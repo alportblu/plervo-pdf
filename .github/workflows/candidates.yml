@@ -21,8 +21,16 @@ jobs:
     env:
       CARGO_BUILD_JOBS: 2
       PDFCRAFT_BUILD_LABEL: internal
+      CRAFT_FONTS_DIR: ${{ github.workspace }}/craft-fonts
+      CRAFT_FONTS_REQUIRED: '1'
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Check out release fonts
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: storytold/craft-fonts
+          ref: 3d9ab3a132ed0eff457e424226a435a901da30d3
+          path: craft-fonts
       - uses: dtolnay/rust-toolchain@686976e191b89faba57d3206551f0f330d8cb249
         with:
           toolchain: '1.95.0'
@@ -37,6 +45,8 @@ jobs:
       - name: CLI smoke test
         shell: bash
         run: ./target/release/plervo-pdf-cli --version
+      - name: PDF operations and file protection (release binaries)
+        run: cargo test --release --locked -p plervo-pdf-cli --tests
       - name: Control transport regression tests
         run: cargo test --locked -p pdfcraft-ui-egui --lib control::transport_tests -- --test-threads=1
       - name: macOS installer (internal, not notarized)
