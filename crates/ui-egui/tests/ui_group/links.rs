@@ -1,10 +1,9 @@
-//! Community links: the Discord button is one click away everywhere; Help menu, About dialog and
-//! home screen open the ArtCraft and Plervo PDF pages.
+//! Voluntary support and project links in the toolbar, Help menu, About dialog and home screen.
 
 use egui_kittest::Harness;
 use egui_kittest::kittest::Queryable;
 use pdfcraft_engine::links;
-use pdfcraft_ui_egui::{Dialog, PdfCraftApp};
+use pdfcraft_ui_egui::{Dialog, PdfCraftApp, i18n};
 
 fn harness(setup: impl FnOnce(&mut PdfCraftApp) + 'static) -> Harness<'static, PdfCraftApp> {
     let mut h = Harness::builder().with_size(egui::vec2(1400.0, 900.0)).build_eframe(move |_cc| {
@@ -19,11 +18,13 @@ fn harness(setup: impl FnOnce(&mut PdfCraftApp) + 'static) -> Harness<'static, P
 
 #[test]
 fn support_button_in_the_top_bar_opens_plervo_support() {
-    let mut h = harness(|_| {});
-    h.get_by_label("Support").click();
-    h.run_steps(2);
-    assert_eq!(h.state().last_opened_url.as_deref(), Some(links::SUPPORT));
-    assert_eq!(links::SUPPORT, "https://plervo.com/apoiar/");
+    assert_eq!(links::SUPPORT, "https://buymeacoffee.com/alport");
+    for lang in i18n::Lang::all() {
+        let mut h = harness(move |app| app.set_option("language", lang.code()).unwrap());
+        h.get_by_label(i18n::tr(lang, "Support")).click();
+        h.run_steps(2);
+        assert_eq!(h.state().last_opened_url.as_deref(), Some(links::SUPPORT), "{}", lang.code());
+    }
 }
 
 #[test]

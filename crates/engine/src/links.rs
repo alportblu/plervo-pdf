@@ -7,7 +7,7 @@ use std::path::{Path, PathBuf};
 /// The application's repository name.
 pub const APP: &str = "plervo-pdf";
 
-pub const SUPPORT: &str = "https://plervo.com/apoiar/";
+pub const SUPPORT: &str = "https://buymeacoffee.com/alport";
 pub const WEBSITE: &str = "https://plervo.com";
 pub const APP_PAGE: &str = "https://plervo.com/#recursos";
 pub const GITHUB: &str = "https://github.com/alportblu/plervo-pdf";
@@ -522,7 +522,7 @@ mod tests {
 
     #[test]
     fn links_use_plervo_destinations_and_registered_commands() {
-        assert_eq!(super::SUPPORT, "https://plervo.com/apoiar/");
+        assert_eq!(super::SUPPORT, "https://buymeacoffee.com/alport");
         assert_eq!(super::GITHUB, format!("https://github.com/alportblu/{}", super::APP));
         for l in super::LINKS {
             assert!(l.url.starts_with("https://"), "{}", l.url);

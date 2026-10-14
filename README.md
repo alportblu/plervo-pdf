@@ -4,7 +4,13 @@ Aplicativo independente para trabalhar com PDFs no computador, baseado no [PdfCr
 
 **Estado: desenvolvimento inicial; não liberado para produção.** Windows, macOS e Linux são os alvos. Cada pacote precisa de validação no sistema correspondente antes de um download público.
 
-Site: https://plervo.com · Apoio voluntário: https://plervo.com/apoiar/
+Site: https://plervo.com · Apoio voluntário: https://buymeacoffee.com/alport
+
+## Idiomas
+
+A interface mantém os 22 idiomas da base, incluindo português do Brasil. Em **Editar → Preferências → Idioma da interface**, escolha o idioma ou use a detecção automática do sistema. A escolha é salva; trocar de idioma preserva os documentos abertos e os comandos de automação. Novas telas e ações da Plervo devem usar o mesmo sistema de tradução.
+
+Os catálogos têm diferentes níveis de cobertura; textos ainda não traduzidos usam inglês. A revisão visual nos três sistemas, fontes para todas as escritas e o layout da direita para a esquerda continuam como critérios de lançamento. Veja [localização](docs/localization.md) e [limitações por idioma](docs/localization-parity.md).
 
 ## Desenvolvimento
 

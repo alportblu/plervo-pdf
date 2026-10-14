@@ -70,7 +70,7 @@ plervo-pdf-cli run    --script steps.json [--root DIR]      [{\"tool\": \"doc_op
     "\
 plervo-pdf-cli ui     --control FILE <method> [key=value …] [--out shot.png]
                                                            drive a running app started with --control FILE
-help and feedback: https://plervo.com/apoiar/"
+voluntary support: https://buymeacoffee.com/alport"
 );
 
 fn main() -> ExitCode {

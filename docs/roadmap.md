@@ -1,6 +1,6 @@
 ## Plervo P0 — launch foundation
 
-2026-10-14: in validation. Four control-channel resource-limit regressions reproduced and corrected; own identity and donation link prepared. Windows/Linux installers and public signing not yet validated. Historical upstream milestones below are not Plervo release claims.
+2026-10-14: in validation. Four control-channel resource-limit regressions reproduced and corrected; own identity and the owner-confirmed Buy Me a Coffee destination configured. Preserve all 22 interface languages; support buttons and language-switch/document-integrity tests cover the full registry. Linguistic, glyph and native-layout review, Windows/Linux installers and public signing remain pending. Historical upstream milestones below are not Plervo release claims.
 
 # PdfCraft roadmap: milestones and what's next
 
