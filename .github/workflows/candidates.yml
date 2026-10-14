@@ -2,6 +2,10 @@ name: Plervo internal candidates
 
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/candidates.yml'
+      - 'packaging/**'
 
 permissions:
   contents: read

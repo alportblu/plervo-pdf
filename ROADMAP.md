@@ -1,5 +1,7 @@
 ## Plervo fork — 2026-10-14
 
+2026-10-14: source published under the personal `alportblu/plervo-pdf` account. First native CI started; packaging changes now request internal candidates on PRs as well as manual dispatch. Installer results, native acceptance and distribution signing remain pending.
+
 Stage: internal alpha preparation. Brand and distribution separation, bounded authenticated control transport, TLS dependency update, and website foundation. Owner-confirmed support destination: https://buymeacoffee.com/alport. Preserve all 22 interface languages, with automatic detection and persistent manual selection; complete linguistic, glyph and native-layout review remains a release gate alongside signing. Upstream history follows.
 
 # PdfCraft roadmap
