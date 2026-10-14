@@ -1,3 +1,7 @@
+## Plervo fork — 2026-10-14
+
+Stage: internal alpha preparation. Brand and distribution separation, bounded authenticated control transport, TLS dependency update, and website foundation. Native validation and signing remain release gates. Upstream history follows.
+
 # PdfCraft roadmap
 
 **Stage: alpha** · next: beta, ~26% (ready for real work 49% → 75%) and ~400–700 h away

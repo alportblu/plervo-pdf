@@ -1,5 +1,5 @@
 //! Community links: the Discord button is one click away everywhere; Help menu, About dialog and
-//! home screen open the ArtCraft and PdfCraft pages.
+//! home screen open the ArtCraft and Plervo PDF pages.
 
 use egui_kittest::Harness;
 use egui_kittest::kittest::Queryable;
@@ -18,24 +18,24 @@ fn harness(setup: impl FnOnce(&mut PdfCraftApp) + 'static) -> Harness<'static, P
 }
 
 #[test]
-fn discord_button_in_the_top_bar_opens_discord() {
+fn support_button_in_the_top_bar_opens_plervo_support() {
     let mut h = harness(|_| {});
-    h.get_by_label("Discord").click();
+    h.get_by_label("Support").click();
     h.run_steps(2);
-    assert_eq!(h.state().last_opened_url.as_deref(), Some(links::DISCORD));
-    assert_eq!(links::DISCORD, "https://discord.gg/artcraft");
+    assert_eq!(h.state().last_opened_url.as_deref(), Some(links::SUPPORT));
+    assert_eq!(links::SUPPORT, "https://plervo.com/apoiar/");
 }
 
 #[test]
 fn home_screen_links() {
     for (label, url) in [
-        ("Join our Discord", links::DISCORD),
-        ("PdfCraft web page", "https://getartcraft.com/apps/pdfcraft"),
-        ("PdfCraft on GitHub", "https://github.com/storytold/pdfcraft"),
-        ("ArtCraft website", "https://getartcraft.com"),
+        ("Support Plervo", links::SUPPORT),
+        ("Plervo PDF web page", "https://plervo.com/#recursos"),
+        ("Plervo PDF on GitHub", "https://github.com/alportblu/plervo-pdf"),
+        ("Plervo website", "https://plervo.com"),
     ] {
         let mut h = harness(|_| {});
-        h.get_by_label("Join the ArtCraft community");
+        h.get_by_label("Help build Plervo");
         h.get_by_label(label).click();
         h.run_steps(2);
         assert_eq!(h.state().last_opened_url.as_deref(), Some(url), "{label}");
@@ -50,10 +50,10 @@ fn about_dialog_shows_the_brand_and_links() {
         app.open_bytes("one.pdf", None, pdf.to_vec()).unwrap();
         app.dialog = Some(Dialog::About);
     });
-    assert!(h.query_all_by_label("ArtCraft").count() >= 2, "the mark and the wordmark (alt text)");
-    h.get_by_label("Join our Discord").click();
+    assert!(h.query_all_by_label("Plervo").count() >= 2, "the mark and the wordmark (alt text)");
+    h.get_by_label("Support Plervo").click();
     h.run_steps(2);
-    assert_eq!(h.state().last_opened_url.as_deref(), Some(links::DISCORD));
+    assert_eq!(h.state().last_opened_url.as_deref(), Some(links::SUPPORT));
 }
 
 #[test]

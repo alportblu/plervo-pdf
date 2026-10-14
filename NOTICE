@@ -58,3 +58,9 @@ dependencies change (plan/adr/0002, 0006).
 Vendored (vendor/, patched; see vendor/README.md):
 - hayro 0.7.1 — Apache-2.0 OR MIT, Copyright the hayro authors (licence files kept in vendor/hayro).
 - hayro-interpret 0.7.0 — Apache-2.0 OR MIT, Copyright the hayro authors (LICENSE-APACHE, LICENSE-MIT kept in vendor/hayro-interpret).
+
+Plervo PDF fork
+Based on PdfCraft v0.8.0, commit 9931329b9fae0b05373b4dc3ac7c58541f0891a4.
+Plervo branding and fork-specific modifications copyright 2026 Plervo contributors.
+Original notices and MIT OR Apache-2.0 licensing are preserved.
+ArtCraft trademark graphics are not included in this modified distribution.

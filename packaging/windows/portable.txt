@@ -1,9 +1,9 @@
-PdfCraft portable mode
+Plervo PDF portable mode
 
-While this file sits next to pdfcraft.exe, PdfCraft keeps its settings, log files, crash-recovery
-autosaves and new digital IDs in the PdfCraftData folder beside it, and writes nothing to
-%APPDATA% or %LOCALAPPDATA%. Copy the whole folder to move PdfCraft with its settings.
+While this file sits next to plervo-pdf.exe, Plervo PDF keeps its settings, log files, crash-recovery
+autosaves and new digital IDs in the PlervoPDFData folder beside it, and writes nothing to
+%APPDATA% or %LOCALAPPDATA%. Copy the whole folder to move Plervo PDF with its settings.
 
-Delete this file to use the normal per-user folders (%APPDATA%\PdfCraft and
-%LOCALAPPDATA%\PdfCraft) instead. If PdfCraftData can't be written (for example on a read-only
-drive), PdfCraft says so and uses the per-user folders instead.
+Delete this file to use the normal per-user folders (%APPDATA%\Plervo PDF and
+%LOCALAPPDATA%\Plervo PDF) instead. If PlervoPDFData can't be written (for example on a read-only
+drive), Plervo PDF says so and uses the per-user folders instead.

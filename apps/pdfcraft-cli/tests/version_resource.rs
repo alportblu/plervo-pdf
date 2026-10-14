@@ -1,5 +1,5 @@
-//! `pdfcraft-cli.exe` carries a Windows version resource (`build.rs`), so Explorer, PowerShell's
-//! `VersionInfo` and inventory tools see its version and publisher, as they do for `pdfcraft.exe`.
+//! `plervo-pdf-cli.exe` carries a Windows version resource (`build.rs`), so Explorer, PowerShell's
+//! `VersionInfo` and inventory tools see its version and publisher, as they do for `plervo-pdf.exe`.
 
 #![cfg(windows)]
 
@@ -29,15 +29,15 @@ fn string_value(resource: &[u8], key: &str) -> Option<String> {
 
 #[test]
 fn the_exe_has_version_info_with_the_package_version() {
-    let exe = std::fs::read(env!("CARGO_BIN_EXE_pdfcraft-cli")).unwrap();
+    let exe = std::fs::read(env!("CARGO_BIN_EXE_plervo-pdf-cli")).unwrap();
     let start = find(&exe, &utf16("VS_VERSION_INFO")).expect("no version resource");
     let resource = &exe[start..];
     for (key, value) in [
-        ("ProductName", "PdfCraft"),
-        ("FileDescription", "PdfCraft command-line tool"),
-        ("LegalCopyright", "Copyright (c) the PdfCraft contributors. MIT OR Apache-2.0."),
-        ("OriginalFilename", "pdfcraft-cli.exe"),
-        ("InternalName", "pdfcraft-cli"),
+        ("ProductName", "Plervo PDF"),
+        ("FileDescription", "Plervo PDF command-line tool"),
+        ("LegalCopyright", "Copyright (c) the Plervo PDF contributors. MIT OR Apache-2.0."),
+        ("OriginalFilename", "plervo-pdf-cli.exe"),
+        ("InternalName", "plervo-pdf-cli"),
         ("FileVersion", env!("CARGO_PKG_VERSION")),
         ("ProductVersion", env!("CARGO_PKG_VERSION")),
     ] {

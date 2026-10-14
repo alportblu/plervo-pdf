@@ -42,12 +42,12 @@ PdfCraft is a clean-room, open-source, Rust-native PDF application targeting Ado
   - **`main` moves fast enough that PRs rot.** It took 396 commits in the three days to 2026-10-12, and most open PRs are conflicting at any given time. Rebase your own branch the same day `main` moves under it, and ask the author to rebase theirs — never rewrite a contributor's branch. Conflict risk tracks how *contested* the files are, not how large the change is: tooling, tests and docs are nearly free, while `crates/fonts`, `ui-egui` and the i18n catalogues are where several people collide at once.
 
 ## Running and looking at the app
-- `cargo run -p pdfcraft -- <file.pdf>` opens the desktop app.
-- `cargo run -p pdfcraft-cli -- run --script steps.json --root DIR` drives the engine headlessly through the automation tools (`pdfcraft-cli tools` lists them). Use it, together with `page_render`, to check engine changes. `pdfcraft-cli mcp` is the opt-in MCP server (AGENTS.md §3).
+- `cargo run -p plervo-pdf -- <file.pdf>` opens the desktop app.
+- `cargo run -p plervo-pdf-cli -- run --script steps.json --root DIR` drives the engine headlessly through the automation tools (`plervo-pdf-cli tools` lists them). Use it, together with `page_render`, to check engine changes. `plervo-pdf-cli mcp` is the opt-in MCP server (AGENTS.md §3).
 - `cargo xtask fuzz --time 300` mutation-fuzzes open/render/edit/save in child processes. Findings land in `fuzz-out/findings/` (git-ignored; never commit corpus-derived files). Turn every real finding into a small synthetic regression test before fixing it.
 - `cargo xtask parity [--partial]` reports Acrobat-parity progress from `parity/acrobat-features.toml`. Update the entry when a feature ships.
 - `cargo xtask demo-pdf` builds `dist/demo/pdfcraft-showcase.pdf` (needs Chrome) for visual checks.
-- For UI work, **look at the result**. Either launch `pdfcraft --control FILE doc.pdf` and use `pdfcraft-cli ui --control FILE screenshot --out x.png` (plus `inspect`, `click`, `key`, `type`, `command`, `set`), or take a headless shot with `cargo run -p pdfcraft-ui-egui --example shot`. Compare against `plan/acrobat/02-ui-ux.md`. Control-channel tests use kittest (`crates/ui-egui/tests/control.rs`).
+- For UI work, **look at the result**. Either launch `pdfcraft --control FILE doc.pdf` and use `plervo-pdf-cli ui --control FILE screenshot --out x.png` (plus `inspect`, `click`, `key`, `type`, `command`, `set`), or take a headless shot with `cargo run -p pdfcraft-ui-egui --example shot`. Compare against `plan/acrobat/02-ui-ux.md`. Control-channel tests use kittest (`crates/ui-egui/tests/control.rs`).
 - Parallel agents: use a separate `CARGO_TARGET_DIR` per agent and separate git worktrees.
 
 ## Current bootstrap debt (tracked in STATUS.md)

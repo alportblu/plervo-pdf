@@ -6,7 +6,7 @@
 //! is read only once it has stopped changing ([`SETTLE`] apart) and ends like a whole PDF: its
 //! last KiB is read first, so a file still being written costs one small read. The new bytes go
 //! to the UI thread, which is woken for them: a clean document is reloaded in place, keeping its
-//! tab, page, zoom and scroll; one with unsaved changes gets a notice instead. PdfCraft's own
+//! tab, page, zoom and scroll; one with unsaved changes gets a notice instead. Plervo PDF's own
 //! saves are recognised by the file's stamp after writing, so they never reload.
 
 use std::collections::HashMap;
@@ -66,9 +66,9 @@ impl Stamp {
 pub struct Watched {
     pub doc: DocId,
     pub path: String,
-    /// The version PdfCraft last read or wrote (`None`: the first one the watcher sees).
+    /// The version Plervo PDF last read or wrote (`None`: the first one the watcher sees).
     pub known: Option<Stamp>,
-    /// Which reading or writing of the file by PdfCraft this is for (an open, a save, Save As):
+    /// Which reading or writing of the file by Plervo PDF this is for (an open, a save, Save As):
     /// a version the watcher found for an earlier one is older than the document is now.
     pub epoch: u64,
 }
@@ -245,9 +245,9 @@ pub struct FileWatch {
     sent: Vec<Watched>,
     /// In tests ([`PdfCraftApp::run_inline`]) there is no thread: each frame looks once.
     inline: Watcher,
-    /// The version of each document's file that PdfCraft last read or wrote.
+    /// The version of each document's file that Plervo PDF last read or wrote.
     known: HashMap<DocId, Stamp>,
-    /// How many times PdfCraft has read or written each document's file: a version the watcher
+    /// How many times Plervo PDF has read or written each document's file: a version the watcher
     /// found before the latest one is older than the document in memory, and is not applied
     /// (#1802).
     epoch: HashMap<DocId, u64>,
@@ -256,7 +256,7 @@ pub struct FileWatch {
 }
 
 impl FileWatch {
-    /// PdfCraft read or wrote `path` for `doc`: that version is not a change, and anything the
+    /// Plervo PDF read or wrote `path` for `doc`: that version is not a change, and anything the
     /// watcher found before it is stale.
     pub fn known_now(&mut self, doc: DocId, path: &str) {
         if let Some(stamp) = Stamp::at(path) {
@@ -360,7 +360,7 @@ impl PdfCraftApp {
         if !same_file || self.watch.epoch(c.doc) != c.epoch {
             return;
         }
-        // PdfCraft wrote this version itself (a save), or it was handled already.
+        // Plervo PDF wrote this version itself (a save), or it was handled already.
         if self.watch.known.get(&c.doc) == Some(&c.stamp) {
             return;
         }

@@ -1,0 +1,73 @@
+name: Plervo internal candidates
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: candidates-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2025, macos-15]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 120
+    env:
+      CARGO_BUILD_JOBS: 2
+      PDFCRAFT_BUILD_LABEL: internal
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: dtolnay/rust-toolchain@686976e191b89faba57d3206551f0f330d8cb249
+        with:
+          toolchain: '1.95.0'
+      - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6
+      - name: Linux libraries
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libxkbcommon-dev libwayland-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev libgtk-3-dev
+      - name: Build candidates
+        run: cargo build --release --locked -p plervo-pdf -p plervo-pdf-cli
+      - name: CLI smoke test
+        shell: bash
+        run: ./target/release/plervo-pdf-cli --version
+      - name: Control transport regression tests
+        run: cargo test --locked -p pdfcraft-ui-egui --lib control::transport_tests -- --test-threads=1
+      - name: macOS installer (internal, not notarized)
+        if: runner.os == 'macOS'
+        shell: bash
+        run: |
+          arch="$(uname -m)"
+          target="$(rustc -vV | sed -n 's/^host: //p')"
+          mkdir -p "target/$target/release"
+          cp target/release/plervo-pdf target/release/plervo-pdf-cli "target/$target/release/"
+          [ "$arch" = arm64 ] && arch=aarch64
+          packaging/macos/package.sh --arch "$arch" --skip-build
+      - name: Windows installer (internal, unsigned)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          dotnet tool install --global wix --version 5.0.2
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          packaging/windows/package.ps1 -Arch x64
+      - name: Linux packages (internal)
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          go install github.com/goreleaser/nfpm/v2/cmd/nfpm@v2.48.0
+          go_path="$(go env GOPATH)"
+          export PATH="$go_path/bin:$PATH"
+          packaging/linux/package.sh --skip-build --formats 'deb rpm tar cli'
+      - name: Upload internal candidates
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: plervo-internal-${{ runner.os }}-${{ runner.arch }}
+          path: dist/release/
+          if-no-files-found: error
+          retention-days: 14

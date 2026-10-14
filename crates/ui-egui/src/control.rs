@@ -41,7 +41,7 @@
 //! - `ui.screenshot {region?}`: PNG of the window (base64), optionally cropped to a rect.
 
 use std::collections::{HashMap, VecDeque};
-use std::sync::mpsc::{Receiver, Sender, channel};
+use std::sync::mpsc::{Receiver, Sender, SyncSender, TrySendError, channel, sync_channel};
 use std::sync::{Arc, Mutex};
 
 use egui::accesskit::{self, Action, NodeId};
@@ -83,7 +83,7 @@ pub struct ControlRequest {
 /// Sends requests to the app (from the transport thread or a test).
 #[derive(Clone)]
 pub struct ControlClient {
-    tx: Sender<ControlRequest>,
+    tx: SyncSender<ControlRequest>,
     ctx: egui::Context,
 }
 
@@ -92,8 +92,12 @@ impl ControlClient {
     pub fn send(&self, method: &str, params: Value) -> Receiver<Reply> {
         let (reply, rx) = channel();
         let req = ControlRequest { method: method.into(), params, reply };
-        if let Err(e) = self.tx.send(req) {
-            let _ = e.0.reply.send(Err("the app has closed".into()));
+        if let Err(e) = self.tx.try_send(req) {
+            let (req, message) = match e {
+                TrySendError::Full(req) => (req, "the control queue is full; wait for the app and retry"),
+                TrySendError::Disconnected(req) => (req, "the app has closed"),
+            };
+            let _ = req.reply.send(Err(message.into()));
         }
         self.ctx.request_repaint();
         rx
@@ -173,7 +177,7 @@ pub fn attach(ctx: &egui::Context) -> (Control, ControlClient) {
     let shared = Arc::new(Mutex::new(Shared::default()));
     ctx.add_plugin(ControlPlugin { shared: shared.clone() });
     ctx.enable_accesskit();
-    let (tx, rx) = channel();
+    let (tx, rx) = sync_channel(32);
     (Control { rx, shared, pending: Vec::new(), next_tag: 1 }, ControlClient { tx, ctx: ctx.clone() })
 }
 
@@ -784,7 +788,8 @@ pub struct Endpoint {
 ///
 /// Protocol: newline-delimited JSON-RPC 2.0. The first request on a connection must be
 /// `{"method": "auth", "params": {"token": …}}`; anything else closes the connection, and so does
-/// a line longer than [`MAX_AUTH_LINE`] before that.
+/// a line longer than [`MAX_AUTH_LINE`] before that. Authenticated requests, concurrent clients
+/// and read/write times are bounded too, even when a peer trickles bytes or stops reading.
 #[cfg(not(target_arch = "wasm32"))]
 pub fn serve(client: ControlClient) -> std::io::Result<Endpoint> {
     use std::io::{BufReader, Write};
@@ -792,26 +797,35 @@ pub fn serve(client: ControlClient) -> std::io::Result<Endpoint> {
     let port = listener.local_addr()?.port();
     let token = random_token()?;
     let expected = token.clone();
+    let active = Arc::new(std::sync::atomic::AtomicUsize::new(0));
     std::thread::Builder::new().name("pdfcraft-control".into()).spawn(move || {
         for stream in listener.incoming().flatten() {
+            let Some(slot) = ConnectionSlot::acquire(&active) else { continue };
             let client = client.clone();
             let expected = expected.clone();
             let _ = std::thread::Builder::new().name("pdfcraft-control-conn".into()).spawn(move || {
+                let _slot = slot;
+                if stream.set_write_timeout(Some(std::time::Duration::from_secs(5))).is_err() {
+                    return;
+                }
                 let Ok(read) = stream.try_clone() else { return };
                 let mut write = stream;
                 let mut authed = false;
-                let mut reader = BufReader::new(read);
+                let mut reader =
+                    BufReader::new(DeadlineReader { stream: read, deadline: std::time::Instant::now() + std::time::Duration::from_secs(5) });
                 let mut buf = Vec::new();
                 loop {
-                    // Until `auth` succeeds, lines are capped at MAX_AUTH_LINE; afterwards they
-                    // are read whole, as before.
-                    let max = if authed { usize::MAX } else { MAX_AUTH_LINE };
+                    // Empty pre-auth lines do not extend the authentication deadline.
+                    if authed {
+                        reader.get_mut().deadline = std::time::Instant::now() + std::time::Duration::from_secs(30);
+                    }
+                    let max = if authed { MAX_REQUEST_LINE } else { MAX_AUTH_LINE };
                     match read_line_limited(&mut reader, &mut buf, max) {
                         Ok(LineRead::Line) => {}
                         // End of stream or a failed read ends the connection, as before.
                         Ok(LineRead::End) | Err(_) => break,
                         Ok(LineRead::TooLong) => {
-                            let e = rpc_error(Value::Null, -32600, &format!("request line longer than {max} bytes before auth"));
+                            let e = rpc_error(Value::Null, -32600, &format!("request line longer than {max} bytes"));
                             let _ = writeln!(write, "{e}").and_then(|_| write.flush());
                             break;
                         }
@@ -842,7 +856,7 @@ pub fn serve(client: ControlClient) -> std::io::Result<Endpoint> {
                                 match rx.recv_timeout(std::time::Duration::from_secs(30)) {
                                     Ok(Ok(v)) => (json!({ "jsonrpc": "2.0", "id": id, "result": v }), false),
                                     Ok(Err(e)) => (rpc_error(id, -32000, &e), false),
-                                    Err(_) => (rpc_error(id, -32002, "the app did not answer within 30 s"), false),
+                                    Err(_) => (rpc_error(id, -32002, "the app did not answer within 30 s"), true),
                                 }
                             }
                         }
@@ -861,6 +875,47 @@ pub fn serve(client: ControlClient) -> std::io::Result<Endpoint> {
 /// `auth`, about a hundred bytes; a longer line is refused without buffering the rest of it.
 #[cfg(not(target_arch = "wasm32"))]
 const MAX_AUTH_LINE: usize = 4 * 1024;
+
+#[cfg(not(target_arch = "wasm32"))]
+const MAX_REQUEST_LINE: usize = 1024 * 1024;
+
+#[cfg(not(target_arch = "wasm32"))]
+struct ConnectionSlot(Arc<std::sync::atomic::AtomicUsize>);
+
+#[cfg(not(target_arch = "wasm32"))]
+impl ConnectionSlot {
+    fn acquire(active: &Arc<std::sync::atomic::AtomicUsize>) -> Option<Self> {
+        use std::sync::atomic::Ordering;
+        active.fetch_update(Ordering::AcqRel, Ordering::Relaxed, |n| (n < 16).then_some(n + 1)).ok()?;
+        Some(Self(Arc::clone(active)))
+    }
+}
+
+#[cfg(not(target_arch = "wasm32"))]
+impl Drop for ConnectionSlot {
+    fn drop(&mut self) {
+        self.0.fetch_sub(1, std::sync::atomic::Ordering::Release);
+    }
+}
+
+/// A per-message deadline, so slow byte-by-byte input cannot renew the socket timeout forever.
+#[cfg(not(target_arch = "wasm32"))]
+struct DeadlineReader {
+    stream: std::net::TcpStream,
+    deadline: std::time::Instant,
+}
+
+#[cfg(not(target_arch = "wasm32"))]
+impl std::io::Read for DeadlineReader {
+    fn read(&mut self, buf: &mut [u8]) -> std::io::Result<usize> {
+        let remaining = self.deadline.saturating_duration_since(std::time::Instant::now());
+        if remaining.is_zero() {
+            return Err(std::io::Error::new(std::io::ErrorKind::TimedOut, "control request deadline exceeded"));
+        }
+        self.stream.set_read_timeout(Some(remaining))?;
+        self.stream.read(buf)
+    }
+}
 
 /// What [`read_line_limited`] found.
 #[cfg(not(target_arch = "wasm32"))]
@@ -915,6 +970,116 @@ fn random_token() -> std::io::Result<String> {
 
 #[cfg(test)]
 mod transport_tests {
+    #[test]
+    fn a_stalled_ui_cannot_accumulate_unbounded_requests() {
+        let (_control, client) = super::attach(&egui::Context::default());
+        let _held: Vec<_> = (0..32).map(|_| client.send("ui.state", serde_json::Value::Null)).collect();
+        let reply = client.send("ui.state", serde_json::Value::Null);
+        assert!(reply.recv_timeout(std::time::Duration::from_millis(100)).unwrap().is_err());
+    }
+
+    #[cfg(not(target_arch = "wasm32"))]
+    fn authenticated(port: u16, token: &str) -> std::io::BufReader<std::net::TcpStream> {
+        use std::io::{BufRead, Write};
+        let mut stream = std::net::TcpStream::connect(("127.0.0.1", port)).unwrap();
+        stream.set_read_timeout(Some(std::time::Duration::from_secs(7))).unwrap();
+        stream.set_write_timeout(Some(std::time::Duration::from_secs(7))).unwrap();
+        writeln!(stream, "{}", serde_json::json!({"id": 1, "method": "auth", "params": {"token": token}})).unwrap();
+        let mut reader = std::io::BufReader::new(stream);
+        let mut reply = String::new();
+        reader.read_line(&mut reply).unwrap();
+        assert_eq!(serde_json::from_str::<serde_json::Value>(&reply).unwrap()["result"]["ok"], true);
+        reader
+    }
+
+    #[cfg(not(target_arch = "wasm32"))]
+    #[test]
+    fn oversized_authenticated_request_is_refused() {
+        use std::io::{BufRead, Write};
+        let (_control, client) = super::attach(&egui::Context::default());
+        let ep = super::serve(client).unwrap();
+        let mut reader = authenticated(ep.port, &ep.token);
+        reader.get_mut().write_all(&vec![b'x'; 1024 * 1024 + 1]).unwrap();
+        let mut reply = String::new();
+        reader.read_line(&mut reply).unwrap();
+        assert_eq!(serde_json::from_str::<serde_json::Value>(&reply).unwrap()["error"]["code"], -32600);
+    }
+
+    #[cfg(not(target_arch = "wasm32"))]
+    #[test]
+    fn excess_control_connections_are_closed() {
+        use std::io::{ErrorKind, Read};
+        let (_control, client) = super::attach(&egui::Context::default());
+        let ep = super::serve(client).unwrap();
+        let held: Vec<_> = (0..16).map(|_| authenticated(ep.port, &ep.token)).collect();
+        let mut extra = std::net::TcpStream::connect(("127.0.0.1", ep.port)).unwrap();
+        extra.set_read_timeout(Some(std::time::Duration::from_secs(1))).unwrap();
+        let closed = match extra.read(&mut [0]) {
+            Ok(n) => n == 0,
+            Err(e) => matches!(e.kind(), ErrorKind::ConnectionReset | ErrorKind::ConnectionAborted),
+        };
+        assert!(closed, "connections beyond the 16-client budget must be closed");
+        drop(held);
+        // Disconnecting clients must return their slots, so a burst cannot permanently lock out the UI.
+        use std::io::{BufRead, BufReader, Write};
+        let deadline = std::time::Instant::now() + std::time::Duration::from_secs(2);
+        loop {
+            let mut next = std::net::TcpStream::connect(("127.0.0.1", ep.port)).unwrap();
+            next.set_read_timeout(Some(std::time::Duration::from_millis(100))).unwrap();
+            let auth = serde_json::json!({"id": 2, "method": "auth", "params": {"token": ep.token}});
+            let mut reply = String::new();
+            if writeln!(next, "{auth}").is_ok()
+                && BufReader::new(next).read_line(&mut reply).is_ok()
+                && serde_json::from_str::<serde_json::Value>(&reply).is_ok_and(|v| v["result"]["ok"] == true)
+            {
+                break;
+            }
+            assert!(std::time::Instant::now() < deadline, "disconnected clients did not return their slots");
+            std::thread::sleep(std::time::Duration::from_millis(10));
+        }
+    }
+
+    #[cfg(not(target_arch = "wasm32"))]
+    #[test]
+    fn trickled_bytes_do_not_extend_the_message_deadline() {
+        use std::io::{BufReader, ErrorKind, Write};
+        let listener = std::net::TcpListener::bind(("127.0.0.1", 0)).unwrap();
+        let stream = std::net::TcpStream::connect(listener.local_addr().unwrap()).unwrap();
+        let (mut peer, _) = listener.accept().unwrap();
+        peer.write_all(b"x").unwrap();
+        let writer = std::thread::spawn(move || {
+            for _ in 0..10 {
+                std::thread::sleep(std::time::Duration::from_millis(30));
+                if peer.write_all(b"x").is_err() {
+                    break;
+                }
+            }
+        });
+        let mut reader =
+            BufReader::new(super::DeadlineReader { stream, deadline: std::time::Instant::now() + std::time::Duration::from_millis(100) });
+        let mut bytes = Vec::new();
+        let error = super::read_line_limited(&mut reader, &mut bytes, 4096).unwrap_err();
+        assert!(matches!(error.kind(), ErrorKind::TimedOut | ErrorKind::WouldBlock));
+        assert!(!bytes.is_empty(), "the peer sent data before the deadline");
+        drop(reader);
+        writer.join().unwrap();
+    }
+
+    #[cfg(not(target_arch = "wasm32"))]
+    #[test]
+    fn idle_unauthenticated_connection_expires() {
+        use std::io::{ErrorKind, Read};
+        let (_control, client) = super::attach(&egui::Context::default());
+        let ep = super::serve(client).unwrap();
+        let mut stream = std::net::TcpStream::connect(("127.0.0.1", ep.port)).unwrap();
+        stream.set_read_timeout(Some(std::time::Duration::from_secs(7))).unwrap();
+        let closed = match stream.read(&mut [0]) {
+            Ok(n) => n == 0,
+            Err(e) => matches!(e.kind(), ErrorKind::ConnectionReset | ErrorKind::ConnectionAborted),
+        };
+        assert!(closed, "an idle client must release its worker after five seconds");
+    }
+
     /// Before authenticating, a line that isn't JSON gets a parse error and closes the
     /// connection, as [`super::serve`] documents for any first request other than `auth`.
     #[cfg(not(target_arch = "wasm32"))]

@@ -1,3 +1,7 @@
+## Plervo P0 — launch foundation
+
+2026-10-14: in validation. Four control-channel resource-limit regressions reproduced and corrected; own identity and donation link prepared. Windows/Linux installers and public signing not yet validated. Historical upstream milestones below are not Plervo release claims.
+
 # PdfCraft roadmap: milestones and what's next
 
 > **Last reviewed:** 2026-10-13 · **Last updated:** 2026-10-13 · **Change:** minor (M3 candidate: native opens retain chosen tools through password retries and defer startup intake while preparation is pending; estimates unchanged) · **Target:** Adobe Acrobat Pro (Acrobat DC, continuous track 26.002.21931, macOS)

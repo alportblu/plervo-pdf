@@ -1,4 +1,4 @@
-//! PdfCraft in the browser. Build: `cd apps/pdfcraft-web && trunk build --release`
+//! Plervo PDF in the browser. Build: `cd apps/pdfcraft-web && trunk build --release`
 //! (trunk generates the JS loader; no handwritten JS — plan/execution-plan.md §1).
 
 #![deny(clippy::unwrap_used, clippy::expect_used, clippy::panic, clippy::unimplemented, clippy::todo, clippy::unreachable)]
@@ -12,7 +12,7 @@ fn main() {
     wasm_bindgen_futures::spawn_local(async move {
         let Some(canvas) = web_sys::window()
             .and_then(|w| w.document())
-            .and_then(|d| d.get_element_by_id("pdfcraft"))
+            .and_then(|d| d.get_element_by_id("plervo-pdf"))
             .and_then(|e| e.dyn_into::<web_sys::HtmlCanvasElement>().ok())
         else {
             return;
@@ -24,7 +24,7 @@ fn main() {
                 Box::new(|cc| {
                     let mut app = PdfCraftApp::new();
                     // "printcraft": settings saved under the app's former name, PrintCraft.
-                    if let Some(json) = cc.storage.and_then(|s| s.get_string("pdfcraft").or_else(|| s.get_string("printcraft"))) {
+                    if let Some(json) = cc.storage.and_then(|s| s.get_string("plervo-pdf").or_else(|| s.get_string("printcraft"))) {
                         app.restore(&json);
                     }
                     // `?file=<url>` opens a PDF from a URL (same-origin or CORS-enabled).
@@ -41,7 +41,7 @@ fn main() {
                                     }
                                 }
                                 Err(e) => {
-                                    eframe::web_sys::console::error_1(&format!("PdfCraft: could not fetch {url}: {e}").into());
+                                    eframe::web_sys::console::error_1(&format!("Plervo PDF: could not fetch {url}: {e}").into());
                                     // Shown in the app too, not only in the console (#173).
                                     if let Ok(mut q) = failed.lock() {
                                         q.push((name, e));
@@ -54,13 +54,13 @@ fn main() {
                     // eframe never raises a close request on a browser reload or tab close, so `guard_quit` never
                     // prompts; ask the browser to confirm instead while a document has unsaved work (#812).
                     warn_before_unload(app.unsaved_flag.clone());
-                    // `?host=parent`: a same-origin page embedding PdfCraft in an iframe (such
+                    // `?host=parent`: a same-origin page embedding Plervo PDF in an iframe (such
                     // as the Nextcloud app) passes files in and takes saves back (`host` below).
                     if query_param("host").as_deref() == Some("parent")
                         && let Some(bridge) = host::Bridge::new()
                     {
                         // `?author=`: the host's name for the user signs their comments,
-                        // unless they chose a name in PdfCraft (the web default is "Guest").
+                        // unless they chose a name in Plervo PDF (the web default is "Guest").
                         if let Some(author) = query_param("author").map(|a| a.trim().to_string()).filter(|a| !a.is_empty())
                             && app.comment_prefs.author == "Guest"
                         {
@@ -122,13 +122,13 @@ async fn fetch_bytes(url: &str) -> Result<Vec<u8>, String> {
 /// The `postMessage` bridge to a same-origin parent page. Messages are plain objects with a
 /// `type`:
 ///
-/// - `pdfcraft:ready` (to the parent): the app is listening; send files now.
-/// - `pdfcraft:open` (from the parent): `{ name, bytes }`, where `bytes` is an `ArrayBuffer` or
+/// - `plervo-pdf:ready` (to the parent): the app is listening; send files now.
+/// - `plervo-pdf:open` (from the parent): `{ name, bytes }`, where `bytes` is an `ArrayBuffer` or
 ///   `Uint8Array` holding a PDF. It opens in a tab, like a `?file=` URL.
-/// - `pdfcraft:save` (to the parent): `{ name, saveAs, bytes }` when the user saves; `bytes` is
+/// - `plervo-pdf:save` (to the parent): `{ name, saveAs, bytes }` when the user saves; `bytes` is
 ///   a transferred `ArrayBuffer`. The parent stores the file (and reports its own errors).
-/// - `pdfcraft:dirty` (to the parent): `{ dirty }` whenever unsaved work appears or goes away.
-/// - `pdfcraft:failed` (to the parent): `{ error }` when the app couldn't start.
+/// - `plervo-pdf:dirty` (to the parent): `{ dirty }` whenever unsaved work appears or goes away.
+/// - `plervo-pdf:failed` (to the parent): `{ error }` when the app couldn't start.
 ///
 /// Only the parent window on the app's own origin is heard or answered.
 #[cfg(target_arch = "wasm32")]
@@ -163,19 +163,19 @@ mod host {
         }
 
         pub fn post_ready(&self) {
-            if let Some(m) = message(&[("type", "pdfcraft:ready".into()), ("version", env!("CARGO_PKG_VERSION").into())]) {
+            if let Some(m) = message(&[("type", "plervo-pdf:ready".into()), ("version", env!("CARGO_PKG_VERSION").into())]) {
                 let _ = self.post(&m, None);
             }
         }
 
         /// The app couldn't start (no WebGL, for example): let the parent say so.
         pub fn post_failed(&self, error: &str) {
-            if let Some(m) = message(&[("type", "pdfcraft:failed".into()), ("error", error.into())]) {
+            if let Some(m) = message(&[("type", "plervo-pdf:failed".into()), ("error", error.into())]) {
                 let _ = self.post(&m, None);
             }
         }
 
-        /// Hear `pdfcraft:open` from the parent and queue the file like a `?file=` download.
+        /// Hear `plervo-pdf:open` from the parent and queue the file like a `?file=` download.
         pub fn listen(&self, inbox: pdfcraft_ui_egui::Inbox, ctx: egui::Context) {
             let parent = self.parent.clone();
             let origin = self.origin.clone();
@@ -184,7 +184,7 @@ mod host {
                     return;
                 }
                 let data = event.data();
-                if string(&data, "type").as_deref() != Some("pdfcraft:open") {
+                if string(&data, "type").as_deref() != Some("plervo-pdf:open") {
                     return;
                 }
                 let name = string(&data, "name").filter(|n| !n.trim().is_empty()).unwrap_or_else(|| "document.pdf".to_string());
@@ -211,9 +211,13 @@ mod host {
             let bridge = self.clone();
             Box::new(move |name: &str, bytes: &[u8], save_as: bool| {
                 let buffer = js_sys::Uint8Array::from(bytes).buffer();
-                let m =
-                    message(&[("type", "pdfcraft:save".into()), ("name", name.into()), ("saveAs", save_as.into()), ("bytes", buffer.clone().into())])
-                        .ok_or_else(|| "couldn't build the message".to_string())?;
+                let m = message(&[
+                    ("type", "plervo-pdf:save".into()),
+                    ("name", name.into()),
+                    ("saveAs", save_as.into()),
+                    ("bytes", buffer.clone().into()),
+                ])
+                .ok_or_else(|| "couldn't build the message".to_string())?;
                 bridge.post(&m, Some(&buffer))
             })
         }
@@ -224,7 +228,7 @@ mod host {
             Box::new(move |dirty: bool| {
                 if dirty != last {
                     last = dirty;
-                    if let Some(m) = message(&[("type", "pdfcraft:dirty".into()), ("dirty", dirty.into())]) {
+                    if let Some(m) = message(&[("type", "plervo-pdf:dirty".into()), ("dirty", dirty.into())]) {
                         let _ = bridge.post(&m, None);
                     }
                 }

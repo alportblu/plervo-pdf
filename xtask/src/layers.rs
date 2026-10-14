@@ -85,8 +85,8 @@ pub const TABLE: &[(&str, Class)] = &[
     ("testkit", Class::Testkit),
     ("oracle", Class::Testkit),
     // L8 apps + tooling
-    ("pdfcraft", Class::Exempt),
-    ("cli", Class::Exempt),
+    ("plervo-pdf", Class::Exempt),
+    ("plervo-pdf-cli", Class::Exempt),
     ("web", Class::Exempt),
     ("xtask", Class::Exempt),
 ];
@@ -276,7 +276,7 @@ mod tests {
             c("pdfcraft-render", &[("hayro", Normal, false), ("lopdf", Normal, false)]),
             c("pdfcraft-engine", &[("pdfcraft-render", Normal, true)]),
             c("pdfcraft-ui-egui", &[("pdfcraft-engine", Normal, true), ("egui", Normal, false), ("egui_kittest", Dev, false)]),
-            c("pdfcraft", &[("pdfcraft-ui-egui", Normal, true)]),
+            c("plervo-pdf", &[("pdfcraft-ui-egui", Normal, true)]),
         ];
         assert!(check(&g).is_empty(), "{:?}", check(&g));
     }
@@ -332,7 +332,7 @@ mod tests {
 
     #[test]
     fn apps_exempt() {
-        for app in ["pdfcraft", "pdfcraft-cli", "pdfcraft-web", "xtask"] {
+        for app in ["plervo-pdf", "plervo-pdf-cli", "pdfcraft-web", "xtask"] {
             assert!(check(&[c(app, &[("egui", Normal, false), ("pdfcraft-ui-egui", Normal, true)])]).is_empty());
         }
     }
