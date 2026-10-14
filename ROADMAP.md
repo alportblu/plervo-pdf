@@ -1,6 +1,6 @@
 ## Plervo fork — 2026-10-14
 
-2026-10-14: source published under the personal `alportblu/plervo-pdf` account. First native CI started; packaging changes now request internal candidates on PRs as well as manual dispatch. Installer results, native acceptance and distribution signing remain pending.
+2026-10-14: source published under the personal `alportblu/plervo-pdf` account. macOS/Linux CI and the first Linux package job passed. Windows candidate builds and tests now use the same static-CRT configuration as the installer, which reuses the tested binaries. Validation of this workflow change, native installer acceptance and distribution signing remain pending.
 
 Stage: internal alpha preparation. Brand and distribution separation, bounded authenticated control transport, TLS dependency update, and website foundation. Owner-confirmed support destination: https://buymeacoffee.com/alport. Preserve all 22 interface languages, with automatic detection and persistent manual selection; complete linguistic, glyph and native-layout review remains a release gate alongside signing. Upstream history follows.
 
@@ -155,6 +155,7 @@ Ranked; detail and the full milestone table in [docs/roadmap.md](docs/roadmap.md
 
 ## Progress log
 
+- **2026-10-14 (Plervo, Windows candidate consistency):** Candidate builds, CLI integration tests and control regressions now share the installer's explicit MSVC target, static CRT and required Windows resources. Packaging uses `-SkipBuild` so it cannot silently substitute a second compilation. Workflow validation is pending in CI; there is no public signed release yet.
 - **2026-10-14 (Plervo, candidate preparation):** Internal Windows/macOS/Linux candidates now require the pinned optional font input and run the existing CLI integration suite against release binaries before packaging. Remote CI and native installer validation are still pending; see `docs/plervo-validation.md` for the acceptance matrix.
 - **2026-10-14 (Plervo, support and languages):** Connected the owner's Buy Me a Coffee destination; support-button and document-preservation checks now exercise every registered interface language. No claim of complete translation, native platform validation or updated installers.
 - **2026-10-13 (M3, native-opening candidate):** Chosen tools survive preparation, conversion and password retries; startup intake waits for pending preparation. Regression tests cover completion, cancellation and document identity. Estimates unchanged.

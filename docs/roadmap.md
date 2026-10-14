@@ -2,11 +2,13 @@
 
 | Milestone | Current Plervo evidence | Remaining release gates |
 |---|---|---|
-| M14 — distribution | Personal GitHub repository published; first native CI started; packaging PRs build internal candidates | Successful native jobs, installation/update/removal, language review, signing and notarization |
+| M14 — distribution | Personal GitHub repository published; macOS/Linux CI and the first Linux package job passed; Windows candidate tests now use the installer's static-CRT configuration | Successful Windows jobs, installation/update/removal, language review, signing and notarization |
 
 2026-10-14: in validation. Four control-channel resource-limit regressions reproduced and corrected; own identity and the owner-confirmed Buy Me a Coffee destination configured. Preserve all 22 interface languages; support buttons and language-switch/document-integrity tests cover the full registry. Linguistic, glyph and native-layout review, Windows/Linux installers and public signing remain pending. Historical upstream milestones below are not Plervo release claims.
 
 Candidate preparation: the three native packaging jobs require the pinned font input and test the release CLI before packaging. Personal GitHub access is configured; remote validation is underway. Acceptance and evidence requirements are in [Plervo validation](plervo-validation.md).
+
+2026-10-14: Windows candidate builds and tests now use the explicit MSVC target, static CRT and required PE resources. Packaging reuses those binaries instead of rebuilding with different flags. Native CI must validate this workflow change before merge; signing and installer acceptance remain separate release gates.
 
 # PdfCraft roadmap: milestones and what's next
 

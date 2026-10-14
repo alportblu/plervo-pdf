@@ -6,6 +6,7 @@ Atualizado em 14 de outubro de 2026. Estado: **alpha interna**. Um teste só con
 
 - `ci.yml`: testes, análise estática e compilação nativa no Windows, macOS e Linux; auditoria de dependências/licenças, compilação WASM e fuzzing separado.
 - `candidates.yml`: execução manual ou em PRs que alteram o empacotamento, fontes adicionais fixadas por commit, testes da CLI compilada em modo release, regressões da automação local e geração de pacotes internos. Nenhuma release pública é criada automaticamente.
+- No Windows, a compilação e os testes usam `x86_64-pc-windows-msvc`, CRT estático e recursos PE obrigatórios. O empacotador recebe `-SkipBuild` e utiliza esses executáveis; não recompila outra versão depois dos testes.
 - Os testes existentes da CLI cobrem edição e salvamento, rotação e metadados após reabrir, renderização, extração de texto, arquivos inválidos, opções incorretas, caminhos fora da pasta permitida e preservação dos arquivos existentes. A suíte completa de CI também cobre a interface e a troca entre os 22 idiomas.
 - O empacotador de macOS monta e verifica o DMG; o de Windows inspeciona as tabelas e condições do MSI. Essas verificações **não substituem instalação e uso em um sistema limpo**.
 
@@ -30,3 +31,5 @@ Usar documentos sintéticos e contas de teste. Registrar sistema, arquitetura, c
 O site estático pode ser publicado na Cloudflare Pages enquanto os downloads continuam indisponíveis. Depois do aceite de cada sistema, publicar seus instaladores no GitHub Releases e cadastrar somente URLs reais no site. O apoio usa `https://buymeacoffee.com/alport`, sem dados de pagamento no código.
 
 O código está publicado em `alportblu/plervo-pdf` e o site em `alportblu/plervo-site`, exclusivamente na conta pessoal. O primeiro CI remoto do app foi iniciado; seus resultados ainda não aprovam uma distribuição. O site está hospedado no Cloudflare Pages. Para a distribuição final, faltam as identidades de assinatura apropriadas de macOS/Windows e os ensaios nativos acima. Não adicionar certificados, senhas ou tokens ao repositório.
+
+No commit `10a9374ff9058e9f0259bcbd7f920c7912290734`, os jobs de macOS/Linux, dependências e WASM do [CI 38651175379](https://github.com/alportblu/plervo-pdf/actions/runs/38651175379) passaram, e o job Linux de [candidatos 38651175487](https://github.com/alportblu/plervo-pdf/actions/runs/38651175487) gerou seus pacotes. Windows ainda estava em execução nessa coleta. A alteração posterior que alinha a configuração Windows precisa de sua própria execução aprovada; esses resultados não são evidência dos binários novos nem de instalação nativa.

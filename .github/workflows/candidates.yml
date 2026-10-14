@@ -38,6 +38,14 @@ jobs:
       - uses: dtolnay/rust-toolchain@686976e191b89faba57d3206551f0f330d8cb249
         with:
           toolchain: '1.95.0'
+      - name: Windows release configuration
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          # Use the installer's static CRT and required PE resources for builds and tests alike.
+          'CARGO_BUILD_TARGET=x86_64-pc-windows-msvc' >> $env:GITHUB_ENV
+          'CARGO_TARGET_X86_64_PC_WINDOWS_MSVC_RUSTFLAGS=-C target-feature=+crt-static' >> $env:GITHUB_ENV
+          'PDFCRAFT_REQUIRE_WINRES=1' >> $env:GITHUB_ENV
       - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6
       - name: Linux libraries
         if: runner.os == 'Linux'
@@ -48,7 +56,12 @@ jobs:
         run: cargo build --release --locked -p plervo-pdf -p plervo-pdf-cli
       - name: CLI smoke test
         shell: bash
-        run: ./target/release/plervo-pdf-cli --version
+        run: |
+          if [ "$RUNNER_OS" = Windows ]; then
+            ./target/x86_64-pc-windows-msvc/release/plervo-pdf-cli.exe --version
+          else
+            ./target/release/plervo-pdf-cli --version
+          fi
       - name: PDF operations and file protection (release binaries)
         run: cargo test --release --locked -p plervo-pdf-cli --tests
       - name: Control transport regression tests
@@ -69,7 +82,7 @@ jobs:
         run: |
           dotnet tool install --global wix --version 5.0.2
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          packaging/windows/package.ps1 -Arch x64
+          packaging/windows/package.ps1 -Arch x64 -SkipBuild
       - name: Linux packages (internal)
         if: runner.os == 'Linux'
         shell: bash
