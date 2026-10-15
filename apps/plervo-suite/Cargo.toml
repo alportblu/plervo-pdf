@@ -18,6 +18,7 @@ eframe = { workspace = true, features = ["default_fonts", "glow", "accesskit", "
 serde.workspace = true
 serde_json.workspace = true
 sys-locale = "0.3"
+png = "0.18"
 
 [dev-dependencies]
 egui_kittest = { workspace = true, features = ["eframe", "wgpu"] }

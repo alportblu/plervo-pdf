@@ -1,0 +1,58 @@
+name: Linux public downloads
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Published Linux prerelease to verify
+        type: string
+        required: true
+        default: v0.1.0-alpha.3
+permissions:
+  contents: read
+jobs:
+  public-download:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        image: ['ubuntu:24.04', 'ubuntu:26.04', 'debian:13', 'fedora:44']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Download published packages
+        env:
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          [[ "$RELEASE_TAG" =~ ^v[0-9]+\.[0-9]+\.[0-9]+-alpha\.[0-9]+$ ]]
+          mkdir -p dist/release dist/validation dist/evidence
+          for extension in deb rpm; do
+            name="plervo-suite-${RELEASE_TAG#v}-linux-x86_64.$extension"
+            curl --fail --location --proto '=https' --proto-redir '=https' \
+              "https://github.com/$GITHUB_REPOSITORY/releases/download/$RELEASE_TAG/$name" -o "dist/release/$name"
+          done
+          (cd dist/release && sha256sum ./*) > dist/evidence/public-download-sha256.txt
+      - name: Install Suite and download PDF without GitHub credentials
+        env:
+          TEST_IMAGE: ${{ matrix.image }}
+          RELEASE_TAG: ${{ inputs.tag }}
+        run: |
+          docker pull "$TEST_IMAGE"
+          docker image inspect "$TEST_IMAGE" --format '{{json .RepoDigests}}' > dist/evidence/container-digest.json
+          docker run --rm --network bridge -e PLERVO_ACCEPTANCE=1 -e PLERVO_PUBLIC_ACCEPTANCE=1 \
+            -e "PLERVO_EXPECTED_VERSION=${RELEASE_TAG#v}" \
+            -v "$PWD/dist/release:/packages:ro" -v "$PWD/dist/validation:/validation:ro" \
+            -v "$PWD/packaging/linux:/test:ro" -v "$PWD/dist/evidence:/evidence" \
+            "$TEST_IMAGE" bash /test/test-suite-container.sh
+      - name: Remove test credentials and name evidence
+        if: always()
+        env:
+          TEST_IMAGE: ${{ matrix.image }}
+        run: |
+          sudo rm -f dist/evidence/pdf-control.json
+          echo "EVIDENCE_NAME=${TEST_IMAGE//:/-}" >> "$GITHUB_ENV"
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        if: always()
+        with:
+          name: public-linux-${{ env.EVIDENCE_NAME }}
+          path: dist/evidence/
+          retention-days: 14

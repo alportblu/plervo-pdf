@@ -34,6 +34,7 @@ overrides:
       - libc6 (>= ${PLERVO_MIN_GLIBC})
       - libgcc-s1
       - libxkbcommon0
+      - libxkbcommon-x11-0
       - libvulkan1 | libegl1
     recommends:
       - cups-client
@@ -50,6 +51,7 @@ overrides:
       - glibc >= ${PLERVO_MIN_GLIBC}
       - libgcc
       - libxkbcommon
+      - libxkbcommon-x11
       - (vulkan-loader or libglvnd-egl)
     recommends:
       - cups-client

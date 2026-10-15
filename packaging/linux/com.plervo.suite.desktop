@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Plervo Suite
+Comment=Install and manage your Plervo apps
+Comment[pt_BR]=Instale e gerencie seus aplicativos Plervo
+Comment[es]=Instala y administra tus aplicaciones Plervo
+Exec=plervo-suite
+Icon=com.plervo.suite
+Terminal=false
+Categories=Utility;
+StartupWMClass=com.plervo.suite

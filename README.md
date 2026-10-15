@@ -4,7 +4,9 @@ Instale primeiro o **Plervo Suite**. A central permite instalar, abrir, atualiza
 
 A Suite tem interface própria em inglês, português e espanhol, com **idioma do sistema** como padrão. Seu mecanismo de instalação foi adaptado do [ArtCraft Launcher 0.4.1](docs/suite-provenance.md). O editor de PDF é baseado no [PdfCraft 0.8.0](https://github.com/storytold/pdfcraft/tree/v0.8.0), mantendo os créditos e licenças originais.
 
-**Estado: alpha experimental 0.1.0-alpha.2 em validação; não estável.** Windows, macOS e Linux são os alvos. Cada pacote precisa de validação no sistema correspondente antes de um download público.
+**Estado: alpha experimental; não estável.** O Mac Apple Silicon usa a alpha.2 assinada/notarizada. A alpha.3 prepara a Suite Linux x86_64 em DEB e RPM (glibc 2.39+). A matriz de aceitação verifica Ubuntu 24.04/26.04, Debian 13 e Fedora 44; só os artefatos aprovados são publicados. Linux Mint 22 usa a mesma base Ubuntu 24.04, mas não tem teste de desktop separado. Windows continua aguardando SignPath.
+
+No Linux, a Suite instala o PDF por usuário em `~/.local/share/plervo-suite/apps/plervo-pdf/current` (respeitando XDG_DATA_HOME), sem senha de administrador. Downloads exigem SHA-256 e origem oficial; pacotes com links, caminhos inseguros ou tamanho excessivo são recusados. A substituição do pacote é atômica; documentos e preferências ficam fora dessa pasta e são preservados na remoção.
 
 Site: https://plervo.com · Apoio voluntário: https://buymeacoffee.com/alport
 
