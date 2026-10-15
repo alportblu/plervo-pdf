@@ -400,7 +400,12 @@ pub mod linux {
     }
 
     pub(crate) fn binary_version(bin: &Path, app: &CraftApp) -> Option<version::Version> {
-        let out = crate::process::capture(bin.to_str()?, &["--version"], Duration::from_secs(5))?;
+        let output = crate::process::run(bin.to_str()?, &["--version"], Duration::from_secs(5));
+        #[cfg(test)]
+        if let Err(error) = &output {
+            eprintln!("version probe: {error}");
+        }
+        let out = output.ok()?;
         parse_cli_version(out.trim(), app)
     }
 }

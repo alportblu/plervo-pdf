@@ -51,16 +51,22 @@ pub fn capture(program: &str, args: &[&str], timeout: Duration) -> Option<String
 /// Runs a helper and returns its standard output when it succeeds within `timeout`; otherwise
 /// the reason, in the helper's own words (its standard error) where it gave one.
 pub fn run(program: &str, args: &[&str], timeout: Duration) -> Result<String, String> {
-    let mut child = command(program)
-        .args(args)
-        .stdin(Stdio::null())
-        .stdout(Stdio::piped())
-        .stderr(Stdio::piped())
-        .spawn()
-        .map_err(|e| format!("couldn't start {program} ({e})"))?;
+    let start = Instant::now();
+    let mut cmd = command(program);
+    cmd.args(args).stdin(Stdio::null()).stdout(Stdio::piped()).stderr(Stdio::piped());
+    let mut child = loop {
+        match cmd.spawn() {
+            Ok(child) => break child,
+            // A recently written executable may still have a writer inherited by another
+            // short-lived child. Retry only this pre-execution refusal, within the same deadline.
+            Err(e) if e.kind() == std::io::ErrorKind::ExecutableFileBusy && start.elapsed() < timeout => {
+                std::thread::sleep(Duration::from_millis(15).min(timeout.saturating_sub(start.elapsed())));
+            }
+            Err(e) => return Err(format!("couldn't start {program} ({e})")),
+        }
+    };
     // Read both pipes while it runs, so a chatty helper can't block on a full one.
     let (stdout, stderr) = (read_all(child.stdout.take()), read_all(child.stderr.take()));
-    let start = Instant::now();
     let status = loop {
         match child.try_wait() {
             Ok(Some(status)) => break status,
@@ -329,6 +335,39 @@ mod run_tests {
         assert!(err.starts_with(&format!("{program} failed")), "{err}");
         let (program, args) = shell("echo hello");
         assert_eq!(run(program, &args, Duration::from_secs(30)).map(|out| out.trim().to_string()), Ok("hello".into()));
+    }
+
+    #[cfg(target_os = "linux")]
+    #[test]
+    fn a_temporarily_busy_helper_runs_after_the_writer_closes() {
+        use std::os::unix::fs::PermissionsExt;
+        let temp = tempfile::tempdir().unwrap();
+        let path = temp.path().join("helper");
+        std::fs::write(&path, "#!/bin/sh\necho 'SoundCraft 0.5.0'\n").unwrap();
+        std::fs::set_permissions(&path, std::fs::Permissions::from_mode(0o755)).unwrap();
+        let writer = std::fs::OpenOptions::new().write(true).open(&path).unwrap();
+        let release = std::thread::spawn(move || {
+            std::thread::sleep(Duration::from_millis(100));
+            drop(writer);
+        });
+        let result = run(path.to_str().unwrap(), &["--version"], Duration::from_secs(2));
+        release.join().unwrap();
+        assert_eq!(result.map(|out| out.trim().to_string()), Ok("SoundCraft 0.5.0".into()));
+    }
+
+    #[cfg(target_os = "linux")]
+    #[test]
+    fn a_permanently_busy_helper_is_refused_within_the_deadline() {
+        use std::os::unix::fs::PermissionsExt;
+        let temp = tempfile::tempdir().unwrap();
+        let path = temp.path().join("helper");
+        std::fs::write(&path, "#!/bin/sh\necho 'must not run'\n").unwrap();
+        std::fs::set_permissions(&path, std::fs::Permissions::from_mode(0o755)).unwrap();
+        let _writer = std::fs::OpenOptions::new().write(true).open(&path).unwrap();
+        let start = Instant::now();
+        let result = run(path.to_str().unwrap(), &[], Duration::from_millis(80));
+        assert!(result.is_err());
+        assert!(start.elapsed() < Duration::from_secs(2));
     }
 }
 

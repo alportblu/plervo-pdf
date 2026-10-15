@@ -1,6 +1,6 @@
 # Plervo Suite implementation and provenance
 
-Status: development; not yet a published installer. Updated 2026-10-15.
+Status: experimental alpha implementation. Publication and artifact status are recorded in the [release notes](https://github.com/alportblu/plervo-pdf/releases). Updated 2026-10-15.
 
 The install engine is adapted from the MIT/Apache-2.0 source of [storytold/craft-launcher](https://github.com/storytold/craft-launcher/tree/0f295d4b9c90d15c2e38e36c322bdbc0fa943a54), version 0.4.1, commit 0f295d4b9c90d15c2e38e36c322bdbc0fa943a54. Original authors retain their copyright. The root MIT and Apache licences apply to these derived modules. No upstream trademark icon or screenshot is bundled. The upstream product names appear only in preserved synthetic regression fixtures and attribution.
 
@@ -19,5 +19,7 @@ The installed universal launcher was inspected read-only with REA: SHA-256 3b18b
 ## Validation
 
 Core/native unit tests preserve upstream security cases: corrupt/resumed downloads, cancellation, rollback, signatures and version mismatch. Plervo adds catalogue confinement, missing/invalid checksums, limits and path checks. GUI tests check all three languages and cancellation of uninstall. The screenshot example renders the actual UI without global keyboard/mouse input.
+
+Linux helper execution retries only `ExecutableFileBusy` before a program starts, within the original timeout. A deterministic Linux regression holds a write handle briefly, then releases it; this failed before the fix. A permanently busy executable remains refused. Permissions failures and failures after a helper starts are not retried.
 
 The PDF locale regression was observed failing with shell Portuguese ahead of display English. Auto now prioritizes the OS display language on macOS/Windows; Linux still follows locale environment settings. Local testing does not establish native Windows/Linux release readiness.
