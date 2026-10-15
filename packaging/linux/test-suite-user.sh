@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
+trap 'echo "User acceptance failed at line $LINENO" >&2' ERR
 packages="$1"
 out="$2"
 mkdir -p "$HOME/Documents" "$HOME/.config"
 printf '%s\n' 'keep settings' >"$HOME/.config/plervo-preserve.txt"
-archive=("$packages"/plervo-pdf-*-linux-x86_64.tar.gz)
+archive=("$packages"/plervo-pdf-[0-9]*-linux-x86_64.tar.gz)
 [ "${#archive[@]}" = 1 ]
 helper=/validation/linux_acceptance
 if [ "${PLERVO_PUBLIC_ACCEPTANCE:-}" = 1 ]; then

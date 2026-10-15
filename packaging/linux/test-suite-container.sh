@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Runs only in the disposable test container. It never uses the host desktop or home.
 set -euo pipefail
+trap 'echo "Container acceptance failed at line $LINENO" >&2' ERR
 [ "${PLERVO_ACCEPTANCE:-}" = 1 ] && [ -f /.dockerenv ] || { echo 'Disposable container required' >&2; exit 2; }
 packages=/packages
 out=/evidence
