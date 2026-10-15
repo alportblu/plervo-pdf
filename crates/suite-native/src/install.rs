@@ -353,7 +353,7 @@ fn prepare_home(home: &Path) {
 
 /// Moves `staged` into place at `dest`, keeping the old copy until the new one is there.
 #[allow(dead_code)]
-fn swap_into_place(staged: &Path, dest: &Path) -> Result<(), String> {
+pub(crate) fn swap_into_place(staged: &Path, dest: &Path) -> Result<(), String> {
     swap_into_place_via(staged, dest, |from, to| std::fs::rename(from, to))
 }
 

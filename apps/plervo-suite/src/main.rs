@@ -1,13 +1,21 @@
 #![cfg_attr(all(windows, not(debug_assertions)), windows_subsystem = "windows")]
 #![deny(clippy::unwrap_used, clippy::expect_used, clippy::panic)]
 
+mod probe;
+
 fn main() {
     let args: Vec<String> = std::env::args().skip(1).collect();
     if args.first().is_some_and(|s| s == "--version") {
         println!("Plervo Suite {}", env!("CARGO_PKG_VERSION"));
         return;
     }
-    if !args.is_empty() {
+    let probe_path =
+        if args.len() == 2 && args.first().is_some_and(|s| s == "--native-smoke-test") { args.get(1).map(std::path::PathBuf::from) } else { None };
+    if probe_path.as_ref().is_some_and(|p| p.exists()) {
+        eprintln!("The screenshot destination already exists.");
+        std::process::exit(1);
+    }
+    if !args.is_empty() && probe_path.is_none() {
         if let Err(error) = plervo_suite::headless(&args) {
             eprintln!("{error}");
             std::process::exit(1);
@@ -23,7 +31,20 @@ fn main() {
         renderer: eframe::Renderer::Glow,
         ..Default::default()
     };
-    if let Err(error) = eframe::run_native("Plervo Suite", options, Box::new(|cc| Ok(Box::new(plervo_suite::SuiteApp::new(cc))))) {
+    let capture = probe_path.clone();
+    let success = std::sync::Arc::new(std::sync::atomic::AtomicBool::new(false));
+    let recorded = success.clone();
+    if let Err(error) = eframe::run_native(
+        "Plervo Suite",
+        options,
+        Box::new(move |cc| {
+            if let Some(path) = capture { Ok(Box::new(probe::Probe::new(cc, path, recorded))) } else { Ok(Box::new(plervo_suite::SuiteApp::new(cc))) }
+        }),
+    ) {
         eprintln!("{error}");
+        std::process::exit(1);
+    }
+    if probe_path.is_some() && !success.load(std::sync::atomic::Ordering::Relaxed) {
+        std::process::exit(1);
     }
 }

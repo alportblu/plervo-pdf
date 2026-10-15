@@ -1,5 +1,11 @@
 Plervo update — 2026-10-15 (M14): Suite-first distribution is under validation. New native Suite manages installation/open/update/removal of Plervo PDF from the personal release repository, with hash, Maintech signature, notarization and rollback checks. Suite UI follows the OS by default (English/Portuguese/Spanish); PDF Auto now prioritizes the display language on macOS/Windows. Public Windows/Linux management remains gated; Suite self-updates are manual. This does not increase upstream Acrobat parity. See [Suite provenance](suite-provenance.md).
 
+## Plervo platform delivery — 2026-10-15
+
+| Delivery | State | Evidence |
+|---|---|---|
+| Linux Suite alpha.3 x86_64 | Implemented; release gated on acceptance | `.github/workflows/linux-suite.yml`: DEB/RPM install/remove, per-user PDF update/remove, native rendering, file preservation and locale checks |
+
 ## Plervo P0 — launch foundation
 
 | Milestone | Current Plervo evidence | Remaining release gates |

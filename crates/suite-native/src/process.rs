@@ -231,24 +231,52 @@ fn explorer_select_arg(path: &Path) -> Option<std::ffi::OsString> {
 
 /// Whether a process started from inside `path` (an exe, an AppImage, or a `.app`) is running.
 pub fn is_running(path: &Path) -> bool {
-    if cfg!(windows) {
-        let Some(name) = path.file_name().and_then(|n| n.to_str()) else { return false };
-        let filter = format!("IMAGENAME eq {name}");
-        capture("tasklist", &["/FI", &filter, "/NH", "/FO", "CSV"], Duration::from_secs(5))
-            .is_some_and(|out| out.to_ascii_lowercase().contains(&name.to_ascii_lowercase()))
-    } else {
-        let Some(p) = path.to_str() else { return false };
-        let pattern = pgrep_pattern(p);
-        // pgrep exits 0 when something matches; it never matches itself.
-        if in_sandbox() {
-            capture("flatpak-spawn", &["--host", "pgrep", "-f", "--", &pattern], Duration::from_secs(5)).is_some()
+    #[cfg(target_os = "linux")]
+    {
+        linux_running(path)
+    }
+    #[cfg(not(target_os = "linux"))]
+    {
+        if cfg!(windows) {
+            let Some(name) = path.file_name().and_then(|n| n.to_str()) else { return false };
+            let filter = format!("IMAGENAME eq {name}");
+            capture("tasklist", &["/FI", &filter, "/NH", "/FO", "CSV"], Duration::from_secs(5))
+                .is_some_and(|out| out.to_ascii_lowercase().contains(&name.to_ascii_lowercase()))
         } else {
-            capture("pgrep", &["-f", "--", &pattern], Duration::from_secs(5)).is_some()
+            let Some(p) = path.to_str() else { return false };
+            let pattern = pgrep_pattern(p);
+            // pgrep exits 0 when something matches; it never matches itself.
+            if in_sandbox() {
+                capture("flatpak-spawn", &["--host", "pgrep", "-f", "--", &pattern], Duration::from_secs(5)).is_some()
+            } else {
+                capture("pgrep", &["-f", "--", &pattern], Duration::from_secs(5)).is_some()
+            }
         }
     }
 }
 
+#[cfg(target_os = "linux")]
+fn linux_running(path: &Path) -> bool {
+    use std::os::unix::ffi::OsStrExt;
+    // /proc contains raw bytes, unlike pgrep's locale-dependent command-line display.
+    let Ok(entries) = std::fs::read_dir("/proc") else { return true };
+    let expected = path.as_os_str().as_bytes();
+    for entry in entries.flatten() {
+        if !entry.file_name().as_bytes().iter().all(u8::is_ascii_digit) {
+            continue;
+        }
+        if std::fs::read_link(entry.path().join("exe")).is_ok_and(|exe| exe == path || exe.starts_with(path)) {
+            return true;
+        }
+        if std::fs::read(entry.path().join("cmdline")).is_ok_and(|args| args.split(|b| *b == 0).any(|arg| arg == expected)) {
+            return true;
+        }
+    }
+    false
+}
+
 /// Quote the path's metacharacters for pgrep's extended regular expression.
+#[cfg(not(target_os = "linux"))]
 fn pgrep_pattern(path: &str) -> String {
     let mut pattern = String::with_capacity(path.len());
     for c in path.chars() {

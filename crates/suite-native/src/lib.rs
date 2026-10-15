@@ -4,6 +4,8 @@ pub mod desktop_entry;
 pub mod detect;
 pub mod http;
 pub mod install;
+#[cfg(unix)]
+pub mod managed_linux;
 pub mod manager;
 pub mod manifest;
 pub mod packages;

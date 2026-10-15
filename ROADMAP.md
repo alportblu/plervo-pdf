@@ -466,3 +466,5 @@ Newest first: the date, what moved, and the new overall estimate.
 | 2026-10-05 | major | Honest assessment and "Where we're lacking" added |
 
 - **2026-10-12 (M8):** Redaction cleans indirect and form structure references, preserving surviving form tags.
+
+- **2026-10-15 (Plervo Linux alpha.3):** Suite DEB/RPM packaging, per-user PDF installer with checksum/architecture/path checks and atomic replacement, non-UTF-8 process regression, isolated native acceptance matrix. Publication gated on passing checks.

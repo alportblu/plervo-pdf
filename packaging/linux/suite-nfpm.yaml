@@ -1,0 +1,53 @@
+name: plervo-suite
+arch: ${NFPM_ARCH}
+platform: linux
+version: ${VERSION}
+version_schema: semver
+release: ${RELEASE}
+section: utils
+priority: optional
+maintainer: ${PDFCRAFT_MAINTAINER}
+vendor: Plervo
+homepage: https://plervo.com
+license: MIT OR Apache-2.0
+description: |-
+  Install, open, update and remove Plervo applications from one place.
+  PDF downloads are verified and installed in the user's account.
+overrides:
+  deb:
+    depends:
+      - libc6 (>= ${PLERVO_MIN_GLIBC})
+      - libgcc-s1
+      - libxkbcommon0
+      - libgl1
+      - libegl1
+      - libx11-6
+      - libxcursor1
+      - libxi6
+      - libxrandr2
+    recommends:
+      - libwayland-client0
+      - xdg-desktop-portal
+      - mesa-vulkan-drivers
+  rpm:
+    depends:
+      - glibc >= ${PLERVO_MIN_GLIBC}
+      - libgcc
+      - libxkbcommon
+      - libglvnd-glx
+      - libglvnd-egl
+      - libX11
+      - libXcursor
+      - libXi
+      - libXrandr
+    recommends:
+      - libwayland-client
+      - xdg-desktop-portal
+      - mesa-vulkan-drivers
+contents:
+  - src: ${STAGE}/bin/plervo-suite
+    dst: /usr/bin/plervo-suite
+    file_info: { mode: 0755 }
+  - src: ${STAGE}/share/
+    dst: /usr/share/
+    type: tree
