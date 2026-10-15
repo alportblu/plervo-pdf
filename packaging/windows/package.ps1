@@ -96,6 +96,13 @@ Copy-Item (Join-Path $Root 'assets\app-icon\LICENSE-document.txt') $Stage
 Copy-Item (Join-Path $Root 'assets\fonts\OFL-*.txt') $Stage
 Copy-Item (Join-Path $Root 'assets\icons\LICENSE-lucide.txt') $Stage
 Copy-Item (Join-Path $Root 'ATTRIBUTION.md') $Stage
+# Both the MSI and portable archive embed craft-fonts, so stage its licences before either is built.
+if ($env:CRAFT_FONTS_DIR) {
+  Get-ChildItem -Path (Join-Path $env:CRAFT_FONTS_DIR 'fonts') -Directory -ErrorAction SilentlyContinue | ForEach-Object {
+    $ofl = Join-Path $_.FullName 'OFL.txt'
+    if (Test-Path $ofl) { Copy-Item $ofl (Join-Path $Stage "OFL-$($_.Name).txt") }
+  }
+}
 
 & (Join-Path $PSScriptRoot 'sign.ps1') (Join-Path $Stage 'plervo-pdf.exe') (Join-Path $Stage 'plervo-pdf-cli.exe')
 
@@ -139,14 +146,6 @@ Copy-Item -Recurse $Models (Join-Path $Portable 'models')
 foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE') {
   $p = Join-Path $Root $f
   if (Test-Path $p) { Copy-Item $p $Portable }
-}
-# Builds made with craft-fonts (CRAFT_FONTS_DIR, set for every release) embed its fonts: ship their
-# licences, fonts\<family>\OFL.txt -> OFL-<family>.txt.
-if ($env:CRAFT_FONTS_DIR) {
-  Get-ChildItem -Path (Join-Path $env:CRAFT_FONTS_DIR 'fonts') -Directory -ErrorAction SilentlyContinue | ForEach-Object {
-    $ofl = Join-Path $_.FullName 'OFL.txt'
-    if (Test-Path $ofl) { Copy-Item $ofl (Join-Path $Portable "OFL-$($_.Name).txt") }
-  }
 }
 # portable.txt beside plervo-pdf.exe switches on portable mode: settings, logs, recovery files and new
 # digital IDs go to PlervoPDFData\ next to the exe instead of %APPDATA% (#157; see

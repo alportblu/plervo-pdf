@@ -346,6 +346,45 @@ fn flattening_refuses_what_would_bake_in_question_marks() {
     assert_eq!(flatten(&mut doc, &[0], true, false).unwrap(), 1);
 }
 
+#[test]
+fn rewriting_added_text_drops_stale_editor_metadata_only_for_changed_streams() {
+    for paragraph in [false, true] {
+        let mut doc = fixture();
+        for (text, top) in [("Original text", 100.0), ("Untouched text", 400.0)] {
+            add_content(
+                &mut doc,
+                2,
+                &Content::Text(AddedText { rect: [72.0, top, 400.0, top + 60.0], text: text.into(), size: 14.0, ..Default::default() }),
+            )
+            .unwrap();
+        }
+        let items = list_added(&doc);
+        let untouched = items[1].obj;
+        doc.update_dict(items[0].obj, |d| d.set(b"VendorNote".to_vec(), Object::Int(42))).unwrap();
+        if paragraph {
+            text::replace_block(&mut doc, 2, 0, "Replacement text").unwrap();
+        } else {
+            text::replace_line(&mut doc, 2, 0, "Replacement text").unwrap();
+        }
+        let verify = |doc: &Document| {
+            let items = list_added(doc);
+            assert_eq!(items.len(), 1, "the added-content editor must not reopen stale text");
+            assert_eq!(items[0].obj, untouched, "unchanged stream and editor metadata are preserved");
+            let Content::Text(t) = &items[0].content else { panic!() };
+            assert_eq!(t.text, "Untouched text");
+            let lines = text::text_lines(doc, 2).unwrap();
+            assert!(lines.iter().any(|l| l.text == "Replacement text"));
+            assert!(!lines.iter().any(|l| l.text == "Original text"));
+            let p = &pdfcraft_model::pages(doc)[2];
+            let contents = doc.resolve(p.dict.get(b"Contents").unwrap());
+            let Object::Array(refs) = &*contents else { panic!() };
+            assert!(refs.iter().any(|r| doc.resolve(r).as_dict().is_some_and(|d| d.get(b"VendorNote") == Some(&Object::Int(42)))));
+        };
+        verify(&doc);
+        verify(&reopen(&doc));
+    }
+}
+
 /// Display space is in points, so on a `/UserUnit 2` page an item's box maps to half as many
 /// user-space units. Items record the `/UserUnit` they were written for; one without it was
 /// written when display space was in user-space units, and reads back scaled to points.

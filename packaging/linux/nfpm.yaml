@@ -31,7 +31,7 @@ description: |-
 overrides:
   deb:
     depends:
-      - libc6 (>= 2.35)
+      - libc6 (>= ${PLERVO_MIN_GLIBC})
       - libgcc-s1
       - libxkbcommon0
       - libvulkan1 | libegl1
@@ -47,6 +47,8 @@ overrides:
       - xdg-desktop-portal
   rpm:
     depends:
+      - glibc >= ${PLERVO_MIN_GLIBC}
+      - libgcc
       - libxkbcommon
       - (vulkan-loader or libglvnd-egl)
     recommends:

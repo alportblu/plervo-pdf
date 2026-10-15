@@ -183,10 +183,25 @@ fn saved_value(path: &std::path::Path, name: &str) -> Vec<String> {
 }
 
 fn scratch(name: &str) -> std::path::PathBuf {
-    let dir = std::env::temp_dir().join(format!("pdfcraft-forms-{name}-{}", std::process::id()));
+    // Parallel tests can use the same case name; never remove another test's directory.
+    static NEXT: std::sync::atomic::AtomicU64 = std::sync::atomic::AtomicU64::new(0);
+    let sequence = NEXT.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
+    let dir = std::env::temp_dir().join(format!("pdfcraft-forms-{name}-{}-{sequence}", std::process::id()));
     let _ = std::fs::remove_dir_all(&dir);
     std::fs::create_dir_all(&dir).unwrap();
     dir
+}
+
+#[test]
+fn scratch_directories_preserve_other_tests_files() {
+    let first = scratch("isolation");
+    let saved = first.join("saved.pdf");
+    std::fs::write(&saved, b"first test").unwrap();
+    let second = scratch("isolation");
+    assert_eq!(std::fs::read(&saved).unwrap(), b"first test");
+    assert_ne!(first, second);
+    std::fs::remove_dir_all(first).unwrap();
+    std::fs::remove_dir_all(second).unwrap();
 }
 
 #[test]

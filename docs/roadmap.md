@@ -1,8 +1,32 @@
 ## Plervo P0 — launch foundation
 
+| Milestone | Current Plervo evidence | Remaining release gates |
+|---|---|---|
+| M14 — distribution | Personal repositories published; cb4c8fe4 Mac candidate signed/notarized and exercised through its opt-in native UI; b2934fe4 DEB installation/removal passed; OCR archive and stale text fixes verified in the final Mac package | Latest Windows CI/installer acceptance, cross-platform GUI and upgrade checks, language/font review, Windows signing and final release verification |
+
+2026-10-14: Windows CI found the non-file GoToR test reading its refusal notification before the background opener replied. It now uses the existing bounded state wait before checking the unchanged refusal message and absence of a new tab. The failure was observed on Windows before this test-only correction; no production behavior or protection changed. Independent checks of final Mac outputs passed PDF parsing, form values, OCR text, redaction, AES-256 permissions and synthetic signature integrity/tamper detection. Catalog font coverage still has gaps for Telugu and both Chinese variants without system fallback.
+
+2026-10-14: native cb4c8fe4 editing/re-entry/save/reopen passed. Package review found optional craft-fonts licences copied only into the Windows portable archive, after MSI generation. They now enter the shared stage used by both formats, and compiled-MSI inspection requires every optional family licence. No fonts or licences were added or changed; Windows execution is pending.
+
+2026-10-14: expanded end-to-end acceptance found a second part of stale-text handling: the working PDF was corrected, but the engine's cached added-item list was not refreshed. Text and image rewrites now refresh that list. A tools-level line/paragraph regression failed before the cache fix and verifies the live list, undo/redo, save and reopen; all 437 engine/automation tests passed (three existing ignored), with scoped clippy, formatting, layer/asset and WASM checks. Native interaction and final candidate verification remain required.
+
+2026-10-14: practical acceptance exercised 17 engine feature groups, five additional image/printing/script/sanitization/batch groups, OCR on a scanned fixture, and the signed Mac UI. A generic text rewrite could leave stale added-item editor metadata; the new regression failed before the fix, then 704 scoped edit/engine/automation/UI tests passed (seven existing ignored). Mac and Linux standalone CLI archives omitted their OCR models; both packagers now include them, and the rebuilt Mac archive completed OCR/save/reopen. Candidate CI now installs/repairs/removes the Windows MSI and installs/removes the Linux DEB on disposable runners, preserving synthetic documents; execution is pending. All 22 interface catalogs rendered, but Chinese has missing glyphs without system fallback and OCR supports English/unaccented Latin only. No complete linguistic or cross-platform GUI acceptance claim.
+
+2026-10-14: Windows candidate c8b89cdc reached MSI inspection, which correctly blocked publication because the inspection queried obsolete rebranded registry names with spaces. The two expectations now match the declared `PlervoPDF.CreatePdf` / `PlervoPDF.Edit` keys; compiled-MSI verification still runs and must pass remotely.
+
+2026-10-14: static inspection found that c8b89cdc Linux binaries require glibc 2.39 but the DEB declared 2.35. Packaging now checks both binaries before staging and declares the Ubuntu 24.04 baseline consistently in DEB/RPM. The real candidate failed the old 2.35 guard. Regenerated packages and native acceptance remain required; do not distribute the old candidates.
+
+2026-10-14: the owner configured the notarization profile and submitted the SignPath application (approval pending). Apple accepted the c8b89cdc app, DMG and CLI ZIP; tickets, Gatekeeper, app distribution checks and the CLI notarization requirement passed. Linux CI exposed three UI assertions made while text extraction was still pending. The shared state-based wait now enforces completion with a deadline and then paints the accessibility tree. Native CI must confirm the change; installation in a clean system remains untested.
+
 2026-10-14: in validation. Four control-channel resource-limit regressions reproduced and corrected; own identity and the owner-confirmed Buy Me a Coffee destination configured. Preserve all 22 interface languages; support buttons and language-switch/document-integrity tests cover the full registry. Linguistic, glyph and native-layout review, Windows/Linux installers and public signing remain pending. Historical upstream milestones below are not Plervo release claims.
 
-Candidate preparation: the three native packaging jobs require the pinned font input and test the release CLI before packaging. Remote execution is pending account access. Acceptance and evidence requirements are in [Plervo validation](plervo-validation.md).
+Candidate preparation: the three native packaging jobs require the pinned font input and test the release CLI before packaging. Personal GitHub access is configured; remote validation is underway. Acceptance and evidence requirements are in [Plervo validation](plervo-validation.md).
+
+2026-10-14: Windows candidate builds and tests now use the explicit MSVC target, static CRT and required PE resources. Packaging reuses those binaries instead of rebuilding with different flags. Native CI must validate this workflow change before merge; signing and installer acceptance remain separate release gates.
+
+2026-10-14: macOS packaging now accepts a `notarytool` Keychain profile for notarization, avoiding a plaintext password in the packaging invocation. Ad-hoc signing with a notarization profile is rejected. Developer ID issuance and local packaging evidence do not replace notarization or native acceptance of the final release.
+
+2026-10-14: CI exposed a shared scratch-directory race between parallel form tests and a stale Windows copyright expectation. The scratch regression failed locally before the fix; all 23 form tests, the CLI suite, scoped clippy, formatting, layer and asset checks passed afterward. Windows must validate the corrected PE-resource expectation in CI before merge.
 
 # PdfCraft roadmap: milestones and what's next
 

@@ -4347,14 +4347,14 @@ fn content_refresh_lists_match_the_storages_an_edit_touches() {
             },
         },
         Edit::MoveObjects { page: 0, objects: vec![target(crate::ObjectKind::Added)], offset: [1.0, 0.0] },
+        Edit::EditTextLine { page: 0, line: 0, text: String::new() },
+        Edit::EditTextBlock { page: 0, block: 0, text: String::new(), style: pdfcraft_edit::BlockStyle::default() },
+        Edit::EditPageImage { page: 0, index: 0, change: ImageEdit::Rotate(1) },
     ];
     for edit in &added {
         assert_eq!(Session::content_refresh_lists(Some(edit)), (true, false), "{}", edit.label());
     }
-    let plain = [
-        Edit::MoveObjects { page: 0, objects: vec![target(crate::ObjectKind::Text)], offset: [1.0, 0.0] },
-        Edit::EditTextBlock { page: 0, block: 0, text: String::new(), style: pdfcraft_edit::BlockStyle::default() },
-    ];
+    let plain = [Edit::MoveObjects { page: 0, objects: vec![target(crate::ObjectKind::Text)], offset: [1.0, 0.0] }];
     for edit in &plain {
         assert_eq!(Session::content_refresh_lists(Some(edit)), (false, false), "{}", edit.label());
     }

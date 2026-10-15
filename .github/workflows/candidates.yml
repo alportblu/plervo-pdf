@@ -2,6 +2,10 @@ name: Plervo internal candidates
 
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/candidates.yml'
+      - 'packaging/**'
 
 permissions:
   contents: read
@@ -34,6 +38,14 @@ jobs:
       - uses: dtolnay/rust-toolchain@686976e191b89faba57d3206551f0f330d8cb249
         with:
           toolchain: '1.95.0'
+      - name: Windows release configuration
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          # Use the installer's static CRT and required PE resources for builds and tests alike.
+          'CARGO_BUILD_TARGET=x86_64-pc-windows-msvc' >> $env:GITHUB_ENV
+          'CARGO_TARGET_X86_64_PC_WINDOWS_MSVC_RUSTFLAGS=-C target-feature=+crt-static' >> $env:GITHUB_ENV
+          'PDFCRAFT_REQUIRE_WINRES=1' >> $env:GITHUB_ENV
       - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6
       - name: Linux libraries
         if: runner.os == 'Linux'
@@ -44,7 +56,12 @@ jobs:
         run: cargo build --release --locked -p plervo-pdf -p plervo-pdf-cli
       - name: CLI smoke test
         shell: bash
-        run: ./target/release/plervo-pdf-cli --version
+        run: |
+          if [ "$RUNNER_OS" = Windows ]; then
+            ./target/x86_64-pc-windows-msvc/release/plervo-pdf-cli.exe --version
+          else
+            ./target/release/plervo-pdf-cli --version
+          fi
       - name: PDF operations and file protection (release binaries)
         run: cargo test --release --locked -p plervo-pdf-cli --tests
       - name: Control transport regression tests
@@ -59,13 +76,31 @@ jobs:
           cp target/release/plervo-pdf target/release/plervo-pdf-cli "target/$target/release/"
           [ "$arch" = arm64 ] && arch=aarch64
           packaging/macos/package.sh --arch "$arch" --skip-build
+      - name: macOS standalone CLI OCR models
+        if: runner.os == 'macOS'
+        shell: bash
+        run: |
+          archives=(dist/release/plervo-pdf-cli-*.zip)
+          [ "${#archives[@]}" = 1 ]
+          work="$(mktemp -d "$RUNNER_TEMP/plervo-cli.XXXXXX")"
+          ditto -x -k "${archives[0]}" "$work"
+          cli=("$work"/*/plervo-pdf-cli)
+          [ "${#cli[@]}" = 1 ]
+          env -u PDFCRAFT_MODELS "${cli[0]}" run ocr_status | jq -e '.available == true'
       - name: Windows installer (internal, unsigned)
         if: runner.os == 'Windows'
         shell: pwsh
         run: |
           dotnet tool install --global wix --version 5.0.2
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
-          packaging/windows/package.ps1 -Arch x64
+          packaging/windows/package.ps1 -Arch x64 -SkipBuild
+      - name: Windows MSI install, repair and uninstall
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $msi = @(Get-ChildItem dist/release/*.msi)
+          if ($msi.Count -ne 1) { throw 'Expected exactly one MSI candidate' }
+          packaging/windows/test-install.ps1 -Path $msi[0].FullName
       - name: Linux packages (internal)
         if: runner.os == 'Linux'
         shell: bash
@@ -74,6 +109,21 @@ jobs:
           go_path="$(go env GOPATH)"
           export PATH="$go_path/bin:$PATH"
           packaging/linux/package.sh --skip-build --formats 'deb rpm tar cli'
+      - name: Linux DEB install and uninstall
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          packages=(dist/release/*.deb)
+          [ "${#packages[@]}" = 1 ]
+          bash packaging/linux/test-install.sh "${packages[0]}"
+      - name: Upload installer validation evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: plervo-validation-${{ runner.os }}-${{ runner.arch }}
+          path: dist/validation/
+          if-no-files-found: ignore
+          retention-days: 14
       - name: Upload internal candidates
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:

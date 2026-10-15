@@ -3186,6 +3186,38 @@ fn adding_content_through_tools() {
     assert!(matches!(a.call("content_delete", &json!({ "doc": doc, "page": 1, "index": 5 })), Err(ToolError::Failed(_))));
 }
 
+#[test]
+fn generic_text_edits_refresh_added_content_before_save_and_through_undo() {
+    for selector in ["line", "paragraph"] {
+        let dir = workdir(&format!("added-text-rewrite-{selector}"));
+        let mut a = auto(&dir);
+        let doc = ok(&mut a, "doc_create", json!({"from": "blank"}))["doc"].as_u64().unwrap();
+        for (text, y) in [("Original text", 100), ("Untouched text", 400)] {
+            ok(&mut a, "page_add_text", json!({"doc": doc, "page": 1, "text": text, "rect": [72, y, 500, y + 50]}));
+        }
+        let mut args = json!({"doc": doc, "page": 1, "text": "Replacement text"});
+        args[selector] = json!(1);
+        ok(&mut a, "text_edit", args);
+        let assert_current = |a: &mut Automation, doc| {
+            let list = ok(a, "content_list", json!({"doc": doc}));
+            assert_eq!(list["count"], 1, "the active editor must not retain the old text");
+            assert_eq!(list["items"][0]["text"], "Untouched text");
+            let text = page_text(a, doc)[0].clone();
+            assert!(text.contains("Replacement text") && !text.contains("Original text"), "{text}");
+        };
+        assert_current(&mut a, doc);
+        ok(&mut a, "edit_undo", json!({"doc": doc}));
+        let list = ok(&mut a, "content_list", json!({"doc": doc}));
+        assert_eq!(list["count"], 2);
+        assert_eq!(list["items"][0]["text"], "Original text");
+        ok(&mut a, "edit_redo", json!({"doc": doc}));
+        assert_current(&mut a, doc);
+        ok(&mut a, "doc_save", json!({"doc": doc, "path": "rewritten.pdf"}));
+        let reopened = ok(&mut a, "doc_open", json!({"path": "rewritten.pdf"}))["doc"].as_u64().unwrap();
+        assert_current(&mut a, reopened);
+    }
+}
+
 /// Text styling on an added image is refused (#1331), as image transforms are on text, and the
 /// refusal leaves the content, the dirty flag and the undo and redo steps as they were.
 #[test]
