@@ -2,7 +2,9 @@
 
 | Milestone | Current Plervo evidence | Remaining release gates |
 |---|---|---|
-| M14 — distribution | Personal repositories published; internal Mac c8b89cdc app/DMG/CLI signed and notarized; Mac/Linux candidate builds passed; UI tests now require rendering to finish instead of silently exhausting a frame budget | CI for the latest commit, installation/update/removal, language review, Windows signing and verification of the final release artifacts |
+| M14 — distribution | Personal repositories published; internal Mac c8b89cdc app/DMG/CLI signed and notarized; UI waits require completion; Linux packaging verifies ELF glibc requirements against its shared DEB/RPM baseline | CI and regenerated packages for the latest commit, installation/update/removal, language review, Windows signing and verification of the final release artifacts |
+
+2026-10-14: static inspection found that c8b89cdc Linux binaries require glibc 2.39 but the DEB declared 2.35. Packaging now checks both binaries before staging and declares the Ubuntu 24.04 baseline consistently in DEB/RPM. The real candidate failed the old 2.35 guard. Regenerated packages and native acceptance remain required; do not distribute the old candidates.
 
 2026-10-14: the owner configured the notarization profile and submitted the SignPath application (approval pending). Apple accepted the c8b89cdc app, DMG and CLI ZIP; tickets, Gatekeeper, app distribution checks and the CLI notarization requirement passed. Linux CI exposed three UI assertions made while text extraction was still pending. The shared state-based wait now enforces completion with a deadline and then paints the accessibility tree. Native CI must confirm the change; installation in a clean system remains untested.
 

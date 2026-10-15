@@ -1,4 +1,15 @@
-# Releasing PdfCraft
+# Releasing Plervo PDF
+
+Plervo currently builds **internal candidates**, through `.github/workflows/candidates.yml`.
+There is no public release workflow. See [the current validation matrix](plervo-validation.md)
+before distributing anything. Linux x64 candidates build on Ubuntu 24.04 and require glibc 2.39+;
+`package.sh` passes one baseline to the ELF verifier and DEB/RPM metadata. A binary requiring a
+newer or unrecognized glibc version is rejected before staging. The earlier c8b89cdc DEB had an
+incorrect 2.35 minimum and must be regenerated. AppImage, Flatpak and other architectures have
+not been accepted for Plervo. The upstream process below is historical reference, including its
+older Linux baseline and names.
+
+# Historical PdfCraft release process
 
 Every push to the `release` branch runs `.github/workflows/release.yml`. It builds installers for
 macOS, Windows, Linux, FreeBSD and the web, signs the ones it has certificates for, and creates or

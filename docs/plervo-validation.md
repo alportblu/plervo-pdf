@@ -8,6 +8,7 @@ Atualizado em 14 de outubro de 2026. Estado: **alpha interna**. Um teste só con
 - `candidates.yml`: execução manual ou em PRs que alteram o empacotamento, fontes adicionais fixadas por commit, testes da CLI compilada em modo release, regressões da automação local e geração de pacotes internos. Nenhuma release pública é criada automaticamente.
 - No Windows, a compilação e os testes usam `x86_64-pc-windows-msvc`, CRT estático e recursos PE obrigatórios. O empacotador recebe `-SkipBuild` e utiliza esses executáveis; não recompila outra versão depois dos testes.
 - Os testes existentes da CLI cobrem edição e salvamento, rotação e metadados após reabrir, renderização, extração de texto, arquivos inválidos, opções incorretas, caminhos fora da pasta permitida e preservação dos arquivos existentes. A suíte completa de CI também cobre a interface e a troca entre os 22 idiomas.
+- Linux x64 usa Ubuntu 24.04 como base e exige glibc 2.39 ou superior. O empacotador confere os requisitos ELF de ambos os executáveis antes de criar os pacotes; DEB e RPM recebem a mesma versão mínima. Ubuntu 22.04/Debian 12 não são destinos destes candidatos.
 - O empacotador de macOS monta e verifica o DMG; o de Windows inspeciona as tabelas e condições do MSI. Essas verificações **não substituem instalação e uso em um sistema limpo**.
 
 ## Matriz de aceite
@@ -19,7 +20,7 @@ Atualizado em 14 de outubro de 2026. Estado: **alpha interna**. Um teste só con
 | Windows x64 | Instalar MSI em máquina/VM limpa, abrir PDF, salvar cópia, verificar atalhos, reparar e desinstalar; preservar documentos e aplicativo padrão de PDF | Pendente |
 | macOS Apple Silicon | Instalar pelo DMG em ambiente limpo; abrir, editar e salvar; testar Gatekeeper e assinatura do pacote final; remover app preservando documentos | Candidato interno c8b89cdc assinado e notarizado, Gatekeeper e distribuição aprovados; instalação limpa e GUI pendentes |
 | macOS Intel | Compilar e executar em Intel; repetir instalação e fluxo de PDF | Pendente; não anunciar suporte validado |
-| Linux x64 | Instalar/remover DEB no Ubuntu e RPM em ambiente compatível; executar app, integração de menu, abrir e salvar PDF; validar pacote portátil | Pendente |
+| Linux x64 | Instalar/remover DEB no Ubuntu 24.04 e RPM em ambiente com glibc 2.39+; executar app, integração de menu, abrir e salvar PDF; validar pacote portátil | Pacotes c8b89cdc inspecionados; mínimo glibc incorreto corrigido no empacotador, novos pacotes e instalação nativa pendentes |
 | Atualização | Instalar candidato anterior, alterar preferências/idioma, atualizar para versão de teste superior e verificar preservação | Pendente; requer dois pacotes distintos |
 | Idiomas | Seleção automática e manual persistente; 22 catálogos; conferir caracteres, textos cortados, diálogos e direção de escrita em cada sistema | Testes de troca e apoio passaram localmente; revisão visual/linguística completa pendente |
 | Distribuição | Pacotes assinados quando aplicável; notarização do Mac; varredura do pacote exato, SHA-256, notas de versão com limitações | Pendente para os novos candidatos |
@@ -46,3 +47,5 @@ O pacote Mac Apple Silicon c8b89cdc foi notarizado em 14/10/2026 (noite local): 
 
 - DMG: `8ec03466ee72735aa61515a2e164d63d21a80402fa2cd5f1255c29459f786be4`.
 - CLI ZIP: `6ee71ca539f6df439b372f81fb4622e981af797866d9add2b4a59ed771868cc0`.
+
+Na inspeção Linux, os quatro arquivos do candidato c8b89cdc tiveram zero detecções no ClamAV; os tarballs não continham caminhos de escape, links especiais ou arquivos com setuid/setgid/escrita global. A inspeção ELF encontrou requisitos `GLIBC_2.38` e `GLIBC_2.39`, apesar de o DEB declarar 2.35. O verificador rejeitou esses binários sob o mínimo antigo antes de criar a árvore do pacote. A base declarada agora é 2.39, compartilhada entre verificação e metadados DEB/RPM. Sete verificações locais cobriram aceitação dos ELF reais sob 2.39, rejeição sob 2.35 e 2.9, arquivo inválido/ausente e argumentos inválidos; sintaxe, shellcheck e actionlint passaram. Os candidatos antigos não devem ser publicados; recriar e inspecionar os pacotes corrigidos. Isso é verificação estática, não execução ou instalação Linux local.

@@ -18,9 +18,9 @@
 #
 # Usage: packaging/linux/package.sh [--skip-build] [--formats "appimage deb rpm tar cli"]
 #
-# Needs: cargo, curl and the network (the OCR models: cargo xtask models); nfpm for deb/rpm (https://nfpm.goreleaser.com); appimagetool for the AppImage
-# (downloaded into $CARGO_TARGET_DIR if missing). Build on an old distro (CI: Ubuntu 22.04,
-# glibc 2.35) so the binaries run on newer ones. Optional: desktop-file-validate, appstreamcli,
+# Needs: cargo, objdump, curl and the network (the OCR models: cargo xtask models); nfpm for deb/rpm (https://nfpm.goreleaser.com); appimagetool for the AppImage
+# (must be supplied and verified). Internal candidates build on Ubuntu 24.04 (glibc 2.39);
+# verify-glibc.sh rejects binaries above the declared baseline. Optional: desktop-file-validate, appstreamcli,
 # zsyncmake (the zsync package) for the AppImage's .zsync.
 set -euo pipefail
 # shellcheck source=../env.sh
@@ -60,6 +60,9 @@ if [ "$SKIP_BUILD" = 0 ]; then
   fi
 fi
 BIN="$CARGO_TARGET_DIR/${CROSS_TARGET:+$CROSS_TARGET/}release"
+# The package metadata and the ELF check must use the same compatibility baseline.
+export PLERVO_MIN_GLIBC=2.39
+bash "$HERE/verify-glibc.sh" "$PLERVO_MIN_GLIBC" "$BIN/plervo-pdf" "$BIN/plervo-pdf-cli"
 WORK="$CARGO_TARGET_DIR/linux-package"
 STAGE="$WORK/root"
 rm -rf "$WORK"
