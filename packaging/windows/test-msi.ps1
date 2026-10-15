@@ -200,6 +200,21 @@ try {
   while ($record = $view.Fetch()) { if ($record.StringData(1) -match '\.rten$') { $modelFiles++ } }
 } finally { [void] $view.Close() }
 if ($modelFiles -lt 2) { throw "expected the OCR models (*.rten) in models\, found $modelFiles" }
+
+# The MSI embeds the same optional fonts as the portable archive; inspect the compiled file table.
+if ($env:CRAFT_FONTS_DIR) {
+  $view = $Database.OpenView('SELECT `FileName` FROM `File`')
+  $files = @()
+  try {
+    [void] $view.Execute()
+    while ($record = $view.Fetch()) { $files += ($record.StringData(1) -split '\|')[-1] }
+  } finally { [void] $view.Close() }
+  Get-ChildItem -Path (Join-Path $env:CRAFT_FONTS_DIR 'fonts') -Directory | ForEach-Object {
+    if ((Test-Path (Join-Path $_.FullName 'OFL.txt')) -and $files -notcontains "OFL-$($_.Name).txt") {
+      throw "MSI is missing the licence for embedded font family $($_.Name)"
+    }
+  }
+}
 $rm = Read-Row 'SELECT `Dialog` FROM `Dialog` WHERE `Dialog` = ''MsiRMFilesInUse''' 1
 Assert-Equal $rm[0] 'MsiRMFilesInUse' 'Files-in-use dialog'
 [void] [Runtime.InteropServices.Marshal]::FinalReleaseComObject($Database)
