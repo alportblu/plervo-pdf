@@ -10,8 +10,10 @@
 #   MACOS_SIGN_IDENTITY   codesign identity (name or SHA-1). Default "-" = ad-hoc (local testing;
 #                         Gatekeeper will reject the result on other Macs). In CI, import-cert.sh sets it.
 #   MACOS_KEYCHAIN        keychain holding the identity (optional)
-# Notarization (env; all three needed, and a real identity):
-#   APPLE_ID, APPLE_PASSWORD (app-specific password), APPLE_TEAM_ID
+# Notarization (requires a real identity):
+#   MACOS_NOTARY_PROFILE  notarytool Keychain profile (preferred; stored in MACOS_KEYCHAIN
+#                         when specified, otherwise in the default Keychain)
+#   Or APPLE_ID, APPLE_PASSWORD (app-specific password), APPLE_TEAM_ID
 set -euo pipefail
 # shellcheck source=../env.sh
 . "$(dirname "${BASH_SOURCE[0]}")/../env.sh"
@@ -44,12 +46,24 @@ DMG="$DIST/plervo-pdf-$VERSION-macos-$ARCH.dmg"
 CLI_ZIP="$DIST/plervo-pdf-cli-$VERSION-macos-$ARCH.zip"
 
 NOTARIZE=0
+NOTARY_ARGS=()
 if [ "$IDENTITY" = "-" ]; then
+  if [ -n "${MACOS_NOTARY_PROFILE:-}" ]; then
+    echo "error: MACOS_NOTARY_PROFILE requires a real MACOS_SIGN_IDENTITY" >&2
+    exit 2
+  fi
   warn "macOS: ad-hoc signing (no MACOS_SIGN_IDENTITY); artifacts are not notarized"
+elif [ -n "${MACOS_NOTARY_PROFILE:-}" ]; then
+  NOTARIZE=1
+  NOTARY_ARGS=(--keychain-profile "$MACOS_NOTARY_PROFILE")
+  if [ -n "${MACOS_KEYCHAIN:-}" ]; then
+    NOTARY_ARGS+=(--keychain "$MACOS_KEYCHAIN")
+  fi
 elif [ -n "${APPLE_ID:-}" ] && [ -n "${APPLE_PASSWORD:-}" ] && [ -n "${APPLE_TEAM_ID:-}" ]; then
   NOTARIZE=1
+  NOTARY_ARGS=(--apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$APPLE_TEAM_ID")
 else
-  warn "macOS: APPLE_ID / APPLE_PASSWORD / APPLE_TEAM_ID incomplete; signed but not notarized"
+  warn "macOS: no Keychain profile or complete Apple credentials; signed but not notarized"
 fi
 
 echo "==> Plervo PDF $VERSION for macOS ($ARCH), identity: $IDENTITY, notarize: $NOTARIZE"
@@ -83,14 +97,14 @@ sign() {
 notarize() {
   local file="$1" out id status
   echo "==> notarizing $(basename "$file") (this can take a few minutes)"
-  out="$(xcrun notarytool submit "$file" --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" \
-    --team-id "$APPLE_TEAM_ID" --wait --timeout 1h --output-format json)" || true
+  out="$(xcrun notarytool submit "$file" "${NOTARY_ARGS[@]}" \
+    --wait --timeout 1h --output-format json)" || true
   echo "$out"
   id="$(printf '%s' "$out" | plutil -extract id raw -o - - 2>/dev/null || true)"
   status="$(printf '%s' "$out" | plutil -extract status raw -o - - 2>/dev/null || true)"
   if [ "$status" != "Accepted" ]; then
     if [ -n "$id" ]; then
-      xcrun notarytool log "$id" --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$APPLE_TEAM_ID" || true
+      xcrun notarytool log "$id" "${NOTARY_ARGS[@]}" || true
     fi
     echo "error: notarization of $(basename "$file") failed (status: ${status:-unknown})" >&2
     exit 1

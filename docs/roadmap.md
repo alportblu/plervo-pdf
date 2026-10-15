@@ -2,13 +2,17 @@
 
 | Milestone | Current Plervo evidence | Remaining release gates |
 |---|---|---|
-| M14 — distribution | Personal GitHub repository published; macOS/Linux CI and the first Linux package job passed; Windows candidate tests now use the installer's static-CRT configuration | Successful Windows jobs, installation/update/removal, language review, signing and notarization |
+| M14 — distribution | Personal GitHub repository published; macOS/Linux CI and internal packages passed; Windows candidate tests use the installer's static-CRT configuration; Developer ID issued and internal Mac signature verified | CI for the latest commit, installation/update/removal, language review, Windows signing and Mac notarization |
 
 2026-10-14: in validation. Four control-channel resource-limit regressions reproduced and corrected; own identity and the owner-confirmed Buy Me a Coffee destination configured. Preserve all 22 interface languages; support buttons and language-switch/document-integrity tests cover the full registry. Linguistic, glyph and native-layout review, Windows/Linux installers and public signing remain pending. Historical upstream milestones below are not Plervo release claims.
 
 Candidate preparation: the three native packaging jobs require the pinned font input and test the release CLI before packaging. Personal GitHub access is configured; remote validation is underway. Acceptance and evidence requirements are in [Plervo validation](plervo-validation.md).
 
 2026-10-14: Windows candidate builds and tests now use the explicit MSVC target, static CRT and required PE resources. Packaging reuses those binaries instead of rebuilding with different flags. Native CI must validate this workflow change before merge; signing and installer acceptance remain separate release gates.
+
+2026-10-14: macOS packaging now accepts a `notarytool` Keychain profile for notarization, avoiding a plaintext password in the packaging invocation. Ad-hoc signing with a notarization profile is rejected. Developer ID issuance and local packaging evidence do not replace notarization or native acceptance of the final release.
+
+2026-10-14: CI exposed a shared scratch-directory race between parallel form tests and a stale Windows copyright expectation. The scratch regression failed locally before the fix; all 23 form tests, the CLI suite, scoped clippy, formatting, layer and asset checks passed afterward. Windows must validate the corrected PE-resource expectation in CI before merge.
 
 # PdfCraft roadmap: milestones and what's next
 
