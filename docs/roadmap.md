@@ -1,8 +1,10 @@
+Plervo update — 2026-10-15 (M14): Suite-first distribution is under validation. New native Suite manages installation/open/update/removal of Plervo PDF from the personal release repository, with hash, Maintech signature, notarization and rollback checks. Suite UI follows the OS by default (English/Portuguese/Spanish); PDF Auto now prioritizes the display language on macOS/Windows. Public Windows/Linux management remains gated; Suite self-updates are manual. This does not increase upstream Acrobat parity. See [Suite provenance](suite-provenance.md).
+
 ## Plervo P0 — launch foundation
 
 | Milestone | Current Plervo evidence | Remaining release gates |
 |---|---|---|
-| M14 — distribution | Personal repositories published; cb4c8fe4 Mac candidate signed/notarized and exercised through its opt-in native UI; b2934fe4 DEB installation/removal passed; OCR archive and stale text fixes verified in the final Mac package | Latest Windows CI/installer acceptance, cross-platform GUI and upgrade checks, language/font review, Windows signing and final release verification |
+| M14 — distribution | Suite-first alpha.2 candidate: native app manager, verified Mac PDF installation, English/Portuguese/Spanish, OS language priority, atomic install and recoverable uninstall checks | Final Suite packaging/notarization, protected CI and public download switch; native Windows/Linux acceptance and signing; manual Suite updates |
 
 2026-10-14: Windows CI found the non-file GoToR test reading its refusal notification before the background opener replied. It now uses the existing bounded state wait before checking the unchanged refusal message and absence of a new tab. The failure was observed on Windows before this test-only correction; no production behavior or protection changed. Independent checks of final Mac outputs passed PDF parsing, form values, OCR text, redaction, AES-256 permissions and synthetic signature integrity/tamper detection. Catalog font coverage still has gaps for Telugu and both Chinese variants without system fallback.
 

@@ -1,0 +1,23 @@
+[package]
+name = "plervo-suite"
+description = "Plervo Suite: install and manage Plervo apps"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+publish = false
+
+[lints]
+workspace = true
+
+[dependencies]
+plervo-suite-core.workspace = true
+plervo-suite-native.workspace = true
+egui.workspace = true
+eframe = { workspace = true, features = ["default_fonts", "glow", "accesskit", "wayland", "x11", "persistence", "links"] }
+serde.workspace = true
+serde_json.workspace = true
+sys-locale = "0.3"
+
+[dev-dependencies]
+egui_kittest = { workspace = true, features = ["eframe", "wgpu"] }

@@ -340,28 +340,27 @@ pub fn system_lang() -> Lang {
 
 #[cfg(not(target_arch = "wasm32"))]
 fn detect_system_lang() -> Lang {
-    for var in ["LC_ALL", "LC_MESSAGES", "LANG"] {
-        if let Some(l) = std::env::var(var).ok().and_then(|v| language_override(&v)) {
-            return l;
-        }
-    }
-    // Apps started from the Finder don't inherit LANG: use the macOS preferred-languages list.
-    // The absolute path keeps a `defaults` earlier on PATH from running; any failure means English.
+    let shell = ["LC_ALL", "LC_MESSAGES", "LANG"].into_iter().find_map(|var| std::env::var(var).ok().and_then(|v| language_override(&v)));
     #[cfg(target_os = "macos")]
-    if let Ok(out) = std::process::Command::new("/usr/bin/defaults").args(["read", "-g", "AppleLanguages"]).output()
-        && out.status.success()
-        && let Some(l) = first_supported(&String::from_utf8_lossy(&out.stdout))
-    {
-        return l;
-    }
+    let display = std::process::Command::new("/usr/bin/defaults")
+        .args(["read", "-g", "AppleLanguages"])
+        .output()
+        .ok()
+        .filter(|out| out.status.success())
+        .and_then(|out| first_supported(&String::from_utf8_lossy(&out.stdout)));
     #[cfg(target_os = "windows")]
-    if let Some(l) = windows_ui_language().as_deref().and_then(first_supported) {
-        return l;
-    }
-    Lang::EN
+    let display = windows_ui_language().as_deref().and_then(first_supported);
+    #[cfg(not(any(target_os = "macos", target_os = "windows")))]
+    let display = None;
+    preferred_language(display, shell)
 }
 
-/// A named locale can override the display language. On Windows, the neutral
+#[cfg(not(target_arch = "wasm32"))]
+fn preferred_language(display: Option<Lang>, shell: Option<Lang>) -> Lang {
+    display.or(shell).unwrap_or(Lang::EN)
+}
+
+/// A shell locale is a fallback when the display language is unavailable. On Windows, the neutral
 /// C/POSIX locale inherited from a launcher says nothing about the user's UI language.
 #[cfg(not(target_arch = "wasm32"))]
 fn language_override(tag: &str) -> Option<Lang> {
@@ -607,6 +606,15 @@ mod tests {
         assert_eq!(candidates("zh_TW"), ["zh-tw", "zh-hant", "zh"]);
         assert_eq!(candidates("zh-CN"), ["zh-cn", "zh-hans", "zh"]);
         assert_eq!(candidates("zh-Hant-HK"), ["zh-hant-hk", "zh-hant", "zh"]);
+    }
+
+    #[cfg(not(target_arch = "wasm32"))]
+    #[test]
+    fn desktop_display_language_precedes_inherited_shell_locale() {
+        assert_eq!(preferred_language(Some(Lang::EN), Some(Lang::from_code("pt-br").unwrap())), Lang::EN);
+        assert_eq!(preferred_language(Lang::from_code("es"), Some(Lang::EN)), Lang::from_code("es").unwrap());
+        assert_eq!(preferred_language(None, Lang::from_code("pt-br")), Lang::from_code("pt-br").unwrap());
+        assert_eq!(preferred_language(None, None), Lang::EN);
     }
 
     #[test]

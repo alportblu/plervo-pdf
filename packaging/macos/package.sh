@@ -4,7 +4,7 @@
 #   $DIST/plervo-pdf-<version>-macos-<arch>.dmg        Plervo PDF.app on a drag-to-Applications DMG
 #   $DIST/plervo-pdf-cli-<version>-macos-<arch>.zip      the headless CLI
 #
-# Usage: packaging/macos/package.sh [--arch universal|aarch64|x86_64] [--skip-build]
+# Usage: packaging/macos/package.sh [--arch universal|aarch64|x86_64] [--skip-build] [--suite]
 #
 # Signing (env):
 #   MACOS_SIGN_IDENTITY   codesign identity (name or SHA-1). Default "-" = ad-hoc (local testing;
@@ -19,12 +19,14 @@ set -euo pipefail
 . "$(dirname "${BASH_SOURCE[0]}")/../env.sh"
 HERE="$ROOT/packaging/macos"
 
+PRODUCT=pdf
 ARCH=universal
 SKIP_BUILD=0
 while [ $# -gt 0 ]; do
   case "$1" in
     --arch) ARCH="$2"; shift 2 ;;
     --skip-build) SKIP_BUILD=1; shift ;;
+    --suite) PRODUCT=suite; shift ;;
     -h | --help) sed -n '2,16p' "$0"; exit 0 ;;
     *) echo "unknown argument: $1" >&2; exit 2 ;;
   esac
@@ -40,9 +42,17 @@ esac
 export MACOSX_DEPLOYMENT_TARGET=11.0
 IDENTITY="${MACOS_SIGN_IDENTITY:--}"
 SHORT_VERSION="${VERSION%%-*}"
-WORK="$CARGO_TARGET_DIR/macos-package"
-APP="$WORK/Plervo PDF.app"
-DMG="$DIST/plervo-pdf-$VERSION-macos-$ARCH.dmg"
+DISPLAY_NAME="Plervo PDF"
+BINS=(plervo-pdf plervo-pdf-cli)
+PLIST="$HERE/Info.plist.in"
+if [ "$PRODUCT" = suite ]; then
+  DISPLAY_NAME="Plervo Suite"
+  BINS=(plervo-suite)
+  PLIST="$HERE/Suite-Info.plist.in"
+fi
+WORK="$CARGO_TARGET_DIR/macos-package-$PRODUCT"
+APP="$WORK/$DISPLAY_NAME.app"
+DMG="$DIST/plervo-$PRODUCT-$VERSION-macos-$ARCH.dmg"
 CLI_ZIP="$DIST/plervo-pdf-cli-$VERSION-macos-$ARCH.zip"
 
 NOTARIZE=0
@@ -66,18 +76,20 @@ else
   warn "macOS: no Keychain profile or complete Apple credentials; signed but not notarized"
 fi
 
-echo "==> Plervo PDF $VERSION for macOS ($ARCH), identity: $IDENTITY, notarize: $NOTARIZE"
+echo "==> $DISPLAY_NAME $VERSION for macOS ($ARCH), identity: $IDENTITY, notarize: $NOTARIZE"
 
 # ---- build -------------------------------------------------------------------------------------
 if [ "$SKIP_BUILD" = 0 ]; then
   args=()
+  packages=()
+  for bin in "${BINS[@]}"; do packages+=(-p "$bin"); done
   for t in "${TARGETS[@]}"; do args+=(--target "$t"); done
-  (cd "$ROOT" && cargo build --release --locked -p plervo-pdf -p plervo-pdf-cli "${args[@]}")
+  (cd "$ROOT" && cargo build --release --locked "${packages[@]}" "${args[@]}")
 fi
 
 rm -rf "$WORK"
 mkdir -p "$WORK/bin"
-for bin in plervo-pdf plervo-pdf-cli; do
+for bin in "${BINS[@]}"; do
   inputs=()
   for t in "${TARGETS[@]}"; do inputs+=("$CARGO_TARGET_DIR/$t/release/$bin"); done
   lipo -create -output "$WORK/bin/$bin" "${inputs[@]}"
@@ -115,28 +127,29 @@ notarize() {
 echo "==> assembling $APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 # Executable and icon carry the display name (CFBundleExecutable / CFBundleIconFile).
-cp "$WORK/bin/plervo-pdf" "$APP/Contents/MacOS/Plervo PDF"
-cp "$ROOT/assets/app-icon/pdfcraft.icns" "$APP/Contents/Resources/Plervo PDF.icns"
+cp "$WORK/bin/plervo-$PRODUCT" "$APP/Contents/MacOS/$DISPLAY_NAME"
+cp "$ROOT/assets/app-icon/pdfcraft.icns" "$APP/Contents/Resources/$DISPLAY_NAME.icns"
 mkdir -p "$APP/Contents/Resources/Licenses"
 copy_docs "$APP/Contents/Resources/Licenses"
 # OCR models: the app finds them at Contents/MacOS/../Resources/models. Before signing, so the
 # bundle's seal covers them.
-stage_models "$APP/Contents/Resources/models"
+if [ "$PRODUCT" = pdf ]; then stage_models "$APP/Contents/Resources/models"; fi
+cp "$ROOT/licenses/artcraft-launcher-LICENSE-MIT.txt" "$APP/Contents/Resources/Licenses/"
 sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
   -e "s/@BUILD_SHA@/${PDFCRAFT_BUILD_SHA:-unknown}/g" \
-  "$HERE/Info.plist.in" >"$APP/Contents/Info.plist"
+  "$PLIST" >"$APP/Contents/Info.plist"
 plutil -lint "$APP/Contents/Info.plist"
 printf 'APPL????' >"$APP/Contents/PkgInfo"
 
 # Sign inside-out: nested code first, then the bundle itself (no --deep on the final signature).
 # Today the only nested code is the main executable; frameworks/helpers would be signed here too.
-sign --options runtime --entitlements "$HERE/entitlements.plist" "$APP/Contents/MacOS/Plervo PDF"
+sign --options runtime --entitlements "$HERE/entitlements.plist" "$APP/Contents/MacOS/$DISPLAY_NAME"
 sign --options runtime --entitlements "$HERE/entitlements.plist" "$APP"
 codesign --verify --strict --deep --verbose=2 "$APP"
 
 if [ "$NOTARIZE" = 1 ]; then
-  ditto -c -k --keepParent "$APP" "$WORK/Plervo PDF-notarize.zip"
-  notarize "$WORK/Plervo PDF-notarize.zip"
+  ditto -c -k --keepParent "$APP" "$WORK/$DISPLAY_NAME-notarize.zip"
+  notarize "$WORK/$DISPLAY_NAME-notarize.zip"
   xcrun stapler staple "$APP"
   xcrun stapler validate "$APP"
   spctl --assess --type execute -vvv "$APP"
@@ -146,7 +159,7 @@ fi
 echo "==> building $DMG"
 STAGE="$WORK/dmg"
 mkdir -p "$STAGE"
-ditto "$APP" "$STAGE/Plervo PDF.app"
+ditto "$APP" "$STAGE/$DISPLAY_NAME.app"
 ln -s /Applications "$STAGE/Applications"
 # A plain drag-to-Applications image; no upstream Finder layout or brand artwork.
 rm -f "$DMG"
@@ -169,7 +182,7 @@ hdiutil_retry() {
     sleep $((attempt * 10))
   done
 }
-hdiutil_retry create create -srcfolder "$STAGE" -volname "Plervo PDF" -fs HFS+ -format UDZO -imagekey zlib-level=9 -ov "$DMG"
+hdiutil_retry create create -srcfolder "$STAGE" -volname "$DISPLAY_NAME" -fs HFS+ -format UDZO -imagekey zlib-level=9 -ov "$DMG"
 sign "$DMG"
 codesign --verify --strict --verbose=2 "$DMG"
 # The app inside the image must still pass --strict, so a makehybrid-style regression can't ship.
@@ -177,7 +190,7 @@ MOUNT="$WORK/dmg-check"
 rm -rf "$MOUNT"
 mkdir -p "$MOUNT"
 hdiutil_retry attach attach -nobrowse -readonly -mountpoint "$MOUNT" "$DMG" >/dev/null
-if ! codesign --verify --strict --deep --verbose=2 "$MOUNT/Plervo PDF.app"; then
+if ! codesign --verify --strict --deep --verbose=2 "$MOUNT/$DISPLAY_NAME.app"; then
   hdiutil_retry detach detach "$MOUNT" >/dev/null || true
   exit 1
 fi
@@ -187,6 +200,14 @@ if [ "$NOTARIZE" = 1 ]; then
   xcrun stapler staple "$DMG"
   xcrun stapler validate "$DMG"
   spctl --assess --type open --context context:primary-signature -vvv "$DMG"
+fi
+
+# Suite has no separate PDF command-line archive.
+if [ "$PRODUCT" = suite ]; then
+  "$WORK/bin/plervo-suite" --version
+  echo "==> done"
+  ls -lh "$DMG"
+  exit 0
 fi
 
 # ---- CLI ---------------------------------------------------------------------------------------
