@@ -21,7 +21,8 @@ chmod 700 "$runtime"
 /usr/bin/plervo-suite --version
 test -f /usr/share/applications/com.plervo.suite.desktop
 test -f /usr/share/icons/hicolor/scalable/apps/com.plervo.suite.svg
-runuser -u plervo -- env PLERVO_ACCEPTANCE=1 XDG_RUNTIME_DIR="$runtime" LIBGL_ALWAYS_SOFTWARE=1 PDFCRAFT_SYSTEM_FONTS=0 \
+runuser -u plervo -- env PLERVO_ACCEPTANCE=1 PLERVO_PUBLIC_ACCEPTANCE="${PLERVO_PUBLIC_ACCEPTANCE:-0}" \
+  PLERVO_EXPECTED_VERSION="${PLERVO_EXPECTED_VERSION:-}" XDG_RUNTIME_DIR="$runtime" LIBGL_ALWAYS_SOFTWARE=1 PDFCRAFT_SYSTEM_FONTS=0 \
   xvfb-run -a -s '-screen 0 1280x900x24 -nolisten tcp' bash /test/test-suite-user.sh "$packages" "$out"
 if command -v apt-get >/dev/null; then
   apt-get remove -y plervo-suite

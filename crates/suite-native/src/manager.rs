@@ -67,7 +67,7 @@ fn select_release_for(json: &str, platform: Platform) -> Result<Release, String>
 pub fn detected() -> Option<Installed> {
     #[cfg(target_os = "linux")]
     {
-        return Paths::new().ok().and_then(|paths| crate::managed_linux::detected(&paths).ok().flatten());
+        Paths::new().ok().and_then(|paths| crate::managed_linux::detected(&paths).ok().flatten())
     }
     #[cfg(not(target_os = "linux"))]
     crate::detect::detect(&PDF, &Manifest::default(), &crate::detect::Snapshot::take())

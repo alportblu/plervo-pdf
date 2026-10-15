@@ -7,7 +7,14 @@ printf '%s\n' 'keep settings' >"$HOME/.config/plervo-preserve.txt"
 archive=("$packages"/plervo-pdf-*-linux-x86_64.tar.gz)
 [ "${#archive[@]}" = 1 ]
 helper=/validation/linux_acceptance
-binary="$($helper "${archive[0]}")"
+if [ "${PLERVO_PUBLIC_ACCEPTANCE:-}" = 1 ]; then
+  plervo-suite --check >"$out/public-release.json"
+  jq -e --arg version "${PLERVO_EXPECTED_VERSION:?}" '.version == $version' "$out/public-release.json"
+  plervo-suite --install-pdf
+  binary="$(plervo-suite --status | jq -er '.location')"
+else
+  binary="$($helper "${archive[0]}")"
+fi
 cli="$(dirname "$binary")/plervo-pdf-cli"
 "$cli" --version
 "$cli" run ocr_status | jq -e '.available == true'
@@ -17,7 +24,11 @@ JSON
 "$cli" run --root "$HOME/Documents" --script "$out/create.json"
 "$cli" info "$HOME/Documents/acceptance.pdf" | jq -e '.pages == 1'
 # Update through the same manager with the verified candidate in its download cache.
-"$helper" "${archive[0]}"
+if [ "${PLERVO_PUBLIC_ACCEPTANCE:-}" = 1 ]; then
+  plervo-suite --install-pdf
+else
+  "$helper" "${archive[0]}"
+fi
 for language in en_US.UTF-8 pt_BR.UTF-8 es_ES.UTF-8; do
   LANG="$language" LANGUAGE="${language%%.*}" timeout 60 plervo-suite --native-smoke-test "$out/suite-$language.png"
 done
