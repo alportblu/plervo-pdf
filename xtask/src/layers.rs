@@ -29,6 +29,9 @@ impl Class {
 
 /// Every workspace crate (package name without the `pdfcraft-` prefix) and its layer.
 pub const TABLE: &[(&str, Class)] = &[
+    ("plervo-suite-core", Class::Layer(0)),
+    ("plervo-suite-native", Class::Layer(1)),
+    ("plervo-suite", Class::Exempt),
     // L0 foundation (standalone, publishable)
     ("geom", Class::Standalone(0)),
     ("filters", Class::Standalone(0)),

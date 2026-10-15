@@ -1,0 +1,519 @@
+//! The Plervo Suite shell. Slow operations run outside the UI; headless checks use the same engine.
+#![deny(clippy::unwrap_used, clippy::expect_used, clippy::panic, clippy::unimplemented, clippy::todo, clippy::unreachable)]
+mod locale;
+use egui::{Color32, RichText, Vec2};
+use locale::Language;
+use plervo_suite_core::{Installed, Release, protocol::JobPhase};
+use plervo_suite_native::{http::Stop, manager, paths::Paths};
+use std::{
+    fs::File,
+    sync::{Arc, mpsc},
+};
+
+const INK: Color32 = Color32::from_rgb(25, 39, 33);
+const PAPER: Color32 = Color32::from_rgb(247, 248, 244);
+const LIME: Color32 = Color32::from_rgb(202, 232, 98);
+const MUTED: Color32 = Color32::from_rgb(89, 102, 94);
+#[derive(Clone, Copy)]
+enum Action {
+    Refresh,
+    Install,
+    Open,
+    Remove,
+}
+enum Event {
+    Refreshed(Result<Release, String>, Option<Installed>),
+    Progress(JobPhase),
+    Finished(Result<(), String>, Option<Installed>),
+}
+
+fn acquire(paths: &Paths) -> Result<File, String> {
+    std::fs::create_dir_all(&paths.data).map_err(|e| e.to_string())?;
+    let file = std::fs::OpenOptions::new()
+        .read(true)
+        .write(true)
+        .create(true)
+        .truncate(false)
+        .open(paths.data.join("suite.lock"))
+        .map_err(|e| e.to_string())?;
+    file.try_lock().map_err(|_| "Plervo Suite is already open. Close the other window first.".to_string())?;
+    Ok(file)
+}
+
+pub struct SuiteApp {
+    language: Language,
+    system_language: Language,
+    settings: bool,
+    release: Option<Release>,
+    installed: Option<Installed>,
+    paths: Option<Paths>,
+    _lock: Option<File>,
+    tx: mpsc::Sender<Event>,
+    rx: mpsc::Receiver<Event>,
+    stop: Arc<Stop>,
+    busy: bool,
+    progress: Option<JobPhase>,
+    error: Option<String>,
+    success: bool,
+    confirm_remove: bool,
+}
+impl Default for SuiteApp {
+    fn default() -> Self {
+        let (tx, rx) = mpsc::channel();
+        Self {
+            language: Language::Auto,
+            system_language: Language::Auto.resolve(),
+            settings: false,
+            release: None,
+            installed: None,
+            paths: None,
+            _lock: None,
+            tx,
+            rx,
+            stop: Arc::new(Stop::default()),
+            busy: false,
+            progress: None,
+            error: None,
+            success: false,
+            confirm_remove: false,
+        }
+    }
+}
+impl SuiteApp {
+    pub fn new(cc: &eframe::CreationContext<'_>) -> Self {
+        Self::style(&cc.egui_ctx);
+        let mut app = Self::default();
+        if let Some(saved) = cc.storage.and_then(|s| s.get_string("language")) {
+            app.language = serde_json::from_str(&saved).unwrap_or_default();
+        }
+        match Paths::new().and_then(|paths| acquire(&paths).map(|lock| (paths, lock))) {
+            Ok((paths, lock)) => {
+                app.paths = Some(paths);
+                app._lock = Some(lock);
+                app.start(Action::Refresh, &cc.egui_ctx);
+            }
+            Err(e) => app.error = Some(e),
+        }
+        app
+    }
+    pub fn is_busy(&self) -> bool {
+        self.busy
+    }
+    pub fn style(ctx: &egui::Context) {
+        let mut fonts = egui::FontDefinitions::default();
+        fonts.font_data.insert("inter".into(), Arc::new(egui::FontData::from_static(include_bytes!("../../../assets/fonts/Inter-Regular.ttf"))));
+        fonts.families.entry(egui::FontFamily::Proportional).or_default().insert(0, "inter".into());
+        ctx.set_fonts(fonts);
+        let mut style = (*ctx.style_of(egui::Theme::Light)).clone();
+        style.visuals = egui::Visuals::light();
+        style.visuals.override_text_color = Some(INK);
+        style.visuals.panel_fill = PAPER;
+        style.visuals.selection.bg_fill = LIME;
+        style.visuals.selection.stroke = egui::Stroke::new(1.0, INK);
+        style.spacing.item_spacing = Vec2::new(12.0, 12.0);
+        style.spacing.button_padding = Vec2::new(17.0, 11.0);
+        style.text_styles.insert(egui::TextStyle::Body, egui::FontId::proportional(15.0));
+        style.text_styles.insert(egui::TextStyle::Button, egui::FontId::proportional(15.0));
+        ctx.set_style_of(egui::Theme::Light, style);
+        ctx.set_theme(egui::Theme::Light);
+    }
+    fn lang(&self) -> Language {
+        if self.language == Language::Auto { self.system_language } else { self.language }
+    }
+    fn start(&mut self, action: Action, ctx: &egui::Context) {
+        if self.busy {
+            return;
+        }
+        let Some(paths) = self.paths.clone() else { return };
+        let release = self.release.clone();
+        if matches!(action, Action::Install) && release.is_none() {
+            return;
+        }
+        self.busy = true;
+        self.error = None;
+        self.success = false;
+        self.progress = None;
+        self.stop = Arc::new(Stop::default());
+        let tx = self.tx.clone();
+        let stop = self.stop.clone();
+        let context = ctx.clone();
+        let result = std::thread::Builder::new().name("plervo-operation".into()).spawn(move || {
+            let mut progress = |phase| {
+                let _ = tx.send(Event::Progress(phase));
+                context.request_repaint();
+            };
+            let outcome = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+                if matches!(action, Action::Refresh) {
+                    let _ = tx.send(Event::Refreshed(manager::latest(), manager::detected()));
+                } else {
+                    let result = match action {
+                        Action::Install => match release {
+                            Some(r) => manager::install_pdf(&r, &paths, &stop, &mut progress),
+                            None => Err("No release selected".into()),
+                        },
+                        Action::Open => manager::open_pdf(&paths),
+                        Action::Remove => manager::uninstall_pdf(&paths, &stop, &mut progress),
+                        Action::Refresh => Ok(()),
+                    };
+                    let _ = tx.send(Event::Finished(result, manager::detected()));
+                }
+            }));
+            if outcome.is_err() {
+                let _ = tx.send(Event::Finished(Err("The operation ended unexpectedly. Check the installed version before retrying.".into()), None));
+            }
+            context.request_repaint();
+        });
+        if let Err(e) = result {
+            self.busy = false;
+            self.error = Some(e.to_string());
+        }
+    }
+    fn poll(&mut self) {
+        while let Ok(event) = self.rx.try_recv() {
+            match event {
+                Event::Refreshed(result, installed) => {
+                    self.busy = false;
+                    self.installed = installed;
+                    match result {
+                        Ok(r) => self.release = Some(r),
+                        Err(e) => self.error = Some(e),
+                    }
+                }
+                Event::Progress(p) => self.progress = Some(p),
+                Event::Finished(result, installed) => {
+                    self.busy = false;
+                    self.progress = None;
+                    self.installed = installed;
+                    self.success = result.is_ok();
+                    self.error = result.err();
+                }
+            }
+        }
+    }
+    pub fn show(&mut self, root: &mut egui::Ui) {
+        let ctx = &root.ctx().clone();
+        root.set_style(ctx.style_of(egui::Theme::Light));
+        self.poll();
+        let l = self.lang();
+        let t = |en, pt, es| l.text(en, pt, es);
+        if self.busy && ctx.input(|i| i.viewport().close_requested()) {
+            ctx.send_viewport_cmd(egui::ViewportCommand::CancelClose);
+        }
+        egui::Panel::left("navigation").exact_size(190.0).resizable(false).frame(egui::Frame::new().fill(INK).inner_margin(24)).show(root, |ui| {
+            ui.visuals_mut().override_text_color = Some(Color32::WHITE);
+            ui.visuals_mut().hyperlink_color = LIME;
+            ui.add_space(15.0);
+            ui.label(RichText::new("Plervo").size(32.0).strong().color(Color32::WHITE));
+            ui.label(RichText::new("S U I T E").size(11.0).color(LIME));
+            ui.add_space(58.0);
+            if ui
+                .selectable_label(
+                    !self.settings,
+                    RichText::new(t("My apps", "Meus apps", "Mis apps")).color(if self.settings { Color32::WHITE } else { INK }),
+                )
+                .clicked()
+            {
+                self.settings = false;
+            }
+            ui.add_space(8.0);
+            if ui
+                .selectable_label(
+                    self.settings,
+                    RichText::new(t("Settings", "Configurações", "Configuración")).color(if self.settings { INK } else { Color32::WHITE }),
+                )
+                .clicked()
+            {
+                self.settings = true;
+            }
+            ui.with_layout(egui::Layout::bottom_up(egui::Align::LEFT), |ui| {
+                ui.label(RichText::new(format!("Alpha · {}", env!("CARGO_PKG_VERSION"))).size(11.0).color(Color32::from_gray(180)));
+                ui.hyperlink_to(t("Support Plervo ↗", "Apoie o Plervo ↗", "Apoya Plervo ↗"), "https://buymeacoffee.com/alport");
+                ui.add_space(8.0);
+                ui.hyperlink_to(t("Visit website ↗", "Visitar site ↗", "Visitar web ↗"), "https://plervo.com");
+            });
+        });
+        egui::CentralPanel::default().frame(egui::Frame::new().fill(PAPER).inner_margin(36)).show(root, |ui| {
+            ui.add_space(8.0);
+            if self.settings {
+                ui.heading(RichText::new(t("Make it yours.", "Do seu jeito.", "A tu manera.")).size(34.0));
+                ui.add_space(25.0);
+                ui.label(t("Interface language", "Idioma da interface", "Idioma de la interfaz"));
+                egui::ComboBox::from_label(t("Language", "Idioma", "Idioma"))
+                    .selected_text(match self.language {
+                        Language::Auto => t("System language", "Idioma do sistema", "Idioma del sistema"),
+                        Language::En => "English",
+                        Language::Pt => "Português",
+                        Language::Es => "Español",
+                    })
+                    .show_ui(ui, |ui| {
+                        for (value, label) in [
+                            (Language::Auto, t("System language", "Idioma do sistema", "Idioma del sistema")),
+                            (Language::En, "English"),
+                            (Language::Pt, "Português"),
+                            (Language::Es, "Español"),
+                        ] {
+                            ui.selectable_value(&mut self.language, value, label);
+                        }
+                    });
+                ui.add_space(12.0);
+                ui.label(
+                    RichText::new(t(
+                        "New installations follow your operating system. You can choose another language here.",
+                        "Novas instalações seguem o sistema operacional. Você pode escolher outro idioma aqui.",
+                        "Las nuevas instalaciones siguen el sistema operativo. Puedes elegir otro idioma aquí.",
+                    ))
+                    .color(MUTED),
+                );
+                ui.add_space(36.0);
+                ui.separator();
+                ui.add_space(12.0);
+                ui.label("Plervo Suite");
+                ui.label(t("Published by Maintech Solutions LLC", "Publicado por Maintech Solutions LLC", "Publicado por Maintech Solutions LLC"));
+                ui.hyperlink_to(t("Source & licenses ↗", "Código e licenças ↗", "Código y licencias ↗"), "https://github.com/alportblu/plervo-pdf");
+                ui.label(RichText::new("Installation engine adapted from ArtCraft Launcher · MIT / Apache-2.0").small().color(MUTED));
+                return;
+            }
+            ui.label(RichText::new(t("YOUR WORKSPACE", "SEU ESPAÇO DE TRABALHO", "TU ESPACIO DE TRABAJO")).size(11.0).color(MUTED));
+            ui.add_space(7.0);
+            ui.heading(RichText::new(t("Good tools. All yours.", "Boas ferramentas. Suas.", "Buenas herramientas. Tuyas.")).size(34.0));
+            ui.add_space(8.0);
+            ui.label(
+                RichText::new(t(
+                    "Install the apps you need. Keep them together.",
+                    "Instale os apps que precisa. Encontre tudo aqui.",
+                    "Instala los apps que necesitas. Todo en un lugar.",
+                ))
+                .color(MUTED),
+            );
+            ui.add_space(30.0);
+            egui::Frame::new()
+                .fill(Color32::WHITE)
+                .stroke(egui::Stroke::new(1.0, Color32::from_rgb(217, 224, 214)))
+                .corner_radius(12)
+                .inner_margin(26)
+                .show(ui, |ui| {
+                    ui.set_min_width((ui.available_width() - 2.0).max(0.0));
+                    ui.horizontal(|ui| {
+                        let (rect, _) = ui.allocate_exact_size(Vec2::splat(68.0), egui::Sense::hover());
+                        ui.painter().rect_filled(rect, 12.0, LIME);
+                        ui.painter().text(rect.center(), egui::Align2::CENTER_CENTER, "PDF", egui::FontId::proportional(21.0), INK);
+                        ui.add_space(10.0);
+                        ui.vertical(|ui| {
+                            ui.label(RichText::new("Plervo PDF").size(24.0).strong());
+                            ui.label(
+                                RichText::new(t(
+                                    "Documents, without the subscription.",
+                                    "Documentos, sem assinatura.",
+                                    "Documentos, sin suscripción.",
+                                ))
+                                .color(MUTED),
+                            );
+                        });
+                    });
+                    ui.add_space(24.0);
+                    ui.label(t(
+                        "Read, edit, annotate and organize your PDFs. Your files stay on your computer.",
+                        "Leia, edite, anote e organize seus PDFs. Seus arquivos ficam no seu computador.",
+                        "Lee, edita, anota y organiza tus PDF. Tus archivos se quedan en tu equipo.",
+                    ));
+                    ui.add_space(20.0);
+                    ui.separator();
+                    ui.add_space(8.0);
+                    let installed_version = self.installed.as_ref().and_then(|i| i.version.as_ref());
+                    let update = self.release.as_ref().and_then(|r| r.version.as_ref()).zip(installed_version).is_some_and(|(new, old)| new > old);
+                    ui.horizontal_wrapped(|ui| {
+                        let ready = !self.busy && self.paths.is_some();
+                        if self.installed.is_some() {
+                            if ui.add_enabled(ready, egui::Button::new(t("Open PDF", "Abrir PDF", "Abrir PDF")).fill(LIME)).clicked() {
+                                self.start(Action::Open, ctx);
+                            }
+                            if update && ui.add_enabled(ready, egui::Button::new(t("Update", "Atualizar", "Actualizar"))).clicked() {
+                                self.start(Action::Install, ctx);
+                            }
+                            if ui.add_enabled(ready, egui::Button::new(t("Uninstall…", "Desinstalar…", "Desinstalar…"))).clicked() {
+                                self.confirm_remove = true;
+                            }
+                        } else if ui
+                            .add_enabled(
+                                ready && self.release.is_some() && manager::supported_platform().is_some(),
+                                egui::Button::new(t("Install Plervo PDF", "Instalar Plervo PDF", "Instalar Plervo PDF")).fill(LIME),
+                            )
+                            .clicked()
+                        {
+                            self.start(Action::Install, ctx);
+                        }
+                        if let Some(r) = &self.release {
+                            ui.label(RichText::new(format!("{} · Alpha", r.version_label())).small().color(MUTED));
+                        }
+                    });
+                    if manager::supported_platform().is_none() {
+                        ui.label(t(
+                            "Downloads for this platform are still being validated.",
+                            "Os downloads deste sistema ainda estão em validação.",
+                            "Las descargas para este sistema siguen en validación.",
+                        ));
+                    }
+                });
+            ui.add_space(18.0);
+            if self.busy {
+                ui.horizontal(|ui| {
+                    ui.spinner();
+                    ui.label(match self.progress {
+                        Some(JobPhase::Installing) => t(
+                            "Installing. Keep this window open…",
+                            "Instalando. Mantenha esta janela aberta…",
+                            "Instalando. Mantén esta ventana abierta…",
+                        ),
+                        Some(JobPhase::Verifying) => t("Verifying download…", "Verificando download…", "Verificando descarga…"),
+                        Some(JobPhase::Removing) => t("Removing app…", "Removendo app…", "Eliminando app…"),
+                        Some(_) => t("Downloading…", "Baixando…", "Descargando…"),
+                        None => t("Working…", "Aguarde…", "Un momento…"),
+                    });
+                });
+                if let Some(JobPhase::Downloading { done, total } | JobPhase::Reconnecting { done, total }) = self.progress {
+                    ui.add(egui::ProgressBar::new(if total > 0 { done as f32 / total as f32 } else { 0.0 }).show_percentage());
+                    if ui.button(t("Cancel download", "Cancelar download", "Cancelar descarga")).clicked() {
+                        self.stop.cancel();
+                    }
+                }
+            } else if self.success {
+                ui.label(t("Done.", "Pronto.", "Listo."));
+            }
+            if let Some(error) = &self.error {
+                egui::Frame::new().fill(Color32::from_rgb(255, 238, 230)).inner_margin(14).corner_radius(8).show(ui, |ui| {
+                    ui.label(t("We couldn't complete this step.", "Não foi possível concluir esta etapa.", "No se pudo completar este paso."));
+                    ui.label(RichText::new(error).small());
+                });
+            }
+            ui.add_space(18.0);
+            ui.horizontal(|ui| {
+                if ui.add_enabled(!self.busy, egui::Button::new(t("Check for updates", "Verificar atualizações", "Buscar actualizaciones"))).clicked()
+                {
+                    self.start(Action::Refresh, ctx);
+                }
+                ui.label(
+                    RichText::new(t(
+                        "More apps will appear here as they become ready.",
+                        "Novos apps aparecerão aqui quando estiverem prontos.",
+                        "Aparecerán más apps cuando estén listos.",
+                    ))
+                    .small()
+                    .color(MUTED),
+                );
+            });
+            ui.with_layout(egui::Layout::bottom_up(egui::Align::LEFT), |ui| {
+                ui.label(
+                    RichText::new(t(
+                        "Early access · Keep backups of important documents.",
+                        "Acesso antecipado · Guarde cópias dos documentos importantes.",
+                        "Acceso anticipado · Guarda copias de los documentos importantes.",
+                    ))
+                    .size(11.0)
+                    .color(MUTED),
+                );
+            });
+        });
+        if self.confirm_remove {
+            egui::Window::new(t("Uninstall Plervo PDF?", "Desinstalar o Plervo PDF?", "¿Desinstalar Plervo PDF?"))
+                .collapsible(false)
+                .resizable(false)
+                .show(ctx, |ui| {
+                    ui.label(t(
+                        "Your documents and preferences will be kept.",
+                        "Seus documentos e preferências serão mantidos.",
+                        "Se conservarán tus documentos y preferencias.",
+                    ));
+                    ui.horizontal(|ui| {
+                        if ui.button(t("Cancel", "Cancelar", "Cancelar")).clicked() {
+                            self.confirm_remove = false;
+                        }
+                        if ui.button(t("Uninstall", "Desinstalar", "Desinstalar")).clicked() {
+                            self.confirm_remove = false;
+                            self.start(Action::Remove, ctx);
+                        }
+                    });
+                });
+        }
+    }
+}
+impl eframe::App for SuiteApp {
+    fn ui(&mut self, ui: &mut egui::Ui, _: &mut eframe::Frame) {
+        self.show(ui);
+    }
+    fn save(&mut self, storage: &mut dyn eframe::Storage) {
+        if let Ok(s) = serde_json::to_string(&self.language) {
+            storage.set_string("language", s);
+        }
+    }
+}
+
+/// Explicit commands only: no listener, background service, login item or agent registration.
+pub fn headless(args: &[String]) -> Result<(), String> {
+    let cmd = args.first().map(String::as_str).unwrap_or_default();
+    match cmd {
+        "--check" if args.len() == 1 => {
+            let r = manager::latest()?;
+            println!("{}", serde_json::to_string_pretty(&r).map_err(|e| e.to_string())?);
+            Ok(())
+        }
+        "--status" if args.len() == 1 => {
+            println!("{}", serde_json::to_string_pretty(&manager::detected()).map_err(|e| e.to_string())?);
+            Ok(())
+        }
+        "--install-pdf" | "--open-pdf" | "--uninstall-pdf" if args.len() == 1 => {
+            let paths = Paths::new()?;
+            let _lock = acquire(&paths)?;
+            let stop = Stop::default();
+            let mut progress = |p| eprintln!("{p:?}");
+            match cmd {
+                "--install-pdf" => manager::install_pdf(&manager::latest()?, &paths, &stop, &mut progress),
+                "--open-pdf" => manager::open_pdf(&paths),
+                _ => manager::uninstall_pdf(&paths, &stop, &mut progress),
+            }
+        }
+        _ => Err("Usage: plervo-suite [--version | --check | --status | --install-pdf | --open-pdf | --uninstall-pdf]".into()),
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use egui_kittest::{Harness, kittest::Queryable};
+    fn harness() -> Harness<'static, SuiteApp> {
+        let app = SuiteApp { system_language: Language::En, ..Default::default() };
+        Harness::builder().with_size(egui::vec2(1000.0, 700.0)).build_ui_state(|ui, app| app.show(ui), app)
+    }
+    #[test]
+    fn settings_offer_system_english_portuguese_and_spanish() {
+        let mut h = harness();
+        h.get_by_label("Settings").click();
+        h.run();
+        h.get_by_role(egui::accesskit::Role::ComboBox).click();
+        h.run();
+        h.get_by_label("Português").click();
+        h.run();
+        assert_eq!(h.state().language, Language::Pt);
+        h.get_by_label("Meus apps");
+        h.get_by_role(egui::accesskit::Role::ComboBox).click();
+        h.run();
+        h.get_by_label("Español").click();
+        h.run();
+        assert_eq!(h.state().language, Language::Es);
+        h.get_by_label("Mis apps");
+    }
+    #[test]
+    fn cancel_uninstall_does_not_start_a_worker_or_remove_anything() {
+        let mut h = harness();
+        h.state_mut().confirm_remove = true;
+        h.run();
+        h.get_by_label("Your documents and preferences will be kept.");
+        h.get_by_label("Cancel").click();
+        h.run();
+        assert!(!h.state().confirm_remove);
+        assert!(!h.state().busy);
+    }
+    #[test]
+    fn unknown_commands_do_not_start_the_gui_or_an_installer() {
+        assert!(headless(&["--install-pdf".into(), "https://evil.test".into()]).is_err());
+    }
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+<key>CFBundleDevelopmentRegion</key><string>en</string>
+<key>CFBundleLocalizations</key><array><string>en</string><string>pt</string><string>es</string></array>
+<key>CFBundleDisplayName</key><string>Plervo Suite</string>
+<key>CFBundleName</key><string>Plervo Suite</string>
+<key>CFBundleExecutable</key><string>Plervo Suite</string>
+<key>CFBundleIdentifier</key><string>com.plervo.suite</string>
+<key>CFBundleInfoDictionaryVersion</key><string>6.0</string>
+<key>CFBundlePackageType</key><string>APPL</string>
+<key>CFBundleShortVersionString</key><string>@SHORT_VERSION@</string>
+<key>CFBundleVersion</key><string>@SHORT_VERSION@</string>
+<key>PlervoSuiteVersion</key><string>@VERSION@</string>
+<key>PlervoSuiteBuildCommit</key><string>@BUILD_SHA@</string>
+<key>CFBundleIconFile</key><string>Plervo Suite</string>
+<key>LSApplicationCategoryType</key><string>public.app-category.productivity</string>
+<key>LSMinimumSystemVersion</key><string>11.0</string>
+<key>NSHighResolutionCapable</key><true/>
+<key>NSHumanReadableCopyright</key><string>Copyright © 2026 Plervo contributors. Includes ArtCraft Launcher components, MIT OR Apache-2.0.</string>
+</dict></plist>

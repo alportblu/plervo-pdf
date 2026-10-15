@@ -64,3 +64,9 @@ Based on PdfCraft v0.8.0, commit 9931329b9fae0b05373b4dc3ac7c58541f0891a4.
 Plervo branding and fork-specific modifications copyright 2026 Plervo contributors.
 Original notices and MIT OR Apache-2.0 licensing are preserved.
 ArtCraft trademark graphics are not included in this modified distribution.
+
+Plervo Suite installation components are derived from ArtCraft Launcher 0.4.1
+(storytold/craft-launcher, commit 0f295d4b9c90d15c2e38e36c322bdbc0fa943a54),
+Copyright (c) 2026 ArtCraft Team and the ArtCraft Launcher contributors,
+licensed MIT OR Apache-2.0.
+No upstream trademarks or logos are included in the Plervo Suite product.

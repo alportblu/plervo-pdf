@@ -75,6 +75,8 @@ pub fn wasm(_: &[String]) -> anyhow::Result<()> {
     let crates = layers::from_metadata(&metadata()?).map_err(|e| anyhow!(e))?;
     let set: Vec<String> = crates
         .into_iter()
+        // The Suite core is portable; its OS installer backend deliberately is not.
+        .filter(|c| c.name != "plervo-suite-native")
         .filter(|c| matches!(layers::classify(&c.name), Some(layers::Class::Layer(_) | layers::Class::Standalone(_))))
         .map(|c| c.name)
         .collect();
