@@ -19,6 +19,7 @@ overrides:
       - libc6 (>= ${PLERVO_MIN_GLIBC})
       - libgcc-s1
       - libxkbcommon0
+      - libxkbcommon-x11-0
       - libgl1
       - libegl1
       - libx11-6
@@ -34,6 +35,7 @@ overrides:
       - glibc >= ${PLERVO_MIN_GLIBC}
       - libgcc
       - libxkbcommon
+      - libxkbcommon-x11
       - libglvnd-glx
       - libglvnd-egl
       - libX11
