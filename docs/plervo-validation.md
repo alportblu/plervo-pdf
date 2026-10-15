@@ -2,6 +2,8 @@
 
 Atualizado em 14 de outubro de 2026. Estado: **alpha interna**. Um teste só conta como aprovado quando há resultado do commit e do pacote correspondentes; a documentação histórica do PdfCraft não comprova uma release da Plervo.
 
+Em `87ae2456`, Mac/Linux, WASM e dependências passaram; o Windows encontrou uma espera ausente no teste de recusa de links GoToR para diretórios/dispositivos. O teste consultava a notificação antes da resposta do worker. A correção usa a espera limitada existente e mantém as verificações da mensagem de recusa e de nenhuma aba nova; o produto não foi alterado. A nova execução Windows continua obrigatória. A revisão das fontes embutidas encontrou 55 caracteres ausentes no catálogo Telugu, 205 no chinês simplificado e um no tradicional; os outros 18 catálogos traduzidos têm seus caracteres mapeados, o que não certifica seleção de fonte, composição ou qualidade linguística. O fallback do sistema permanece separado. Texto em português/espanhol/francês/alemão com acentos sobreviveu à criação e à extração independente no pacote Mac final; OCR continua restrito ao inglês.
+
 ## Automação preparada
 
 - `ci.yml`: testes, análise estática e compilação nativa no Windows, macOS e Linux; auditoria de dependências/licenças, compilação WASM e fuzzing separado.

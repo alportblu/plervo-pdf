@@ -2,7 +2,9 @@
 
 | Milestone | Current Plervo evidence | Remaining release gates |
 |---|---|---|
-| M14 — distribution | Personal repositories published; c8b89cdc Mac candidate signed/notarized and exercised through its opt-in native UI; 3cb65eda CI passed on all three OSes; OCR archive and stale text metadata fixes verified locally | CI and regenerated packages for the latest changes, installer/update acceptance, language review, Windows signing and verification of the final release artifacts |
+| M14 — distribution | Personal repositories published; cb4c8fe4 Mac candidate signed/notarized and exercised through its opt-in native UI; b2934fe4 DEB installation/removal passed; OCR archive and stale text fixes verified in the final Mac package | Latest Windows CI/installer acceptance, cross-platform GUI and upgrade checks, language/font review, Windows signing and final release verification |
+
+2026-10-14: Windows CI found the non-file GoToR test reading its refusal notification before the background opener replied. It now uses the existing bounded state wait before checking the unchanged refusal message and absence of a new tab. The failure was observed on Windows before this test-only correction; no production behavior or protection changed. Independent checks of final Mac outputs passed PDF parsing, form values, OCR text, redaction, AES-256 permissions and synthetic signature integrity/tamper detection. Catalog font coverage still has gaps for Telugu and both Chinese variants without system fallback.
 
 2026-10-14: native cb4c8fe4 editing/re-entry/save/reopen passed. Package review found optional craft-fonts licences copied only into the Windows portable archive, after MSI generation. They now enter the shared stage used by both formats, and compiled-MSI inspection requires every optional family licence. No fonts or licences were added or changed; Windows execution is pending.
 
