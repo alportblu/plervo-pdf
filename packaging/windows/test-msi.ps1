@@ -131,7 +131,7 @@ Assert-Equal $scope[0] '1' 'Per-machine shortcut scope'
 # Image context menu opens the DPI chooser; the app component owns every registry row so
 # uninstall removes it. No image default association is changed.
 foreach ($ext in @('png', 'jpg', 'jpeg', 'tif', 'tiff', 'gif', 'bmp', 'jp2', 'j2k', 'jpx')) {
-  $key = 'Software\Classes\SystemFileAssociations\.' + $ext + '\shell\Plervo PDF.CreatePdf'
+  $key = 'Software\Classes\SystemFileAssociations\.' + $ext + '\shell\PlervoPDF.CreatePdf'
   $menu = Read-Row ('SELECT `Value`, `Component_`, `Root` FROM `Registry` WHERE `Key` = ''' + $key + ''' AND `Name` IS NULL') 3
   Assert-Equal $menu[0] 'Create PDF with Plervo PDF…' "$ext context menu label"
   Assert-Equal $menu[1] 'PdfcraftApp' "$ext context menu component"
@@ -147,7 +147,7 @@ foreach ($ext in @('png', 'jpg', 'jpeg', 'tif', 'tiff', 'gif', 'bmp', 'jp2', 'j2
 # uninstall removes it. Several selected PDFs each start plervo-pdf.exe "%1" (Document), which the
 # single-instance hand-off opens as tabs. The .pdf default is never set, so the user's default app
 # stays.
-$pdfKey = 'Software\Classes\SystemFileAssociations\.pdf\shell\Plervo PDF.Edit'
+$pdfKey = 'Software\Classes\SystemFileAssociations\.pdf\shell\PlervoPDF.Edit'
 $pdfMenu = Read-Row ('SELECT `Registry`, `Value`, `Component_`, `Root` FROM `Registry` WHERE `Key` = ''' + $pdfKey + ''' AND `Name` IS NULL') 4
 Assert-Equal $pdfMenu[1] 'Edit with Plervo PDF' 'PDF context menu label'
 Assert-Equal $pdfMenu[2] 'PdfcraftPdfContextMenu' 'PDF context menu component'

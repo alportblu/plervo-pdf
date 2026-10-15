@@ -195,6 +195,8 @@ CLI_DIR="$WORK/plervo-pdf-cli-$VERSION-macos-$ARCH"
 mkdir -p "$CLI_DIR"
 cp "$WORK/bin/plervo-pdf-cli" "$CLI_DIR/"
 copy_docs "$CLI_DIR"
+# The standalone CLI needs its own models; it cannot rely on the separately installed app.
+cp -R "$APP/Contents/Resources/models" "$CLI_DIR/models"
 sign --options runtime "$CLI_DIR/plervo-pdf-cli"
 codesign --verify --strict --verbose=2 "$CLI_DIR/plervo-pdf-cli"
 rm -f "$CLI_ZIP"

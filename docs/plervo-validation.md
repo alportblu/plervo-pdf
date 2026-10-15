@@ -10,19 +10,28 @@ Atualizado em 14 de outubro de 2026. Estado: **alpha interna**. Um teste só con
 - Os testes existentes da CLI cobrem edição e salvamento, rotação e metadados após reabrir, renderização, extração de texto, arquivos inválidos, opções incorretas, caminhos fora da pasta permitida e preservação dos arquivos existentes. A suíte completa de CI também cobre a interface e a troca entre os 22 idiomas.
 - Linux x64 usa Ubuntu 24.04 como base e exige glibc 2.39 ou superior. O empacotador confere os requisitos ELF de ambos os executáveis antes de criar os pacotes; DEB e RPM recebem a mesma versão mínima. Ubuntu 22.04/Debian 12 não são destinos destes candidatos.
 - O empacotador de macOS monta e verifica o DMG; o de Windows inspeciona as tabelas e condições do MSI. Essas verificações **não substituem instalação e uso em um sistema limpo**.
+- A pipeline de candidatos instala, repara e remove o MSI e instala/remove o DEB em runners descartáveis, verificando a CLI instalada, descoberta dos modelos OCR e preservação de documentos sintéticos. A CLI avulsa é conferida sem depender da instalação principal. Esses novos passos ainda precisam passar no CI e não substituem a interface nativa nem uma atualização entre duas versões.
+
+## Aceite prático em 14/10/2026
+
+- CI de `3cb65eda`: macOS 3.051 testes aprovados; Windows 3.052; Linux 3.064. Os números incluem casos comuns aos três sistemas; não representam funcionalidades distintas. As novas correções abaixo exigem outro CI.
+- Candidato Mac assinado `c8b89cdc`: 17 grupos de operações pelo motor e cinco grupos adicionais passaram. Incluem organização, texto, imagens, formulários, comentários, exportação, criptografia, remoção de conteúdo sensível, assinatura sintética, layouts de impressão em PDF, scripts com limite e sanitização. Os 163 comandos recusaram argumentos desconhecidos; isso é cobertura de validação de entrada, não de todos os comportamentos.
+- Interface real no Mac: edição/salvamento/reabertura, campos, comentários, busca, páginas, desfazer/refazer, senha incorreta/correta, PDF inválido, OCR, temas, preferências após reinício e troca dos 22 idiomas. O controle foi habilitado apenas para o teste, autenticado e restrito ao app; os documentos eram sintéticos.
+- Corrigidos dois problemas encontrados: modelos OCR ausentes nas CLIs avulsas de Mac/Linux e texto antigo reaparecendo no editor após reescrita do conteúdo. O OCR passou no arquivo Mac reempacotado; a regressão de texto falhou antes e passou depois da correção. A bateria local da alteração teve 704 testes aprovados e sete já ignorados.
+- Limites observados: caracteres chineses ausentes sem fallback do sistema; OCR em inglês/latim sem acentos; revisão linguística e escrita da direita para a esquerda incompletas. Não houve impressão em equipamento físico, inspeção visual no Office, confiança pública de certificado PDF de teste nem GUI nativa no Windows/Linux.
 
 ## Matriz de aceite
 
 | Etapa | Evidência exigida | Estado da Plervo |
 |---|---|---|
-| Código e segurança | CI do commit aprovado; auditoria de dependências e licenças; regressões de limites, autenticação e acesso a arquivos | Verificações locais anteriores registradas; CI remoto pendente |
+| Código e segurança | CI do commit aprovado; auditoria de dependências e licenças; regressões de limites, autenticação e acesso a arquivos | CI 3cb65eda aprovado nos três sistemas; correções posteriores aguardam CI |
 | PDF de ponta a ponta | Criar, abrir, editar, desfazer/refazer, salvar, reabrir, renderizar e extrair texto; original preservado; erros claros para arquivos inválidos | Fluxo sintético local no Mac aprovado na alpha anterior; repetir nos candidatos novos |
 | Windows x64 | Instalar MSI em máquina/VM limpa, abrir PDF, salvar cópia, verificar atalhos, reparar e desinstalar; preservar documentos e aplicativo padrão de PDF | Pendente |
-| macOS Apple Silicon | Instalar pelo DMG em ambiente limpo; abrir, editar e salvar; testar Gatekeeper e assinatura do pacote final; remover app preservando documentos | Candidato interno c8b89cdc assinado e notarizado, Gatekeeper e distribuição aprovados; instalação limpa e GUI pendentes |
+| macOS Apple Silicon | Instalar pelo DMG em ambiente limpo; abrir, editar e salvar; testar Gatekeeper e assinatura do pacote final; remover app preservando documentos | Candidato interno c8b89cdc assinado/notarizado e GUI exercitada; instalação limpa e repetição no pacote final pendentes |
 | macOS Intel | Compilar e executar em Intel; repetir instalação e fluxo de PDF | Pendente; não anunciar suporte validado |
 | Linux x64 | Instalar/remover DEB no Ubuntu 24.04 e RPM em ambiente com glibc 2.39+; executar app, integração de menu, abrir e salvar PDF; validar pacote portátil | Pacotes c8b89cdc inspecionados; mínimo glibc incorreto corrigido no empacotador, novos pacotes e instalação nativa pendentes |
 | Atualização | Instalar candidato anterior, alterar preferências/idioma, atualizar para versão de teste superior e verificar preservação | Pendente; requer dois pacotes distintos |
-| Idiomas | Seleção automática e manual persistente; 22 catálogos; conferir caracteres, textos cortados, diálogos e direção de escrita em cada sistema | Testes de troca e apoio passaram localmente; revisão visual/linguística completa pendente |
+| Idiomas | Seleção automática e manual persistente; 22 catálogos; conferir caracteres, textos cortados, diálogos e direção de escrita em cada sistema | Troca dos 22 catálogos e persistência de pt-BR verificadas no Mac; chinês com glifos ausentes; revisão visual/linguística completa pendente |
 | Distribuição | Pacotes assinados quando aplicável; notarização do Mac; varredura do pacote exato, SHA-256, notas de versão com limitações | Pendente para os novos candidatos |
 
 Usar documentos sintéticos e contas de teste. Registrar sistema, arquitetura, commit, hash do instalador, passos e resultado. Testes de atalhos, impressão, permissões e interface precisam de execução nativa; compilação cruzada ou CLI não bastam. Uma varredura sem detecções não comprova ausência de vulnerabilidades.

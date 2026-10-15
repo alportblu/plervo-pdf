@@ -2,7 +2,11 @@
 
 | Milestone | Current Plervo evidence | Remaining release gates |
 |---|---|---|
-| M14 — distribution | Personal repositories published; internal Mac c8b89cdc app/DMG/CLI signed and notarized; UI waits require completion; Linux packaging verifies ELF glibc requirements against its shared DEB/RPM baseline | CI and regenerated packages for the latest commit, installation/update/removal, language review, Windows signing and verification of the final release artifacts |
+| M14 — distribution | Personal repositories published; c8b89cdc Mac candidate signed/notarized and exercised through its opt-in native UI; 3cb65eda CI passed on all three OSes; OCR archive and stale text metadata fixes verified locally | CI and regenerated packages for the latest changes, installer/update acceptance, language review, Windows signing and verification of the final release artifacts |
+
+2026-10-14: practical acceptance exercised 17 engine feature groups, five additional image/printing/script/sanitization/batch groups, OCR on a scanned fixture, and the signed Mac UI. A generic text rewrite could leave stale added-item editor metadata; the new regression failed before the fix, then 704 scoped edit/engine/automation/UI tests passed (seven existing ignored). Mac and Linux standalone CLI archives omitted their OCR models; both packagers now include them, and the rebuilt Mac archive completed OCR/save/reopen. Candidate CI now installs/repairs/removes the Windows MSI and installs/removes the Linux DEB on disposable runners, preserving synthetic documents; execution is pending. All 22 interface catalogs rendered, but Chinese has missing glyphs without system fallback and OCR supports English/unaccented Latin only. No complete linguistic or cross-platform GUI acceptance claim.
+
+2026-10-14: Windows candidate c8b89cdc reached MSI inspection, which correctly blocked publication because the inspection queried obsolete rebranded registry names with spaces. The two expectations now match the declared `PlervoPDF.CreatePdf` / `PlervoPDF.Edit` keys; compiled-MSI verification still runs and must pass remotely.
 
 2026-10-14: static inspection found that c8b89cdc Linux binaries require glibc 2.39 but the DEB declared 2.35. Packaging now checks both binaries before staging and declares the Ubuntu 24.04 baseline consistently in DEB/RPM. The real candidate failed the old 2.35 guard. Regenerated packages and native acceptance remain required; do not distribute the old candidates.
 

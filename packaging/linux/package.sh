@@ -109,6 +109,7 @@ if has cli; then
   mkdir -p "$CLI_DIR"
   cp "$STAGE/usr/bin/plervo-pdf-cli" "$CLI_DIR/"
   copy_docs "$CLI_DIR"
+  cp -R "$STAGE/usr/share/plervo-pdf/models" "$CLI_DIR/models"
   tar -C "$WORK/cli" -czf "$DIST/$CLI_NAME.tar.gz" "$CLI_NAME"
   echo "wrote $DIST/$CLI_NAME.tar.gz"
 fi

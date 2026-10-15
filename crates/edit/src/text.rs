@@ -395,7 +395,7 @@ pub(crate) fn splice(pieces: &Pieces, ops: &[Op], mut edit: impl FnMut(usize) ->
 }
 
 /// The page's `/Contents` after a [`splice`]: pieces whose bytes changed become new streams
-/// (keeping their dictionaries), the others stay as they were.
+/// (keeping unknown dictionary entries), the others stay as they were.
 pub(crate) fn rewritten_contents(doc: &mut Document, streams: &[(Object, Vec<u8>)], new: Vec<Vec<u8>>) -> Object {
     let mut contents: Vec<Object> = Vec::with_capacity(streams.len());
     for ((obj, old), data) in streams.iter().zip(new) {
@@ -408,6 +408,8 @@ pub(crate) fn rewritten_contents(doc: &mut Document, streams: &[(Object, Vec<u8>
             _ => Dict::new(),
         };
         dict.remove(b"Length");
+        // Generic rewrites invalidate the added-item editor's stored text/geometry.
+        dict.remove(b"PCAdded");
         contents.push(Object::Ref(doc.add(Object::Stream(Stream::flate(dict, &data)))));
     }
     match <[Object; 1]>::try_from(contents) {
