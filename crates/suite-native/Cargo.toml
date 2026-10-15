@@ -15,7 +15,7 @@ plervo-suite-core = { workspace = true }
 serde = { workspace = true }
 serde_json = { workspace = true }
 log = { workspace = true }
-dirs = "6"
+dirs = { package = "dirs-next", version = "2" }
 tempfile = "3"
 sha2 = "0.10"
 # HTTPS over rustls, with the OS verifying certificates (rustls-platform-verifier). No bundled
