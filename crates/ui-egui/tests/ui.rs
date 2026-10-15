@@ -469,13 +469,9 @@ trailer << /Root 1 0 R >>
 %%EOF";
 
 fn settle(h: &mut Harness<'static, PdfCraftApp>) {
-    for _ in 0..200 {
-        h.run_steps(2);
-        if !h.state().render_pending() {
-            break;
-        }
-        std::thread::sleep(std::time::Duration::from_millis(5));
-    }
+    support::wait_until(h, "page renders and text layers", |app| !app.render_pending());
+    // Paint the completed results into the accessibility tree before querying it.
+    h.run_steps(2);
 }
 
 #[test]

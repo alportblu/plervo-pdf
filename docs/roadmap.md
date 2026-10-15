@@ -2,7 +2,9 @@
 
 | Milestone | Current Plervo evidence | Remaining release gates |
 |---|---|---|
-| M14 — distribution | Personal GitHub repository published; macOS/Linux CI and internal packages passed; Windows candidate tests use the installer's static-CRT configuration; Developer ID issued and internal Mac signature verified | CI for the latest commit, installation/update/removal, language review, Windows signing and Mac notarization |
+| M14 — distribution | Personal repositories published; internal Mac c8b89cdc app/DMG/CLI signed and notarized; Mac/Linux candidate builds passed; UI tests now require rendering to finish instead of silently exhausting a frame budget | CI for the latest commit, installation/update/removal, language review, Windows signing and verification of the final release artifacts |
+
+2026-10-14: the owner configured the notarization profile and submitted the SignPath application (approval pending). Apple accepted the c8b89cdc app, DMG and CLI ZIP; tickets, Gatekeeper, app distribution checks and the CLI notarization requirement passed. Linux CI exposed three UI assertions made while text extraction was still pending. The shared state-based wait now enforces completion with a deadline and then paints the accessibility tree. Native CI must confirm the change; installation in a clean system remains untested.
 
 2026-10-14: in validation. Four control-channel resource-limit regressions reproduced and corrected; own identity and the owner-confirmed Buy Me a Coffee destination configured. Preserve all 22 interface languages; support buttons and language-switch/document-integrity tests cover the full registry. Linguistic, glyph and native-layout review, Windows/Linux installers and public signing remain pending. Historical upstream milestones below are not Plervo release claims.
 
