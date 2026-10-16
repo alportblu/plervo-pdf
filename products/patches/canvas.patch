@@ -1,0 +1,3525 @@
+diff --git a/ATTRIBUTION.md b/ATTRIBUTION.md
+index 1f72aeb..b6db333 100644
+--- a/ATTRIBUTION.md
++++ b/ATTRIBUTION.md
+@@ -1,7 +1,6 @@
+ # Attribution
+ 
+ Every asset bundled in this repository (images, icons, fonts, data files) is listed here with its
+-author, source and licence. `cargo xtask assets` fails if a file under `assets/`, `docs/brand/` or
+ `docs/images/` is missing from this list.
+ 
+ FigCraft's user-interface icons are drawn in code (`crates/ui-egui/src/icons.rs`): original work,
+@@ -11,8 +10,6 @@ MIT OR Apache-2.0. No third-party icon sets are used.
+ 
+ | Path | Author | Source | Licence | Notes |
+ |---|---|---|---|---|
+-| `assets/app-icon/` (all files: `figcraft.svg`, `figcraft-small.svg`, `figcraft-*.png`, `figcraft.ico`, `hicolor/`) | The project owner (engraving-style drawing, vectorised) | Original work, see [`assets/app-icon/README.md`](assets/app-icon/README.md); derived files rendered by `cargo xtask icon` | MIT OR Apache-2.0, [`assets/app-icon/LICENSE.txt`](assets/app-icon/LICENSE.txt) | FigCraft app icon (chameleon) |
+-| `docs/brand/artcraft-logo.svg`, `docs/brand/artcraft-logo.png`, `docs/brand/artcraft-logo-white.svg`, `docs/brand/artcraft-logo-white.png`, `docs/brand/artcraft-mark.svg`, `docs/brand/artcraft-mark.png`, `docs/brand/artcraft-mark-black.svg`, `docs/brand/artcraft-mark-black.png` | ArtCraft Team | storytold/craftrules `assets/brand/` | ArtCraft brand terms (`docs/brand/LICENSE-brand.txt`), not open source | Trademarks; unmodified use within FigCraft only |
+ | `docs/images/` (all screenshots and exports: `shot-*.png`, `art-*.png`) | FigCraft contributors | Screenshots of FigCraft showing synthetic demo documents made in FigCraft, and PNG exports of those documents by FigCraft's renderer | MIT OR Apache-2.0 | No third-party artwork |
+ | `examples/*.figcraft` | FigCraft contributors | Synthetic demo documents built through FigCraft's command API; invented copy, shapes and vectors drawn from scratch, no images or embedded fonts | MIT OR Apache-2.0 | Text uses Inter (OFL, from craft-fonts or the system); no third-party artwork |
+ 
+@@ -30,3 +27,30 @@ Release builds embed fonts from the optional craft-fonts build input
+ | BIZ UDPGothic, BIZ UDMincho, Shippori Mincho, Noto Sans Arabic | SIL Open Font License 1.1 | Google Fonts (see craft-fonts) |
+ 
+ egui's default fonts (compiled into the `egui`/`epaint` crates) keep their own licences (OFL / Apache-2.0 / Ubuntu Font Licence); see those crates.
++
++## Plervo application identity
++
++| Asset | Author | Source | License | Notes |
++|---|---|---|---|---|
++| `assets/app-icon/figcraft-1024.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 334cc8ab4fa8e3a233d5ddcab2678e6bcbaf3d98c6a536676aa4d6ade9a5a19f |
++| `assets/app-icon/figcraft-128.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 8bc3037a8c941a765541c678491e17e1909a7d96334e1599339cd598a1e21aad |
++| `assets/app-icon/figcraft-16.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 049a5c6ad0202952798899d9ba7e9caa70c94b175ac36c57e9e56b43cad2ab13 |
++| `assets/app-icon/figcraft-256.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 ca711f040f9cd9ab3335cd20d60cacbb1ea43f1cb025a441d8f3ed563925d0c0 |
++| `assets/app-icon/figcraft-32.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 6464342f3d15822124946e98124ec67723d8882614f06ce24dd0f19f8851afde |
++| `assets/app-icon/figcraft-48.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 f21b5073ce51a00d567eed9a3298643675728ef506dc92414b967d069341a742 |
++| `assets/app-icon/figcraft-512.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 37d7f73d6d6768450b746735bb1028322775656fa78dee8860e094b2eb504c6e |
++| `assets/app-icon/figcraft-64.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 2a4cec3daf1ed77bb0daf08320b94081f98a42fc9fb3c85bb84e66845e5b1d6a |
++| `assets/app-icon/figcraft-small.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 78393df071e3407ba674d1784382ebc36518af2afea7a96825f1436054402813 |
++| `assets/app-icon/figcraft.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 ddcaf594640a90e1b498e806bf2d5e0592708c861043abc0dc73340bde3fc127 |
++| `assets/app-icon/figcraft.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 78393df071e3407ba674d1784382ebc36518af2afea7a96825f1436054402813 |
++| `assets/app-icon/hicolor/128x128/apps/com.plervo.canvas.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 8bc3037a8c941a765541c678491e17e1909a7d96334e1599339cd598a1e21aad |
++| `assets/app-icon/hicolor/16x16/apps/com.plervo.canvas.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 049a5c6ad0202952798899d9ba7e9caa70c94b175ac36c57e9e56b43cad2ab13 |
++| `assets/app-icon/hicolor/256x256/apps/com.plervo.canvas.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 ca711f040f9cd9ab3335cd20d60cacbb1ea43f1cb025a441d8f3ed563925d0c0 |
++| `assets/app-icon/hicolor/32x32/apps/com.plervo.canvas.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 6464342f3d15822124946e98124ec67723d8882614f06ce24dd0f19f8851afde |
++| `assets/app-icon/hicolor/48x48/apps/com.plervo.canvas.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 f21b5073ce51a00d567eed9a3298643675728ef506dc92414b967d069341a742 |
++| `assets/app-icon/hicolor/512x512/apps/com.plervo.canvas.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 37d7f73d6d6768450b746735bb1028322775656fa78dee8860e094b2eb504c6e |
++| `assets/app-icon/hicolor/64x64/apps/com.plervo.canvas.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 2a4cec3daf1ed77bb0daf08320b94081f98a42fc9fb3c85bb84e66845e5b1d6a |
++| `assets/app-icon/hicolor/scalable/apps/com.plervo.canvas.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 78393df071e3407ba674d1784382ebc36518af2afea7a96825f1436054402813 |
++| `assets/app-icon/plervo-canvas.icns` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 0468daa85038a884e8fe7ae2f624e6c0c471b6eb2173e274867381156bd1ce2e |
++| `assets/app-icon/plervo-canvas.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 ddcaf594640a90e1b498e806bf2d5e0592708c861043abc0dc73340bde3fc127 |
++| `assets/app-icon/plervo-canvas.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 78393df071e3407ba674d1784382ebc36518af2afea7a96825f1436054402813 |
+diff --git a/Cargo.lock b/Cargo.lock
+index 5e9c6f6..aa6e088 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -1406,8 +1406,8 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "b97b65636e5b9ef369943878ac74335ba1c55c1cb6adbf1e2c293c624248d693"
+ 
+ [[package]]
+-name = "figcraft"
+-version = "0.6.0"
++name = "plervo-canvas"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "arboard",
+  "eframe",
+@@ -1429,8 +1429,8 @@ dependencies = [
+ ]
+ 
+ [[package]]
+-name = "figcraft-cli"
+-version = "0.6.0"
++name = "plervo-canvas-cli"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "figcraft-doc",
+  "figcraft-engine",
+@@ -1444,7 +1444,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "figcraft-collab"
+-version = "0.6.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "base64 0.22.1",
+  "figcraft-color",
+@@ -1459,7 +1459,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "figcraft-collab-net"
+-version = "0.6.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "base64 0.22.1",
+  "figcraft-collab",
+@@ -1482,7 +1482,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "figcraft-color"
+-version = "0.6.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "kurbo",
+  "serde",
+@@ -1491,7 +1491,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "figcraft-doc"
+-version = "0.6.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "figcraft-color",
+  "figcraft-geom",
+@@ -1503,7 +1503,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "figcraft-engine"
+-version = "0.6.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "base64 0.22.1",
+  "figcraft-collab",
+@@ -1530,7 +1530,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "figcraft-format"
+-version = "0.6.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "figcraft-doc",
+  "figcraft-pathops",
+@@ -1545,7 +1545,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "figcraft-geom"
+-version = "0.6.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "kurbo",
+  "serde",
+@@ -1553,7 +1553,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "figcraft-layout"
+-version = "0.6.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "figcraft-doc",
+  "figcraft-geom",
+@@ -1561,7 +1561,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "figcraft-mcp"
+-version = "0.6.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "base64 0.22.1",
+  "figcraft-collab-net",
+@@ -1577,7 +1577,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "figcraft-pathops"
+-version = "0.6.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "figcraft-doc",
+  "figcraft-geom",
+@@ -1586,7 +1586,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "figcraft-pdf"
+-version = "0.6.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "figcraft-color",
+  "figcraft-doc",
+@@ -1603,7 +1603,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "figcraft-plugin"
+-version = "0.6.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "figcraft-color",
+  "serde",
+@@ -1616,7 +1616,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "figcraft-render"
+-version = "0.6.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "crc32fast",
+  "figcraft-color",
+@@ -1634,7 +1634,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "figcraft-server"
+-version = "0.6.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "crc32fast",
+  "ctrlc",
+@@ -1658,7 +1658,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "figcraft-svg"
+-version = "0.6.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "base64 0.22.1",
+  "figcraft-color",
+@@ -1674,7 +1674,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "figcraft-text"
+-version = "0.6.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "figcraft-doc",
+  "figcraft-geom",
+@@ -1687,7 +1687,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "figcraft-ui-egui"
+-version = "0.6.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "base64 0.22.1",
+  "egui",
+@@ -1711,7 +1711,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "figcraft-web"
+-version = "0.6.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "eframe",
+  "egui",
+@@ -5807,7 +5807,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
+ 
+ [[package]]
+ name = "xtask"
+-version = "0.6.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "figcraft-engine",
+  "serde_json",
+diff --git a/Cargo.toml b/Cargo.toml
+index 8f125ac..f7c5688 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -6,7 +6,7 @@ exclude = ["plugins"]
+ # default-members = ["crates/*", "apps/figcraft", "apps/figcraft-cli", "xtask"]
+ 
+ [workspace.package]
+-version = "0.6.0"
++version = "0.1.0-alpha.4"
+ edition = "2024"
+ license = "MIT OR Apache-2.0"
+ rust-version = "1.95"
+diff --git a/NOTICE b/NOTICE
+index 9aaba82..dfd6cd7 100644
+--- a/NOTICE
++++ b/NOTICE
+@@ -20,3 +20,7 @@ licence texts.
+ Rust crate dependencies keep their own licenses (MIT, Apache-2.0, BSD, ISC, Zlib, OFL for egui's
+ default fonts, CDLA-Permissive-2.0 for the root certificate list webpki-roots compiles in, and
+ similar permissive licenses); see each crate's metadata.
++
++Plervo adaptation by AlporT (2026). Product identity and packaging are original Plervo work.
++Based on storytold/figcraft at 833f0d2c27f0acbae5394848930ae531fc89c724.
++Original authorship and MIT/Apache-2.0 licenses are preserved. No ArtCraft endorsement.
+diff --git a/README.md b/README.md
+index 9b67078..b2d30a1 100644
+--- a/README.md
++++ b/README.md
+@@ -1,360 +1,10 @@
+-<p align="center">
+-  <a href="https://getartcraft.com/">
+-    <picture>
+-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/storytold/vectorcraft/main/docs/brand/artcraft-logo-white.png">
+-      <img alt="ArtCraft" src="https://raw.githubusercontent.com/storytold/vectorcraft/main/docs/brand/artcraft-logo.png" width="200">
+-    </picture>
+-  </a>
+-</p>
++# Plervo Canvas
+ 
+-<h1 align="center">FigCraft</h1>
++An experimental member of Plervo Suite by AlporT.
+ 
+-<p align="center">
+-  <b>Interface design; an open-source, clean-room reimplementation of Figma, rebuilt in pure Rust.</b><br>
+-  Frames, auto layout, components and variants, vector networks, styles, variables and prototypes,<br>
+-  in a native app that opens instantly and works offline. Open source, and yours.
+-</p>
++Adapted from [storytold/figcraft](https://github.com/storytold/figcraft) at `833f0d2c27f0acbae5394848930ae531fc89c724` (v0.6.0).
++Original authors, copyright notices and MIT/Apache-2.0 licenses are retained. Plervo is an independent distribution.
+ 
+-<p align="center">
+-  <img alt="100% Rust" src="https://img.shields.io/badge/100%25-Rust-b7410e?style=flat-square&logo=rust">
+-  <img alt="macOS · Windows · Linux · FreeBSD · Web" src="https://img.shields.io/badge/macOS%20%C2%B7%20Windows%20%C2%B7%20Linux%20%C2%B7%20FreeBSD%20%C2%B7%20Web-native-0EA5C6?style=flat-square">
+-  <img alt="License: MIT OR Apache-2.0" src="https://img.shields.io/badge/license-MIT%20%2F%20Apache--2.0-3a3a3a?style=flat-square">
+-  <img alt="Status: early alpha" src="https://img.shields.io/badge/status-early%20alpha-d69e2e?style=flat-square">
+-</p>
++This source is under validation; building it does not certify it for public distribution.
+ 
+-<p align="center">
+-  <a href="https://discord.gg/artcraft"><img alt="Join the ArtCraft community on Discord" src="https://img.shields.io/badge/Join%20us%20on%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" height="40"></a>
+-</p>
+-
+-<p align="center">
+-  <a href="https://getartcraft.com/apps/figcraft"><b>FigCraft on getartcraft.com</b></a> ·
+-  <a href="https://getartcraft.com/">ArtCraft</a> ·
+-  <a href="https://getartcraft.com/apps">All Crafting Apps</a>
+-</p>
+-
+-<br>
+-
+-<p align="center">
+-  <img src="docs/images/shot-1-hero.png" alt="FigCraft in its dark theme editing the Ridgeline hiking app: three phone screens (Home in light mode, a trail detail page and Home in dark mode) on the canvas, the Featured trail card instance selected, the layers panel showing the screen's auto layout tree, and the Design panel showing the instance's Fill and Hug auto layout sizing, its Theme variable mode and a fill bound to the surface colour variable" width="100%">
+-  <br><sub><b>Ridgeline</b>: auto layout screens built from components, with Light and Dark modes from one set of colour variables · <code>examples/ridgeline-app.figcraft</code></sub>
+-</p>
+-
+-<br>
+-
+-> [!NOTE]
+-> **ArtCraft is a community of artists from all walks of life.** Designers, illustrators, developers,
+-> musicians, game makers &mdash; if you make things, you're one of us. **[Come say hi on Discord](https://discord.gg/artcraft).**
+-
+-<p align="center">
+-  <a href="#a-look-around">A look around</a> ·
+-  <a href="#made-in-figcraft">Made in FigCraft</a> ·
+-  <a href="#features">Features</a> ·
+-  <a href="#built-for-agents">Agents</a> ·
+-  <a href="#under-the-hood">Under the hood</a> ·
+-  <a href="#get-started">Get started</a> ·
+-  <a href="#the-crafting-apps">Crafting Apps</a> ·
+-  <a href="https://discord.gg/artcraft">Discord</a>
+-</p>
+-
+-<br>
+-
+-<table>
+-  <tr>
+-    <td width="25%" valign="top">
+-      <h3>🎛️ Familiar by design</h3>
+-      The toolbar, layers panel, Design panel, menus and shortcuts sit where your hands expect them. If you know Figma, you already know FigCraft.
+-    </td>
+-    <td width="25%" valign="top">
+-      <h3>⚡ Native and fast</h3>
+-      A Rust engine with a persistent document model: edits touch only what changed, so creating a node in a 20,000-node file takes a fraction of a millisecond. No Electron, no web view.
+-    </td>
+-    <td width="25%" valign="top">
+-      <h3>🔌 Offline and private</h3>
+-      Your files are plain <code>.figcraft</code> archives on your own disk. No account, no telemetry, and nothing leaves your computer unless you share a file (<a href="#privacy-and-online-sharing">what sharing sends where</a>). SVG, PNG, JPG, WebP and PDF in and out; <code>.fig</code> files open (best effort), and so do designs exported as the public REST API file JSON, with their prototypes and variables.
+-    </td>
+-    <td width="25%" valign="top">
+-      <h3>🤖 Agent-ready</h3>
+-      Every menu item, tool and drag is a command, so the same engine runs from the UI, the CLI, a JSON control channel or an MCP server.
+-    </td>
+-  </tr>
+-</table>
+-
+-<br>
+-
+-## A look around
+-
+-<table>
+-<tr>
+-<td width="50%" valign="top">
+-  <img src="docs/images/shot-2-components.png" alt="The Ridgeline UI design system open with the Assets panel on the left showing live thumbnails of the Button, Difficulty, Search field, Toggle and icon components; a Button component set of nine variants laid out in a three-by-three grid auto layout is selected, and the Design panel lists its Style (Primary, Tonal, Outline) and State (Default, Hover, Disabled) variant properties" width="100%">
+-  <p align="center"><sub><b>Components and variants</b>: component sets, variant properties and the Assets panel · <code>examples/ridgeline-design-system.figcraft</code></sub></p>
+-</td>
+-<td width="50%" valign="top">
+-  <img src="docs/images/shot-3-prototype.png" alt="Four onboarding phone screens in the Prototype tab, joined by blue connection curves from the Get started, Continue, Allow location and Not now buttons to the next screens; the Get started button is selected and the Prototype panel shows its On click, Navigate to 2 Interests interaction" width="100%">
+-  <p align="center"><sub><b>Prototyping</b>: connections, transitions, back actions and a flow · <code>examples/ridgeline-onboarding.figcraft</code></sub></p>
+-</td>
+-</tr>
+-<tr>
+-<td width="50%" valign="top">
+-  <img src="docs/images/shot-4-devmode.png" alt="Dev Mode on the Ridgeline home screen: the frame carries a Ready for dev badge, a Development annotation callout points at the featured trail card, a trail row instance is selected and the Inspect panel shows generated React code with a TrailRow props interface and the instance's title and details values" width="100%">
+-  <p align="center"><sub><b>Dev Mode</b>: ready-for-dev status, annotations and React code where component properties become props · <code>examples/ridgeline-app.figcraft</code></sub></p>
+-</td>
+-<td width="50%" valign="top">
+-  <img src="docs/images/shot-5-vector.png" alt="Vector edit mode on a wave path with a gradient, tapered variable-width stroke: its anchor points, Bezier handles and the transform box of the selected points are visible, with the vector edit toolbar at the bottom; above it are a boolean-built mountain mark and an angular-gradient knot of excluded rings" width="100%">
+-  <p align="center"><sub><b>Vector networks</b>: points and handles, variable-width strokes, booleans that stay editable · <code>examples/glass-and-vectors.figcraft</code></sub></p>
+-</td>
+-</tr>
+-<tr>
+-<td width="50%" valign="top">
+-  <img src="docs/images/shot-6-dashboard-light.png" alt="The light UI theme with a web analytics dashboard for a fictional trail operator: a dark sidebar, KPI cards with sparklines, a grouped bar chart, a donut chart, a table of top trails and an area chart, with the frame's 12-column layout grid showing as tinted columns and its fill linked to a paint style" width="100%">
+-  <p align="center"><sub><b>Layout grids and styles, light theme</b>: a 12-column grid, paint, text, effect and grid styles, charts drawn from shapes · <code>examples/ridgeline-studio-dashboard.figcraft</code></sub></p>
+-</td>
+-<td width="50%" valign="top">
+-  <img src="docs/images/shot-7-collab.png" alt="A live session seen from one participant's window: avatars of three people in the top right, a Priya Nair is spotlighting banner with a Follow button, Priya's green cursor and selection outline on the dark home screen's trail card, and Jonas Ortiz's purple cursor and selection on the Start hike button with his cursor chat bubble asking whether the button should stay pinned while scrolling" width="100%">
+-  <p align="center"><sub><b>Live sessions</b>: three apps on one <code>figcraft-server</code> file, with cursors, selections, cursor chat and spotlight</sub></p>
+-</td>
+-</tr>
+-</table>
+-
+-## Made in FigCraft
+-
+-Every design below was built entirely through FigCraft's command API, the same one the MCP server
+-exposes to agents, and exported at 2x by FigCraft's own renderer. The source files are in
+-[`examples/`](examples).
+-
+-<table>
+-<tr>
+-<td width="33%" valign="top">
+-  <img src="docs/images/art-app-home.png" alt="Ridgeline home screen in light mode: a greeting, a search field, filter chips, a featured trail card with an illustrated mountain landscape, a list of nearby trails and a translucent tab bar" width="100%">
+-  <p align="center"><sub><b>Home, light</b></sub></p>
+-</td>
+-<td width="33%" valign="top">
+-  <img src="docs/images/art-app-trail.png" alt="Ridgeline trail detail screen: a dusk mountain illustration with glass buttons, a sheet with difficulty tags, the trail name, distance, elevation and duration stats, an elevation profile chart and a Start hike button" width="100%">
+-  <p align="center"><sub><b>Trail detail</b></sub></p>
+-</td>
+-<td width="33%" valign="top">
+-  <img src="docs/images/art-app-home-dark.png" alt="The same Ridgeline home screen in dark mode, its colours switched by the Theme variable collection's Dark mode" width="100%">
+-  <p align="center"><sub><b>Home, dark</b>: the same frame in the Dark mode</sub></p>
+-</td>
+-</tr>
+-<tr>
+-<td colspan="3" valign="top">
+-  <img src="docs/images/art-dashboard.png" alt="Ridgeline Studio dashboard: a dark navy sidebar with navigation, KPI cards for active hikers, check-ins, average rating and open incidents with sparklines, a hikes-per-day grouped bar chart with a tooltip, a difficulty donut chart, a top trails table with condition badges and a visitors area chart" width="100%">
+-  <p align="center"><sub><b>Ridgeline Studio</b>: a desktop dashboard on a 12-column grid, every chart made of shapes and vectors</sub></p>
+-</td>
+-</tr>
+-<tr>
+-<td colspan="2" valign="top">
+-  <img src="docs/images/art-glass-weather.png" alt="A glass weather widget over blurred teal, violet, rose and orange colour fields: a frosted card for Lake Louise showing 14 degrees and partly cloudy with a gradient sun behind a boolean-union cloud, an hourly forecast row, and smaller glass cards for air quality, wind and humidity" width="100%">
+-  <p align="center"><sub><b>Glass weather</b>: glass and background blur, layer-blurred colour fields, a boolean cloud</sub></p>
+-</td>
+-<td width="33%" valign="top">
+-  <img src="docs/images/art-vector-marks.png" alt="Three tiles on a cream background: a gradient mountain mark made by unioning two peaks and subtracting a sun, a knot of three excluded rings with an angular gradient, and a tapered gradient wave with a leaf and a glowing four-point star" width="100%">
+-  <p align="center"><sub><b>Vector marks</b>: union, subtract and exclude, an angular gradient, a variable-width stroke</sub></p>
+-</td>
+-</tr>
+-<tr>
+-<td colspan="3" valign="top">
+-  <img src="docs/images/art-ds-colour.png" alt="Ridgeline UI colour ramps: six swatches each of Pine greens, Sunset oranges and Slate greys, each labelled with its name and hex value" width="100%">
+-  <p align="center"><sub><b>Ridgeline UI</b>: colour ramps where every swatch is a paint style, exported through a slice</sub></p>
+-</td>
+-</tr>
+-</table>
+-
+-## Features
+-
+-<table>
+-  <tr>
+-    <td width="50%" valign="top">
+-      <h3>Layouts that build themselves</h3>
+-      Auto layout in both directions, with wrap and grid (fixed, hug and `fr` tracks, cells that span), padding, gaps, alignment including text baselines, Hug / Fill / Fixed sizing, min and max sizes, absolute positioning, drag handles for padding and spacing right on the canvas, and arrow keys that move children through the flow, grid cells and nested frames. Constraints and layout grids for everything else.
+-    </td>
+-    <td width="50%" valign="top">
+-      <h3>Components that scale</h3>
+-      Main components, instances with overrides that survive edits, component sets with variants, properties, swap instance, detach, reset overrides and go to main component, and an Assets panel with live thumbnails, search and drag-to-canvas into frames and auto layout. Local styles and variables (colour, number, string, boolean) with modes, aliases and scopes, edited in a Variables table and bound to fills, strokes, effects, layout grids and instance properties. Fills, strokes, effects and layout grids reorder by dragging their rows.
+-    </td>
+-  </tr>
+-  <tr>
+-    <td width="50%" valign="top">
+-      <h3>Vectors without compromise</h3>
+-      Real vector networks: the Pen and Pencil tools, vector edit mode with its own tools (pen that extends and branches paths, bend, paint bucket fills for any closed area, lasso, cut), point panel with handle mirroring and per-point corner radius, join, split and heal-on-delete, the shape builder (click or drag across the regions of overlapping shapes, strokes and open paths to merge them, Alt to remove them), boolean groups (union, subtract, intersect, exclude) whose operands stay editable on the canvas with the result following every drag, an operation per operand, flatten, outline stroke, arrowheads, dashes, per-side strokes and variable width strokes (width profile presets, and a Variable width tool that drags width points along the path, one side at a time with Alt). Rectangles with smooth (squircle) corners, polygons, stars, and arcs and rings shaped with on-canvas sweep, start and ratio handles or the Design panel's Arc fields.
+-    </td>
+-    <td width="50%" valign="top">
+-      <h3>Paints and effects</h3>
+-      Solid, linear, radial, angular and diamond gradients with on-canvas handles, image fills (fill, fit, crop, tile) with adjustments and presets, multiple fills and strokes, every blend mode, drop and inner shadows (spread offsets the outline exactly), layer and background blur (uniform or progressive), noise (mono, duo, multi), texture and glass (refraction, dispersion, frost, light), masks. Files are sRGB or Display P3, with exports tagged with the file's colour profile.
+-    </td>
+-  </tr>
+-  <tr>
+-    <td width="50%" valign="top">
+-      <h3>Type that sets beautifully</h3>
+-      Text edited in place on the canvas (with inline IME composition), mixed styles within a paragraph, auto width and auto height, line height, letter and paragraph spacing, decoration, case, lists, OpenType features, variable font axes and text styles, right-to-left and mixed-direction text (Arabic, Hebrew) with the Unicode bidi algorithm, shaped with HarfRust and the open fonts from craft-fonts plus your system fonts.
+-    </td>
+-    <td width="50%" valign="top">
+-      <h3>Prototype and hand off</h3>
+-      Connections, triggers, actions and Smart Animate-style transitions, variables with conditionals (if / else if / else built in the interaction editor, expressions like <code>count + 1</code>), flows, a presentation view with device frames, hotspot hints and an Inspect panel, and a live preview pane. Alt to measure distances and padding on the canvas, Inspect mode with measurements, annotations in colour-coded categories, a ready-for-dev list with a focus view and Compare changes (before / after with property-level diffs since a frame was marked ready), and code (CSS, HTML, React, Leptos, SwiftUI, Compose) where components take their properties as parameters, comment threads pinned to frames (replies, @mentions, reactions, read state) and named version history. Export any layer at any scale to PNG, JPG, WebP, SVG or PDF.
+-    </td>
+-  </tr>
+-</table>
+-
+-<br>
+-
+-## Built for agents
+-
+-Every menu item, tool and gesture runs a command from one registry of 400+ commands. The UI, the CLI, the JSON control channel and the MCP server all call the same commands, so anything you can click, a script or an AI agent can do too.
+-
+-```sh
+-# Headless: render and export
+-figcraft-cli render landing.figcraft -o landing.png --scale 2
+-figcraft-cli export landing.figcraft -o out/ --format svg
+-
+-# Run a script of commands without a window
+-figcraft-cli run build-card.json --out card.figcraft
+-
+-# Every command, with its parameters
+-figcraft-cli commands --filter autoLayout
+-
+-# Let an agent drive it over MCP (headless, or attached to the running app)
+-figcraft-cli mcp
+-figcraft-cli mcp --attach 47800
+-```
+-
+-The desktop app also offers a loopback-only control channel (`figcraft --control <port>`) for inspecting UI state, driving tools with pointer and key events, and taking screenshots. See [`docs/control-protocol.md`](docs/control-protocol.md), [`docs/mcp.md`](docs/mcp.md) and [`docs/cli.md`](docs/cli.md).
+-
+-## Under the hood
+-
+-- **Engine first:** a pure-data document model and a command engine, with a thin, swappable egui UI on top. Layering is checked at build time across the workspace crates (`cargo xtask layers`).
+-- **Persistent data:** the document lives in an immutable ordered map, so undo snapshots are cheap and layout, component sync and text measurement only revisit what changed.
+-- **Its own renderer:** tiny-skia on every core for the canvas and exports, with layer blending, effects and masks; booleans from linesweeper, geometry from kurbo, text from skrifa and HarfRust.
+-- **Runs in the browser:** the whole engine and UI compile to WebAssembly.
+-- **Accessible:** screen readers get names, roles, values and states for the tools, layer rows, fields, dropdowns, tabs and menus (AccessKit on desktop), F6 moves the keyboard between the toolbar, layers, canvas and properties (Tab within them, Escape back to the canvas), the system's reduce-motion setting is honoured, and panel text meets WCAG AA contrast in both themes.
+-- **Languages:** English and Spanish (a draft waiting for a native speaker's review), picked in Preferences or taken from the system or browser and switched live; adding a language is one catalog file ([`docs/translating.md`](docs/translating.md)).
+-- **Plugins:** sandboxed WebAssembly plugins (a metered, pure-Rust interpreter with a memory cap and no file or network access, in the browser too) that act through the same commands, each run one undo step, within the permissions their manifest asks for. A Rust SDK and two example plugins are in [`plugins/`](plugins); see [`docs/plugins.md`](docs/plugins.md).
+-- **Live sessions (preview):** share the open file from the app (Share ▸ Start sharing: online through a server, or on your local network), give the others the short join code it shows (or the invite link), and edit it together: everyone's changes sync live, with cursors, selections, avatars and follow, and undo takes back only your own changes. Others join from the desktop app (invite links open it) or from the browser build. See [`docs/collab-protocol.md`](docs/collab-protocol.md).
+-- **A server of your own (preview):** `figcraft-server` keeps a team's files, publishes them from the app (File ▸ Publish to server…, or Share ▸ Online with your server in Preferences) and hands out share links and join codes that let people edit or only view; files survive restarts and apps reconnect where they were. No accounts yet: links are the access. Releases ship it for Linux, and the desktop app joins over `wss://`; [hosting it on a rented Linux server](docs/server.md#deploy-on-a-linux-server) takes a systemd unit and Caddy or nginx (or Docker). See [`docs/server.md`](docs/server.md).
+-- **Never crashes:** no `unwrap`, `expect` or `panic` in shipped code, enforced by clippy; commands run behind a guard so a bug fails one action, not your session.
+-- **Clean-room:** implemented from public documentation and observed behaviour only. No proprietary code, file formats, icons or images.
+-
+-## Get started
+-
+-```sh
+-git clone https://github.com/storytold/figcraft
+-cd figcraft
+-cargo run --release -p figcraft            # the desktop app
+-cargo run --release -p figcraft-server     # the collaboration server (docs/server.md)
+-cargo test --workspace                     # the test suite
+-cargo xtask ci                             # fmt, clippy, tests, layering and asset checks
+-```
+-
+-Fonts for the UI and the Text tool come from [craft-fonts](https://github.com/storytold/craft-fonts), cloned next to this repository (`../craft-fonts`); without it FigCraft falls back to your system fonts.
+-
+-```sh
+-git clone https://github.com/storytold/craft-fonts ../craft-fonts
+-```
+-
+-If you clone it after a first build, run `cargo clean -p figcraft-text` once so the next build embeds the fonts.
+-
+-**Start from a template.** The home screen's Templates tab has eight starter files (a mobile app, a landing page, a dashboard, a design system starter, a wireframe kit, social post sizes, presentation slides and an icon set starter), also under File ▸ New from template…. They are built in code from original, synthetic content, so scripts and agents can open them too: `file.newFromTemplate {template}` ([`docs/mcp.md`](docs/mcp.md#starter-templates)).
+-
+-For the web build, install [trunk](https://trunkrs.dev/) and run `cargo xtask wasm`.
+-
+-New contributors and AI agents: start with [`AGENTS.md`](AGENTS.md), then [`docs/`](docs/).
+-
+-Installers for macOS (universal, signed and notarized), Windows (x64, x86 and arm64), Linux (AppImage, `.deb`, `.rpm`, Flatpak and tarball), FreeBSD and the web are attached to each [GitHub release](https://github.com/storytold/figcraft/releases). Maintainers: [`docs/releasing.md`](docs/releasing.md) explains how releases are built, signed and published.
+-
+-> [!IMPORTANT]
+-> **Status:** FigCraft is in **alpha**: about 49% of the way to replacing Figma for real work, by our own estimate. Nearly all of Figma's main menu is wired ([`docs/parity-checklist.md`](docs/parity-checklist.md)) and the core editor works end to end, but FigCraft opens `.fig` files only best effort, has only a first preview of multiplayer (live sessions hosted from the app or a self-hosted server, with per-person undo and share links to edit or to view; no accounts, teams or cloud yet), runs its own WebAssembly plugins rather than Figma's, and hasn't been checked against real Figma documents. The honest, area-by-area picture is in the [roadmap](ROADMAP.md) and [`docs/target-app-parity.md`](docs/target-app-parity.md). Expect rough edges and please file issues, or tell us what broke on [Discord](https://discord.gg/artcraft).
+-
+-## Privacy and online sharing
+-
+-FigCraft works offline: it has no account and no telemetry, and it contacts no server until you
+-share or join a file. Live sessions are a **preview**. Before you share anything that matters,
+-know what sharing does:
+-
+-- **Share ▸ Online uploads the file to a server.** By default that is the public server at
+-  `collab.craftapps.dev`; you can set another one, or your own, in Preferences (and a build can
+-  ship without it: [`docs/releasing.md`](docs/releasing.md#the-default-server)). The file stays on
+-  the server after you stop sharing, until you remove it (Share ▸ Advanced ▸ Remove from server…)
+-  or nobody has opened it for 30 days, when a public server deletes it.
+-- **It is not end-to-end encrypted.** The connection to the server is encrypted (TLS), but the
+-  server stores the file unencrypted and whoever runs the server can read it. Don't share
+-  confidential work through a server you don't trust; run your own
+-  ([`docs/server.md`](docs/server.md)) or share on the local network instead.
+-- **The code or link is the access.** There are no accounts: anyone who has an edit code or link
+-  can open and change the file, anyone with a view code or link can open it. Stop sharing revokes
+-  them and disconnects everyone else.
+-- **Share ▸ Local network involves no server**, but it is not encrypted either: your app hosts
+-  the session and others connect to it directly, so use it on networks you trust.
+-- **No guarantees.** The public server is offered as is, without backups or uptime promises, and
+-  files on it can be removed. Keep your own saved copy of anything you share.
+-
+-The default server's terms are in [`docs/online-sharing-terms.md`](docs/online-sharing-terms.md).
+-
+-## The Crafting Apps
+-
+-FigCraft is one of the **Crafting Apps**: free, open-source creative tools from the
+-[ArtCraft](https://getartcraft.com/) team, each written from scratch in Rust and each able to
+-stand on its own.
+-
+-| | App | What it's for | Code | Learn more |
+-|:-:|---|---|---|---|
+-| <img src="assets/app-icon/hicolor/64x64/apps/ai.storyteller.figcraft.png" alt="" width="32" height="32"> | **FigCraft** | **Interface design, components and prototypes · you are here** | [GitHub](https://github.com/storytold/figcraft) | [Website](https://getartcraft.com/apps/figcraft) |
+-| <img src="https://raw.githubusercontent.com/storytold/photocraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.photocraft.png" alt="" width="32" height="32"> | **PhotoCraft** | Image editing | [GitHub](https://github.com/storytold/photocraft) | [Website](https://getartcraft.com/apps/photocraft) |
+-| <img src="https://raw.githubusercontent.com/storytold/vectorcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.vectorcraft.png" alt="" width="32" height="32"> | **VectorCraft** | Vector illustration | [GitHub](https://github.com/storytold/vectorcraft) | [Website](https://getartcraft.com/apps/vectorcraft) |
+-| <img src="https://raw.githubusercontent.com/storytold/filmcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.filmcraft.png" alt="" width="32" height="32"> | **FilmCraft** | Video editing, color and sound | [GitHub](https://github.com/storytold/filmcraft) | [Website](https://getartcraft.com/apps/filmcraft) |
+-| <img src="https://raw.githubusercontent.com/storytold/lightcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.lightcraft.png" alt="" width="32" height="32"> | **LightCraft** | Photo library and raw development | [GitHub](https://github.com/storytold/lightcraft) | [Website](https://getartcraft.com/apps/lightcraft) |
+-| <img src="https://raw.githubusercontent.com/storytold/pdfcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.pdfcraft.png" alt="" width="32" height="32"> | **PdfCraft** | Reading, organizing and protecting PDFs | [GitHub](https://github.com/storytold/pdfcraft) | [Website](https://getartcraft.com/apps/pdfcraft) |
+-| <img src="https://raw.githubusercontent.com/storytold/effectcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.effectcraft.png" alt="" width="32" height="32"> | **EffectCraft** | Motion graphics and visual effects | [GitHub](https://github.com/storytold/effectcraft) | [Website](https://getartcraft.com/apps/effectcraft) |
+-| <img src="https://raw.githubusercontent.com/storytold/designcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.designcraft.png" alt="" width="32" height="32"> | **DesignCraft** | Page layout and publishing | [GitHub](https://github.com/storytold/designcraft) | [Website](https://getartcraft.com/apps/designcraft) |
+-
+-And [**ArtCraft**](https://getartcraft.com/) itself, our AI image and video studio for artists who want real control.
+-
+-The Crafting Apps share the same conventions: clean-room and pure Rust, native on macOS, Windows, Linux and FreeBSD, in the browser via WebAssembly, and fully drivable by agents.
+-
+-<br>
+-
+-<p align="center">
+-  <a href="https://discord.gg/artcraft"><img alt="Join the ArtCraft community on Discord" src="https://img.shields.io/badge/Join%20us%20on%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" height="40"></a>
+-</p>
+-
+-<h3 align="center">Come make things with us</h3>
+-
+-<p align="center">
+-  Our Discord is where people who make things hang out: designers sketching their first app,
+-  developers who just want a button to look right, illustrators, filmmakers, type nerds, and
+-  plenty of people still working out what they like to make. Share what you're building, ask for
+-  help, tell us what's broken or what you wish FigCraft could do. You're welcome here.
+-</p>
+-
+-<p align="center">
+-  <a href="https://discord.gg/artcraft"><b>discord.gg/artcraft</b></a> ·
+-  <a href="https://getartcraft.com/">getartcraft.com</a> ·
+-  <a href="https://getartcraft.com/apps">The Crafting Apps</a> ·
+-  <a href="https://getartcraft.com/apps/figcraft">FigCraft</a>
+-</p>
+-
+----
+-
+-## License and credits
+-
+-FigCraft is dual-licensed under [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE), at your option.
+-Copyright (c) 2026 ArtCraft Team and the FigCraft contributors. Required notices are in [NOTICE](NOTICE).
+-
+-Every icon in FigCraft is drawn in code or made for this project, and bundled fonts, images and other
+-assets keep their own open licenses; each one is listed with its author, source and license in
+-[ATTRIBUTION.md](ATTRIBUTION.md).
+-
+-The ArtCraft name, wordmark and logos in [`docs/brand/`](docs/brand/) are trademarks of the
+-ArtCraft Team and are not covered by this license. They may be used only unmodified, and only as
+-part of this repository and FigCraft, under [`docs/brand/LICENSE-brand.txt`](docs/brand/LICENSE-brand.txt).
+-Forks and modified versions must remove them.
+-
+-<sub>Figma is a trademark of Figma, Inc. FigCraft is an independent, open-source project and is not affiliated with, sponsored by or endorsed by Figma, Inc.; the name is used only to describe the workflows FigCraft is compatible with.</sub>
+-
+-<p align="center">
+-  <a href="https://getartcraft.com/"><img alt="ArtCraft" src="https://raw.githubusercontent.com/storytold/vectorcraft/main/docs/brand/artcraft-mark.png" width="28"></a><br>
+-  <sub>Made by the <a href="https://getartcraft.com/">ArtCraft</a> team and community.</sub>
+-</p>
+-
+-## Star history
+-
+-[![Star History Chart](https://api.star-history.com/svg?repos=storytold/figcraft&type=Date&legend=top-left)](https://www.star-history.com/?repos=storytold%2Ffigcraft&type=date&legend=top-left)
++Website: https://plervo.com/ · Optional support: https://buymeacoffee.com/alport
+diff --git a/apps/figcraft-cli/Cargo.toml b/apps/figcraft-cli/Cargo.toml
+index 0b356c2..719a4cc 100644
+--- a/apps/figcraft-cli/Cargo.toml
++++ b/apps/figcraft-cli/Cargo.toml
+@@ -1,5 +1,5 @@
+ [package]
+-name = "figcraft-cli"
++name = "plervo-canvas-cli"
+ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+@@ -7,7 +7,7 @@ publish = false
+ description = "FigCraft command line: info, export, convert, render, scripted commands, MCP server, perf"
+ 
+ [[bin]]
+-name = "figcraft-cli"
++name = "plervo-canvas-cli"
+ path = "src/main.rs"
+ 
+ [lints]
+diff --git a/apps/figcraft-cli/src/files.rs b/apps/figcraft-cli/src/files.rs
+index 9b0f9b5..61769f6 100644
+--- a/apps/figcraft-cli/src/files.rs
++++ b/apps/figcraft-cli/src/files.rs
+@@ -391,7 +391,7 @@ mod tests {
+         }
+         doc.create(parent, figcraft_doc::NodeKind::Rectangle, "leaf", 0.0, 0.0, 8.0, 8.0).unwrap();
+         let stamp = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_nanos();
+-        let dir = std::env::temp_dir().join(format!("figcraft-cli-export-depth-{}-{stamp}", std::process::id()));
++        let dir = std::env::temp_dir().join(format!("plervo-canvas-cli-export-depth-{}-{stamp}", std::process::id()));
+         std::fs::create_dir(&dir).unwrap();
+         for ext in ["svg", "pdf"] {
+             let path = dir.join(format!("previous.{ext}"));
+diff --git a/apps/figcraft-cli/src/main.rs b/apps/figcraft-cli/src/main.rs
+index 590b50f..5c7184f 100644
+--- a/apps/figcraft-cli/src/main.rs
++++ b/apps/figcraft-cli/src/main.rs
+@@ -1,4 +1,4 @@
+-//! `figcraft-cli`: FigCraft without a window. Inspect, export, convert and render documents, run
++//! `plervo-canvas-cli`: Plervo Canvas without a window. Inspect, export, convert and render documents, run
+ //! command scripts, list commands, serve MCP on stdio, publish plugins to a server's plugin
+ //! directory and measure performance.
+ #![deny(clippy::unwrap_used, clippy::expect_used, clippy::panic, clippy::unimplemented, clippy::todo, clippy::unreachable)]
+@@ -13,26 +13,26 @@ use std::process::ExitCode;
+ use args::Args;
+ use serde_json::{Value, json};
+ 
+-pub const USAGE: &str = "figcraft-cli — FigCraft without a window
++pub const USAGE: &str = "plervo-canvas-cli — Plervo Canvas without a window
+ 
+ USAGE:
+-  figcraft-cli info <file> [--json]
+-  figcraft-cli export <file> -o <out> [--format png|jpg|svg|webp|pdf|fig] [--scale N] [--page NAME] [--node ID|NAME]
++  plervo-canvas-cli info <file> [--json]
++  plervo-canvas-cli export <file> -o <out> [--format png|jpg|svg|webp|pdf|fig] [--scale N] [--page NAME] [--node ID|NAME]
+                       [--bleed LENGTH] [--crop-marks] [--bleed-marks] [--cmyk]
+-  figcraft-cli convert <in> <out>
+-  figcraft-cli render <file> -o <out.png> [--scale N] [--page NAME]
+-  figcraft-cli run <script.json|script.jsonl> [--in <file>] [--out <file>]
+-  figcraft-cli commands [--json] [--filter TEXT]
+-  figcraft-cli mcp [--attach PORT]
+-  figcraft-cli plugin publish <folder> --server ws://host:port/[?key=KEY]
+-  figcraft-cli perf [--layers N[,N...]] [--instances N[,N...]]
+-  figcraft-cli help | --help | --version
++  plervo-canvas-cli convert <in> <out>
++  plervo-canvas-cli render <file> -o <out.png> [--scale N] [--page NAME]
++  plervo-canvas-cli run <script.json|script.jsonl> [--in <file>] [--out <file>]
++  plervo-canvas-cli commands [--json] [--filter TEXT]
++  plervo-canvas-cli mcp [--attach PORT]
++  plervo-canvas-cli plugin publish <folder> --server ws://host:port/[?key=KEY]
++  plervo-canvas-cli perf [--layers N[,N...]] [--instances N[,N...]]
++  plervo-canvas-cli help | --help | --version
+ 
+ Every subcommand takes --no-system-fonts (or set FIGCRAFT_NO_SYSTEM_FONTS=1): text uses only the
+-fonts built into FigCraft, for renders that match on every machine. Otherwise installed fonts are
++fonts built into Plervo Canvas, for renders that match on every machine. Otherwise installed fonts are
+ indexed the first time text is laid out, as in the app.
+ 
+-Files: .figcraft (native), .json (FigCraft or REST API file JSON), .fig (best effort; `info` lists what
++Files: .figcraft (native), .json (Plervo Canvas or REST API file JSON), .fig (best effort; `info` lists what
+ wasn't imported), .svg, .png/.jpg/.webp/.gif/.bmp (open as an image layer). `export` writes one file
+ per top-level frame into the <out> directory, or one file when <out> has an image extension or --node
+ is given (`fig`, or an <out> ending in .fig: the whole file as .fig, experimental; other apps may
+@@ -90,7 +90,7 @@ fn run(argv: &[String]) -> CliResult<ExitCode> {
+             Ok(ExitCode::SUCCESS)
+         }
+         "--version" | "-V" | "version" => {
+-            println!("figcraft-cli {}", env!("CARGO_PKG_VERSION"));
++            println!("plervo-canvas-cli {}", env!("CARGO_PKG_VERSION"));
+             Ok(ExitCode::SUCCESS)
+         }
+         "info" => {
+@@ -214,12 +214,12 @@ fn mcp(attach: Option<&str>) -> CliResult<ExitCode> {
+                 format!("127.0.0.1:{}", p.parse::<u16>().map_err(|_| CliError::Usage(format!("--attach needs a port number, got `{p}`")))?)
+             };
+             let b = figcraft_mcp::Attached::connect(&addr)
+-                .map_err(|e| format!("can't reach the FigCraft app at {addr}: {e} (start it with `figcraft --control PORT`)"))?;
++                .map_err(|e| format!("can't reach the Plervo Canvas app at {addr}: {e} (start it with `plervo-canvas --control PORT`)"))?;
+             Box::new(b)
+         }
+         None => Box::new(figcraft_mcp::Headless::new()),
+     };
+-    eprintln!("figcraft MCP server ({}) on stdio", backend.describe());
++    eprintln!("plervo-canvas MCP server ({}) on stdio", backend.describe());
+     let mut server = figcraft_mcp::Server::new(backend);
+     let stdin = std::io::stdin();
+     let stdout = std::io::stdout();
+diff --git a/apps/figcraft-cli/src/perf.rs b/apps/figcraft-cli/src/perf.rs
+index c08ddc0..f1ceb62 100644
+--- a/apps/figcraft-cli/src/perf.rs
++++ b/apps/figcraft-cli/src/perf.rs
+@@ -1,4 +1,4 @@
+-//! `figcraft-cli perf`: synthetic large documents and timings of the hot paths.
++//! `plervo-canvas-cli perf`: synthetic large documents and timings of the hot paths.
+ //!
+ //! The documents come from [`figcraft_engine::synthetic`] (screens with an auto layout header, a
+ //! card group, button instances and a grid of shapes and text). Every row is the mean of several
+diff --git a/apps/figcraft-cli/tests/cli.rs b/apps/figcraft-cli/tests/cli.rs
+index 390e641..b8d4db3 100644
+--- a/apps/figcraft-cli/tests/cli.rs
++++ b/apps/figcraft-cli/tests/cli.rs
+@@ -5,11 +5,11 @@ use std::io::Write;
+ use std::process::{Command, Stdio};
+ 
+ fn bin() -> Command {
+-    Command::new(env!("CARGO_BIN_EXE_figcraft-cli"))
++    Command::new(env!("CARGO_BIN_EXE_plervo-canvas-cli"))
+ }
+ 
+ fn tmp(name: &str) -> std::path::PathBuf {
+-    let d = std::env::temp_dir().join(format!("figcraft-cli-test-{}-{name}", std::process::id()));
++    let d = std::env::temp_dir().join(format!("plervo-canvas-cli-test-{}-{name}", std::process::id()));
+     std::fs::create_dir_all(&d).unwrap();
+     d
+ }
+diff --git a/apps/figcraft-cli/tests/export_depth.rs b/apps/figcraft-cli/tests/export_depth.rs
+index d8b3ef3..b55efb0 100644
+--- a/apps/figcraft-cli/tests/export_depth.rs
++++ b/apps/figcraft-cli/tests/export_depth.rs
+@@ -17,7 +17,7 @@ fn export_depth_cli_refuses_partial_files_and_accepts_an_inner_root() {
+     let leaf = doc.create(parent, NodeKind::Rectangle, "leaf", 3.0, 5.0, 13.0, 17.0).unwrap();
+     doc.get_mut(leaf).unwrap().fills = vec![Paint::solid(Color::from_hex("FF0000").unwrap())];
+     let stamp = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_nanos();
+-    let dir = std::env::temp_dir().join(format!("figcraft-cli-depth-process-{}-{stamp}", std::process::id()));
++    let dir = std::env::temp_dir().join(format!("plervo-canvas-cli-depth-process-{}-{stamp}", std::process::id()));
+     std::fs::create_dir(&dir).unwrap();
+     let input = dir.join("deep.figcraft");
+     std::fs::write(&input, figcraft_format::save_bytes(&doc, None).unwrap()).unwrap();
+@@ -25,7 +25,7 @@ fn export_depth_cli_refuses_partial_files_and_accepts_an_inner_root() {
+         let path = dir.join(format!("previous.{ext}"));
+         std::fs::write(&path, b"previous export").unwrap();
+         for verb in ["convert", "export"] {
+-            let mut command = Command::new(env!("CARGO_BIN_EXE_figcraft-cli"));
++            let mut command = Command::new(env!("CARGO_BIN_EXE_plervo-canvas-cli"));
+             command.arg(verb).arg(&input);
+             if verb == "export" {
+                 command.arg("-o");
+@@ -38,7 +38,7 @@ fn export_depth_cli_refuses_partial_files_and_accepts_an_inner_root() {
+             assert_eq!(std::fs::read(&path).unwrap(), b"previous export");
+         }
+         let inner = dir.join(format!("inner.{ext}"));
+-        let output = Command::new(env!("CARGO_BIN_EXE_figcraft-cli"))
++        let output = Command::new(env!("CARGO_BIN_EXE_plervo-canvas-cli"))
+             .arg("export")
+             .arg(&input)
+             .arg("-o")
+diff --git a/apps/figcraft-cli/tests/fonts.rs b/apps/figcraft-cli/tests/fonts.rs
+index c5901ac..cf74d37 100644
+--- a/apps/figcraft-cli/tests/fonts.rs
++++ b/apps/figcraft-cli/tests/fonts.rs
+@@ -6,14 +6,14 @@ use std::process::Command;
+ 
+ use serde_json::{Value, json};
+ 
+-/// The result of one `figcraft-cli run` step (script file `name`); `opt_out` sets the environment
++/// The result of one `plervo-canvas-cli run` step (script file `name`); `opt_out` sets the environment
+ /// variable.
+ fn run_one(name: &str, step: Value, args: &[&str], opt_out: bool) -> Value {
+-    let d = std::env::temp_dir().join(format!("figcraft-cli-fonts-{}", std::process::id()));
++    let d = std::env::temp_dir().join(format!("plervo-canvas-cli-fonts-{}", std::process::id()));
+     std::fs::create_dir_all(&d).unwrap();
+     let script = d.join(format!("{name}.json"));
+     std::fs::write(&script, json!([step]).to_string()).unwrap();
+-    let mut cmd = Command::new(env!("CARGO_BIN_EXE_figcraft-cli"));
++    let mut cmd = Command::new(env!("CARGO_BIN_EXE_plervo-canvas-cli"));
+     cmd.arg("run").arg(&script).args(args);
+     if opt_out {
+         cmd.env("FIGCRAFT_NO_SYSTEM_FONTS", "1");
+diff --git a/apps/figcraft-cli/tests/pdf.rs b/apps/figcraft-cli/tests/pdf.rs
+index 28d5ca6..9d4e965 100644
+--- a/apps/figcraft-cli/tests/pdf.rs
++++ b/apps/figcraft-cli/tests/pdf.rs
+@@ -1,10 +1,10 @@
+-//! `figcraft-cli export --format pdf` and `convert … .pdf` end to end.
++//! `plervo-canvas-cli export --format pdf` and `convert … .pdf` end to end.
+ #![allow(clippy::unwrap_used, clippy::expect_used, clippy::panic)]
+ 
+ use std::process::Command;
+ 
+ fn bin() -> Command {
+-    Command::new(env!("CARGO_BIN_EXE_figcraft-cli"))
++    Command::new(env!("CARGO_BIN_EXE_plervo-canvas-cli"))
+ }
+ 
+ fn pages(pdf: &[u8]) -> usize {
+@@ -14,7 +14,7 @@ fn pages(pdf: &[u8]) -> usize {
+ 
+ #[test]
+ fn pdf_export_one_page_per_frame() {
+-    let d = std::env::temp_dir().join(format!("figcraft-cli-pdf-{}", std::process::id()));
++    let d = std::env::temp_dir().join(format!("plervo-canvas-cli-pdf-{}", std::process::id()));
+     std::fs::create_dir_all(&d).unwrap();
+     // Two frames and a loose rectangle (not a frame: left out of the frames PDF).
+     let script = d.join("s.jsonl");
+diff --git a/apps/figcraft-cli/tests/pdf_print.rs b/apps/figcraft-cli/tests/pdf_print.rs
+index b2ce3c9..39619f6 100644
+--- a/apps/figcraft-cli/tests/pdf_print.rs
++++ b/apps/figcraft-cli/tests/pdf_print.rs
+@@ -1,15 +1,15 @@
+-//! `figcraft-cli export` with PDF print options: bleed, marks, CMYK; bad lengths are usage errors.
++//! `plervo-canvas-cli export` with PDF print options: bleed, marks, CMYK; bad lengths are usage errors.
+ #![allow(clippy::unwrap_used, clippy::expect_used, clippy::panic)]
+ 
+ use std::process::Command;
+ 
+ fn bin() -> Command {
+-    Command::new(env!("CARGO_BIN_EXE_figcraft-cli"))
++    Command::new(env!("CARGO_BIN_EXE_plervo-canvas-cli"))
+ }
+ 
+ #[test]
+ fn pdf_export_with_bleed_marks_and_cmyk() {
+-    let d = std::env::temp_dir().join(format!("figcraft-cli-print-{}", std::process::id()));
++    let d = std::env::temp_dir().join(format!("plervo-canvas-cli-print-{}", std::process::id()));
+     std::fs::create_dir_all(&d).unwrap();
+     let script = d.join("s.jsonl");
+     std::fs::write(&script, r##"{"command":"frame.create","params":{"x":0,"y":0,"width":100,"height":50,"name":"A","props":{"fill":"#ff0000"}}}"##)
+diff --git a/apps/figcraft-server/src/cli.rs b/apps/figcraft-server/src/cli.rs
+index 06f248e..7adcf89 100644
+--- a/apps/figcraft-server/src/cli.rs
++++ b/apps/figcraft-server/src/cli.rs
+@@ -20,7 +20,7 @@ use crate::store::{self, KEY, Store};
+ pub const SERVER_JSON: &str = "server.json";
+ 
+ pub const USAGE: &str = "\
+-figcraft-server: FigCraft's collaboration server (files, share links, live sessions)
++figcraft-server: Plervo Canvas's collaboration server (files, share links, live sessions)
+ 
+ Usage:
+   figcraft-server [serve] [--listen ADDR] [--data DIR] [--public-url URL] [--config FILE]
+@@ -279,7 +279,7 @@ fn directory(cfg: &Config, req: PluginReq) -> Result<PluginReply, String> {
+ 
+ fn plugins_table(entries: &[PluginEntry]) -> String {
+     if entries.is_empty() {
+-        return "No plugins yet (publish one with `figcraft-cli plugin publish FOLDER --server ws://host:port/?key=KEY`).\n".into();
++        return "No plugins yet (publish one with `plervo-canvas-cli plugin publish FOLDER --server ws://host:port/?key=KEY`).\n".into();
+     }
+     let mut out =
+         String::from("ID                                VERSIONS            NAME                  AUTHOR            ACCESS  SIZE       SHA-256\n");
+@@ -344,7 +344,7 @@ fn key(cfg: &Config, rotate: bool) -> Result<String, String> {
+     if rotate {
+         out.push_str("A new server key: the old one no longer works.\n");
+     }
+-    let _ = writeln!(out, "Publish to this address (in FigCraft: File > Publish to server…):");
++    let _ = writeln!(out, "Publish to this address (in Plervo Canvas: File > Publish to server…):");
+     let _ = writeln!(out, "  {}?key={key}", public.url());
+     let _ = writeln!(out, "Whoever has it can publish files and manage their links: share it only with people you trust.");
+     if cfg.open_publish {
+@@ -375,7 +375,7 @@ fn used(f: &FileRow) -> u64 {
+ 
+ fn files_table(mut files: Vec<FileRow>, sort: Sort, now: u64) -> String {
+     if files.is_empty() {
+-        return "No files yet (publish one from FigCraft: File > Publish to server…).\n".into();
++        return "No files yet (publish one from Plervo Canvas: File > Publish to server…).\n".into();
+     }
+     match sort {
+         Sort::Id => {}
+diff --git a/apps/figcraft-server/src/lib.rs b/apps/figcraft-server/src/lib.rs
+index e2f0d44..6df6391 100644
+--- a/apps/figcraft-server/src/lib.rs
++++ b/apps/figcraft-server/src/lib.rs
+@@ -1,4 +1,4 @@
+-//! `figcraft-server`: FigCraft's standalone collaboration server (milestone M9, step 5 of
++//! `figcraft-server`: Plervo Canvas's standalone collaboration server (milestone M9, step 5 of
+ //! `docs/collab-protocol.md`; running it: `docs/server.md`).
+ //!
+ //! It keeps many files in a data directory ([`store`]), each with share links that let people
+diff --git a/apps/figcraft-server/src/store.rs b/apps/figcraft-server/src/store.rs
+index e5e56b8..a9dda3f 100644
+--- a/apps/figcraft-server/src/store.rs
++++ b/apps/figcraft-server/src/store.rs
+@@ -1338,7 +1338,7 @@ impl Backend for Store {
+         match same_secret(key, &self.key) {
+             true => Ok(()),
+             false if self.cfg.hosting.open => {
+-                Err("wrong server key (this server is open to the public: publish without a key, with an up-to-date FigCraft)".into())
++                Err("wrong server key (this server is open to the public: publish without a key, with an up-to-date Plervo Canvas)".into())
+             }
+             false => Err("wrong server key".into()),
+         }
+diff --git a/apps/figcraft-web/src/main.rs b/apps/figcraft-web/src/main.rs
+index 587fd60..d661dc3 100644
+--- a/apps/figcraft-web/src/main.rs
++++ b/apps/figcraft-web/src/main.rs
+@@ -1,4 +1,4 @@
+-//! FigCraft in the browser.
++//! Plervo Canvas in the browser.
+ //!
+ //! Runs the same [`figcraft_ui_egui::FigApp`] as the desktop app through eframe's web runner
+ //! (wgpu: WebGPU where available, WebGL2 otherwise). Build with `trunk build --release` from this
+diff --git a/apps/figcraft-web/src/web.rs b/apps/figcraft-web/src/web.rs
+index 6368903..25952f4 100644
+--- a/apps/figcraft-web/src/web.rs
++++ b/apps/figcraft-web/src/web.rs
+@@ -48,7 +48,9 @@ pub fn start() {
+         if let Some(el) = document.get_element_by_id(LOADING_ID) {
+             match result {
+                 Ok(()) => el.remove(),
+-                Err(e) => el.set_inner_html(&format!("<p>FigCraft failed to start: {e:?}</p><p>A browser with WebGPU or WebGL2 is required.</p>")),
++                Err(e) => {
++                    el.set_inner_html(&format!("<p>Plervo Canvas failed to start: {e:?}</p><p>A browser with WebGPU or WebGL2 is required.</p>"))
++                }
+             }
+         }
+     });
+diff --git a/apps/figcraft/Cargo.toml b/apps/figcraft/Cargo.toml
+index b64b68d..a34202e 100644
+--- a/apps/figcraft/Cargo.toml
++++ b/apps/figcraft/Cargo.toml
+@@ -1,11 +1,11 @@
+ [package]
+-name = "figcraft"
++name = "plervo-canvas"
+ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ publish = false
+ description = "FigCraft desktop app"
+-default-run = "figcraft"
++default-run = "plervo-canvas"
+ 
+ [lints]
+ workspace = true
+diff --git a/apps/figcraft/build.rs b/apps/figcraft/build.rs
+index 64f9783..3a1cba6 100644
+--- a/apps/figcraft/build.rs
++++ b/apps/figcraft/build.rs
+@@ -9,9 +9,9 @@ fn main() {
+         if std::path::Path::new(ico).exists() {
+             res.set_icon(ico);
+         }
+-        res.set("ProductName", "FigCraft");
+-        res.set("FileDescription", "FigCraft");
+-        res.set("CompanyName", "ArtCraft");
++        res.set("ProductName", "Plervo Canvas");
++        res.set("FileDescription", "Plervo Canvas");
++        res.set("CompanyName", "Plervo");
+         if let Err(e) = res.compile() {
+             println!("cargo::warning=winresource: {e}");
+         }
+diff --git a/apps/figcraft/src/control_server.rs b/apps/figcraft/src/control_server.rs
+index 5cfe129..acaff94 100644
+--- a/apps/figcraft/src/control_server.rs
++++ b/apps/figcraft/src/control_server.rs
+@@ -31,11 +31,11 @@ pub fn start(port: u16, queue: Queue, ctx: CtxSlot) {
+         Ok(l) => l,
+         Err(e) => {
+             log::error!("control server: can't bind 127.0.0.1:{port}: {e} (another app may own it; pick another port)");
+-            eprintln!("FigCraft control server failed to bind port {port}: {e}");
++            eprintln!("Plervo Canvas control server failed to bind port {port}: {e}");
+             return;
+         }
+     };
+-    eprintln!("FigCraft control server listening on 127.0.0.1:{port}");
++    eprintln!("Plervo Canvas control server listening on 127.0.0.1:{port}");
+     let spawned = std::thread::Builder::new().name("figcraft-control".into()).spawn(move || {
+         let mut workers = Vec::new();
+         for stream in listener.incoming().flatten() {
+diff --git a/apps/figcraft/src/main.rs b/apps/figcraft/src/main.rs
+index 0332f7d..387dd0b 100644
+--- a/apps/figcraft/src/main.rs
++++ b/apps/figcraft/src/main.rs
+@@ -1,4 +1,4 @@
+-//! FigCraft desktop app.
++//! Plervo Canvas desktop app.
+ //!
+ //! Usage: `figcraft [--control <port>] [files…] [figcraft://join?…]` (an invite link joins that
+ //! live session; the app registers itself as the opener of such links: `collab.registerLinks`).
+@@ -99,7 +99,7 @@ fn main() -> eframe::Result {
+     let args: Vec<String> = std::env::args().skip(1).collect();
+     if args.iter().any(|a| a == "--version" || a == "-V") {
+         println!(
+-            "FigCraft {}{}",
++            "Plervo Canvas {}{}",
+             env!("CARGO_PKG_VERSION"),
+             option_env!("FIGCRAFT_BUILD_SHA").filter(|s| !s.is_empty()).map(|s| format!(" ({s})")).unwrap_or_default()
+         );
+@@ -169,12 +169,12 @@ fn main() -> eframe::Result {
+     }
+     let icon = services::window_icon();
+     let mut viewport = egui::ViewportBuilder::default()
+-        .with_title("FigCraft")
++        .with_title("Plervo Canvas")
+         .with_inner_size([1440.0, 900.0])
+         .with_min_inner_size([800.0, 500.0])
+         .with_drag_and_drop(true);
+     // The tab strip is the title bar: macOS keeps its window buttons inset into it; elsewhere the
+-    // window is frameless and FigCraft draws the buttons and resize edges.
++    // window is frameless and Plervo Canvas draws the buttons and resize edges.
+     if cfg!(target_os = "macos") {
+         viewport = viewport.with_fullsize_content_view(true).with_titlebar_shown(false).with_title_shown(false);
+         fig.ui.title_bar = figcraft_ui_egui::TitleBar::Inset;
+@@ -188,5 +188,5 @@ fn main() -> eframe::Result {
+     let mut options = eframe::NativeOptions { viewport, renderer: eframe::Renderer::Wgpu, ..Default::default() };
+     graphics::configure(&mut options.wgpu_options);
+     figcraft_ui_egui::windows::install(fig);
+-    eframe::run_native("FigCraft", options, Box::new(move |_cc| Ok(Box::new(App { queue, ctx_slot, title: String::new(), recovery }))))
++    eframe::run_native("Plervo Canvas", options, Box::new(move |_cc| Ok(Box::new(App { queue, ctx_slot, title: String::new(), recovery }))))
+ }
+diff --git a/apps/figcraft/src/services.rs b/apps/figcraft/src/services.rs
+index f4aeb63..92aaa5f 100644
+--- a/apps/figcraft/src/services.rs
++++ b/apps/figcraft/src/services.rs
+@@ -28,7 +28,7 @@ pub fn config_dir() -> Option<PathBuf> {
+     let base = std::env::var_os("APPDATA").map(PathBuf::from);
+     #[cfg(all(unix, not(target_os = "macos")))]
+     let base = std::env::var_os("XDG_CONFIG_HOME").map(PathBuf::from).or_else(|| std::env::var_os("HOME").map(|h| PathBuf::from(h).join(".config")));
+-    base.map(|b| b.join("FigCraft"))
++    base.map(|b| b.join("Plervo Canvas"))
+ }
+ 
+ impl Desktop {
+@@ -261,7 +261,7 @@ pub fn window_icon() -> Option<egui::IconData> {
+     #[cfg(target_os = "macos")]
+     let bytes = include_bytes!("../../../assets/app-icon/figcraft-256.png");
+     #[cfg(not(target_os = "macos"))]
+-    let bytes = include_bytes!("../../../assets/app-icon/hicolor/256x256/apps/ai.storyteller.figcraft.png");
++    let bytes = include_bytes!("../../../assets/app-icon/hicolor/256x256/apps/com.plervo.canvas.png");
+     let img = image::load_from_memory(bytes).ok()?.to_rgba8();
+     let (w, h) = img.dimensions();
+     Some(egui::IconData { rgba: img.into_raw(), width: w, height: h })
+diff --git a/crates/collab-net/src/links_tests.rs b/crates/collab-net/src/links_tests.rs
+index 8d81b80..e828fe7 100644
+--- a/crates/collab-net/src/links_tests.rs
++++ b/crates/collab-net/src/links_tests.rs
+@@ -80,7 +80,7 @@ fn cargo_builds_are_not_installed() {
+     std::fs::create_dir_all(&bin).unwrap();
+     std::fs::write(target.join("CACHEDIR.TAG"), "Signature: 8a477f597d28d172789f06886806bc55").unwrap();
+     assert!(!installed_build(&bin.join("figcraft.exe")), "inside a Cargo build directory");
+-    let installed = dir.join("Programs").join("FigCraft");
++    let installed = dir.join("Programs").join("Plervo Canvas");
+     std::fs::create_dir_all(&installed).unwrap();
+     // Debug builds (these tests) never count as installed either.
+     assert_eq!(installed_build(&installed.join("figcraft.exe")), !cfg!(debug_assertions));
+diff --git a/crates/ui-egui/src/credits_tests.rs b/crates/ui-egui/src/credits_tests.rs
+index 993aa44..15d3a1d 100644
+--- a/crates/ui-egui/src/credits_tests.rs
++++ b/crates/ui-egui/src/credits_tests.rs
+@@ -1,4 +1,4 @@
+-//! The credits tabs as drawn, through egui headless with FigCraft's fonts and theme: every column
++//! The credits tabs as drawn, through egui headless with Plervo Canvas's fonts and theme: every column
+ //! fits the About window, switching the Contributors view keeps its size, clicking a header sorts
+ //! by it, and empty tables (no contributors.json) draw a note instead.
+ 
+@@ -34,7 +34,7 @@ fn model(name: &'static str, commits: u64) -> Model {
+     Model { company: "Anthropic", model: name, version: "5.5", commits, lines_added: 150_000 + commits, lines_deleted: 20_000 }
+ }
+ 
+-/// A headless egui with FigCraft's fonts and light theme; `draw` runs inside a fixed-width column.
++/// A headless egui with Plervo Canvas's fonts and light theme; `draw` runs inside a fixed-width column.
+ struct Ui {
+     ctx: egui::Context,
+     time: f64,
+diff --git a/crates/ui-egui/src/cursors.rs b/crates/ui-egui/src/cursors.rs
+index 1c4e4ad..1fdbeb2 100644
+--- a/crates/ui-egui/src/cursors.rs
++++ b/crates/ui-egui/src/cursors.rs
+@@ -1,5 +1,5 @@
+ //! The pointer on the canvas: each engine cursor ([`figcraft_engine::tools::Cursor`]) as one of
+-//! the system's cursors, or as a small glyph FigCraft draws at the pointer with the system's
++//! the system's cursors, or as a small glyph Plervo Canvas draws at the pointer with the system's
+ //! hidden (a rotate cursor turned to its corner, the pen's states, the eyedropper, the comment
+ //! pin). The glyphs are original, drawn from lines and the code-drawn icons: no cursor images.
+ 
+@@ -8,7 +8,7 @@ use figcraft_engine::tools::{Cursor, PenCursor};
+ 
+ use crate::icons::{self, Icon};
+ 
+-/// A cursor FigCraft draws.
++/// A cursor Plervo Canvas draws.
+ #[derive(Clone, Copy, Debug, PartialEq)]
+ pub enum Glyph {
+     /// A curved double arrow about the direction (degrees, 0 = right, 90 = down) from the box's
+diff --git a/crates/ui-egui/src/dev_compare.rs b/crates/ui-egui/src/dev_compare.rs
+index 2e21eb5..f7913b0 100644
+--- a/crates/ui-egui/src/dev_compare.rs
++++ b/crates/ui-egui/src/dev_compare.rs
+@@ -165,7 +165,7 @@ pub fn show(app: &mut FigApp, ctx: &egui::Context) {
+                 if !cache.cmp.snapshot {
+                     let msg = if cache.cmp.changed {
+                         tr(
+-                            "What this changed from isn't known: it changed before FigCraft kept a copy of ready-for-dev frames. Resolve the change (or mark it ready again) to compare from now on.",
++                            "What this changed from isn't known: it changed before Plervo Canvas kept a copy of ready-for-dev frames. Resolve the change (or mark it ready again) to compare from now on.",
+                         )
+                     } else {
+                         tr("Nothing changed since this was marked ready for dev.")
+diff --git a/crates/ui-egui/src/dialogs.rs b/crates/ui-egui/src/dialogs.rs
+index 221ee63..8cd1559 100644
+--- a/crates/ui-egui/src/dialogs.rs
++++ b/crates/ui-egui/src/dialogs.rs
+@@ -82,7 +82,7 @@ fn about_body(ui: &mut egui::Ui, t: &Tokens) {
+         ui.painter().rect_filled(r, CornerRadius::same(10), ACCENT);
+         icons::paint(ui.painter(), r.shrink(10.0), Icon::Logo, Color32::WHITE);
+         ui.vertical(|ui| {
+-            ui.label(RichText::new("FigCraft").font(semibold(18.0)));
++            ui.label(RichText::new("Plervo Canvas").font(semibold(18.0)));
+             ui.label(RichText::new(trf("Version {version}", &[("version", &VERSION)])).color(t.text_secondary));
+         });
+     });
+@@ -91,8 +91,8 @@ fn about_body(ui: &mut egui::Ui, t: &Tokens) {
+         "Interface design and prototyping. A free, open-source, clean-room design tool written from scratch in Rust, part of the ArtCraft Crafting Apps.",
+     ));
+     ui.add_space(8.0);
+-    ui.hyperlink_to("getartcraft.com/apps/figcraft", "https://getartcraft.com/apps/figcraft");
+-    ui.hyperlink_to(tr("Join us on Discord"), "https://discord.gg/artcraft");
++    ui.hyperlink_to("plervo.com/apps/figcraft", "https://plervo.com/");
++    ui.hyperlink_to(tr("Support Plervo"), "https://buymeacoffee.com/alport");
+     ui.add_space(8.0);
+     ui.label(
+         RichText::new(tr("Dual-licensed MIT OR Apache-2.0. Made by the ArtCraft team and community.")).color(t.text_secondary).font(regular(11.0)),
+@@ -128,7 +128,7 @@ pub fn show(app: &mut FigApp, ctx: &Context) {
+     let t = Tokens::get(ctx);
+     if app.ui.about {
+         let mut open = true;
+-        window(tr("About FigCraft"), ctx).open(&mut open).show(ctx, |ui| {
++        window(tr("About Plervo Canvas"), ctx).open(&mut open).show(ctx, |ui| {
+             ui.set_width(ABOUT_WIDTH);
+             tab_strip(ui, &t, &AboutTab::ALL, AboutTab::label, &mut app.ui.about_tab);
+             ui.add_space(12.0);
+@@ -168,7 +168,7 @@ pub fn show(app: &mut FigApp, ctx: &Context) {
+             }
+             // Where the app registers itself as the opener of invite links (Windows).
+             if let Some(on) = app.session.invite_links_on() {
+-                if crate::widgets::checkbox(ui, on, tr("Open invite links in FigCraft")) {
++                if crate::widgets::checkbox(ui, on, tr("Open invite links in Plervo Canvas")) {
+                     app.run("collab.registerLinks", json!({"on": !on}));
+                 }
+                 crate::widgets::label(
+@@ -194,7 +194,7 @@ pub fn show(app: &mut FigApp, ctx: &Context) {
+                     app.run("pref.publishServer", json!({"url": url}));
+                 }
+                 let usual = prefs.publish_server == figcraft_engine::live::DEFAULT_SERVER;
+-                if crate::widgets::button(ui, tr("Reset"), false, !usual).on_hover_text(tr("Back to the FigCraft server")).clicked() {
++                if crate::widgets::button(ui, tr("Reset"), false, !usual).on_hover_text(tr("Back to the Plervo Canvas server")).clicked() {
+                     app.run("pref.publishServer", json!({}));
+                 }
+             });
+diff --git a/crates/ui-egui/src/font_preview.rs b/crates/ui-egui/src/font_preview.rs
+index a16177d..856b259 100644
+--- a/crates/ui-egui/src/font_preview.rs
++++ b/crates/ui-egui/src/font_preview.rs
+@@ -1,4 +1,4 @@
+-//! Text drawn in its own font by FigCraft's text engine, as textures for the panels: font family
++//! Text drawn in its own font by Plervo Canvas's text engine, as textures for the panels: font family
+ //! names in the font picker, text styles in the style browser. Rendered lazily (a few per frame:
+ //! callers pass a budget) and cached for the session. Textures are white; paint them tinted.
+ 
+diff --git a/crates/ui-egui/src/home.rs b/crates/ui-egui/src/home.rs
+index 9b57cb0..427df4d 100644
+--- a/crates/ui-egui/src/home.rs
++++ b/crates/ui-egui/src/home.rs
+@@ -144,7 +144,7 @@ pub fn show(app: &mut FigApp, ui: &mut Ui) {
+ fn sidebar(app: &mut FigApp, ui: &mut Ui, t: &Tokens, left: Rect) {
+     let mut y = left.min.y + 20.0;
+     icons::paint(ui.painter(), Rect::from_min_size(pos2(left.min.x + 16.0, y), vec2(20.0, 20.0)), Icon::Logo, ACCENT);
+-    ui.painter().text(pos2(left.min.x + 44.0, y + 10.0), Align2::LEFT_CENTER, "FigCraft", semibold(14.0), t.text);
++    ui.painter().text(pos2(left.min.x + 44.0, y + 10.0), Align2::LEFT_CENTER, "Plervo Canvas", semibold(14.0), t.text);
+     y += 48.0;
+     for (section, icon, label) in Section::ALL {
+         let r = Rect::from_min_size(pos2(left.min.x + 8.0, y), vec2(SIDEBAR - 16.0, 32.0));
+diff --git a/crates/ui-egui/src/icons.rs b/crates/ui-egui/src/icons.rs
+index 726f62f..c21728c 100644
+--- a/crates/ui-egui/src/icons.rs
++++ b/crates/ui-egui/src/icons.rs
+@@ -1,4 +1,4 @@
+-//! FigCraft's icon set, drawn in code from simple primitives on a 16×16 grid. Original artwork
++//! Plervo Canvas's icon set, drawn in code from simple primitives on a 16×16 grid. Original artwork
+ //! (MIT OR Apache-2.0): no third-party icons are used anywhere.
+ //!
+ //! The grid is pixel-exact at 16 px: 1-unit strokes sit on half coordinates (pixel centres) and
+@@ -1021,7 +1021,7 @@ fn draw(p: &P, icon: Icon) {
+             p.dot(8.0, 11.5, 0.9);
+         }
+         Logo => {
+-            // FigCraft's own mark: the curled tail of the chameleon on the app icon. One bold
++            // Plervo Canvas's own mark: the curled tail of the chameleon on the app icon. One bold
+             // stroke: a shaft along the bottom, then three half turns, each tighter than the last.
+             let mut tail = vec![(13.75, 13.0)];
+             tail.extend(arc_pts(7.25, 8.0, 5.0, FRAC_PI_2, 3.0 * FRAC_PI_2));
+diff --git a/crates/ui-egui/src/lib.rs b/crates/ui-egui/src/lib.rs
+index 613f18f..cf2c006 100644
+--- a/crates/ui-egui/src/lib.rs
++++ b/crates/ui-egui/src/lib.rs
+@@ -1,4 +1,4 @@
+-//! The FigCraft egui frontend.
++//! The Plervo Canvas egui frontend.
+ //!
+ //! A thin shell over [`figcraft_engine::Session`]: panels read engine state and act by running
+ //! commands; the canvas forwards pointer events to the engine's tools and draws overlays. Nothing
+@@ -371,7 +371,7 @@ pub struct UiState {
+     /// Dev Mode: annotations on the canvas and the ready-for-dev list.
+     pub dev: dev_mode::DevUi,
+ 
+-    /// What FigCraft last put on the system clipboard: when the clipboard still holds it, a paste
++    /// What Plervo Canvas last put on the system clipboard: when the clipboard still holds it, a paste
+     /// uses our copied layers; anything else there (an image, SVG, text) came from another app.
+     pub last_copy: Option<String>,
+     /// When (UI clock, seconds) open documents next get an autosave checkpoint.
+@@ -472,7 +472,7 @@ impl Default for UiState {
+     }
+ }
+ 
+-/// The whole FigCraft UI.
++/// The whole Plervo Canvas UI.
+ pub struct FigApp {
+     pub session: Session,
+     pub ui: UiState,
+@@ -717,7 +717,7 @@ impl FigApp {
+                     }
+                 }
+                 "preview.close" => self.ui.preview = None,
+-                "open.help" => self.services.open_url("https://getartcraft.com/apps/figcraft"),
++                "open.help" => self.services.open_url("https://plervo.com/"),
+                 "layers.collapseAll" => layers::collapse_all(self),
+                 "contextMenu" => self.ui.key_menu = true,
+                 "selectArea" => self.start_key_box(),
+diff --git a/crates/ui-egui/src/live.rs b/crates/ui-egui/src/live.rs
+index 46687a6..ddffbf4 100644
+--- a/crates/ui-egui/src/live.rs
++++ b/crates/ui-egui/src/live.rs
+@@ -29,7 +29,7 @@ use crate::widgets;
+ 
+ /// In the browser: what joining needs (a page can't host, and https pages can't reach `ws://`).
+ const BROWSER_NOTE: &str = tr_noop(
+-    "In the browser you can join sessions the desktop app hosts and files on a FigCraft server. A page opened over https reaches other computers only through wss:// links (a server behind TLS).",
++    "In the browser you can join sessions the desktop app hosts and files on a Plervo Canvas server. A page opened over https reaches other computers only through wss:// links (a server behind TLS).",
+ );
+ 
+ /// How undo works in a session (per person).
+@@ -166,7 +166,7 @@ pub fn avatar(painter: &egui::Painter, center: Pos2, r: f32, name: &str, fill: C
+     painter.text(center, Align2::CENTER_CENTER, initials(name), semibold(r * 0.8), text_on(fill));
+ }
+ 
+-/// FigCraft's remote pointer: a notched dart pointing up-left from `tip`, filled with the
++/// Plervo Canvas's remote pointer: a notched dart pointing up-left from `tip`, filled with the
+ /// person's colour and edged in white so it shows on any canvas.
+ pub fn pointer(painter: &egui::Painter, tip: Pos2, fill: Color32) {
+     let at = |x: f32, y: f32| tip + vec2(x, y);
+@@ -865,7 +865,8 @@ fn share_ui(app: &mut FigApp, ui: &mut Ui, t: &Tokens, share: &Share) {
+                     app.services.clipboard_set_text(&code);
+                     app.toast(tr("Join code copied"));
+                 }
+-                if widgets::button(ui, tr("Copy link"), false, true).on_hover_text(tr("An invite link that opens FigCraft and joins")).clicked() {
++                if widgets::button(ui, tr("Copy link"), false, true).on_hover_text(tr("An invite link that opens Plervo Canvas and joins")).clicked()
++                {
+                     app.services.clipboard_set_text(&link);
+                     app.toast(tr("Invite link copied"));
+                 }
+@@ -1136,7 +1137,7 @@ pub fn publish_dialog(app: &mut FigApp, ctx: &egui::Context) {
+         ui.set_width(380.0);
+         widgets::label(
+             ui,
+-            tr("Uploads this file to a FigCraft server and keeps this tab in sync with it. You get a link to edit and a link to view."),
++            tr("Uploads this file to a Plervo Canvas server and keeps this tab in sync with it. You get a link to edit and a link to view."),
+             t.text,
+         );
+         widgets::label(ui, tr("Server address"), t.text_secondary);
+diff --git a/crates/ui-egui/src/live_join_tests.rs b/crates/ui-egui/src/live_join_tests.rs
+index d745216..f923130 100644
+--- a/crates/ui-egui/src/live_join_tests.rs
++++ b/crates/ui-egui/src/live_join_tests.rs
+@@ -101,6 +101,6 @@ fn the_browser_joins_but_does_not_host() {
+     assert!(has_text(&shapes, "Join with a code") && has_text(&shapes, "Join"));
+     assert!(has_text(
+         &shapes,
+-        "In the browser you can join sessions the desktop app hosts and files on a FigCraft server. A page opened over https reaches other computers only through wss:// links (a server behind TLS)."
++        "In the browser you can join sessions the desktop app hosts and files on a Plervo Canvas server. A page opened over https reaches other computers only through wss:// links (a server behind TLS)."
+     ));
+ }
+diff --git a/crates/ui-egui/src/plugins_ui.rs b/crates/ui-egui/src/plugins_ui.rs
+index 0d4da40..7278cc8 100644
+--- a/crates/ui-egui/src/plugins_ui.rs
++++ b/crates/ui-egui/src/plugins_ui.rs
+@@ -452,7 +452,7 @@ fn confirm_window(app: &mut FigApp, ctx: &Context, t: &Tokens) {
+         ui.add_space(8.0);
+         widgets::label(
+             ui,
+-            tr("Plugins run in FigCraft's sandbox, without files, network or clock. Install only plugins you trust."),
++            tr("Plugins run in Plervo Canvas's sandbox, without files, network or clock. Install only plugins you trust."),
+             t.text_secondary,
+         );
+         ui.add_space(4.0);
+diff --git a/crates/ui-egui/src/present_behaviour_tests.rs b/crates/ui-egui/src/present_behaviour_tests.rs
+index 791e0d3..1e2fc8f 100644
+--- a/crates/ui-egui/src/present_behaviour_tests.rs
++++ b/crates/ui-egui/src/present_behaviour_tests.rs
+@@ -1,6 +1,6 @@
+ //! Prototype player behaviour, written from the public documentation of prototype triggers,
+ //! actions, overlays, animations and scrolling. Each case states the rule, what it implies and a
+-//! one-line derivation; where the documentation is silent the case says so and pins what FigCraft
++//! one-line derivation; where the documentation is silent the case says so and pins what Plervo Canvas
+ //! does. Gestures go through egui headless (the harness is `present_tests`'); the rest drives the
+ //! player directly. Model rules (drag directions, key combinations, easing, interactive
+ //! components, hotspots) are in the engine's `proto_behaviour_tests`.
+diff --git a/crates/ui-egui/src/present_tail_tests.rs b/crates/ui-egui/src/present_tail_tests.rs
+index b3abd25..62209e7 100644
+--- a/crates/ui-egui/src/present_tail_tests.rs
++++ b/crates/ui-egui/src/present_tail_tests.rs
+@@ -2,7 +2,7 @@
+ //! buttons play key/gamepad triggers (from the system's controllers and injected through the
+ //! control channel; no physical controller needed), and widgets react to clicks in a presented
+ //! prototype. Each case states the rule and a one-line derivation; "docs silent" cases pin what
+-//! FigCraft does. The model's side is the engine's `proto_tail_tests`.
++//! Plervo Canvas does. The model's side is the engine's `proto_tail_tests`.
+ 
+ use std::sync::Arc;
+ use std::sync::atomic::{AtomicU32, AtomicUsize, Ordering};
+diff --git a/crates/ui-egui/src/toolbar.rs b/crates/ui-egui/src/toolbar.rs
+index 1e6e38a..5532c55 100644
+--- a/crates/ui-egui/src/toolbar.rs
++++ b/crates/ui-egui/src/toolbar.rs
+@@ -194,7 +194,7 @@ pub fn show(app: &mut FigApp, ui: &mut Ui) {
+             (tr("Getting started"), "help.gettingStarted"),
+             (tr("Keyboard shortcuts"), "help.shortcuts"),
+             (tr("Help page"), "help.page"),
+-            (tr("About FigCraft"), "help.about"),
++            (tr("About Plervo Canvas"), "help.about"),
+         ] {
+             if crate::right::menu_item(ui, l, crate::shortcuts::shortcut(c).unwrap_or("")) {
+                 app.run(c, json!({}));
+diff --git a/crates/ui-egui/src/windows.rs b/crates/ui-egui/src/windows.rs
+index 82da755..1534121 100644
+--- a/crates/ui-egui/src/windows.rs
++++ b/crates/ui-egui/src/windows.rs
+@@ -112,8 +112,8 @@ pub fn take_input(app: &mut FigApp, viewport_id: ViewportId) -> Vec<egui::Event>
+ 
+ fn title_of(ds: Option<&DocState>) -> String {
+     match ds {
+-        Some(ds) => format!("{}{} – FigCraft", ds.doc.name, if ds.is_dirty() { " •" } else { "" }),
+-        None => "FigCraft".into(),
++        Some(ds) => format!("{}{} – Plervo Canvas", ds.doc.name, if ds.is_dirty() { " •" } else { "" }),
++        None => "Plervo Canvas".into(),
+     }
+ }
+ 
+diff --git a/packaging/env.sh b/packaging/env.sh
+index b68406a..520618d 100644
+--- a/packaging/env.sh
++++ b/packaging/env.sh
+@@ -9,9 +9,9 @@
+ #   FIGCRAFT_BUILD_DATE   UTC build date, YYYY-MM-DD
+ #   CARGO_TARGET_DIR      cargo's target dir (default: $ROOT/target)
+ # Sets (not exported):
+-#   BINS                  the binaries to build and ship: figcraft, plus figcraft-cli when the
++#   BINS                  the binaries to build and ship: plervo-canvas, plus plervo-canvas-cli when the
+ #                         workspace has apps/figcraft-cli
+-#   HAS_CLI               1 when figcraft-cli is part of the build, else 0
++#   HAS_CLI               1 when plervo-canvas-cli is part of the build, else 0
+ #   CARGO_PKGS            `-p <bin>` arguments for cargo build
+ 
+ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+@@ -45,10 +45,10 @@ export FIGCRAFT_BUILD_DATE="${FIGCRAFT_BUILD_DATE:-$(date -u +%Y-%m-%d)}"
+ export CARGO_TARGET_DIR="${CARGO_TARGET_DIR:-$ROOT/target}"
+ 
+ # The headless CLI ships next to the app once apps/figcraft-cli exists.
+-BINS=(figcraft)
++BINS=(plervo-canvas)
+ HAS_CLI=0
+ if [ -f "$ROOT/apps/figcraft-cli/Cargo.toml" ]; then
+-  BINS+=(figcraft-cli)
++  BINS+=(plervo-canvas-cli)
+   HAS_CLI=1
+ fi
+ CARGO_PKGS=()
+@@ -58,7 +58,7 @@ unset _bin
+ # The binary used for a `--version` smoke test: the CLI when shipped, else the app (which answers
+ # --version before opening a window).
+ smoke_bin() {
+-  if [ "$HAS_CLI" = 1 ]; then echo figcraft-cli; else echo figcraft; fi
++  if [ "$HAS_CLI" = 1 ]; then echo plervo-canvas-cli; else echo plervo-canvas; fi
+ }
+ 
+ # Emit a GitHub Actions warning (plain stderr outside Actions).
+@@ -80,10 +80,17 @@ warn() {
+ # Copy licence and readme files that exist into a package directory.
+ copy_docs() {
+   local dest="$1" f
+-  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE NOTICE COPYRIGHT; do
++  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md; do
+     if [ -f "$ROOT/$f" ]; then cp "$ROOT/$f" "$dest/"; fi
+   done
+   copy_font_licences "$dest"
++  # Embedded resources retain their original licence notices.
++  while IFS= read -r -d '' lic; do
++    local rel="${lic#"$ROOT/"}"
++    local file="${rel//\//_}"
++    cp "$lic" "$dest/LICENSE-bundled-$file.txt"
++  done < <(find "$ROOT/assets" -type f \( -iname '*license*' -o -iname '*licence*' -o -iname '*ofl*txt' -o -iname 'copyright*' \) -print0)
++
+ }
+ 
+ # Builds made with craft-fonts (CRAFT_FONTS_DIR, all official releases) embed its fonts, which
+diff --git a/packaging/freebsd/package.sh b/packaging/freebsd/package.sh
+index 6931676..9544daf 100755
+--- a/packaging/freebsd/package.sh
++++ b/packaging/freebsd/package.sh
+@@ -1,13 +1,13 @@
+ #!/usr/bin/env bash
+-# Build and package FigCraft for FreeBSD:
++# Build and package Plervo Canvas for FreeBSD:
+ #
+-#   $DIST/figcraft-<version>-freebsd-x86_64.tar.gz   a /usr/local-style tree:
+-#       figcraft-<version>-freebsd-x86_64/{bin, share/applications, share/icons, share/mime,
+-#       share/metainfo, share/doc/figcraft}
+-#   bin/ holds figcraft, plus figcraft-cli once apps/figcraft-cli exists.
++#   $DIST/plervo-canvas-<version>-freebsd-x86_64.tar.gz   a /usr/local-style tree:
++#       plervo-canvas-<version>-freebsd-x86_64/{bin, share/applications, share/icons, share/mime,
++#       share/metainfo, share/doc/plervo-canvas}
++#   bin/ holds plervo-canvas, plus plervo-canvas-cli once apps/figcraft-cli exists.
+ #
+ # Install by copying the tree's contents into /usr/local:
+-#   tar -xzf figcraft-<version>-freebsd-x86_64.tar.gz --strip-components 1 -C /usr/local
++#   tar -xzf plervo-canvas-<version>-freebsd-x86_64.tar.gz --strip-components 1 -C /usr/local
+ #
+ # Usage: packaging/freebsd/package.sh [--skip-build] [--dry-run]
+ #   --dry-run   stage the tree from stub binaries and list it, without building (works on any OS)
+@@ -17,7 +17,7 @@ set -euo pipefail
+ # shellcheck source=../env.sh
+ . "$(dirname "${BASH_SOURCE[0]}")/../env.sh"
+ LINUX="$ROOT/packaging/linux"
+-APP_ID=ai.storyteller.figcraft
++APP_ID=com.plervo.canvas
+ 
+ SKIP_BUILD=0
+ DRY_RUN=0
+@@ -41,9 +41,9 @@ if [ "$DRY_RUN" = 0 ] && [ "$(uname -s)" != FreeBSD ]; then
+   echo "error: build on FreeBSD (or pass --dry-run to check the tree layout)" >&2
+   exit 2
+ fi
+-BASENAME="figcraft-$VERSION-freebsd-$ARCH"
++BASENAME="plervo-canvas-$VERSION-freebsd-$ARCH"
+ 
+-echo "==> FigCraft $VERSION for FreeBSD $ARCH"
++echo "==> Plervo Canvas $VERSION for FreeBSD $ARCH"
+ 
+ # The release VM has 12 GB; full parallelism on the biggest crates runs it out of memory.
+ export CARGO_BUILD_JOBS="${CARGO_BUILD_JOBS:-4}"
+@@ -71,7 +71,7 @@ fi
+ # ---- stage a /usr/local-style tree --------------------------------------------------------------
+ # FreeBSD's install(1) has no -D: create the directories first.
+ mkdir -p "$STAGE/bin" "$STAGE/share/applications" "$STAGE/share/mime/packages" \
+-  "$STAGE/share/metainfo" "$STAGE/share/icons" "$STAGE/share/doc/figcraft"
++  "$STAGE/share/metainfo" "$STAGE/share/icons" "$STAGE/share/doc/plervo-canvas"
+ for b in "${BINS[@]}"; do
+   install -m 755 "$BIN/$b" "$STAGE/bin/"
+   strip "$STAGE/bin/$b" 2>/dev/null || true
+@@ -82,12 +82,12 @@ install -m 644 "$LINUX/$APP_ID.mime.xml" "$STAGE/share/mime/packages/$APP_ID.xml
+ sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$FIGCRAFT_BUILD_DATE/g" \
+   "$LINUX/$APP_ID.metainfo.xml.in" >"$STAGE/share/metainfo/$APP_ID.metainfo.xml"
+ cp -R "$ROOT/assets/app-icon/hicolor" "$STAGE/share/icons/"
+-copy_docs "$STAGE/share/doc/figcraft"
+-if [ -f "$ROOT/ATTRIBUTION.md" ]; then install -m 644 "$ROOT/ATTRIBUTION.md" "$STAGE/share/doc/figcraft/"; fi
++copy_docs "$STAGE/share/doc/plervo-canvas"
++if [ -f "$ROOT/ATTRIBUTION.md" ]; then install -m 644 "$ROOT/ATTRIBUTION.md" "$STAGE/share/doc/plervo-canvas/"; fi
+ 
+ for f in "${BINS[@]/#/bin/}" "share/applications/$APP_ID.desktop" \
+   "share/icons/hicolor/256x256/apps/$APP_ID.png" \
+-  share/doc/figcraft/LICENSE-MIT share/doc/figcraft/LICENSE-APACHE; do
++  share/doc/plervo-canvas/LICENSE-MIT share/doc/plervo-canvas/LICENSE-APACHE; do
+   if [ ! -e "$STAGE/$f" ]; then echo "error: $f is missing from the package" >&2; exit 1; fi
+ done
+ 
+diff --git a/packaging/linux/AppRun b/packaging/linux/AppRun
+index f329289..02aa42d 100755
+--- a/packaging/linux/AppRun
++++ b/packaging/linux/AppRun
+@@ -1,21 +1,21 @@
+ #!/bin/sh
+-# FigCraft AppImage entry point (packaging/linux/AppRun; installed by package.sh).
++# Plervo Canvas AppImage entry point (packaging/linux/AppRun; installed by package.sh).
+ #
+ # On Wayland the compositor resolves a window's dock icon by taking the window's
+-# app_id (ai.storyteller.figcraft) and looking up an installed .desktop file.
++# app_id (com.plervo.canvas) and looking up an installed .desktop file.
+ # An AppImage installs nothing, so every AppImage run would otherwise show the
+ # generic "Wayland" icon. Best-effort desktop integration: on first run
+ # (and whenever the AppImage's path changes) install the .desktop entry and the
+ # hicolor icons into $XDG_DATA_HOME, then launch. Every failure here must leave
+ # the launch untouched. Opt out with FIGCRAFT_NO_DESKTOP_INTEGRATION=1.
+ #
+-# `FigCraft.AppImage cli <args>` runs the bundled headless figcraft-cli with <args>
++# `Plervo Canvas.AppImage cli <args>` runs the bundled headless plervo-canvas-cli with <args>
+ # (e.g. `cli mcp`) instead of the app, without touching the desktop.
+ 
+ set -u
+ 
+ APPDIR="$(dirname "$(readlink -f "$0")")"
+-DESK_ID=ai.storyteller.figcraft
++DESK_ID=com.plervo.canvas
+ 
+ integrate() {
+   case "${FIGCRAFT_NO_DESKTOP_INTEGRATION:-}" in
+@@ -75,13 +75,13 @@ integrate() {
+ # desktop integration, straight to the binary.
+ if [ "${1:-}" = cli ]; then
+   shift
+-  cli="$APPDIR/usr/bin/figcraft-cli"
++  cli="$APPDIR/usr/bin/plervo-canvas-cli"
+   if [ ! -x "$cli" ]; then
+-    echo "figcraft: this AppImage was built without figcraft-cli" >&2
++    echo "plervo-canvas: this AppImage was built without plervo-canvas-cli" >&2
+     exit 127
+   fi
+   exec "$cli" "$@"
+ fi
+ 
+ integrate
+-exec "$APPDIR/usr/bin/figcraft" "$@"
++exec "$APPDIR/usr/bin/plervo-canvas" "$@"
+diff --git a/packaging/linux/ai.storyteller.figcraft.mime.xml b/packaging/linux/ai.storyteller.figcraft.mime.xml
+deleted file mode 100644
+index 7c18c9a..0000000
+--- a/packaging/linux/ai.storyteller.figcraft.mime.xml
++++ /dev/null
+@@ -1,11 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<!-- shared-mime-info definition for FigCraft's own document type (SVG, PNG and JPEG are already in
+-     the system database). Installed to /usr/share/mime/packages/ (update-mime-database runs on
+-     install). -->
+-<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+-  <mime-type type="application/x-figcraft">
+-    <comment>FigCraft document</comment>
+-    <icon name="ai.storyteller.figcraft"/>
+-    <glob pattern="*.figcraft"/>
+-  </mime-type>
+-</mime-info>
+diff --git a/packaging/linux/apprun-test.sh b/packaging/linux/apprun-test.sh
+index c6d98da..ae1f7ec 100755
+--- a/packaging/linux/apprun-test.sh
++++ b/packaging/linux/apprun-test.sh
+@@ -1,29 +1,29 @@
+ #!/usr/bin/env bash
+ # Smoke test for packaging/linux/AppRun: the AppImage's desktop integration writes
+ # and refreshes the host .desktop entry and icons, is idempotent, honours the opt-out
+-# and an unwritable HOME, and always launches the app; `cli` runs figcraft-cli instead.
++# and an unwritable HOME, and always launches the app; `cli` runs plervo-canvas-cli instead.
+ #
+ # Runs in seconds with no build (CI: .github/workflows/packaging-lint.yml).
+ set -euo pipefail
+ 
+ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ ROOT="$(cd "$HERE/../.." && pwd)"
+-APP_ID=ai.storyteller.figcraft
++APP_ID=com.plervo.canvas
+ 
+ TMP="$(mktemp -d)"
+ trap 'rm -rf "$TMP"' EXIT
+ 
+ # Fake AppDir with the real AppRun, .desktop template, icons, and a stub binary.
+-APPDIR="$TMP/FigCraft.AppDir"
++APPDIR="$TMP/Plervo Canvas.AppDir"
+ mkdir -p "$APPDIR/usr/bin"
+ install -Dm755 "$HERE/AppRun" "$APPDIR/AppRun"
+ install -Dm644 "$HERE/$APP_ID.desktop" "$APPDIR/usr/share/applications/$APP_ID.desktop"
+ mkdir -p "$APPDIR/usr/share/icons"
+ cp -R "$ROOT/assets/app-icon/hicolor" "$APPDIR/usr/share/icons/"
+-printf '#!/bin/sh\necho "stub: $*"\n' >"$APPDIR/usr/bin/figcraft"
+-chmod +x "$APPDIR/usr/bin/figcraft"
++printf '#!/bin/sh\necho "stub: $*"\n' >"$APPDIR/usr/bin/plervo-canvas"
++chmod +x "$APPDIR/usr/bin/plervo-canvas"
+ 
+-APPIMAGE="$TMP/figcraft test.AppImage" # spaces on purpose: Exec must stay quoted
++APPIMAGE="$TMP/plervo-canvas test.AppImage" # spaces on purpose: Exec must stay quoted
+ : >"$APPIMAGE"
+ export APPIMAGE
+ export HOME="$TMP/home"
+@@ -95,19 +95,19 @@ out="$(APPIMAGE="$odd" "$APPDIR/AppRun" x)" || fail "launch with an odd path exi
+ [ "$out" = "stub: x" ] || fail "odd path: $out"
+ [ ! -e "$XDG_DATA_HOME" ] || fail "integrated an AppImage path that needs escaping"
+ 
+-# 10. `cli <args>` runs figcraft-cli with the remaining arguments and integrates nothing.
++# 10. `cli <args>` runs plervo-canvas-cli with the remaining arguments and integrates nothing.
+ rm -rf "$XDG_DATA_HOME"
+-out="$("$APPDIR/AppRun" cli mcp --attach 7979 2>&1)" && fail "cli ran without figcraft-cli in the AppDir"
+-[ "$out" = "figcraft: this AppImage was built without figcraft-cli" ] || fail "missing cli: $out"
+-printf '#!/bin/sh\necho "cli stub: $*"\n' >"$APPDIR/usr/bin/figcraft-cli"
+-chmod +x "$APPDIR/usr/bin/figcraft-cli"
++out="$("$APPDIR/AppRun" cli mcp --attach 7979 2>&1)" && fail "cli ran without plervo-canvas-cli in the AppDir"
++[ "$out" = "plervo-canvas: this AppImage was built without plervo-canvas-cli" ] || fail "missing cli: $out"
++printf '#!/bin/sh\necho "cli stub: $*"\n' >"$APPDIR/usr/bin/plervo-canvas-cli"
++chmod +x "$APPDIR/usr/bin/plervo-canvas-cli"
+ out="$("$APPDIR/AppRun" cli mcp --attach 7979)" || fail "cli launch exited non-zero"
+ [ "$out" = "cli stub: mcp --attach 7979" ] || fail "cli arguments not forwarded: $out"
+ out="$("$APPDIR/AppRun" cli)" || fail "bare cli launch exited non-zero"
+ [ "$out" = "cli stub: " ] || fail "bare cli output: $out"
+ [ ! -e "$XDG_DATA_HOME" ] || fail "cli launch integrated the desktop"
+ # Only the first argument selects the CLI.
+-out="$("$APPDIR/AppRun" file.figcraft cli)" || fail "app launch with a later cli argument exited non-zero"
+-[ "$out" = "stub: file.figcraft cli" ] || fail "later cli argument hijacked the launch: $out"
++out="$("$APPDIR/AppRun" file.plervo-canvas cli)" || fail "app launch with a later cli argument exited non-zero"
++[ "$out" = "stub: file.plervo-canvas cli" ] || fail "later cli argument hijacked the launch: $out"
+ 
+ echo "AppRun desktop integration ok"
+diff --git a/packaging/linux/com.plervo.canvas.desktop b/packaging/linux/com.plervo.canvas.desktop
+new file mode 100644
+index 0000000..cdc4591
+--- /dev/null
++++ b/packaging/linux/com.plervo.canvas.desktop
+@@ -0,0 +1,14 @@
++[Desktop Entry]
++Type=Application
++Name=Plervo Canvas
++GenericName=Interface Design Tool
++Comment=Design and prototype user interfaces
++Exec=plervo-canvas %U
++TryExec=plervo-canvas
++Icon=com.plervo.canvas
++Terminal=false
++StartupNotify=true
++StartupWMClass=plervo-canvas
++Categories=Graphics;2DGraphics;VectorGraphics;X-Design;
++Keywords=design;interface;ui;ux;prototype;wireframe;mockup;vector;layout;components;
++MimeType=application/x-plervo-canvas;image/svg+xml;image/png;image/jpeg;x-scheme-handler/plervo-canvas;
+diff --git a/packaging/linux/com.plervo.canvas.metainfo.xml.in b/packaging/linux/com.plervo.canvas.metainfo.xml.in
+new file mode 100644
+index 0000000..2224348
+--- /dev/null
++++ b/packaging/linux/com.plervo.canvas.metainfo.xml.in
+@@ -0,0 +1,66 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
++     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
++<component type="desktop-application">
++  <id>com.plervo.canvas</id>
++  <metadata_license>CC0-1.0</metadata_license>
++  <project_license>MIT OR Apache-2.0</project_license>
++  <name>Plervo Canvas</name>
++  <summary>Design and prototype user interfaces</summary>
++  <developer id="ai.storyteller">
++    <name>Maintech Solutions LLC</name>
++  </developer>
++  <description>
++    <p>
++      Plervo Canvas is an open-source, native interface design and prototyping tool. Lay out screens
++      on an infinite canvas with frames, auto layout and constraints, build reusable components
++      and variants, and link screens into clickable prototypes.
++    </p>
++    <ul>
++      <li>Frames, vector shapes, text and images on an infinite canvas</li>
++      <li>Auto layout and constraints for responsive designs</li>
++      <li>Components, variants, shared styles and variables</li>
++      <li>Prototyping with interactions and transitions, and a presentation mode</li>
++      <li>Inspect panel with measurements and code snippets; SVG and PNG export</li>
++      <li>Every action is a command, scriptable from a CLI, a JSON control channel and an MCP server</li>
++    </ul>
++  </description>
++  <launchable type="desktop-id">com.plervo.canvas.desktop</launchable>
++  <icon type="stock">com.plervo.canvas</icon>
++  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
++  <url type="homepage">https://plervo.com/</url>
++  <url type="bugtracker">https://github.com/alportblu/plervo-pdf/issues</url>
++  <url type="help">https://github.com/alportblu/plervo-pdf</url>
++  <url type="contact">https://buymeacoffee.com/alport</url>
++  <categories>
++    <!-- Freedesktop registered categories only ("Design" isn't one; the .desktop file says X-Design). -->
++    <category>Graphics</category>
++    <category>2DGraphics</category>
++    <category>VectorGraphics</category>
++  </categories>
++  <keywords>
++    <keyword>interface design</keyword>
++    <keyword>prototyping</keyword>
++    <keyword>ui</keyword>
++    <keyword>wireframe</keyword>
++  </keywords>
++  <branding>
++    <color type="primary" scheme_preference="light">#9fd3ff</color>
++    <color type="primary" scheme_preference="dark">#0b5fa5</color>
++  </branding>
++  <requires>
++    <display_length compare="ge">760</display_length>
++  </requires>
++  <supports>
++    <control>keyboard</control>
++    <control>pointing</control>
++  </supports>
++  <provides>
++    <binary>plervo-canvas</binary>
++    <mediatype>application/x-plervo-canvas</mediatype>
++  </provides>
++  <content_rating type="oars-1.1"/>
++  <releases>
++    <release version="@VERSION@" date="@DATE@"/>
++  </releases>
++</component>
+diff --git a/packaging/linux/com.plervo.canvas.mime.xml b/packaging/linux/com.plervo.canvas.mime.xml
+new file mode 100644
+index 0000000..5219bd0
+--- /dev/null
++++ b/packaging/linux/com.plervo.canvas.mime.xml
+@@ -0,0 +1,11 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!-- shared-mime-info definition for Plervo Canvas's own document type (SVG, PNG and JPEG are already in
++     the system database). Installed to /usr/share/mime/packages/ (update-mime-database runs on
++     install). -->
++<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
++  <mime-type type="application/x-plervo-canvas">
++    <comment>Plervo Canvas document</comment>
++    <icon name="com.plervo.canvas"/>
++    <glob pattern="*.plervo-canvas"/>
++  </mime-type>
++</mime-info>
+diff --git a/packaging/linux/flatpak-bundle.sh b/packaging/linux/flatpak-bundle.sh
+index 127c3af..1bbf6d7 100755
+--- a/packaging/linux/flatpak-bundle.sh
++++ b/packaging/linux/flatpak-bundle.sh
+@@ -1,23 +1,23 @@
+ #!/usr/bin/env bash
+-# Repackage a FigCraft Linux tarball as a single-file Flatpak bundle:
++# Repackage a Plervo Canvas Linux tarball as a single-file Flatpak bundle:
+ #
+-#   $DIST/figcraft-<version>-linux-<arch>.flatpak
++#   $DIST/plervo-canvas-<version>-linux-<arch>.flatpak
+ #
+ # Usage: packaging/linux/flatpak-bundle.sh [--no-test] [TARBALL]
+ #
+-# TARBALL defaults to $DIST/figcraft-<version>-linux-<arch>.tar.gz from package.sh. The bundle
++# TARBALL defaults to $DIST/plervo-canvas-<version>-linux-<arch>.tar.gz from package.sh. The bundle
+ # is built for the host architecture (x86_64 or aarch64), which must match the tarball's.
+ # Needs flatpak, flatpak-builder and the SVG pixbuf loader (librsvg2-common) for the host's
+ # `appstreamcli compose`; the freedesktop runtime and SDK named in the manifest are
+ # installed per-user from Flathub. Unless --no-test, the bundle is then installed per-user and
+-# `figcraft-cli --version` (or `figcraft --version` without the CLI) is run inside the sandbox
++# `plervo-canvas-cli --version` (or `plervo-canvas --version` without the CLI) is run inside the sandbox
+ # as a smoke test.
+-# Manifest: packaging/linux/flatpak/ai.storyteller.figcraft.bundle.yml.
++# Manifest: packaging/linux/flatpak/com.plervo.canvas.bundle.yml.
+ set -euo pipefail
+ # shellcheck source=../env.sh
+ . "$(dirname "${BASH_SOURCE[0]}")/../env.sh"
+ HERE="$ROOT/packaging/linux"
+-APP_ID=ai.storyteller.figcraft
++APP_ID=com.plervo.canvas
+ FLATHUB=https://dl.flathub.org/repo/flathub.flatpakrepo
+ 
+ TEST=1
+@@ -37,20 +37,20 @@ case "$ARCH" in
+   aarch64 | arm64) ARCH=aarch64 ;;
+   *) echo "unsupported architecture $ARCH" >&2; exit 2 ;;
+ esac
+-BASENAME="figcraft-$VERSION-linux-$ARCH"
++BASENAME="plervo-canvas-$VERSION-linux-$ARCH"
+ TARBALL="${TARBALL:-$DIST/$BASENAME.tar.gz}"
+ [ -f "$TARBALL" ] || { echo "error: $TARBALL not found (run packaging/linux/package.sh --formats tar first)" >&2; exit 1; }
+ for tool in flatpak flatpak-builder; do
+   command -v "$tool" >/dev/null || { echo "error: $tool not found (apt install flatpak flatpak-builder librsvg2-common)" >&2; exit 1; }
+ done
+ 
+-echo "==> FigCraft $VERSION Flatpak bundle for $ARCH from $(basename "$TARBALL")"
++echo "==> Plervo Canvas $VERSION Flatpak bundle for $ARCH from $(basename "$TARBALL")"
+ 
+ WORK="$CARGO_TARGET_DIR/flatpak-bundle"
+ rm -rf "$WORK"
+ mkdir -p "$WORK/stage"
+ tar -xzf "$TARBALL" -C "$WORK/stage" --strip-components=1
+-[ -x "$WORK/stage/bin/figcraft" ] || { echo "error: $TARBALL has no bin/figcraft" >&2; exit 1; }
++[ -x "$WORK/stage/bin/plervo-canvas" ] || { echo "error: $TARBALL has no bin/plervo-canvas" >&2; exit 1; }
+ cp "$HERE/flatpak/$APP_ID.bundle.yml" "$WORK/$APP_ID.yml"
+ 
+ flatpak remote-add --user --if-not-exists flathub "$FLATHUB"
+@@ -66,7 +66,7 @@ echo "wrote $OUT"
+ if [ "$TEST" = 1 ]; then
+   flatpak install --user -y --noninteractive --reinstall "$OUT"
+   flatpak info --user "$APP_ID"
+-  if [ -x "$WORK/stage/bin/figcraft-cli" ]; then smoke=figcraft-cli; else smoke=figcraft; fi
++  if [ -x "$WORK/stage/bin/plervo-canvas-cli" ]; then smoke=plervo-canvas-cli; else smoke=plervo-canvas; fi
+   flatpak run --command="$smoke" "$APP_ID" --version
+   flatpak run --command=sh "$APP_ID" -c 'ls /app/share/applications /app/share/metainfo /app/share/mime/packages /app/share/icons/hicolor/256x256/apps'
+ fi
+diff --git a/packaging/linux/flatpak/com.plervo.canvas.bundle.yml b/packaging/linux/flatpak/com.plervo.canvas.bundle.yml
+new file mode 100644
+index 0000000..f3023ba
+--- /dev/null
++++ b/packaging/linux/flatpak/com.plervo.canvas.bundle.yml
+@@ -0,0 +1,51 @@
++# Flatpak manifest for the single-file bundle attached to every GitHub release
++# (plervo-canvas-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
++#
++# It repackages the release's own Linux tarball (plervo-canvas-<version>-linux-<arch>.tar.gz,
++# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
++# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
++# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
++# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
++# Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
++# GPU driver comes from its org.freedesktop.Platform.GL extension.
++#
++# com.plervo.canvas.yml (same directory) is the from-source manifest for Flathub. Keep
++# runtime-version and finish-args identical in both (packaging-lint checks this).
++id: com.plervo.canvas
++runtime: org.freedesktop.Platform
++runtime-version: '26.08'
++sdk: org.freedesktop.Sdk
++command: plervo-canvas
++finish-args:
++  # Display: Wayland first; X11 only when no Wayland compositor is running.
++  - --socket=wayland
++  - --socket=fallback-x11
++  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
++  - --share=ipc
++  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
++  - --device=dri
++  # Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
++  # drag-and-drop through the document portal, so picked files work anywhere without broad
++  # filesystem access. Pictures and Documents are granted so files passed by path (the command
++  # line, Open Recent, "Save" next to the original) work in the usual places.
++  - --filesystem=xdg-pictures
++  - --filesystem=xdg-documents
++  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
++  # the sandbox; `flatpak override --user --share=network com.plervo.canvas` exposes it to
++  # host agents) and home/host filesystem access.
++modules:
++  - name: plervo-canvas
++    buildsystem: simple
++    build-commands:
++      - install -Dm755 bin/plervo-canvas /app/bin/plervo-canvas
++      # The headless CLI, in tarballs built with apps/plervo-canvas-cli.
++      - if [ -x bin/plervo-canvas-cli ]; then install -Dm755 bin/plervo-canvas-cli /app/bin/plervo-canvas-cli; fi
++      - install -Dm644 share/applications/com.plervo.canvas.desktop /app/share/applications/com.plervo.canvas.desktop
++      # .plervo-canvas; the runtime's shared-mime-info already knows SVG, PNG and JPEG.
++      - install -Dm644 share/mime/packages/com.plervo.canvas.xml /app/share/mime/packages/com.plervo.canvas.xml
++      # Already has the release's version and date substituted by package.sh.
++      - install -Dm644 share/metainfo/com.plervo.canvas.metainfo.xml /app/share/metainfo/com.plervo.canvas.metainfo.xml
++      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/plervo-canvas /app/share/doc/
++    sources:
++      - type: dir
++        path: stage
+diff --git a/packaging/linux/flatpak/com.plervo.canvas.yml b/packaging/linux/flatpak/com.plervo.canvas.yml
+new file mode 100644
+index 0000000..d5ae186
+--- /dev/null
++++ b/packaging/linux/flatpak/com.plervo.canvas.yml
+@@ -0,0 +1,73 @@
++# Flatpak manifest for Plervo Canvas, ready for a Flathub submission.
++#
++# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
++#
++#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
++#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
++#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/com.plervo.canvas.yml
++#   flatpak run com.plervo.canvas
++#
++# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
++# The single-file .flatpak attached to each release comes from com.plervo.canvas.bundle.yml,
++# which repackages the prebuilt release binaries. Keep runtime-version and finish-args identical.
++#
++# Official release binaries embed craft-fonts (storytold/craft-fonts, OFL fonts); this from-source
++# build doesn't (add it as a git source and set CRAFT_FONTS_DIR to include it), so it uses the
++# runtime's system fonts.
++id: com.plervo.canvas
++runtime: org.freedesktop.Platform
++runtime-version: '26.08'
++sdk: org.freedesktop.Sdk
++sdk-extensions:
++  - org.freedesktop.Sdk.Extension.rust-stable
++command: plervo-canvas
++finish-args:
++  # Display: Wayland first; X11 only when no Wayland compositor is running.
++  - --socket=wayland
++  - --socket=fallback-x11
++  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
++  - --share=ipc
++  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
++  - --device=dri
++  # Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
++  # drag-and-drop through the document portal, so picked files work anywhere without broad
++  # filesystem access. Pictures and Documents are granted so files passed by path (the command
++  # line, Open Recent, "Save" next to the original) work in the usual places.
++  - --filesystem=xdg-pictures
++  - --filesystem=xdg-documents
++  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
++  # the sandbox; `flatpak override --user --share=network com.plervo.canvas` exposes it to
++  # host agents) and home/host filesystem access.
++build-options:
++  append-path: /usr/lib/sdk/rust-stable/bin
++modules:
++  - name: plervo-canvas
++    buildsystem: simple
++    build-options:
++      env:
++        CARGO_HOME: /run/build/plervo-canvas/cargo
++        CARGO_NET_OFFLINE: 'true'
++        # .cargo/config.toml points CRAFT_FONTS_DIR at ../craft-fonts for local builds; there is
++        # none here, so build without it (a warning, not an error).
++        CRAFT_FONTS_DIR: /nonexistent
++    build-commands:
++      - cargo --offline build --release --locked -p plervo-canvas
++      - install -Dm755 target/release/plervo-canvas /app/bin/plervo-canvas
++      - install -Dm644 packaging/linux/com.plervo.canvas.desktop /app/share/applications/com.plervo.canvas.desktop
++      - install -Dm644 packaging/linux/com.plervo.canvas.mime.xml /app/share/mime/packages/com.plervo.canvas.xml
++      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
++      - >-
++        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
++        install -d /app/share/metainfo;
++        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
++        packaging/linux/com.plervo.canvas.metainfo.xml.in > /app/share/metainfo/com.plervo.canvas.metainfo.xml
++    sources:
++      - type: dir
++        path: ../../..
++        skip:
++          - target
++          - dist
++          - corpus
++          - build-flatpak
++          - .flatpak-builder
++      - cargo-sources.json
+diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
+index 69667a2..b5d625b 100644
+--- a/packaging/linux/nfpm.yaml
++++ b/packaging/linux/nfpm.yaml
+@@ -1,10 +1,10 @@
+ # .deb and .rpm packages (nfpm: https://nfpm.goreleaser.com). Run by package.sh, which stages
+ # the file tree, substitutes its path for ${STAGE} (nfpm doesn't expand env vars in `src`),
+-# drops the lines marked `#cli` when the workspace has no apps/figcraft-cli, and exports VERSION,
++# drops the lines marked `#cli` when the workspace has no apps/plervo-canvas-cli, and exports VERSION,
+ # NFPM_ARCH and FIGCRAFT_MAINTAINER.
+ #
+ #   nfpm package -f packaging/linux/nfpm.yaml -p deb -t dist/release/
+-name: figcraft
++name: plervo-canvas
+ arch: ${NFPM_ARCH}
+ platform: linux
+ version: ${VERSION}
+@@ -14,8 +14,8 @@ release: 1
+ section: graphics
+ priority: optional
+ maintainer: ${FIGCRAFT_MAINTAINER}
+-vendor: Learning Machines LLC
+-homepage: https://getartcraft.com/apps/figcraft
++vendor: Maintech Solutions LLC
++homepage: https://plervo.com/
+ license: MIT OR Apache-2.0
+ description: |-
+   Open-source, native interface design and prototyping tool.
+@@ -66,11 +66,11 @@ overrides:
+       - xdg-desktop-portal
+ 
+ contents:
+-  - src: ${STAGE}/usr/bin/figcraft
+-    dst: /usr/bin/figcraft
++  - src: ${STAGE}/usr/bin/plervo-canvas
++    dst: /usr/bin/plervo-canvas
+     file_info: { mode: 0755 }
+-  - src: ${STAGE}/usr/bin/figcraft-cli #cli
+-    dst: /usr/bin/figcraft-cli #cli
++  - src: ${STAGE}/usr/bin/plervo-canvas-cli #cli
++    dst: /usr/bin/plervo-canvas-cli #cli
+     file_info: { mode: 0755 } #cli
+   - src: ${STAGE}/usr/share/
+     dst: /usr/share/
+diff --git a/packaging/linux/package.sh b/packaging/linux/package.sh
+index 20da2f7..e1e98ac 100755
+--- a/packaging/linux/package.sh
++++ b/packaging/linux/package.sh
+@@ -1,13 +1,13 @@
+ #!/usr/bin/env bash
+-# Build and package FigCraft for Linux (<arch> is x86_64 or aarch64, or riscv64 when cross-compiling):
++# Build and package Plervo Canvas for Linux (<arch> is x86_64 or aarch64, or riscv64 when cross-compiling):
+ #
+-#   $DIST/figcraft-<version>-linux-<arch>.AppImage  any distro with glibc >= the build host's
+-#   $DIST/figcraft-<version>-linux-<arch>.AppImage.zsync  delta updates (needs zsyncmake)
+-#   $DIST/figcraft-<version>-linux-<arch>.deb       Debian, Ubuntu, Mint, Pop!_OS, ...
+-#   $DIST/figcraft-<version>-linux-<arch>.rpm       Fedora, openSUSE, RHEL, ...
+-#   $DIST/figcraft-<version>-linux-<arch>.tar.gz    plain FHS-style tree (bin/, share/)
++#   $DIST/plervo-canvas-<version>-linux-<arch>.AppImage  any distro with glibc >= the build host's
++#   $DIST/plervo-canvas-<version>-linux-<arch>.AppImage.zsync  delta updates (needs zsyncmake)
++#   $DIST/plervo-canvas-<version>-linux-<arch>.deb       Debian, Ubuntu, Mint, Pop!_OS, ...
++#   $DIST/plervo-canvas-<version>-linux-<arch>.rpm       Fedora, openSUSE, RHEL, ...
++#   $DIST/plervo-canvas-<version>-linux-<arch>.tar.gz    plain FHS-style tree (bin/, share/)
+ #
+-# figcraft-cli is built and shipped next to figcraft once apps/figcraft-cli exists.
++# plervo-canvas-cli is built and shipped next to plervo-canvas once apps/figcraft-cli exists.
+ #
+ # Usage: packaging/linux/package.sh [--skip-build] [--formats "appimage deb rpm tar"]
+ #
+@@ -23,7 +23,7 @@ set -euo pipefail
+ # shellcheck source=../env.sh
+ . "$(dirname "${BASH_SOURCE[0]}")/../env.sh"
+ HERE="$ROOT/packaging/linux"
+-APP_ID=ai.storyteller.figcraft
++APP_ID=com.plervo.canvas
+ 
+ SKIP_BUILD=0
+ FORMATS="appimage deb rpm tar"
+@@ -43,10 +43,10 @@ case "$ARCH" in
+   aarch64 | arm64) ARCH=aarch64; DEB_ARCH=arm64 ;;
+   *) echo "unsupported architecture $ARCH" >&2; exit 2 ;;
+ esac
+-export FIGCRAFT_MAINTAINER="${FIGCRAFT_MAINTAINER:-FigCraft maintainers <figcraft@storyteller.ai>}"
+-BASENAME="figcraft-$VERSION-linux-$ARCH"
++export FIGCRAFT_MAINTAINER="${FIGCRAFT_MAINTAINER:-Plervo Canvas maintainers <plervo-canvas@storyteller.ai>}"
++BASENAME="plervo-canvas-$VERSION-linux-$ARCH"
+ 
+-echo "==> FigCraft $VERSION for Linux $ARCH ($FORMATS; ${BINS[*]})"
++echo "==> Plervo Canvas $VERSION for Linux $ARCH ($FORMATS; ${BINS[*]})"
+ 
+ if [ "$SKIP_BUILD" = 0 ]; then
+   (cd "$ROOT" && cargo build --release --locked "${CARGO_PKGS[@]}" ${CROSS_TARGET:+--target "$CROSS_TARGET"})
+@@ -68,8 +68,8 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$FIGCRAFT_BUILD_DATE/g" \
+   "$HERE/$APP_ID.metainfo.xml.in" >"$STAGE/usr/share/metainfo/$APP_ID.metainfo.xml"
+ mkdir -p "$STAGE/usr/share/icons"
+ cp -R "$ROOT/assets/app-icon/hicolor" "$STAGE/usr/share/icons/"
+-mkdir -p "$STAGE/usr/share/doc/figcraft"
+-copy_docs "$STAGE/usr/share/doc/figcraft"
++mkdir -p "$STAGE/usr/share/doc/plervo-canvas"
++copy_docs "$STAGE/usr/share/doc/plervo-canvas"
+ 
+ if command -v desktop-file-validate >/dev/null; then
+   desktop-file-validate "$STAGE/usr/share/applications/$APP_ID.desktop"
+@@ -105,7 +105,7 @@ fi
+ 
+ # ---- AppImage -----------------------------------------------------------------------------------
+ if has appimage; then
+-  APPDIR="$WORK/FigCraft.AppDir"
++  APPDIR="$WORK/Plervo Canvas.AppDir"
+   cp -R "$STAGE" "$APPDIR"
+   mv "$APPDIR/usr/share/doc" "$WORK/doc-unused"
+   # AppRun is a script, not a symlink: it installs the .desktop entry and icons into
+@@ -136,8 +136,8 @@ if has appimage; then
+   # file and fetch only the blocks that changed in a newer release, through the .zsync published
+   # next to each AppImage on GitHub Releases. `latest` is the newest published release that is
+   # not a pre-release. A fork's builds point at its own releases through GITHUB_REPOSITORY.
+-  REPO="${GITHUB_REPOSITORY:-storytold/figcraft}"
+-  UPDATE_INFO="gh-releases-zsync|${REPO%%/*}|${REPO#*/}|latest|figcraft-*-linux-$ARCH.AppImage.zsync"
++  REPO="${GITHUB_REPOSITORY:-alportblu/plervo-pdf}"
++  UPDATE_INFO="gh-releases-zsync|${REPO%%/*}|${REPO#*/}|latest|plervo-canvas-*-linux-$ARCH.AppImage.zsync"
+   # Extract-and-run: works without FUSE (containers, CI). The output embeds the static runtime,
+   # so users don't need libfuse2 either. With zsyncmake on the host (CI installs the zsync
+   # package) appimagetool also writes the .zsync, into its working directory, hence the cd.
+diff --git a/packaging/macos/Info.plist.in b/packaging/macos/Info.plist.in
+index bbcec20..8a5f23c 100644
+--- a/packaging/macos/Info.plist.in
++++ b/packaging/macos/Info.plist.in
+@@ -7,13 +7,13 @@
+   <key>CFBundleDevelopmentRegion</key>
+   <string>en</string>
+   <key>CFBundleDisplayName</key>
+-  <string>FigCraft</string>
++  <string>Plervo Canvas</string>
+   <key>CFBundleName</key>
+-  <string>FigCraft</string>
++  <string>Plervo Canvas</string>
+   <key>CFBundleExecutable</key>
+-  <string>FigCraft</string>
++  <string>Plervo Canvas</string>
+   <key>CFBundleIdentifier</key>
+-  <string>ai.storyteller.figcraft</string>
++  <string>com.plervo.canvas</string>
+   <key>CFBundleInfoDictionaryVersion</key>
+   <string>6.0</string>
+   <key>CFBundlePackageType</key>
+@@ -24,12 +24,12 @@
+   <string>@SHORT_VERSION@</string>
+   <key>CFBundleVersion</key>
+   <string>@SHORT_VERSION@</string>
+-  <key>FigCraftVersion</key>
++  <key>Plervo CanvasVersion</key>
+   <string>@VERSION@</string>
+-  <key>FigCraftBuildCommit</key>
++  <key>Plervo CanvasBuildCommit</key>
+   <string>@BUILD_SHA@</string>
+   <key>CFBundleIconFile</key>
+-  <string>FigCraft</string>
++  <string>Plervo Canvas</string>
+   <key>LSApplicationCategoryType</key>
+   <string>public.app-category.graphics-design</string>
+   <!-- Must match MACOSX_DEPLOYMENT_TARGET in package.sh. Big Sur is the first release on
+@@ -43,43 +43,43 @@
+   <key>NSRequiresAquaSystemAppearance</key>
+   <false/>
+   <key>NSHumanReadableCopyright</key>
+-  <string>Copyright © the FigCraft authors. MIT OR Apache-2.0.</string>
++  <string>Copyright © the Plervo Canvas authors. MIT OR Apache-2.0.</string>
+ 
+-  <!-- FigCraft's own format. -->
++  <!-- Plervo Canvas's own format. -->
+   <key>UTExportedTypeDeclarations</key>
+   <array>
+     <dict>
+       <key>UTTypeIdentifier</key>
+-      <string>ai.storyteller.figcraft.document</string>
++      <string>com.plervo.canvas.document</string>
+       <key>UTTypeDescription</key>
+-      <string>FigCraft Document</string>
++      <string>Plervo Canvas Document</string>
+       <key>UTTypeConformsTo</key>
+       <array>
+         <string>public.data</string>
+         <string>public.content</string>
+       </array>
+       <key>UTTypeIconFile</key>
+-      <string>FigCraft</string>
++      <string>Plervo Canvas</string>
+       <key>UTTypeTagSpecification</key>
+       <dict>
+         <key>public.filename-extension</key>
+-        <array><string>figcraft</string></array>
++        <array><string>plervo-canvas</string></array>
+         <key>public.mime-type</key>
+-        <array><string>application/x-figcraft</string></array>
++        <array><string>application/x-plervo-canvas</string></array>
+       </dict>
+     </dict>
+   </array>
+ 
+-  <!-- figcraft://join?... live session invite links open FigCraft. -->
++  <!-- plervo-canvas://join?... live session invite links open Plervo Canvas. -->
+   <key>CFBundleURLTypes</key>
+   <array>
+     <dict>
+       <key>CFBundleURLName</key>
+-      <string>ai.storyteller.figcraft.invite</string>
++      <string>com.plervo.canvas.invite</string>
+       <key>CFBundleTypeRole</key>
+       <string>Editor</string>
+       <key>CFBundleURLSchemes</key>
+-      <array><string>figcraft</string></array>
++      <array><string>plervo-canvas</string></array>
+     </dict>
+   </array>
+ 
+@@ -87,15 +87,15 @@
+   <array>
+     <dict>
+       <key>CFBundleTypeName</key>
+-      <string>FigCraft Document</string>
++      <string>Plervo Canvas Document</string>
+       <key>CFBundleTypeRole</key>
+       <string>Editor</string>
+       <key>LSHandlerRank</key>
+       <string>Owner</string>
+       <key>CFBundleTypeIconFile</key>
+-      <string>FigCraft</string>
++      <string>Plervo Canvas</string>
+       <key>LSItemContentTypes</key>
+-      <array><string>ai.storyteller.figcraft.document</string></array>
++      <array><string>com.plervo.canvas.document</string></array>
+     </dict>
+     <!-- Offered under "Open With", never forced as the default. -->
+     <dict>
+diff --git a/packaging/macos/entitlements.plist b/packaging/macos/entitlements.plist
+index 2ad453c..d410050 100644
+--- a/packaging/macos/entitlements.plist
++++ b/packaging/macos/entitlements.plist
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+-<!-- Hardened-runtime entitlements for FigCraft. Deliberately empty: the app is pure Rust,
++<!-- Hardened-runtime entitlements for Plervo Canvas. Deliberately empty: the app is pure Rust,
+      loads no unsigned code, needs no JIT, and is not sandboxed (it opens files by path, from the
+      command line and drag-and-drop). Add exceptions here only with a reason in a comment. -->
+ <plist version="1.0">
+diff --git a/packaging/macos/import-cert.sh b/packaging/macos/import-cert.sh
+index 1150163..8dd815f 100755
+--- a/packaging/macos/import-cert.sh
++++ b/packaging/macos/import-cert.sh
+@@ -18,8 +18,8 @@ if [ -z "${APPLE_CERTIFICATE:-}" ]; then
+ fi
+ 
+ TMP="${RUNNER_TEMP:-${TMPDIR:-/tmp}}"
+-KEYCHAIN="$TMP/figcraft-signing.keychain-db"
+-CERT="$TMP/figcraft-signing.p12"
++KEYCHAIN="$TMP/plervo-canvas-signing.keychain-db"
++CERT="$TMP/plervo-canvas-signing.p12"
+ KC_PASS="${KEYCHAIN_PASSWORD:-$(openssl rand -hex 24)}"
+ 
+ trap 'rm -f "$CERT"' EXIT
+diff --git a/packaging/macos/package.sh b/packaging/macos/package.sh
+index 87abe94..b1047c8 100755
+--- a/packaging/macos/package.sh
++++ b/packaging/macos/package.sh
+@@ -1,8 +1,8 @@
+ #!/usr/bin/env bash
+ # Build, sign and (optionally) notarize the macOS release artifacts:
+ #
+-#   $DIST/figcraft-<version>-macos-<arch>.dmg          FigCraft.app on a drag-to-Applications DMG
+-#   $DIST/figcraft-cli-<version>-macos-<arch>.zip      the headless CLI (when apps/figcraft-cli exists)
++#   $DIST/plervo-canvas-<version>-macos-<arch>.dmg          Plervo Canvas.app on a drag-to-Applications DMG
++#   $DIST/plervo-canvas-cli-<version>-macos-<arch>.zip      the headless CLI (when apps/figcraft-cli exists)
+ #
+ # Usage: packaging/macos/package.sh [--arch universal|aarch64|x86_64] [--skip-build]
+ #
+@@ -39,9 +39,9 @@ export MACOSX_DEPLOYMENT_TARGET=11.0
+ IDENTITY="${MACOS_SIGN_IDENTITY:--}"
+ SHORT_VERSION="${VERSION%%-*}"
+ WORK="$CARGO_TARGET_DIR/macos-package"
+-APP="$WORK/FigCraft.app"
+-DMG="$DIST/figcraft-$VERSION-macos-$ARCH.dmg"
+-CLI_ZIP="$DIST/figcraft-cli-$VERSION-macos-$ARCH.zip"
++APP="$WORK/Plervo Canvas.app"
++DMG="$DIST/plervo-canvas-$VERSION-macos-$ARCH.dmg"
++CLI_ZIP="$DIST/plervo-canvas-cli-$VERSION-macos-$ARCH.zip"
+ 
+ NOTARIZE=0
+ if [ "$IDENTITY" = "-" ]; then
+@@ -52,7 +52,7 @@ else
+   warn "macOS: APPLE_ID / APPLE_PASSWORD / APPLE_TEAM_ID incomplete; signed but not notarized"
+ fi
+ 
+-echo "==> FigCraft $VERSION for macOS ($ARCH; ${BINS[*]}), identity: $IDENTITY, notarize: $NOTARIZE"
++echo "==> Plervo Canvas $VERSION for macOS ($ARCH; ${BINS[*]}), identity: $IDENTITY, notarize: $NOTARIZE"
+ 
+ # ---- build -------------------------------------------------------------------------------------
+ if [ "$SKIP_BUILD" = 0 ]; then
+@@ -98,23 +98,23 @@ notarize() {
+ }
+ 
+ # ---- icon --------------------------------------------------------------------------------------
+-# The .icns is generated here from the committed PNGs (assets/app-icon/figcraft-<size>.png, made by
++# The .icns is generated here from the committed PNGs (assets/app-icon/plervo-canvas-<size>.png, made by
+ # `cargo xtask icon`); it is never committed.
+ ICONS="$ROOT/assets/app-icon"
+-ICONSET="$WORK/FigCraft.iconset"
++ICONSET="$WORK/Plervo Canvas.iconset"
+ mkdir -p "$ICONSET"
+ for s in 16 32 128 256 512; do
+-  cp "$ICONS/figcraft-$s.png" "$ICONSET/icon_${s}x${s}.png"
+-  cp "$ICONS/figcraft-$((s * 2)).png" "$ICONSET/icon_${s}x${s}@2x.png"
++  cp "$ICONS/plervo-canvas-$s.png" "$ICONSET/icon_${s}x${s}.png"
++  cp "$ICONS/plervo-canvas-$((s * 2)).png" "$ICONSET/icon_${s}x${s}@2x.png"
+ done
+-iconutil -c icns -o "$WORK/FigCraft.icns" "$ICONSET"
++iconutil -c icns -o "$WORK/Plervo Canvas.icns" "$ICONSET"
+ 
+-# ---- FigCraft.app ------------------------------------------------------------------------------
++# ---- Plervo Canvas.app ------------------------------------------------------------------------------
+ echo "==> assembling $APP"
+ mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
+ # Executable and icon carry the display name (CFBundleExecutable / CFBundleIconFile).
+-cp "$WORK/bin/figcraft" "$APP/Contents/MacOS/FigCraft"
+-cp "$WORK/FigCraft.icns" "$APP/Contents/Resources/FigCraft.icns"
++cp "$WORK/bin/plervo-canvas" "$APP/Contents/MacOS/Plervo Canvas"
++cp "$WORK/Plervo Canvas.icns" "$APP/Contents/Resources/Plervo Canvas.icns"
+ # Licences of the embedded craft-fonts fonts (only when built with CRAFT_FONTS_DIR).
+ if [ -n "${CRAFT_FONTS_DIR:-}" ]; then
+   mkdir -p "$APP/Contents/Resources/Licenses"
+@@ -125,16 +125,18 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
+   "$HERE/Info.plist.in" >"$APP/Contents/Info.plist"
+ plutil -lint "$APP/Contents/Info.plist"
+ printf 'APPL????' >"$APP/Contents/PkgInfo"
++mkdir -p "$APP/Contents/Resources/Licenses"
++copy_docs "$APP/Contents/Resources/Licenses"
+ 
+ # Sign inside-out: nested code first, then the bundle itself (no --deep on the final signature).
+ # Today the only nested code is the main executable; frameworks/helpers would be signed here too.
+-sign --options runtime --entitlements "$HERE/entitlements.plist" "$APP/Contents/MacOS/FigCraft"
++sign --options runtime --entitlements "$HERE/entitlements.plist" "$APP/Contents/MacOS/Plervo Canvas"
+ sign --options runtime --entitlements "$HERE/entitlements.plist" "$APP"
+ codesign --verify --strict --deep --verbose=2 "$APP"
+ 
+ if [ "$NOTARIZE" = 1 ]; then
+-  ditto -c -k --keepParent "$APP" "$WORK/FigCraft-notarize.zip"
+-  notarize "$WORK/FigCraft-notarize.zip"
++  ditto -c -k --keepParent "$APP" "$WORK/Plervo Canvas-notarize.zip"
++  notarize "$WORK/Plervo Canvas-notarize.zip"
+   retry xcrun stapler staple "$APP"
+   retry xcrun stapler validate "$APP"
+   spctl --assess --type execute -vvv "$APP"
+@@ -144,12 +146,12 @@ fi
+ echo "==> building $DMG"
+ STAGE="$WORK/dmg"
+ mkdir -p "$STAGE"
+-ditto "$APP" "$STAGE/FigCraft.app"
++ditto "$APP" "$STAGE/Plervo Canvas.app"
+ ln -s /Applications "$STAGE/Applications"
+ rm -f "$DMG" "$WORK/raw.dmg"
+ # makehybrid + convert builds the image without attaching a device, unlike `create -srcfolder`,
+ # which is flaky on CI runners ("Resource busy") and hangs in sandboxed sessions.
+-hdiutil makehybrid -hfs -hfs-volume-name "FigCraft" -hfs-openfolder "$STAGE" -o "$WORK/raw.dmg" "$STAGE"
++hdiutil makehybrid -hfs -hfs-volume-name "Plervo Canvas" -hfs-openfolder "$STAGE" -o "$WORK/raw.dmg" "$STAGE"
+ hdiutil convert "$WORK/raw.dmg" -format UDZO -imagekey zlib-level=9 -o "$DMG"
+ rm -f "$WORK/raw.dmg"
+ sign "$DMG"
+@@ -164,25 +166,25 @@ fi
+ # ---- CLI ---------------------------------------------------------------------------------------
+ if [ "$HAS_CLI" = 1 ]; then
+   echo "==> building $CLI_ZIP"
+-  CLI_DIR="$WORK/figcraft-cli-$VERSION-macos-$ARCH"
++  CLI_DIR="$WORK/plervo-canvas-cli-$VERSION-macos-$ARCH"
+   mkdir -p "$CLI_DIR"
+-  cp "$WORK/bin/figcraft-cli" "$CLI_DIR/"
++  cp "$WORK/bin/plervo-canvas-cli" "$CLI_DIR/"
+   copy_docs "$CLI_DIR"
+   # Same Developer ID and hardened runtime as the app, with an explicit reverse-DNS identifier
+   # (codesign would otherwise use the bare file name).
+-  sign --options runtime --identifier ai.storyteller.figcraft-cli "$CLI_DIR/figcraft-cli"
+-  codesign --verify --strict --verbose=2 "$CLI_DIR/figcraft-cli"
++  sign --options runtime --identifier com.plervo.canvas-cli "$CLI_DIR/plervo-canvas-cli"
++  codesign --verify --strict --verbose=2 "$CLI_DIR/plervo-canvas-cli"
+   rm -f "$CLI_ZIP"
+   ditto -c -k --keepParent "$CLI_DIR" "$CLI_ZIP"
+   # notarytool accepts a zip of the bare binary. A bare Mach-O can't carry a stapled ticket, so
+   # Gatekeeper looks the notarization up online when a quarantined copy first runs.
+   if [ "$NOTARIZE" = 1 ]; then notarize "$CLI_ZIP"; fi
+-  "$WORK/bin/figcraft-cli" --version
++  "$WORK/bin/plervo-canvas-cli" --version
+ else
+   warn "apps/figcraft-cli is not in this workspace: no CLI zip"
+   rm -f "$CLI_ZIP"
+ fi
+ 
+-"$WORK/bin/figcraft" --version
++"$WORK/bin/plervo-canvas" --version
+ echo "==> done (check the artifacts as shipped with packaging/macos/verify.sh --arch $ARCH)"
+-ls -lh "$DIST"/figcraft*-"$VERSION"-macos-"$ARCH".*
++ls -lh "$DIST"/plervo-canvas*-"$VERSION"-macos-"$ARCH".*
+diff --git a/packaging/macos/verify.sh b/packaging/macos/verify.sh
+index 6080cf8..711ea8e 100755
+--- a/packaging/macos/verify.sh
++++ b/packaging/macos/verify.sh
+@@ -1,8 +1,8 @@
+ #!/usr/bin/env bash
+ # Check the macOS release artifacts exactly as users download them:
+ #
+-#   $DIST/figcraft-<version>-macos-<arch>.dmg       signed, notarized, ticket stapled
+-#   $DIST/figcraft-cli-<version>-macos-<arch>.zip   (when apps/figcraft-cli exists) unpacked here; the binary inside must be
++#   $DIST/plervo-canvas-<version>-macos-<arch>.dmg       signed, notarized, ticket stapled
++#   $DIST/plervo-canvas-cli-<version>-macos-<arch>.zip   (when apps/figcraft-cli exists) unpacked here; the binary inside must be
+ #                                                    Developer ID signed with the hardened runtime,
+ #                                                    timestamped and notarized
+ #
+@@ -37,8 +37,8 @@ case "$ARCH" in
+   *) echo "unknown --arch $ARCH" >&2; exit 2 ;;
+ esac
+ 
+-DMG="$DIST/figcraft-$VERSION-macos-$ARCH.dmg"
+-CLI_ZIP="$DIST/figcraft-cli-$VERSION-macos-$ARCH.zip"
++DMG="$DIST/plervo-canvas-$VERSION-macos-$ARCH.dmg"
++CLI_ZIP="$DIST/plervo-canvas-cli-$VERSION-macos-$ARCH.zip"
+ IDENTITY="${MACOS_SIGN_IDENTITY:--}"
+ STRICT=0
+ if [ "$IDENTITY" != "-" ] && [ -n "${APPLE_ID:-}" ] && [ -n "${APPLE_PASSWORD:-}" ] && [ -n "${APPLE_TEAM_ID:-}" ]; then
+@@ -79,16 +79,16 @@ for f in "${FILES[@]}"; do
+   fi
+ done
+ 
+-WORK="$(mktemp -d "${RUNNER_TEMP:-${TMPDIR:-/tmp}}/figcraft-verify.XXXXXX")"
++WORK="$(mktemp -d "${RUNNER_TEMP:-${TMPDIR:-/tmp}}/plervo-canvas-verify.XXXXXX")"
+ trap 'rm -rf "$WORK"' EXIT
+ 
+ # ---- CLI zip (when apps/figcraft-cli exists) ----------------------------------------------------
+ if [ "$HAS_CLI" = 1 ]; then
+   echo "==> $(basename "$CLI_ZIP")"
+   ditto -x -k "$CLI_ZIP" "$WORK/cli"
+-  CLI="$WORK/cli/figcraft-cli-$VERSION-macos-$ARCH/figcraft-cli"
++  CLI="$WORK/cli/plervo-canvas-cli-$VERSION-macos-$ARCH/plervo-canvas-cli"
+   if [ ! -x "$CLI" ]; then
+-    echo "error: $(basename "$CLI_ZIP") has no executable figcraft-cli-$VERSION-macos-$ARCH/figcraft-cli" >&2
++    echo "error: $(basename "$CLI_ZIP") has no executable plervo-canvas-cli-$VERSION-macos-$ARCH/plervo-canvas-cli" >&2
+     exit 1
+   fi
+ 
+@@ -96,7 +96,7 @@ if [ "$HAS_CLI" = 1 ]; then
+   for a in $WANT_ARCHS; do
+     case " $archs " in
+       *" $a "*) ;;
+-      *) echo "error: figcraft-cli lacks $a (has: $archs)" >&2; exit 1 ;;
++      *) echo "error: plervo-canvas-cli lacks $a (has: $archs)" >&2; exit 1 ;;
+     esac
+   done
+ 
+@@ -106,22 +106,22 @@ if [ "$HAS_CLI" = 1 ]; then
+   printf '%s\n' "$details" | grep -E '^(Identifier|Format|CodeDirectory|Authority|Timestamp|TeamIdentifier)[= ]' || true
+ 
+   printf '%s\n' "$details" | grep -Eq '^CodeDirectory .*flags=0x[0-9a-f]+\([^)]*runtime' \
+-    || fail "figcraft-cli is not signed with the hardened runtime"
++    || fail "plervo-canvas-cli is not signed with the hardened runtime"
+   printf '%s\n' "$details" | grep -q '^Authority=Developer ID Application:' \
+-    || fail "figcraft-cli is not signed with a Developer ID Application identity"
++    || fail "plervo-canvas-cli is not signed with a Developer ID Application identity"
+   printf '%s\n' "$details" | grep -q '^Timestamp=' \
+-    || fail "figcraft-cli signature has no secure timestamp"
++    || fail "plervo-canvas-cli signature has no secure timestamp"
+   if [ -n "${APPLE_TEAM_ID:-}" ]; then
+     printf '%s\n' "$details" | grep -qx "TeamIdentifier=$APPLE_TEAM_ID" \
+-      || fail "figcraft-cli is signed by a different team"
++      || fail "plervo-canvas-cli is signed by a different team"
+   fi
+   if gk="$(assess --assess --type install -vv "$CLI")"; then
+     printf '%s\n' "$gk"
+     printf '%s\n' "$gk" | grep -q 'source=Notarized Developer ID' \
+-      || fail "Gatekeeper accepts figcraft-cli but not as notarized"
++      || fail "Gatekeeper accepts plervo-canvas-cli but not as notarized"
+   else
+     printf '%s\n' "$gk"
+-    fail "Gatekeeper rejects figcraft-cli (not notarized?)"
++    fail "Gatekeeper rejects plervo-canvas-cli (not notarized?)"
+   fi
+   "$CLI" --version
+ fi
+diff --git a/packaging/server/Caddyfile b/packaging/server/Caddyfile
+index cd34394..e99acc1 100644
+--- a/packaging/server/Caddyfile
++++ b/packaging/server/Caddyfile
+@@ -1,18 +1,18 @@
+-# Caddy in front of figcraft-server; setup in docs/server.md ("Deploy on a Linux server").
++# Caddy in front of plervo-canvas-server; setup in docs/server.md ("Deploy on a Linux server").
+ # Replace the host name with yours (its DNS must point at this machine). Caddy obtains and renews
+ # the certificate and passes WebSocket upgrades through by itself. Put this in /etc/caddy/Caddyfile
+ # and run `sudo systemctl reload caddy` (install.sh does all this for you).
+ # Caddy tells the server who each client is (X-Forwarded-For): set trusted_proxy = "127.0.0.1" in
+ # server.toml so per-address limits and blocks count clients, not Caddy.
+ 
+-figcraft.example.com {
++plervo-canvas.example.com {
+ 	reverse_proxy 127.0.0.1:47900
+ }
+ 
+-# Under a path of an existing site instead (then public_url = "wss://example.com/figcraft/"):
++# Under a path of an existing site instead (then public_url = "wss://example.com/plervo-canvas/"):
+ #
+ # example.com {
+-# 	handle /figcraft/* {
++# 	handle /plervo-canvas/* {
+ # 		reverse_proxy 127.0.0.1:47900
+ # 	}
+ # }
+diff --git a/packaging/server/Dockerfile b/packaging/server/Dockerfile
+index 56f27ea..056fbf8 100644
+--- a/packaging/server/Dockerfile
++++ b/packaging/server/Dockerfile
+@@ -1,26 +1,26 @@
+-# figcraft-server in a container; setup in docs/server.md ("Deploy on a Linux server"). Build from
++# plervo-canvas-server in a container; setup in docs/server.md ("Deploy on a Linux server"). Build from
+ # the repository root:
+ #
+-#   docker build -f packaging/server/Dockerfile -t figcraft-server .
++#   docker build -f packaging/server/Dockerfile -t plervo-canvas-server .
+ #
+ # The image runs as an unprivileged user, keeps its files in the /data volume and reads
+-# /etc/figcraft-server/server.toml (listen on 0.0.0.0:47900, data in /data; mount your own to set
++# /etc/plervo-canvas-server/server.toml (listen on 0.0.0.0:47900, data in /data; mount your own to set
+ # public_url). `docker stop` sends SIGTERM: the server saves open files and stops gracefully.
+ 
+ FROM rust:1-bookworm AS build
+ WORKDIR /src
+ COPY . .
+-RUN cargo build --release --locked -p figcraft-server \
++RUN cargo build --release --locked -p plervo-canvas-server \
+  && mkdir -p /out/data \
+  && printf 'listen = "0.0.0.0:47900"\ndata = "/data"\n' > /out/server.toml
+ 
+ # glibc and libgcc only, no shell; "nonroot" is uid 65532.
+ FROM gcr.io/distroless/cc-debian12:nonroot
+-COPY --from=build /src/target/release/figcraft-server /usr/local/bin/figcraft-server
+-COPY --from=build /out/server.toml /etc/figcraft-server/server.toml
++COPY --from=build /src/target/release/plervo-canvas-server /usr/local/bin/plervo-canvas-server
++COPY --from=build /out/server.toml /etc/plervo-canvas-server/server.toml
+ COPY --from=build --chown=nonroot:nonroot /out/data /data
+ USER nonroot
+ VOLUME /data
+ EXPOSE 47900
+ STOPSIGNAL SIGTERM
+-ENTRYPOINT ["/usr/local/bin/figcraft-server", "--config", "/etc/figcraft-server/server.toml"]
++ENTRYPOINT ["/usr/local/bin/plervo-canvas-server", "--config", "/etc/plervo-canvas-server/server.toml"]
+diff --git a/packaging/server/figcraft-backup.service b/packaging/server/figcraft-backup.service
+deleted file mode 100644
+index fc93a3e..0000000
+--- a/packaging/server/figcraft-backup.service
++++ /dev/null
+@@ -1,20 +0,0 @@
+-# Nightly backup of figcraft-server's data directory (an example; docs/server.md, "Backups").
+-# install.sh installs it with figcraft-backup.timer; turn it on with
+-#   sudo systemctl enable --now figcraft-backup.timer
+-# It checks there is room for the copy (twice the data directory's size free), stops the server
+-# for the few seconds the copy takes (apps reconnect on their own), writes
+-# /var/backups/figcraft-server/figcraft-YYYY-MM-DD.tar.gz (readable by root only) and keeps the last
+-# 7 days. The archives hold every file, the addresses files came from, the reports and the server
+-# key: keep them, and any copy off the machine, as private as the server itself.
+-
+-[Unit]
+-Description=Back up figcraft-server's data directory
+-After=figcraft-server.service
+-
+-[Service]
+-Type=oneshot
+-Nice=10
+-IOSchedulingClass=idle
+-UMask=0077
+-# `$$` and `%%` are a literal `$` and `%` for the shell (systemd expands the single ones).
+-ExecStart=/bin/sh -ec 'dir=/var/backups/figcraft-server; install -d -m 700 "$$dir"; need=$$(du -sk /var/lib/figcraft-server | cut -f1); free=$$(df -k --output=avail "$$dir" | tail -n 1); if [ "$$free" -lt $$((need * 2)) ]; then echo "not enough free space for a backup ($$free KiB free, $$need KiB of data)" >&2; exit 1; fi; systemctl stop figcraft-server; trap "systemctl start figcraft-server" EXIT; tar -C /var/lib -czf "$$dir/figcraft-$$(date +%%F).tar.gz" figcraft-server; find "$$dir" -name "figcraft-*.tar.gz" -mtime +7 -delete'
+diff --git a/packaging/server/figcraft-backup.timer b/packaging/server/figcraft-backup.timer
+deleted file mode 100644
+index ff2a15d..0000000
+--- a/packaging/server/figcraft-backup.timer
++++ /dev/null
+@@ -1,14 +0,0 @@
+-# Runs figcraft-backup.service every night (see that file).
+-#   sudo systemctl enable --now figcraft-backup.timer
+-#   systemctl list-timers figcraft-backup.timer
+-
+-[Unit]
+-Description=Nightly backup of figcraft-server's data directory
+-
+-[Timer]
+-OnCalendar=*-*-* 04:00:00
+-RandomizedDelaySec=30min
+-Persistent=true
+-
+-[Install]
+-WantedBy=timers.target
+diff --git a/packaging/server/install-test.sh b/packaging/server/install-test.sh
+index 303d08d..afbecd4 100755
+--- a/packaging/server/install-test.sh
++++ b/packaging/server/install-test.sh
+@@ -15,7 +15,7 @@ fail() { printf 'FAIL: %s\n' "$*" >&2; FAILED=1; }
+ 
+ # Missing: ours.
+ main "$WORK/none" >"$WORK/out"
+-grep -qx 'import figcraft-server.caddy' "$WORK/out" || fail "a new Caddyfile imports our site"
++grep -qx 'import plervo-canvas-server.caddy' "$WORK/out" || fail "a new Caddyfile imports our site"
+ grep -q 'email ops@example.com' "$WORK/out" || fail "a new Caddyfile has the certificate email"
+ 
+ # The example site the package ships: replaced by ours.
+@@ -28,7 +28,7 @@ printf 'shop.example.com {\n\treverse_proxy 127.0.0.1:8080\n}\n' >"$WORK/theirs"
+ cp "$WORK/theirs" "$WORK/run1"
+ main "$WORK/run1" >"$WORK/run2"
+ grep -q 'shop.example.com' "$WORK/run2" || fail "the operator's site is kept"
+-[ "$(grep -c 'import figcraft-server.caddy' "$WORK/run2")" = 1 ] || fail "one import line is added"
++[ "$(grep -c 'import plervo-canvas-server.caddy' "$WORK/run2")" = 1 ] || fail "one import line is added"
+ main "$WORK/run2" >"$WORK/run3"
+ cmp -s "$WORK/run2" "$WORK/run3" || fail "running again leaves a Caddyfile with other sites as it is"
+ main "$WORK/run3" >"$WORK/run4"
+diff --git a/packaging/server/install.sh b/packaging/server/install.sh
+index 11c489a..a839221 100755
+--- a/packaging/server/install.sh
++++ b/packaging/server/install.sh
+@@ -1,14 +1,14 @@
+ #!/usr/bin/env bash
+-# Install or upgrade figcraft-server on a Debian or Ubuntu machine, behind Caddy (TLS), as a
++# Install or upgrade plervo-canvas-server on a Debian or Ubuntu machine, behind Caddy (TLS), as a
+ # server open to the public. See docs/server.md ("Running a public server").
+ #
+-#   sudo ./install.sh --host figcraft.example.com --email you@example.com
++#   sudo ./install.sh --host plervo-canvas.example.com --email you@example.com
+ #
+ # The binary comes from this folder when it is an unpacked release archive; else it is built from
+ # the source tree around this script (a copy of the repository); else it is the latest release for
+ # this machine (checked against SHA256SUMS.txt); else it is built from a fresh clone of the latest
+ # release tag. Builds run as an unprivileged user, with a temporary swap file under 2 GB of memory.
+-# It makes the `figcraft` user, its data directory and /etc/figcraft-server/server.toml (only when
++# It makes the `plervo-canvas` user, its data directory and /etc/plervo-canvas-server/server.toml (only when
+ # missing: your edits are kept), installs the systemd units and its own Caddy site, opens SSH, 80
+ # and 443 in ufw and starts it all. Safe to run again: it upgrades and restarts only on change.
+ #
+@@ -27,17 +27,17 @@
+ #   -h, --help         this text
+ set -euo pipefail
+ 
+-REPO="storytold/figcraft"
+-CONFIG_DIR=/etc/figcraft-server
++REPO="alportblu/plervo-pdf"
++CONFIG_DIR=/etc/plervo-canvas-server
+ CONFIG="$CONFIG_DIR/server.toml"
+-DATA=/var/lib/figcraft-server
+-BIN=/usr/local/bin/figcraft-server
+-BUILD=/var/cache/figcraft-build
+-BUILDER=figcraft-build
++DATA=/var/lib/plervo-canvas-server
++BIN=/usr/local/bin/plervo-canvas-server
++BUILD=/var/cache/plervo-canvas-build
++BUILDER=plervo-canvas-build
+ # Root's own work (downloads, its clone, the swap file, the built binary once copied out): never
+ # a place the build user can touch.
+-WORK=/var/cache/figcraft-install
+-SERVICE=figcraft-server
++WORK=/var/cache/plervo-canvas-install
++SERVICE=plervo-canvas-server
+ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ # The source tree this script sits in (packaging/server/ of a copy or checkout), if any.
+ LOCAL_SRC=""
+@@ -60,19 +60,19 @@ say() { printf '==> %s\n' "$*"; }
+ warn() { printf 'install.sh: warning: %s\n' "$*" >&2; }
+ die() { printf 'install.sh: %s\n' "$*" >&2; exit 1; }
+ 
+-MARK="# figcraft-server (install.sh)"
++MARK="# plervo-canvas-server (install.sh)"
+ 
+ caddy_main() { # caddy_main FILE EMAIL: the main Caddyfile to install, on stdout
+   local file="$1" email="$2"
+-  if [ -f "$file" ] && grep -qE '^[[:space:]]*import[[:space:]]+figcraft-server\.caddy[[:space:]]*$' "$file"; then
++  if [ -f "$file" ] && grep -qE '^[[:space:]]*import[[:space:]]+plervo-canvas-server\.caddy[[:space:]]*$' "$file"; then
+     cat "$file" # it imports our site already: kept exactly as it is
+   elif [ ! -f "$file" ] || ! grep -qvE '^[[:space:]]*(#|$|:80|\{|\}|root|file_server)' "$file"; then
+     # Missing, or only the example site the package ships: ours, with the certificate email.
+-    printf '%s\n{\n\temail %s\n}\n\nimport figcraft-server.caddy\n' "$MARK" "$email"
++    printf '%s\n{\n\temail %s\n}\n\nimport plervo-canvas-server.caddy\n' "$MARK" "$email"
+   else
+     # Someone else's sites: kept, with one line added that imports ours.
+     cat "$file"
+-    printf '\nimport figcraft-server.caddy\n'
++    printf '\nimport plervo-canvas-server.caddy\n'
+   fi
+ }
+ 
+@@ -111,10 +111,10 @@ ask() { # ask VAR "question" FLAG: read an answer from the terminal when the val
+     printf -v "$var" '%s' "$answer"
+   fi
+ }
+-ask HOST "DNS name people will use (e.g. figcraft.example.com):" "--host"
++ask HOST "DNS name people will use (e.g. plervo-canvas.example.com):" "--host"
+ ask EMAIL "Email for Let's Encrypt and the abuse contact shown to users:" "--email"
+ case "$HOST" in
+-  "" | *[!A-Za-z0-9.-]* | .* | *. ) die "--host must be a DNS name like figcraft.example.com" ;;
++  "" | *[!A-Za-z0-9.-]* | .* | *. ) die "--host must be a DNS name like plervo-canvas.example.com" ;;
+ esac
+ case "$EMAIL" in
+   *@*.*) ;;
+@@ -150,7 +150,7 @@ from_release() { # download and check the release archive; sets NEW_BIN and FILE
+     version="$(curl -fsSL "https://api.github.com/repos/$REPO/releases/latest" | sed -n 's/.*"tag_name": *"v\([^"]*\)".*/\1/p' | head -n 1)" || return 1
+     [ -n "$version" ] || return 1
+   fi
+-  name="figcraft-server-$version-linux-$ARCH"
++  name="plervo-canvas-server-$version-linux-$ARCH"
+   dir="$WORK/release"
+   rm -rf "$dir"
+   mkdir -p "$dir"
+@@ -159,7 +159,7 @@ from_release() { # download and check the release archive; sets NEW_BIN and FILE
+   curl -fsSL -o "$dir/SHA256SUMS.txt" "https://github.com/$REPO/releases/download/v$version/SHA256SUMS.txt" || return 1
+   (cd "$dir" && grep " $name.tar.gz\$" SHA256SUMS.txt | sha256sum -c --quiet -) || die "the download doesn't match SHA256SUMS.txt"
+   tar -C "$dir" -xzf "$dir/$name.tar.gz"
+-  NEW_BIN="$dir/$name/figcraft-server"
++  NEW_BIN="$dir/$name/plervo-canvas-server"
+   FILES="$dir/$name"
+ }
+ 
+@@ -225,36 +225,36 @@ from_source() { # build the source tree around this script, else a fresh clone;
+     swapon "$SWAP"
+     export CARGO_BUILD_JOBS=1
+   fi
+-  (cd "$copy" && as_builder "$BUILD/cargo/bin/cargo" build --release --locked -p figcraft-server)
++  (cd "$copy" && as_builder "$BUILD/cargo/bin/cargo" build --release --locked -p plervo-canvas-server)
+   cleanup
+   SWAP=""
+   # Copied out with the build user's rights into a file root made: a link the build user planted
+   # can't make root read (or install) anything else.
+-  NEW_BIN="$WORK/figcraft-server.built"
++  NEW_BIN="$WORK/plervo-canvas-server.built"
+   rm -f "$NEW_BIN"
+-  as_builder cat "$BUILD/target/release/figcraft-server" >"$NEW_BIN" || die "the build left no binary"
++  as_builder cat "$BUILD/target/release/plervo-canvas-server" >"$NEW_BIN" || die "the build left no binary"
+   chmod 755 "$NEW_BIN"
+   FILES="$src/packaging/server"
+ }
+ 
+-if [ -x "$HERE/figcraft-server" ] && [ "$FROM_SOURCE" = false ]; then
+-  NEW_BIN="$HERE/figcraft-server" # run from an unpacked release archive
++if [ -x "$HERE/plervo-canvas-server" ] && [ "$FROM_SOURCE" = false ]; then
++  NEW_BIN="$HERE/plervo-canvas-server" # run from an unpacked release archive
+ elif [ -n "$LOCAL_SRC" ] && [ -z "$VERSION" ]; then
+   from_source # the source copied to (or checked out on) this machine, as it is
+ elif [ "$FROM_SOURCE" = true ] || ! from_release; then
+   [ "$FROM_SOURCE" = true ] || say "No release archive for linux-$ARCH: building from source instead"
+   from_source
+ fi
+-[ -x "$NEW_BIN" ] || die "no figcraft-server binary to install"
++[ -x "$NEW_BIN" ] || die "no plervo-canvas-server binary to install"
+ # The units and the Caddyfile beside this script when it has them (a checkout or an archive).
+-[ -f "$HERE/figcraft-backup.timer" ] && FILES="$HERE"
+-for f in figcraft-server.service Caddyfile figcraft-backup.service figcraft-backup.timer; do
++[ -f "$HERE/plervo-canvas-backup.timer" ] && FILES="$HERE"
++for f in plervo-canvas-server.service Caddyfile plervo-canvas-backup.service plervo-canvas-backup.timer; do
+   [ -f "$FILES/$f" ] || die "$FILES/$f is missing"
+ done
+ 
+ # The server's own account runs the binary, from here on too (root never runs what was built).
+-id -u figcraft >/dev/null 2>&1 || useradd --system --home-dir "$DATA" --shell /usr/sbin/nologin figcraft
+-as_server() { runuser -u figcraft -- "$@"; }
++id -u plervo-canvas >/dev/null 2>&1 || useradd --system --home-dir "$DATA" --shell /usr/sbin/nologin plervo-canvas
++as_server() { runuser -u plervo-canvas -- "$@"; }
+ 
+ CHANGED=false
+ if ! cmp -s "$NEW_BIN" "$BIN"; then
+@@ -265,12 +265,12 @@ if ! cmp -s "$NEW_BIN" "$BIN"; then
+ fi
+ 
+ # --- Data and settings ----------------------------------------------------------------------
+-install -d -o figcraft -g figcraft -m 700 "$DATA"
++install -d -o plervo-canvas -g plervo-canvas -m 700 "$DATA"
+ install -d -m 755 "$CONFIG_DIR"
+ if [ ! -f "$CONFIG" ]; then
+   say "Writing $CONFIG"
+   {
+-    printf '# figcraft-server settings (docs/server.md, "Configuration"). install.sh never overwrites this file.\n'
++    printf '# plervo-canvas-server settings (docs/server.md, "Configuration"). install.sh never overwrites this file.\n'
+     printf 'listen = "127.0.0.1:47900"\n'
+     printf 'data = "%s"\n' "$DATA"
+     printf 'public_url = "wss://%s/"\n' "$HOST"
+@@ -300,7 +300,7 @@ if [ ! -f "$CONFIG" ]; then
+   CHANGED=true
+ fi
+ as_server "$BIN" --config "$CONFIG" check >/dev/null ||
+-  die "$CONFIG isn't right for this figcraft-server (see above; a release older than open hosting needs --from-source)"
++  die "$CONFIG isn't right for this plervo-canvas-server (see above; a release older than open hosting needs --from-source)"
+ 
+ install_file() { # install_file SOURCE TARGET MODE: true when it changed
+   if cmp -s "$1" "$2"; then return 1; fi
+@@ -309,37 +309,37 @@ install_file() { # install_file SOURCE TARGET MODE: true when it changed
+ 
+ # --- systemd --------------------------------------------------------------------------------
+ UNITS=false
+-install_file "$FILES/figcraft-server.service" /etc/systemd/system/figcraft-server.service 644 && UNITS=true
+-install_file "$FILES/figcraft-backup.service" /etc/systemd/system/figcraft-backup.service 644 && UNITS=true
+-install_file "$FILES/figcraft-backup.timer" /etc/systemd/system/figcraft-backup.timer 644 && UNITS=true
++install_file "$FILES/plervo-canvas-server.service" /etc/systemd/system/plervo-canvas-server.service 644 && UNITS=true
++install_file "$FILES/plervo-canvas-backup.service" /etc/systemd/system/plervo-canvas-backup.service 644 && UNITS=true
++install_file "$FILES/plervo-canvas-backup.timer" /etc/systemd/system/plervo-canvas-backup.timer 644 && UNITS=true
+ if [ "$UNITS" = true ]; then
+   systemctl daemon-reload
+   CHANGED=true
+ fi
+ systemctl enable --quiet "$SERVICE"
+ if [ "$CHANGED" = true ] || ! systemctl is-active --quiet "$SERVICE"; then
+-  say "Starting figcraft-server"
++  say "Starting plervo-canvas-server"
+   systemctl restart "$SERVICE"
+ fi
+ if [ "$BACKUPS" = true ]; then
+-  systemctl enable --now --quiet figcraft-backup.timer
++  systemctl enable --now --quiet plervo-canvas-backup.timer
+ fi
+ 
+ # --- Caddy ----------------------------------------------------------------------------------
+ # Our site lives in a file of its own; the main Caddyfile only imports it (caddy_main). A
+ # Caddyfile with other sites is never replaced: it only gains the import line, once.
+ CADDYFILE=/etc/caddy/Caddyfile
+-SITE_FILE=/etc/caddy/figcraft-server.caddy
++SITE_FILE=/etc/caddy/plervo-canvas-server.caddy
+ SITE="$(mktemp)"
+ MAIN="$(mktemp)"
+ {
+   printf '%s: written by packaging/server/install.sh (run it again to update).\n' "$MARK"
+-  sed -e '/^#/d' -e "s/figcraft\.example\.com/$HOST/" "$FILES/Caddyfile" | sed -e '/./,$!d'
++  sed -e '/^#/d' -e "s/plervo-canvas\.example\.com/$HOST/" "$FILES/Caddyfile" | sed -e '/./,$!d'
+ } >"$SITE"
+ caddy_main "$CADDYFILE" "$EMAIL" >"$MAIN"
+ CADDY_CHANGED=false
+ for f in "$CADDYFILE" "$SITE_FILE"; do
+-  if [ -f "$f" ]; then cp -p "$f" "$f.before-figcraft"; else rm -f "$f.before-figcraft"; fi
++  if [ -f "$f" ]; then cp -p "$f" "$f.before-plervo-canvas"; else rm -f "$f.before-plervo-canvas"; fi
+ done
+ install_file "$SITE" "$SITE_FILE" 644 && CADDY_CHANGED=true
+ install_file "$MAIN" "$CADDYFILE" 644 && CADDY_CHANGED=true
+@@ -347,7 +347,7 @@ rm -f "$SITE" "$MAIN"
+ if [ "$CADDY_CHANGED" = true ]; then
+   if ! caddy validate --config "$CADDYFILE" --adapter caddyfile >/dev/null 2>&1; then
+     for f in "$CADDYFILE" "$SITE_FILE"; do
+-      if [ -f "$f.before-figcraft" ]; then cp -p "$f.before-figcraft" "$f"; else rm -f "$f"; fi
++      if [ -f "$f.before-plervo-canvas" ]; then cp -p "$f.before-plervo-canvas" "$f"; else rm -f "$f"; fi
+     done
+     die "Caddy doesn't accept the new configuration (the old one is back; see: caddy validate --config $CADDYFILE)"
+   fi
+@@ -388,13 +388,13 @@ for _ in $(seq 1 50); do
+   curl -fs http://127.0.0.1:47900/healthz >/dev/null && break
+   sleep 0.2
+ done
+-curl -fs http://127.0.0.1:47900/healthz >/dev/null || die "figcraft-server isn't answering: journalctl -u $SERVICE"
+-ADMIN="sudo -u figcraft figcraft-server --config $CONFIG"
++curl -fs http://127.0.0.1:47900/healthz >/dev/null || die "plervo-canvas-server isn't answering: journalctl -u $SERVICE"
++ADMIN="sudo -u plervo-canvas plervo-canvas-server --config $CONFIG"
+ cat <<EOF
+ 
+-figcraft-server is running behind Caddy.
++plervo-canvas-server is running behind Caddy.
+ 
+-  Publish:   in FigCraft, Share > Publish to server..., address wss://$HOST/
++  Publish:   in Plervo Canvas, Share > Publish to server..., address wss://$HOST/
+              $(if [ "$OPEN" = true ]; then echo "(open to the public: no key needed; each file gets an owner token)"; else echo "(with the key: $ADMIN key)"; fi)
+   Check:     curl https://$HOST/healthz      (once DNS points here and Caddy has its certificate)
+   Logs:      journalctl -u $SERVICE -f
+@@ -405,7 +405,7 @@ figcraft-server is running behind Caddy.
+              $ADMIN block-ip ADDRESS      (unblock-ip, blocked)
+   Server key: $ADMIN key
+   Settings:  $CONFIG (then: systemctl restart $SERVICE)
+-  Backups:   systemctl enable --now figcraft-backup.timer   (nightly, to /var/backups/figcraft-server;
++  Backups:   systemctl enable --now plervo-canvas-backup.timer   (nightly, to /var/backups/plervo-canvas-server;
+              the archives hold every file and the server key: keep them as private as the server)
+   Upgrade:   run this script again
+ 
+diff --git a/packaging/server/nginx.conf b/packaging/server/nginx.conf
+index 5dac37e..61538b2 100644
+--- a/packaging/server/nginx.conf
++++ b/packaging/server/nginx.conf
+@@ -1,5 +1,5 @@
+-# nginx in front of figcraft-server; setup in docs/server.md ("Deploy on a Linux server").
+-# Put this in /etc/nginx/conf.d/figcraft.conf (it goes inside nginx's http block), replace the
++# nginx in front of plervo-canvas-server; setup in docs/server.md ("Deploy on a Linux server").
++# Put this in /etc/nginx/conf.d/plervo-canvas.conf (it goes inside nginx's http block), replace the
+ # host name and the certificate paths (these are certbot's), then `sudo nginx -t` and
+ # `sudo systemctl reload nginx`.
+ 
+@@ -12,21 +12,21 @@ map $http_upgrade $connection_upgrade {
+ server {
+     listen 80;
+     listen [::]:80;
+-    server_name figcraft.example.com;
++    server_name plervo-canvas.example.com;
+     return 301 https://$host$request_uri;
+ }
+ 
+ server {
+     listen 443 ssl;
+     listen [::]:443 ssl;
+-    server_name figcraft.example.com;
++    server_name plervo-canvas.example.com;
+ 
+-    ssl_certificate     /etc/letsencrypt/live/figcraft.example.com/fullchain.pem;
+-    ssl_certificate_key /etc/letsencrypt/live/figcraft.example.com/privkey.pem;
++    ssl_certificate     /etc/letsencrypt/live/plervo-canvas.example.com/fullchain.pem;
++    ssl_certificate_key /etc/letsencrypt/live/plervo-canvas.example.com/privkey.pem;
+     ssl_protocols       TLSv1.2 TLSv1.3;
+ 
+-    # Under a path instead: `location /figcraft/ { ... }` with the same lines, and
+-    # public_url = "wss://figcraft.example.com/figcraft/".
++    # Under a path instead: `location /plervo-canvas/ { ... }` with the same lines, and
++    # public_url = "wss://plervo-canvas.example.com/plervo-canvas/".
+     location / {
+         proxy_pass http://127.0.0.1:47900;
+         proxy_http_version 1.1;
+diff --git a/packaging/server/package.sh b/packaging/server/package.sh
+index 7d2f9c5..a3b23ff 100755
+--- a/packaging/server/package.sh
++++ b/packaging/server/package.sh
+@@ -1,9 +1,9 @@
+ #!/usr/bin/env bash
+ # Build and package the collaboration server for this machine (see docs/server.md):
+ #
+-#   $DIST/figcraft-server-<version>-<os>-<arch>.tar.gz
++#   $DIST/plervo-canvas-server-<version>-<os>-<arch>.tar.gz
+ #
+-# One directory with the figcraft-server binary, the licences, docs/server.md and the deployment
++# One directory with the plervo-canvas-server binary, the licences, docs/server.md and the deployment
+ # files (install.sh, systemd units, Caddyfile, nginx). A headless binary: no desktop files, no fonts.
+ #
+ # Usage: packaging/server/package.sh [--skip-build]
+@@ -26,24 +26,24 @@ case "$ARCH" in
+   arm64) ARCH=aarch64 ;;
+   amd64) ARCH=x86_64 ;;
+ esac
+-NAME="figcraft-server-$VERSION-$OS-$ARCH"
+-echo "==> figcraft-server $VERSION for $OS $ARCH"
++NAME="plervo-canvas-server-$VERSION-$OS-$ARCH"
++echo "==> plervo-canvas-server $VERSION for $OS $ARCH"
+ 
+ if [ "$SKIP_BUILD" = 0 ]; then
+-  (cd "$ROOT" && cargo build --release --locked -p figcraft-server)
++  (cd "$ROOT" && cargo build --release --locked -p plervo-canvas-server)
+ fi
+ WORK="$CARGO_TARGET_DIR/server-package"
+ STAGE="$WORK/$NAME"
+ rm -rf "$WORK"
+ mkdir -p "$STAGE"
+-cp "$CARGO_TARGET_DIR/release/figcraft-server" "$STAGE/"
+-strip "$STAGE/figcraft-server" 2>/dev/null || true
++cp "$CARGO_TARGET_DIR/release/plervo-canvas-server" "$STAGE/"
++strip "$STAGE/plervo-canvas-server" 2>/dev/null || true
+ for f in LICENSE-MIT LICENSE-APACHE NOTICE docs/server.md; do cp "$ROOT/$f" "$STAGE/"; done
+-cp "$HERE/figcraft-server.service" "$HERE/figcraft-backup.service" "$HERE/figcraft-backup.timer" "$HERE/Caddyfile" "$HERE/nginx.conf" "$STAGE/"
++cp "$HERE/plervo-canvas-server.service" "$HERE/plervo-canvas-backup.service" "$HERE/plervo-canvas-backup.timer" "$HERE/Caddyfile" "$HERE/nginx.conf" "$STAGE/"
+ install -m 755 "$HERE/install.sh" "$STAGE/"
+ 
+ # Smoke test: the binary runs and reports the version being shipped.
+-"$STAGE/figcraft-server" --version | grep -F "$VERSION"
++"$STAGE/plervo-canvas-server" --version | grep -F "$VERSION"
+ 
+ tar -C "$WORK" -czf "$DIST/$NAME.tar.gz" "$NAME"
+ echo "==> $DIST/$NAME.tar.gz"
+diff --git a/packaging/server/plervo-canvas-backup.service b/packaging/server/plervo-canvas-backup.service
+new file mode 100644
+index 0000000..d66063f
+--- /dev/null
++++ b/packaging/server/plervo-canvas-backup.service
+@@ -0,0 +1,20 @@
++# Nightly backup of plervo-canvas-server's data directory (an example; docs/server.md, "Backups").
++# install.sh installs it with plervo-canvas-backup.timer; turn it on with
++#   sudo systemctl enable --now plervo-canvas-backup.timer
++# It checks there is room for the copy (twice the data directory's size free), stops the server
++# for the few seconds the copy takes (apps reconnect on their own), writes
++# /var/backups/plervo-canvas-server/plervo-canvas-YYYY-MM-DD.tar.gz (readable by root only) and keeps the last
++# 7 days. The archives hold every file, the addresses files came from, the reports and the server
++# key: keep them, and any copy off the machine, as private as the server itself.
++
++[Unit]
++Description=Back up plervo-canvas-server's data directory
++After=plervo-canvas-server.service
++
++[Service]
++Type=oneshot
++Nice=10
++IOSchedulingClass=idle
++UMask=0077
++# `$$` and `%%` are a literal `$` and `%` for the shell (systemd expands the single ones).
++ExecStart=/bin/sh -ec 'dir=/var/backups/plervo-canvas-server; install -d -m 700 "$$dir"; need=$$(du -sk /var/lib/plervo-canvas-server | cut -f1); free=$$(df -k --output=avail "$$dir" | tail -n 1); if [ "$$free" -lt $$((need * 2)) ]; then echo "not enough free space for a backup ($$free KiB free, $$need KiB of data)" >&2; exit 1; fi; systemctl stop plervo-canvas-server; trap "systemctl start plervo-canvas-server" EXIT; tar -C /var/lib -czf "$$dir/plervo-canvas-$$(date +%%F).tar.gz" plervo-canvas-server; find "$$dir" -name "plervo-canvas-*.tar.gz" -mtime +7 -delete'
+diff --git a/packaging/server/plervo-canvas-backup.timer b/packaging/server/plervo-canvas-backup.timer
+new file mode 100644
+index 0000000..9d0d27c
+--- /dev/null
++++ b/packaging/server/plervo-canvas-backup.timer
+@@ -0,0 +1,14 @@
++# Runs plervo-canvas-backup.service every night (see that file).
++#   sudo systemctl enable --now plervo-canvas-backup.timer
++#   systemctl list-timers plervo-canvas-backup.timer
++
++[Unit]
++Description=Nightly backup of plervo-canvas-server's data directory
++
++[Timer]
++OnCalendar=*-*-* 04:00:00
++RandomizedDelaySec=30min
++Persistent=true
++
++[Install]
++WantedBy=timers.target
+diff --git a/packaging/server/plervo-canvas-server.service b/packaging/server/plervo-canvas-server.service
+new file mode 100644
+index 0000000..37ce97a
+--- /dev/null
++++ b/packaging/server/plervo-canvas-server.service
+@@ -0,0 +1,64 @@
++# systemd unit for plervo-canvas-server; setup in docs/server.md ("Deploy on a Linux server").
++# Install: sudo cp plervo-canvas-server.service /etc/systemd/system/ && sudo systemctl daemon-reload
++#          sudo systemctl enable --now plervo-canvas-server
++# Logs:    journalctl -u plervo-canvas-server
++
++[Unit]
++Description=Plervo Canvas collaboration server
++Documentation=https://github.com/alportblu/plervo-pdf/blob/main/docs/server.md
++Wants=network-online.target
++After=network-online.target
++
++[Service]
++Type=simple
++User=plervo-canvas
++Group=plervo-canvas
++ExecStart=/usr/local/bin/plervo-canvas-server --config /etc/plervo-canvas-server/server.toml
++# SIGTERM (systemctl stop/restart) stops it gracefully: open files are saved and compacted, and
++# apps are told the server is restarting (they reconnect when it is back).
++KillSignal=SIGTERM
++TimeoutStopSec=30
++Restart=on-failure
++RestartSec=2
++# max_connections (512 by default) plus the files kept open.
++LimitNOFILE=4096
++UMask=0077
++# Under memory pressure this service slows down, then it alone is stopped (and restarted), not the
++# rest of the machine.
++MemoryHigh=60%
++MemoryMax=75%
++# It talks only to the proxy on this machine (listen = "127.0.0.1:47900"). Listening on a network
++# address without a proxy in front needs these two lines removed.
++IPAddressAllow=localhost
++IPAddressDeny=any
++
++# Hardening: the only writable place is the data directory.
++NoNewPrivileges=yes
++ProtectSystem=strict
++ReadWritePaths=/var/lib/plervo-canvas-server
++ProtectHome=yes
++PrivateTmp=yes
++PrivateDevices=yes
++ProtectKernelTunables=yes
++ProtectKernelModules=yes
++ProtectKernelLogs=yes
++ProtectControlGroups=yes
++ProtectClock=yes
++ProtectHostname=yes
++ProtectProc=invisible
++ProcSubset=pid
++CapabilityBoundingSet=
++AmbientCapabilities=
++RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
++RestrictNamespaces=yes
++RestrictRealtime=yes
++RestrictSUIDSGID=yes
++LockPersonality=yes
++MemoryDenyWriteExecute=yes
++RemoveIPC=yes
++SystemCallArchitectures=native
++SystemCallFilter=@system-service
++SystemCallErrorNumber=EPERM
++
++[Install]
++WantedBy=multi-user.target
+diff --git a/packaging/web/README.md b/packaging/web/README.md
+index e17be23..e43755d 100644
+--- a/packaging/web/README.md
++++ b/packaging/web/README.md
+@@ -1,17 +1,17 @@
+-# Hosting FigCraft for the web
++# Hosting Plervo Canvas for the web
+ 
+-`figcraft-web-<version>.zip` (from the GitHub release, or `packaging/web/package.sh`) holds a
+-static site in `figcraft-web-<version>/`:
++`plervo-canvas-web-<version>.zip` (from the GitHub release, or `packaging/web/package.sh`) holds a
++static site in `plervo-canvas-web-<version>/`:
+ 
+ | File | What it is |
+ |---|---|
+ | `index.html` | The page. It loads everything through relative URLs. |
+-| `figcraft-web-<hash>.js` | wasm-bindgen glue (generated, ES module) |
+-| `figcraft-web-<hash>_bg.wasm` | The app: about 18 MiB raw, 7 MiB with gzip, 4.5 MiB with Brotli (see [Sizes](#sizes)) |
++| `plervo-canvas-web-<hash>.js` | wasm-bindgen glue (generated, ES module) |
++| `plervo-canvas-web-<hash>_bg.wasm` | The app: about 18 MiB raw, 7 MiB with gzip, 4.5 MiB with Brotli (see [Sizes](#sizes)) |
+ | `_headers`, `.htaccess` | Sample header rules for Netlify/Cloudflare Pages and Apache |
+ 
+ There is no server-side code and no hand-written JavaScript: the glue is generated by
+-wasm-bindgen from the Rust sources (`apps/figcraft-web`). Upload the folder's contents anywhere
++wasm-bindgen from the Rust sources (`apps/plervo-canvas-web`). Upload the folder's contents anywhere
+ that serves static files.
+ 
+ The editor runs entirely on the visitor's device. The web build starts with one new document;
+@@ -32,8 +32,8 @@ Measured on the 0.1.0 build (`trunk build --release`; gzip `-9`, Brotli quality
+ 
+ | File | Raw | gzip | Brotli |
+ |---|---|---|---|
+-| `figcraft-web-<hash>_bg.wasm` | 18,534,563 bytes (17.7 MiB) | 7,023,460 (6.7 MiB) | 4,642,764 (4.4 MiB) |
+-| `figcraft-web-<hash>.js` | about 148 KB | about 22 KB | |
++| `plervo-canvas-web-<hash>_bg.wasm` | 18,534,563 bytes (17.7 MiB) | 7,023,460 (6.7 MiB) | 4,642,764 (4.4 MiB) |
++| `plervo-canvas-web-<hash>.js` | about 148 KB | about 22 KB | |
+ 
+ Per-file upload limits: Cloudflare Pages and Workers static assets reject any file over
+ **25 MiB** (26,214,400 bytes). `packaging/web/package.sh` fails the build if the wasm ever grows
+@@ -41,9 +41,9 @@ past 24 MiB, so a release can't ship a file a common host refuses.
+ 
+ ## Any path works
+ 
+-All URLs in `index.html` are relative (`public_url = "./"` in `apps/figcraft-web/Trunk.toml`),
++All URLs in `index.html` are relative (`public_url = "./"` in `apps/plervo-canvas-web/Trunk.toml`),
+ so the site works at a domain root (`https://example.com/`), under a prefix
+-(`https://example.com/tools/figcraft/`) and from a CDN bucket. The asset names carry a content
++(`https://example.com/tools/plervo-canvas/`) and from a CDN bucket. The asset names carry a content
+ hash, so they can be cached forever. Only `index.html` needs revalidation.
+ 
+ ## Required server settings
+@@ -58,7 +58,7 @@ hash, so they can be cached forever. Only `index.html` needs revalidation.
+   `.js` files, and `no-cache` on `index.html`.
+ - **HTTPS:** WebGPU (and the clipboard) only work in a secure context, which means `https://`
+   or `http://localhost`. Over plain HTTP elsewhere, the app falls back to WebGL2.
+-- **No special isolation headers:** FigCraft doesn't use `SharedArrayBuffer`, so it doesn't
++- **No special isolation headers:** Plervo Canvas doesn't use `SharedArrayBuffer`, so it doesn't
+   need `Cross-Origin-Opener-Policy` or `Cross-Origin-Embedder-Policy`. If your site already sends
+   COEP `require-corp`, also send `Cross-Origin-Resource-Policy: same-origin` (or `cross-origin`
+   when the files live on a CDN) on the app's files.
+@@ -66,7 +66,7 @@ hash, so they can be cached forever. Only `index.html` needs revalidation.
+ nginx example:
+ 
+ ```nginx
+-location /figcraft/ {
++location /plervo-canvas/ {
+     types { application/wasm wasm; text/javascript js; text/html html; }
+     gzip on;
+     gzip_types application/wasm text/javascript text/html;
+@@ -81,8 +81,8 @@ Local test: `python3 -m http.server 8767` inside the folder, then open http://lo
+ 
+ ```html
+ <iframe
+-  src="https://example.com/figcraft/"
+-  title="FigCraft interface design tool"
++  src="https://example.com/plervo-canvas/"
++  title="Plervo Canvas interface design tool"
+   style="width: 100%; height: 720px; border: 0;"
+   allow="fullscreen; clipboard-read; clipboard-write"
+   allowfullscreen>
+@@ -97,7 +97,7 @@ Local test: `python3 -m http.server 8767` inside the folder, then open http://lo
+ 
+ ## Renderer selection and fallback flags
+ 
+-FigCraft renders with wgpu. It uses **WebGPU** when the browser has it and falls back to
++Plervo Canvas renders with wgpu. It uses **WebGPU** when the browser has it and falls back to
+ **WebGL2** on its own. A URL query flag overrides this, and it works on the iframe `src` too:
+ 
+ | Flag | Effect |
+@@ -105,7 +105,7 @@ FigCraft renders with wgpu. It uses **WebGPU** when the browser has it and falls
+ | *(none)* | WebGPU if available, otherwise WebGL2 |
+ | `?webgl` | Force the WebGL2 backend (useful when a WebGPU driver misbehaves, and in headless browsers) |
+ 
+-For example: `<iframe src="https://example.com/figcraft/?webgl" ...>`.
++For example: `<iframe src="https://example.com/plervo-canvas/?webgl" ...>`.
+ 
+ A browser with neither WebGPU nor WebGL2 gets a message in place of the app.
+ 
+@@ -117,5 +117,5 @@ on SwiftShader:
+ ```sh
+ "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless=new \
+   --use-angle=swiftshader --enable-unsafe-swiftshader --window-size=1440,900 \
+-  --timeout=30000 --screenshot=figcraft-web.png "http://127.0.0.1:8767/?webgl"
++  --timeout=30000 --screenshot=plervo-canvas-web.png "http://127.0.0.1:8767/?webgl"
+ ```
+diff --git a/packaging/web/package.sh b/packaging/web/package.sh
+index 0e45c51..5d15d8f 100755
+--- a/packaging/web/package.sh
++++ b/packaging/web/package.sh
+@@ -1,10 +1,10 @@
+ #!/usr/bin/env bash
+-# Build the browser version and zip it:  $DIST/figcraft-web-<version>.zip
++# Build the browser version and zip it:  $DIST/plervo-canvas-web-<version>.zip
+ #
+ # Usage: packaging/web/package.sh [--skip-build]
+ #
+ # Needs: trunk (brew install trunk / cargo install trunk --locked) and the wasm32-unknown-unknown
+-# target. The zip holds a self-contained static site in figcraft-web-<version>/ that works
++# target. The zip holds a self-contained static site in plervo-canvas-web-<version>/ that works
+ # from any URL path and inside an <iframe>. Hosting notes: packaging/web/README.md.
+ set -euo pipefail
+ # shellcheck source=../env.sh
+@@ -41,7 +41,7 @@ for wasm in "$SITE"/*.wasm; do
+ done
+ [ "$WASM_COUNT" -gt 0 ] || { echo "error: no .wasm in $SITE" >&2; exit 1; }
+ 
+-NAME="figcraft-web-$VERSION"
++NAME="plervo-canvas-web-$VERSION"
+ WORK="$CARGO_TARGET_DIR/web-package"
+ rm -rf "$WORK"
+ mkdir -p "$WORK/$NAME"
+diff --git a/packaging/windows/check-icons.ps1 b/packaging/windows/check-icons.ps1
+index fcc6d2f..09ffe0c 100644
+--- a/packaging/windows/check-icons.ps1
++++ b/packaging/windows/check-icons.ps1
+@@ -1,6 +1,6 @@
+ <#
+ .SYNOPSIS
+-  Check MSI icon references without building or installing FigCraft.
++  Check MSI icon references without building or installing Plervo Canvas.
+ 
+ .DESCRIPTION
+   ICE50 requires advertised shortcut icon identifiers to have the target file's extension.
+@@ -8,7 +8,7 @@
+   can display a generic document icon even when the ICO data and application are valid.
+ #>
+ param(
+-  [string] $WxsPath = (Join-Path $PSScriptRoot 'figcraft.wxs')
++  [string] $WxsPath = (Join-Path $PSScriptRoot 'plervo-canvas.wxs')
+ )
+ $ErrorActionPreference = 'Stop'
+ [xml] $Wxs = Get-Content -LiteralPath $WxsPath -Raw
+diff --git a/packaging/windows/package.ps1 b/packaging/windows/package.ps1
+index eaa46ba..bb5fc07 100644
+--- a/packaging/windows/package.ps1
++++ b/packaging/windows/package.ps1
+@@ -1,13 +1,13 @@
+ <#
+ .SYNOPSIS
+-  Build, sign and package FigCraft for Windows.
++  Build, sign and package Plervo Canvas for Windows.
+ 
+ .DESCRIPTION
+   Produces, in $env:DIST (default: dist/release):
+-    figcraft-<version>-windows-<arch>.msi            per-machine installer (WiX v5)
+-    figcraft-<version>-windows-<arch>-portable.zip   figcraft.exe (+ figcraft-cli.exe) and the licences
++    plervo-canvas-<version>-windows-<arch>.msi            per-machine installer (WiX v5)
++    plervo-canvas-<version>-windows-<arch>-portable.zip   plervo-canvas.exe (+ plervo-canvas-cli.exe) and the licences
+ 
+-  figcraft-cli.exe is built and shipped once apps/figcraft-cli exists in the workspace.
++  plervo-canvas-cli.exe is built and shipped once apps/figcraft-cli exists in the workspace.
+ 
+   The binaries link the C runtime statically (+crt-static), so neither the MSI nor the portable
+   zip needs the Visual C++ redistributable. Signing is delegated to sign.ps1 (skipped with a
+@@ -58,9 +58,9 @@ if (-not $env:FIGCRAFT_BUILD_DATE) { $env:FIGCRAFT_BUILD_DATE = (Get-Date).ToUni
+ 
+ # The headless CLI ships next to the app once apps/figcraft-cli exists.
+ $HasCli = Test-Path (Join-Path $Root 'apps\figcraft-cli\Cargo.toml')
+-$Bins = @('figcraft'); if ($HasCli) { $Bins += 'figcraft-cli' }
++$Bins = @('plervo-canvas'); if ($HasCli) { $Bins += 'plervo-canvas-cli' }
+ 
+-Write-Output "FigCraft $Version for Windows $Arch ($Target): $($Bins -join ', ')"
++Write-Output "Plervo Canvas $Version for Windows $Arch ($Target): $($Bins -join ', ')"
+ 
+ if (-not $SkipBuild) {
+   # Static CRT: no VC++ redistributable needed. Scoped to the target so host build scripts and
+@@ -83,7 +83,7 @@ function Get-PeHeader([string] $Path) {
+   return @{ Machine = [BitConverter]::ToUInt16($bytes, $pe + 4); Subsystem = [BitConverter]::ToUInt16($bytes, $pe + 0x5C) }
+ }
+ $Machine = switch ($Arch) { 'x64' { 0x8664 } 'x86' { 0x14C } 'arm64' { 0xAA64 } }
+-$checks = @(, @('figcraft.exe', 2)); if ($HasCli) { $checks += , @('figcraft-cli.exe', 3) }
++$checks = @(, @('plervo-canvas.exe', 2)); if ($HasCli) { $checks += , @('plervo-canvas-cli.exe', 3) }
+ foreach ($check in $checks) {
+   $h = Get-PeHeader (Join-Path $Bin $check[0])
+   if ($h.Machine -ne $Machine) { throw "$($check[0]) is for machine 0x$('{0:X}' -f $h.Machine), expected 0x$('{0:X}' -f $Machine) ($Arch)" }
+@@ -98,8 +98,25 @@ foreach ($exe in $Exes) { Copy-Item (Join-Path $Bin $exe) $Stage }
+ 
+ & (Join-Path $PSScriptRoot 'sign.ps1') @($Exes | ForEach-Object { Join-Path $Stage $_ })
+ 
++# Carry source and embedded-asset notices in MSI and portable distributions.
++$Legal = Join-Path $Stage 'Licenses'
++New-Item -ItemType Directory -Force -Path $Legal | Out-Null
++foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md') {
++  $p = Join-Path $Root $f
++  if (Test-Path $p) { Copy-Item $p $Legal }
++}
++Get-ChildItem (Join-Path $Root 'assets') -Recurse -File | Where-Object { $_.Name -match '(?i)licen[cs]e|OFL.*txt|copyright' } | ForEach-Object {
++  $name = ($_.FullName.Substring($Root.Length + 1) -replace '[\\/]', '_') + '.txt'
++  Copy-Item $_.FullName (Join-Path $Legal $name)
++}
++if ($env:CRAFT_FONTS_DIR) {
++  Get-ChildItem (Join-Path $env:CRAFT_FONTS_DIR 'fonts\*\OFL.txt') | ForEach-Object {
++    Copy-Item $_.FullName (Join-Path $Legal ("OFL-" + $_.Directory.Name + '.txt'))
++  }
++}
++
+ # ---- MSI ---------------------------------------------------------------------------------------
+-# The setup wizard's art, drawn here from the app icon so the MSI shows FigCraft rather than
++# The setup wizard's art, drawn here from the app icon so the MSI shows Plervo Canvas rather than
+ # WiX's stock bitmaps: a 493x58 banner across the top of the inner pages (the page title is drawn
+ # over its left side, so that stays white) and a 493x312 backdrop for the Welcome and Finish pages
+ # (their text sits on the right; the left 164 px are ours). Both must be 24-bit BMPs.
+@@ -134,15 +151,15 @@ function New-InstallerArt([string] $IconPng, [string] $BannerOut, [string] $Dial
+ }
+ $Banner = Join-Path $Stage 'installer-banner.bmp'
+ $Dialog = Join-Path $Stage 'installer-dialog.bmp'
+-New-InstallerArt (Join-Path $Root 'assets\app-icon\hicolor\256x256\apps\ai.storyteller.figcraft.png') $Banner $Dialog
++New-InstallerArt (Join-Path $Root 'assets\app-icon\hicolor\256x256\apps\com.plervo.canvas.png') $Banner $Dialog
+ 
+-$Msi = Join-Path $Dist "figcraft-$Version-windows-$Arch.msi"
++$Msi = Join-Path $Dist "plervo-canvas-$Version-windows-$Arch.msi"
+ & (Join-Path $PSScriptRoot 'check-icons.ps1')
+ Invoke-Native 'wix build' {
+-  wix build (Join-Path $PSScriptRoot 'figcraft.wxs') -arch $Arch `
++  wix build (Join-Path $PSScriptRoot 'plervo-canvas.wxs') -arch $Arch `
+     -ext WixToolset.UI.wixext -ext WixToolset.Util.wixext `
+-    -culture en-US -loc (Join-Path $PSScriptRoot 'figcraft.en-us.wxl') `
+-    -d "Version=$MsiVersion" -d "DisplayVersion=$Version" -d "BinDir=$Stage" -d "IconPath=$(Join-Path $Root 'assets\app-icon\figcraft.ico')" `
++    -culture en-US -loc (Join-Path $PSScriptRoot 'plervo-canvas.en-us.wxl') `
++    -d "Version=$MsiVersion" -d "DisplayVersion=$Version" -d "BinDir=$Stage" -d "IconPath=$(Join-Path $Root 'assets\app-icon\plervo-canvas.ico')" `
+     -d "BannerBmp=$Banner" -d "DialogBmp=$Dialog" -d "HasCli=$([int]$HasCli)" `
+     -o $Msi
+ }
+@@ -154,10 +171,11 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
+ & (Join-Path $PSScriptRoot 'sign.ps1') $Msi
+ 
+ # ---- portable zip ------------------------------------------------------------------------------
+-$Portable = Join-Path $TargetDir "windows-package\figcraft-$Version-windows-$Arch-portable"
++$Portable = Join-Path $TargetDir "windows-package\plervo-canvas-$Version-windows-$Arch-portable"
+ Remove-Item -Recurse -Force $Portable -ErrorAction SilentlyContinue
+ New-Item -ItemType Directory -Force -Path $Portable | Out-Null
+ Copy-Item (Join-Path $Stage '*.exe') $Portable
++Copy-Item $Legal (Join-Path $Portable 'Licenses') -Recurse
+ foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'NOTICE') {
+   $p = Join-Path $Root $f
+   if (Test-Path $p) { Copy-Item $p $Portable }
+@@ -170,17 +188,17 @@ if ($env:CRAFT_FONTS_DIR) {
+     if (Test-Path $lic) { Copy-Item $lic (Join-Path $Portable "OFL-$($_.Name).txt") }
+   }
+ }
+-# files go to FigCraftData\ next to the exe instead of %APPDATA% (#228; see app_dirs.rs).
+-$Zip = Join-Path $Dist "figcraft-$Version-windows-$Arch-portable.zip"
++# files go to Plervo CanvasData\ next to the exe instead of %APPDATA% (#228; see app_dirs.rs).
++$Zip = Join-Path $Dist "plervo-canvas-$Version-windows-$Arch-portable.zip"
+ Remove-Item -Force $Zip -ErrorAction SilentlyContinue
+ Compress-Archive -Path $Portable -DestinationPath $Zip
+ 
+ # Smoke-test the CLI when this machine can run it. An ARM64 build made on an x64 runner can't run
+ # here; .github/workflows/windows-arm64.yml installs and runs it on ARM64 instead.
+ $HostArch = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString().ToLowerInvariant()
+-$Smoke = if ($HasCli) { 'figcraft-cli.exe' } else { 'figcraft.exe' }
++$Smoke = if ($HasCli) { 'plervo-canvas-cli.exe' } else { 'plervo-canvas.exe' }
+ if ($Arch -ne 'arm64' -or $HostArch -eq 'arm64') {
+-  # figcraft.exe is a GUI-subsystem exe: pipe it so PowerShell waits and shows its --version output.
++  # plervo-canvas.exe is a GUI-subsystem exe: pipe it so PowerShell waits and shows its --version output.
+   Invoke-Native "$Smoke --version" { & (Join-Path $Stage $Smoke) --version | Out-Host }
+ } else {
+   Write-Output "skipping $Smoke --version: an $Arch build doesn't run on this $HostArch machine"
+diff --git a/packaging/windows/plervo-canvas.en-us.wxl b/packaging/windows/plervo-canvas.en-us.wxl
+new file mode 100644
+index 0000000..9a6b3ec
+--- /dev/null
++++ b/packaging/windows/plervo-canvas.en-us.wxl
+@@ -0,0 +1,11 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!--
++  Overrides for the setup wizard's WixUI strings, so its pages name the version being installed
++  ([FigcraftVersion] is the full version, pre-release tag included, set in plervo-canvas.wxs).
++-->
++<WixLocalization Culture="en-US" xmlns="http://wixtoolset.org/schemas/v4/wxl">
++  <String Id="WelcomeDlgTitle" Value="{\WixUI_Font_Bigger}Welcome to the [ProductName] [FigcraftVersion] Setup Wizard" />
++  <String Id="WelcomeDlgDescription" Value="The Setup Wizard will install [ProductName] version [FigcraftVersion] on your computer. Click Next to continue or Cancel to exit the Setup Wizard." />
++  <String Id="VerifyReadyDlgInstallTitle" Value="{\WixUI_Font_Title}Ready to install [ProductName] [FigcraftVersion]" />
++  <String Id="ExitDialogTitle" Value="{\WixUI_Font_Bigger}Completed the [ProductName] [FigcraftVersion] Setup Wizard" />
++</WixLocalization>
+diff --git a/packaging/windows/plervo-canvas.wxs b/packaging/windows/plervo-canvas.wxs
+new file mode 100644
+index 0000000..c35e781
+--- /dev/null
++++ b/packaging/windows/plervo-canvas.wxs
+@@ -0,0 +1,131 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!--
++  Plervo Canvas MSI (WiX Toolset v5: `dotnet tool install -g wix`, plus the UI and Util extensions:
++  `wix extension add -g WixToolset.UI.wixext/5.0.2 WixToolset.Util.wixext/5.0.2`). Built by package.ps1:
++
++    wix build plervo-canvas.wxs -arch x64 -ext WixToolset.UI.wixext -ext WixToolset.Util.wixext
++      -culture en-US -loc plervo-canvas.en-us.wxl -d Version=1.2.3 -d DisplayVersion=1.2.3-rc.1
++      -d BinDir=... -d IconPath=... -d BannerBmp=... -d DialogBmp=... -d HasCli=1 -o out.msi
++
++  Per-machine install with a setup wizard that names the version: Welcome, install folder
++  (Program Files\Plervo Canvas by default, remembered for upgrades), Ready, a progress page, and a
++  Finish page with a ticked "Launch Plervo Canvas" box. Installs a Start Menu shortcut, makes
++  Plervo Canvas the owner of `.plervo-canvas`, and offers it under "Open with" for SVG, PNG and JPEG
++  (without taking over the user's default app for them), plus plervo-canvas-cli when HasCli=1.
++  `msiexec /qn` still installs silently.
++
++  UpgradeCode is fixed for Plervo Canvas forever (generated once; never reuse another app's).
++-->
++<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
++     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
++  <Package
++      Name="Plervo Canvas"
++      Manufacturer="Maintech Solutions LLC"
++      Version="$(var.Version)"
++      UpgradeCode="10B07941-A89D-5B5B-B651-B9B8970A85DC"
++      Scope="perMachine"
++      Compressed="yes"
++      Language="1033">
++    <SummaryInformation Description="Plervo Canvas interface design and prototyping tool" Manufacturer="Maintech Solutions LLC" />
++    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
++         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
++    <MajorUpgrade AllowSameVersionUpgrades="yes"
++        DowngradeErrorMessage="A newer version of Plervo Canvas is already installed." />
++    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
++
++    <!-- MSI caches this icon using its Id as the filename. Advertised shortcuts to an
++         .exe need an .exe icon identifier (ICE50), even when the source is an ICO. -->
++    <Icon Id="FigcraftIcon.exe" SourceFile="$(var.IconPath)" />
++    <Property Id="ARPPRODUCTICON" Value="FigcraftIcon.exe" />
++    <Property Id="ARPURLINFOABOUT" Value="https://plervo.com/" />
++    <Property Id="ARPURLUPDATEINFO" Value="https://plervo.com/" />
++    <Property Id="ARPHELPLINK" Value="https://buymeacoffee.com/alport" />
++
++    <StandardDirectory Id="ProgramFiles6432Folder">
++      <Directory Id="INSTALLFOLDER" Name="Plervo Canvas" />
++    </StandardDirectory>
++    <StandardDirectory Id="ProgramMenuFolder" />
++
++    <!-- An upgrade installs where the user put the previous version (written by FigcraftApp). -->
++    <Property Id="INSTALLFOLDER">
++      <RegistrySearch Id="PreviousInstallFolder" Root="HKLM" Key="Software\Plervo Canvas" Name="InstallDir" Type="raw" />
++    </Property>
++
++    <Feature Id="Main" Title="Plervo Canvas" Level="1">
++      <ComponentGroupRef Id="FigcraftFiles" />
++    </Feature>
++
++    <!-- The setup wizard: WixUI_InstallDir without its licence page (the code is MIT OR
++         Apache-2.0; there is nothing to accept). A later NewDialog on the same button wins. -->
++    <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
++    <UI>
++      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2" Condition="NOT Installed" />
++      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" />
++      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchFigcraft"
++          Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 AND NOT Installed" />
++    </UI>
++    <!-- Our own art, generated by package.ps1 from the app icon (not WiX's stock bitmaps). -->
++    <WixVariable Id="WixUIBannerBmp" Value="$(var.BannerBmp)" />
++    <WixVariable Id="WixUIDialogBmp" Value="$(var.DialogBmp)" />
++
++    <!-- The full version (Version is numeric, so it drops a pre-release tag), shown on the wizard's
++         pages through plervo-canvas.en-us.wxl. -->
++    <Property Id="FigcraftVersion" Value="$(var.DisplayVersion)" />
++
++    <!-- Finish page: say where to find the app, and offer to start it (ticked by default). -->
++    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="Plervo Canvas $(var.DisplayVersion) is installed. You can start it any time from the Start menu." />
++    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch Plervo Canvas" />
++    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
++    <Property Id="WixShellExecTarget" Value="[#FigcraftExe]" />
++    <!-- Runs in the wizard's own (unelevated) process, so the app starts as the user, not as admin. -->
++    <CustomAction Id="LaunchFigcraft" BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" DllEntry="WixShellExec" Impersonate="yes" Return="ignore" />
++    <Feature Id="PlervoLicenseFeature" Title="Licenses" Level="1"><ComponentGroupRef Id="PlervoLegalFiles" /></Feature>
++  </Package>
++
++  <Fragment>
++    <ComponentGroup Id="FigcraftFiles" Directory="INSTALLFOLDER">
++      <Component Id="FigcraftApp" Guid="6DD8CC3B-101F-5B9D-B8A3-657762828941">
++        <File Id="FigcraftExe" Source="$(var.BinDir)\plervo-canvas.exe" KeyPath="yes">
++          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="Plervo Canvas"
++              Description="Plervo Canvas interface design and prototyping" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
++              Icon="FigcraftIcon.exe" IconIndex="0" />
++        </File>
++
++        <!-- .plervo-canvas: Plervo Canvas's own format; Plervo Canvas is its default app. -->
++        <ProgId Id="PlervoCanvas.Document" Description="Plervo Canvas Document" Icon="FigcraftExe" IconIndex="0">
++          <Extension Id="plervo-canvas" ContentType="application/x-plervo-canvas">
++            <Verb Id="open" Command="Open" TargetFile="FigcraftExe" Argument="&quot;%1&quot;" />
++          </Extension>
++        </ProgId>
++        <!-- SVG and images: offered under "Open with", never forced as the default. -->
++        <ProgId Id="PlervoCanvas.Image" Description="Image" Icon="FigcraftExe" IconIndex="0" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\PlervoCanvas.Image\shell\open\command" Value="&quot;[#FigcraftExe]&quot; &quot;%1&quot;" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.svg\OpenWithProgids" Name="PlervoCanvas.Image" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.png\OpenWithProgids" Name="PlervoCanvas.Image" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.jpg\OpenWithProgids" Name="PlervoCanvas.Image" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.jpeg\OpenWithProgids" Name="PlervoCanvas.Image" Value="" Type="string" />
++
++        <!-- "Open with" app list and the Run dialog (Win+R "plervo-canvas"). -->
++        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\plervo-canvas.exe" Name="FriendlyAppName" Value="Plervo Canvas" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\plervo-canvas.exe\shell\open\command" Value="&quot;[#FigcraftExe]&quot; &quot;%1&quot;" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\plervo-canvas.exe\SupportedTypes" Name=".plervo-canvas" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\plervo-canvas.exe\SupportedTypes" Name=".svg" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\plervo-canvas.exe\SupportedTypes" Name=".png" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\plervo-canvas.exe\SupportedTypes" Name=".jpg" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\plervo-canvas.exe\SupportedTypes" Name=".jpeg" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\plervo-canvas.exe" Value="[#FigcraftExe]" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Plervo Canvas" Name="InstallDir" Value="[INSTALLFOLDER]" Type="string" />
++      </Component>
++
++<?if $(var.HasCli) = 1 ?>
++      <Component Id="FigcraftCli">
++        <File Id="FigcraftCliExe" Source="$(var.BinDir)\plervo-canvas-cli.exe" KeyPath="yes" />
++      </Component>
++<?endif?>
++    </ComponentGroup>
++  </Fragment>
++  <Fragment>
++    <DirectoryRef Id="INSTALLFOLDER"><Directory Id="PlervoLegalDir" Name="Licenses" /></DirectoryRef>
++    <ComponentGroup Id="PlervoLegalFiles" Directory="PlervoLegalDir"><Files Include="$(var.BinDir)\Licenses\*" /></ComponentGroup>
++  </Fragment>
++</Wix>
+diff --git a/packaging/windows/sign.ps1 b/packaging/windows/sign.ps1
+index 3d94747..dcb756f 100644
+--- a/packaging/windows/sign.ps1
++++ b/packaging/windows/sign.ps1
+@@ -15,7 +15,7 @@
+   timestamp server, ...). Optional overrides: WINDOWS_TIMESTAMP_URL, SIGNTOOL (path to signtool.exe).
+ 
+ .EXAMPLE
+-  pwsh packaging/windows/sign.ps1 dist/figcraft.exe dist/FigCraft.msi
++  pwsh packaging/windows/sign.ps1 dist/plervo-canvas.exe dist/Plervo Canvas.msi
+ #>
+ param(
+   [Parameter(Mandatory = $true, ValueFromRemainingArguments = $true)]
+@@ -55,8 +55,8 @@ if (-not $haveCert -and -not $haveAzure) {
+ }
+ 
+ $script:SignTool = Find-SignTool
+-$common = @('sign', '/v', '/fd', 'SHA256', '/td', 'SHA256', '/d', 'FigCraft', '/du', 'https://github.com/storytold/figcraft')
+-$tmp = Join-Path ([IO.Path]::GetTempPath()) "figcraft-sign-$PID"
++$common = @('sign', '/v', '/fd', 'SHA256', '/td', 'SHA256', '/d', 'Plervo Canvas', '/du', 'https://github.com/alportblu/plervo-pdf')
++$tmp = Join-Path ([IO.Path]::GetTempPath()) "plervo-canvas-sign-$PID"
+ New-Item -ItemType Directory -Force -Path $tmp | Out-Null
+ 
+ try {
+diff --git a/xtask/src/icon.rs b/xtask/src/icon.rs
+index b91fcce..9a7fc44 100644
+--- a/xtask/src/icon.rs
++++ b/xtask/src/icon.rs
+@@ -42,7 +42,7 @@ pub fn generate(root: &Path) -> bool {
+         if size <= 512 {
+             let hd = dir.join(format!("hicolor/{size}x{size}/apps"));
+             let _ = std::fs::create_dir_all(&hd);
+-            ok &= render(&tile, size, &hd.join("ai.storyteller.figcraft.png"));
++            ok &= render(&tile, size, &hd.join("com.plervo.canvas.png"));
+         }
+     }
+     // Windows .ico (PNG-compressed entries).
+@@ -71,7 +71,7 @@ pub fn generate(root: &Path) -> bool {
+     // The lighter trace keeps the scalable theme icon cheap to render.
+     let sd = dir.join("hicolor/scalable/apps");
+     let _ = std::fs::create_dir_all(&sd);
+-    ok &= std::fs::copy(dir.join("figcraft-small.svg"), sd.join("ai.storyteller.figcraft.svg")).is_ok();
++    ok &= std::fs::copy(dir.join("figcraft-small.svg"), sd.join("com.plervo.canvas.svg")).is_ok();
+     eprintln!("icon: wrote {}", dir.display());
+     ok
+ }

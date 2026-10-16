@@ -10,6 +10,7 @@ mod gates;
 mod layers;
 mod macos_integration;
 mod parity;
+mod products;
 mod screenshots;
 mod version;
 
@@ -23,6 +24,7 @@ const COMMANDS: &[(&str, &str, Command)] = &[
     ("deny", "Dependency licences, bans, sources and advisories (deny.toml; needs cargo-deny)", gates::deny),
     ("ci", "fmt --check, clippy -D warnings, test, layers, wasm, assets, deny, parity (stops at first failure)", gates::ci),
     ("assets", "Enforce the asset policy (AGENTS.md §1) against ATTRIBUTION.toml; --write regenerates ATTRIBUTION.md", assets::run),
+    ("products", "Check pinned Plervo product sources, or --prepare PRODUCT CLEAN_CHECKOUT, or --matrix", products::run),
     ("corpus", "Fetch the pinned pdf.js test corpus into corpus/ (git-ignored) and verify it; --update-pin re-records the pin", gates::corpus),
     ("check", "Robustness sweep over corpus/ with plervo-pdf-cli; fails on crashes or regressions vs xtask/baselines", gates::check),
     ("fuzz", "Mutation fuzzing of open/render/edit/save in child processes; findings in fuzz-out/ (--time 300)", fuzz::run),

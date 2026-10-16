@@ -1,0 +1,181 @@
+name: Plervo product candidates
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'products/**'
+      - 'assets/products/**'
+      - 'xtask/src/products.rs'
+      - '.github/workflows/products.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: products-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  catalog:
+    runs-on: ubuntu-24.04
+    outputs:
+      matrix: ${{ steps.catalog.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@686976e191b89faba57d3206551f0f330d8cb249
+        with:
+          toolchain: '1.95.0'
+      - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6
+      - run: cargo test --locked -p xtask products::
+      - id: catalog
+        run: echo "matrix=$(cargo xtask products --matrix)" >> "$GITHUB_OUTPUT"
+
+  candidate:
+    needs: catalog
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        app: ${{ fromJSON(needs.catalog.outputs.matrix).include }}
+        os: [ubuntu-24.04, macos-15, windows-2025]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 150
+    env:
+      CARGO_BUILD_JOBS: 2
+      CARGO_PROFILE_DEV_DEBUG: line-tables-only
+      CARGO_PROFILE_TEST_DEBUG: line-tables-only
+      CRAFT_FONTS_DIR: ${{ github.workspace }}/craft-fonts
+      CRAFT_FONTS_REQUIRED: '1'
+      UPSTREAM_APP: ${{ matrix.app.app }}
+      PRODUCT: ${{ matrix.app.product }}
+    steps:
+      - name: Preserve source line endings on the isolated Windows runner
+        if: runner.os == 'Windows'
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Read pinned public source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: ${{ matrix.app.upstream }}
+          ref: ${{ matrix.app.commit }}
+          path: source
+          persist-credentials: false
+      - name: Read pinned fonts
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: storytold/craft-fonts
+          ref: ${{ matrix.app.fonts }}
+          path: craft-fonts
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@686976e191b89faba57d3206551f0f330d8cb249
+        with:
+          toolchain: '1.95.0'
+          components: rustfmt, clippy
+          targets: wasm32-unknown-unknown
+      - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6
+        with:
+          workspaces: |
+            . -> target
+            source -> target
+          key: products-${{ matrix.app.product }}
+      - name: Linux native libraries
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libxkbcommon-dev libwayland-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev libgtk-3-dev libasound2-dev libudev-dev libva-dev libdrm-dev xvfb
+      - name: Slides upstream baseline before adaptation
+        if: runner.os == 'Linux' && matrix.app.product == 'slides'
+        working-directory: source
+        run: cargo xtask ci
+      - name: Verify and apply the Plervo source overlay
+        shell: bash
+        run: cargo xtask products --prepare "$PRODUCT" "$GITHUB_WORKSPACE/source"
+      - name: Build identity
+        shell: bash
+        run: |
+          prefix="$(printf '%s' "$UPSTREAM_APP" | tr '[:lower:]' '[:upper:]')"
+          echo "${prefix}_BUILD_SHA=$GITHUB_SHA" >> "$GITHUB_ENV"
+          echo "${prefix}_BUILD_DATE=$(date -u +%Y-%m-%d)" >> "$GITHUB_ENV"
+          if [ "$RUNNER_OS" = Windows ]; then
+            echo 'CARGO_BUILD_TARGET=x86_64-pc-windows-msvc' >> "$GITHUB_ENV"
+            echo 'CARGO_TARGET_X86_64_PC_WINDOWS_MSVC_RUSTFLAGS=-C target-feature=+crt-static' >> "$GITHUB_ENV"
+            echo "${prefix}_REQUIRE_WINRES=1" >> "$GITHUB_ENV"
+          fi
+      - name: Formatting and source boundaries
+        if: runner.os == 'Linux'
+        working-directory: source
+        run: |
+          cargo fmt --all -- --check
+          cargo xtask layers
+      - name: Upstream asset attribution gate
+        if: runner.os == 'Linux' && matrix.app.product != 'photo'
+        working-directory: source
+        run: cargo xtask assets
+      - name: Dependency licences and security advisories
+        if: runner.os == 'Linux'
+        uses: EmbarkStudios/cargo-deny-action@3c6349835b2b7b196a839186cb8b78e02f7b5f25
+        with:
+          manifest-path: source/Cargo.toml
+          command: check
+      - name: Static analysis
+        working-directory: source
+        run: cargo clippy --locked --workspace --all-targets -- -D warnings
+      - name: Feature and regression tests
+        working-directory: source
+        run: cargo test --locked --workspace
+      - name: Build desktop and CLI
+        working-directory: source
+        shell: bash
+        run: cargo build --release --locked -p "plervo-$PRODUCT" -p "plervo-$PRODUCT-cli"
+      - name: Headless executable checks
+        working-directory: source
+        shell: bash
+        run: |
+          bin=target/release
+          ext=
+          if [ "$RUNNER_OS" = Windows ]; then bin=target/x86_64-pc-windows-msvc/release; ext=.exe; fi
+          "$bin/plervo-$PRODUCT$ext" --version
+          "$bin/plervo-$PRODUCT-cli$ext" --help
+      - name: Linux internal packages
+        if: runner.os == 'Linux'
+        working-directory: source
+        run: |
+          go install github.com/goreleaser/nfpm/v2/cmd/nfpm@v2.48.0
+          export PATH="$(go env GOPATH)/bin:$PATH"
+          packaging/linux/package.sh --skip-build --formats 'deb rpm tar'
+      - name: macOS internal package (not notarized)
+        if: runner.os == 'macOS'
+        working-directory: source
+        run: |
+          target="$(rustc -vV | sed -n 's/^host: //p')"
+          mkdir -p "target/$target/release"
+          cp "target/release/plervo-$PRODUCT" "target/release/plervo-$PRODUCT-cli" "target/$target/release/"
+          packaging/macos/package.sh --arch aarch64 --skip-build
+      - name: Windows internal package (unsigned)
+        if: runner.os == 'Windows'
+        working-directory: source
+        shell: pwsh
+        run: |
+          dotnet tool install --global wix --version 5.0.2
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          wix extension add -g WixToolset.UI.wixext/5.0.2 WixToolset.Util.wixext/5.0.2
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          packaging/windows/package.ps1 -Arch x64 -SkipBuild
+      - name: Preserve qualification status and source provenance
+        working-directory: source
+        shell: bash
+        run: |
+          cp PLERVO-BUILD.json dist/release/
+          printf '%s\n' 'Internal candidates. Not approved for public distribution. macOS is not notarized; Windows is unsigned. Native installation, security and product acceptance remain required.' > dist/release/INTERNAL-CANDIDATES.txt
+      - name: Upload internal candidates
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: internal-plervo-${{ matrix.app.product }}-${{ runner.os }}-${{ github.sha }}
+          path: source/dist/release/
+          if-no-files-found: error
+          retention-days: 14

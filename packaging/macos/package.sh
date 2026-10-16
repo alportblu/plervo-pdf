@@ -128,7 +128,7 @@ echo "==> assembling $APP"
 mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
 # Executable and icon carry the display name (CFBundleExecutable / CFBundleIconFile).
 cp "$WORK/bin/plervo-$PRODUCT" "$APP/Contents/MacOS/$DISPLAY_NAME"
-cp "$ROOT/assets/app-icon/pdfcraft.icns" "$APP/Contents/Resources/$DISPLAY_NAME.icns"
+cp "$ROOT/assets/products/$PRODUCT/icon.icns" "$APP/Contents/Resources/$DISPLAY_NAME.icns"
 mkdir -p "$APP/Contents/Resources/Licenses"
 copy_docs "$APP/Contents/Resources/Licenses"
 # OCR models: the app finds them at Contents/MacOS/../Resources/models. Before signing, so the

@@ -26,6 +26,7 @@ fn main() {
         viewport: egui::ViewportBuilder::default()
             .with_app_id("com.plervo.suite")
             .with_title("Plervo Suite")
+            .with_icon(eframe::icon_data::from_png_bytes(include_bytes!("../../../assets/products/suite/icon-256.png")).unwrap_or_default())
             .with_inner_size([1000.0, 700.0])
             .with_min_inner_size([760.0, 580.0]),
         renderer: eframe::Renderer::Glow,

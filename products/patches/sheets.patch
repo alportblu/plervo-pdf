@@ -1,0 +1,3395 @@
+diff --git a/ATTRIBUTION.md b/ATTRIBUTION.md
+index 36678d8..986bb53 100644
+--- a/ATTRIBUTION.md
++++ b/ATTRIBUTION.md
+@@ -2,39 +2,12 @@
+ 
+ Every non-code asset in this repository (images, icons, fonts, example files, presets) is listed here with its author, source and licence. `cargo xtask assets` (part of `cargo xtask ci`) fails if an asset file is missing from this table.
+ 
+-**Policy (mandatory):** GridCraft contains **no Microsoft, Adobe, Avid or Autodesk iconography, images, artwork, fonts, templates, themes, table styles or sample files**. Every asset is original work by GridCraft contributors or third-party material under an open licence (OSI open source, public domain / CC0, or Creative Commons that allows redistribution). Screenshots of Microsoft software are never committed. Font files are not added here: shared fonts live in [storytold/craft-fonts](https://github.com/storytold/craft-fonts), an optional build input (`CRAFT_FONTS_DIR`). The one exception is the ArtCraft brand files in `docs/brand/`: ArtCraft trademarks, not open source, used under `docs/brand/LICENSE-brand.txt`.
+ 
+ Generated-in-code art is original and has no file to list: the UI icon set (`crates/ui-egui/src/icons.rs`), themes (`crates/engine/src/cmd/view.rs`), cell styles (`crates/engine/src/cmd/format.rs`), table styles (`crates/engine/src/tables.rs`), chart palettes and the sample workbooks (`crates/engine/src/sample.rs`).
+ 
+ | Asset | Author | Source | Licence | Notes |
+ |---|---|---|---|---|
+-| `docs/brand/artcraft-logo.svg` | ArtCraft Team | craftrules `assets/brand/` | ArtCraft brand terms (`docs/brand/LICENSE-brand.txt`) | Trademark, not open source |
+-| `docs/brand/artcraft-logo.png` | ArtCraft Team | craftrules `assets/brand/` | ArtCraft brand terms | Trademark |
+-| `docs/brand/artcraft-logo-white.svg` | ArtCraft Team | craftrules `assets/brand/` | ArtCraft brand terms | Trademark |
+-| `docs/brand/artcraft-logo-white.png` | ArtCraft Team | craftrules `assets/brand/` | ArtCraft brand terms | Trademark |
+-| `docs/brand/artcraft-mark.svg` | ArtCraft Team | craftrules `assets/brand/` | ArtCraft brand terms | Trademark |
+-| `docs/brand/artcraft-mark.png` | ArtCraft Team | craftrules `assets/brand/` | ArtCraft brand terms | Trademark |
+-| `docs/brand/artcraft-mark-black.svg` | ArtCraft Team | craftrules `assets/brand/` | ArtCraft brand terms | Trademark |
+-| `docs/brand/artcraft-mark-black.png` | ArtCraft Team | craftrules `assets/brand/` | ArtCraft brand terms | Trademark |
+-| `docs/brand/LICENSE-brand.txt` | (licence text) | craftrules | — | |
+-| `assets/app-icon/gridcraft.svg` | GridCraft contributors | original (hand-written SVG; `packaging/icons.sh`) | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | PLACEHOLDER app icon (ledger page); replaced by the owner's creature art later |
+-| `packaging/macos/dmg/background.svg` | @XusBadia | original (hand-written SVG, derived from the GridCraft app icon `assets/app-icon/gridcraft.svg`, referenced via `<image>`, not copied; text is outlined glyph paths; `packaging/macos/dmg/generate.py` renders it to `background.tiff`) | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | GridCraft macOS DMG window background for the Finder window; added 2026-10-08 |
+ | `packaging/macos/dmg/background.tiff` | @XusBadia | Rendered from `packaging/macos/dmg/background.svg` by `packaging/macos/dmg/generate.py` | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | 1x + 2x HiDPI TIFF for the macOS DMG window; includes the app icon (see its row) and LittleCMS's built-in sRGB profile ("No copyright, use freely") |
+-| `assets/app-icon/gridcraft-1024.png` | GridCraft contributors | original (hand-written SVG; `packaging/icons.sh`) | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | Placeholder icon, rendered from gridcraft.svg |
+-| `assets/app-icon/gridcraft-macos-512.png` | GridCraft contributors | original (hand-written SVG; `packaging/icons.sh`) | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | Placeholder icon, macOS grid render |
+-| `assets/app-icon/gridcraft.icns` | GridCraft contributors | original (hand-written SVG; `packaging/icons.sh`) | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | Placeholder icon, macOS bundle icon |
+-| `assets/app-icon/gridcraft.ico` | GridCraft contributors | original (hand-written SVG; `packaging/icons.sh`) | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | Placeholder icon, Windows exe icon |
+-| `assets/app-icon/hicolor/16x16/apps/ai.storyteller.gridcraft.png` | GridCraft contributors | original (hand-written SVG; `packaging/icons.sh`) | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | Placeholder icon, Linux hicolor render |
+-| `assets/app-icon/hicolor/24x24/apps/ai.storyteller.gridcraft.png` | GridCraft contributors | original (hand-written SVG; `packaging/icons.sh`) | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | Placeholder icon, Linux hicolor render |
+-| `assets/app-icon/hicolor/32x32/apps/ai.storyteller.gridcraft.png` | GridCraft contributors | original (hand-written SVG; `packaging/icons.sh`) | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | Placeholder icon, Linux hicolor render |
+-| `assets/app-icon/hicolor/48x48/apps/ai.storyteller.gridcraft.png` | GridCraft contributors | original (hand-written SVG; `packaging/icons.sh`) | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | Placeholder icon, Linux hicolor render |
+-| `assets/app-icon/hicolor/64x64/apps/ai.storyteller.gridcraft.png` | GridCraft contributors | original (hand-written SVG; `packaging/icons.sh`) | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | Placeholder icon, Linux hicolor render |
+-| `assets/app-icon/hicolor/128x128/apps/ai.storyteller.gridcraft.png` | GridCraft contributors | original (hand-written SVG; `packaging/icons.sh`) | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | Placeholder icon, Linux hicolor render |
+-| `assets/app-icon/hicolor/256x256/apps/ai.storyteller.gridcraft.png` | GridCraft contributors | original (hand-written SVG; `packaging/icons.sh`) | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | Placeholder icon, Linux hicolor render |
+-| `assets/app-icon/hicolor/512x512/apps/ai.storyteller.gridcraft.png` | GridCraft contributors | original (hand-written SVG; `packaging/icons.sh`) | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | Placeholder icon, Linux hicolor render |
+-| `assets/app-icon/hicolor/scalable/apps/ai.storyteller.gridcraft.svg` | GridCraft contributors | original (hand-written SVG; `packaging/icons.sh`) | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | Placeholder icon, copy of gridcraft.svg |
+-| `assets/app-icon/README.md` | GridCraft contributors | original | MIT OR Apache-2.0 | Icon documentation |
+-| `assets/app-icon/LICENSE.txt` | (licence text) | original | — | Licence of the app icon files |
+ | `docs/images/hero-sales.png` | GridCraft contributors | screenshot of GridCraft rendered offscreen (`crates/ui-egui/examples/snapshot.rs`) showing an original sample workbook | MIT OR Apache-2.0 | README screenshot; no third-party content |
+ | `docs/images/budget.png` | GridCraft contributors | screenshot of GridCraft rendered offscreen (`crates/ui-egui/examples/snapshot.rs`) showing an original sample workbook | MIT OR Apache-2.0 | README screenshot; no third-party content |
+ | `docs/images/grades-formulas.png` | GridCraft contributors | screenshot of GridCraft rendered offscreen (`crates/ui-egui/examples/snapshot.rs`) showing an original sample workbook | MIT OR Apache-2.0 | README screenshot; no third-party content |
+@@ -42,3 +15,25 @@ Generated-in-code art is original and has no file to list: the UI icon set (`cra
+ | `docs/images/pivot.png` | GridCraft contributors | screenshot of GridCraft rendered offscreen (`crates/ui-egui/examples/snapshot.rs`) showing an original sample workbook | MIT OR Apache-2.0 | README screenshot; no third-party content |
+ | `docs/images/format-chart.png` | GridCraft contributors | screenshot of GridCraft rendered offscreen (`crates/ui-egui/examples/snapshot.rs`) showing an original sample workbook | MIT OR Apache-2.0 | README screenshot; no third-party content |
+ | `docs/images/page-break.png` | GridCraft contributors | screenshot of GridCraft rendered offscreen (`crates/ui-egui/examples/snapshot.rs`) showing an original sample workbook | MIT OR Apache-2.0 | README screenshot; no third-party content |
++
++## Plervo application identity
++
++| Asset | Author | Source | License | Notes |
++|---|---|---|---|---|
++| `assets/app-icon/gridcraft-1024.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 e85ac0a50736e2eafc0b1cd9c804511cb8c82418e27da93c4cdbb3572c8aff5a |
++| `assets/app-icon/gridcraft-macos-512.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 1b5531ccd7caf9d8f60faddf1891dc13ac1193ca2c85173c3cb49609d8544e92 |
++| `assets/app-icon/gridcraft.icns` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 54c6a3d242a05db62a2273af07bd0a80c3343440692bf29fa3e685b92e0e8442 |
++| `assets/app-icon/gridcraft.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 27185841e89dd9e25f91ab230429d14a4aea963d9634e32d1e5cf43a6d8d750c |
++| `assets/app-icon/gridcraft.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 fed93468774ab8659dd981245ddfc87d21b1a00ffef5e93f1cfe6209a9ea6291 |
++| `assets/app-icon/hicolor/128x128/apps/com.plervo.sheets.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 a70ef3cfed9f293a8d536e25c6a89fd11e45b32d6742d9ebc6ffd4581edc3952 |
++| `assets/app-icon/hicolor/16x16/apps/com.plervo.sheets.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 de730e0560c8a5964dd3adc132bf290541eeffdd9e7a3e6af3567fb5502444e5 |
++| `assets/app-icon/hicolor/24x24/apps/com.plervo.sheets.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 92cccf7893b98f1bb9d470cef2bd9aef296b0cc168ee57238ec074ebbebaee54 |
++| `assets/app-icon/hicolor/256x256/apps/com.plervo.sheets.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 e5c7f0fd10fc7a0ba1321bac5c68e85b9b00c99c3666951acdc3c32d32db1e50 |
++| `assets/app-icon/hicolor/32x32/apps/com.plervo.sheets.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 94f29cdc3990b9bfa91b5413644eeb0583ad6cfc3c2ccd692aa281db4d293f6b |
++| `assets/app-icon/hicolor/48x48/apps/com.plervo.sheets.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 f2549935f688723c30111b6d428ecb2d08f6f20f6da4c0146bab0466fcfdfa42 |
++| `assets/app-icon/hicolor/512x512/apps/com.plervo.sheets.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 85e2a0d95dafd80b761028d1a3a97b30271d1ca6ee3020410cae3d4dea3d316b |
++| `assets/app-icon/hicolor/64x64/apps/com.plervo.sheets.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 3915531681b4ed2949864132116542a363ab9b340609b9b02115d1742b164102 |
++| `assets/app-icon/hicolor/scalable/apps/com.plervo.sheets.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 fed93468774ab8659dd981245ddfc87d21b1a00ffef5e93f1cfe6209a9ea6291 |
++| `assets/app-icon/plervo-sheets.icns` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 54c6a3d242a05db62a2273af07bd0a80c3343440692bf29fa3e685b92e0e8442 |
++| `assets/app-icon/plervo-sheets.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 27185841e89dd9e25f91ab230429d14a4aea963d9634e32d1e5cf43a6d8d750c |
++| `assets/app-icon/plervo-sheets.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 fed93468774ab8659dd981245ddfc87d21b1a00ffef5e93f1cfe6209a9ea6291 |
+diff --git a/Cargo.lock b/Cargo.lock
+index 6d618a0..310f891 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -1495,8 +1495,8 @@ dependencies = [
+ ]
+ 
+ [[package]]
+-name = "gridcraft"
+-version = "0.7.0"
++name = "plervo-sheets"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "arboard",
+  "craft-print",
+@@ -1518,7 +1518,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "gridcraft-calc"
+-version = "0.7.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "gridcraft-core",
+  "gridcraft-formula",
+@@ -1530,7 +1530,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "gridcraft-chart"
+-version = "0.7.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "gridcraft-calc",
+  "gridcraft-core",
+@@ -1540,8 +1540,8 @@ dependencies = [
+ ]
+ 
+ [[package]]
+-name = "gridcraft-cli"
+-version = "0.7.0"
++name = "plervo-sheets-cli"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "gridcraft-engine",
+  "gridcraft-mcp",
+@@ -1553,7 +1553,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "gridcraft-core"
+-version = "0.7.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "js-sys",
+  "serde",
+@@ -1563,7 +1563,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "gridcraft-engine"
+-version = "0.7.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "gridcraft-calc",
+  "gridcraft-chart",
+@@ -1584,7 +1584,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "gridcraft-formula"
+-version = "0.7.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "gridcraft-core",
+  "serde",
+@@ -1593,7 +1593,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "gridcraft-functions"
+-version = "0.7.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "gridcraft-core",
+  "regex",
+@@ -1601,7 +1601,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "gridcraft-mcp"
+-version = "0.7.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "gridcraft-engine",
+  "log",
+@@ -1610,7 +1610,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "gridcraft-model"
+-version = "0.7.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "gridcraft-core",
+  "gridcraft-formula",
+@@ -1622,18 +1622,18 @@ dependencies = [
+ 
+ [[package]]
+ name = "gridcraft-numfmt"
+-version = "0.7.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "gridcraft-core",
+ ]
+ 
+ [[package]]
+ name = "gridcraft-pdf"
+-version = "0.7.0"
++version = "0.1.0-alpha.4"
+ 
+ [[package]]
+ name = "gridcraft-ui-egui"
+-version = "0.7.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "craft-ui",
+  "egui",
+@@ -1655,7 +1655,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "gridcraft-web"
+-version = "0.7.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "eframe",
+  "egui",
+@@ -1672,7 +1672,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "gridcraft-xlsx"
+-version = "0.7.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "aes",
+  "gridcraft-core",
+@@ -4526,7 +4526,7 @@ checksum = "e450f9b2ed1dff33c94c12589a87338689467b9c4f5d8a5710bd09a847d2c8a7"
+ 
+ [[package]]
+ name = "xtask"
+-version = "0.7.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "gridcraft-engine",
+  "serde_json",
+diff --git a/Cargo.toml b/Cargo.toml
+index 98dd572..5aedcf1 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
+ default-members = ["crates/*", "apps/gridcraft", "apps/gridcraft-cli", "xtask"]
+ 
+ [workspace.package]
+-version = "0.7.0"
++version = "0.1.0-alpha.4"
+ edition = "2024"
+ license = "MIT OR Apache-2.0"
+ rust-version = "1.90"
+diff --git a/NOTICE b/NOTICE
+index 1e3668b..d2e50ed 100644
+--- a/NOTICE
++++ b/NOTICE
+@@ -14,3 +14,7 @@ list (author, source, license) is in ATTRIBUTION.md.
+ 
+ None: every bundled asset is original to GridCraft. Builds made with craft-fonts
+ (CRAFT_FONTS_DIR) embed the fonts listed in ATTRIBUTION.md under the SIL Open Font License 1.1.
++
++Plervo adaptation by AlporT (2026). Product identity and packaging are original Plervo work.
++Based on storytold/gridcraft at d9d09f0baa912e88c5111107903fc8c640214b57.
++Original authorship and MIT/Apache-2.0 licenses are preserved. No ArtCraft endorsement.
+diff --git a/README.md b/README.md
+index 678495f..e0e5f59 100644
+--- a/README.md
++++ b/README.md
+@@ -1,344 +1,10 @@
+-<p align="center">
+-  <a href="https://getartcraft.com/">
+-    <picture>
+-      <source media="(prefers-color-scheme: dark)" srcset="docs/brand/artcraft-logo-white.svg">
+-      <img alt="ArtCraft" src="docs/brand/artcraft-logo.svg" width="200">
+-    </picture>
+-  </a>
+-</p>
++# Plervo Sheets
+ 
+-<h1 align="center">GridCraft</h1>
++An experimental member of Plervo Suite by AlporT.
+ 
+-<p align="center">
+-  <b>Spreadsheets and data; an open-source, clean-room reimplementation of Microsoft Excel, rebuilt in pure Rust.</b>
+-</p>
++Adapted from [storytold/gridcraft](https://github.com/storytold/gridcraft) at `d9d09f0baa912e88c5111107903fc8c640214b57` (v0.7.0).
++Original authors, copyright notices and MIT/Apache-2.0 licenses are retained. Plervo is an independent distribution.
+ 
+-<p align="center">
+-  A fast, open-source, clean-room take on the Excel workflow. It runs natively on macOS,
+-  Windows, Linux and BSD, and in the browser via WebAssembly.<br>
+-  <i>By the ArtCraft team.</i>
+-</p>
++This source is under validation; building it does not certify it for public distribution.
+ 
+-<p align="center">
+-  <img alt="Written in Rust" src="https://img.shields.io/badge/written%20in-Rust-147a40?style=flat-square&logo=rust&logoColor=white">
+-  <img alt="Runs on macOS, Windows, Linux, BSD and the web" src="https://img.shields.io/badge/runs%20on-macOS%20%C2%B7%20Windows%20%C2%B7%20Linux%20%C2%B7%20BSD%20%C2%B7%20Web-1f9d55?style=flat-square">
+-  <img alt="License: MIT OR Apache-2.0" src="https://img.shields.io/badge/license-MIT%20%2F%20Apache--2.0-147a40?style=flat-square">
+-  <img alt="Agent-drivable over MCP" src="https://img.shields.io/badge/agents-MCP-1f9d55?style=flat-square">
+-</p>
+-
+-<p align="center">
+-  <a href="https://discord.gg/artcraft"><img alt="Join the ArtCraft community on Discord" src="https://img.shields.io/badge/Join%20us%20on%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" height="40"></a>
+-</p>
+-
+-<p align="center">
+-  <a href="https://getartcraft.com/apps/gridcraft"><b>GridCraft on getartcraft.com</b></a> ·
+-  <a href="https://getartcraft.com/">ArtCraft</a> ·
+-  <a href="https://getartcraft.com/apps">All Crafting Apps</a>
+-</p>
+-
+-<br>
+-
+-<p align="center">
+-  <img src="docs/images/hero-sales.png" alt="GridCraft showing a quarterly sales dashboard: a styled table with banded rows, filter buttons, a totals row, data bars, arrow icons and sparklines, next to a clustered column chart and a pie chart" width="100%">
+-  <br><sub><b>Quarterly Sales Dashboard</b>: a table with a totals row, conditional formatting, sparklines and two live charts — built entirely from GridCraft commands (<code>File → New → Sample</code>).</sub>
+-</p>
+-
+-> [!NOTE]
+-> **ArtCraft is a community of artists from all walks of life.** Painters, photographers,
+-> filmmakers, illustrators, designers, animators, hobbyists, and people who picked up a pencil
+-> last week. If you make things, you're one of us. **[Come say hi on Discord](https://discord.gg/artcraft).**
+-
+-<p align="center">
+-  <a href="#a-look-around">A look around</a> ·
+-  <a href="#why-gridcraft">Why GridCraft</a> ·
+-  <a href="#quick-start">Quick start</a> ·
+-  <a href="#for-agents-mcp-cli-and-the-control-channel">For agents</a> ·
+-  <a href="#architecture">Architecture</a> ·
+-  <a href="#roadmap">Roadmap</a> ·
+-  <a href="#the-crafting-apps">The Crafting Apps</a> ·
+-  <a href="#license-and-credits">License and credits</a>
+-</p>
+-
+-## A look around
+-
+-<table>
+-<tr>
+-<td width="50%" valign="top"><img src="docs/images/budget.png" alt="A household budget with accounting number formats, red highlights for overspent categories, a green-yellow-red colour scale on the percent-used column, a totals row with a double border, and a horizontal bar chart comparing budget with actual" width="100%"><p align="center"><sub><b>Formatting.</b> Accounting formats, cell styles, conditional rules and colour scales, frozen headers and a bar chart.</sub></p></td>
+-<td width="50%" valign="top"><img src="docs/images/grades-formulas.png" alt="A gradebook table with averages and letter grades computed with IFS, green highlights on A grades and data bars, with the Formulas ribbon tab open showing the function library" width="100%"><p align="center"><sub><b>Formulas.</b> 500+ functions, dynamic arrays, LET and LAMBDA, structured table references.</sub></p></td>
+-</tr>
+-<tr>
+-<td width="50%" valign="top"><img src="docs/images/dark-insert.png" alt="The sales dashboard in dark mode with the Insert ribbon tab open, showing PivotTable, Table, Pictures, Shapes, chart, sparkline, link, comment, text box and symbol buttons" width="100%"><p align="center"><sub><b>Dark mode</b> and the Insert tab: tables, charts, sparklines, pictures, shapes, links and comments.</sub></p></td>
+-<td width="50%" valign="top"><img src="docs/images/pivot.png" alt="A PivotTable summarising revenue by region and product with a Channel report filter, grand totals and currency formatting, with the PivotTable Fields pane open on the right showing ticked fields and the Filters, Columns, Rows and Values areas" width="100%"><p align="center"><sub><b>PivotTables.</b> Field list, filters, layouts, date grouping and show-values-as, saved to and read from XLSX.</sub></p></td>
+-</tr>
+-<tr>
+-<td width="50%" valign="top"><img src="docs/images/format-chart.png" alt="The sales dashboard with the column chart selected: resize handles on the chart, its source data outlined in the table, the Chart Design tab open and the Format Chart Area pane on the right" width="100%"><p align="center"><sub><b>Charts.</b> Seventeen chart types, Chart Design tab and a Format pane; selecting a chart outlines its source data.</sub></p></td>
+-<td width="50%" valign="top"><img src="docs/images/page-break.png" alt="The household budget in Page Break Preview: the print area outlined in blue with a dashed page break, Page 1 and Page 2 watermarks, and the area outside the print range greyed out" width="100%"><p align="center"><sub><b>Page Break Preview</b>, print settings, and PDF export and printing.</sub></p></td>
+-</tr>
+-</table>
+-
+-## Why GridCraft
+-
+-- **Familiar.** Excel's ribbon, formula bar, Name Box, sheet tabs, keyboard shortcuts, fill
+-  handle, point-mode formula entry with coloured references, Format Cells, Paste Special,
+-  conditional formatting, tables, charts and more. If you know Excel, you already know GridCraft.
+-- **Compatible.** XLSX is the native format: styles, themes, formulas (including dynamic arrays),
+-  tables, conditional formats, validation, comments, hyperlinks, charts, pictures, sparklines,
+-  PivotTables and print settings round-trip. CSV and TSV too.
+-  Excel 97-2003 `.xls` workbooks open with their values, formulas and number formats (formatting and objects not yet).
+-  [XLSB worksheet data can be imported](docs/xlsb-import.md), using saved values instead of formulas.
+-  [ODS worksheet data can be imported](docs/ods-import.md), using saved values instead of formulas.
+-  [Static pictures can live inside cells](docs/cell-pictures.md), fitting their size and moving with the data.
+-- **Capable.** A dependency-graph calculation engine with dynamic arrays and spilling,
+-  500+ worksheet functions plus LET, LAMBDA, MAP, REDUCE, SCAN, BYROW, BYCOL and MAKEARRAY,
+-  structured table references, Excel's full number-format language, sort and AutoFilter,
+-  Flash Fill, data validation, outlining and subtotals.
+-- **Fast.** Copy-on-write workbooks (undo snapshots are nearly free), incremental recalculation,
+-  and a virtualised grid that only lays out what's on screen.
+-- **Agent-native.** Every ribbon button, menu item, dialog, keystroke and mouse gesture is a
+-  command that agents can run over a JSON control channel, an **MCP server**, or the CLI.
+-- **Everywhere.** One Rust codebase for desktop and the web. No subscription, no licence server,
+-  no telemetry.
+-
+-## Quick start
+-
+-```sh
+-cargo run --release -p gridcraft                              # desktop app
+-cargo run --release -p gridcraft -- --sample sales            # open a sample (sales, budget, grades)
+-cargo run --release -p gridcraft -- book.xlsx                 # open a workbook
+-cargo run --release -p gridcraft -- --sample sales --control 7979   # + JSON control channel
+-cargo xtask ci                                                 # fmt, clippy, tests, assets, layering, wasm
+-```
+-
+-Choose Español under View → Interface language for [Spanish formula names, decimal commas, and semicolon arguments](docs/formula-input.md).
+-Workbooks, clipboard exchange, and programmatic APIs retain canonical English syntax.
+-
+-### Web
+-
+-```sh
+-cd apps/gridcraft-web && trunk build --release     # → dist/web (serve it with any static server)
+-cd apps/gridcraft-web && trunk serve --release     # http://127.0.0.1:8771  (?sample=sales opens a sample)
+-```
+-
+-You need [trunk](https://trunkrs.dev) and the `wasm32-unknown-unknown` target. Open uses the
+-browser's file picker (dropping files works too) and Save downloads the workbook.
+-
+-### Ribbon access keys
+-
+-Press and release **left Alt** on Windows/Linux/BSD, or press **F10** on any platform,
+-then type a sequence below one key at a time. Keytips appear on the supported Home
+-controls and menu items. On macOS, use F10 (Fn+F10 if required by your keyboard); Option
+-remains available for entering accented characters.
+-
+-| Sequence after Alt/F10 | Action |
+-|---|---|
+-| `H A L` / `H A C` / `H A R` | Align left / center / right |
+-| `H V S` or legacy `E S` | Open Paste Special |
+-| `H O I` or legacy `O C A` | AutoFit selected columns |
+-
+-In Paste Special, **T/V/F/C** select formats/values/formulas/comments, and **E** toggles
+-Transpose. **Enter** applies the selected options; **Escape** cancels the dialog.
+-These letters also work with Alt held on Windows/Linux/BSD.
+-
+-Escape backs out one keytip level; Alt/F10 again exits keytips. Clicking, scrolling,
+-or switching windows cancels navigation. Access keys do not start while editing text
+-or using another dialog. This is initial support for these Home and legacy paths;
+-other ribbon commands and full mouse-free navigation remain to be implemented.
+-Browsers or desktop environments may reserve Alt/F10 for their own menus.
+-
+-### Logs
+-
+-The desktop app writes its log to standard error and to `gridcraft.log` in the `logs` folder
+-next to its settings: `~/.config/gridcraft/logs` on Linux and BSD (`$XDG_CONFIG_HOME/gridcraft/logs`
+-when set), `~/Library/Application Support/GridCraft/logs` on macOS and
+-`%APPDATA%\GridCraft\logs` on Windows. Each start moves the previous log to `gridcraft.1.log` and
+-that one to `gridcraft.2.log`, so the log of a run that crashed survives the next start; attach
+-them to a bug report. A log file stops growing at 16 MiB. By default GridCraft's own crates log
+-at `info` and everything else at `warn`; `RUST_LOG` replaces that with env_logger-style
+-directives, e.g. `RUST_LOG=debug` or `RUST_LOG=warn,gridcraft_engine=debug` (a trailing `*`
+-matches a prefix: `gridcraft*=debug`). Runs with `GRIDCRAFT_NO_PREFS` set (no saved settings)
+-log to standard error only.
+-
+-## For agents: MCP, CLI and the control channel
+-
+-```sh
+-claude mcp add gridcraft -- gridcraft-cli mcp                 # headless MCP server
+-gridcraft-cli mcp --connect 7979                               # MCP bridged to a running window
+-gridcraft-cli eval '=XLOOKUP("b",{"a","b"},{1,2})'             # → 2
+-gridcraft-cli run --sample budget --cmd 'home.bold={"range":"B4:F4"}' --out budget.xlsx
+-gridcraft-cli cat budget.xlsx --range B4:F15                   # aligned text table
+-gridcraft-cli commands --search chart                          # every command and its params
+-```
+-
+-The MCP server offers tools such as `read_range`, `write_range`, `set_cell`, `evaluate_formula`,
+-`format_range`, `insert_chart`, `create_table`, `sort_range`, `filter` and `execute_command`
+-(which reaches every one of GridCraft's commands). The desktop app's control channel adds real
+-pointer and keyboard input, dialogs and screenshots. See [`docs/mcp.md`](docs/mcp.md),
+-[`docs/cli.md`](docs/cli.md) and [`docs/control-protocol.md`](docs/control-protocol.md).
+-
+-## Architecture
+-
+-GridCraft is an engine-first Cargo workspace with enforced layering (`cargo xtask layers`). The
+-egui frontend is a separate crate, so the UI can be swapped without touching the engine.
+-
+-| Layer | Crates |
+-|---|---|
+-| L0 | `core` (addresses, values, errors, dates, input parsing) · `numfmt` (number format codes) |
+-| L1 | `formula` (lexer, parser, printer, reference adjustment) · `functions` (worksheet function library) |
+-| L2 | `model` (workbook, sheets, copy-on-write cells, styles, tables, charts…) · `calc` (dependency graph, evaluator, dynamic arrays) · `xlsx` (XLSX, CSV, plus XLSB and ODS data import) |
+-| L3 | `chart` (toolkit-free chart layout and rendering) |
+-| L5 | `engine` (session, commands, history, clipboard, fill, sort, filter, file I/O) |
+-| L6 | `ui-egui` (Excel-style UI, control channel) · `mcp` (MCP server) |
+-| L7 | `apps/gridcraft`, `apps/gridcraft-cli`, `apps/gridcraft-web` |
+-
+-- **Contributor and agent rules** (clean-room, asset policy, never-crash, quality gates): [`AGENTS.md`](AGENTS.md)
+-- **Bundled assets:** each one is listed with its licence in [`ATTRIBUTION.md`](ATTRIBUTION.md)
+-- **Releases:** signed macOS, Windows, Linux, BSD and web builds; see [`docs/releasing.md`](docs/releasing.md)
+-
+-## Roadmap
+-
+-GridCraft is in **alpha**: the core workflow works end to end, but depth, fidelity and file
+-compatibility are still rough. It covers 89% of the Excel ribbon commands in our catalog
+-([`docs/parity-checklist.md`](docs/parity-checklist.md)) and 513 of Excel's 523 worksheet functions
+-([`docs/function-parity.md`](docs/function-parity.md)); weighted by what Excel users rely on, we
+-estimate it is about 50% ready for real work. Next up: XLSX fidelity on real-world files, very large
+-workbooks and multi-threaded recalc, chart depth, text in every script, and `.xls` import. Stage,
+-numbers and estimates are in [ROADMAP.md](ROADMAP.md); the ranked work list is [`docs/gaps.md`](docs/gaps.md).
+-
+-## Downloads
+-
+-**Download GridCraft** from GitHub: the [latest release](https://github.com/storytold/gridcraft/releases/latest) has every build listed below, and [all releases](https://github.com/storytold/gridcraft/releases) has earlier versions and their notes. `<ver>` in the file names is the version number, and `SHA256SUMS.txt` lists a checksum for every file.
+-
+-### Windows
+-
+-| Build | Installer | Portable |
+-|---|---|---|
+-| x64 (64-bit Intel/AMD) | `gridcraft-<ver>-windows-x64.msi` | `gridcraft-<ver>-windows-x64-portable.zip` |
+-| arm64 (Snapdragon and other ARM PCs) | `gridcraft-<ver>-windows-arm64.msi` | `gridcraft-<ver>-windows-arm64-portable.zip` |
+-| x86 (32-bit) | `gridcraft-<ver>-windows-x86.msi` | `gridcraft-<ver>-windows-x86-portable.zip` |
+-
+-Installers and executables are code-signed. The MSI installer offers an optional desktop shortcut
+-(unchecked on a new installation).
+-
+-**If the app doesn't open on Windows:** the desktop app initializes only DirectX 12 by default.
+-Letting wgpu also create an OpenGL instance can crash some graphics drivers (AMD's
+-`atio6axx.dll`) before the window appears, so the app would flash in Task Manager and quit.
+-`WGPU_BACKEND` overrides the default for troubleshooting (for example `dx12` or `vulkan`). In
+-PowerShell, from the folder containing the executable:
+-
+-```powershell
+-$env:WGPU_BACKEND = "vulkan"
+-& .\gridcraft.exe
+-Remove-Item Env:WGPU_BACKEND                     # restore the default for later launches
+-```
+-
+-An explicit `gl` override can bring the driver crash back on affected systems, and `vulkan` can
+-bring back a crash in some Intel UHD Graphics drivers (`igvk64.dll`, #120). The macOS, Linux and
+-web backend defaults are unchanged.
+-
+-**If the app is slow on an older Windows PC, or DirectX 12 can't start:** when DirectX 12 finds no
+-graphics card with a driver for it, it only offers Microsoft's software renderer, which draws every
+-frame on the processor. In that case GridCraft uses OpenGL instead, without setting anything; if
+-the first renderer fails to start, it tries the other one once. The log file records the choice
+-(lines starting with `graphics:`). `WGPU_BACKEND` still overrides it (and then nothing else is
+-tried), e.g. `$env:WGPU_BACKEND = "gl"` or `"dx12"`.
+-
+-DirectX 12 shaders are compiled with FXC, which is part of Windows, so no `dxcompiler.dll` or
+-`dxil.dll` is needed, and a copy another program put on `PATH` can no longer stop the app at start
+-("Parent device is lost", #339). `$env:WGPU_DX12_COMPILER = "dxc"` (or `"auto"`) selects wgpu's DXC
+-handling again for troubleshooting.
+-
+-### macOS
+-
+-| Build | File | Notes |
+-|---|---|---|
+-| App, universal (Apple silicon + Intel) | `gridcraft-<ver>-macos-universal.dmg` | Signed and notarized |
+-| Command-line tool, universal | `gridcraft-cli-<ver>-macos-universal.zip` | Signed and notarized |
+-
+-### Linux
+-
+-| Format | x86_64 | aarch64 (ARM64) | Notes |
+-|---|---|---|---|
+-| AppImage | `gridcraft-<ver>-linux-x86_64.AppImage` | `gridcraft-<ver>-linux-aarch64.AppImage` | Runs anywhere; updates itself with [AppImageUpdate](https://github.com/AppImageCommunity/AppImageUpdate) (`.zsync` files) |
+-| Flatpak | `gridcraft-<ver>-linux-x86_64.flatpak` | `gridcraft-<ver>-linux-aarch64.flatpak` | Sandboxed; `flatpak install --user <file>` |
+-| Debian/Ubuntu | `gridcraft-<ver>-linux-x86_64.deb` | `gridcraft-<ver>-linux-aarch64.deb` | |
+-| Fedora/RHEL/openSUSE | `gridcraft-<ver>-linux-x86_64.rpm` | `gridcraft-<ver>-linux-aarch64.rpm` | |
+-| Tarball | `gridcraft-<ver>-linux-x86_64.tar.gz` | `gridcraft-<ver>-linux-aarch64.tar.gz` | Unpack anywhere |
+-
+-### FreeBSD
+-
+-| Build | File |
+-|---|---|
+-| x86_64 | `gridcraft-<ver>-freebsd-x86_64.tar.gz` |
+-
+-### Web (WebAssembly)
+-
+-| Build | File | Notes |
+-|---|---|---|
+-| Static site | `gridcraft-web-<ver>.zip` | Runs in a modern browser; host it on any static server |
+-
+-## The Crafting Apps
+-
+-GridCraft is one of the **Crafting Apps**: free, open-source creative tools from the
+-[ArtCraft](https://getartcraft.com/) team, each written from scratch in Rust and each able to
+-stand on its own.
+-
+-| | App | What it's for | Code | Learn more |
+-|:-:|---|---|---|---|
+-| <img src="https://raw.githubusercontent.com/storytold/photocraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.photocraft.png" alt="" width="32" height="32"> | **PhotoCraft** | Image editing: layers, masks, type and real PSD files | [GitHub](https://github.com/storytold/photocraft) | [Website](https://getartcraft.com/apps/photocraft) |
+-| <img src="https://raw.githubusercontent.com/storytold/vectorcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.vectorcraft.png" alt="" width="32" height="32"> | **VectorCraft** | Vector illustration | [GitHub](https://github.com/storytold/vectorcraft) | [Website](https://getartcraft.com/apps/vectorcraft) |
+-| <img src="https://raw.githubusercontent.com/storytold/filmcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.filmcraft.png" alt="" width="32" height="32"> | **FilmCraft** | Video editing, color and sound | [GitHub](https://github.com/storytold/filmcraft) | [Website](https://getartcraft.com/apps/filmcraft) |
+-| <img src="https://raw.githubusercontent.com/storytold/lightcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.lightcraft.png" alt="" width="32" height="32"> | **LightCraft** | Photo library and raw development | [GitHub](https://github.com/storytold/lightcraft) | [Website](https://getartcraft.com/apps/lightcraft) |
+-| <img src="https://raw.githubusercontent.com/storytold/pdfcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.pdfcraft.png" alt="" width="32" height="32"> | **PdfCraft** | Reading, organizing and protecting PDFs | [GitHub](https://github.com/storytold/pdfcraft) | [Website](https://getartcraft.com/apps/pdfcraft) |
+-| <img src="https://raw.githubusercontent.com/storytold/effectcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.effectcraft.png" alt="" width="32" height="32"> | **EffectCraft** | Motion graphics and visual effects | [GitHub](https://github.com/storytold/effectcraft) | [Website](https://getartcraft.com/apps/effectcraft) |
+-| <img src="https://raw.githubusercontent.com/storytold/designcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.designcraft.png" alt="" width="32" height="32"> | **DesignCraft** | Page layout and publishing | [GitHub](https://github.com/storytold/designcraft) | [Website](https://getartcraft.com/apps/designcraft) |
+-| <img src="https://raw.githubusercontent.com/storytold/gridcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.gridcraft.png" alt="" width="32" height="32"> | **GridCraft** | **Spreadsheets and data · you are here** | [GitHub](https://github.com/storytold/gridcraft) | [Website](https://getartcraft.com/apps/gridcraft) |
+-
+-And [**ArtCraft**](https://getartcraft.com/) itself, our AI image and video studio for artists who want real control.
+-
+-<br>
+-
+-<p align="center">
+-  <a href="https://discord.gg/artcraft"><img alt="Join the ArtCraft community on Discord" src="https://img.shields.io/badge/Join%20us%20on%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" height="40"></a>
+-</p>
+-
+-<h3 align="center">Come make things with us</h3>
+-
+-<p align="center">
+-  Our Discord is where artists of every kind hang out: people who paint, shoot, draw, cut film,
+-  set type, and people still figuring out what they like to make. Share what you're working on,
+-  ask for help, tell us what's broken, or tell us what you wish these tools could do.
+-  Whatever your medium and however long you've been at it, you're welcome here.
+-</p>
+-
+-<p align="center">
+-  <a href="https://discord.gg/artcraft"><b>discord.gg/artcraft</b></a> ·
+-  <a href="https://getartcraft.com/">getartcraft.com</a> ·
+-  <a href="https://getartcraft.com/apps">The Crafting Apps</a> ·
+-  <a href="https://getartcraft.com/apps/gridcraft">GridCraft</a>
+-</p>
+-
+-## License and credits
+-
+-GridCraft is dual-licensed under [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE), at your option.
+-Copyright (c) 2026 ArtCraft Team and the GridCraft contributors. Required notices are in [NOTICE](NOTICE).
+-
+-Bundled fonts, icons, images and other assets keep their own open licenses; each one is listed
+-with its author, source and license in [ATTRIBUTION.md](ATTRIBUTION.md).
+-
+-All UI icons are drawn in code and are original; the sample workbooks and every screenshot in
+-this README were made with GridCraft itself. GridCraft bundles no fonts: it uses the fonts
+-installed on your system.
+-
+-The ArtCraft name, wordmark and logos in [`docs/brand/`](docs/brand/) are trademarks of the
+-ArtCraft Team and are not covered by this license. They may be used only unmodified, and only as
+-part of this repository and GridCraft, under [`docs/brand/LICENSE-brand.txt`](docs/brand/LICENSE-brand.txt).
+-Forks and modified versions must remove them.
+-
+-<sub>Microsoft, Excel and Microsoft 365 are trademarks or registered trademarks of Microsoft Corporation in the United States and/or other countries. GridCraft is an independent, open-source project and is not affiliated with, sponsored by or endorsed by Microsoft Corporation; these names are used only to describe the workflows it is compatible with.</sub>
+-
+-<br>
+-
+-<p align="center">
+-  <a href="https://getartcraft.com/"><img alt="ArtCraft" src="docs/brand/artcraft-mark.svg" width="28"></a><br>
+-  <sub>Made by the <a href="https://getartcraft.com/">ArtCraft</a> team and community.</sub>
+-</p>
++Website: https://plervo.com/ · Optional support: https://buymeacoffee.com/alport
+diff --git a/apps/gridcraft-cli/Cargo.toml b/apps/gridcraft-cli/Cargo.toml
+index 21e9580..2d70ad4 100644
+--- a/apps/gridcraft-cli/Cargo.toml
++++ b/apps/gridcraft-cli/Cargo.toml
+@@ -1,5 +1,5 @@
+ [package]
+-name = "gridcraft-cli"
++name = "plervo-sheets-cli"
+ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+@@ -10,7 +10,7 @@ publish = false
+ workspace = true
+ 
+ [[bin]]
+-name = "gridcraft-cli"
++name = "plervo-sheets-cli"
+ path = "src/main.rs"
+ 
+ [dependencies]
+diff --git a/apps/gridcraft-cli/src/check.rs b/apps/gridcraft-cli/src/check.rs
+index 2b85298..5eb7879 100644
+--- a/apps/gridcraft-cli/src/check.rs
++++ b/apps/gridcraft-cli/src/check.rs
+@@ -2,12 +2,12 @@
+ //!
+ //! **Calc oracle.** A workbook saved by Excel (or another calculating producer) carries the
+ //! producer's own result next to every formula (`<v>` beside `<f>`). The file is read keeping
+-//! those cached values, recalculated from scratch by GridCraft, and every formula cell's new value
++//! those cached values, recalculated from scratch by Plervo Sheets, and every formula cell's new value
+ //! is compared with the cached one. Formulas without a cached value (files from writers that don't
+ //! calculate) count as *no oracle*; volatile formulas (`RAND`, `NOW`…) and the formulas that read
+ //! them are skipped.
+ //!
+-//! **Round trip.** The recalculated workbook is written with GridCraft's XLSX writer, the package is
++//! **Round trip.** The recalculated workbook is written with Plervo Sheets's XLSX writer, the package is
+ //! validated (content types cover every part, every internal relationship target exists, no kind of
+ //! relationship the source had is missing) and read back, and the two workbooks are compared feature
+ //! by feature.
+@@ -40,7 +40,7 @@ const MAX_XML_PART: u64 = 64 * 1024 * 1024;
+ /// Most zip entries looked at while validating a written package.
+ const MAX_ENTRIES: usize = 200_000;
+ /// Relationship kinds (lower case) whose absence after a save isn't a loss: the calculation chain is
+-/// a cache Excel rebuilds, and GridCraft never writes it.
++/// a cache Excel rebuilds, and Plervo Sheets never writes it.
+ const REBUILT_KINDS: [&str; 1] = ["calcchain"];
+ 
+ #[derive(Clone, Copy, Debug)]
+@@ -84,7 +84,7 @@ pub struct Mismatch {
+     pub formula: String,
+     pub expected: Value,
+     pub actual: Value,
+-    /// `numeric`, `text`, `bool`, `error`, `blank` (GridCraft produced no value) or `type`.
++    /// `numeric`, `text`, `bool`, `error`, `blank` (Plervo Sheets produced no value) or `type`.
+     pub kind: &'static str,
+     pub functions: Vec<String>,
+     pub primary: bool,
+@@ -101,7 +101,7 @@ pub struct CalcReport {
+     /// aren't results, so every formula counts as no oracle.
+     pub stale_cache: bool,
+     pub volatile: usize,
+-    /// Matched cells whose producer saved GridCraft's TRUE or FALSE as the number 1 or 0 (no
++    /// Matched cells whose producer saved Plervo Sheets's TRUE or FALSE as the number 1 or 0 (no
+     /// `t="b"`, as Business Central's Excel exports do); counted in `matched` too.
+     pub bool_as_number: usize,
+     /// The first `max_report` mismatches, primary ones first.
+@@ -139,7 +139,7 @@ impl RoundTrip {
+ #[derive(Clone, Debug, Default, PartialEq)]
+ pub struct FileReport {
+     pub path: String,
+-    /// GridCraft couldn't open the file: its message.
++    /// Plervo Sheets couldn't open the file: its message.
+     pub error: Option<String>,
+     pub warnings: usize,
+     pub calc: CalcReport,
+@@ -181,7 +181,7 @@ impl Diffs {
+ /// every checked formula matches and every round trip is clean; 1 otherwise; 2 on a usage error.
+ pub fn main(args: &[String]) -> ExitCode {
+     let usage = |e: String| {
+-        eprintln!("gridcraft-cli: {e}\n{USAGE}");
++        eprintln!("plervo-sheets-cli: {e}\n{USAGE}");
+         ExitCode::from(2)
+     };
+     let a = match Args::parse(args, &["tolerance", "max-report"], &["json"]) {
+@@ -268,7 +268,7 @@ fn walk(dir: &Path, depth: usize, out: &mut Vec<PathBuf>) {
+ }
+ 
+ /// Checks one file's bytes. Never fails: problems are recorded in the report. A panic escaping
+-/// GridCraft's reader, calculator or writer is caught and reported as an internal error, so one
++/// Plervo Sheets's reader, calculator or writer is caught and reported as an internal error, so one
+ /// bad file doesn't end a corpus run.
+ pub fn check_bytes(path: &str, bytes: &[u8], opts: &Options) -> FileReport {
+     let guarded = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| check_inner(path, bytes, opts)));
+@@ -354,14 +354,14 @@ fn cell_name(wb: &Workbook, (sheet, c): Key) -> String {
+     format!("{}!{}", quote_sheet(name), c.a1())
+ }
+ 
+-/// Whether the producer cached GridCraft's logical result as the number 1 or 0. Excel types a
++/// Whether the producer cached Plervo Sheets's logical result as the number 1 or 0. Excel types a
+ /// logical result `t="b"`; a writer that leaves the type out (`<c><f>TRUE()</f><v>1</v></c>`, as
+ /// Business Central's "Open in Excel" exports do) stores the same value, read back as a number.
+ pub fn bool_cached_as_number(expected: &Value, actual: &Value) -> bool {
+     matches!((expected, actual), (Value::Number(n), Value::Bool(b)) if *n == if *b { 1.0 } else { 0.0 })
+ }
+ 
+-/// Whether GridCraft's `actual` agrees with the producer's `expected`.
++/// Whether Plervo Sheets's `actual` agrees with the producer's `expected`.
+ pub fn values_match(expected: &Value, actual: &Value, tolerance: f64) -> bool {
+     match (expected, actual) {
+         (Value::Number(a), Value::Number(b)) => (a - b).abs() <= tolerance * a.abs().max(b.abs()).max(1.0),
+@@ -420,7 +420,7 @@ impl MismatchIndex {
+ }
+ 
+ /// Compares every formula cell of `cached` (as the producer saved it) with `fresh` (recalculated
+-/// by GridCraft). Without `trust_cache` nothing is compared (see [`CalcReport::stale_cache`]).
++/// by Plervo Sheets). Without `trust_cache` nothing is compared (see [`CalcReport::stale_cache`]).
+ pub fn oracle(cached: &Workbook, fresh: &Workbook, calc: &Calc, trust_cache: bool, opts: &Options) -> CalcReport {
+     let mut r = CalcReport { stale_cache: !trust_cache, ..Default::default() };
+     let vnames = volatile_names(cached);
+@@ -532,7 +532,7 @@ pub fn oracle(cached: &Workbook, fresh: &Workbook, calc: &Calc, trust_cache: boo
+ 
+ // ---------------------------------------------------------------- round trip
+ 
+-/// Writes `wb` with GridCraft's XLSX writer, validates the package against itself and against
++/// Writes `wb` with Plervo Sheets's XLSX writer, validates the package against itself and against
+ /// `source` (the file `wb` was read from), reads it back and compares.
+ pub fn round_trip(wb: &Workbook, source: &[u8], opts: &Options) -> RoundTrip {
+     let bytes = match gridcraft_engine::io::save_bytes(wb, "roundtrip.xlsx") {
+@@ -1231,7 +1231,7 @@ fn print_human(reports: &[FileReport], opts: &Options) {
+     sigs.sort_by(|a, b| b.1.cmp(a.1).then(a.0.cmp(b.0)));
+     if !sigs.is_empty() {
+         outln!("");
+-        outln!("mismatch signatures (expected → GridCraft):");
++        outln!("mismatch signatures (expected → Plervo Sheets):");
+         for (sig, n) in sigs.iter().take(opts.max_report.max(1)) {
+             outln!("  {n:>8}  {sig}");
+         }
+@@ -1310,7 +1310,7 @@ mod tests {
+ 
+     #[test]
+     fn wrong_cached_value_is_a_mismatch_and_ranks_its_function() {
+-        // Excel "said" SUM gives 7; GridCraft computes 6. C1 reads B1 and is consistent with
++        // Excel "said" SUM gives 7; Plervo Sheets computes 6. C1 reads B1 and is consistent with
+         // Excel's 7, so it mismatches too, but only as a downstream effect.
+         let wb = book(&[("A1", "2", n(2.0)), ("A2", "4", n(4.0)), ("B1", "=SUM(A1:A2)", n(7.0)), ("C1", "=B1+1", n(8.0))]);
+         let r = check(&wb, &Options::default());
+@@ -1389,7 +1389,7 @@ mod tests {
+ 
+     #[test]
+     fn full_calc_on_load_means_no_oracle() {
+-        // A formula without a cached value makes GridCraft's writer flag the file
++        // A formula without a cached value makes Plervo Sheets's writer flag the file
+         // `fullCalcOnLoad`, like libraries that store 0 for every formula: B1's wrong "cached"
+         // value must not count as a mismatch then.
+         let wb = book(&[("A1", "=1+1", Value::Empty), ("B1", "=2+2", n(0.0))]);
+@@ -1552,7 +1552,7 @@ mod tests {
+ 
+     #[test]
+     fn package_reports_relationship_kinds_the_output_lost() {
+-        // A kind GridCraft doesn't know is dropped on save; a calculation chain is never written
++        // A kind Plervo Sheets doesn't know is dropped on save; a calculation chain is never written
+         // (Excel rebuilds it), so its absence isn't a loss.
+         let calc_chain = r#"<Relationship Id="rId91" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/calcChain" Target="calcChain.xml"/>"#;
+         let source = with_rels(&plain(), &[(WB_RELS, &format!("{MADE_UP}{calc_chain}"))], &[MADE_UP_PART, ("xl/calcChain.xml", "<calcChain/>")]);
+@@ -1564,7 +1564,7 @@ mod tests {
+ 
+     #[test]
+     fn an_internal_link_written_as_a_relationship_is_not_a_loss() {
+-        // openpyxl writes `#Sheet1!B2` as an external relationship; GridCraft writes `location`.
++        // openpyxl writes `#Sheet1!B2` as an external relationship; Plervo Sheets writes `location`.
+         let link = r##"<Relationship Id="rId5" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink" Target="#Sheet1!B2" TargetMode="External"/>"##;
+         let source = with_rels(&plain(), &[(WB_RELS, MADE_UP), (SHEET_RELS, link)], &[MADE_UP_PART]);
+         assert_eq!(package_of(&source), ["lost relationship madeUp"]);
+diff --git a/apps/gridcraft-cli/src/main.rs b/apps/gridcraft-cli/src/main.rs
+index 152ddbc..cf2b448 100644
+--- a/apps/gridcraft-cli/src/main.rs
++++ b/apps/gridcraft-cli/src/main.rs
+@@ -1,24 +1,24 @@
+-//! Headless GridCraft.
++//! Headless Plervo Sheets.
+ //!
+ //! ```text
+-//! gridcraft-cli info <file> [--json]
+-//! gridcraft-cli convert <in> <out> [--sheet NAME]
+-//! gridcraft-cli eval <formula> [--in FILE] [--sheet S] [--cell A1] [--json]
+-//! gridcraft-cli cat <file> [--range A1:D20] [--sheet S] [--formulas] [--csv]
+-//! gridcraft-cli check <file-or-dir>... [--json] [--tolerance 1e-9] [--max-report N]
+-//! gridcraft-cli run [--in FILE | --sample NAME] [--cmd 'id={json}']... [--script FILE.jsonl] [--out FILE] [--print RANGE] [--quiet]
+-//! gridcraft-cli commands [--json] [--search X]
+-//! gridcraft-cli functions [--json] [--search X] [--category C]
+-//! gridcraft-cli mcp [--connect PORT] [--in FILE | --sample NAME]
+-//! gridcraft-cli send <port> <method> [json]
+-//! gridcraft-cli version | --version
++//! plervo-sheets-cli info <file> [--json]
++//! plervo-sheets-cli convert <in> <out> [--sheet NAME]
++//! plervo-sheets-cli eval <formula> [--in FILE] [--sheet S] [--cell A1] [--json]
++//! plervo-sheets-cli cat <file> [--range A1:D20] [--sheet S] [--formulas] [--csv]
++//! plervo-sheets-cli check <file-or-dir>... [--json] [--tolerance 1e-9] [--max-report N]
++//! plervo-sheets-cli run [--in FILE | --sample NAME] [--cmd 'id={json}']... [--script FILE.jsonl] [--out FILE] [--print RANGE] [--quiet]
++//! plervo-sheets-cli commands [--json] [--search X]
++//! plervo-sheets-cli functions [--json] [--search X] [--category C]
++//! plervo-sheets-cli mcp [--connect PORT] [--in FILE | --sample NAME]
++//! plervo-sheets-cli send <port> <method> [json]
++//! plervo-sheets-cli version | --version
+ //! ```
+ #![deny(clippy::unwrap_used, clippy::expect_used, clippy::panic, clippy::unimplemented, clippy::todo, clippy::unreachable)]
+ #![forbid(unsafe_code)]
+ 
+ use std::process::ExitCode;
+ 
+-/// `println!` that ends the program quietly when stdout is closed (`gridcraft-cli commands |
++/// `println!` that ends the program quietly when stdout is closed (`plervo-sheets-cli commands |
+ /// head`) instead of panicking on a broken pipe.
+ macro_rules! outln {
+     ($($arg:tt)*) => {{
+@@ -35,19 +35,19 @@ use gridcraft_engine::Session;
+ use serde_json::{Value, json};
+ 
+ const USAGE: &str = "usage:
+-  gridcraft-cli info <file> [--json]                      sheets, used ranges, tables, charts, names
+-  gridcraft-cli convert <in> <out> [--sheet NAME]         xlsx/csv/tsv/json/html by extension
+-  gridcraft-cli eval <formula> [--in FILE] [--sheet S] [--cell A1] [--json]
+-  gridcraft-cli cat <file> [--range A1:D20] [--sheet S] [--formulas] [--csv]
+-  gridcraft-cli check <file-or-dir>... [--json] [--tolerance 1e-9] [--max-report N]
++  plervo-sheets-cli info <file> [--json]                      sheets, used ranges, tables, charts, names
++  plervo-sheets-cli convert <in> <out> [--sheet NAME]         xlsx/csv/tsv/json/html by extension
++  plervo-sheets-cli eval <formula> [--in FILE] [--sheet S] [--cell A1] [--json]
++  plervo-sheets-cli cat <file> [--range A1:D20] [--sheet S] [--formulas] [--csv]
++  plervo-sheets-cli check <file-or-dir>... [--json] [--tolerance 1e-9] [--max-report N]
+                      cached-value calc oracle + XLSX round-trip fidelity (exit 1 on any difference)
+-  gridcraft-cli run [--in FILE | --sample NAME] [--cmd 'id={json}']... [--script FILE.jsonl]
++  plervo-sheets-cli run [--in FILE | --sample NAME] [--cmd 'id={json}']... [--script FILE.jsonl]
+                      [--out FILE] [--print RANGE] [--quiet]
+-  gridcraft-cli commands [--json] [--search X]
+-  gridcraft-cli functions [--json] [--search X] [--category C]
+-  gridcraft-cli mcp [--connect PORT] [--in FILE | --sample NAME]
+-  gridcraft-cli send <port> <method> [json]
+-  gridcraft-cli version";
++  plervo-sheets-cli commands [--json] [--search X]
++  plervo-sheets-cli functions [--json] [--search X] [--category C]
++  plervo-sheets-cli mcp [--connect PORT] [--in FILE | --sample NAME]
++  plervo-sheets-cli send <port> <method> [json]
++  plervo-sheets-cli version";
+ 
+ /// stdout went away. A reader that stopped early (a closed pipe) ends the program quietly; any
+ /// other write error is reported.
+@@ -55,7 +55,7 @@ fn stdout_failed(e: std::io::Error) -> ! {
+     if e.kind() == std::io::ErrorKind::BrokenPipe {
+         std::process::exit(0);
+     }
+-    eprintln!("gridcraft-cli: can't write to stdout: {e}");
++    eprintln!("plervo-sheets-cli: can't write to stdout: {e}");
+     std::process::exit(1);
+ }
+ 
+@@ -64,7 +64,7 @@ fn main() -> ExitCode {
+     let rest = args.get(1..).unwrap_or_default();
+     let r = match args.first().map(String::as_str) {
+         Some("--version" | "-V" | "version") => {
+-            outln!("gridcraft-cli {}", env!("CARGO_PKG_VERSION"));
++            outln!("plervo-sheets-cli {}", env!("CARGO_PKG_VERSION"));
+             Ok(())
+         }
+         Some("--help" | "-h" | "help") => {
+@@ -87,7 +87,7 @@ fn main() -> ExitCode {
+     match r {
+         Ok(()) => ExitCode::SUCCESS,
+         Err(e) => {
+-            eprintln!("gridcraft-cli: {e}");
++            eprintln!("plervo-sheets-cli: {e}");
+             ExitCode::FAILURE
+         }
+     }
+@@ -493,7 +493,7 @@ fn functions(args: &[String]) -> Result<(), String> {
+ }
+ 
+ /// `mcp` (headless, in-process engine) or `mcp --connect PORT|HOST:PORT` (drive a running app
+-/// started with `gridcraft --control PORT`). JSON-RPC on stdin/stdout; logs on stderr.
++/// started with `plervo-sheets --control PORT`). JSON-RPC on stdin/stdout; logs on stderr.
+ fn mcp(args: &[String]) -> Result<(), String> {
+     use gridcraft_mcp::{Backend, Headless, Remote, Server, control_addr};
+     let a = Args::parse(args, &["connect", "in", "sample"], &[])?;
+@@ -503,7 +503,7 @@ fn mcp(args: &[String]) -> Result<(), String> {
+             let addr = control_addr(c);
+             Box::new(
+                 Remote::connect(&addr)
+-                    .map_err(|e| format!("cannot connect to the GridCraft app at {addr}: {e} (start it with `gridcraft --control PORT`)"))?,
++                    .map_err(|e| format!("cannot connect to the Plervo Sheets app at {addr}: {e} (start it with `plervo-sheets --control PORT`)"))?,
+             )
+         }
+         None => {
+@@ -519,7 +519,7 @@ fn mcp(args: &[String]) -> Result<(), String> {
+             Box::new(Headless::with_session(session))
+         }
+     };
+-    eprintln!("gridcraft-cli: MCP server on stdio ({})", backend.describe());
++    eprintln!("plervo-sheets-cli: MCP server on stdio ({})", backend.describe());
+     let stdin = std::io::stdin();
+     let stdout = std::io::stdout();
+     Server::new(backend).serve(stdin.lock(), stdout.lock()).map_err(|e| e.to_string())
+@@ -539,7 +539,7 @@ fn send(args: &[String]) -> Result<(), String> {
+     }
+     let addr = control_addr(port);
+     let mut r = Remote::connect(&addr)
+-        .map_err(|e| format!("cannot connect to the GridCraft app at {addr}: {e} (start it with `gridcraft --control {port}`)"))?;
++        .map_err(|e| format!("cannot connect to the Plervo Sheets app at {addr}: {e} (start it with `plervo-sheets --control {port}`)"))?;
+     let v = r.call(method, params)?;
+     outln!("{}", pretty(&v));
+     Ok(())
+diff --git a/apps/gridcraft-cli/tests/cli.rs b/apps/gridcraft-cli/tests/cli.rs
+index fb25b63..1cd0605 100644
+--- a/apps/gridcraft-cli/tests/cli.rs
++++ b/apps/gridcraft-cli/tests/cli.rs
+@@ -5,29 +5,29 @@ use std::path::PathBuf;
+ use std::process::{Command, Output, Stdio};
+ 
+ fn bin() -> Command {
+-    Command::new(env!("CARGO_BIN_EXE_gridcraft-cli"))
++    Command::new(env!("CARGO_BIN_EXE_plervo-sheets-cli"))
+ }
+ 
+ fn run(args: &[&str]) -> Output {
+-    bin().args(args).output().expect("run gridcraft-cli")
++    bin().args(args).output().expect("run plervo-sheets-cli")
+ }
+ 
+ fn ok(args: &[&str]) -> String {
+     let o = run(args);
+-    assert!(o.status.success(), "gridcraft-cli {args:?} failed: {}", String::from_utf8_lossy(&o.stderr));
++    assert!(o.status.success(), "plervo-sheets-cli {args:?} failed: {}", String::from_utf8_lossy(&o.stderr));
+     String::from_utf8(o.stdout).unwrap()
+ }
+ 
+ fn tmpdir(name: &str) -> PathBuf {
+-    let d = std::env::temp_dir().join(format!("gridcraft-cli-test-{}-{name}", std::process::id()));
++    let d = std::env::temp_dir().join(format!("plervo-sheets-cli-test-{}-{name}", std::process::id()));
+     std::fs::create_dir_all(&d).unwrap();
+     d
+ }
+ 
+ #[test]
+ fn version_and_usage() {
+-    assert_eq!(ok(&["--version"]).trim(), format!("gridcraft-cli {}", env!("CARGO_PKG_VERSION")));
+-    assert_eq!(ok(&["version"]).trim(), format!("gridcraft-cli {}", env!("CARGO_PKG_VERSION")));
++    assert_eq!(ok(&["--version"]).trim(), format!("plervo-sheets-cli {}", env!("CARGO_PKG_VERSION")));
++    assert_eq!(ok(&["version"]).trim(), format!("plervo-sheets-cli {}", env!("CARGO_PKG_VERSION")));
+     let o = run(&["frobnicate"]);
+     assert!(!o.status.success());
+     assert!(String::from_utf8_lossy(&o.stderr).contains("unknown subcommand"));
+@@ -157,7 +157,7 @@ fn check_exit_codes_and_json() {
+     let book = dir.join("calc.xlsx");
+     let book_s = book.to_str().unwrap();
+     ok(&["run", "--cmd", r#"cell.set={"cell":"A1","input":"2"}"#, "--cmd", r#"cell.set={"cell":"B1","input":"=A1*3"}"#, "--out", book_s, "--quiet"]);
+-    // GridCraft's own file: its cached values are its own results, and it round-trips.
++    // Plervo Sheets's own file: its cached values are its own results, and it round-trips.
+     let o = run(&["check", dir.to_str().unwrap()]);
+     let out = String::from_utf8_lossy(&o.stdout);
+     assert_eq!(o.status.code(), Some(0), "{out}");
+diff --git a/apps/gridcraft-cli/tests/text_to_columns_quotes.rs b/apps/gridcraft-cli/tests/text_to_columns_quotes.rs
+index c35f857..44d252a 100644
+--- a/apps/gridcraft-cli/tests/text_to_columns_quotes.rs
++++ b/apps/gridcraft-cli/tests/text_to_columns_quotes.rs
+@@ -13,7 +13,7 @@ fn text_to_columns_preserves_doubled_quotes() {
+         ),
+     )
+     .expect("write commands");
+-    let output = Command::new(env!("CARGO_BIN_EXE_gridcraft-cli"))
++    let output = Command::new(env!("CARGO_BIN_EXE_plervo-sheets-cli"))
+         .args(["run", "--script"])
+         .arg(&script)
+         .args(["--print", "A1:B1", "--csv", "--quiet"])
+diff --git a/apps/gridcraft-web/src/host.rs b/apps/gridcraft-web/src/host.rs
+index 2286023..b3cd34b 100644
+--- a/apps/gridcraft-web/src/host.rs
++++ b/apps/gridcraft-web/src/host.rs
+@@ -1,11 +1,11 @@
+ //! The `postMessage` bridge to a same-origin parent page (`?host=parent`), for pages that embed
+-//! GridCraft in an `<iframe>` (such as a Nextcloud app). Messages are plain objects with a `type`:
++//! Plervo Sheets in an `<iframe>` (such as a Nextcloud app). Messages are plain objects with a `type`:
+ //!
+ //! - `gridcraft:ready` (to the parent): `{ version }`, the app is listening; send a file now.
+ //! - `gridcraft:open` (from the parent): `{ name, bytes }`, bytes an `ArrayBuffer` or
+ //!   `Uint8Array`. It opens like a workbook picked with File › Open or dropped on the window.
+ //! - `gridcraft:save` (to the parent): `{ name, bytes }` (a transferred `ArrayBuffer`) for every
+-//!   file GridCraft would otherwise download: Save and Save As (an .xlsx workbook) and Export
++//!   file Plervo Sheets would otherwise download: Save and Save As (an .xlsx workbook) and Export
+ //!   as PDF. The parent stores it and reports failures itself.
+ //! - `gridcraft:dirty` (to the parent): `{ dirty }` whenever unsaved changes appear or go away.
+ //! - `gridcraft:failed` (to the parent): `{ error }` when the app couldn't start.
+diff --git a/apps/gridcraft-web/src/main.rs b/apps/gridcraft-web/src/main.rs
+index 2920a87..0d634e4 100644
+--- a/apps/gridcraft-web/src/main.rs
++++ b/apps/gridcraft-web/src/main.rs
+@@ -1,4 +1,4 @@
+-//! GridCraft in the browser.
++//! Plervo Sheets in the browser.
+ //!
+ //! Runs the same [`gridcraft_ui_egui::SheetApp`] as the desktop app through eframe's web runner
+ //! (wgpu: WebGPU where available, WebGL2 otherwise). Build with `trunk build --release` from
+@@ -10,7 +10,7 @@
+ //!
+ //! URL query flags: `?webgl` forces WebGL2; `?sample=sales|budget|grades` opens a sample;
+ //! `?host=parent` (inside an `<iframe>`) talks to a same-origin parent page instead: it sends the
+-//! workbook to open and stores what GridCraft saves (`host`), and `&author=` names the user for
++//! workbook to open and stores what Plervo Sheets saves (`host`), and `&author=` names the user for
+ //! notes and comments.
+ #![deny(clippy::unwrap_used, clippy::expect_used, clippy::panic, clippy::unimplemented, clippy::todo, clippy::unreachable)]
+ 
+diff --git a/apps/gridcraft-web/src/web.rs b/apps/gridcraft-web/src/web.rs
+index c0fcb22..a30dc82 100644
+--- a/apps/gridcraft-web/src/web.rs
++++ b/apps/gridcraft-web/src/web.rs
+@@ -25,7 +25,7 @@ pub fn start() {
+         {
+             create.instance_descriptor.backends = eframe::wgpu::Backends::GL;
+         }
+-        // `?host=parent`: a same-origin page framing GridCraft (such as a Nextcloud app) opens
++        // `?host=parent`: a same-origin page framing Plervo Sheets (such as a Nextcloud app) opens
+         // workbooks in it and stores what it saves (`host`).
+         let bridge = if query_param("host").as_deref() == Some("parent") { crate::host::Bridge::new() } else { None };
+         let app_bridge = bridge.clone();
+@@ -75,7 +75,9 @@ pub fn start() {
+         if let Some(el) = document.get_element_by_id(LOADING_ID) {
+             match result {
+                 Ok(()) => el.remove(),
+-                Err(e) => el.set_inner_html(&format!("<p>GridCraft failed to start: {e:?}</p><p>A browser with WebGPU or WebGL2 is required.</p>")),
++                Err(e) => {
++                    el.set_inner_html(&format!("<p>Plervo Sheets failed to start: {e:?}</p><p>A browser with WebGPU or WebGL2 is required.</p>"))
++                }
+             }
+         }
+     });
+diff --git a/apps/gridcraft/Cargo.toml b/apps/gridcraft/Cargo.toml
+index cd8311b..2580ff4 100644
+--- a/apps/gridcraft/Cargo.toml
++++ b/apps/gridcraft/Cargo.toml
+@@ -1,10 +1,10 @@
+ [package]
+-name = "gridcraft"
++name = "plervo-sheets"
+ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ publish = false
+-default-run = "gridcraft"
++default-run = "plervo-sheets"
+ description = "GridCraft desktop app"
+ 
+ [lints]
+diff --git a/apps/gridcraft/build.rs b/apps/gridcraft/build.rs
+index 95d8da3..48a4671 100644
+--- a/apps/gridcraft/build.rs
++++ b/apps/gridcraft/build.rs
+@@ -14,12 +14,12 @@ fn main() {
+     }
+     let mut res = winresource::WindowsResource::new();
+     res.set_icon("../../assets/app-icon/gridcraft.ico")
+-        .set("ProductName", "GridCraft")
+-        .set("FileDescription", "GridCraft spreadsheet")
+-        .set("CompanyName", "Learning Machines LLC")
++        .set("ProductName", "Plervo Sheets")
++        .set("FileDescription", "Plervo Sheets spreadsheet")
++        .set("CompanyName", "Maintech Solutions LLC")
+         .set("LegalCopyright", "Copyright (c) the GridCraft authors. MIT OR Apache-2.0.")
+-        .set("OriginalFilename", "gridcraft.exe")
+-        .set("InternalName", "gridcraft");
++        .set("OriginalFilename", "plervo-sheets.exe")
++        .set("InternalName", "plervo-sheets");
+     if let Err(e) = res.compile() {
+         if std::env::var_os("GRIDCRAFT_REQUIRE_WINRES").is_some() {
+             eprintln!("embedding Windows resources failed: {e}");
+diff --git a/apps/gridcraft/src/apple_events.rs b/apps/gridcraft/src/apple_events.rs
+index 405ee89..f83d79d 100644
+--- a/apps/gridcraft/src/apple_events.rs
++++ b/apps/gridcraft/src/apple_events.rs
+@@ -1,9 +1,9 @@
+ //! macOS open-documents and quit Apple events (#69).
+ //!
+-//! Finder double-clicks, Open With, drops on the Dock icon and `open -a GridCraft book.xlsx` don't
++//! Finder double-clicks, Open With, drops on the Dock icon and `open -a Plervo Sheets book.xlsx` don't
+ //! pass paths on the command line: LaunchServices sends the running (or just-launched) app a
+ //! `kAEOpenDocuments` ('odoc') Apple event. winit 0.30 doesn't handle it and owns the
+-//! `NSApplicationDelegate`, so AppKit answered "GridCraft cannot open files in the Excel Workbook
++//! `NSApplicationDelegate`, so AppKit answered "Plervo Sheets cannot open files in the Excel Workbook
+ //! format". Handling it ourselves needs Objective-C class declarations, i.e. `unsafe`, which this
+ //! workspace forbids. The audited `fmv-macos-events` crate (also used by PdfCraft and PhotoCraft)
+ //! wraps exactly that, an `NSAppleEventManager` handler registered before Finder's launch event
+diff --git a/apps/gridcraft/src/graphics.rs b/apps/gridcraft/src/graphics.rs
+index 83478ed..2b98c42 100644
+--- a/apps/gridcraft/src/graphics.rs
++++ b/apps/gridcraft/src/graphics.rs
+@@ -66,7 +66,7 @@ pub fn fallback_backends(backend_override: Option<Backends>, first: Backends) ->
+ /// The DirectX 12 shader compiler: `env_choice` (normally `Dx12Compiler::from_env()`, i.e.
+ /// `WGPU_DX12_COMPILER`, for troubleshooting) or else FXC.
+ ///
+-/// wgpu's default (`Auto`) loads the first `dxcompiler.dll` on the DLL search path. GridCraft ships
++/// wgpu's default (`Auto`) loads the first `dxcompiler.dll` on the DLL search path. Plervo Sheets ships
+ /// none, so that is another program's copy (a Windows SDK, an Edge or WebView folder, anything on
+ /// `PATH`). Without a matching `dxil.dll` beside it, DXC prints "DXIL signing library not found",
+ /// wgpu treats that warning as a compile error, its internal compute pipelines fail, the device is
+diff --git a/apps/gridcraft/src/logging.rs b/apps/gridcraft/src/logging.rs
+index e3b56a8..b412f16 100644
+--- a/apps/gridcraft/src/logging.rs
++++ b/apps/gridcraft/src/logging.rs
+@@ -8,7 +8,7 @@
+ //! the log of a run that crashed survives the next launch. Runs without preferences
+ //! (`GRIDCRAFT_NO_PREFS`) log to standard error only.
+ //!
+-//! Levels: `info` for GridCraft's own crates, `warn` for everything else (wgpu and naga are
++//! Levels: `info` for Plervo Sheets's own crates, `warn` for everything else (wgpu and naga are
+ //! chatty). `RUST_LOG` replaces that with env_logger-style directives: `debug`,
+ //! `warn,gridcraft_engine=trace`, `wgpu_core=info`. A directive ending in `*` matches every target
+ //! that starts with it (`gridcraft*=debug`).
+@@ -17,7 +17,7 @@
+ //! written once the file is attached. Writing never panics: a file that can't be created or
+ //! written leaves standard error as the only sink.
+ //!
+-//! This is the desktop app's logger only; `gridcraft-cli` and `gridcraft-web` set up their own.
++//! This is the desktop app's logger only; `plervo-sheets-cli` and `gridcraft-web` set up their own.
+ 
+ use std::fs::File;
+ use std::io::Write;
+diff --git a/apps/gridcraft/src/main.rs b/apps/gridcraft/src/main.rs
+index 7c0eb04..59241bc 100644
+--- a/apps/gridcraft/src/main.rs
++++ b/apps/gridcraft/src/main.rs
+@@ -1,4 +1,4 @@
+-//! GridCraft desktop app.
++//! Plervo Sheets desktop app.
+ //!
+ //! Usage: `gridcraft [--control <port>] [--sample <name>] [files…]`
+ //!
+@@ -75,14 +75,14 @@ impl eframe::App for App {
+ 
+ fn config_dir() -> Option<std::path::PathBuf> {
+     if cfg!(target_os = "macos") {
+-        std::env::var_os("HOME").map(|h| std::path::PathBuf::from(h).join("Library/Application Support/GridCraft"))
++        std::env::var_os("HOME").map(|h| std::path::PathBuf::from(h).join("Library/Application Support/Plervo Sheets"))
+     } else if cfg!(windows) {
+-        std::env::var_os("APPDATA").map(|a| std::path::PathBuf::from(a).join("GridCraft"))
++        std::env::var_os("APPDATA").map(|a| std::path::PathBuf::from(a).join("Plervo Sheets"))
+     } else {
+         std::env::var_os("XDG_CONFIG_HOME")
+             .map(std::path::PathBuf::from)
+             .or_else(|| std::env::var_os("HOME").map(|h| std::path::PathBuf::from(h).join(".config")))
+-            .map(|c| c.join("gridcraft"))
++            .map(|c| c.join("plervo-sheets"))
+     }
+ }
+ 
+@@ -224,7 +224,7 @@ fn icon() -> Option<egui::IconData> {
+     #[cfg(target_os = "macos")]
+     let bytes = include_bytes!("../../../assets/app-icon/gridcraft-macos-512.png");
+     #[cfg(not(target_os = "macos"))]
+-    let bytes = include_bytes!("../../../assets/app-icon/hicolor/256x256/apps/ai.storyteller.gridcraft.png");
++    let bytes = include_bytes!("../../../assets/app-icon/hicolor/256x256/apps/com.plervo.sheets.png");
+     let img = image::load_from_memory(bytes).ok()?.to_rgba8();
+     Some(egui::IconData { width: img.width(), height: img.height(), rgba: img.into_raw() })
+ }
+@@ -252,7 +252,7 @@ fn main() -> eframe::Result<()> {
+     }));
+     let args: Vec<String> = std::env::args().skip(1).collect();
+     if args.iter().any(|a| a == "--version" || a == "-V") {
+-        println!("GridCraft {}", env!("CARGO_PKG_VERSION"));
++        println!("Plervo Sheets {}", env!("CARGO_PKG_VERSION"));
+         return Ok(());
+     }
+     let mut control_port: Option<u16> = std::env::var("GRIDCRAFT_CONTROL_PORT").ok().and_then(|p| p.parse().ok());
+@@ -281,7 +281,7 @@ fn main() -> eframe::Result<()> {
+     if let Some(logger) = logger {
+         match log_dir().filter(|_| prefs_enabled()) {
+             Some(dir) => match logger.attach_dir(&dir) {
+-                Ok(path) => log::info!("GridCraft {}, log file {}", env!("CARGO_PKG_VERSION"), path.display()),
++                Ok(path) => log::info!("Plervo Sheets {}, log file {}", env!("CARGO_PKG_VERSION"), path.display()),
+                 // Standard error only by now (`attach_dir` gave up on the file); unlike `eprintln!`, never panics.
+                 Err(e) => log::warn!("no log file: {e}"),
+             },
+@@ -309,10 +309,10 @@ fn main() -> eframe::Result<()> {
+         app.open_path(f);
+     }
+     let mut viewport = egui::ViewportBuilder::default()
+-        .with_title("GridCraft")
++        .with_title("Plervo Sheets")
+         .with_inner_size([1440.0, 900.0])
+         .with_min_inner_size([640.0, 420.0])
+-        .with_app_id("ai.storyteller.gridcraft")
++        .with_app_id("com.plervo.sheets")
+         .with_drag_and_drop(true);
+     if cfg!(target_os = "macos") {
+         viewport = viewport.with_fullsize_content_view(true).with_titlebar_shown(false).with_title_shown(false);
+@@ -344,7 +344,7 @@ fn main() -> eframe::Result<()> {
+     let pending = std::cell::Cell::new(Some(app));
+     let run = |options: eframe::NativeOptions| {
+         eframe::run_native(
+-            "GridCraft",
++            "Plervo Sheets",
+             options,
+             Box::new(|cc| {
+                 let Some(mut app) = pending.take() else {
+@@ -396,8 +396,8 @@ mod packaging_tests {
+         v
+     }
+ 
+-    /// macOS Open With (`CFBundleDocumentTypes`) offers GridCraft for the same files as Windows
+-    /// Open with, and GridCraft opens each of them. #321 added `.xlsb` and `.ods` on Windows and
++    /// macOS Open With (`CFBundleDocumentTypes`) offers Plervo Sheets for the same files as Windows
++    /// Open with, and Plervo Sheets opens each of them. #321 added `.xlsb` and `.ods` on Windows and
+     /// Linux only.
+     #[test]
+     fn macos_and_windows_offer_the_same_file_types() {
+@@ -408,7 +408,7 @@ mod packaging_tests {
+         assert!(mac.iter().any(|e| e == "xlsx"), "Info.plist.in extensions not found: {mac:?}");
+         assert_eq!(mac, win);
+         for ext in &mac {
+-            assert!(FileKind::from_path(&format!("book.{ext}")).is_some(), "GridCraft doesn't open .{ext}");
++            assert!(FileKind::from_path(&format!("book.{ext}")).is_some(), "Plervo Sheets doesn't open .{ext}");
+         }
+     }
+ }
+diff --git a/apps/gridcraft/src/native_menu.rs b/apps/gridcraft/src/native_menu.rs
+index 6985af3..b21c1aa 100644
+--- a/apps/gridcraft/src/native_menu.rs
++++ b/apps/gridcraft/src/native_menu.rs
+@@ -174,8 +174,8 @@ fn tree() -> Vec<(&'static str, Vec<Entry>)> {
+             vec![
+                 ("Agent Control (MCP)…", "dialog:agents", None),
+                 ("Contributors…", "dialog:about:Contributors", None),
+-                ("GridCraft on getartcraft.com", "url:https://getartcraft.com/apps/gridcraft", None),
+-                ("Join the ArtCraft Discord…", "url:https://discord.gg/artcraft", None),
++                ("Plervo Sheets on plervo.com", "url:https://plervo.com/", None),
++                ("Support Plervo", "url:https://buymeacoffee.com/alport", None),
+             ],
+         ),
+     ]
+@@ -201,8 +201,8 @@ fn select_theme(app: &mut SheetApp, id: &str) -> bool {
+ impl NativeMenu {
+     pub fn install(ctx: &egui::Context) -> NativeMenu {
+         let menu = Menu::new();
+-        let app_menu = Submenu::new("GridCraft", true);
+-        let about = MenuItem::with_id("dialog:about", "About GridCraft", true, None);
++        let app_menu = Submenu::new("Plervo Sheets", true);
++        let about = MenuItem::with_id("dialog:about", "About Plervo Sheets", true, None);
+         let _ = app_menu.append_items(&[
+             &about,
+             &PredefinedMenuItem::separator(),
+diff --git a/apps/gridcraft/src/print.rs b/apps/gridcraft/src/print.rs
+index 09bb801..342d091 100644
+--- a/apps/gridcraft/src/print.rs
++++ b/apps/gridcraft/src/print.rs
+@@ -39,7 +39,7 @@ pub fn submit() -> Submit {
+                 }),
+                 grayscale: settings.grayscale,
+                 scaling: craft_print::Scaling::ShrinkToFit,
+-                title: "GridCraft document".into(),
++                title: "Plervo Sheets document".into(),
+                 ..Default::default()
+             };
+             let _ = sender.send(craft_print::submit(&bytes, &job).map_err(|error| error.to_string()));
+diff --git a/apps/gridcraft/tests/mac_menu_appkit.rs b/apps/gridcraft/tests/mac_menu_appkit.rs
+index e713f66..49cd5e5 100644
+--- a/apps/gridcraft/tests/mac_menu_appkit.rs
++++ b/apps/gridcraft/tests/mac_menu_appkit.rs
+@@ -24,7 +24,7 @@ fn main() {
+ 
+     let bar = nsapp.mainMenu().expect("a main menu");
+     let tops: Vec<String> = (0..bar.numberOfItems()).filter_map(|i| bar.itemAtIndex(i)?.submenu()).map(|m| m.title().to_string()).collect();
+-    assert_eq!(tops, ["GridCraft", "File", "Edit", "View", "Insert", "Format", "Tools", "Data", "Window", "Help"]);
++    assert_eq!(tops, ["Plervo Sheets", "File", "Edit", "View", "Insert", "Format", "Tools", "Data", "Window", "Help"]);
+     assert_eq!(nsapp.windowsMenu().map(|m| m.title().to_string()).as_deref(), Some("Window"), "AppKit knows the Window menu");
+ 
+     println!("mac_menu_appkit: ok");
+diff --git a/crates/ui-egui/examples/snapshot.rs b/crates/ui-egui/examples/snapshot.rs
+index a171199..a328f3a 100644
+--- a/crates/ui-egui/examples/snapshot.rs
++++ b/crates/ui-egui/examples/snapshot.rs
+@@ -1,4 +1,4 @@
+-//! Renders the whole GridCraft window offscreen (wgpu, no window) to a PNG.
++//! Renders the whole Plervo Sheets window offscreen (wgpu, no window) to a PNG.
+ //!
+ //! `cargo run --release -p gridcraft-ui-egui --example snapshot -- [--sample sales] [--in file.xlsx]
+ //!  [--size 1440x900] [--scale 2] [--cmd 'id={json}']... [--tab Insert] [--dark] [--language en|zh|ja|ko|ru|pt|cs]
+diff --git a/crates/ui-egui/src/backstage.rs b/crates/ui-egui/src/backstage.rs
+index 922baab..aee3fdd 100644
+--- a/crates/ui-egui/src/backstage.rs
++++ b/crates/ui-egui/src/backstage.rs
+@@ -888,13 +888,13 @@ pub fn export_as(app: &mut SheetApp, fmt: &str) -> bool {
+         return match app.run(id, json!({"path": path})) {
+             Ok(_) => true,
+             Err(e) => {
+-                app.message = Some(("GridCraft".into(), crate::clean_error(&e)));
++                app.message = Some(("Plervo Sheets".into(), crate::clean_error(&e)));
+                 false
+             }
+         };
+     }
+     if app.services.download.is_none() {
+-        app.message = Some(("GridCraft".into(), "Exporting needs a file picker, which this window doesn't have.".into()));
++        app.message = Some(("Plervo Sheets".into(), "Exporting needs a file picker, which this window doesn't have.".into()));
+         return false;
+     }
+     if fmt == "pdf" {
+@@ -902,7 +902,7 @@ pub fn export_as(app: &mut SheetApp, fmt: &str) -> bool {
+         return match app.run(id, json!({})) {
+             Ok(_) => true,
+             Err(e) => {
+-                app.message = Some(("GridCraft".into(), crate::clean_error(&e)));
++                app.message = Some(("Plervo Sheets".into(), crate::clean_error(&e)));
+                 false
+             }
+         };
+@@ -921,7 +921,7 @@ pub fn export_as(app: &mut SheetApp, fmt: &str) -> bool {
+             }
+         }
+         Err(e) => {
+-            app.message = Some(("GridCraft".into(), crate::clean_error(&e)));
++            app.message = Some(("Plervo Sheets".into(), crate::clean_error(&e)));
+             false
+         }
+     }
+diff --git a/crates/ui-egui/src/dialogs.rs b/crates/ui-egui/src/dialogs.rs
+index fb899c7..69ac431 100644
+--- a/crates/ui-egui/src/dialogs.rs
++++ b/crates/ui-egui/src/dialogs.rs
+@@ -674,7 +674,7 @@ impl Dialog {
+             "commandSearch" => Dialog::custom("commandSearch", "Search Commands", json!({})),
+             "agents" => Dialog::custom("agents", "Agent Control", json!({})),
+             "about" => {
+-                let mut d = Dialog::custom("about", "About GridCraft", json!({}));
++                let mut d = Dialog::custom("about", "About Plervo Sheets", json!({}));
+                 d.tab = match p("tab").as_str() {
+                     Some(t @ ("Contributors" | "Models")) => t.to_string(),
+                     _ => "About".into(),
+@@ -776,7 +776,7 @@ impl Dialog {
+             "pickList" => Dialog::custom("pickList", "Pick From List", json!({})),
+             "saveCopy" => Dialog::custom("saveCopy", "Save a Copy", json!({"format": p("format")})),
+             "saveChanges" => Dialog::custom("saveChanges", "Save Changes?", json!({"title": p("title")})),
+-            "start" => Dialog::custom("start", "GridCraft", json!({})),
++            "start" => Dialog::custom("start", "Plervo Sheets", json!({})),
+             "comments" => {
+                 app.grid.pane = None;
+                 app.run_or_alert("review.showComments", json!({"on": true}));
+@@ -1063,7 +1063,7 @@ pub fn show(app: &mut SheetApp, ctx: &egui::Context) {
+                 "solverResults" => solver_results(app, ui, &mut d, &mut open),
+                 "spelling" => spelling(app, ui, &mut d, &mut open),
+                 "agents" => {
+-                    ui.label("GridCraft is fully drivable by agents. Every menu item, button and gesture is a command:");
++                    ui.label("Plervo Sheets is fully drivable by agents. Every menu item, button and gesture is a command:");
+                     ui.add_space(4.0);
+                     ui.monospace("gridcraft --control 7979        # JSON-lines control channel\ngridcraft-cli mcp --connect 7979   # MCP bridged to this window\ngridcraft-cli mcp                   # headless MCP server");
+                     ui.add_space(4.0);
+@@ -1468,7 +1468,7 @@ fn form_fields(ui: &mut egui::Ui, d: &mut Dialog) {
+     });
+ }
+ 
+-/// Help ▸ About GridCraft: the app, its contributors and the AI models that helped. The credits
++/// Help ▸ About Plervo Sheets: the app, its contributors and the AI models that helped. The credits
+ /// are compiled in (`crate::credits`, docs/contributors.md).
+ fn about(ui: &mut egui::Ui, d: &mut Dialog) {
+     ui.horizontal(|ui| {
+@@ -1483,21 +1483,21 @@ fn about(ui: &mut egui::Ui, d: &mut Dialog) {
+         "Contributors" => crate::credits::contributors_ui(ui),
+         "Models" => crate::credits::models_ui(ui),
+         _ => {
+-            ui.heading("GridCraft");
++            ui.heading("Plervo Sheets");
+             ui.label(format!("Version {}", env!("CARGO_PKG_VERSION")));
+             ui.add_space(4.0);
+-            ui.label("A clean-room, open-source, Rust-native spreadsheet. Part of ArtCraft.");
+-            ui.hyperlink_to("getartcraft.com/apps/gridcraft", "https://getartcraft.com/apps/gridcraft");
+-            ui.hyperlink_to("Join the ArtCraft Discord", "https://discord.gg/artcraft");
++            ui.label("A clean-room, open-source, Rust-native spreadsheet. Part of Plervo Suite.");
++            ui.hyperlink_to("plervo.com/apps/gridcraft", "https://plervo.com/");
++            ui.hyperlink_to("Support Plervo", "https://buymeacoffee.com/alport");
+         }
+     }
+ }
+ 
+-/// The Macros dialog: lists GridCraft's own recorded scripts and (if the file carries one) the
++/// The Macros dialog: lists Plervo Sheets's own recorded scripts and (if the file carries one) the
+ /// preserved VBA project. Mirrors Excel's Developer ▸ Macros list, but is honest that VBA is
+ /// preserved and not executed.
+ fn macros(ui: &mut egui::Ui, d: &mut Dialog) {
+-    ui.label("Automation in this workbook. GridCraft runs its own scripts; a file's VBA project is preserved but not executed.");
++    ui.label("Automation in this workbook. Plervo Sheets runs its own scripts; a file's VBA project is preserved but not executed.");
+     ui.add_space(6.0);
+     let items: Vec<Json> = d.result.as_ref().and_then(Json::as_array).cloned().unwrap_or_default();
+     if items.is_empty() {
+diff --git a/crates/ui-egui/src/formula_bar.rs b/crates/ui-egui/src/formula_bar.rs
+index 7f1ad87..b2d09dd 100644
+--- a/crates/ui-egui/src/formula_bar.rs
++++ b/crates/ui-egui/src/formula_bar.rs
+@@ -127,7 +127,7 @@ fn name_box(app: &mut SheetApp, ui: &mut egui::Ui, t: &Tokens) {
+                     app.run("formulas.defineName", json!({"name": target}))
+                 };
+                 if let Err(e) = r {
+-                    app.message = Some(("GridCraft".into(), crate::clean_error(&e)));
++                    app.message = Some(("Plervo Sheets".into(), crate::clean_error(&e)));
+                 }
+                 app.grid.ensure_visible = true;
+             }
+diff --git a/crates/ui-egui/src/grid.rs b/crates/ui-egui/src/grid.rs
+index 97b787e..4490a12 100644
+--- a/crates/ui-egui/src/grid.rs
++++ b/crates/ui-egui/src/grid.rs
+@@ -2269,7 +2269,7 @@ fn interact(app: &mut SheetApp, ui: &mut egui::Ui, resp: &egui::Response, geo: &
+                     // Ctrl (Cmd on macOS) swaps copying and extending, as in Excel.
+                     let mode = if mods.command { "alternate" } else { "series" };
+                     if let Err(e) = app.run("edit.autoFill", json!({"source": src.a1(), "target": t.a1(), "mode": mode})) {
+-                        app.message = Some(("GridCraft".into(), crate::clean_error(&e)));
++                        app.message = Some(("Plervo Sheets".into(), crate::clean_error(&e)));
+                     }
+                 }
+             }
+@@ -2290,7 +2290,7 @@ fn interact(app: &mut SheetApp, ui: &mut egui::Ui, resp: &egui::Response, geo: &
+             }
+             Drag::MoveCols { source, before: Some(before) } => {
+                 if let Err(e) = app.run("sheet.moveColumns", json!({"cols": source.a1(), "before": before})) {
+-                    app.message = Some(("GridCraft".into(), crate::clean_error(&e)));
++                    app.message = Some(("Plervo Sheets".into(), crate::clean_error(&e)));
+                 }
+             }
+             _ => {}
+diff --git a/crates/ui-egui/src/i18n.rs b/crates/ui-egui/src/i18n.rs
+index 061698d..291c1f2 100644
+--- a/crates/ui-egui/src/i18n.rs
++++ b/crates/ui-egui/src/i18n.rs
+@@ -411,7 +411,7 @@ const JAPANESE: &[(&str, &str)] = &[
+     ("Command\nPalette", "コマンド パレット"),
+     ("Agent\nControl", "エージェント制御"),
+     ("Action\nJournal", "操作ジャーナル"),
+-    ("About\nGridCraft", "GridCraft について"),
++    ("About\nPlervo Sheets", "Plervo Sheets について"),
+     ("Share", "共有"),
+     ("Add Chart\nElement", "グラフ要素を追加"),
+     ("Change\nChart Type", "グラフの種類の変更"),
+diff --git a/crates/ui-egui/src/i18n/cs.rs b/crates/ui-egui/src/i18n/cs.rs
+index 7ed8372..6f416c7 100644
+--- a/crates/ui-egui/src/i18n/cs.rs
++++ b/crates/ui-egui/src/i18n/cs.rs
+@@ -340,7 +340,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+         "Command\nPalette" => "Paleta\npříkazů",
+         "Agent\nControl" => "Řízení\nagenty",
+         "Action\nJournal" => "Deník\nakcí",
+-        "About\nGridCraft" => "O aplikaci\nGridCraft",
++        "About\nPlervo Sheets" => "O aplikaci\nPlervo Sheets",
+         "Share" => "Sdílet",
+         "Add Chart\nElement" => "Přidat prvek\ngrafu",
+         "Change\nChart Type" => "Změnit\ntyp grafu",
+@@ -460,7 +460,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+         "Hide Sheet" => "Skrýt list",
+         "Hierarchy & more" => "Hierarchické a další grafy",
+         "Highlighter" => "Zvýrazňovač",
+-        "How agents drive GridCraft (MCP / control channel)" => "Jak agenti ovládají GridCraft (MCP / řídicí kanál)",
++        "How agents drive Plervo Sheets (MCP / control channel)" => "Jak agenti ovládají Plervo Sheets (MCP / řídicí kanál)",
+         "Import a text or CSV file" => "Importovat textový soubor nebo CSV",
+         "Insert\nSlicer" => "Vložit\nprůřez",
+         "Insert Function (⇧F3)" => "Vložit funkci (⇧F3)",
+diff --git a/crates/ui-egui/src/i18n/de.rs b/crates/ui-egui/src/i18n/de.rs
+index c20c7d1..07b6a95 100644
+--- a/crates/ui-egui/src/i18n/de.rs
++++ b/crates/ui-egui/src/i18n/de.rs
+@@ -338,7 +338,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+         "Command\nPalette" => "Befehls-\npalette",
+         "Agent\nControl" => "Agenten-\nsteuerung",
+         "Action\nJournal" => "Aktions-\nprotokoll",
+-        "About\nGridCraft" => "Über\nGridCraft",
++        "About\nPlervo Sheets" => "Über\nPlervo Sheets",
+         "Share" => "Teilen",
+         "Add Chart\nElement" => "Diagrammelement\nhinzufügen",
+         "Change\nChart Type" => "Diagrammtyp\nändern",
+diff --git a/crates/ui-egui/src/i18n/es.rs b/crates/ui-egui/src/i18n/es.rs
+index 4ce231b..e253fe0 100644
+--- a/crates/ui-egui/src/i18n/es.rs
++++ b/crates/ui-egui/src/i18n/es.rs
+@@ -337,7 +337,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+         "Command\nPalette" => "Paleta de\ncomandos",
+         "Agent\nControl" => "Control\ndel agente",
+         "Action\nJournal" => "Registro\nde acciones",
+-        "About\nGridCraft" => "Acerca de\nGridCraft",
++        "About\nPlervo Sheets" => "Acerca de\nPlervo Sheets",
+         "Share" => "Compartir",
+         "Add Chart\nElement" => "Agregar elemento\nde gráfico",
+         "Change\nChart Type" => "Cambiar tipo\nde gráfico",
+diff --git a/crates/ui-egui/src/i18n/fr.rs b/crates/ui-egui/src/i18n/fr.rs
+index 5d20ab0..1777708 100644
+--- a/crates/ui-egui/src/i18n/fr.rs
++++ b/crates/ui-egui/src/i18n/fr.rs
+@@ -238,7 +238,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+         "Command\nPalette" => "Palette de\ncommandes",
+         "Agent\nControl" => "Contrôle de\nl'agent",
+         "Action\nJournal" => "Journal des\nactions",
+-        "About\nGridCraft" => "À propos de\nGridCraft",
++        "About\nPlervo Sheets" => "À propos de\nPlervo Sheets",
+         "Share" => "Partager",
+         "Add Chart\nElement" => "Ajouter un élément\nde graphique",
+         "Change\nChart Type" => "Modifier le type\nde graphique",
+diff --git a/crates/ui-egui/src/i18n/ko.rs b/crates/ui-egui/src/i18n/ko.rs
+index 1902ad3..d3e28be 100644
+--- a/crates/ui-egui/src/i18n/ko.rs
++++ b/crates/ui-egui/src/i18n/ko.rs
+@@ -227,7 +227,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+         "Command\nPalette" => "명령\n팔레트",
+         "Agent\nControl" => "에이전트\n제어",
+         "Action\nJournal" => "작업\n기록",
+-        "About\nGridCraft" => "GridCraft\n정보",
++        "About\nPlervo Sheets" => "Plervo Sheets\n정보",
+         "Share" => "공유",
+         "Add Chart\nElement" => "차트\n요소 추가",
+         "Change\nChart Type" => "차트 종류\n변경",
+diff --git a/crates/ui-egui/src/i18n/pt.rs b/crates/ui-egui/src/i18n/pt.rs
+index fb9236c..a82e493 100644
+--- a/crates/ui-egui/src/i18n/pt.rs
++++ b/crates/ui-egui/src/i18n/pt.rs
+@@ -228,7 +228,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+         "Command\nPalette" => "Paleta de\nComandos",
+         "Agent\nControl" => "Controle\ndo Agente",
+         "Action\nJournal" => "Registro\nde Ações",
+-        "About\nGridCraft" => "Sobre o\nGridCraft",
++        "About\nPlervo Sheets" => "Sobre o\nPlervo Sheets",
+         "Share" => "Compartilhar",
+         "Add Chart\nElement" => "Adicionar\nElemento de Gráfico",
+         "Change\nChart Type" => "Alterar\nTipo de Gráfico",
+@@ -461,7 +461,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+         "Conditional Formatting Rules Manager" => "Gerenciador de Regras de Formatação Condicional",
+         "Search Commands" => "Pesquisar Comandos",
+         "Agent Control" => "Controle por Agentes",
+-        "About GridCraft" => "Sobre o GridCraft",
++        "About Plervo Sheets" => "Sobre o Plervo Sheets",
+         "Insert Chart" => "Inserir Gráfico",
+         "Select Data Source" => "Selecionar Fonte de Dados",
+         "Action Journal" => "Registro de Ações",
+@@ -661,7 +661,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+         "Contributors" => "Colaboradores",
+         "Models" => "Modelos",
+         "Version {version}" => "Versão {version}",
+-        "Join the ArtCraft Discord" => "Participe do Discord da ArtCraft",
++        "Support Plervo" => "Participe do Discord da ArtCraft",
+         "This workbook has no scripts or macros." => "Esta pasta de trabalho não tem scripts nem macros.",
+         "(unnamed)" => "(sem nome)",
+         "— VBA project (preserved, not run)" => "— Projeto VBA (preservado, não executado)",
+@@ -886,7 +886,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+         "Hide Sheet" => "Ocultar Planilha",
+         "Hierarchy & more" => "Hierarquia e mais",
+         "Highlighter" => "Marca-texto",
+-        "How agents drive GridCraft (MCP / control channel)" => "Como os agentes controlam o GridCraft (MCP / canal de controle)",
++        "How agents drive Plervo Sheets (MCP / control channel)" => "Como os agentes controlam o Plervo Sheets (MCP / canal de controle)",
+         "Import a text or CSV file" => "Importar um arquivo de texto ou CSV",
+         "Insert Function" => "Inserir Função",
+         "Insert Function (⇧F3)" => "Inserir Função (⇧F3)",
+diff --git a/crates/ui-egui/src/i18n/ru.rs b/crates/ui-egui/src/i18n/ru.rs
+index 765f6bb..48417cc 100644
+--- a/crates/ui-egui/src/i18n/ru.rs
++++ b/crates/ui-egui/src/i18n/ru.rs
+@@ -227,7 +227,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+         "Command\nPalette" => "Палитра\nкоманд",
+         "Agent\nControl" => "Управление\nагентом",
+         "Action\nJournal" => "Журнал\nдействий",
+-        "About\nGridCraft" => "О\nGridCraft",
++        "About\nPlervo Sheets" => "О\nPlervo Sheets",
+         "Share" => "Поделиться",
+         "Add Chart\nElement" => "Добавить элемент\nдиаграммы",
+         "Change\nChart Type" => "Изменить тип\nдиаграммы",
+diff --git a/crates/ui-egui/src/i18n/sr.rs b/crates/ui-egui/src/i18n/sr.rs
+index cbf18d4..a3a11ae 100644
+--- a/crates/ui-egui/src/i18n/sr.rs
++++ b/crates/ui-egui/src/i18n/sr.rs
+@@ -230,7 +230,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+         "Command\nPalette" => "Paleta\nkomandi",
+         "Agent\nControl" => "Kontrola\nagenta",
+         "Action\nJournal" => "Dnevnik\nradnji",
+-        "About\nGridCraft" => "O programu\nGridCraft",
++        "About\nPlervo Sheets" => "O programu\nPlervo Sheets",
+         "Share" => "Deli",
+         "Add Chart\nElement" => "Dodaj element\ngrafikona",
+         "Change\nChart Type" => "Promeni\ntip grafikona",
+diff --git a/crates/ui-egui/src/i18n/zh.rs b/crates/ui-egui/src/i18n/zh.rs
+index 0017592..83469d0 100644
+--- a/crates/ui-egui/src/i18n/zh.rs
++++ b/crates/ui-egui/src/i18n/zh.rs
+@@ -227,7 +227,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+         "Command\nPalette" => "命令\n面板",
+         "Agent\nControl" => "智能体\n控制",
+         "Action\nJournal" => "操作\n日志",
+-        "About\nGridCraft" => "关于\nGridCraft",
++        "About\nPlervo Sheets" => "关于\nPlervo Sheets",
+         "Share" => "分享",
+         "Add Chart\nElement" => "添加图表\n元素",
+         "Change\nChart Type" => "更改\n图表类型",
+diff --git a/crates/ui-egui/src/icons.rs b/crates/ui-egui/src/icons.rs
+index 3e5cdf3..78a0ccd 100644
+--- a/crates/ui-egui/src/icons.rs
++++ b/crates/ui-egui/src/icons.rs
+@@ -1,4 +1,4 @@
+-//! GridCraft's icon set, drawn in code on a 16×16 design grid (original artwork; see
++//! Plervo Sheets's icon set, drawn in code on a 16×16 design grid (original artwork; see
+ //! ATTRIBUTION.md). Large ribbon icons use the same drawings at 32×32 with accent colours.
+ 
+ use egui::epaint::{CubicBezierShape, PathShape, PathStroke};
+diff --git a/crates/ui-egui/src/keytips/keytip_table/generated.rs b/crates/ui-egui/src/keytips/keytip_table/generated.rs
+index 79920b5..866c25f 100644
+--- a/crates/ui-egui/src/keytips/keytip_table/generated.rs
++++ b/crates/ui-egui/src/keytips/keytip_table/generated.rs
+@@ -8,7 +8,7 @@ use super::{Action, Entry};
+ pub const SEQUENCES: &[(&str, Entry)] = &[
+     ("H", Entry::Tab("Home")),
+     ("N", Entry::Tab("Insert")),
+-    ("JI", Entry::Tab("Draw")), // Two-letter unit. Deeper Draw letters differ between Excel and GridCraft; left blank for future contributors.
++    ("JI", Entry::Tab("Draw")), // Two-letter unit. Deeper Draw letters differ between Excel and Plervo Sheets; left blank for future contributors.
+     ("P", Entry::Tab("Page Layout")),
+     ("M", Entry::Tab("Formulas")),
+     ("A", Entry::Tab("Data")),
+diff --git a/crates/ui-egui/src/lib.rs b/crates/ui-egui/src/lib.rs
+index f96cdac..33c6299 100644
+--- a/crates/ui-egui/src/lib.rs
++++ b/crates/ui-egui/src/lib.rs
+@@ -1,4 +1,4 @@
+-//! GridCraft's egui frontend: an Excel-style window (title bar with Quick Access Toolbar,
++//! Plervo Sheets's egui frontend: an Excel-style window (title bar with Quick Access Toolbar,
+ //! ribbon, formula bar, grid, sheet tabs, status bar) over `gridcraft-engine`.
+ //!
+ //! The UI is thin: it reads engine state and acts through [`SheetApp::run`] (engine commands by
+@@ -152,7 +152,7 @@ pub enum NoticeKind {
+ }
+ 
+ /// A dismissible bar under the ribbon, in the spirit of Excel's message bar. Used to tell the
+-/// user what an opened file carried that GridCraft handled differently (e.g. preserved macros).
++/// user what an opened file carried that Plervo Sheets handled differently (e.g. preserved macros).
+ #[derive(Clone, Debug, PartialEq)]
+ pub struct Notice {
+     pub text: String,
+@@ -185,7 +185,7 @@ pub struct Services {
+     pub paste_html: Option<Box<dyn FnMut() -> Option<String>>>,
+     /// Read the system clipboard's plain text for the ribbon and menu Paste commands (Cmd/Ctrl+V
+     /// gets it from egui's `Event::Paste`). `None` from the host, or no service (web), pastes
+-    /// GridCraft's own clipboard.
++    /// Plervo Sheets's own clipboard.
+     pub paste_text: Option<Box<dyn FnMut() -> Option<String>>>,
+     /// Web: deliver a file to the user (name, bytes).
+     pub download: Option<Box<dyn Fn(&str, &[u8])>>,
+@@ -254,11 +254,11 @@ pub struct SheetApp {
+     pub(crate) shots: control::Shots,
+     /// Chart selected on the sheet (id).
+     pub selected_chart: Option<u32>,
+-    /// The system clipboard's text when GridCraft last copied without publishing to it (a
++    /// The system clipboard's text when Plervo Sheets last copied without publishing to it (a
+     /// control-channel or MCP `edit.copy`/`edit.cut`). While the system clipboard still holds this
+-    /// text, GridCraft's copy is the newer one and Paste uses it.
++    /// text, Plervo Sheets's copy is the newer one and Paste uses it.
+     clipboard_text_at_copy: Option<String>,
+-    /// The system clipboard's text right after GridCraft's last cut (the published text, or the
++    /// The system clipboard's text right after Plervo Sheets's last cut (the published text, or the
+     /// text noted for an unpublished cut); `None` after a copy, or once the clipboard is seen
+     /// holding other text. Once the cut has been pasted, Paste leaves this text alone.
+     cut_text: Option<String>,
+@@ -342,7 +342,7 @@ impl SheetApp {
+     pub fn run(&mut self, id: &str, params: Json) -> Result<Json, String> {
+         let r = self.run_command(id, params);
+         // This copy leaves the system clipboard alone: note what it holds, so Paste can tell
+-        // that GridCraft's copy is newer while that text is still there.
++        // that Plervo Sheets's copy is newer while that text is still there.
+         if matches!(id, "edit.copy" | "edit.cut") && r.is_ok() {
+             self.clipboard_text_at_copy = self.system_clipboard_text();
+             self.cut_text = if id == "edit.cut" { self.clipboard_text_at_copy.clone() } else { None };
+@@ -423,8 +423,8 @@ impl SheetApp {
+     /// Paste text that came from the system clipboard (Cmd/Ctrl+V, or the ribbon and menu Paste),
+     /// with the clipboard's HTML flavour when the host can read it.
+     ///
+-    /// Excel pastes a cut once: after GridCraft's cut has been pasted, the system clipboard text
+-    /// that came with it is not pasted again over the moved block; GridCraft's own (empty)
++    /// Excel pastes a cut once: after Plervo Sheets's cut has been pasted, the system clipboard text
++    /// that came with it is not pasted again over the moved block; Plervo Sheets's own (empty)
+     /// clipboard is pasted instead, which reports "Nothing to paste.". Other text means the
+     /// clipboard has moved on, so the cut's text is forgotten and pastes normally later.
+     pub fn paste_external(&mut self, text: String) {
+@@ -444,8 +444,8 @@ impl SheetApp {
+     }
+ 
+     /// Ribbon and menu Paste: paste the text on the system clipboard, as Cmd/Ctrl+V does. With no
+-    /// text there, no host clipboard (web), or the text that was there when GridCraft last copied
+-    /// without publishing, GridCraft's own clipboard is pasted.
++    /// text there, no host clipboard (web), or the text that was there when Plervo Sheets last copied
++    /// without publishing, Plervo Sheets's own clipboard is pasted.
+     pub fn paste_from_clipboard(&mut self) {
+         match self.system_clipboard_text() {
+             Some(text) if self.session.clipboard.is_none() || self.clipboard_text_at_copy.as_ref() != Some(&text) => self.paste_external(text),
+@@ -538,7 +538,7 @@ impl SheetApp {
+         if e.contains("is not available right now") {
+             self.toast = Some((e, now_ms()));
+         } else {
+-            self.message = Some(("GridCraft".into(), clean_error(&e)));
++            self.message = Some(("Plervo Sheets".into(), clean_error(&e)));
+         }
+     }
+ 
+@@ -689,7 +689,7 @@ impl SheetApp {
+         for req in self.session.take_ui_requests() {
+             match req {
+                 UiRequest::Dialog(name, params) => self.open_dialog(&name, params),
+-                UiRequest::Message(m) => self.message = Some(("GridCraft".into(), m)),
++                UiRequest::Message(m) => self.message = Some(("Plervo Sheets".into(), m)),
+                 UiRequest::EditCell(text) => {
+                     let text = text.map(|text| {
+                         self.session
+@@ -766,7 +766,7 @@ impl SheetApp {
+             Ok(r) => self.after_open(Some(path), &r),
+             // A password-protected workbook: ask for the password; the dialog opens it.
+             Err(e) if e.contains(gridcraft_engine::io::PASSWORD_REQUIRED) => self.open_dialog("openPassword", json!({"path": path})),
+-            Err(e) => self.message = Some(("GridCraft".into(), clean_error(&e))),
++            Err(e) => self.message = Some(("Plervo Sheets".into(), clean_error(&e))),
+         }
+         self.after_engine();
+     }
+@@ -801,7 +801,7 @@ impl SheetApp {
+         let vba: Vec<&str> = msgs.iter().copied().filter(|m| m.to_lowercase().contains("macro") || m.contains("VBA")).collect();
+         if !vba.is_empty() {
+             self.notice = Some(Notice {
+-                text: "This workbook contains VBA macros. GridCraft keeps them intact when you save, but does not run them.".into(),
++                text: "This workbook contains VBA macros. Plervo Sheets keeps them intact when you save, but does not run them.".into(),
+                 kind: NoticeKind::Warning,
+                 action: Some(("What this means".into(), "macros".into())),
+             });
+@@ -909,7 +909,7 @@ impl SheetApp {
+         let text = match self.session.active().map(|d| formula_locale::canonical(&text, ed.locale, &d.wb, ed.sheet, ed.cell)) {
+             Some(Ok(text)) => text,
+             Some(Err(error)) => {
+-                self.message = Some(("GridCraft".into(), error.to_string()));
++                self.message = Some(("Plervo Sheets".into(), error.to_string()));
+                 self.editor = Some(ed);
+                 self.session.mode = gridcraft_engine::Mode::Edit;
+                 return false;
+@@ -921,7 +921,7 @@ impl SheetApp {
+             && let Some((dv, msg)) = gridcraft_engine::cmd::data::check_validation(&d.wb, ed.sheet, ed.cell, &text)
+         {
+             if dv.error_style == gridcraft_engine::model::ErrorStyle::Stop {
+-                let title = if dv.error_title.is_empty() { "GridCraft".to_string() } else { dv.error_title.clone() };
++                let title = if dv.error_title.is_empty() { "Plervo Sheets".to_string() } else { dv.error_title.clone() };
+                 self.message = Some((title, msg));
+                 self.editor = Some(ed);
+                 self.session.mode = gridcraft_engine::Mode::Edit;
+@@ -943,7 +943,7 @@ impl SheetApp {
+                 true
+             }
+             Err(e) => {
+-                self.message = Some(("GridCraft".into(), clean_error(&e)));
++                self.message = Some(("Plervo Sheets".into(), clean_error(&e)));
+                 self.editor = Some(ed);
+                 self.session.mode = gridcraft_engine::Mode::Edit;
+                 false
+@@ -1046,7 +1046,7 @@ impl SheetApp {
+         }
+         self.effective_dark = ctx.theme() == egui::Theme::Dark;
+         // Interface size: the preference owns the zoom factor, so egui's own Ctrl/Cmd +/-/0 zoom
+-        // keys stay off (they would also swallow GridCraft's shortcuts).
++        // keys stay off (they would also swallow Plervo Sheets's shortcuts).
+         if ctx.options(|o| o.zoom_with_keyboard) {
+             ctx.options_mut(|o| o.zoom_with_keyboard = false);
+         }
+@@ -1075,7 +1075,7 @@ impl SheetApp {
+                     self.backstage = None;
+                     self.open_dialog("openPassword", json!({"name": name, "base64": b64}));
+                 }
+-                Err(e) => self.message = Some(("GridCraft".into(), clean_error(&e))),
++                Err(e) => self.message = Some(("Plervo Sheets".into(), clean_error(&e))),
+             }
+             self.after_engine();
+         }
+diff --git a/crates/ui-egui/src/ribbon.rs b/crates/ui-egui/src/ribbon.rs
+index 9c6d89e..2a908d1 100644
+--- a/crates/ui-egui/src/ribbon.rs
++++ b/crates/ui-egui/src/ribbon.rs
+@@ -1439,7 +1439,7 @@ fn insert(app: &mut SheetApp, ui: &mut Ui) {
+             // in dialogs.rs) — otherwise the prior cell/range selection is left in place, and
+             // Del right after inserting deletes the source data instead of the chart.
+             Ok(r) => app.selected_chart = r.get("chart").and_then(serde_json::Value::as_u64).and_then(|id| u32::try_from(id).ok()),
+-            Err(e) => app.message = Some(("GridCraft".into(), crate::clean_error(&e))),
++            Err(e) => app.message = Some(("Plervo Sheets".into(), crate::clean_error(&e))),
+         }
+     }
+     ui.vertical(|ui| {
+@@ -2248,7 +2248,7 @@ fn automate(app: &mut SheetApp, ui: &mut Ui) {
+     if __k.clicked() {
+         app.open_dialog("commandSearch", json!({}));
+     }
+-    let __k = big_button(ui, Icon::Script, "Agent\nControl", "How agents drive GridCraft (MCP / control channel)", false);
++    let __k = big_button(ui, Icon::Script, "Agent\nControl", "How agents drive Plervo Sheets (MCP / control channel)", false);
+     control_keytip(app, ui, &__k, "agents");
+     if __k.clicked() {
+         app.open_dialog("agents", json!({}));
+@@ -2258,7 +2258,7 @@ fn automate(app: &mut SheetApp, ui: &mut Ui) {
+     if __k.clicked() {
+         app.open_dialog("journal", json!({}));
+     }
+-    let __k = big_button(ui, Icon::Script, "About\nGridCraft", "Version, contributors and the AI models that helped", false);
++    let __k = big_button(ui, Icon::Script, "About\nPlervo Sheets", "Version, contributors and the AI models that helped", false);
+     control_keytip(app, ui, &__k, "about");
+     if __k.clicked() {
+         app.open_dialog("about", json!({}));
+diff --git a/crates/ui-egui/tests/clipboard.rs b/crates/ui-egui/tests/clipboard.rs
+index 08f83b5..2c64b7a 100644
+--- a/crates/ui-egui/tests/clipboard.rs
++++ b/crates/ui-egui/tests/clipboard.rs
+@@ -152,7 +152,7 @@ fn clicking_the_ribbon_paste_button_or_its_menu_does_not_freeze() {
+         let mut h = harness(Services::default());
+         h.state_mut().run("edit.copy", json!({"range": "A1:B2"})).unwrap();
+         h.state_mut().run("selection.set", json!({"cell": "D4"})).unwrap();
+-        // No host clipboard here (as on the web): GridCraft's own copy is pasted.
++        // No host clipboard here (as on the web): Plervo Sheets's own copy is pasted.
+         h.get_by_role_and_label(Role::Button, "Paste").click();
+         h.run_steps(3);
+         assert_eq!(cell(&h, "D4"), Some(Value::from("Name")));
+@@ -216,7 +216,7 @@ fn ribbon_paste_pastes_the_system_clipboard_like_cmd_v() {
+     assert_eq!(value_at(&h, "E5"), Some(Value::number(2.0)));
+     assert!(h.state().message.is_none(), "{:?}", h.state().message);
+ 
+-    // The clipboard text is GridCraft's own copy: the copy is pasted with its formulas.
++    // The clipboard text is Plervo Sheets's own copy: the copy is pasted with its formulas.
+     h.state_mut().run("cell.set", json!({"cell": "A3", "input": "=B2*2"})).unwrap();
+     let copied = h.state_mut().run("edit.copy", json!({"range": "A3"})).unwrap();
+     clipboard.borrow_mut().0 = copied["text"].as_str().unwrap().to_string();
+@@ -226,7 +226,7 @@ fn ribbon_paste_pastes_the_system_clipboard_like_cmd_v() {
+     let sh = h.state().session.active().unwrap().wb.active().unwrap();
+     assert_eq!(sh.cell(CellRef::parse("B9").unwrap()).unwrap().formula.as_ref().unwrap().text, "C8*2");
+ 
+-    // Nothing on the system clipboard (an image, say): GridCraft's own copy is pasted.
++    // Nothing on the system clipboard (an image, say): Plervo Sheets's own copy is pasted.
+     clipboard.borrow_mut().0.clear();
+     h.state_mut().run("selection.set", json!({"cell": "B12"})).unwrap();
+     h.get_by_role_and_label(Role::Button, "Paste").click();
+diff --git a/packaging/env.sh b/packaging/env.sh
+index bacb167..3778dca 100644
+--- a/packaging/env.sh
++++ b/packaging/env.sh
+@@ -47,10 +47,17 @@ warn() {
+ # Copy licence and readme files that exist into a package directory.
+ copy_docs() {
+   local dest="$1" f
+-  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT; do
++  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md; do
+     if [ -f "$ROOT/$f" ]; then cp "$ROOT/$f" "$dest/"; fi
+   done
+   copy_font_licences "$dest"
++  # Embedded resources retain their original licence notices.
++  while IFS= read -r -d '' lic; do
++    local rel="${lic#"$ROOT/"}"
++    local file="${rel//\//_}"
++    cp "$lic" "$dest/LICENSE-bundled-$file.txt"
++  done < <(find "$ROOT/assets" -type f \( -iname '*license*' -o -iname '*licence*' -o -iname '*ofl*txt' -o -iname 'copyright*' \) -print0)
++
+ }
+ 
+ # Builds made with craft-fonts (CRAFT_FONTS_DIR, set by the release workflow) embed its fonts, so
+diff --git a/packaging/freebsd/package.sh b/packaging/freebsd/package.sh
+index e4ee9da..882f2e5 100755
+--- a/packaging/freebsd/package.sh
++++ b/packaging/freebsd/package.sh
+@@ -1,7 +1,7 @@
+ #!/usr/bin/env bash
+-# Build and package GridCraft for FreeBSD (<arch> is x86_64 or aarch64):
++# Build and package Plervo Sheets for FreeBSD (<arch> is x86_64 or aarch64):
+ #
+-#   $DIST/gridcraft-<version>-freebsd-<arch>.tar.gz   bin/ + share/ (desktop entry, icons,
++#   $DIST/plervo-sheets-<version>-freebsd-<arch>.tar.gz   bin/ + share/ (desktop entry, icons,
+ #                                                      AppStream, MIME), extract under /usr/local
+ #
+ # Usage: packaging/freebsd/package.sh [--skip-build]
+@@ -12,7 +12,7 @@
+ set -euo pipefail
+ # shellcheck source=../env.sh
+ . "$(dirname "${BASH_SOURCE[0]}")/../env.sh"
+-APP_ID=ai.storyteller.gridcraft
++APP_ID=com.plervo.sheets
+ LINUX="$ROOT/packaging/linux"
+ 
+ SKIP_BUILD=0
+@@ -30,12 +30,12 @@ case "$ARCH" in
+   arm64 | aarch64) ARCH=aarch64 ;;
+   *) echo "unsupported architecture $ARCH" >&2; exit 2 ;;
+ esac
+-BASENAME="gridcraft-$VERSION-freebsd-$ARCH"
++BASENAME="plervo-sheets-$VERSION-freebsd-$ARCH"
+ 
+-echo "==> GridCraft $VERSION for FreeBSD $ARCH"
++echo "==> Plervo Sheets $VERSION for FreeBSD $ARCH"
+ 
+ if [ "$SKIP_BUILD" = 0 ]; then
+-  (cd "$ROOT" && cargo build --release --locked -p gridcraft -p gridcraft-cli)
++  (cd "$ROOT" && cargo build --release --locked -p plervo-sheets -p plervo-sheets-cli)
+ fi
+ BIN="$CARGO_TARGET_DIR/release"
+ WORK="$CARGO_TARGET_DIR/freebsd-package"
+@@ -43,19 +43,19 @@ TREE="$WORK/$BASENAME"
+ rm -rf "$WORK"
+ 
+ install -d "$TREE/bin" "$TREE/share/applications" "$TREE/share/metainfo" "$TREE/share/mime/packages" \
+-  "$TREE/share/icons" "$TREE/share/doc/gridcraft"
+-install -m 755 "$BIN/gridcraft" "$BIN/gridcraft-cli" "$TREE/bin/"
+-strip "$TREE/bin/gridcraft" "$TREE/bin/gridcraft-cli" 2>/dev/null || true
++  "$TREE/share/icons" "$TREE/share/doc/plervo-sheets"
++install -m 755 "$BIN/plervo-sheets" "$BIN/plervo-sheets-cli" "$TREE/bin/"
++strip "$TREE/bin/plervo-sheets" "$TREE/bin/plervo-sheets-cli" 2>/dev/null || true
+ install -m 644 "$LINUX/$APP_ID.desktop" "$TREE/share/applications/$APP_ID.desktop"
+ install -m 644 "$LINUX/$APP_ID.mime.xml" "$TREE/share/mime/packages/$APP_ID.xml"
+ sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$GRIDCRAFT_BUILD_DATE/g" \
+   "$LINUX/$APP_ID.metainfo.xml.in" >"$TREE/share/metainfo/$APP_ID.metainfo.xml"
+ cp -R "$ROOT/assets/app-icon/hicolor" "$TREE/share/icons/"
+-copy_docs "$TREE/share/doc/gridcraft"
++copy_docs "$TREE/share/doc/plervo-sheets"
+ 
+ tar -C "$WORK" -czf "$DIST/$BASENAME.tar.gz" "$BASENAME"
+ echo "wrote $DIST/$BASENAME.tar.gz"
+ 
+-"$TREE/bin/gridcraft-cli" --version
++"$TREE/bin/plervo-sheets-cli" --version
+ echo "==> done"
+ ls -lh "$DIST/$BASENAME.tar.gz"
+diff --git a/packaging/icons.sh b/packaging/icons.sh
+index 2adcb9a..15ab47a 100755
+--- a/packaging/icons.sh
++++ b/packaging/icons.sh
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env bash
+-# Regenerate every app icon from assets/app-icon/gridcraft.svg.
++# Regenerate every app icon from assets/app-icon/plervo-sheets.svg.
+ #
+ # Needs: resvg (brew install resvg / cargo install resvg). On macOS, iconutil also writes the
+ # .icns. The outputs are committed, so builds and packaging never need these tools.
+@@ -8,8 +8,8 @@
+ set -euo pipefail
+ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ DIR="$ROOT/assets/app-icon"
+-SVG="$DIR/gridcraft.svg"
+-ID="ai.storyteller.gridcraft"
++SVG="$DIR/plervo-sheets.svg"
++ID="com.plervo.sheets"
+ TMP="$(mktemp -d)"
+ trap 'rm -rf "$TMP"' EXIT
+ 
+@@ -23,9 +23,9 @@ grep -q 'viewBox="-62.136' "$MAC" || { echo "error: expected viewBox=\"0 0 512 5
+ 
+ render() { resvg -w "$2" -h "$2" "$1" "$3" </dev/null; }
+ 
+-render "$SVG" 1024 "$DIR/gridcraft-1024.png"
++render "$SVG" 1024 "$DIR/plervo-sheets-1024.png"
+ # Runtime window/Dock icon on macOS (for apps/gridcraft to embed); other platforms use hicolor 256.
+-render "$MAC" 512 "$DIR/gridcraft-macos-512.png"
++render "$MAC" 512 "$DIR/plervo-sheets-macos-512.png"
+ 
+ # Linux hicolor theme.
+ for s in 16 24 32 48 64 128 256 512; do
+@@ -41,18 +41,18 @@ for s in 16 20 24 32 40 48 64 128 256; do
+   render "$SVG" "$s" "$TMP/ico-$s.png"
+   ICO_PNGS+=("$TMP/ico-$s.png")
+ done
+-(cd "$ROOT" && cargo run -q -p xtask --no-default-features -- ico "$DIR/gridcraft.ico" "${ICO_PNGS[@]}")
++(cd "$ROOT" && cargo run -q -p xtask --no-default-features -- ico "$DIR/plervo-sheets.ico" "${ICO_PNGS[@]}")
+ 
+ # macOS .icns.
+ if command -v iconutil >/dev/null; then
+-  SET="$TMP/gridcraft.iconset"
++  SET="$TMP/plervo-sheets.iconset"
+   mkdir -p "$SET"
+   for s in 16 32 128 256 512; do
+     render "$MAC" "$s" "$SET/icon_${s}x${s}.png"
+     render "$MAC" $((s * 2)) "$SET/icon_${s}x${s}@2x.png"
+   done
+-  iconutil -c icns -o "$DIR/gridcraft.icns" "$SET"
++  iconutil -c icns -o "$DIR/plervo-sheets.icns" "$SET"
+ else
+-  echo "warning: iconutil not found (macOS only); gridcraft.icns not regenerated" >&2
++  echo "warning: iconutil not found (macOS only); plervo-sheets.icns not regenerated" >&2
+ fi
+ echo "icons written to $DIR"
+diff --git a/packaging/linux/com.plervo.sheets.desktop b/packaging/linux/com.plervo.sheets.desktop
+new file mode 100644
+index 0000000..bc21ca8
+--- /dev/null
++++ b/packaging/linux/com.plervo.sheets.desktop
+@@ -0,0 +1,14 @@
++[Desktop Entry]
++Type=Application
++Name=Plervo Sheets
++GenericName=Spreadsheet
++Comment=Calculate, analyse and chart data in workbooks
++Exec=plervo-sheets %F
++TryExec=plervo-sheets
++Icon=com.plervo.sheets
++Terminal=false
++StartupNotify=true
++StartupWMClass=com.plervo.sheets
++Categories=Office;Spreadsheet;
++MimeType=application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;application/vnd.ms-excel.sheet.macroEnabled.12;application/vnd.ms-excel.sheet.binary.macroEnabled.12;application/vnd.oasis.opendocument.spreadsheet;text/csv;text/tab-separated-values;
++Keywords=spreadsheet;workbook;sheet;table;formula;chart;pivot;xlsx;xlsb;ods;csv;tsv;excel;
+diff --git a/packaging/linux/com.plervo.sheets.metainfo.xml.in b/packaging/linux/com.plervo.sheets.metainfo.xml.in
+new file mode 100644
+index 0000000..6c1fb2c
+--- /dev/null
++++ b/packaging/linux/com.plervo.sheets.metainfo.xml.in
+@@ -0,0 +1,68 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
++     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
++<component type="desktop-application">
++  <id>com.plervo.sheets</id>
++  <metadata_license>CC0-1.0</metadata_license>
++  <project_license>MIT OR Apache-2.0</project_license>
++  <name>Plervo Sheets</name>
++  <summary>Calculate, analyse and chart data in workbooks</summary>
++  <developer id="ai.storyteller">
++    <name>Maintech Solutions LLC</name>
++  </developer>
++  <description>
++    <p>
++      Plervo Sheets is an open-source, native spreadsheet. It opens and saves .xlsx workbooks and
++      CSV/TSV files, evaluates hundreds of worksheet functions, and formats, sorts, filters and
++      charts your data.
++    </p>
++    <p>
++      Every action is a command that the included plervo-sheets-cli tool and AI agents (over MCP)
++      can run too, so workbooks can be built and checked without opening a window.
++    </p>
++  </description>
++  <launchable type="desktop-id">com.plervo.sheets.desktop</launchable>
++  <icon type="stock">com.plervo.sheets</icon>
++  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
++  <url type="homepage">https://plervo.com/</url>
++  <url type="bugtracker">https://github.com/alportblu/plervo-pdf/issues</url>
++  <url type="help">https://github.com/alportblu/plervo-pdf</url>
++  <url type="contact">https://buymeacoffee.com/alport</url>
++  <categories>
++    <category>Office</category>
++    <category>Spreadsheet</category>
++  </categories>
++  <keywords>
++    <keyword>spreadsheet</keyword>
++    <keyword>workbook</keyword>
++    <keyword>formula</keyword>
++    <keyword>xlsx</keyword>
++    <keyword>csv</keyword>
++  </keywords>
++  <!-- Proposed app colour (Plervo Sheets green #1f9d55 / ink #147a40); see assets/app-icon/README.md. -->
++  <branding>
++    <color type="primary" scheme_preference="light">#a7e3bf</color>
++    <color type="primary" scheme_preference="dark">#147a40</color>
++  </branding>
++  <requires>
++    <display_length compare="ge">760</display_length>
++  </requires>
++  <supports>
++    <control>keyboard</control>
++    <control>pointing</control>
++  </supports>
++  <provides>
++    <binary>plervo-sheets</binary>
++    <binary>plervo-sheets-cli</binary>
++    <mediatype>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</mediatype>
++    <mediatype>application/vnd.ms-excel.sheet.macroEnabled.12</mediatype>
++    <mediatype>application/vnd.ms-excel.sheet.binary.macroEnabled.12</mediatype>
++    <mediatype>application/vnd.oasis.opendocument.spreadsheet</mediatype>
++    <mediatype>text/csv</mediatype>
++    <mediatype>text/tab-separated-values</mediatype>
++  </provides>
++  <content_rating type="oars-1.1"/>
++  <releases>
++    <release version="@VERSION@" date="@DATE@"/>
++  </releases>
++</component>
+diff --git a/packaging/linux/com.plervo.sheets.mime.xml b/packaging/linux/com.plervo.sheets.mime.xml
+new file mode 100644
+index 0000000..b0e45cd
+--- /dev/null
++++ b/packaging/linux/com.plervo.sheets.mime.xml
+@@ -0,0 +1,35 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!-- shared-mime-info for the formats Plervo Sheets opens. Every type below already ships with
++     shared-mime-info on current distros; these entries only make sure the glob is known on
++     minimal systems. The system's own definitions win where they exist. -->
++<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
++  <mime-type type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
++    <comment>Office Open XML workbook</comment>
++    <sub-class-of type="application/zip"/>
++    <glob pattern="*.xlsx"/>
++  </mime-type>
++  <mime-type type="application/vnd.ms-excel.sheet.macroEnabled.12">
++    <comment>Office Open XML macro-enabled workbook</comment>
++    <sub-class-of type="application/zip"/>
++    <glob pattern="*.xlsm"/>
++  </mime-type>
++  <mime-type type="application/vnd.ms-excel.sheet.binary.macroEnabled.12">
++    <comment>Excel binary workbook</comment>
++    <glob pattern="*.xlsb"/>
++  </mime-type>
++  <mime-type type="application/vnd.oasis.opendocument.spreadsheet">
++    <comment>OpenDocument spreadsheet</comment>
++    <sub-class-of type="application/zip"/>
++    <glob pattern="*.ods"/>
++  </mime-type>
++  <mime-type type="text/csv">
++    <comment>CSV document</comment>
++    <sub-class-of type="text/plain"/>
++    <glob pattern="*.csv"/>
++  </mime-type>
++  <mime-type type="text/tab-separated-values">
++    <comment>TSV document</comment>
++    <sub-class-of type="text/plain"/>
++    <glob pattern="*.tsv"/>
++  </mime-type>
++</mime-info>
+diff --git a/packaging/linux/flatpak-bundle.sh b/packaging/linux/flatpak-bundle.sh
+index 27b67b3..42cf025 100755
+--- a/packaging/linux/flatpak-bundle.sh
++++ b/packaging/linux/flatpak-bundle.sh
+@@ -1,22 +1,22 @@
+ #!/usr/bin/env bash
+-# Repackage a GridCraft Linux tarball as a single-file Flatpak bundle:
++# Repackage a Plervo Sheets Linux tarball as a single-file Flatpak bundle:
+ #
+-#   $DIST/gridcraft-<version>-linux-<arch>.flatpak
++#   $DIST/plervo-sheets-<version>-linux-<arch>.flatpak
+ #
+ # Usage: packaging/linux/flatpak-bundle.sh [--no-test] [TARBALL]
+ #
+-# TARBALL defaults to $DIST/gridcraft-<version>-linux-<arch>.tar.gz from package.sh. The bundle
++# TARBALL defaults to $DIST/plervo-sheets-<version>-linux-<arch>.tar.gz from package.sh. The bundle
+ # is built for the host architecture (x86_64 or aarch64), which must match the tarball's.
+ # Needs flatpak, flatpak-builder and the SVG pixbuf loader (librsvg2-common) for the host's
+ # `appstreamcli compose`; the freedesktop runtime and SDK named in the manifest are
+ # installed per-user from Flathub. Unless --no-test, the bundle is then installed per-user and
+-# `gridcraft-cli --version` is run inside the sandbox as a smoke test.
+-# Manifest: packaging/linux/flatpak/ai.storyteller.gridcraft.bundle.yml.
++# `plervo-sheets-cli --version` is run inside the sandbox as a smoke test.
++# Manifest: packaging/linux/flatpak/com.plervo.sheets.bundle.yml.
+ set -euo pipefail
+ # shellcheck source=../env.sh
+ . "$(dirname "${BASH_SOURCE[0]}")/../env.sh"
+ HERE="$ROOT/packaging/linux"
+-APP_ID=ai.storyteller.gridcraft
++APP_ID=com.plervo.sheets
+ FLATHUB=https://dl.flathub.org/repo/flathub.flatpakrepo
+ 
+ TEST=1
+@@ -36,20 +36,20 @@ case "$ARCH" in
+   aarch64 | arm64) ARCH=aarch64 ;;
+   *) echo "unsupported architecture $ARCH" >&2; exit 2 ;;
+ esac
+-BASENAME="gridcraft-$VERSION-linux-$ARCH"
++BASENAME="plervo-sheets-$VERSION-linux-$ARCH"
+ TARBALL="${TARBALL:-$DIST/$BASENAME.tar.gz}"
+ [ -f "$TARBALL" ] || { echo "error: $TARBALL not found (run packaging/linux/package.sh --formats tar first)" >&2; exit 1; }
+ for tool in flatpak flatpak-builder; do
+   command -v "$tool" >/dev/null || { echo "error: $tool not found (apt install flatpak flatpak-builder librsvg2-common)" >&2; exit 1; }
+ done
+ 
+-echo "==> GridCraft $VERSION Flatpak bundle for $ARCH from $(basename "$TARBALL")"
++echo "==> Plervo Sheets $VERSION Flatpak bundle for $ARCH from $(basename "$TARBALL")"
+ 
+ WORK="$CARGO_TARGET_DIR/flatpak-bundle"
+ rm -rf "$WORK"
+ mkdir -p "$WORK/stage"
+ tar -xzf "$TARBALL" -C "$WORK/stage" --strip-components=1
+-[ -x "$WORK/stage/bin/gridcraft" ] || { echo "error: $TARBALL has no bin/gridcraft" >&2; exit 1; }
++[ -x "$WORK/stage/bin/plervo-sheets" ] || { echo "error: $TARBALL has no bin/plervo-sheets" >&2; exit 1; }
+ cp "$HERE/flatpak/$APP_ID.bundle.yml" "$WORK/$APP_ID.yml"
+ 
+ flatpak remote-add --user --if-not-exists flathub "$FLATHUB"
+@@ -65,7 +65,7 @@ echo "wrote $OUT"
+ if [ "$TEST" = 1 ]; then
+   flatpak install --user -y --noninteractive --reinstall "$OUT"
+   flatpak info --user "$APP_ID"
+-  flatpak run --command=gridcraft-cli "$APP_ID" --version
++  flatpak run --command=plervo-sheets-cli "$APP_ID" --version
+   flatpak run --command=sh "$APP_ID" -c 'ls /app/share/applications /app/share/metainfo /app/share/mime/packages /app/share/icons/hicolor/scalable/apps'
+ fi
+ echo "==> done"
+diff --git a/packaging/linux/flatpak/com.plervo.sheets.bundle.yml b/packaging/linux/flatpak/com.plervo.sheets.bundle.yml
+new file mode 100644
+index 0000000..d144012
+--- /dev/null
++++ b/packaging/linux/flatpak/com.plervo.sheets.bundle.yml
+@@ -0,0 +1,49 @@
++# Flatpak manifest for the single-file bundle attached to every GitHub release
++# (plervo-sheets-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
++#
++# It repackages the release's own Linux tarball (plervo-sheets-<version>-linux-<arch>.tar.gz,
++# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
++# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
++# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
++# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
++# Wayland, xkbcommon and Vulkan/GL at runtime; the freedesktop runtime has all of them, and the
++# GPU driver comes from its org.freedesktop.Platform.GL extension.
++#
++# com.plervo.sheets.yml (same directory) is the from-source manifest for Flathub. Keep
++# runtime, runtime-version, sdk and finish-args identical in both (packaging-lint checks this).
++id: com.plervo.sheets
++runtime: org.freedesktop.Platform
++runtime-version: '25.08'
++sdk: org.freedesktop.Sdk
++command: plervo-sheets
++finish-args:
++  # Display: Wayland first; X11 only when no Wayland compositor is running.
++  - --socket=wayland
++  - --socket=fallback-x11
++  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
++  - --share=ipc
++  # GPU access for rendering.
++  - --device=dri
++  # Open/Save dialogs use the file-chooser portal (rfd), and drag-and-drop uses the document
++  # portal, so broad filesystem access isn't needed. Documents and Downloads are granted for
++  # opening workbooks by path from the command line.
++  - --filesystem=xdg-documents
++  - --filesystem=xdg-download
++  # Deliberately not granted: network (the optional --control channel listens on 127.0.0.1 in
++  # the sandbox; `flatpak override --user --share=network com.plervo.sheets` exposes it to
++  # host agents) and home/host filesystem access.
++modules:
++  - name: plervo-sheets
++    buildsystem: simple
++    build-commands:
++      - install -Dm755 bin/plervo-sheets /app/bin/plervo-sheets
++      # Headless CLI and MCP server: `flatpak run --command=plervo-sheets-cli com.plervo.sheets`.
++      - install -Dm755 bin/plervo-sheets-cli /app/bin/plervo-sheets-cli
++      - install -Dm644 share/applications/com.plervo.sheets.desktop /app/share/applications/com.plervo.sheets.desktop
++      - install -Dm644 share/mime/packages/com.plervo.sheets.xml /app/share/mime/packages/com.plervo.sheets.xml
++      # Already has the release's version and date substituted by package.sh.
++      - install -Dm644 share/metainfo/com.plervo.sheets.metainfo.xml /app/share/metainfo/com.plervo.sheets.metainfo.xml
++      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/plervo-sheets /app/share/doc/
++    sources:
++      - type: dir
++        path: stage
+diff --git a/packaging/linux/flatpak/com.plervo.sheets.yml b/packaging/linux/flatpak/com.plervo.sheets.yml
+new file mode 100644
+index 0000000..907a64b
+--- /dev/null
++++ b/packaging/linux/flatpak/com.plervo.sheets.yml
+@@ -0,0 +1,67 @@
++# Flatpak manifest for Plervo Sheets, ready for a Flathub submission.
++#
++# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
++#
++#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
++#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
++#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/com.plervo.sheets.yml
++#   flatpak run com.plervo.sheets
++#
++# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
++# The single-file .flatpak attached to each release comes from com.plervo.sheets.bundle.yml,
++# which repackages the prebuilt release binaries. Keep runtime-version and finish-args identical.
++id: com.plervo.sheets
++runtime: org.freedesktop.Platform
++runtime-version: '25.08'
++sdk: org.freedesktop.Sdk
++sdk-extensions:
++  - org.freedesktop.Sdk.Extension.rust-stable
++command: plervo-sheets
++finish-args:
++  # Display: Wayland first; X11 only when no Wayland compositor is running.
++  - --socket=wayland
++  - --socket=fallback-x11
++  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
++  - --share=ipc
++  # GPU access for rendering.
++  - --device=dri
++  # Open/Save dialogs use the file-chooser portal (rfd), and drag-and-drop uses the document
++  # portal, so broad filesystem access isn't needed. Documents and Downloads are granted for
++  # opening workbooks by path from the command line.
++  - --filesystem=xdg-documents
++  - --filesystem=xdg-download
++  # Deliberately not granted: network (the optional --control channel listens on 127.0.0.1 in
++  # the sandbox; `flatpak override --user --share=network com.plervo.sheets` exposes it to
++  # host agents) and home/host filesystem access.
++build-options:
++  append-path: /usr/lib/sdk/rust-stable/bin
++modules:
++  - name: plervo-sheets
++    buildsystem: simple
++    build-options:
++      env:
++        CARGO_HOME: /run/build/plervo-sheets/cargo
++        CARGO_NET_OFFLINE: 'true'
++    build-commands:
++      - cargo --offline build --release --locked -p plervo-sheets -p plervo-sheets-cli
++      - install -Dm755 target/release/plervo-sheets /app/bin/plervo-sheets
++      - install -Dm755 target/release/plervo-sheets-cli /app/bin/plervo-sheets-cli
++      - install -Dm644 packaging/linux/com.plervo.sheets.desktop /app/share/applications/com.plervo.sheets.desktop
++      - install -Dm644 packaging/linux/com.plervo.sheets.mime.xml /app/share/mime/packages/com.plervo.sheets.xml
++      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
++      - >-
++        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
++        install -d /app/share/metainfo;
++        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
++        packaging/linux/com.plervo.sheets.metainfo.xml.in > /app/share/metainfo/com.plervo.sheets.metainfo.xml
++    sources:
++      - type: dir
++        path: ../../..
++        skip:
++          - target
++          - target-xtask
++          - dist
++          - corpus
++          - build-flatpak
++          - .flatpak-builder
++      - cargo-sources.json
+diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
+index 5e8c3a1..95b04a2 100644
+--- a/packaging/linux/nfpm.yaml
++++ b/packaging/linux/nfpm.yaml
+@@ -3,7 +3,7 @@
+ # exports VERSION and NFPM_ARCH.
+ #
+ #   nfpm package -f packaging/linux/nfpm.yaml -p deb -t dist/release/
+-name: gridcraft
++name: plervo-sheets
+ arch: ${NFPM_ARCH}
+ platform: linux
+ version: ${VERSION}
+@@ -13,14 +13,14 @@ release: 1
+ section: misc
+ priority: optional
+ maintainer: ${GRIDCRAFT_MAINTAINER}
+-vendor: Learning Machines LLC
+-homepage: https://getartcraft.com/apps/gridcraft
++vendor: Maintech Solutions LLC
++homepage: https://plervo.com/
+ license: MIT OR Apache-2.0
+ description: |-
+   Open-source, native spreadsheet that works the way Excel users expect.
+   Opens and saves .xlsx workbooks and CSV/TSV files; hundreds of worksheet
+   functions; formatting, sorting, filtering and charts.
+-  Includes gridcraft-cli, a headless evaluator, converter and command runner.
++  Includes plervo-sheets-cli, a headless evaluator, converter and command runner.
+ 
+ # The binaries link only glibc and libgcc_s directly. Windowing (X11/Wayland, xkbcommon) and the
+ # GPU (Vulkan, EGL/GL) are loaded at runtime, so they are dependencies/recommendations here
+@@ -55,11 +55,11 @@ overrides:
+       - xdg-desktop-portal
+ 
+ contents:
+-  - src: ${STAGE}/usr/bin/gridcraft
+-    dst: /usr/bin/gridcraft
++  - src: ${STAGE}/usr/bin/plervo-sheets
++    dst: /usr/bin/plervo-sheets
+     file_info: { mode: 0755 }
+-  - src: ${STAGE}/usr/bin/gridcraft-cli
+-    dst: /usr/bin/gridcraft-cli
++  - src: ${STAGE}/usr/bin/plervo-sheets-cli
++    dst: /usr/bin/plervo-sheets-cli
+     file_info: { mode: 0755 }
+   - src: ${STAGE}/usr/share/
+     dst: /usr/share/
+diff --git a/packaging/linux/package.sh b/packaging/linux/package.sh
+index 9fde2c5..c72d251 100755
+--- a/packaging/linux/package.sh
++++ b/packaging/linux/package.sh
+@@ -1,11 +1,11 @@
+ #!/usr/bin/env bash
+-# Build and package GridCraft for Linux (<arch> is x86_64 or aarch64, or riscv64 when cross-compiling):
++# Build and package Plervo Sheets for Linux (<arch> is x86_64 or aarch64, or riscv64 when cross-compiling):
+ #
+-#   $DIST/gridcraft-<version>-linux-<arch>.AppImage  any distro with glibc >= the build host's
+-#   $DIST/gridcraft-<version>-linux-<arch>.AppImage.zsync  delta updates (needs zsyncmake)
+-#   $DIST/gridcraft-<version>-linux-<arch>.deb       Debian, Ubuntu, Mint, Pop!_OS, ...
+-#   $DIST/gridcraft-<version>-linux-<arch>.rpm       Fedora, openSUSE, RHEL, ...
+-#   $DIST/gridcraft-<version>-linux-<arch>.tar.gz    plain FHS-style tree (bin/, share/)
++#   $DIST/plervo-sheets-<version>-linux-<arch>.AppImage  any distro with glibc >= the build host's
++#   $DIST/plervo-sheets-<version>-linux-<arch>.AppImage.zsync  delta updates (needs zsyncmake)
++#   $DIST/plervo-sheets-<version>-linux-<arch>.deb       Debian, Ubuntu, Mint, Pop!_OS, ...
++#   $DIST/plervo-sheets-<version>-linux-<arch>.rpm       Fedora, openSUSE, RHEL, ...
++#   $DIST/plervo-sheets-<version>-linux-<arch>.tar.gz    plain FHS-style tree (bin/, share/)
+ #
+ # Usage: packaging/linux/package.sh [--skip-build] [--formats "appimage deb rpm tar"]
+ #
+@@ -17,7 +17,7 @@ set -euo pipefail
+ # shellcheck source=../env.sh
+ . "$(dirname "${BASH_SOURCE[0]}")/../env.sh"
+ HERE="$ROOT/packaging/linux"
+-APP_ID=ai.storyteller.gridcraft
++APP_ID=com.plervo.sheets
+ 
+ SKIP_BUILD=0
+ FORMATS="appimage deb rpm tar"
+@@ -37,16 +37,16 @@ case "$ARCH" in
+   aarch64 | arm64) ARCH=aarch64; DEB_ARCH=arm64 ;;
+   *) echo "unsupported architecture $ARCH" >&2; exit 2 ;;
+ esac
+-export GRIDCRAFT_MAINTAINER="${GRIDCRAFT_MAINTAINER:-GridCraft maintainers <gridcraft@storyteller.ai>}"
+-BASENAME="gridcraft-$VERSION-linux-$ARCH"
++export GRIDCRAFT_MAINTAINER="${GRIDCRAFT_MAINTAINER:-Plervo Sheets maintainers <plervo-sheets@storyteller.ai>}"
++BASENAME="plervo-sheets-$VERSION-linux-$ARCH"
+ 
+-echo "==> GridCraft $VERSION for Linux $ARCH ($FORMATS)"
++echo "==> Plervo Sheets $VERSION for Linux $ARCH ($FORMATS)"
+ 
+ if [ "$SKIP_BUILD" = 0 ]; then
+   if [ -n "${CROSS_TARGET:-}" ]; then
+-    (cd "$ROOT" && cargo build --release --locked -p gridcraft -p gridcraft-cli --target "$CROSS_TARGET")
++    (cd "$ROOT" && cargo build --release --locked -p plervo-sheets -p plervo-sheets-cli --target "$CROSS_TARGET")
+   else
+-    (cd "$ROOT" && cargo build --release --locked -p gridcraft -p gridcraft-cli)
++    (cd "$ROOT" && cargo build --release --locked -p plervo-sheets -p plervo-sheets-cli)
+   fi
+ fi
+ BIN="$CARGO_TARGET_DIR/${CROSS_TARGET:+$CROSS_TARGET/}release"
+@@ -55,9 +55,9 @@ STAGE="$WORK/root"
+ rm -rf "$WORK"
+ 
+ # ---- stage an FHS tree (shared by every format) -------------------------------------------------
+-install -Dm755 "$BIN/gridcraft" "$STAGE/usr/bin/gridcraft"
+-install -Dm755 "$BIN/gridcraft-cli" "$STAGE/usr/bin/gridcraft-cli"
+-"${CROSS_COMPILE:-}strip" "$STAGE/usr/bin/gridcraft" "$STAGE/usr/bin/gridcraft-cli" 2>/dev/null || true
++install -Dm755 "$BIN/plervo-sheets" "$STAGE/usr/bin/plervo-sheets"
++install -Dm755 "$BIN/plervo-sheets-cli" "$STAGE/usr/bin/plervo-sheets-cli"
++"${CROSS_COMPILE:-}strip" "$STAGE/usr/bin/plervo-sheets" "$STAGE/usr/bin/plervo-sheets-cli" 2>/dev/null || true
+ install -Dm644 "$HERE/$APP_ID.desktop" "$STAGE/usr/share/applications/$APP_ID.desktop"
+ install -Dm644 "$HERE/$APP_ID.mime.xml" "$STAGE/usr/share/mime/packages/$APP_ID.xml"
+ mkdir -p "$STAGE/usr/share/metainfo"
+@@ -65,8 +65,8 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$GRIDCRAFT_BUILD_DATE/g" \
+   "$HERE/$APP_ID.metainfo.xml.in" >"$STAGE/usr/share/metainfo/$APP_ID.metainfo.xml"
+ mkdir -p "$STAGE/usr/share/icons"
+ cp -R "$ROOT/assets/app-icon/hicolor" "$STAGE/usr/share/icons/"
+-mkdir -p "$STAGE/usr/share/doc/gridcraft"
+-copy_docs "$STAGE/usr/share/doc/gridcraft"
++mkdir -p "$STAGE/usr/share/doc/plervo-sheets"
++copy_docs "$STAGE/usr/share/doc/plervo-sheets"
+ 
+ if command -v desktop-file-validate >/dev/null; then
+   desktop-file-validate "$STAGE/usr/share/applications/$APP_ID.desktop"
+@@ -99,10 +99,10 @@ fi
+ 
+ # ---- AppImage -----------------------------------------------------------------------------------
+ if has appimage; then
+-  APPDIR="$WORK/GridCraft.AppDir"
++  APPDIR="$WORK/Plervo Sheets.AppDir"
+   cp -R "$STAGE" "$APPDIR"
+   mv "$APPDIR/usr/share/doc" "$WORK/doc-unused"
+-  ln -s usr/bin/gridcraft "$APPDIR/AppRun"
++  ln -s usr/bin/plervo-sheets "$APPDIR/AppRun"
+   cp "$HERE/$APP_ID.desktop" "$APPDIR/$APP_ID.desktop"
+   cp "$ROOT/assets/app-icon/hicolor/256x256/apps/$APP_ID.png" "$APPDIR/$APP_ID.png"
+   ln -s "$APP_ID.png" "$APPDIR/.DirIcon"
+@@ -126,8 +126,8 @@ if has appimage; then
+   # fetch only the blocks that changed in a newer release, through the .zsync published next to
+   # each AppImage on GitHub Releases. `latest` is the newest published release that is not a
+   # pre-release. A fork's builds point at its own releases through GITHUB_REPOSITORY.
+-  REPO="${GITHUB_REPOSITORY:-storytold/gridcraft}"
+-  UPDATE_INFO="gh-releases-zsync|${REPO%%/*}|${REPO#*/}|latest|gridcraft-*-linux-$ARCH.AppImage.zsync"
++  REPO="${GITHUB_REPOSITORY:-alportblu/plervo-pdf}"
++  UPDATE_INFO="gh-releases-zsync|${REPO%%/*}|${REPO#*/}|latest|plervo-sheets-*-linux-$ARCH.AppImage.zsync"
+   # Extract-and-run: works without FUSE (containers, CI). The output embeds the static runtime,
+   # so users don't need libfuse2 either. With zsyncmake on the host (CI installs the zsync
+   # package) appimagetool also writes the .zsync, into its working directory, hence the cd.
+@@ -141,9 +141,9 @@ if has appimage; then
+ fi
+ 
+ if [ -z "${CROSS_TARGET:-}" ]; then
+-  "$STAGE/usr/bin/gridcraft-cli" --version
++  "$STAGE/usr/bin/plervo-sheets-cli" --version
+ elif [ -n "${EMULATOR:-}" ]; then
+-  "$EMULATOR" "$STAGE/usr/bin/gridcraft-cli" --version
++  "$EMULATOR" "$STAGE/usr/bin/plervo-sheets-cli" --version
+ fi
+ echo "==> done"
+ ls -lh "$DIST"
+diff --git a/packaging/macos/Info.plist.in b/packaging/macos/Info.plist.in
+index 4ed6d97..b3cb899 100644
+--- a/packaging/macos/Info.plist.in
++++ b/packaging/macos/Info.plist.in
+@@ -7,13 +7,13 @@
+   <key>CFBundleDevelopmentRegion</key>
+   <string>en</string>
+   <key>CFBundleDisplayName</key>
+-  <string>GridCraft</string>
++  <string>Plervo Sheets</string>
+   <key>CFBundleName</key>
+-  <string>GridCraft</string>
++  <string>Plervo Sheets</string>
+   <key>CFBundleExecutable</key>
+-  <string>GridCraft</string>
++  <string>Plervo Sheets</string>
+   <key>CFBundleIdentifier</key>
+-  <string>ai.storyteller.gridcraft</string>
++  <string>com.plervo.sheets</string>
+   <key>CFBundleInfoDictionaryVersion</key>
+   <string>6.0</string>
+   <key>CFBundlePackageType</key>
+@@ -24,12 +24,12 @@
+   <string>@SHORT_VERSION@</string>
+   <key>CFBundleVersion</key>
+   <string>@SHORT_VERSION@</string>
+-  <key>GridCraftVersion</key>
++  <key>Plervo SheetsVersion</key>
+   <string>@VERSION@</string>
+-  <key>GridCraftBuildCommit</key>
++  <key>Plervo SheetsBuildCommit</key>
+   <string>@BUILD_SHA@</string>
+   <key>CFBundleIconFile</key>
+-  <string>GridCraft</string>
++  <string>Plervo Sheets</string>
+   <key>LSApplicationCategoryType</key>
+   <string>public.app-category.productivity</string>
+   <!-- Must match MACOSX_DEPLOYMENT_TARGET in package.sh. Big Sur is the first release on
+@@ -43,9 +43,9 @@
+   <key>NSRequiresAquaSystemAppearance</key>
+   <false/>
+   <key>NSHumanReadableCopyright</key>
+-  <string>Copyright © the GridCraft authors. MIT OR Apache-2.0.</string>
++  <string>Copyright © the Plervo Sheets authors. MIT OR Apache-2.0.</string>
+ 
+-  <!-- Files GridCraft opens. Rank Alternate: it's offered under "Open With" without taking
++  <!-- Files Plervo Sheets opens. Rank Alternate: it's offered under "Open With" without taking
+        over the default app (Numbers, another spreadsheet) for these types. -->
+   <key>CFBundleDocumentTypes</key>
+   <array>
+diff --git a/packaging/macos/dmg/README.md b/packaging/macos/dmg/README.md
+index 0a6233d..49fa18a 100644
+--- a/packaging/macos/dmg/README.md
++++ b/packaging/macos/dmg/README.md
+@@ -7,17 +7,17 @@ Finder scripting on CI, nothing extra installed in the signing job).
+ 
+ | File | What |
+ |---|---|
+-| `background.svg` | Source of the background: the app icon (`assets/app-icon/gridcraft.svg`, linked, not copied) cropped as a cover on the GridCraft colour field (`#1f9d55`), Ink and Paper. Its text (Inter, JetBrains Mono) is outlined, so rendering it needs no fonts. No paper grain: noise doesn't compress, and this keeps `background.tiff` small. |
++| `background.svg` | Source of the background: the app icon (`assets/app-icon/plervo-sheets.svg`, linked, not copied) cropped as a cover on the Plervo Sheets colour field (`#1f9d55`), Ink and Paper. Its text (Inter, JetBrains Mono) is outlined, so rendering it needs no fonts. No paper grain: noise doesn't compress, and this keeps `background.tiff` small. |
+ | `background.tiff` | The background at 1x (660 × 400 px, 72 dpi) and 2x (1320 × 800 px, 144 dpi) in one HiDPI TIFF (16-colour palette, Deflate, sRGB). Goes to `.background/background.tiff`. |
+-| `dmg-layout.DS_Store` | Finder's view settings for the volume: window size, icon size 128, GridCraft.app at (326, 205), `Applications` at (574, 205), and the background. Goes to `.DS_Store` in the image; named so it isn't mistaken for (or ignored like) a Finder-generated `.DS_Store`. |
++| `dmg-layout.DS_Store` | Finder's view settings for the volume: window size, icon size 128, Plervo Sheets.app at (326, 205), `Applications` at (574, 205), and the background. Goes to `.DS_Store` in the image; named so it isn't mistaken for (or ignored like) a Finder-generated `.DS_Store`. |
+ | `generate.py` | Writes `background.tiff` and `dmg-layout.DS_Store` from the SVG and the layout above. |
+ 
+ ## The volume name has no version
+ 
+-The mounted volume is called `GridCraft`, not `GridCraft <version>`. The layout points at the background
++The mounted volume is called `Plervo Sheets`, not `Plervo Sheets <version>`. The layout points at the background
+ through an alias that includes the volume name, and Finder resolves it by that name: with a
+ versioned name the window keeps its size and icon positions but shows no background (tested).
+-The DMG file name (`gridcraft-<version>-macos-<arch>.dmg`) still carries the version.
++The DMG file name (`plervo-sheets-<version>-macos-<arch>.dmg`) still carries the version.
+ 
+ ## Rules
+ 
+diff --git a/packaging/macos/dmg/background.svg b/packaging/macos/dmg/background.svg
+index b4c2661..0519d48 100644
+--- a/packaging/macos/dmg/background.svg
++++ b/packaging/macos/dmg/background.svg
+@@ -6,7 +6,7 @@
+ </filter></defs>
+ 
+ <rect width="660" height="400" fill="#efe9dc"/>
+-<g clip-path="url(#panel)"><rect width="232" height="400" fill="#1f9d55"/><g transform="translate(-68.3,11.4) scale(0.72)"><image href="../../../assets/app-icon/gridcraft.svg" width="512" height="512"/></g></g>
++<g clip-path="url(#panel)"><rect width="232" height="400" fill="#1f9d55"/><g transform="translate(-68.3,11.4) scale(0.72)"><image href="../../../assets/app-icon/plervo-sheets.svg" width="512" height="512"/></g></g>
+ <line x1="232.5" y1="0" x2="232.5" y2="400" stroke="#0b0b0c" stroke-width="1.2"/>
+ <line x1="236.5" y1="0" x2="236.5" y2="400" stroke="#0b0b0c" stroke-width="0.5"/>
+ 
+diff --git a/packaging/macos/dmg/generate.py b/packaging/macos/dmg/generate.py
+index a168759..7c63f06 100644
+--- a/packaging/macos/dmg/generate.py
++++ b/packaging/macos/dmg/generate.py
+@@ -24,12 +24,12 @@ from PIL import Image, ImageCms
+ HERE = os.path.dirname(os.path.abspath(__file__))
+ 
+ # Keep in sync with package.sh (volume name) and README.md (layout).
+-VOLUME = "GridCraft"
++VOLUME = "Plervo Sheets"
+ WIDTH, HEIGHT = 660, 400  # window content, pt; the background's 1x size
+ TITLE_BAR = 32
+ ICON_SIZE = 128
+ PALETTE = 16  # colours in background.tiff
+-ICONS = {"GridCraft.app": (326, 205), "Applications": (574, 205)}
++ICONS = {"Plervo Sheets.app": (326, 205), "Applications": (574, 205)}
+ # A fixed date for the alias and the colour profile. Finder never matches it against the image
+ # (each build is a new volume): it finds the background by volume name and path.
+ FIXED_DATE = datetime.datetime(2026, 10, 8, tzinfo=datetime.timezone.utc)
+diff --git a/packaging/macos/entitlements.plist b/packaging/macos/entitlements.plist
+index 8558c5d..8cf13f3 100644
+--- a/packaging/macos/entitlements.plist
++++ b/packaging/macos/entitlements.plist
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+-<!-- Hardened-runtime entitlements for GridCraft. Deliberately empty: the app is pure Rust,
++<!-- Hardened-runtime entitlements for Plervo Sheets. Deliberately empty: the app is pure Rust,
+      loads no unsigned code, needs no JIT, and is not sandboxed (it opens files by path, from the
+      command line and drag-and-drop). Add exceptions here only with a reason in a comment. -->
+ <plist version="1.0">
+diff --git a/packaging/macos/import-cert.sh b/packaging/macos/import-cert.sh
+index 41d9538..cd0fc62 100755
+--- a/packaging/macos/import-cert.sh
++++ b/packaging/macos/import-cert.sh
+@@ -18,8 +18,8 @@ if [ -z "${APPLE_CERTIFICATE:-}" ]; then
+ fi
+ 
+ TMP="${RUNNER_TEMP:-${TMPDIR:-/tmp}}"
+-KEYCHAIN="$TMP/gridcraft-signing.keychain-db"
+-CERT="$TMP/gridcraft-signing.p12"
++KEYCHAIN="$TMP/plervo-sheets-signing.keychain-db"
++CERT="$TMP/plervo-sheets-signing.p12"
+ KC_PASS="${KEYCHAIN_PASSWORD:-$(openssl rand -hex 24)}"
+ 
+ trap 'rm -f "$CERT"' EXIT
+diff --git a/packaging/macos/package.sh b/packaging/macos/package.sh
+index b128c3c..46d47d6 100755
+--- a/packaging/macos/package.sh
++++ b/packaging/macos/package.sh
+@@ -1,8 +1,8 @@
+ #!/usr/bin/env bash
+ # Build, sign and (optionally) notarize the macOS release artifacts:
+ #
+-#   $DIST/gridcraft-<version>-macos-<arch>.dmg          GridCraft.app on a drag-to-Applications DMG
+-#   $DIST/gridcraft-cli-<version>-macos-<arch>.zip      the headless CLI
++#   $DIST/plervo-sheets-<version>-macos-<arch>.dmg          Plervo Sheets.app on a drag-to-Applications DMG
++#   $DIST/plervo-sheets-cli-<version>-macos-<arch>.zip      the headless CLI
+ #
+ # Usage: packaging/macos/package.sh [--arch universal|aarch64|x86_64] [--skip-build]
+ #
+@@ -39,9 +39,9 @@ export MACOSX_DEPLOYMENT_TARGET=11.0
+ IDENTITY="${MACOS_SIGN_IDENTITY:--}"
+ SHORT_VERSION="${VERSION%%-*}"
+ WORK="$CARGO_TARGET_DIR/macos-package"
+-APP="$WORK/GridCraft.app"
+-DMG="$DIST/gridcraft-$VERSION-macos-$ARCH.dmg"
+-CLI_ZIP="$DIST/gridcraft-cli-$VERSION-macos-$ARCH.zip"
++APP="$WORK/Plervo Sheets.app"
++DMG="$DIST/plervo-sheets-$VERSION-macos-$ARCH.dmg"
++CLI_ZIP="$DIST/plervo-sheets-cli-$VERSION-macos-$ARCH.zip"
+ 
+ NOTARIZE=0
+ if [ "$IDENTITY" = "-" ]; then
+@@ -52,18 +52,18 @@ else
+   warn "macOS: APPLE_ID / APPLE_PASSWORD / APPLE_TEAM_ID incomplete; signed but not notarized"
+ fi
+ 
+-echo "==> GridCraft $VERSION for macOS ($ARCH), identity: $IDENTITY, notarize: $NOTARIZE"
++echo "==> Plervo Sheets $VERSION for macOS ($ARCH), identity: $IDENTITY, notarize: $NOTARIZE"
+ 
+ # ---- build -------------------------------------------------------------------------------------
+ if [ "$SKIP_BUILD" = 0 ]; then
+   args=()
+   for t in "${TARGETS[@]}"; do args+=(--target "$t"); done
+-  (cd "$ROOT" && cargo build --release --locked -p gridcraft -p gridcraft-cli "${args[@]}")
++  (cd "$ROOT" && cargo build --release --locked -p plervo-sheets -p plervo-sheets-cli "${args[@]}")
+ fi
+ 
+ rm -rf "$WORK"
+ mkdir -p "$WORK/bin"
+-for bin in gridcraft gridcraft-cli; do
++for bin in plervo-sheets plervo-sheets-cli; do
+   inputs=()
+   for t in "${TARGETS[@]}"; do inputs+=("$CARGO_TARGET_DIR/$t/release/$bin"); done
+   lipo -create -output "$WORK/bin/$bin" "${inputs[@]}"
+@@ -97,12 +97,12 @@ notarize() {
+   fi
+ }
+ 
+-# ---- GridCraft.app ----------------------------------------------------------------------------
++# ---- Plervo Sheets.app ----------------------------------------------------------------------------
+ echo "==> assembling $APP"
+ mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
+ # Executable and icon carry the display name (CFBundleExecutable / CFBundleIconFile).
+-cp "$WORK/bin/gridcraft" "$APP/Contents/MacOS/GridCraft"
+-cp "$ROOT/assets/app-icon/gridcraft.icns" "$APP/Contents/Resources/GridCraft.icns"
++cp "$WORK/bin/plervo-sheets" "$APP/Contents/MacOS/Plervo Sheets"
++cp "$ROOT/assets/app-icon/plervo-sheets.icns" "$APP/Contents/Resources/Plervo Sheets.icns"
+ # Licences of the embedded craft-fonts fonts (only when built with CRAFT_FONTS_DIR).
+ copy_font_licences "$APP/Contents/Resources"
+ sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
+@@ -110,16 +110,18 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
+   "$HERE/Info.plist.in" >"$APP/Contents/Info.plist"
+ plutil -lint "$APP/Contents/Info.plist"
+ printf 'APPL????' >"$APP/Contents/PkgInfo"
++mkdir -p "$APP/Contents/Resources/Licenses"
++copy_docs "$APP/Contents/Resources/Licenses"
+ 
+ # Sign inside-out: nested code first, then the bundle itself (no --deep on the final signature).
+ # Today the only nested code is the main executable; frameworks/helpers would be signed here too.
+-sign --options runtime --entitlements "$HERE/entitlements.plist" "$APP/Contents/MacOS/GridCraft"
++sign --options runtime --entitlements "$HERE/entitlements.plist" "$APP/Contents/MacOS/Plervo Sheets"
+ sign --options runtime --entitlements "$HERE/entitlements.plist" "$APP"
+ codesign --verify --strict --deep --verbose=2 "$APP"
+ 
+ if [ "$NOTARIZE" = 1 ]; then
+-  ditto -c -k --keepParent "$APP" "$WORK/GridCraft-notarize.zip"
+-  notarize "$WORK/GridCraft-notarize.zip"
++  ditto -c -k --keepParent "$APP" "$WORK/Plervo Sheets-notarize.zip"
++  notarize "$WORK/Plervo Sheets-notarize.zip"
+   xcrun stapler staple "$APP"
+   xcrun stapler validate "$APP"
+   spctl --assess --type execute -vvv "$APP"
+@@ -129,17 +131,15 @@ fi
+ echo "==> building $DMG"
+ STAGE="$WORK/dmg"
+ mkdir -p "$STAGE"
+-ditto "$APP" "$STAGE/GridCraft.app"
++ditto "$APP" "$STAGE/Plervo Sheets.app"
+ ln -s /Applications "$STAGE/Applications"
+ # Finder window layout: background, icon size and positions (packaging/macos/dmg/README.md).
+ mkdir -p "$STAGE/.background"
+-cp "$HERE/dmg/background.tiff" "$STAGE/.background/background.tiff"
+-cp "$HERE/dmg/dmg-layout.DS_Store" "$STAGE/.DS_Store"
+ rm -f "$DMG" "$WORK/raw.dmg"
+ # makehybrid + convert builds the image without attaching a device, unlike `create -srcfolder`,
+ # which is flaky on CI runners ("Resource busy") and hangs in sandboxed sessions.
+ # The volume name has no version: .DS_Store finds the background through an alias that includes it.
+-hdiutil makehybrid -hfs -hfs-volume-name "GridCraft" -hfs-openfolder "$STAGE" -o "$WORK/raw.dmg" "$STAGE"
++hdiutil makehybrid -hfs -hfs-volume-name "Plervo Sheets" -hfs-openfolder "$STAGE" -o "$WORK/raw.dmg" "$STAGE"
+ hdiutil convert "$WORK/raw.dmg" -format UDZO -imagekey zlib-level=9 -o "$DMG"
+ rm -f "$WORK/raw.dmg"
+ sign "$DMG"
+@@ -153,17 +153,17 @@ fi
+ 
+ # ---- CLI ---------------------------------------------------------------------------------------
+ echo "==> building $CLI_ZIP"
+-CLI_DIR="$WORK/gridcraft-cli-$VERSION-macos-$ARCH"
++CLI_DIR="$WORK/plervo-sheets-cli-$VERSION-macos-$ARCH"
+ mkdir -p "$CLI_DIR"
+-cp "$WORK/bin/gridcraft-cli" "$CLI_DIR/"
++cp "$WORK/bin/plervo-sheets-cli" "$CLI_DIR/"
+ copy_docs "$CLI_DIR"
+-sign --options runtime "$CLI_DIR/gridcraft-cli"
+-codesign --verify --strict --verbose=2 "$CLI_DIR/gridcraft-cli"
++sign --options runtime "$CLI_DIR/plervo-sheets-cli"
++codesign --verify --strict --verbose=2 "$CLI_DIR/plervo-sheets-cli"
+ rm -f "$CLI_ZIP"
+ ditto -c -k --keepParent "$CLI_DIR" "$CLI_ZIP"
+ # A bare Mach-O can't carry a stapled ticket; Gatekeeper looks the notarization up online.
+ if [ "$NOTARIZE" = 1 ]; then notarize "$CLI_ZIP"; fi
+ 
+-"$WORK/bin/gridcraft-cli" --version
++"$WORK/bin/plervo-sheets-cli" --version
+ echo "==> done"
+ ls -lh "$DMG" "$CLI_ZIP"
+diff --git a/packaging/web/README.md b/packaging/web/README.md
+index 90be0ec..6a5eb54 100644
+--- a/packaging/web/README.md
++++ b/packaging/web/README.md
+@@ -1,22 +1,22 @@
+-# Hosting GridCraft for the web
++# Hosting Plervo Sheets for the web
+ 
+-`gridcraft-web-<version>.zip` (from the GitHub release, or `packaging/web/package.sh`) holds a
+-static site in `gridcraft-web-<version>/`:
++`plervo-sheets-web-<version>.zip` (from the GitHub release, or `packaging/web/package.sh`) holds a
++static site in `plervo-sheets-web-<version>/`:
+ 
+ | File | What it is |
+ |---|---|
+ | `index.html` | The page. It loads everything through relative URLs. |
+-| `gridcraft-web-<hash>.js` | wasm-bindgen glue (generated, ES module) |
+-| `gridcraft-web-<hash>_bg.wasm` | The app (compresses to roughly a third with gzip/Brotli) |
++| `plervo-sheets-web-<hash>.js` | wasm-bindgen glue (generated, ES module) |
++| `plervo-sheets-web-<hash>_bg.wasm` | The app (compresses to roughly a third with gzip/Brotli) |
+ | `_headers`, `.htaccess` | Sample header rules for Netlify/Cloudflare Pages and Apache |
+ 
+ There is no server-side code. Upload the folder's contents anywhere that serves static files.
+ 
+ ## Any path works
+ 
+-All URLs in `index.html` are relative (`public_url = "./"` in `apps/gridcraft-web/Trunk.toml`),
++All URLs in `index.html` are relative (`public_url = "./"` in `apps/plervo-sheets-web/Trunk.toml`),
+ so the site works at a domain root (`https://example.com/`), under a prefix
+-(`https://example.com/tools/gridcraft/`) and from a CDN bucket. The asset names carry a content
++(`https://example.com/tools/plervo-sheets/`) and from a CDN bucket. The asset names carry a content
+ hash, so they can be cached forever. Only `index.html` needs revalidation.
+ 
+ ## Required server settings
+@@ -31,7 +31,7 @@ hash, so they can be cached forever. Only `index.html` needs revalidation.
+   `.js` files, and `no-cache` on `index.html`.
+ - **HTTPS:** WebGPU (and the clipboard) only work in a secure context, which means `https://`
+   or `http://localhost`. Over plain HTTP elsewhere, the app falls back to WebGL2.
+-- **No special isolation headers:** GridCraft doesn't use `SharedArrayBuffer`, so it doesn't
++- **No special isolation headers:** Plervo Sheets doesn't use `SharedArrayBuffer`, so it doesn't
+   need `Cross-Origin-Opener-Policy` or `Cross-Origin-Embedder-Policy`. If your site already sends
+   COEP `require-corp`, also send `Cross-Origin-Resource-Policy: same-origin` (or `cross-origin`
+   when the files live on a CDN) on the app's files.
+@@ -39,7 +39,7 @@ hash, so they can be cached forever. Only `index.html` needs revalidation.
+ nginx example:
+ 
+ ```nginx
+-location /gridcraft/ {
++location /plervo-sheets/ {
+     types { application/wasm wasm; text/javascript js; text/html html; }
+     gzip on;
+     gzip_types application/wasm text/javascript text/html;
+@@ -54,8 +54,8 @@ Local test: `python3 -m http.server 8765` inside the folder, then open http://lo
+ 
+ ```html
+ <iframe
+-  src="https://example.com/gridcraft/"
+-  title="GridCraft spreadsheet"
++  src="https://example.com/plervo-sheets/"
++  title="Plervo Sheets spreadsheet"
+   style="width: 100%; height: 720px; border: 0;"
+   allow="fullscreen; clipboard-read; clipboard-write"
+   allowfullscreen>
+@@ -75,8 +75,8 @@ Local test: `python3 -m http.server 8765` inside the folder, then open http://lo
+ 
+ ## Renderer selection
+ 
+-GridCraft's web build is the same egui app as the desktop one, compiled to wasm
+-(`apps/gridcraft-web`). It renders with the backend `apps/gridcraft-web` selects (WebGPU
++Plervo Sheets's web build is the same egui app as the desktop one, compiled to wasm
++(`apps/plervo-sheets-web`). It renders with the backend `apps/plervo-sheets-web` selects (WebGPU
+ where available, otherwise WebGL2). If the web app adds URL flags to force a backend (as the
+ sibling Craft apps do with `?webgl` / `?cpu`), document them here; they also work on the
+ iframe `src`.
+diff --git a/packaging/web/package.sh b/packaging/web/package.sh
+index 8b1bca6..a1af6cf 100755
+--- a/packaging/web/package.sh
++++ b/packaging/web/package.sh
+@@ -1,10 +1,10 @@
+ #!/usr/bin/env bash
+-# Build the browser version and zip it:  $DIST/gridcraft-web-<version>.zip
++# Build the browser version and zip it:  $DIST/plervo-sheets-web-<version>.zip
+ #
+ # Usage: packaging/web/package.sh [--skip-build]
+ #
+ # Needs: trunk (brew install trunk / cargo install trunk --locked) and the wasm32-unknown-unknown
+-# target. The zip holds a self-contained static site in gridcraft-web-<version>/ that works
++# target. The zip holds a self-contained static site in plervo-sheets-web-<version>/ that works
+ # from any URL path and inside an <iframe>. Hosting notes: packaging/web/README.md.
+ set -euo pipefail
+ # shellcheck source=../env.sh
+@@ -27,7 +27,7 @@ if grep -Eq '(src|href)="/[^/]' "$SITE/index.html"; then
+   exit 1
+ fi
+ 
+-NAME="gridcraft-web-$VERSION"
++NAME="plervo-sheets-web-$VERSION"
+ WORK="$CARGO_TARGET_DIR/web-package"
+ rm -rf "$WORK"
+ mkdir -p "$WORK/$NAME"
+diff --git a/packaging/windows/app-build.rs.in b/packaging/windows/app-build.rs.in
+index dc1e798..63e00c3 100644
+--- a/packaging/windows/app-build.rs.in
++++ b/packaging/windows/app-build.rs.in
+@@ -2,7 +2,7 @@
+ // apps/gridcraft didn't exist yet). Move it there and add to apps/gridcraft/Cargo.toml:
+ //
+ //   [build-dependencies]
+-//   # Icon + VERSIONINFO for gridcraft.exe; build.rs only uses it when the target is Windows.
++//   # Icon + VERSIONINFO for plervo-sheets.exe; build.rs only uses it when the target is Windows.
+ //   winresource = "0.1"
+ //
+ // and to apps/gridcraft/src/main.rs (package.ps1 checks the exe is a GUI-subsystem binary):
+@@ -11,7 +11,7 @@
+ //
+ // package.ps1 sets GRIDCRAFT_REQUIRE_WINRES=1 so release builds fail without the resources.
+ 
+-//! Windows only: embed the app icon and version info (VERSIONINFO) into `gridcraft.exe`, so it
++//! Windows only: embed the app icon and version info (VERSIONINFO) into `plervo-sheets.exe`, so it
+ //! shows in Explorer, the taskbar, the Start menu and Alt-Tab.
+ //!
+ //! On every other target this does nothing. A missing resource compiler is a warning, so a
+@@ -20,24 +20,24 @@
+ 
+ fn main() {
+     println!("cargo:rerun-if-changed=build.rs");
+-    println!("cargo:rerun-if-changed=../../assets/app-icon/gridcraft.ico");
++    println!("cargo:rerun-if-changed=../../assets/app-icon/plervo-sheets.ico");
+     println!("cargo:rerun-if-env-changed=GRIDCRAFT_REQUIRE_WINRES");
+     if std::env::var("CARGO_CFG_TARGET_OS").as_deref() != Ok("windows") {
+         return;
+     }
+     let mut res = winresource::WindowsResource::new();
+-    res.set_icon("../../assets/app-icon/gridcraft.ico")
+-        .set("ProductName", "GridCraft")
+-        .set("FileDescription", "GridCraft spreadsheet")
+-        .set("CompanyName", "Learning Machines LLC")
+-        .set("LegalCopyright", "Copyright (c) the GridCraft authors. MIT OR Apache-2.0.")
+-        .set("OriginalFilename", "gridcraft.exe")
+-        .set("InternalName", "gridcraft");
++    res.set_icon("../../assets/app-icon/plervo-sheets.ico")
++        .set("ProductName", "Plervo Sheets")
++        .set("FileDescription", "Plervo Sheets spreadsheet")
++        .set("CompanyName", "Maintech Solutions LLC")
++        .set("LegalCopyright", "Copyright (c) the Plervo Sheets authors. MIT OR Apache-2.0.")
++        .set("OriginalFilename", "plervo-sheets.exe")
++        .set("InternalName", "plervo-sheets");
+     if let Err(e) = res.compile() {
+         if std::env::var_os("GRIDCRAFT_REQUIRE_WINRES").is_some() {
+             eprintln!("embedding Windows resources failed: {e}");
+             std::process::exit(1);
+         }
+-        println!("cargo:warning=gridcraft.exe built without icon/version resources: {e}");
++        println!("cargo:warning=plervo-sheets.exe built without icon/version resources: {e}");
+     }
+ }
+diff --git a/packaging/windows/package.ps1 b/packaging/windows/package.ps1
+index 8b780f8..83cd284 100644
+--- a/packaging/windows/package.ps1
++++ b/packaging/windows/package.ps1
+@@ -1,11 +1,11 @@
+ <#
+ .SYNOPSIS
+-  Build, sign and package GridCraft for Windows.
++  Build, sign and package Plervo Sheets for Windows.
+ 
+ .DESCRIPTION
+   Produces, in $env:DIST (default: dist/release):
+-    gridcraft-<version>-windows-<arch>.msi            per-machine installer (WiX v5)
+-    gridcraft-<version>-windows-<arch>-portable.zip   gridcraft.exe + gridcraft-cli.exe
++    plervo-sheets-<version>-windows-<arch>.msi            per-machine installer (WiX v5)
++    plervo-sheets-<version>-windows-<arch>-portable.zip   plervo-sheets.exe + plervo-sheets-cli.exe
+ 
+   The binaries link the C runtime statically (+crt-static), so neither the MSI nor the portable
+   zip needs the Visual C++ redistributable. Signing is delegated to sign.ps1 (skipped with a
+@@ -53,7 +53,7 @@ New-Item -ItemType Directory -Force -Path $Dist | Out-Null
+ if (-not $env:GRIDCRAFT_BUILD_SHA) { $env:GRIDCRAFT_BUILD_SHA = (git -C $Root rev-parse HEAD 2>$null) }
+ if (-not $env:GRIDCRAFT_BUILD_DATE) { $env:GRIDCRAFT_BUILD_DATE = (Get-Date).ToUniversalTime().ToString('yyyy-MM-dd') }
+ 
+-Write-Output "GridCraft $Version for Windows $Arch ($Target)"
++Write-Output "Plervo Sheets $Version for Windows $Arch ($Target)"
+ 
+ if (-not $SkipBuild) {
+   # Static CRT: no VC++ redistributable needed. Scoped to the target so host build scripts and
+@@ -62,7 +62,7 @@ if (-not $SkipBuild) {
+   [Environment]::SetEnvironmentVariable($flagVar, '-C target-feature=+crt-static')
+   # Fail the build (rather than warn) if the icon/VERSIONINFO can't be embedded.
+   $env:GRIDCRAFT_REQUIRE_WINRES = '1'
+-  Invoke-Native "cargo build ($Target)" { cargo build --release --locked -p gridcraft -p gridcraft-cli --target $Target }
++  Invoke-Native "cargo build ($Target)" { cargo build --release --locked -p plervo-sheets -p plervo-sheets-cli --target $Target }
+ }
+ 
+ $Bin = Join-Path $TargetDir "$Target\release"
+@@ -77,7 +77,7 @@ function Get-PeHeader([string] $Path) {
+   return @{ Machine = [BitConverter]::ToUInt16($bytes, $pe + 4); Subsystem = [BitConverter]::ToUInt16($bytes, $pe + 0x5C) }
+ }
+ $Machine = switch ($Arch) { 'x64' { 0x8664 } 'x86' { 0x14C } 'arm64' { 0xAA64 } }
+-foreach ($check in @(@('gridcraft.exe', 2), @('gridcraft-cli.exe', 3))) {
++foreach ($check in @(@('plervo-sheets.exe', 2), @('plervo-sheets-cli.exe', 3))) {
+   $h = Get-PeHeader (Join-Path $Bin $check[0])
+   if ($h.Machine -ne $Machine) { throw "$($check[0]) is for machine 0x$('{0:X}' -f $h.Machine), expected 0x$('{0:X}' -f $Machine) ($Arch)" }
+   if ($h.Subsystem -ne $check[1]) { throw "$($check[0]) has PE subsystem $($h.Subsystem), expected $($check[1])" }
+@@ -86,15 +86,32 @@ foreach ($check in @(@('gridcraft.exe', 2), @('gridcraft-cli.exe', 3))) {
+ $Stage = Join-Path $TargetDir "windows-package\$Arch"
+ Remove-Item -Recurse -Force $Stage -ErrorAction SilentlyContinue
+ New-Item -ItemType Directory -Force -Path $Stage | Out-Null
+-Copy-Item (Join-Path $Bin 'gridcraft.exe'), (Join-Path $Bin 'gridcraft-cli.exe') $Stage
++Copy-Item (Join-Path $Bin 'plervo-sheets.exe'), (Join-Path $Bin 'plervo-sheets-cli.exe') $Stage
+ 
+-& (Join-Path $PSScriptRoot 'sign.ps1') (Join-Path $Stage 'gridcraft.exe') (Join-Path $Stage 'gridcraft-cli.exe')
++& (Join-Path $PSScriptRoot 'sign.ps1') (Join-Path $Stage 'plervo-sheets.exe') (Join-Path $Stage 'plervo-sheets-cli.exe')
++
++# Carry source and embedded-asset notices in MSI and portable distributions.
++$Legal = Join-Path $Stage 'Licenses'
++New-Item -ItemType Directory -Force -Path $Legal | Out-Null
++foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md') {
++  $p = Join-Path $Root $f
++  if (Test-Path $p) { Copy-Item $p $Legal }
++}
++Get-ChildItem (Join-Path $Root 'assets') -Recurse -File | Where-Object { $_.Name -match '(?i)licen[cs]e|OFL.*txt|copyright' } | ForEach-Object {
++  $name = ($_.FullName.Substring($Root.Length + 1) -replace '[\\/]', '_') + '.txt'
++  Copy-Item $_.FullName (Join-Path $Legal $name)
++}
++if ($env:CRAFT_FONTS_DIR) {
++  Get-ChildItem (Join-Path $env:CRAFT_FONTS_DIR 'fonts\*\OFL.txt') | ForEach-Object {
++    Copy-Item $_.FullName (Join-Path $Legal ("OFL-" + $_.Directory.Name + '.txt'))
++  }
++}
+ 
+ # ---- MSI ---------------------------------------------------------------------------------------
+-$Msi = Join-Path $Dist "gridcraft-$Version-windows-$Arch.msi"
++$Msi = Join-Path $Dist "plervo-sheets-$Version-windows-$Arch.msi"
+ Invoke-Native 'wix build' {
+-  wix build (Join-Path $PSScriptRoot 'gridcraft.wxs') -arch $Arch `
+-    -d "Version=$MsiVersion" -d "BinDir=$Stage" -d "IconPath=$(Join-Path $Root 'assets\app-icon\gridcraft.ico')" `
++  wix build (Join-Path $PSScriptRoot 'plervo-sheets.wxs') -arch $Arch `
++    -d "Version=$MsiVersion" -d "BinDir=$Stage" -d "IconPath=$(Join-Path $Root 'assets\app-icon\plervo-sheets.ico')" `
+     -o $Msi
+ }
+ # wix writes its debug symbols (.wixpdb) next to the MSI; keep them out of the release assets.
+@@ -102,10 +119,11 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
+ & (Join-Path $PSScriptRoot 'sign.ps1') $Msi
+ 
+ # ---- portable zip ------------------------------------------------------------------------------
+-$Portable = Join-Path $TargetDir "windows-package\gridcraft-$Version-windows-$Arch-portable"
++$Portable = Join-Path $TargetDir "windows-package\plervo-sheets-$Version-windows-$Arch-portable"
+ Remove-Item -Recurse -Force $Portable -ErrorAction SilentlyContinue
+ New-Item -ItemType Directory -Force -Path $Portable | Out-Null
+ Copy-Item (Join-Path $Stage '*.exe') $Portable
++Copy-Item $Legal (Join-Path $Portable 'Licenses') -Recurse
+ foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE') {
+   $p = Join-Path $Root $f
+   if (Test-Path $p) { Copy-Item $p $Portable }
+@@ -116,7 +134,7 @@ if ($env:CRAFT_FONTS_DIR) {
+     Copy-Item $ofl.FullName (Join-Path $Portable "OFL-$($ofl.Directory.Name).txt")
+   }
+ }
+-$Zip = Join-Path $Dist "gridcraft-$Version-windows-$Arch-portable.zip"
++$Zip = Join-Path $Dist "plervo-sheets-$Version-windows-$Arch-portable.zip"
+ Remove-Item -Force $Zip -ErrorAction SilentlyContinue
+ Compress-Archive -Path $Portable -DestinationPath $Zip
+ 
+@@ -124,8 +142,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
+ # here; .github/workflows/windows-arm64.yml installs and runs it on ARM64 instead.
+ $HostArch = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString().ToLowerInvariant()
+ if ($Arch -ne 'arm64' -or $HostArch -eq 'arm64') {
+-  Invoke-Native 'gridcraft-cli --version' { & (Join-Path $Stage 'gridcraft-cli.exe') --version }
++  Invoke-Native 'plervo-sheets-cli --version' { & (Join-Path $Stage 'plervo-sheets-cli.exe') --version }
+ } else {
+-  Write-Output "skipping gridcraft-cli --version: an $Arch build doesn't run on this $HostArch machine"
++  Write-Output "skipping plervo-sheets-cli --version: an $Arch build doesn't run on this $HostArch machine"
+ }
+ Get-Item $Msi, $Zip | Format-Table Name, Length
+diff --git a/packaging/windows/plervo-sheets.wxs b/packaging/windows/plervo-sheets.wxs
+new file mode 100644
+index 0000000..2bf2dfb
+--- /dev/null
++++ b/packaging/windows/plervo-sheets.wxs
+@@ -0,0 +1,226 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!--
++  Plervo Sheets MSI (WiX Toolset v5: `dotnet tool install -g wix`). Built by package.ps1:
++
++    wix build plervo-sheets.wxs -arch x64 -d Version=1.2.3 -d BinDir=... -d IconPath=... -o out.msi
++
++  Per-machine install into Program Files, a Start Menu shortcut, an optional desktop shortcut,
++  App Paths (Win+R `plervo-sheets`),
++  and Plervo Sheets offered under "Open with" (and in Settings > Default apps) for .xlsx, .xlsm,
++  .csv and .tsv, without taking over the user's default app for them.
++
++  UpgradeCode is fixed for Plervo Sheets (generated 2026-10-07): never change it, or upgrades
++  install side by side instead of replacing the old version.
++-->
++<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
++  <Package
++      Name="Plervo Sheets"
++      Manufacturer="Maintech Solutions LLC"
++      Version="$(var.Version)"
++      UpgradeCode="367F8F49-1509-5881-ADC8-508107C73287"
++      Scope="perMachine"
++      Compressed="yes"
++      Language="1033">
++    <SummaryInformation Description="Plervo Sheets spreadsheet" Manufacturer="Maintech Solutions LLC" />
++    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
++         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
++    <MajorUpgrade AllowSameVersionUpgrades="yes"
++        DowngradeErrorMessage="A newer version of Plervo Sheets is already installed." />
++    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
++
++    <Icon Id="GridcraftIcon.ico" SourceFile="$(var.IconPath)" />
++    <Property Id="ARPPRODUCTICON" Value="GridcraftIcon.ico" />
++    <Property Id="ARPURLINFOABOUT" Value="https://plervo.com/" />
++    <Property Id="ARPURLUPDATEINFO" Value="https://plervo.com/" />
++    <Property Id="ARPHELPLINK" Value="https://buymeacoffee.com/alport" />
++
++    <!-- An explicit command-line value wins. Otherwise retain the previous installation's
++         choice, defaulting to off for a fresh install. Run only in the first sequence so the
++         execute sequence cannot reload the old choice after the user unchecks the box. -->
++    <Property Id="DESKTOPSHORTCUT" Secure="yes" />
++    <Property Id="SAVEDDESKTOPSHORTCUT" Secure="yes">
++      <RegistrySearch Id="FindDesktopShortcutPreference" Root="HKLM"
++          Key="Software\Plervo Sheets\Installer" Name="DesktopShortcut" Type="raw" />
++    </Property>
++    <SetProperty Id="DESKTOPSHORTCUT" Action="LoadDesktopShortcutPreference" Value="1"
++        After="AppSearch" Sequence="first"
++        Condition="NOT DESKTOPSHORTCUT AND SAVEDDESKTOPSHORTCUT = &quot;1&quot;" />
++    <SetProperty Id="DESKTOPSHORTCUT" Action="DefaultDesktopShortcut" Value="0"
++        After="LoadDesktopShortcutPreference" Sequence="first" Condition="NOT DESKTOPSHORTCUT" />
++    <SetProperty Id="DesktopShortcutChoice" Value="1" After="DefaultDesktopShortcut"
++        Sequence="ui" Condition="DESKTOPSHORTCUT = &quot;1&quot;" />
++
++    <Property Id="DefaultUIFont" Value="GridcraftUIFont" />
++    <Property Id="ErrorDialog" Value="GridcraftErrorDlg" />
++    <EnsureTable Id="ListBox" />
++    <UI>
++      <TextStyle Id="GridcraftUIFont" FaceName="Segoe UI" Size="9" />
++      <Dialog Id="DesktopShortcutDlg" Width="320" Height="150" Title="Plervo Sheets Setup" NoMinimize="yes">
++        <Control Id="Heading" Type="Text" X="15" Y="15" Width="290" Height="20" Text="Install Plervo Sheets" />
++        <Control Id="Description" Type="Text" X="15" Y="40" Width="290" Height="28"
++            Text="Install Plervo Sheets for everyone who uses this computer." />
++        <Control Id="DesktopShortcutCheckbox" Type="CheckBox" X="15" Y="76" Width="290" Height="18"
++            Property="DesktopShortcutChoice" CheckBoxValue="1" Text="Create a &amp;desktop shortcut" />
++        <Control Id="Install" Type="PushButton" X="165" Y="118" Width="65" Height="20"
++            Default="yes" ElevationShield="yes" Text="&amp;Install">
++          <!-- An unchecked checkbox clears its property. Publish an explicit zero so the
++               elevated execute sequence receives an unambiguous opt-out. -->
++          <Publish Property="DESKTOPSHORTCUT" Value="1" Condition="DesktopShortcutChoice" />
++          <Publish Property="DESKTOPSHORTCUT" Value="0" Condition="NOT DesktopShortcutChoice" />
++          <Publish Event="EndDialog" Value="Return" />
++        </Control>
++        <Control Id="Cancel" Type="PushButton" X="240" Y="118" Width="65" Height="20" Cancel="yes" Text="Cancel">
++          <Publish Event="EndDialog" Value="Exit" />
++        </Control>
++      </Dialog>
++
++      <!-- Windows Installer requires these support dialogs for authored full UI (ICE20).
++           They contain only installer messages and standard response controls. -->
++      <Dialog Id="GridcraftErrorDlg" Width="320" Height="120" Title="Plervo Sheets Setup" ErrorDialog="yes" NoMinimize="yes">
++        <Control Id="ErrorText" Type="Text" X="15" Y="15" Width="290" Height="65" TabSkip="no" />
++        <Control Id="A" Type="PushButton" X="15" Y="90" Width="65" Height="20" Text="Abort" TabSkip="yes">
++          <Publish Event="EndDialog" Value="ErrorAbort" />
++        </Control>
++        <Control Id="C" Type="PushButton" X="15" Y="90" Width="65" Height="20" Text="Cancel" TabSkip="yes">
++          <Publish Event="EndDialog" Value="ErrorCancel" />
++        </Control>
++        <Control Id="I" Type="PushButton" X="15" Y="90" Width="65" Height="20" Text="Ignore" TabSkip="yes">
++          <Publish Event="EndDialog" Value="ErrorIgnore" />
++        </Control>
++        <Control Id="N" Type="PushButton" X="15" Y="90" Width="65" Height="20" Text="No" TabSkip="yes">
++          <Publish Event="EndDialog" Value="ErrorNo" />
++        </Control>
++        <Control Id="O" Type="PushButton" X="15" Y="90" Width="65" Height="20" Text="OK" TabSkip="yes">
++          <Publish Event="EndDialog" Value="ErrorOk" />
++        </Control>
++        <Control Id="R" Type="PushButton" X="15" Y="90" Width="65" Height="20" Text="Retry" TabSkip="yes">
++          <Publish Event="EndDialog" Value="ErrorRetry" />
++        </Control>
++        <Control Id="Y" Type="PushButton" X="15" Y="90" Width="65" Height="20" Text="Yes" TabSkip="yes">
++          <Publish Event="EndDialog" Value="ErrorYes" />
++        </Control>
++      </Dialog>
++      <Dialog Id="FilesInUse" Width="320" Height="190" Title="Plervo Sheets Setup" NoMinimize="yes">
++        <Control Id="Description" Type="Text" X="15" Y="15" Width="290" Height="35"
++            Text="Close the applications listed below, then choose Retry. Ignore may require a restart." />
++        <Control Id="Files" Type="ListBox" X="15" Y="55" Width="290" Height="85" Property="FileInUseProcess" />
++        <Control Id="Retry" Type="PushButton" X="95" Y="155" Width="65" Height="20" Default="yes" Text="Retry">
++          <Publish Event="EndDialog" Value="Retry" />
++        </Control>
++        <Control Id="Ignore" Type="PushButton" X="167" Y="155" Width="65" Height="20" Text="Ignore">
++          <Publish Event="EndDialog" Value="Ignore" />
++        </Control>
++        <Control Id="Cancel" Type="PushButton" X="240" Y="155" Width="65" Height="20" Cancel="yes" Text="Cancel">
++          <Publish Event="EndDialog" Value="Exit" />
++        </Control>
++      </Dialog>
++      <Dialog Id="SetupCompleteDlg" Width="320" Height="110" Title="Plervo Sheets Setup" NoMinimize="yes">
++        <Control Id="Message" Type="Text" X="15" Y="20" Width="290" Height="35" Text="Plervo Sheets setup completed." />
++        <Control Id="Close" Type="PushButton" X="240" Y="75" Width="65" Height="20" Default="yes" Cancel="yes" Text="Close">
++          <Publish Event="EndDialog" Value="Return" />
++        </Control>
++      </Dialog>
++      <Dialog Id="SetupCanceledDlg" Width="320" Height="110" Title="Plervo Sheets Setup" NoMinimize="yes">
++        <Control Id="Message" Type="Text" X="15" Y="20" Width="290" Height="35" Text="Plervo Sheets setup was canceled." />
++        <Control Id="Close" Type="PushButton" X="240" Y="75" Width="65" Height="20" Default="yes" Cancel="yes" Text="Close">
++          <Publish Event="EndDialog" Value="Return" />
++        </Control>
++      </Dialog>
++      <Dialog Id="SetupFailedDlg" Width="320" Height="110" Title="Plervo Sheets Setup" NoMinimize="yes">
++        <Control Id="Message" Type="Text" X="15" Y="20" Width="290" Height="35" Text="Plervo Sheets setup could not finish. See the installer message or log for details." />
++        <Control Id="Close" Type="PushButton" X="240" Y="75" Width="65" Height="20" Default="yes" Cancel="yes" Text="Close">
++          <Publish Event="EndDialog" Value="Return" />
++        </Control>
++      </Dialog>
++    </UI>
++    <InstallUISequence>
++      <!-- Component conditions must see the choice before costing. Do not show the choice
++           during basic/silent installs, repair or uninstall. -->
++      <Show Dialog="DesktopShortcutDlg" Before="CostInitialize" Condition="NOT Installed AND NOT REMOVE AND UILevel = 5" />
++      <Show Dialog="SetupCompleteDlg" OnExit="success" Condition="UILevel = 5" />
++      <Show Dialog="SetupCanceledDlg" OnExit="cancel" Condition="UILevel = 5" />
++      <Show Dialog="SetupFailedDlg" OnExit="error" Condition="UILevel = 5" />
++    </InstallUISequence>
++    <AdminUISequence>
++      <Show Dialog="SetupCompleteDlg" OnExit="success" Condition="UILevel = 5" />
++      <Show Dialog="SetupCanceledDlg" OnExit="cancel" Condition="UILevel = 5" />
++      <Show Dialog="SetupFailedDlg" OnExit="error" Condition="UILevel = 5" />
++    </AdminUISequence>
++
++    <StandardDirectory Id="ProgramFiles6432Folder">
++      <Directory Id="INSTALLFOLDER" Name="Plervo Sheets" />
++    </StandardDirectory>
++    <StandardDirectory Id="ProgramMenuFolder" />
++    <StandardDirectory Id="DesktopFolder" />
++
++    <Feature Id="Main" Title="Plervo Sheets" Level="1">
++      <ComponentGroupRef Id="GridcraftFiles" />
++    </Feature>
++    <Feature Id="PlervoLicenseFeature" Title="Licenses" Level="1"><ComponentGroupRef Id="PlervoLegalFiles" /></Feature>
++  </Package>
++
++  <Fragment>
++    <ComponentGroup Id="GridcraftFiles" Directory="INSTALLFOLDER">
++      <Component Id="GridcraftApp" Guid="43D95257-69FA-54A3-A7A5-2C1A964097AA">
++        <File Id="GridcraftExe" Source="$(var.BinDir)\plervo-sheets.exe" KeyPath="yes">
++          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="Plervo Sheets"
++              Description="Plervo Sheets spreadsheet" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
++              Icon="GridcraftIcon.ico" IconIndex="0" />
++        </File>
++
++        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\plervo-sheets.exe" Value="[#GridcraftExe]" Type="string" />
++
++        <!-- ProgIds: how Explorer opens a file with PlervoSheets. Nothing here sets HKCR\.<ext>'s
++             default value, so the user's current default app is left alone. -->
++        <RegistryValue Root="HKLM" Key="Software\Classes\PlervoSheets.Workbook" Value="Plervo Sheets Workbook" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\PlervoSheets.Workbook\DefaultIcon" Value="&quot;[#GridcraftExe]&quot;,0" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\PlervoSheets.Workbook\shell\open\command" Value="&quot;[#GridcraftExe]&quot; &quot;%1&quot;" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\PlervoSheets.TextData" Value="Plervo Sheets Text Data" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\PlervoSheets.TextData\DefaultIcon" Value="&quot;[#GridcraftExe]&quot;,0" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\PlervoSheets.TextData\shell\open\command" Value="&quot;[#GridcraftExe]&quot; &quot;%1&quot;" Type="string" />
++
++        <!-- "Open with": Windows reads only the value names under OpenWithProgids; the data is
++             ignored (WiX rejects an empty Value, so it repeats the ProgId). -->
++        <RegistryValue Root="HKLM" Key="Software\Classes\.xlsx\OpenWithProgids" Name="PlervoSheets.Workbook" Value="PlervoSheets.Workbook" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.xlsm\OpenWithProgids" Name="PlervoSheets.Workbook" Value="PlervoSheets.Workbook" Type="string" />
++        <!-- .xlsb and .ods are imported (data only) into a new workbook that saves as .xlsx. -->
++        <RegistryValue Root="HKLM" Key="Software\Classes\.xlsb\OpenWithProgids" Name="PlervoSheets.Workbook" Value="PlervoSheets.Workbook" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.ods\OpenWithProgids" Name="PlervoSheets.Workbook" Value="PlervoSheets.Workbook" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.csv\OpenWithProgids" Name="PlervoSheets.TextData" Value="PlervoSheets.TextData" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.tsv\OpenWithProgids" Name="PlervoSheets.TextData" Value="PlervoSheets.TextData" Type="string" />
++
++        <!-- Settings > Default apps: lets the user pick Plervo Sheets for these types. -->
++        <RegistryValue Root="HKLM" Key="Software\Plervo Sheets\Capabilities" Name="ApplicationName" Value="Plervo Sheets" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Plervo Sheets\Capabilities" Name="ApplicationDescription" Value="Open-source spreadsheet for .xlsx, CSV and TSV files" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Plervo Sheets\Capabilities\FileAssociations" Name=".xlsx" Value="PlervoSheets.Workbook" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Plervo Sheets\Capabilities\FileAssociations" Name=".xlsm" Value="PlervoSheets.Workbook" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Plervo Sheets\Capabilities\FileAssociations" Name=".csv" Value="PlervoSheets.TextData" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Plervo Sheets\Capabilities\FileAssociations" Name=".tsv" Value="PlervoSheets.TextData" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\RegisteredApplications" Name="Plervo Sheets" Value="Software\Plervo Sheets\Capabilities" Type="string" />
++      </Component>
++
++      <Component Id="GridcraftCli">
++        <File Id="GridcraftCliExe" Source="$(var.BinDir)\plervo-sheets-cli.exe" KeyPath="yes" />
++      </Component>
++
++      <!-- Persist both on and off, independently of the optional shortcut. AppSearch reads
++           this before MajorUpgrade removes the previous product. -->
++      <Component Id="DesktopShortcutPreference">
++        <RegistryValue Root="HKLM" Key="Software\Plervo Sheets\Installer" Name="DesktopShortcut"
++            Value="[DESKTOPSHORTCUT]" Type="string" KeyPath="yes" />
++      </Component>
++      <Component Id="DesktopShortcutComponent" Directory="DesktopFolder" Condition="DESKTOPSHORTCUT = &quot;1&quot;">
++        <Shortcut Id="DesktopShortcut" Name="Plervo Sheets" Description="Plervo Sheets spreadsheet"
++            Target="[#GridcraftExe]" WorkingDirectory="INSTALLFOLDER" Icon="GridcraftIcon.ico" IconIndex="0" />
++        <!-- HKMU resolves to HKLM for this per-machine package, so another account can
++             uninstall the marker too. MSI root -1 also satisfies ICE43 for this shortcut. -->
++        <RegistryValue Root="HKMU" Key="Software\Plervo Sheets\Installer" Name="DesktopShortcutComponent"
++            Value="1" Type="integer" KeyPath="yes" />
++      </Component>
++    </ComponentGroup>
++  </Fragment>
++  <Fragment>
++    <DirectoryRef Id="INSTALLFOLDER"><Directory Id="PlervoLegalDir" Name="Licenses" /></DirectoryRef>
++    <ComponentGroup Id="PlervoLegalFiles" Directory="PlervoLegalDir"><Files Include="$(var.BinDir)\Licenses\*" /></ComponentGroup>
++  </Fragment>
++</Wix>
+diff --git a/packaging/windows/preview-installer-dialogs.ps1 b/packaging/windows/preview-installer-dialogs.ps1
+index b96ad3f..f7903e5 100644
+--- a/packaging/windows/preview-installer-dialogs.ps1
++++ b/packaging/windows/preview-installer-dialogs.ps1
+@@ -53,7 +53,7 @@ public static class GridcraftMsiPreview {
+             if (owner != process) return true;
+             var title = new StringBuilder(128);
+             GetWindowText(window, title, title.Capacity);
+-            if (title.ToString() != "GridCraft Setup") return true;
++            if (title.ToString() != "Plervo Sheets Setup") return true;
+             found = window;
+             return false;
+         }, IntPtr.Zero);
+diff --git a/packaging/windows/sign.ps1 b/packaging/windows/sign.ps1
+index a886a8d..9a9ec91 100644
+--- a/packaging/windows/sign.ps1
++++ b/packaging/windows/sign.ps1
+@@ -15,7 +15,7 @@
+   timestamp server, ...). Optional overrides: WINDOWS_TIMESTAMP_URL, SIGNTOOL (path to signtool.exe).
+ 
+ .EXAMPLE
+-  pwsh packaging/windows/sign.ps1 dist/gridcraft.exe dist/gridcraft.msi
++  pwsh packaging/windows/sign.ps1 dist/plervo-sheets.exe dist/plervo-sheets.msi
+ #>
+ param(
+   [Parameter(Mandatory = $true, ValueFromRemainingArguments = $true)]
+@@ -55,8 +55,8 @@ if (-not $haveCert -and -not $haveAzure) {
+ }
+ 
+ $script:SignTool = Find-SignTool
+-$common = @('sign', '/v', '/fd', 'SHA256', '/td', 'SHA256', '/d', 'GridCraft', '/du', 'https://github.com/storytold/gridcraft')
+-$tmp = Join-Path ([IO.Path]::GetTempPath()) "gridcraft-sign-$PID"
++$common = @('sign', '/v', '/fd', 'SHA256', '/td', 'SHA256', '/d', 'Plervo Sheets', '/du', 'https://github.com/alportblu/plervo-pdf')
++$tmp = Join-Path ([IO.Path]::GetTempPath()) "plervo-sheets-sign-$PID"
+ New-Item -ItemType Directory -Force -Path $tmp | Out-Null
+ 
+ try {
+diff --git a/packaging/windows/test-desktop-shortcut.ps1 b/packaging/windows/test-desktop-shortcut.ps1
+index 9a5b4cb..d3772ac 100644
+--- a/packaging/windows/test-desktop-shortcut.ps1
++++ b/packaging/windows/test-desktop-shortcut.ps1
+@@ -2,7 +2,7 @@
+ .SYNOPSIS
+   Exercise the actual MSI's desktop-shortcut choices on a disposable GitHub Windows runner.
+ .DESCRIPTION
+-  Compiles original no-op GUI/CLI fixtures instead of Rust, uses GridCraft's existing icon,
++  Compiles original no-op GUI/CLI fixtures instead of Rust, uses Plervo Sheets's existing icon,
+   and builds adjacent MSI versions. Installs the real package (including its registrations),
+   checks default/explicit choices, repair and major upgrades, then uninstalls in finally.
+   Run through the Packaging lint workflow, never on a developer's Windows installation.
+@@ -14,18 +14,18 @@ Set-StrictMode -Version Latest
+ if ($env:GITHUB_ACTIONS -ne 'true' -or $env:RUNNER_OS -ne 'Windows' -or $env:RUNNER_ENVIRONMENT -ne 'github-hosted') {
+   throw 'This install test is restricted to disposable GitHub-hosted Windows runners.'
+ }
+-if (-not $WorkDir) { $WorkDir = Join-Path $env:RUNNER_TEMP 'gridcraft-shortcut-smoke' }
++if (-not $WorkDir) { $WorkDir = Join-Path $env:RUNNER_TEMP 'plervo-sheets-shortcut-smoke' }
+ $Root = (Resolve-Path (Join-Path $PSScriptRoot '..\..')).Path
+-$InstallDir = Join-Path $env:ProgramFiles 'GridCraft'
+-$DesktopLink = Join-Path ([Environment]::GetFolderPath('CommonDesktopDirectory')) 'GridCraft.lnk'
+-$StartLink = Join-Path ([Environment]::GetFolderPath('CommonPrograms')) 'GridCraft.lnk'
+-$ChoiceKey = 'HKLM:\Software\GridCraft\Installer'
+-$ComponentKey = 'HKLM:\Software\GridCraft\Installer'
++$InstallDir = Join-Path $env:ProgramFiles 'Plervo Sheets'
++$DesktopLink = Join-Path ([Environment]::GetFolderPath('CommonDesktopDirectory')) 'Plervo Sheets.lnk'
++$StartLink = Join-Path ([Environment]::GetFolderPath('CommonPrograms')) 'Plervo Sheets.lnk'
++$ChoiceKey = 'HKLM:\Software\Plervo Sheets\Installer'
++$ComponentKey = 'HKLM:\Software\Plervo Sheets\Installer'
+ $UninstallRoot = 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall'
+-$Icon = Join-Path $Root 'assets\app-icon\gridcraft.ico'
++$Icon = Join-Path $Root 'assets\app-icon\plervo-sheets.ico'
+ if ((Test-Path $InstallDir) -or (Test-Path $DesktopLink) -or (Test-Path $StartLink) -or
+-    (Test-Path 'HKLM:\Software\GridCraft') -or (Test-Path 'HKCU:\Software\GridCraft')) {
+-  throw 'Refusing to run against an existing GridCraft installation or its settings.'
++    (Test-Path 'HKLM:\Software\Plervo Sheets') -or (Test-Path 'HKCU:\Software\Plervo Sheets')) {
++  throw 'Refusing to run against an existing Plervo Sheets installation or its settings.'
+ }
+ New-Item -ItemType Directory -Force -Path $WorkDir | Out-Null
+ $Bin = Join-Path $WorkDir 'bin'
+@@ -85,7 +85,7 @@ function Assert-Package($Package) {
+   $key = Join-Path $UninstallRoot $Package.Code
+   $registered = Get-ItemProperty -Path $key -ErrorAction Stop
+   Assert-That ($registered.DisplayVersion -eq $Package.Version) "Wrong installed product version: $($Package.Version)"
+-  foreach ($exe in 'gridcraft.exe', 'gridcraft-cli.exe') {
++  foreach ($exe in 'plervo-sheets.exe', 'plervo-sheets-cli.exe') {
+     Assert-That (Test-Path (Join-Path $InstallDir $exe)) "$exe missing after installation"
+   }
+   Assert-That (Test-Path $StartLink) 'The existing Start Menu shortcut is missing'
+@@ -95,7 +95,7 @@ function Assert-Desktop([bool] $Enabled) {
+   Assert-That ((Test-Path $DesktopLink) -eq $Enabled) "Desktop shortcut presence should be $Enabled"
+   $marker = Get-OptionalRegistryValue $ComponentKey 'DesktopShortcutComponent'
+   Assert-That (($null -ne $marker) -eq $Enabled) 'Shortcut component marker must match the machine-wide shortcut'
+-  Assert-That ($null -eq (Get-OptionalRegistryValue 'HKCU:\Software\GridCraft\Installer' 'DesktopShortcutComponent')) 'Shortcut component must not leave a per-user marker'
++  Assert-That ($null -eq (Get-OptionalRegistryValue 'HKCU:\Software\Plervo Sheets\Installer' 'DesktopShortcutComponent')) 'Shortcut component must not leave a per-user marker'
+   $choice = Get-ItemPropertyValue -Path $ChoiceKey -Name DesktopShortcut
+   Assert-That ($choice -eq $(if ($Enabled) { '1' } else { '0' })) 'Installer did not persist the selected desktop choice'
+   if (-not $Enabled) { return }
+@@ -103,12 +103,12 @@ function Assert-Desktop([bool] $Enabled) {
+   $shortcut = $null
+   try {
+     $shortcut = $shell.CreateShortcut($DesktopLink)
+-    Assert-That ($shortcut.TargetPath -ieq (Join-Path $InstallDir 'gridcraft.exe')) 'Desktop shortcut targets the wrong executable'
++    Assert-That ($shortcut.TargetPath -ieq (Join-Path $InstallDir 'plervo-sheets.exe')) 'Desktop shortcut targets the wrong executable'
+     Assert-That ($shortcut.WorkingDirectory.TrimEnd('\') -ieq $InstallDir.TrimEnd('\')) 'Desktop shortcut has the wrong working directory'
+     Assert-That ($shortcut.IconLocation -match '^(.*),\s*0$') 'Desktop shortcut must use icon index zero'
+     $iconPath = [Environment]::ExpandEnvironmentVariables($Matches[1].Trim('"'))
+     Assert-That (Test-Path $iconPath) 'Desktop shortcut icon is missing'
+-    Assert-That ((Get-FileHash $iconPath).Hash -eq (Get-FileHash $Icon).Hash) 'Desktop shortcut does not use the packaged GridCraft icon'
++    Assert-That ((Get-FileHash $iconPath).Hash -eq (Get-FileHash $Icon).Hash) 'Desktop shortcut does not use the packaged Plervo Sheets icon'
+   } finally {
+     foreach ($item in $shortcut, $shell) {
+       if ($item) { [Runtime.InteropServices.Marshal]::FinalReleaseComObject($item) | Out-Null }
+@@ -118,8 +118,8 @@ function Assert-Desktop([bool] $Enabled) {
+ 
+ function Assert-Removed($Package) {
+   Assert-That (-not (Test-Path (Join-Path $UninstallRoot $Package.Code))) 'MSI still registered after removal'
+-  Assert-That (-not (Test-Path (Join-Path $InstallDir 'gridcraft.exe'))) 'App executable remains after uninstall'
+-  Assert-That (-not (Test-Path (Join-Path $InstallDir 'gridcraft-cli.exe'))) 'CLI executable remains after uninstall'
++  Assert-That (-not (Test-Path (Join-Path $InstallDir 'plervo-sheets.exe'))) 'App executable remains after uninstall'
++  Assert-That (-not (Test-Path (Join-Path $InstallDir 'plervo-sheets-cli.exe'))) 'CLI executable remains after uninstall'
+   Assert-That (-not (Test-Path $DesktopLink)) 'Desktop shortcut remains after uninstall'
+   Assert-That (-not (Test-Path $StartLink)) 'Start Menu shortcut remains after uninstall'
+   Assert-That ($null -eq (Get-OptionalRegistryValue $ChoiceKey 'DesktopShortcut')) 'Saved choice remains after uninstall'
+@@ -129,7 +129,7 @@ function Assert-Removed($Package) {
+ function Uninstall-AsSystem($Package) {
+   # Exercise removal under a different account without creating a user or credentials.
+   # This function is covered by the disposable hosted-runner guard at the top of the script.
+-  $taskName = 'GridCraft-shortcut-' + [Guid]::NewGuid().ToString('N')
++  $taskName = 'Plervo Sheets-shortcut-' + [Guid]::NewGuid().ToString('N')
+   $log = Join-Path $WorkDir 'uninstall-as-system.log'
+   $action = New-ScheduledTaskAction -Execute (Join-Path $env:WINDIR 'System32\msiexec.exe') `
+     -Argument "/x $($Package.Code) /qn /norestart /l*v `"$log`""
+@@ -164,14 +164,14 @@ function Uninstall-AsSystem($Package) {
+ $source = Join-Path $WorkDir 'Stub.cs'
+ 'public static class Program { public static void Main() { } }' | Set-Content -Path $source -Encoding utf8
+ $csc = Join-Path $env:WINDIR 'Microsoft.NET\Framework64\v4.0.30319\csc.exe'
+-foreach ($fixture in @(@('gridcraft.exe', 'winexe'), @('gridcraft-cli.exe', 'exe'))) {
++foreach ($fixture in @(@('plervo-sheets.exe', 'winexe'), @('plervo-sheets-cli.exe', 'exe'))) {
+   & $csc /nologo /platform:x64 "/target:$($fixture[1])" "/out:$(Join-Path $Bin $fixture[0])" $source
+   if ($LASTEXITCODE -ne 0) { throw 'Could not compile installer fixture' }
+ }
+ $packages = @()
+ foreach ($version in '90.0.0', '90.0.1', '90.0.2') {
+-  $msi = Join-Path $WorkDir "gridcraft-$version.msi"
+-  & wix build (Join-Path $PSScriptRoot 'gridcraft.wxs') -arch x64 `
++  $msi = Join-Path $WorkDir "plervo-sheets-$version.msi"
++  & wix build (Join-Path $PSScriptRoot 'plervo-sheets.wxs') -arch x64 `
+     -d "Version=$version" -d "BinDir=$Bin" -d "IconPath=$Icon" -o $msi | Write-Host
+   if ($LASTEXITCODE -ne 0) { throw "WiX failed to build $version" }
+   $packages += [pscustomobject]@{ Path = $msi; Code = (Get-ProductCode $msi); Version = $version }
+diff --git a/xtask/src/layers.rs b/xtask/src/layers.rs
+index 0d19907..52d321e 100644
+--- a/xtask/src/layers.rs
++++ b/xtask/src/layers.rs
+@@ -69,7 +69,11 @@ pub const UI_CRATES: &[&str] = &["egui*", "eframe", "winit", "rfd", "wgpu*"];
+ pub const UI_MIN_LAYER: u8 = 6;
+ 
+ pub fn short_name(pkg: &str) -> &str {
+-    pkg.strip_prefix("gridcraft-").unwrap_or(pkg)
++    match pkg {
++        "plervo-sheets" => "gridcraft",
++        "plervo-sheets-cli" => "cli",
++        other => other.strip_prefix("gridcraft-").unwrap_or(other),
++    }
+ }
+ 
+ pub fn classify(pkg: &str) -> Option<Class> {

@@ -1,0 +1,3337 @@
+diff --git a/ASSETS.md b/ASSETS.md
+index 76052b5..9dba41d 100644
+--- a/ASSETS.md
++++ b/ASSETS.md
+@@ -2,7 +2,6 @@
+ 
+ Every non-code asset in this repository (fonts, images, example art, presets) is listed here with its author, source and licence. `cargo xtask assets` (part of `cargo xtask ci`) fails if an asset file is missing from this table.
+ 
+-**Policy (mandatory):** DesignCraft contains **no Adobe iconography, images, artwork, presets, swatch libraries or ICC profiles**. Every asset is original work by DesignCraft contributors or third-party material under an open licence (OSI open source, public domain / CC0, or Creative Commons that allows redistribution). Screenshots of Adobe software are never committed. Font files are not added here: shared fonts live in [storytold/craft-fonts](https://github.com/storytold/craft-fonts), an optional build input (`CRAFT_FONTS_DIR`, see AGENTS.md and craftrules [`standards/fonts.md`](https://github.com/storytold/craftrules/blob/main/standards/fonts.md)). The one exception is the ArtCraft brand files in `docs/brand/`: ArtCraft trademarks, not open source, used under `docs/brand/LICENSE-brand.txt`.
+ 
+ Generated-in-code art is original and has no file to list: the UI icon set (`crates/ui-egui/src/icons.rs`), default swatches, and the sample magazine's imagery (`crates/engine/src/sample.rs`).
+ 
+@@ -44,26 +43,27 @@ Generated-in-code art is original and has no file to list: the UI icon set (`cra
+ | `crates/render/tests/golden/feather.png` | DesignCraft contributors (generated) | rendered by DesignCraft's own renderer (`crates/render/tests/effects.rs`, synthetic shapes and bundled fonts) | MIT OR Apache-2.0 | Golden test image for soft effects |
+ | `crates/render/tests/golden/inner-shadow.png` | DesignCraft contributors (generated) | rendered by DesignCraft's own renderer (`crates/render/tests/effects.rs`, synthetic shapes and bundled fonts) | MIT OR Apache-2.0 | Golden test image for soft effects |
+ | `crates/render/tests/golden/outer-glow.png` | DesignCraft contributors (generated) | rendered by DesignCraft's own renderer (`crates/render/tests/effects.rs`, synthetic shapes and bundled fonts) | MIT OR Apache-2.0 | Golden test image for soft effects |
+-| `assets/app-icon/LICENSE.txt` | (licence text) | this project | — | Licence for the app icon |
+-| `assets/app-icon/designcraft-1024.png` | DesignCraft project owner (drawn in ArtCraft) | rendered from `assets/app-icon/designcraft.svg` by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon: calico cat in a polka-dot scarf (see `assets/app-icon/README.md`) |
+-| `assets/app-icon/designcraft-macos-512.png` | DesignCraft project owner (drawn in ArtCraft) | rendered from `assets/app-icon/designcraft.svg` by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon: calico cat in a polka-dot scarf (see `assets/app-icon/README.md`) |
+-| `assets/app-icon/designcraft-small.svg` | DesignCraft project owner (drawn in ArtCraft) | owner's ArtCraft drawing, vectorised with craftrules `assets/logo-options/_tools/vectorize_tile.py` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon: calico cat in a polka-dot scarf (see `assets/app-icon/README.md`) |
+-| `assets/app-icon/designcraft.icns` | DesignCraft project owner (drawn in ArtCraft) | rendered from `assets/app-icon/designcraft.svg` by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon: calico cat in a polka-dot scarf (see `assets/app-icon/README.md`) |
+-| `assets/app-icon/designcraft.ico` | DesignCraft project owner (drawn in ArtCraft) | rendered from `assets/app-icon/designcraft.svg` by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon: calico cat in a polka-dot scarf (see `assets/app-icon/README.md`) |
+-| `assets/app-icon/designcraft.svg` | DesignCraft project owner (drawn in ArtCraft) | owner's ArtCraft drawing, vectorised with craftrules `assets/logo-options/_tools/vectorize_tile.py` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon: calico cat in a polka-dot scarf (see `assets/app-icon/README.md`) |
+-| `assets/app-icon/hicolor/128x128/apps/ai.storyteller.designcraft.png` | DesignCraft project owner (drawn in ArtCraft) | rendered from `assets/app-icon/designcraft.svg` by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon: calico cat in a polka-dot scarf (see `assets/app-icon/README.md`) |
+-| `assets/app-icon/hicolor/16x16/apps/ai.storyteller.designcraft.png` | DesignCraft project owner (drawn in ArtCraft) | rendered from `assets/app-icon/designcraft.svg` by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon: calico cat in a polka-dot scarf (see `assets/app-icon/README.md`) |
+-| `assets/app-icon/hicolor/24x24/apps/ai.storyteller.designcraft.png` | DesignCraft project owner (drawn in ArtCraft) | rendered from `assets/app-icon/designcraft.svg` by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon: calico cat in a polka-dot scarf (see `assets/app-icon/README.md`) |
+-| `assets/app-icon/hicolor/256x256/apps/ai.storyteller.designcraft.png` | DesignCraft project owner (drawn in ArtCraft) | rendered from `assets/app-icon/designcraft.svg` by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon: calico cat in a polka-dot scarf (see `assets/app-icon/README.md`) |
+-| `assets/app-icon/hicolor/32x32/apps/ai.storyteller.designcraft.png` | DesignCraft project owner (drawn in ArtCraft) | rendered from `assets/app-icon/designcraft.svg` by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon: calico cat in a polka-dot scarf (see `assets/app-icon/README.md`) |
+-| `assets/app-icon/hicolor/48x48/apps/ai.storyteller.designcraft.png` | DesignCraft project owner (drawn in ArtCraft) | rendered from `assets/app-icon/designcraft.svg` by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon: calico cat in a polka-dot scarf (see `assets/app-icon/README.md`) |
+-| `assets/app-icon/hicolor/512x512/apps/ai.storyteller.designcraft.png` | DesignCraft project owner (drawn in ArtCraft) | rendered from `assets/app-icon/designcraft.svg` by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon: calico cat in a polka-dot scarf (see `assets/app-icon/README.md`) |
+-| `assets/app-icon/hicolor/64x64/apps/ai.storyteller.designcraft.png` | DesignCraft project owner (drawn in ArtCraft) | rendered from `assets/app-icon/designcraft.svg` by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon: calico cat in a polka-dot scarf (see `assets/app-icon/README.md`) |
+-| `assets/app-icon/hicolor/scalable/apps/ai.storyteller.designcraft.svg` | DesignCraft project owner (drawn in ArtCraft) | owner's ArtCraft drawing, vectorised with craftrules `assets/logo-options/_tools/vectorize_tile.py` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon: calico cat in a polka-dot scarf (see `assets/app-icon/README.md`) |
+-| `docs/brand/artcraft-logo.svg`, `docs/brand/artcraft-logo.png` | ArtCraft / Storyteller | ArtCraft brand kit (project owner) | ArtCraft trademark, see docs/brand/LICENSE-brand.txt (not open source) | ArtCraft wordmark (README header) |
+-| `docs/brand/artcraft-logo-white.svg`, `docs/brand/artcraft-logo-white.png` | ArtCraft / Storyteller | ArtCraft brand kit (project owner) | ArtCraft trademark, see docs/brand/LICENSE-brand.txt (not open source) | Wordmark for dark backgrounds |
+-| `docs/brand/artcraft-mark.svg`, `docs/brand/artcraft-mark.png` | ArtCraft / Storyteller | ArtCraft brand kit (project owner) | ArtCraft trademark, see docs/brand/LICENSE-brand.txt (not open source) | The mark; its outline is drawn in code by `crates/ui-egui/src/about.rs` (About splash, start screen) |
+-| `docs/brand/artcraft-mark-black.svg`, `docs/brand/artcraft-mark-black.png` | ArtCraft / Storyteller | ArtCraft brand kit (project owner) | ArtCraft trademark, see docs/brand/LICENSE-brand.txt (not open source) | Mark for light backgrounds |
+-| `docs/brand/LICENSE-brand.txt` | (licence text) | ArtCraft Team | — | Terms for the ArtCraft Marks in `docs/brand/` |
+-| `packaging/macos/dmg/background.svg` | @XusBadia | original work for this repository, derived from the DesignCraft app icon (`assets/app-icon/designcraft.svg`, referenced via `<image>`, not copied); text is outlined Inter / JetBrains Mono glyph paths | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | DesignCraft macOS DMG window background for the Finder window; `packaging/macos/dmg/generate.py` renders it to `background.tiff` (2026-10-08) |
+ | `packaging/macos/dmg/background.tiff` | @XusBadia | Rendered from `packaging/macos/dmg/background.svg` by `packaging/macos/dmg/generate.py` | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | 1x + 2x HiDPI TIFF for the macOS DMG window; includes the app icon (see its row) and LittleCMS's built-in sRGB profile ("No copyright, use freely") |
++
++## Plervo application identity
++
++| Asset | Author | Source | License | Notes |
++|---|---|---|---|---|
++| `assets/app-icon/designcraft-1024.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 c59fc35439182657daea18534d62c365f73f618f045f83f4a270876281af8285 |
++| `assets/app-icon/designcraft-macos-512.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 93d21f9ba05ff5a5c849230dab280fa9f9fe098590b4790c7ef903f2118fde37 |
++| `assets/app-icon/designcraft-small.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 dd0795fe3452ecd9d056d6ee72006016ef9e186f6aea326765379bd00507f7d1 |
++| `assets/app-icon/designcraft.icns` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 a9543be3fd2adf4926c0a6a0b18bcac3423c39986f165bf4e4851201924715ef |
++| `assets/app-icon/designcraft.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 08aaf384570209e0bf2e7288f3d953c81407b39797dabff874d0695484add3ea |
++| `assets/app-icon/designcraft.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 dd0795fe3452ecd9d056d6ee72006016ef9e186f6aea326765379bd00507f7d1 |
++| `assets/app-icon/hicolor/128x128/apps/com.plervo.publish.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 4b4d428671032c7c6e1e2e7b172ee0ba7d1f89b0cc724806a07b92368127eb7a |
++| `assets/app-icon/hicolor/16x16/apps/com.plervo.publish.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 691570cf1fa1689f38b199aeeabb1e24f6fcb8f4e556691340a3599928c0ad8f |
++| `assets/app-icon/hicolor/24x24/apps/com.plervo.publish.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 01e195073ba97161286c4f778d8056691aed8bf49c481714726d92c1ff298efb |
++| `assets/app-icon/hicolor/256x256/apps/com.plervo.publish.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 e1da715386612e2ee61dd381d64247b9d33a7e0bbeef714fce37851a9db8002a |
++| `assets/app-icon/hicolor/32x32/apps/com.plervo.publish.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 09bcd83feaa1337a429ad8674a266ae4c6996676eb5ea4100e24882e0dd10f61 |
++| `assets/app-icon/hicolor/48x48/apps/com.plervo.publish.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 814c0b7abd3f1b62925c155c1941b9c50d43abd26f662d00d41c1c1245ec1d14 |
++| `assets/app-icon/hicolor/512x512/apps/com.plervo.publish.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 4723ce9ba7d782e94087464b344afe18f9bbd555def7a900bd4999081468f809 |
++| `assets/app-icon/hicolor/64x64/apps/com.plervo.publish.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 a7c6330461a701476c8a60627a4a5e293f67677e24bb052a3eed3e5a55e0cf90 |
++| `assets/app-icon/hicolor/scalable/apps/com.plervo.publish.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 dd0795fe3452ecd9d056d6ee72006016ef9e186f6aea326765379bd00507f7d1 |
++| `assets/app-icon/plervo-publish.icns` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 a9543be3fd2adf4926c0a6a0b18bcac3423c39986f165bf4e4851201924715ef |
++| `assets/app-icon/plervo-publish.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 08aaf384570209e0bf2e7288f3d953c81407b39797dabff874d0695484add3ea |
++| `assets/app-icon/plervo-publish.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 dd0795fe3452ecd9d056d6ee72006016ef9e186f6aea326765379bd00507f7d1 |
+diff --git a/Cargo.lock b/Cargo.lock
+index e77a81b..bb0f77e 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -886,8 +886,8 @@ dependencies = [
+ ]
+ 
+ [[package]]
+-name = "designcraft"
+-version = "0.8.0"
++name = "plervo-publish"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "arboard",
+  "designcraft-engine",
+@@ -904,8 +904,8 @@ dependencies = [
+ ]
+ 
+ [[package]]
+-name = "designcraft-cli"
+-version = "0.8.0"
++name = "plervo-publish-cli"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "designcraft-color",
+  "designcraft-compose",
+@@ -921,7 +921,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "designcraft-color"
+-version = "0.8.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "kurbo",
+  "moxcms",
+@@ -933,7 +933,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "designcraft-compose"
+-version = "0.8.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "designcraft-color",
+  "designcraft-doc",
+@@ -951,7 +951,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "designcraft-doc"
+-version = "0.8.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "designcraft-color",
+  "designcraft-geom",
+@@ -963,7 +963,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "designcraft-engine"
+-version = "0.8.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "caseless",
+  "craft-print",
+@@ -998,7 +998,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "designcraft-epub"
+-version = "0.8.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "designcraft-color",
+  "designcraft-doc",
+@@ -1007,7 +1007,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "designcraft-fonts"
+-version = "0.8.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "harfrust 0.13.3",
+  "kurbo",
+@@ -1019,7 +1019,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "designcraft-format"
+-version = "0.8.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "designcraft-doc",
+  "serde",
+@@ -1030,7 +1030,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "designcraft-geom"
+-version = "0.8.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "flo_curves",
+  "kurbo",
+@@ -1043,7 +1043,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "designcraft-idml"
+-version = "0.8.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "designcraft-color",
+  "designcraft-compose",
+@@ -1056,7 +1056,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "designcraft-images"
+-version = "0.8.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "designcraft-color",
+  "designcraft-fonts",
+@@ -1067,7 +1067,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "designcraft-mcp"
+-version = "0.8.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "designcraft-engine",
+  "designcraft-geom",
+@@ -1080,7 +1080,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "designcraft-pdf"
+-version = "0.8.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "designcraft-color",
+  "designcraft-compose",
+@@ -1102,7 +1102,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "designcraft-render"
+-version = "0.8.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "designcraft-color",
+  "designcraft-compose",
+@@ -1120,7 +1120,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "designcraft-textimport"
+-version = "0.8.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "designcraft-doc",
+  "quick-xml 0.38.4",
+@@ -1129,7 +1129,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "designcraft-tools"
+-version = "0.8.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "designcraft-color",
+  "designcraft-compose",
+@@ -1141,7 +1141,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "designcraft-ui-egui"
+-version = "0.8.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "craft-ui",
+  "designcraft-color",
+@@ -1169,7 +1169,7 @@ dependencies = [
+ 
+ [[package]]
+ name = "designcraft-web"
+-version = "0.8.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "designcraft-engine",
+  "designcraft-format",
+@@ -5697,7 +5697,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
+ 
+ [[package]]
+ name = "xtask"
+-version = "0.8.0"
++version = "0.1.0-alpha.4"
+ dependencies = [
+  "serde_json",
+ ]
+diff --git a/Cargo.toml b/Cargo.toml
+index e76609e..45afcde 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
+ default-members = ["crates/*", "apps/designcraft", "apps/designcraft-cli", "xtask"]
+ 
+ [workspace.package]
+-version = "0.8.0"
++version = "0.1.0-alpha.4"
+ edition = "2024"
+ license = "MIT OR Apache-2.0"
+ rust-version = "1.95"
+diff --git a/NOTICE b/NOTICE
+index 21123ee..c81e0e2 100644
+--- a/NOTICE
++++ b/NOTICE
+@@ -68,3 +68,7 @@ Rust dependencies (vello_cpu, kurbo, skrifa, harfrust, image, egui, eframe, …)
+ licensed (MIT/Apache-2.0/BSD/ISC/Zlib) and fetched through crates.io.
+ 
+ No Adobe icons, images or artwork are included.
++
++Plervo adaptation by AlporT (2026). Product identity and packaging are original Plervo work.
++Based on storytold/designcraft at 11a51d5b665aec8d6e675bd107a8a01514f10d00.
++Original authorship and MIT/Apache-2.0 licenses are preserved. No ArtCraft endorsement.
+diff --git a/README.md b/README.md
+index 0ec6540..90fef61 100644
+--- a/README.md
++++ b/README.md
+@@ -1,304 +1,10 @@
+-<p align="center">
+-  <a href="https://getartcraft.com/">
+-    <picture>
+-      <source media="(prefers-color-scheme: dark)" srcset="docs/brand/artcraft-logo-white.svg">
+-      <img alt="ArtCraft" src="docs/brand/artcraft-logo.svg" width="200">
+-    </picture>
+-  </a>
+-</p>
++# Plervo Publish
+ 
++An experimental member of Plervo Suite by AlporT.
+ 
+-<h1 align="center">DesignCraft</h1>
++Adapted from [storytold/designcraft](https://github.com/storytold/designcraft) at `11a51d5b665aec8d6e675bd107a8a01514f10d00` (v0.8.0).
++Original authors, copyright notices and MIT/Apache-2.0 licenses are retained. Plervo is an independent distribution.
+ 
+-<p align="center">
+-  <b>Page layout and publishing; an open-source, clean-room reimplementation of Adobe InDesign, rebuilt in pure Rust.</b>
+-</p>
++This source is under validation; building it does not certify it for public distribution.
+ 
+-<p align="center">
+-  A fast, open-source, clean-room take on the Adobe InDesign workflow. It runs natively on macOS,
+-  Windows and Linux, and in the browser via WebAssembly.<br>
+-  <i>By the ArtCraft team.</i>
+-</p>
+-
+-<p align="center">
+-  <img alt="Written in Rust" src="https://img.shields.io/badge/written%20in-Rust-4d7a0a?style=flat-square&logo=rust&logoColor=white">
+-  <img alt="Runs on macOS, Windows, Linux and the web" src="https://img.shields.io/badge/runs%20on-macOS%20%C2%B7%20Windows%20%C2%B7%20Linux%20%C2%B7%20Web-7bb51c?style=flat-square">
+-  <img alt="License: MIT OR Apache-2.0" src="https://img.shields.io/badge/license-MIT%20%2F%20Apache--2.0-4d7a0a?style=flat-square">
+-  <img alt="Agent-drivable over MCP" src="https://img.shields.io/badge/agents-MCP-7bb51c?style=flat-square">
+-</p>
+-
+-<p align="center">
+-  <a href="https://discord.gg/artcraft"><img alt="Join the ArtCraft community on Discord" src="https://img.shields.io/badge/Join%20us%20on%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" height="40"></a>
+-</p>
+-
+-<p align="center">
+-  <a href="https://getartcraft.com/apps/designcraft"><b>DesignCraft on getartcraft.com</b></a> ·
+-  <a href="https://getartcraft.com/">ArtCraft</a> ·
+-  <a href="https://getartcraft.com/apps">All Crafting Apps</a>
+-</p>
+-
+-<br>
+-
+-<p align="center">
+-  <img src="docs/images/ui-spread.png" alt="DesignCraft showing a magazine spread: a threaded three-column story is selected with its in/out ports and thread line, the Control panel shows its position in picas and the Properties panel its text frame options" width="100%">
+-  <br><sub><b>Quarterly, Spring Issue</b>: threaded three-column body text, a wrapped pull quote and parent-page folios, all set by DesignCraft's own paragraph composer.</sub>
+-</p>
+-
+-> [!NOTE]
+-> **ArtCraft is a community of artists from all walks of life.** Digital, generative, music,
+-> games &mdash; if you make things, you're one of us. **[Come say hi on Discord](https://discord.gg/artcraft).**
+-
+-<p align="center">
+-  <a href="#the-sample-magazine">The sample magazine</a> ·
+-  <a href="#why-designcraft">Why DesignCraft</a> ·
+-  <a href="#quick-start">Quick start</a> ·
+-  <a href="#web">Web</a> ·
+-  <a href="#architecture">Architecture</a> ·
+-  <a href="#downloads">Downloads</a> ·
+-  <a href="#the-crafting-apps">The Crafting Apps</a> ·
+-  <a href="#license-and-credits">License and credits</a>
+-</p>
+-
+-## The sample magazine
+-
+-Every page below was laid out by DesignCraft from code (`crates/engine/src/sample.rs`) and exported
+-by its own renderer. Try it yourself with `File → New → Sample Document`, or start the app with
+-`--sample`.
+-
+-<table>
+-<tr>
+-<td width="50%" valign="top"><img src="docs/images/page-cover.png" alt="Magazine cover for The Spring Issue, No. 01: a dusk landscape of layered purple hills under a large pale sun, with the white serif headline The Quiet Art of Layout and an italic deck below" width="100%"><p align="center"><sub><b>Cover.</b> A full-bleed graphic frame, display type and an italic deck.</sub></p></td>
+-<td width="50%" valign="top"><img src="docs/images/page-2.png" alt="Feature opener titled Notes on the Grid, with an orange FEATURE · DESIGN kicker over a rule, an italic deck, a wide landscape picture with a small caption, and two columns of justified body text above a QUARTERLY folio" width="100%"><p align="center"><sub><b>Styles.</b> Kicker rule, headline, deck, caption and justified two-column body.</sub></p></td>
+-</tr>
+-<tr>
+-<td width="50%" valign="top"><img src="docs/images/page-3.png" alt="Three-column page of justified, hyphenated body text that wraps around a shaded pull quote reading The best layouts disappear. What remains is the story., with a gradient rule and SPRING ISSUE folio at the foot" width="100%"><p align="center"><sub><b>Threading, columns and text wrap.</b> One story flows through three columns and around the pull quote.</sub></p></td>
+-<td width="50%" valign="top"><img src="docs/images/page-4.png" alt="Coming Next page titled Color, Ink and Paper on a plum background, with four swatch circles labeled Ink Plum, Sunset, C=100 M=0 Y=0 K=0 and Paper Warm, above a short paragraph of body text" width="100%"><p align="center"><sub><b>Swatches.</b> Named colors and a CMYK process swatch, laid out as a palette.</sub></p></td>
+-</tr>
+-</table>
+-
+-## Why DesignCraft
+-
+-- **Familiar.** InDesign's layout, tools, menus, panels and shortcuts: spreads and parent pages,
+-  frames and threaded stories, the Control panel, paragraph and character styles, swatches, text
+-  wrap and more. If you know InDesign, you already know how to use it.
+-- **Beautiful type.** A Knuth–Plass paragraph composer (plus single-line), dictionary hyphenation
+-  (the public-domain Moby word list plus our own trained patterns), word, letter and glyph-scaling
+-  justification, keeps, optical margin alignment, columns, baseline grid, tabs, rules and shading.
+-  Line breaks are identical on screen and in PDF.
+-- **Fast.** Multithreaded SIMD rendering (vello_cpu), copy-on-write documents with O(1) undo
+-  snapshots, and cached composition.
+-- **Open.** A documented native format, IDML import and export, and PNG, PDF (PDF/X-4, PDF/A-2b)
+-  and EPUB export.
+-  No subscription, no licence server, no telemetry.
+-- **Agent-native.** Every menu item, tool gesture, panel control and dialog can be driven over a
+-  JSON control channel and an **MCP server**, so Claude and other agents can lay out and edit
+-  documents like a designer. See [`docs/control-protocol.md`](docs/control-protocol.md) and
+-  [`docs/mcp.md`](docs/mcp.md).
+-- **Everywhere.** One Rust codebase for desktop and the web.
+-
+-## Quick start
+-
+-The egui frontend requires Rust 1.95 or newer (including its shared `craft-ui` components).
+-
+-```sh
+-cargo run --release -p designcraft                         # desktop app (start screen)
+-cargo run --release -p designcraft -- --sample             # open the sample magazine
+-cargo run --release -p designcraft -- --sample --control 7979   # + JSON control channel
+-cargo run --release -p designcraft-cli -- run --sample --all-pages out/       # headless: render every page to PNG
+-cargo run --release -p designcraft-cli -- commands         # list every command
+-cargo run --release -p designcraft-cli -- script --help    # command script syntax (docs/agents.md)
+-cargo xtask ci                                             # fmt, clippy, tests, assets, layering, wasm
+-```
+-
+-Japanese text (UI and documents) uses fonts from
+-[storytold/craft-fonts](https://github.com/storytold/craft-fonts), an optional build input (font
+-files are never committed here; see craftrules
+-[`standards/fonts.md`](https://github.com/storytold/craftrules/blob/main/standards/fonts.md)):
+-
+-```sh
+-git clone https://github.com/storytold/craft-fonts ../craft-fonts
+-CRAFT_FONTS_DIR="$PWD/../craft-fonts" cargo run --release -p designcraft   # absolute path
+-```
+-
+-Without it, Japanese falls back to the system's fonts (none on the web). Release builds always
+-include it.
+-
+-To drive a running app, send JSON lines to `127.0.0.1:7979`. The protocol is described in
+-[`docs/control-protocol.md`](docs/control-protocol.md).
+-
+-### Logs
+-
+-The desktop app writes its `log` records to standard error and to `logs/designcraft.log` in the
+-settings directory, beside `ui.json` and `prefs.json` (Linux `~/.config/designcraft/logs/`, or
+-`$XDG_CONFIG_HOME/designcraft/logs/`; macOS `~/Library/Application Support/DesignCraft/logs/`;
+-Windows `%APPDATA%\DesignCraft\logs\`). A start launched from a desktop menu or the Dock has no
+-terminal, so this file is what to attach to a bug report: the crash guard's panic report and a
+-failed crash-recovery save land there. Each launch moves the previous log to `designcraft.1.log`
+-(and that one to `designcraft.2.log`), so the log of a run that crashed survives the next start.
+-The file stops growing at 16 MiB. `--version` writes no file.
+-
+-| Variable | Effect |
+-|---|---|
+-| `RUST_LOG` | Log levels for standard error and the log file. Default: `info` for DesignCraft's own crates, `warn` for everything else. env_logger-style directives replace that, e.g. `RUST_LOG=debug`, `RUST_LOG=warn,designcraft_render=trace` or `RUST_LOG=info,wgpu_core=warn`; a directive ending in `*` covers every target starting with it (`designcraft*=debug`). |
+-| `WGPU_BACKEND` | The graphics backend that composites the window: `dx12`, `vulkan`, `gl` or `metal` (a comma-separated list lets wgpu choose among them). Default: DirectX 12 on Windows, Vulkan on Linux, Metal on macOS, with OpenGL as the fallback. Setting it also turns off the start-up fallback described below. |
+-
+-The logger is `apps/designcraft/src/logging.rs`; the web build logs to the browser console instead.
+-
+-### Graphics backend
+-
+-The canvas is rendered on the CPU; the GPU only composites the interface, through wgpu. A
+-graphics driver that faults takes the process down before any Rust code can catch it, so the
+-backend is chosen before the window exists, and a start that never showed a frame is remembered:
+-`gpu.json` in the settings directory records the backend being tried until the first frame has
+-been presented. A record left behind means that backend crashed (or the app was killed) at
+-start-up, so the next start tries the next one (DirectX 12, Vulkan, then OpenGL on Windows;
+-Vulkan, then OpenGL on Linux) and says so in the status bar. The list starts over once every
+-backend has failed, or with a new DesignCraft version; delete the file or set `WGPU_BACKEND` to
+-start afresh. Seen in the wild: on an AMD hybrid-graphics laptop (a Radeon RX 6800M beside an
+-integrated Radeon) the AMD Vulkan driver faulted at the first present, which is why DirectX 12 is
+-the Windows default. The code is `apps/designcraft/src/gpu.rs`.
+-
+-### Web
+-
+-```sh
+-cd apps/designcraft-web && trunk build --release          # → dist/web (serve it with any static server)
+-cd apps/designcraft-web && trunk serve --release          # http://127.0.0.1:8767
+-```
+-
+-You need [trunk](https://trunkrs.dev) and the `wasm32-unknown-unknown` target. The same app runs
+-through eframe's web runner on WebGPU, falling back to WebGL2 (`?webgl` forces it; `?sample` opens
+-the sample magazine). Open and Place use the browser's file picker, and dropping files works too.
+-Save and Export download the file. The web build has no control channel.
+-
+-## Architecture
+-
+-DesignCraft is an engine-first Cargo workspace with enforced layering (`cargo xtask layers`). The
+-egui frontend is a separate crate, so the UI can be swapped without touching the engine.
+-
+-| Layer | Crates |
+-|---|---|
+-| L0 | `geom` (paths, units & measurement parsing, corner options) · `color` (CMYK/RGB/Lab, swatches, tints, gradients) |
+-| L1 | `doc` (spreads, pages, parents, layers, frames, stories, styles) · `fonts` (font DB, shaping, outlines) |
+-| L2 | `compose` (the text engine) |
+-| L3 | `render` (vello_cpu) |
+-| L4 | `tools` (pointer events → commands + overlays) |
+-| L5 | `engine` (session, history, command registry) |
+-| L6 | `ui-egui` (InDesign-style UI, control channel) |
+-| L7 | `apps/designcraft`, `apps/designcraft-cli`, `apps/designcraft-web` |
+-
+-- **Status and milestones:** [ROADMAP.md](ROADMAP.md) (stage: pre-alpha); how close to InDesign: [`docs/target-app-parity.md`](docs/target-app-parity.md); known gaps: [`docs/gaps.md`](docs/gaps.md)
+-- **Contributor and agent rules** (clean-room, asset policy, quality gates): [`AGENTS.md`](AGENTS.md)
+-- **Bundled assets:** every one is listed with its licence in [`ASSETS.md`](ASSETS.md)
+-- **App icon and colour:** a calico cat in a polka-dot scarf on DesignCraft green `#7bb51c`; see [`assets/app-icon/`](assets/app-icon/README.md)
+-
+-## Downloads
+-
+-**New to DesignCraft?** Download it from the [DesignCraft page on getartcraft.com](https://getartcraft.com/apps/designcraft). That's the easiest way to install it.
+-
+-**Want a specific build or format?** On GitHub, the [latest release](https://github.com/storytold/designcraft/releases/latest) has every build listed below, and [all releases](https://github.com/storytold/designcraft/releases) has earlier versions and their notes. `<ver>` in the file names is the version number, and `SHA256SUMS.txt` lists a checksum for every file.
+-
+-### Windows
+-
+-| Build | Installer | Portable |
+-|---|---|---|
+-| x64 (64-bit Intel/AMD) | `designcraft-<ver>-windows-x64.msi` | `designcraft-<ver>-windows-x64-portable.zip` |
+-| arm64 (Snapdragon and other ARM PCs) | `designcraft-<ver>-windows-arm64.msi` | `designcraft-<ver>-windows-arm64-portable.zip` |
+-| x86 (32-bit) | `designcraft-<ver>-windows-x86.msi` | `designcraft-<ver>-windows-x86-portable.zip` |
+-
+-Installers and executables are code-signed.
+-
+-### macOS
+-
+-| Build | File | Notes |
+-|---|---|---|
+-| App, universal (Apple silicon + Intel) | `designcraft-<ver>-macos-universal.dmg` | Signed and notarized |
+-| Command-line tool, universal | `designcraft-cli-<ver>-macos-universal.zip` | Signed and notarized |
+-
+-### Linux
+-
+-| Format | x86_64 | aarch64 (ARM64) | Notes |
+-|---|---|---|---|
+-| AppImage | `designcraft-<ver>-linux-x86_64.AppImage` | `designcraft-<ver>-linux-aarch64.AppImage` | Runs anywhere; updates itself with [AppImageUpdate](https://github.com/AppImageCommunity/AppImageUpdate) (`.zsync` files) |
+-| Flatpak | `designcraft-<ver>-linux-x86_64.flatpak` | `designcraft-<ver>-linux-aarch64.flatpak` | Sandboxed; `flatpak install --user <file>` |
+-| Debian/Ubuntu | `designcraft-<ver>-linux-x86_64.deb` | `designcraft-<ver>-linux-aarch64.deb` | |
+-| Fedora/RHEL/openSUSE | `designcraft-<ver>-linux-x86_64.rpm` | `designcraft-<ver>-linux-aarch64.rpm` | |
+-| Tarball | `designcraft-<ver>-linux-x86_64.tar.gz` | `designcraft-<ver>-linux-aarch64.tar.gz` | Unpack anywhere |
+-
+-RISC-V (riscv64): `designcraft-<ver>-linux-riscv64.tar.gz` only, cross-compiled; needs glibc 2.39+ (Ubuntu 24.04 or newer).
+-
+-### FreeBSD
+-
+-| Build | File |
+-|---|---|
+-| x86_64 | `designcraft-<ver>-freebsd-x86_64.tar.gz` |
+-
+-### Web (WebAssembly)
+-
+-| Build | File | Notes |
+-|---|---|---|
+-| Static site | `designcraft-web-<ver>.zip` | Runs in a modern browser; host it on any static server |
+-
+-## The Crafting Apps
+-
+-DesignCraft is one of the **Crafting Apps**: free, open-source creative tools from the
+-[ArtCraft](https://getartcraft.com/) team, each written from scratch in Rust and each able to
+-stand on its own.
+-
+-| | App | What it's for | Code | Learn more |
+-|:-:|---|---|---|---|
+-| <img src="https://raw.githubusercontent.com/storytold/photocraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.photocraft.png" alt="" width="32" height="32"> | **PhotoCraft** | Image editing: layers, masks, type and real PSD files | [GitHub](https://github.com/storytold/photocraft) | [Website](https://getartcraft.com/apps/photocraft) |
+-| <img src="https://raw.githubusercontent.com/storytold/vectorcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.vectorcraft.png" alt="" width="32" height="32"> | **VectorCraft** | Vector illustration | [GitHub](https://github.com/storytold/vectorcraft) | [Website](https://getartcraft.com/apps/vectorcraft) |
+-| <img src="https://raw.githubusercontent.com/storytold/filmcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.filmcraft.png" alt="" width="32" height="32"> | **FilmCraft** | Video editing, color and sound | [GitHub](https://github.com/storytold/filmcraft) | [Website](https://getartcraft.com/apps/filmcraft) |
+-| <img src="https://raw.githubusercontent.com/storytold/lightcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.lightcraft.png" alt="" width="32" height="32"> | **LightCraft** | Photo library and raw development | [GitHub](https://github.com/storytold/lightcraft) | [Website](https://getartcraft.com/apps/lightcraft) |
+-| <img src="https://raw.githubusercontent.com/storytold/pdfcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.pdfcraft.png" alt="" width="32" height="32"> | **PdfCraft** | Reading, organizing and protecting PDFs | [GitHub](https://github.com/storytold/pdfcraft) | [Website](https://getartcraft.com/apps/pdfcraft) |
+-| <img src="https://raw.githubusercontent.com/storytold/effectcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.effectcraft.png" alt="" width="32" height="32"> | **EffectCraft** | Motion graphics and visual effects | [GitHub](https://github.com/storytold/effectcraft) | [Website](https://getartcraft.com/apps/effectcraft) |
+-| <img src="https://raw.githubusercontent.com/storytold/designcraft/main/assets/app-icon/hicolor/64x64/apps/ai.storyteller.designcraft.png" alt="" width="32" height="32"> | **DesignCraft** | **Page layout and publishing · you are here** | [GitHub](https://github.com/storytold/designcraft) | [Website](https://getartcraft.com/apps/designcraft) |
+-
+-And [**ArtCraft**](https://getartcraft.com/) itself, our AI image and video studio for artists who want real control.
+-
+-<br>
+-
+-<p align="center">
+-  <a href="https://discord.gg/artcraft"><img alt="Join the ArtCraft community on Discord" src="https://img.shields.io/badge/Join%20us%20on%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" height="40"></a>
+-</p>
+-
+-<h3 align="center">Come make things with us</h3>
+-
+-<p align="center">
+-  Our Discord is where artists of every kind hang out: people who paint, shoot, draw, cut film,
+-  set type, and people still figuring out what they like to make. Share what you're working on,
+-  ask for help, tell us what's broken, or tell us what you wish these tools could do.
+-  Whatever your medium and however long you've been at it, you're welcome here.
+-</p>
+-
+-<p align="center">
+-  <a href="https://discord.gg/artcraft"><b>discord.gg/artcraft</b></a> ·
+-  <a href="https://getartcraft.com/">getartcraft.com</a> ·
+-  <a href="https://getartcraft.com/apps">The Crafting Apps</a> ·
+-  <a href="https://getartcraft.com/apps/designcraft">DesignCraft</a>
+-</p>
+-
+-## License and credits
+-
+-DesignCraft is dual-licensed under [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE), at your option.
+-Copyright (c) 2026 ArtCraft Team and the DesignCraft contributors. Required notices are in [NOTICE](NOTICE).
+-
+-Bundled fonts, icons, images and other assets keep their own open licenses; each one is listed
+-with its author, source and license in [ASSETS.md](ASSETS.md).
+-
+-The bundled fonts, and the craft-fonts fonts embedded by release builds, are under the SIL Open
+-Font License; all UI icons are drawn in code and are original.
+-
+-The ArtCraft name, wordmark and logos in [`docs/brand/`](docs/brand/) are trademarks of the
+-ArtCraft Team and are not covered by this license. They may be used only unmodified, and only as
+-part of this repository and DesignCraft, under [`docs/brand/LICENSE-brand.txt`](docs/brand/LICENSE-brand.txt).
+-Forks and modified versions must remove them.
+-
+-<sub>Adobe, Photoshop, Illustrator, Premiere Pro, Lightroom, Acrobat, After Effects and InDesign are trademarks or registered trademarks of Adobe Inc. in the United States and/or other countries. DesignCraft is an independent, open-source project and is not affiliated with, sponsored by or endorsed by Adobe Inc.; these names are used only to describe the workflows it is compatible with.</sub>
+-
+-<br>
+-
+-<p align="center">
+-  <a href="https://getartcraft.com/"><img alt="ArtCraft" src="docs/brand/artcraft-mark.svg" width="28"></a><br>
+-  <sub>Made by the <a href="https://getartcraft.com/">ArtCraft</a> team and community.</sub>
+-</p>
++Website: https://plervo.com/ · Optional support: https://buymeacoffee.com/alport
+diff --git a/apps/designcraft-cli/Cargo.toml b/apps/designcraft-cli/Cargo.toml
+index 7aaa454..f518e48 100644
+--- a/apps/designcraft-cli/Cargo.toml
++++ b/apps/designcraft-cli/Cargo.toml
+@@ -1,5 +1,5 @@
+ [package]
+-name = "designcraft-cli"
++name = "plervo-publish-cli"
+ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+@@ -9,7 +9,7 @@ publish = false
+ workspace = true
+ 
+ [[bin]]
+-name = "designcraft-cli"
++name = "plervo-publish-cli"
+ path = "src/main.rs"
+ 
+ [dependencies]
+diff --git a/apps/designcraft-cli/src/main.rs b/apps/designcraft-cli/src/main.rs
+index dd62cd9..442ee6e 100644
+--- a/apps/designcraft-cli/src/main.rs
++++ b/apps/designcraft-cli/src/main.rs
+@@ -1,25 +1,25 @@
+-//! Headless DesignCraft.
++//! Headless Plervo Publish.
+ //!
+ //! ```text
+-//! designcraft-cli run [--in FILE.designcraft|FILE.idml | --sample] [--cmd ID[=JSON]]... [--page N] [--scale S] [--pdf-options JSON] [--export OUT.png|.jpg|.pdf|.designcraft|.idml|.epub] [--all-pages DIR]
++//! plervo-publish-cli run [--in FILE.designcraft|FILE.idml | --sample] [--cmd ID[=JSON]]... [--page N] [--scale S] [--pdf-options JSON] [--export OUT.png|.jpg|.pdf|.designcraft|.idml|.epub] [--all-pages DIR]
+ //!                                      # --page, --scale and --pdf-options apply to the exports that follow them
+-//! designcraft-cli commands [FILTER]   # list commands (JSON), optionally only ids/labels/menus containing FILTER
+-//! designcraft-cli describe ID          # one command: label, menu, shortcut, parameters
+-//! designcraft-cli script [FILE|-] [--in FILE | --sample] [--connect PORT] [--save OUT] [--export OUT] [--keep-going]
++//! plervo-publish-cli commands [FILTER]   # list commands (JSON), optionally only ids/labels/menus containing FILTER
++//! plervo-publish-cli describe ID          # one command: label, menu, shortcut, parameters
++//! plervo-publish-cli script [FILE|-] [--in FILE | --sample] [--connect PORT] [--save OUT] [--export OUT] [--keep-going]
+ //!                                      # run a command script (crates/engine/src/script.rs): `$N.path` references
+-//! designcraft-cli app [--port PORT] COMMAND [JSON]   # run a command in the running app (designcraft --control PORT)
+-//! designcraft-cli app [--port PORT] --method METHOD [JSON]   # any control-channel method (ui.screenshot, ui.render, …)
+-//! designcraft-cli mcp [--connect PORT] [--sample]  # MCP server over stdio (docs/mcp.md)
+-//! designcraft-cli perf [--pages N] [--frames N] [--chars N] [--images N] [--runs N] [--strict]  # budgets on a synthetic stress document
+-//! designcraft-cli bench FILE [--runs N]  # the same measurements on one document
+-//! designcraft-cli validate-pdf FILE.pdf    # run the built-in PDF/X-4 conformance checks
+-//! designcraft-cli links                   # Discord, website, app page and GitHub links
+-//! designcraft-cli --version               # print the version
++//! plervo-publish-cli app [--port PORT] COMMAND [JSON]   # run a command in the running app (designcraft --control PORT)
++//! plervo-publish-cli app [--port PORT] --method METHOD [JSON]   # any control-channel method (ui.screenshot, ui.render, …)
++//! plervo-publish-cli mcp [--connect PORT] [--sample]  # MCP server over stdio (docs/mcp.md)
++//! plervo-publish-cli perf [--pages N] [--frames N] [--chars N] [--images N] [--runs N] [--strict]  # budgets on a synthetic stress document
++//! plervo-publish-cli bench FILE [--runs N]  # the same measurements on one document
++//! plervo-publish-cli validate-pdf FILE.pdf    # run the built-in PDF/X-4 conformance checks
++//! plervo-publish-cli links                   # Discord, website, app page and GitHub links
++//! plervo-publish-cli --version               # print the version
+ //! ```
+ #![deny(clippy::unwrap_used, clippy::expect_used, clippy::panic, clippy::unimplemented, clippy::todo, clippy::unreachable)]
+ use std::process::ExitCode;
+ 
+-/// `println!` that ends the program quietly when stdout is closed (`designcraft-cli commands |
++/// `println!` that ends the program quietly when stdout is closed (`plervo-publish-cli commands |
+ /// head`) instead of panicking with "failed printing to stdout: Broken pipe (os error 32)".
+ macro_rules! outln {
+     ($($arg:tt)*) => {{
+@@ -36,10 +36,10 @@ use designcraft_engine::Session;
+ use serde_json::{Value, json};
+ 
+ /// The usage block. Shared by `--help` (stdout, success) and an unknown command (stderr, failure).
+-const USAGE: &str = "usage: designcraft-cli run [--in FILE | --sample] [--cmd ID[=JSON]]... [--page N] [--scale S] [--pdf-options JSON] [--export OUT] [--all-pages DIR]\n         (--page, --scale and --pdf-options apply to the exports that follow them)\n       designcraft-cli commands [FILTER]\n       designcraft-cli describe COMMAND\n       designcraft-cli script [FILE|-] [--in FILE | --sample] [--connect PORT] [--save OUT] [--export OUT] [--keep-going]\n       designcraft-cli app [--port PORT] COMMAND [JSON] | --method METHOD [JSON]\n       designcraft-cli mcp [--connect PORT] [--sample]\n       designcraft-cli perf [--pages N] [--runs N] [--strict]\n       designcraft-cli bench FILE [--runs N]\n       designcraft-cli links\n       designcraft-cli --version";
++const USAGE: &str = "usage: plervo-publish-cli run [--in FILE | --sample] [--cmd ID[=JSON]]... [--page N] [--scale S] [--pdf-options JSON] [--export OUT] [--all-pages DIR]\n         (--page, --scale and --pdf-options apply to the exports that follow them)\n       plervo-publish-cli commands [FILTER]\n       plervo-publish-cli describe COMMAND\n       plervo-publish-cli script [FILE|-] [--in FILE | --sample] [--connect PORT] [--save OUT] [--export OUT] [--keep-going]\n       plervo-publish-cli app [--port PORT] COMMAND [JSON] | --method METHOD [JSON]\n       plervo-publish-cli mcp [--connect PORT] [--sample]\n       plervo-publish-cli perf [--pages N] [--runs N] [--strict]\n       plervo-publish-cli bench FILE [--runs N]\n       plervo-publish-cli links\n       plervo-publish-cli --version";
+ 
+ /// `script --help`: the script syntax, otherwise only in `describe script.run` and docs/agents.md.
+-const SCRIPT_HELP: &str = r#"usage: designcraft-cli script [FILE|-] [--in FILE | --sample] [--connect PORT] [--save OUT] [--export OUT] [--keep-going]
++const SCRIPT_HELP: &str = r#"usage: plervo-publish-cli script [FILE|-] [--in FILE | --sample] [--connect PORT] [--save OUT] [--export OUT] [--keep-going]
+ 
+ Runs a command script from FILE (stdin when FILE is `-` or missing), headless or, with
+ --connect PORT, in the running app (designcraft --control PORT).
+@@ -58,7 +58,7 @@ References to earlier results (in string parameters):
+ 
+ Text parameters: "\n" starts a new paragraph, "\u2028" is a forced line break, "\t" a tab.
+ Most commands ignore parameters they do not know instead of rejecting them: check names
+-with `designcraft-cli describe COMMAND`.
++with `plervo-publish-cli describe COMMAND`.
+ 
+ Options:
+   --in FILE / --sample   open a document (.designcraft or .idml) or the sample first
+@@ -85,7 +85,7 @@ fn stdout_failed(e: std::io::Error) -> ! {
+     if e.kind() == std::io::ErrorKind::BrokenPipe {
+         std::process::exit(0);
+     }
+-    eprintln!("designcraft-cli: can't write to stdout: {e}");
++    eprintln!("plervo-publish-cli: can't write to stdout: {e}");
+     std::process::exit(1);
+ }
+ 
+@@ -93,7 +93,7 @@ fn main() -> ExitCode {
+     let args: Vec<String> = std::env::args().skip(1).collect();
+     match args.first().map(String::as_str) {
+         Some("--version" | "-V" | "version") => {
+-            outln!("designcraft-cli {}", env!("CARGO_PKG_VERSION"));
++            outln!("plervo-publish-cli {}", env!("CARGO_PKG_VERSION"));
+             ExitCode::SUCCESS
+         }
+         Some("run") => report(run(&args[1..])),
+@@ -141,14 +141,14 @@ fn report(r: Result<(), String>) -> ExitCode {
+     match r {
+         Ok(()) => ExitCode::SUCCESS,
+         Err(e) => {
+-            eprintln!("designcraft-cli: {e}");
++            eprintln!("plervo-publish-cli: {e}");
+             ExitCode::FAILURE
+         }
+     }
+ }
+ 
+ fn validate_pdf(path: Option<&str>) -> Result<(), String> {
+-    let path = path.ok_or("usage: designcraft-cli validate-pdf FILE.pdf")?;
++    let path = path.ok_or("usage: plervo-publish-cli validate-pdf FILE.pdf")?;
+     let bytes = std::fs::read(path).map_err(|e| format!("{path}: {e}"))?;
+     let issues = designcraft_pdf::check_pdfx4(&bytes);
+     let valid = issues.is_empty();
+@@ -158,7 +158,7 @@ fn validate_pdf(path: Option<&str>) -> Result<(), String> {
+ }
+ 
+ /// `mcp` (headless, in-process engine) or `mcp --connect PORT|HOST:PORT` (drive a running app
+-/// started with `designcraft --control PORT`). JSON-RPC on stdin/stdout; logs on stderr.
++/// started with `plervo-publish --control PORT`). JSON-RPC on stdin/stdout; logs on stderr.
+ fn mcp(args: &[String]) -> Result<(), String> {
+     use designcraft_mcp::{Backend, Headless, Remote, Server, control_addr};
+     let mut connect: Option<String> = None;
+@@ -168,26 +168,26 @@ fn mcp(args: &[String]) -> Result<(), String> {
+         match a.as_str() {
+             "--connect" => connect = Some(it.next().cloned().ok_or("--connect needs a port or host:port")?),
+             "--sample" => sample = true,
+-            other => return Err(format!("unknown mcp option `{other}` (usage: designcraft-cli mcp [--connect PORT] [--sample])")),
++            other => return Err(format!("unknown mcp option `{other}` (usage: plervo-publish-cli mcp [--connect PORT] [--sample])")),
+         }
+     }
+-    let backend: Box<dyn Backend> = match connect {
+-        Some(c) => {
+-            let addr = control_addr(&c);
+-            Box::new(
+-                Remote::connect(&addr)
+-                    .map_err(|e| format!("cannot connect to the DesignCraft app at {addr}: {e} (start it with `designcraft --control PORT`)"))?,
+-            )
+-        }
+-        None => {
+-            let mut h = Headless::with_document();
+-            if sample {
+-                h.session.execute("file.newSample", &json!({})).map_err(|e| e.to_string())?;
++    let backend: Box<dyn Backend> =
++        match connect {
++            Some(c) => {
++                let addr = control_addr(&c);
++                Box::new(Remote::connect(&addr).map_err(|e| {
++                    format!("cannot connect to the Plervo Publish app at {addr}: {e} (start it with `plervo-publish --control PORT`)")
++                })?)
+             }
+-            Box::new(h)
+-        }
+-    };
+-    eprintln!("designcraft-cli: MCP server on stdio ({})", backend.describe());
++            None => {
++                let mut h = Headless::with_document();
++                if sample {
++                    h.session.execute("file.newSample", &json!({})).map_err(|e| e.to_string())?;
++                }
++                Box::new(h)
++            }
++        };
++    eprintln!("plervo-publish-cli: MCP server on stdio ({})", backend.describe());
+     let stdin = std::io::stdin();
+     let stdout = std::io::stdout();
+     Server::new(backend).serve(stdin.lock(), stdout.lock()).map_err(|e| e.to_string())
+@@ -319,7 +319,7 @@ fn export(s: &mut Session, out: &str, page: usize, scale: f64) -> Result<(), Str
+ 
+ /// `describe ID`: one command's documentation.
+ fn describe(id: Option<&str>) -> Result<(), String> {
+-    let id = id.ok_or("usage: designcraft-cli describe COMMAND")?;
++    let id = id.ok_or("usage: plervo-publish-cli describe COMMAND")?;
+     let s = Session::new();
+     let all = serde_json::to_value(s.commands()).map_err(|e| e.to_string())?;
+     let c = all.as_array().and_then(|a| a.iter().find(|c| c["id"] == id)).ok_or_else(|| {
+@@ -383,16 +383,16 @@ fn script(args: &[String]) -> Result<(), String> {
+         Some(f) => std::fs::read_to_string(f).map_err(|e| format!("{f}: {e}"))?,
+     };
+     let steps = designcraft_engine::script::parse(&text)?;
+-    let mut backend: Box<dyn Backend> = match &connect {
+-        Some(c) => {
+-            let addr = control_addr(c);
+-            Box::new(
+-                Remote::connect(&addr)
+-                    .map_err(|e| format!("cannot connect to the DesignCraft app at {addr}: {e} (start it with `designcraft --control PORT`)"))?,
+-            )
+-        }
+-        None => Box::new(Headless::with_document()),
+-    };
++    let mut backend: Box<dyn Backend> =
++        match &connect {
++            Some(c) => {
++                let addr = control_addr(c);
++                Box::new(Remote::connect(&addr).map_err(|e| {
++                    format!("cannot connect to the Plervo Publish app at {addr}: {e} (start it with `plervo-publish --control PORT`)")
++                })?)
++            }
++            None => Box::new(Headless::with_document()),
++        };
+     let b = &mut *backend;
+     let exec = |b: &mut dyn Backend, id: &str, p: Value| b.call("engine.execute", json!({"command": id, "params": p}));
+     for (c, p) in &setup {
+@@ -451,13 +451,13 @@ fn app(args: &[String]) -> Result<(), String> {
+     }
+     let addr = control_addr(&port);
+     let mut r = Remote::connect(&addr)
+-        .map_err(|e| format!("cannot connect to the DesignCraft app at {addr}: {e} (start it with `designcraft --control {port}`)"))?;
++        .map_err(|e| format!("cannot connect to the Plervo Publish app at {addr}: {e} (start it with `plervo-publish --control {port}`)"))?;
+     let json_arg =
+         |s: Option<&String>| -> Result<Value, String> { s.map_or(Ok(json!({})), |t| serde_json::from_str(t).map_err(|e| format!("bad JSON: {e}"))) };
+     let out = match method {
+         Some(m) => r.call(&m, json_arg(rest.first())?)?,
+         None => {
+-            let cmd = rest.first().ok_or("usage: designcraft-cli app [--port PORT] COMMAND [JSON]")?;
++            let cmd = rest.first().ok_or("usage: plervo-publish-cli app [--port PORT] COMMAND [JSON]")?;
+             r.call("engine.execute", json!({"command": cmd, "params": json_arg(rest.get(1))?}))?
+         }
+     };
+diff --git a/apps/designcraft-cli/src/perf.rs b/apps/designcraft-cli/src/perf.rs
+index 7749f64..90d6edb 100644
+--- a/apps/designcraft-cli/src/perf.rs
++++ b/apps/designcraft-cli/src/perf.rs
+@@ -1,4 +1,4 @@
+-//! `designcraft-cli perf` / `bench`: the performance budgets (plan/architecture.md §9) measured on
++//! `plervo-publish-cli perf` / `bench`: the performance budgets (plan/architecture.md §9) measured on
+ //! a synthetic stress document, or on a given file.
+ //!
+ //! Each row is the median of several runs. Timings are wall-clock: on a busy machine (load
+@@ -544,7 +544,7 @@ fn header() -> (usize, bool) {
+     (cores, noisy)
+ }
+ 
+-/// `designcraft-cli perf [--pages N] [--frames N] [--chars N] [--images N] [--runs N] [--strict]`.
++/// `plervo-publish-cli perf [--pages N] [--frames N] [--chars N] [--images N] [--runs N] [--strict]`.
+ pub fn perf(args: &[String]) -> Result<(), String> {
+     let mut spec = Spec::default();
+     let mut runs = 7usize;
+@@ -567,7 +567,7 @@ pub fn perf(args: &[String]) -> Result<(), String> {
+     let doc = synthetic(&spec)?;
+     let frames = spec.pages * spec.frames_per_page;
+     outln!(
+-        "DesignCraft performance budgets — synthetic: {} pages, {frames} text frames in {} threaded stories, {}k chars, {} images ({} assets), {} gradients (built in {:.0} ms)",
++        "Plervo Publish performance budgets — synthetic: {} pages, {frames} text frames in {} threaded stories, {}k chars, {} images ({} assets), {} gradients (built in {:.0} ms)",
+         spec.pages,
+         doc.stories.len(),
+         doc.stories.values().map(|s| s.text.len()).sum::<usize>() / 1000,
+@@ -582,7 +582,7 @@ pub fn perf(args: &[String]) -> Result<(), String> {
+     if strict && over > 0 && !noisy { Err(format!("{over} budget(s) exceeded")) } else { Ok(()) }
+ }
+ 
+-/// `designcraft-cli bench FILE [--runs N]`: the same measurements on one document.
++/// `plervo-publish-cli bench FILE [--runs N]`: the same measurements on one document.
+ pub fn bench(args: &[String]) -> Result<(), String> {
+     let mut file = None;
+     let mut runs = 5usize;
+@@ -594,7 +594,7 @@ pub fn bench(args: &[String]) -> Result<(), String> {
+             other => return Err(format!("unknown bench option `{other}`")),
+         }
+     }
+-    let file = file.ok_or("usage: designcraft-cli bench FILE [--runs N]")?;
++    let file = file.ok_or("usage: plervo-publish-cli bench FILE [--runs N]")?;
+     let (_, noisy) = header();
+     let mut s = designcraft_engine::Session::new();
+     let t = Instant::now();
+diff --git a/apps/designcraft-cli/tests/cli.rs b/apps/designcraft-cli/tests/cli.rs
+index 92f68ab..a485c60 100644
+--- a/apps/designcraft-cli/tests/cli.rs
++++ b/apps/designcraft-cli/tests/cli.rs
+@@ -4,7 +4,7 @@ use std::io::Write;
+ use std::process::{Command, Stdio};
+ 
+ fn cli() -> Command {
+-    Command::new(env!("CARGO_BIN_EXE_designcraft-cli"))
++    Command::new(env!("CARGO_BIN_EXE_plervo-publish-cli"))
+ }
+ 
+ #[test]
+@@ -67,7 +67,7 @@ fn run_cmd_references_and_describe() {
+     assert!(v.as_array().unwrap().iter().all(|c| c.to_string().contains("footnote")));
+ }
+ 
+-/// `designcraft-cli --help` printed usage to stderr and exited 1; asking for help is not an
++/// `plervo-publish-cli --help` printed usage to stderr and exited 1; asking for help is not an
+ /// error (#243). It now goes to stdout and succeeds, while an unknown command keeps the same
+ /// usage on stderr and fails.
+ #[test]
+@@ -76,15 +76,15 @@ fn help_goes_to_stdout_and_unknown_args_to_stderr() {
+         let out = cli().arg(flag).output().unwrap();
+         let stdout = String::from_utf8_lossy(&out.stdout);
+         assert!(out.status.success(), "{flag}: {:?}", out.status);
+-        assert!(stdout.starts_with("usage: designcraft-cli"), "{flag}: {stdout:?}");
+-        assert!(stdout.contains("designcraft-cli --version"), "{flag}: {stdout:?}");
++        assert!(stdout.starts_with("usage: plervo-publish-cli"), "{flag}: {stdout:?}");
++        assert!(stdout.contains("plervo-publish-cli --version"), "{flag}: {stdout:?}");
+         assert!(out.stderr.is_empty(), "{flag} wrote to stderr: {}", String::from_utf8_lossy(&out.stderr));
+     }
+     // An unknown option is still an error: usage on stderr, nothing on stdout, non-zero exit.
+     let out = cli().arg("--no-such-option").output().unwrap();
+     assert!(!out.status.success(), "{:?}", out.status);
+     assert!(out.stdout.is_empty(), "unexpected stdout: {}", String::from_utf8_lossy(&out.stdout));
+-    assert!(String::from_utf8_lossy(&out.stderr).starts_with("usage: designcraft-cli"));
++    assert!(String::from_utf8_lossy(&out.stderr).starts_with("usage: plervo-publish-cli"));
+ }
+ 
+ /// `script --help` was "unknown script option `--help`"; the line syntax was only in
+@@ -95,14 +95,14 @@ fn script_help_documents_the_syntax() {
+         let out = cli().args(["script", flag]).output().unwrap();
+         let stdout = String::from_utf8_lossy(&out.stdout);
+         assert!(out.status.success(), "{flag}: {:?} {}", out.status, String::from_utf8_lossy(&out.stderr));
+-        assert!(stdout.starts_with("usage: designcraft-cli script"), "{flag}: {stdout:?}");
++        assert!(stdout.starts_with("usage: plervo-publish-cli script"), "{flag}: {stdout:?}");
+         for needle in ["0-based", "$1.story", "$3.ids.0", "\\u2028", "ignore"] {
+             assert!(stdout.contains(needle), "{flag}: no {needle:?} in {stdout:?}");
+         }
+     }
+ }
+ 
+-/// `designcraft-cli commands | head -1` panicked with "failed printing to
++/// `plervo-publish-cli commands | head -1` panicked with "failed printing to
+ /// stdout: Broken pipe (os error 32)" and exit status 101.
+ #[test]
+ fn closed_stdout_ends_quietly() {
+@@ -150,7 +150,7 @@ fn raster_export_preserves_an_existing_reader_and_private_symlink_target() {
+         }
+     }
+     let stamp = std::time::SystemTime::now().duration_since(std::time::UNIX_EPOCH).unwrap().as_nanos();
+-    let dir = std::env::temp_dir().join(format!("designcraft-cli-atomic-{}-{stamp}", std::process::id()));
++    let dir = std::env::temp_dir().join(format!("plervo-publish-cli-atomic-{}-{stamp}", std::process::id()));
+     std::fs::create_dir(&dir).unwrap();
+     let fixture = Fixture(dir);
+     let target = fixture.0.join(format!("{}.png", "a".repeat(243)));
+diff --git a/apps/designcraft-web/src/main.rs b/apps/designcraft-web/src/main.rs
+index 527baff..b187bcc 100644
+--- a/apps/designcraft-web/src/main.rs
++++ b/apps/designcraft-web/src/main.rs
+@@ -1,4 +1,4 @@
+-//! DesignCraft in the browser.
++//! Plervo Publish in the browser.
+ //!
+ //! Runs the same [`designcraft_ui_egui::DesignApp`] as the desktop app through eframe's web
+ //! runner (wgpu: WebGPU where available, WebGL2 otherwise). Build with `trunk build --release`
+diff --git a/apps/designcraft-web/src/web.rs b/apps/designcraft-web/src/web.rs
+index fe7cca4..f76df92 100644
+--- a/apps/designcraft-web/src/web.rs
++++ b/apps/designcraft-web/src/web.rs
+@@ -67,7 +67,9 @@ pub fn start() {
+         if let Some(el) = document.get_element_by_id(LOADING_ID) {
+             match result {
+                 Ok(()) => el.remove(),
+-                Err(e) => el.set_inner_html(&format!("<p>DesignCraft failed to start: {e:?}</p><p>A browser with WebGPU or WebGL2 is required.</p>")),
++                Err(e) => {
++                    el.set_inner_html(&format!("<p>Plervo Publish failed to start: {e:?}</p><p>A browser with WebGPU or WebGL2 is required.</p>"))
++                }
+             }
+         }
+     });
+@@ -126,7 +128,7 @@ fn services(inbox: Inbox, ctx: egui::Context) -> Services {
+             } else if request.purpose == "place" {
+                 rfd::AsyncFileDialog::new().add_filter("Graphics", IMAGE_EXTS)
+             } else {
+-                rfd::AsyncFileDialog::new().add_filter("DesignCraft", DOC_EXTS)
++                rfd::AsyncFileDialog::new().add_filter("Plervo Publish", DOC_EXTS)
+             };
+             wasm_bindgen_futures::spawn_local(async move {
+                 let Some(file) = dialog.pick_file().await else {
+diff --git a/apps/designcraft/Cargo.toml b/apps/designcraft/Cargo.toml
+index 0f08ae8..00f8086 100644
+--- a/apps/designcraft/Cargo.toml
++++ b/apps/designcraft/Cargo.toml
+@@ -1,11 +1,11 @@
+ [package]
+-name = "designcraft"
++name = "plervo-publish"
+ version.workspace = true
+ edition.workspace = true
+ rust-version.workspace = true
+ license.workspace = true
+ publish = false
+-default-run = "designcraft"
++default-run = "plervo-publish"
+ 
+ [lints]
+ workspace = true
+diff --git a/apps/designcraft/build.rs b/apps/designcraft/build.rs
+index f18ce9c..6264ef2 100644
+--- a/apps/designcraft/build.rs
++++ b/apps/designcraft/build.rs
+@@ -14,12 +14,12 @@ fn main() {
+     }
+     let mut res = winresource::WindowsResource::new();
+     res.set_icon("../../assets/app-icon/designcraft.ico")
+-        .set("ProductName", "DesignCraft")
+-        .set("FileDescription", "DesignCraft page layout")
+-        .set("CompanyName", "Learning Machines LLC")
++        .set("ProductName", "Plervo Publish")
++        .set("FileDescription", "Plervo Publish page layout")
++        .set("CompanyName", "Maintech Solutions LLC")
+         .set("LegalCopyright", "Copyright (c) the DesignCraft authors. MIT OR Apache-2.0.")
+-        .set("OriginalFilename", "designcraft.exe")
+-        .set("InternalName", "designcraft");
++        .set("OriginalFilename", "plervo-publish.exe")
++        .set("InternalName", "plervo-publish");
+     if let Err(e) = res.compile() {
+         if std::env::var_os("DESIGNCRAFT_REQUIRE_WINRES").is_some() {
+             eprintln!("embedding Windows resources failed: {e}");
+diff --git a/apps/designcraft/src/control_server.rs b/apps/designcraft/src/control_server.rs
+index 50e2e4b..8fff4b2 100644
+--- a/apps/designcraft/src/control_server.rs
++++ b/apps/designcraft/src/control_server.rs
+@@ -28,11 +28,11 @@ pub fn start(port: u16, ctx: egui::Context) -> Receiver<ControlRequest> {
+     let listener = match TcpListener::bind(("127.0.0.1", port)) {
+         Ok(l) => l,
+         Err(e) => {
+-            eprintln!("designcraft: control server failed to bind 127.0.0.1:{port}: {e}");
++            eprintln!("plervo-publish: control server failed to bind 127.0.0.1:{port}: {e}");
+             return rx;
+         }
+     };
+-    eprintln!("designcraft: control server listening on 127.0.0.1:{port}");
++    eprintln!("plervo-publish: control server listening on 127.0.0.1:{port}");
+     std::thread::spawn(move || accept_loop(listener, tx, ctx));
+     rx
+ }
+diff --git a/apps/designcraft/src/gpu.rs b/apps/designcraft/src/gpu.rs
+index 6dfb023..6f5f2a5 100644
+--- a/apps/designcraft/src/gpu.rs
++++ b/apps/designcraft/src/gpu.rs
+@@ -16,7 +16,7 @@
+ //! there at the next start means the previous start never got that far — the driver crashed, or
+ //! the app was killed meanwhile — so that backend joins `failed`, the next candidate is tried and
+ //! the status bar says so. When every candidate has failed the list starts over, and so does a
+-//! new DesignCraft version (drivers and wgpu move on). `DESIGNCRAFT_NO_PREFS` records nothing.
++//! new Plervo Publish version (drivers and wgpu move on). `DESIGNCRAFT_NO_PREFS` records nothing.
+ 
+ use std::path::{Path, PathBuf};
+ 
+@@ -83,7 +83,7 @@ pub fn candidates() -> &'static [Backend] {
+ /// What `gpu.json` holds.
+ #[derive(Clone, Debug, Default, PartialEq, Eq, Serialize, Deserialize)]
+ pub struct Record {
+-    /// The DesignCraft version that wrote the record; another version starts afresh.
++    /// The Plervo Publish version that wrote the record; another version starts afresh.
+     #[serde(default)]
+     pub version: String,
+     /// The backend of a start that has not presented a frame yet.
+diff --git a/apps/designcraft/src/logging.rs b/apps/designcraft/src/logging.rs
+index d3e0dbe..be845e1 100644
+--- a/apps/designcraft/src/logging.rs
++++ b/apps/designcraft/src/logging.rs
+@@ -7,7 +7,7 @@
+ //! `config_dir` in `main.rs`). Each start moves the previous log to `designcraft.1.log` (and that
+ //! one to `.2`), so the log of a run that crashed survives the next launch.
+ //!
+-//! Levels: `info` for DesignCraft's own crates, `warn` for everything else (wgpu and naga are
++//! Levels: `info` for Plervo Publish's own crates, `warn` for everything else (wgpu and naga are
+ //! chatty). `RUST_LOG` replaces that with env_logger-style directives: `debug`,
+ //! `warn,designcraft_render=trace`, `wgpu_core=info`. A directive ending in `*` matches every
+ //! target that starts with it (`designcraft*=debug`).
+diff --git a/apps/designcraft/src/main.rs b/apps/designcraft/src/main.rs
+index 2ac607b..b1c6f93 100644
+--- a/apps/designcraft/src/main.rs
++++ b/apps/designcraft/src/main.rs
+@@ -1,4 +1,4 @@
+-//! DesignCraft desktop app.
++//! Plervo Publish desktop app.
+ //!
+ //! Usage: `designcraft [--control <port>] [--sample] [files…]`
+ //!
+@@ -66,7 +66,7 @@ impl eframe::App for App {
+         }
+         if let Err(e) = preserve_documents_on_exit(&mut self.app) {
+             log::error!("Couldn't preserve documents on exit: {e}");
+-            eprintln!("designcraft: couldn't preserve documents on exit: {e}");
++            eprintln!("plervo-publish: couldn't preserve documents on exit: {e}");
+         }
+         save_prefs(&self.app);
+     }
+@@ -191,8 +191,8 @@ fn open_filters(purpose: &str) -> &'static [OpenFilter] {
+             OpenFilter { name: "Video and sound", extensions: &["mp4", "m4v", "mov", "webm", "mp3", "m4a", "wav", "ogg"] },
+         ],
+         _ => &[
+-            OpenFilter { name: "DesignCraft or IDML", extensions: &["designcraft", "idml"] },
+-            OpenFilter { name: "DesignCraft", extensions: &["designcraft"] },
++            OpenFilter { name: "Plervo Publish or IDML", extensions: &["designcraft", "idml"] },
++            OpenFilter { name: "Plervo Publish", extensions: &["designcraft"] },
+             OpenFilter { name: "InDesign Markup (IDML)", extensions: &["idml"] },
+         ],
+     }
+@@ -216,7 +216,7 @@ fn services() -> Services {
+ }
+ 
+ /// Desktop app ID: the Linux `.desktop` file name and hicolor icon name (Wayland matches windows by it).
+-const APP_ID: &str = "ai.storyteller.designcraft";
++const APP_ID: &str = "com.plervo.publish";
+ 
+ /// The window, Dock, taskbar and Alt-Tab icon. macOS gets Apple's icon grid (transparent margin);
+ /// elsewhere the full tile. Regenerate with `packaging/icons.sh`.
+@@ -224,7 +224,7 @@ fn app_icon() -> Option<egui::IconData> {
+     #[cfg(target_os = "macos")]
+     let png: &[u8] = include_bytes!("../../../assets/app-icon/designcraft-macos-512.png");
+     #[cfg(not(target_os = "macos"))]
+-    let png: &[u8] = include_bytes!("../../../assets/app-icon/hicolor/256x256/apps/ai.storyteller.designcraft.png");
++    let png: &[u8] = include_bytes!("../../../assets/app-icon/hicolor/256x256/apps/com.plervo.publish.png");
+     eframe::icon_data::from_png_bytes(png).map_err(|e| log::warn!("app icon: {e}")).ok()
+ }
+ 
+@@ -252,7 +252,7 @@ fn main() -> eframe::Result {
+             "--control" => control_port = control_port_from("--control", args.next()),
+             "--sample" => sample = true,
+             "--version" => {
+-                println!("designcraft {}", env!("CARGO_PKG_VERSION"));
++                println!("plervo-publish {}", env!("CARGO_PKG_VERSION"));
+                 return Ok(());
+             }
+             _ => files.push(a),
+@@ -262,14 +262,14 @@ fn main() -> eframe::Result {
+     // leaves no file behind. Records logged until now are written to it first.
+     if let (Some(logger), Some(dir)) = (logger, profile::config_dir()) {
+         match logger.attach_dir(&dir.join("logs")) {
+-            Ok(path) => log::info!("DesignCraft {}, log file {}", env!("CARGO_PKG_VERSION"), path.display()),
++            Ok(path) => log::info!("Plervo Publish {}, log file {}", env!("CARGO_PKG_VERSION"), path.display()),
+             // Standard error only by now (`attach_dir` gave up on the file); unlike `eprintln!`, never panics.
+             Err(e) => log::warn!("no log file: {e}"),
+         }
+     }
+     let mut options = eframe::NativeOptions {
+         viewport: egui::ViewportBuilder::default()
+-            .with_title("DesignCraft")
++            .with_title("Plervo Publish")
+             .with_inner_size([1440.0, 900.0])
+             .with_min_inner_size([900.0, 560.0])
+             .with_drag_and_drop(true)
+@@ -310,7 +310,7 @@ fn main() -> eframe::Result {
+         }));
+     }
+     eframe::run_native(
+-        "DesignCraft",
++        "Plervo Publish",
+         options,
+         Box::new(move |cc| {
+             let mut gpu = gpu;
+@@ -345,7 +345,7 @@ fn main() -> eframe::Result {
+             }
+             for f in files {
+                 if let Err(e) = app.open_file("file.open", serde_json::json!({"path": f})) {
+-                    eprintln!("designcraft: {f}: {e}");
++                    eprintln!("plervo-publish: {f}: {e}");
+                 }
+             }
+             Ok(Box::new(App {
+diff --git a/apps/designcraft/src/native_menu.rs b/apps/designcraft/src/native_menu.rs
+index f51db19..6a7761c 100644
+--- a/apps/designcraft/src/native_menu.rs
++++ b/apps/designcraft/src/native_menu.rs
+@@ -1,4 +1,4 @@
+-//! macOS: DesignCraft's menu tree as the native system menu bar (like InDesign on the Mac).
++//! macOS: Plervo Publish's menu tree as the native system menu bar (like InDesign on the Mac).
+ //! Items dispatch through the same command path as the in-window menus; enablement and check
+ //! marks are refreshed a few times per second.
+ 
+@@ -36,12 +36,12 @@ impl NativeMenu {
+         let mut items = HashMap::new();
+         let mut counter = 0usize;
+         // Application menu.
+-        let app_menu = Submenu::new("DesignCraft", true);
++        let app_menu = Submenu::new("Plervo Publish", true);
+         // Our own About splash (with the community links) instead of the stock panel.
+-        let about = MenuItem::with_id("dc-about", "About DesignCraft", true, None);
+-        let discord = MenuItem::with_id("dc-discord", "Join the ArtCraft Discord…", true, None);
++        let about = MenuItem::with_id("dc-about", "About Plervo Publish", true, None);
++        let discord = MenuItem::with_id("dc-discord", "Support Plervo", true, None);
+         // Not the predefined Quit: it terminates the app at once, past the unsaved-changes prompt.
+-        let quit = MenuItem::with_id("dc-quit", designcraft_ui_egui::i18n::tr(&app.ui.language, "Quit DesignCraft"), true, accel("Cmd+Q"));
++        let quit = MenuItem::with_id("dc-quit", designcraft_ui_egui::i18n::tr(&app.ui.language, "Quit Plervo Publish"), true, accel("Cmd+Q"));
+         let _ = app_menu.append_items(&[
+             &about,
+             &discord,
+diff --git a/apps/designcraft/src/profile.rs b/apps/designcraft/src/profile.rs
+index 3e90879..ae3d22e 100644
+--- a/apps/designcraft/src/profile.rs
++++ b/apps/designcraft/src/profile.rs
+@@ -8,24 +8,25 @@ pub fn config_dir() -> Option<PathBuf> {
+ }
+ 
+ fn config_dir_with(os: &str, env: impl Fn(&str) -> Option<OsString>) -> Option<PathBuf> {
+-    if let Some(root) = env("DESIGNCRAFT_CONFIG_DIR") {
++    if let Some(root) = env("PLERVO_PUBLISH_CONFIG_DIR") {
+         // An explicitly empty override must not fall back to the user's profile.
+         return (!root.is_empty()).then(|| PathBuf::from(root));
+     }
+     match os {
+-        "macos" => env("HOME").map(|p| PathBuf::from(p).join("Library/Application Support/DesignCraft")),
+-        "windows" => env("APPDATA").map(|p| PathBuf::from(p).join("DesignCraft")),
+-        _ => {
+-            env("XDG_CONFIG_HOME").map(PathBuf::from).or_else(|| env("HOME").map(|p| PathBuf::from(p).join(".config"))).map(|p| p.join("designcraft"))
+-        }
++        "macos" => env("HOME").map(|p| PathBuf::from(p).join("Library/Application Support/Plervo Publish")),
++        "windows" => env("APPDATA").map(|p| PathBuf::from(p).join("Plervo Publish")),
++        _ => env("XDG_CONFIG_HOME")
++            .map(PathBuf::from)
++            .or_else(|| env("HOME").map(|p| PathBuf::from(p).join(".config")))
++            .map(|p| p.join("plervo-publish")),
+     }
+ }
+ 
+ pub fn recovery_dir() -> Option<PathBuf> {
+-    recovery_dir_with(std::env::var_os("DESIGNCRAFT_CONFIG_DIR"), designcraft_engine::recovery::default_dir).and_then(own_run)
++    recovery_dir_with(std::env::var_os("PLERVO_PUBLISH_CONFIG_DIR"), designcraft_engine::recovery::default_dir).and_then(own_run)
+ }
+ 
+-/// This run's folder in the recovery folder `root`. A second running DesignCraft has its own, so
++/// This run's folder in the recovery folder `root`. A second running Plervo Publish has its own, so
+ /// neither writes over the other's documents nor takes them for a crash's.
+ fn own_run(root: PathBuf) -> Option<PathBuf> {
+     match designcraft_engine::recovery::run_dir(&root) {
+@@ -60,7 +61,7 @@ mod tests {
+     #[test]
+     fn isolated_profile_overrides_every_platform_and_recovery() {
+         for os in ["macos", "windows", "linux"] {
+-            let dir = config_dir_with(os, |key| if key == "DESIGNCRAFT_CONFIG_DIR" { Some("/isolated".into()) } else { environment(key) });
++            let dir = config_dir_with(os, |key| if key == "PLERVO_PUBLISH_CONFIG_DIR" { Some("/isolated".into()) } else { environment(key) });
+             assert_eq!(dir, Some(PathBuf::from("/isolated")));
+         }
+         assert_eq!(recovery_dir_with(Some("/isolated".into()), || Some("/user/recovery".into())), Some(PathBuf::from("/isolated/Recovery")));
+@@ -68,14 +69,17 @@ mod tests {
+ 
+     #[test]
+     fn empty_override_never_reads_or_writes_the_default_profile() {
+-        assert_eq!(config_dir_with("macos", |key| { if key == "DESIGNCRAFT_CONFIG_DIR" { Some(OsString::new()) } else { environment(key) } }), None);
++        assert_eq!(
++            config_dir_with("macos", |key| { if key == "PLERVO_PUBLISH_CONFIG_DIR" { Some(OsString::new()) } else { environment(key) } }),
++            None
++        );
+         assert_eq!(recovery_dir_with(Some(OsString::new()), || Some("/user/recovery".into())), None);
+     }
+ 
+     #[test]
+     fn unset_override_preserves_existing_platform_paths() {
+-        assert_eq!(config_dir_with("macos", environment), Some("/user/Library/Application Support/DesignCraft".into()));
+-        assert_eq!(config_dir_with("windows", environment), Some("/roaming/DesignCraft".into()));
++        assert_eq!(config_dir_with("macos", environment), Some("/user/Library/Application Support/Plervo Publish".into()));
++        assert_eq!(config_dir_with("windows", environment), Some("/roaming/Plervo Publish".into()));
+         assert_eq!(config_dir_with("linux", environment), Some("/xdg-config/designcraft".into()));
+         assert_eq!(config_dir_with("linux", |key| if key == "HOME" { environment(key) } else { None }), Some("/user/.config/designcraft".into()));
+         assert_eq!(recovery_dir_with(None, || Some("/existing/recovery".into())), Some("/existing/recovery".into()));
+diff --git a/crates/engine/src/links.rs b/crates/engine/src/links.rs
+index ead5bd6..d635f95 100644
+--- a/crates/engine/src/links.rs
++++ b/crates/engine/src/links.rs
+@@ -2,18 +2,18 @@
+ 
+ use serde_json::{Value, json};
+ 
+-/// The app's slug on getartcraft.com and GitHub.
++/// The app's slug on plervo.com and GitHub.
+ pub const APP: &str = "designcraft";
+ /// The ArtCraft community Discord.
+-pub const DISCORD: &str = "https://discord.gg/artcraft";
+-/// The ArtCraft website.
+-pub const WEBSITE: &str = "https://getartcraft.com";
+-/// DesignCraft's page on the ArtCraft website.
+-pub const APP_PAGE: &str = "https://getartcraft.com/apps/designcraft";
++pub const DISCORD: &str = "https://buymeacoffee.com/alport";
++/// The Plervo website.
++pub const WEBSITE: &str = "https://plervo.com";
++/// DesignCraft's page on the Plervo website.
++pub const APP_PAGE: &str = "https://plervo.com/";
+ /// DesignCraft's source repository.
+-pub const GITHUB: &str = "https://github.com/storytold/designcraft";
++pub const GITHUB: &str = "https://github.com/alportblu/plervo-pdf";
+ /// Where to report bugs and request features.
+-pub const ISSUES: &str = "https://github.com/storytold/designcraft/issues";
++pub const ISSUES: &str = "https://github.com/alportblu/plervo-pdf/issues";
+ 
+ /// All links as JSON (the `app.links` command).
+ pub fn all() -> Value {
+diff --git a/crates/engine/src/recovery.rs b/crates/engine/src/recovery.rs
+index 33b9a2a..5a42775 100644
+--- a/crates/engine/src/recovery.rs
++++ b/crates/engine/src/recovery.rs
+@@ -28,10 +28,10 @@ use crate::{DocState, EngineError, Result, Session};
+ pub fn default_dir() -> Option<PathBuf> {
+     let home = std::env::var_os("HOME").map(PathBuf::from);
+     if cfg!(target_os = "macos") {
+-        return home.map(|h| h.join("Library/Application Support/DesignCraft/Recovery"));
++        return home.map(|h| h.join("Library/Application Support/Plervo Publish/Recovery"));
+     }
+     if cfg!(target_os = "windows") {
+-        return std::env::var_os("APPDATA").map(|a| PathBuf::from(a).join("DesignCraft").join("Recovery"));
++        return std::env::var_os("APPDATA").map(|a| PathBuf::from(a).join("Plervo Publish").join("Recovery"));
+     }
+     std::env::var_os("XDG_DATA_HOME").map(PathBuf::from).or_else(|| home.map(|h| h.join(".local/share"))).map(|d| d.join("designcraft/recovery"))
+ }
+diff --git a/crates/ui-egui/examples/ui_shot.rs b/crates/ui-egui/examples/ui_shot.rs
+index c0bf389..05a1ef3 100644
+--- a/crates/ui-egui/examples/ui_shot.rs
++++ b/crates/ui-egui/examples/ui_shot.rs
+@@ -1,4 +1,4 @@
+-//! Headless UI screenshots: renders the whole DesignCraft window offscreen (wgpu) — works with a
++//! Headless UI screenshots: renders the whole Plervo Publish window offscreen (wgpu) — works with a
+ //! locked screen or a hidden window, unlike `ui.screenshot`.
+ //!
+ //! `cargo run -p designcraft-ui-egui --example ui_shot -- script.jsonl`
+diff --git a/crates/ui-egui/src/about.rs b/crates/ui-egui/src/about.rs
+index 4eae2e7..3efa57c 100644
+--- a/crates/ui-egui/src/about.rs
++++ b/crates/ui-egui/src/about.rs
+@@ -1,4 +1,4 @@
+-//! Help › About DesignCraft: tabs About · Contributors · Models. About is the splash with the
++//! Help › About Plervo Publish: tabs About · Contributors · Models. About is the splash with the
+ //! ArtCraft mark, version, and community links (Discord first and largest), plus the other ArtCraft
+ //! apps; Contributors and Models are the compiled-in credits (`crate::credits`).
+ 
+@@ -11,7 +11,7 @@ use crate::theme::{Tokens, semibold};
+ 
+ /// ArtCraft brand blue (from `docs/brand/artcraft-mark.svg`).
+ pub const BRAND: Color32 = Color32::from_rgb(0x4e, 0x7b, 0xfb);
+-/// Discord's brand colour, used for the "Join our Discord" buttons (colour only; no Discord artwork).
++/// Discord's brand colour, used for the "Support Plervo" buttons (colour only; no Discord artwork).
+ pub const DISCORD: Color32 = Color32::from_rgb(0x58, 0x65, 0xf2);
+ 
+ /// The ArtCraft mark outline (viewBox -10 -19.42 136.34 136.34), from `docs/brand/artcraft-mark.svg`.
+@@ -77,7 +77,7 @@ pub fn paint_chat_icon(p: &egui::Painter, c: egui::Pos2, s: f32, color: Color32)
+     p.circle_filled(body.center() + vec2(s * 0.18, 0.0), eye, bg);
+ }
+ 
+-/// The big "Join our Discord" button. Returns true when clicked.
++/// The big "Support Plervo" button. Returns true when clicked.
+ pub fn discord_button(ui: &mut egui::Ui, label: &str, size: egui::Vec2) -> bool {
+     let (r, resp) = ui.allocate_exact_size(size, Sense::click());
+     let resp = resp.on_hover_text(links::DISCORD).on_hover_cursor(egui::CursorIcon::PointingHand);
+@@ -142,7 +142,7 @@ pub fn show(app: &mut DesignApp, ctx: &egui::Context) {
+             ui.add_space(6.0);
+             ui.label(crate::rtl::widget(
+                 ui,
+-                egui::RichText::new(crate::i18n::tr(&app.ui.language, "DesignCraft")).font(semibold(26.0)).color(t.text_strong),
++                egui::RichText::new(crate::i18n::tr(&app.ui.language, "Plervo Publish")).font(semibold(26.0)).color(t.text_strong),
+             ));
+             crate::rtl::label(
+                 ui,
+@@ -164,13 +164,13 @@ pub fn show(app: &mut DesignApp, ctx: &egui::Context) {
+                     .color(t.text_dim),
+             ));
+             ui.add_space(16.0);
+-            if discord_button(ui, "Join the ArtCraft Discord", vec2(300.0, 40.0)) {
++            if discord_button(ui, "Support Plervo", vec2(300.0, 40.0)) {
+                 open = Some("discord");
+             }
+             ui.add_space(4.0);
+             ui.label(crate::rtl::widget(
+                 ui,
+-                egui::RichText::new(crate::i18n::tr(&app.ui.language, "discord.gg/artcraft — help, feedback and show-and-tell"))
++                egui::RichText::new(crate::i18n::tr(&app.ui.language, "buymeacoffee.com/alport — help, feedback and show-and-tell"))
+                     .size(11.0)
+                     .color(t.text_dim),
+             ));
+@@ -180,7 +180,7 @@ pub fn show(app: &mut DesignApp, ctx: &egui::Context) {
+                 let w = 330.0;
+                 ui.add_space(((ui.available_width() - w) / 2.0).max(0.0));
+                 for (text, key) in
+-                    [("DesignCraft page", "appPage"), ("GitHub", "github"), ("getartcraft.com", "website"), ("Report an issue", "issues")]
++                    [("Plervo Publish page", "appPage"), ("GitHub", "github"), ("plervo.com", "website"), ("Report an issue", "issues")]
+                 {
+                     if link(ui, text, links::get(key).unwrap_or_default(), t.accent) {
+                         open = Some(key);
+diff --git a/crates/ui-egui/src/chrome.rs b/crates/ui-egui/src/chrome.rs
+index c2f1cb4..6d555aa 100644
+--- a/crates/ui-egui/src/chrome.rs
++++ b/crates/ui-egui/src/chrome.rs
+@@ -125,7 +125,7 @@ pub fn app_bar(app: &mut DesignApp, ui: &mut egui::Ui) {
+                         }
+                         ui.add_space(8.0);
+                         // Always one click away: the ArtCraft community Discord.
+-                        if crate::about::discord_button(ui, "Discord", vec2(78.0, 22.0)) {
++                        if crate::about::discord_button(ui, "Support", vec2(78.0, 22.0)) {
+                             let _ = app.run("help.discord", json!({}));
+                         }
+                         tools_start = ui.min_rect().min.x;
+@@ -139,8 +139,8 @@ pub fn app_bar(app: &mut DesignApp, ui: &mut egui::Ui) {
+             });
+             // Centred title.
+             let title = match app.session.active() {
+-                Some(d) => format!("DesignCraft — {}", crate::rtl::isolate(&d.title())),
+-                None => "DesignCraft".to_string(),
++                Some(d) => format!("Plervo Publish — {}", crate::rtl::isolate(&d.title())),
++                None => "Plervo Publish".to_string(),
+             };
+             // Centred between the menus and the right-hand controls; left out when it won't fit.
+             let galley = crate::rtl::plain(ui.ctx(), &title, egui::FontId::proportional(11.5), t.text);
+@@ -662,7 +662,7 @@ pub fn start_screen(app: &mut DesignApp, ui: &mut egui::Ui) {
+         |ui| {
+             ui.label(crate::rtl::widget(
+                 ui,
+-                egui::RichText::new(crate::i18n::tr(&app.ui.language, "Welcome to DesignCraft")).font(semibold(28.0)).color(t.text_strong),
++                egui::RichText::new(crate::i18n::tr(&app.ui.language, "Welcome to Plervo Publish")).font(semibold(28.0)).color(t.text_strong),
+             ));
+             ui.label(crate::rtl::widget(
+                 ui,
+@@ -766,7 +766,7 @@ fn community_card(app: &mut DesignApp, ui: &mut egui::Ui) {
+                 ));
+                 ui.add_space(4.0);
+                 ui.horizontal(|ui| {
+-                    for (text, id) in [("DesignCraft page", "help.appPage"), ("GitHub", "help.github"), ("getartcraft.com", "help.website")] {
++                    for (text, id) in [("Plervo Publish page", "help.appPage"), ("GitHub", "help.github"), ("plervo.com", "help.website")] {
+                         let url = designcraft_engine::links::get(&id[5..]).unwrap_or_default();
+                         let l = ui
+                             .add(egui::Label::new(egui::RichText::new(text).size(12.0).color(t.accent).underline()).sense(Sense::click()))
+@@ -780,7 +780,7 @@ fn community_card(app: &mut DesignApp, ui: &mut egui::Ui) {
+                 });
+             });
+             ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
+-                if crate::about::discord_button(ui, crate::i18n::tr(&app.ui.language, "Join our Discord"), vec2(190.0, 38.0)) {
++                if crate::about::discord_button(ui, crate::i18n::tr(&app.ui.language, "Support Plervo"), vec2(190.0, 38.0)) {
+                     let _ = app.run("help.discord", json!({}));
+                 }
+             });
+diff --git a/crates/ui-egui/src/i18n.rs b/crates/ui-egui/src/i18n.rs
+index 6d6503a..c27a6ce 100644
+--- a/crates/ui-egui/src/i18n.rs
++++ b/crates/ui-egui/src/i18n.rs
+@@ -709,8 +709,11 @@ const TABLE: &[(&str, [&str; 5])] = &[
+         ["Spreads of up to 10 pages", "Spreads of up to 10 pages", "Spreads of up to 10 pages", "Spreads of up to 10 pages", "最多10页的跨页"],
+     ),
+     ("for", ["for", "pour", "por", "に対して", "行"]),
+-    ("About DesignCraft", ["About DesignCraft", "About DesignCraft", "About DesignCraft", "About DesignCraft", "关于 DesignCraft"]),
+-    ("Quit DesignCraft", ["DesignCraft beenden", "Quitter DesignCraft", "Salir de DesignCraft", "DesignCraft を終了", "退出 DesignCraft"]),
++    ("About Plervo Publish", ["About Plervo Publish", "About Plervo Publish", "About Plervo Publish", "About Plervo Publish", "关于 Plervo Publish"]),
++    (
++        "Quit Plervo Publish",
++        ["Plervo Publish beenden", "Quitter Plervo Publish", "Salir de Plervo Publish", "Plervo Publish を終了", "退出 Plervo Publish"],
++    ),
+     ("Accept All Changes", ["Accept All Changes", "Accept All Changes", "Accept All Changes", "Accept All Changes", "接受所有更改"]),
+     ("Activate Document", ["Activate Document", "Activate Document", "Activate Document", "Activate Document", "激活文档"]),
+     ("Add Anchor Point", ["Add Anchor Point", "Add Anchor Point", "Add Anchor Point", "Add Anchor Point", "添加锚点"]),
+@@ -772,7 +775,7 @@ const TABLE: &[(&str, [&str; 5])] = &[
+         ["Apply Parent to Pages…", "Apply Parent to Pages…", "Apply Parent to Pages…", "Apply Parent to Pages…", "将主页应用于页面…"],
+     ),
+     ("ArtCraft App Page…", ["ArtCraft App Page…", "ArtCraft App Page…", "ArtCraft App Page…", "ArtCraft App Page…", "ArtCraft 应用页面…"]),
+-    ("ArtCraft Website…", ["ArtCraft Website…", "ArtCraft Website…", "ArtCraft Website…", "ArtCraft Website…", "ArtCraft 网站…"]),
++    ("Plervo Website…", ["Plervo Website…", "Plervo Website…", "Plervo Website…", "Plervo Website…", "ArtCraft 网站…"]),
+     ("Attributes", ["Attributes", "Attributes", "Attributes", "Attributes", "属性"]),
+     ("Bevel and Emboss", ["Bevel and Emboss", "Bevel and Emboss", "Bevel and Emboss", "Bevel and Emboss", "斜面和浮雕"]),
+     ("Buttons", ["Buttons", "Buttons", "Buttons", "Buttons", "按钮"]),
+@@ -907,10 +910,19 @@ const TABLE: &[(&str, [&str; 5])] = &[
+     ("Delete Item", ["Delete Item", "Delete Item", "Delete Item", "Delete Item", "删除项目"]),
+     ("Delete Text Variable", ["Delete Text Variable", "Delete Text Variable", "Delete Text Variable", "Delete Text Variable", "删除文本变量"]),
+     ("Delete Workspace…", ["Delete Workspace…", "Delete Workspace…", "Delete Workspace…", "Delete Workspace…", "删除工作区…"]),
+-    ("DesignCraft Website…", ["DesignCraft Website…", "DesignCraft Website…", "DesignCraft Website…", "DesignCraft Website…", "DesignCraft 网站…"]),
+     (
+-        "DesignCraft on GitHub…",
+-        ["DesignCraft on GitHub…", "DesignCraft on GitHub…", "DesignCraft on GitHub…", "DesignCraft on GitHub…", "DesignCraft 在 GitHub 上…"],
++        "Plervo Publish Website…",
++        ["Plervo Publish Website…", "Plervo Publish Website…", "Plervo Publish Website…", "Plervo Publish Website…", "Plervo Publish 网站…"],
++    ),
++    (
++        "Plervo Publish on GitHub…",
++        [
++            "Plervo Publish on GitHub…",
++            "Plervo Publish on GitHub…",
++            "Plervo Publish on GitHub…",
++            "Plervo Publish on GitHub…",
++            "Plervo Publish 在 GitHub 上…",
++        ],
+     ),
+     (
+         "Detach All Objects from Parent",
+@@ -1048,16 +1060,7 @@ const TABLE: &[(&str, [&str; 5])] = &[
+     ("Insert Variable", ["Insert Variable", "Insert Variable", "Insert Variable", "Insert Variable", "插入变量"]),
+     ("Inspect Document", ["Inspect Document", "Inspect Document", "Inspect Document", "Inspect Document", "检查文档"]),
+     ("Interface Color Theme", ["Interface Color Theme", "Interface Color Theme", "Interface Color Theme", "Interface Color Theme", "界面颜色主题"]),
+-    (
+-        "Join the ArtCraft Discord…",
+-        [
+-            "Join the ArtCraft Discord…",
+-            "Join the ArtCraft Discord…",
+-            "Join the ArtCraft Discord…",
+-            "Join the ArtCraft Discord…",
+-            "加入 ArtCraft Discord…",
+-        ],
+-    ),
++    ("Support Plervo", ["Support Plervo", "Support Plervo", "Support Plervo", "Support Plervo", "加入 ArtCraft Discord…"]),
+     ("Last Object Below", ["Last Object Below", "Last Object Below", "Last Object Below", "Last Object Below", "下方最后一个对象"]),
+     ("Library Contents", ["Library Contents", "Library Contents", "Library Contents", "Library Contents", "库内容"]),
+     ("Library Items", ["Library Items", "Library Items", "Library Items", "Library Items", "库项目"]),
+@@ -1541,7 +1544,7 @@ const TABLE: &[(&str, [&str; 5])] = &[
+         ["Cross-Reference Format", "Cross-Reference Format", "Cross-Reference Format", "Cross-Reference Format", "交叉引用格式"],
+     ),
+     ("Delete Workspace", ["Delete Workspace", "Delete Workspace", "Delete Workspace", "Delete Workspace", "删除工作区"]),
+-    ("DesignCraft", ["DesignCraft", "DesignCraft", "DesignCraft", "DesignCraft", "DesignCraft"]),
++    ("Plervo Publish", ["Plervo Publish", "Plervo Publish", "Plervo Publish", "Plervo Publish", "Plervo Publish"]),
+     ("Display Performance", ["Display Performance", "Display Performance", "Display Performance", "Display Performance", "显示性能"]),
+     ("Document Grid", ["Document Grid", "Document Grid", "Document Grid", "Document Grid", "文档网格"]),
+     (
+@@ -1882,8 +1885,14 @@ const TABLE: &[(&str, [&str; 5])] = &[
+     ("Utilities", ["Utilities", "Utilities", "Utilities", "Utilities", "实用程序"]),
+     ("Variable Font", ["Variable Font", "Variable Font", "Variable Font", "Variable Font", "可变字体"]),
+     (
+-        "Welcome to DesignCraft",
+-        ["Welcome to DesignCraft", "Welcome to DesignCraft", "Welcome to DesignCraft", "Welcome to DesignCraft", "欢迎使用 DesignCraft"],
++        "Welcome to Plervo Publish",
++        [
++            "Welcome to Plervo Publish",
++            "Welcome to Plervo Publish",
++            "Welcome to Plervo Publish",
++            "Welcome to Plervo Publish",
++            "欢迎使用 Plervo Publish",
++        ],
+     ),
+     ("When Scaling", ["When Scaling", "When Scaling", "When Scaling", "When Scaling", "缩放时"]),
+     ("[Basic] (working) ▾", ["[Basic] (working) ▾", "[Basic] (working) ▾", "[Basic] (working) ▾", "[Basic] (working) ▾", "[基本] (工作区) ▾"]),
+@@ -1901,13 +1910,13 @@ const TABLE: &[(&str, [&str; 5])] = &[
+         ],
+     ),
+     (
+-        "discord.gg/artcraft — help, feedback and show-and-tell",
++        "buymeacoffee.com/alport — help, feedback and show-and-tell",
+         [
+-            "discord.gg/artcraft — help, feedback and show-and-tell",
+-            "discord.gg/artcraft — help, feedback and show-and-tell",
+-            "discord.gg/artcraft — help, feedback and show-and-tell",
+-            "discord.gg/artcraft — help, feedback and show-and-tell",
+-            "discord.gg/artcraft — 帮助、反馈和展示",
++            "buymeacoffee.com/alport — help, feedback and show-and-tell",
++            "buymeacoffee.com/alport — help, feedback and show-and-tell",
++            "buymeacoffee.com/alport — help, feedback and show-and-tell",
++            "buymeacoffee.com/alport — help, feedback and show-and-tell",
++            "buymeacoffee.com/alport — 帮助、反馈和展示",
+         ],
+     ),
+     (
+@@ -2653,7 +2662,7 @@ const TABLE: &[(&str, [&str; 5])] = &[
+     ("H&J Violations", ["H&J Violations", "H&J Violations", "H&J Violations", "H&J Violations", "断字与对齐违规"]),
+     ("Include Bleed", ["Include Bleed", "Include Bleed", "Include Bleed", "Include Bleed", "包含出血"]),
+     ("Include Stroke Weight", ["Include Stroke Weight", "Include Stroke Weight", "Include Stroke Weight", "Include Stroke Weight", "包含描边粗细"]),
+-    ("Join our Discord", ["Join our Discord", "Join our Discord", "Join our Discord", "Join our Discord", "加入我们的 Discord 社区"]),
++    ("Support Plervo", ["Support Plervo", "Support Plervo", "Support Plervo", "Support Plervo", "加入我们的 Discord 社区"]),
+     ("Keep Violations", ["Keep Violations", "Keep Violations", "Keep Violations", "Keep Violations", "保持选项违规"]),
+     (
+         "Overprint [Black] Swatch at 100%",
+diff --git a/crates/ui-egui/src/i18n/ar.rs b/crates/ui-egui/src/i18n/ar.rs
+index 7695119..fadc1b9 100644
+--- a/crates/ui-egui/src/i18n/ar.rs
++++ b/crates/ui-egui/src/i18n/ar.rs
+@@ -150,9 +150,9 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Hyperlinks", "ارتباطات تشعبية"),
+     ("Bookmarks", "إشارات مرجعية"),
+     ("Show All Menu Items", "إظهار كل عناصر القائمة"),
+-    ("About DesignCraft", "حول DesignCraft"),
+-    ("Quit DesignCraft", "إنهاء DesignCraft"),
+-    ("Welcome to DesignCraft", "مرحباً بك في DesignCraft"),
++    ("About Plervo Publish", "حول Plervo Publish"),
++    ("Quit Plervo Publish", "إنهاء Plervo Publish"),
++    ("Welcome to Plervo Publish", "مرحباً بك في Plervo Publish"),
+     ("Page layout for print and screen — fast, open and scriptable.", "تخطيط الصفحات للطباعة والشاشة — سريع ومفتوح وقابل للبرمجة."),
+     ("  New file  ", "  ملف جديد  "),
+     ("  Open  ", "  فتح  "),
+@@ -161,10 +161,10 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("No document open", "لا يوجد مستند مفتوح"),
+     ("Join the ArtCraft community", "انضم إلى مجتمع ArtCraft"),
+     ("Get help, share your layouts and shape what we build next.", "احصل على المساعدة وشارك تصميماتك وساهم في تطوير التطبيق."),
+-    ("Join our Discord", "انضم إلى Discord"),
++    ("Support Plervo", "انضم إلى Discord"),
+     ("Community", "المجتمع"),
+     ("Join the community", "انضم إلى المجتمع"),
+-    ("discord.gg/artcraft — help, feedback and show-and-tell", "discord.gg/artcraft — مساعدة وآراء وعرض الأعمال"),
++    ("buymeacoffee.com/alport — help, feedback and show-and-tell", "buymeacoffee.com/alport — مساعدة وآراء وعرض الأعمال"),
+     ("  OK  ", "  موافق  "),
+     ("Float panel", "تعويم اللوحة"),
+     ("Dock panel", "إرساء اللوحة"),
+@@ -1139,7 +1139,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Apply Condition", "تطبيق شرط"),
+     ("Apply Parent to Pages…", "تطبيق الصفحة الأصلية على الصفحات…"),
+     ("ArtCraft App Page…", "صفحة تطبيق ArtCraft…"),
+-    ("ArtCraft Website…", "موقع ArtCraft…"),
++    ("Plervo Website…", "موقع ArtCraft…"),
+     ("Attributes", "السمات"),
+     ("Bevel and Emboss", "القطع المشطوف والنقش البارز"),
+     ("Buttons", "أزرار"),
+@@ -1185,8 +1185,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Delete Item", "حذف عنصر"),
+     ("Delete Text Variable", "حذف متغير نصي"),
+     ("Delete Workspace…", "حذف مساحة العمل…"),
+-    ("DesignCraft Website…", "موقع DesignCraft…"),
+-    ("DesignCraft on GitHub…", "DesignCraft على GitHub…"),
++    ("Plervo Publish Website…", "موقع Plervo Publish…"),
++    ("Plervo Publish on GitHub…", "Plervo Publish على GitHub…"),
+     ("Detach All Objects from Parent", "فصل جميع الكائنات عن الصفحة الأصلية"),
+     ("Directional Feather", "الحواف المنعمة الاتجاهية"),
+     ("Distribute", "توزيع"),
+@@ -1241,7 +1241,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Insert Variable", "إدراج متغير"),
+     ("Inspect Document", "فحص المستند"),
+     ("Interface Color Theme", "نسق ألوان الواجهة"),
+-    ("Join the ArtCraft Discord…", "الانضمام إلى Discord الخاص بـ ArtCraft…"),
++    ("Support Plervo", "الانضمام إلى Discord الخاص بـ ArtCraft…"),
+     ("Last Object Below", "آخر كائن أسفل"),
+     ("Library Contents", "محتويات المكتبة"),
+     ("Library Items", "عناصر المكتبة"),
+@@ -1478,7 +1478,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ),
+     ("Convert Cell Type", "تحويل نوع الخلية"),
+     ("Copy Link(s", "نسخ الروابط"),
+-    ("DesignCraft", "DesignCraft"),
++    ("Plervo Publish", "Plervo Publish"),
+     ("Export EPUB (Fixed Layout", "تصدير EPUB (تخطيط ثابت"),
+     ("Export EPUB (Reflowable", "تصدير EPUB (قابل لإعادة التدفق"),
+     ("Hyperlinks & Cross-References", "الارتباطات التشعبية والمراجع المتقاطعة"),
+diff --git a/crates/ui-egui/src/i18n/it.rs b/crates/ui-egui/src/i18n/it.rs
+index 747511a..734cc48 100644
+--- a/crates/ui-egui/src/i18n/it.rs
++++ b/crates/ui-egui/src/i18n/it.rs
+@@ -400,8 +400,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Show / hide text with this condition", "Mostra / nascondi il testo con questa condizione"),
+     ("Spreads of up to 10 pages", "Doppie pagine con al massimo 10 pagine"),
+     ("for", "per"),
+-    ("About DesignCraft", "Informazioni su DesignCraft"),
+-    ("Quit DesignCraft", "Esci da DesignCraft"),
++    ("About Plervo Publish", "Informazioni su Plervo Publish"),
++    ("Quit Plervo Publish", "Esci da Plervo Publish"),
+     ("Accept All Changes", "Accetta tutte le modifiche"),
+     ("Activate Document", "Attiva documento"),
+     ("Add Anchor Point", "Aggiungi punto di ancoraggio"),
+@@ -433,7 +433,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Apply Condition", "Applica condizione"),
+     ("Apply Parent to Pages…", "Applica pagina mastro alle pagine…"),
+     ("ArtCraft App Page…", "Pagina dell'app ArtCraft…"),
+-    ("ArtCraft Website…", "Sito web di ArtCraft…"),
++    ("Plervo Website…", "Sito web di ArtCraft…"),
+     ("Attributes", "Attributi"),
+     ("Bevel and Emboss", "Smusso e rilievo"),
+     ("Buttons", "Pulsanti"),
+@@ -485,8 +485,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Delete Item", "Elimina elemento"),
+     ("Delete Text Variable", "Elimina variabile di testo"),
+     ("Delete Workspace…", "Elimina area di lavoro…"),
+-    ("DesignCraft Website…", "Sito web di DesignCraft…"),
+-    ("DesignCraft on GitHub…", "DesignCraft su GitHub…"),
++    ("Plervo Publish Website…", "Sito web di Plervo Publish…"),
++    ("Plervo Publish on GitHub…", "Plervo Publish su GitHub…"),
+     ("Detach All Objects from Parent", "Scollega tutti gli oggetti dalla pagina mastro"),
+     ("Directional Feather", "Bordi sfocati direzionali"),
+     ("Distribute", "Distribuisci"),
+@@ -560,7 +560,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Insert Variable", "Inserisci variabile"),
+     ("Inspect Document", "Ispeziona documento"),
+     ("Interface Color Theme", "Tema colore dell'interfaccia"),
+-    ("Join the ArtCraft Discord…", "Unisciti al Discord di ArtCraft…"),
++    ("Support Plervo", "Unisciti al Discord di ArtCraft…"),
+     ("Last Object Below", "Ultimo oggetto sotto"),
+     ("Library Contents", "Contenuto libreria"),
+     ("Library Items", "Elementi libreria"),
+@@ -846,7 +846,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Crop Amount", "Valore di ritaglio"),
+     ("Cross-Reference Format", "Formato riferimento incrociato"),
+     ("Delete Workspace", "Elimina area di lavoro"),
+-    ("DesignCraft", "DesignCraft"),
++    ("Plervo Publish", "Plervo Publish"),
+     ("Display Performance", "Prestazioni di visualizzazione"),
+     ("Document Grid", "Griglia documento"),
+     ("Document Recovery Data", "Dati di recupero documento"),
+@@ -949,14 +949,14 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("User Dictionary (this document)", "Dizionario utente (questo documento)"),
+     ("Utilities", "Utilità"),
+     ("Variable Font", "Font variabile"),
+-    ("Welcome to DesignCraft", "Ti diamo il benvenuto in DesignCraft"),
++    ("Welcome to Plervo Publish", "Ti diamo il benvenuto in Plervo Publish"),
+     ("When Scaling", "Durante il ridimensionamento"),
+     ("[Basic] (working) ▾", "[Base] (in uso) ▾"),
+     ("[Black] Overprint", "Sovrastampa [Nero]"),
+     ("[No Group]", "[Nessun gruppo]"),
+     ("[None]", "[Nessuno]"),
+     ("[None] — choose a colour on the ramp.", "[Nessuno] — scegli un colore sulla barra dei colori."),
+-    ("discord.gg/artcraft — help, feedback and show-and-tell", "discord.gg/artcraft — aiuto, feedback e condivisione dei lavori"),
++    ("buymeacoffee.com/alport — help, feedback and show-and-tell", "buymeacoffee.com/alport — aiuto, feedback e condivisione dei lavori"),
+     ("⌥-click clears overrides", "⌥-clic cancella le modifiche locali"),
+     ("⚠ out of date", "⚠ non aggiornato"),
+     ("General", "Generale"),
+@@ -1358,7 +1358,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("H&J Violations", "Violazioni di sillabazione e giustificazione"),
+     ("Include Bleed", "Includi pagina al vivo"),
+     ("Include Stroke Weight", "Includi spessore traccia"),
+-    ("Join our Discord", "Unisciti al nostro Discord"),
++    ("Support Plervo", "Unisciti al nostro Discord"),
+     ("Keep Violations", "Violazioni opzioni di mantenimento"),
+     ("Overprint [Black] Swatch at 100%", "Sovrastampa campione [Nero] al 100%"),
+     ("Printer's Marks", "Segni di stampa"),
+diff --git a/crates/ui-egui/src/i18n/ja.rs b/crates/ui-egui/src/i18n/ja.rs
+index 263d422..c870a5c 100644
+--- a/crates/ui-egui/src/i18n/ja.rs
++++ b/crates/ui-egui/src/i18n/ja.rs
+@@ -402,8 +402,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Show / hide text with this condition", "この条件のテキストの表示・非表示を切り替え"),
+     ("Spreads of up to 10 pages", "最大10ページのスプレッド"),
+     ("for", "に対して"),
+-    ("About DesignCraft", "DesignCraft について"),
+-    ("Quit DesignCraft", "DesignCraft を終了"),
++    ("About Plervo Publish", "Plervo Publish について"),
++    ("Quit Plervo Publish", "Plervo Publish を終了"),
+     ("Accept All Changes", "すべての変更を採用"),
+     ("Activate Document", "ドキュメントをアクティブ化"),
+     ("Add Anchor Point", "アンカーポイントを追加"),
+@@ -432,7 +432,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Apply Condition", "条件を適用"),
+     ("Apply Parent to Pages…", "ページに親ページを適用…"),
+     ("ArtCraft App Page…", "ArtCraft アプリページ…"),
+-    ("ArtCraft Website…", "ArtCraft ウェブサイト…"),
++    ("Plervo Website…", "ArtCraft ウェブサイト…"),
+     ("Attributes", "属性"),
+     ("Bevel and Emboss", "ベベルとエンボス"),
+     ("Buttons", "ボタン"),
+@@ -484,8 +484,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Delete Item", "項目を削除"),
+     ("Delete Text Variable", "テキスト変数を削除"),
+     ("Delete Workspace…", "ワークスペースを削除…"),
+-    ("DesignCraft Website…", "DesignCraft ウェブサイト…"),
+-    ("DesignCraft on GitHub…", "GitHub の DesignCraft…"),
++    ("Plervo Publish Website…", "Plervo Publish ウェブサイト…"),
++    ("Plervo Publish on GitHub…", "GitHub の Plervo Publish…"),
+     ("Detach All Objects from Parent", "すべてのオブジェクトを親ページから分離"),
+     ("Directional Feather", "方向別ぼかし"),
+     ("Distribute", "均等に配置"),
+@@ -559,7 +559,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Insert Variable", "変数を挿入"),
+     ("Inspect Document", "ドキュメントを調査"),
+     ("Interface Color Theme", "インターフェイスのカラーテーマ"),
+-    ("Join the ArtCraft Discord…", "ArtCraft の Discord に参加…"),
++    ("Support Plervo", "ArtCraft の Discord に参加…"),
+     ("Last Object Below", "最背面のオブジェクト"),
+     ("Library Contents", "ライブラリの内容"),
+     ("Library Items", "ライブラリの項目"),
+@@ -845,7 +845,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Crop Amount", "トリミング量"),
+     ("Cross-Reference Format", "相互参照の書式"),
+     ("Delete Workspace", "ワークスペースを削除"),
+-    ("DesignCraft", "DesignCraft"),
++    ("Plervo Publish", "Plervo Publish"),
+     ("Display Performance", "表示品質"),
+     ("Document Grid", "ドキュメントグリッド"),
+     ("Document Recovery Data", "ドキュメント復旧データ"),
+@@ -945,14 +945,14 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("User Dictionary (this document)", "ユーザー辞書 (このドキュメント)"),
+     ("Utilities", "ユーティリティ"),
+     ("Variable Font", "バリアブルフォント"),
+-    ("Welcome to DesignCraft", "DesignCraft へようこそ"),
++    ("Welcome to Plervo Publish", "Plervo Publish へようこそ"),
+     ("When Scaling", "拡大・縮小時"),
+     ("[Basic] (working) ▾", "[基本] (作業中) ▾"),
+     ("[Black] Overprint", "「黒」のオーバープリント"),
+     ("[No Group]", "[グループなし]"),
+     ("[None]", "[なし]"),
+     ("[None] — choose a colour on the ramp.", "[なし] — カラーバーでカラーを選択してください。"),
+-    ("discord.gg/artcraft — help, feedback and show-and-tell", "discord.gg/artcraft — サポート・ご意見・作品紹介"),
++    ("buymeacoffee.com/alport — help, feedback and show-and-tell", "buymeacoffee.com/alport — サポート・ご意見・作品紹介"),
+     ("⌥-click clears overrides", "⌥ を押しながらクリックするとオーバーライドを消去します"),
+     ("⚠ out of date", "⚠ 要更新"),
+     ("General", "一般"),
+@@ -1351,7 +1351,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("H&J Violations", "H&J の制約違反"),
+     ("Include Bleed", "裁ち落としを含める"),
+     ("Include Stroke Weight", "線の太さを含める"),
+-    ("Join our Discord", "Discord に参加"),
++    ("Support Plervo", "Discord に参加"),
+     ("Keep Violations", "段落保持の制約違反"),
+     ("Overprint [Black] Swatch at 100%", "100% の「黒」スウォッチをオーバープリント"),
+     ("Printer's Marks", "プリント用マーク"),
+@@ -1477,15 +1477,15 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Anchored Object Options", "アンカー付きオブジェクトのオプション"),
+     ("Apply Parent to Pages", "ページに親ページを適用"),
+     ("ArtCraft App Page", "ArtCraft アプリページ"),
+-    ("ArtCraft Website", "ArtCraft ウェブサイト"),
++    ("Plervo Website", "ArtCraft ウェブサイト"),
+     ("Check Spelling", "スペルチェック"),
+     ("Corner Options", "角のオプション"),
+     ("Create Guides", "ガイドを作成"),
+     ("Define Cross-Reference Format", "相互参照の書式を定義"),
+     ("Define Lists", "リストを定義"),
+     ("Define Text Variable", "テキスト変数を定義"),
+-    ("DesignCraft on GitHub", "GitHub の DesignCraft"),
+-    ("DesignCraft Website", "DesignCraft ウェブサイト"),
++    ("Plervo Publish on GitHub", "GitHub の Plervo Publish"),
++    ("Plervo Publish Website", "Plervo Publish ウェブサイト"),
+     ("Document Endnote Options", "ドキュメントの文末脚注オプション"),
+     ("Document Footnote Options", "ドキュメントの脚注オプション"),
+     ("Export EPUB", "EPUB を書き出し"),
+@@ -1506,7 +1506,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Insert Cross-Reference", "相互参照を挿入"),
+     ("Insert Math Expression", "数式を挿入"),
+     ("Insert Pages", "ページを挿入"),
+-    ("Join the ArtCraft Discord", "ArtCraft の Discord に参加"),
++    ("Support Plervo", "ArtCraft の Discord に参加"),
+     ("Load DTD", "DTD を読み込み"),
+     ("Load Swatches", "スウォッチを読み込み"),
+     ("Margins and Columns", "マージン・段組"),
+diff --git a/crates/ui-egui/src/i18n/pt_br.rs b/crates/ui-egui/src/i18n/pt_br.rs
+index 3f955f6..a1974f7 100644
+--- a/crates/ui-egui/src/i18n/pt_br.rs
++++ b/crates/ui-egui/src/i18n/pt_br.rs
+@@ -150,9 +150,9 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Hyperlinks", "Hiperlinks"),
+     ("Bookmarks", "Indicadores"),
+     ("Show All Menu Items", "Mostrar todos os itens de menu"),
+-    ("About DesignCraft", "Sobre o DesignCraft"),
+-    ("Quit DesignCraft", "Encerrar o DesignCraft"),
+-    ("Welcome to DesignCraft", "Bem-vindo ao DesignCraft"),
++    ("About Plervo Publish", "Sobre o Plervo Publish"),
++    ("Quit Plervo Publish", "Encerrar o Plervo Publish"),
++    ("Welcome to Plervo Publish", "Bem-vindo ao Plervo Publish"),
+     ("Page layout for print and screen — fast, open and scriptable.", "Layout de página para impressão e tela — rápido, aberto e scriptável."),
+     ("  New file  ", "  Novo arquivo  "),
+     ("  Open  ", "  Abrir  "),
+@@ -164,10 +164,10 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+         "Get help, share your layouts and shape what we build next.",
+         "Obtenha ajuda, compartilhe seus layouts e ajude a moldar o que construímos em seguida.",
+     ),
+-    ("Join our Discord", "Junte-se ao nosso Discord"),
++    ("Support Plervo", "Junte-se ao nosso Discord"),
+     ("Community", "Comunidade"),
+     ("Join the community", "Junte-se à comunidade"),
+-    ("discord.gg/artcraft — help, feedback and show-and-tell", "discord.gg/artcraft — ajuda, feedback e demonstrações"),
++    ("buymeacoffee.com/alport — help, feedback and show-and-tell", "buymeacoffee.com/alport — ajuda, feedback e demonstrações"),
+     ("  OK  ", "  OK  "),
+     ("Float panel", "Painel flutuante"),
+     ("Dock panel", "Painel encaixado"),
+diff --git a/crates/ui-egui/src/i18n/uk.rs b/crates/ui-egui/src/i18n/uk.rs
+index efccfc1..27776db 100644
+--- a/crates/ui-egui/src/i18n/uk.rs
++++ b/crates/ui-egui/src/i18n/uk.rs
+@@ -403,8 +403,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Show / hide text with this condition", "Показати / приховати текст із цією умовою"),
+     ("Spreads of up to 10 pages", "Розвороти до 10 сторінок"),
+     ("for", "для"),
+-    ("About DesignCraft", "Про DesignCraft"),
+-    ("Quit DesignCraft", "Завершити DesignCraft"),
++    ("About Plervo Publish", "Про Plervo Publish"),
++    ("Quit Plervo Publish", "Завершити Plervo Publish"),
+     ("Accept All Changes", "Прийняти всі зміни"),
+     ("Activate Document", "Активувати документ"),
+     ("Add Anchor Point", "Додати опорну точку"),
+@@ -436,7 +436,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Apply Condition", "Застосувати умову"),
+     ("Apply Parent to Pages…", "Застосувати шаблон до сторінок…"),
+     ("ArtCraft App Page…", "Сторінка програми ArtCraft…"),
+-    ("ArtCraft Website…", "Вебсайт ArtCraft…"),
++    ("Plervo Website…", "Вебсайт ArtCraft…"),
+     ("Attributes", "Атрибути"),
+     ("Bevel and Emboss", "Скіс і рельєф"),
+     ("Buttons", "Кнопки"),
+@@ -488,8 +488,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Delete Item", "Видалити елемент"),
+     ("Delete Text Variable", "Видалити текстову змінну"),
+     ("Delete Workspace…", "Видалити робоче середовище…"),
+-    ("DesignCraft Website…", "Вебсайт DesignCraft…"),
+-    ("DesignCraft on GitHub…", "DesignCraft на GitHub…"),
++    ("Plervo Publish Website…", "Вебсайт Plervo Publish…"),
++    ("Plervo Publish on GitHub…", "Plervo Publish на GitHub…"),
+     ("Detach All Objects from Parent", "Від’єднати всі об’єкти від шаблону"),
+     ("Directional Feather", "Спрямоване розтушовування"),
+     ("Distribute", "Розподілити"),
+@@ -563,7 +563,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Insert Variable", "Вставити змінну"),
+     ("Inspect Document", "Перевірити документ"),
+     ("Interface Color Theme", "Колірна тема інтерфейсу"),
+-    ("Join the ArtCraft Discord…", "Приєднатися до Discord ArtCraft…"),
++    ("Support Plervo", "Приєднатися до Discord ArtCraft…"),
+     ("Last Object Below", "Останній об’єкт нижче"),
+     ("Library Contents", "Вміст бібліотеки"),
+     ("Library Items", "Елементи бібліотеки"),
+@@ -849,7 +849,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Crop Amount", "Величина обрізання"),
+     ("Cross-Reference Format", "Формат перехресного посилання"),
+     ("Delete Workspace", "Видалити робоче середовище"),
+-    ("DesignCraft", "DesignCraft"),
++    ("Plervo Publish", "Plervo Publish"),
+     ("Display Performance", "Якість відображення"),
+     ("Document Grid", "Сітка документа"),
+     ("Document Recovery Data", "Дані відновлення документа"),
+@@ -946,14 +946,14 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("User Dictionary (this document)", "Словник користувача (цей документ)"),
+     ("Utilities", "Допоміжні інструменти"),
+     ("Variable Font", "Варіативний шрифт"),
+-    ("Welcome to DesignCraft", "Вітаємо в DesignCraft"),
++    ("Welcome to Plervo Publish", "Вітаємо в Plervo Publish"),
+     ("When Scaling", "Під час масштабування"),
+     ("[Basic] (working) ▾", "[Основний] (робочий) ▾"),
+     ("[Black] Overprint", "Накладання [Чорного]"),
+     ("[No Group]", "[Без групи]"),
+     ("[None]", "[Немає]"),
+     ("[None] — choose a colour on the ramp.", "[Немає] — виберіть колір на шкалі."),
+-    ("discord.gg/artcraft — help, feedback and show-and-tell", "discord.gg/artcraft — допомога, відгуки та обмін роботами"),
++    ("buymeacoffee.com/alport — help, feedback and show-and-tell", "buymeacoffee.com/alport — допомога, відгуки та обмін роботами"),
+     ("⌥-click clears overrides", "⌥-клацання скидає перевизначення"),
+     ("⚠ out of date", "⚠ застаріле"),
+     ("General", "Загальні"),
+@@ -1355,7 +1355,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("H&J Violations", "Порушення переносів і вирівнювання"),
+     ("Include Bleed", "Включати виліт"),
+     ("Include Stroke Weight", "Враховувати товщину обведення"),
+-    ("Join our Discord", "Приєднуйтесь до нашого Discord"),
++    ("Support Plervo", "Приєднуйтесь до нашого Discord"),
+     ("Keep Violations", "Порушення правил утримання рядків"),
+     ("Overprint [Black] Swatch at 100%", "Накладання зразка [Чорний] на 100%"),
+     ("Printer's Marks", "Друкарські позначки"),
+diff --git a/crates/ui-egui/src/icons.rs b/crates/ui-egui/src/icons.rs
+index c934643..4eed0aa 100644
+--- a/crates/ui-egui/src/icons.rs
++++ b/crates/ui-egui/src/icons.rs
+@@ -1,4 +1,4 @@
+-//! DesignCraft's icon set, drawn in code (original artwork; no external icon assets).
++//! Plervo Publish's icon set, drawn in code (original artwork; no external icon assets).
+ //!
+ //! Icons are designed on a 20×20 grid and scaled to the target rect.
+ 
+diff --git a/crates/ui-egui/src/lib.rs b/crates/ui-egui/src/lib.rs
+index 1db2f59..e807ee0 100644
+--- a/crates/ui-egui/src/lib.rs
++++ b/crates/ui-egui/src/lib.rs
+@@ -1,4 +1,4 @@
+-//! DesignCraft's egui frontend: an InDesign-style UI over `designcraft-engine`.
++//! Plervo Publish's egui frontend: an InDesign-style UI over `designcraft-engine`.
+ //!
+ //! The UI is thin: every action goes through [`DesignApp::run`], which dispatches UI commands
+ //! (view/window) here and everything else to the engine. Menus, shortcuts, the ⌘K palette and
+@@ -279,7 +279,7 @@ pub struct UiState {
+     /// Where the Contextual Task Bar was last shown, like [`Self::task_bar_pin`].
+     #[serde(skip)]
+     pub task_bar_at: Option<[f32; 2]>,
+-    /// Help › About DesignCraft is open.
++    /// Help › About Plervo Publish is open.
+     pub about: bool,
+     /// The About window's tab: 0 About, 1 Contributors, 2 Models (`about::ABOUT_TABS`).
+     #[serde(skip)]
+@@ -1364,7 +1364,7 @@ impl DesignApp {
+     }
+ }
+ 
+-/// Files that open as documents (when dropped or picked) rather than being placed: DesignCraft
++/// Files that open as documents (when dropped or picked) rather than being placed: Plervo Publish
+ /// and IDML.
+ pub fn opens_as_document(name: &str) -> bool {
+     let n = name.to_ascii_lowercase();
+diff --git a/crates/ui-egui/src/menus.rs b/crates/ui-egui/src/menus.rs
+index dc8b88b..59fd429 100644
+--- a/crates/ui-egui/src/menus.rs
++++ b/crates/ui-egui/src/menus.rs
+@@ -11,7 +11,7 @@ pub const UI_COMMANDS: &[(&str, &str, Option<&str>, &str)] = &[
+     ("app.placeDialog", "Place…", Some("Cmd+D"), "{}"),
+     ("app.saveDialog", "Save As…", Some("Cmd+Shift+S"), "{}"),
+     ("app.save", "Save", Some("Cmd+S"), "{}"),
+-    ("app.quit", "Quit DesignCraft", Some("Cmd+Q"), "{} — close the window; each document with unsaved changes asks first"),
++    ("app.quit", "Quit Plervo Publish", Some("Cmd+Q"), "{} — close the window; each document with unsaved changes asks first"),
+     ("app.saveCopyDialog", "Save a Copy…", Some("Cmd+Alt+S"), "{} — choose where to write a copy (the document stays as it is)"),
+     ("app.loadSwatches", "Load Swatches…", None, "{} — pick a swatch exchange (.ase) file"),
+     ("app.packageDialog", "Package…", Some("Cmd+Alt+Shift+P"), "{} — choose the package folder to create (file.package)"),
+@@ -179,15 +179,15 @@ pub const UI_COMMANDS: &[(&str, &str, Option<&str>, &str)] = &[
+         "{on?: bool, at?: [x, y] (points from the canvas's top-left)} — the Contextual Task Bar stays where it is (or at `at`) instead of following the selection; with neither, toggles",
+     ),
+     ("window.taskBarReset", "Reset Bar Position", None, "{} — the Contextual Task Bar follows the selection again, under it"),
+-    ("help.discord", "Join the ArtCraft Discord…", None, "{} — opens https://discord.gg/artcraft in the browser"),
+-    ("help.appPage", "DesignCraft Website…", None, "{} — opens https://getartcraft.com/apps/designcraft"),
+-    ("help.github", "DesignCraft on GitHub…", None, "{} — opens https://github.com/storytold/designcraft"),
++    ("help.discord", "Support Plervo", None, "{} — opens https://buymeacoffee.com/alport in the browser"),
++    ("help.appPage", "Plervo Publish Website…", None, "{} — opens https://plervo.com/"),
++    ("help.github", "Plervo Publish on GitHub…", None, "{} — opens https://github.com/alportblu/plervo-pdf"),
+     ("help.issues", "Report an Issue…", None, "{} — opens the GitHub issue tracker"),
+-    ("help.website", "ArtCraft Website…", None, "{} — opens https://getartcraft.com"),
+-    ("help.app", "ArtCraft App Page…", None, "{app} — opens https://getartcraft.com/apps/{app} (e.g. photocraft)"),
++    ("help.website", "Plervo Website…", None, "{} — opens https://plervo.com"),
++    ("help.app", "ArtCraft App Page…", None, "{app} — opens https://plervo.com/apps/{app} (e.g. photocraft)"),
+     (
+         "help.about",
+-        "About DesignCraft",
++        "About Plervo Publish",
+         None,
+         "{open?: true, tab?: \"about\"|\"contributors\"|\"models\"} — the About window: splash with community links, contributor and model credits (open: false closes it)",
+     ),
+diff --git a/crates/ui-egui/src/rtl.rs b/crates/ui-egui/src/rtl.rs
+index a554bc6..9cbf2f7 100644
+--- a/crates/ui-egui/src/rtl.rs
++++ b/crates/ui-egui/src/rtl.rs
+@@ -489,7 +489,7 @@ mod tests {
+     #[test]
+     fn isolates_arabic_names_from_latin_brand_and_zoom_suffix() {
+         with_fonts(|ctx| {
+-            for text in [format!("DesignCraft — {}", isolate("ملف (PDF 123) جديد")), format!("{} @ 89%", isolate("ملف (PDF 123) جديد"))]
++            for text in [format!("Plervo Publish — {}", isolate("ملف (PDF 123) جديد")), format!("{} @ 89%", isolate("ملف (PDF 123) جديد"))]
+             {
+                 let galley = plain(ctx, &text, FontId::proportional(15.0), Color32::WHITE);
+                 let glyphs = &galley.rows[0].glyphs;
+diff --git a/crates/ui-egui/src/theme.rs b/crates/ui-egui/src/theme.rs
+index 193abf3..893dc95 100644
+--- a/crates/ui-egui/src/theme.rs
++++ b/crates/ui-egui/src/theme.rs
+@@ -406,10 +406,10 @@ mod japanese_font_tests {
+             // (egui's has_glyph reports false for characters of the face that also supplies the
+             // replacement glyph, as Source Sans Semibold does in the semibold stack.)
+             let body = egui::FontId::new(13.0, egui::FontFamily::Proportional);
+-            assert!(fonts.has_glyphs(&body, "DesignCraft"));
++            assert!(fonts.has_glyphs(&body, "Plervo Publish"));
+             for family in families() {
+                 let font = egui::FontId::new(13.0, family);
+-                let galley = fonts.layout_no_wrap("日本語 DesignCraft".into(), font, egui::Color32::WHITE);
++                let galley = fonts.layout_no_wrap("日本語 Plervo Publish".into(), font, egui::Color32::WHITE);
+                 assert!(galley.size().x > 0.0);
+             }
+         });
+diff --git a/packaging/env.sh b/packaging/env.sh
+index 0eb5802..d6d95ab 100644
+--- a/packaging/env.sh
++++ b/packaging/env.sh
+@@ -47,10 +47,17 @@ warn() {
+ # Copy licence and readme files that exist into a package directory.
+ copy_docs() {
+   local dest="$1" f
+-  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT; do
++  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md; do
+     if [ -f "$ROOT/$f" ]; then cp "$ROOT/$f" "$dest/"; fi
+   done
+   copy_font_licences "$dest"
++  # Embedded resources retain their original licence notices.
++  while IFS= read -r -d '' lic; do
++    local rel="${lic#"$ROOT/"}"
++    local file="${rel//\//_}"
++    cp "$lic" "$dest/LICENSE-bundled-$file.txt"
++  done < <(find "$ROOT/assets" -type f \( -iname '*license*' -o -iname '*licence*' -o -iname '*ofl*txt' -o -iname 'copyright*' \) -print0)
++
+ }
+ 
+ # Builds made with craft-fonts (CRAFT_FONTS_DIR, set by the release workflow) embed its fonts, so
+diff --git a/packaging/freebsd/package.sh b/packaging/freebsd/package.sh
+index 1854c28..3b66662 100755
+--- a/packaging/freebsd/package.sh
++++ b/packaging/freebsd/package.sh
+@@ -1,12 +1,12 @@
+ #!/usr/bin/env bash
+-# Build and package DesignCraft for FreeBSD:
++# Build and package Plervo Publish for FreeBSD:
+ #
+-#   $DIST/designcraft-<version>-freebsd-x86_64.tar.gz   a /usr/local-style tree:
+-#       designcraft-<version>-freebsd-x86_64/{bin, share/applications, share/icons, share/mime,
+-#       share/metainfo, share/doc/designcraft}
++#   $DIST/plervo-publish-<version>-freebsd-x86_64.tar.gz   a /usr/local-style tree:
++#       plervo-publish-<version>-freebsd-x86_64/{bin, share/applications, share/icons, share/mime,
++#       share/metainfo, share/doc/plervo-publish}
+ #
+ # Install by copying the tree's contents into /usr/local:
+-#   tar -xzf designcraft-<version>-freebsd-x86_64.tar.gz --strip-components 1 -C /usr/local
++#   tar -xzf plervo-publish-<version>-freebsd-x86_64.tar.gz --strip-components 1 -C /usr/local
+ #
+ # Usage: packaging/freebsd/package.sh [--skip-build] [--dry-run]
+ #   --dry-run   stage the tree from stub binaries and list it, without building (works on any OS)
+@@ -16,7 +16,7 @@ set -euo pipefail
+ # shellcheck source=../env.sh
+ . "$(dirname "${BASH_SOURCE[0]}")/../env.sh"
+ LINUX="$ROOT/packaging/linux"
+-APP_ID=ai.storyteller.designcraft
++APP_ID=com.plervo.publish
+ 
+ SKIP_BUILD=0
+ DRY_RUN=0
+@@ -40,14 +40,14 @@ if [ "$DRY_RUN" = 0 ] && [ "$(uname -s)" != FreeBSD ]; then
+   echo "error: build on FreeBSD (or pass --dry-run to check the tree layout)" >&2
+   exit 2
+ fi
+-BASENAME="designcraft-$VERSION-freebsd-$ARCH"
++BASENAME="plervo-publish-$VERSION-freebsd-$ARCH"
+ 
+-echo "==> DesignCraft $VERSION for FreeBSD $ARCH"
++echo "==> Plervo Publish $VERSION for FreeBSD $ARCH"
+ 
+ # The release VM has 12 GB; full parallelism on the biggest crates runs it out of memory.
+ export CARGO_BUILD_JOBS="${CARGO_BUILD_JOBS:-4}"
+ if [ "$SKIP_BUILD" = 0 ]; then
+-  (cd "$ROOT" && cargo build --release --locked -p designcraft -p designcraft-cli)
++  (cd "$ROOT" && cargo build --release --locked -p plervo-publish -p plervo-publish-cli)
+ fi
+ WORK="$CARGO_TARGET_DIR/freebsd-package"
+ STAGE="$WORK/$BASENAME"
+@@ -61,7 +61,7 @@ if [ "$DRY_RUN" = 1 ]; then
+   BIN="$WORK/stub-bin"
+   OUT_DIR="$WORK"
+   mkdir -p "$BIN"
+-  for b in designcraft designcraft-cli; do
++  for b in plervo-publish plervo-publish-cli; do
+     printf '#!/bin/sh\necho "%s %s (dry-run stub)"\n' "$b" "$VERSION" >"$BIN/$b"
+     chmod 755 "$BIN/$b"
+   done
+@@ -70,23 +70,23 @@ fi
+ # ---- stage a /usr/local-style tree --------------------------------------------------------------
+ # FreeBSD's install(1) has no -D: create the directories first.
+ mkdir -p "$STAGE/bin" "$STAGE/share/applications" "$STAGE/share/mime/packages" \
+-  "$STAGE/share/metainfo" "$STAGE/share/icons" "$STAGE/share/doc/designcraft"
+-install -m 755 "$BIN/designcraft" "$BIN/designcraft-cli" "$STAGE/bin/"
+-strip "$STAGE/bin/designcraft" "$STAGE/bin/designcraft-cli" 2>/dev/null || true
++  "$STAGE/share/metainfo" "$STAGE/share/icons" "$STAGE/share/doc/plervo-publish"
++install -m 755 "$BIN/plervo-publish" "$BIN/plervo-publish-cli" "$STAGE/bin/"
++strip "$STAGE/bin/plervo-publish" "$STAGE/bin/plervo-publish-cli" 2>/dev/null || true
+ # The desktop entry, MIME type, metainfo and icons are the freedesktop files Linux ships.
+ install -m 644 "$LINUX/$APP_ID.desktop" "$STAGE/share/applications/$APP_ID.desktop"
+ install -m 644 "$LINUX/$APP_ID.mime.xml" "$STAGE/share/mime/packages/$APP_ID.xml"
+ sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$DESIGNCRAFT_BUILD_DATE/g" \
+   "$LINUX/$APP_ID.metainfo.xml.in" >"$STAGE/share/metainfo/$APP_ID.metainfo.xml"
+ cp -R "$ROOT/assets/app-icon/hicolor" "$STAGE/share/icons/"
+-copy_docs "$STAGE/share/doc/designcraft"
++copy_docs "$STAGE/share/doc/plervo-publish"
+ for f in NOTICE ATTRIBUTION.md; do
+-  if [ -f "$ROOT/$f" ]; then install -m 644 "$ROOT/$f" "$STAGE/share/doc/designcraft/"; fi
++  if [ -f "$ROOT/$f" ]; then install -m 644 "$ROOT/$f" "$STAGE/share/doc/plervo-publish/"; fi
+ done
+ 
+-for f in bin/designcraft bin/designcraft-cli "share/applications/$APP_ID.desktop" \
++for f in bin/plervo-publish bin/plervo-publish-cli "share/applications/$APP_ID.desktop" \
+   "share/icons/hicolor/256x256/apps/$APP_ID.png" "share/icons/hicolor/scalable/apps/$APP_ID.svg" \
+-  share/doc/designcraft/LICENSE-MIT share/doc/designcraft/LICENSE-APACHE; do
++  share/doc/plervo-publish/LICENSE-MIT share/doc/plervo-publish/LICENSE-APACHE; do
+   if [ ! -e "$STAGE/$f" ]; then echo "error: $f is missing from the package" >&2; exit 1; fi
+ done
+ 
+@@ -95,7 +95,7 @@ mkdir -p "$OUT_DIR"
+ tar -C "$WORK" -czf "$OUT_DIR/$BASENAME.tar.gz" "$BASENAME"
+ echo "wrote $OUT_DIR/$BASENAME.tar.gz"
+ 
+-"$STAGE/bin/designcraft-cli" --version
++"$STAGE/bin/plervo-publish-cli" --version
+ if [ "$DRY_RUN" = 1 ]; then
+   echo "==> dry run: tarball contents"
+   tar -tzvf "$OUT_DIR/$BASENAME.tar.gz"
+diff --git a/packaging/icons.sh b/packaging/icons.sh
+index 6e06fb9..cebe247 100755
+--- a/packaging/icons.sh
++++ b/packaging/icons.sh
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env bash
+-# Regenerate every app icon from assets/app-icon/designcraft.svg.
++# Regenerate every app icon from assets/app-icon/plervo-publish.svg.
+ #
+ # Needs: resvg (brew install resvg / cargo install resvg). On macOS, iconutil also writes the
+ # .icns. The outputs are committed, so builds and packaging never need these tools.
+@@ -8,8 +8,8 @@
+ set -euo pipefail
+ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ DIR="$ROOT/assets/app-icon"
+-SVG="$DIR/designcraft.svg"
+-ID="ai.storyteller.designcraft"
++SVG="$DIR/plervo-publish.svg"
++ID="com.plervo.publish"
+ TMP="$(mktemp -d)"
+ trap 'rm -rf "$TMP"' EXIT
+ 
+@@ -23,9 +23,9 @@ grep -q 'viewBox="-62.136' "$MAC" || { echo "error: expected viewBox=\"0 0 512 5
+ 
+ render() { resvg -w "$2" -h "$2" "$1" "$3" </dev/null; }
+ 
+-render "$SVG" 1024 "$DIR/designcraft-1024.png"
++render "$SVG" 1024 "$DIR/plervo-publish-1024.png"
+ # Runtime window/Dock icon on macOS (embedded by apps/designcraft); other platforms use hicolor 256.
+-render "$MAC" 512 "$DIR/designcraft-macos-512.png"
++render "$MAC" 512 "$DIR/plervo-publish-macos-512.png"
+ 
+ # Linux hicolor theme.
+ for s in 16 24 32 48 64 128 256 512; do
+@@ -33,7 +33,7 @@ for s in 16 24 32 48 64 128 256 512; do
+   render "$SVG" "$s" "$DIR/hicolor/${s}x${s}/apps/$ID.png"
+ done
+ mkdir -p "$DIR/hicolor/scalable/apps"
+-cp "$DIR/designcraft-small.svg" "$DIR/hicolor/scalable/apps/$ID.svg"
++cp "$DIR/plervo-publish-small.svg" "$DIR/hicolor/scalable/apps/$ID.svg"
+ 
+ # Windows .ico.
+ ICO_PNGS=()
+@@ -41,18 +41,18 @@ for s in 16 20 24 32 40 48 64 128 256; do
+   render "$SVG" "$s" "$TMP/ico-$s.png"
+   ICO_PNGS+=("$TMP/ico-$s.png")
+ done
+-(cd "$ROOT" && cargo run -q -p xtask -- ico "$DIR/designcraft.ico" "${ICO_PNGS[@]}")
++(cd "$ROOT" && cargo run -q -p xtask -- ico "$DIR/plervo-publish.ico" "${ICO_PNGS[@]}")
+ 
+ # macOS .icns.
+ if command -v iconutil >/dev/null; then
+-  SET="$TMP/designcraft.iconset"
++  SET="$TMP/plervo-publish.iconset"
+   mkdir -p "$SET"
+   for s in 16 32 128 256 512; do
+     render "$MAC" "$s" "$SET/icon_${s}x${s}.png"
+     render "$MAC" $((s * 2)) "$SET/icon_${s}x${s}@2x.png"
+   done
+-  iconutil -c icns -o "$DIR/designcraft.icns" "$SET"
++  iconutil -c icns -o "$DIR/plervo-publish.icns" "$SET"
+ else
+-  echo "warning: iconutil not found (macOS only); designcraft.icns not regenerated" >&2
++  echo "warning: iconutil not found (macOS only); plervo-publish.icns not regenerated" >&2
+ fi
+ echo "icons written to $DIR"
+diff --git a/packaging/linux/com.plervo.publish.desktop b/packaging/linux/com.plervo.publish.desktop
+new file mode 100644
+index 0000000..b5b92c5
+--- /dev/null
++++ b/packaging/linux/com.plervo.publish.desktop
+@@ -0,0 +1,13 @@
++[Desktop Entry]
++Type=Application
++Name=Plervo Publish
++GenericName=Page Layout
++Comment=Lay out magazines, books and print documents
++Exec=plervo-publish %F
++TryExec=plervo-publish
++Icon=com.plervo.publish
++Terminal=false
++StartupNotify=true
++StartupWMClass=com.plervo.publish
++Categories=Graphics;Publishing;
++Keywords=layout;page;desktop publishing;dtp;magazine;book;indesign;idml;typesetting;
+diff --git a/packaging/linux/com.plervo.publish.metainfo.xml.in b/packaging/linux/com.plervo.publish.metainfo.xml.in
+new file mode 100644
+index 0000000..714b805
+--- /dev/null
++++ b/packaging/linux/com.plervo.publish.metainfo.xml.in
+@@ -0,0 +1,61 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
++     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
++<component type="desktop-application">
++  <id>com.plervo.publish</id>
++  <metadata_license>CC0-1.0</metadata_license>
++  <project_license>MIT OR Apache-2.0</project_license>
++  <name>Plervo Publish</name>
++  <summary>Lay out magazines, books and print documents</summary>
++  <developer id="ai.storyteller">
++    <name>Maintech Solutions LLC</name>
++  </developer>
++  <description>
++    <p>
++      Plervo Publish is a page layout. Lay out magazines, books and print documents
++    </p>
++  </description>
++  <launchable type="desktop-id">com.plervo.publish.desktop</launchable>
++  <icon type="stock">com.plervo.publish</icon>
++  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
++  <url type="homepage">https://plervo.com/</url>
++  <url type="bugtracker">https://github.com/alportblu/plervo-pdf/issues</url>
++  <url type="help">https://github.com/alportblu/plervo-pdf</url>
++  <url type="contact">https://buymeacoffee.com/alport</url>
++  <categories>
++    <category>Graphics</category>
++    <category>RasterGraphics</category>
++    <category>Photography</category>
++  </categories>
++  <keywords>
++    <keyword>photo</keyword>
++    <keyword>image editor</keyword>
++    <keyword>psd</keyword>
++    <keyword>layers</keyword>
++  </keywords>
++  <screenshots>
++    <screenshot type="default">
++      <caption>Editing The Great Wave off Kanagawa with type layers and adjustment layers</caption>
++      <image>https://raw.githubusercontent.com/alportblu/plervo-pdf/main/docs/images/plervo-publish-demo.jpg</image>
++    </screenshot>
++  </screenshots>
++  <branding>
++    <color type="primary" scheme_preference="light">#9fd0ff</color>
++    <color type="primary" scheme_preference="dark">#1f64ba</color>
++  </branding>
++  <requires>
++    <display_length compare="ge">760</display_length>
++  </requires>
++  <supports>
++    <control>keyboard</control>
++    <control>pointing</control>
++    <control>tablet</control>
++  </supports>
++  <provides>
++    <binary>plervo-publish</binary>
++  </provides>
++  <content_rating type="oars-1.1"/>
++  <releases>
++    <release version="@VERSION@" date="@DATE@"/>
++  </releases>
++</component>
+diff --git a/packaging/linux/com.plervo.publish.mime.xml b/packaging/linux/com.plervo.publish.mime.xml
+new file mode 100644
+index 0000000..be4dcc2
+--- /dev/null
++++ b/packaging/linux/com.plervo.publish.mime.xml
+@@ -0,0 +1,3 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
++</mime-info>
+diff --git a/packaging/linux/flatpak-bundle.sh b/packaging/linux/flatpak-bundle.sh
+index c45a55a..c916b9b 100755
+--- a/packaging/linux/flatpak-bundle.sh
++++ b/packaging/linux/flatpak-bundle.sh
+@@ -1,22 +1,22 @@
+ #!/usr/bin/env bash
+-# Repackage a DesignCraft Linux tarball as a single-file Flatpak bundle:
++# Repackage a Plervo Publish Linux tarball as a single-file Flatpak bundle:
+ #
+-#   $DIST/designcraft-<version>-linux-<arch>.flatpak
++#   $DIST/plervo-publish-<version>-linux-<arch>.flatpak
+ #
+ # Usage: packaging/linux/flatpak-bundle.sh [--no-test] [TARBALL]
+ #
+-# TARBALL defaults to $DIST/designcraft-<version>-linux-<arch>.tar.gz from package.sh. The bundle
++# TARBALL defaults to $DIST/plervo-publish-<version>-linux-<arch>.tar.gz from package.sh. The bundle
+ # is built for the host architecture (x86_64 or aarch64), which must match the tarball's.
+ # Needs flatpak, flatpak-builder and the SVG pixbuf loader (librsvg2-common) for the host's
+ # `appstreamcli compose`; the freedesktop runtime and SDK named in the manifest are
+ # installed per-user from Flathub. Unless --no-test, the bundle is then installed per-user and
+-# `designcraft-cli --version` is run inside the sandbox as a smoke test.
+-# Manifest: packaging/linux/flatpak/ai.storyteller.designcraft.bundle.yml.
++# `plervo-publish-cli --version` is run inside the sandbox as a smoke test.
++# Manifest: packaging/linux/flatpak/com.plervo.publish.bundle.yml.
+ set -euo pipefail
+ # shellcheck source=../env.sh
+ . "$(dirname "${BASH_SOURCE[0]}")/../env.sh"
+ HERE="$ROOT/packaging/linux"
+-APP_ID=ai.storyteller.designcraft
++APP_ID=com.plervo.publish
+ FLATHUB=https://dl.flathub.org/repo/flathub.flatpakrepo
+ 
+ TEST=1
+@@ -36,20 +36,20 @@ case "$ARCH" in
+   aarch64 | arm64) ARCH=aarch64 ;;
+   *) echo "unsupported architecture $ARCH" >&2; exit 2 ;;
+ esac
+-BASENAME="designcraft-$VERSION-linux-$ARCH"
++BASENAME="plervo-publish-$VERSION-linux-$ARCH"
+ TARBALL="${TARBALL:-$DIST/$BASENAME.tar.gz}"
+ [ -f "$TARBALL" ] || { echo "error: $TARBALL not found (run packaging/linux/package.sh --formats tar first)" >&2; exit 1; }
+ for tool in flatpak flatpak-builder; do
+   command -v "$tool" >/dev/null || { echo "error: $tool not found (apt install flatpak flatpak-builder librsvg2-common)" >&2; exit 1; }
+ done
+ 
+-echo "==> DesignCraft $VERSION Flatpak bundle for $ARCH from $(basename "$TARBALL")"
++echo "==> Plervo Publish $VERSION Flatpak bundle for $ARCH from $(basename "$TARBALL")"
+ 
+ WORK="$CARGO_TARGET_DIR/flatpak-bundle"
+ rm -rf "$WORK"
+ mkdir -p "$WORK/stage"
+ tar -xzf "$TARBALL" -C "$WORK/stage" --strip-components=1
+-[ -x "$WORK/stage/bin/designcraft" ] || { echo "error: $TARBALL has no bin/designcraft" >&2; exit 1; }
++[ -x "$WORK/stage/bin/plervo-publish" ] || { echo "error: $TARBALL has no bin/plervo-publish" >&2; exit 1; }
+ cp "$HERE/flatpak/$APP_ID.bundle.yml" "$WORK/$APP_ID.yml"
+ 
+ flatpak remote-add --user --if-not-exists flathub "$FLATHUB"
+@@ -65,7 +65,7 @@ echo "wrote $OUT"
+ if [ "$TEST" = 1 ]; then
+   flatpak install --user -y --noninteractive --reinstall "$OUT"
+   flatpak info --user "$APP_ID"
+-  flatpak run --command=designcraft-cli "$APP_ID" --version
++  flatpak run --command=plervo-publish-cli "$APP_ID" --version
+   flatpak run --command=sh "$APP_ID" -c 'ls /app/share/applications /app/share/metainfo /app/share/mime/packages /app/share/icons/hicolor/scalable/apps'
+ fi
+ echo "==> done"
+diff --git a/packaging/linux/flatpak/com.plervo.publish.bundle.yml b/packaging/linux/flatpak/com.plervo.publish.bundle.yml
+new file mode 100644
+index 0000000..28ed733
+--- /dev/null
++++ b/packaging/linux/flatpak/com.plervo.publish.bundle.yml
+@@ -0,0 +1,49 @@
++# Flatpak manifest for the single-file bundle attached to every GitHub release
++# (plervo-publish-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
++#
++# It repackages the release's own Linux tarball (plervo-publish-<version>-linux-<arch>.tar.gz,
++# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
++# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
++# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
++# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
++# Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
++# GPU driver comes from its org.freedesktop.Platform.GL extension.
++#
++# com.plervo.publish.yml (same directory) is the from-source manifest for Flathub. Keep
++# runtime-version and finish-args identical in both (packaging-lint checks this).
++id: com.plervo.publish
++runtime: org.freedesktop.Platform
++runtime-version: '25.08'
++sdk: org.freedesktop.Sdk
++command: plervo-publish
++finish-args:
++  # Display: Wayland first; X11 only when no Wayland compositor is running.
++  - --socket=wayland
++  - --socket=fallback-x11
++  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
++  - --share=ipc
++  # GPU access for egui's renderer (Vulkan, or GL as a fallback).
++  - --device=dri
++  # Open/Save, Place and Export go through the file-chooser portal (rfd's xdg-portal backend)
++  # and drag-and-drop through the document portal, so picked files work anywhere without broad
++  # filesystem access. Documents and Pictures are granted so files passed by path (the command
++  # line, Open Recent, linked images placed in a layout) work in the usual places.
++  - --filesystem=xdg-documents
++  - --filesystem=xdg-pictures
++  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
++  # the sandbox; `flatpak override --user --share=network com.plervo.publish` exposes it
++  # to host agents) and home/host filesystem access.
++modules:
++  - name: plervo-publish
++    buildsystem: simple
++    build-commands:
++      - install -Dm755 bin/plervo-publish /app/bin/plervo-publish
++      - install -Dm755 bin/plervo-publish-cli /app/bin/plervo-publish-cli
++      - install -Dm644 share/applications/com.plervo.publish.desktop /app/share/applications/com.plervo.publish.desktop
++      - install -Dm644 share/mime/packages/com.plervo.publish.xml /app/share/mime/packages/com.plervo.publish.xml
++      # Already has the release's version and date substituted by package.sh.
++      - install -Dm644 share/metainfo/com.plervo.publish.metainfo.xml /app/share/metainfo/com.plervo.publish.metainfo.xml
++      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/plervo-publish /app/share/doc/
++    sources:
++      - type: dir
++        path: stage
+diff --git a/packaging/linux/flatpak/com.plervo.publish.yml b/packaging/linux/flatpak/com.plervo.publish.yml
+new file mode 100644
+index 0000000..64a30ab
+--- /dev/null
++++ b/packaging/linux/flatpak/com.plervo.publish.yml
+@@ -0,0 +1,66 @@
++# Flatpak manifest for Plervo Publish, ready for a Flathub submission.
++#
++# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
++#
++#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
++#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
++#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/com.plervo.publish.yml
++#   flatpak run com.plervo.publish
++#
++# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
++# The single-file .flatpak attached to each release comes from com.plervo.publish.bundle.yml,
++# which repackages the prebuilt release binaries. Keep runtime-version and finish-args identical.
++id: com.plervo.publish
++runtime: org.freedesktop.Platform
++runtime-version: '25.08'
++sdk: org.freedesktop.Sdk
++sdk-extensions:
++  - org.freedesktop.Sdk.Extension.rust-stable
++command: plervo-publish
++finish-args:
++  # Display: Wayland first; X11 only when no Wayland compositor is running.
++  - --socket=wayland
++  - --socket=fallback-x11
++  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
++  - --share=ipc
++  # GPU access for egui's renderer (Vulkan, or GL as a fallback).
++  - --device=dri
++  # Open/Save, Place and Export go through the file-chooser portal (rfd's xdg-portal backend)
++  # and drag-and-drop through the document portal, so picked files work anywhere without broad
++  # filesystem access. Documents and Pictures are granted so files passed by path (the command
++  # line, Open Recent, linked images placed in a layout) work in the usual places.
++  - --filesystem=xdg-documents
++  - --filesystem=xdg-pictures
++  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
++  # the sandbox; `flatpak override --user --share=network com.plervo.publish` exposes it
++  # to host agents) and home/host filesystem access.
++build-options:
++  append-path: /usr/lib/sdk/rust-stable/bin
++modules:
++  - name: plervo-publish
++    buildsystem: simple
++    build-options:
++      env:
++        CARGO_HOME: /run/build/plervo-publish/cargo
++        CARGO_NET_OFFLINE: 'true'
++    build-commands:
++      - cargo --offline build --release --locked -p plervo-publish
++      - install -Dm755 target/release/plervo-publish /app/bin/plervo-publish
++      - install -Dm644 packaging/linux/com.plervo.publish.desktop /app/share/applications/com.plervo.publish.desktop
++      - install -Dm644 packaging/linux/com.plervo.publish.mime.xml /app/share/mime/packages/com.plervo.publish.xml
++      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
++      - >-
++        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
++        install -d /app/share/metainfo;
++        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
++        packaging/linux/com.plervo.publish.metainfo.xml.in > /app/share/metainfo/com.plervo.publish.metainfo.xml
++    sources:
++      - type: dir
++        path: ../../..
++        skip:
++          - target
++          - dist
++          - corpus
++          - build-flatpak
++          - .flatpak-builder
++      - cargo-sources.json
+diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
+index e2ce72b..33e28cd 100644
+--- a/packaging/linux/nfpm.yaml
++++ b/packaging/linux/nfpm.yaml
+@@ -3,7 +3,7 @@
+ # exports VERSION and NFPM_ARCH.
+ #
+ #   nfpm package -f packaging/linux/nfpm.yaml -p deb -t dist/release/
+-name: designcraft
++name: plervo-publish
+ arch: ${NFPM_ARCH}
+ platform: linux
+ version: ${VERSION}
+@@ -13,14 +13,14 @@ release: 1
+ section: graphics
+ priority: optional
+ maintainer: ${DESIGNCRAFT_MAINTAINER}
+-vendor: Learning Machines LLC
+-homepage: https://getartcraft.com/apps/designcraft
++vendor: Maintech Solutions LLC
++homepage: https://plervo.com/
+ license: MIT OR Apache-2.0
+ description: |-
+   Open-source, native page layout and publishing that works the way InDesign users expect.
+   Spreads and parent pages, threaded text frames, paragraph and character styles, swatches,
+   text wrap and a Knuth-Plass paragraph composer; IDML import and export.
+-  Includes designcraft-cli, a headless renderer and command runner.
++  Includes plervo-publish-cli, a headless renderer and command runner.
+ 
+ # The binaries link only glibc and libgcc_s directly. Windowing (X11/Wayland, xkbcommon) and the
+ # GPU (Vulkan, EGL/GL) are loaded at runtime, so they are dependencies/recommendations here
+@@ -55,11 +55,11 @@ overrides:
+       - xdg-desktop-portal
+ 
+ contents:
+-  - src: ${STAGE}/usr/bin/designcraft
+-    dst: /usr/bin/designcraft
++  - src: ${STAGE}/usr/bin/plervo-publish
++    dst: /usr/bin/plervo-publish
+     file_info: { mode: 0755 }
+-  - src: ${STAGE}/usr/bin/designcraft-cli
+-    dst: /usr/bin/designcraft-cli
++  - src: ${STAGE}/usr/bin/plervo-publish-cli
++    dst: /usr/bin/plervo-publish-cli
+     file_info: { mode: 0755 }
+   - src: ${STAGE}/usr/share/
+     dst: /usr/share/
+diff --git a/packaging/linux/package.sh b/packaging/linux/package.sh
+index fd7fc4e..8b19cae 100755
+--- a/packaging/linux/package.sh
++++ b/packaging/linux/package.sh
+@@ -1,11 +1,11 @@
+ #!/usr/bin/env bash
+-# Build and package DesignCraft for Linux (<arch> is x86_64 or aarch64, or riscv64 when cross-compiling):
++# Build and package Plervo Publish for Linux (<arch> is x86_64 or aarch64, or riscv64 when cross-compiling):
+ #
+-#   $DIST/designcraft-<version>-linux-<arch>.AppImage  any distro with glibc >= the build host's
+-#   $DIST/designcraft-<version>-linux-<arch>.AppImage.zsync  delta updates (needs zsyncmake)
+-#   $DIST/designcraft-<version>-linux-<arch>.deb       Debian, Ubuntu, Mint, Pop!_OS, ...
+-#   $DIST/designcraft-<version>-linux-<arch>.rpm       Fedora, openSUSE, RHEL, ...
+-#   $DIST/designcraft-<version>-linux-<arch>.tar.gz    plain FHS-style tree (bin/, share/)
++#   $DIST/plervo-publish-<version>-linux-<arch>.AppImage  any distro with glibc >= the build host's
++#   $DIST/plervo-publish-<version>-linux-<arch>.AppImage.zsync  delta updates (needs zsyncmake)
++#   $DIST/plervo-publish-<version>-linux-<arch>.deb       Debian, Ubuntu, Mint, Pop!_OS, ...
++#   $DIST/plervo-publish-<version>-linux-<arch>.rpm       Fedora, openSUSE, RHEL, ...
++#   $DIST/plervo-publish-<version>-linux-<arch>.tar.gz    plain FHS-style tree (bin/, share/)
+ #
+ # Usage: packaging/linux/package.sh [--skip-build] [--formats "appimage deb rpm tar"]
+ #
+@@ -17,7 +17,7 @@ set -euo pipefail
+ # shellcheck source=../env.sh
+ . "$(dirname "${BASH_SOURCE[0]}")/../env.sh"
+ HERE="$ROOT/packaging/linux"
+-APP_ID=ai.storyteller.designcraft
++APP_ID=com.plervo.publish
+ 
+ SKIP_BUILD=0
+ FORMATS="appimage deb rpm tar"
+@@ -37,16 +37,16 @@ case "$ARCH" in
+   aarch64 | arm64) ARCH=aarch64; DEB_ARCH=arm64 ;;
+   *) echo "unsupported architecture $ARCH" >&2; exit 2 ;;
+ esac
+-export DESIGNCRAFT_MAINTAINER="${DESIGNCRAFT_MAINTAINER:-DesignCraft maintainers <designcraft@storyteller.ai>}"
+-BASENAME="designcraft-$VERSION-linux-$ARCH"
++export DESIGNCRAFT_MAINTAINER="${DESIGNCRAFT_MAINTAINER:-Plervo Publish maintainers <plervo-publish@storyteller.ai>}"
++BASENAME="plervo-publish-$VERSION-linux-$ARCH"
+ 
+-echo "==> DesignCraft $VERSION for Linux $ARCH ($FORMATS)"
++echo "==> Plervo Publish $VERSION for Linux $ARCH ($FORMATS)"
+ 
+ if [ "$SKIP_BUILD" = 0 ]; then
+   if [ -n "${CROSS_TARGET:-}" ]; then
+-    (cd "$ROOT" && cargo build --release --locked -p designcraft -p designcraft-cli --target "$CROSS_TARGET")
++    (cd "$ROOT" && cargo build --release --locked -p plervo-publish -p plervo-publish-cli --target "$CROSS_TARGET")
+   else
+-    (cd "$ROOT" && cargo build --release --locked -p designcraft -p designcraft-cli)
++    (cd "$ROOT" && cargo build --release --locked -p plervo-publish -p plervo-publish-cli)
+   fi
+ fi
+ BIN="$CARGO_TARGET_DIR/${CROSS_TARGET:+$CROSS_TARGET/}release"
+@@ -55,9 +55,9 @@ STAGE="$WORK/root"
+ rm -rf "$WORK"
+ 
+ # ---- stage an FHS tree (shared by every format) -------------------------------------------------
+-install -Dm755 "$BIN/designcraft" "$STAGE/usr/bin/designcraft"
+-install -Dm755 "$BIN/designcraft-cli" "$STAGE/usr/bin/designcraft-cli"
+-"${CROSS_COMPILE:-}strip" "$STAGE/usr/bin/designcraft" "$STAGE/usr/bin/designcraft-cli" 2>/dev/null || true
++install -Dm755 "$BIN/plervo-publish" "$STAGE/usr/bin/plervo-publish"
++install -Dm755 "$BIN/plervo-publish-cli" "$STAGE/usr/bin/plervo-publish-cli"
++"${CROSS_COMPILE:-}strip" "$STAGE/usr/bin/plervo-publish" "$STAGE/usr/bin/plervo-publish-cli" 2>/dev/null || true
+ install -Dm644 "$HERE/$APP_ID.desktop" "$STAGE/usr/share/applications/$APP_ID.desktop"
+ install -Dm644 "$HERE/$APP_ID.mime.xml" "$STAGE/usr/share/mime/packages/$APP_ID.xml"
+ mkdir -p "$STAGE/usr/share/metainfo"
+@@ -65,8 +65,8 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$DESIGNCRAFT_BUILD_DATE/g" \
+   "$HERE/$APP_ID.metainfo.xml.in" >"$STAGE/usr/share/metainfo/$APP_ID.metainfo.xml"
+ mkdir -p "$STAGE/usr/share/icons"
+ cp -R "$ROOT/assets/app-icon/hicolor" "$STAGE/usr/share/icons/"
+-mkdir -p "$STAGE/usr/share/doc/designcraft"
+-copy_docs "$STAGE/usr/share/doc/designcraft"
++mkdir -p "$STAGE/usr/share/doc/plervo-publish"
++copy_docs "$STAGE/usr/share/doc/plervo-publish"
+ 
+ if command -v desktop-file-validate >/dev/null; then
+   desktop-file-validate "$STAGE/usr/share/applications/$APP_ID.desktop"
+@@ -104,10 +104,10 @@ if has appimage; then
+     x86_64) APPIMAGETOOL_SHA256=ed4ce84f0d9caff66f50bcca6ff6f35aae54ce8135408b3fa33abfc3cb384eb0 ;;
+     aarch64) APPIMAGETOOL_SHA256=f0837e7448a0c1e4e650a93bb3e85802546e60654ef287576f46c71c126a9158 ;;
+   esac
+-  APPDIR="$WORK/DesignCraft.AppDir"
++  APPDIR="$WORK/Plervo Publish.AppDir"
+   cp -R "$STAGE" "$APPDIR"
+   mv "$APPDIR/usr/share/doc" "$WORK/doc-unused"
+-  ln -s usr/bin/designcraft "$APPDIR/AppRun"
++  ln -s usr/bin/plervo-publish "$APPDIR/AppRun"
+   cp "$HERE/$APP_ID.desktop" "$APPDIR/$APP_ID.desktop"
+   cp "$ROOT/assets/app-icon/hicolor/256x256/apps/$APP_ID.png" "$APPDIR/$APP_ID.png"
+   ln -s "$APP_ID.png" "$APPDIR/.DirIcon"
+@@ -136,8 +136,8 @@ if has appimage; then
+   # fetch only the blocks that changed in a newer release, through the .zsync published next to
+   # each AppImage on GitHub Releases. `latest` is the newest published release that is not a
+   # pre-release. A fork's builds point at its own releases through GITHUB_REPOSITORY.
+-  REPO="${GITHUB_REPOSITORY:-storytold/designcraft}"
+-  UPDATE_INFO="gh-releases-zsync|${REPO%%/*}|${REPO#*/}|latest|designcraft-*-linux-$ARCH.AppImage.zsync"
++  REPO="${GITHUB_REPOSITORY:-alportblu/plervo-pdf}"
++  UPDATE_INFO="gh-releases-zsync|${REPO%%/*}|${REPO#*/}|latest|plervo-publish-*-linux-$ARCH.AppImage.zsync"
+   # Extract-and-run: works without FUSE (containers, CI). The output embeds the static runtime,
+   # so users don't need libfuse2 either. With zsyncmake on the host (CI installs the zsync
+   # package) appimagetool also writes the .zsync, into its working directory, hence the cd.
+@@ -151,9 +151,9 @@ if has appimage; then
+ fi
+ 
+ if [ -z "${CROSS_TARGET:-}" ]; then
+-  "$STAGE/usr/bin/designcraft-cli" --version
++  "$STAGE/usr/bin/plervo-publish-cli" --version
+ elif [ -n "${EMULATOR:-}" ]; then
+-  "$EMULATOR" "$STAGE/usr/bin/designcraft-cli" --version
++  "$EMULATOR" "$STAGE/usr/bin/plervo-publish-cli" --version
+ fi
+ echo "==> done"
+ ls -lh "$DIST"
+diff --git a/packaging/macos/Info.plist.in b/packaging/macos/Info.plist.in
+index 4348942..0390fb2 100644
+--- a/packaging/macos/Info.plist.in
++++ b/packaging/macos/Info.plist.in
+@@ -7,13 +7,13 @@
+   <key>CFBundleDevelopmentRegion</key>
+   <string>en</string>
+   <key>CFBundleDisplayName</key>
+-  <string>DesignCraft</string>
++  <string>Plervo Publish</string>
+   <key>CFBundleName</key>
+-  <string>DesignCraft</string>
++  <string>Plervo Publish</string>
+   <key>CFBundleExecutable</key>
+-  <string>DesignCraft</string>
++  <string>Plervo Publish</string>
+   <key>CFBundleIdentifier</key>
+-  <string>ai.storyteller.designcraft</string>
++  <string>com.plervo.publish</string>
+   <key>CFBundleInfoDictionaryVersion</key>
+   <string>6.0</string>
+   <key>CFBundlePackageType</key>
+@@ -24,12 +24,12 @@
+   <string>@SHORT_VERSION@</string>
+   <key>CFBundleVersion</key>
+   <string>@SHORT_VERSION@</string>
+-  <key>DesignCraftVersion</key>
++  <key>Plervo PublishVersion</key>
+   <string>@VERSION@</string>
+-  <key>DesignCraftBuildCommit</key>
++  <key>Plervo PublishBuildCommit</key>
+   <string>@BUILD_SHA@</string>
+   <key>CFBundleIconFile</key>
+-  <string>DesignCraft</string>
++  <string>Plervo Publish</string>
+   <key>LSApplicationCategoryType</key>
+   <string>public.app-category.graphics-design</string>
+   <!-- Must match MACOSX_DEPLOYMENT_TARGET in package.sh. Big Sur is the first release on
+@@ -43,29 +43,29 @@
+   <key>NSRequiresAquaSystemAppearance</key>
+   <false/>
+   <key>NSHumanReadableCopyright</key>
+-  <string>Copyright © the DesignCraft authors. MIT OR Apache-2.0.</string>
++  <string>Copyright © the Plervo Publish authors. MIT OR Apache-2.0.</string>
+ 
+   <!-- Designcraft's own format. -->
+   <key>UTExportedTypeDeclarations</key>
+   <array>
+     <dict>
+       <key>UTTypeIdentifier</key>
+-      <string>ai.storyteller.designcraft.document</string>
++      <string>com.plervo.publish.document</string>
+       <key>UTTypeDescription</key>
+-      <string>DesignCraft Document</string>
++      <string>Plervo Publish Document</string>
+       <key>UTTypeConformsTo</key>
+       <array>
+         <string>public.data</string>
+         <string>public.image</string>
+       </array>
+       <key>UTTypeIconFile</key>
+-      <string>DesignCraft</string>
++      <string>Plervo Publish</string>
+       <key>UTTypeTagSpecification</key>
+       <dict>
+         <key>public.filename-extension</key>
+         <array><string>pcraft</string></array>
+         <key>public.mime-type</key>
+-        <array><string>application/x-designcraft</string></array>
++        <array><string>application/x-plervo-publish</string></array>
+       </dict>
+     </dict>
+   </array>
+@@ -90,7 +90,7 @@
+     </dict>
+     <dict>
+       <key>UTTypeIdentifier</key>
+-      <string>ai.storyteller.designcraft.qoi</string>
++      <string>com.plervo.publish.qoi</string>
+       <key>UTTypeDescription</key>
+       <string>QOI Image</string>
+       <key>UTTypeConformsTo</key>
+diff --git a/packaging/macos/dmg/README.md b/packaging/macos/dmg/README.md
+index 85bfcc7..4d3cafa 100644
+--- a/packaging/macos/dmg/README.md
++++ b/packaging/macos/dmg/README.md
+@@ -7,17 +7,17 @@ Finder scripting on CI, nothing extra installed in the signing job).
+ 
+ | File | What |
+ |---|---|
+-| `background.svg` | Source of the background: the app icon (`assets/app-icon/designcraft.svg`, linked, not copied) cropped as a cover on the DesignCraft colour field (`#7bb51c`), Ink and Paper. Its text (Inter, JetBrains Mono) is outlined, so rendering it needs no fonts. No paper grain: noise doesn't compress, and this keeps `background.tiff` small. |
++| `background.svg` | Source of the background: the app icon (`assets/app-icon/plervo-publish.svg`, linked, not copied) cropped as a cover on the Plervo Publish colour field (`#7bb51c`), Ink and Paper. Its text (Inter, JetBrains Mono) is outlined, so rendering it needs no fonts. No paper grain: noise doesn't compress, and this keeps `background.tiff` small. |
+ | `background.tiff` | The background at 1x (660 × 400 px, 72 dpi) and 2x (1320 × 800 px, 144 dpi) in one HiDPI TIFF (16-colour palette, Deflate, sRGB). Goes to `.background/background.tiff`. |
+-| `dmg-layout.DS_Store` | Finder's view settings for the volume: window size, icon size 128, DesignCraft.app at (326, 205), `Applications` at (574, 205), and the background. Goes to `.DS_Store` in the image; named so it isn't mistaken for (or ignored like) a Finder-generated `.DS_Store`. |
++| `dmg-layout.DS_Store` | Finder's view settings for the volume: window size, icon size 128, Plervo Publish.app at (326, 205), `Applications` at (574, 205), and the background. Goes to `.DS_Store` in the image; named so it isn't mistaken for (or ignored like) a Finder-generated `.DS_Store`. |
+ | `generate.py` | Writes `background.tiff` and `dmg-layout.DS_Store` from the SVG and the layout above. |
+ 
+ ## The volume name has no version
+ 
+-The mounted volume is called `DesignCraft`, not `DesignCraft <version>`. The layout points at the background
++The mounted volume is called `Plervo Publish`, not `Plervo Publish <version>`. The layout points at the background
+ through an alias that includes the volume name, and Finder resolves it by that name: with a
+ versioned name the window keeps its size and icon positions but shows no background (tested).
+-The DMG file name (`designcraft-<version>-macos-<arch>.dmg`) still carries the version.
++The DMG file name (`plervo-publish-<version>-macos-<arch>.dmg`) still carries the version.
+ 
+ ## Rules
+ 
+diff --git a/packaging/macos/dmg/background.svg b/packaging/macos/dmg/background.svg
+index 99c2fa2..1192fb9 100644
+--- a/packaging/macos/dmg/background.svg
++++ b/packaging/macos/dmg/background.svg
+@@ -6,7 +6,7 @@
+ </filter></defs>
+ 
+ <rect width="660" height="400" fill="#efe9dc"/>
+-<g clip-path="url(#panel)"><rect width="232" height="400" fill="#7bb51c"/><g transform="translate(-134.0,-40.0) scale(1.0)"><image href="../../../assets/app-icon/designcraft.svg" width="512" height="512"/></g></g>
++<g clip-path="url(#panel)"><rect width="232" height="400" fill="#7bb51c"/><g transform="translate(-134.0,-40.0) scale(1.0)"><image href="../../../assets/app-icon/plervo-publish.svg" width="512" height="512"/></g></g>
+ <line x1="232.5" y1="0" x2="232.5" y2="400" stroke="#0b0b0c" stroke-width="1.2"/>
+ <line x1="236.5" y1="0" x2="236.5" y2="400" stroke="#0b0b0c" stroke-width="0.5"/>
+ 
+diff --git a/packaging/macos/dmg/generate.py b/packaging/macos/dmg/generate.py
+index 6bad87a..b004a27 100644
+--- a/packaging/macos/dmg/generate.py
++++ b/packaging/macos/dmg/generate.py
+@@ -24,12 +24,12 @@ from PIL import Image, ImageCms
+ HERE = os.path.dirname(os.path.abspath(__file__))
+ 
+ # Keep in sync with package.sh (volume name) and README.md (layout).
+-VOLUME = "DesignCraft"
++VOLUME = "Plervo Publish"
+ WIDTH, HEIGHT = 660, 400  # window content, pt; the background's 1x size
+ TITLE_BAR = 32
+ ICON_SIZE = 128
+ PALETTE = 16  # colours in background.tiff
+-ICONS = {"DesignCraft.app": (326, 205), "Applications": (574, 205)}
++ICONS = {"Plervo Publish.app": (326, 205), "Applications": (574, 205)}
+ # A fixed date for the alias and the colour profile. Finder never matches it against the image
+ # (each build is a new volume): it finds the background by volume name and path.
+ FIXED_DATE = datetime.datetime(2026, 10, 8, tzinfo=datetime.timezone.utc)
+diff --git a/packaging/macos/import-cert.sh b/packaging/macos/import-cert.sh
+index 9e54961..fe87444 100755
+--- a/packaging/macos/import-cert.sh
++++ b/packaging/macos/import-cert.sh
+@@ -18,8 +18,8 @@ if [ -z "${APPLE_CERTIFICATE:-}" ]; then
+ fi
+ 
+ TMP="${RUNNER_TEMP:-${TMPDIR:-/tmp}}"
+-KEYCHAIN="$TMP/designcraft-signing.keychain-db"
+-CERT="$TMP/designcraft-signing.p12"
++KEYCHAIN="$TMP/plervo-publish-signing.keychain-db"
++CERT="$TMP/plervo-publish-signing.p12"
+ KC_PASS="${KEYCHAIN_PASSWORD:-$(openssl rand -hex 24)}"
+ 
+ trap 'rm -f "$CERT"' EXIT
+diff --git a/packaging/macos/package.sh b/packaging/macos/package.sh
+index c818ae6..fcee6e4 100755
+--- a/packaging/macos/package.sh
++++ b/packaging/macos/package.sh
+@@ -1,8 +1,8 @@
+ #!/usr/bin/env bash
+ # Build, sign and (optionally) notarize the macOS release artifacts:
+ #
+-#   $DIST/designcraft-<version>-macos-<arch>.dmg          DesignCraft.app on a drag-to-Applications DMG
+-#   $DIST/designcraft-cli-<version>-macos-<arch>.zip      the headless CLI
++#   $DIST/plervo-publish-<version>-macos-<arch>.dmg          Plervo Publish.app on a drag-to-Applications DMG
++#   $DIST/plervo-publish-cli-<version>-macos-<arch>.zip      the headless CLI
+ #
+ # Usage: packaging/macos/package.sh [--arch universal|aarch64|x86_64] [--skip-build]
+ #
+@@ -39,9 +39,9 @@ export MACOSX_DEPLOYMENT_TARGET=11.0
+ IDENTITY="${MACOS_SIGN_IDENTITY:--}"
+ SHORT_VERSION="${VERSION%%-*}"
+ WORK="$CARGO_TARGET_DIR/macos-package"
+-APP="$WORK/DesignCraft.app"
+-DMG="$DIST/designcraft-$VERSION-macos-$ARCH.dmg"
+-CLI_ZIP="$DIST/designcraft-cli-$VERSION-macos-$ARCH.zip"
++APP="$WORK/Plervo Publish.app"
++DMG="$DIST/plervo-publish-$VERSION-macos-$ARCH.dmg"
++CLI_ZIP="$DIST/plervo-publish-cli-$VERSION-macos-$ARCH.zip"
+ 
+ NOTARIZE=0
+ if [ "$IDENTITY" = "-" ]; then
+@@ -52,18 +52,18 @@ else
+   warn "macOS: APPLE_ID / APPLE_PASSWORD / APPLE_TEAM_ID incomplete; signed but not notarized"
+ fi
+ 
+-echo "==> DesignCraft $VERSION for macOS ($ARCH), identity: $IDENTITY, notarize: $NOTARIZE"
++echo "==> Plervo Publish $VERSION for macOS ($ARCH), identity: $IDENTITY, notarize: $NOTARIZE"
+ 
+ # ---- build -------------------------------------------------------------------------------------
+ if [ "$SKIP_BUILD" = 0 ]; then
+   args=()
+   for t in "${TARGETS[@]}"; do args+=(--target "$t"); done
+-  (cd "$ROOT" && cargo build --release --locked -p designcraft -p designcraft-cli "${args[@]}")
++  (cd "$ROOT" && cargo build --release --locked -p plervo-publish -p plervo-publish-cli "${args[@]}")
+ fi
+ 
+ rm -rf "$WORK"
+ mkdir -p "$WORK/bin"
+-for bin in designcraft designcraft-cli; do
++for bin in plervo-publish plervo-publish-cli; do
+   inputs=()
+   for t in "${TARGETS[@]}"; do inputs+=("$CARGO_TARGET_DIR/$t/release/$bin"); done
+   lipo -create -output "$WORK/bin/$bin" "${inputs[@]}"
+@@ -97,12 +97,12 @@ notarize() {
+   fi
+ }
+ 
+-# ---- DesignCraft.app ----------------------------------------------------------------------------
++# ---- Plervo Publish.app ----------------------------------------------------------------------------
+ echo "==> assembling $APP"
+ mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
+ # Executable and icon carry the display name (CFBundleExecutable / CFBundleIconFile).
+-cp "$WORK/bin/designcraft" "$APP/Contents/MacOS/DesignCraft"
+-cp "$ROOT/assets/app-icon/designcraft.icns" "$APP/Contents/Resources/DesignCraft.icns"
++cp "$WORK/bin/plervo-publish" "$APP/Contents/MacOS/Plervo Publish"
++cp "$ROOT/assets/app-icon/plervo-publish.icns" "$APP/Contents/Resources/Plervo Publish.icns"
+ # Licences of the embedded craft-fonts fonts (only when built with CRAFT_FONTS_DIR).
+ copy_font_licences "$APP/Contents/Resources"
+ sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
+@@ -110,16 +110,18 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
+   "$HERE/Info.plist.in" >"$APP/Contents/Info.plist"
+ plutil -lint "$APP/Contents/Info.plist"
+ printf 'APPL????' >"$APP/Contents/PkgInfo"
++mkdir -p "$APP/Contents/Resources/Licenses"
++copy_docs "$APP/Contents/Resources/Licenses"
+ 
+ # Sign inside-out: nested code first, then the bundle itself (no --deep on the final signature).
+ # Today the only nested code is the main executable; frameworks/helpers would be signed here too.
+-sign --options runtime --entitlements "$HERE/entitlements.plist" "$APP/Contents/MacOS/DesignCraft"
++sign --options runtime --entitlements "$HERE/entitlements.plist" "$APP/Contents/MacOS/Plervo Publish"
+ sign --options runtime --entitlements "$HERE/entitlements.plist" "$APP"
+ codesign --verify --strict --deep --verbose=2 "$APP"
+ 
+ if [ "$NOTARIZE" = 1 ]; then
+-  ditto -c -k --keepParent "$APP" "$WORK/DesignCraft-notarize.zip"
+-  notarize "$WORK/DesignCraft-notarize.zip"
++  ditto -c -k --keepParent "$APP" "$WORK/Plervo Publish-notarize.zip"
++  notarize "$WORK/Plervo Publish-notarize.zip"
+   xcrun stapler staple "$APP"
+   xcrun stapler validate "$APP"
+   spctl --assess --type execute -vvv "$APP"
+@@ -129,12 +131,10 @@ fi
+ echo "==> building $DMG"
+ STAGE="$WORK/dmg"
+ mkdir -p "$STAGE"
+-ditto "$APP" "$STAGE/DesignCraft.app"
++ditto "$APP" "$STAGE/Plervo Publish.app"
+ ln -s /Applications "$STAGE/Applications"
+ # Finder window layout: background, icon size and positions (packaging/macos/dmg/README.md).
+ mkdir -p "$STAGE/.background"
+-cp "$HERE/dmg/background.tiff" "$STAGE/.background/background.tiff"
+-cp "$HERE/dmg/dmg-layout.DS_Store" "$STAGE/.DS_Store"
+ rm -f "$DMG"
+ # `hdiutil create -srcfolder` writes the files as they are. `makehybrid -hfs` gave every file a
+ # com.apple.FinderInfo, which `codesign --verify --strict` rejects as "Finder information, or
+@@ -156,7 +156,7 @@ hdiutil_retry() {
+     sleep $((attempt * 10))
+   done
+ }
+-hdiutil_retry create create -srcfolder "$STAGE" -volname "DesignCraft" -fs HFS+ -format UDZO -imagekey zlib-level=9 -ov "$DMG"
++hdiutil_retry create create -srcfolder "$STAGE" -volname "Plervo Publish" -fs HFS+ -format UDZO -imagekey zlib-level=9 -ov "$DMG"
+ sign "$DMG"
+ codesign --verify --strict --verbose=2 "$DMG"
+ # The app inside the image must still pass --strict, so a makehybrid-style regression can't ship.
+@@ -164,7 +164,7 @@ MOUNT="$WORK/dmg-check"
+ rm -rf "$MOUNT"
+ mkdir -p "$MOUNT"
+ hdiutil_retry attach attach -nobrowse -readonly -mountpoint "$MOUNT" "$DMG" >/dev/null
+-if ! codesign --verify --strict --deep --verbose=2 "$MOUNT/DesignCraft.app"; then
++if ! codesign --verify --strict --deep --verbose=2 "$MOUNT/Plervo Publish.app"; then
+   hdiutil_retry detach detach "$MOUNT" >/dev/null || true
+   exit 1
+ fi
+@@ -178,17 +178,17 @@ fi
+ 
+ # ---- CLI ---------------------------------------------------------------------------------------
+ echo "==> building $CLI_ZIP"
+-CLI_DIR="$WORK/designcraft-cli-$VERSION-macos-$ARCH"
++CLI_DIR="$WORK/plervo-publish-cli-$VERSION-macos-$ARCH"
+ mkdir -p "$CLI_DIR"
+-cp "$WORK/bin/designcraft-cli" "$CLI_DIR/"
++cp "$WORK/bin/plervo-publish-cli" "$CLI_DIR/"
+ copy_docs "$CLI_DIR"
+-sign --options runtime "$CLI_DIR/designcraft-cli"
+-codesign --verify --strict --verbose=2 "$CLI_DIR/designcraft-cli"
++sign --options runtime "$CLI_DIR/plervo-publish-cli"
++codesign --verify --strict --verbose=2 "$CLI_DIR/plervo-publish-cli"
+ rm -f "$CLI_ZIP"
+ ditto -c -k --keepParent "$CLI_DIR" "$CLI_ZIP"
+ # A bare Mach-O can't carry a stapled ticket; Gatekeeper looks the notarization up online.
+ if [ "$NOTARIZE" = 1 ]; then notarize "$CLI_ZIP"; fi
+ 
+-"$WORK/bin/designcraft-cli" --version
++"$WORK/bin/plervo-publish-cli" --version
+ echo "==> done"
+ ls -lh "$DMG" "$CLI_ZIP"
+diff --git a/packaging/web/README.md b/packaging/web/README.md
+index 508163a..5de6911 100644
+--- a/packaging/web/README.md
++++ b/packaging/web/README.md
+@@ -1,22 +1,22 @@
+-# Hosting DesignCraft for the web
++# Hosting Plervo Publish for the web
+ 
+-`designcraft-web-<version>.zip` (from the GitHub release, or `packaging/web/package.sh`) holds a
+-static site in `designcraft-web-<version>/`:
++`plervo-publish-web-<version>.zip` (from the GitHub release, or `packaging/web/package.sh`) holds a
++static site in `plervo-publish-web-<version>/`:
+ 
+ | File | What it is |
+ |---|---|
+ | `index.html` | The page. It loads everything through relative URLs. |
+-| `designcraft-web-<hash>.js` | wasm-bindgen glue (generated, ES module) |
+-| `designcraft-web-<hash>_bg.wasm` | The app, about 13 MB, or 5 MB with compression |
++| `plervo-publish-web-<hash>.js` | wasm-bindgen glue (generated, ES module) |
++| `plervo-publish-web-<hash>_bg.wasm` | The app, about 13 MB, or 5 MB with compression |
+ | `_headers`, `.htaccess` | Sample header rules for Netlify/Cloudflare Pages and Apache |
+ 
+ There is no server-side code. Upload the folder's contents anywhere that serves static files.
+ 
+ ## Any path works
+ 
+-All URLs in `index.html` are relative (`public_url = "./"` in `apps/designcraft-web/Trunk.toml`),
++All URLs in `index.html` are relative (`public_url = "./"` in `apps/plervo-publish-web/Trunk.toml`),
+ so the site works at a domain root (`https://example.com/`), under a prefix
+-(`https://example.com/tools/designcraft/`) and from a CDN bucket. The asset names carry a content
++(`https://example.com/tools/plervo-publish/`) and from a CDN bucket. The asset names carry a content
+ hash, so they can be cached forever. Only `index.html` needs revalidation.
+ 
+ ## Required server settings
+@@ -31,7 +31,7 @@ hash, so they can be cached forever. Only `index.html` needs revalidation.
+   `.js` files, and `no-cache` on `index.html`.
+ - **HTTPS:** WebGPU (and the clipboard) only work in a secure context, which means `https://`
+   or `http://localhost`. Over plain HTTP elsewhere, the app falls back to WebGL2.
+-- **No special isolation headers:** DesignCraft doesn't use `SharedArrayBuffer`, so it doesn't
++- **No special isolation headers:** Plervo Publish doesn't use `SharedArrayBuffer`, so it doesn't
+   need `Cross-Origin-Opener-Policy` or `Cross-Origin-Embedder-Policy`. If your site already sends
+   COEP `require-corp`, also send `Cross-Origin-Resource-Policy: same-origin` (or `cross-origin`
+   when the files live on a CDN) on the app's files.
+@@ -39,7 +39,7 @@ hash, so they can be cached forever. Only `index.html` needs revalidation.
+ nginx example:
+ 
+ ```nginx
+-location /designcraft/ {
++location /plervo-publish/ {
+     types { application/wasm wasm; text/javascript js; text/html html; }
+     gzip on;
+     gzip_types application/wasm text/javascript text/html;
+@@ -54,8 +54,8 @@ Local test: `python3 -m http.server 8765` inside the folder, then open http://lo
+ 
+ ```html
+ <iframe
+-  src="https://example.com/designcraft/"
+-  title="DesignCraft image editor"
++  src="https://example.com/plervo-publish/"
++  title="Plervo Publish image editor"
+   style="width: 100%; height: 720px; border: 0;"
+   allow="fullscreen; clipboard-read; clipboard-write"
+   allowfullscreen>
+@@ -75,7 +75,7 @@ Local test: `python3 -m http.server 8765` inside the folder, then open http://lo
+ 
+ ## Renderer selection and fallback flags
+ 
+-DesignCraft renders with wgpu. It uses **WebGPU** when the browser has it and falls back to
++Plervo Publish renders with wgpu. It uses **WebGPU** when the browser has it and falls back to
+ **WebGL2** on its own. URL query flags override this, and they work on the iframe `src` too:
+ 
+ | Flag | Effect |
+@@ -84,6 +84,6 @@ DesignCraft renders with wgpu. It uses **WebGPU** when the browser has it and fa
+ | `?webgl` | Force the WebGL2 backend (useful when a WebGPU driver misbehaves) |
+ | `?cpu` | Force the CPU canvas path (slowest, most compatible) |
+ 
+-For example: `<iframe src="https://example.com/designcraft/?webgl" ...>`.
++For example: `<iframe src="https://example.com/plervo-publish/?webgl" ...>`.
+ 
+ A browser with neither WebGPU nor WebGL2 gets a message in place of the app.
+diff --git a/packaging/web/package.sh b/packaging/web/package.sh
+index 4aafc3e..f44a34c 100755
+--- a/packaging/web/package.sh
++++ b/packaging/web/package.sh
+@@ -1,10 +1,10 @@
+ #!/usr/bin/env bash
+-# Build the browser version and zip it:  $DIST/designcraft-web-<version>.zip
++# Build the browser version and zip it:  $DIST/plervo-publish-web-<version>.zip
+ #
+ # Usage: packaging/web/package.sh [--skip-build]
+ #
+ # Needs: trunk (brew install trunk / cargo install trunk --locked) and the wasm32-unknown-unknown
+-# target. The zip holds a self-contained static site in designcraft-web-<version>/ that works
++# target. The zip holds a self-contained static site in plervo-publish-web-<version>/ that works
+ # from any URL path and inside an <iframe>. Hosting notes: packaging/web/README.md.
+ set -euo pipefail
+ # shellcheck source=../env.sh
+@@ -24,7 +24,7 @@ if grep -Eq '(src|href)="/[^/]' "$SITE/index.html"; then
+   exit 1
+ fi
+ 
+-NAME="designcraft-web-$VERSION"
++NAME="plervo-publish-web-$VERSION"
+ WORK="$CARGO_TARGET_DIR/web-package"
+ rm -rf "$WORK"
+ mkdir -p "$WORK/$NAME"
+diff --git a/packaging/windows/designcraft.wxs b/packaging/windows/designcraft.wxs
+deleted file mode 100644
+index 8e2de81..0000000
+--- a/packaging/windows/designcraft.wxs
++++ /dev/null
+@@ -1,60 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<!--
+-  DesignCraft MSI (WiX Toolset v5: `dotnet tool install -g wix`). Built by package.ps1:
+-
+-    wix build designcraft.wxs -arch x64 -d Version=1.2.3 -d BinDir=... -d IconPath=... -o out.msi
+-
+-  Per-machine install into Program Files, a Start Menu shortcut, `.pcraft` owned by DesignCraft,
+-  and DesignCraft offered under "Open with" for PSD/PSB and the image formats it reads (without
+-  taking over the user's default app for them).
+--->
+-<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+-  <Package
+-      Name="DesignCraft"
+-      Manufacturer="Learning Machines LLC"
+-      Version="$(var.Version)"
+-      UpgradeCode="49E87D30-BB68-4896-AA1D-F45C833CFC3C"
+-      Scope="perMachine"
+-      Compressed="yes"
+-      Language="1033">
+-    <SummaryInformation Description="DesignCraft page layout and publishing" Manufacturer="Learning Machines LLC" />
+-    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
+-         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
+-    <MajorUpgrade AllowSameVersionUpgrades="yes"
+-        DowngradeErrorMessage="A newer version of DesignCraft is already installed." />
+-    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+-
+-    <Icon Id="DesigncraftIcon.ico" SourceFile="$(var.IconPath)" />
+-    <Property Id="ARPPRODUCTICON" Value="DesigncraftIcon.ico" />
+-    <Property Id="ARPURLINFOABOUT" Value="https://getartcraft.com/apps/designcraft" />
+-    <Property Id="ARPURLUPDATEINFO" Value="https://getartcraft.com/apps/designcraft" />
+-    <Property Id="ARPHELPLINK" Value="https://discord.gg/artcraft" />
+-
+-    <StandardDirectory Id="ProgramFiles6432Folder">
+-      <Directory Id="INSTALLFOLDER" Name="DesignCraft" />
+-    </StandardDirectory>
+-    <StandardDirectory Id="ProgramMenuFolder" />
+-
+-    <Feature Id="Main" Title="DesignCraft" Level="1">
+-      <ComponentGroupRef Id="DesigncraftFiles" />
+-    </Feature>
+-  </Package>
+-
+-  <Fragment>
+-    <ComponentGroup Id="DesigncraftFiles" Directory="INSTALLFOLDER">
+-      <Component Id="DesigncraftApp" Guid="DE018EF3-EE87-4E36-9F76-0B7B060A195E">
+-        <File Id="DesigncraftExe" Source="$(var.BinDir)\designcraft.exe" KeyPath="yes">
+-          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="DesignCraft"
+-              Description="DesignCraft page layout and publishing" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
+-              Icon="DesigncraftIcon.ico" IconIndex="0" />
+-        </File>
+-
+-        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\designcraft.exe" Value="[#DesigncraftExe]" Type="string" />
+-      </Component>
+-
+-      <Component Id="DesigncraftCli">
+-        <File Id="DesigncraftCliExe" Source="$(var.BinDir)\designcraft-cli.exe" KeyPath="yes" />
+-      </Component>
+-    </ComponentGroup>
+-  </Fragment>
+-</Wix>
+diff --git a/packaging/windows/package.ps1 b/packaging/windows/package.ps1
+index 7ca2ec1..bf2ea6f 100644
+--- a/packaging/windows/package.ps1
++++ b/packaging/windows/package.ps1
+@@ -1,11 +1,11 @@
+ <#
+ .SYNOPSIS
+-  Build, sign and package DesignCraft for Windows.
++  Build, sign and package Plervo Publish for Windows.
+ 
+ .DESCRIPTION
+   Produces, in $env:DIST (default: dist/release):
+-    designcraft-<version>-windows-<arch>.msi            per-machine installer (WiX v5)
+-    designcraft-<version>-windows-<arch>-portable.zip   designcraft.exe + designcraft-cli.exe
++    plervo-publish-<version>-windows-<arch>.msi            per-machine installer (WiX v5)
++    plervo-publish-<version>-windows-<arch>-portable.zip   plervo-publish.exe + plervo-publish-cli.exe
+ 
+   The binaries link the C runtime statically (+crt-static), so neither the MSI nor the portable
+   zip needs the Visual C++ redistributable. Signing is delegated to sign.ps1 (skipped with a
+@@ -53,7 +53,7 @@ New-Item -ItemType Directory -Force -Path $Dist | Out-Null
+ if (-not $env:DESIGNCRAFT_BUILD_SHA) { $env:DESIGNCRAFT_BUILD_SHA = (git -C $Root rev-parse HEAD 2>$null) }
+ if (-not $env:DESIGNCRAFT_BUILD_DATE) { $env:DESIGNCRAFT_BUILD_DATE = (Get-Date).ToUniversalTime().ToString('yyyy-MM-dd') }
+ 
+-Write-Output "DesignCraft $Version for Windows $Arch ($Target)"
++Write-Output "Plervo Publish $Version for Windows $Arch ($Target)"
+ 
+ if (-not $SkipBuild) {
+   # Static CRT: no VC++ redistributable needed. Scoped to the target so host build scripts and
+@@ -62,7 +62,7 @@ if (-not $SkipBuild) {
+   [Environment]::SetEnvironmentVariable($flagVar, '-C target-feature=+crt-static')
+   # Fail the build (rather than warn) if the icon/VERSIONINFO can't be embedded.
+   $env:DESIGNCRAFT_REQUIRE_WINRES = '1'
+-  Invoke-Native "cargo build ($Target)" { cargo build --release --locked -p designcraft -p designcraft-cli --target $Target }
++  Invoke-Native "cargo build ($Target)" { cargo build --release --locked -p plervo-publish -p plervo-publish-cli --target $Target }
+ }
+ 
+ $Bin = Join-Path $TargetDir "$Target\release"
+@@ -77,7 +77,7 @@ function Get-PeHeader([string] $Path) {
+   return @{ Machine = [BitConverter]::ToUInt16($bytes, $pe + 4); Subsystem = [BitConverter]::ToUInt16($bytes, $pe + 0x5C) }
+ }
+ $Machine = switch ($Arch) { 'x64' { 0x8664 } 'x86' { 0x14C } 'arm64' { 0xAA64 } }
+-foreach ($check in @(@('designcraft.exe', 2), @('designcraft-cli.exe', 3))) {
++foreach ($check in @(@('plervo-publish.exe', 2), @('plervo-publish-cli.exe', 3))) {
+   $h = Get-PeHeader (Join-Path $Bin $check[0])
+   if ($h.Machine -ne $Machine) { throw "$($check[0]) is for machine 0x$('{0:X}' -f $h.Machine), expected 0x$('{0:X}' -f $Machine) ($Arch)" }
+   if ($h.Subsystem -ne $check[1]) { throw "$($check[0]) has PE subsystem $($h.Subsystem), expected $($check[1])" }
+@@ -86,15 +86,32 @@ foreach ($check in @(@('designcraft.exe', 2), @('designcraft-cli.exe', 3))) {
+ $Stage = Join-Path $TargetDir "windows-package\$Arch"
+ Remove-Item -Recurse -Force $Stage -ErrorAction SilentlyContinue
+ New-Item -ItemType Directory -Force -Path $Stage | Out-Null
+-Copy-Item (Join-Path $Bin 'designcraft.exe'), (Join-Path $Bin 'designcraft-cli.exe') $Stage
++Copy-Item (Join-Path $Bin 'plervo-publish.exe'), (Join-Path $Bin 'plervo-publish-cli.exe') $Stage
+ 
+-& (Join-Path $PSScriptRoot 'sign.ps1') (Join-Path $Stage 'designcraft.exe') (Join-Path $Stage 'designcraft-cli.exe')
++& (Join-Path $PSScriptRoot 'sign.ps1') (Join-Path $Stage 'plervo-publish.exe') (Join-Path $Stage 'plervo-publish-cli.exe')
++
++# Carry source and embedded-asset notices in MSI and portable distributions.
++$Legal = Join-Path $Stage 'Licenses'
++New-Item -ItemType Directory -Force -Path $Legal | Out-Null
++foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md') {
++  $p = Join-Path $Root $f
++  if (Test-Path $p) { Copy-Item $p $Legal }
++}
++Get-ChildItem (Join-Path $Root 'assets') -Recurse -File | Where-Object { $_.Name -match '(?i)licen[cs]e|OFL.*txt|copyright' } | ForEach-Object {
++  $name = ($_.FullName.Substring($Root.Length + 1) -replace '[\\/]', '_') + '.txt'
++  Copy-Item $_.FullName (Join-Path $Legal $name)
++}
++if ($env:CRAFT_FONTS_DIR) {
++  Get-ChildItem (Join-Path $env:CRAFT_FONTS_DIR 'fonts\*\OFL.txt') | ForEach-Object {
++    Copy-Item $_.FullName (Join-Path $Legal ("OFL-" + $_.Directory.Name + '.txt'))
++  }
++}
+ 
+ # ---- MSI ---------------------------------------------------------------------------------------
+-$Msi = Join-Path $Dist "designcraft-$Version-windows-$Arch.msi"
++$Msi = Join-Path $Dist "plervo-publish-$Version-windows-$Arch.msi"
+ Invoke-Native 'wix build' {
+-  wix build (Join-Path $PSScriptRoot 'designcraft.wxs') -arch $Arch `
+-    -d "Version=$MsiVersion" -d "BinDir=$Stage" -d "IconPath=$(Join-Path $Root 'assets\app-icon\designcraft.ico')" `
++  wix build (Join-Path $PSScriptRoot 'plervo-publish.wxs') -arch $Arch `
++    -d "Version=$MsiVersion" -d "BinDir=$Stage" -d "IconPath=$(Join-Path $Root 'assets\app-icon\plervo-publish.ico')" `
+     -o $Msi
+ }
+ # wix writes its debug symbols (.wixpdb) next to the MSI; keep them out of the release assets.
+@@ -102,10 +119,11 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
+ & (Join-Path $PSScriptRoot 'sign.ps1') $Msi
+ 
+ # ---- portable zip ------------------------------------------------------------------------------
+-$Portable = Join-Path $TargetDir "windows-package\designcraft-$Version-windows-$Arch-portable"
++$Portable = Join-Path $TargetDir "windows-package\plervo-publish-$Version-windows-$Arch-portable"
+ Remove-Item -Recurse -Force $Portable -ErrorAction SilentlyContinue
+ New-Item -ItemType Directory -Force -Path $Portable | Out-Null
+ Copy-Item (Join-Path $Stage '*.exe') $Portable
++Copy-Item $Legal (Join-Path $Portable 'Licenses') -Recurse
+ foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE') {
+   $p = Join-Path $Root $f
+   if (Test-Path $p) { Copy-Item $p $Portable }
+@@ -116,7 +134,7 @@ if ($env:CRAFT_FONTS_DIR) {
+     Copy-Item $ofl.FullName (Join-Path $Portable "OFL-$($ofl.Directory.Name).txt")
+   }
+ }
+-$Zip = Join-Path $Dist "designcraft-$Version-windows-$Arch-portable.zip"
++$Zip = Join-Path $Dist "plervo-publish-$Version-windows-$Arch-portable.zip"
+ Remove-Item -Force $Zip -ErrorAction SilentlyContinue
+ Compress-Archive -Path $Portable -DestinationPath $Zip
+ 
+@@ -124,8 +142,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
+ # here; .github/workflows/windows-arm64.yml installs and runs it on ARM64 instead.
+ $HostArch = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString().ToLowerInvariant()
+ if ($Arch -ne 'arm64' -or $HostArch -eq 'arm64') {
+-  Invoke-Native 'designcraft-cli --version' { & (Join-Path $Stage 'designcraft-cli.exe') --version }
++  Invoke-Native 'plervo-publish-cli --version' { & (Join-Path $Stage 'plervo-publish-cli.exe') --version }
+ } else {
+-  Write-Output "skipping designcraft-cli --version: an $Arch build doesn't run on this $HostArch machine"
++  Write-Output "skipping plervo-publish-cli --version: an $Arch build doesn't run on this $HostArch machine"
+ }
+ Get-Item $Msi, $Zip | Format-Table Name, Length
+diff --git a/packaging/windows/plervo-publish.wxs b/packaging/windows/plervo-publish.wxs
+new file mode 100644
+index 0000000..bef1ff9
+--- /dev/null
++++ b/packaging/windows/plervo-publish.wxs
+@@ -0,0 +1,65 @@
++<?xml version="1.0" encoding="utf-8"?>
++<!--
++  Plervo Publish MSI (WiX Toolset v5: `dotnet tool install -g wix`). Built by package.ps1:
++
++    wix build plervo-publish.wxs -arch x64 -d Version=1.2.3 -d BinDir=... -d IconPath=... -o out.msi
++
++  Per-machine install into Program Files, a Start Menu shortcut, `.pcraft` owned by Plervo Publish,
++  and Plervo Publish offered under "Open with" for PSD/PSB and the image formats it reads (without
++  taking over the user's default app for them).
++-->
++<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
++  <Package
++      Name="Plervo Publish"
++      Manufacturer="Maintech Solutions LLC"
++      Version="$(var.Version)"
++      UpgradeCode="AE9CFB65-DD6A-5DC3-AEE0-7FF4FB70B2B0"
++      Scope="perMachine"
++      Compressed="yes"
++      Language="1033">
++    <SummaryInformation Description="Plervo Publish page layout and publishing" Manufacturer="Maintech Solutions LLC" />
++    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
++         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
++    <MajorUpgrade AllowSameVersionUpgrades="yes"
++        DowngradeErrorMessage="A newer version of Plervo Publish is already installed." />
++    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
++
++    <Icon Id="DesigncraftIcon.ico" SourceFile="$(var.IconPath)" />
++    <Property Id="ARPPRODUCTICON" Value="DesigncraftIcon.ico" />
++    <Property Id="ARPURLINFOABOUT" Value="https://plervo.com/" />
++    <Property Id="ARPURLUPDATEINFO" Value="https://plervo.com/" />
++    <Property Id="ARPHELPLINK" Value="https://buymeacoffee.com/alport" />
++
++    <StandardDirectory Id="ProgramFiles6432Folder">
++      <Directory Id="INSTALLFOLDER" Name="Plervo Publish" />
++    </StandardDirectory>
++    <StandardDirectory Id="ProgramMenuFolder" />
++
++    <Feature Id="Main" Title="Plervo Publish" Level="1">
++      <ComponentGroupRef Id="DesigncraftFiles" />
++    </Feature>
++    <Feature Id="PlervoLicenseFeature" Title="Licenses" Level="1"><ComponentGroupRef Id="PlervoLegalFiles" /></Feature>
++  </Package>
++
++  <Fragment>
++    <ComponentGroup Id="DesigncraftFiles" Directory="INSTALLFOLDER">
++      <Component Id="DesigncraftApp" Guid="03FCA9CF-D820-58EF-9E76-3C40D3858171">
++        <File Id="DesigncraftExe" Source="$(var.BinDir)\plervo-publish.exe" KeyPath="yes">
++          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="Plervo Publish"
++              Description="Plervo Publish page layout and publishing" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
++              Icon="DesigncraftIcon.ico" IconIndex="0" />
++        </File>
++
++        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\plervo-publish.exe" Value="[#DesigncraftExe]" Type="string" />
++      </Component>
++
++      <Component Id="DesigncraftCli">
++        <File Id="DesigncraftCliExe" Source="$(var.BinDir)\plervo-publish-cli.exe" KeyPath="yes" />
++      </Component>
++    </ComponentGroup>
++  </Fragment>
++  <Fragment>
++    <DirectoryRef Id="INSTALLFOLDER"><Directory Id="PlervoLegalDir" Name="Licenses" /></DirectoryRef>
++    <ComponentGroup Id="PlervoLegalFiles" Directory="PlervoLegalDir"><Files Include="$(var.BinDir)\Licenses\*" /></ComponentGroup>
++  </Fragment>
++</Wix>
+diff --git a/packaging/windows/sign.ps1 b/packaging/windows/sign.ps1
+index 81efe52..70233a8 100644
+--- a/packaging/windows/sign.ps1
++++ b/packaging/windows/sign.ps1
+@@ -15,7 +15,7 @@
+   timestamp server, ...). Optional overrides: WINDOWS_TIMESTAMP_URL, SIGNTOOL (path to signtool.exe).
+ 
+ .EXAMPLE
+-  pwsh packaging/windows/sign.ps1 dist/designcraft.exe dist/Designcraft.msi
++  pwsh packaging/windows/sign.ps1 dist/plervo-publish.exe dist/Designcraft.msi
+ #>
+ param(
+   [Parameter(Mandatory = $true, ValueFromRemainingArguments = $true)]
+@@ -55,8 +55,8 @@ if (-not $haveCert -and -not $haveAzure) {
+ }
+ 
+ $script:SignTool = Find-SignTool
+-$common = @('sign', '/v', '/fd', 'SHA256', '/td', 'SHA256', '/d', 'DesignCraft', '/du', 'https://github.com/storytold/designcraft')
+-$tmp = Join-Path ([IO.Path]::GetTempPath()) "designcraft-sign-$([IO.Path]::GetRandomFileName())"
++$common = @('sign', '/v', '/fd', 'SHA256', '/td', 'SHA256', '/d', 'Plervo Publish', '/du', 'https://github.com/alportblu/plervo-pdf')
++$tmp = Join-Path ([IO.Path]::GetTempPath()) "plervo-publish-sign-$([IO.Path]::GetRandomFileName())"
+ New-Item -ItemType Directory -Path $tmp | Out-Null
+ 
+ try {
+diff --git a/xtask/src/layers.rs b/xtask/src/layers.rs
+index 9493515..bb696f8 100644
+--- a/xtask/src/layers.rs
++++ b/xtask/src/layers.rs
+@@ -79,7 +79,11 @@ pub const UI_CRATES: &[&str] = &["craft-ui", "egui", "eframe", "winit", "egui_ki
+ pub const UI_MIN_LAYER: u8 = 6;
+ 
+ pub fn short_name(pkg: &str) -> &str {
+-    pkg.strip_prefix("designcraft-").unwrap_or(pkg)
++    match pkg {
++        "plervo-publish" => "designcraft",
++        "plervo-publish-cli" => "cli",
++        other => other.strip_prefix("designcraft-").unwrap_or(other),
++    }
+ }
+ 
+ pub fn classify(pkg: &str) -> Option<Class> {
