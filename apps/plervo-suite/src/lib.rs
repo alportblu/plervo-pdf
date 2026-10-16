@@ -1,5 +1,6 @@
 //! The Plervo Suite shell. Slow operations run outside the UI; headless checks use the same engine.
 #![deny(clippy::unwrap_used, clippy::expect_used, clippy::panic, clippy::unimplemented, clippy::todo, clippy::unreachable)]
+mod family;
 mod locale;
 use egui::{Color32, RichText, Vec2};
 use locale::Language;
@@ -44,6 +45,8 @@ pub struct SuiteApp {
     language: Language,
     system_language: Language,
     settings: bool,
+    catalog: bool,
+    icons: std::collections::BTreeMap<&'static str, egui::TextureHandle>,
     release: Option<Release>,
     installed: Option<Installed>,
     paths: Option<Paths>,
@@ -64,6 +67,8 @@ impl Default for SuiteApp {
             language: Language::Auto,
             system_language: Language::Auto.resolve(),
             settings: false,
+            catalog: false,
+            icons: Default::default(),
             release: None,
             installed: None,
             paths: None,
@@ -119,6 +124,60 @@ impl SuiteApp {
     }
     fn lang(&self) -> Language {
         if self.language == Language::Auto { self.system_language } else { self.language }
+    }
+    fn icon(&mut self, ui: &mut egui::Ui, id: &'static str, bytes: &'static [u8], size: f32) {
+        if let std::collections::btree_map::Entry::Vacant(entry) = self.icons.entry(id)
+            && let Ok(icon) = eframe::icon_data::from_png_bytes(bytes)
+        {
+            let pixels = egui::ColorImage::from_rgba_unmultiplied([icon.width as usize, icon.height as usize], &icon.rgba);
+            entry.insert(ui.ctx().load_texture(id, pixels, egui::TextureOptions::LINEAR));
+        }
+        if let Some(texture) = self.icons.get(id) {
+            ui.image((texture.id(), Vec2::splat(size)));
+        } else {
+            ui.label(id);
+        }
+    }
+    fn catalog(&mut self, ui: &mut egui::Ui) {
+        let l = self.lang();
+        let t = |en, pt, es| l.text(en, pt, es);
+        ui.heading(RichText::new(t("Explore your next tools.", "Conheça os próximos apps.", "Conoce tus próximas herramientas.")).size(30.0));
+        ui.label(t(
+            "PDF is available today. The other apps are being tested before their downloads open.",
+            "O PDF já está disponível. Os outros apps estão em testes antes de liberar os downloads.",
+            "PDF ya está disponible. Los otros apps están en pruebas antes de habilitar las descargas.",
+        ));
+        ui.add_space(20.0);
+        let count = if ui.available_width() >= 690.0 {
+            3
+        } else if ui.available_width() >= 440.0 {
+            2
+        } else {
+            1
+        };
+        egui::ScrollArea::vertical().show(ui, |ui| {
+            for row in family::PRODUCTS.chunks(count) {
+                ui.columns(count, |columns| {
+                    for (product, column) in row.iter().zip(columns) {
+                        egui::Frame::new().fill(Color32::WHITE).corner_radius(12).inner_margin(16).show(column, |ui| {
+                            ui.set_min_width(ui.available_width());
+                            ui.set_min_height(176.0);
+                            self.icon(ui, product.id, product.icon, 48.0);
+                            ui.label(RichText::new(product.name).size(19.0).strong());
+                            ui.label(RichText::new(t(product.description[0], product.description[1], product.description[2])).color(MUTED));
+                            if product.id == "pdf" {
+                                if ui.button(t("Manage PDF", "Gerenciar PDF", "Gestionar PDF")).clicked() {
+                                    self.catalog = false;
+                                }
+                            } else {
+                                ui.add_enabled(false, egui::Button::new(t("In testing", "Em testes", "En pruebas")));
+                            }
+                        });
+                    }
+                });
+                ui.add_space(12.0);
+            }
+        });
     }
     fn start(&mut self, action: Action, ctx: &egui::Context) {
         if self.busy {
@@ -208,12 +267,24 @@ impl SuiteApp {
             ui.add_space(58.0);
             if ui
                 .selectable_label(
-                    !self.settings,
-                    RichText::new(t("My apps", "Meus apps", "Mis apps")).color(if self.settings { Color32::WHITE } else { INK }),
+                    !self.settings && !self.catalog,
+                    RichText::new(t("My apps", "Meus apps", "Mis apps")).color(if self.settings || self.catalog { Color32::WHITE } else { INK }),
                 )
                 .clicked()
             {
                 self.settings = false;
+                self.catalog = false;
+            }
+            ui.add_space(8.0);
+            if ui
+                .selectable_label(
+                    self.catalog,
+                    RichText::new(t("All apps", "Todos os apps", "Todos los apps")).color(if self.catalog { INK } else { Color32::WHITE }),
+                )
+                .clicked()
+            {
+                self.settings = false;
+                self.catalog = true;
             }
             ui.add_space(8.0);
             if ui
@@ -224,6 +295,7 @@ impl SuiteApp {
                 .clicked()
             {
                 self.settings = true;
+                self.catalog = false;
             }
             ui.with_layout(egui::Layout::bottom_up(egui::Align::LEFT), |ui| {
                 ui.label(RichText::new(format!("Alpha · {}", env!("CARGO_PKG_VERSION"))).size(11.0).color(Color32::from_gray(180)));
@@ -273,6 +345,10 @@ impl SuiteApp {
                 ui.label(RichText::new("Installation engine adapted from ArtCraft Launcher · MIT / Apache-2.0").small().color(MUTED));
                 return;
             }
+            if self.catalog {
+                self.catalog(ui);
+                return;
+            }
             ui.label(RichText::new(t("YOUR WORKSPACE", "SEU ESPAÇO DE TRABALHO", "TU ESPACIO DE TRABAJO")).size(11.0).color(MUTED));
             ui.add_space(7.0);
             ui.heading(RichText::new(t("Good tools. All yours.", "Boas ferramentas. Suas.", "Buenas herramientas. Tuyas.")).size(34.0));
@@ -294,9 +370,7 @@ impl SuiteApp {
                 .show(ui, |ui| {
                     ui.set_min_width((ui.available_width() - 2.0).max(0.0));
                     ui.horizontal(|ui| {
-                        let (rect, _) = ui.allocate_exact_size(Vec2::splat(68.0), egui::Sense::hover());
-                        ui.painter().rect_filled(rect, 12.0, LIME);
-                        ui.painter().text(rect.center(), egui::Align2::CENTER_CENTER, "PDF", egui::FontId::proportional(21.0), INK);
+                        self.icon(ui, "pdf", family::PDF_ICON, 68.0);
                         ui.add_space(10.0);
                         ui.vertical(|ui| {
                             ui.label(RichText::new("Plervo PDF").size(24.0).strong());
@@ -515,5 +589,43 @@ mod tests {
     #[test]
     fn unknown_commands_do_not_start_the_gui_or_an_installer() {
         assert!(headless(&["--install-pdf".into(), "https://evil.test".into()]).is_err());
+    }
+    #[test]
+    fn candidate_catalog_has_no_enabled_install_action_and_keeps_pdf_management() -> Result<(), String> {
+        use egui_kittest::kittest::NodeT;
+        let mut h = harness();
+        SuiteApp::style(&h.ctx);
+        h.run();
+        h.get_by_label("All apps").click();
+        h.run();
+        h.get_by_label("Plervo Photo");
+        if let Some(path) = std::env::var_os("PLERVO_CATALOG_PREVIEW") {
+            h.render()?.save(path).map_err(|e| e.to_string())?;
+        }
+        let buttons: Vec<_> = h.get_all_by_label("In testing").collect();
+        assert!(!buttons.is_empty());
+        assert!(buttons.iter().all(|b| b.accesskit_node().is_disabled()));
+        assert!(!h.state().busy);
+        h.get_by_label("Manage PDF").click();
+        h.run();
+        assert!(!h.state().catalog);
+        h.get_by_label("Install Plervo PDF");
+        Ok(())
+    }
+
+    #[test]
+    fn candidate_catalog_uses_the_selected_language_at_minimum_window_size() -> Result<(), String> {
+        let app = SuiteApp { system_language: Language::Pt, catalog: true, ..Default::default() };
+        let mut h = Harness::builder().with_size(egui::vec2(760.0, 580.0)).build_ui_state(|ui, app: &mut SuiteApp| app.show(ui), app);
+        SuiteApp::style(&h.ctx);
+        h.run();
+        h.get_by_label("Conheça os próximos apps.");
+        h.get_by_label("Gerenciar PDF");
+        assert!(h.get_all_by_label("Em testes").next().is_some());
+        assert!(!h.state().busy);
+        if let Some(path) = std::env::var_os("PLERVO_CATALOG_PREVIEW_SMALL") {
+            h.render()?.save(path).map_err(|e| e.to_string())?;
+        }
+        Ok(())
     }
 }

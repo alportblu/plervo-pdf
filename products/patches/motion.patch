@@ -1,5 +1,5 @@
 diff --git a/ATTRIBUTION.md b/ATTRIBUTION.md
-index be99cdc..7b0a4bc 100644
+index be99cdc..88d8120 100644
 --- a/ATTRIBUTION.md
 +++ b/ATTRIBUTION.md
 @@ -16,23 +16,6 @@ iconography, images or other Adobe assets; open licences only; every asset attri
@@ -26,7 +26,7 @@ index be99cdc..7b0a4bc 100644
  | `crates/lottie/tests/fixtures/bouncing-ball.json` | EffectCraft contributors | Original work: hand-written Lottie test fixture (bouncing ball, eased position keys) | MIT OR Apache-2.0 |
  | `crates/lottie/tests/fixtures/shapes-gradient.json` | EffectCraft contributors | Original work: hand-written Lottie test fixture (star, rectangle, gradient fill, dashed stroke, trim paths) | MIT OR Apache-2.0 |
  | `crates/lottie/tests/fixtures/precomp-matte-text.json` | EffectCraft contributors | Original work: hand-written Lottie test fixture (precomp, track matte, parented text) | MIT OR Apache-2.0 |
-@@ -109,18 +92,32 @@ configuration from these Apache-2.0 projects:
+@@ -109,18 +92,40 @@ configuration from these Apache-2.0 projects:
  
  The ArtCraft name, wordmark and logos are trademarks of the ArtCraft Team. They are not open source and are not
  covered by the project licence; they may be used only unmodified and only as part of this repository and EffectCraft,
@@ -68,6 +68,14 @@ index be99cdc..7b0a4bc 100644
 +| `assets/app-icon/plervo-motion.icns` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 22c4c8e9bbe720ed921e5535ee233edb36bb43ea1c0cee4431a82f6126d38c80 |
 +| `assets/app-icon/plervo-motion.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 04542f949b4c9efd0ed6b8e152bf120976973f18e1a70a60571f0ae743b2679b |
 +| `assets/app-icon/plervo-motion.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 bbeb790d08607f9e32571fef7a80c9c3ca8c40395b5006e952ae99b48ed89fad |
++
++| `assets/app-icon/README.md` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | d0a418e3713e6d89a4c0f1a5cf8ef7562336cca41ae1a2a1b03dcd0190650b5a |
++
++| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | d0a418e3713e6d89a4c0f1a5cf8ef7562336cca41ae1a2a1b03dcd0190650b5a |
++
++| `apps/effectcraft-web/web/favicon.svg` | EffectCraft contributors | Original work: web app icon, a copy of `assets/app-icon/effectcraft-small.svg` (the unicorn app icon) | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
++
++| `packaging/macos/dmg/background.svg` | @XusBadia | Original work: macOS DMG Finder window background, derived from the EffectCraft app icon (`assets/app-icon/effectcraft.svg`); rendered to a TIFF by `packaging/macos/package.sh` at package time | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) |
 diff --git a/Cargo.lock b/Cargo.lock
 index ce8fe12..1c9b3f8 100644
 --- a/Cargo.lock
@@ -808,17 +816,21 @@ index 914a409..283ad99 100644
 -[![Star History Chart](https://api.star-history.com/svg?repos=storytold/effectcraft&type=Date&legend=top-left)](https://www.star-history.com/?repos=storytold%2Feffectcraft&type=date&legend=top-left)
 +Website: https://plervo.com/ · Optional support: https://buymeacoffee.com/alport
 diff --git a/apps/effectcraft-cli/Cargo.toml b/apps/effectcraft-cli/Cargo.toml
-index b5784f4..fe89dea 100644
+index b5784f4..ebf841d 100644
 --- a/apps/effectcraft-cli/Cargo.toml
 +++ b/apps/effectcraft-cli/Cargo.toml
-@@ -1,5 +1,5 @@
+@@ -1,15 +1,17 @@
  [package]
 -name = "effectcraft-cli"
 +name = "plervo-motion-cli"
  description = "EffectCraft headless CLI: render frames and sequences, run commands, MCP server"
  version.workspace = true
  edition.workspace = true
-@@ -9,7 +9,7 @@ license.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
  workspace = true
  
  [[bin]]
@@ -1181,10 +1193,10 @@ index b3a858d..1afa529 100644
          // The tab closes without a clean exit: the next visit offers the auto-save.
          let mut b = Session { config: Some(Arc::new(WebConfig::new(s.clone()))), ..Default::default() };
 diff --git a/apps/effectcraft/Cargo.toml b/apps/effectcraft/Cargo.toml
-index 5ad6c80..2ddb8c8 100644
+index 5ad6c80..a24c78c 100644
 --- a/apps/effectcraft/Cargo.toml
 +++ b/apps/effectcraft/Cargo.toml
-@@ -1,10 +1,10 @@
+@@ -1,10 +1,12 @@
  [package]
 -name = "effectcraft"
 +name = "plervo-motion"
@@ -1194,6 +1206,8 @@ index 5ad6c80..2ddb8c8 100644
  license.workspace = true
 -default-run = "effectcraft"
 +default-run = "plervo-motion"
++
++publish = false
  
  [lints]
  workspace = true
@@ -1519,6 +1533,79 @@ index 8367d2a..1cc03d9 100644
      assert!(out.status.success(), "{}", String::from_utf8_lossy(&out.stderr));
      assert_eq!(String::from_utf8(out.stdout).unwrap(), format!("effectcraft {}\n", env!("CARGO_PKG_VERSION")));
  }
+diff --git a/assets/app-icon/LICENSE.txt b/assets/app-icon/LICENSE.txt
+index 5fdd611..3daeab5 100644
+--- a/assets/app-icon/LICENSE.txt
++++ b/assets/app-icon/LICENSE.txt
+@@ -1,13 +1,6 @@
+-EffectCraft app icon (effectcraft.svg, effectcraft-small.svg and every file derived from them in
+-this directory: effectcraft-1024.png, effectcraft-macos-512.png, effectcraft.icns, effectcraft.ico,
+-hicolor/), and the web favicon apps/effectcraft-web/web/favicon.svg.
++# Plervo Motion application icons
+ 
+-Original artwork made for this project by the project owner in ArtCraft, then vectorised (no
+-third-party material). Licensed like the rest of EffectCraft, under either of
++Original artwork by Plervo contributors, 2026. Licensed under MIT OR Apache-2.0; see the complete LICENSE-MIT and LICENSE-APACHE files at the repository root.
+ 
+-  * Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
+-  * MIT license (https://opensource.org/licenses/MIT)
+-
+-at your option.
+-
+-Regenerate the derived files with packaging/icons.sh.
++Source vectors and platform variants: https://github.com/alportblu/plervo-pdf/tree/feat/app-family/assets/products/motion
++These icons replace the upstream product artwork. Engine code and other assets retain their original notices.
+diff --git a/assets/app-icon/README.md b/assets/app-icon/README.md
+index 814ad60..3daeab5 100644
+--- a/assets/app-icon/README.md
++++ b/assets/app-icon/README.md
+@@ -1,42 +1,6 @@
+-# EffectCraft app icon
++# Plervo Motion application icons
+ 
+-**Creature:** a unicorn, as an engraved head-and-shoulders bust looking out of the tile.
++Original artwork by Plervo contributors, 2026. Licensed under MIT OR Apache-2.0; see the complete LICENSE-MIT and LICENSE-APACHE files at the repository root.
+ 
+-**Style:** an ink engraving portrait in the Crafting Apps' owl-template framing (the FilmCraft owl):
+-full-bleed colour field, tight head-and-shoulders crop, the body running off the bottom and right edges.
+-
+-**Tile:** 512 × 512 viewBox, rounded square `rx=112`, clipped; no border or roundel.
+-
+-**Palette** (exactly three colours):
+-
+-| Colour | Hex | Used for |
+-|---|---|---|
+-| App colour (EffectCraft pink) | `#e0368f` | the full-bleed field |
+-| Paper | `#efe9dc` | the figure |
+-| Ink | `#0b0b0c` | line work and contour |
+-
+-**Provenance:** the project owner drew it in ArtCraft (a 2880 px engraving-style image, kept in
+-craftrules at `assets/app-icons/effectcraft/source.png`). It was vectorised with craftrules
+-`assets/logo-options/_tools/vectorize_tile.py`, which keys out the field and traces the ink with potrace.
+-Licence: see [LICENSE.txt](LICENSE.txt) (MIT OR Apache-2.0, like the repo).
+-
+-## Files
+-
+-| File | What |
+-|---|---|
+-| `effectcraft.svg` | master vector, traced at 2048 px (canonical) |
+-| `effectcraft-small.svg` | lighter vector (~350 KB), traced at 1024 px; also the web favicon |
+-| `effectcraft-1024.png` | 1024 px render |
+-| `effectcraft-macos-512.png` | runtime Dock icon on macOS, on Apple's 824/1024 grid |
+-| `effectcraft.icns` | macOS icon (Apple grid) |
+-| `effectcraft.ico` | Windows icon, 16–256 px; embedded in `effectcraft.exe` by `apps/effectcraft/build.rs` |
+-| `hicolor/<n>x<n>/apps/ai.storyteller.effectcraft.png` | Linux icon theme, 16–512 px; the 256 px one is the runtime icon on Windows and Linux |
+-| `hicolor/scalable/apps/ai.storyteller.effectcraft.svg` | Linux scalable icon |
+-
+-App ID: `ai.storyteller.effectcraft` (Wayland app ID, `packaging/linux/ai.storyteller.effectcraft.desktop`).
+-
+-## Regenerate
+-
+-Copy a new `icon-master.svg` / `icon.svg` from craftrules `assets/app-icons/effectcraft/` over
+-`effectcraft.svg` / `effectcraft-small.svg`, then run `packaging/icons.sh` (needs `resvg`; `iconutil`
+-on macOS for the `.icns`). Copy `effectcraft-small.svg` to `apps/effectcraft-web/web/favicon.svg` too.
++Source vectors and platform variants: https://github.com/alportblu/plervo-pdf/tree/feat/app-family/assets/products/motion
++These icons replace the upstream product artwork. Engine code and other assets retain their original notices.
 diff --git a/assets/app-icon/effectcraft-1024.png.attribution b/assets/app-icon/effectcraft-1024.png.attribution
 index 1793aa5..00c8cfe 100644
 --- a/assets/app-icon/effectcraft-1024.png.attribution
@@ -1645,6 +1732,20 @@ index 2196062..61bfb1e 100644
 +license-file: LICENSE-MIT
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
+diff --git a/assets/app-icon/hicolor/128x128/apps/ai.storyteller.effectcraft.png.attribution b/assets/app-icon/hicolor/128x128/apps/ai.storyteller.effectcraft.png.attribution
+deleted file mode 100644
+index 3684742..0000000
+--- a/assets/app-icon/hicolor/128x128/apps/ai.storyteller.effectcraft.png.attribution
++++ /dev/null
+@@ -1,8 +0,0 @@
+-asset:        ai.storyteller.effectcraft.png
+-title:        EffectCraft app icon, Linux hicolor 128x128
+-author:       EffectCraft contributors (drawing by the project owner in ArtCraft)
+-source:       original work
+-license:      MIT OR Apache-2.0
+-license-file: assets/app-icon/LICENSE.txt
+-added:        2026-10-02 by EffectCraft contributors (Claude agent, app icon)
+-notes:        Rendered from effectcraft.svg with resvg by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/128x128/apps/com.plervo.motion.png.attribution b/assets/app-icon/hicolor/128x128/apps/com.plervo.motion.png.attribution
 new file mode 100644
 index 0000000..2348b8c
@@ -1659,6 +1760,20 @@ index 0000000..2348b8c
 +license-file: LICENSE-MIT
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
+diff --git a/assets/app-icon/hicolor/16x16/apps/ai.storyteller.effectcraft.png.attribution b/assets/app-icon/hicolor/16x16/apps/ai.storyteller.effectcraft.png.attribution
+deleted file mode 100644
+index 943f87c..0000000
+--- a/assets/app-icon/hicolor/16x16/apps/ai.storyteller.effectcraft.png.attribution
++++ /dev/null
+@@ -1,8 +0,0 @@
+-asset:        ai.storyteller.effectcraft.png
+-title:        EffectCraft app icon, Linux hicolor 16x16
+-author:       EffectCraft contributors (drawing by the project owner in ArtCraft)
+-source:       original work
+-license:      MIT OR Apache-2.0
+-license-file: assets/app-icon/LICENSE.txt
+-added:        2026-10-02 by EffectCraft contributors (Claude agent, app icon)
+-notes:        Rendered from effectcraft.svg with resvg by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/16x16/apps/com.plervo.motion.png.attribution b/assets/app-icon/hicolor/16x16/apps/com.plervo.motion.png.attribution
 new file mode 100644
 index 0000000..2348b8c
@@ -1673,6 +1788,20 @@ index 0000000..2348b8c
 +license-file: LICENSE-MIT
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
+diff --git a/assets/app-icon/hicolor/24x24/apps/ai.storyteller.effectcraft.png.attribution b/assets/app-icon/hicolor/24x24/apps/ai.storyteller.effectcraft.png.attribution
+deleted file mode 100644
+index 10347ea..0000000
+--- a/assets/app-icon/hicolor/24x24/apps/ai.storyteller.effectcraft.png.attribution
++++ /dev/null
+@@ -1,8 +0,0 @@
+-asset:        ai.storyteller.effectcraft.png
+-title:        EffectCraft app icon, Linux hicolor 24x24
+-author:       EffectCraft contributors (drawing by the project owner in ArtCraft)
+-source:       original work
+-license:      MIT OR Apache-2.0
+-license-file: assets/app-icon/LICENSE.txt
+-added:        2026-10-02 by EffectCraft contributors (Claude agent, app icon)
+-notes:        Rendered from effectcraft.svg with resvg by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/24x24/apps/com.plervo.motion.png.attribution b/assets/app-icon/hicolor/24x24/apps/com.plervo.motion.png.attribution
 new file mode 100644
 index 0000000..2348b8c
@@ -1687,6 +1816,20 @@ index 0000000..2348b8c
 +license-file: LICENSE-MIT
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
+diff --git a/assets/app-icon/hicolor/256x256/apps/ai.storyteller.effectcraft.png.attribution b/assets/app-icon/hicolor/256x256/apps/ai.storyteller.effectcraft.png.attribution
+deleted file mode 100644
+index 86dd6d7..0000000
+--- a/assets/app-icon/hicolor/256x256/apps/ai.storyteller.effectcraft.png.attribution
++++ /dev/null
+@@ -1,8 +0,0 @@
+-asset:        ai.storyteller.effectcraft.png
+-title:        EffectCraft app icon, Linux hicolor 256x256
+-author:       EffectCraft contributors (drawing by the project owner in ArtCraft)
+-source:       original work
+-license:      MIT OR Apache-2.0
+-license-file: assets/app-icon/LICENSE.txt
+-added:        2026-10-02 by EffectCraft contributors (Claude agent, app icon)
+-notes:        Rendered from effectcraft.svg with resvg by packaging/icons.sh. Also the runtime window/taskbar icon on Windows and Linux.
 diff --git a/assets/app-icon/hicolor/256x256/apps/com.plervo.motion.png.attribution b/assets/app-icon/hicolor/256x256/apps/com.plervo.motion.png.attribution
 new file mode 100644
 index 0000000..2348b8c
@@ -1701,6 +1844,20 @@ index 0000000..2348b8c
 +license-file: LICENSE-MIT
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
+diff --git a/assets/app-icon/hicolor/32x32/apps/ai.storyteller.effectcraft.png.attribution b/assets/app-icon/hicolor/32x32/apps/ai.storyteller.effectcraft.png.attribution
+deleted file mode 100644
+index 06f910e..0000000
+--- a/assets/app-icon/hicolor/32x32/apps/ai.storyteller.effectcraft.png.attribution
++++ /dev/null
+@@ -1,8 +0,0 @@
+-asset:        ai.storyteller.effectcraft.png
+-title:        EffectCraft app icon, Linux hicolor 32x32
+-author:       EffectCraft contributors (drawing by the project owner in ArtCraft)
+-source:       original work
+-license:      MIT OR Apache-2.0
+-license-file: assets/app-icon/LICENSE.txt
+-added:        2026-10-02 by EffectCraft contributors (Claude agent, app icon)
+-notes:        Rendered from effectcraft.svg with resvg by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/32x32/apps/com.plervo.motion.png.attribution b/assets/app-icon/hicolor/32x32/apps/com.plervo.motion.png.attribution
 new file mode 100644
 index 0000000..2348b8c
@@ -1715,6 +1872,20 @@ index 0000000..2348b8c
 +license-file: LICENSE-MIT
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
+diff --git a/assets/app-icon/hicolor/48x48/apps/ai.storyteller.effectcraft.png.attribution b/assets/app-icon/hicolor/48x48/apps/ai.storyteller.effectcraft.png.attribution
+deleted file mode 100644
+index 46fbd4d..0000000
+--- a/assets/app-icon/hicolor/48x48/apps/ai.storyteller.effectcraft.png.attribution
++++ /dev/null
+@@ -1,8 +0,0 @@
+-asset:        ai.storyteller.effectcraft.png
+-title:        EffectCraft app icon, Linux hicolor 48x48
+-author:       EffectCraft contributors (drawing by the project owner in ArtCraft)
+-source:       original work
+-license:      MIT OR Apache-2.0
+-license-file: assets/app-icon/LICENSE.txt
+-added:        2026-10-02 by EffectCraft contributors (Claude agent, app icon)
+-notes:        Rendered from effectcraft.svg with resvg by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/48x48/apps/com.plervo.motion.png.attribution b/assets/app-icon/hicolor/48x48/apps/com.plervo.motion.png.attribution
 new file mode 100644
 index 0000000..2348b8c
@@ -1729,6 +1900,20 @@ index 0000000..2348b8c
 +license-file: LICENSE-MIT
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
+diff --git a/assets/app-icon/hicolor/512x512/apps/ai.storyteller.effectcraft.png.attribution b/assets/app-icon/hicolor/512x512/apps/ai.storyteller.effectcraft.png.attribution
+deleted file mode 100644
+index a08d141..0000000
+--- a/assets/app-icon/hicolor/512x512/apps/ai.storyteller.effectcraft.png.attribution
++++ /dev/null
+@@ -1,8 +0,0 @@
+-asset:        ai.storyteller.effectcraft.png
+-title:        EffectCraft app icon, Linux hicolor 512x512
+-author:       EffectCraft contributors (drawing by the project owner in ArtCraft)
+-source:       original work
+-license:      MIT OR Apache-2.0
+-license-file: assets/app-icon/LICENSE.txt
+-added:        2026-10-02 by EffectCraft contributors (Claude agent, app icon)
+-notes:        Rendered from effectcraft.svg with resvg by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/512x512/apps/com.plervo.motion.png.attribution b/assets/app-icon/hicolor/512x512/apps/com.plervo.motion.png.attribution
 new file mode 100644
 index 0000000..2348b8c
@@ -1743,6 +1928,20 @@ index 0000000..2348b8c
 +license-file: LICENSE-MIT
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
+diff --git a/assets/app-icon/hicolor/64x64/apps/ai.storyteller.effectcraft.png.attribution b/assets/app-icon/hicolor/64x64/apps/ai.storyteller.effectcraft.png.attribution
+deleted file mode 100644
+index fcfe963..0000000
+--- a/assets/app-icon/hicolor/64x64/apps/ai.storyteller.effectcraft.png.attribution
++++ /dev/null
+@@ -1,8 +0,0 @@
+-asset:        ai.storyteller.effectcraft.png
+-title:        EffectCraft app icon, Linux hicolor 64x64
+-author:       EffectCraft contributors (drawing by the project owner in ArtCraft)
+-source:       original work
+-license:      MIT OR Apache-2.0
+-license-file: assets/app-icon/LICENSE.txt
+-added:        2026-10-02 by EffectCraft contributors (Claude agent, app icon)
+-notes:        Rendered from effectcraft.svg with resvg by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/64x64/apps/com.plervo.motion.png.attribution b/assets/app-icon/hicolor/64x64/apps/com.plervo.motion.png.attribution
 new file mode 100644
 index 0000000..2348b8c
@@ -1757,6 +1956,20 @@ index 0000000..2348b8c
 +license-file: LICENSE-MIT
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
+diff --git a/assets/app-icon/hicolor/scalable/apps/ai.storyteller.effectcraft.svg.attribution b/assets/app-icon/hicolor/scalable/apps/ai.storyteller.effectcraft.svg.attribution
+deleted file mode 100644
+index 562c350..0000000
+--- a/assets/app-icon/hicolor/scalable/apps/ai.storyteller.effectcraft.svg.attribution
++++ /dev/null
+@@ -1,8 +0,0 @@
+-asset:        ai.storyteller.effectcraft.svg
+-title:        EffectCraft app icon, Linux hicolor scalable
+-author:       EffectCraft contributors (drawing by the project owner in ArtCraft)
+-source:       original work
+-license:      MIT OR Apache-2.0
+-license-file: assets/app-icon/LICENSE.txt
+-added:        2026-10-02 by EffectCraft contributors (Claude agent, app icon)
+-notes:        Copy of effectcraft-small.svg, written by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/scalable/apps/com.plervo.motion.svg.attribution b/assets/app-icon/hicolor/scalable/apps/com.plervo.motion.svg.attribution
 new file mode 100644
 index 0000000..9994375
@@ -1813,6 +2026,19 @@ index 0000000..d2739f7
 +license-file: LICENSE-MIT
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
+diff --git a/crates/automation/Cargo.toml b/crates/automation/Cargo.toml
+index b14b163..edd1da2 100644
+--- a/crates/automation/Cargo.toml
++++ b/crates/automation/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/crates/automation/src/autosave.rs b/crates/automation/src/autosave.rs
 index b3f2e23..e435fce 100644
 --- a/crates/automation/src/autosave.rs
@@ -1826,6 +2052,58 @@ index b3f2e23..e435fce 100644
          }
          std::fs::create_dir_all(&base)?;
          let previous = previous_sessions(&base);
+diff --git a/crates/av1enc/Cargo.toml b/crates/av1enc/Cargo.toml
+index 2a4c7dd..e48a5ea 100644
+--- a/crates/av1enc/Cargo.toml
++++ b/crates/av1enc/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/color/Cargo.toml b/crates/color/Cargo.toml
+index c30e33b..d784046 100644
+--- a/crates/color/Cargo.toml
++++ b/crates/color/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/effects/Cargo.toml b/crates/effects/Cargo.toml
+index c37d099..543c527 100644
+--- a/crates/effects/Cargo.toml
++++ b/crates/effects/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/engine/Cargo.toml b/crates/engine/Cargo.toml
+index 68e761a..d99032e 100644
+--- a/crates/engine/Cargo.toml
++++ b/crates/engine/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/crates/engine/src/commands/help.rs b/crates/engine/src/commands/help.rs
 index c6f315f..fac4db5 100644
 --- a/crates/engine/src/commands/help.rs
@@ -1946,11 +2224,89 @@ index afe4b98..7ec60b8 100644
      assert_eq!(m["frameTarget"], "_blank");
      assert_eq!(m["cuePoint"]["name"], "cue");
      assert_eq!(m["cuePoint"]["navigation"], true);
+diff --git a/crates/export/Cargo.toml b/crates/export/Cargo.toml
+index 2ef6f5a..f3f8afc 100644
+--- a/crates/export/Cargo.toml
++++ b/crates/export/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/expr/Cargo.toml b/crates/expr/Cargo.toml
+index 6f15769..7622d39 100644
+--- a/crates/expr/Cargo.toml
++++ b/crates/expr/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/geom/Cargo.toml b/crates/geom/Cargo.toml
+index 20eb386..acccb10 100644
+--- a/crates/geom/Cargo.toml
++++ b/crates/geom/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/gpu/Cargo.toml b/crates/gpu/Cargo.toml
+index 49fe51c..fc5c05f 100644
+--- a/crates/gpu/Cargo.toml
++++ b/crates/gpu/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/hevcenc/Cargo.toml b/crates/hevcenc/Cargo.toml
+index 136611f..735586e 100644
+--- a/crates/hevcenc/Cargo.toml
++++ b/crates/hevcenc/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/host/Cargo.toml b/crates/host/Cargo.toml
+index 80f61e4..e47cbe5 100644
+--- a/crates/host/Cargo.toml
++++ b/crates/host/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/crates/host/src/app_dirs.rs b/crates/host/src/app_dirs.rs
-index de81ea6..a92ab84 100644
+index de81ea6..31df9ad 100644
 --- a/crates/host/src/app_dirs.rs
 +++ b/crates/host/src/app_dirs.rs
-@@ -2,13 +2,13 @@
+@@ -2,14 +2,14 @@
  //! plug-ins): the one directory [`config_dir`](crate::config_dir) returns.
  //!
  //! In order:
@@ -1962,10 +2318,12 @@ index de81ea6..a92ab84 100644
  //!    folder can't be written (read-only medium, Program Files), a warning is logged and the
  //!    platform folder is used.
 -//! 3. The platform convention: macOS `~/Library/Application Support/EffectCraft`, Windows
+-//!    `%APPDATA%\EffectCraft`, Linux `$XDG_CONFIG_HOME/effectcraft` or `~/.config/effectcraft`.
 +//! 3. The platform convention: macOS `~/Library/Application Support/Plervo Motion`, Windows
- //!    `%APPDATA%\EffectCraft`, Linux `$XDG_CONFIG_HOME/effectcraft` or `~/.config/effectcraft`.
++//!    `%APPDATA%\EffectCraft`, Linux `$XDG_CONFIG_HOME/effectcraft` or `~/.config/plervo-motion`.
  
  use std::ffi::OsString;
+ use std::path::{Path, PathBuf};
 @@ -23,7 +23,7 @@ pub const PORTABLE_DATA_DIR: &str = "EffectCraftData";
  /// How [`DataDir::dir`] was chosen.
  #[derive(Clone, Copy, Debug, PartialEq, Eq)]
@@ -2000,7 +2358,7 @@ index de81ea6..a92ab84 100644
  }
  
  /// The first portable marker file in `exe_dir`, if any.
-@@ -138,9 +138,9 @@ mod tests {
+@@ -138,11 +138,11 @@ mod tests {
          assert!(d.warning.is_none());
          let dir = d.dir.unwrap();
          if cfg!(target_os = "macos") {
@@ -2010,8 +2368,11 @@ index de81ea6..a92ab84 100644
 -            assert_eq!(dir, root.join("appdata").join("EffectCraft"));
 +            assert_eq!(dir, root.join("appdata").join("Plervo Motion"));
          } else {
-             assert_eq!(dir, root.join("home/.config/effectcraft"));
+-            assert_eq!(dir, root.join("home/.config/effectcraft"));
++            assert_eq!(dir, root.join("home/.config/plervo-motion"));
          }
+         assert!(!exe.join(PORTABLE_DATA_DIR).exists(), "no portable folder without a marker");
+         let _ = std::fs::remove_dir_all(&root);
 @@ -152,7 +152,7 @@ mod tests {
      fn either_marker_keeps_everything_beside_the_exe() {
          for marker in PORTABLE_MARKERS {
@@ -2031,25 +2392,226 @@ index de81ea6..a92ab84 100644
          assert!(!exe.join(PORTABLE_DATA_DIR).exists());
          let _ = std::fs::remove_dir_all(&root);
 diff --git a/crates/host/src/lib.rs b/crates/host/src/lib.rs
-index 1e5311b..14f4570 100644
+index 1e5311b..9de18c3 100644
 --- a/crates/host/src/lib.rs
 +++ b/crates/host/src/lib.rs
-@@ -97,8 +97,8 @@ pub fn session() -> Session {
+@@ -97,9 +97,9 @@ pub fn session() -> Session {
      }
  }
  
 -/// The platform config directory for EffectCraft (`EFFECTCRAFT_CONFIG_DIR` overrides):
 -/// `~/Library/Application Support/EffectCraft` (macOS), `%APPDATA%\EffectCraft` (Windows),
+-/// `$XDG_CONFIG_HOME/effectcraft` or `~/.config/effectcraft` (Linux and others). A `portable.txt`
 +/// The platform config directory for EffectCraft (`PLERVO_MOTION_CONFIG_DIR` overrides):
 +/// `~/Library/Application Support/Plervo Motion` (macOS), `%APPDATA%\EffectCraft` (Windows),
- /// `$XDG_CONFIG_HOME/effectcraft` or `~/.config/effectcraft` (Linux and others). A `portable.txt`
++/// `$XDG_CONFIG_HOME/effectcraft` or `~/.config/plervo-motion` (Linux and others). A `portable.txt`
  /// beside the executable puts it in `EffectCraftData` there instead ([`app_dirs`]).
  pub fn config_dir() -> Option<std::path::PathBuf> {
+     app_dirs::current().dir.clone()
+diff --git a/crates/host/tests/relink.rs b/crates/host/tests/relink.rs
+index 5bb31b4..26dab45 100644
+--- a/crates/host/tests/relink.rs
++++ b/crates/host/tests/relink.rs
+@@ -7,7 +7,7 @@ use effectcraft_engine::project::ItemKind;
+ use serde_json::json;
+ 
+ fn icon() -> Vec<u8> {
+-    std::fs::read(Path::new(env!("CARGO_MANIFEST_DIR")).join("../../assets/app-icon/hicolor/16x16/apps/ai.storyteller.effectcraft.png")).unwrap()
++    std::fs::read(Path::new(env!("CARGO_MANIFEST_DIR")).join("../../assets/app-icon/hicolor/16x16/apps/com.plervo.motion.png")).unwrap()
+ }
+ 
+ fn footage_paths(s: &effectcraft_engine::Session) -> Vec<(u64, String, bool)> {
+diff --git a/crates/interchange/Cargo.toml b/crates/interchange/Cargo.toml
+index 11dfec3..32a7b62 100644
+--- a/crates/interchange/Cargo.toml
++++ b/crates/interchange/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/keyframe/Cargo.toml b/crates/keyframe/Cargo.toml
+index e9cc257..5fc57e7 100644
+--- a/crates/keyframe/Cargo.toml
++++ b/crates/keyframe/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/lottie/Cargo.toml b/crates/lottie/Cargo.toml
+index ec71de4..0fe918b 100644
+--- a/crates/lottie/Cargo.toml
++++ b/crates/lottie/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/media/Cargo.toml b/crates/media/Cargo.toml
+index a3ff624..025886d 100644
+--- a/crates/media/Cargo.toml
++++ b/crates/media/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/model/Cargo.toml b/crates/model/Cargo.toml
+index 2539792..a1f49e8 100644
+--- a/crates/model/Cargo.toml
++++ b/crates/model/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/model/src/stl.rs b/crates/model/src/stl.rs
+index 6684858..34e9a7f 100644
+--- a/crates/model/src/stl.rs
++++ b/crates/model/src/stl.rs
+@@ -175,10 +175,8 @@ fn ascii(bytes: &[u8]) -> Result<Model> {
+         let Some(key) = it.next() else { continue };
+         let bad = || perr(format!("STL line {}: expected three numbers", ln + 1));
+         match key.to_ascii_lowercase().as_str() {
+-            "solid" => {
+-                if name.is_none() {
+-                    name = Some(line.get(5..).unwrap_or("").trim().to_string());
+-                }
++            "solid" if name.is_none() => {
++                name = Some(line.get(5..).unwrap_or("").trim().to_string());
+             }
+             "facet" => {
+                 // `facet normal nx ny nz`
+diff --git a/crates/opusenc/Cargo.toml b/crates/opusenc/Cargo.toml
+index 489c648..beb52f3 100644
+--- a/crates/opusenc/Cargo.toml
++++ b/crates/opusenc/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/path/Cargo.toml b/crates/path/Cargo.toml
+index 46cf0a8..84c653c 100644
+--- a/crates/path/Cargo.toml
++++ b/crates/path/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/pdf/Cargo.toml b/crates/pdf/Cargo.toml
+index 9b761f5..1e86001 100644
+--- a/crates/pdf/Cargo.toml
++++ b/crates/pdf/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/plugin/Cargo.toml b/crates/plugin/Cargo.toml
+index 4081b61..300a560 100644
+--- a/crates/plugin/Cargo.toml
++++ b/crates/plugin/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/project/Cargo.toml b/crates/project/Cargo.toml
+index 72d40db..4f01d30 100644
+--- a/crates/project/Cargo.toml
++++ b/crates/project/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/psd/Cargo.toml b/crates/psd/Cargo.toml
+index 49dda6a..b947906 100644
+--- a/crates/psd/Cargo.toml
++++ b/crates/psd/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/raster/Cargo.toml b/crates/raster/Cargo.toml
+index e27d553..dd60458 100644
+--- a/crates/raster/Cargo.toml
++++ b/crates/raster/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/render/Cargo.toml b/crates/render/Cargo.toml
+index db2fa9d..3695b66 100644
+--- a/crates/render/Cargo.toml
++++ b/crates/render/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/crates/render/src/disk_cache.rs b/crates/render/src/disk_cache.rs
-index 4140b79..1f6fb10 100644
+index 4140b79..e587226 100644
 --- a/crates/render/src/disk_cache.rs
 +++ b/crates/render/src/disk_cache.rs
-@@ -281,7 +281,7 @@ pub fn default_folder() -> PathBuf {
+@@ -281,12 +281,12 @@ pub fn default_folder() -> PathBuf {
      if cfg!(windows)
          && let Some(l) = std::env::var_os("LOCALAPPDATA")
      {
@@ -2058,8 +2620,114 @@ index 4140b79..1f6fb10 100644
      }
      if let Some(x) = std::env::var_os("XDG_CACHE_HOME") {
          return PathBuf::from(x).join("effectcraft/disk-cache");
+     }
+-    home.map(|h| h.join(".cache/effectcraft/disk-cache")).unwrap_or_else(|| std::env::temp_dir().join("effectcraft-disk-cache"))
++    home.map(|h| h.join(".cache/plervo-motion/disk-cache")).unwrap_or_else(|| std::env::temp_dir().join("plervo-motion-disk-cache"))
+ }
+ 
+ impl DiskCache {
+@@ -881,7 +881,7 @@ mod tests {
+     use super::*;
+ 
+     fn tmpdir(name: &str) -> PathBuf {
+-        let d = std::env::temp_dir().join(format!("effectcraft-disk-cache-{name}-{}", std::process::id()));
++        let d = std::env::temp_dir().join(format!("plervo-motion-disk-cache-{name}-{}", std::process::id()));
+         let _ = std::fs::remove_dir_all(&d);
+         d
+     }
+diff --git a/crates/script/Cargo.toml b/crates/script/Cargo.toml
+index 10c635e..d3225e2 100644
+--- a/crates/script/Cargo.toml
++++ b/crates/script/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/segment/Cargo.toml b/crates/segment/Cargo.toml
+index 98f3d1a..2ae913c 100644
+--- a/crates/segment/Cargo.toml
++++ b/crates/segment/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/svg/Cargo.toml b/crates/svg/Cargo.toml
+index 0e1af77..0d3446c 100644
+--- a/crates/svg/Cargo.toml
++++ b/crates/svg/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/text/Cargo.toml b/crates/text/Cargo.toml
+index d48da8a..d03a232 100644
+--- a/crates/text/Cargo.toml
++++ b/crates/text/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/time/Cargo.toml b/crates/time/Cargo.toml
+index bc63048..76e153c 100644
+--- a/crates/time/Cargo.toml
++++ b/crates/time/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/track/Cargo.toml b/crates/track/Cargo.toml
+index cd9daae..bcdbf61 100644
+--- a/crates/track/Cargo.toml
++++ b/crates/track/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/ui-egui/Cargo.toml b/crates/ui-egui/Cargo.toml
+index be02fef..62cdb27 100644
+--- a/crates/ui-egui/Cargo.toml
++++ b/crates/ui-egui/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/crates/ui-egui/src/header.rs b/crates/ui-egui/src/header.rs
-index fb381cf..3153b08 100644
+index fb381cf..62d4f39 100644
 --- a/crates/ui-egui/src/header.rs
 +++ b/crates/ui-egui/src/header.rs
 @@ -27,9 +27,9 @@ pub fn show(app: &mut EffectcraftApp, ui: &mut egui::Ui, rect: Rect) {
@@ -2099,17 +2767,35 @@ index fb381cf..3153b08 100644
      {
          let r = Rect::from_min_max(pos2(rx - 26.0, cy - 13.0), pos2(rx, cy + 13.0));
          if widgets::icon_button(ui, r, icon, false, &t, egui::Id::new(id)).on_hover_text(tip).clicked() {
-@@ -654,7 +654,7 @@ fn ws_menu(app: &mut EffectcraftApp, ui: &mut egui::Ui) {
+@@ -654,20 +654,19 @@ fn ws_menu(app: &mut EffectcraftApp, ui: &mut egui::Ui) {
      }
  }
  
 -/// The ArtCraft mark as supplied in `docs/brand` (the README's and getartcraft.com's logo; used
-+/// The ArtCraft mark as supplied in `docs/brand` (the README's and plervo.com's logo; used
- /// unmodified, see `docs/brand/LICENSE-brand.txt`).
- static ARTCRAFT_MARK: &[u8] = include_bytes!("../../../docs/brand/artcraft-mark.png");
+-/// unmodified, see `docs/brand/LICENSE-brand.txt`).
+-static ARTCRAFT_MARK: &[u8] = include_bytes!("../../../docs/brand/artcraft-mark.png");
++/// Original Plervo Motion mark; MIT OR Apache-2.0, see assets/app-icon/.
++static PLERVO_MARK: &[u8] = include_bytes!("../../../assets/app-icon/effectcraft-1024.png");
  
+-/// The ArtCraft mark in `r` (decoded once into a mipmapped texture, so it stays crisp from the
++/// The Plervo mark in `r` (decoded once into a mipmapped texture, so it stays crisp from the
+ /// 24 px Tools bar to the About dialog). Nothing is drawn if it can't be decoded.
+ pub fn paint_logo(p: &egui::Painter, r: Rect) {
+     let ctx = p.ctx();
+-    let id = egui::Id::new("artcraft-mark");
++    let id = egui::Id::new("plervo-motion-mark");
+     let tex = ctx.data(|d| d.get_temp::<Option<egui::TextureHandle>>(id)).unwrap_or_else(|| {
+-        let tex = image::load_from_memory_with_format(ARTCRAFT_MARK, image::ImageFormat::Png).ok().map(|img| {
++        let tex = image::load_from_memory_with_format(PLERVO_MARK, image::ImageFormat::Png).ok().map(|img| {
+             let img = img.to_rgba8();
+             let ci = egui::ColorImage::from_rgba_unmultiplied([img.width() as usize, img.height() as usize], img.as_raw());
+-            ctx.load_texture("artcraft-mark", ci, egui::TextureOptions::LINEAR.with_mipmap_mode(Some(egui::TextureFilter::Linear)))
++            ctx.load_texture("plervo-motion-mark", ci, egui::TextureOptions::LINEAR.with_mipmap_mode(Some(egui::TextureFilter::Linear)))
+         });
+         ctx.data_mut(|d| d.insert_temp(id, tex.clone()));
+         tex
 diff --git a/crates/ui-egui/src/i18n.rs b/crates/ui-egui/src/i18n.rs
-index 4caae8d..51345f8 100644
+index 4caae8d..e20b488 100644
 --- a/crates/ui-egui/src/i18n.rs
 +++ b/crates/ui-egui/src/i18n.rs
 @@ -1,4 +1,4 @@
@@ -2183,12 +2869,12 @@ index 4caae8d..51345f8 100644
      ("help.enableLogging", "Enable Logging", "启用日志记录"),
      ("help.revealLogFile", "Reveal Logging File", "显示日志记录文件"),
 -    ("help.discord", "Join the ArtCraft Discord...", "加入 ArtCraft 的 Discord 社区..."),
-+    ("help.discord", "Support Plervo", "加入 ArtCraft 的 Discord 社区..."),
++    ("help.discord", "Support Plervo", "加入 Plervo 的 Discord 社区..."),
      ("help.reportIssue", "Provide Feedback...", "提供反馈..."),
 -    ("help.website", "ArtCraft Website", "ArtCraft 网站"),
 -    ("help.appPage", "EffectCraft Home Page", "EffectCraft 主页"),
 -    ("help.github", "EffectCraft on GitHub", "GitHub 上的 EffectCraft"),
-+    ("help.website", "Plervo Website", "ArtCraft 网站"),
++    ("help.website", "Plervo Website", "Plervo 网站"),
 +    ("help.appPage", "Plervo Motion Home Page", "Plervo Motion 主页"),
 +    ("help.github", "Plervo Motion on GitHub", "GitHub 上的 Plervo Motion"),
      ("file.openDemoProject", "Open Demo Project", "打开示例项目"),
@@ -2241,12 +2927,12 @@ index 4caae8d..51345f8 100644
      ("help.enableLogging", "Enable Logging", "啟用日誌記錄"),
      ("help.revealLogFile", "Reveal Logging File", "顯示日誌檔案"),
 -    ("help.discord", "Join the ArtCraft Discord...", "加入 ArtCraft 的 Discord 社群..."),
-+    ("help.discord", "Support Plervo", "加入 ArtCraft 的 Discord 社群..."),
++    ("help.discord", "Support Plervo", "加入 Plervo 的 Discord 社群..."),
      ("help.reportIssue", "Provide Feedback...", "提供意見..."),
 -    ("help.website", "ArtCraft Website", "ArtCraft 網站"),
 -    ("help.appPage", "EffectCraft Home Page", "EffectCraft 首頁"),
 -    ("help.github", "EffectCraft on GitHub", "GitHub 上的 EffectCraft"),
-+    ("help.website", "Plervo Website", "ArtCraft 網站"),
++    ("help.website", "Plervo Website", "Plervo 網站"),
 +    ("help.appPage", "Plervo Motion Home Page", "Plervo Motion 首頁"),
 +    ("help.github", "Plervo Motion on GitHub", "GitHub 上的 Plervo Motion"),
      ("file.openDemoProject", "Open Demo Project", "開啟範例專案"),
@@ -2296,12 +2982,12 @@ index 4caae8d..51345f8 100644
      ("help.enableLogging", "Enable Logging", "ログ記録を有効化"),
      ("help.revealLogFile", "Reveal Logging File", "ログファイルを表示"),
 -    ("help.discord", "Join the ArtCraft Discord...", "ArtCraft Discordに参加..."),
-+    ("help.discord", "Support Plervo", "ArtCraft Discordに参加..."),
++    ("help.discord", "Support Plervo", "Plervo Discordに参加..."),
      ("help.reportIssue", "Provide Feedback...", "フィードバックを送信..."),
 -    ("help.website", "ArtCraft Website", "ArtCraftウェブサイト"),
 -    ("help.appPage", "EffectCraft Home Page", "EffectCraftホームページ"),
 -    ("help.github", "EffectCraft on GitHub", "GitHubのEffectCraft"),
-+    ("help.website", "Plervo Website", "ArtCraftウェブサイト"),
++    ("help.website", "Plervo Website", "Plervoウェブサイト"),
 +    ("help.appPage", "Plervo Motion Home Page", "Plervo Motionホームページ"),
 +    ("help.github", "Plervo Motion on GitHub", "GitHubのPlervo Motion"),
      ("file.openDemoProject", "Open Demo Project", "デモプロジェクトを開く"),
@@ -2354,12 +3040,12 @@ index 4caae8d..51345f8 100644
      ("help.enableLogging", "Enable Logging", "Увімкнути журналювання"),
      ("help.revealLogFile", "Reveal Logging File", "Показати файл журналу"),
 -    ("help.discord", "Join the ArtCraft Discord...", "Приєднатися до Discord ArtCraft..."),
-+    ("help.discord", "Support Plervo", "Приєднатися до Discord ArtCraft..."),
++    ("help.discord", "Support Plervo", "Приєднатися до Discord Plervo..."),
      ("help.reportIssue", "Provide Feedback...", "Надіслати відгук..."),
 -    ("help.website", "ArtCraft Website", "Вебсайт ArtCraft"),
 -    ("help.appPage", "EffectCraft Home Page", "Домашня сторінка EffectCraft"),
 -    ("help.github", "EffectCraft on GitHub", "EffectCraft на GitHub"),
-+    ("help.website", "Plervo Website", "Вебсайт ArtCraft"),
++    ("help.website", "Plervo Website", "Вебсайт Plervo"),
 +    ("help.appPage", "Plervo Motion Home Page", "Домашня сторінка Plervo Motion"),
 +    ("help.github", "Plervo Motion on GitHub", "Plervo Motion на GitHub"),
      ("file.openDemoProject", "Open Demo Project", "Відкрити демонстраційний проєкт"),
@@ -2412,12 +3098,12 @@ index 4caae8d..51345f8 100644
      ("help.enableLogging", "Enable Logging", "Habilitar registro"),
      ("help.revealLogFile", "Reveal Logging File", "Mostrar archivo de registro"),
 -    ("help.discord", "Join the ArtCraft Discord...", "Unirse al Discord de ArtCraft..."),
-+    ("help.discord", "Support Plervo", "Unirse al Discord de ArtCraft..."),
++    ("help.discord", "Support Plervo", "Unirse al Discord de Plervo..."),
      ("help.reportIssue", "Provide Feedback...", "Enviar comentarios..."),
 -    ("help.website", "ArtCraft Website", "Sitio web de ArtCraft"),
 -    ("help.appPage", "EffectCraft Home Page", "Página de inicio de EffectCraft"),
 -    ("help.github", "EffectCraft on GitHub", "EffectCraft en GitHub"),
-+    ("help.website", "Plervo Website", "Sitio web de ArtCraft"),
++    ("help.website", "Plervo Website", "Sitio web de Plervo"),
 +    ("help.appPage", "Plervo Motion Home Page", "Página de inicio de Plervo Motion"),
 +    ("help.github", "Plervo Motion on GitHub", "Plervo Motion en GitHub"),
      ("file.openDemoProject", "Open Demo Project", "Abrir proyecto de demostración"),
@@ -2469,12 +3155,12 @@ index 4caae8d..51345f8 100644
      ("help.enableLogging", "Enable Logging", "Ativar registro em log"),
      ("help.revealLogFile", "Reveal Logging File", "Revelar arquivo de log"),
 -    ("help.discord", "Join the ArtCraft Discord...", "Entrar no Discord do ArtCraft..."),
-+    ("help.discord", "Support Plervo", "Entrar no Discord do ArtCraft..."),
++    ("help.discord", "Support Plervo", "Entrar no Discord do Plervo..."),
      ("help.reportIssue", "Provide Feedback...", "Enviar comentários..."),
 -    ("help.website", "ArtCraft Website", "Site do ArtCraft"),
 -    ("help.appPage", "EffectCraft Home Page", "Página inicial do EffectCraft"),
 -    ("help.github", "EffectCraft on GitHub", "EffectCraft no GitHub"),
-+    ("help.website", "Plervo Website", "Site do ArtCraft"),
++    ("help.website", "Plervo Website", "Site do Plervo"),
 +    ("help.appPage", "Plervo Motion Home Page", "Página inicial do Plervo Motion"),
 +    ("help.github", "Plervo Motion on GitHub", "Plervo Motion no GitHub"),
      ("file.openDemoProject", "Open Demo Project", "Abrir projeto de demonstração"),
@@ -2527,12 +3213,12 @@ index 4caae8d..51345f8 100644
      ("help.enableLogging", "Enable Logging", "Включить ведение журнала"),
      ("help.revealLogFile", "Reveal Logging File", "Показать файл журнала"),
 -    ("help.discord", "Join the ArtCraft Discord...", "Присоединяйтесь к Discord ArtCraft..."),
-+    ("help.discord", "Support Plervo", "Присоединяйтесь к Discord ArtCraft..."),
++    ("help.discord", "Support Plervo", "Присоединяйтесь к Discord Plervo..."),
      ("help.reportIssue", "Provide Feedback...", "Оставить отзыв..."),
 -    ("help.website", "ArtCraft Website", "Сайт ArtCraft"),
 -    ("help.appPage", "EffectCraft Home Page", "Главная страница EffectCraft"),
 -    ("help.github", "EffectCraft on GitHub", "EffectCraft на GitHub"),
-+    ("help.website", "Plervo Website", "Сайт ArtCraft"),
++    ("help.website", "Plervo Website", "Сайт Plervo"),
 +    ("help.appPage", "Plervo Motion Home Page", "Главная страница Plervo Motion"),
 +    ("help.github", "Plervo Motion on GitHub", "Plervo Motion на GitHub"),
      ("file.openDemoProject", "Open Demo Project", "Открыть демонстрационный проект"),
@@ -2585,12 +3271,12 @@ index 4caae8d..51345f8 100644
      ("help.enableLogging", "Enable Logging", "Activer la journalisation"),
      ("help.revealLogFile", "Reveal Logging File", "Révéler le fichier journal"),
 -    ("help.discord", "Join the ArtCraft Discord...", "Rejoindre le Discord ArtCraft..."),
-+    ("help.discord", "Support Plervo", "Rejoindre le Discord ArtCraft..."),
++    ("help.discord", "Support Plervo", "Rejoindre le Discord Plervo..."),
      ("help.reportIssue", "Provide Feedback...", "Envoyer des commentaires..."),
 -    ("help.website", "ArtCraft Website", "Site web ArtCraft"),
 -    ("help.appPage", "EffectCraft Home Page", "Page d’accueil EffectCraft"),
 -    ("help.github", "EffectCraft on GitHub", "EffectCraft sur GitHub"),
-+    ("help.website", "Plervo Website", "Site web ArtCraft"),
++    ("help.website", "Plervo Website", "Site web Plervo"),
 +    ("help.appPage", "Plervo Motion Home Page", "Page d’accueil Plervo Motion"),
 +    ("help.github", "Plervo Motion on GitHub", "Plervo Motion sur GitHub"),
      ("file.openDemoProject", "Open Demo Project", "Ouvrir le projet de démonstration"),
@@ -2643,12 +3329,12 @@ index 4caae8d..51345f8 100644
      ("help.enableLogging", "Enable Logging", "Protokollierung aktivieren"),
      ("help.revealLogFile", "Reveal Logging File", "Protokolldatei anzeigen"),
 -    ("help.discord", "Join the ArtCraft Discord...", "ArtCraft-Discord beitreten..."),
-+    ("help.discord", "Support Plervo", "ArtCraft-Discord beitreten..."),
++    ("help.discord", "Support Plervo", "Plervo-Discord beitreten..."),
      ("help.reportIssue", "Provide Feedback...", "Feedback senden..."),
 -    ("help.website", "ArtCraft Website", "ArtCraft-Website"),
 -    ("help.appPage", "EffectCraft Home Page", "EffectCraft-Startseite"),
 -    ("help.github", "EffectCraft on GitHub", "EffectCraft auf GitHub"),
-+    ("help.website", "Plervo Website", "ArtCraft-Website"),
++    ("help.website", "Plervo Website", "Plervo-Website"),
 +    ("help.appPage", "Plervo Motion Home Page", "Plervo Motion-Startseite"),
 +    ("help.github", "Plervo Motion on GitHub", "Plervo Motion auf GitHub"),
      ("file.openDemoProject", "Open Demo Project", "Demoprojekt öffnen"),
@@ -2701,12 +3387,12 @@ index 4caae8d..51345f8 100644
      ("help.enableLogging", "Enable Logging", "Povolit protokolování"),
      ("help.revealLogFile", "Reveal Logging File", "Zobrazit soubor protokolu"),
 -    ("help.discord", "Join the ArtCraft Discord...", "Připojit se na Discord ArtCraft..."),
-+    ("help.discord", "Support Plervo", "Připojit se na Discord ArtCraft..."),
++    ("help.discord", "Support Plervo", "Připojit se na Discord Plervo..."),
      ("help.reportIssue", "Provide Feedback...", "Poskytnout zpětnou vazbu..."),
 -    ("help.website", "ArtCraft Website", "Web ArtCraft"),
 -    ("help.appPage", "EffectCraft Home Page", "Domovská stránka EffectCraft"),
 -    ("help.github", "EffectCraft on GitHub", "EffectCraft na GitHubu"),
-+    ("help.website", "Plervo Website", "Web ArtCraft"),
++    ("help.website", "Plervo Website", "Web Plervo"),
 +    ("help.appPage", "Plervo Motion Home Page", "Domovská stránka Plervo Motion"),
 +    ("help.github", "Plervo Motion on GitHub", "Plervo Motion na GitHubu"),
      ("file.openDemoProject", "Open Demo Project", "Otevřít ukázkový projekt"),
@@ -2735,12 +3421,17 @@ index 3ab1155..eee161d 100644
  const JAPANESE_EFFECTS: &[Row] = &[];
  
 diff --git a/crates/ui-egui/src/i18n/ui.rs b/crates/ui-egui/src/i18n/ui.rs
-index 3a4dd4a..c0edc92 100644
+index 3a4dd4a..e955cef 100644
 --- a/crates/ui-egui/src/i18n/ui.rs
 +++ b/crates/ui-egui/src/i18n/ui.rs
-@@ -100,7 +100,7 @@ const JAPANESE: &[(&str, &str)] = &[
-         "A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the ArtCraft family of creative apps.",
-         "モーショングラフィックスとビジュアルエフェクト向けの、クリーンルーム方式で開発されたオープンソースのコンポジットソフトウェアです。macOS、Windows、Linuxでネイティブに動作し、ブラウザーでも使えます。ArtCraftクリエイティブアプリファミリーの一員です。",
+@@ -97,10 +97,10 @@ const JAPANESE: &[(&str, &str)] = &[
+     ("360 View Orientation", "360度ビューの方向"),
+     ("3:2 Pulldown: {}", "3:2プルダウン：{}"),
+     (
+-        "A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the ArtCraft family of creative apps.",
+-        "モーショングラフィックスとビジュアルエフェクト向けの、クリーンルーム方式で開発されたオープンソースのコンポジットソフトウェアです。macOS、Windows、Linuxでネイティブに動作し、ブラウザーでも使えます。ArtCraftクリエイティブアプリファミリーの一員です。",
++        "A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the Plervo family of creative apps.",
++        "モーショングラフィックスとビジュアルエフェクト向けの、クリーンルーム方式で開発されたオープンソースのコンポジットソフトウェアです。macOS、Windows、Linuxでネイティブに動作し、ブラウザーでも使えます。Plervoクリエイティブアプリファミリーの一員です。",
      ),
 -    ("About EffectCraft", "EffectCraftについて"),
 +    ("About Plervo Motion", "Plervo Motionについて"),
@@ -2770,10 +3461,19 @@ index 3a4dd4a..c0edc92 100644
      ("Intensity", "強度"),
      ("Inverted", "反転"),
 -    ("Join the ArtCraft community on Discord", "DiscordでArtCraftコミュニティに参加"),
-+    ("Support Plervo", "DiscordでArtCraftコミュニティに参加"),
++    ("Support Plervo", "DiscordでPlervoコミュニティに参加"),
      ("Key: {}", "キー：{}"),
      ("LEARN", "学習"),
      ("Label", "ラベル"),
+@@ -318,7 +318,7 @@ const JAPANESE: &[(&str, &str)] = &[
+     ("Models folder: {}", "モデルフォルダー：{}"),
+     ("Modifiers:", "修飾キー:"),
+     ("More", "その他"),
+-    ("More ArtCraft apps", "ほかのArtCraftアプリ"),
++    ("More Plervo apps", "ほかのPlervoアプリ"),
+     ("More tutorials", "ほかのチュートリアル"),
+     ("Motion Blur", "モーションブラー"),
+     ("Motion Blur: {}", "モーションブラー：{}"),
 @@ -534,7 +534,7 @@ const JAPANESE: &[(&str, &str)] = &[
      ("Variable Font Axes", "可変フォントの軸"),
      ("Video Codec: {}", "ビデオコーデック：{}"),
@@ -2788,7 +3488,7 @@ index 3a4dd4a..c0edc92 100644
      ("Import Photoshop File", "Photoshopファイルを読み込み"),
      ("Interpret Unlabeled Alpha As", "ラベルなしアルファの解釈"),
 -    ("Join the ArtCraft Discord", "ArtCraftのDiscordに参加"),
-+    ("Support Plervo", "ArtCraftのDiscordに参加"),
++    ("Support Plervo", "PlervoのDiscordに参加"),
      ("Mercury GPU Acceleration ({})", "Mercury GPUアクセラレーション（{}）"),
      ("Mercury Software Only", "Mercuryソフトウェアのみ"),
      ("OCIO (built-in ACES config)", "OCIO（組み込みACES設定）"),
@@ -2812,9 +3512,14 @@ index 3a4dd4a..c0edc92 100644
      ("After Effects project", "After Effectsプロジェクト"),
      ("Lottie animation", "Lottieアニメーション"),
      ("Project", "プロジェクト"),
-@@ -650,7 +650,7 @@ const SIMPLIFIED_CHINESE: &[(&str, &str)] = &[
-         "A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the ArtCraft family of creative apps.",
-         "一款从零编写、开源的动态图形与视觉效果合成软件：原生支持 macOS、Windows 和 Linux，也可在浏览器中运行。属于 ArtCraft 创意应用家族。",
+@@ -647,10 +647,10 @@ const SIMPLIFIED_CHINESE: &[(&str, &str)] = &[
+     ("360 View Orientation", "360 视图方向"),
+     ("3:2 Pulldown: {}", "3:2 折叠：{}"),
+     (
+-        "A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the ArtCraft family of creative apps.",
+-        "一款从零编写、开源的动态图形与视觉效果合成软件：原生支持 macOS、Windows 和 Linux，也可在浏览器中运行。属于 ArtCraft 创意应用家族。",
++        "A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the Plervo family of creative apps.",
++        "一款从零编写、开源的动态图形与视觉效果合成软件：原生支持 macOS、Windows 和 Linux，也可在浏览器中运行。属于 Plervo 创意应用家族。",
      ),
 -    ("About EffectCraft", "关于 EffectCraft"),
 +    ("About Plervo Motion", "关于 Plervo Motion"),
@@ -2844,10 +3549,19 @@ index 3a4dd4a..c0edc92 100644
      ("Intensity", "强度"),
      ("Inverted", "反转"),
 -    ("Join the ArtCraft community on Discord", "加入 ArtCraft 的 Discord 社区"),
-+    ("Support Plervo", "加入 ArtCraft 的 Discord 社区"),
++    ("Support Plervo", "加入 Plervo 的 Discord 社区"),
      ("Key: {}", "按键：{}"),
      ("LEARN", "学习"),
      ("Label", "标签"),
+@@ -862,7 +862,7 @@ const SIMPLIFIED_CHINESE: &[(&str, &str)] = &[
+     ("Models folder: {}", "模型文件夹：{}"),
+     ("Modifiers:", "修饰键："),
+     ("More", "更多"),
+-    ("More ArtCraft apps", "更多 ArtCraft 应用"),
++    ("More Plervo apps", "更多 Plervo 应用"),
+     ("More tutorials", "更多教程"),
+     ("Motion Blur", "运动模糊"),
+     ("Motion Blur: {}", "运动模糊：{}"),
 @@ -1072,7 +1072,7 @@ const SIMPLIFIED_CHINESE: &[(&str, &str)] = &[
      ("Variable Font Axes", "可变字体轴"),
      ("Video Codec: {}", "视频编解码器：{}"),
@@ -2862,7 +3576,7 @@ index 3a4dd4a..c0edc92 100644
      ("Import Photoshop File", "导入 Photoshop 文件"),
      ("Interpret Unlabeled Alpha As", "将未标记的 Alpha 解释为"),
 -    ("Join the ArtCraft Discord", "加入 ArtCraft Discord"),
-+    ("Support Plervo", "加入 ArtCraft Discord"),
++    ("Support Plervo", "加入 Plervo Discord"),
      ("Mercury GPU Acceleration ({})", "Mercury GPU 加速（{}）"),
      ("Mercury Software Only", "仅 Mercury 软件"),
      ("OCIO (built-in ACES config)", "OCIO（内置 ACES 配置）"),
@@ -2917,9 +3631,14 @@ index 3a4dd4a..c0edc92 100644
      ("Total Offset", "总偏移"),
      ("Per Layer", "每个图层"),
      ("Track", "跟踪"),
-@@ -1382,7 +1382,7 @@ const TRADITIONAL_CHINESE: &[(&str, &str)] = &[
-         "A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the ArtCraft family of creative apps.",
-         "一款從零編寫、開源的動態圖形與視覺效果合成軟件：原生支援 macOS、Windows 和 Linux，也可在瀏覽器中執行。屬於 ArtCraft 創意應用家族。",
+@@ -1379,10 +1379,10 @@ const TRADITIONAL_CHINESE: &[(&str, &str)] = &[
+     ("360 View Orientation", "360 檢視方向"),
+     ("3:2 Pulldown: {}", "3:2 摺疊：{}"),
+     (
+-        "A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the ArtCraft family of creative apps.",
+-        "一款從零編寫、開源的動態圖形與視覺效果合成軟件：原生支援 macOS、Windows 和 Linux，也可在瀏覽器中執行。屬於 ArtCraft 創意應用家族。",
++        "A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the Plervo family of creative apps.",
++        "一款從零編寫、開源的動態圖形與視覺效果合成軟件：原生支援 macOS、Windows 和 Linux，也可在瀏覽器中執行。屬於 Plervo 創意應用家族。",
      ),
 -    ("About EffectCraft", "關於 EffectCraft"),
 +    ("About Plervo Motion", "關於 Plervo Motion"),
@@ -2949,10 +3668,19 @@ index 3a4dd4a..c0edc92 100644
      ("Intensity", "強度"),
      ("Inverted", "反轉"),
 -    ("Join the ArtCraft community on Discord", "加入 ArtCraft 的 Discord 社區"),
-+    ("Support Plervo", "加入 ArtCraft 的 Discord 社區"),
++    ("Support Plervo", "加入 Plervo 的 Discord 社區"),
      ("Key: {}", "按鍵：{}"),
      ("LEARN", "學習"),
      ("Label", "標籤"),
+@@ -1594,7 +1594,7 @@ const TRADITIONAL_CHINESE: &[(&str, &str)] = &[
+     ("Models folder: {}", "模型資料夾：{}"),
+     ("Modifiers:", "修飾鍵："),
+     ("More", "更多"),
+-    ("More ArtCraft apps", "更多 ArtCraft 應用"),
++    ("More Plervo apps", "更多 Plervo 應用"),
+     ("More tutorials", "更多教學"),
+     ("Motion Blur", "運動模糊"),
+     ("Motion Blur: {}", "動態模糊：{}"),
 @@ -1804,7 +1804,7 @@ const TRADITIONAL_CHINESE: &[(&str, &str)] = &[
      ("Variable Font Axes", "可變字型軸"),
      ("Video Codec: {}", "視訊轉碼器：{}"),
@@ -2967,7 +3695,7 @@ index 3a4dd4a..c0edc92 100644
      ("Import Photoshop File", "Import Photoshop File"),
      ("Interpret Unlabeled Alpha As", "Interpret Unlabeled Alpha As"),
 -    ("Join the ArtCraft Discord", "加入 ArtCraft Discord"),
-+    ("Support Plervo", "加入 ArtCraft Discord"),
++    ("Support Plervo", "加入 Plervo Discord"),
      ("Mercury GPU Acceleration ({})", "Mercury GPU Acceleration ({})"),
      ("Mercury Software Only", "Mercury Software Only"),
      ("OCIO (built-in ACES config)", "OCIO (built-in ACES config)"),
@@ -3022,9 +3750,14 @@ index 3a4dd4a..c0edc92 100644
      ("Total Offset", "總偏移"),
      ("Per Layer", "每個圖層"),
      ("Track", "追蹤"),
-@@ -2111,7 +2111,7 @@ const UKRAINIAN: &[(&str, &str)] = &[
-         "A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the ArtCraft family of creative apps.",
-         "Незалежно розроблена програма з відкритим кодом для компонування анімованої графіки та візуальних ефектів: працює на macOS, Windows і Linux, а також у браузері. Належить до родини творчих програм ArtCraft.",
+@@ -2108,10 +2108,10 @@ const UKRAINIAN: &[(&str, &str)] = &[
+     ("360 View Orientation", "Орієнтація огляду 360°"),
+     ("3:2 Pulldown: {}", "Перетворення кадрів 3:2: {}"),
+     (
+-        "A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the ArtCraft family of creative apps.",
+-        "Незалежно розроблена програма з відкритим кодом для компонування анімованої графіки та візуальних ефектів: працює на macOS, Windows і Linux, а також у браузері. Належить до родини творчих програм ArtCraft.",
++        "A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the Plervo family of creative apps.",
++        "Незалежно розроблена програма з відкритим кодом для компонування анімованої графіки та візуальних ефектів: працює на macOS, Windows і Linux, а також у браузері. Належить до родини творчих програм Plervo.",
      ),
 -    ("About EffectCraft", "Про EffectCraft"),
 +    ("About Plervo Motion", "Про Plervo Motion"),
@@ -3054,10 +3787,19 @@ index 3a4dd4a..c0edc92 100644
      ("Intensity", "Інтенсивність"),
      ("Inverted", "Інвертовано"),
 -    ("Join the ArtCraft community on Discord", "Приєднайтеся до спільноти ArtCraft у Discord"),
-+    ("Support Plervo", "Приєднайтеся до спільноти ArtCraft у Discord"),
++    ("Support Plervo", "Приєднайтеся до спільноти Plervo у Discord"),
      ("Key: {}", "Клавіша: {}"),
      ("LEARN", "НАВЧАННЯ"),
      ("Label", "Мітка"),
+@@ -2329,7 +2329,7 @@ const UKRAINIAN: &[(&str, &str)] = &[
+     ("Models folder: {}", "Тека моделей: {}"),
+     ("Modifiers:", "Модифікатори:"),
+     ("More", "Більше"),
+-    ("More ArtCraft apps", "Інші програми ArtCraft"),
++    ("More Plervo apps", "Інші програми Plervo"),
+     ("More tutorials", "Інші уроки"),
+     ("Motion Blur", "Розмиття руху"),
+     ("Motion Blur: {}", "Розмиття руху: {}"),
 @@ -2550,7 +2550,7 @@ const UKRAINIAN: &[(&str, &str)] = &[
      ("Variable Font Axes", "Осі змінного шрифту"),
      ("Video Codec: {}", "Відеокодек: {}"),
@@ -3072,7 +3814,7 @@ index 3a4dd4a..c0edc92 100644
      ("Import Photoshop File", "Імпорт файлу Photoshop"),
      ("Interpret Unlabeled Alpha As", "Інтерпретувати непозначену альфу як"),
 -    ("Join the ArtCraft Discord", "Приєднатися до Discord ArtCraft"),
-+    ("Support Plervo", "Приєднатися до Discord ArtCraft"),
++    ("Support Plervo", "Приєднатися до Discord Plervo"),
      ("Mercury GPU Acceleration ({})", "Прискорення Mercury GPU ({})"),
      ("Mercury Software Only", "Лише програмний Mercury"),
      ("OCIO (built-in ACES config)", "OCIO (вбудована конфігурація ACES)"),
@@ -3096,9 +3838,14 @@ index 3a4dd4a..c0edc92 100644
      ("After Effects project", "Проєкт After Effects"),
      ("Lottie animation", "Анімація Lottie"),
      ("Project", "Проєкт"),
-@@ -2674,7 +2674,7 @@ const PORTUGUESE: &[(&str, &str)] = &[
-         "A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the ArtCraft family of creative apps.",
-         "Um compositor de código aberto, desenvolvido em clean-room, para motion graphics e efeitos visuais: nativo no macOS, Windows e Linux, e no navegador. Parte da família de aplicativos criativos ArtCraft.",
+@@ -2671,10 +2671,10 @@ const PORTUGUESE: &[(&str, &str)] = &[
+     ("360 View Orientation", "Orientação da vista 360°"),
+     ("3:2 Pulldown: {}", "Pulldown 3:2: {}"),
+     (
+-        "A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the ArtCraft family of creative apps.",
+-        "Um compositor de código aberto, desenvolvido em clean-room, para motion graphics e efeitos visuais: nativo no macOS, Windows e Linux, e no navegador. Parte da família de aplicativos criativos ArtCraft.",
++        "A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the Plervo family of creative apps.",
++        "Um compositor de código aberto, desenvolvido em clean-room, para motion graphics e efeitos visuais: nativo no macOS, Windows e Linux, e no navegador. Parte da família de aplicativos criativos Plervo.",
      ),
 -    ("About EffectCraft", "Sobre o EffectCraft"),
 +    ("About Plervo Motion", "Sobre o Plervo Motion"),
@@ -3128,10 +3875,19 @@ index 3a4dd4a..c0edc92 100644
      ("Intensity", "Intensidade"),
      ("Inverted", "Invertido"),
 -    ("Join the ArtCraft community on Discord", "Entre na comunidade ArtCraft no Discord"),
-+    ("Support Plervo", "Entre na comunidade ArtCraft no Discord"),
++    ("Support Plervo", "Entre na comunidade Plervo no Discord"),
      ("Key: {}", "Tecla: {}"),
      ("LEARN", "APRENDER"),
      ("Label", "Rótulo"),
+@@ -2876,7 +2876,7 @@ const PORTUGUESE: &[(&str, &str)] = &[
+     ("Models folder: {}", "Pasta de modelos: {}"),
+     ("Modifiers:", "Modificadores:"),
+     ("More", "Mais"),
+-    ("More ArtCraft apps", "Mais aplicativos ArtCraft"),
++    ("More Plervo apps", "Mais aplicativos Plervo"),
+     ("More tutorials", "Mais tutoriais"),
+     ("Motion Blur", "Desfoque de movimento"),
+     ("Motion Blur: {}", "Desfoque de movimento: {}"),
 @@ -3086,7 +3086,7 @@ const PORTUGUESE: &[(&str, &str)] = &[
      ("Variable Font Axes", "Eixos da fonte variável"),
      ("Video Codec: {}", "Codec de vídeo: {}"),
@@ -3141,9 +3897,14 @@ index 3a4dd4a..c0edc92 100644
      ("Width:", "Largura:"),
      ("You can undo this.", "Você pode desfazer isto."),
      ("Your changes will be lost if you don't save them.", "Suas alterações serão perdidas se você não as salvar."),
-@@ -3117,7 +3117,7 @@ const CZECH: &[(&str, &str)] = &[
-         "A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the ArtCraft family of creative apps.",
-         "Kompoziční nástroj s otevřeným zdrojovým kódem pro pohyblivou grafiku a vizuální efekty, vyvinutý nezávisle metodou clean-room. Běží nativně na macOS, Windows a Linuxu i v prohlížeči. Patří do rodiny kreativních aplikací ArtCraft.",
+@@ -3114,10 +3114,10 @@ const CZECH: &[(&str, &str)] = &[
+     ("360 View Orientation", "Orientace zobrazení 360°"),
+     ("3:2 Pulldown: {}", "Převod 3:2 pulldown: {}"),
+     (
+-        "A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the ArtCraft family of creative apps.",
+-        "Kompoziční nástroj s otevřeným zdrojovým kódem pro pohyblivou grafiku a vizuální efekty, vyvinutý nezávisle metodou clean-room. Běží nativně na macOS, Windows a Linuxu i v prohlížeči. Patří do rodiny kreativních aplikací ArtCraft.",
++        "A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the Plervo family of creative apps.",
++        "Kompoziční nástroj s otevřeným zdrojovým kódem pro pohyblivou grafiku a vizuální efekty, vyvinutý nezávisle metodou clean-room. Běží nativně na macOS, Windows a Linuxu i v prohlížeči. Patří do rodiny kreativních aplikací Plervo.",
      ),
 -    ("About EffectCraft", "O aplikaci EffectCraft"),
 +    ("About Plervo Motion", "O aplikaci Plervo Motion"),
@@ -3173,10 +3934,19 @@ index 3a4dd4a..c0edc92 100644
      ("Intensity", "Intenzita"),
      ("Inverted", "Invertovaná"),
 -    ("Join the ArtCraft community on Discord", "Připojit se ke komunitě ArtCraft na Discordu"),
-+    ("Support Plervo", "Připojit se ke komunitě ArtCraft na Discordu"),
++    ("Support Plervo", "Připojit se ke komunitě Plervo na Discordu"),
      ("Key: {}", "Klávesa: {}"),
      ("LEARN", "VÝUKA"),
      ("Label", "Štítek"),
+@@ -3329,7 +3329,7 @@ const CZECH: &[(&str, &str)] = &[
+     ("Models folder: {}", "Složka modelů: {}"),
+     ("Modifiers:", "Modifikátory:"),
+     ("More", "Další"),
+-    ("More ArtCraft apps", "Další aplikace ArtCraft"),
++    ("More Plervo apps", "Další aplikace Plervo"),
+     ("More tutorials", "Další výukové lekce"),
+     ("Motion Blur", "Rozostření pohybem"),
+     ("Motion Blur: {}", "Rozostření pohybem: {}"),
 @@ -3541,7 +3541,7 @@ const CZECH: &[(&str, &str)] = &[
      ("Variable Font Axes", "Osy variabilního písma"),
      ("Video Codec: {}", "Video kodek: {}"),
@@ -3191,7 +3961,7 @@ index 3a4dd4a..c0edc92 100644
      ("Import Photoshop File", "Importovat soubor Photoshop"),
      ("Interpret Unlabeled Alpha As", "Interpretovat neoznačenou alfu jako"),
 -    ("Join the ArtCraft Discord", "Připojit se na Discord ArtCraft"),
-+    ("Support Plervo", "Připojit se na Discord ArtCraft"),
++    ("Support Plervo", "Připojit se na Discord Plervo"),
      ("Mercury GPU Acceleration ({})", "GPU akcelerace Mercury ({})"),
      ("Mercury Software Only", "Pouze softwarové zpracování Mercury"),
      ("OCIO (built-in ACES config)", "OCIO (vestavěná konfigurace ACES)"),
@@ -3215,9 +3985,14 @@ index 3a4dd4a..c0edc92 100644
      ("After Effects project", "Projekt After Effects"),
      ("Lottie animation", "Animace Lottie"),
      ("Project", "Projekt"),
-@@ -3666,7 +3666,7 @@ const SPANISH: &[(&str, &str)] = &[
-         "A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the ArtCraft family of creative apps.",
-         "Un compositor de código abierto y desarrollado en sala limpia para gráficos en movimiento y efectos visuales: nativo en macOS, Windows y Linux, y en el navegador. Forma parte de la familia de aplicaciones creativas ArtCraft.",
+@@ -3663,10 +3663,10 @@ const SPANISH: &[(&str, &str)] = &[
+     ("360 View Orientation", "Orientación de la vista 360°"),
+     ("3:2 Pulldown: {}", "Pulldown 3:2: {}"),
+     (
+-        "A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the ArtCraft family of creative apps.",
+-        "Un compositor de código abierto y desarrollado en sala limpia para gráficos en movimiento y efectos visuales: nativo en macOS, Windows y Linux, y en el navegador. Forma parte de la familia de aplicaciones creativas ArtCraft.",
++        "A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the Plervo family of creative apps.",
++        "Un compositor de código abierto y desarrollado en sala limpia para gráficos en movimiento y efectos visuales: nativo en macOS, Windows y Linux, y en el navegador. Forma parte de la familia de aplicaciones creativas Plervo.",
      ),
 -    ("About EffectCraft", "Acerca de EffectCraft"),
 +    ("About Plervo Motion", "Acerca de Plervo Motion"),
@@ -3247,10 +4022,19 @@ index 3a4dd4a..c0edc92 100644
      ("Intensity", "Intensidad"),
      ("Inverted", "Invertida"),
 -    ("Join the ArtCraft community on Discord", "Únete a la comunidad de ArtCraft en Discord"),
-+    ("Support Plervo", "Únete a la comunidad de ArtCraft en Discord"),
++    ("Support Plervo", "Únete a la comunidad de Plervo en Discord"),
      ("Key: {}", "Tecla: {}"),
      ("LEARN", "APRENDER"),
      ("Label", "Etiqueta"),
+@@ -3885,7 +3885,7 @@ const SPANISH: &[(&str, &str)] = &[
+     ("Models folder: {}", "Carpeta de modelos: {}"),
+     ("Modifiers:", "Modificadores:"),
+     ("More", "Más"),
+-    ("More ArtCraft apps", "Más aplicaciones de ArtCraft"),
++    ("More Plervo apps", "Más aplicaciones de Plervo"),
+     ("More tutorials", "Más tutoriales"),
+     ("Motion Blur", "Desenfoque de movimiento"),
+     ("Motion Blur: {}", "Desenfoque de movimiento: {}"),
 @@ -4102,7 +4102,7 @@ const SPANISH: &[(&str, &str)] = &[
      ("Variable Font Axes", "Ejes de fuente variable"),
      ("Video Codec: {}", "Códec de vídeo: {}"),
@@ -3265,7 +4049,7 @@ index 3a4dd4a..c0edc92 100644
      ("Import Photoshop File", "Importar archivo de Photoshop"),
      ("Interpret Unlabeled Alpha As", "Interpretar alfa sin etiquetar como"),
 -    ("Join the ArtCraft Discord", "Únete al Discord de ArtCraft"),
-+    ("Support Plervo", "Únete al Discord de ArtCraft"),
++    ("Support Plervo", "Únete al Discord de Plervo"),
      ("Mercury GPU Acceleration ({})", "Aceleración por GPU Mercury ({})"),
      ("Mercury Software Only", "Solo software Mercury"),
      ("OCIO (built-in ACES config)", "OCIO (configuración ACES integrada)"),
@@ -3385,7 +4169,7 @@ index 3e09844..be2771b 100644
  
      #[test]
 diff --git a/crates/ui-egui/src/panels/dialogs.rs b/crates/ui-egui/src/panels/dialogs.rs
-index d773fc4..43322f0 100644
+index d773fc4..7f08e99 100644
 --- a/crates/ui-egui/src/panels/dialogs.rs
 +++ b/crates/ui-egui/src/panels/dialogs.rs
 @@ -274,7 +274,7 @@ fn about(app: &mut EffectcraftApp, ctx: &egui::Context, t: &Tokens) {
@@ -3406,8 +4190,12 @@ index d773fc4..43322f0 100644
      p.text(
          r.min + vec2(90.0, 62.0),
          Align2::LEFT_CENTER,
-@@ -339,9 +339,9 @@ fn about_main(app: &mut EffectcraftApp, ui: &mut egui::Ui, t: &Tokens, cmd: &mut
-     ui.label(tr("A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the ArtCraft family of creative apps."));
+@@ -336,12 +336,12 @@ fn about_main(app: &mut EffectcraftApp, ui: &mut egui::Ui, t: &Tokens, cmd: &mut
+         t.text_dim,
+     );
+     ui.add_space(12.0);
+-    ui.label(tr("A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the ArtCraft family of creative apps."));
++    ui.label(tr("A clean-room, open-source compositor for motion graphics and visual effects: native on macOS, Windows and Linux, and in the browser. Part of the Plervo family of creative apps."));
      ui.add_space(14.0);
      let links: [(Icon, &str, &str, &'static str); 4] = [
 -        (Icon::Chat, "Join the ArtCraft Discord", effectcraft_engine::links::DISCORD, "help.discord"),
@@ -3461,9 +4249,17 @@ index d3921cd..b57b507 100644
  
  /// The `.ecpreset` files in `dir`, sorted by name.
 diff --git a/crates/ui-egui/src/panels/home.rs b/crates/ui-egui/src/panels/home.rs
-index 46bbb44..70fd209 100644
+index 46bbb44..acb2db4 100644
 --- a/crates/ui-egui/src/panels/home.rs
 +++ b/crates/ui-egui/src/panels/home.rs
+@@ -1,6 +1,6 @@
+ //! The Home screen, laid out like After Effects' (shown over the whole workspace at launch, from
+ //! the Tools bar's Home button and by the Learn workspace). A left rail holds New Project / Open
+-//! Project, the Home / Templates / Learn pages and, at its foot, the ArtCraft community links.
++//! Project, the Home / Templates / Learn pages and, at its foot, the Plervo community links.
+ //! The Home page welcomes you with quick-start tiles (New Composition, the demo project, Import,
+ //! New from Template) over the recent projects (File ▸ Open Recent, from Settings): a filterable
+ //! table with thumbnails and Name / Opened / Size / Kind columns. Templates is the New from
 @@ -116,7 +116,7 @@ pub fn format_size(bytes: u64) -> String {
  /// The Kind column: what a recent file is, by its extension, in the interface language.
  fn kind_of(path: &str) -> &'static str {
@@ -3488,6 +4284,15 @@ index 46bbb44..70fd209 100644
      ];
      let sib = effectcraft_engine::links::SIBLINGS;
      let sib_rows = sib.len().div_ceil(2) as f32;
+@@ -302,7 +302,7 @@ fn rail_ui(app: &mut EffectcraftApp, ui: &mut egui::Ui, p: &egui::Painter, rail:
+         }
+         cy += 30.0;
+     }
+-    p.text(pos2(x0, cy + 8.0), Align2::LEFT_CENTER, tr("More ArtCraft apps"), Tokens::ui(11.0), t.text_faint);
++    p.text(pos2(x0, cy + 8.0), Align2::LEFT_CENTER, tr("More Plervo apps"), Tokens::ui(11.0), t.text_faint);
+     cy += 20.0;
+     let sw = (w - 6.0) / 2.0;
+     for (i, (name, slug)) in sib.iter().enumerate() {
 @@ -329,7 +329,7 @@ fn home_page(
      let t = app.tokens;
      let (x0, w) = (area.min.x, area.width());
@@ -3730,6 +4535,19 @@ index 70cc5ed..cb2be15 100644
          s.execute("layer.newSolid", json!({"name":"Plate","color":"#406080","width":160,"height":120})).unwrap();
          s.execute("renderQueue.add", json!({"format":"png","output":"review-[#####].png"})).unwrap();
          std::sync::Arc::make_mut(&mut s.project).settings.gpu_acceleration = false;
+diff --git a/crates/vp9enc/Cargo.toml b/crates/vp9enc/Cargo.toml
+index fe2e767..bff07f9 100644
+--- a/crates/vp9enc/Cargo.toml
++++ b/crates/vp9enc/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/packaging/env.sh b/packaging/env.sh
 index 6a1bfa2..ad071b1 100644
 --- a/packaging/env.sh
@@ -4581,7 +5399,7 @@ index e0178b6..5d31a55 100755
  
  trap 'rm -f "$CERT"' EXIT
 diff --git a/packaging/macos/package.sh b/packaging/macos/package.sh
-index 607290b..8d8e2d7 100755
+index 607290b..3d3b7b4 100755
 --- a/packaging/macos/package.sh
 +++ b/packaging/macos/package.sh
 @@ -1,8 +1,8 @@
@@ -4666,20 +5484,23 @@ index 607290b..8d8e2d7 100755
    xcrun stapler staple "$APP"
    xcrun stapler validate "$APP"
    spctl --assess --type execute -vvv "$APP"
-@@ -127,7 +129,7 @@ fi
+@@ -127,22 +129,14 @@ fi
  echo "==> building $DMG"
  STAGE="$WORK/dmg"
  mkdir -p "$STAGE"
 -ditto "$APP" "$STAGE/EffectCraft.app"
 +ditto "$APP" "$STAGE/Plervo Motion.app"
  ln -s /Applications "$STAGE/Applications"
- # Finder window layout: background, icon size and positions (packaging/macos/dmg/README.md).
- # The background is rendered from its SVG (1x + 2x in one HiDPI TIFF), so no bitmap is committed.
-@@ -137,12 +139,11 @@ resvg --skip-system-fonts -w 660 "$HERE/dmg/background.svg" "$WORK/background.pn
- resvg --skip-system-fonts -w 1320 "$HERE/dmg/background.svg" "$WORK/background@2x.png"
- sips -s dpiWidth 144 -s dpiHeight 144 "$WORK/background@2x.png" >/dev/null
- tiffutil -cathidpicheck "$WORK/background.png" "$WORK/background@2x.png" -out "$STAGE/.background/background.tiff"
+-# Finder window layout: background, icon size and positions (packaging/macos/dmg/README.md).
+-# The background is rendered from its SVG (1x + 2x in one HiDPI TIFF), so no bitmap is committed.
+-command -v resvg >/dev/null || { echo "resvg not found (cargo install resvg --locked --version 0.48.1)" >&2; exit 1; }
+-mkdir -p "$STAGE/.background"
+-resvg --skip-system-fonts -w 660 "$HERE/dmg/background.svg" "$WORK/background.png"
+-resvg --skip-system-fonts -w 1320 "$HERE/dmg/background.svg" "$WORK/background@2x.png"
+-sips -s dpiWidth 144 -s dpiHeight 144 "$WORK/background@2x.png" >/dev/null
+-tiffutil -cathidpicheck "$WORK/background.png" "$WORK/background@2x.png" -out "$STAGE/.background/background.tiff"
 -cp "$HERE/dmg/dmg-layout.DS_Store" "$STAGE/.DS_Store"
++# Use the system Finder layout for this internal candidate.
  rm -f "$DMG" "$WORK/raw.dmg"
  # makehybrid + convert builds the image without attaching a device, unlike `create -srcfolder`,
  # which is flaky on CI runners ("Resource busy") and hangs in sandboxed sessions.
@@ -4689,7 +5510,7 @@ index 607290b..8d8e2d7 100755
  hdiutil convert "$WORK/raw.dmg" -format UDZO -imagekey zlib-level=9 -o "$DMG"
  rm -f "$WORK/raw.dmg"
  sign "$DMG"
-@@ -156,17 +157,17 @@ fi
+@@ -156,17 +150,17 @@ fi
  
  # ---- CLI ---------------------------------------------------------------------------------------
  echo "==> building $CLI_ZIP"

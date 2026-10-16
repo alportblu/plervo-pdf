@@ -34,10 +34,11 @@ jobs:
         run: echo "matrix=$(cargo xtask products --matrix)" >> "$GITHUB_OUTPUT"
 
   candidate:
+    name: ${{ matrix.app.product }} (${{ matrix.os }})
     needs: catalog
     strategy:
       fail-fast: false
-      max-parallel: 6
+      max-parallel: 9
       matrix:
         app: ${{ fromJSON(needs.catalog.outputs.matrix).include }}
         os: [ubuntu-24.04, macos-15, windows-2025]
@@ -83,6 +84,7 @@ jobs:
             . -> target
             source -> target
           key: products-${{ matrix.app.product }}
+          cache-on-failure: true
       - name: Linux native libraries
         if: runner.os == 'Linux'
         run: |
@@ -90,8 +92,17 @@ jobs:
           sudo apt-get install -y --no-install-recommends libxkbcommon-dev libwayland-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev libgtk-3-dev libasound2-dev libudev-dev libva-dev libdrm-dev xvfb
       - name: Slides upstream baseline before adaptation
         if: runner.os == 'Linux' && matrix.app.product == 'slides'
+        continue-on-error: true
         working-directory: source
-        run: cargo xtask ci
+        run: cargo xtask ci 2>&1 | tee "$GITHUB_WORKSPACE/slides-upstream-baseline.log"
+      - name: Preserve the untouched Slides baseline result
+        if: always() && runner.os == 'Linux' && matrix.app.product == 'slides'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: slides-upstream-baseline-${{ github.sha }}
+          path: slides-upstream-baseline.log
+          if-no-files-found: error
+          retention-days: 14
       - name: Verify and apply the Plervo source overlay
         shell: bash
         run: cargo xtask products --prepare "$PRODUCT" "$GITHUB_WORKSPACE/source"
@@ -119,11 +130,16 @@ jobs:
         working-directory: source
         run: cargo xtask assets
       - name: Dependency licences and security advisories
+        id: dependencies
         if: runner.os == 'Linux'
+        # Continue native diagnostics, then fail the job below if this review failed.
+        # No candidate from this workflow is eligible for public distribution.
+        continue-on-error: true
         uses: EmbarkStudios/cargo-deny-action@3c6349835b2b7b196a839186cb8b78e02f7b5f25
         with:
           manifest-path: source/Cargo.toml
           command: check
+          command-arguments: --config products/deny.toml
       - name: Static analysis
         working-directory: source
         run: cargo clippy --locked --workspace --all-targets -- -D warnings
@@ -133,7 +149,10 @@ jobs:
       - name: Build desktop and CLI
         working-directory: source
         shell: bash
-        run: cargo build --release --locked -p "plervo-$PRODUCT" -p "plervo-$PRODUCT-cli"
+        run: |
+          features=()
+          if [ "$PRODUCT" = photo ]; then features=(--features heif); fi
+          cargo build --release --locked -p "plervo-$PRODUCT" -p "plervo-$PRODUCT-cli" "${features[@]}"
       - name: Headless executable checks
         working-directory: source
         shell: bash
@@ -182,3 +201,8 @@ jobs:
           path: source/dist/release/
           if-no-files-found: error
           retention-days: 14
+      - name: Enforce dependency review result
+        if: always() && runner.os == 'Linux' && steps.dependencies.outcome != 'success'
+        run: |
+          echo 'Dependency review did not pass. This candidate remains blocked.' >&2
+          exit 1

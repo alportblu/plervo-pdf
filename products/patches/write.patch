@@ -1027,11 +1027,15 @@ index 564b6ed..26e04d0 100644
  /// error, its own indirect-validation pipeline fails, the device is lost and eframe exits before
  /// the first frame. FXC is always there and compiles everything egui's shaders need.
 diff --git a/apps/wordcraft/src/logging.rs b/apps/wordcraft/src/logging.rs
-index 23a5616..f268345 100644
+index 23a5616..e1dbde4 100644
 --- a/apps/wordcraft/src/logging.rs
 +++ b/apps/wordcraft/src/logging.rs
-@@ -8,7 +8,7 @@
- //! that crashed survives the next launch. Runs without preferences (`WORDCRAFT_NO_PREFS`) log to
+@@ -5,10 +5,10 @@
+ //! launch from a desktop menu has no terminal, so the file is what a bug report can attach:
+ //! `<settings dir>/logs/wordcraft.log`, next to the preferences (`prefs_path` in `main.rs`). Each
+ //! start moves the previous log to `wordcraft.1.log` (and that one to `.2`), so the log of a run
+-//! that crashed survives the next launch. Runs without preferences (`WORDCRAFT_NO_PREFS`) log to
++//! that crashed survives the next launch. Runs without preferences (`PLERVO_WRITE_NO_PREFS`) log to
  //! standard error only.
  //!
 -//! Levels: `info` for WordCraft's own crates, `warn` for everything else (wgpu and naga are
@@ -1040,7 +1044,7 @@ index 23a5616..f268345 100644
  //! `warn,wordcraft_docx=trace`, `wgpu_core=info`. A directive ending in `*` matches every target
  //! that starts with it (`wordcraft*=debug`).
 diff --git a/apps/wordcraft/src/main.rs b/apps/wordcraft/src/main.rs
-index 62b51d4..433a611 100644
+index 62b51d4..f7f2af9 100644
 --- a/apps/wordcraft/src/main.rs
 +++ b/apps/wordcraft/src/main.rs
 @@ -1,4 +1,4 @@
@@ -1049,6 +1053,18 @@ index 62b51d4..433a611 100644
  //!
  //! Usage: `wordcraft [--control <port>] [--sample] [files…]`
  //!
+@@ -145,9 +145,9 @@ fn load_user_dictionary(app: &mut WordApp) {
+     }
+ }
+ 
+-/// Runs without preferences (`WORDCRAFT_NO_PREFS`, agents' test runs) neither read nor write them.
++/// Runs without preferences (`PLERVO_WRITE_NO_PREFS`, agents' test runs) neither read nor write them.
+ fn prefs_enabled() -> bool {
+-    std::env::var_os("WORDCRAFT_NO_PREFS").is_none()
++    std::env::var_os("PLERVO_WRITE_NO_PREFS").is_none()
+ }
+ 
+ fn load_prefs(app: &mut WordApp) {
 @@ -201,7 +201,7 @@ fn save_prefs(app: &WordApp) {
  /// Native file dialogs, shown without blocking the window (`file_dialogs`, #94), File › Print
  /// through the system spooler (`print`), the system clipboard's text, formatted copies,
@@ -1118,8 +1134,33 @@ index 978bdc4..8d039b4 100644
                  ..Default::default()
              };
              let _ = sender.send(craft_print::submit(&bytes, &job).map_err(|error| error.to_string()));
+diff --git a/apps/wordcraft/src/region.rs b/apps/wordcraft/src/region.rs
+index e58a927..eb20842 100644
+--- a/apps/wordcraft/src/region.rs
++++ b/apps/wordcraft/src/region.rs
+@@ -10,7 +10,7 @@
+ pub fn system() -> wordcraft_engine::Region {
+     // Runs without preferences (agents' and screenshot runs) behave the same on every machine:
+     // en-US unless `WORDCRAFT_REGION` says otherwise.
+-    if std::env::var_os("WORDCRAFT_NO_PREFS").is_some() && std::env::var_os("WORDCRAFT_REGION").is_none() {
++    if std::env::var_os("PLERVO_WRITE_NO_PREFS").is_some() && std::env::var_os("WORDCRAFT_REGION").is_none() {
+         return wordcraft_engine::Region::default();
+     }
+     let region = wordcraft_ui_egui::i18n::system_region();
+diff --git a/crates/control-key/Cargo.toml b/crates/control-key/Cargo.toml
+index 0884e52..a61dbaa 100644
+--- a/crates/control-key/Cargo.toml
++++ b/crates/control-key/Cargo.toml
+@@ -5,5 +5,7 @@ edition.workspace = true
+ license.workspace = true
+ description = "WordCraft control-port key file: where it lives and how to read it (shared by the app and the MCP bridge)"
+ 
++publish = false
++
+ [lints]
+ workspace = true
 diff --git a/crates/control-key/src/lib.rs b/crates/control-key/src/lib.rs
-index 1cb7a1e..b5c8ee6 100644
+index 1cb7a1e..05b7534 100644
 --- a/crates/control-key/src/lib.rs
 +++ b/crates/control-key/src/lib.rs
 @@ -4,18 +4,18 @@
@@ -1127,8 +1168,9 @@ index 1cb7a1e..b5c8ee6 100644
  
  /// The app's settings folder (preferences, logs, key files): macOS
 -/// `~/Library/Application Support/WordCraft`, Windows `%APPDATA%\WordCraft`, otherwise
+-/// `$XDG_CONFIG_HOME/wordcraft` or `~/.config/wordcraft`.
 +/// `~/Library/Application Support/Plervo Write`, Windows `%APPDATA%\WordCraft`, otherwise
- /// `$XDG_CONFIG_HOME/wordcraft` or `~/.config/wordcraft`.
++/// `$XDG_CONFIG_HOME/wordcraft` or `~/.config/plervo-write`.
  pub fn settings_dir() -> Option<PathBuf> {
      if cfg!(target_os = "macos") {
 -        std::env::var_os("HOME").map(|h| PathBuf::from(h).join("Library/Application Support/WordCraft"))
@@ -1145,6 +1187,67 @@ index 1cb7a1e..b5c8ee6 100644
      }
  }
  
+@@ -59,7 +59,7 @@ mod tests {
+         assert_eq!(parse_instance_id("instance-id=a b\n"), None);
+         assert_eq!(parse_instance_id("instance-id=..\n"), None);
+         assert_eq!(parse_instance_id("instance-id=\n"), None);
+-        assert_eq!(parse_instance_id("app=ai.storyteller.wordcraft\n"), None);
++        assert_eq!(parse_instance_id("app=com.plervo.write\n"), None);
+     }
+ 
+     #[test]
+diff --git a/crates/doc/Cargo.toml b/crates/doc/Cargo.toml
+index f0111eb..55291dc 100644
+--- a/crates/doc/Cargo.toml
++++ b/crates/doc/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "WordCraft document model: stories, paragraphs, runs, tables, sections, styles, numbering, fields, notes, comments, revisions; edit primitives"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/docbin/Cargo.toml b/crates/docbin/Cargo.toml
+index 3f9d436..e3397bb 100644
+--- a/crates/docbin/Cargo.toml
++++ b/crates/docbin/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "WordCraft reader for the Word 97-2003 binary file format (.doc, [MS-DOC])"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/docx/Cargo.toml b/crates/docx/Cargo.toml
+index f51956f..195dcdc 100644
+--- a/crates/docx/Cargo.toml
++++ b/crates/docx/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "WordCraft DOCX (OOXML WordprocessingML) reader and writer"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/engine/Cargo.toml b/crates/engine/Cargo.toml
+index 4d58323..b42f5b4 100644
+--- a/crates/engine/Cargo.toml
++++ b/crates/engine/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "WordCraft engine: session, selection, undo, the command registry (every action is a command), Word's command catalog, file I/O dispatch"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/crates/engine/src/sample.rs b/crates/engine/src/sample.rs
 index 718765f..c1b13be 100644
 --- a/crates/engine/src/sample.rs
@@ -1158,6 +1261,45 @@ index 718765f..c1b13be 100644
      );
      add(&mut h, " for events.", CharProps::default());
      b.push(Block::Para(h));
+diff --git a/crates/fonts/Cargo.toml b/crates/fonts/Cargo.toml
+index 9107da4..30c02de 100644
+--- a/crates/fonts/Cargo.toml
++++ b/crates/fonts/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "WordCraft fonts: font database (bundled OFL + system), metrics, glyph outlines, shaping"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/fonts/src/fontdb/user.rs b/crates/fonts/src/fontdb/user.rs
+index ff9cee6..b72e74c 100644
+--- a/crates/fonts/src/fontdb/user.rs
++++ b/crates/fonts/src/fontdb/user.rs
+@@ -7,7 +7,7 @@
+ //!
+ //! Desktop: [`FontDb::load_user_fonts`] names a folder (the app's `fonts` folder); the fonts there
+ //! load at start-up and each font added later is copied there (unwrapped from WOFF/WOFF2). Without
+-//! a folder (the web, tests, `WORDCRAFT_NO_PREFS`) added fonts last for the session; the web
++//! a folder (the web, tests, `PLERVO_WRITE_NO_PREFS`) added fonts last for the session; the web
+ //! shell keeps them in the browser itself.
+ 
+ use std::path::{Path, PathBuf};
+diff --git a/crates/formats/Cargo.toml b/crates/formats/Cargo.toml
+index 3935990..95df89d 100644
+--- a/crates/formats/Cargo.toml
++++ b/crates/formats/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "WordCraft import/export: plain text, Markdown, HTML, RTF, OpenDocument Text and LaTeX"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/crates/formats/src/latex.rs b/crates/formats/src/latex.rs
 index d9e7990..507c6fc 100644
 --- a/crates/formats/src/latex.rs
@@ -1171,6 +1313,45 @@ index d9e7990..507c6fc 100644
      o.push_str("\\documentclass{article}\n");
      o.push_str("\\usepackage[T1]{fontenc}\n");
      if w.uses.ulem {
+diff --git a/crates/geom/Cargo.toml b/crates/geom/Cargo.toml
+index a39d4eb..26b2c3f 100644
+--- a/crates/geom/Cargo.toml
++++ b/crates/geom/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "WordCraft geometry and units: points, twips, EMU, inches, centimetres; rectangles; measurement parsing"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/layout/Cargo.toml b/crates/layout/Cargo.toml
+index afb8f0a..62e1e98 100644
+--- a/crates/layout/Cargo.toml
++++ b/crates/layout/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "WordCraft layout: shaping, line breaking, tabs, lists, tables, pagination, headers/footers, hit testing"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/mcp/Cargo.toml b/crates/mcp/Cargo.toml
+index a767a20..a34d241 100644
+--- a/crates/mcp/Cargo.toml
++++ b/crates/mcp/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "WordCraft MCP server: every command as a tool, headless or bridged to the running app"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/crates/mcp/src/server.rs b/crates/mcp/src/server.rs
 index 63f6764..fe2b9f6 100644
 --- a/crates/mcp/src/server.rs
@@ -1187,6 +1368,65 @@ index 63f6764..fe2b9f6 100644
                          self.backend.describe()
                      ),
                  }))
+diff --git a/crates/metafile/Cargo.toml b/crates/metafile/Cargo.toml
+index 55e76c9..17c3195 100644
+--- a/crates/metafile/Cargo.toml
++++ b/crates/metafile/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "WordCraft metafiles: parses Windows WMF and EMF records into a neutral vector model (paths and bitmaps)"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/pdf/Cargo.toml b/crates/pdf/Cargo.toml
+index 46aa52a..4ec6d10 100644
+--- a/crates/pdf/Cargo.toml
++++ b/crates/pdf/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "WordCraft PDF export (krilla): embedded font subsets with selectable text, links, outline, tagging"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/proof/Cargo.toml b/crates/proof/Cargo.toml
+index abee190..ca2627e 100644
+--- a/crates/proof/Cargo.toml
++++ b/crates/proof/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "WordCraft proofing per language: spelling, suggestions, grammar checks and hyphenation for English (public-domain word list) and Polish (installed Hunspell dictionary, TeX patterns)"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/proof/src/affix.rs b/crates/proof/src/affix.rs
+index fb362c7..3fa6634 100644
+--- a/crates/proof/src/affix.rs
++++ b/crates/proof/src/affix.rs
+@@ -277,12 +277,9 @@ fn parse_aff(aff: &str) -> Result<Rules, String> {
+         match dir {
+             "SET" | "LANG" | "NAME" | "VERSION" | "HOME" | "WORDCHARS" | "KEY" | "MAXNGRAMSUGS" | "MAXDIFF" | "ONLYMAXDIFF" | "NOSPLITSUGS"
+             | "SUGSWITHDOTS" | "NOSUGGEST" | "WARN" | "FORBIDWARN" | "MAXCPDSUGS" => {}
+-            "FLAG" => {
+-                // Per-character flag modes (`FLAG UTF-8`, as VERO's pt_BR dictionary uses) work
+-                // with the one-character parsing here; only the multi-character encodings differ.
+-                if !matches!(at(1), "UTF-8" | "DEFAULT" | "utf-8" | "default" | "UTF8" | "") {
+-                    return Err(format!("line {}: FLAG {} is not supported (one-character flags only)", n + 1, at(1)));
+-                }
++            // Per-character flags work here; reject the multi-character encodings.
++            "FLAG" if !matches!(at(1), "UTF-8" | "DEFAULT" | "utf-8" | "default" | "UTF8" | "") => {
++                return Err(format!("line {}: FLAG {} is not supported (one-character flags only)", n + 1, at(1)));
+             }
+             "FORBIDDENWORD" => {
+                 let mut it = at(1).chars();
 diff --git a/crates/proof/src/hunspell.rs b/crates/proof/src/hunspell.rs
 index 1134208..4e6d59f 100644
 --- a/crates/proof/src/hunspell.rs
@@ -1200,6 +1440,32 @@ index 1134208..4e6d59f 100644
                  dirs.push(base.join("hunspell"));
              }
          }
+diff --git a/crates/render/Cargo.toml b/crates/render/Cargo.toml
+index 309ce12..a7a305a 100644
+--- a/crates/render/Cargo.toml
++++ b/crates/render/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "WordCraft rasteriser: pages and thumbnails from the layout display list (vello_cpu), PNG/JPEG export"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/ui-egui/Cargo.toml b/crates/ui-egui/Cargo.toml
+index f4a0b66..a3c7389 100644
+--- a/crates/ui-egui/Cargo.toml
++++ b/crates/ui-egui/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "WordCraft egui front end (Word-style ribbon UI); swappable: nothing below depends on it"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/crates/ui-egui/examples/perf_probe.rs b/crates/ui-egui/examples/perf_probe.rs
 index b2ef7fc..b49caa9 100644
 --- a/crates/ui-egui/examples/perf_probe.rs
@@ -1299,7 +1565,7 @@ index 7e7483a..a93acfd 100644
                  format!(
                      "{} — {}",
 diff --git a/crates/ui-egui/src/dialogs.rs b/crates/ui-egui/src/dialogs.rs
-index 975ff90..1e3713c 100644
+index 975ff90..daa4ddb 100644
 --- a/crates/ui-egui/src/dialogs.rs
 +++ b/crates/ui-egui/src/dialogs.rs
 @@ -1196,7 +1196,7 @@ impl Dialog {
@@ -1322,7 +1588,7 @@ index 975ff90..1e3713c 100644
          Dialog::RecipientList { .. } => "Recipient List",
          Dialog::SelectTable { .. } => "Select Table",
          Dialog::InsertMergeField { .. } => "Insert Merge Field",
-@@ -2324,16 +2324,16 @@ fn body(app: &mut WordApp, ui: &mut Ui, d: &mut Dialog) -> bool {
+@@ -2324,21 +2324,19 @@ fn body(app: &mut WordApp, ui: &mut Ui, d: &mut Dialog) -> bool {
                  1 => crate::credits::contributors_ui(ui),
                  2 => crate::credits::models_ui(ui),
                  _ => {
@@ -1343,8 +1609,14 @@ index 975ff90..1e3713c 100644
 +                    ui.hyperlink_to(tl!("Source code: github.com/storytold/wordcraft"), "https://github.com/alportblu/plervo-pdf");
                      ui.add_space(6.0);
                      ui.label(
-                         egui::RichText::new(tl!("MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors."))
-@@ -2460,7 +2460,7 @@ fn body(app: &mut WordApp, ui: &mut Ui, d: &mut Dialog) -> bool {
+-                        egui::RichText::new(tl!("MIT OR Apache-2.0. Copyright (c) 2026 ArtCraft Team and the WordCraft contributors."))
+-                            .small()
+-                            .weak(),
++                        egui::RichText::new(tl!("MIT OR Apache-2.0. Copyright (c) 2026 Plervo Team and the WordCraft contributors.")).small().weak(),
+                     );
+                 }
+             }
+@@ -2460,7 +2458,7 @@ fn body(app: &mut WordApp, ui: &mut Ui, d: &mut Dialog) -> bool {
              });
              ui.label(
                  egui::RichText::new(tl!(
@@ -4542,6 +4814,19 @@ index 0437df5..b136b93 100644
              continue;
          }
          let rev = app.session.rev();
+diff --git a/crates/zotero/Cargo.toml b/crates/zotero/Cargo.toml
+index 7f83b3f..2e3e22c 100644
+--- a/crates/zotero/Cargo.toml
++++ b/crates/zotero/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "WordCraft Zotero integration: Zotero's word-processor wire protocol, answered against an engine Session"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/packaging/env.sh b/packaging/env.sh
 index 2614fc0..1ff1eba 100644
 --- a/packaging/env.sh

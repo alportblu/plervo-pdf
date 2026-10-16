@@ -1,5 +1,5 @@
 diff --git a/ATTRIBUTION.md b/ATTRIBUTION.md
-index 227aee8..5fa1973 100644
+index 227aee8..ab0fff3 100644
 --- a/ATTRIBUTION.md
 +++ b/ATTRIBUTION.md
 @@ -50,7 +50,6 @@ next to them.
@@ -18,7 +18,7 @@ index 227aee8..5fa1973 100644
  | `docs/images/photocraft-*.jpg` | PhotoCraft screenshots | PhotoCraft contributors (UI) | Rendered offscreen with the `snapshot` example | MIT OR Apache-2.0 (UI); the artwork in each is public domain, listed below |
  | `docs/images/preferences-apply-*.png` | Preferences before and after adding Apply (no artwork) | PhotoCraft contributors | PhotoCraft control-channel capture and offscreen `snapshot` example | MIT OR Apache-2.0 |
  
-@@ -115,3 +113,25 @@ next to the files:
+@@ -115,3 +113,29 @@ next to the files:
  | `corpus/pixls/` (7 files, 226 MB) | Real camera raws, one per decode path: Canon PowerShot SX50 HS (CR2 and its DNG conversion), Nikon D3 uncompressed NEF, Sony DSC-RX0 cRAW ARW, Panasonic DC-G9 high-res RW2, Olympus E-1 GRBG ORF, plus the E-5 packed ORF as the documented known-unsupported case. Per file (each CC0, per its database entry): [IMG_4059.CR2](https://raw.pixls.us/data/Canon/PowerShot%20SX50%20HS/IMG_4059.CR2), [CRW_4061.DNG](https://raw.pixls.us/data/Canon/PowerShot%20SX50%20HS/CRW_4061.DNG), [JD1_8203.NEF](https://raw.pixls.us/data/Nikon/D3/JD1_8203.NEF), [DSC00009.ARW](https://raw.pixls.us/data/Sony/DSC-RX0/DSC00009.ARW), [P1000475.RW2](https://raw.pixls.us/data/Panasonic/DC-G9/P1000475.RW2), [E_1__C106743_gredos.ORF](https://raw.pixls.us/data/Olympus/E-1/E_1__C106743_gredos.ORF), [_7061961_copy.ORF](https://raw.pixls.us/data/Olympus/E-5/_7061961_copy.ORF) | The photographers of the pixls.us raw samples database | [raw.pixls.us](https://raw.pixls.us) `data/`, fetched per [xtask/src/corpus_pins.rs](xtask/src/corpus_pins.rs) | CC0 / public domain, per file as linked |
  
  Files copied into `corpus/` by hand (tiff, exr, raw) must be MIT, BSD or CC0.
@@ -44,23 +44,62 @@ index 227aee8..5fa1973 100644
 +| `assets/app-icon/plervo-photo.icns` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 16dc0ddd9eabb64f37f28b513c4e626c9461bc1d1f3002005a775779bb66fbad |
 +| `assets/app-icon/plervo-photo.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 605cab7f909fcde846c72e4f4fc17c3a9460ff8fd5f4f5e4f21f1c9ec0d79818 |
 +| `assets/app-icon/plervo-photo.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 37be5cc5321d4c3363e203f26328516430d1eb70c4bc92f68894a11dc1ed0a09 |
++
++| `assets/app-icon/README.md` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | efa30dd6b6cc09a5b65932243098832aabc84cf06909f1c5cd207b19c60d07df |
++
++| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | efa30dd6b6cc09a5b65932243098832aabc84cf06909f1c5cd207b19c60d07df |
 diff --git a/Cargo.lock b/Cargo.lock
-index 54085cf..cb5bf39 100644
+index 54085cf..f268c87 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -4612,8 +4612,8 @@ dependencies = [
+@@ -4611,53 +4611,9 @@ dependencies = [
+  "siphasher",
  ]
  
- [[package]]
+-[[package]]
 -name = "photocraft"
 -version = "0.9.0"
-+name = "plervo-photo"
-+version = "0.1.0-alpha.4"
- dependencies = [
-  "arboard",
-  "async-io",
-@@ -4657,7 +4657,7 @@ dependencies = [
- 
+-dependencies = [
+- "arboard",
+- "async-io",
+- "core-graphics2",
+- "dispatch2",
+- "eframe",
+- "egui",
+- "fmv-macos-events",
+- "futures-lite",
+- "log",
+- "muda",
+- "objc2 0.6.4",
+- "objc2-app-kit 0.3.2",
+- "objc2-foundation 0.3.2",
+- "open",
+- "photocraft-automation",
+- "photocraft-cms",
+- "photocraft-codecs",
+- "photocraft-color",
+- "photocraft-compose",
+- "photocraft-doc",
+- "photocraft-engine",
+- "photocraft-format",
+- "photocraft-geom",
+- "photocraft-io",
+- "photocraft-raster",
+- "photocraft-tablet",
+- "photocraft-ui-egui",
+- "resvg",
+- "rfd",
+- "ron",
+- "serde_json",
+- "winit",
+- "winresource",
+- "winsafe",
+- "wl-clipboard-rs",
+- "x11rb",
+- "xcap",
+- "zbus",
+-]
+-
  [[package]]
  name = "photocraft-affinity"
 -version = "0.9.0"
@@ -68,7 +107,7 @@ index 54085cf..cb5bf39 100644
  dependencies = [
   "crc32fast",
   "flate2",
-@@ -4667,7 +4667,7 @@ dependencies = [
+@@ -4667,7 +4623,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-algo"
@@ -77,7 +116,7 @@ index 54085cf..cb5bf39 100644
  dependencies = [
   "photocraft-color",
   "photocraft-geom",
-@@ -4680,7 +4680,7 @@ dependencies = [
+@@ -4680,7 +4636,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-automation"
@@ -86,19 +125,24 @@ index 54085cf..cb5bf39 100644
  dependencies = [
   "base64 0.22.1",
   "cap-std",
-@@ -4701,8 +4701,8 @@ dependencies = [
+@@ -4700,23 +4656,9 @@ dependencies = [
+  "tokio",
  ]
  
- [[package]]
+-[[package]]
 -name = "photocraft-cli"
 -version = "0.9.0"
-+name = "plervo-photo-cli"
-+version = "0.1.0-alpha.4"
- dependencies = [
-  "photocraft-automation",
-  "photocraft-codecs",
-@@ -4716,7 +4716,7 @@ dependencies = [
- 
+-dependencies = [
+- "photocraft-automation",
+- "photocraft-codecs",
+- "photocraft-engine",
+- "photocraft-format",
+- "photocraft-io",
+- "serde_json",
+- "tokio",
+- "winresource",
+-]
+-
  [[package]]
  name = "photocraft-cms"
 -version = "0.9.0"
@@ -106,7 +150,7 @@ index 54085cf..cb5bf39 100644
  dependencies = [
   "moxcms",
   "rayon",
-@@ -4724,7 +4724,7 @@ dependencies = [
+@@ -4724,7 +4666,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-codecs"
@@ -115,7 +159,7 @@ index 54085cf..cb5bf39 100644
  dependencies = [
   "exr",
   "flate2",
-@@ -4745,7 +4745,7 @@ dependencies = [
+@@ -4745,7 +4687,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-color"
@@ -124,7 +168,7 @@ index 54085cf..cb5bf39 100644
  dependencies = [
   "photocraft-cms",
   "serde",
-@@ -4753,7 +4753,7 @@ dependencies = [
+@@ -4753,7 +4695,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-compose"
@@ -133,7 +177,7 @@ index 54085cf..cb5bf39 100644
  dependencies = [
   "criterion",
   "photocraft-color",
-@@ -4768,7 +4768,7 @@ dependencies = [
+@@ -4768,7 +4710,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-doc"
@@ -142,7 +186,7 @@ index 54085cf..cb5bf39 100644
  dependencies = [
   "photocraft-color",
   "photocraft-geom",
-@@ -4779,7 +4779,7 @@ dependencies = [
+@@ -4779,7 +4721,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-engine"
@@ -151,7 +195,7 @@ index 54085cf..cb5bf39 100644
  dependencies = [
   "blake3",
   "craft-print",
-@@ -4814,7 +4814,7 @@ dependencies = [
+@@ -4814,7 +4756,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-format"
@@ -160,7 +204,7 @@ index 54085cf..cb5bf39 100644
  dependencies = [
   "blake3",
   "crc32fast",
-@@ -4835,14 +4835,14 @@ dependencies = [
+@@ -4835,14 +4777,14 @@ dependencies = [
  
  [[package]]
  name = "photocraft-geom"
@@ -177,7 +221,7 @@ index 54085cf..cb5bf39 100644
  dependencies = [
   "half",
   "log",
-@@ -4859,14 +4859,14 @@ dependencies = [
+@@ -4859,14 +4801,14 @@ dependencies = [
  
  [[package]]
  name = "photocraft-heif"
@@ -194,7 +238,7 @@ index 54085cf..cb5bf39 100644
  dependencies = [
   "blake3",
   "crc32fast",
-@@ -4895,14 +4895,14 @@ dependencies = [
+@@ -4895,14 +4837,14 @@ dependencies = [
  
  [[package]]
  name = "photocraft-ops"
@@ -211,7 +255,7 @@ index 54085cf..cb5bf39 100644
  dependencies = [
   "photocraft-color",
   "photocraft-geom",
-@@ -4913,7 +4913,7 @@ dependencies = [
+@@ -4913,7 +4855,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-plugins"
@@ -220,7 +264,7 @@ index 54085cf..cb5bf39 100644
  dependencies = [
   "photocraft-color",
   "photocraft-geom",
-@@ -4928,7 +4928,7 @@ dependencies = [
+@@ -4928,7 +4870,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-psd"
@@ -229,7 +273,7 @@ index 54085cf..cb5bf39 100644
  dependencies = [
   "flate2",
   "photocraft-psd",
-@@ -4939,7 +4939,7 @@ dependencies = [
+@@ -4939,7 +4881,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-raster"
@@ -238,7 +282,7 @@ index 54085cf..cb5bf39 100644
  dependencies = [
   "photocraft-color",
   "photocraft-geom",
-@@ -4949,7 +4949,7 @@ dependencies = [
+@@ -4949,7 +4891,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-raw"
@@ -247,7 +291,7 @@ index 54085cf..cb5bf39 100644
  dependencies = [
   "flate2",
   "image",
-@@ -4964,7 +4964,7 @@ dependencies = [
+@@ -4964,7 +4906,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-tablet"
@@ -256,7 +300,7 @@ index 54085cf..cb5bf39 100644
  dependencies = [
   "block2 0.6.2",
   "objc2 0.6.4",
-@@ -4976,7 +4976,7 @@ dependencies = [
+@@ -4976,7 +4918,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-testkit"
@@ -265,7 +309,7 @@ index 54085cf..cb5bf39 100644
  dependencies = [
   "memory-stats",
   "photocraft-color",
-@@ -4987,7 +4987,7 @@ dependencies = [
+@@ -4987,7 +4929,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-text"
@@ -274,7 +318,7 @@ index 54085cf..cb5bf39 100644
  dependencies = [
   "flate2",
   "parley",
-@@ -5001,7 +5001,7 @@ dependencies = [
+@@ -5001,7 +4943,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-ui-egui"
@@ -283,7 +327,7 @@ index 54085cf..cb5bf39 100644
  dependencies = [
   "base64 0.22.1",
   "craft-print",
-@@ -5042,7 +5042,7 @@ dependencies = [
+@@ -5042,7 +4984,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-vector"
@@ -292,7 +336,7 @@ index 54085cf..cb5bf39 100644
  dependencies = [
   "photocraft-color",
   "photocraft-doc",
-@@ -5053,7 +5053,7 @@ dependencies = [
+@@ -5053,7 +4995,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-web"
@@ -301,6 +345,95 @@ index 54085cf..cb5bf39 100644
  dependencies = [
   "eframe",
   "egui",
+@@ -5153,6 +5095,64 @@ version = "0.2.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "b4596b6d070b27117e987119b4dac604f3c58cfb0b191112e24771b2faeac1a6"
+ 
++[[package]]
++name = "plervo-photo"
++version = "0.1.0-alpha.4"
++dependencies = [
++ "arboard",
++ "async-io",
++ "core-graphics2",
++ "dispatch2",
++ "eframe",
++ "egui",
++ "fmv-macos-events",
++ "futures-lite",
++ "log",
++ "muda",
++ "objc2 0.6.4",
++ "objc2-app-kit 0.3.2",
++ "objc2-foundation 0.3.2",
++ "open",
++ "photocraft-automation",
++ "photocraft-cms",
++ "photocraft-codecs",
++ "photocraft-color",
++ "photocraft-compose",
++ "photocraft-doc",
++ "photocraft-engine",
++ "photocraft-format",
++ "photocraft-geom",
++ "photocraft-io",
++ "photocraft-raster",
++ "photocraft-tablet",
++ "photocraft-ui-egui",
++ "resvg",
++ "rfd",
++ "ron",
++ "serde_json",
++ "winit",
++ "winresource",
++ "winsafe",
++ "wl-clipboard-rs",
++ "x11rb",
++ "xcap",
++ "zbus",
++]
++
++[[package]]
++name = "plervo-photo-cli"
++version = "0.1.0-alpha.4"
++dependencies = [
++ "photocraft-automation",
++ "photocraft-codecs",
++ "photocraft-engine",
++ "photocraft-format",
++ "photocraft-io",
++ "serde_json",
++ "tokio",
++ "winresource",
++]
++
+ [[package]]
+ name = "png"
+ version = "0.17.16"
+@@ -5991,9 +5991,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "rustls"
+-version = "0.23.45"
++version = "0.23.46"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "0d41d731c7d2f962d1ccc364cec258de3c0e93b38c2fb3ba97ac74513048d634"
++checksum = "48e13bd8c0e9365c43cfa5c9e8f9ad49d3c8444926c9aac819e0e4dc503c8fdf"
+ dependencies = [
+  "aws-lc-rs",
+  "once_cell",
+@@ -6102,9 +6102,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "ruzstd"
+-version = "0.9.0"
++version = "0.9.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "a252f5e20f038fe7b4ea53e073e65398d652c864cc162fc77c56c2f13717b888"
++checksum = "69e4ce4a039f42bf25920b95667e4d789e98749ab11bbb8d2c2936f788421bb5"
+ dependencies = [
+  "twox-hash",
+ ]
 @@ -8651,7 +8651,7 @@ checksum = "ec7a2a501ed189703dba8b08142f057e887dfc4b2cc4db2d343ac6376ba3e0b9"
  
  [[package]]
@@ -782,17 +915,25 @@ index b272705..190b025 100644
 -[![Star History Chart](https://api.star-history.com/svg?repos=storytold/photocraft&type=Date&legend=top-left)](https://www.star-history.com/?repos=storytold%2Fphotocraft&type=date&legend=top-left)
 +Website: https://plervo.com/ · Optional support: https://buymeacoffee.com/alport
 diff --git a/apps/photocraft-cli/Cargo.toml b/apps/photocraft-cli/Cargo.toml
-index a6d3b49..faa659d 100644
+index a6d3b49..71780c2 100644
 --- a/apps/photocraft-cli/Cargo.toml
 +++ b/apps/photocraft-cli/Cargo.toml
-@@ -1,5 +1,5 @@
+@@ -1,11 +1,13 @@
  [package]
 -name = "photocraft-cli"
 +name = "plervo-photo-cli"
  description = "Headless Photocraft: convert, inspect, run commands, batch, MCP server"
  version.workspace = true
  edition.workspace = true
-@@ -19,7 +19,7 @@ name = "photocraft_cli"
+ license.workspace = true
+ build = "build.rs"
+ 
++publish = false
++
+ [features]
+ # Open HEIC/HEIF photos (the optional photocraft-heif crate). Not default so distributors choose
+ # it; official builds (CI, packaging/, release) build with `--features heif`.
+@@ -19,7 +21,7 @@ name = "photocraft_cli"
  path = "src/lib.rs"
  
  [[bin]]
@@ -1068,10 +1209,10 @@ index a5c9d8a..78e418c 100644
          }
      });
 diff --git a/apps/photocraft/Cargo.toml b/apps/photocraft/Cargo.toml
-index e5af663..9aeda6c 100644
+index e5af663..4ca6688 100644
 --- a/apps/photocraft/Cargo.toml
 +++ b/apps/photocraft/Cargo.toml
-@@ -1,9 +1,9 @@
+@@ -1,12 +1,14 @@
  [package]
 -name = "photocraft"
 +name = "plervo-photo"
@@ -1083,6 +1224,11 @@ index e5af663..9aeda6c 100644
  description = "Photocraft: an open-source, native image editor"
  build = "build.rs"
  
++publish = false
++
+ [features]
+ # Open HEIC/HEIF photos (the optional photocraft-heif crate). Not default so distributors choose
+ # it; official builds (CI, packaging/, release) build with `--features heif`.
 diff --git a/apps/photocraft/build.rs b/apps/photocraft/build.rs
 index cbba622..83ea5f9 100644
 --- a/apps/photocraft/build.rs
@@ -1106,10 +1252,10 @@ index cbba622..83ea5f9 100644
          if std::env::var_os("PHOTOCRAFT_REQUIRE_WINRES").is_some() {
              panic!("embedding Windows resources failed: {e}");
 diff --git a/apps/photocraft/src/app_dirs.rs b/apps/photocraft/src/app_dirs.rs
-index 2897beb..57227c8 100644
+index 2897beb..640b6a3 100644
 --- a/apps/photocraft/src/app_dirs.rs
 +++ b/apps/photocraft/src/app_dirs.rs
-@@ -2,12 +2,12 @@
+@@ -2,29 +2,29 @@
  //! autosaves and the GPU startup marker all live under the one directory [`config_dir`] returns.
  //!
  //! In order:
@@ -1121,11 +1267,12 @@ index 2897beb..57227c8 100644
  //!    `%APPDATA%`. The Windows portable zip ships with `portable.txt`; the MSI doesn't. If that
  //!    folder can't be written (read-only medium, Program Files), the app warns and falls back.
 -//! 3. The platform convention: macOS `~/Library/Application Support/Photocraft`, Windows
+-//!    `%APPDATA%\Photocraft`, Linux `$XDG_CONFIG_HOME/photocraft` or `~/.config/photocraft`.
 +//! 3. The platform convention: macOS `~/Library/Application Support/Plervo Photo`, Windows
- //!    `%APPDATA%\Photocraft`, Linux `$XDG_CONFIG_HOME/photocraft` or `~/.config/photocraft`.
++//!    `%APPDATA%\Photocraft`, Linux `$XDG_CONFIG_HOME/photocraft` or `~/.config/plervo-photo`.
  
  use std::ffi::OsString;
-@@ -15,16 +15,16 @@ use std::path::{Path, PathBuf};
+ use std::path::{Path, PathBuf};
  use std::sync::OnceLock;
  
  /// Files beside the executable that switch on portable mode (either one; contents are ignored).
@@ -1180,7 +1327,7 @@ index 2897beb..57227c8 100644
  }
  
  /// The first portable marker file in `exe_dir`, if any.
-@@ -149,9 +149,9 @@ mod tests {
+@@ -149,11 +149,11 @@ mod tests {
          assert!(!exe.join(PORTABLE_DATA_DIR).exists(), "no portable folder without a marker");
          // The convention per platform.
          if cfg!(target_os = "macos") {
@@ -1190,8 +1337,11 @@ index 2897beb..57227c8 100644
 -            assert_eq!(dir, root.join("appdata").join("Photocraft"));
 +            assert_eq!(dir, root.join("appdata").join("Plervo Photo"));
          } else {
-             assert_eq!(dir, root.join("home/.config/photocraft"));
+-            assert_eq!(dir, root.join("home/.config/photocraft"));
++            assert_eq!(dir, root.join("home/.config/plervo-photo"));
          }
+         let _ = std::fs::remove_dir_all(&root);
+     }
 @@ -162,7 +162,7 @@ mod tests {
      fn either_marker_keeps_everything_beside_the_exe() {
          for marker in PORTABLE_MARKERS {
@@ -1505,7 +1655,7 @@ index 8a0d4ca..3816593 100644
          let image = window::new_image(
              bounds,
 diff --git a/apps/photocraft/src/services.rs b/apps/photocraft/src/services.rs
-index e6c882d..0e86cc6 100644
+index e6c882d..132eb7b 100644
 --- a/apps/photocraft/src/services.rs
 +++ b/apps/photocraft/src/services.rs
 @@ -16,7 +16,7 @@ use std::sync::Arc;
@@ -1562,7 +1712,7 @@ index e6c882d..0e86cc6 100644
  }
  
 -/// Per-user settings directory: `PHOTOCRAFT_CONFIG_DIR`, else `<exe dir>/PhotoCraftData` in
-+/// Per-user settings directory: `PHOTOCRAFT_CONFIG_DIR`, else `<exe dir>/Plervo PhotoData` in
++/// Per-user settings directory: `PLERVO_PHOTO_CONFIG_DIR`, else `<exe dir>/Plervo PhotoData` in
  /// portable mode, else the platform convention. Everything the app persists lives under it; see
  /// [`crate::app_dirs`].
  pub fn config_dir() -> Option<PathBuf> {
@@ -1621,18 +1771,21 @@ index c4de67a..ed82431 100644
  //! `dpi` assertion, and a NaN or huge window size fails surface creation. A truncated or
  //! hand-edited file would then crash every launch. [`sanitize`] runs first and removes a file
 diff --git a/apps/photocraft/tests/control_exit_code.rs b/apps/photocraft/tests/control_exit_code.rs
-index 280afac..ba75d4d 100644
+index 280afac..1948712 100644
 --- a/apps/photocraft/tests/control_exit_code.rs
 +++ b/apps/photocraft/tests/control_exit_code.rs
-@@ -17,7 +17,7 @@ fn run_photocraft(args: &[&str]) -> (std::process::ExitStatus, String) {
+@@ -17,9 +17,9 @@ fn run_photocraft(args: &[&str]) -> (std::process::ExitStatus, String) {
      let n = NEXT.fetch_add(1, std::sync::atomic::Ordering::Relaxed);
      let dir = std::env::temp_dir().join(format!("photocraft-control-exit-{}-{n}", std::process::id()));
      std::fs::create_dir_all(&dir).unwrap();
 -    let output = std::process::Command::new(env!("CARGO_BIN_EXE_photocraft"))
 +    let output = std::process::Command::new(env!("CARGO_BIN_EXE_plervo-photo"))
          .args(args)
-         .env("PHOTOCRAFT_CONFIG_DIR", &dir)
+-        .env("PHOTOCRAFT_CONFIG_DIR", &dir)
++        .env("PLERVO_PHOTO_CONFIG_DIR", &dir)
          // Isolate from the host environment so the test is reproducible.
+         .env_remove("PHOTOCRAFT_CONTROL_PORT")
+         .env_remove("PHOTOCRAFT_CONTROL_TOKEN")
 diff --git a/apps/photocraft/tests/mac_menu_appkit.rs b/apps/photocraft/tests/mac_menu_appkit.rs
 index feacb4b..161beb5 100644
 --- a/apps/photocraft/tests/mac_menu_appkit.rs
@@ -1656,18 +1809,215 @@ index feacb4b..161beb5 100644
      assert_eq!(quit.keyEquivalentModifierMask(), NSEventModifierFlags::Command);
      assert!(!titles(&submenu(&bar, "File")).iter().any(|n| n == "Exit"), "Exit moved to the app menu as Quit");
 diff --git a/apps/photocraft/tests/startup_without_display.rs b/apps/photocraft/tests/startup_without_display.rs
-index 5ffb578..46240e9 100644
+index 5ffb578..7f456bf 100644
 --- a/apps/photocraft/tests/startup_without_display.rs
 +++ b/apps/photocraft/tests/startup_without_display.rs
-@@ -30,7 +30,7 @@ fn missing_display_preserves_existing_gpu_crash_evidence() {
+@@ -30,8 +30,8 @@ fn missing_display_preserves_existing_gpu_crash_evidence() {
  }
  
  fn launch_without_display(dir: &std::path::Path) -> String {
 -    let output = std::process::Command::new(env!("CARGO_BIN_EXE_photocraft"))
+-        .env("PHOTOCRAFT_CONFIG_DIR", dir)
 +    let output = std::process::Command::new(env!("CARGO_BIN_EXE_plervo-photo"))
-         .env("PHOTOCRAFT_CONFIG_DIR", dir)
++        .env("PLERVO_PHOTO_CONFIG_DIR", dir)
          .env_remove("DISPLAY")
          .env_remove("WAYLAND_DISPLAY")
+         .env_remove("WAYLAND_SOCKET")
+diff --git a/assets/app-icon/LICENSE.txt b/assets/app-icon/LICENSE.txt
+index b28ccee..16e24d0 100644
+--- a/assets/app-icon/LICENSE.txt
++++ b/assets/app-icon/LICENSE.txt
+@@ -1,13 +1,6 @@
+-PhotoCraft app icon (photocraft.svg, photocraft-small.svg and every file derived from them in
+-this directory: photocraft-1024.png, photocraft.icns, photocraft.ico, hicolor/).
++# Plervo Photo application icons
+ 
+-Original artwork made for this project by the project owner: an engraving-style drawing created
+-in ArtCraft, then vectorised. No third-party material. Licensed like the rest of PhotoCraft,
+-under either of
++Original artwork by Plervo contributors, 2026. Licensed under MIT OR Apache-2.0; see the complete LICENSE-MIT and LICENSE-APACHE files at the repository root.
+ 
+-  * Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
+-  * MIT license (https://opensource.org/licenses/MIT)
+-
+-at your option.
+-
+-Regenerate the derived files with packaging/icons.sh.
++Source vectors and platform variants: https://github.com/alportblu/plervo-pdf/tree/feat/app-family/assets/products/photo
++These icons replace the upstream product artwork. Engine code and other assets retain their original notices.
+diff --git a/assets/app-icon/README.md b/assets/app-icon/README.md
+index 8ddb66f..16e24d0 100644
+--- a/assets/app-icon/README.md
++++ b/assets/app-icon/README.md
+@@ -1,47 +1,6 @@
+-# PhotoCraft app icon
++# Plervo Photo application icons
+ 
+-A **nine-tailed kitsune with a brow diamond**: an engraving portrait, seated, looking back at the
+-viewer, in the Crafting Apps' owl-template framing (full-bleed field, head and body filling the
+-tile, tails running off the edges).
++Original artwork by Plervo contributors, 2026. Licensed under MIT OR Apache-2.0; see the complete LICENSE-MIT and LICENSE-APACHE files at the repository root.
+ 
+-## Palette
+-
+-Exactly three colours:
+-
+-| Colour | Hex | Used for |
+-|---|---|---|
+-| Ink | `#0b0b0c` | line work and contours |
+-| Paper | `#efe9dc` | the figure |
+-| PhotoCraft blue (app colour) | `#2f7bf5` | the full-bleed field |
+-
+-## Geometry
+-
+-A 512-unit tile (`viewBox="0 0 512 512"`), rounded square with `rx=112`, no border. The macOS
+-renders pad it onto Apple's 824/1024 icon grid; the Windows and Linux renders crop 22 units off
+-each side so the figure reads at 16–48 px.
+-
+-## Provenance
+-
+-The owner's original drawing, made in ArtCraft (2880 px, engraving style, keyed to the palette),
+-vectorised with craftrules `assets/logo-options/_tools/vectorize_tile.py`. The source PNG stays in
+-craftrules at `assets/app-icons/photocraft/source.png`. License: see `LICENSE.txt`.
+-
+-## Files
+-
+-- `photocraft.svg`: canonical master (traced at 2048 px).
+-- `photocraft-small.svg`: lighter trace (traced at 1024 px); also the hicolor scalable icon.
+-- `photocraft-1024.png`: 1024 px render on the macOS grid.
+-- `photocraft.icns`: macOS bundle icon (`CFBundleIconFile`).
+-- `photocraft.ico`: Windows icon, 16–256 px, embedded in the `.exe` by `apps/photocraft/build.rs`.
+-- `hicolor/<size>/apps/ai.storyteller.photocraft.png` (16–512) and `hicolor/scalable/...svg`:
+-  Linux icon theme.
+-
+-The app also sets the window icon and Wayland app ID at runtime (`apps/photocraft/src/app_icon.rs`,
+-`main.rs`). On Windows the taskbar shows the icon of the Start Menu shortcut that launches the
+-exe, so the MSI's `<Icon Id>` keeps the `.exe` extension (ICE50); `app_icon.rs` documents the
+-details and tests the `.ico` sizes and the WiX icon references.
+-
+-## Regenerate
+-
+-Replace `photocraft.svg` (and `photocraft-small.svg`), then run `packaging/icons.sh`. It needs
+-`resvg`, plus `iconutil` on macOS; the `.ico` is packed by `cargo xtask ico`.
++Source vectors and platform variants: https://github.com/alportblu/plervo-pdf/tree/feat/app-family/assets/products/photo
++These icons replace the upstream product artwork. Engine code and other assets retain their original notices.
+diff --git a/crates/affinity/Cargo.toml b/crates/affinity/Cargo.toml
+index e686e73..da9d99a 100644
+--- a/crates/affinity/Cargo.toml
++++ b/crates/affinity/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/algo/Cargo.toml b/crates/algo/Cargo.toml
+index c4f34b4..96e044b 100644
+--- a/crates/algo/Cargo.toml
++++ b/crates/algo/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/automation/Cargo.toml b/crates/automation/Cargo.toml
+index 0738140..716ddf3 100644
+--- a/crates/automation/Cargo.toml
++++ b/crates/automation/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/cms/Cargo.toml b/crates/cms/Cargo.toml
+index 389f797..95ec398 100644
+--- a/crates/cms/Cargo.toml
++++ b/crates/cms/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/codecs/Cargo.toml b/crates/codecs/Cargo.toml
+index 25f3f09..a352808 100644
+--- a/crates/codecs/Cargo.toml
++++ b/crates/codecs/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [features]
+ # Real-file corpus tests (opt-in; `cargo xtask test-corpus`). Fail when the corpus is missing.
+ corpus = []
+diff --git a/crates/color/Cargo.toml b/crates/color/Cargo.toml
+index 6ee0d2a..766683a 100644
+--- a/crates/color/Cargo.toml
++++ b/crates/color/Cargo.toml
+@@ -4,6 +4,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/compose/Cargo.toml b/crates/compose/Cargo.toml
+index 45bdb4b..f1589c4 100644
+--- a/crates/compose/Cargo.toml
++++ b/crates/compose/Cargo.toml
+@@ -4,6 +4,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/doc/Cargo.toml b/crates/doc/Cargo.toml
+index 299880c..eb0f2c1 100644
+--- a/crates/doc/Cargo.toml
++++ b/crates/doc/Cargo.toml
+@@ -4,6 +4,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/engine/Cargo.toml b/crates/engine/Cargo.toml
+index 741d927..3f06b0c 100644
+--- a/crates/engine/Cargo.toml
++++ b/crates/engine/Cargo.toml
+@@ -4,6 +4,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/crates/engine/src/prefs.rs b/crates/engine/src/prefs.rs
 index b163d40..0fb3559 100644
 --- a/crates/engine/src/prefs.rs
@@ -1704,6 +2054,71 @@ index 2edd13b..2692010 100644
  //! `cargo xtask corpus --all`. Feature `corpus` (run with `cargo xtask test-corpus`); a missing
  //! corpus fails.
  //!
+diff --git a/crates/format/Cargo.toml b/crates/format/Cargo.toml
+index 45d7a4c..2e215c3 100644
+--- a/crates/format/Cargo.toml
++++ b/crates/format/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/geom/Cargo.toml b/crates/geom/Cargo.toml
+index 2c3541d..40c449a 100644
+--- a/crates/geom/Cargo.toml
++++ b/crates/geom/Cargo.toml
+@@ -4,6 +4,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/gpu/Cargo.toml b/crates/gpu/Cargo.toml
+index 6a0b649..08670a5 100644
+--- a/crates/gpu/Cargo.toml
++++ b/crates/gpu/Cargo.toml
+@@ -4,6 +4,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/heif/Cargo.toml b/crates/heif/Cargo.toml
+index 18210b0..1da9421 100644
+--- a/crates/heif/Cargo.toml
++++ b/crates/heif/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [dependencies]
+ # Pure Rust, no unsafe. Pinned exactly: a young, single-owner crate that parses untrusted files;
+ # moving the pin is a reviewed change (re-run the fuzz target and the heif corpus tests).
+diff --git a/crates/io/Cargo.toml b/crates/io/Cargo.toml
+index 9bd4c55..47ed8e1 100644
+--- a/crates/io/Cargo.toml
++++ b/crates/io/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/crates/io/tests/corpus.rs b/crates/io/tests/corpus.rs
 index 776f27f..61cf5e8 100644
 --- a/crates/io/tests/corpus.rs
@@ -1737,6 +2152,153 @@ index b0b3a01..c430f0a 100644
 +//! `tools/krita-oracles/generate.py` in https://github.com/alportblu/plervo-pdf-corpus and are
  //! not bundled. Run with
  //! `KRITA_TEST_DIR=<dir> cargo test -p photocraft-io --test krita_corpus -- --ignored --nocapture`.
+ 
+diff --git a/crates/ops/Cargo.toml b/crates/ops/Cargo.toml
+index 7a15a11..6e37a2d 100644
+--- a/crates/ops/Cargo.toml
++++ b/crates/ops/Cargo.toml
+@@ -4,6 +4,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/paint/Cargo.toml b/crates/paint/Cargo.toml
+index afb9a19..6faaaf9 100644
+--- a/crates/paint/Cargo.toml
++++ b/crates/paint/Cargo.toml
+@@ -4,6 +4,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/plugins/Cargo.toml b/crates/plugins/Cargo.toml
+index 09a69ca..71bda50 100644
+--- a/crates/plugins/Cargo.toml
++++ b/crates/plugins/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/psd/Cargo.toml b/crates/psd/Cargo.toml
+index 12662f9..2cb7e2b 100644
+--- a/crates/psd/Cargo.toml
++++ b/crates/psd/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lib]
+ name = "photocraft_psd"
+ path = "src/lib.rs"
+diff --git a/crates/raster/Cargo.toml b/crates/raster/Cargo.toml
+index 956d1c9..bddf5af 100644
+--- a/crates/raster/Cargo.toml
++++ b/crates/raster/Cargo.toml
+@@ -4,6 +4,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/raw/Cargo.toml b/crates/raw/Cargo.toml
+index 1395da7..7de8590 100644
+--- a/crates/raw/Cargo.toml
++++ b/crates/raw/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [features]
+ default = []
+ # Synthetic raw-file generators (DNG / CR2 / TIFF-EP writers and a lossless-JPEG
+diff --git a/crates/raw/src/cr3.rs b/crates/raw/src/cr3.rs
+index bb2119e..8ca816b 100644
+--- a/crates/raw/src/cr3.rs
++++ b/crates/raw/src/cr3.rs
+@@ -141,10 +141,8 @@ fn walk<'a>(raw: &'a [u8], b: &'a [u8], depth: usize, budget: &mut usize, found:
+     }
+     boxes(b, budget, |item, budget| match item.kind {
+         b"moov" => walk(raw, item.body, depth + 1, budget, found),
+-        b"trak" => {
+-            if found.previews.len() < 128 {
+-                found.previews.extend(track_preview(raw, item.body, budget, &found.media));
+-            }
++        b"trak" if found.previews.len() < 128 => {
++            found.previews.extend(track_preview(raw, item.body, budget, &found.media));
+         }
+         b"uuid" => {
+             if item.body.get(..16) == Some(META_UUID)
+diff --git a/crates/tablet/Cargo.toml b/crates/tablet/Cargo.toml
+index d4602ec..fac71c4 100644
+--- a/crates/tablet/Cargo.toml
++++ b/crates/tablet/Cargo.toml
+@@ -8,6 +8,8 @@ description = "Pen tablet pressure, tilt, rotation and eraser end on macOS (AppK
+ # The one isolated `unsafe` helper crate (craftrules never-crash, AGENTS.md): the AppKit event
+ # monitor needs Objective-C interop. Only `src/macos.rs` allows `unsafe`; everything else is
+ # denied, and every other crate keeps the workspace's `unsafe_code = "forbid"`.
++publish = false
++
+ [lints.rust]
+ unsafe_code = "deny"
+ 
+diff --git a/crates/testkit/Cargo.toml b/crates/testkit/Cargo.toml
+index 0d69300..ac0ed1d 100644
+--- a/crates/testkit/Cargo.toml
++++ b/crates/testkit/Cargo.toml
+@@ -4,6 +4,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/text/Cargo.toml b/crates/text/Cargo.toml
+index 985f627..f0f7a25 100644
+--- a/crates/text/Cargo.toml
++++ b/crates/text/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/ui-egui/Cargo.toml b/crates/ui-egui/Cargo.toml
+index aeefaca..4349e60 100644
+--- a/crates/ui-egui/Cargo.toml
++++ b/crates/ui-egui/Cargo.toml
+@@ -4,6 +4,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
  
 diff --git a/crates/ui-egui/examples/type_bench.rs b/crates/ui-egui/examples/type_bench.rs
 index c5cbaf0..a5f73e5 100644
@@ -5638,7 +6200,7 @@ index 3811895..acdc51d 100644
          ctx.options_mut(|o| o.zoom_with_keyboard = false);
          // ⌘/Ctrl + wheel scrolls sideways, as in Photoshop; only a pinch zooms (wheel_nav.rs).
 diff --git a/crates/ui-egui/src/links.rs b/crates/ui-egui/src/links.rs
-index e01a19d..22fd078 100644
+index e01a19d..0616160 100644
 --- a/crates/ui-egui/src/links.rs
 +++ b/crates/ui-egui/src/links.rs
 @@ -1,16 +1,16 @@
@@ -5680,7 +6242,7 @@ index e01a19d..22fd078 100644
  }
  
 -/// "PhotoCraft website · GitHub · ArtCraft" as links, centred. Clicks route through [`open`] (the
-+/// "Plervo Photo website · GitHub · ArtCraft" as links, centred. Clicks route through [`open`] (the
++/// "Plervo Photo website · GitHub · Plervo" as links, centred. Clicks route through [`open`] (the
  /// platform browser service) rather than `ui.hyperlink_to`, which uses the unreliable `ctx.open_url`.
  pub fn link_row(app: &mut PhotocraftApp, ui: &mut egui::Ui) {
      let t = crate::theme::Tokens::get(ui.ctx());
@@ -6392,6 +6954,19 @@ index fd23d7f..9a94e25 100644
  //! canvas, so a frame couldn't be pulled back out over those pixels by eye. Photoshop (measured on
  //! 25.4) grows the view to every layer's bounds and the frame once the frame is pressed: the
  //! hidden pixels under the shield, transparency as the checkerboard, until ↵ or Esc.
+diff --git a/crates/vector/Cargo.toml b/crates/vector/Cargo.toml
+index dae5013..80270d7 100644
+--- a/crates/vector/Cargo.toml
++++ b/crates/vector/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/packaging/env.sh b/packaging/env.sh
 index 0007227..d13f275 100644
 --- a/packaging/env.sh

@@ -3,6 +3,7 @@
 These twelve independent forks are **internal candidates**, not public downloads.
 The currently published Suite still distributes the qualified PDF releases only.
 Passing a compile check does not qualify an app, installer, or platform for release.
+Current findings and remaining gates are recorded in [SECURITY-REVIEW.md](SECURITY-REVIEW.md).
 
 | Product | Purpose | Public upstream |
 | --- | --- | --- |
@@ -33,7 +34,8 @@ no credentials or signing keys in this catalog.
    and Windows, then builds internal artifacts with provenance and a qualification warning.
 
 The preparation command refuses dirty checkouts, unknown products, mismatched
-source/patch/icon hashes, traversal, and linked asset destinations. It never
+source/patch/icon hashes, traversal, and linked asset destinations. It stages the
+prepared snapshot for upstream asset-inventory gates, without creating a commit. It never
 downloads, installs, signs, or publishes an application. Internal candidates use
 `0.1.0-alpha.4` as a development version; that version is not a public release promise.
 

@@ -117,7 +117,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.photocraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "095b72037826ef4e213428e3454bd066e2290146865ed8d8ad0f93c715a6b7df"
+    "patch_sha256": "93266efe63164815c86b42a25395c6e345685c6dc29a0b80d5b9d74a4f0ed452"
   },
   {
     "app": "vectorcraft",
@@ -242,7 +242,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.vectorcraft.png"
     ],
     "fonts_commit": "3d9ab3a132ed0eff457e424226a435a901da30d3",
-    "patch_sha256": "de0439ebf701c430cf3b620a1ddfdc6750e40863d5792007a467a80e5443d768"
+    "patch_sha256": "a1a3fce0fce3497b85eda4b5f8282d7658da5a06a0a6199570f1002956838c5a"
   },
   {
     "app": "filmcraft",
@@ -375,7 +375,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.filmcraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "ea68cdd5f43eff8c2e4108605ab6dad8c33f92271fc00e6ce1692a3cb48224e9"
+    "patch_sha256": "20ad6a58e88c608b9fb949833dff4379b6c2d2f0c0657229459a76200d79751b"
   },
   {
     "app": "lightcraft",
@@ -391,92 +391,92 @@
       {
         "to": "assets/app-icon/hicolor/128x128/apps/com.plervo.develop.png",
         "from": "assets/products/develop/icon-128.png",
-        "sha256": "e9633e214f1636c1b040f943d3c7866b52f6e38fc0bd608757c36a83e5c3742e"
+        "sha256": "39c6f63e2a8eaa35c32f856fad90caa00fe58ca8204ef6dee9fc26daf82c4592"
       },
       {
         "to": "assets/app-icon/hicolor/16x16/apps/com.plervo.develop.png",
         "from": "assets/products/develop/icon-16.png",
-        "sha256": "11c9ffd488b3e843f5b6b2ac728e05f23c9c16aa85115adf7faa3b04964d5e91"
+        "sha256": "da82e4428481899dcaa9c9fdc1cea774ad2413e95b2c2c26a74cc68c5c313db1"
       },
       {
         "to": "assets/app-icon/hicolor/24x24/apps/com.plervo.develop.png",
         "from": "assets/products/develop/icon-24.png",
-        "sha256": "f255b8f474c422de7d426f8ed039aa35bf3c340f4743d589e0ed2d223c57f917"
+        "sha256": "663b243df264faec96ecad0447cb96258e18aebc191a9e955c210cbc1711417f"
       },
       {
         "to": "assets/app-icon/hicolor/256x256/apps/com.plervo.develop.png",
         "from": "assets/products/develop/icon-256.png",
-        "sha256": "272c03e9736c2977747174b5ad1f843014a46225d1642ca55d5562a18adc0643"
+        "sha256": "150b9eccfad2aab1268c345f1b09cbe5de30dddb658155da209940a6369f0d7f"
       },
       {
         "to": "assets/app-icon/hicolor/32x32/apps/com.plervo.develop.png",
         "from": "assets/products/develop/icon-32.png",
-        "sha256": "2fcfcd2104b2d29ea94c8aad47eec7c24c18cfd92e5a28d22f5a32ff7118a9b3"
+        "sha256": "1cab7a9b4e9e47fc4273187f1d850cd5a9c413d4a0a1f438bd9eef6235bf0efa"
       },
       {
         "to": "assets/app-icon/hicolor/48x48/apps/com.plervo.develop.png",
         "from": "assets/products/develop/icon-48.png",
-        "sha256": "ad343d17ac970b0be45c1464dd2c44bc6405857e2621f427c1b57e082028b66d"
+        "sha256": "9c4647d2bedcc4b19dc1c8521124338cec01d2526a662548b4237d5f5e7d463e"
       },
       {
         "to": "assets/app-icon/hicolor/512x512/apps/com.plervo.develop.png",
         "from": "assets/products/develop/icon-512.png",
-        "sha256": "22fa25eccb7bbf8ac012749ee75868b1de6dde483d349d896116f3dc5a0cc691"
+        "sha256": "c5b6d48d20b76f0d98684ab262033ecc952718be793c28b69a90b8a0982a1482"
       },
       {
         "to": "assets/app-icon/hicolor/64x64/apps/com.plervo.develop.png",
         "from": "assets/products/develop/icon-64.png",
-        "sha256": "4f66fcc412b836930ecd788cdf8afaceff07d7b2bf293a4e036dd7540f8268db"
+        "sha256": "7b4c8e7ef614d6b9db26e33b96f26196a1dcd063ddb2c6f0c43c5c618d313b1b"
       },
       {
         "to": "assets/app-icon/hicolor/scalable/apps/com.plervo.develop.svg",
         "from": "assets/products/develop/icon.svg",
-        "sha256": "6ba7a378de697ace6f814be5de69301415b71e831924b49340bde113dc3f55b3"
+        "sha256": "0820219e10803c1c617ad181284d11e443019e3041258ce415e9df743f213f9b"
       },
       {
         "to": "assets/app-icon/lightcraft-1024.png",
         "from": "assets/products/develop/icon-1024.png",
-        "sha256": "4b2d920b832a6df3c4b8928834e28edd9802346d071331db9f8fba3e19bb8a32"
+        "sha256": "5fd21f5a689e96fca085e4f4239d6646316e5f5b9fe1be594576f320179fc0d4"
       },
       {
         "to": "assets/app-icon/lightcraft-macos-512.png",
         "from": "assets/products/develop/macos-512.png",
-        "sha256": "3f3960e048b7600c3b0fa72ef69bb9412ec0ef97edcedeff22df881b68b32fca"
+        "sha256": "50f09e621e1f267ca68525db45398759f0faabcf15743ed0a4704d2159c3cb5d"
       },
       {
         "to": "assets/app-icon/lightcraft-small.svg",
         "from": "assets/products/develop/icon.svg",
-        "sha256": "6ba7a378de697ace6f814be5de69301415b71e831924b49340bde113dc3f55b3"
+        "sha256": "0820219e10803c1c617ad181284d11e443019e3041258ce415e9df743f213f9b"
       },
       {
         "to": "assets/app-icon/lightcraft.icns",
         "from": "assets/products/develop/icon.icns",
-        "sha256": "1a311df7556062e3c1c60249249a947a692952991b2d6a3f645b6f1a614f1cbd"
+        "sha256": "92695d4d16ae94d39723ca9d519ac6f719c58a71cb9eca6aba6e5812202d99f6"
       },
       {
         "to": "assets/app-icon/lightcraft.ico",
         "from": "assets/products/develop/icon.ico",
-        "sha256": "05bed199241f6af2d86fabc5a00c34c9c2f43c649f3d7f78237660e143b1b1a6"
+        "sha256": "06087d94bebdc955a8fddefe6007d31d5fa97cb0dea0542e9d20154551048865"
       },
       {
         "to": "assets/app-icon/lightcraft.svg",
         "from": "assets/products/develop/icon.svg",
-        "sha256": "6ba7a378de697ace6f814be5de69301415b71e831924b49340bde113dc3f55b3"
+        "sha256": "0820219e10803c1c617ad181284d11e443019e3041258ce415e9df743f213f9b"
       },
       {
         "to": "assets/app-icon/plervo-develop.icns",
         "from": "assets/products/develop/icon.icns",
-        "sha256": "1a311df7556062e3c1c60249249a947a692952991b2d6a3f645b6f1a614f1cbd"
+        "sha256": "92695d4d16ae94d39723ca9d519ac6f719c58a71cb9eca6aba6e5812202d99f6"
       },
       {
         "to": "assets/app-icon/plervo-develop.ico",
         "from": "assets/products/develop/icon.ico",
-        "sha256": "05bed199241f6af2d86fabc5a00c34c9c2f43c649f3d7f78237660e143b1b1a6"
+        "sha256": "06087d94bebdc955a8fddefe6007d31d5fa97cb0dea0542e9d20154551048865"
       },
       {
         "to": "assets/app-icon/plervo-develop.svg",
         "from": "assets/products/develop/icon.svg",
-        "sha256": "6ba7a378de697ace6f814be5de69301415b71e831924b49340bde113dc3f55b3"
+        "sha256": "0820219e10803c1c617ad181284d11e443019e3041258ce415e9df743f213f9b"
       }
     ],
     "remove": [
@@ -499,8 +499,8 @@
       "assets/app-icon/hicolor/64x64/apps/ai.storyteller.lightcraft.png",
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.lightcraft.png"
     ],
-    "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "02cfc3fb3479b66714dde82853139ef86194a660daff97c5df090a4ececc942d"
+    "fonts_commit": "8dcdacd5153e64560d109541a47d806f26f048c0",
+    "patch_sha256": "969757f185de3fd8627b4092f385fb920b9ba9540596fe515720d5a75158b0f8"
   },
   {
     "app": "effectcraft",
@@ -633,7 +633,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.effectcraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "95e15a56feb1fcc1f38ba8226b2c88ebb14aa091656bc757a11f7f6ce61c3bdb"
+    "patch_sha256": "c0a78cc2ef152b475d4acbe12029f7c6de32004f498d7607bb715f675756dadd"
   },
   {
     "app": "designcraft",
@@ -758,7 +758,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.designcraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "b0a02d0ad724a2cd2ed56bb3710add7b2f75ae2458891bd37d618c6c1b46151f"
+    "patch_sha256": "0e98d8281f39429afbb30fd7298542cd43fb67d278d828264e8607521a0b67f3"
   },
   {
     "app": "wordcraft",
@@ -878,7 +878,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.wordcraft.png"
     ],
     "fonts_commit": "8dcdacd5153e64560d109541a47d806f26f048c0",
-    "patch_sha256": "68a6323e27b0d360b2148fdde61dc666c6997208332cfe80fb6a6b4fc5296dd5"
+    "patch_sha256": "ed767ce2a64ab5675f4e9eeab6c1d4259e610d303ed23edee05d6390c8520fad"
   },
   {
     "app": "deckcraft",
@@ -988,7 +988,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.deckcraft.png"
     ],
     "fonts_commit": "43913056ce82a3fdad0ef69f6b88d1dc922a8104",
-    "patch_sha256": "3eaa3bd7d5f98b1c84c106efc98d5aa73a8966048796c9dc902d83a7f6845ca0"
+    "patch_sha256": "0c568ea27530bea3a4f63fb8e8319ab0c283b72adc62db0e217d21a8a17dfaf6"
   },
   {
     "app": "gridcraft",
@@ -1108,7 +1108,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.gridcraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "628cc706d254cfa585066f635d521426ed4278fb0a4312fb74327fa4b82d9473"
+    "patch_sha256": "accb73db08f3969fba03f93bf6a216b0a096d72eb135c0e9751a2a339e66615f"
   },
   {
     "app": "cadcraft",
@@ -1227,7 +1227,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.cadcraft.png"
     ],
     "fonts_commit": "3d9ab3a132ed0eff457e424226a435a901da30d3",
-    "patch_sha256": "2bfb716ea906adc49995b67f71a1247b7f2945c49be149c7f264f7bab27d1fdb"
+    "patch_sha256": "eec16427af984c8b11d0cf51c97ce10c30f86b94203a18fa2a19d2a1fc4b02f2"
   },
   {
     "app": "soundcraft",
@@ -1347,7 +1347,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.soundcraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "0ef9d15e13159b7dab7aeca4a6e93dd162cff85bbde3c4c23716258f2b011e8d"
+    "patch_sha256": "af725cdd41b12c81d295188e7e18c7b9b7de9192c3e659af35ea0b6c13c67cbb"
   },
   {
     "app": "figcraft",
@@ -1490,7 +1490,7 @@
       "assets/app-icon/hicolor/64x64/apps/ai.storyteller.figcraft.png",
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.figcraft.png"
     ],
-    "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "83690215001d2402c912b4c1f1c29249857d179898b120810c3a4c0d17ca9210"
+    "fonts_commit": "43913056ce82a3fdad0ef69f6b88d1dc922a8104",
+    "patch_sha256": "813dd0a77cce529c9d3a0720e0f279e6e93d1f46280021eb0490c5af15b3a120"
   }
 ]

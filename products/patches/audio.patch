@@ -1,5 +1,5 @@
 diff --git a/ATTRIBUTION.md b/ATTRIBUTION.md
-index 084f424..cd6e05f 100644
+index 084f424..8cf23d4 100644
 --- a/ATTRIBUTION.md
 +++ b/ATTRIBUTION.md
 @@ -10,7 +10,6 @@ Assets must be original, public domain (CC0) or permissively licensed. See `AGEN
@@ -10,7 +10,7 @@ index 084f424..cd6e05f 100644
  the SoundCraft contributors) is listed under Files below.
  
  ## Audio
-@@ -29,19 +28,27 @@ and, at runtime, the operating system's own UI fonts when available (never redis
+@@ -29,19 +28,29 @@ and, at runtime, the operating system's own UI fonts when available (never redis
  
  | Path | Author | Source | License |
  |---|---|---|---|
@@ -52,6 +52,8 @@ index 084f424..cd6e05f 100644
 +| `assets/app-icon/soundcraft-macos-512.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 55493239a2b525e498f562ddedc4b9f06f4684eb98a9df133ee54cae6941395a |
 +| `assets/app-icon/soundcraft.icns` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 0a3eaf0497ab7d094e6beccc61ed9f6182af455072d62c4f9af1073c5dffe50d |
 +| `assets/app-icon/soundcraft.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 045d52d9eeb1650cfaf9ff99a4c27e36c4358bf494760059987b85ac6bf2406b |
++
++| `assets/app-icon/README.md` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | bc72ba46054b6e875abc4424dbddb9f2e5999cd8f27052a3c0ededc04802a827 |
 diff --git a/Cargo.lock b/Cargo.lock
 index b8eb765..107a094 100644
 --- a/Cargo.lock
@@ -759,7 +761,7 @@ index 9a51cc5..f7c74b2 100644
          assert!(!help.contains("```"));
          assert!(!help.contains("#![") && !help.contains("use serde_json"));
 diff --git a/apps/soundcraft-cli/tests/cli.rs b/apps/soundcraft-cli/tests/cli.rs
-index ef2fb88..c62e4cd 100644
+index ef2fb88..03f5845 100644
 --- a/apps/soundcraft-cli/tests/cli.rs
 +++ b/apps/soundcraft-cli/tests/cli.rs
 @@ -1,4 +1,4 @@
@@ -768,15 +770,17 @@ index ef2fb88..c62e4cd 100644
  // Integration tests: unwrapping and panicking on failure is fine here, unlike in shipped code (AGENTS.md).
  #![allow(clippy::unwrap_used, clippy::expect_used, clippy::panic)]
  
-@@ -9,7 +9,7 @@ use std::process::{Command, Output, Stdio};
+@@ -9,8 +9,8 @@ use std::process::{Command, Output, Stdio};
  use serde_json::Value;
  
  fn bin() -> Command {
 -    let mut cmd = Command::new(env!("CARGO_BIN_EXE_soundcraft-cli"));
+-    cmd.env("SOUNDCRAFT_NO_PREFS", "1");
 +    let mut cmd = Command::new(env!("CARGO_BIN_EXE_plervo-audio-cli"));
-     cmd.env("SOUNDCRAFT_NO_PREFS", "1");
++    cmd.env("PLERVO_AUDIO_NO_PREFS", "1");
      cmd
  }
+ 
 @@ -25,7 +25,7 @@ fn tmpdir(tag: &str) -> PathBuf {
      dir
  }
@@ -787,18 +791,20 @@ index ef2fb88..c62e4cd 100644
  fn mcp_session(args: &[&str], calls: &[(&str, Value)]) -> (bool, String, Vec<Value>) {
      let mut child = bin().arg("mcp").args(args).stdin(Stdio::piped()).stdout(Stdio::piped()).stderr(Stdio::piped()).spawn().unwrap();
 diff --git a/apps/soundcraft-cli/tests/closed_stdout.rs b/apps/soundcraft-cli/tests/closed_stdout.rs
-index 9807423..8535a05 100644
+index 9807423..2bc7404 100644
 --- a/apps/soundcraft-cli/tests/closed_stdout.rs
 +++ b/apps/soundcraft-cli/tests/closed_stdout.rs
-@@ -3,7 +3,7 @@
+@@ -3,8 +3,8 @@
  use std::process::{Command, Stdio};
  
  fn bin() -> Command {
 -    let mut cmd = Command::new(env!("CARGO_BIN_EXE_soundcraft-cli"));
+-    cmd.env("SOUNDCRAFT_NO_PREFS", "1");
 +    let mut cmd = Command::new(env!("CARGO_BIN_EXE_plervo-audio-cli"));
-     cmd.env("SOUNDCRAFT_NO_PREFS", "1");
++    cmd.env("PLERVO_AUDIO_NO_PREFS", "1");
      cmd
  }
+ 
 diff --git a/apps/soundcraft-web/src/main.rs b/apps/soundcraft-web/src/main.rs
 index 6e52278..0b5ec1b 100644
 --- a/apps/soundcraft-web/src/main.rs
@@ -874,7 +880,7 @@ index 4df35b9..813ce2a 100644
          if std::env::var_os("SOUNDCRAFT_REQUIRE_WINRES").is_some() {
              eprintln!("embedding Windows resources failed: {e}");
 diff --git a/apps/soundcraft/src/config.rs b/apps/soundcraft/src/config.rs
-index 1ade4ee..e8a3935 100644
+index 1ade4ee..950fcde 100644
 --- a/apps/soundcraft/src/config.rs
 +++ b/apps/soundcraft/src/config.rs
 @@ -10,7 +10,7 @@ enum Platform {
@@ -927,7 +933,7 @@ index 1ade4ee..e8a3935 100644
                      Some(OsString::new())
                  }),
                  None
-@@ -225,8 +226,8 @@ mod config_tests {
+@@ -225,10 +226,10 @@ mod config_tests {
      #[test]
      fn config_unset_override_keeps_platform_defaults() {
          let vars = [("HOME", "/user"), ("APPDATA", "/roaming"), ("XDG_CONFIG_HOME", "/xdg")];
@@ -936,8 +942,11 @@ index 1ade4ee..e8a3935 100644
 +        assert_eq!(resolve(Platform::Mac, &vars), Some(PathBuf::from("/user/Library/Application Support/Plervo Audio")));
 +        assert_eq!(resolve(Platform::Windows, &vars), Some(PathBuf::from("/roaming/Plervo Audio")));
          assert_eq!(resolve(Platform::Other, &vars), Some(PathBuf::from("/xdg/soundcraft")));
-         assert_eq!(resolve(Platform::Other, &[("HOME", "/user")]), Some(PathBuf::from("/user/.config/soundcraft")));
+-        assert_eq!(resolve(Platform::Other, &[("HOME", "/user")]), Some(PathBuf::from("/user/.config/soundcraft")));
++        assert_eq!(resolve(Platform::Other, &[("HOME", "/user")]), Some(PathBuf::from("/user/.config/plervo-audio")));
          for platform in [Platform::Mac, Platform::Windows, Platform::Other] {
+             assert_eq!(resolve(platform, &[]), None);
+         }
 diff --git a/apps/soundcraft/src/control_server.rs b/apps/soundcraft/src/control_server.rs
 index abff7bb..b9e9d38 100644
 --- a/apps/soundcraft/src/control_server.rs
@@ -963,11 +972,15 @@ index 2a932a6..71106d6 100644
          // indirect-validation pipeline and loses the device before the first frame
          // (issue #185). FXC uses the compiler that is part of Windows.
 diff --git a/apps/soundcraft/src/logging.rs b/apps/soundcraft/src/logging.rs
-index 53be177..23a92ca 100644
+index 53be177..4889add 100644
 --- a/apps/soundcraft/src/logging.rs
 +++ b/apps/soundcraft/src/logging.rs
-@@ -9,7 +9,7 @@
- //! crashed survives the next launch. Runs without preferences (`SOUNDCRAFT_NO_PREFS`, agents' test
+@@ -6,10 +6,10 @@
+ //! desktop menu has no terminal, so the file is what a bug report can attach:
+ //! `<settings dir>/logs/soundcraft.log`, beside `ui.json`, `Autosave/` and `Presets/`. Each start
+ //! moves the previous log to `soundcraft.1.log` (and that one to `.2`), so the log of a run that
+-//! crashed survives the next launch. Runs without preferences (`SOUNDCRAFT_NO_PREFS`, agents' test
++//! crashed survives the next launch. Runs without preferences (`PLERVO_AUDIO_NO_PREFS`, agents' test
  //! runs) log to standard error only, so they don't rotate away the user's own logs.
  //!
 -//! Levels: `info` for SoundCraft's own crates, `warn` for everything else (wgpu and naga are
@@ -975,6 +988,15 @@ index 53be177..23a92ca 100644
  //! chatty). `RUST_LOG` replaces that with env_logger-style directives: `debug`,
  //! `warn,soundcraft_mix=trace`, `wgpu_core=info`. A directive ending in `*` matches every target
  //! that starts with it (`soundcraft*=debug`).
+@@ -357,7 +357,7 @@ impl AppLogger {
+         }
+     }
+ 
+-    /// No log file this run (no settings directory, `SOUNDCRAFT_NO_PREFS`, or the directory can't
++    /// No log file this run (no settings directory, `PLERVO_AUDIO_NO_PREFS`, or the directory can't
+     /// be used): stop keeping records for one.
+     pub fn no_file(&self) {
+         self.sink.lock().unwrap_or_else(PoisonError::into_inner).no_file();
 @@ -640,7 +640,7 @@ mod tests {
      fn the_logger_filters_records_and_writes_them_to_the_attached_file() {
          let dir = temp_dir("logger");
@@ -994,7 +1016,7 @@ index 53be177..23a92ca 100644
          assert!(logger.enabled(&log::Metadata::builder().level(log::Level::Info).target("soundcraft_engine").build()));
          assert!(!logger.enabled(&log::Metadata::builder().level(log::Level::Info).target("naga").build()));
 diff --git a/apps/soundcraft/src/main.rs b/apps/soundcraft/src/main.rs
-index 808cdef..f980a79 100644
+index 808cdef..228e56a 100644
 --- a/apps/soundcraft/src/main.rs
 +++ b/apps/soundcraft/src/main.rs
 @@ -1,4 +1,4 @@
@@ -1019,6 +1041,18 @@ index 808cdef..f980a79 100644
          };
          set_title(ctx, title);
      }
+@@ -129,9 +129,9 @@ fn prefs_path() -> Option<std::path::PathBuf> {
+     config_dir().map(|b| b.join("ui.json"))
+ }
+ 
+-/// Runs without preferences (`SOUNDCRAFT_NO_PREFS`, agents' test runs) neither read nor write them.
++/// Runs without preferences (`PLERVO_AUDIO_NO_PREFS`, agents' test runs) neither read nor write them.
+ fn prefs_enabled() -> bool {
+-    std::env::var_os("SOUNDCRAFT_NO_PREFS").is_none()
++    std::env::var_os("PLERVO_AUDIO_NO_PREFS").is_none()
+ }
+ 
+ fn load_prefs() -> Option<UiState> {
 @@ -164,7 +164,7 @@ fn services() -> Services {
          pick_open: Some(Box::new(|purpose: &str, _exts: &[&str]| {
              let d = rfd::FileDialog::new();
@@ -1128,6 +1162,111 @@ index e0dc93e..ea89740 100644
          native.menu.append(&app_menu)?;
          let aliases = menus::ui_aliases();
          for root in menus::tree() {
+diff --git a/assets/app-icon/README.md b/assets/app-icon/README.md
+index 12cea9c..bcecc7a 100644
+--- a/assets/app-icon/README.md
++++ b/assets/app-icon/README.md
+@@ -1,44 +1,6 @@
+-# SoundCraft app icon (placeholder)
++# Plervo Audio application icons
+ 
+-**A nightingale singing**, as an engraving-style head-and-shoulders portrait in the Crafting Apps'
+-owl-template framing (craftrules `standards/icon-design.md`): a full-bleed colour field, the bird
+-in three-quarter view with its bill open and its eye on the viewer, its breast and wing running off
+-the bottom and right edges, three song arcs leaving the bill.
++Original artwork by Plervo contributors, 2026. Licensed under MIT OR Apache-2.0; see the complete LICENSE-MIT and LICENSE-APACHE files at the repository root.
+ 
+-This is a **placeholder** until the owner draws SoundCraft's icon in ArtCraft like the other apps'
+-icons. Replace `icon.svg` and run `packaging/icons.sh`; nothing else needs to change.
+-
+-## Palette
+-
+-Exactly three colours:
+-
+-| Colour | Hex | Used for |
+-|---|---|---|
+-| Ink | `#0b0b0c` | Line work and contour |
+-| Paper | `#efe9dc` | The bird and the song arcs |
+-| SoundCraft teal (app colour) | `#14a9c4` | The full-bleed background field |
+-
+-## Geometry
+-
+-A 512 × 512 viewBox, clipped to a rounded square with `rx=112`. Windows and Linux use the full
+-tile. The macOS icons (`soundcraft.icns`, `soundcraft-macos-512.png`) sit on Apple's grid: an
+-824/1024 body with a transparent margin.
+-
+-## Provenance and licence
+-
+-Drawn from scratch as hand-placed SVG paths by the SoundCraft contributors; no source image was
+-traced or copied. MIT OR Apache-2.0, like the code (see `ATTRIBUTION.md`).
+-
+-## Files
+-
+-| File | What it is |
+-|---|---|
+-| `icon.svg` | The canonical vector |
+-| `soundcraft-1024.png` | 1024 px render |
+-| `soundcraft-macos-512.png` | Runtime window/Dock icon on macOS (Apple grid margin) |
+-| `soundcraft.icns` | macOS bundle icon |
+-| `soundcraft.ico` | Windows icon (16–256 px), embedded in `soundcraft.exe` and used by the MSI |
+-| `hicolor/<size>x<size>/apps/ai.storyteller.soundcraft.png` | Linux/FreeBSD icon theme, 16–512 px, plus `scalable/` |
+-
+-Regenerate everything with `packaging/icons.sh` (needs `resvg`, and `iconutil` on macOS for the
+-`.icns`).
++Source vectors and platform variants: https://github.com/alportblu/plervo-pdf/tree/feat/app-family/assets/products/audio
++These icons replace the upstream product artwork. Engine code and other assets retain their original notices.
+diff --git a/crates/au-host/Cargo.toml b/crates/au-host/Cargo.toml
+index af79316..5095073 100644
+--- a/crates/au-host/Cargo.toml
++++ b/crates/au-host/Cargo.toml
+@@ -7,6 +7,8 @@ license.workspace = true
+ rust-version.workspace = true
+ repository.workspace = true
+ 
++publish = false
++
+ [dependencies]
+ soundcraft-dsp.workspace = true
+ serde.workspace = true
+diff --git a/crates/audio-io/Cargo.toml b/crates/audio-io/Cargo.toml
+index d3450a2..49960bb 100644
+--- a/crates/audio-io/Cargo.toml
++++ b/crates/audio-io/Cargo.toml
+@@ -7,6 +7,8 @@ license.workspace = true
+ rust-version.workspace = true
+ repository.workspace = true
+ 
++publish = false
++
+ [dependencies]
+ serde.workspace = true
+ thiserror.workspace = true
+diff --git a/crates/automation/Cargo.toml b/crates/automation/Cargo.toml
+index 2e3f3f8..0ed18df 100644
+--- a/crates/automation/Cargo.toml
++++ b/crates/automation/Cargo.toml
+@@ -7,6 +7,8 @@ license.workspace = true
+ rust-version.workspace = true
+ repository.workspace = true
+ 
++publish = false
++
+ [dependencies]
+ soundcraft-engine.workspace = true
+ soundcraft-time.workspace = true
+diff --git a/crates/clap-host/Cargo.toml b/crates/clap-host/Cargo.toml
+index e08bbdf..ec6f0bc 100644
+--- a/crates/clap-host/Cargo.toml
++++ b/crates/clap-host/Cargo.toml
+@@ -7,6 +7,8 @@ license.workspace = true
+ rust-version.workspace = true
+ repository.workspace = true
+ 
++publish = false
++
+ [dependencies]
+ soundcraft-dsp.workspace = true
+ serde.workspace = true
 diff --git a/crates/clap-host/src/ffi.rs b/crates/clap-host/src/ffi.rs
 index 82f57bf..4078c5c 100644
 --- a/crates/clap-host/src/ffi.rs
@@ -1141,6 +1280,110 @@ index 82f57bf..4078c5c 100644
              version: c"0.1.0".as_ptr(),
              get_extension: Some(host_get_extension),
              request_restart: Some(host_request_restart),
+diff --git a/crates/dsp/Cargo.toml b/crates/dsp/Cargo.toml
+index 3429a9a..fbbe886 100644
+--- a/crates/dsp/Cargo.toml
++++ b/crates/dsp/Cargo.toml
+@@ -7,6 +7,8 @@ license.workspace = true
+ rust-version.workspace = true
+ repository.workspace = true
+ 
++publish = false
++
+ [dependencies]
+ serde.workspace = true
+ log.workspace = true
+diff --git a/crates/engine/Cargo.toml b/crates/engine/Cargo.toml
+index 9b097a0..5241a74 100644
+--- a/crates/engine/Cargo.toml
++++ b/crates/engine/Cargo.toml
+@@ -7,6 +7,8 @@ license.workspace = true
+ rust-version.workspace = true
+ repository.workspace = true
+ 
++publish = false
++
+ [dependencies]
+ soundcraft-time.workspace = true
+ soundcraft-audio-io.workspace = true
+diff --git a/crates/midi/Cargo.toml b/crates/midi/Cargo.toml
+index c32093f..380b9b9 100644
+--- a/crates/midi/Cargo.toml
++++ b/crates/midi/Cargo.toml
+@@ -7,6 +7,8 @@ license.workspace = true
+ rust-version.workspace = true
+ repository.workspace = true
+ 
++publish = false
++
+ [dependencies]
+ serde.workspace = true
+ thiserror.workspace = true
+diff --git a/crates/mix/Cargo.toml b/crates/mix/Cargo.toml
+index 1c32f52..6d6e10a 100644
+--- a/crates/mix/Cargo.toml
++++ b/crates/mix/Cargo.toml
+@@ -7,6 +7,8 @@ license.workspace = true
+ rust-version.workspace = true
+ repository.workspace = true
+ 
++publish = false
++
+ [dependencies]
+ soundcraft-time.workspace = true
+ soundcraft-audio-io.workspace = true
+diff --git a/crates/model/Cargo.toml b/crates/model/Cargo.toml
+index c948d93..1869736 100644
+--- a/crates/model/Cargo.toml
++++ b/crates/model/Cargo.toml
+@@ -7,6 +7,8 @@ license.workspace = true
+ rust-version.workspace = true
+ repository.workspace = true
+ 
++publish = false
++
+ [dependencies]
+ soundcraft-time.workspace = true
+ soundcraft-audio-io.workspace = true
+diff --git a/crates/playback/Cargo.toml b/crates/playback/Cargo.toml
+index 514879a..f8a25f5 100644
+--- a/crates/playback/Cargo.toml
++++ b/crates/playback/Cargo.toml
+@@ -7,6 +7,8 @@ license.workspace = true
+ rust-version.workspace = true
+ repository.workspace = true
+ 
++publish = false
++
+ [dependencies]
+ soundcraft-time.workspace = true
+ soundcraft-audio-io.workspace = true
+diff --git a/crates/time/Cargo.toml b/crates/time/Cargo.toml
+index df5dc4e..5988db1 100644
+--- a/crates/time/Cargo.toml
++++ b/crates/time/Cargo.toml
+@@ -7,6 +7,8 @@ license.workspace = true
+ rust-version.workspace = true
+ repository.workspace = true
+ 
++publish = false
++
+ [dependencies]
+ serde.workspace = true
+ thiserror.workspace = true
+diff --git a/crates/ui-egui/Cargo.toml b/crates/ui-egui/Cargo.toml
+index 66158bb..5f5f15f 100644
+--- a/crates/ui-egui/Cargo.toml
++++ b/crates/ui-egui/Cargo.toml
+@@ -7,6 +7,8 @@ license.workspace = true
+ rust-version = "1.95"
+ repository.workspace = true
+ 
++publish = false
++
+ [dependencies]
+ craft-ui.workspace = true
+ soundcraft-time.workspace = true
 diff --git a/crates/ui-egui/src/icons.rs b/crates/ui-egui/src/icons.rs
 index 55953ff..9b30e19 100644
 --- a/crates/ui-egui/src/icons.rs
@@ -1225,7 +1468,7 @@ index 9eef0b2..7cbf65c 100644
      ("Setup > Appearance", "window.ui_customization"),
      ("Setup > Hardware...", "window.playback_engine"),
 diff --git a/crates/ui-egui/src/panels.rs b/crates/ui-egui/src/panels.rs
-index dda31ce..8bcf29e 100644
+index dda31ce..168bb06 100644
 --- a/crates/ui-egui/src/panels.rs
 +++ b/crates/ui-egui/src/panels.rs
 @@ -594,7 +594,7 @@ fn about(app: &mut SoundApp, ctx: &egui::Context) {
@@ -1244,7 +1487,8 @@ index dda31ce..8bcf29e 100644
 -                ui.label(egui::RichText::new("SoundCraft").font(bold(22.0)));
 +                ui.label(egui::RichText::new("Plervo Audio").font(bold(22.0)));
                  ui.label(format!("Version {}", env!("CARGO_PKG_VERSION")));
-                 ui.label("An open-source digital audio workstation from the ArtCraft team.");
+-                ui.label("An open-source digital audio workstation from the ArtCraft team.");
++                ui.label("An open-source digital audio workstation from the Plervo team.");
                  ui.label("Dual-licensed MIT OR Apache-2.0. Made with Rust and egui.");
 -                ui.hyperlink_to("getartcraft.com/apps/soundcraft", "https://getartcraft.com/apps/soundcraft");
 -                ui.hyperlink_to("Join us on Discord", "https://discord.gg/artcraft");
@@ -1266,6 +1510,32 @@ index 0cf5b9b..5aadf50 100644
      ctx.all_styles_mut(|s| {
          s.visuals = v.clone();
          s.spacing.item_spacing = egui::vec2(6.0, 4.0);
+diff --git a/crates/video/Cargo.toml b/crates/video/Cargo.toml
+index d8165ab..f34f81f 100644
+--- a/crates/video/Cargo.toml
++++ b/crates/video/Cargo.toml
+@@ -7,6 +7,8 @@ license.workspace = true
+ rust-version.workspace = true
+ repository.workspace = true
+ 
++publish = false
++
+ [features]
+ default = []
+ # Frame-parallel H.264 and slice-parallel ProRes decoding (rayon). Off by default: SoundCraft
+diff --git a/crates/vst3-host/Cargo.toml b/crates/vst3-host/Cargo.toml
+index 1c1583a..042ca1b 100644
+--- a/crates/vst3-host/Cargo.toml
++++ b/crates/vst3-host/Cargo.toml
+@@ -7,6 +7,8 @@ license.workspace = true
+ rust-version.workspace = true
+ repository.workspace = true
+ 
++publish = false
++
+ [dependencies]
+ soundcraft-dsp.workspace = true
+ serde.workspace = true
 diff --git a/packaging/env.sh b/packaging/env.sh
 index cb4bcdb..d2d0078 100644
 --- a/packaging/env.sh

@@ -1045,7 +1045,7 @@ index 6678dec..8a6c925 100644
          assert!(logger.enabled(&log::Metadata::builder().level(log::Level::Info).target("cadcraft_ui_egui::gpu").build()));
          assert!(!logger.enabled(&log::Metadata::builder().level(log::Level::Info).target("naga").build()));
 diff --git a/apps/cadcraft/src/main.rs b/apps/cadcraft/src/main.rs
-index 157294a..4bb003e 100644
+index 157294a..e96ba40 100644
 --- a/apps/cadcraft/src/main.rs
 +++ b/apps/cadcraft/src/main.rs
 @@ -1,4 +1,4 @@
@@ -1068,9 +1068,10 @@ index 157294a..4bb003e 100644
  }
  
 -/// The per-user settings directory (it holds `logs/` and `autosave/`): `CADCRAFT_CONFIG_DIR` if set, else
-+/// The per-user settings directory (it holds `logs/` and `autosave/`): `PLERVO_CAD_CONFIG_DIR` if set, else
- /// `$XDG_CONFIG_HOME/cadcraft` or `~/.config/cadcraft` on Linux and the BSDs,
+-/// `$XDG_CONFIG_HOME/cadcraft` or `~/.config/cadcraft` on Linux and the BSDs,
 -/// `~/Library/Application Support/CADCraft` on macOS, `%APPDATA%\CADCraft` on Windows.
++/// The per-user settings directory (it holds `logs/` and `autosave/`): `PLERVO_CAD_CONFIG_DIR` if set, else
++/// `$XDG_CONFIG_HOME/cadcraft` or `~/.config/plervo-cad` on Linux and the BSDs,
 +/// `~/Library/Application Support/Plervo CAD` on macOS, `%APPDATA%\Plervo CAD` on Windows.
  fn config_dir() -> Option<std::path::PathBuf> {
      config_dir_from(|k| std::env::var_os(k))
@@ -1149,7 +1150,19 @@ index 157294a..4bb003e 100644
          assert_eq!(config_dir_from(env(&empty)), None, "no usable variable means no directory, not the working directory");
          assert_eq!(config_dir_from(env(&[])), None);
      }
-@@ -444,7 +444,7 @@ mod tests {
+@@ -435,16 +435,16 @@ mod tests {
+     #[cfg(all(unix, not(target_os = "macos")))]
+     #[test]
+     fn linux_and_bsd_follow_xdg_config_home() {
+-        assert_eq!(config_dir_from(env(&[("XDG_CONFIG_HOME", "/x"), ("HOME", "/home/u")])), Some(PathBuf::from("/x/cadcraft")));
+-        assert_eq!(config_dir_from(env(&[("HOME", "/home/u")])), Some(PathBuf::from("/home/u/.config/cadcraft")));
++        assert_eq!(config_dir_from(env(&[("XDG_CONFIG_HOME", "/x"), ("HOME", "/home/u")])), Some(PathBuf::from("/x/plervo-cad")));
++        assert_eq!(config_dir_from(env(&[("HOME", "/home/u")])), Some(PathBuf::from("/home/u/.config/plervo-cad")));
+         // The XDG spec says a relative XDG_CONFIG_HOME is ignored.
+-        assert_eq!(config_dir_from(env(&[("XDG_CONFIG_HOME", "rel"), ("HOME", "/home/u")])), Some(PathBuf::from("/home/u/.config/cadcraft")));
++        assert_eq!(config_dir_from(env(&[("XDG_CONFIG_HOME", "rel"), ("HOME", "/home/u")])), Some(PathBuf::from("/home/u/.config/plervo-cad")));
+     }
+ 
      #[cfg(target_os = "macos")]
      #[test]
      fn macos_uses_application_support() {
@@ -1235,7 +1248,7 @@ index 0ea892d..1ccd140 100644
  
  /// Watches the OS setting.
 diff --git a/apps/cadcraft/src/workspace.rs b/apps/cadcraft/src/workspace.rs
-index e2a429d..9523ca8 100644
+index e2a429d..2551353 100644
 --- a/apps/cadcraft/src/workspace.rs
 +++ b/apps/cadcraft/src/workspace.rs
 @@ -20,14 +20,14 @@ pub struct Workspace {
@@ -1253,7 +1266,7 @@ index e2a429d..9523ca8 100644
 -        _ => nonempty("XDG_CONFIG_HOME").map(|root| root.join("cadcraft")).or_else(|| nonempty("HOME").map(|home| home.join(".config/cadcraft"))),
 +        "macos" => nonempty("HOME").map(|home| home.join("Library/Application Support/Plervo CAD")),
 +        "windows" => nonempty("APPDATA").map(|root| root.join("Plervo CAD")),
-+        _ => nonempty("XDG_CONFIG_HOME").map(|root| root.join("plervo-cad")).or_else(|| nonempty("HOME").map(|home| home.join(".config/cadcraft"))),
++        _ => nonempty("XDG_CONFIG_HOME").map(|root| root.join("plervo-cad")).or_else(|| nonempty("HOME").map(|home| home.join(".config/plervo-cad"))),
      }
  }
  
@@ -1273,8 +1286,86 @@ index e2a429d..9523ca8 100644
          }
          assert_eq!(
              config_dir_from("linux", |key| (key == "XDG_CONFIG_HOME").then(|| OsString::from("/config"))),
+diff --git a/crates/color/Cargo.toml b/crates/color/Cargo.toml
+index cdad405..ef4bc76 100644
+--- a/crates/color/Cargo.toml
++++ b/crates/color/Cargo.toml
+@@ -5,6 +5,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/constraints/Cargo.toml b/crates/constraints/Cargo.toml
+index 0c66ef6..6a390a8 100644
+--- a/crates/constraints/Cargo.toml
++++ b/crates/constraints/Cargo.toml
+@@ -5,6 +5,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/doc/Cargo.toml b/crates/doc/Cargo.toml
+index 7046fd4..bde8c67 100644
+--- a/crates/doc/Cargo.toml
++++ b/crates/doc/Cargo.toml
+@@ -5,6 +5,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/dwg/Cargo.toml b/crates/dwg/Cargo.toml
+index 398df0a..9693710 100644
+--- a/crates/dwg/Cargo.toml
++++ b/crates/dwg/Cargo.toml
+@@ -5,6 +5,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/dxf/Cargo.toml b/crates/dxf/Cargo.toml
+index ef6703c..cb05d2b 100644
+--- a/crates/dxf/Cargo.toml
++++ b/crates/dxf/Cargo.toml
+@@ -5,6 +5,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/engine/Cargo.toml b/crates/engine/Cargo.toml
+index 0dad377..27d8915 100644
+--- a/crates/engine/Cargo.toml
++++ b/crates/engine/Cargo.toml
+@@ -5,6 +5,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/crates/engine/src/cmd/plotters.rs b/crates/engine/src/cmd/plotters.rs
-index 454b977..413405a 100644
+index 454b977..459a2dd 100644
 --- a/crates/engine/src/cmd/plotters.rs
 +++ b/crates/engine/src/cmd/plotters.rs
 @@ -60,20 +60,20 @@ impl PlotterStore {
@@ -1299,10 +1390,88 @@ index 454b977..413405a 100644
 -                    _ => get("XDG_CONFIG_HOME").map(|r| r.join("cadcraft")).or_else(|| get("HOME").map(|h| h.join(".config/cadcraft"))),
 +                    "macos" => get("HOME").map(|h| h.join("Library/Application Support/Plervo CAD")),
 +                    "windows" => get("APPDATA").map(|r| r.join("Plervo CAD")),
-+                    _ => get("XDG_CONFIG_HOME").map(|r| r.join("plervo-cad")).or_else(|| get("HOME").map(|h| h.join(".config/cadcraft"))),
++                    _ => get("XDG_CONFIG_HOME").map(|r| r.join("plervo-cad")).or_else(|| get("HOME").map(|h| h.join(".config/plervo-cad"))),
                  },
              };
              root.map(|r| r.join("plotters")).ok_or_else(|| "there is no settings folder for plotter configurations".to_string())
+diff --git a/crates/fonts/Cargo.toml b/crates/fonts/Cargo.toml
+index d2bdddf..1422f4e 100644
+--- a/crates/fonts/Cargo.toml
++++ b/crates/fonts/Cargo.toml
+@@ -5,6 +5,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/geom/Cargo.toml b/crates/geom/Cargo.toml
+index b19c1f2..dbd485e 100644
+--- a/crates/geom/Cargo.toml
++++ b/crates/geom/Cargo.toml
+@@ -5,6 +5,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/io/Cargo.toml b/crates/io/Cargo.toml
+index 151e1ec..c69877a 100644
+--- a/crates/io/Cargo.toml
++++ b/crates/io/Cargo.toml
+@@ -5,6 +5,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/mcp/Cargo.toml b/crates/mcp/Cargo.toml
+index 9bfc18e..becba38 100644
+--- a/crates/mcp/Cargo.toml
++++ b/crates/mcp/Cargo.toml
+@@ -5,6 +5,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/render/Cargo.toml b/crates/render/Cargo.toml
+index d62af23..ccd3d2e 100644
+--- a/crates/render/Cargo.toml
++++ b/crates/render/Cargo.toml
+@@ -5,6 +5,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/ui-egui/Cargo.toml b/crates/ui-egui/Cargo.toml
+index 630188d..ab03a1b 100644
+--- a/crates/ui-egui/Cargo.toml
++++ b/crates/ui-egui/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version = "1.95"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/crates/ui-egui/src/animation.rs b/crates/ui-egui/src/animation.rs
 index 75e28a7..051cbdd 100644
 --- a/crates/ui-egui/src/animation.rs
@@ -1414,7 +1583,7 @@ index d03fafa..1b221d7 100644
          ui.label(format!("Save changes to {title}?"));
          ui.label(RichText::new("Your changes will be lost if you don't save them.").color(t.text_dim));
 diff --git a/crates/ui-egui/src/dialogs.rs b/crates/ui-egui/src/dialogs.rs
-index 914de61..a44d9e4 100644
+index 914de61..1da4e46 100644
 --- a/crates/ui-egui/src/dialogs.rs
 +++ b/crates/ui-egui/src/dialogs.rs
 @@ -300,8 +300,8 @@ fn units(app: &mut CadApp, ctx: &egui::Context, open: &mut bool) {
@@ -1437,9 +1606,10 @@ index 914de61..a44d9e4 100644
                      ui.label(crate::tf!("Version {version}", version = env!("CARGO_PKG_VERSION")));
                      ui.label(crate::tl!("Computer-aided design and drafting: an open-source, clean-room CAD application written in pure Rust."));
                      ui.add_space(6.0);
-                     ui.label(RichText::new(crate::tl!("One of the Crafting Apps by the ArtCraft team and community.")).color(t.text_dim));
+-                    ui.label(RichText::new(crate::tl!("One of the Crafting Apps by the ArtCraft team and community.")).color(t.text_dim));
 -                    ui.hyperlink_to("getartcraft.com/apps/cadcraft", "https://getartcraft.com/apps/cadcraft");
 -                    ui.hyperlink_to(crate::tl!("Join us on Discord"), "https://discord.gg/artcraft");
++                    ui.label(RichText::new(crate::tl!("One of the Crafting Apps by the Plervo team and community.")).color(t.text_dim));
 +                    ui.hyperlink_to("plervo.com/apps/cadcraft", "https://plervo.com/");
 +                    ui.hyperlink_to(crate::tl!("Support Plervo"), "https://buymeacoffee.com/alport");
                      ui.add_space(6.0);

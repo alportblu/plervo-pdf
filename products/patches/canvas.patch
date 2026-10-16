@@ -1,5 +1,5 @@
 diff --git a/ATTRIBUTION.md b/ATTRIBUTION.md
-index 1f72aeb..b6db333 100644
+index 1f72aeb..1b6d446 100644
 --- a/ATTRIBUTION.md
 +++ b/ATTRIBUTION.md
 @@ -1,7 +1,6 @@
@@ -19,7 +19,7 @@ index 1f72aeb..b6db333 100644
  | `docs/images/` (all screenshots and exports: `shot-*.png`, `art-*.png`) | FigCraft contributors | Screenshots of FigCraft showing synthetic demo documents made in FigCraft, and PNG exports of those documents by FigCraft's renderer | MIT OR Apache-2.0 | No third-party artwork |
  | `examples/*.figcraft` | FigCraft contributors | Synthetic demo documents built through FigCraft's command API; invented copy, shapes and vectors drawn from scratch, no images or embedded fonts | MIT OR Apache-2.0 | Text uses Inter (OFL, from craft-fonts or the system); no third-party artwork |
  
-@@ -30,3 +27,30 @@ Release builds embed fonts from the optional craft-fonts build input
+@@ -30,3 +27,34 @@ Release builds embed fonts from the optional craft-fonts build input
  | BIZ UDPGothic, BIZ UDMincho, Shippori Mincho, Noto Sans Arabic | SIL Open Font License 1.1 | Google Fonts (see craft-fonts) |
  
  egui's default fonts (compiled into the `egui`/`epaint` crates) keep their own licences (OFL / Apache-2.0 / Ubuntu Font Licence); see those crates.
@@ -50,34 +50,55 @@ index 1f72aeb..b6db333 100644
 +| `assets/app-icon/plervo-canvas.icns` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 0468daa85038a884e8fe7ae2f624e6c0c471b6eb2173e274867381156bd1ce2e |
 +| `assets/app-icon/plervo-canvas.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 ddcaf594640a90e1b498e806bf2d5e0592708c861043abc0dc73340bde3fc127 |
 +| `assets/app-icon/plervo-canvas.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 78393df071e3407ba674d1784382ebc36518af2afea7a96825f1436054402813 |
++
++| `assets/app-icon/README.md` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | 1a19be67a88404ccfe381bf5611409914a7b63e6ef1a5695f9726beec98e6972 |
++
++| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | 1a19be67a88404ccfe381bf5611409914a7b63e6ef1a5695f9726beec98e6972 |
 diff --git a/Cargo.lock b/Cargo.lock
-index 5e9c6f6..aa6e088 100644
+index 5e9c6f6..c3d24d3 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -1406,8 +1406,8 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+@@ -1405,46 +1405,9 @@ version = "0.4.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "b97b65636e5b9ef369943878ac74335ba1c55c1cb6adbf1e2c293c624248d693"
  
- [[package]]
+-[[package]]
 -name = "figcraft"
 -version = "0.6.0"
-+name = "plervo-canvas"
-+version = "0.1.0-alpha.4"
- dependencies = [
-  "arboard",
-  "eframe",
-@@ -1429,8 +1429,8 @@ dependencies = [
- ]
- 
- [[package]]
+-dependencies = [
+- "arboard",
+- "eframe",
+- "egui",
+- "env_logger",
+- "figcraft-collab-net",
+- "figcraft-engine",
+- "figcraft-format",
+- "figcraft-text",
+- "figcraft-ui-egui",
+- "image",
+- "log",
+- "rfd",
+- "serde_json",
+- "wat",
+- "webbrowser",
+- "windows",
+- "winresource",
+-]
+-
+-[[package]]
 -name = "figcraft-cli"
 -version = "0.6.0"
-+name = "plervo-canvas-cli"
-+version = "0.1.0-alpha.4"
- dependencies = [
-  "figcraft-doc",
-  "figcraft-engine",
-@@ -1444,7 +1444,7 @@ dependencies = [
- 
+-dependencies = [
+- "figcraft-doc",
+- "figcraft-engine",
+- "figcraft-format",
+- "figcraft-mcp",
+- "figcraft-render",
+- "figcraft-svg",
+- "figcraft-text",
+- "serde_json",
+-]
+-
  [[package]]
  name = "figcraft-collab"
 -version = "0.6.0"
@@ -85,7 +106,7 @@ index 5e9c6f6..aa6e088 100644
  dependencies = [
   "base64 0.22.1",
   "figcraft-color",
-@@ -1459,7 +1459,7 @@ dependencies = [
+@@ -1459,7 +1422,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-collab-net"
@@ -94,7 +115,7 @@ index 5e9c6f6..aa6e088 100644
  dependencies = [
   "base64 0.22.1",
   "figcraft-collab",
-@@ -1482,7 +1482,7 @@ dependencies = [
+@@ -1482,7 +1445,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-color"
@@ -103,7 +124,7 @@ index 5e9c6f6..aa6e088 100644
  dependencies = [
   "kurbo",
   "serde",
-@@ -1491,7 +1491,7 @@ dependencies = [
+@@ -1491,7 +1454,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-doc"
@@ -112,7 +133,7 @@ index 5e9c6f6..aa6e088 100644
  dependencies = [
   "figcraft-color",
   "figcraft-geom",
-@@ -1503,7 +1503,7 @@ dependencies = [
+@@ -1503,7 +1466,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-engine"
@@ -121,7 +142,7 @@ index 5e9c6f6..aa6e088 100644
  dependencies = [
   "base64 0.22.1",
   "figcraft-collab",
-@@ -1530,7 +1530,7 @@ dependencies = [
+@@ -1530,7 +1493,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-format"
@@ -130,7 +151,7 @@ index 5e9c6f6..aa6e088 100644
  dependencies = [
   "figcraft-doc",
   "figcraft-pathops",
-@@ -1545,7 +1545,7 @@ dependencies = [
+@@ -1545,7 +1508,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-geom"
@@ -139,7 +160,7 @@ index 5e9c6f6..aa6e088 100644
  dependencies = [
   "kurbo",
   "serde",
-@@ -1553,7 +1553,7 @@ dependencies = [
+@@ -1553,7 +1516,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-layout"
@@ -148,7 +169,7 @@ index 5e9c6f6..aa6e088 100644
  dependencies = [
   "figcraft-doc",
   "figcraft-geom",
-@@ -1561,7 +1561,7 @@ dependencies = [
+@@ -1561,7 +1524,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-mcp"
@@ -157,7 +178,7 @@ index 5e9c6f6..aa6e088 100644
  dependencies = [
   "base64 0.22.1",
   "figcraft-collab-net",
-@@ -1577,7 +1577,7 @@ dependencies = [
+@@ -1577,7 +1540,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-pathops"
@@ -166,7 +187,7 @@ index 5e9c6f6..aa6e088 100644
  dependencies = [
   "figcraft-doc",
   "figcraft-geom",
-@@ -1586,7 +1586,7 @@ dependencies = [
+@@ -1586,7 +1549,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-pdf"
@@ -175,7 +196,7 @@ index 5e9c6f6..aa6e088 100644
  dependencies = [
   "figcraft-color",
   "figcraft-doc",
-@@ -1603,7 +1603,7 @@ dependencies = [
+@@ -1603,7 +1566,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-plugin"
@@ -184,7 +205,7 @@ index 5e9c6f6..aa6e088 100644
  dependencies = [
   "figcraft-color",
   "serde",
-@@ -1616,7 +1616,7 @@ dependencies = [
+@@ -1616,7 +1579,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-render"
@@ -193,7 +214,7 @@ index 5e9c6f6..aa6e088 100644
  dependencies = [
   "crc32fast",
   "figcraft-color",
-@@ -1634,7 +1634,7 @@ dependencies = [
+@@ -1634,7 +1597,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-server"
@@ -202,7 +223,7 @@ index 5e9c6f6..aa6e088 100644
  dependencies = [
   "crc32fast",
   "ctrlc",
-@@ -1658,7 +1658,7 @@ dependencies = [
+@@ -1658,7 +1621,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-svg"
@@ -211,7 +232,7 @@ index 5e9c6f6..aa6e088 100644
  dependencies = [
   "base64 0.22.1",
   "figcraft-color",
-@@ -1674,7 +1674,7 @@ dependencies = [
+@@ -1674,7 +1637,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-text"
@@ -220,7 +241,7 @@ index 5e9c6f6..aa6e088 100644
  dependencies = [
   "figcraft-doc",
   "figcraft-geom",
-@@ -1687,7 +1687,7 @@ dependencies = [
+@@ -1687,7 +1650,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-ui-egui"
@@ -229,7 +250,7 @@ index 5e9c6f6..aa6e088 100644
  dependencies = [
   "base64 0.22.1",
   "egui",
-@@ -1711,7 +1711,7 @@ dependencies = [
+@@ -1711,7 +1674,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-web"
@@ -238,6 +259,71 @@ index 5e9c6f6..aa6e088 100644
  dependencies = [
   "eframe",
   "egui",
+@@ -3347,6 +3310,43 @@ version = "0.2.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "b4596b6d070b27117e987119b4dac604f3c58cfb0b191112e24771b2faeac1a6"
+ 
++[[package]]
++name = "plervo-canvas"
++version = "0.1.0-alpha.4"
++dependencies = [
++ "arboard",
++ "eframe",
++ "egui",
++ "env_logger",
++ "figcraft-collab-net",
++ "figcraft-engine",
++ "figcraft-format",
++ "figcraft-text",
++ "figcraft-ui-egui",
++ "image",
++ "log",
++ "rfd",
++ "serde_json",
++ "wat",
++ "webbrowser",
++ "windows",
++ "winresource",
++]
++
++[[package]]
++name = "plervo-canvas-cli"
++version = "0.1.0-alpha.4"
++dependencies = [
++ "figcraft-doc",
++ "figcraft-engine",
++ "figcraft-format",
++ "figcraft-mcp",
++ "figcraft-render",
++ "figcraft-svg",
++ "figcraft-text",
++ "serde_json",
++]
++
+ [[package]]
+ name = "png"
+ version = "0.18.1"
+@@ -3855,9 +3855,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "rustls"
+-version = "0.23.45"
++version = "0.23.46"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "0d41d731c7d2f962d1ccc364cec258de3c0e93b38c2fb3ba97ac74513048d634"
++checksum = "48e13bd8c0e9365c43cfa5c9e8f9ad49d3c8444926c9aac819e0e4dc503c8fdf"
+ dependencies = [
+  "log",
+  "once_cell",
+@@ -4356,7 +4356,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd"
+ dependencies = [
+  "fastrand",
+- "getrandom 0.4.3",
++ "getrandom 0.3.4",
+  "once_cell",
+  "rustix 1.1.5",
+  "windows-sys 0.61.2",
 @@ -5807,7 +5807,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
  
  [[package]]
@@ -1084,6 +1170,90 @@ index f4aeb63..92aaa5f 100644
      let img = image::load_from_memory(bytes).ok()?.to_rgba8();
      let (w, h) = img.dimensions();
      Some(egui::IconData { rgba: img.into_raw(), width: w, height: h })
+diff --git a/assets/app-icon/LICENSE.txt b/assets/app-icon/LICENSE.txt
+index 134a8b1..9b7458c 100644
+--- a/assets/app-icon/LICENSE.txt
++++ b/assets/app-icon/LICENSE.txt
+@@ -1,12 +1,6 @@
+-FigCraft app icon (figcraft.svg, figcraft-small.svg and every file derived from them in this
+-directory: figcraft-<size>.png, figcraft.ico, hicolor/).
++# Plervo Canvas application icons
+ 
+-Original artwork made for this project by the project owner: an engraving-style drawing, then
+-vectorised. No third-party material. Licensed like the rest of FigCraft, under either of
++Original artwork by Plervo contributors, 2026. Licensed under MIT OR Apache-2.0; see the complete LICENSE-MIT and LICENSE-APACHE files at the repository root.
+ 
+-  * Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
+-  * MIT license (https://opensource.org/licenses/MIT)
+-
+-at your option.
+-
+-Regenerate the derived files with `cargo xtask icon`.
++Source vectors and platform variants: https://github.com/alportblu/plervo-pdf/tree/feat/app-family/assets/products/canvas
++These icons replace the upstream product artwork. Engine code and other assets retain their original notices.
+diff --git a/assets/app-icon/README.md b/assets/app-icon/README.md
+index 435dc68..9b7458c 100644
+--- a/assets/app-icon/README.md
++++ b/assets/app-icon/README.md
+@@ -1,41 +1,6 @@
+-# FigCraft app icon
++# Plervo Canvas application icons
+ 
+-A **chameleon**: an engraving portrait in profile with a curled tail, in the Crafting Apps'
+-owl-template framing (full-bleed field, head and body filling the tile, body running off the edges).
++Original artwork by Plervo contributors, 2026. Licensed under MIT OR Apache-2.0; see the complete LICENSE-MIT and LICENSE-APACHE files at the repository root.
+ 
+-## Palette
+-
+-Exactly three colours:
+-
+-| Colour | Hex | Used for |
+-|---|---|---|
+-| Ink | `#0b0b0c` | line work and contours |
+-| Paper | `#efe9dc` | the figure |
+-| FigCraft green (app colour) | `#02da96` | the full-bleed field |
+-
+-## Geometry
+-
+-A 512-unit tile (`viewBox="0 0 512 512"`), rounded square with `rx=112`, no border. The macOS
+-renders pad it onto Apple's 824/1024 icon grid; Windows and Linux use the tile edge to edge, with
+-its rounded corners, like the other Crafting Apps.
+-
+-## Provenance
+-
+-The owner's original engraving-style drawing (1500 px, keyed to the palette), supplied for
+-FigCraft and vectorised with craftrules `assets/logo-options/_tools/vectorize_tile.py`. The source
+-image is not kept in this repo. License: see `LICENSE.txt`.
+-
+-## Files
+-
+-- `figcraft.svg`: canonical master (traced at 1500 px, the source's size).
+-- `figcraft-small.svg`: lighter trace (traced at 1024 px); also the hicolor scalable icon.
+-- `figcraft-<size>.png` (16–1024): renders on the macOS grid; `packaging/macos/package.sh` builds
+-  the `.icns` from them.
+-- `figcraft.ico`: Windows icon, 16–256 px, embedded in the `.exe` by `apps/figcraft/build.rs`.
+-- `hicolor/<size>/apps/ai.storyteller.figcraft.png` (16–512) and `hicolor/scalable/...svg`:
+-  Linux icon theme; the 256 px one is also the runtime window icon off macOS.
+-
+-## Regenerate
+-
+-Replace `figcraft.svg` (and `figcraft-small.svg`), then run `cargo xtask icon`. It needs `resvg`
+-(`cargo install resvg`).
++Source vectors and platform variants: https://github.com/alportblu/plervo-pdf/tree/feat/app-family/assets/products/canvas
++These icons replace the upstream product artwork. Engine code and other assets retain their original notices.
+diff --git a/crates/collab-net/Cargo.toml b/crates/collab-net/Cargo.toml
+index 67c4d84..c0c204d 100644
+--- a/crates/collab-net/Cargo.toml
++++ b/crates/collab-net/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "FigCraft live sessions over the network: the WebSocket transport, the session host the app embeds, invite links and presence relay (carries figcraft-collab's messages)"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/crates/collab-net/src/links_tests.rs b/crates/collab-net/src/links_tests.rs
 index 8d81b80..e828fe7 100644
 --- a/crates/collab-net/src/links_tests.rs
@@ -1097,6 +1267,201 @@ index 8d81b80..e828fe7 100644
      std::fs::create_dir_all(&installed).unwrap();
      // Debug builds (these tests) never count as installed either.
      assert_eq!(installed_build(&installed.join("figcraft.exe")), !cfg!(debug_assertions));
+diff --git a/crates/collab/Cargo.toml b/crates/collab/Cargo.toml
+index 89a7968..84fd8c2 100644
+--- a/crates/collab/Cargo.toml
++++ b/crates/collab/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "FigCraft real-time collaboration core: the synced object/property model, change sets, fractional positions, server ordering and validation, client reconciliation, per-user undo, offline queueing and reconnect, and the wire messages (no networking)"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/color/Cargo.toml b/crates/color/Cargo.toml
+index 0bd5885..c5c986b 100644
+--- a/crates/color/Cargo.toml
++++ b/crates/color/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "FigCraft colour and paint: RGBA colours, HSB/HSL, hex/CSS parsing, solid/gradient/image paints, blend modes"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/doc/Cargo.toml b/crates/doc/Cargo.toml
+index 5609ed8..431af11 100644
+--- a/crates/doc/Cargo.toml
++++ b/crates/doc/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "FigCraft document model: pages, the node tree, properties, components, styles, variables, prototype data"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/engine/Cargo.toml b/crates/engine/Cargo.toml
+index f610c38..7e8a1f8 100644
+--- a/crates/engine/Cargo.toml
++++ b/crates/engine/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "FigCraft engine: sessions, undo history, the command registry every surface (UI, CLI, control channel, MCP) dispatches through, pointer tools, components and the Figma menu catalog"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/format/Cargo.toml b/crates/format/Cargo.toml
+index 3dca391..e052cf1 100644
+--- a/crates/format/Cargo.toml
++++ b/crates/format/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "FigCraft native file format (.figcraft: zip of document.json + images), image import helpers, REST API file JSON import and .fig import"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/geom/Cargo.toml b/crates/geom/Cargo.toml
+index e173e58..27d2bce 100644
+--- a/crates/geom/Cargo.toml
++++ b/crates/geom/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "FigCraft geometry: affine transforms, shape path builders (rounded/smoothed corners, polygons, stars, arcs)"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/layout/Cargo.toml b/crates/layout/Cargo.toml
+index 59f257c..d080947 100644
+--- a/crates/layout/Cargo.toml
++++ b/crates/layout/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "FigCraft layout: auto layout (horizontal, vertical, wrap, grid; hug/fill/fixed), constraints, layout grid geometry"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/mcp/Cargo.toml b/crates/mcp/Cargo.toml
+index ba559b1..bfcd03f 100644
+--- a/crates/mcp/Cargo.toml
++++ b/crates/mcp/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "FigCraft MCP server: JSON-RPC 2.0 over stdio, driving a headless engine session or a running FigCraft app"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/pathops/Cargo.toml b/crates/pathops/Cargo.toml
+index 27e2b72..59f0aee 100644
+--- a/crates/pathops/Cargo.toml
++++ b/crates/pathops/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "FigCraft path operations: booleans (union, subtract, intersect, exclude), outline stroke with inside/center/outside alignment, arrowheads"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/pdf/Cargo.toml b/crates/pdf/Cargo.toml
+index 63e776c..1b81980 100644
+--- a/crates/pdf/Cargo.toml
++++ b/crates/pdf/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "FigCraft PDF export (krilla): vector shapes, gradients, embedded images, aligned strokes as outlines, clips, masks, blend modes, real selectable text, effects as rasters, print options (bleed, marks, page boxes, CMYK)"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/plugin/Cargo.toml b/crates/plugin/Cargo.toml
+index 957803d..f210b72 100644
+--- a/crates/plugin/Cargo.toml
++++ b/crates/plugin/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "FigCraft plugins: the plugin manifest and the WebAssembly sandbox plugins run in (a metered interpreter with no file system, network or clock)"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/render/Cargo.toml b/crates/render/Cargo.toml
+index 2dcfda6..d60998d 100644
+--- a/crates/render/Cargo.toml
++++ b/crates/render/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "FigCraft renderer: the scene graph to pixels on tiny-skia (fills, gradients, images, aligned strokes, shadows, blurs, masks, blend modes, text)"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/svg/Cargo.toml b/crates/svg/Cargo.toml
+index d248bdf..ab29f26 100644
+--- a/crates/svg/Cargo.toml
++++ b/crates/svg/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "FigCraft SVG export (shapes, gradients, images, strokes, effects as filters, text as outlines) and import (via usvg)"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/text/Cargo.toml b/crates/text/Cargo.toml
+index 273ff12..a372523 100644
+--- a/crates/text/Cargo.toml
++++ b/crates/text/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "FigCraft text: font database (embedded craft-fonts + system fonts), shaping, line layout, glyph outlines"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/ui-egui/Cargo.toml b/crates/ui-egui/Cargo.toml
+index b14c04f..0ca3652 100644
+--- a/crates/ui-egui/Cargo.toml
++++ b/crates/ui-egui/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "FigCraft egui frontend (the Figma-style UI: canvas, toolbar, layers, design and prototype panels, menus); swappable: nothing below depends on it"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/crates/ui-egui/src/credits_tests.rs b/crates/ui-egui/src/credits_tests.rs
 index 993aa44..15d3a1d 100644
 --- a/crates/ui-egui/src/credits_tests.rs
@@ -1150,10 +1515,10 @@ index 2e21eb5..f7913b0 100644
                      } else {
                          tr("Nothing changed since this was marked ready for dev.")
 diff --git a/crates/ui-egui/src/dialogs.rs b/crates/ui-egui/src/dialogs.rs
-index 221ee63..8cd1559 100644
+index 221ee63..15ecec3 100644
 --- a/crates/ui-egui/src/dialogs.rs
 +++ b/crates/ui-egui/src/dialogs.rs
-@@ -82,7 +82,7 @@ fn about_body(ui: &mut egui::Ui, t: &Tokens) {
+@@ -82,20 +82,20 @@ fn about_body(ui: &mut egui::Ui, t: &Tokens) {
          ui.painter().rect_filled(r, CornerRadius::same(10), ACCENT);
          icons::paint(ui.painter(), r.shrink(10.0), Icon::Logo, Color32::WHITE);
          ui.vertical(|ui| {
@@ -1162,8 +1527,10 @@ index 221ee63..8cd1559 100644
              ui.label(RichText::new(trf("Version {version}", &[("version", &VERSION)])).color(t.text_secondary));
          });
      });
-@@ -91,8 +91,8 @@ fn about_body(ui: &mut egui::Ui, t: &Tokens) {
-         "Interface design and prototyping. A free, open-source, clean-room design tool written from scratch in Rust, part of the ArtCraft Crafting Apps.",
+     ui.add_space(12.0);
+     ui.label(tr(
+-        "Interface design and prototyping. A free, open-source, clean-room design tool written from scratch in Rust, part of the ArtCraft Crafting Apps.",
++        "Interface design and prototyping. A free, open-source, clean-room design tool written from scratch in Rust, part of the Plervo Crafting Apps.",
      ));
      ui.add_space(8.0);
 -    ui.hyperlink_to("getartcraft.com/apps/figcraft", "https://getartcraft.com/apps/figcraft");
@@ -1172,7 +1539,11 @@ index 221ee63..8cd1559 100644
 +    ui.hyperlink_to(tr("Support Plervo"), "https://buymeacoffee.com/alport");
      ui.add_space(8.0);
      ui.label(
-         RichText::new(tr("Dual-licensed MIT OR Apache-2.0. Made by the ArtCraft team and community.")).color(t.text_secondary).font(regular(11.0)),
+-        RichText::new(tr("Dual-licensed MIT OR Apache-2.0. Made by the ArtCraft team and community.")).color(t.text_secondary).font(regular(11.0)),
++        RichText::new(tr("Dual-licensed MIT OR Apache-2.0. Made by the Plervo team and community.")).color(t.text_secondary).font(regular(11.0)),
+     );
+ }
+ 
 @@ -128,7 +128,7 @@ pub fn show(app: &mut FigApp, ctx: &Context) {
      let t = Tokens::get(ctx);
      if app.ui.about {

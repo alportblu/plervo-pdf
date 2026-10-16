@@ -1,5 +1,5 @@
 diff --git a/ASSETS.md b/ASSETS.md
-index 81b0bd6..874e715 100644
+index 81b0bd6..f4c4fe2 100644
 --- a/ASSETS.md
 +++ b/ASSETS.md
 @@ -2,7 +2,6 @@
@@ -43,7 +43,7 @@ index 81b0bd6..874e715 100644
  | `packaging/macos/dmg/background.tiff` | Xus Badia (contributed in #493) | Rendered from `packaging/macos/dmg/background.svg` by `packaging/macos/dmg/generate.py` | MIT OR Apache-2.0 | 1x + 2x DMG background; includes the app icon (see its rows), text rendered from OFL-1.1 fonts and LittleCMS's built-in sRGB profile ("No copyright, use freely") |
  | `packaging/macos/dmg/DS_Store` | Xus Badia (layout, #493) | Written by `packaging/macos/dmg/generate.py` | MIT OR Apache-2.0 | Finder view settings for the DMG (window, icon size and positions, background alias); no machine data |
  | `assets/fonts/Inter-Medium.ttf` | Rasmus Andersson / The Inter Project Authors | https://github.com/rsms/inter | OFL-1.1 (`assets/fonts/OFL-Inter.txt`) | Open-source typeface, not product iconography or artwork |
-@@ -364,3 +337,26 @@ The shared PDF backend keeps the existing standard-font and CMap features. These
+@@ -364,3 +337,30 @@ The shared PDF backend keeps the existing standard-font and CMap features. These
  | `hayro-interpret 0.7.0 / assets/CGATS001Compat-v2-micro.icc` | Clinton Ingram (saucecontrol/Compact-ICC-Profiles) | https://github.com/storytold/craft-libs/blob/ca50d63b773c99f96e75c77ce5a1d21e7c9cda0d/vendor/hayro-interpret/assets/CGATS001Compat-v2-micro.icc | CC0-1.0 | `73e1ba37d2bad5bab2a964f40a9eed96209666efc067c3322626214bbef234a0` | Default CMYK colour conversion (pinned hayro-interpret) |
  | `hayro-cmap 0.1.0 / assets/cmaps.brotli` | Adobe | https://crates.io/crates/hayro-cmap/0.1.0 | BSD-3-Clause | `ddf37af521d904d5646c2fc37b2b7e912dc1b56f0d210190b61f598154758e46` | Character-code mapping tables required to read CJK PDFs. Non-visual dependency data; existing embedding unchanged |
  | `hayro-interpret 0.7.0 / src/font/generated/metrics.rs` | Adobe (Core 14 AFM metrics, PDF specification encodings); tables by The Hayro Authors | https://github.com/storytold/craft-libs/blob/ca50d63b773c99f96e75c77ce5a1d21e7c9cda0d/vendor/hayro-interpret/src/font/generated/metrics.rs | MIT OR Apache-2.0 | `2ec9e608573eda459de1e1d9bda3bb494315e36bee885acc88912a11fe0caa41` | Glyph widths and encodings for non-embedded standard fonts. Non-visual dependency data; existing embedding unchanged |
@@ -70,6 +70,10 @@ index 81b0bd6..874e715 100644
 +| `assets/app-icon/vectorcraft.icns` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 7a03e9e14a5d6910da9b9f63b5ff45d253e506483373643809f761cabf4566b3 |
 +| `assets/app-icon/vectorcraft.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 abf4c5831e9e87f16be43df9a116bf85aba3fe5ed4fadfe74a11964fbaa011e7 |
 +| `assets/app-icon/vectorcraft.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 988779013933237f674ecd5bfe8c2c6416c20c01b73d7fa289903436ecaf2e7d |
++
++| `assets/app-icon/README.md` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | 2a40ee6e580a985695afdd9a78d8125a7da4428358f22fe0b366a760a1d5069e |
++
++| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | 2a40ee6e580a985695afdd9a78d8125a7da4428358f22fe0b366a760a1d5069e |
 diff --git a/Cargo.lock b/Cargo.lock
 index eca4758..5a8fb34 100644
 --- a/Cargo.lock
@@ -1218,7 +1222,7 @@ index 0b94fa0..3e121dc 100644
  //!   (View › Hide Edges) and ⌥⌘H.
  
 diff --git a/apps/vectorcraft/src/main.rs b/apps/vectorcraft/src/main.rs
-index bfa0f3a..d57992b 100644
+index bfa0f3a..41b951a 100644
 --- a/apps/vectorcraft/src/main.rs
 +++ b/apps/vectorcraft/src/main.rs
 @@ -1,7 +1,7 @@
@@ -1259,7 +1263,7 @@ index bfa0f3a..d57992b 100644
 -/// Where UI preferences live: ~/Library/Application Support/VectorCraft (macOS),
 -/// %APPDATA%\VectorCraft (Windows), $XDG_CONFIG_HOME or ~/.config/vectorcraft (Linux).
 +/// Where UI preferences live: ~/Library/Application Support/Plervo Vector (macOS),
-+/// %APPDATA%\Plervo Vector (Windows), $XDG_CONFIG_HOME or ~/.config/vectorcraft (Linux).
++/// %APPDATA%\Plervo Vector (Windows), $XDG_CONFIG_HOME or ~/.config/plervo-vector (Linux).
  fn prefs_path() -> Option<std::path::PathBuf> {
 -    prefs_dir::prefs_path_for("VectorCraft", "vectorcraft")
 +    prefs_dir::prefs_path_for("Plervo Vector", "plervo-vector")
@@ -1775,6 +1779,178 @@ index 5c77ecd..761d73c 100644
  }
  
  #[test]
+diff --git a/assets/app-icon/LICENSE.txt b/assets/app-icon/LICENSE.txt
+index 484ebbc..75c828d 100644
+--- a/assets/app-icon/LICENSE.txt
++++ b/assets/app-icon/LICENSE.txt
+@@ -1,12 +1,6 @@
+-VectorCraft app icon (vectorcraft.svg, vectorcraft-small.svg and every file derived from them in this
+-directory: vectorcraft-1024.png, vectorcraft-macos-512.png, vectorcraft.icns, vectorcraft.ico, hicolor/).
++# Plervo Vector application icons
+ 
+-Original artwork made for this project by the project owner, drawn in ArtCraft and vectorised for
+-VectorCraft (no third-party material). Licensed like the rest of VectorCraft, under either of
++Original artwork by Plervo contributors, 2026. Licensed under MIT OR Apache-2.0; see the complete LICENSE-MIT and LICENSE-APACHE files at the repository root.
+ 
+-  * Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
+-  * MIT license (https://opensource.org/licenses/MIT)
+-
+-at your option.
+-
+-Regenerate the derived files with packaging/icons.sh.
++Source vectors and platform variants: https://github.com/alportblu/plervo-pdf/tree/feat/app-family/assets/products/vector
++These icons replace the upstream product artwork. Engine code and other assets retain their original notices.
+diff --git a/assets/app-icon/README.md b/assets/app-icon/README.md
+index 0b8fce9..75c828d 100644
+--- a/assets/app-icon/README.md
++++ b/assets/app-icon/README.md
+@@ -1,51 +1,6 @@
+-# VectorCraft app icon
++# Plervo Vector application icons
+ 
+-**Creature:** a regal engraved dragon, VectorCraft's mascot.
++Original artwork by Plervo contributors, 2026. Licensed under MIT OR Apache-2.0; see the complete LICENSE-MIT and LICENSE-APACHE files at the repository root.
+ 
+-**Style:** an engraving-style portrait in the Crafting Apps owl template (the FilmCraft owl): a tight
+-head-and-shoulders portrait on a full-bleed field, no frame or roundel, with the body running off the tile.
+-
+-**Palette** (exactly three colours):
+-
+-| Colour | Hex | Used for |
+-|---|---|---|
+-| Ink | `#0b0b0c` | line work and contour |
+-| Paper | `#efe9dc` | the figure |
+-| VectorCraft colour | `#e8573f` | the full-bleed field |
+-
+-**Tile:** `viewBox="0 0 512 512"`, a rounded square with `rx=112`, clipped. The macOS files add Apple's
+-transparent margin (tile = 824/1024 of the canvas); Windows and Linux use the tile edge to edge.
+-
+-**Provenance:** the owner's original ArtCraft drawing (2880 px, keyed to the palette), vectorised with
+-craftrules `assets/logo-options/_tools/vectorize_tile.py`. The drawing is kept in craftrules at
+-`craftrules/assets/app-icons/vectorcraft/source.png`, not here. `vectorcraft.svg` is the canonical
+-artwork. Licence: see `LICENSE.txt`.
+-
+-## Files
+-
+-| File | What | Used by |
+-|---|---|---|
+-| `vectorcraft.svg` | master vector (traced at 2048 px, about 700 KB) | source for everything below |
+-| `vectorcraft-small.svg` | lighter vector (traced at 1024 px, about 370 KB) | `hicolor/scalable` |
+-| `vectorcraft-1024.png` | full tile, 1024 px | docs, store listings |
+-| `vectorcraft-macos-512.png` | tile with Apple margin, 512 px | runtime Dock icon (`apps/vectorcraft/src/main.rs`) |
+-| `vectorcraft.icns` | macOS icon set, 16 to 1024 px | `cargo xtask bundle` (`CFBundleIconFile`) |
+-| `vectorcraft.ico` | Windows icon, 16 to 256 px | `apps/vectorcraft/build.rs` (embedded in the `.exe`) |
+-| `hicolor/<size>/apps/ai.storyteller.vectorcraft.png` | Linux theme icons, 16 to 512 px; the 256 one is also the runtime icon on Windows and Linux, the 128 one the brand mark in the app bar and About box (`crates/ui-egui/src/brand.rs`) | `packaging/linux/ai.storyteller.vectorcraft.desktop` |
+-| `hicolor/scalable/apps/ai.storyteller.vectorcraft.svg` | Linux scalable icon | as above |
+-
+-## How it reaches each OS
+-
+-- **macOS:** the app sets the Dock / app-switcher icon at runtime (`ViewportBuilder::with_icon`); the
+-  `.app` from `cargo xtask bundle` carries `vectorcraft.icns`.
+-- **Windows:** `build.rs` embeds `vectorcraft.ico` and VERSIONINFO with `winresource` (taskbar, Start
+-  menu, Explorer, Alt-Tab); the runtime icon covers the title bar.
+-- **Linux:** install `packaging/linux/ai.storyteller.vectorcraft.desktop` to `share/applications/` and
+-  `hicolor/` to `share/icons/`. The app sets its Wayland app ID / X11 class to
+-  `ai.storyteller.vectorcraft`, so the dock matches the window to the launcher.
+-
+-## Regenerate
+-
+-Edit or replace `vectorcraft.svg` (and `vectorcraft-small.svg`), then run `packaging/icons.sh`
+-(needs `resvg`; `iconutil` on macOS for the `.icns`). It writes every PNG, the `.ico` (via
+-`cargo xtask ico`) and the `.icns`.
++Source vectors and platform variants: https://github.com/alportblu/plervo-pdf/tree/feat/app-family/assets/products/vector
++These icons replace the upstream product artwork. Engine code and other assets retain their original notices.
+diff --git a/crates/affinity/Cargo.toml b/crates/affinity/Cargo.toml
+index c335c7b..1a1529c 100644
+--- a/crates/affinity/Cargo.toml
++++ b/crates/affinity/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/brush/Cargo.toml b/crates/brush/Cargo.toml
+index 3610cdb..c88dd8b 100644
+--- a/crates/brush/Cargo.toml
++++ b/crates/brush/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "VectorCraft brushes: calligraphic, scatter, art, pattern and bristle brush definitions and stroke geometry"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/cad/Cargo.toml b/crates/cad/Cargo.toml
+index 4886d9e..67ad737 100644
+--- a/crates/cad/Cargo.toml
++++ b/crates/cad/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "VectorCraft CAD interchange: a hand-written ASCII DXF writer (R12 to 2018)"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/color/Cargo.toml b/crates/color/Cargo.toml
+index a007ede..f46e390 100644
+--- a/crates/color/Cargo.toml
++++ b/crates/color/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "VectorCraft color"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/doc/Cargo.toml b/crates/doc/Cargo.toml
+index e2eac5f..c99b3af 100644
+--- a/crates/doc/Cargo.toml
++++ b/crates/doc/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "VectorCraft document model: artboards, layers, objects, appearance (pure data + serde)"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/effects/Cargo.toml b/crates/effects/Cargo.toml
+index 9abbc29..85c0157 100644
+--- a/crates/effects/Cargo.toml
++++ b/crates/effects/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "VectorCraft live effects evaluated to geometry"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/engine/Cargo.toml b/crates/engine/Cargo.toml
+index c51728e..78a4a14 100644
+--- a/crates/engine/Cargo.toml
++++ b/crates/engine/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "VectorCraft engine: sessions, history, selection, the command registry"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/crates/engine/src/cmd/help.rs b/crates/engine/src/cmd/help.rs
 index aba4d60..b2e31f4 100644
 --- a/crates/engine/src/cmd/help.rs
@@ -1830,6 +2006,227 @@ index aba4d60..b2e31f4 100644
 +        assert_eq!(s.execute("help.links", &json!({})).unwrap()["website"], "https://plervo.com");
      }
  }
+diff --git a/crates/eps/Cargo.toml b/crates/eps/Cargo.toml
+index 4031f89..93bab8a 100644
+--- a/crates/eps/Cargo.toml
++++ b/crates/eps/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "VectorCraft Encapsulated PostScript: a hand-written EPS writer (PostScript Level 2 and 3) with TIFF previews"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/format/Cargo.toml b/crates/format/Cargo.toml
+index 6ab9ce5..b1ea12c 100644
+--- a/crates/format/Cargo.toml
++++ b/crates/format/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "VectorCraft native .vectorcraft format (versioned JSON, embedded images)"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/geom/Cargo.toml b/crates/geom/Cargo.toml
+index ab404c6..8b01a89 100644
+--- a/crates/geom/Cargo.toml
++++ b/crates/geom/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "VectorCraft geom"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/mcp/Cargo.toml b/crates/mcp/Cargo.toml
+index 1ebe4ca..4c5ad56 100644
+--- a/crates/mcp/Cargo.toml
++++ b/crates/mcp/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "VectorCraft MCP server: JSON-RPC 2.0 over stdio, driving a running app or a headless session"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/metafile/Cargo.toml b/crates/metafile/Cargo.toml
+index fe54a67..e3e9b34 100644
+--- a/crates/metafile/Cargo.toml
++++ b/crates/metafile/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "VectorCraft Windows metafiles: hand-written EMF and WMF writers and readers"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/pathops/Cargo.toml b/crates/pathops/Cargo.toml
+index 87e80da..f014831 100644
+--- a/crates/pathops/Cargo.toml
++++ b/crates/pathops/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "VectorCraft path operations: booleans (Pathfinder), shape builder regions, offset, outline stroke, simplify"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/pdf/Cargo.toml b/crates/pdf/Cargo.toml
+index a9c110a..309132b 100644
+--- a/crates/pdf/Cargo.toml
++++ b/crates/pdf/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "VectorCraft PDF export and import"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/plugins/Cargo.toml b/crates/plugins/Cargo.toml
+index 1fb4bd7..fc3b55d 100644
+--- a/crates/plugins/Cargo.toml
++++ b/crates/plugins/Cargo.toml
+@@ -5,6 +5,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/render/Cargo.toml b/crates/render/Cargo.toml
+index 5039995..9f9229e 100644
+--- a/crates/render/Cargo.toml
++++ b/crates/render/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "VectorCraft renderer: document to pixels (vello_cpu backend)"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/render/src/fx.rs b/crates/render/src/fx.rs
+index 23352a2..efb065a 100644
+--- a/crates/render/src/fx.rs
++++ b/crates/render/src/fx.rs
+@@ -877,7 +877,7 @@ impl Renderer {
+         off.flush();
+         let mut pm = vello_cpu::Pixmap::new(w, h);
+         off.render(&mut pm, &mut self.resources);
+-        if !self.shadows.get(&old).is_some_and(|e| silhouette(&pm, colored) == e.made.pixels) {
++        if self.shadows.get(&old).is_none_or(|e| silhouette(&pm, colored) != e.made.pixels) {
+             return;
+         }
+         if let Some(mut e) = self.shadows.remove(&old) {
+diff --git a/crates/scriptcheck/Cargo.toml b/crates/scriptcheck/Cargo.toml
+index d0101be..266f175 100644
+--- a/crates/scriptcheck/Cargo.toml
++++ b/crates/scriptcheck/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/svg/Cargo.toml b/crates/svg/Cargo.toml
+index 7b67936..87f5b8d 100644
+--- a/crates/svg/Cargo.toml
++++ b/crates/svg/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "VectorCraft SVG import and export"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/text/Cargo.toml b/crates/text/Cargo.toml
+index 7f3b52b..07dd9a9 100644
+--- a/crates/text/Cargo.toml
++++ b/crates/text/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "VectorCraft text: font database, shaping, layout, glyph outlines"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/three-d/Cargo.toml b/crates/three-d/Cargo.toml
+index f5eefa1..d7a7e22 100644
+--- a/crates/three-d/Cargo.toml
++++ b/crates/three-d/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "Portable 3D effect geometry (revolve, extrude and bevel, inflate, rotate) and projected vector shading"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/tools/Cargo.toml b/crates/tools/Cargo.toml
+index 1a0f8e6..758f96f 100644
+--- a/crates/tools/Cargo.toml
++++ b/crates/tools/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "VectorCraft tool state machines: pointer events in, commands and overlays out"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/trace/Cargo.toml b/crates/trace/Cargo.toml
+index a605a69..bd27be5 100644
+--- a/crates/trace/Cargo.toml
++++ b/crates/trace/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "VectorCraft Image Trace: raster to vector tracing (quantize, boundary follow, polygon, Bezier fit)"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/ui-egui/Cargo.toml b/crates/ui-egui/Cargo.toml
+index 193832b..8b575b1 100644
+--- a/crates/ui-egui/Cargo.toml
++++ b/crates/ui-egui/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "VectorCraft egui frontend (menus, panels, tools and canvas); swappable — nothing below depends on it"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/crates/ui-egui/src/brand.rs b/crates/ui-egui/src/brand.rs
 index 461af13..603d9f1 100644
 --- a/crates/ui-egui/src/brand.rs

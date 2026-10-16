@@ -1,5 +1,5 @@
 diff --git a/ASSETS.md b/ASSETS.md
-index 76052b5..9dba41d 100644
+index 76052b5..4325b42 100644
 --- a/ASSETS.md
 +++ b/ASSETS.md
 @@ -2,7 +2,6 @@
@@ -10,7 +10,7 @@ index 76052b5..9dba41d 100644
  
  Generated-in-code art is original and has no file to list: the UI icon set (`crates/ui-egui/src/icons.rs`), default swatches, and the sample magazine's imagery (`crates/engine/src/sample.rs`).
  
-@@ -44,26 +43,27 @@ Generated-in-code art is original and has no file to list: the UI icon set (`cra
+@@ -44,26 +43,31 @@ Generated-in-code art is original and has no file to list: the UI icon set (`cra
  | `crates/render/tests/golden/feather.png` | DesignCraft contributors (generated) | rendered by DesignCraft's own renderer (`crates/render/tests/effects.rs`, synthetic shapes and bundled fonts) | MIT OR Apache-2.0 | Golden test image for soft effects |
  | `crates/render/tests/golden/inner-shadow.png` | DesignCraft contributors (generated) | rendered by DesignCraft's own renderer (`crates/render/tests/effects.rs`, synthetic shapes and bundled fonts) | MIT OR Apache-2.0 | Golden test image for soft effects |
  | `crates/render/tests/golden/outer-glow.png` | DesignCraft contributors (generated) | rendered by DesignCraft's own renderer (`crates/render/tests/effects.rs`, synthetic shapes and bundled fonts) | MIT OR Apache-2.0 | Golden test image for soft effects |
@@ -60,34 +60,52 @@ index 76052b5..9dba41d 100644
 +| `assets/app-icon/plervo-publish.icns` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 a9543be3fd2adf4926c0a6a0b18bcac3423c39986f165bf4e4851201924715ef |
 +| `assets/app-icon/plervo-publish.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 08aaf384570209e0bf2e7288f3d953c81407b39797dabff874d0695484add3ea |
 +| `assets/app-icon/plervo-publish.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 dd0795fe3452ecd9d056d6ee72006016ef9e186f6aea326765379bd00507f7d1 |
++
++| `assets/app-icon/README.md` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | c98853a7427b62041d651836e94ef44855b8aeff377fd7d8d7a7380d1362647b |
++
++| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | c98853a7427b62041d651836e94ef44855b8aeff377fd7d8d7a7380d1362647b |
 diff --git a/Cargo.lock b/Cargo.lock
-index e77a81b..bb0f77e 100644
+index e77a81b..e365e5b 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -886,8 +886,8 @@ dependencies = [
+@@ -885,43 +885,9 @@ dependencies = [
+  "syn 2.0.119",
  ]
  
- [[package]]
+-[[package]]
 -name = "designcraft"
 -version = "0.8.0"
-+name = "plervo-publish"
-+version = "0.1.0-alpha.4"
- dependencies = [
-  "arboard",
-  "designcraft-engine",
-@@ -904,8 +904,8 @@ dependencies = [
- ]
- 
- [[package]]
+-dependencies = [
+- "arboard",
+- "designcraft-engine",
+- "designcraft-ui-egui",
+- "eframe",
+- "egui",
+- "log",
+- "muda",
+- "rfd",
+- "serde",
+- "serde_json",
+- "winit",
+- "winresource",
+-]
+-
+-[[package]]
 -name = "designcraft-cli"
 -version = "0.8.0"
-+name = "plervo-publish-cli"
-+version = "0.1.0-alpha.4"
- dependencies = [
-  "designcraft-color",
-  "designcraft-compose",
-@@ -921,7 +921,7 @@ dependencies = [
- 
+-dependencies = [
+- "designcraft-color",
+- "designcraft-compose",
+- "designcraft-doc",
+- "designcraft-engine",
+- "designcraft-format",
+- "designcraft-geom",
+- "designcraft-mcp",
+- "designcraft-pdf",
+- "designcraft-render",
+- "serde_json",
+-]
+-
  [[package]]
  name = "designcraft-color"
 -version = "0.8.0"
@@ -95,7 +113,7 @@ index e77a81b..bb0f77e 100644
  dependencies = [
   "kurbo",
   "moxcms",
-@@ -933,7 +933,7 @@ dependencies = [
+@@ -933,7 +899,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-compose"
@@ -104,7 +122,7 @@ index e77a81b..bb0f77e 100644
  dependencies = [
   "designcraft-color",
   "designcraft-doc",
-@@ -951,7 +951,7 @@ dependencies = [
+@@ -951,7 +917,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-doc"
@@ -113,7 +131,7 @@ index e77a81b..bb0f77e 100644
  dependencies = [
   "designcraft-color",
   "designcraft-geom",
-@@ -963,7 +963,7 @@ dependencies = [
+@@ -963,7 +929,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-engine"
@@ -122,7 +140,16 @@ index e77a81b..bb0f77e 100644
  dependencies = [
   "caseless",
   "craft-print",
-@@ -998,7 +998,7 @@ dependencies = [
+@@ -985,7 +951,7 @@ dependencies = [
+  "hayro-syntax",
+  "kurbo",
+  "log",
+- "quick-xml 0.38.4",
++ "quick-xml",
+  "regex",
+  "serde",
+  "serde_json",
+@@ -998,7 +964,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-epub"
@@ -131,7 +158,7 @@ index e77a81b..bb0f77e 100644
  dependencies = [
   "designcraft-color",
   "designcraft-doc",
-@@ -1007,7 +1007,7 @@ dependencies = [
+@@ -1007,7 +973,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-fonts"
@@ -140,7 +167,7 @@ index e77a81b..bb0f77e 100644
  dependencies = [
   "harfrust 0.13.3",
   "kurbo",
-@@ -1019,7 +1019,7 @@ dependencies = [
+@@ -1019,7 +985,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-format"
@@ -149,7 +176,7 @@ index e77a81b..bb0f77e 100644
  dependencies = [
   "designcraft-doc",
   "serde",
-@@ -1030,7 +1030,7 @@ dependencies = [
+@@ -1030,7 +996,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-geom"
@@ -158,7 +185,7 @@ index e77a81b..bb0f77e 100644
  dependencies = [
   "flo_curves",
   "kurbo",
-@@ -1043,7 +1043,7 @@ dependencies = [
+@@ -1043,20 +1009,20 @@ dependencies = [
  
  [[package]]
  name = "designcraft-idml"
@@ -167,7 +194,13 @@ index e77a81b..bb0f77e 100644
  dependencies = [
   "designcraft-color",
   "designcraft-compose",
-@@ -1056,7 +1056,7 @@ dependencies = [
+  "designcraft-doc",
+  "designcraft-geom",
+- "quick-xml 0.38.4",
++ "quick-xml",
+  "thiserror 2.0.21",
+  "zip",
+ ]
  
  [[package]]
  name = "designcraft-images"
@@ -176,7 +209,7 @@ index e77a81b..bb0f77e 100644
  dependencies = [
   "designcraft-color",
   "designcraft-fonts",
-@@ -1067,7 +1067,7 @@ dependencies = [
+@@ -1067,7 +1033,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-mcp"
@@ -185,7 +218,7 @@ index e77a81b..bb0f77e 100644
  dependencies = [
   "designcraft-engine",
   "designcraft-geom",
-@@ -1080,7 +1080,7 @@ dependencies = [
+@@ -1080,7 +1046,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-pdf"
@@ -194,7 +227,7 @@ index e77a81b..bb0f77e 100644
  dependencies = [
   "designcraft-color",
   "designcraft-compose",
-@@ -1102,7 +1102,7 @@ dependencies = [
+@@ -1102,7 +1068,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-render"
@@ -203,7 +236,7 @@ index e77a81b..bb0f77e 100644
  dependencies = [
   "designcraft-color",
   "designcraft-compose",
-@@ -1120,7 +1120,7 @@ dependencies = [
+@@ -1120,16 +1086,16 @@ dependencies = [
  
  [[package]]
  name = "designcraft-textimport"
@@ -211,8 +244,10 @@ index e77a81b..bb0f77e 100644
 +version = "0.1.0-alpha.4"
  dependencies = [
   "designcraft-doc",
-  "quick-xml 0.38.4",
-@@ -1129,7 +1129,7 @@ dependencies = [
+- "quick-xml 0.38.4",
++ "quick-xml",
+  "zip",
+ ]
  
  [[package]]
  name = "designcraft-tools"
@@ -221,7 +256,7 @@ index e77a81b..bb0f77e 100644
  dependencies = [
   "designcraft-color",
   "designcraft-compose",
-@@ -1141,7 +1141,7 @@ dependencies = [
+@@ -1141,7 +1107,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-ui-egui"
@@ -230,7 +265,15 @@ index e77a81b..bb0f77e 100644
  dependencies = [
   "craft-ui",
   "designcraft-color",
-@@ -1169,7 +1169,7 @@ dependencies = [
+@@ -1159,6 +1125,7 @@ dependencies = [
+  "regex",
+  "serde",
+  "serde_json",
++ "sys-locale",
+  "tempfile",
+  "toml",
+  "unicode-bidi",
+@@ -1169,7 +1136,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-web"
@@ -239,7 +282,152 @@ index e77a81b..bb0f77e 100644
  dependencies = [
   "designcraft-engine",
   "designcraft-format",
-@@ -5697,7 +5697,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
+@@ -1486,7 +1453,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "39cab71617ae0d63f51a36d69f866391735b51691dbda63cf6f96d042b63efeb"
+ dependencies = [
+  "libc",
+- "windows-sys 0.59.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -2658,7 +2625,7 @@ dependencies = [
+  "once_cell",
+  "png",
+  "thiserror 2.0.21",
+- "windows-sys 0.60.2",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -2741,7 +2708,7 @@ version = "0.50.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "7957b9740744892f114936ab4a57b3f487491bbeafaf8083688b16841a4240e5"
+ dependencies = [
+- "windows-sys 0.59.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -3339,6 +3306,40 @@ version = "0.2.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "b4596b6d070b27117e987119b4dac604f3c58cfb0b191112e24771b2faeac1a6"
+ 
++[[package]]
++name = "plervo-publish"
++version = "0.1.0-alpha.4"
++dependencies = [
++ "arboard",
++ "designcraft-engine",
++ "designcraft-ui-egui",
++ "eframe",
++ "egui",
++ "log",
++ "muda",
++ "rfd",
++ "serde",
++ "serde_json",
++ "winit",
++ "winresource",
++]
++
++[[package]]
++name = "plervo-publish-cli"
++version = "0.1.0-alpha.4"
++dependencies = [
++ "designcraft-color",
++ "designcraft-compose",
++ "designcraft-doc",
++ "designcraft-engine",
++ "designcraft-format",
++ "designcraft-geom",
++ "designcraft-mcp",
++ "designcraft-pdf",
++ "designcraft-render",
++ "serde_json",
++]
++
+ [[package]]
+ name = "png"
+ version = "0.18.1"
+@@ -3506,15 +3507,6 @@ version = "2.0.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "a993555f31e5a609f617c12db6250dedcac1b0a85076912c436e6fc9b2c8e6a3"
+ 
+-[[package]]
+-name = "quick-xml"
+-version = "0.38.4"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "b66c2058c55a409d601666cffe35f04333cf1013010882cec174a7467cd4e21c"
+-dependencies = [
+- "memchr",
+-]
+-
+ [[package]]
+ name = "quick-xml"
+ version = "0.41.0"
+@@ -3850,7 +3842,7 @@ dependencies = [
+  "errno",
+  "libc",
+  "linux-raw-sys 0.12.1",
+- "windows-sys 0.59.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -4266,6 +4258,15 @@ dependencies = [
+  "syn 3.0.6",
+ ]
+ 
++[[package]]
++name = "sys-locale"
++version = "0.3.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "8eab9a99a024a169fe8a903cf9d4a3b3601109bcc13bd9e3c6fff259138626c4"
++dependencies = [
++ "libc",
++]
++
+ [[package]]
+ name = "tempfile"
+ version = "3.27.0"
+@@ -4276,7 +4277,7 @@ dependencies = [
+  "getrandom 0.4.3",
+  "once_cell",
+  "rustix 1.1.5",
+- "windows-sys 0.59.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -4511,7 +4512,7 @@ checksum = "f2f6fb2847f6742cd76af783a2a2c49e9375d0a111c7bef6f71cd9e738c72d6e"
+ dependencies = [
+  "memoffset",
+  "tempfile",
+- "windows-sys 0.60.2",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -5001,7 +5002,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "338e30461b3a2b67d70eb30a6d89f8e0c93a833e07d2ae89085cd070c4a00ac0"
+ dependencies = [
+  "proc-macro2",
+- "quick-xml 0.41.0",
++ "quick-xml",
+  "quote",
+ ]
+ 
+@@ -5248,7 +5249,7 @@ version = "0.1.11"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "c2a7b1c03c876122aa43f3020e6c3c3ee5c05081c9a00739faf7503aeba10d22"
+ dependencies = [
+- "windows-sys 0.59.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -5697,7 +5698,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
  
  [[package]]
  name = "xtask"
@@ -249,7 +437,7 @@ index e77a81b..bb0f77e 100644
   "serde_json",
  ]
 diff --git a/Cargo.toml b/Cargo.toml
-index e76609e..45afcde 100644
+index e76609e..344ed67 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -261,6 +449,15 @@ index e76609e..45afcde 100644
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.95"
+@@ -64,7 +64,7 @@ flo_curves = "0.8"
+ qrcodegen = "1.8"
+ krilla = { version = "0.8", features = ["pdf"] }
+ hayro = "0.7"
+-quick-xml = "0.38"
++quick-xml = "0.41"
+ zip = { version = "3", default-features = false, features = ["deflate"] }
+ 
+ # ui
 diff --git a/NOTICE b/NOTICE
 index 21123ee..c81e0e2 100644
 --- a/NOTICE
@@ -1020,7 +1217,7 @@ index 50e2e4b..8fff4b2 100644
      rx
  }
 diff --git a/apps/designcraft/src/gpu.rs b/apps/designcraft/src/gpu.rs
-index 6dfb023..6f5f2a5 100644
+index 6dfb023..2687424 100644
 --- a/apps/designcraft/src/gpu.rs
 +++ b/apps/designcraft/src/gpu.rs
 @@ -16,7 +16,7 @@
@@ -1028,7 +1225,7 @@ index 6dfb023..6f5f2a5 100644
  //! the app was killed meanwhile — so that backend joins `failed`, the next candidate is tried and
  //! the status bar says so. When every candidate has failed the list starts over, and so does a
 -//! new DesignCraft version (drivers and wgpu move on). `DESIGNCRAFT_NO_PREFS` records nothing.
-+//! new Plervo Publish version (drivers and wgpu move on). `DESIGNCRAFT_NO_PREFS` records nothing.
++//! new Plervo Publish version (drivers and wgpu move on). `PLERVO_PUBLISH_NO_PREFS` records nothing.
  
  use std::path::{Path, PathBuf};
  
@@ -1055,7 +1252,7 @@ index d3e0dbe..be845e1 100644
  //! `warn,designcraft_render=trace`, `wgpu_core=info`. A directive ending in `*` matches every
  //! target that starts with it (`designcraft*=debug`).
 diff --git a/apps/designcraft/src/main.rs b/apps/designcraft/src/main.rs
-index 2ac607b..b1c6f93 100644
+index 2ac607b..b307524 100644
 --- a/apps/designcraft/src/main.rs
 +++ b/apps/designcraft/src/main.rs
 @@ -1,4 +1,4 @@
@@ -1073,6 +1270,18 @@ index 2ac607b..b1c6f93 100644
          }
          save_prefs(&self.app);
      }
+@@ -91,9 +91,9 @@ fn preserve_documents_on_exit(app: &mut DesignApp) -> Result<(), String> {
+     app.run("file.recovery.save", serde_json::json!({})).map(|_| ())
+ }
+ 
+-/// `DESIGNCRAFT_NO_PREFS`: read and write nothing in the settings directory (tests, demos).
++/// `PLERVO_PUBLISH_NO_PREFS`: read and write nothing in the settings directory (tests, demos).
+ fn no_prefs() -> bool {
+-    std::env::var_os("DESIGNCRAFT_NO_PREFS").is_some()
++    std::env::var_os("PLERVO_PUBLISH_NO_PREFS").is_some()
+ }
+ 
+ fn prefs_path() -> Option<std::path::PathBuf> {
 @@ -191,8 +191,8 @@ fn open_filters(purpose: &str) -> &'static [OpenFilter] {
              OpenFilter { name: "Video and sound", extensions: &["mp4", "m4v", "mov", "webm", "mp3", "m4a", "wav", "ogg"] },
          ],
@@ -1174,7 +1383,7 @@ index f51db19..6a7761c 100644
              &about,
              &discord,
 diff --git a/apps/designcraft/src/profile.rs b/apps/designcraft/src/profile.rs
-index 3e90879..ae3d22e 100644
+index 3e90879..3b8a94b 100644
 --- a/apps/designcraft/src/profile.rs
 +++ b/apps/designcraft/src/profile.rs
 @@ -8,24 +8,25 @@ pub fn config_dir() -> Option<PathBuf> {
@@ -1220,7 +1429,7 @@ index 3e90879..ae3d22e 100644
              assert_eq!(dir, Some(PathBuf::from("/isolated")));
          }
          assert_eq!(recovery_dir_with(Some("/isolated".into()), || Some("/user/recovery".into())), Some(PathBuf::from("/isolated/Recovery")));
-@@ -68,14 +69,17 @@ mod tests {
+@@ -68,16 +69,19 @@ mod tests {
  
      #[test]
      fn empty_override_never_reads_or_writes_the_default_profile() {
@@ -1239,10 +1448,146 @@ index 3e90879..ae3d22e 100644
 +        assert_eq!(config_dir_with("macos", environment), Some("/user/Library/Application Support/Plervo Publish".into()));
 +        assert_eq!(config_dir_with("windows", environment), Some("/roaming/Plervo Publish".into()));
          assert_eq!(config_dir_with("linux", environment), Some("/xdg-config/designcraft".into()));
-         assert_eq!(config_dir_with("linux", |key| if key == "HOME" { environment(key) } else { None }), Some("/user/.config/designcraft".into()));
+-        assert_eq!(config_dir_with("linux", |key| if key == "HOME" { environment(key) } else { None }), Some("/user/.config/designcraft".into()));
++        assert_eq!(config_dir_with("linux", |key| if key == "HOME" { environment(key) } else { None }), Some("/user/.config/plervo-publish".into()));
          assert_eq!(recovery_dir_with(None, || Some("/existing/recovery".into())), Some("/existing/recovery".into()));
+     }
+ 
+diff --git a/assets/app-icon/LICENSE.txt b/assets/app-icon/LICENSE.txt
+index 2c9c2dd..141b6d0 100644
+--- a/assets/app-icon/LICENSE.txt
++++ b/assets/app-icon/LICENSE.txt
+@@ -1,13 +1,6 @@
+-DesignCraft app icon (designcraft.svg, designcraft-small.svg and every file derived from them in
+-this directory: designcraft-1024.png, designcraft-macos-512.png, designcraft.icns, designcraft.ico,
+-hicolor/).
++# Plervo Publish application icons
+ 
+-Original artwork made for this project by the project owner in ArtCraft, then vectorised. No
+-third-party material. Licensed like the rest of DesignCraft, under either of
++Original artwork by Plervo contributors, 2026. Licensed under MIT OR Apache-2.0; see the complete LICENSE-MIT and LICENSE-APACHE files at the repository root.
+ 
+-  * Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
+-  * MIT license (https://opensource.org/licenses/MIT)
+-
+-at your option.
+-
+-Regenerate the derived files with packaging/icons.sh.
++Source vectors and platform variants: https://github.com/alportblu/plervo-pdf/tree/feat/app-family/assets/products/publish
++These icons replace the upstream product artwork. Engine code and other assets retain their original notices.
+diff --git a/assets/app-icon/README.md b/assets/app-icon/README.md
+index e0ee414..141b6d0 100644
+--- a/assets/app-icon/README.md
++++ b/assets/app-icon/README.md
+@@ -1,50 +1,6 @@
+-# DesignCraft app icon
++# Plervo Publish application icons
+ 
+-**A calico cat wearing a polka-dot scarf**, as an engraving-style head-and-shoulders portrait in the
+-Crafting Apps' owl-template framing: a full-bleed colour field, the cat in three-quarter view, its
+-shoulders running off the bottom edge.
++Original artwork by Plervo contributors, 2026. Licensed under MIT OR Apache-2.0; see the complete LICENSE-MIT and LICENSE-APACHE files at the repository root.
+ 
+-## Palette
+-
+-Exactly three colours:
+-
+-| Colour | Hex | Used for |
+-|---|---|---|
+-| Ink | `#0b0b0c` | Line work and contour |
+-| Paper | `#efe9dc` | The figure (the cat and its scarf) |
+-| DesignCraft green (app colour) | `#7bb51c` | The full-bleed background field |
+-
+-## Geometry
+-
+-A 512 × 512 viewBox, clipped to a rounded square with `rx=112`. Windows and Linux use the full tile. The
+-macOS icons (`.icns`, `designcraft-macos-512.png`) sit on Apple's grid: an 824/1024 body with a
+-transparent margin.
+-
+-## Provenance
+-
+-The owner drew the cat in ArtCraft. The 2880 px drawing, keyed to the three-colour palette, lives
+-outside this repo in craftrules at `assets/app-icons/designcraft/source.png`. It was vectorised with
+-craftrules' `assets/logo-options/_tools/vectorize_tile.py`: `designcraft.svg` is traced at 2048 px and
+-`designcraft-small.svg` at 1024 px. Design rules: craftrules `standards/icon-design.md`.
+-
+-## Files
+-
+-| File | Use |
+-|---|---|
+-| `designcraft.svg` | Canonical artwork (about 680 KB) |
+-| `designcraft-small.svg` | Lighter vector (about 350 KB); also `hicolor/scalable` |
+-| `designcraft-1024.png` | 1024 px render of the full tile |
+-| `designcraft-macos-512.png` | Runtime Dock icon on macOS (embedded by `apps/designcraft`) |
+-| `designcraft.icns` | macOS bundle icon (`CFBundleIconFile`) |
+-| `designcraft.ico` | Windows exe icon, 16–256 px (embedded by `apps/designcraft/build.rs`) |
+-| `hicolor/<size>/apps/ai.storyteller.designcraft.png` | Linux icon theme, 16–512 px; the 256 px one is also the runtime window icon on Windows and Linux |
+-| `hicolor/scalable/apps/ai.storyteller.designcraft.svg` | Linux scalable icon |
+-| `LICENSE.txt` | MIT OR Apache-2.0 |
+-
+-The app ID is `ai.storyteller.designcraft`. It's used for the hicolor icon names, the Wayland app ID and
+-`packaging/linux/ai.storyteller.designcraft.desktop`.
+-
+-## Regenerate
+-
+-Edit `designcraft.svg` (or `designcraft-small.svg`), then run `packaging/icons.sh`. It needs `resvg`, and
+-`iconutil` for the `.icns` (macOS only). It packs the `.ico` with `cargo xtask ico`.
++Source vectors and platform variants: https://github.com/alportblu/plervo-pdf/tree/feat/app-family/assets/products/publish
++These icons replace the upstream product artwork. Engine code and other assets retain their original notices.
+diff --git a/crates/color/Cargo.toml b/crates/color/Cargo.toml
+index ca707a0..c0d85d5 100644
+--- a/crates/color/Cargo.toml
++++ b/crates/color/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "DesignCraft color"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/compose/Cargo.toml b/crates/compose/Cargo.toml
+index b99e108..e5ff37d 100644
+--- a/crates/compose/Cargo.toml
++++ b/crates/compose/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "DesignCraft text composition: paragraph composer (Knuth–Plass), hyphenation, justification, columns, threading, wrap"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/doc/Cargo.toml b/crates/doc/Cargo.toml
+index ed7430d..a25cdf5 100644
+--- a/crates/doc/Cargo.toml
++++ b/crates/doc/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "DesignCraft document model: spreads, pages, parents, layers, frames, stories, styles, swatches"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/engine/Cargo.toml b/crates/engine/Cargo.toml
+index 1de90d1..41ba052 100644
+--- a/crates/engine/Cargo.toml
++++ b/crates/engine/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "DesignCraft engine: session, documents, history, selection, command registry, tool hosting"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/crates/engine/src/links.rs b/crates/engine/src/links.rs
-index ead5bd6..d635f95 100644
+index ead5bd6..53a0bf6 100644
 --- a/crates/engine/src/links.rs
 +++ b/crates/engine/src/links.rs
 @@ -2,18 +2,18 @@
@@ -1272,11 +1617,22 @@ index ead5bd6..d635f95 100644
  
  /// All links as JSON (the `app.links` command).
  pub fn all() -> Value {
+@@ -44,8 +44,8 @@ mod tests {
+ 
+     #[test]
+     fn links_follow_the_app_slug() {
+-        assert!(APP_PAGE.ends_with(&format!("/apps/{APP}")));
+-        assert!(GITHUB.ends_with(&format!("/storytold/{APP}")));
++        assert_eq!(APP_PAGE, "https://plervo.com/");
++        assert_eq!(GITHUB, "https://github.com/alportblu/plervo-pdf");
+         assert!(ISSUES.starts_with(GITHUB));
+         for k in ["discord", "website", "appPage", "github", "issues"] {
+             assert!(get(k).is_some_and(|u| u.starts_with("https://")), "{k}");
 diff --git a/crates/engine/src/recovery.rs b/crates/engine/src/recovery.rs
-index 33b9a2a..5a42775 100644
+index 33b9a2a..25d4861 100644
 --- a/crates/engine/src/recovery.rs
 +++ b/crates/engine/src/recovery.rs
-@@ -28,10 +28,10 @@ use crate::{DocState, EngineError, Result, Session};
+@@ -28,12 +28,12 @@ use crate::{DocState, EngineError, Result, Session};
  pub fn default_dir() -> Option<PathBuf> {
      let home = std::env::var_os("HOME").map(PathBuf::from);
      if cfg!(target_os = "macos") {
@@ -1287,8 +1643,216 @@ index 33b9a2a..5a42775 100644
 -        return std::env::var_os("APPDATA").map(|a| PathBuf::from(a).join("DesignCraft").join("Recovery"));
 +        return std::env::var_os("APPDATA").map(|a| PathBuf::from(a).join("Plervo Publish").join("Recovery"));
      }
-     std::env::var_os("XDG_DATA_HOME").map(PathBuf::from).or_else(|| home.map(|h| h.join(".local/share"))).map(|d| d.join("designcraft/recovery"))
+-    std::env::var_os("XDG_DATA_HOME").map(PathBuf::from).or_else(|| home.map(|h| h.join(".local/share"))).map(|d| d.join("designcraft/recovery"))
++    std::env::var_os("XDG_DATA_HOME").map(PathBuf::from).or_else(|| home.map(|h| h.join(".local/share"))).map(|d| d.join("plervo-publish/recovery"))
  }
+ 
+ /// This process's folder in a recovery folder, with the lock that says it is still running.
+diff --git a/crates/epub/Cargo.toml b/crates/epub/Cargo.toml
+index 0cbe167..feb5568 100644
+--- a/crates/epub/Cargo.toml
++++ b/crates/epub/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "DesignCraft EPUB 3 (reflowable) export: stories in reading order, CSS from styles, images"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/fonts/Cargo.toml b/crates/fonts/Cargo.toml
+index d30d210..77a9f89 100644
+--- a/crates/fonts/Cargo.toml
++++ b/crates/fonts/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "DesignCraft fonts: font database (bundled OFL + system), metrics, glyph outlines, shaping"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/format/Cargo.toml b/crates/format/Cargo.toml
+index c3b8ac4..8099a36 100644
+--- a/crates/format/Cargo.toml
++++ b/crates/format/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "DesignCraft native file format: zip with document.json and embedded assets; versioned"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/geom/Cargo.toml b/crates/geom/Cargo.toml
+index 30e4570..4fce694 100644
+--- a/crates/geom/Cargo.toml
++++ b/crates/geom/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "DesignCraft geometry: anchor paths, shapes, units and measurements, hit testing"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/idml/Cargo.toml b/crates/idml/Cargo.toml
+index 7e11a33..e4535b9 100644
+--- a/crates/idml/Cargo.toml
++++ b/crates/idml/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "DesignCraft IDML (InDesign Markup Language) import and export"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/idml/src/xml.rs b/crates/idml/src/xml.rs
+index cb09249..97aab23 100644
+--- a/crates/idml/src/xml.rs
++++ b/crates/idml/src/xml.rs
+@@ -283,7 +283,10 @@ fn start_el(e: &quick_xml::events::BytesStart) -> Result<El, String> {
+     for a in e.attributes().with_checks(false) {
+         let a = a.map_err(|e| e.to_string())?;
+         let k = String::from_utf8_lossy(a.key.as_ref()).to_string();
+-        let v = a.unescape_value().map(|v| v.to_string()).unwrap_or_else(|_| String::from_utf8_lossy(&a.value).to_string());
++        let v = a
++            .normalized_value(quick_xml::XmlVersion::Implicit1_0)
++            .map(|v| v.to_string())
++            .unwrap_or_else(|_| String::from_utf8_lossy(&a.value).to_string());
+         el.attrs.push((k, v));
+     }
+     Ok(el)
+diff --git a/crates/images/Cargo.toml b/crates/images/Cargo.toml
+index 0db9d19..a69a8bd 100644
+--- a/crates/images/Cargo.toml
++++ b/crates/images/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "DesignCraft placed-graphic decoding: raster formats (PNG, JPEG, GIF, WebP, TIFF, BMP, PSD) and SVG"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/mcp/Cargo.toml b/crates/mcp/Cargo.toml
+index fa863aa..0f388d3 100644
+--- a/crates/mcp/Cargo.toml
++++ b/crates/mcp/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "DesignCraft MCP server: JSON-RPC 2.0 over stdio, driving a running app or a headless session"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/pdf/Cargo.toml b/crates/pdf/Cargo.toml
+index 47c3844..f979bde 100644
+--- a/crates/pdf/Cargo.toml
++++ b/crates/pdf/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "DesignCraft PDF export (krilla): real text with embedded font subsets, CMYK/spot colour, bleed and printer's marks"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/render/Cargo.toml b/crates/render/Cargo.toml
+index 5ababd5..1daab6f 100644
+--- a/crates/render/Cargo.toml
++++ b/crates/render/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "DesignCraft renderer: spreads, pages, frames, composed text and images to pixels (vello_cpu)"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/textimport/Cargo.toml b/crates/textimport/Cargo.toml
+index bbbd57f..8f369b9 100644
+--- a/crates/textimport/Cargo.toml
++++ b/crates/textimport/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "DesignCraft text import: plain text, Word (.docx) and RTF into stories"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/textimport/src/docx.rs b/crates/textimport/src/docx.rs
+index 67a2b71..58c9da8 100644
+--- a/crates/textimport/src/docx.rs
++++ b/crates/textimport/src/docx.rs
+@@ -67,7 +67,9 @@ pub(crate) fn parse(xml: &str) -> Result<El, ImportError> {
+                     attrs: e
+                         .attributes()
+                         .flatten()
+-                        .map(|a| (local(a.key.as_ref()), a.unescape_value().map(|v| v.to_string()).unwrap_or_default()))
++                        .map(|a| {
++                            (local(a.key.as_ref()), a.normalized_value(quick_xml::XmlVersion::Implicit1_0).map(|v| v.to_string()).unwrap_or_default())
++                        })
+                         .collect(),
+                     kids: vec![],
+                 };
+@@ -79,7 +81,9 @@ pub(crate) fn parse(xml: &str) -> Result<El, ImportError> {
+                     attrs: e
+                         .attributes()
+                         .flatten()
+-                        .map(|a| (local(a.key.as_ref()), a.unescape_value().map(|v| v.to_string()).unwrap_or_default()))
++                        .map(|a| {
++                            (local(a.key.as_ref()), a.normalized_value(quick_xml::XmlVersion::Implicit1_0).map(|v| v.to_string()).unwrap_or_default())
++                        })
+                         .collect(),
+                     kids: vec![],
+                 };
+diff --git a/crates/tools/Cargo.toml b/crates/tools/Cargo.toml
+index 747a74e..948e1cb 100644
+--- a/crates/tools/Cargo.toml
++++ b/crates/tools/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "DesignCraft tools: pointer events in, commands and overlays out (Selection, Direct Selection, frames, Type, Hand, Zoom…)"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/ui-egui/Cargo.toml b/crates/ui-egui/Cargo.toml
+index 76b5f89..d5a428b 100644
+--- a/crates/ui-egui/Cargo.toml
++++ b/crates/ui-egui/Cargo.toml
+@@ -6,6 +6,8 @@ rust-version.workspace = true
+ license.workspace = true
+ description = "DesignCraft egui frontend (InDesign-style UI); swappable — nothing below depends on it"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+@@ -39,3 +41,6 @@ designcraft-fonts = { workspace = true, features = ["testing"] }
+ [build-dependencies]
+ serde_json = { workspace = true }
+ toml = "1"
++
++[target.'cfg(not(target_arch = "wasm32"))'.dependencies]
++sys-locale = "=0.3.2"
 diff --git a/crates/ui-egui/examples/ui_shot.rs b/crates/ui-egui/examples/ui_shot.rs
 index c0bf389..05a1ef3 100644
 --- a/crates/ui-egui/examples/ui_shot.rs
@@ -1300,25 +1864,95 @@ index c0bf389..05a1ef3 100644
  //!
  //! `cargo run -p designcraft-ui-egui --example ui_shot -- script.jsonl`
 diff --git a/crates/ui-egui/src/about.rs b/crates/ui-egui/src/about.rs
-index 4eae2e7..3efa57c 100644
+index 4eae2e7..b9c26e2 100644
 --- a/crates/ui-egui/src/about.rs
 +++ b/crates/ui-egui/src/about.rs
-@@ -1,4 +1,4 @@
+@@ -1,5 +1,5 @@
 -//! Help › About DesignCraft: tabs About · Contributors · Models. About is the splash with the
+-//! ArtCraft mark, version, and community links (Discord first and largest), plus the other ArtCraft
 +//! Help › About Plervo Publish: tabs About · Contributors · Models. About is the splash with the
- //! ArtCraft mark, version, and community links (Discord first and largest), plus the other ArtCraft
++//! Plervo mark, version, and community links (Discord first and largest), plus the other Plervo
  //! apps; Contributors and Models are the compiled-in credits (`crate::credits`).
  
-@@ -11,7 +11,7 @@ use crate::theme::{Tokens, semibold};
+ use designcraft_engine::links;
+@@ -9,53 +9,38 @@ use serde_json::json;
+ use crate::DesignApp;
+ use crate::theme::{Tokens, semibold};
  
- /// ArtCraft brand blue (from `docs/brand/artcraft-mark.svg`).
- pub const BRAND: Color32 = Color32::from_rgb(0x4e, 0x7b, 0xfb);
+-/// ArtCraft brand blue (from `docs/brand/artcraft-mark.svg`).
+-pub const BRAND: Color32 = Color32::from_rgb(0x4e, 0x7b, 0xfb);
 -/// Discord's brand colour, used for the "Join our Discord" buttons (colour only; no Discord artwork).
++/// Plervo Publish accent.
++pub const BRAND: Color32 = Color32::from_rgb(0xc4, 0xc9, 0x9f);
 +/// Discord's brand colour, used for the "Support Plervo" buttons (colour only; no Discord artwork).
  pub const DISCORD: Color32 = Color32::from_rgb(0x58, 0x65, 0xf2);
  
- /// The ArtCraft mark outline (viewBox -10 -19.42 136.34 136.34), from `docs/brand/artcraft-mark.svg`.
-@@ -77,7 +77,7 @@ pub fn paint_chat_icon(p: &egui::Painter, c: egui::Pos2, s: f32, color: Color32)
+-/// The ArtCraft mark outline (viewBox -10 -19.42 136.34 136.34), from `docs/brand/artcraft-mark.svg`.
+-const MARK_PATH: &str = "M104.28,49.49L81.55,0h-31.23l-3.17,4.76L14.75,53.63,0,75.85l21.55,21.55,63.79-36.94,16.99,37.04,14.01-21.74-12.06-26.27ZM32.89,65.66l32.42-48.87,10.91,23.77-43.32,25.09Z";
+-
+-/// The other ArtCraft apps (app-page slug, name, what it is) — same list as the README.
++/// The other Plervo apps (app-page slug, name, what it is) — same list as the README.
+ pub const SIBLINGS: &[(&str, &str, &str)] = &[
+-    ("photocraft", "PhotoCraft", "image editing"),
+-    ("vectorcraft", "VectorCraft", "vector illustration"),
+-    ("filmcraft", "FilmCraft", "video editing, color and sound"),
+-    ("lightcraft", "LightCraft", "photo library and raw development"),
+-    ("pdfcraft", "PdfCraft", "reading, organizing and protecting PDFs"),
+-    ("effectcraft", "EffectCraft", "motion graphics and visual effects"),
++    ("photocraft", "Plervo Photo", "image editing"),
++    ("vectorcraft", "Plervo Vector", "vector illustration"),
++    ("filmcraft", "Plervo Video", "video editing, color and sound"),
++    ("lightcraft", "Plervo Develop", "photo library and raw development"),
++    ("pdfcraft", "Plervo PDF", "reading, organizing and protecting PDFs"),
++    ("effectcraft", "Plervo Motion", "motion graphics and visual effects"),
+ ];
+ 
+ /// The About window's tabs, in `UiState::about_tab` order (`help.about {tab}` names them in lowercase).
+ pub const ABOUT_TABS: [&str; 3] = ["About", "Contributors", "Models"];
+ 
+-/// Paint the ArtCraft mark into `rect` (square), rasterised once per size and cached.
+-pub fn paint_mark(ui: &egui::Ui, rect: Rect, color: Color32) {
+-    use designcraft_render::vello_cpu::{self, kurbo, peniko};
++/// Paint the original Plervo Publish mark, decoded once and cached.
++pub fn paint_mark(ui: &egui::Ui, rect: Rect, _color: Color32) {
+     let ctx = ui.ctx();
+-    let ppp = ctx.pixels_per_point();
+-    let px = ((rect.width().min(rect.height()) * ppp).round() as u32).clamp(8, 1024);
+-    let key = egui::Id::new(("artcraft_mark", px, color.to_array()));
+-    let tex: Option<egui::TextureHandle> = ctx.data(|d| d.get_temp(key));
+-    let tex = tex.unwrap_or_else(|| {
+-        let mut rc = vello_cpu::RenderContext::new_with(px as u16, px as u16, vello_cpu::RenderSettings { num_threads: 0, ..Default::default() });
+-        let k = px as f64 / 136.34;
+-        rc.set_transform(kurbo::Affine::scale(k) * kurbo::Affine::translate((10.0, 19.42)));
+-        let [r, g, b, a] = color.to_srgba_unmultiplied();
+-        rc.set_paint(peniko::Color::from_rgba8(r, g, b, a));
+-        if let Ok(p) = kurbo::BezPath::from_svg(MARK_PATH) {
+-            rc.fill_path(&p);
+-        }
+-        rc.flush();
+-        let mut pm = vello_cpu::Pixmap::new(px as u16, px as u16);
+-        let mut res = vello_cpu::Resources::new();
+-        rc.render(&mut pm, &mut res);
+-        let ci = egui::ColorImage::from_rgba_premultiplied([px as usize, px as usize], pm.data_as_u8_slice());
+-        let t = ctx.load_texture("artcraft_mark", ci, egui::TextureOptions::LINEAR);
+-        ctx.data_mut(|d| d.insert_temp(key, t.clone()));
+-        t
+-    });
++    let key = egui::Id::new("plervo-publish-mark");
++    let cached: Option<egui::TextureHandle> = ctx.data(|d| d.get_temp(key));
++    let tex = if let Some(tex) = cached {
++        tex
++    } else {
++        let Some(pm) = designcraft_render::decode_pixmap(include_bytes!("../../../assets/app-icon/designcraft-1024.png")) else { return };
++        let ci = egui::ColorImage::from_rgba_premultiplied([pm.width() as usize, pm.height() as usize], pm.data_as_u8_slice());
++        let tex = ctx.load_texture("plervo-publish-mark", ci, egui::TextureOptions::LINEAR);
++        ctx.data_mut(|d| d.insert_temp(key, tex.clone()));
++        tex
++    };
+     let side = rect.width().min(rect.height());
+     let r = Rect::from_center_size(rect.center(), vec2(side, side));
+     ui.painter().image(tex.id(), r, Rect::from_min_max(pos2(0.0, 0.0), pos2(1.0, 1.0)), Color32::WHITE);
+@@ -77,7 +62,7 @@ pub fn paint_chat_icon(p: &egui::Painter, c: egui::Pos2, s: f32, color: Color32)
      p.circle_filled(body.center() + vec2(s * 0.18, 0.0), eye, bg);
  }
  
@@ -1327,7 +1961,7 @@ index 4eae2e7..3efa57c 100644
  pub fn discord_button(ui: &mut egui::Ui, label: &str, size: egui::Vec2) -> bool {
      let (r, resp) = ui.allocate_exact_size(size, Sense::click());
      let resp = resp.on_hover_text(links::DISCORD).on_hover_cursor(egui::CursorIcon::PointingHand);
-@@ -142,7 +142,7 @@ pub fn show(app: &mut DesignApp, ctx: &egui::Context) {
+@@ -142,7 +127,7 @@ pub fn show(app: &mut DesignApp, ctx: &egui::Context) {
              ui.add_space(6.0);
              ui.label(crate::rtl::widget(
                  ui,
@@ -1336,7 +1970,13 @@ index 4eae2e7..3efa57c 100644
              ));
              crate::rtl::label(
                  ui,
-@@ -164,13 +164,13 @@ pub fn show(app: &mut DesignApp, ctx: &egui::Context) {
+@@ -159,18 +144,18 @@ pub fn show(app: &mut DesignApp, ctx: &egui::Context) {
+             ));
+             ui.label(crate::rtl::widget(
+                 ui,
+-                egui::RichText::new(crate::i18n::tr(&app.ui.language, "Part of the ArtCraft suite of open creative tools."))
++                egui::RichText::new(crate::i18n::tr(&app.ui.language, "Part of the Plervo suite of open creative tools."))
+                     .size(12.0)
                      .color(t.text_dim),
              ));
              ui.add_space(16.0);
@@ -1352,7 +1992,7 @@ index 4eae2e7..3efa57c 100644
                      .size(11.0)
                      .color(t.text_dim),
              ));
-@@ -180,7 +180,7 @@ pub fn show(app: &mut DesignApp, ctx: &egui::Context) {
+@@ -180,7 +165,7 @@ pub fn show(app: &mut DesignApp, ctx: &egui::Context) {
                  let w = 330.0;
                  ui.add_space(((ui.available_width() - w) / 2.0).max(0.0));
                  for (text, key) in
@@ -1361,15 +2001,37 @@ index 4eae2e7..3efa57c 100644
                  {
                      if link(ui, text, links::get(key).unwrap_or_default(), t.accent) {
                          open = Some(key);
+@@ -193,7 +178,7 @@ pub fn show(app: &mut DesignApp, ctx: &egui::Context) {
+             ui.add_space(6.0);
+             ui.label(crate::rtl::widget(
+                 ui,
+-                egui::RichText::new(crate::i18n::tr(&app.ui.language, "More ArtCraft apps")).font(semibold(12.0)).color(t.text_strong),
++                egui::RichText::new(crate::i18n::tr(&app.ui.language, "More Plervo apps")).font(semibold(12.0)).color(t.text_strong),
+             ));
+             ui.add_space(4.0);
+             ui.horizontal(|ui| {
+@@ -204,8 +189,8 @@ pub fn show(app: &mut DesignApp, ctx: &egui::Context) {
+                     .sum::<f32>()
+                     - ui.spacing().item_spacing.x;
+                 ui.add_space(((ui.available_width() - w) / 2.0).max(0.0));
+-                for (slug, name, what) in SIBLINGS {
+-                    let url = format!("{}/apps/{slug}", links::WEBSITE);
++                for (_, name, what) in SIBLINGS {
++                    let url = links::WEBSITE.to_owned();
+                     let b =
+                         ui.add(egui::Button::new(egui::RichText::new(*name).size(12.0)).corner_radius(10.0)).on_hover_text(format!("{what} — {url}"));
+                     if b.clicked() {
 diff --git a/crates/ui-egui/src/chrome.rs b/crates/ui-egui/src/chrome.rs
-index c2f1cb4..6d555aa 100644
+index c2f1cb4..0e61044 100644
 --- a/crates/ui-egui/src/chrome.rs
 +++ b/crates/ui-egui/src/chrome.rs
-@@ -125,7 +125,7 @@ pub fn app_bar(app: &mut DesignApp, ui: &mut egui::Ui) {
+@@ -124,8 +124,8 @@ pub fn app_bar(app: &mut DesignApp, ui: &mut egui::Ui) {
+                             app.status("Export a PDF, IDML or package to share — no cloud account needed.");
                          }
                          ui.add_space(8.0);
-                         // Always one click away: the ArtCraft community Discord.
+-                        // Always one click away: the ArtCraft community Discord.
 -                        if crate::about::discord_button(ui, "Discord", vec2(78.0, 22.0)) {
++                        // Always one click away: the Plervo community Discord.
 +                        if crate::about::discord_button(ui, "Support", vec2(78.0, 22.0)) {
                              let _ = app.run("help.discord", json!({}));
                          }
@@ -1394,6 +2056,24 @@ index c2f1cb4..6d555aa 100644
              ));
              ui.label(crate::rtl::widget(
                  ui,
+@@ -744,7 +744,7 @@ pub fn start_screen(app: &mut DesignApp, ui: &mut egui::Ui) {
+     let _ = Content::Unassigned;
+ }
+ 
+-/// Start screen: the ArtCraft community (Discord first) and project links.
++/// Start screen: the Plervo community (Discord first) and project links.
+ fn community_card(app: &mut DesignApp, ui: &mut egui::Ui) {
+     let t = Tokens::get(ui.ctx());
+     egui::Frame::NONE.fill(t.panel).corner_radius(10.0).inner_margin(egui::Margin::same(14)).show(ui, |ui| {
+@@ -756,7 +756,7 @@ fn community_card(app: &mut DesignApp, ui: &mut egui::Ui) {
+             ui.vertical(|ui| {
+                 ui.label(crate::rtl::widget(
+                     ui,
+-                    egui::RichText::new(crate::i18n::tr(&app.ui.language, "Join the ArtCraft community")).font(semibold(14.0)).color(t.text_strong),
++                    egui::RichText::new(crate::i18n::tr(&app.ui.language, "Join the Plervo community")).font(semibold(14.0)).color(t.text_strong),
+                 ));
+                 ui.label(crate::rtl::widget(
+                     ui,
 @@ -766,7 +766,7 @@ fn community_card(app: &mut DesignApp, ui: &mut egui::Ui) {
                  ));
                  ui.add_space(4.0);
@@ -1413,7 +2093,7 @@ index c2f1cb4..6d555aa 100644
                  }
              });
 diff --git a/crates/ui-egui/src/i18n.rs b/crates/ui-egui/src/i18n.rs
-index 6d6503a..c27a6ce 100644
+index 6d6503a..e8428be 100644
 --- a/crates/ui-egui/src/i18n.rs
 +++ b/crates/ui-egui/src/i18n.rs
 @@ -709,8 +709,11 @@ const TABLE: &[(&str, [&str; 5])] = &[
@@ -1430,12 +2110,14 @@ index 6d6503a..c27a6ce 100644
      ("Accept All Changes", ["Accept All Changes", "Accept All Changes", "Accept All Changes", "Accept All Changes", "接受所有更改"]),
      ("Activate Document", ["Activate Document", "Activate Document", "Activate Document", "Activate Document", "激活文档"]),
      ("Add Anchor Point", ["Add Anchor Point", "Add Anchor Point", "Add Anchor Point", "Add Anchor Point", "添加锚点"]),
-@@ -772,7 +775,7 @@ const TABLE: &[(&str, [&str; 5])] = &[
+@@ -771,8 +774,8 @@ const TABLE: &[(&str, [&str; 5])] = &[
+         "Apply Parent to Pages…",
          ["Apply Parent to Pages…", "Apply Parent to Pages…", "Apply Parent to Pages…", "Apply Parent to Pages…", "将主页应用于页面…"],
      ),
-     ("ArtCraft App Page…", ["ArtCraft App Page…", "ArtCraft App Page…", "ArtCraft App Page…", "ArtCraft App Page…", "ArtCraft 应用页面…"]),
+-    ("ArtCraft App Page…", ["ArtCraft App Page…", "ArtCraft App Page…", "ArtCraft App Page…", "ArtCraft App Page…", "ArtCraft 应用页面…"]),
 -    ("ArtCraft Website…", ["ArtCraft Website…", "ArtCraft Website…", "ArtCraft Website…", "ArtCraft Website…", "ArtCraft 网站…"]),
-+    ("Plervo Website…", ["Plervo Website…", "Plervo Website…", "Plervo Website…", "Plervo Website…", "ArtCraft 网站…"]),
++    ("Plervo App Page…", ["Plervo App Page…", "Plervo App Page…", "Plervo App Page…", "Plervo App Page…", "Plervo 应用页面…"]),
++    ("Plervo Website…", ["Plervo Website…", "Plervo Website…", "Plervo Website…", "Plervo Website…", "Plervo 网站…"]),
      ("Attributes", ["Attributes", "Attributes", "Attributes", "Attributes", "属性"]),
      ("Bevel and Emboss", ["Bevel and Emboss", "Bevel and Emboss", "Bevel and Emboss", "Bevel and Emboss", "斜面和浮雕"]),
      ("Buttons", ["Buttons", "Buttons", "Buttons", "Buttons", "按钮"]),
@@ -1476,7 +2158,7 @@ index 6d6503a..c27a6ce 100644
 -            "加入 ArtCraft Discord…",
 -        ],
 -    ),
-+    ("Support Plervo", ["Support Plervo", "Support Plervo", "Support Plervo", "Support Plervo", "加入 ArtCraft Discord…"]),
++    ("Support Plervo", ["Support Plervo", "Support Plervo", "Support Plervo", "Support Plervo", "加入 Plervo Discord…"]),
      ("Last Object Below", ["Last Object Below", "Last Object Below", "Last Object Below", "Last Object Below", "下方最后一个对象"]),
      ("Library Contents", ["Library Contents", "Library Contents", "Library Contents", "Library Contents", "库内容"]),
      ("Library Items", ["Library Items", "Library Items", "Library Items", "Library Items", "库项目"]),
@@ -1489,7 +2171,50 @@ index 6d6503a..c27a6ce 100644
      ("Display Performance", ["Display Performance", "Display Performance", "Display Performance", "Display Performance", "显示性能"]),
      ("Document Grid", ["Document Grid", "Document Grid", "Document Grid", "Document Grid", "文档网格"]),
      (
-@@ -1882,8 +1885,14 @@ const TABLE: &[(&str, [&str; 5])] = &[
+@@ -1585,19 +1588,13 @@ const TABLE: &[(&str, [&str; 5])] = &[
+     ("Interactive", ["Interactive", "Interactive", "Interactive", "Interactive", "交互式"]),
+     ("Invert", ["Invert", "Invert", "Invert", "Invert", "反相"]),
+     (
+-        "Join the ArtCraft community",
+-        [
+-            "Join the ArtCraft community",
+-            "Join the ArtCraft community",
+-            "Join the ArtCraft community",
+-            "Join the ArtCraft community",
+-            "加入 ArtCraft 社区",
+-        ],
++        "Join the Plervo community",
++        ["Join the Plervo community", "Join the Plervo community", "Join the Plervo community", "Join the Plervo community", "加入 Plervo 社区"],
+     ),
+     ("Keyboard Increments", ["Keyboard Increments", "Keyboard Increments", "Keyboard Increments", "Keyboard Increments", "键盘增量"]),
+     ("Liquid guides", ["Liquid guides", "Liquid guides", "Liquid guides", "Liquid guides", "自适应参考线"]),
+     ("Markers", ["Markers", "Markers", "Markers", "Markers", "标记"]),
+-    ("More ArtCraft apps", ["More ArtCraft apps", "More ArtCraft apps", "More ArtCraft apps", "More ArtCraft apps", "更多 ArtCraft 应用"]),
++    ("More Plervo apps", ["More Plervo apps", "More Plervo apps", "More Plervo apps", "More Plervo apps", "更多 Plervo 应用"]),
+     ("Nested Line Styles", ["Nested Line Styles", "Nested Line Styles", "Nested Line Styles", "Nested Line Styles", "嵌套行样式"]),
+     ("Nested Styles", ["Nested Styles", "Nested Styles", "Nested Styles", "Nested Styles", "嵌套样式"]),
+     (
+@@ -1717,13 +1714,13 @@ const TABLE: &[(&str, [&str; 5])] = &[
+     ),
+     ("Page · PPI", ["Page · PPI", "Page · PPI", "Page · PPI", "Page · PPI", "页面 · PPI"]),
+     (
+-        "Part of the ArtCraft suite of open creative tools.",
++        "Part of the Plervo suite of open creative tools.",
+         [
+-            "Part of the ArtCraft suite of open creative tools.",
+-            "Part of the ArtCraft suite of open creative tools.",
+-            "Part of the ArtCraft suite of open creative tools.",
+-            "Part of the ArtCraft suite of open creative tools.",
+-            "ArtCraft 开源创意工具套件的一部分。",
++            "Part of the Plervo suite of open creative tools.",
++            "Part of the Plervo suite of open creative tools.",
++            "Part of the Plervo suite of open creative tools.",
++            "Part of the Plervo suite of open creative tools.",
++            "Plervo 开源创意工具套件的一部分。",
+         ],
+     ),
+     ("Pasteboard Options", ["Pasteboard Options", "Pasteboard Options", "Pasteboard Options", "Pasteboard Options", "粘贴板选项"]),
+@@ -1882,8 +1879,14 @@ const TABLE: &[(&str, [&str; 5])] = &[
      ("Utilities", ["Utilities", "Utilities", "Utilities", "Utilities", "实用程序"]),
      ("Variable Font", ["Variable Font", "Variable Font", "Variable Font", "Variable Font", "可变字体"]),
      (
@@ -1506,7 +2231,7 @@ index 6d6503a..c27a6ce 100644
      ),
      ("When Scaling", ["When Scaling", "When Scaling", "When Scaling", "When Scaling", "缩放时"]),
      ("[Basic] (working) ▾", ["[Basic] (working) ▾", "[Basic] (working) ▾", "[Basic] (working) ▾", "[Basic] (working) ▾", "[基本] (工作区) ▾"]),
-@@ -1901,13 +1910,13 @@ const TABLE: &[(&str, [&str; 5])] = &[
+@@ -1901,13 +1904,13 @@ const TABLE: &[(&str, [&str; 5])] = &[
          ],
      ),
      (
@@ -1526,7 +2251,7 @@ index 6d6503a..c27a6ce 100644
          ],
      ),
      (
-@@ -2653,7 +2662,7 @@ const TABLE: &[(&str, [&str; 5])] = &[
+@@ -2653,7 +2656,7 @@ const TABLE: &[(&str, [&str; 5])] = &[
      ("H&J Violations", ["H&J Violations", "H&J Violations", "H&J Violations", "H&J Violations", "断字与对齐违规"]),
      ("Include Bleed", ["Include Bleed", "Include Bleed", "Include Bleed", "Include Bleed", "包含出血"]),
      ("Include Stroke Weight", ["Include Stroke Weight", "Include Stroke Weight", "Include Stroke Weight", "Include Stroke Weight", "包含描边粗细"]),
@@ -1535,11 +2260,63 @@ index 6d6503a..c27a6ce 100644
      ("Keep Violations", ["Keep Violations", "Keep Violations", "Keep Violations", "Keep Violations", "保持选项违规"]),
      (
          "Overprint [Black] Swatch at 100%",
+@@ -3099,3 +3102,51 @@ mod tests {
+         assert_eq!(tr("ja", "PDF/X-4"), "PDF/X-4");
+     }
+ }
++
++/// Initial UI language for a new profile; saved manual selections are kept by serde.
++pub fn default_language() -> String {
++    #[cfg(not(target_arch = "wasm32"))]
++    {
++        preferred_language(sys_locale::get_locales().take(64)).to_owned()
++    }
++    #[cfg(target_arch = "wasm32")]
++    {
++        String::new()
++    }
++}
++
++#[cfg(any(test, not(target_arch = "wasm32")))]
++fn preferred_language(tags: impl IntoIterator<Item = impl AsRef<str>>) -> &'static str {
++    for tag in tags {
++        let tag = tag.as_ref().split('.').next().unwrap_or_default().replace('_', "-").to_ascii_lowercase();
++        let primary = tag.split('-').next().unwrap_or_default();
++        if primary == "en" {
++            return "";
++        }
++        if primary == "pt" {
++            return "pt-br";
++        }
++        if let Some((code, _)) = LANGUAGES.iter().find(|(code, _)| !code.is_empty() && (*code == tag || *code == primary)) {
++            return code;
++        }
++    }
++    ""
++}
++
++#[cfg(test)]
++mod plervo_language_tests {
++    use super::*;
++    #[test]
++    fn first_supported_os_language_wins() {
++        assert_eq!(preferred_language(["xx-XX", "pt_BR.UTF-8", "en-US"]), "pt-br");
++        assert_eq!(preferred_language(["es-ES", "en-US"]), "es");
++        assert_eq!(preferred_language(["en-US", "pt-BR"]), "");
++        assert_eq!(preferred_language(["xx-XX"]), "");
++    }
++    #[test]
++    fn persisted_manual_language_is_preserved() -> Result<(), serde_json::Error> {
++        let state: crate::UiState = serde_json::from_str(r#"{"language":"es"}"#)?;
++        assert_eq!(state.language, "es");
++        Ok(())
++    }
++}
 diff --git a/crates/ui-egui/src/i18n/ar.rs b/crates/ui-egui/src/i18n/ar.rs
-index 7695119..fadc1b9 100644
+index 7695119..a078c2c 100644
 --- a/crates/ui-egui/src/i18n/ar.rs
 +++ b/crates/ui-egui/src/i18n/ar.rs
-@@ -150,9 +150,9 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -150,21 +150,21 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Hyperlinks", "ارتباطات تشعبية"),
      ("Bookmarks", "إشارات مرجعية"),
      ("Show All Menu Items", "إظهار كل عناصر القائمة"),
@@ -1552,9 +2329,11 @@ index 7695119..fadc1b9 100644
      ("Page layout for print and screen — fast, open and scriptable.", "تخطيط الصفحات للطباعة والشاشة — سريع ومفتوح وقابل للبرمجة."),
      ("  New file  ", "  ملف جديد  "),
      ("  Open  ", "  فتح  "),
-@@ -161,10 +161,10 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("  Open sample magazine  ", "  فتح نموذج المجلة  "),
+     ("Start a new document", "بدء مستند جديد"),
      ("No document open", "لا يوجد مستند مفتوح"),
-     ("Join the ArtCraft community", "انضم إلى مجتمع ArtCraft"),
+-    ("Join the ArtCraft community", "انضم إلى مجتمع ArtCraft"),
++    ("Join the Plervo community", "انضم إلى مجتمع Plervo"),
      ("Get help, share your layouts and shape what we build next.", "احصل على المساعدة وشارك تصميماتك وساهم في تطوير التطبيق."),
 -    ("Join our Discord", "انضم إلى Discord"),
 +    ("Support Plervo", "انضم إلى Discord"),
@@ -1565,12 +2344,32 @@ index 7695119..fadc1b9 100644
      ("  OK  ", "  موافق  "),
      ("Float panel", "تعويم اللوحة"),
      ("Dock panel", "إرساء اللوحة"),
-@@ -1139,7 +1139,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -909,7 +909,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Merge into Active Layer", "دمج في الطبقة النشطة"),
+     ("Misspelled word → Correction (one per line):", "كلمة خاطئة ← تصحيح (واحد في كل سطر):"),
+     ("Mobile", "جوال"),
+-    ("More ArtCraft apps", "المزيد من تطبيقات ArtCraft"),
++    ("More Plervo apps", "المزيد من تطبيقات Plervo"),
+     ("Move Selection Here", "نقل التحديد إلى هنا"),
+     ("Move to Color Group", "نقل إلى مجموعة ألوان"),
+     ("Move to Group", "نقل إلى مجموعة"),
+@@ -948,7 +948,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Page Numbering", "ترقيم الصفحات"),
+     ("Page · PPI", "صفحة · PPI"),
+     ("Pages:", "الصفحات:"),
+-    ("Part of the ArtCraft suite of open creative tools.", "جزء من مجموعة ArtCraft للأدوات الإبداعية المفتوحة."),
++    ("Part of the Plervo suite of open creative tools.", "جزء من مجموعة Plervo للأدوات الإبداعية المفتوحة."),
+     ("Pasteboard Options", "خيارات مساحة اللصق"),
+     ("Path", "مسار"),
+     ("Place the insertion point in a table, or create one.", "ضع نقطة الإدراج داخل جدول أو أنشئ جدولًا."),
+@@ -1138,8 +1138,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Apply Cell Style", "تطبيق نمط الخلية"),
      ("Apply Condition", "تطبيق شرط"),
      ("Apply Parent to Pages…", "تطبيق الصفحة الأصلية على الصفحات…"),
-     ("ArtCraft App Page…", "صفحة تطبيق ArtCraft…"),
+-    ("ArtCraft App Page…", "صفحة تطبيق ArtCraft…"),
 -    ("ArtCraft Website…", "موقع ArtCraft…"),
-+    ("Plervo Website…", "موقع ArtCraft…"),
++    ("Plervo App Page…", "صفحة تطبيق Plervo…"),
++    ("Plervo Website…", "موقع Plervo…"),
      ("Attributes", "السمات"),
      ("Bevel and Emboss", "القطع المشطوف والنقش البارز"),
      ("Buttons", "أزرار"),
@@ -1590,7 +2389,7 @@ index 7695119..fadc1b9 100644
      ("Inspect Document", "فحص المستند"),
      ("Interface Color Theme", "نسق ألوان الواجهة"),
 -    ("Join the ArtCraft Discord…", "الانضمام إلى Discord الخاص بـ ArtCraft…"),
-+    ("Support Plervo", "الانضمام إلى Discord الخاص بـ ArtCraft…"),
++    ("Support Plervo", "الانضمام إلى Discord الخاص بـ Plervo…"),
      ("Last Object Below", "آخر كائن أسفل"),
      ("Library Contents", "محتويات المكتبة"),
      ("Library Items", "عناصر المكتبة"),
@@ -1604,7 +2403,7 @@ index 7695119..fadc1b9 100644
      ("Export EPUB (Reflowable", "تصدير EPUB (قابل لإعادة التدفق"),
      ("Hyperlinks & Cross-References", "الارتباطات التشعبية والمراجع المتقاطعة"),
 diff --git a/crates/ui-egui/src/i18n/it.rs b/crates/ui-egui/src/i18n/it.rs
-index 747511a..734cc48 100644
+index 747511a..972c954 100644
 --- a/crates/ui-egui/src/i18n/it.rs
 +++ b/crates/ui-egui/src/i18n/it.rs
 @@ -400,8 +400,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
@@ -1618,12 +2417,14 @@ index 747511a..734cc48 100644
      ("Accept All Changes", "Accetta tutte le modifiche"),
      ("Activate Document", "Attiva documento"),
      ("Add Anchor Point", "Aggiungi punto di ancoraggio"),
-@@ -433,7 +433,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -432,8 +432,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Sample Color (Eyedropper)", "Campiona colore (Contagocce)"),
      ("Apply Condition", "Applica condizione"),
      ("Apply Parent to Pages…", "Applica pagina mastro alle pagine…"),
-     ("ArtCraft App Page…", "Pagina dell'app ArtCraft…"),
+-    ("ArtCraft App Page…", "Pagina dell'app ArtCraft…"),
 -    ("ArtCraft Website…", "Sito web di ArtCraft…"),
-+    ("Plervo Website…", "Sito web di ArtCraft…"),
++    ("Plervo App Page…", "Pagina dell'app Plervo…"),
++    ("Plervo Website…", "Sito web di Plervo…"),
      ("Attributes", "Attributi"),
      ("Bevel and Emboss", "Smusso e rilievo"),
      ("Buttons", "Pulsanti"),
@@ -1643,7 +2444,7 @@ index 747511a..734cc48 100644
      ("Inspect Document", "Ispeziona documento"),
      ("Interface Color Theme", "Tema colore dell'interfaccia"),
 -    ("Join the ArtCraft Discord…", "Unisciti al Discord di ArtCraft…"),
-+    ("Support Plervo", "Unisciti al Discord di ArtCraft…"),
++    ("Support Plervo", "Unisciti al Discord di Plervo…"),
      ("Last Object Below", "Ultimo oggetto sotto"),
      ("Library Contents", "Contenuto libreria"),
      ("Library Items", "Elementi libreria"),
@@ -1656,6 +2457,29 @@ index 747511a..734cc48 100644
      ("Display Performance", "Prestazioni di visualizzazione"),
      ("Document Grid", "Griglia documento"),
      ("Document Recovery Data", "Dati di recupero documento"),
+@@ -865,11 +865,11 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Hyphens and Dashes", "Trattini e lineette"),
+     ("Interactive", "Interattivo"),
+     ("Invert", "Inverti"),
+-    ("Join the ArtCraft community", "Unisciti alla community ArtCraft"),
++    ("Join the Plervo community", "Unisciti alla community Plervo"),
+     ("Keyboard Increments", "Incrementi da tastiera"),
+     ("Liquid guides", "Guide liquide"),
+     ("Markers", "Indicatori"),
+-    ("More ArtCraft apps", "Altre app ArtCraft"),
++    ("More Plervo apps", "Altre app Plervo"),
+     ("Nested Line Styles", "Stili di riga nidificati"),
+     ("Nested Styles", "Stili nidificati"),
+     ("No articles: exports follow page order.", "Nessun articolo: le esportazioni seguono l'ordine delle pagine."),
+@@ -904,7 +904,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+         "Impaginazione per la stampa e lo schermo — veloce, aperta e automatizzabile con script.",
+     ),
+     ("Page · PPI", "Pagina · PPI"),
+-    ("Part of the ArtCraft suite of open creative tools.", "Parte della suite ArtCraft di strumenti creativi aperti."),
++    ("Part of the Plervo suite of open creative tools.", "Parte della suite Plervo di strumenti creativi aperti."),
+     ("Pasteboard Options", "Opzioni tavolo di montaggio"),
+     ("Paths", "Tracciati"),
+     ("Place the insertion point in a table, or create one.", "Posiziona il punto di inserimento in una tabella o creane una."),
 @@ -949,14 +949,14 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("User Dictionary (this document)", "Dizionario utente (questo documento)"),
      ("Utilities", "Utilità"),
@@ -1683,7 +2507,7 @@ index 747511a..734cc48 100644
      ("Overprint [Black] Swatch at 100%", "Sovrastampa campione [Nero] al 100%"),
      ("Printer's Marks", "Segni di stampa"),
 diff --git a/crates/ui-egui/src/i18n/ja.rs b/crates/ui-egui/src/i18n/ja.rs
-index 263d422..c870a5c 100644
+index 263d422..016c4b9 100644
 --- a/crates/ui-egui/src/i18n/ja.rs
 +++ b/crates/ui-egui/src/i18n/ja.rs
 @@ -402,8 +402,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
@@ -1697,12 +2521,14 @@ index 263d422..c870a5c 100644
      ("Accept All Changes", "すべての変更を採用"),
      ("Activate Document", "ドキュメントをアクティブ化"),
      ("Add Anchor Point", "アンカーポイントを追加"),
-@@ -432,7 +432,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -431,8 +431,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Sample Color (Eyedropper)", "カラーを抽出 (スポイト)"),
      ("Apply Condition", "条件を適用"),
      ("Apply Parent to Pages…", "ページに親ページを適用…"),
-     ("ArtCraft App Page…", "ArtCraft アプリページ…"),
+-    ("ArtCraft App Page…", "ArtCraft アプリページ…"),
 -    ("ArtCraft Website…", "ArtCraft ウェブサイト…"),
-+    ("Plervo Website…", "ArtCraft ウェブサイト…"),
++    ("Plervo App Page…", "Plervo アプリページ…"),
++    ("Plervo Website…", "Plervo ウェブサイト…"),
      ("Attributes", "属性"),
      ("Bevel and Emboss", "ベベルとエンボス"),
      ("Buttons", "ボタン"),
@@ -1722,7 +2548,7 @@ index 263d422..c870a5c 100644
      ("Inspect Document", "ドキュメントを調査"),
      ("Interface Color Theme", "インターフェイスのカラーテーマ"),
 -    ("Join the ArtCraft Discord…", "ArtCraft の Discord に参加…"),
-+    ("Support Plervo", "ArtCraft の Discord に参加…"),
++    ("Support Plervo", "Plervo の Discord に参加…"),
      ("Last Object Below", "最背面のオブジェクト"),
      ("Library Contents", "ライブラリの内容"),
      ("Library Items", "ライブラリの項目"),
@@ -1735,6 +2561,29 @@ index 263d422..c870a5c 100644
      ("Display Performance", "表示品質"),
      ("Document Grid", "ドキュメントグリッド"),
      ("Document Recovery Data", "ドキュメント復旧データ"),
+@@ -861,11 +861,11 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Hyphens and Dashes", "ハイフンとダッシュ"),
+     ("Interactive", "インタラクティブ"),
+     ("Invert", "反転"),
+-    ("Join the ArtCraft community", "ArtCraft コミュニティに参加"),
++    ("Join the Plervo community", "Plervo コミュニティに参加"),
+     ("Keyboard Increments", "キーボードの移動量"),
+     ("Liquid guides", "リキッドガイド"),
+     ("Markers", "マーカー"),
+-    ("More ArtCraft apps", "他の ArtCraft アプリ"),
++    ("More Plervo apps", "他の Plervo アプリ"),
+     ("Nested Line Styles", "入れ子行スタイル"),
+     ("Nested Styles", "入れ子スタイル"),
+     ("No articles: exports follow page order.", "アーティクルがありません。ページ順に書き出します。"),
+@@ -900,7 +900,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+         "印刷・画面向けの高速なページレイアウトツールです。オープンで、スクリプトにも対応します。",
+     ),
+     ("Page · PPI", "ページ・PPI"),
+-    ("Part of the ArtCraft suite of open creative tools.", "オープンな制作ツール群 ArtCraft の一部です。"),
++    ("Part of the Plervo suite of open creative tools.", "オープンな制作ツール群 Plervo の一部です。"),
+     ("Pasteboard Options", "ペーストボードのオプション"),
+     ("Paths", "パス"),
+     ("Place the insertion point in a table, or create one.", "表内に挿入位置を置くか、表を作成してください。"),
 @@ -945,14 +945,14 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("User Dictionary (this document)", "ユーザー辞書 (このドキュメント)"),
      ("Utilities", "ユーティリティ"),
@@ -1761,12 +2610,14 @@ index 263d422..c870a5c 100644
      ("Keep Violations", "段落保持の制約違反"),
      ("Overprint [Black] Swatch at 100%", "100% の「黒」スウォッチをオーバープリント"),
      ("Printer's Marks", "プリント用マーク"),
-@@ -1477,15 +1477,15 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -1476,16 +1476,16 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     // few field labels.
      ("Anchored Object Options", "アンカー付きオブジェクトのオプション"),
      ("Apply Parent to Pages", "ページに親ページを適用"),
-     ("ArtCraft App Page", "ArtCraft アプリページ"),
+-    ("ArtCraft App Page", "ArtCraft アプリページ"),
 -    ("ArtCraft Website", "ArtCraft ウェブサイト"),
-+    ("Plervo Website", "ArtCraft ウェブサイト"),
++    ("Plervo App Page", "Plervo アプリページ"),
++    ("Plervo Website", "Plervo ウェブサイト"),
      ("Check Spelling", "スペルチェック"),
      ("Corner Options", "角のオプション"),
      ("Create Guides", "ガイドを作成"),
@@ -1785,15 +2636,15 @@ index 263d422..c870a5c 100644
      ("Insert Math Expression", "数式を挿入"),
      ("Insert Pages", "ページを挿入"),
 -    ("Join the ArtCraft Discord", "ArtCraft の Discord に参加"),
-+    ("Support Plervo", "ArtCraft の Discord に参加"),
++    ("Support Plervo", "Plervo の Discord に参加"),
      ("Load DTD", "DTD を読み込み"),
      ("Load Swatches", "スウォッチを読み込み"),
      ("Margins and Columns", "マージン・段組"),
 diff --git a/crates/ui-egui/src/i18n/pt_br.rs b/crates/ui-egui/src/i18n/pt_br.rs
-index 3f955f6..a1974f7 100644
+index 3f955f6..6239b75 100644
 --- a/crates/ui-egui/src/i18n/pt_br.rs
 +++ b/crates/ui-egui/src/i18n/pt_br.rs
-@@ -150,9 +150,9 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -150,24 +150,24 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Hyperlinks", "Hiperlinks"),
      ("Bookmarks", "Indicadores"),
      ("Show All Menu Items", "Mostrar todos os itens de menu"),
@@ -1806,7 +2657,12 @@ index 3f955f6..a1974f7 100644
      ("Page layout for print and screen — fast, open and scriptable.", "Layout de página para impressão e tela — rápido, aberto e scriptável."),
      ("  New file  ", "  Novo arquivo  "),
      ("  Open  ", "  Abrir  "),
-@@ -164,10 +164,10 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("  Open sample magazine  ", "  Abrir revista de exemplo  "),
+     ("Start a new document", "Iniciar um novo documento"),
+     ("No document open", "Nenhum documento aberto"),
+-    ("Join the ArtCraft community", "Junte-se à comunidade ArtCraft"),
++    ("Join the Plervo community", "Junte-se à comunidade Plervo"),
+     (
          "Get help, share your layouts and shape what we build next.",
          "Obtenha ajuda, compartilhe seus layouts e ajude a moldar o que construímos em seguida.",
      ),
@@ -1819,10 +2675,35 @@ index 3f955f6..a1974f7 100644
      ("  OK  ", "  OK  "),
      ("Float panel", "Painel flutuante"),
      ("Dock panel", "Painel encaixado"),
+@@ -903,7 +903,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Merge into Active Layer", "Mesclar na camada ativa"),
+     ("Misspelled word → Correction (one per line):", "Palavra incorreta → Correção (uma por linha):"),
+     ("Mobile", "Dispositivo móvel"),
+-    ("More ArtCraft apps", "Mais aplicativos ArtCraft"),
++    ("More Plervo apps", "Mais aplicativos Plervo"),
+     ("Move Selection Here", "Mover a seleção para cá"),
+     ("Move to Color Group", "Mover para grupo de cores"),
+     ("Move to Group", "Mover para grupo"),
+@@ -948,7 +948,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Page Numbering", "Numeração de página"),
+     ("Page · PPI", "Página · PPI"),
+     ("Pages:", "Páginas:"),
+-    ("Part of the ArtCraft suite of open creative tools.", "Parte do conjunto ArtCraft de ferramentas criativas abertas."),
++    ("Part of the Plervo suite of open creative tools.", "Parte do conjunto Plervo de ferramentas criativas abertas."),
+     ("Pasteboard Options", "Opções da área de transferência"),
+     ("Path", "Caminho"),
+     ("Place the insertion point in a table, or create one.", "Coloque o ponto de inserção em uma tabela ou crie uma."),
 diff --git a/crates/ui-egui/src/i18n/uk.rs b/crates/ui-egui/src/i18n/uk.rs
-index efccfc1..27776db 100644
+index efccfc1..82ade93 100644
 --- a/crates/ui-egui/src/i18n/uk.rs
 +++ b/crates/ui-egui/src/i18n/uk.rs
+@@ -1,5 +1,5 @@
+ //! Ukrainian interface translations; publishing terms are reviewed in context.
+-//! Common phrases are adapted from the MIT OR Apache-2.0 ArtCraft sibling catalogs
++//! Common phrases are adapted from the MIT OR Apache-2.0 Plervo sibling catalogs
+ //! (VectorCraft, PhotoCraft, WordCraft and DeckCraft); see ASSETS.md for pinned sources.
+ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("File", "Файл"),
 @@ -403,8 +403,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Show / hide text with this condition", "Показати / приховати текст із цією умовою"),
      ("Spreads of up to 10 pages", "Розвороти до 10 сторінок"),
@@ -1834,12 +2715,14 @@ index efccfc1..27776db 100644
      ("Accept All Changes", "Прийняти всі зміни"),
      ("Activate Document", "Активувати документ"),
      ("Add Anchor Point", "Додати опорну точку"),
-@@ -436,7 +436,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -435,8 +435,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Sample Color (Eyedropper)", "Узяти колір (піпетка)"),
      ("Apply Condition", "Застосувати умову"),
      ("Apply Parent to Pages…", "Застосувати шаблон до сторінок…"),
-     ("ArtCraft App Page…", "Сторінка програми ArtCraft…"),
+-    ("ArtCraft App Page…", "Сторінка програми ArtCraft…"),
 -    ("ArtCraft Website…", "Вебсайт ArtCraft…"),
-+    ("Plervo Website…", "Вебсайт ArtCraft…"),
++    ("Plervo App Page…", "Сторінка програми Plervo…"),
++    ("Plervo Website…", "Вебсайт Plervo…"),
      ("Attributes", "Атрибути"),
      ("Bevel and Emboss", "Скіс і рельєф"),
      ("Buttons", "Кнопки"),
@@ -1859,7 +2742,7 @@ index efccfc1..27776db 100644
      ("Inspect Document", "Перевірити документ"),
      ("Interface Color Theme", "Колірна тема інтерфейсу"),
 -    ("Join the ArtCraft Discord…", "Приєднатися до Discord ArtCraft…"),
-+    ("Support Plervo", "Приєднатися до Discord ArtCraft…"),
++    ("Support Plervo", "Приєднатися до Discord Plervo…"),
      ("Last Object Below", "Останній об’єкт нижче"),
      ("Library Contents", "Вміст бібліотеки"),
      ("Library Items", "Елементи бібліотеки"),
@@ -1872,6 +2755,29 @@ index efccfc1..27776db 100644
      ("Display Performance", "Якість відображення"),
      ("Document Grid", "Сітка документа"),
      ("Document Recovery Data", "Дані відновлення документа"),
+@@ -865,11 +865,11 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Hyphens and Dashes", "Дефіси та тире"),
+     ("Interactive", "Інтерактивність"),
+     ("Invert", "Інвертувати"),
+-    ("Join the ArtCraft community", "Приєднатися до спільноти ArtCraft"),
++    ("Join the Plervo community", "Приєднатися до спільноти Plervo"),
+     ("Keyboard Increments", "Кроки переміщення клавішами"),
+     ("Liquid guides", "Напрямні гнучкого макета"),
+     ("Markers", "Маркери"),
+-    ("More ArtCraft apps", "Інші програми ArtCraft"),
++    ("More Plervo apps", "Інші програми Plervo"),
+     ("Nested Line Styles", "Вкладені стилі рядків"),
+     ("Nested Styles", "Вкладені стилі"),
+     ("No articles: exports follow page order.", "Немає статей: експорт дотримується порядку сторінок."),
+@@ -901,7 +901,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+     ("Page Numbering", "Нумерація сторінок"),
+     ("Page layout for print and screen — fast, open and scriptable.", "Верстка для друку й екрана — швидка, відкрита, зі сценаріями."),
+     ("Page · PPI", "Сторінка · PPI"),
+-    ("Part of the ArtCraft suite of open creative tools.", "Частина набору відкритих творчих інструментів ArtCraft."),
++    ("Part of the Plervo suite of open creative tools.", "Частина набору відкритих творчих інструментів Plervo."),
+     ("Pasteboard Options", "Параметри монтажного столу"),
+     ("Paths", "Контури"),
+     ("Place the insertion point in a table, or create one.", "Установіть курсор у таблиці або створіть її."),
 @@ -946,14 +946,14 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("User Dictionary (this document)", "Словник користувача (цей документ)"),
      ("Utilities", "Допоміжні інструменти"),
@@ -1909,7 +2815,7 @@ index c934643..4eed0aa 100644
  //! Icons are designed on a 20×20 grid and scaled to the target rect.
  
 diff --git a/crates/ui-egui/src/lib.rs b/crates/ui-egui/src/lib.rs
-index 1db2f59..e807ee0 100644
+index 1db2f59..75b54c9 100644
 --- a/crates/ui-egui/src/lib.rs
 +++ b/crates/ui-egui/src/lib.rs
 @@ -1,4 +1,4 @@
@@ -1927,6 +2833,15 @@ index 1db2f59..e807ee0 100644
      pub about: bool,
      /// The About window's tab: 0 About, 1 Contributors, 2 Models (`about::ABOUT_TABS`).
      #[serde(skip)]
+@@ -327,7 +327,7 @@ impl Default for UiState {
+             proof_colors: false,
+             proof_setup: Default::default(),
+             dynamic_spelling: false,
+-            language: String::new(),
++            language: i18n::default_language(),
+             flattener: String::new(),
+             pdf_export: PdfExportSettings::default(),
+             separation: None,
 @@ -1364,7 +1364,7 @@ impl DesignApp {
      }
  }
@@ -1937,7 +2852,7 @@ index 1db2f59..e807ee0 100644
  pub fn opens_as_document(name: &str) -> bool {
      let n = name.to_ascii_lowercase();
 diff --git a/crates/ui-egui/src/menus.rs b/crates/ui-egui/src/menus.rs
-index dc8b88b..59fd429 100644
+index dc8b88b..f9456c2 100644
 --- a/crates/ui-egui/src/menus.rs
 +++ b/crates/ui-egui/src/menus.rs
 @@ -11,7 +11,7 @@ pub const UI_COMMANDS: &[(&str, &str, Option<&str>, &str)] = &[
@@ -1963,7 +2878,7 @@ index dc8b88b..59fd429 100644
 -    ("help.website", "ArtCraft Website…", None, "{} — opens https://getartcraft.com"),
 -    ("help.app", "ArtCraft App Page…", None, "{app} — opens https://getartcraft.com/apps/{app} (e.g. photocraft)"),
 +    ("help.website", "Plervo Website…", None, "{} — opens https://plervo.com"),
-+    ("help.app", "ArtCraft App Page…", None, "{app} — opens https://plervo.com/apps/{app} (e.g. photocraft)"),
++    ("help.app", "Plervo App Page…", None, "{app} — opens https://plervo.com/apps/{app} (e.g. photocraft)"),
      (
          "help.about",
 -        "About DesignCraft",

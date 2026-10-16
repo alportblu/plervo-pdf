@@ -1,5 +1,5 @@
 diff --git a/ATTRIBUTION.md b/ATTRIBUTION.md
-index 36678d8..986bb53 100644
+index 36678d8..b2a681b 100644
 --- a/ATTRIBUTION.md
 +++ b/ATTRIBUTION.md
 @@ -2,39 +2,12 @@
@@ -42,7 +42,7 @@ index 36678d8..986bb53 100644
  | `docs/images/hero-sales.png` | GridCraft contributors | screenshot of GridCraft rendered offscreen (`crates/ui-egui/examples/snapshot.rs`) showing an original sample workbook | MIT OR Apache-2.0 | README screenshot; no third-party content |
  | `docs/images/budget.png` | GridCraft contributors | screenshot of GridCraft rendered offscreen (`crates/ui-egui/examples/snapshot.rs`) showing an original sample workbook | MIT OR Apache-2.0 | README screenshot; no third-party content |
  | `docs/images/grades-formulas.png` | GridCraft contributors | screenshot of GridCraft rendered offscreen (`crates/ui-egui/examples/snapshot.rs`) showing an original sample workbook | MIT OR Apache-2.0 | README screenshot; no third-party content |
-@@ -42,3 +15,25 @@ Generated-in-code art is original and has no file to list: the UI icon set (`cra
+@@ -42,3 +15,29 @@ Generated-in-code art is original and has no file to list: the UI icon set (`cra
  | `docs/images/pivot.png` | GridCraft contributors | screenshot of GridCraft rendered offscreen (`crates/ui-egui/examples/snapshot.rs`) showing an original sample workbook | MIT OR Apache-2.0 | README screenshot; no third-party content |
  | `docs/images/format-chart.png` | GridCraft contributors | screenshot of GridCraft rendered offscreen (`crates/ui-egui/examples/snapshot.rs`) showing an original sample workbook | MIT OR Apache-2.0 | README screenshot; no third-party content |
  | `docs/images/page-break.png` | GridCraft contributors | screenshot of GridCraft rendered offscreen (`crates/ui-egui/examples/snapshot.rs`) showing an original sample workbook | MIT OR Apache-2.0 | README screenshot; no third-party content |
@@ -68,6 +68,10 @@ index 36678d8..986bb53 100644
 +| `assets/app-icon/plervo-sheets.icns` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 54c6a3d242a05db62a2273af07bd0a80c3343440692bf29fa3e685b92e0e8442 |
 +| `assets/app-icon/plervo-sheets.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 27185841e89dd9e25f91ab230429d14a4aea963d9634e32d1e5cf43a6d8d750c |
 +| `assets/app-icon/plervo-sheets.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 fed93468774ab8659dd981245ddfc87d21b1a00ffef5e93f1cfe6209a9ea6291 |
++
++| `assets/app-icon/README.md` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | 77e7cc78fe8e6b8bc4fde5ce9158e286fdde4f5892a0716511acce251167ca25 |
++
++| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | 77e7cc78fe8e6b8bc4fde5ce9158e286fdde4f5892a0716511acce251167ca25 |
 diff --git a/Cargo.lock b/Cargo.lock
 index 6d618a0..310f891 100644
 --- a/Cargo.lock
@@ -1096,12 +1100,15 @@ index 83478ed..2b98c42 100644
  /// `PATH`). Without a matching `dxil.dll` beside it, DXC prints "DXIL signing library not found",
  /// wgpu treats that warning as a compile error, its internal compute pipelines fail, the device is
 diff --git a/apps/gridcraft/src/logging.rs b/apps/gridcraft/src/logging.rs
-index e3b56a8..b412f16 100644
+index e3b56a8..cc0a9f9 100644
 --- a/apps/gridcraft/src/logging.rs
 +++ b/apps/gridcraft/src/logging.rs
-@@ -8,7 +8,7 @@
+@@ -6,9 +6,9 @@
+ //! `<settings dir>/logs/gridcraft.log`, next to `ui.json` and `prefs.json` (`config_dir` in
+ //! `main.rs`). Each start moves the previous log to `gridcraft.1.log` (and that one to `.2`), so
  //! the log of a run that crashed survives the next launch. Runs without preferences
- //! (`GRIDCRAFT_NO_PREFS`) log to standard error only.
+-//! (`GRIDCRAFT_NO_PREFS`) log to standard error only.
++//! (`PLERVO_SHEETS_NO_PREFS`) log to standard error only.
  //!
 -//! Levels: `info` for GridCraft's own crates, `warn` for everything else (wgpu and naga are
 +//! Levels: `info` for Plervo Sheets's own crates, `warn` for everything else (wgpu and naga are
@@ -1118,7 +1125,7 @@ index e3b56a8..b412f16 100644
  use std::fs::File;
  use std::io::Write;
 diff --git a/apps/gridcraft/src/main.rs b/apps/gridcraft/src/main.rs
-index 7c0eb04..59241bc 100644
+index 7c0eb04..12c6cf8 100644
 --- a/apps/gridcraft/src/main.rs
 +++ b/apps/gridcraft/src/main.rs
 @@ -1,4 +1,4 @@
@@ -1127,7 +1134,7 @@ index 7c0eb04..59241bc 100644
  //!
  //! Usage: `gridcraft [--control <port>] [--sample <name>] [files…]`
  //!
-@@ -75,14 +75,14 @@ impl eframe::App for App {
+@@ -75,21 +75,21 @@ impl eframe::App for App {
  
  fn config_dir() -> Option<std::path::PathBuf> {
      if cfg!(target_os = "macos") {
@@ -1145,6 +1152,15 @@ index 7c0eb04..59241bc 100644
      }
  }
  
+-/// Runs without preferences (`GRIDCRAFT_NO_PREFS`, agents' test runs) neither read nor write
++/// Runs without preferences (`PLERVO_SHEETS_NO_PREFS`, agents' test runs) neither read nor write
+ /// them, and keep no log file.
+ fn prefs_enabled() -> bool {
+-    std::env::var_os("GRIDCRAFT_NO_PREFS").is_none()
++    std::env::var_os("PLERVO_SHEETS_NO_PREFS").is_none()
+ }
+ 
+ /// Where the log files live: `logs` in the settings folder, next to `ui.json` (see `logging`).
 @@ -224,7 +224,7 @@ fn icon() -> Option<egui::IconData> {
      #[cfg(target_os = "macos")]
      let bytes = include_bytes!("../../../assets/app-icon/gridcraft-macos-512.png");
@@ -1266,6 +1282,232 @@ index e713f66..49cd5e5 100644
      assert_eq!(nsapp.windowsMenu().map(|m| m.title().to_string()).as_deref(), Some("Window"), "AppKit knows the Window menu");
  
      println!("mac_menu_appkit: ok");
+diff --git a/assets/app-icon/LICENSE.txt b/assets/app-icon/LICENSE.txt
+index 28d1656..a96d0b6 100644
+--- a/assets/app-icon/LICENSE.txt
++++ b/assets/app-icon/LICENSE.txt
+@@ -1,13 +1,6 @@
+-GridCraft app icon (gridcraft.svg and every file derived from it in this directory:
+-gridcraft-1024.png, gridcraft-macos-512.png, gridcraft.icns, gridcraft.ico, hicolor/).
++# Plervo Sheets application icons
+ 
+-PLACEHOLDER artwork: original work written for this project by GridCraft contributors (simple
+-hand-written SVG geometry). No third-party material. Licensed like the rest of GridCraft, under
+-either of
++Original artwork by Plervo contributors, 2026. Licensed under MIT OR Apache-2.0; see the complete LICENSE-MIT and LICENSE-APACHE files at the repository root.
+ 
+-  * Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
+-  * MIT license (https://opensource.org/licenses/MIT)
+-
+-at your option.
+-
+-Regenerate the derived files with packaging/icons.sh.
++Source vectors and platform variants: https://github.com/alportblu/plervo-pdf/tree/feat/app-family/assets/products/sheets
++These icons replace the upstream product artwork. Engine code and other assets retain their original notices.
+diff --git a/assets/app-icon/README.md b/assets/app-icon/README.md
+index fdf0b0e..a96d0b6 100644
+--- a/assets/app-icon/README.md
++++ b/assets/app-icon/README.md
+@@ -1,52 +1,6 @@
+-# GridCraft app icon (PLACEHOLDER)
++# Plervo Sheets application icons
+ 
+-**This icon is temporary.** Every Crafting App's icon is an engraved creature portrait that the
+-product owner makes (craftrules `standards/icon-design.md`); GridCraft's hasn't been made yet.
+-Until it is, this placeholder stands in: a simple ledger page with a header row, a row-number
+-column, a selected cell with its fill handle and a double rule under a total, on a full-bleed
+-GridCraft-green tile. It is original geometry written by hand for this repository, deliberately
+-not modelled on any vendor's spreadsheet logo (no letters, no "X", no overlapping panels).
++Original artwork by Plervo contributors, 2026. Licensed under MIT OR Apache-2.0; see the complete LICENSE-MIT and LICENSE-APACHE files at the repository root.
+ 
+-When the owner's art arrives, replace `gridcraft.svg`, run `packaging/icons.sh`, update this
+-README (provenance, creature) and the rows in `ATTRIBUTION.md`, and drop the word placeholder.
+-
+-## Palette
+-
+-Exactly three colours:
+-
+-| Colour | Hex | Used for |
+-|---|---|---|
+-| Ink | `#0b0b0c` | Line work and contour |
+-| Paper | `#efe9dc` | The page |
+-| GridCraft green (app colour, **proposed**) | `#1f9d55` | The full-bleed field and the header cells |
+-
+-The app colour is a proposal pending the owner's approval: GridCraft green `#1f9d55`, with ink
+-(darker) variant `#147a40` for text and accents on light backgrounds. It differs from
+-DesignCraft's `#7bb51c`.
+-
+-## Geometry
+-
+-A 512 × 512 viewBox, clipped to a rounded square with `rx=112`. Windows and Linux use the full
+-tile. The macOS icons (`.icns`, `gridcraft-macos-512.png`) sit on Apple's grid: an 824/1024
+-body with a transparent margin.
+-
+-## Files
+-
+-| File | Use |
+-|---|---|
+-| `gridcraft.svg` | Canonical artwork; also `hicolor/scalable` |
+-| `gridcraft-1024.png` | 1024 px render of the full tile |
+-| `gridcraft-macos-512.png` | Runtime Dock icon on macOS (for `apps/gridcraft` to embed) |
+-| `gridcraft.icns` | macOS bundle icon (`CFBundleIconFile`) |
+-| `gridcraft.ico` | Windows exe icon, 16–256 px (embedded by `apps/gridcraft/build.rs`) |
+-| `hicolor/<size>/apps/ai.storyteller.gridcraft.png` | Linux icon theme, 16–512 px; the 256 px one is also the runtime window icon on Windows and Linux |
+-| `hicolor/scalable/apps/ai.storyteller.gridcraft.svg` | Linux scalable icon |
+-| `LICENSE.txt` | MIT OR Apache-2.0 |
+-
+-The app ID is `ai.storyteller.gridcraft`. It's used for the hicolor icon names, the Wayland app
+-ID and `packaging/linux/ai.storyteller.gridcraft.desktop`.
+-
+-## Regenerate
+-
+-Edit `gridcraft.svg`, then run `packaging/icons.sh`. It needs `resvg`, and `iconutil` for the
+-`.icns` (macOS only). It packs the `.ico` with `cargo xtask ico`.
++Source vectors and platform variants: https://github.com/alportblu/plervo-pdf/tree/feat/app-family/assets/products/sheets
++These icons replace the upstream product artwork. Engine code and other assets retain their original notices.
+diff --git a/crates/calc/Cargo.toml b/crates/calc/Cargo.toml
+index 8f1bd12..b7f8bad 100644
+--- a/crates/calc/Cargo.toml
++++ b/crates/calc/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "GridCraft calculation engine: dependency graph, recalculation, evaluator, dynamic arrays"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/chart/Cargo.toml b/crates/chart/Cargo.toml
+index 7b1976c..a0b73dc 100644
+--- a/crates/chart/Cargo.toml
++++ b/crates/chart/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "GridCraft charts: data resolution, layout into toolkit-free primitives, sparklines and a small rasteriser"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/core/Cargo.toml b/crates/core/Cargo.toml
+index 1decf62..d0298a9 100644
+--- a/crates/core/Cargo.toml
++++ b/crates/core/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "GridCraft core types: cell addresses, values, errors, date serials"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/engine/Cargo.toml b/crates/engine/Cargo.toml
+index e8ea91c..499f10e 100644
+--- a/crates/engine/Cargo.toml
++++ b/crates/engine/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "GridCraft engine: sessions, commands, history, clipboard, fill, sort, filter"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/formula/Cargo.toml b/crates/formula/Cargo.toml
+index e1b0ca7..94bde7b 100644
+--- a/crates/formula/Cargo.toml
++++ b/crates/formula/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "GridCraft formula language: lexer, parser, printer and reference adjustment"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/functions/Cargo.toml b/crates/functions/Cargo.toml
+index 97f51c2..041a893 100644
+--- a/crates/functions/Cargo.toml
++++ b/crates/functions/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "GridCraft worksheet function library: math, statistics, text, dates, lookup, financial, engineering"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/mcp/Cargo.toml b/crates/mcp/Cargo.toml
+index d634166..9158bb0 100644
+--- a/crates/mcp/Cargo.toml
++++ b/crates/mcp/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "GridCraft MCP server: JSON-RPC 2.0 over stdio, driving a running app or a headless session"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/model/Cargo.toml b/crates/model/Cargo.toml
+index 761cf00..dcc511d 100644
+--- a/crates/model/Cargo.toml
++++ b/crates/model/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "GridCraft document model: workbooks, sheets, cells, styles, tables, charts"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/numfmt/Cargo.toml b/crates/numfmt/Cargo.toml
+index 01a059d..1880384 100644
+--- a/crates/numfmt/Cargo.toml
++++ b/crates/numfmt/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "GridCraft number formats: Excel format codes, General display, TEXT()"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/pdf/Cargo.toml b/crates/pdf/Cargo.toml
+index 6cb0d2e..f3894ee 100644
+--- a/crates/pdf/Cargo.toml
++++ b/crates/pdf/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "GridCraft's tiny self-contained PDF 1.7 writer (standard 14 fonts, vector drawing, RGBA images)"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/ui-egui/Cargo.toml b/crates/ui-egui/Cargo.toml
+index 85a24dd..2b12f52 100644
+--- a/crates/ui-egui/Cargo.toml
++++ b/crates/ui-egui/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "GridCraft egui frontend (Excel-style UI); swappable — nothing below depends on it"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/crates/ui-egui/examples/snapshot.rs b/crates/ui-egui/examples/snapshot.rs
 index a171199..a328f3a 100644
 --- a/crates/ui-egui/examples/snapshot.rs
@@ -1505,7 +1747,7 @@ index 1902ad3..d3e28be 100644
          "Add Chart\nElement" => "차트\n요소 추가",
          "Change\nChart Type" => "차트 종류\n변경",
 diff --git a/crates/ui-egui/src/i18n/pt.rs b/crates/ui-egui/src/i18n/pt.rs
-index fb9236c..a82e493 100644
+index fb9236c..9e507b5 100644
 --- a/crates/ui-egui/src/i18n/pt.rs
 +++ b/crates/ui-egui/src/i18n/pt.rs
 @@ -228,7 +228,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
@@ -1531,7 +1773,7 @@ index fb9236c..a82e493 100644
          "Models" => "Modelos",
          "Version {version}" => "Versão {version}",
 -        "Join the ArtCraft Discord" => "Participe do Discord da ArtCraft",
-+        "Support Plervo" => "Participe do Discord da ArtCraft",
++        "Support Plervo" => "Participe do Discord da Plervo",
          "This workbook has no scripts or macros." => "Esta pasta de trabalho não tem scripts nem macros.",
          "(unnamed)" => "(sem nome)",
          "— VBA project (preserved, not run)" => "— Projeto VBA (preservado, não executado)",
@@ -1823,6 +2065,19 @@ index 08f83b5..2c64b7a 100644
      clipboard.borrow_mut().0.clear();
      h.state_mut().run("selection.set", json!({"cell": "B12"})).unwrap();
      h.get_by_role_and_label(Role::Button, "Paste").click();
+diff --git a/crates/xlsx/Cargo.toml b/crates/xlsx/Cargo.toml
+index b53a448..8f36ce9 100644
+--- a/crates/xlsx/Cargo.toml
++++ b/crates/xlsx/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ description = "GridCraft file formats: XLSX (SpreadsheetML) and CSV import/export"
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/packaging/env.sh b/packaging/env.sh
 index bacb167..3778dca 100644
 --- a/packaging/env.sh

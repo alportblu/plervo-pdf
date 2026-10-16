@@ -121,6 +121,10 @@ pub fn run(args: &[String]) -> Result<()> {
         ["--prepare", name, checkout] => {
             let product = products.iter().find(|p| p.product == *name).context("unknown product")?;
             let checkout = Path::new(checkout).canonicalize()?;
+            ensure!(
+                Path::new(&git_output(&checkout, &["rev-parse", "--show-toplevel"])?).canonicalize()? == checkout,
+                "checkout must be a repository root"
+            );
             ensure!(git_output(&checkout, &["rev-parse", "HEAD"])? == product.commit, "checkout does not match the reviewed upstream pin");
             ensure!(
                 git_output(&checkout, &["status", "--porcelain", "--untracked-files=all"])?.is_empty(),
@@ -159,6 +163,9 @@ pub fn run(args: &[String]) -> Result<()> {
                     "qualification":"internal candidate; not approved for distribution"
                 }))?,
             )?;
+            // Upstream asset gates inspect the Git index. Stage this fresh, prepared snapshot
+            // so removed original brand files are not mistaken for files still being shipped.
+            git_output(&checkout, &["add", "--all"])?;
             println!("Prepared {} from {}; no app was installed or published.", product.name, product.commit);
         }
         _ => bail!("usage: cargo xtask products [--matrix | --prepare PRODUCT CLEAN_CHECKOUT]"),

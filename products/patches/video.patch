@@ -1,5 +1,5 @@
 diff --git a/ATTRIBUTION.md b/ATTRIBUTION.md
-index 2b69cb0..c6a3085 100644
+index 2b69cb0..f282af0 100644
 --- a/ATTRIBUTION.md
 +++ b/ATTRIBUTION.md
 @@ -32,24 +32,7 @@ iconography, images or other Adobe assets; open licences only; every asset attri
@@ -47,7 +47,7 @@ index 2b69cb0..c6a3085 100644
  
  ## Third-party source code
  
-@@ -168,3 +142,26 @@ SHA-256 (`crates/speech/src/models.rs`, `docs/transcripts.md`).
+@@ -168,3 +142,34 @@ SHA-256 (`crates/speech/src/models.rs`, `docs/transcripts.md`).
  | Asset | Author | Source | Licence |
  |---|---|---|---|
  | Whisper tiny / base / small speech-recognition weights (`model.safetensors`, `config.json`, `generation_config.json`, `tokenizer.json`) | OpenAI | `https://huggingface.co/openai/whisper-{tiny,base,small}` (revisions `169d4a43…`, `e37978b9…`, `973afd24…`); weights released with `https://github.com/openai/whisper` | MIT (weights and code, github.com/openai/whisper); the Hugging Face conversion is labelled Apache-2.0 |
@@ -74,23 +74,55 @@ index 2b69cb0..c6a3085 100644
 +| `assets/app-icon/plervo-video.icns` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 b95da7c6f158ea306a2da65d757d3e9167d0efde7fb98f7353773a4fa8f7ee63 |
 +| `assets/app-icon/plervo-video.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 a7c25b4596e5f60a303f368ad92e7c7c98526b130290de6145d9a74fc327d6fe |
 +| `assets/app-icon/plervo-video.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 f2890ee1861e616c91361c1db56dcadf75ae56454299c2c81be9f1fdbe10cfcd |
++
++| `assets/app-icon/README.md` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | b0c6434f65927f52e7a3178f1e9cfdb6070ac09bcdf0a25f964ef25d1dfd5f4e |
++
++| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | b0c6434f65927f52e7a3178f1e9cfdb6070ac09bcdf0a25f964ef25d1dfd5f4e |
++
++| `apps/filmcraft-web/web/favicon.png` | Brandon Thomas (FilmCraft owner) | Original work: FilmCraft app icon (owl with ear tufts), drawn by the owner in ArtCraft and vectorised; 128 px | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) |
++
++| `packaging/macos/dmg/background.svg` | @XusBadia | Original work: FilmCraft macOS DMG window background, derived from the FilmCraft app icon (`assets/app-icon/filmcraft.svg`); rendered to `background.tiff` by `packaging/macos/dmg/generate.py` | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) |
 diff --git a/Cargo.lock b/Cargo.lock
-index e50797e..5976345 100644
+index e50797e..e8c306a 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -1673,8 +1673,8 @@ dependencies = [
+@@ -1672,42 +1672,9 @@ dependencies = [
+  "rustc_version",
  ]
  
- [[package]]
+-[[package]]
 -name = "filmcraft"
 -version = "0.8.0"
-+name = "plervo-video"
-+version = "0.1.0-alpha.4"
- dependencies = [
-  "arboard",
-  "chrono",
-@@ -1707,7 +1707,7 @@ dependencies = [
- 
+-dependencies = [
+- "arboard",
+- "chrono",
+- "cpal",
+- "eframe",
+- "egui",
+- "filmcraft-engine",
+- "filmcraft-export",
+- "filmcraft-gpu",
+- "filmcraft-platform",
+- "filmcraft-project",
+- "filmcraft-render",
+- "filmcraft-time",
+- "filmcraft-ui-egui",
+- "glob",
+- "log",
+- "muda",
+- "objc2 0.6.4",
+- "objc2-app-kit 0.3.2",
+- "objc2-foundation 0.3.2",
+- "open",
+- "pollster 0.4.0",
+- "rfd",
+- "serde_json",
+- "sys-locale",
+- "winit",
+- "winresource",
+- "zbus",
+-]
+-
  [[package]]
  name = "filmcraft-aac"
 -version = "0.8.0"
@@ -98,7 +130,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
-@@ -1717,7 +1717,7 @@ dependencies = [
+@@ -1717,7 +1684,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-ac3"
@@ -107,7 +139,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-testkit",
   "thiserror 2.0.21",
-@@ -1725,7 +1725,7 @@ dependencies = [
+@@ -1725,7 +1692,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-apv"
@@ -116,7 +148,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
-@@ -1735,14 +1735,14 @@ dependencies = [
+@@ -1735,14 +1702,14 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-audio-dsp"
@@ -133,7 +165,7 @@ index e50797e..5976345 100644
  dependencies = [
   "base64 0.22.1",
   "filmcraft-engine",
-@@ -1758,7 +1758,7 @@ dependencies = [
+@@ -1758,7 +1725,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-av1"
@@ -142,7 +174,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
-@@ -1769,21 +1769,21 @@ dependencies = [
+@@ -1769,21 +1736,21 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-avi"
@@ -167,22 +199,34 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-color",
   "filmcraft-project",
-@@ -1796,11 +1796,11 @@ dependencies = [
+@@ -1796,33 +1763,11 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-cfb"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
- 
- [[package]]
+-
+-[[package]]
 -name = "filmcraft-cli"
 -version = "0.8.0"
-+name = "plervo-video-cli"
+-dependencies = [
+- "filmcraft-automation",
+- "filmcraft-codecs",
+- "filmcraft-engine",
+- "filmcraft-export",
+- "filmcraft-gpu",
+- "filmcraft-media",
+- "filmcraft-mpegts",
+- "filmcraft-mxf",
+- "filmcraft-ogg",
+- "filmcraft-platform",
+- "filmcraft-project",
+- "filmcraft-render",
+- "filmcraft-testkit",
+- "filmcraft-time",
+- "serde_json",
+- "tokio",
+-]
 +version = "0.1.0-alpha.4"
- dependencies = [
-  "filmcraft-automation",
-  "filmcraft-codecs",
-@@ -1822,7 +1822,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-codecs"
@@ -191,7 +235,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-aac",
   "filmcraft-ac3",
-@@ -1860,7 +1860,7 @@ dependencies = [
+@@ -1860,7 +1805,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-color"
@@ -200,7 +244,7 @@ index e50797e..5976345 100644
  dependencies = [
   "proptest",
   "serde",
-@@ -1868,7 +1868,7 @@ dependencies = [
+@@ -1868,7 +1813,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-dng"
@@ -209,7 +253,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-dng",
   "rayon",
-@@ -1877,7 +1877,7 @@ dependencies = [
+@@ -1877,7 +1822,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-dnx"
@@ -218,7 +262,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
-@@ -1887,7 +1887,7 @@ dependencies = [
+@@ -1887,7 +1832,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-edit"
@@ -227,7 +271,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-geom",
   "filmcraft-media",
-@@ -1900,7 +1900,7 @@ dependencies = [
+@@ -1900,7 +1845,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-engine"
@@ -236,7 +280,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-audio-dsp",
   "filmcraft-captions",
-@@ -1934,7 +1934,7 @@ dependencies = [
+@@ -1934,7 +1879,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-export"
@@ -245,7 +289,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-aac",
   "filmcraft-apv",
-@@ -1965,7 +1965,7 @@ dependencies = [
+@@ -1965,7 +1910,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-flac"
@@ -254,7 +298,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
-@@ -1974,7 +1974,7 @@ dependencies = [
+@@ -1974,7 +1919,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-format"
@@ -263,7 +307,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-media",
   "filmcraft-project",
-@@ -1987,7 +1987,7 @@ dependencies = [
+@@ -1987,7 +1932,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-frame"
@@ -272,7 +316,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-color",
   "filmcraft-time",
-@@ -1997,7 +1997,7 @@ dependencies = [
+@@ -1997,7 +1942,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-geom"
@@ -281,7 +325,7 @@ index e50797e..5976345 100644
  dependencies = [
   "proptest",
   "serde",
-@@ -2005,7 +2005,7 @@ dependencies = [
+@@ -2005,7 +1950,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-golden"
@@ -290,7 +334,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-color",
   "filmcraft-frame",
-@@ -2022,7 +2022,7 @@ dependencies = [
+@@ -2022,7 +1967,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-gpu"
@@ -299,7 +343,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-color",
   "filmcraft-export",
-@@ -2041,7 +2041,7 @@ dependencies = [
+@@ -2041,7 +1986,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-h264"
@@ -308,7 +352,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
-@@ -2051,7 +2051,7 @@ dependencies = [
+@@ -2051,7 +1996,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-h264enc"
@@ -317,7 +361,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
-@@ -2061,7 +2061,7 @@ dependencies = [
+@@ -2061,7 +2006,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-hevc"
@@ -326,7 +370,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
-@@ -2071,7 +2071,7 @@ dependencies = [
+@@ -2071,7 +2016,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-interchange"
@@ -335,7 +379,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-cfb",
   "filmcraft-color",
-@@ -2088,7 +2088,7 @@ dependencies = [
+@@ -2088,7 +2033,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-isobmff"
@@ -344,7 +388,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
-@@ -2099,7 +2099,7 @@ dependencies = [
+@@ -2099,7 +2044,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-matroska"
@@ -353,7 +397,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-testkit",
   "serde_json",
-@@ -2107,7 +2107,7 @@ dependencies = [
+@@ -2107,7 +2052,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-media"
@@ -362,7 +406,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-color",
   "filmcraft-dng",
-@@ -2123,7 +2123,7 @@ dependencies = [
+@@ -2123,7 +2068,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-mpa"
@@ -371,7 +415,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
-@@ -2132,7 +2132,7 @@ dependencies = [
+@@ -2132,7 +2077,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-mpeg2v"
@@ -380,7 +424,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-testkit",
   "rayon",
-@@ -2141,7 +2141,7 @@ dependencies = [
+@@ -2141,7 +2086,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-mpegts"
@@ -389,7 +433,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-testkit",
   "thiserror 2.0.21",
-@@ -2149,28 +2149,28 @@ dependencies = [
+@@ -2149,28 +2094,28 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-mxf"
@@ -422,7 +466,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-codecs",
-@@ -2196,7 +2196,7 @@ dependencies = [
+@@ -2196,7 +2141,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-project"
@@ -431,7 +475,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-color",
   "filmcraft-geom",
-@@ -2210,7 +2210,7 @@ dependencies = [
+@@ -2210,7 +2155,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-prores"
@@ -440,7 +484,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
-@@ -2220,7 +2220,7 @@ dependencies = [
+@@ -2220,7 +2165,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-render"
@@ -449,7 +493,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-audio-dsp",
   "filmcraft-captions",
-@@ -2240,7 +2240,7 @@ dependencies = [
+@@ -2240,7 +2185,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-scopes"
@@ -458,7 +502,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-color",
   "serde",
-@@ -2249,7 +2249,7 @@ dependencies = [
+@@ -2249,7 +2194,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-speech"
@@ -467,7 +511,7 @@ index e50797e..5976345 100644
  dependencies = [
   "candle-core",
   "candle-nn",
-@@ -2267,14 +2267,14 @@ dependencies = [
+@@ -2267,14 +2212,14 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-testkit"
@@ -484,7 +528,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-color",
   "harfrust",
-@@ -2286,7 +2286,7 @@ dependencies = [
+@@ -2286,7 +2231,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-time"
@@ -493,7 +537,7 @@ index e50797e..5976345 100644
  dependencies = [
   "proptest",
   "serde",
-@@ -2294,7 +2294,7 @@ dependencies = [
+@@ -2294,7 +2239,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-tts"
@@ -502,7 +546,7 @@ index e50797e..5976345 100644
  dependencies = [
   "candle-core",
   "candle-nn",
-@@ -2308,7 +2308,7 @@ dependencies = [
+@@ -2308,7 +2253,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-tts-text"
@@ -511,7 +555,7 @@ index e50797e..5976345 100644
  dependencies = [
   "serde",
   "thiserror 2.0.21",
-@@ -2316,7 +2316,7 @@ dependencies = [
+@@ -2316,7 +2261,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-ui-egui"
@@ -520,7 +564,7 @@ index e50797e..5976345 100644
  dependencies = [
   "cpu-time",
   "craft-ui",
-@@ -2355,14 +2355,14 @@ dependencies = [
+@@ -2355,14 +2300,14 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-vp8"
@@ -537,7 +581,7 @@ index e50797e..5976345 100644
  dependencies = [
   "filmcraft-bitstream",
   "rayon",
-@@ -2371,7 +2371,7 @@ dependencies = [
+@@ -2371,7 +2316,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-web"
@@ -546,7 +590,140 @@ index e50797e..5976345 100644
  dependencies = [
   "eframe",
   "egui",
-@@ -7396,7 +7396,7 @@ checksum = "e450f9b2ed1dff33c94c12589a87338689467b9c4f5d8a5710bd09a847d2c8a7"
+@@ -4528,6 +4473,61 @@ version = "0.2.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "b4596b6d070b27117e987119b4dac604f3c58cfb0b191112e24771b2faeac1a6"
+ 
++[[package]]
++name = "plervo-video"
++version = "0.1.0-alpha.4"
++dependencies = [
++ "arboard",
++ "chrono",
++ "cpal",
++ "eframe",
++ "egui",
++ "filmcraft-engine",
++ "filmcraft-export",
++ "filmcraft-gpu",
++ "filmcraft-platform",
++ "filmcraft-project",
++ "filmcraft-render",
++ "filmcraft-time",
++ "filmcraft-ui-egui",
++ "glob",
++ "log",
++ "muda",
++ "objc2 0.6.4",
++ "objc2-app-kit 0.3.2",
++ "objc2-foundation 0.3.2",
++ "open",
++ "pollster 0.4.0",
++ "rfd",
++ "serde_json",
++ "sys-locale",
++ "winit",
++ "winresource",
++ "zbus",
++]
++
++[[package]]
++name = "plervo-video-cli"
++version = "0.1.0-alpha.4"
++dependencies = [
++ "filmcraft-automation",
++ "filmcraft-codecs",
++ "filmcraft-engine",
++ "filmcraft-export",
++ "filmcraft-gpu",
++ "filmcraft-media",
++ "filmcraft-mpegts",
++ "filmcraft-mxf",
++ "filmcraft-ogg",
++ "filmcraft-platform",
++ "filmcraft-project",
++ "filmcraft-render",
++ "filmcraft-testkit",
++ "filmcraft-time",
++ "serde_json",
++ "tokio",
++]
++
+ [[package]]
+ name = "png"
+ version = "0.18.1"
+@@ -5167,14 +5167,14 @@ dependencies = [
+ 
+ [[package]]
+ name = "rustls"
+-version = "0.23.45"
++version = "0.23.46"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "0d41d731c7d2f962d1ccc364cec258de3c0e93b38c2fb3ba97ac74513048d634"
++checksum = "48e13bd8c0e9365c43cfa5c9e8f9ad49d3c8444926c9aac819e0e4dc503c8fdf"
+ dependencies = [
+  "log",
+  "once_cell",
+  "rustls-pki-types",
+- "rustls-webpki 0.103.15",
++ "rustls-webpki",
+  "subtle",
+  "zeroize",
+ ]
+@@ -5214,7 +5214,7 @@ dependencies = [
+  "rustls",
+  "rustls-native-certs",
+  "rustls-platform-verifier-android",
+- "rustls-webpki 0.103.15",
++ "rustls-webpki",
+  "security-framework",
+  "security-framework-sys",
+  "webpki-root-certs",
+@@ -5230,8 +5230,6 @@ checksum = "eec689c0bc40ff2458a5977b6619cb718087084a18e02a131c599b62d05e1a5f"
+ [[package]]
+ name = "rustls-rustcrypto"
+ version = "0.0.2-alpha"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "f12052947763ab8515f753315357599e9b0b4dab3b8ba15f30f725fe6d025557"
+ dependencies = [
+  "aead",
+  "aes-gcm",
+@@ -5250,24 +5248,13 @@ dependencies = [
+  "rsa",
+  "rustls",
+  "rustls-pki-types",
+- "rustls-webpki 0.102.8",
++ "rustls-webpki",
+  "sec1",
+  "sha2",
+  "signature",
+  "x25519-dalek",
+ ]
+ 
+-[[package]]
+-name = "rustls-webpki"
+-version = "0.102.8"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "64ca1bc8749bd4cf37b5ce386cc146580777b4e8572c7b97baf22c83f444bee9"
+-dependencies = [
+- "ring",
+- "rustls-pki-types",
+- "untrusted",
+-]
+-
+ [[package]]
+ name = "rustls-webpki"
+ version = "0.103.15"
+@@ -5979,7 +5966,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd"
+ dependencies = [
+  "fastrand",
+- "getrandom 0.4.3",
++ "getrandom 0.3.4",
+  "once_cell",
+  "rustix 1.1.5",
+  "windows-sys 0.61.2",
+@@ -7396,7 +7383,7 @@ checksum = "e450f9b2ed1dff33c94c12589a87338689467b9c4f5d8a5710bd09a847d2c8a7"
  
  [[package]]
  name = "xtask"
@@ -556,7 +733,7 @@ index e50797e..5976345 100644
   "filmcraft-testkit",
   "serde_json",
 diff --git a/Cargo.toml b/Cargo.toml
-index 2530bb3..603a468 100644
+index 2530bb3..7867650 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -568,6 +745,13 @@ index 2530bb3..603a468 100644
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.95"
+@@ -145,3 +145,6 @@ opt-level = 3
+ [profile.release]
+ lto = "thin"
+ codegen-units = 1
++
++[patch.crates-io]
++rustls-rustcrypto = { path = "vendor/rustls-rustcrypto" }
 diff --git a/NOTICE b/NOTICE
 index 221a0ac..55dc209 100644
 --- a/NOTICE
@@ -1068,17 +1252,21 @@ index daff93b..247d84c 100644
 -[![Star History Chart](https://api.star-history.com/svg?repos=storytold/filmcraft&type=Date&legend=top-left)](https://www.star-history.com/?repos=storytold%2Ffilmcraft&type=date&legend=top-left)
 +Website: https://plervo.com/ · Optional support: https://buymeacoffee.com/alport
 diff --git a/apps/filmcraft-cli/Cargo.toml b/apps/filmcraft-cli/Cargo.toml
-index 218b7f7..398daf8 100644
+index 218b7f7..967a2e5 100644
 --- a/apps/filmcraft-cli/Cargo.toml
 +++ b/apps/filmcraft-cli/Cargo.toml
-@@ -1,5 +1,5 @@
+@@ -1,15 +1,17 @@
  [package]
 -name = "filmcraft-cli"
 +name = "plervo-video-cli"
  description = "FilmCraft headless CLI and MCP server"
  version.workspace = true
  edition.workspace = true
-@@ -9,7 +9,7 @@ license.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [lints]
  workspace = true
  
  [[bin]]
@@ -1391,10 +1579,10 @@ index 48fa7a1..7ca605e 100644
                  c.failed = true;
                  drop(c);
 diff --git a/apps/filmcraft/Cargo.toml b/apps/filmcraft/Cargo.toml
-index 3ae35e6..ab1d686 100644
+index 3ae35e6..43818c3 100644
 --- a/apps/filmcraft/Cargo.toml
 +++ b/apps/filmcraft/Cargo.toml
-@@ -1,10 +1,10 @@
+@@ -1,12 +1,14 @@
  [package]
 -name = "filmcraft"
 +name = "plervo-video"
@@ -1406,7 +1594,11 @@ index 3ae35e6..ab1d686 100644
 +default-run = "plervo-video"
  build = "build.rs"
  
++publish = false
++
  [lints]
+ workspace = true
+ 
 diff --git a/apps/filmcraft/build.rs b/apps/filmcraft/build.rs
 index 08d6465..2df868a 100644
 --- a/apps/filmcraft/build.rs
@@ -1441,7 +1633,7 @@ index 5aaa5f1..bf3a72a 100644
          // The activity lasts while the token is alive: keep it for the life of the process.
          std::mem::forget(token);
 diff --git a/apps/filmcraft/src/args.rs b/apps/filmcraft/src/args.rs
-index c64e350..db6b622 100644
+index c64e350..61a21b0 100644
 --- a/apps/filmcraft/src/args.rs
 +++ b/apps/filmcraft/src/args.rs
 @@ -1,9 +1,9 @@
@@ -1456,6 +1648,15 @@ index c64e350..db6b622 100644
  pub const USAGE: &str = "\
  Usage: filmcraft [options] [project.fcproj | media files...]
  
+@@ -17,7 +17,7 @@ Options:
+   --recover          recover the newest unsaved changes without asking
+   --no-recover       start without asking about unsaved changes
+   --data-dir <dir>   folder for auto-save, crash recovery and logs
+-                     (also: FILMCRAFT_DATA_DIR)
++                     (also: PLERVO_VIDEO_DATA_DIR)
+   --graphics <mode>  start with this graphics mode and keep it: default,
+                      dx12 (Windows), software (Windows, Linux);
+                      `--graphics default` undoes an automatic fallback
 @@ -118,7 +118,7 @@ pub fn parse(env_control_port: Option<String>, args: impl IntoIterator<Item = Os
      Ok(Cli::Run(l))
  }
@@ -1621,10 +1822,16 @@ index 8c98767..59e3e49 100644
          assert!(!desktop_file_exec_is_ours(&body, "/b/filmcraft"));
          assert!(!desktop_file_exec_is_ours("Exec=filmcraft %F\n", "/a/filmcraft"));
 diff --git a/apps/filmcraft/src/logging.rs b/apps/filmcraft/src/logging.rs
-index 3d7c713..a6209f6 100644
+index 3d7c713..1caaf82 100644
 --- a/apps/filmcraft/src/logging.rs
 +++ b/apps/filmcraft/src/logging.rs
-@@ -8,7 +8,7 @@
+@@ -3,12 +3,12 @@
+ //! Without a logger every `log::warn!`/`log::error!` in the workspace (GPU compositor fallbacks,
+ //! audio output problems, a panicked frame job or audio mixer, container warnings) vanished. A
+ //! launch from a desktop menu has no terminal, so the file is what a bug report can attach:
+-//! `<data dir>/Logs/filmcraft.log`, next to the crash logs (`--data-dir`, `FILMCRAFT_DATA_DIR` or
++//! `<data dir>/Logs/filmcraft.log`, next to the crash logs (`--data-dir`, `PLERVO_VIDEO_DATA_DIR` or
+ //! `filmcraft_engine::autosave::default_data_dir`; Help ▸ Reveal Log Files opens the folder). Each
  //! start moves the previous log to `filmcraft.1.log` (and that one to `.2`), so the log of a run
  //! that crashed survives the next launch.
  //!
@@ -1652,7 +1859,7 @@ index 3d7c713..a6209f6 100644
          assert!(logger.enabled(&log::Metadata::builder().level(log::Level::Info).target("filmcraft_engine::autosave").build()));
          assert!(!logger.enabled(&log::Metadata::builder().level(log::Level::Info).target("naga").build()));
 diff --git a/apps/filmcraft/src/main.rs b/apps/filmcraft/src/main.rs
-index f850b16..2bc5aa3 100644
+index f850b16..91bc189 100644
 --- a/apps/filmcraft/src/main.rs
 +++ b/apps/filmcraft/src/main.rs
 @@ -1,4 +1,4 @@
@@ -1661,6 +1868,15 @@ index f850b16..2bc5aa3 100644
  //!
  //! Usage: `filmcraft [--control <port>] [--demo|--empty] [--recover|--no-recover] [--data-dir <dir>]
  //! [project.fcproj | media files…]`; `--help` prints the options, `--version` the version. An
+@@ -12,7 +12,7 @@
+ //! either source.
+ //!
+ //! Auto-save and the crash-recovery journal run in every session (data in `--data-dir`, else
+-//! `FILMCRAFT_DATA_DIR`, else the per-user application data folder). If a previous session died
++//! `PLERVO_VIDEO_DATA_DIR`, else the per-user application data folder). If a previous session died
+ //! with unsaved changes the app asks to recover them; `--recover` recovers the newest without
+ //! asking, `--no-recover` starts without asking (the changes stay available via File ▸ Recover
+ //! Unsaved Changes…).
 @@ -47,7 +47,7 @@ use std::sync::Arc;
  use std::sync::atomic::{AtomicBool, Ordering};
  
@@ -1697,6 +1913,15 @@ index f850b16..2bc5aa3 100644
      // The log file lives next to the crash logs; opened after the arguments, so `--help`,
      // `--version` and usage errors leave no file behind. Records logged until now go in first.
      if let Some(logger) = logger {
+@@ -107,7 +107,7 @@ fn main() -> eframe::Result {
+             Some(Err(e)) => log::warn!("no log file: {e}"),
+             None => {
+                 logger.stderr_only();
+-                log::warn!("no log file: no data directory (set FILMCRAFT_DATA_DIR or --data-dir)");
++                log::warn!("no log file: no data directory (set PLERVO_VIDEO_DATA_DIR or --data-dir)");
+             }
+         }
+     }
 @@ -135,7 +135,7 @@ fn main() -> eframe::Result {
          // Before eframe creates the wgpu instance (e.g. no OpenGL on Windows, see graphics.rs).
          graphics::apply(&mut options, graphics.mode(), backend_override);
@@ -1804,6 +2029,97 @@ index 9f72fa1..810e208 100644
  //! front without activating the app, so the key window (and the user's focus) stays where it is.
  
  /// Order the app's windows to the front without activating the app (macOS). Returns whether it
+diff --git a/assets/app-icon/LICENSE.txt b/assets/app-icon/LICENSE.txt
+index 090de10..7c0478c 100644
+--- a/assets/app-icon/LICENSE.txt
++++ b/assets/app-icon/LICENSE.txt
+@@ -1,13 +1,6 @@
+-FilmCraft app icon (filmcraft.svg and every file derived from it in this directory:
+-filmcraft-small.svg, filmcraft-1024.png, filmcraft-macos-512.png, filmcraft.icns, filmcraft.ico,
+-hicolor/, and apps/filmcraft-web/web/favicon.png).
++# Plervo Video application icons
+ 
+-Original artwork made for this project by the FilmCraft owner (Brandon Thomas) in ArtCraft, then
+-vectorised. No third-party material. Licensed like the rest of FilmCraft, under either of
++Original artwork by Plervo contributors, 2026. Licensed under MIT OR Apache-2.0; see the complete LICENSE-MIT and LICENSE-APACHE files at the repository root.
+ 
+-  * Apache License, Version 2.0 (https://www.apache.org/licenses/LICENSE-2.0)
+-  * MIT license (https://opensource.org/licenses/MIT)
+-
+-at your option.
+-
+-Regenerate the derived files with packaging/icons.sh.
++Source vectors and platform variants: https://github.com/alportblu/plervo-pdf/tree/feat/app-family/assets/products/video
++These icons replace the upstream product artwork. Engine code and other assets retain their original notices.
+diff --git a/assets/app-icon/README.md b/assets/app-icon/README.md
+index 07a557c..7c0478c 100644
+--- a/assets/app-icon/README.md
++++ b/assets/app-icon/README.md
+@@ -1,60 +1,6 @@
+-# FilmCraft app icon
++# Plervo Video application icons
+ 
+-**Creature:** an owl with ear tufts, in a frontal head-and-shoulders portrait. It is the template the
+-other Crafting App icons follow.
++Original artwork by Plervo contributors, 2026. Licensed under MIT OR Apache-2.0; see the complete LICENSE-MIT and LICENSE-APACHE files at the repository root.
+ 
+-## Palette
+-
+-Exactly three colours:
+-
+-| Colour | Hex | Used for |
+-|---|---|---|
+-| Ink | `#0b0b0c` | line work and the figure's contour |
+-| Paper | `#efe9dc` | the figure (the owl) |
+-| FilmCraft violet (app colour) | `#8b5cf6` | the full-bleed field behind the figure |
+-
+-## Geometry and style
+-
+-- A 512-unit viewBox tile, rounded square `rx=112`, with the app colour full bleed (no frame or border).
+-- An engraving-style portrait in the owl-template framing: the top of the head near y 80–100, the
+-  eyes at about 40 % of the height, and the shoulders running off the bottom edge.
+-- macOS renders (`filmcraft.icns`, `filmcraft-macos-512.png`) put the tile in Apple's grid (824 of
+-  1024 px, transparent margin). Windows, Linux and the web use the full-bleed tile.
+-
+-## Provenance
+-
+-The owner drew it in ArtCraft as a 2880 px engraving-style image. The original is kept in craftrules
+-at `craftrules/assets/app-icons/filmcraft/source.png` (not in this repo). It was vectorised with
+-craftrules `assets/logo-options/_tools/vectorize_tile.py`, which keys the drawing to the three-colour
+-palette and traces the ink with potrace. Licence: [LICENSE.txt](LICENSE.txt) (MIT OR Apache-2.0).
+-
+-## Files
+-
+-| File | What |
+-|---|---|
+-| `filmcraft.svg` | canonical artwork, traced at 2048 px (about 1 MB) |
+-| `filmcraft-small.svg` | lighter trace at 1024 px (about 450 KB), for when size matters |
+-| `filmcraft-1024.png` | 1024 px render |
+-| `filmcraft-macos-512.png` | runtime Dock icon on macOS (embedded by `apps/filmcraft/src/main.rs`) |
+-| `filmcraft.icns` | macOS bundle icon (`CFBundleIconFile`) |
+-| `filmcraft.ico` | Windows icon, 16–256 px (embedded in `filmcraft.exe` by `apps/filmcraft/build.rs`) |
+-| `hicolor/<size>/apps/ai.storyteller.filmcraft.png`, `hicolor/scalable/…svg` | Linux icon theme, used by `packaging/linux/ai.storyteller.filmcraft.desktop` |
+-
+-The web app's `apps/filmcraft-web/web/favicon.png` (128 px) comes from the same artwork.
+-
+-## How the icon reaches each OS
+-
+-- **macOS:** the window icon set at startup (`ViewportBuilder::with_icon`) is the Dock and app-switcher
+-  icon when the app runs unbundled. A future `.app` bundle points `CFBundleIconFile` at `filmcraft.icns`.
+-- **Windows:** `build.rs` embeds `filmcraft.ico` as the exe's resource icon (Explorer, Start menu,
+-  pinned taskbar), and the runtime icon covers the window, taskbar and Alt-Tab.
+-- **Linux:** the runtime icon plus `with_app_id("ai.storyteller.filmcraft")`, which Wayland matches to
+-  the `.desktop` file. Install the `hicolor/` tree under `/usr/share/icons/hicolor/` and the desktop
+-  file under `/usr/share/applications/`.
+-
+-## Regenerate
+-
+-`packaging/icons.sh` (needs `resvg`; `iconutil` on macOS for the `.icns`; the `.ico` is packed by
+-`cargo xtask ico`). To change the artwork, replace `filmcraft.svg` and `filmcraft-small.svg` with new
+-exports from craftrules, then run the script. Every derived file needs its `.attribution` sidecar
+-and a row in `ATTRIBUTION.md`.
++Source vectors and platform variants: https://github.com/alportblu/plervo-pdf/tree/feat/app-family/assets/products/video
++These icons replace the upstream product artwork. Engine code and other assets retain their original notices.
 diff --git a/assets/app-icon/filmcraft-1024.png.attribution b/assets/app-icon/filmcraft-1024.png.attribution
 index 37bf685..8432a8b 100644
 --- a/assets/app-icon/filmcraft-1024.png.attribution
@@ -1930,6 +2246,20 @@ index 4526be4..4f6e8ed 100644
 +license-file: LICENSE-MIT
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
+diff --git a/assets/app-icon/hicolor/128x128/apps/ai.storyteller.filmcraft.png.attribution b/assets/app-icon/hicolor/128x128/apps/ai.storyteller.filmcraft.png.attribution
+deleted file mode 100644
+index 7cabd61..0000000
+--- a/assets/app-icon/hicolor/128x128/apps/ai.storyteller.filmcraft.png.attribution
++++ /dev/null
+@@ -1,8 +0,0 @@
+-asset:        ai.storyteller.filmcraft.png
+-title:        FilmCraft app icon, Linux hicolor theme 128 px
+-author:       Brandon Thomas (FilmCraft owner), for the FilmCraft project
+-source:       original work (drawn by the owner in ArtCraft, then vectorised)
+-license:      MIT OR Apache-2.0
+-license-file: assets/app-icon/LICENSE.txt
+-added:        2026-10-02 by Claude (agent) for Brandon Thomas
+-notes:        Rendered from filmcraft.svg with resvg by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/128x128/apps/com.plervo.video.png.attribution b/assets/app-icon/hicolor/128x128/apps/com.plervo.video.png.attribution
 new file mode 100644
 index 0000000..d7060cf
@@ -1944,6 +2274,20 @@ index 0000000..d7060cf
 +license-file: LICENSE-MIT
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
+diff --git a/assets/app-icon/hicolor/16x16/apps/ai.storyteller.filmcraft.png.attribution b/assets/app-icon/hicolor/16x16/apps/ai.storyteller.filmcraft.png.attribution
+deleted file mode 100644
+index 299ad46..0000000
+--- a/assets/app-icon/hicolor/16x16/apps/ai.storyteller.filmcraft.png.attribution
++++ /dev/null
+@@ -1,8 +0,0 @@
+-asset:        ai.storyteller.filmcraft.png
+-title:        FilmCraft app icon, Linux hicolor theme 16 px
+-author:       Brandon Thomas (FilmCraft owner), for the FilmCraft project
+-source:       original work (drawn by the owner in ArtCraft, then vectorised)
+-license:      MIT OR Apache-2.0
+-license-file: assets/app-icon/LICENSE.txt
+-added:        2026-10-02 by Claude (agent) for Brandon Thomas
+-notes:        Rendered from filmcraft.svg with resvg by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/16x16/apps/com.plervo.video.png.attribution b/assets/app-icon/hicolor/16x16/apps/com.plervo.video.png.attribution
 new file mode 100644
 index 0000000..d7060cf
@@ -1958,6 +2302,20 @@ index 0000000..d7060cf
 +license-file: LICENSE-MIT
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
+diff --git a/assets/app-icon/hicolor/24x24/apps/ai.storyteller.filmcraft.png.attribution b/assets/app-icon/hicolor/24x24/apps/ai.storyteller.filmcraft.png.attribution
+deleted file mode 100644
+index db438d3..0000000
+--- a/assets/app-icon/hicolor/24x24/apps/ai.storyteller.filmcraft.png.attribution
++++ /dev/null
+@@ -1,8 +0,0 @@
+-asset:        ai.storyteller.filmcraft.png
+-title:        FilmCraft app icon, Linux hicolor theme 24 px
+-author:       Brandon Thomas (FilmCraft owner), for the FilmCraft project
+-source:       original work (drawn by the owner in ArtCraft, then vectorised)
+-license:      MIT OR Apache-2.0
+-license-file: assets/app-icon/LICENSE.txt
+-added:        2026-10-02 by Claude (agent) for Brandon Thomas
+-notes:        Rendered from filmcraft.svg with resvg by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/24x24/apps/com.plervo.video.png.attribution b/assets/app-icon/hicolor/24x24/apps/com.plervo.video.png.attribution
 new file mode 100644
 index 0000000..d7060cf
@@ -1972,6 +2330,20 @@ index 0000000..d7060cf
 +license-file: LICENSE-MIT
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
+diff --git a/assets/app-icon/hicolor/256x256/apps/ai.storyteller.filmcraft.png.attribution b/assets/app-icon/hicolor/256x256/apps/ai.storyteller.filmcraft.png.attribution
+deleted file mode 100644
+index da46033..0000000
+--- a/assets/app-icon/hicolor/256x256/apps/ai.storyteller.filmcraft.png.attribution
++++ /dev/null
+@@ -1,8 +0,0 @@
+-asset:        ai.storyteller.filmcraft.png
+-title:        FilmCraft app icon, Linux hicolor theme 256 px
+-author:       Brandon Thomas (FilmCraft owner), for the FilmCraft project
+-source:       original work (drawn by the owner in ArtCraft, then vectorised)
+-license:      MIT OR Apache-2.0
+-license-file: assets/app-icon/LICENSE.txt
+-added:        2026-10-02 by Claude (agent) for Brandon Thomas
+-notes:        Rendered from filmcraft.svg with resvg by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/256x256/apps/com.plervo.video.png.attribution b/assets/app-icon/hicolor/256x256/apps/com.plervo.video.png.attribution
 new file mode 100644
 index 0000000..d7060cf
@@ -1986,6 +2358,20 @@ index 0000000..d7060cf
 +license-file: LICENSE-MIT
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
+diff --git a/assets/app-icon/hicolor/32x32/apps/ai.storyteller.filmcraft.png.attribution b/assets/app-icon/hicolor/32x32/apps/ai.storyteller.filmcraft.png.attribution
+deleted file mode 100644
+index 50fd7f3..0000000
+--- a/assets/app-icon/hicolor/32x32/apps/ai.storyteller.filmcraft.png.attribution
++++ /dev/null
+@@ -1,8 +0,0 @@
+-asset:        ai.storyteller.filmcraft.png
+-title:        FilmCraft app icon, Linux hicolor theme 32 px
+-author:       Brandon Thomas (FilmCraft owner), for the FilmCraft project
+-source:       original work (drawn by the owner in ArtCraft, then vectorised)
+-license:      MIT OR Apache-2.0
+-license-file: assets/app-icon/LICENSE.txt
+-added:        2026-10-02 by Claude (agent) for Brandon Thomas
+-notes:        Rendered from filmcraft.svg with resvg by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/32x32/apps/com.plervo.video.png.attribution b/assets/app-icon/hicolor/32x32/apps/com.plervo.video.png.attribution
 new file mode 100644
 index 0000000..d7060cf
@@ -2000,6 +2386,20 @@ index 0000000..d7060cf
 +license-file: LICENSE-MIT
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
+diff --git a/assets/app-icon/hicolor/48x48/apps/ai.storyteller.filmcraft.png.attribution b/assets/app-icon/hicolor/48x48/apps/ai.storyteller.filmcraft.png.attribution
+deleted file mode 100644
+index 6737b42..0000000
+--- a/assets/app-icon/hicolor/48x48/apps/ai.storyteller.filmcraft.png.attribution
++++ /dev/null
+@@ -1,8 +0,0 @@
+-asset:        ai.storyteller.filmcraft.png
+-title:        FilmCraft app icon, Linux hicolor theme 48 px
+-author:       Brandon Thomas (FilmCraft owner), for the FilmCraft project
+-source:       original work (drawn by the owner in ArtCraft, then vectorised)
+-license:      MIT OR Apache-2.0
+-license-file: assets/app-icon/LICENSE.txt
+-added:        2026-10-02 by Claude (agent) for Brandon Thomas
+-notes:        Rendered from filmcraft.svg with resvg by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/48x48/apps/com.plervo.video.png.attribution b/assets/app-icon/hicolor/48x48/apps/com.plervo.video.png.attribution
 new file mode 100644
 index 0000000..d7060cf
@@ -2014,6 +2414,20 @@ index 0000000..d7060cf
 +license-file: LICENSE-MIT
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
+diff --git a/assets/app-icon/hicolor/512x512/apps/ai.storyteller.filmcraft.png.attribution b/assets/app-icon/hicolor/512x512/apps/ai.storyteller.filmcraft.png.attribution
+deleted file mode 100644
+index c32251b..0000000
+--- a/assets/app-icon/hicolor/512x512/apps/ai.storyteller.filmcraft.png.attribution
++++ /dev/null
+@@ -1,8 +0,0 @@
+-asset:        ai.storyteller.filmcraft.png
+-title:        FilmCraft app icon, Linux hicolor theme 512 px
+-author:       Brandon Thomas (FilmCraft owner), for the FilmCraft project
+-source:       original work (drawn by the owner in ArtCraft, then vectorised)
+-license:      MIT OR Apache-2.0
+-license-file: assets/app-icon/LICENSE.txt
+-added:        2026-10-02 by Claude (agent) for Brandon Thomas
+-notes:        Rendered from filmcraft.svg with resvg by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/512x512/apps/com.plervo.video.png.attribution b/assets/app-icon/hicolor/512x512/apps/com.plervo.video.png.attribution
 new file mode 100644
 index 0000000..d7060cf
@@ -2028,6 +2442,20 @@ index 0000000..d7060cf
 +license-file: LICENSE-MIT
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
+diff --git a/assets/app-icon/hicolor/64x64/apps/ai.storyteller.filmcraft.png.attribution b/assets/app-icon/hicolor/64x64/apps/ai.storyteller.filmcraft.png.attribution
+deleted file mode 100644
+index e10d394..0000000
+--- a/assets/app-icon/hicolor/64x64/apps/ai.storyteller.filmcraft.png.attribution
++++ /dev/null
+@@ -1,8 +0,0 @@
+-asset:        ai.storyteller.filmcraft.png
+-title:        FilmCraft app icon, Linux hicolor theme 64 px
+-author:       Brandon Thomas (FilmCraft owner), for the FilmCraft project
+-source:       original work (drawn by the owner in ArtCraft, then vectorised)
+-license:      MIT OR Apache-2.0
+-license-file: assets/app-icon/LICENSE.txt
+-added:        2026-10-02 by Claude (agent) for Brandon Thomas
+-notes:        Rendered from filmcraft.svg with resvg by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/64x64/apps/com.plervo.video.png.attribution b/assets/app-icon/hicolor/64x64/apps/com.plervo.video.png.attribution
 new file mode 100644
 index 0000000..d7060cf
@@ -2042,6 +2470,20 @@ index 0000000..d7060cf
 +license-file: LICENSE-MIT
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
+diff --git a/assets/app-icon/hicolor/scalable/apps/ai.storyteller.filmcraft.svg.attribution b/assets/app-icon/hicolor/scalable/apps/ai.storyteller.filmcraft.svg.attribution
+deleted file mode 100644
+index 6d62c1f..0000000
+--- a/assets/app-icon/hicolor/scalable/apps/ai.storyteller.filmcraft.svg.attribution
++++ /dev/null
+@@ -1,8 +0,0 @@
+-asset:        ai.storyteller.filmcraft.svg
+-title:        FilmCraft app icon, Linux hicolor theme scalable
+-author:       Brandon Thomas (FilmCraft owner), for the FilmCraft project
+-source:       original work (drawn by the owner in ArtCraft, then vectorised)
+-license:      MIT OR Apache-2.0
+-license-file: assets/app-icon/LICENSE.txt
+-added:        2026-10-02 by Claude (agent) for Brandon Thomas
+-notes:        Copy of filmcraft-small.svg, made by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/scalable/apps/com.plervo.video.svg.attribution b/assets/app-icon/hicolor/scalable/apps/com.plervo.video.svg.attribution
 new file mode 100644
 index 0000000..42b0276
@@ -2098,20 +2540,235 @@ index 0000000..d367f00
 +license-file: LICENSE-MIT
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
+diff --git a/crates/aac/Cargo.toml b/crates/aac/Cargo.toml
+index 1bc2642..f207b3d 100644
+--- a/crates/aac/Cargo.toml
++++ b/crates/aac/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/ac3/Cargo.toml b/crates/ac3/Cargo.toml
+index e7e0149..235fd28 100644
+--- a/crates/ac3/Cargo.toml
++++ b/crates/ac3/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/apv/Cargo.toml b/crates/apv/Cargo.toml
+index edbfaf8..9ae320b 100644
+--- a/crates/apv/Cargo.toml
++++ b/crates/apv/Cargo.toml
+@@ -5,6 +5,8 @@ version.workspace = true
+ edition.workspace = true
+ license.workspace = true
+ 
++publish = false
++
+ [features]
+ default = ["threads"]
+ threads = ["dep:rayon"]
+diff --git a/crates/audio-dsp/Cargo.toml b/crates/audio-dsp/Cargo.toml
+index aef31db..fae6e0b 100644
+--- a/crates/audio-dsp/Cargo.toml
++++ b/crates/audio-dsp/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/automation/Cargo.toml b/crates/automation/Cargo.toml
+index 14b090e..282965a 100644
+--- a/crates/automation/Cargo.toml
++++ b/crates/automation/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/av1/Cargo.toml b/crates/av1/Cargo.toml
+index b83b0f9..c1796a6 100644
+--- a/crates/av1/Cargo.toml
++++ b/crates/av1/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/avi/Cargo.toml b/crates/avi/Cargo.toml
+index 519c098..31d49a7 100644
+--- a/crates/avi/Cargo.toml
++++ b/crates/avi/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/bitstream/Cargo.toml b/crates/bitstream/Cargo.toml
+index 8510e34..7219955 100644
+--- a/crates/bitstream/Cargo.toml
++++ b/crates/bitstream/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/captions/Cargo.toml b/crates/captions/Cargo.toml
+index ea74838..ca3067d 100644
+--- a/crates/captions/Cargo.toml
++++ b/crates/captions/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/cfb/Cargo.toml b/crates/cfb/Cargo.toml
+index 9b5185c..7e3da37 100644
+--- a/crates/cfb/Cargo.toml
++++ b/crates/cfb/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/codecs/Cargo.toml b/crates/codecs/Cargo.toml
+index 90b79e2..8078db5 100644
+--- a/crates/codecs/Cargo.toml
++++ b/crates/codecs/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/color/Cargo.toml b/crates/color/Cargo.toml
+index fc9dc55..33fa4c4 100644
+--- a/crates/color/Cargo.toml
++++ b/crates/color/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/dng/Cargo.toml b/crates/dng/Cargo.toml
+index 1fce493..b6bd5e9 100644
+--- a/crates/dng/Cargo.toml
++++ b/crates/dng/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [features]
+ default = ["threads"]
+ threads = ["dep:rayon"]
+diff --git a/crates/dnx/Cargo.toml b/crates/dnx/Cargo.toml
+index 9b5d34d..ec09520 100644
+--- a/crates/dnx/Cargo.toml
++++ b/crates/dnx/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/edit/Cargo.toml b/crates/edit/Cargo.toml
+index bcf3547..e37ab6a 100644
+--- a/crates/edit/Cargo.toml
++++ b/crates/edit/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/engine/Cargo.toml b/crates/engine/Cargo.toml
+index 16283a3..d018bfc 100644
+--- a/crates/engine/Cargo.toml
++++ b/crates/engine/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/crates/engine/src/autosave.rs b/crates/engine/src/autosave.rs
-index 8af0fef..77999b8 100644
+index 8af0fef..f23e0c3 100644
 --- a/crates/engine/src/autosave.rs
 +++ b/crates/engine/src/autosave.rs
-@@ -489,7 +489,7 @@ pub fn portable_data_dir(exe_dir: &Path) -> Option<PathBuf> {
+@@ -487,25 +487,25 @@ pub fn portable_data_dir(exe_dir: &Path) -> Option<PathBuf> {
+     exe_dir.join(PORTABLE_MARKER).is_file().then(|| exe_dir.join("data"))
+ }
  
- /// The data directory. `FILMCRAFT_DATA_DIR` overrides; a portable install ([`PORTABLE_MARKER`] next
+-/// The data directory. `FILMCRAFT_DATA_DIR` overrides; a portable install ([`PORTABLE_MARKER`] next
++/// The data directory. `PLERVO_VIDEO_DATA_DIR` overrides; a portable install ([`PORTABLE_MARKER`] next
  /// to the executable) uses `<exe dir>/data`; otherwise the per-user directory:
 -/// macOS `~/Library/Application Support/FilmCraft`, Windows `%APPDATA%\FilmCraft`,
 +/// macOS `~/Library/Application Support/Plervo Video`, Windows `%APPDATA%\FilmCraft`,
  /// elsewhere `$XDG_DATA_HOME/filmcraft` or `~/.local/share/filmcraft`.
  pub fn default_data_dir() -> Option<PathBuf> {
      let env = |k: &str| std::env::var_os(k).filter(|v| !v.is_empty()).map(PathBuf::from);
-@@ -500,12 +500,12 @@ pub fn default_data_dir() -> Option<PathBuf> {
+-    if let Some(d) = env("FILMCRAFT_DATA_DIR") {
++    if let Some(d) = env("PLERVO_VIDEO_DATA_DIR") {
+         return Some(d);
+     }
+     if let Some(d) = std::env::current_exe().ok().and_then(|exe| exe.parent().and_then(portable_data_dir)) {
          return Some(d);
      }
      if cfg!(target_os = "macos") {
@@ -2139,6 +2796,396 @@ index fa3dd42..e718b12 100644
 +    let base = s.prefs_path.as_ref().and_then(|p| p.parent()).map(|d| d.to_path_buf()).unwrap_or_else(|| crate::temp_dir().join("Plervo Video"));
      base.join(fallback).to_string_lossy().into_owned()
  }
+ 
+diff --git a/crates/export/Cargo.toml b/crates/export/Cargo.toml
+index 3732c7f..e691d13 100644
+--- a/crates/export/Cargo.toml
++++ b/crates/export/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/flac/Cargo.toml b/crates/flac/Cargo.toml
+index 8d6d050..8d18b9b 100644
+--- a/crates/flac/Cargo.toml
++++ b/crates/flac/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/format/Cargo.toml b/crates/format/Cargo.toml
+index f2c1e98..bf852ac 100644
+--- a/crates/format/Cargo.toml
++++ b/crates/format/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/frame/Cargo.toml b/crates/frame/Cargo.toml
+index ed3431d..f63a324 100644
+--- a/crates/frame/Cargo.toml
++++ b/crates/frame/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/geom/Cargo.toml b/crates/geom/Cargo.toml
+index cf55f4c..9be67b6 100644
+--- a/crates/geom/Cargo.toml
++++ b/crates/geom/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/gpu/Cargo.toml b/crates/gpu/Cargo.toml
+index 3f6137f..dffef73 100644
+--- a/crates/gpu/Cargo.toml
++++ b/crates/gpu/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/h264/Cargo.toml b/crates/h264/Cargo.toml
+index f2a1eb8..dc95e03 100644
+--- a/crates/h264/Cargo.toml
++++ b/crates/h264/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/h264enc/Cargo.toml b/crates/h264enc/Cargo.toml
+index 8385ba9..c4cbe2a 100644
+--- a/crates/h264enc/Cargo.toml
++++ b/crates/h264enc/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/hevc/Cargo.toml b/crates/hevc/Cargo.toml
+index b401435..a062a4a 100644
+--- a/crates/hevc/Cargo.toml
++++ b/crates/hevc/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/interchange/Cargo.toml b/crates/interchange/Cargo.toml
+index 3eecc49..c353a1a 100644
+--- a/crates/interchange/Cargo.toml
++++ b/crates/interchange/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/isobmff/Cargo.toml b/crates/isobmff/Cargo.toml
+index c9b848f..40c7840 100644
+--- a/crates/isobmff/Cargo.toml
++++ b/crates/isobmff/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/matroska/Cargo.toml b/crates/matroska/Cargo.toml
+index 9f64162..d33a750 100644
+--- a/crates/matroska/Cargo.toml
++++ b/crates/matroska/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/media/Cargo.toml b/crates/media/Cargo.toml
+index 3259e50..8608f5d 100644
+--- a/crates/media/Cargo.toml
++++ b/crates/media/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/mpa/Cargo.toml b/crates/mpa/Cargo.toml
+index 8abf08c..207d0ee 100644
+--- a/crates/mpa/Cargo.toml
++++ b/crates/mpa/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/mpeg2v/Cargo.toml b/crates/mpeg2v/Cargo.toml
+index ca418fe..d426073 100644
+--- a/crates/mpeg2v/Cargo.toml
++++ b/crates/mpeg2v/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/mpegts/Cargo.toml b/crates/mpegts/Cargo.toml
+index 9ec521f..a5d216f 100644
+--- a/crates/mpegts/Cargo.toml
++++ b/crates/mpegts/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/mxf/Cargo.toml b/crates/mxf/Cargo.toml
+index 34b6222..d8bf0ce 100644
+--- a/crates/mxf/Cargo.toml
++++ b/crates/mxf/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/ogg/Cargo.toml b/crates/ogg/Cargo.toml
+index 5f76b77..617f792 100644
+--- a/crates/ogg/Cargo.toml
++++ b/crates/ogg/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/opus/Cargo.toml b/crates/opus/Cargo.toml
+index 1ae2c82..6507449 100644
+--- a/crates/opus/Cargo.toml
++++ b/crates/opus/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/platform/Cargo.toml b/crates/platform/Cargo.toml
+index 9e07580..967b0ed 100644
+--- a/crates/platform/Cargo.toml
++++ b/crates/platform/Cargo.toml
+@@ -9,6 +9,8 @@ rust-version.workspace = true
+ # The one crate allowed to contain `unsafe` (OS media FFI; AGENTS.md §0.3, docs/adr/0001-platform-ffi.md).
+ # The workspace lints, except that `unsafe_code` is `deny` instead of `forbid`: only the FFI modules
+ # opt in with `#[allow(unsafe_code)]`, and every `unsafe` block carries a `// SAFETY:` comment.
++publish = false
++
+ [lints.rust]
+ unsafe_code = "deny"
+ 
+diff --git a/crates/project/Cargo.toml b/crates/project/Cargo.toml
+index 29f4301..a7dd30b 100644
+--- a/crates/project/Cargo.toml
++++ b/crates/project/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/prores/Cargo.toml b/crates/prores/Cargo.toml
+index 67c2002..56cd563 100644
+--- a/crates/prores/Cargo.toml
++++ b/crates/prores/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/render/Cargo.toml b/crates/render/Cargo.toml
+index e9d35f4..76f141f 100644
+--- a/crates/render/Cargo.toml
++++ b/crates/render/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/scopes/Cargo.toml b/crates/scopes/Cargo.toml
+index 686a979..89dd893 100644
+--- a/crates/scopes/Cargo.toml
++++ b/crates/scopes/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/speech/Cargo.toml b/crates/speech/Cargo.toml
+index 67f6d8f..f3ee992 100644
+--- a/crates/speech/Cargo.toml
++++ b/crates/speech/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/text/Cargo.toml b/crates/text/Cargo.toml
+index 0098962..24e8747 100644
+--- a/crates/text/Cargo.toml
++++ b/crates/text/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/time/Cargo.toml b/crates/time/Cargo.toml
+index 979e4c7..9fd7084 100644
+--- a/crates/time/Cargo.toml
++++ b/crates/time/Cargo.toml
+@@ -5,6 +5,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/tts-text/Cargo.toml b/crates/tts-text/Cargo.toml
+index 4b59493..a63fd11 100644
+--- a/crates/tts-text/Cargo.toml
++++ b/crates/tts-text/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/tts/Cargo.toml b/crates/tts/Cargo.toml
+index 5100d70..087a64f 100644
+--- a/crates/tts/Cargo.toml
++++ b/crates/tts/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/ui-egui/Cargo.toml b/crates/ui-egui/Cargo.toml
+index b63880d..b1798b6 100644
+--- a/crates/ui-egui/Cargo.toml
++++ b/crates/ui-egui/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
  
 diff --git a/crates/ui-egui/examples/bench/main.rs b/crates/ui-egui/examples/bench/main.rs
 index 3a9f0e1..71ac01b 100644
@@ -2189,6 +3236,19 @@ index 94f56d1..6a09e3b 100644
          if args.gpu { "GPU" } else { "CPU" },
          args.workers,
          cores,
+diff --git a/crates/ui-egui/examples/bench_audio.rs b/crates/ui-egui/examples/bench_audio.rs
+index 5bf1fbf..4e884b8 100644
+--- a/crates/ui-egui/examples/bench_audio.rs
++++ b/crates/ui-egui/examples/bench_audio.rs
+@@ -3,7 +3,7 @@
+ //! would hear them. Nothing is played out loud.
+ //!
+ //! ```sh
+-//! FILMCRAFT_DATA_DIR=/tmp/fc-bench cargo run --release -p filmcraft-ui-egui --example bench_audio -- \
++//! PLERVO_VIDEO_DATA_DIR=/tmp/fc-bench cargo run --release -p filmcraft-ui-egui --example bench_audio -- \
+ //!     "Project.fcproj" --seconds 20 [--sequence "One hero" …] [--mode direct|ahead|both] [--json out.json] [--wav dir]
+ //! ```
+ //!
 diff --git a/crates/ui-egui/examples/menu_tree.rs b/crates/ui-egui/examples/menu_tree.rs
 index 62610ad..3a562ac 100644
 --- a/crates/ui-egui/examples/menu_tree.rs
@@ -2199,6 +3259,40 @@ index 62610ad..3a562ac 100644
  //! item with its `id`, `label` and menu `path`. `cargo xtask parity` reads this to measure menu
  //! coverage against a reference list.
  //!
+diff --git a/crates/ui-egui/src/brand.rs b/crates/ui-egui/src/brand.rs
+index 4c41d08..67a5b1b 100644
+--- a/crates/ui-egui/src/brand.rs
++++ b/crates/ui-egui/src/brand.rs
+@@ -1,22 +1,20 @@
+-//! The ArtCraft wordmark (first-party trademark, used with permission; see `docs/brand/` and
+-//! AGENTS.md §1.8), decoded once and kept as a texture.
++//! Original Plervo Video mark, licensed MIT OR Apache-2.0; see assets/app-icon/.
+ 
+-const LOGO_LIGHT_INK: &[u8] = include_bytes!("../../../docs/brand/artcraft-logo-white.png");
+-const LOGO_DARK_INK: &[u8] = include_bytes!("../../../docs/brand/artcraft-logo.png");
++const PLERVO_MARK: &[u8] = include_bytes!("../../../assets/app-icon/filmcraft-1024.png");
+ 
+-/// The wordmark for a dark (`dark = true`) or light UI: light ink on dark themes. Its aspect
++/// The Plervo mark for either UI theme. Its aspect
+ /// ratio is width / height of the returned texture.
+-pub fn wordmark(ctx: &egui::Context, dark: bool) -> Option<egui::TextureHandle> {
+-    let id = egui::Id::new(("artcraft-wordmark", dark));
++pub fn wordmark(ctx: &egui::Context, _dark: bool) -> Option<egui::TextureHandle> {
++    let id = egui::Id::new("plervo-video-mark");
+     if let Some(t) = ctx.data(|d| d.get_temp::<egui::TextureHandle>(id)) {
+         return Some(t);
+     }
+-    let bytes = if dark { LOGO_LIGHT_INK } else { LOGO_DARK_INK };
++    let bytes = PLERVO_MARK;
+     let img = image::load_from_memory_with_format(bytes, image::ImageFormat::Png).ok()?;
+     // Large enough to stay sharp at 2x for the sizes we draw (≤ 320 pt wide).
+     let img = img.resize(1024, 1024, image::imageops::FilterType::Lanczos3).to_rgba8();
+     let color = egui::ColorImage::from_rgba_unmultiplied([img.width() as usize, img.height() as usize], img.as_raw());
+-    let tex = ctx.load_texture("artcraft-wordmark", color, egui::TextureOptions::LINEAR);
++    let tex = ctx.load_texture("plervo-video-mark", color, egui::TextureOptions::LINEAR);
+     ctx.data_mut(|d| d.insert_temp(id, tex.clone()));
+     Some(tex)
+ }
 diff --git a/crates/ui-egui/src/crash.rs b/crates/ui-egui/src/crash.rs
 index 33ea434..0e02c6a 100644
 --- a/crates/ui-egui/src/crash.rs
@@ -4121,6 +5215,19 @@ index 066279e..9f19016 100644
 +	Shows the version, community links and credits in a Plervo Video window.	在 Plervo Video 窗口中显示版本、社区链接和致谢。
  	Couldn't open your web browser	无法打开网页浏览器
  	Open this address in your browser yourself:	请自行在浏览器中打开此地址：
+diff --git a/crates/ui-egui/src/icons.rs b/crates/ui-egui/src/icons.rs
+index 230a84a..dae7551 100644
+--- a/crates/ui-egui/src/icons.rs
++++ b/crates/ui-egui/src/icons.rs
+@@ -83,7 +83,7 @@ pub enum Icon {
+     Undo,
+     Redo,
+     Bell,
+-    /// Community chat (the ArtCraft Discord): a speech bubble with three dots. Our own drawing,
++    /// Community chat (the Plervo Discord): a speech bubble with three dots. Our own drawing,
+     /// not the Discord logo.
+     Chat,
+     /// Website: a globe.
 diff --git a/crates/ui-egui/src/lib.rs b/crates/ui-egui/src/lib.rs
 index cb4a234..87d9343 100644
 --- a/crates/ui-egui/src/lib.rs
@@ -4306,7 +5413,7 @@ index a18ae8b..3e6df19 100644
      /// Save a file, suggesting `name`.
      SaveAs { filter: String, exts: Vec<String>, name: String },
 diff --git a/crates/ui-egui/src/panels/dialogs.rs b/crates/ui-egui/src/panels/dialogs.rs
-index 8bc23db..554aae2 100644
+index 8bc23db..6f5e60f 100644
 --- a/crates/ui-egui/src/panels/dialogs.rs
 +++ b/crates/ui-egui/src/panels/dialogs.rs
 @@ -33,8 +33,8 @@ pub fn show(app: &mut FilmcraftApp, ctx: &egui::Context) {
@@ -4325,19 +5432,36 @@ index 8bc23db..554aae2 100644
  }
  
 -/// Help ▸ About FilmCraft, in three tabs: About (version and the ArtCraft community links),
-+/// Help ▸ About Plervo Video, in three tabs: About (version and the ArtCraft community links),
++/// Help ▸ About Plervo Video, in three tabs: About (version and the Plervo community links),
  /// Contributors and Models (the credits compiled in from `contributors/contributors.json`, see
  /// `crate::credits` and docs/contributors.md).
  ///
-@@ -458,7 +458,7 @@ fn about_tab(app: &mut FilmcraftApp, ui: &mut egui::Ui) {
+@@ -444,7 +444,7 @@ fn about(app: &mut FilmcraftApp, ui: &mut egui::Ui) {
+     }
+ }
+ 
+-/// About ▸ About: version, licence and the ArtCraft community links. Joining the Discord is the
++/// About ▸ About: version, licence and the Plervo community links. Joining the Discord is the
+ /// first, accented button.
+ ///
+ /// Automation ids: `about.discord`, `about.website`, `about.appPage`, `about.github`,
+@@ -454,13 +454,13 @@ fn about_tab(app: &mut FilmcraftApp, ui: &mut egui::Ui) {
+     use crate::links;
+     let t = app.tokens;
+     ui.set_width(380.0);
+-    // ArtCraft wordmark (first-party trademark, docs/brand/).
++    // Original Plervo Video mark.
      let (r, _) = ui.allocate_exact_size(egui::vec2(ui.available_width(), 30.0), egui::Sense::hover());
      crate::brand::paint_wordmark(ui, egui::pos2(r.min.x, r.center().y), 20.0, app.ui.dark);
      ui.add_space(6.0);
 -    ui.heading("FilmCraft");
 +    ui.heading("Plervo Video");
      ui.label(tlf!("Version {version}", version = env!("CARGO_PKG_VERSION")));
-     ui.label(tl!("A clean-room, pure-Rust non-linear video editor. Part of the ArtCraft family."));
+-    ui.label(tl!("A clean-room, pure-Rust non-linear video editor. Part of the ArtCraft family."));
++    ui.label(tl!("A clean-room, pure-Rust non-linear video editor. Part of the Plervo family."));
      ui.add_space(10.0);
+     let mut link = |ui: &mut egui::Ui, id: &str, icon: Icon, label: &str, url: &str, primary: bool| {
+         let size = egui::vec2(ui.available_width(), if primary { 36.0 } else { 28.0 });
 @@ -489,10 +489,10 @@ fn about_tab(app: &mut FilmcraftApp, ui: &mut egui::Ui) {
              links::open(app, ui.ctx(), url);
          }
@@ -4422,10 +5546,18 @@ index 0aafa2e..b23d00a 100644
                  ui.colored_label(Color32::from_rgb(0xff, 0x80, 0x80), &d.error);
              }
 diff --git a/crates/ui-egui/src/panels/import_mode.rs b/crates/ui-egui/src/panels/import_mode.rs
-index 2af12ca..c4e3992 100644
+index 2af12ca..c136fa7 100644
 --- a/crates/ui-egui/src/panels/import_mode.rs
 +++ b/crates/ui-egui/src/panels/import_mode.rs
-@@ -53,7 +53,7 @@ pub fn show(app: &mut FilmcraftApp, ui: &mut egui::Ui, rect: Rect) {
+@@ -46,14 +46,14 @@ pub fn show(app: &mut FilmcraftApp, ui: &mut egui::Ui, rect: Rect) {
+     }
+     let y = recent(app, ui, rect, 90.0 + 150.0 + 36.0);
+     // Community and project links.
+-    // ArtCraft wordmark (first-party trademark, docs/brand/), then the section title.
++    // Original Plervo Video mark, then the section title.
+     let logo = crate::brand::paint_wordmark(ui, rect.min + vec2(24.0, y), 15.0, app.ui.dark);
+     let tx = logo.map_or(rect.min.x + 24.0, |r| r.max.x + 12.0);
+     ui.painter().text(pos2(tx, rect.min.y + y), Align2::LEFT_CENTER, tl!("Community"), Tokens::semibold(15.0), t.text);
      let mut x = rect.min.x + 24.0;
      for (i, (id, label, url)) in crate::links::ALL.iter().take(4).enumerate() {
          let primary = i == 0;
@@ -4641,6 +5773,32 @@ index 3df87b9..7996dfc 100644
  
  use craft_ui::docking::{Action, Placement, Zone};
  use egui::{Event, Modifiers, PointerButton, Rect, pos2, vec2};
+diff --git a/crates/vp8/Cargo.toml b/crates/vp8/Cargo.toml
+index 52f2749..0d383a1 100644
+--- a/crates/vp8/Cargo.toml
++++ b/crates/vp8/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
+diff --git a/crates/vp9/Cargo.toml b/crates/vp9/Cargo.toml
+index 5e9fd06..ea3c31c 100644
+--- a/crates/vp9/Cargo.toml
++++ b/crates/vp9/Cargo.toml
+@@ -6,6 +6,8 @@ edition.workspace = true
+ license.workspace = true
+ rust-version.workspace = true
+ 
++publish = false
++
+ [lints]
+ workspace = true
+ 
 diff --git a/packaging/env.sh b/packaging/env.sh
 index d227a71..c8254d9 100644
 --- a/packaging/env.sh
@@ -6195,6 +7353,2989 @@ index 07aa8be..a057ced 100644
  New-Item -ItemType Directory -Force -Path $tmp | Out-Null
  
  try {
+diff --git a/vendor/rustls-rustcrypto/CHANGELOG.md b/vendor/rustls-rustcrypto/CHANGELOG.md
+new file mode 100644
+index 0000000..1d013ff
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/CHANGELOG.md
+@@ -0,0 +1,6 @@
++# Changelog
++
++All notable changes to this project will be documented in this file.
++
++The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
++and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+diff --git a/vendor/rustls-rustcrypto/Cargo.toml b/vendor/rustls-rustcrypto/Cargo.toml
+new file mode 100644
+index 0000000..e35640d
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/Cargo.toml
+@@ -0,0 +1,179 @@
++# THIS FILE IS AUTOMATICALLY GENERATED BY CARGO
++#
++# When uploading crates to the registry Cargo will automatically
++# "normalize" Cargo.toml files for maximal compatibility
++# with all versions of Cargo and also rewrite `path` dependencies
++# to registry (e.g., crates.io) dependencies.
++#
++# If you are reading this file be aware that the original Cargo.toml
++# will likely look very different (and much more reasonable).
++# See Cargo.toml.orig for the original contents.
++
++[package]
++edition = "2021"
++rust-version = "1.75"
++name = "rustls-rustcrypto"
++version = "0.0.2-alpha"
++authors = ["RustCrypto Developers"]
++description = """
++Pure Rust cryptography provider for the Rustls TLS library using algorithm implementations from the
++RustCrypto organization
++"""
++readme = "README.md"
++keywords = [
++    "rustls",
++    "tls",
++]
++categories = [
++    "cryptography",
++    "no-std",
++]
++license = "MIT OR Apache-2.0"
++repository = "https://github.com/RustCrypto/rustls-rustcrypto"
++resolver = "1"
++
++[dependencies.aead]
++version = "0.5.2"
++default-features = false
++
++[dependencies.aes-gcm]
++version = "0.10.3"
++features = [
++    "aes",
++    "alloc",
++]
++default-features = false
++
++[dependencies.chacha20poly1305]
++version = "0.10.1"
++default-features = false
++
++[dependencies.crypto-common]
++version = "0.1.6"
++default-features = false
++
++[dependencies.der]
++version = "0.7.9"
++default-features = false
++
++[dependencies.digest]
++version = "0.10.7"
++default-features = false
++
++[dependencies.ecdsa]
++version = "0.16.8"
++features = ["alloc"]
++default-features = false
++
++[dependencies.ed25519-dalek]
++version = "2"
++features = ["pkcs8"]
++default-features = false
++
++[dependencies.hmac]
++version = "0.12.1"
++default-features = false
++
++[dependencies.p256]
++version = "0.13.2"
++features = [
++    "pem",
++    "ecdsa",
++    "ecdh",
++]
++default-features = false
++
++[dependencies.p384]
++version = "0.13.0"
++features = [
++    "pem",
++    "ecdsa",
++    "ecdh",
++]
++default-features = false
++
++[dependencies.paste]
++version = "1.0.14"
++default-features = false
++
++[dependencies.pkcs8]
++version = "0.10.2"
++features = [
++    "pem",
++    "pkcs5",
++]
++default-features = false
++
++[dependencies.pki-types]
++version = "1.0.1"
++default-features = false
++package = "rustls-pki-types"
++
++[dependencies.rand_core]
++version = "0.6.4"
++features = ["getrandom"]
++default-features = false
++
++[dependencies.rsa]
++version = "0.9.2"
++features = ["sha2"]
++default-features = false
++
++[dependencies.rustls]
++version = "0.23.0"
++default-features = false
++
++[dependencies.sec1]
++version = "0.7.3"
++features = [
++    "pkcs8",
++    "pem",
++]
++default-features = false
++
++[dependencies.sha2]
++version = "0.10.7"
++default-features = false
++
++[dependencies.signature]
++version = "2.1.0"
++default-features = false
++
++[dependencies.webpki]
++version = "0.103.13"
++default-features = false
++package = "rustls-webpki"
++
++[dependencies.x25519-dalek]
++version = "2"
++default-features = false
++
++[dev-dependencies.getrandom]
++version = "0.2"
++features = ["custom"]
++
++[features]
++alloc = [
++    "webpki/alloc",
++    "pki-types/alloc",
++    "aead/alloc",
++    "ed25519-dalek/alloc",
++]
++default = [
++    "std",
++    "tls12",
++    "zeroize",
++]
++logging = ["rustls/logging"]
++std = [
++    "alloc",
++    "webpki/std",
++    "pki-types/std",
++    "rustls/std",
++    "ed25519-dalek/std",
++]
++tls12 = ["rustls/tls12"]
++zeroize = [
++    "ed25519-dalek/zeroize",
++    "x25519-dalek/zeroize",
++]
+diff --git a/vendor/rustls-rustcrypto/Cargo.toml.orig b/vendor/rustls-rustcrypto/Cargo.toml.orig
+new file mode 100644
+index 0000000..6ff6103
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/Cargo.toml.orig
+@@ -0,0 +1,59 @@
++[package]
++name = "rustls-rustcrypto"
++description = """
++Pure Rust cryptography provider for the Rustls TLS library using algorithm implementations from the
++RustCrypto organization
++"""
++version = "0.0.2-alpha"
++authors = ["RustCrypto Developers"]
++license = "MIT OR Apache-2.0"
++readme = "README.md"
++repository = "https://github.com/RustCrypto/rustls-rustcrypto"
++categories = ["cryptography", "no-std"]
++keywords = ["rustls", "tls"]
++edition = "2021"
++rust-version = "1.75"
++resolver = "1" # Hack to enable the `custom` feature of `getrandom`
++
++# Ensure all dependencies + feats are mapped to crate features for correct usage
++# default features often have std breaking no_std and potentially other unwanted
++[dependencies]
++aead = { version = "0.5.2", default-features = false }
++aes-gcm = { version = "0.10.3", default-features = false, features = ["aes", "alloc"] }
++chacha20poly1305 = { version = "0.10.1", default-features = false }
++crypto-common = { version = "0.1.6", default-features = false }
++der = { version = "0.7.9", default-features = false }
++digest = { version = "0.10.7", default-features = false }
++ecdsa = { version = "0.16.8", default-features = false, features = ["alloc"] }
++ed25519-dalek = { version = "2", default-features = false, features = ["pkcs8"] }
++hmac = { version = "0.12.1", default-features = false }
++p256 = { version = "0.13.2", default-features = false, features = ["pem", "ecdsa", "ecdh"] }
++p384 = { version = "0.13.0", default-features = false, features = ["pem", "ecdsa", "ecdh"] }
++paste = { version = "1.0.14", default-features = false }
++pkcs8 = { version = "0.10.2", default-features = false, features = ["pem", "pkcs5"] }
++pki-types = { package = "rustls-pki-types", version = "1.0.1", default-features = false }
++rand_core = { version = "0.6.4", default-features = false, features = ["getrandom"] }
++rsa = { version = "0.9.2", default-features = false, features = ["sha2"] }
++rustls = { version = "0.23.0", default-features = false }
++sec1 = { version = "0.7.3", default-features = false, features = ["pkcs8", "pem"] }
++sha2 = { version = "0.10.7", default-features = false }
++signature = { version = "2.1.0", default-features = false }
++webpki = { package = "rustls-webpki", version = "0.102.0", default-features = false }
++x25519-dalek = { version = "2", default-features = false }
++
++[dev-dependencies]
++getrandom = { version = "0.2", features = ["custom"] } # workaround to build on no_std targets
++
++[features]
++default = ["std", "tls12", "zeroize"]
++logging = ["rustls/logging"]
++tls12 = ["rustls/tls12"]
++
++# Only enable feature in upstream if there is an overall effect e.g. aead/alloc in-place
++# zeroize is another typical that can be turned off
++
++# TODO: go through all of these that what gets exposed re: std error type
++std = ["alloc", "webpki/std", "pki-types/std", "rustls/std", "ed25519-dalek/std"]
++# TODO: go through all of these to ensure to_vec etc. impls are exposed
++alloc = ["webpki/alloc", "pki-types/alloc", "aead/alloc", "ed25519-dalek/alloc"]
++zeroize = ["ed25519-dalek/zeroize", "x25519-dalek/zeroize"]
+diff --git a/vendor/rustls-rustcrypto/LICENSE-APACHE b/vendor/rustls-rustcrypto/LICENSE-APACHE
+new file mode 100644
+index 0000000..78173fa
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/LICENSE-APACHE
+@@ -0,0 +1,201 @@
++                              Apache License
++                        Version 2.0, January 2004
++                     http://www.apache.org/licenses/
++
++TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
++
++1. Definitions.
++
++   "License" shall mean the terms and conditions for use, reproduction,
++   and distribution as defined by Sections 1 through 9 of this document.
++
++   "Licensor" shall mean the copyright owner or entity authorized by
++   the copyright owner that is granting the License.
++
++   "Legal Entity" shall mean the union of the acting entity and all
++   other entities that control, are controlled by, or are under common
++   control with that entity. For the purposes of this definition,
++   "control" means (i) the power, direct or indirect, to cause the
++   direction or management of such entity, whether by contract or
++   otherwise, or (ii) ownership of fifty percent (50%) or more of the
++   outstanding shares, or (iii) beneficial ownership of such entity.
++
++   "You" (or "Your") shall mean an individual or Legal Entity
++   exercising permissions granted by this License.
++
++   "Source" form shall mean the preferred form for making modifications,
++   including but not limited to software source code, documentation
++   source, and configuration files.
++
++   "Object" form shall mean any form resulting from mechanical
++   transformation or translation of a Source form, including but
++   not limited to compiled object code, generated documentation,
++   and conversions to other media types.
++
++   "Work" shall mean the work of authorship, whether in Source or
++   Object form, made available under the License, as indicated by a
++   copyright notice that is included in or attached to the work
++   (an example is provided in the Appendix below).
++
++   "Derivative Works" shall mean any work, whether in Source or Object
++   form, that is based on (or derived from) the Work and for which the
++   editorial revisions, annotations, elaborations, or other modifications
++   represent, as a whole, an original work of authorship. For the purposes
++   of this License, Derivative Works shall not include works that remain
++   separable from, or merely link (or bind by name) to the interfaces of,
++   the Work and Derivative Works thereof.
++
++   "Contribution" shall mean any work of authorship, including
++   the original version of the Work and any modifications or additions
++   to that Work or Derivative Works thereof, that is intentionally
++   submitted to Licensor for inclusion in the Work by the copyright owner
++   or by an individual or Legal Entity authorized to submit on behalf of
++   the copyright owner. For the purposes of this definition, "submitted"
++   means any form of electronic, verbal, or written communication sent
++   to the Licensor or its representatives, including but not limited to
++   communication on electronic mailing lists, source code control systems,
++   and issue tracking systems that are managed by, or on behalf of, the
++   Licensor for the purpose of discussing and improving the Work, but
++   excluding communication that is conspicuously marked or otherwise
++   designated in writing by the copyright owner as "Not a Contribution."
++
++   "Contributor" shall mean Licensor and any individual or Legal Entity
++   on behalf of whom a Contribution has been received by Licensor and
++   subsequently incorporated within the Work.
++
++2. Grant of Copyright License. Subject to the terms and conditions of
++   this License, each Contributor hereby grants to You a perpetual,
++   worldwide, non-exclusive, no-charge, royalty-free, irrevocable
++   copyright license to reproduce, prepare Derivative Works of,
++   publicly display, publicly perform, sublicense, and distribute the
++   Work and such Derivative Works in Source or Object form.
++
++3. Grant of Patent License. Subject to the terms and conditions of
++   this License, each Contributor hereby grants to You a perpetual,
++   worldwide, non-exclusive, no-charge, royalty-free, irrevocable
++   (except as stated in this section) patent license to make, have made,
++   use, offer to sell, sell, import, and otherwise transfer the Work,
++   where such license applies only to those patent claims licensable
++   by such Contributor that are necessarily infringed by their
++   Contribution(s) alone or by combination of their Contribution(s)
++   with the Work to which such Contribution(s) was submitted. If You
++   institute patent litigation against any entity (including a
++   cross-claim or counterclaim in a lawsuit) alleging that the Work
++   or a Contribution incorporated within the Work constitutes direct
++   or contributory patent infringement, then any patent licenses
++   granted to You under this License for that Work shall terminate
++   as of the date such litigation is filed.
++
++4. Redistribution. You may reproduce and distribute copies of the
++   Work or Derivative Works thereof in any medium, with or without
++   modifications, and in Source or Object form, provided that You
++   meet the following conditions:
++
++   (a) You must give any other recipients of the Work or
++       Derivative Works a copy of this License; and
++
++   (b) You must cause any modified files to carry prominent notices
++       stating that You changed the files; and
++
++   (c) You must retain, in the Source form of any Derivative Works
++       that You distribute, all copyright, patent, trademark, and
++       attribution notices from the Source form of the Work,
++       excluding those notices that do not pertain to any part of
++       the Derivative Works; and
++
++   (d) If the Work includes a "NOTICE" text file as part of its
++       distribution, then any Derivative Works that You distribute must
++       include a readable copy of the attribution notices contained
++       within such NOTICE file, excluding those notices that do not
++       pertain to any part of the Derivative Works, in at least one
++       of the following places: within a NOTICE text file distributed
++       as part of the Derivative Works; within the Source form or
++       documentation, if provided along with the Derivative Works; or,
++       within a display generated by the Derivative Works, if and
++       wherever such third-party notices normally appear. The contents
++       of the NOTICE file are for informational purposes only and
++       do not modify the License. You may add Your own attribution
++       notices within Derivative Works that You distribute, alongside
++       or as an addendum to the NOTICE text from the Work, provided
++       that such additional attribution notices cannot be construed
++       as modifying the License.
++
++   You may add Your own copyright statement to Your modifications and
++   may provide additional or different license terms and conditions
++   for use, reproduction, or distribution of Your modifications, or
++   for any such Derivative Works as a whole, provided Your use,
++   reproduction, and distribution of the Work otherwise complies with
++   the conditions stated in this License.
++
++5. Submission of Contributions. Unless You explicitly state otherwise,
++   any Contribution intentionally submitted for inclusion in the Work
++   by You to the Licensor shall be under the terms and conditions of
++   this License, without any additional terms or conditions.
++   Notwithstanding the above, nothing herein shall supersede or modify
++   the terms of any separate license agreement you may have executed
++   with Licensor regarding such Contributions.
++
++6. Trademarks. This License does not grant permission to use the trade
++   names, trademarks, service marks, or product names of the Licensor,
++   except as required for reasonable and customary use in describing the
++   origin of the Work and reproducing the content of the NOTICE file.
++
++7. Disclaimer of Warranty. Unless required by applicable law or
++   agreed to in writing, Licensor provides the Work (and each
++   Contributor provides its Contributions) on an "AS IS" BASIS,
++   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
++   implied, including, without limitation, any warranties or conditions
++   of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
++   PARTICULAR PURPOSE. You are solely responsible for determining the
++   appropriateness of using or redistributing the Work and assume any
++   risks associated with Your exercise of permissions under this License.
++
++8. Limitation of Liability. In no event and under no legal theory,
++   whether in tort (including negligence), contract, or otherwise,
++   unless required by applicable law (such as deliberate and grossly
++   negligent acts) or agreed to in writing, shall any Contributor be
++   liable to You for damages, including any direct, indirect, special,
++   incidental, or consequential damages of any character arising as a
++   result of this License or out of the use or inability to use the
++   Work (including but not limited to damages for loss of goodwill,
++   work stoppage, computer failure or malfunction, or any and all
++   other commercial damages or losses), even if such Contributor
++   has been advised of the possibility of such damages.
++
++9. Accepting Warranty or Additional Liability. While redistributing
++   the Work or Derivative Works thereof, You may choose to offer,
++   and charge a fee for, acceptance of support, warranty, indemnity,
++   or other liability obligations and/or rights consistent with this
++   License. However, in accepting such obligations, You may act only
++   on Your own behalf and on Your sole responsibility, not on behalf
++   of any other Contributor, and only if You agree to indemnify,
++   defend, and hold each Contributor harmless for any liability
++   incurred by, or claims asserted against, such Contributor by reason
++   of your accepting any such warranty or additional liability.
++
++END OF TERMS AND CONDITIONS
++
++APPENDIX: How to apply the Apache License to your work.
++
++   To apply the Apache License to your work, attach the following
++   boilerplate notice, with the fields enclosed by brackets "[]"
++   replaced with your own identifying information. (Don't include
++   the brackets!)  The text should be enclosed in the appropriate
++   comment syntax for the file format. We also recommend that a
++   file or class name and description of purpose be included on the
++   same "printed page" as the copyright notice for easier
++   identification within third-party archives.
++
++Copyright [yyyy] [name of copyright owner]
++
++Licensed under the Apache License, Version 2.0 (the "License");
++you may not use this file except in compliance with the License.
++You may obtain a copy of the License at
++
++   http://www.apache.org/licenses/LICENSE-2.0
++
++Unless required by applicable law or agreed to in writing, software
++distributed under the License is distributed on an "AS IS" BASIS,
++WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++See the License for the specific language governing permissions and
++limitations under the License.
+diff --git a/vendor/rustls-rustcrypto/LICENSE-MIT b/vendor/rustls-rustcrypto/LICENSE-MIT
+new file mode 100644
+index 0000000..966be2b
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/LICENSE-MIT
+@@ -0,0 +1,19 @@
++Copyright (c) 2023 Steve Fan, ctz
++
++Permission is hereby granted, free of charge, to any person obtaining a copy
++of this software and associated documentation files (the "Software"), to deal
++in the Software without restriction, including without limitation the rights
++to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++copies of the Software, and to permit persons to whom the Software is
++furnished to do so, subject to the following conditions:
++
++The above copyright notice and this permission notice shall be included in all
++copies or substantial portions of the Software.
++
++THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++SOFTWARE.
+diff --git a/vendor/rustls-rustcrypto/PLERVO-PATCH.md b/vendor/rustls-rustcrypto/PLERVO-PATCH.md
+new file mode 100644
+index 0000000..6b95e7d
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/PLERVO-PATCH.md
+@@ -0,0 +1,7 @@
++# Plervo TLS dependency patch
++
++Source: RustCrypto/rustls-rustcrypto, crates.io package 0.0.2-alpha. Original MIT/Apache notices are preserved.
++
++The Cargo dependency on rustls-webpki changes from 0.102.0 to 0.103.13 or newer, incorporating the fixes for RUSTSEC-2026-0104, 0098, 0099 and 0049. The three verification modules import the unchanged ASN.1 algorithm identifiers from rustls::pki_types::alg_id, their new upstream location. No cryptographic algorithm implementation is modified. Cargo.lock pins the resulting package checksums.
++
++The application uses this provider only as an HTTPS client without client authentication. It never loads an RSA private key; the RSA public-key verification dependency still has the general RUSTSEC-2023-0071 advisory, which must remain documented rather than described as patched.
+diff --git a/vendor/rustls-rustcrypto/README.md b/vendor/rustls-rustcrypto/README.md
+new file mode 100644
+index 0000000..f77c0b7
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/README.md
+@@ -0,0 +1,63 @@
++# rustls-rustcrypto
++
++[![crate][crate-image]][crate-link]
++[![Docs][docs-image]][docs-link]
++[![Build Status][build-image]][build-link]
++![Apache2/MIT licensed][license-image]
++![Rust Version][rustc-image]
++[![Project Chat][chat-image]][chat-link]
++
++[RustCrypto]-based provider implementation for version 0.23 of [rustls], maintained by the RustCrypto organization.
++
++## ⚠️USE THIS AT YOUR OWN RISK! DO NOT USE THIS IN PRODUCTION⚠️
++
++Not only that this is incomplete that only few selected TLS suites implemented (it should be well enough to cover 70% of the usage), but the elephant in the room is that neither did rustls nor RustCrypto packages were formally verified and certified with FIPS compliance.
++
++Note that RustCrypto performance is generally inferior than ring, but in exchange you got a pure Rust implementation that theoretically compiles everywhere Rust was ported to. In our case, we need to have `std` but foundational support for future `no_std` expansion is already here.
++
++## Supported Cipher Suites
++
++- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
++- TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
++- TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256
++- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
++- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
++- TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256
++- TLS13_AES_128_GCM_SHA256
++- TLS13_AES_256_GCM_SHA384
++- TLS13_CHACHA20_POLY1305_SHA256
++
++## License
++
++Licensed under either of:
++
++- [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0)
++- [MIT license](http://opensource.org/licenses/MIT)
++
++at your option.
++
++Some code authored by [@ctz](https://github.com/ctz) was adapted from upstream rustls. Licensed as above with permission.
++
++### Contribution
++
++Unless you explicitly state otherwise, any contribution intentionally submitted
++for inclusion in the work by you, as defined in the Apache-2.0 license, shall be
++dual licensed as above, without any additional terms or conditions.
++
++[//]: # (badges)
++
++[crate-image]: https://buildstats.info/crate/rustls-rustcrypto
++[crate-link]: https://crates.io/crates/rustls-rustcrypto
++[docs-image]: https://docs.rs/rustls-rustcrypto/badge.svg
++[docs-link]: https://docs.rs/rustls-rustcrypto/
++[build-image]: https://github.com/RustCrypto/rustls-rustcrypto/actions/workflows/rustls-rustcrypto.yml/badge.svg
++[build-link]: https://github.com/RustCrypto/rustls-rustcrypto/actions/workflows/rustls-rustcrypto.yml
++[license-image]: https://img.shields.io/badge/license-Apache2.0/MIT-blue.svg
++[rustc-image]: https://img.shields.io/badge/rustc-1.75+-blue.svg
++[chat-image]: https://img.shields.io/badge/zulip-join_chat-blue.svg
++[chat-link]: https://rustcrypto.zulipchat.com/#narrow/stream/434751-TLS
++
++[//]: # (links)
++
++[RustCrypto]: https://github.com/RustCrypto/
++[rustls]: https://github.com/rustls/rustls/
+diff --git a/vendor/rustls-rustcrypto/examples-external/client.rs b/vendor/rustls-rustcrypto/examples-external/client.rs
+new file mode 100644
+index 0000000..2493c61
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/examples-external/client.rs
+@@ -0,0 +1,47 @@
++use std::str::FromStr;
++
++use anyhow::anyhow;
++use http_body_util::{BodyExt, Empty};
++use hyper::{body::Bytes, Uri};
++use hyper_util::{client::legacy::Client, rt::TokioExecutor};
++use rustls_rustcrypto::provider;
++
++#[tokio::main]
++async fn main() -> anyhow::Result<()> {
++    env_logger::init();
++
++    // Prepare the HTTPS connector
++    let https = hyper_rustls::HttpsConnectorBuilder::new()
++        .with_provider_and_webpki_roots(provider())?
++        .https_or_http()
++        .enable_all_versions()
++        .build();
++
++    // Build the hyper client from the HTTPS connector.
++    let client: Client<_, Empty<Bytes>> = Client::builder(TokioExecutor::new()).build(https);
++
++    // Prepare a chain of futures which sends a GET request, inspects
++    // the returned headers, collects the whole body and prints it to
++    // stdout.
++    let fut = async move {
++        let res = client
++            .get(Uri::from_str("https://ecc256.badssl.com/")?)
++            .await
++            .map_err(|e| anyhow!("Could not get: {:?}", e))?;
++        println!("Status:\n{}", res.status());
++        println!("Headers:\n{:#?}", res.headers());
++
++        let body = res
++            .into_body()
++            .collect()
++            .await
++            .map_err(|e| anyhow!("Could not get body: {:?}", e))?
++            .to_bytes();
++
++        println!("Body:\n{}", String::from_utf8_lossy(&body));
++
++        Ok(())
++    };
++
++    fut.await
++}
+diff --git a/vendor/rustls-rustcrypto/examples-external/server.rs b/vendor/rustls-rustcrypto/examples-external/server.rs
+new file mode 100644
+index 0000000..d31745b
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/examples-external/server.rs
+@@ -0,0 +1,126 @@
++use std::{net::ToSocketAddrs, sync::Arc};
++
++use futures_util::StreamExt;
++use http_body_util::{BodyExt, Full};
++use hyper::{
++    body::{Bytes, Incoming},
++    service::service_fn,
++    Method, Request, Response, StatusCode,
++};
++use hyper_util::{
++    rt::{TokioExecutor, TokioIo},
++    server::conn::auto::Builder,
++};
++use pki_types::PrivateKeyDer;
++use rustls::ServerConfig;
++use rustls_rustcrypto::provider;
++use tls_listener::{SpawningHandshakes, TlsListener};
++use tokio::{net::TcpListener, signal::ctrl_c};
++use tokio_rustls::TlsAcceptor;
++struct TestPki {
++    server_cert_der: Vec<u8>,
++    server_key_der: Vec<u8>,
++}
++
++impl TestPki {
++    fn new() -> Self {
++        let alg = &rcgen::PKCS_ECDSA_P384_SHA384;
++        let mut ca_params = rcgen::CertificateParams::new(Vec::new());
++        ca_params
++            .distinguished_name
++            .push(rcgen::DnType::OrganizationName, "Rustls Server Acceptor");
++        ca_params
++            .distinguished_name
++            .push(rcgen::DnType::CommonName, "Example CA");
++        ca_params.is_ca = rcgen::IsCa::Ca(rcgen::BasicConstraints::Unconstrained);
++        ca_params.key_usages = vec![
++            rcgen::KeyUsagePurpose::KeyCertSign,
++            rcgen::KeyUsagePurpose::DigitalSignature,
++            rcgen::KeyUsagePurpose::CrlSign,
++        ];
++        ca_params.alg = alg;
++        let ca_cert = rcgen::Certificate::from_params(ca_params).unwrap();
++
++        // Create a server end entity cert issued by the CA.
++        let mut server_ee_params = rcgen::CertificateParams::new(vec!["localhost".to_string()]);
++        server_ee_params.is_ca = rcgen::IsCa::NoCa;
++        server_ee_params.extended_key_usages = vec![rcgen::ExtendedKeyUsagePurpose::ServerAuth];
++        server_ee_params.alg = alg;
++        let server_cert = rcgen::Certificate::from_params(server_ee_params).unwrap();
++        let server_cert_der = server_cert.serialize_der_with_signer(&ca_cert).unwrap();
++        let server_key_der = server_cert.serialize_private_key_der();
++        Self {
++            server_cert_der,
++            server_key_der,
++        }
++    }
++}
++
++#[tokio::main]
++async fn main() -> anyhow::Result<()> {
++    env_logger::init();
++
++    let pki = TestPki::new();
++    let addr = "0.0.0.0:4443"
++        .to_socket_addrs()?
++        .next()
++        .ok_or_else(|| std::io::Error::from(std::io::ErrorKind::AddrNotAvailable))?;
++
++    let incoming = TcpListener::bind(&addr).await?;
++
++    let mut server_config = ServerConfig::builder_with_provider(Arc::new(provider()))
++        .with_safe_default_protocol_versions()?
++        .with_no_client_auth()
++        .with_single_cert(
++            vec![pki.server_cert_der.clone().into()],
++            PrivateKeyDer::Pkcs8(pki.server_key_der.clone().into()),
++        )?;
++    server_config.alpn_protocols = vec![b"h2".to_vec(), b"http/1.1".to_vec(), b"http/1.0".to_vec()];
++    let tls_acceptor = TlsAcceptor::from(Arc::new(server_config));
++    let service = service_fn(echo);
++
++    println!("Starting to serve on https://{}.", addr);
++
++    TlsListener::new(SpawningHandshakes(tls_acceptor), incoming)
++        .take_until(ctrl_c())
++        .for_each_concurrent(None, |s| async {
++            match s {
++                Ok((stream, remote_addr)) => {
++                    println!("accepted client from {}", remote_addr);
++                    if let Err(err) = Builder::new(TokioExecutor::new())
++                        .serve_connection(TokioIo::new(stream), service)
++                        .await
++                    {
++                        eprintln!("failed to serve connection: {err:#}");
++                    }
++                }
++                Err(e) => {
++                    eprintln!("failed to perform tls handshake: {:?}", e);
++                }
++            }
++        })
++        .await;
++
++    Ok(())
++}
++
++// Custom echo service, handling two different routes and a
++// catch-all 404 responder.
++async fn echo(req: Request<Incoming>) -> Result<Response<Full<Bytes>>, hyper::Error> {
++    let mut response = Response::new(Full::default());
++    match (req.method(), req.uri().path()) {
++        // Help route.
++        (&Method::GET, "/") => {
++            *response.body_mut() = Full::from("Try POST /echo\n");
++        }
++        // Echo service route.
++        (&Method::POST, "/echo") => {
++            *response.body_mut() = Full::from(req.into_body().collect().await?.to_bytes());
++        }
++        // Catch-all 404.
++        _ => {
++            *response.status_mut() = StatusCode::NOT_FOUND;
++        }
++    };
++    Ok(response)
++}
+diff --git a/vendor/rustls-rustcrypto/src/aead.rs b/vendor/rustls-rustcrypto/src/aead.rs
+new file mode 100644
+index 0000000..6ff57b7
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/src/aead.rs
+@@ -0,0 +1,54 @@
++use aead::Buffer;
++use rustls::crypto::cipher::{BorrowedPayload, PrefixedPayload};
++
++pub mod chacha20;
++pub mod gcm;
++
++pub(crate) struct EncryptBufferAdapter<'a>(&'a mut PrefixedPayload);
++
++impl AsRef<[u8]> for EncryptBufferAdapter<'_> {
++    fn as_ref(&self) -> &[u8] {
++        self.0.as_ref()
++    }
++}
++
++impl AsMut<[u8]> for EncryptBufferAdapter<'_> {
++    fn as_mut(&mut self) -> &mut [u8] {
++        self.0.as_mut()
++    }
++}
++
++impl Buffer for EncryptBufferAdapter<'_> {
++    fn extend_from_slice(&mut self, other: &[u8]) -> aead::Result<()> {
++        self.0.extend_from_slice(other);
++        Ok(())
++    }
++
++    fn truncate(&mut self, len: usize) {
++        self.0.truncate(len)
++    }
++}
++
++pub(crate) struct DecryptBufferAdapter<'a, 'p>(&'a mut BorrowedPayload<'p>);
++
++impl AsRef<[u8]> for DecryptBufferAdapter<'_, '_> {
++    fn as_ref(&self) -> &[u8] {
++        self.0
++    }
++}
++
++impl AsMut<[u8]> for DecryptBufferAdapter<'_, '_> {
++    fn as_mut(&mut self) -> &mut [u8] {
++        self.0
++    }
++}
++
++impl Buffer for DecryptBufferAdapter<'_, '_> {
++    fn extend_from_slice(&mut self, _: &[u8]) -> aead::Result<()> {
++        unreachable!("not used by `AeadInPlace::decrypt_in_place`")
++    }
++
++    fn truncate(&mut self, len: usize) {
++        self.0.truncate(len)
++    }
++}
+diff --git a/vendor/rustls-rustcrypto/src/aead/chacha20.rs b/vendor/rustls-rustcrypto/src/aead/chacha20.rs
+new file mode 100644
+index 0000000..995b79e
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/src/aead/chacha20.rs
+@@ -0,0 +1,197 @@
++#[cfg(feature = "alloc")]
++use alloc::boxed::Box;
++
++use super::{DecryptBufferAdapter, EncryptBufferAdapter};
++
++use chacha20poly1305::{AeadInPlace, KeyInit, KeySizeUser};
++use rustls::crypto::cipher::{
++    self, AeadKey, InboundOpaqueMessage, InboundPlainMessage, Iv, MessageDecrypter,
++    MessageEncrypter, OutboundOpaqueMessage, OutboundPlainMessage, PrefixedPayload,
++    Tls13AeadAlgorithm, UnsupportedOperationError,
++};
++use rustls::{ConnectionTrafficSecrets, ContentType, ProtocolVersion};
++
++#[cfg(feature = "tls12")]
++use rustls::crypto::cipher::{KeyBlockShape, Tls12AeadAlgorithm, NONCE_LEN};
++
++pub struct Chacha20Poly1305;
++
++impl Tls13AeadAlgorithm for Chacha20Poly1305 {
++    fn encrypter(&self, key: AeadKey, iv: Iv) -> Box<dyn MessageEncrypter> {
++        Box::new(Tls13Cipher(
++            chacha20poly1305::ChaCha20Poly1305::new_from_slice(key.as_ref())
++                .expect("key should be valid"),
++            iv,
++        ))
++    }
++
++    fn decrypter(&self, key: AeadKey, iv: Iv) -> Box<dyn MessageDecrypter> {
++        Box::new(Tls13Cipher(
++            chacha20poly1305::ChaCha20Poly1305::new_from_slice(key.as_ref())
++                .expect("key should be valid"),
++            iv,
++        ))
++    }
++
++    fn key_len(&self) -> usize {
++        chacha20poly1305::ChaCha20Poly1305::key_size()
++    }
++
++    fn extract_keys(
++        &self,
++        key: AeadKey,
++        iv: Iv,
++    ) -> Result<ConnectionTrafficSecrets, UnsupportedOperationError> {
++        Ok(ConnectionTrafficSecrets::Chacha20Poly1305 { key, iv })
++    }
++}
++
++#[cfg(feature = "tls12")]
++impl Tls12AeadAlgorithm for Chacha20Poly1305 {
++    fn encrypter(&self, key: AeadKey, iv: &[u8], _: &[u8]) -> Box<dyn MessageEncrypter> {
++        Box::new(Tls12Cipher(
++            chacha20poly1305::ChaCha20Poly1305::new_from_slice(key.as_ref())
++                .expect("key should be valid"),
++            Iv::copy(iv),
++        ))
++    }
++
++    fn decrypter(&self, key: AeadKey, iv: &[u8]) -> Box<dyn MessageDecrypter> {
++        Box::new(Tls12Cipher(
++            chacha20poly1305::ChaCha20Poly1305::new_from_slice(key.as_ref())
++                .expect("key should be valid"),
++            Iv::copy(iv),
++        ))
++    }
++
++    fn key_block_shape(&self) -> KeyBlockShape {
++        KeyBlockShape {
++            enc_key_len: 32,
++            fixed_iv_len: 12,
++            explicit_nonce_len: 0,
++        }
++    }
++
++    fn extract_keys(
++        &self,
++        key: AeadKey,
++        iv: &[u8],
++        _explicit: &[u8],
++    ) -> Result<ConnectionTrafficSecrets, UnsupportedOperationError> {
++        // This should always be true because KeyBlockShape and the Iv nonce len are in
++        // agreement.
++        debug_assert_eq!(NONCE_LEN, iv.len());
++        Ok(ConnectionTrafficSecrets::Chacha20Poly1305 {
++            key,
++            iv: Iv::new(iv[..].try_into().expect("conversion should succeed")),
++        })
++    }
++}
++
++struct Tls13Cipher(chacha20poly1305::ChaCha20Poly1305, Iv);
++
++impl MessageEncrypter for Tls13Cipher {
++    fn encrypt(
++        &mut self,
++        m: OutboundPlainMessage<'_>,
++        seq: u64,
++    ) -> Result<OutboundOpaqueMessage, rustls::Error> {
++        let total_len = self.encrypted_payload_len(m.payload.len());
++        let mut payload = PrefixedPayload::with_capacity(total_len);
++
++        payload.extend_from_chunks(&m.payload);
++        payload.extend_from_slice(&m.typ.to_array());
++
++        let nonce: chacha20poly1305::Nonce = cipher::Nonce::new(&self.1, seq).0.into();
++        let aad = cipher::make_tls13_aad(total_len);
++
++        self.0
++            .encrypt_in_place(&nonce, &aad, &mut EncryptBufferAdapter(&mut payload))
++            .map_err(|_| rustls::Error::EncryptError)
++            .map(|()| {
++                OutboundOpaqueMessage::new(
++                    ContentType::ApplicationData,
++                    ProtocolVersion::TLSv1_2,
++                    payload,
++                )
++            })
++    }
++
++    fn encrypted_payload_len(&self, payload_len: usize) -> usize {
++        payload_len + 1 + CHACHAPOLY1305_OVERHEAD
++    }
++}
++
++impl MessageDecrypter for Tls13Cipher {
++    fn decrypt<'a>(
++        &mut self,
++        mut m: InboundOpaqueMessage<'a>,
++        seq: u64,
++    ) -> Result<InboundPlainMessage<'a>, rustls::Error> {
++        let payload = &mut m.payload;
++        let nonce: chacha20poly1305::Nonce = cipher::Nonce::new(&self.1, seq).0.into();
++        let aad = cipher::make_tls13_aad(payload.len());
++
++        self.0
++            .decrypt_in_place(&nonce, &aad, &mut DecryptBufferAdapter(payload))
++            .map_err(|_| rustls::Error::DecryptError)?;
++
++        m.into_tls13_unpadded_message()
++    }
++}
++
++#[cfg(feature = "tls12")]
++struct Tls12Cipher(chacha20poly1305::ChaCha20Poly1305, Iv);
++
++#[cfg(feature = "tls12")]
++impl MessageEncrypter for Tls12Cipher {
++    fn encrypt(
++        &mut self,
++        m: OutboundPlainMessage<'_>,
++        seq: u64,
++    ) -> Result<OutboundOpaqueMessage, rustls::Error> {
++        let total_len = self.encrypted_payload_len(m.payload.len());
++        let mut payload = PrefixedPayload::with_capacity(total_len);
++
++        payload.extend_from_chunks(&m.payload);
++
++        let nonce: chacha20poly1305::Nonce = cipher::Nonce::new(&self.1, seq).0.into();
++        let aad = cipher::make_tls12_aad(seq, m.typ, m.version, m.payload.len());
++
++        self.0
++            .encrypt_in_place(&nonce, &aad, &mut EncryptBufferAdapter(&mut payload))
++            .map_err(|_| rustls::Error::EncryptError)
++            .map(|_| OutboundOpaqueMessage::new(m.typ, m.version, payload))
++    }
++
++    fn encrypted_payload_len(&self, payload_len: usize) -> usize {
++        payload_len + CHACHAPOLY1305_OVERHEAD
++    }
++}
++
++#[cfg(feature = "tls12")]
++impl MessageDecrypter for Tls12Cipher {
++    fn decrypt<'a>(
++        &mut self,
++        mut m: InboundOpaqueMessage<'a>,
++        seq: u64,
++    ) -> Result<InboundPlainMessage<'a>, rustls::Error> {
++        let payload = &m.payload;
++        let nonce: chacha20poly1305::Nonce = cipher::Nonce::new(&self.1, seq).0.into();
++        let aad = cipher::make_tls12_aad(
++            seq,
++            m.typ,
++            m.version,
++            payload.len() - CHACHAPOLY1305_OVERHEAD,
++        );
++
++        let payload = &mut m.payload;
++        self.0
++            .decrypt_in_place(&nonce, &aad, &mut DecryptBufferAdapter(payload))
++            .map_err(|_| rustls::Error::DecryptError)?;
++
++        Ok(m.into_plain_message())
++    }
++}
++
++const CHACHAPOLY1305_OVERHEAD: usize = 16;
+diff --git a/vendor/rustls-rustcrypto/src/aead/gcm.rs b/vendor/rustls-rustcrypto/src/aead/gcm.rs
+new file mode 100644
+index 0000000..14be62b
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/src/aead/gcm.rs
+@@ -0,0 +1,235 @@
++#[cfg(feature = "alloc")]
++use alloc::boxed::Box;
++
++use super::{DecryptBufferAdapter, EncryptBufferAdapter};
++
++use aead::AeadInPlace;
++use crypto_common::{KeyInit, KeySizeUser};
++use paste::paste;
++use rustls::crypto::cipher::{
++    self, AeadKey, InboundOpaqueMessage, InboundPlainMessage, MessageDecrypter, MessageEncrypter,
++    OutboundOpaqueMessage, OutboundPlainMessage, PrefixedPayload, Tls13AeadAlgorithm,
++};
++use rustls::{ConnectionTrafficSecrets, ContentType, ProtocolVersion};
++
++#[cfg(feature = "tls12")]
++use {
++    aead::AeadCore,
++    crypto_common::typenum::Unsigned,
++    rustls::crypto::cipher::{Iv, KeyBlockShape, Tls12AeadAlgorithm},
++};
++
++#[cfg(feature = "tls12")]
++const TLS12_GCM_EXPLICIT_NONCE_LEN: usize = 8;
++
++#[cfg(feature = "tls12")]
++const TLS12_GCM_OVERHEAD: usize = TLS12_GCM_EXPLICIT_NONCE_LEN + 16;
++
++macro_rules! impl_gcm_tls13 {
++    ($name: ident, $aead: ty, $overhead: expr) => {
++        paste! {
++            pub struct [<Tls13 $name>];
++
++            impl Tls13AeadAlgorithm for [<Tls13 $name>] {
++                fn encrypter(&self, key: AeadKey, iv: cipher::Iv) -> Box<dyn MessageEncrypter> {
++                    Box::new([<Tls13Cipher $name>](
++                        $aead::new_from_slice(key.as_ref()).unwrap(),
++                        iv,
++                    ))
++                }
++
++                fn decrypter(&self, key: AeadKey, iv: cipher::Iv) -> Box<dyn MessageDecrypter> {
++                    Box::new([<Tls13Cipher $name>](
++                        $aead::new_from_slice(key.as_ref()).unwrap(),
++                        iv,
++                    ))
++                }
++
++                fn key_len(&self) -> usize {
++                    $aead::key_size()
++                }
++                fn extract_keys(
++                    &self,
++                    key: AeadKey,
++                    iv: cipher::Iv,
++                ) -> Result<ConnectionTrafficSecrets, cipher::UnsupportedOperationError> {
++                    Ok(ConnectionTrafficSecrets::Aes256Gcm { key, iv })
++                }
++            }
++
++            struct [<Tls13Cipher $name>]($aead, cipher::Iv);
++
++            impl MessageEncrypter for [<Tls13Cipher $name>] {
++                fn encrypt(&mut self, m: OutboundPlainMessage<'_>, seq: u64) -> Result<OutboundOpaqueMessage, rustls::Error> {
++                    let total_len = self.encrypted_payload_len(m.payload.len());
++                    let mut payload = PrefixedPayload::with_capacity(total_len);
++
++                    let nonce = cipher::Nonce::new(&self.1, seq).0;
++                    let aad = cipher::make_tls13_aad(total_len);
++                    payload.extend_from_chunks(&m.payload);
++                    payload.extend_from_slice(&m.typ.to_array());
++
++                    self.0
++                        .encrypt_in_place(&nonce.into(), &aad, &mut EncryptBufferAdapter(&mut payload))
++                        .map_err(|_| rustls::Error::EncryptError)
++                        .map(|_| OutboundOpaqueMessage::new(
++                            ContentType::ApplicationData,
++                            ProtocolVersion::TLSv1_2,
++                            payload,
++                        ))
++                }
++
++                fn encrypted_payload_len(&self, payload_len: usize) -> usize {
++                    payload_len + 1 + $overhead
++                }
++            }
++
++            impl MessageDecrypter for [<Tls13Cipher $name>] {
++                fn decrypt<'a>(&mut self, mut m: InboundOpaqueMessage<'a>, seq: u64) -> Result<InboundPlainMessage<'a>, rustls::Error> {
++                    let payload = &mut m.payload;
++                    let nonce = cipher::Nonce::new(&self.1, seq).0;
++                    let aad = cipher::make_tls13_aad(payload.len());
++
++                    self.0
++                        .decrypt_in_place(&nonce.into(), &aad, &mut DecryptBufferAdapter(payload))
++                        .map_err(|_| rustls::Error::DecryptError)?;
++
++                    m.into_tls13_unpadded_message()
++                }
++            }
++
++        }
++    };
++}
++
++#[cfg(feature = "tls12")]
++macro_rules! impl_gcm_tls12 {
++    ($name: ident, $aead: ty, $nonce: expr, $overhead: expr) => {
++        paste! {
++            #[cfg(feature = "tls12")]
++            pub struct [<Tls12 $name>];
++
++            #[cfg(feature = "tls12")]
++            impl Tls12AeadAlgorithm for [<Tls12 $name>] {
++                fn encrypter(&self, key: AeadKey, write_iv: &[u8], explicit: &[u8]) -> Box<dyn MessageEncrypter> {
++                    Box::new([<Tls12Cipher $name Encrypter>](
++                        $aead::new_from_slice(key.as_ref()).unwrap(),
++                        {
++                            let mut iv: [u8; 12] = [0; 12];
++                            iv[..4].copy_from_slice(write_iv);
++                            iv[4..].copy_from_slice(explicit);
++                            iv
++                        },
++                    ))
++                }
++
++                fn decrypter(&self, dec_key: AeadKey, dec_iv: &[u8]) -> Box<dyn MessageDecrypter> {
++                    Box::new([<Tls12Cipher $name Decrypter>](
++                        $aead::new_from_slice(dec_key.as_ref()).unwrap(),
++                        dec_iv.try_into().unwrap(),
++                    ))
++                }
++
++                fn key_block_shape(&self) -> KeyBlockShape {
++                    KeyBlockShape {
++                        enc_key_len:        $aead::key_size(),
++                        fixed_iv_len:       4,
++                        explicit_nonce_len: 8,
++                    }
++                }
++
++                fn extract_keys(
++                    &self,
++                    key: AeadKey,
++                    iv: &[u8],
++                    _explicit: &[u8],
++                ) -> Result<ConnectionTrafficSecrets, cipher::UnsupportedOperationError> {
++                    Ok(ConnectionTrafficSecrets::Aes128Gcm {
++                        key,
++                        iv: Iv::new(iv[..].try_into().unwrap()),
++                    })
++                }
++            }
++
++            #[cfg(feature = "tls12")]
++            struct [<Tls12Cipher $name Encrypter>]($aead, [u8; 12]);
++
++            #[cfg(feature = "tls12")]
++            impl MessageEncrypter for [<Tls12Cipher $name Encrypter>] {
++                fn encrypt(&mut self, m: OutboundPlainMessage<'_>, seq: u64) -> Result<OutboundOpaqueMessage, rustls::Error> {
++                    let total_len = self.encrypted_payload_len(m.payload.len());
++                    let mut payload = PrefixedPayload::with_capacity(total_len);
++
++                    let nonce = cipher::Nonce::new(&self.1.into(), seq).0;
++                    let aad = cipher::make_tls12_aad(seq, m.typ, m.version, m.payload.len());
++                    payload.extend_from_slice(&nonce.as_ref()[4..]); // explicit
++                    payload.extend_from_chunks(&m.payload);
++
++                    self.0
++                        .encrypt_in_place_detached(&nonce.into(), &aad, &mut payload.as_mut()[$nonce..])
++                        .map(|tag| payload.extend(tag.as_ref() as &[u8]))
++                        .map_err(|_| rustls::Error::EncryptError)
++                        .map(|_| OutboundOpaqueMessage::new(m.typ, m.version, payload))
++                }
++                fn encrypted_payload_len(&self, payload_len: usize) -> usize {
++                    payload_len + $nonce + <$aead as AeadCore>::TagSize::USIZE
++                }
++            }
++
++            #[cfg(feature = "tls12")]
++            struct [<Tls12Cipher $name Decrypter>]($aead, [u8; 4]);
++
++            #[cfg(feature = "tls12")]
++            impl MessageDecrypter for [<Tls12Cipher $name Decrypter>] {
++                fn decrypt<'a>(&mut self, mut m: InboundOpaqueMessage<'a>, seq: u64) -> Result<InboundPlainMessage<'a>, rustls::Error> {
++                    type TagSize = <$aead as AeadCore>::TagSize;
++
++                    let payload = &m.payload;
++
++                    if payload.len() < $overhead {
++                        return Err(rustls::Error::DecryptError);
++                    }
++
++                    let nonce: aead::Nonce<$aead> = {
++                        let mut nonce = [0u8; 12];
++                        nonce[..4].copy_from_slice(&self.1); // dec_iv
++                        nonce[4..].copy_from_slice(&payload[..$nonce]);
++                        nonce.into()
++                    };
++
++                    let aad = cipher::make_tls12_aad(seq, m.typ, m.version, payload.len() - $overhead);
++
++                    let payload = &mut m.payload;
++                    let tag_pos = {
++                        let payload = &mut payload[$nonce..];
++                        let tag_pos = payload.len() - TagSize::to_usize();
++                        let (msg, tag) = payload.split_at_mut(tag_pos);
++
++                        let tag = aes_gcm::Tag::<TagSize>::from_slice(tag);
++                        self.0
++                            .decrypt_in_place_detached(&nonce, &aad, msg, tag)
++                            .map_err(|_| rustls::Error::DecryptError)?;
++                        tag_pos
++                    };
++
++                    // We defer the truncation to here, because we may inadvertently shifted the
++                    // original data if the decryption failed. Another way to avoid this is
++                    // to clone the payload slice starting after the explicit nonce,
++                    // but this will cause an additional cloning and copying
++                    payload.rotate_left($nonce);
++                    payload.truncate(tag_pos);
++                    Ok(m.into_plain_message())
++                }
++            }
++        }
++    };
++}
++
++impl_gcm_tls13! {Aes128Gcm, aes_gcm::Aes128Gcm, 16}
++impl_gcm_tls13! {Aes256Gcm, aes_gcm::Aes256Gcm, 16}
++
++#[cfg(feature = "tls12")]
++impl_gcm_tls12! {Aes128Gcm, aes_gcm::Aes128Gcm, TLS12_GCM_EXPLICIT_NONCE_LEN, TLS12_GCM_OVERHEAD}
++
++#[cfg(feature = "tls12")]
++impl_gcm_tls12! {Aes256Gcm, aes_gcm::Aes256Gcm, TLS12_GCM_EXPLICIT_NONCE_LEN, TLS12_GCM_OVERHEAD}
+diff --git a/vendor/rustls-rustcrypto/src/hash.rs b/vendor/rustls-rustcrypto/src/hash.rs
+new file mode 100644
+index 0000000..dfa58e1
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/src/hash.rs
+@@ -0,0 +1,62 @@
++#[cfg(feature = "alloc")]
++use alloc::boxed::Box;
++
++use digest::{Digest, OutputSizeUser};
++use paste::paste;
++use rustls::crypto::{self, hash};
++use sha2::{Sha256, Sha384};
++
++macro_rules! impl_hash {
++    ($name:ident, $ty:ty, $algo:ty) => {
++        paste! {
++            #[allow(non_camel_case_types)]
++            struct [<Hash_ $ty>];
++
++            impl hash::Hash for [<Hash_ $ty>] {
++                fn start(&self) -> Box<dyn hash::Context> {
++                    Box::new([<HashContent_ $ty>]($ty::new()))
++                }
++
++                fn hash(&self, data: &[u8]) -> hash::Output {
++                    hash::Output::new(&$ty::digest(data)[..])
++                }
++
++                fn output_len(&self) -> usize {
++                    <$ty as OutputSizeUser>::output_size()
++                }
++
++                fn algorithm(&self) -> hash::HashAlgorithm {
++                    $algo
++                }
++            }
++
++            #[allow(non_camel_case_types)]
++            struct [<HashContent_ $ty>]($ty);
++
++            impl hash::Context for [<HashContent_ $ty>] {
++                fn fork_finish(&self) -> hash::Output {
++                    hash::Output::new(&self.0.clone().finalize()[..])
++                }
++
++                fn fork(&self) -> Box<dyn hash::Context> {
++                    Box::new([<HashContent_ $ty>](self.0.clone()))
++                }
++
++                fn finish(self: Box<Self>) -> hash::Output {
++                    hash::Output::new(&self.0.finalize()[..])
++                }
++
++                fn update(&mut self, data: &[u8]) {
++                    self.0.update(data);
++                }
++            }
++
++            pub const $name: &dyn crypto::hash::Hash = &[<Hash_ $ty>];
++        }
++    };
++}
++
++// impl_hash! {SHA224, Sha224, hash::HashAlgorithm::SHA224}
++impl_hash! {SHA256, Sha256, hash::HashAlgorithm::SHA256}
++impl_hash! {SHA384, Sha384, hash::HashAlgorithm::SHA384}
++// impl_hash! {SHA512, Sha512, hash::HashAlgorithm::SHA512}
+diff --git a/vendor/rustls-rustcrypto/src/hmac.rs b/vendor/rustls-rustcrypto/src/hmac.rs
+new file mode 100644
+index 0000000..8388c27
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/src/hmac.rs
+@@ -0,0 +1,56 @@
++#[cfg(feature = "alloc")]
++use alloc::boxed::Box;
++
++use crypto_common::OutputSizeUser;
++use hmac::Mac;
++use paste::paste;
++use rustls::crypto;
++use sha2::{Sha256, Sha384};
++
++macro_rules! impl_hmac {
++    (
++        $name: ident,
++        $ty: ty
++    ) => {
++        paste! {
++            #[allow(non_camel_case_types)]
++            struct [<Hmac_ $ty>];
++
++            impl crypto::hmac::Hmac for [<Hmac_ $ty>] {
++                fn with_key(&self, key: &[u8]) -> Box<dyn crypto::hmac::Key> {
++                    Box::new([<HmacKey_ $ty>](
++                        hmac::Hmac::<$ty>::new_from_slice(key).unwrap(),
++                    ))
++                }
++
++                fn hash_output_len(&self) -> usize {
++                    $ty::output_size()
++                }
++            }
++
++            #[allow(non_camel_case_types)]
++            struct [<HmacKey_ $ty>](hmac::Hmac<$ty>);
++
++            impl crypto::hmac::Key for [<HmacKey_ $ty>] {
++                fn sign_concat(&self, first: &[u8], middle: &[&[u8]], last: &[u8]) -> crypto::hmac::Tag {
++                    let mut ctx = self.0.clone();
++                    ctx.update(first);
++                    for m in middle {
++                        ctx.update(m);
++                    }
++                    ctx.update(last);
++                    crypto::hmac::Tag::new(&ctx.finalize().into_bytes()[..])
++                }
++
++                fn tag_len(&self) -> usize {
++                    $ty::output_size()
++                }
++            }
++            pub const $name: &dyn crypto::hmac::Hmac = &[<Hmac_ $ty>];
++        }
++    };
++}
++
++impl_hmac! {SHA256, Sha256}
++impl_hmac! {SHA384, Sha384}
++// impl_hmac! {SHA512, Sha512}
+diff --git a/vendor/rustls-rustcrypto/src/kx.rs b/vendor/rustls-rustcrypto/src/kx.rs
+new file mode 100644
+index 0000000..66341f2
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/src/kx.rs
+@@ -0,0 +1,108 @@
++#[cfg(feature = "alloc")]
++use alloc::boxed::Box;
++
++use crypto::{SharedSecret, SupportedKxGroup};
++use paste::paste;
++use rustls::crypto;
++
++#[derive(Debug)]
++pub struct X25519;
++
++impl crypto::SupportedKxGroup for X25519 {
++    fn name(&self) -> rustls::NamedGroup {
++        rustls::NamedGroup::X25519
++    }
++
++    fn start(&self) -> Result<Box<dyn crypto::ActiveKeyExchange>, rustls::Error> {
++        let priv_key = x25519_dalek::EphemeralSecret::random_from_rng(rand_core::OsRng);
++        let pub_key = (&priv_key).into();
++        Ok(Box::new(X25519KeyExchange { priv_key, pub_key }))
++    }
++}
++
++pub struct X25519KeyExchange {
++    priv_key: x25519_dalek::EphemeralSecret,
++    pub_key: x25519_dalek::PublicKey,
++}
++
++impl crypto::ActiveKeyExchange for X25519KeyExchange {
++    fn complete(self: Box<X25519KeyExchange>, peer: &[u8]) -> Result<SharedSecret, rustls::Error> {
++        let peer_array: [u8; 32] = peer
++            .try_into()
++            .map_err(|_| rustls::Error::from(rustls::PeerMisbehaved::InvalidKeyShare))?;
++        Ok(self
++            .priv_key
++            .diffie_hellman(&peer_array.into())
++            .as_ref()
++            .into())
++    }
++
++    fn pub_key(&self) -> &[u8] {
++        self.pub_key.as_bytes()
++    }
++
++    fn group(&self) -> rustls::NamedGroup {
++        X25519.name()
++    }
++}
++
++macro_rules! impl_kx {
++    ($name:ident, $kx_name:ty, $secret:ty, $public_key:ty) => {
++        paste! {
++
++            #[derive(Debug)]
++            #[allow(non_camel_case_types)]
++            pub struct $name;
++
++            impl crypto::SupportedKxGroup for $name {
++                fn name(&self) -> rustls::NamedGroup {
++                    $kx_name
++                }
++
++                fn start(&self) -> Result<Box<dyn crypto::ActiveKeyExchange>, rustls::Error> {
++                    let priv_key = $secret::random(&mut rand_core::OsRng);
++                    let pub_key: $public_key = (&priv_key).into();
++                    Ok(Box::new([<$name KeyExchange>] {
++                        priv_key,
++                        pub_key: pub_key.to_sec1_bytes(),
++                    }))
++                }
++            }
++
++            #[allow(non_camel_case_types)]
++            pub struct [<$name KeyExchange>] {
++                priv_key: $secret,
++                pub_key:  Box<[u8]>,
++            }
++
++            impl crypto::ActiveKeyExchange for [<$name KeyExchange>] {
++                fn complete(
++                    self: Box<[<$name KeyExchange>]>,
++                    peer: &[u8],
++                ) -> Result<SharedSecret, rustls::Error> {
++                    let their_pub = $public_key::from_sec1_bytes(peer)
++                        .map_err(|_| rustls::Error::from(rustls::PeerMisbehaved::InvalidKeyShare))?;
++                    Ok(self
++                        .priv_key
++                        .diffie_hellman(&their_pub)
++                        .raw_secret_bytes()
++                        .as_slice()
++                        .into())
++                }
++
++                fn pub_key(&self) -> &[u8] {
++                    &self.pub_key
++                }
++
++                fn group(&self) -> rustls::NamedGroup {
++                    $name.name()
++                }
++            }
++        }
++    };
++}
++
++impl_kx! {SecP256R1, rustls::NamedGroup::secp256r1, p256::ecdh::EphemeralSecret, p256::PublicKey}
++impl_kx! {SecP384R1, rustls::NamedGroup::secp384r1, p384::ecdh::EphemeralSecret, p384::PublicKey}
++
++pub const ALL_KX_GROUPS: &[&dyn SupportedKxGroup] = &[&X25519, &SecP256R1, &SecP384R1];
+diff --git a/vendor/rustls-rustcrypto/src/lib.rs b/vendor/rustls-rustcrypto/src/lib.rs
+new file mode 100644
+index 0000000..1b108b8
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/src/lib.rs
+@@ -0,0 +1,271 @@
++#![no_std]
++#![cfg_attr(docsrs, feature(doc_auto_cfg))]
++#![doc = include_str!("../README.md")]
++#![doc(
++    html_logo_url = "https://raw.githubusercontent.com/RustCrypto/meta/master/logo.svg",
++    html_favicon_url = "https://raw.githubusercontent.com/RustCrypto/meta/master/logo.svg"
++)]
++#![warn(
++    clippy::alloc_instead_of_core,
++    clippy::cast_lossless,
++    clippy::cast_possible_truncation,
++    clippy::cast_possible_wrap,
++    clippy::cast_precision_loss,
++    clippy::cast_sign_loss,
++    clippy::checked_conversions,
++    clippy::from_iter_instead_of_collect,
++    clippy::missing_errors_doc,
++    clippy::mod_module_files,
++    clippy::implicit_saturating_sub,
++    clippy::panic,
++    clippy::panic_in_result_fn,
++    clippy::std_instead_of_alloc,
++    clippy::std_instead_of_core,
++    clippy::unwrap_used,
++    rust_2018_idioms,
++    trivial_numeric_casts,
++    unused_lifetimes
++)]
++
++//! # Usage
++//!
++//! See [`examples-xsmall`](https://github.com/RustCrypto/rustls-rustcrypto/tree/master/examples-xsmall)
++//! for a usage example.
++
++#[cfg(not(feature = "alloc"))]
++compile_error!("Rustls currently does not support alloc-less environments");
++
++#[cfg(feature = "alloc")]
++extern crate alloc;
++
++#[cfg(feature = "alloc")]
++use alloc::sync::Arc;
++
++use rustls::crypto::{
++    CipherSuiteCommon, CryptoProvider, GetRandomFailed, KeyProvider, SecureRandom,
++};
++use rustls::{CipherSuite, SupportedCipherSuite, Tls13CipherSuite};
++
++#[cfg(feature = "tls12")]
++use rustls::SignatureScheme;
++
++#[derive(Debug)]
++pub struct Provider;
++
++pub fn provider() -> CryptoProvider {
++    CryptoProvider {
++        cipher_suites: ALL_CIPHER_SUITES.to_vec(),
++        kx_groups: kx::ALL_KX_GROUPS.to_vec(),
++        signature_verification_algorithms: verify::ALGORITHMS,
++        secure_random: &Provider,
++        key_provider: &Provider,
++    }
++}
++
++impl SecureRandom for Provider {
++    fn fill(&self, bytes: &mut [u8]) -> Result<(), GetRandomFailed> {
++        use rand_core::RngCore;
++        rand_core::OsRng
++            .try_fill_bytes(bytes)
++            .map_err(|_| GetRandomFailed)
++    }
++}
++
++impl KeyProvider for Provider {
++    fn load_private_key(
++        &self,
++        key_der: pki_types::PrivateKeyDer<'static>,
++    ) -> Result<Arc<dyn rustls::sign::SigningKey>, rustls::Error> {
++        sign::any_supported_type(&key_der)
++    }
++}
++
++#[cfg(feature = "tls12")]
++const TLS12_ECDSA_SCHEMES: [SignatureScheme; 4] = [
++    SignatureScheme::ECDSA_NISTP256_SHA256,
++    SignatureScheme::ECDSA_NISTP384_SHA384,
++    SignatureScheme::ECDSA_NISTP521_SHA512,
++    SignatureScheme::ED25519,
++];
++
++#[cfg(feature = "tls12")]
++const TLS12_RSA_SCHEMES: [SignatureScheme; 6] = [
++    SignatureScheme::RSA_PKCS1_SHA256,
++    SignatureScheme::RSA_PKCS1_SHA384,
++    SignatureScheme::RSA_PKCS1_SHA512,
++    SignatureScheme::RSA_PSS_SHA256,
++    SignatureScheme::RSA_PSS_SHA384,
++    SignatureScheme::RSA_PSS_SHA512,
++];
++
++#[cfg(feature = "tls12")]
++pub const TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256: SupportedCipherSuite =
++    SupportedCipherSuite::Tls12(&rustls::Tls12CipherSuite {
++        common: CipherSuiteCommon {
++            suite: CipherSuite::TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
++            hash_provider: hash::SHA256,
++            confidentiality_limit: u64::MAX,
++        },
++        kx: rustls::crypto::KeyExchangeAlgorithm::ECDHE,
++        sign: &TLS12_ECDSA_SCHEMES,
++        aead_alg: &aead::gcm::Tls12Aes128Gcm,
++        prf_provider: &rustls::crypto::tls12::PrfUsingHmac(hmac::SHA256),
++    });
++
++#[cfg(feature = "tls12")]
++pub const TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384: SupportedCipherSuite =
++    SupportedCipherSuite::Tls12(&rustls::Tls12CipherSuite {
++        common: CipherSuiteCommon {
++            suite: CipherSuite::TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
++            hash_provider: hash::SHA384,
++            confidentiality_limit: u64::MAX,
++        },
++        kx: rustls::crypto::KeyExchangeAlgorithm::ECDHE,
++        sign: &TLS12_ECDSA_SCHEMES,
++        prf_provider: &rustls::crypto::tls12::PrfUsingHmac(hmac::SHA384),
++        aead_alg: &aead::gcm::Tls12Aes256Gcm,
++    });
++
++#[cfg(feature = "tls12")]
++pub const TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256: SupportedCipherSuite =
++    SupportedCipherSuite::Tls12(&rustls::Tls12CipherSuite {
++        common: CipherSuiteCommon {
++            suite: CipherSuite::TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,
++            hash_provider: hash::SHA256,
++            confidentiality_limit: u64::MAX,
++        },
++        prf_provider: &rustls::crypto::tls12::PrfUsingHmac(hmac::SHA256),
++        kx: rustls::crypto::KeyExchangeAlgorithm::ECDHE,
++        sign: &TLS12_ECDSA_SCHEMES,
++        aead_alg: &aead::chacha20::Chacha20Poly1305,
++    });
++
++#[cfg(feature = "tls12")]
++const TLS_ECDHE_ECDSA_SUITES: &[SupportedCipherSuite] = &[
++    TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,
++    TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,
++    TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256,
++];
++
++#[cfg(feature = "tls12")]
++pub const TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256: SupportedCipherSuite =
++    SupportedCipherSuite::Tls12(&rustls::Tls12CipherSuite {
++        common: CipherSuiteCommon {
++            suite: CipherSuite::TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
++            hash_provider: hash::SHA256,
++            confidentiality_limit: u64::MAX,
++        },
++        kx: rustls::crypto::KeyExchangeAlgorithm::ECDHE,
++        sign: &TLS12_RSA_SCHEMES,
++        aead_alg: &aead::gcm::Tls12Aes128Gcm,
++        prf_provider: &rustls::crypto::tls12::PrfUsingHmac(hmac::SHA256),
++    });
++
++#[cfg(feature = "tls12")]
++pub const TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384: SupportedCipherSuite =
++    SupportedCipherSuite::Tls12(&rustls::Tls12CipherSuite {
++        common: CipherSuiteCommon {
++            suite: CipherSuite::TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
++            hash_provider: hash::SHA384,
++            confidentiality_limit: u64::MAX,
++        },
++        kx: rustls::crypto::KeyExchangeAlgorithm::ECDHE,
++        sign: &TLS12_RSA_SCHEMES,
++        prf_provider: &rustls::crypto::tls12::PrfUsingHmac(hmac::SHA384),
++        aead_alg: &aead::gcm::Tls12Aes256Gcm,
++    });
++
++#[cfg(feature = "tls12")]
++pub const TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256: SupportedCipherSuite =
++    SupportedCipherSuite::Tls12(&rustls::Tls12CipherSuite {
++        common: CipherSuiteCommon {
++            suite: CipherSuite::TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256,
++            hash_provider: hash::SHA256,
++            confidentiality_limit: u64::MAX,
++        },
++        kx: rustls::crypto::KeyExchangeAlgorithm::ECDHE,
++        sign: &TLS12_RSA_SCHEMES,
++        prf_provider: &rustls::crypto::tls12::PrfUsingHmac(hmac::SHA256),
++        aead_alg: &aead::chacha20::Chacha20Poly1305,
++    });
++
++#[cfg(feature = "tls12")]
++const TLS_ECDHE_RSA_SUITES: &[SupportedCipherSuite] = &[
++    TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,
++    TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
++    TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256,
++];
++
++#[cfg(feature = "tls12")]
++const TLS12_SUITES: &[SupportedCipherSuite] = misc::const_concat_slices!(
++    SupportedCipherSuite,
++    TLS_ECDHE_ECDSA_SUITES,
++    TLS_ECDHE_RSA_SUITES
++);
++
++#[cfg(not(feature = "tls12"))]
++const TLS12_SUITES: &[SupportedCipherSuite] = &[];
++
++pub const TLS13_AES_128_GCM_SHA256: SupportedCipherSuite =
++    SupportedCipherSuite::Tls13(&Tls13CipherSuite {
++        common: CipherSuiteCommon {
++            suite: CipherSuite::TLS13_AES_128_GCM_SHA256,
++            hash_provider: hash::SHA256,
++            confidentiality_limit: u64::MAX,
++        },
++        hkdf_provider: &rustls::crypto::tls13::HkdfUsingHmac(hmac::SHA256),
++        aead_alg: &aead::gcm::Tls13Aes128Gcm,
++        quic: None,
++    });
++
++pub const TLS13_AES_256_GCM_SHA384: SupportedCipherSuite =
++    SupportedCipherSuite::Tls13(&Tls13CipherSuite {
++        common: CipherSuiteCommon {
++            suite: CipherSuite::TLS13_AES_256_GCM_SHA384,
++            hash_provider: hash::SHA384,
++            confidentiality_limit: u64::MAX,
++        },
++        hkdf_provider: &rustls::crypto::tls13::HkdfUsingHmac(hmac::SHA384),
++        aead_alg: &aead::gcm::Tls13Aes256Gcm,
++        quic: None,
++    });
++
++const TLS13_AES_SUITES: &[SupportedCipherSuite] =
++    &[TLS13_AES_128_GCM_SHA256, TLS13_AES_256_GCM_SHA384];
++
++pub const TLS13_CHACHA20_POLY1305_SHA256: SupportedCipherSuite =
++    SupportedCipherSuite::Tls13(&Tls13CipherSuite {
++        common: CipherSuiteCommon {
++            suite: CipherSuite::TLS13_CHACHA20_POLY1305_SHA256,
++            hash_provider: hash::SHA256,
++            confidentiality_limit: u64::MAX,
++        },
++        hkdf_provider: &rustls::crypto::tls13::HkdfUsingHmac(hmac::SHA256),
++        aead_alg: &aead::chacha20::Chacha20Poly1305,
++        quic: None,
++    });
++
++const TLS13_SUITES: &[SupportedCipherSuite] = misc::const_concat_slices!(
++    SupportedCipherSuite,
++    TLS13_AES_SUITES,
++    &[TLS13_CHACHA20_POLY1305_SHA256]
++);
++
++static ALL_CIPHER_SUITES: &[SupportedCipherSuite] = misc::const_concat_slices!(
++    SupportedCipherSuite,
++    if cfg!(feature = "tls12") {
++        TLS12_SUITES
++    } else {
++        &[]
++    },
++    TLS13_SUITES,
++);
++
++mod aead;
++mod hash;
++mod hmac;
++mod kx;
++mod misc;
++pub mod quic;
++pub mod sign;
++mod verify;
+diff --git a/vendor/rustls-rustcrypto/src/misc.rs b/vendor/rustls-rustcrypto/src/misc.rs
+new file mode 100644
+index 0000000..8e25563
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/src/misc.rs
+@@ -0,0 +1,36 @@
++#[macro_export]
++macro_rules! const_concat_slices {
++    ($ty:ty, $a:expr, $b:expr $(,)*) => {{
++        const A: &[$ty] = $a;
++        const B: &[$ty] = $b;
++        const __LEN: usize = A.len() + B.len();
++        const __CONCATENATED: &[$ty; __LEN] = &{
++            let mut out: [$ty; __LEN] = if __LEN == 0 {
++                unsafe { core::mem::transmute([0u8; core::mem::size_of::<$ty>() * __LEN]) }
++            } else if A.len() == 0 {
++                [B[0]; __LEN]
++            } else {
++                [A[0]; __LEN]
++            };
++            let mut i = 0;
++            while i < A.len() {
++                out[i] = A[i];
++                i += 1;
++            }
++            i = 0;
++            while i < B.len() {
++                out[i + A.len()] = B[i];
++                i += 1;
++            }
++            out
++        };
++
++        __CONCATENATED
++    }};
++    ($ty:ty, $a:expr, $b:expr, $($c:expr), + $(,)* ) => {{
++        const CON: &[$ty] = const_concat_slices!($ty, $a, $b);
++        const_concat_slices!($ty, CON, $($c), +)
++    }}
++}
++
++pub(crate) use const_concat_slices;
+diff --git a/vendor/rustls-rustcrypto/src/quic.rs b/vendor/rustls-rustcrypto/src/quic.rs
+new file mode 100644
+index 0000000..f849835
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/src/quic.rs
+@@ -0,0 +1,142 @@
++#![allow(clippy::duplicate_mod)]
++
++#[cfg(feature = "alloc")]
++use alloc::boxed::Box;
++
++use aead::AeadCore;
++use chacha20poly1305::{AeadInPlace, KeyInit, KeySizeUser};
++use crypto_common::typenum::Unsigned;
++use rustls::crypto::cipher::{self, AeadKey, Iv};
++use rustls::{quic, Error, Tls13CipherSuite};
++
++#[allow(dead_code)] // TODO
++pub struct HeaderProtectionKey(AeadKey);
++
++impl HeaderProtectionKey {
++    pub fn new(key: AeadKey) -> Self {
++        Self(key)
++    }
++}
++
++impl quic::HeaderProtectionKey for HeaderProtectionKey {
++    fn encrypt_in_place(
++        &self,
++        _sample: &[u8],
++        _first: &mut u8,
++        _packet_number: &mut [u8],
++    ) -> Result<(), Error> {
++        todo!()
++    }
++
++    fn decrypt_in_place(
++        &self,
++        _sample: &[u8],
++        _first: &mut u8,
++        _packet_number: &mut [u8],
++    ) -> Result<(), Error> {
++        todo!()
++    }
++
++    #[inline]
++    fn sample_len(&self) -> usize {
++        todo!()
++    }
++}
++
++pub struct PacketKey {
++    /// Computes unique nonces for each packet
++    iv: Iv,
++
++    /// The cipher suite used for this packet key
++    #[allow(dead_code)]
++    suite: &'static Tls13CipherSuite,
++
++    crypto: chacha20poly1305::ChaCha20Poly1305,
++}
++
++impl PacketKey {
++    pub fn new(suite: &'static Tls13CipherSuite, key: AeadKey, iv: Iv) -> Self {
++        Self {
++            iv,
++            suite,
++            crypto: chacha20poly1305::ChaCha20Poly1305::new_from_slice(key.as_ref())
++                .expect("key should be valid"),
++        }
++    }
++}
++
++impl quic::PacketKey for PacketKey {
++    fn encrypt_in_place(
++        &self,
++        packet_number: u64,
++        aad: &[u8],
++        payload: &mut [u8],
++    ) -> Result<quic::Tag, Error> {
++        let nonce = cipher::Nonce::new(&self.iv, packet_number).0;
++
++        let tag = self
++            .crypto
++            .encrypt_in_place_detached(&nonce.into(), aad, payload)
++            .map_err(|_| rustls::Error::EncryptError)?;
++        Ok(quic::Tag::from(tag.as_ref()))
++    }
++
++    /// Decrypt a QUIC packet
++    ///
++    /// Takes the packet `header`, which is used as the additional authenticated
++    /// data, and the `payload`, which includes the authentication tag.
++    ///
++    /// If the return value is `Ok`, the decrypted payload can be found in
++    /// `payload`, up to the length found in the return value.
++    fn decrypt_in_place<'a>(
++        &self,
++        packet_number: u64,
++        aad: &[u8],
++        payload: &'a mut [u8],
++    ) -> Result<&'a [u8], Error> {
++        let mut payload_ = payload.to_vec();
++        let payload_len = payload_.len();
++        let nonce = chacha20poly1305::Nonce::from(cipher::Nonce::new(&self.iv, packet_number).0);
++
++        self.crypto
++            .decrypt_in_place(&nonce, aad, &mut payload_)
++            .map_err(|_| rustls::Error::DecryptError)?;
++
++        // Unfortunately the lifetime bound on decrypt_in_place sucks
++        payload.copy_from_slice(&payload_);
++
++        let plain_len = payload_len - self.tag_len();
++        Ok(&payload[..plain_len])
++    }
++
++    /// Tag length for the underlying AEAD algorithm
++    #[inline]
++    fn tag_len(&self) -> usize {
++        <chacha20poly1305::ChaCha20Poly1305 as AeadCore>::TagSize::to_usize()
++    }
++
++    fn integrity_limit(&self) -> u64 {
++        1 << 36
++    }
++
++    fn confidentiality_limit(&self) -> u64 {
++        u64::MAX
++    }
++}
++
++#[allow(dead_code)] // TODO
++pub struct KeyBuilder(AeadKey);
++
++impl rustls::quic::Algorithm for KeyBuilder {
++    fn packet_key(&self, _key: AeadKey, _iv: Iv) -> Box<dyn quic::PacketKey> {
++        todo!()
++    }
++
++    fn header_protection_key(&self, key: AeadKey) -> Box<dyn quic::HeaderProtectionKey> {
++        Box::new(HeaderProtectionKey::new(key))
++    }
++
++    fn aead_key_len(&self) -> usize {
++        chacha20poly1305::ChaCha20Poly1305::key_size()
++    }
++}
+diff --git a/vendor/rustls-rustcrypto/src/sign.rs b/vendor/rustls-rustcrypto/src/sign.rs
+new file mode 100644
+index 0000000..e6109f5
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/src/sign.rs
+@@ -0,0 +1,105 @@
++#[cfg(feature = "alloc")]
++use alloc::{sync::Arc, vec::Vec};
++use core::marker::PhantomData;
++
++use self::ecdsa::{EcdsaSigningKeyP256, EcdsaSigningKeyP384};
++use self::eddsa::Ed25519SigningKey;
++use self::rsa::RsaSigningKey;
++
++use pki_types::PrivateKeyDer;
++use rustls::sign::{Signer, SigningKey};
++use rustls::{Error, SignatureScheme};
++use signature::{RandomizedSigner, SignatureEncoding};
++
++#[derive(Debug)]
++pub struct GenericRandomizedSigner<S, T>
++where
++    S: SignatureEncoding,
++    T: RandomizedSigner<S>,
++{
++    _marker: PhantomData<S>,
++    key: Arc<T>,
++    scheme: SignatureScheme,
++}
++
++impl<T, S> Signer for GenericRandomizedSigner<S, T>
++where
++    S: SignatureEncoding + Send + Sync + core::fmt::Debug,
++    T: RandomizedSigner<S> + Send + Sync + core::fmt::Debug,
++{
++    fn sign(&self, message: &[u8]) -> Result<Vec<u8>, Error> {
++        self.key
++            .try_sign_with_rng(&mut rand_core::OsRng, message)
++            .map_err(|_| rustls::Error::General("signing failed".into()))
++            .map(|sig: S| sig.to_vec())
++    }
++
++    fn scheme(&self) -> SignatureScheme {
++        self.scheme
++    }
++}
++
++#[derive(Debug)]
++pub struct GenericSigner<S, T>
++where
++    S: SignatureEncoding,
++    T: signature::Signer<S>,
++{
++    _marker: PhantomData<S>,
++    key: Arc<T>,
++    scheme: SignatureScheme,
++}
++
++impl<S, T> Signer for GenericSigner<S, T>
++where
++    S: SignatureEncoding + Send + Sync + core::fmt::Debug,
++    T: signature::Signer<S> + Send + Sync + core::fmt::Debug,
++{
++    fn sign(&self, message: &[u8]) -> Result<Vec<u8>, Error> {
++        self.key
++            .try_sign(message)
++            .map_err(|_| rustls::Error::General("signing failed".into()))
++            .map(|sig: S| sig.to_vec())
++    }
++
++    fn scheme(&self) -> SignatureScheme {
++        self.scheme
++    }
++}
++
++/// Extract any supported key from the given DER input.
++///
++/// # Errors
++///
++/// Returns an error if the key couldn't be decoded.
++pub fn any_supported_type(der: &PrivateKeyDer<'_>) -> Result<Arc<dyn SigningKey>, rustls::Error> {
++    RsaSigningKey::try_from(der)
++        .map(|x| Arc::new(x) as _)
++        .or_else(|_| any_ecdsa_type(der))
++        .or_else(|_| any_eddsa_type(der))
++}
++
++/// Extract any supported ECDSA key from the given DER input.
++///
++/// # Errors
++///
++/// Returns an error if the key couldn't be decoded.
++pub fn any_ecdsa_type(der: &PrivateKeyDer<'_>) -> Result<Arc<dyn SigningKey>, rustls::Error> {
++    let p256 = |_| EcdsaSigningKeyP256::try_from(der).map(|x| Arc::new(x) as _);
++    let p384 = |_| EcdsaSigningKeyP384::try_from(der).map(|x| Arc::new(x) as _);
++    p256(()).or_else(p384)
++}
++
++/// Extract any supported EDDSA key from the given DER input.
++///
++/// # Errors
++///
++/// Returns an error if the key couldn't be decoded.
++pub fn any_eddsa_type(der: &PrivateKeyDer<'_>) -> Result<Arc<dyn SigningKey>, rustls::Error> {
++    // TODO: Add support for Ed448
++    Ed25519SigningKey::try_from(der).map(|x| Arc::new(x) as _)
++}
++
++pub mod ecdsa;
++pub mod eddsa;
++pub mod rsa;
+diff --git a/vendor/rustls-rustcrypto/src/sign/ecdsa.rs b/vendor/rustls-rustcrypto/src/sign/ecdsa.rs
+new file mode 100644
+index 0000000..3f4a2bc
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/src/sign/ecdsa.rs
+@@ -0,0 +1,66 @@
++#[cfg(feature = "alloc")]
++use alloc::{boxed::Box, format, sync::Arc};
++use core::marker::PhantomData;
++
++use paste::paste;
++use pkcs8::DecodePrivateKey;
++use pki_types::PrivateKeyDer;
++use rustls::sign::SigningKey;
++use rustls::{SignatureAlgorithm, SignatureScheme};
++use sec1::DecodeEcPrivateKey;
++
++macro_rules! impl_ecdsa {
++    ($name: ident, $scheme: expr, $signing_key: ty, $signature: ty) => {
++        paste! {
++            #[derive(Debug)]
++            pub struct [<EcdsaSigningKey $name>] {
++                key:    Arc<$signing_key>,
++                scheme: SignatureScheme,
++            }
++
++            impl TryFrom<&PrivateKeyDer<'_>> for [<EcdsaSigningKey $name>] {
++                type Error = rustls::Error;
++
++                fn try_from(value: &PrivateKeyDer<'_>) -> Result<Self, Self::Error> {
++                    let pkey = match value {
++                        PrivateKeyDer::Pkcs8(der) => {
++                            $signing_key::from_pkcs8_der(der.secret_pkcs8_der()).map_err(|e| format!("failed to decrypt private key: {e}"))
++                        },
++                        PrivateKeyDer::Sec1(sec1) => {
++                            $signing_key::from_sec1_der(sec1.secret_sec1_der()).map_err(|e| format!("failed to decrypt private key: {e}"))
++                        },
++                        PrivateKeyDer::Pkcs1(_) => Err(format!("ECDSA does not support PKCS#1 key")),
++                        _ => Err("not supported".into()),
++                    };
++                    pkey.map(|kp| {
++                        Self {
++                            key:    Arc::new(kp),
++                            scheme: $scheme,
++                        }
++                    }).map_err(rustls::Error::General)
++                }
++            }
++
++            impl SigningKey for [<EcdsaSigningKey $name>] {
++                fn choose_scheme(&self, offered: &[SignatureScheme]) -> Option<Box<dyn rustls::sign::Signer>> {
++                    if offered.contains(&self.scheme) {
++                        Some(Box::new(super::GenericRandomizedSigner::<$signature, _> {
++                            _marker: PhantomData,
++                            key:     self.key.clone(),
++                            scheme:  self.scheme,
++                        }))
++                    } else {
++                        None
++                    }
++                }
++
++                fn algorithm(&self) -> SignatureAlgorithm {
++                    SignatureAlgorithm::ECDSA
++                }
++            }
++        }
++    };
++}
++
++impl_ecdsa! {P256, SignatureScheme::ECDSA_NISTP256_SHA256, p256::ecdsa::SigningKey, p256::ecdsa::DerSignature}
++impl_ecdsa! {P384, SignatureScheme::ECDSA_NISTP384_SHA384, p384::ecdsa::SigningKey, p384::ecdsa::DerSignature}
+diff --git a/vendor/rustls-rustcrypto/src/sign/eddsa.rs b/vendor/rustls-rustcrypto/src/sign/eddsa.rs
+new file mode 100644
+index 0000000..e6f0d1a
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/src/sign/eddsa.rs
+@@ -0,0 +1,57 @@
++#[cfg(feature = "alloc")]
++use alloc::{boxed::Box, format, string::ToString, sync::Arc};
++use core::marker::PhantomData;
++
++use pkcs8::DecodePrivateKey;
++use pki_types::PrivateKeyDer;
++use rustls::sign::{Signer, SigningKey};
++use rustls::{SignatureAlgorithm, SignatureScheme};
++use sec1::DecodeEcPrivateKey;
++
++#[derive(Debug)]
++pub struct Ed25519SigningKey {
++    key: Arc<ed25519_dalek::SigningKey>,
++    scheme: SignatureScheme,
++}
++
++impl TryFrom<&PrivateKeyDer<'_>> for Ed25519SigningKey {
++    type Error = rustls::Error;
++
++    fn try_from(value: &PrivateKeyDer<'_>) -> Result<Self, Self::Error> {
++        let pkey = match value {
++            PrivateKeyDer::Pkcs8(der) => {
++                ed25519_dalek::SigningKey::from_pkcs8_der(der.secret_pkcs8_der())
++                    .map_err(|e| format!("failed to decrypt private key: {e}"))
++            }
++            PrivateKeyDer::Sec1(sec1) => {
++                ed25519_dalek::SigningKey::from_sec1_der(sec1.secret_sec1_der())
++                    .map_err(|e| format!("failed to decrypt private key: {e}"))
++            }
++            PrivateKeyDer::Pkcs1(_) => Err("ED25519 does not support PKCS#1 key".to_string()),
++            _ => Err("not supported".into()),
++        };
++        pkey.map(|kp| Self {
++            key: Arc::new(kp),
++            scheme: SignatureScheme::ED25519,
++        })
++        .map_err(rustls::Error::General)
++    }
++}
++
++impl SigningKey for Ed25519SigningKey {
++    fn choose_scheme(&self, offered: &[SignatureScheme]) -> Option<Box<dyn Signer>> {
++        if offered.contains(&self.scheme) {
++            Some(Box::new(super::GenericSigner {
++                _marker: PhantomData,
++                key: self.key.clone(),
++                scheme: self.scheme,
++            }))
++        } else {
++            None
++        }
++    }
++
++    fn algorithm(&self) -> SignatureAlgorithm {
++        SignatureAlgorithm::ED25519
++    }
++}
+diff --git a/vendor/rustls-rustcrypto/src/sign/rsa.rs b/vendor/rustls-rustcrypto/src/sign/rsa.rs
+new file mode 100644
+index 0000000..ab27d36
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/src/sign/rsa.rs
+@@ -0,0 +1,78 @@
++#[cfg(feature = "alloc")]
++use alloc::{boxed::Box, format, string::ToString, sync::Arc};
++
++use pkcs8::DecodePrivateKey;
++use pki_types::PrivateKeyDer;
++use rsa::pkcs1::DecodeRsaPrivateKey;
++use rsa::RsaPrivateKey;
++use rustls::sign::{Signer, SigningKey};
++use rustls::{SignatureAlgorithm, SignatureScheme};
++use sha2::{Sha256, Sha384, Sha512};
++
++const ALL_RSA_SCHEMES: &[SignatureScheme] = &[
++    SignatureScheme::RSA_PSS_SHA512,
++    SignatureScheme::RSA_PSS_SHA384,
++    SignatureScheme::RSA_PSS_SHA256,
++    SignatureScheme::RSA_PKCS1_SHA512,
++    SignatureScheme::RSA_PKCS1_SHA384,
++    SignatureScheme::RSA_PKCS1_SHA256,
++];
++
++#[derive(Debug)]
++pub struct RsaSigningKey(RsaPrivateKey);
++
++impl TryFrom<&PrivateKeyDer<'_>> for RsaSigningKey {
++    type Error = rustls::Error;
++
++    fn try_from(value: &PrivateKeyDer<'_>) -> Result<Self, Self::Error> {
++        let pkey = match value {
++            PrivateKeyDer::Pkcs8(der) => RsaPrivateKey::from_pkcs8_der(der.secret_pkcs8_der())
++                .map_err(|e| format!("failed to decrypt private key: {e}")),
++            PrivateKeyDer::Pkcs1(der) => RsaPrivateKey::from_pkcs1_der(der.secret_pkcs1_der())
++                .map_err(|e| format!("failed to decrypt private key: {e}")),
++            PrivateKeyDer::Sec1(_) => Err("RSA does not support SEC-1 key".to_string()),
++            _ => Err("not supported".into()),
++        };
++
++        pkey.map(Self).map_err(rustls::Error::General)
++    }
++}
++
++impl SigningKey for RsaSigningKey {
++    fn choose_scheme(&self, offered: &[SignatureScheme]) -> Option<Box<dyn Signer>> {
++        ALL_RSA_SCHEMES
++            .iter()
++            .find(|scheme| offered.contains(scheme))
++            .and_then(|&scheme| {
++                macro_rules! signer {
++                    ($key:ty) => {{
++                        Some(Box::new(super::GenericRandomizedSigner {
++                            _marker: Default::default(),
++                            key: Arc::new(<$key>::new(self.0.clone())),
++                            scheme,
++                        }) as Box<_>)
++                    }};
++                }
++
++                match scheme {
++                    SignatureScheme::RSA_PSS_SHA512 => signer! {rsa::pss::SigningKey::<Sha512>},
++                    SignatureScheme::RSA_PSS_SHA384 => signer! {rsa::pss::SigningKey::<Sha384>},
++                    SignatureScheme::RSA_PSS_SHA256 => signer! {rsa::pss::SigningKey::<Sha256>},
++                    SignatureScheme::RSA_PKCS1_SHA512 => {
++                        signer! {rsa::pkcs1v15::SigningKey::<Sha512>}
++                    }
++                    SignatureScheme::RSA_PKCS1_SHA384 => {
++                        signer! {rsa::pkcs1v15::SigningKey::<Sha384>}
++                    }
++                    SignatureScheme::RSA_PKCS1_SHA256 => {
++                        signer! {rsa::pkcs1v15::SigningKey::<Sha256>}
++                    }
++                    _ => None,
++                }
++            })
++    }
++
++    fn algorithm(&self) -> SignatureAlgorithm {
++        SignatureAlgorithm::RSA
++    }
++}
+diff --git a/vendor/rustls-rustcrypto/src/verify.rs b/vendor/rustls-rustcrypto/src/verify.rs
+new file mode 100644
+index 0000000..2043b64
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/src/verify.rs
+@@ -0,0 +1,46 @@
++use rustls::crypto::WebPkiSupportedAlgorithms;
++use rustls::SignatureScheme;
++
++use self::ecdsa::{ECDSA_P256_SHA256, ECDSA_P256_SHA384, ECDSA_P384_SHA256, ECDSA_P384_SHA384};
++use self::eddsa::ED25519;
++use self::rsa::{
++    RSA_PKCS1_SHA256, RSA_PKCS1_SHA384, RSA_PKCS1_SHA512, RSA_PSS_SHA256, RSA_PSS_SHA384,
++    RSA_PSS_SHA512,
++};
++
++pub static ALGORITHMS: WebPkiSupportedAlgorithms = WebPkiSupportedAlgorithms {
++    all: &[
++        ECDSA_P256_SHA256,
++        ECDSA_P256_SHA384,
++        ECDSA_P384_SHA256,
++        ECDSA_P384_SHA384,
++        ED25519,
++        RSA_PKCS1_SHA256,
++        RSA_PKCS1_SHA384,
++        RSA_PKCS1_SHA512,
++        RSA_PSS_SHA256,
++        RSA_PSS_SHA384,
++        RSA_PSS_SHA512,
++    ],
++    mapping: &[
++        (
++            SignatureScheme::ECDSA_NISTP384_SHA384,
++            &[ECDSA_P384_SHA384, ECDSA_P256_SHA384],
++        ),
++        (
++            SignatureScheme::ECDSA_NISTP256_SHA256,
++            &[ECDSA_P256_SHA256, ECDSA_P384_SHA256],
++        ),
++        (SignatureScheme::ED25519, &[ED25519]),
++        (SignatureScheme::RSA_PKCS1_SHA256, &[RSA_PKCS1_SHA256]),
++        (SignatureScheme::RSA_PKCS1_SHA384, &[RSA_PKCS1_SHA384]),
++        (SignatureScheme::RSA_PKCS1_SHA512, &[RSA_PKCS1_SHA512]),
++        (SignatureScheme::RSA_PSS_SHA256, &[RSA_PSS_SHA256]),
++        (SignatureScheme::RSA_PSS_SHA384, &[RSA_PSS_SHA384]),
++        (SignatureScheme::RSA_PSS_SHA512, &[RSA_PSS_SHA512]),
++    ],
++};
++
++pub mod ecdsa;
++pub mod eddsa;
++pub mod rsa;
+diff --git a/vendor/rustls-rustcrypto/src/verify/ecdsa.rs b/vendor/rustls-rustcrypto/src/verify/ecdsa.rs
+new file mode 100644
+index 0000000..c05923a
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/src/verify/ecdsa.rs
+@@ -0,0 +1,54 @@
++use der::Decode;
++use digest::Digest;
++use paste::paste;
++use pki_types::{AlgorithmIdentifier, InvalidSignature, SignatureVerificationAlgorithm};
++use signature::hazmat::PrehashVerifier;
++use rustls::pki_types::alg_id;
++
++macro_rules! impl_generic_ecdsa_verifer {
++    (
++        $name:ident,
++        $public_key_algo:expr,
++        $signature_alg_id:expr,
++        $verifying_key:ty,
++        $signature:ty,
++        $hash:ty
++    ) => {
++        paste! {
++            #[allow(non_camel_case_types)]
++            #[derive(Debug)]
++            struct [<EcdsaVerifier_ $name>];
++
++            impl SignatureVerificationAlgorithm for [<EcdsaVerifier_ $name>] {
++                fn public_key_alg_id(&self) -> AlgorithmIdentifier {
++                    $public_key_algo
++                }
++
++                fn signature_alg_id(&self) -> AlgorithmIdentifier {
++                    $signature_alg_id
++                }
++
++                fn verify_signature(
++                    &self,
++                    public_key: &[u8],
++                    message: &[u8],
++                    signature: &[u8],
++                ) -> Result<(), InvalidSignature> {
++                    let signature = <$signature>::from_der(signature).map_err(|_| InvalidSignature)?;
++                    let verifying_key = <$verifying_key>::from_sec1_bytes(public_key).map_err(|_| InvalidSignature)?;
++                    let digest = &<$hash>::digest(&message);
++                    verifying_key
++                        .verify_prehash(digest, &signature)
++                        .map_err(|_| InvalidSignature)
++                }
++            }
++
++            pub const $name: &dyn SignatureVerificationAlgorithm = &[<EcdsaVerifier_ $name>];
++        }
++    };
++}
++
++impl_generic_ecdsa_verifer! {ECDSA_P256_SHA256, alg_id::ECDSA_P256, alg_id::ECDSA_SHA256, p256::ecdsa::VerifyingKey, p256::ecdsa::DerSignature, sha2::Sha256}
++impl_generic_ecdsa_verifer! {ECDSA_P256_SHA384, alg_id::ECDSA_P256, alg_id::ECDSA_SHA384, p256::ecdsa::VerifyingKey, p256::ecdsa::DerSignature, sha2::Sha384}
++impl_generic_ecdsa_verifer! {ECDSA_P384_SHA256, alg_id::ECDSA_P384, alg_id::ECDSA_SHA256, p384::ecdsa::VerifyingKey, p384::ecdsa::DerSignature, sha2::Sha256}
++impl_generic_ecdsa_verifer! {ECDSA_P384_SHA384, alg_id::ECDSA_P384, alg_id::ECDSA_SHA384, p384::ecdsa::VerifyingKey, p384::ecdsa::DerSignature, sha2::Sha384}
+diff --git a/vendor/rustls-rustcrypto/src/verify/eddsa.rs b/vendor/rustls-rustcrypto/src/verify/eddsa.rs
+new file mode 100644
+index 0000000..1ef67ca
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/src/verify/eddsa.rs
+@@ -0,0 +1,33 @@
++use pki_types::{AlgorithmIdentifier, InvalidSignature, SignatureVerificationAlgorithm};
++use signature::Verifier;
++use rustls::pki_types::alg_id;
++
++#[derive(Debug)]
++struct Ed25519Verify;
++
++impl SignatureVerificationAlgorithm for Ed25519Verify {
++    fn public_key_alg_id(&self) -> AlgorithmIdentifier {
++        alg_id::ED25519
++    }
++
++    fn signature_alg_id(&self) -> AlgorithmIdentifier {
++        alg_id::ED25519
++    }
++
++    fn verify_signature(
++        &self,
++        public_key: &[u8],
++        message: &[u8],
++        signature: &[u8],
++    ) -> Result<(), InvalidSignature> {
++        let public_key = public_key.try_into().map_err(|_| InvalidSignature)?;
++        let signature =
++            ed25519_dalek::Signature::from_slice(signature).map_err(|_| InvalidSignature)?;
++        ed25519_dalek::VerifyingKey::from_bytes(public_key)
++            .map_err(|_| InvalidSignature)?
++            .verify(message, &signature)
++            .map_err(|_| InvalidSignature)
++    }
++}
++
++pub const ED25519: &dyn SignatureVerificationAlgorithm = &Ed25519Verify;
+diff --git a/vendor/rustls-rustcrypto/src/verify/rsa.rs b/vendor/rustls-rustcrypto/src/verify/rsa.rs
+new file mode 100644
+index 0000000..9bb5ee5
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/src/verify/rsa.rs
+@@ -0,0 +1,92 @@
++use paste::paste;
++use pki_types::{AlgorithmIdentifier, InvalidSignature, SignatureVerificationAlgorithm};
++use rsa::pkcs1::DecodeRsaPublicKey;
++use rsa::{pkcs1v15, pss, RsaPublicKey};
++use sha2::{Sha256, Sha384, Sha512};
++use signature::Verifier;
++use rustls::pki_types::alg_id;
++
++macro_rules! impl_generic_rsa_verifer {
++    (
++        $name:ident,
++        $public_key_algo:expr,
++        $signature_alg_id:expr,
++        $verifying_key:ty,
++        $signature:ty
++    ) => {
++        paste! {
++            #[allow(non_camel_case_types)]
++            #[derive(Debug)]
++            struct [<RsaVerifier_ $name>];
++
++            impl SignatureVerificationAlgorithm for [<RsaVerifier_ $name>] {
++                fn public_key_alg_id(&self) -> AlgorithmIdentifier {
++                    $public_key_algo
++                }
++
++                fn signature_alg_id(&self) -> AlgorithmIdentifier {
++                    $signature_alg_id
++                }
++
++                fn verify_signature(
++                    &self,
++                    public_key: &[u8],
++                    message: &[u8],
++                    signature: &[u8],
++                ) -> Result<(), InvalidSignature> {
++                        let public_key = RsaPublicKey::from_pkcs1_der(public_key).map_err(|_| InvalidSignature)?;
++                        let signature = <$signature>::try_from(signature).map_err(|_| InvalidSignature)?;
++                        <$verifying_key>::new(public_key)
++                            .verify(message, &signature)
++                            .map_err(|_| InvalidSignature)
++                }
++            }
++
++            pub const $name: &dyn SignatureVerificationAlgorithm = &[<RsaVerifier_ $name>];
++        }
++    };
++}
++
++impl_generic_rsa_verifer!(
++    RSA_PKCS1_SHA256,
++    alg_id::RSA_ENCRYPTION,
++    alg_id::RSA_PKCS1_SHA256,
++    pkcs1v15::VerifyingKey<Sha256>,
++    pkcs1v15::Signature
++);
++impl_generic_rsa_verifer!(
++    RSA_PKCS1_SHA384,
++    alg_id::RSA_ENCRYPTION,
++    alg_id::RSA_PKCS1_SHA384,
++    pkcs1v15::VerifyingKey<Sha384>,
++    pkcs1v15::Signature
++);
++impl_generic_rsa_verifer!(
++    RSA_PKCS1_SHA512,
++    alg_id::RSA_ENCRYPTION,
++    alg_id::RSA_PKCS1_SHA512,
++    pkcs1v15::VerifyingKey<Sha512>,
++    pkcs1v15::Signature
++);
++
++impl_generic_rsa_verifer!(
++    RSA_PSS_SHA256,
++    alg_id::RSA_ENCRYPTION,
++    alg_id::RSA_PSS_SHA256,
++    pss::VerifyingKey<Sha256>,
++    pss::Signature
++);
++impl_generic_rsa_verifer!(
++    RSA_PSS_SHA384,
++    alg_id::RSA_ENCRYPTION,
++    alg_id::RSA_PSS_SHA384,
++    pss::VerifyingKey<Sha384>,
++    pss::Signature
++);
++impl_generic_rsa_verifer!(
++    RSA_PSS_SHA512,
++    alg_id::RSA_ENCRYPTION,
++    alg_id::RSA_PSS_SHA512,
++    pss::VerifyingKey<Sha512>,
++    pss::Signature
++);
+diff --git a/vendor/rustls-rustcrypto/tests-external/badssl.rs b/vendor/rustls-rustcrypto/tests-external/badssl.rs
+new file mode 100644
+index 0000000..7da3a4d
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/tests-external/badssl.rs
+@@ -0,0 +1,53 @@
++use claim::{assert_err, assert_ok};
++use test_case::test_case;
++
++// For the available tests check out here: https://badssl.com/dashboard/
++
++#[cfg(feature = "tls12")]
++#[test_case("https://ecc256.badssl.com/", Ok(()); "test ECC256 verification")]
++#[test_case("https://ecc384.badssl.com/", Ok(()); "test ECC384 verification")]
++#[test_case("https://rsa2048.badssl.com/", Ok(()); "test RSA-2048 verification")]
++#[test_case("https://rsa4096.badssl.com/", Ok(()); "test RSA-4096 verification")]
++#[cfg_attr(TODO, test_case("https://rsa8192.badssl.com/", Err(()); "test RSA-8192 verification"))]
++#[test_case("https://sha256.badssl.com/", Ok(()); "test SHA-256 hash")]
++#[test_case("https://sha384.badssl.com/", Err(()); "test SHA-384 hash (but expired)")]
++#[test_case("https://sha512.badssl.com/", Err(()); "test SHA-512 hash (but expired)")]
++#[test_case("https://tls-v1-2.badssl.com/", Ok(()); "test general TLS1.2 verification")]
++#[test_case("https://mozilla-intermediate.badssl.com/", Ok(()); "test Mozilla intermediate compatibility (TLS 1.2 only)")]
++#[test_case("https://long-extended-subdomain-name-containing-many-letters-and-dashes.badssl.com/", Ok(()); "test long name with dashes")]
++#[test_case("https://longextendedsubdomainnamewithoutdashesinordertotestwordwrapping.badssl.com/", Ok(()); "test long name")]
++#[tokio::test]
++async fn test_badssl_tls12(uri: &str, expected: Result<(), ()>) {
++    if expected.is_ok() {
++        assert_ok!(client::run_request(uri).await);
++    } else {
++        assert_err!(client::run_request(uri).await);
++    }
++}
++
++#[test_case("https://hsts.badssl.com/", Ok(()); "test HSTS (TODO)")]
++#[test_case("https://mozilla-intermediate.badssl.com/", Ok(()); "test Mozilla intermediate compatibility (TLS 1.3 preferred)")]
++#[test_case("https://mozilla-modern.badssl.com/", Ok(()); "test Mozilla modern compatibility (TLS 1.3 required)")]
++#[test_case("https://upgrade.badssl.com/", Ok(()); "test upgrade-insecure-requests")]
++#[test_case("https://1000-sans.badssl.com/", Err(()); "test 1000-sans")]
++#[test_case("https://10000-sans.badssl.com/", Err(()); "test 10000-sans")]
++#[test_case("https://expired.badssl.com/", Err(()); "test expired")]
++#[test_case("https://incomplete-chain.badssl.com/", Err(()); "test incomplete chain")]
++#[test_case("https://no-common-name.badssl.com/", Err(()); "test no common name")]
++#[test_case("https://no-subject.badssl.com/", Err(()); "test no subject")]
++#[test_case("https://revoked.badssl.com/", Err(()); "test revoked")]
++#[test_case("https://self-signed.badssl.com/", Err(()); "test self signed")]
++#[test_case("https://untrusted-root.badssl.com/", Err(()); "test untrusted root")]
++#[test_case("https://wrong.host.badssl.com/", Err(()); "test wrong host")]
++#[test_case("https://no-sct.badssl.com/", Err(()); "test Signed Certificate Timestamp")] // NET::ERR_CERTIFICATE_TRANSPARENCY_REQUIRED
++#[cfg_attr(TODO, test_case("https://pinning-test.badssl.com/", Err(()); "test pinning test"))] // NET::ERR_SSL_PINNED_KEY_NOT_IN_CERT_CHAIN
++#[tokio::test]
++async fn test_badssl(uri: &str, expected: Result<(), ()>) {
++    if expected.is_ok() {
++        assert_ok!(client::run_request(uri).await);
++    } else {
++        assert_err!(client::run_request(uri).await);
++    }
++}
++
++mod client;
+diff --git a/vendor/rustls-rustcrypto/tests-external/client.rs b/vendor/rustls-rustcrypto/tests-external/client.rs
+new file mode 100644
+index 0000000..addae02
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/tests-external/client.rs
+@@ -0,0 +1,37 @@
++use std::str::FromStr;
++
++use http_body_util::{BodyExt, Empty};
++use hyper::{body::Bytes, Uri};
++use hyper_rustls::HttpsConnector;
++use hyper_util::{
++    client::legacy::{connect::HttpConnector, Client},
++    rt::TokioExecutor,
++};
++use rustls_rustcrypto::provider;
++
++pub fn build_hyper_client() -> anyhow::Result<Client<HttpsConnector<HttpConnector>, Empty<Bytes>>> {
++    let https = hyper_rustls::HttpsConnectorBuilder::new()
++        .with_provider_and_webpki_roots(provider())?
++        .https_or_http()
++        .enable_all_versions()
++        .build();
++    let client: Client<_, Empty<Bytes>> = Client::builder(TokioExecutor::new()).build(https);
++
++    Ok(client)
++}
++
++// I'm not sure how to exactly extract the hyper TLS error result to pinpoint
++// what error it should match For now treating it as a grand result is alright
++pub async fn run_request(uri: &str) -> anyhow::Result<()> {
++    let client = build_hyper_client()?;
++    let uri = Uri::from_str(uri)?;
++    let res = client.get(uri).await?;
++
++    // We could definite check whether this is a HTML, but for now we don't really
++    // care about the body content
++    let bytes = res.into_body().collect().await?.to_bytes();
++
++    println!("{:?}", bytes);
++
++    Ok(())
++}
+diff --git a/vendor/rustls-rustcrypto/tests-external/generic.rs b/vendor/rustls-rustcrypto/tests-external/generic.rs
+new file mode 100644
+index 0000000..28f23da
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/tests-external/generic.rs
+@@ -0,0 +1,30 @@
++use claim::{assert_err, assert_ok};
++use test_case::test_case;
++
++// For the available tests check out here: https://badssl.com/dashboard/
++
++#[test_case("https://codeforces.com/", Ok(()))]
++#[test_case("https://crates.io/", Ok(()))]
++#[test_case("https://doc.rust-lang.org/", Ok(()))]
++#[test_case("https://github.com/", Ok(()))]
++#[test_case("https://twitter.com/", Ok(()))]
++#[test_case("https://wikipedia.org/", Ok(()))]
++#[test_case("https://www.facebook.com/", Ok(()))]
++#[test_case("https://www.google.com/", Ok(()))]
++#[test_case("https://www.hackerrank.com/", Ok(()))]
++#[test_case("https://www.instagram.com/", Ok(()))]
++#[test_case("https://www.reddit.com/", Ok(()))]
++#[test_case("https://stackoverflow.com/", Ok(()))]
++#[test_case("https://www.youtube.com/", Ok(()))]
++#[test_case("https://leetcode.com/", Ok(()))]
++#[cfg_attr(feature = "tls12", test_case("https://www.topcoder.com/", Ok(())))]
++#[tokio::test]
++async fn test_generic_sites(uri: &str, expected: Result<(), ()>) {
++    if expected.is_ok() {
++        assert_ok!(client::run_request(uri).await);
++    } else {
++        assert_err!(client::run_request(uri).await);
++    }
++}
++
++mod client;
+diff --git a/vendor/rustls-rustcrypto/tests/builder.rs b/vendor/rustls-rustcrypto/tests/builder.rs
+new file mode 100644
+index 0000000..bab5d85
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/tests/builder.rs
+@@ -0,0 +1,83 @@
++use std::sync::Arc;
++
++use rustls::ClientConfig as RusTlsClientConfig;
++use rustls::ServerConfig as RusTlsServerConfig;
++
++use rustls_rustcrypto::provider as rustcrypto_provider;
++
++mod fake_time;
++use fake_time::FakeTime;
++
++mod fake_cert_server_verifier;
++use fake_cert_server_verifier::FakeServerCertVerifier;
++
++mod fake_cert_client_verifier;
++use fake_cert_client_verifier::FakeClientCertVerifier;
++
++mod fake_cert_server_resolver;
++use fake_cert_server_resolver::FakeServerCertResolver;
++
++// Test integration between rustls and rustls in Client builder context
++#[test]
++fn integrate_client_builder_with_details_fake() {
++    let provider = rustcrypto_provider();
++    let time_provider = FakeTime {};
++
++    let fake_server_cert_verifier = FakeServerCertVerifier {};
++
++    let builder_init =
++        RusTlsClientConfig::builder_with_details(Arc::new(provider), Arc::new(time_provider));
++
++    let builder_default_versions = builder_init
++        .with_safe_default_protocol_versions()
++        .expect("Default protocol versions error?");
++
++    let dangerous_verifier = builder_default_versions
++        .dangerous()
++        .with_custom_certificate_verifier(Arc::new(fake_server_cert_verifier));
++
++    // Out of scope
++    let rustls_client_config = dangerous_verifier.with_no_client_auth();
++
++    // RustCrypto is not fips
++    assert!(!rustls_client_config.fips());
++}
++
++use rustls::DistinguishedName;
++
++// Test integration between rustls and rustls in Server builder context
++#[test]
++fn integrate_server_builder_with_details_fake() {
++    let provider = rustcrypto_provider();
++    let time_provider = FakeTime {};
++
++    let builder_init =
++        RusTlsServerConfig::builder_with_details(Arc::new(provider), Arc::new(time_provider));
++
++    let builder_default_versions = builder_init
++        .with_safe_default_protocol_versions()
++        .expect("Default protocol versions error?");
++
++    // A DistinguishedName is a Vec<u8> wrapped in internal types.
++    // DER or BER encoded Subject field from RFC 5280 for a single certificate.
++    // The Subject field is encoded as an RFC 5280 Name
++    //let b_wrap_in: &[u8] = b""; // TODO: should have constant somewhere
++
++    let dummy_entry: &[u8] = b"";
++
++    let client_dn = [DistinguishedName::in_sequence(dummy_entry)];
++
++    let client_cert_verifier = FakeClientCertVerifier { dn: client_dn };
++
++    let dangerous_verifier =
++        builder_default_versions.with_client_cert_verifier(Arc::new(client_cert_verifier));
++
++    let server_cert_resolver = FakeServerCertResolver {};
++
++    // Out of scope
++    let rustls_client_config =
++        dangerous_verifier.with_cert_resolver(Arc::new(server_cert_resolver));
++
++    // RustCrypto is not fips
++    assert!(!rustls_client_config.fips());
++}
+diff --git a/vendor/rustls-rustcrypto/tests/fake_cert_client_verifier.rs b/vendor/rustls-rustcrypto/tests/fake_cert_client_verifier.rs
+new file mode 100644
+index 0000000..a8dc9cc
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/tests/fake_cert_client_verifier.rs
+@@ -0,0 +1,71 @@
++use rustls::DistinguishedName;
++use rustls::Error;
++
++use rustls::SignatureScheme;
++
++use rustls::pki_types::CertificateDer;
++use rustls::pki_types::UnixTime;
++use rustls::DigitallySignedStruct;
++
++use rustls::client::danger::HandshakeSignatureValid;
++use rustls::server::danger::ClientCertVerified;
++use rustls::server::danger::ClientCertVerifier;
++
++#[derive(Debug)]
++pub struct FakeClientCertVerifier {
++    pub dn: [DistinguishedName; 1],
++}
++
++impl ClientCertVerifier for FakeClientCertVerifier {
++    fn root_hint_subjects(&self) -> &[DistinguishedName] {
++        &self.dn
++    }
++    fn verify_client_cert(
++        &self,
++        _end_entity: &CertificateDer<'_>,
++        _intermediates: &[CertificateDer<'_>],
++        _now: UnixTime,
++    ) -> Result<ClientCertVerified, Error> {
++        Ok(ClientCertVerified::assertion())
++    }
++    fn verify_tls12_signature(
++        &self,
++        _message: &[u8],
++        _cert: &CertificateDer<'_>,
++        _dss: &DigitallySignedStruct,
++    ) -> Result<HandshakeSignatureValid, Error> {
++        Ok(HandshakeSignatureValid::assertion())
++    }
++    fn verify_tls13_signature(
++        &self,
++        _message: &[u8],
++        _cert: &CertificateDer<'_>,
++        _dss: &DigitallySignedStruct,
++    ) -> Result<HandshakeSignatureValid, Error> {
++        Ok(HandshakeSignatureValid::assertion())
++    }
++    fn supported_verify_schemes(&self) -> Vec<SignatureScheme> {
++        vec![
++            SignatureScheme::RSA_PKCS1_SHA1,
++            SignatureScheme::ECDSA_SHA1_Legacy,
++            SignatureScheme::RSA_PKCS1_SHA256,
++            SignatureScheme::ECDSA_NISTP256_SHA256,
++            SignatureScheme::RSA_PKCS1_SHA384,
++            SignatureScheme::ECDSA_NISTP384_SHA384,
++            SignatureScheme::RSA_PKCS1_SHA512,
++            SignatureScheme::ECDSA_NISTP521_SHA512,
++            SignatureScheme::RSA_PSS_SHA256,
++            SignatureScheme::RSA_PSS_SHA384,
++            SignatureScheme::RSA_PSS_SHA512,
++            SignatureScheme::ED25519,
++            SignatureScheme::ED448,
++            //SignatureScheme::Unknown(u16),
++        ]
++    }
++    fn offer_client_auth(&self) -> bool {
++        true
++    }
++    fn client_auth_mandatory(&self) -> bool {
++        false
++    }
++}
+diff --git a/vendor/rustls-rustcrypto/tests/fake_cert_server_resolver.rs b/vendor/rustls-rustcrypto/tests/fake_cert_server_resolver.rs
+new file mode 100644
+index 0000000..7028c8b
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/tests/fake_cert_server_resolver.rs
+@@ -0,0 +1,15 @@
++use std::sync::Arc;
++
++use rustls::server::ClientHello;
++
++use rustls::server::ResolvesServerCert;
++use rustls::sign::CertifiedKey;
++
++#[derive(Debug)]
++pub struct FakeServerCertResolver;
++
++impl ResolvesServerCert for FakeServerCertResolver {
++    fn resolve(&self, _client_hello: ClientHello<'_>) -> Option<Arc<CertifiedKey>> {
++        None
++    }
++}
+diff --git a/vendor/rustls-rustcrypto/tests/fake_cert_server_verifier.rs b/vendor/rustls-rustcrypto/tests/fake_cert_server_verifier.rs
+new file mode 100644
+index 0000000..2786058
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/tests/fake_cert_server_verifier.rs
+@@ -0,0 +1,59 @@
++use rustls::client::danger::HandshakeSignatureValid;
++use rustls::client::danger::ServerCertVerified;
++use rustls::client::danger::ServerCertVerifier;
++use rustls::pki_types::CertificateDer;
++use rustls::pki_types::ServerName;
++use rustls::pki_types::UnixTime;
++use rustls::DigitallySignedStruct;
++use rustls::Error;
++use rustls::SignatureScheme;
++
++#[derive(Debug)]
++pub struct FakeServerCertVerifier;
++
++impl ServerCertVerifier for FakeServerCertVerifier {
++    fn verify_server_cert(
++        &self,
++        _end_entity: &CertificateDer<'_>,
++        _intermediates: &[CertificateDer<'_>],
++        _server_name: &ServerName<'_>,
++        _ocsp_response: &[u8],
++        _now: UnixTime,
++    ) -> Result<ServerCertVerified, Error> {
++        Ok(ServerCertVerified::assertion())
++    }
++    fn verify_tls12_signature(
++        &self,
++        _message: &[u8],
++        _cert: &CertificateDer<'_>,
++        _dss: &DigitallySignedStruct,
++    ) -> Result<HandshakeSignatureValid, Error> {
++        Ok(HandshakeSignatureValid::assertion())
++    }
++    fn verify_tls13_signature(
++        &self,
++        _message: &[u8],
++        _cert: &CertificateDer<'_>,
++        _dss: &DigitallySignedStruct,
++    ) -> Result<HandshakeSignatureValid, Error> {
++        Ok(HandshakeSignatureValid::assertion())
++    }
++    fn supported_verify_schemes(&self) -> Vec<SignatureScheme> {
++        vec![
++            SignatureScheme::RSA_PKCS1_SHA1,
++            SignatureScheme::ECDSA_SHA1_Legacy,
++            SignatureScheme::RSA_PKCS1_SHA256,
++            SignatureScheme::ECDSA_NISTP256_SHA256,
++            SignatureScheme::RSA_PKCS1_SHA384,
++            SignatureScheme::ECDSA_NISTP384_SHA384,
++            SignatureScheme::RSA_PKCS1_SHA512,
++            SignatureScheme::ECDSA_NISTP521_SHA512,
++            SignatureScheme::RSA_PSS_SHA256,
++            SignatureScheme::RSA_PSS_SHA384,
++            SignatureScheme::RSA_PSS_SHA512,
++            SignatureScheme::ED25519,
++            SignatureScheme::ED448,
++            //SignatureScheme::Unknown(u16),
++        ]
++    }
++}
+diff --git a/vendor/rustls-rustcrypto/tests/fake_time.rs b/vendor/rustls-rustcrypto/tests/fake_time.rs
+new file mode 100644
+index 0000000..83dc3fa
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/tests/fake_time.rs
+@@ -0,0 +1,11 @@
++use rustls::pki_types::UnixTime;
++use rustls::time_provider::TimeProvider;
++
++#[derive(Debug)]
++pub struct FakeTime;
++
++impl TimeProvider for FakeTime {
++    fn current_time(&self) -> Option<UnixTime> {
++        None
++    }
++}
+diff --git a/vendor/rustls-rustcrypto/validation/README.md b/vendor/rustls-rustcrypto/validation/README.md
+new file mode 100644
+index 0000000..4670c20
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/validation/README.md
+@@ -0,0 +1,15 @@
++# rustls-rustcrypto Validation
++
++These are collection of crates that can be used to validate integration
++between rustls and rustcrypto-rustcrypto provider under different targets.
++
++| Crate            | Description                                      |
++| :---             | :---                                             |
++| consumer-no_std  | Basic consumer library aiming no_std environment |
++
++These live in the workspace due to different dependency requirements between
++tests where development-deps may pollute the integration under test.
++
++This is aimed for internal validation without requiring further upstream
++dependencies which are may or may not be in lock-step with current version of
++rustls the provider targets in any given time.
 diff --git a/xtask/src/main.rs b/xtask/src/main.rs
 index 819326f..0048afb 100644
 --- a/xtask/src/main.rs

@@ -3703,7 +3703,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "icon"
 usage = "Plervo product identity and native application packaging"
-sha256 = "4b2d920b832a6df3c4b8928834e28edd9802346d071331db9f8fba3e19bb8a32"
+sha256 = "5fd21f5a689e96fca085e4f4239d6646316e5f5b9fe1be594576f320179fc0d4"
 
 [[asset]]
 path = "assets/products/develop/icon-128.png"
@@ -3714,7 +3714,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "icon"
 usage = "Plervo product identity and native application packaging"
-sha256 = "e9633e214f1636c1b040f943d3c7866b52f6e38fc0bd608757c36a83e5c3742e"
+sha256 = "39c6f63e2a8eaa35c32f856fad90caa00fe58ca8204ef6dee9fc26daf82c4592"
 
 [[asset]]
 path = "assets/products/develop/icon-16.png"
@@ -3725,7 +3725,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "icon"
 usage = "Plervo product identity and native application packaging"
-sha256 = "11c9ffd488b3e843f5b6b2ac728e05f23c9c16aa85115adf7faa3b04964d5e91"
+sha256 = "da82e4428481899dcaa9c9fdc1cea774ad2413e95b2c2c26a74cc68c5c313db1"
 
 [[asset]]
 path = "assets/products/develop/icon-24.png"
@@ -3736,7 +3736,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "icon"
 usage = "Plervo product identity and native application packaging"
-sha256 = "f255b8f474c422de7d426f8ed039aa35bf3c340f4743d589e0ed2d223c57f917"
+sha256 = "663b243df264faec96ecad0447cb96258e18aebc191a9e955c210cbc1711417f"
 
 [[asset]]
 path = "assets/products/develop/icon-256.png"
@@ -3747,7 +3747,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "icon"
 usage = "Plervo product identity and native application packaging"
-sha256 = "272c03e9736c2977747174b5ad1f843014a46225d1642ca55d5562a18adc0643"
+sha256 = "150b9eccfad2aab1268c345f1b09cbe5de30dddb658155da209940a6369f0d7f"
 
 [[asset]]
 path = "assets/products/develop/icon-32.png"
@@ -3758,7 +3758,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "icon"
 usage = "Plervo product identity and native application packaging"
-sha256 = "2fcfcd2104b2d29ea94c8aad47eec7c24c18cfd92e5a28d22f5a32ff7118a9b3"
+sha256 = "1cab7a9b4e9e47fc4273187f1d850cd5a9c413d4a0a1f438bd9eef6235bf0efa"
 
 [[asset]]
 path = "assets/products/develop/icon-48.png"
@@ -3769,7 +3769,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "icon"
 usage = "Plervo product identity and native application packaging"
-sha256 = "ad343d17ac970b0be45c1464dd2c44bc6405857e2621f427c1b57e082028b66d"
+sha256 = "9c4647d2bedcc4b19dc1c8521124338cec01d2526a662548b4237d5f5e7d463e"
 
 [[asset]]
 path = "assets/products/develop/icon-512.png"
@@ -3780,7 +3780,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "icon"
 usage = "Plervo product identity and native application packaging"
-sha256 = "22fa25eccb7bbf8ac012749ee75868b1de6dde483d349d896116f3dc5a0cc691"
+sha256 = "c5b6d48d20b76f0d98684ab262033ecc952718be793c28b69a90b8a0982a1482"
 
 [[asset]]
 path = "assets/products/develop/icon-64.png"
@@ -3791,7 +3791,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "icon"
 usage = "Plervo product identity and native application packaging"
-sha256 = "4f66fcc412b836930ecd788cdf8afaceff07d7b2bf293a4e036dd7540f8268db"
+sha256 = "7b4c8e7ef614d6b9db26e33b96f26196a1dcd063ddb2c6f0c43c5c618d313b1b"
 
 [[asset]]
 path = "assets/products/develop/icon-macos.svg"
@@ -3802,7 +3802,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "icon"
 usage = "Plervo product identity and native application packaging"
-sha256 = "9ed18024db37dbb23a07ac9a5b9c7533b8dc2587c30a5e3999007a171f6fc4a6"
+sha256 = "825085dd6cdc24d6dd37da9b63665c81da278737a8696b46f660c690c0bcf646"
 
 [[asset]]
 path = "assets/products/develop/icon.icns"
@@ -3813,7 +3813,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "icon"
 usage = "Plervo product identity and native application packaging"
-sha256 = "1a311df7556062e3c1c60249249a947a692952991b2d6a3f645b6f1a614f1cbd"
+sha256 = "92695d4d16ae94d39723ca9d519ac6f719c58a71cb9eca6aba6e5812202d99f6"
 
 [[asset]]
 path = "assets/products/develop/icon.ico"
@@ -3824,7 +3824,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "icon"
 usage = "Plervo product identity and native application packaging"
-sha256 = "05bed199241f6af2d86fabc5a00c34c9c2f43c649f3d7f78237660e143b1b1a6"
+sha256 = "06087d94bebdc955a8fddefe6007d31d5fa97cb0dea0542e9d20154551048865"
 
 [[asset]]
 path = "assets/products/develop/icon.svg"
@@ -3835,7 +3835,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "icon"
 usage = "Plervo product identity and native application packaging"
-sha256 = "6ba7a378de697ace6f814be5de69301415b71e831924b49340bde113dc3f55b3"
+sha256 = "0820219e10803c1c617ad181284d11e443019e3041258ce415e9df743f213f9b"
 
 [[asset]]
 path = "assets/products/develop/macos-1024.png"
@@ -3846,7 +3846,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "icon"
 usage = "Plervo product identity and native application packaging"
-sha256 = "c41853849c6b7a06868d8b264d846718ebc4479608c2e0dd636845e89b737dfe"
+sha256 = "1dbdc7976339d522c8c9b417674edf44d6d4c5a1ca8f2e49dd86bca86d3a65c6"
 
 [[asset]]
 path = "assets/products/develop/macos-128.png"
@@ -3857,7 +3857,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "icon"
 usage = "Plervo product identity and native application packaging"
-sha256 = "d759dde09e0e0bd0ca291dfc8b4886d17255a8b370149ff4c81a3f0b82a2321c"
+sha256 = "cd8e50fa2ec32579aa9825e358eebe66b3370848ce40cfe30567c919690cb5f3"
 
 [[asset]]
 path = "assets/products/develop/macos-256.png"
@@ -3868,7 +3868,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "icon"
 usage = "Plervo product identity and native application packaging"
-sha256 = "66bbac2cda1006107eac2ea355b918adf6239830384f55d033107a7101a8a9b5"
+sha256 = "a50b22b65226b87ce8d42aa2655e9d73ead580c255150782a75d3d3e0817f8d8"
 
 [[asset]]
 path = "assets/products/develop/macos-512.png"
@@ -3879,7 +3879,7 @@ licence = "MIT OR Apache-2.0"
 licence_file = "LICENSE-MIT"
 kind = "icon"
 usage = "Plervo product identity and native application packaging"
-sha256 = "3f3960e048b7600c3b0fa72ef69bb9412ec0ef97edcedeff22df881b68b32fca"
+sha256 = "50f09e621e1f267ca68525db45398759f0faabcf15743ed0a4704d2159c3cb5d"
 
 [[asset]]
 path = "assets/products/motion/icon-1024.png"
