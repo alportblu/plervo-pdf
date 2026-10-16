@@ -1914,6 +1914,25 @@ index e686e73..da9d99a 100644
  [lints]
  workspace = true
  
+diff --git a/crates/affinity/src/preview.rs b/crates/affinity/src/preview.rs
+index f50cb8c..a553167 100644
+--- a/crates/affinity/src/preview.rs
++++ b/crates/affinity/src/preview.rs
+@@ -94,11 +94,10 @@ pub fn preview(bytes: &[u8]) -> Result<Preview<'_>, Error> {
+                 }
+                 image_data = true;
+             }
+-            b"IEND" => {
+-                if !image_data {
+-                    return Err(Error::Malformed("PNG has no image data"));
+-                }
++            b"IEND" if !image_data => {
++                return Err(Error::Malformed("PNG has no image data"));
+             }
++            b"IEND" => {}
+             _ if kind.first().is_some_and(u8::is_ascii_uppercase) => {
+                 return Err(Error::Unsupported("unknown critical PNG chunk"));
+             }
 diff --git a/crates/algo/Cargo.toml b/crates/algo/Cargo.toml
 index c4f34b4..96e044b 100644
 --- a/crates/algo/Cargo.toml

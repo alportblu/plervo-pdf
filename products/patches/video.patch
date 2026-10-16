@@ -5499,7 +5499,7 @@ index 9dac650..ce574ce 100644
              let labels: Vec<(String, Option<&str>)> = SampleFormat::ALL.iter().zip(sizes).map(|(&f, l)| (l.to_string(), why(f))).collect();
              let cur = SampleFormat::ALL.iter().position(|&f| f == s.audio.sample_format()).and_then(|i| sizes.get(i).copied()).unwrap_or(sizes[0]);
 diff --git a/crates/ui-egui/src/panels/file_dialogs.rs b/crates/ui-egui/src/panels/file_dialogs.rs
-index 26015da..967f355 100644
+index 26015da..7c17584 100644
 --- a/crates/ui-egui/src/panels/file_dialogs.rs
 +++ b/crates/ui-egui/src/panels/file_dialogs.rs
 @@ -53,9 +53,9 @@ pub fn show_recovery(app: &mut FilmcraftApp, ctx: &egui::Context) -> bool {
@@ -5514,6 +5514,15 @@ index 26015da..967f355 100644
              };
              ui.label(RichText::new(why).size(13.5).color(t.text));
              ui.add_space(4.0);
+@@ -131,7 +131,7 @@ pub fn show_revert(app: &mut FilmcraftApp, ctx: &egui::Context) -> bool {
+         });
+     });
+     // (the modal's own close also fires on Escape: not while a drag is being cancelled, #580)
+-    open && !(r.should_close() && !ctx.input(|i| i.pointer.any_down()))
++    open && (!r.should_close() || ctx.input(|i| i.pointer.any_down()))
+ }
+ 
+ /// Draw the dialog if it is one of ours; returns Some(still open).
 diff --git a/crates/ui-egui/src/panels/graphics_templates.rs b/crates/ui-egui/src/panels/graphics_templates.rs
 index 0aafa2e..b23d00a 100644
 --- a/crates/ui-egui/src/panels/graphics_templates.rs
@@ -5670,6 +5679,32 @@ index f72724b..3285065 100644
          system.store(1, Ordering::Relaxed);
          app.apply_prefs(&ctx);
          assert_eq!(app.tokens.kind, ThemeKind::Dark);
+diff --git a/crates/ui-egui/src/panels/timeline.rs b/crates/ui-egui/src/panels/timeline.rs
+index edb5646..b146df4 100644
+--- a/crates/ui-egui/src/panels/timeline.rs
++++ b/crates/ui-egui/src/panels/timeline.rs
+@@ -265,7 +265,7 @@ pub fn max_scroll(sequence_seconds: f64, width: f32, pps: f64) -> f64 {
+ /// Where the left edge goes so the playhead at `ph` seconds shows in a view `width` points wide
+ /// (the page-scroll margin from the left), or `None` when it is in view already.
+ pub fn scroll_to_reveal(ph: f64, scroll: f64, pps: f64, width: f64) -> Option<f64> {
+-    if !ph.is_finite() || !scroll.is_finite() || !(pps > 0.0 && pps.is_finite()) {
++    if !(ph.is_finite() && scroll.is_finite() && pps > 0.0 && pps.is_finite()) {
+         return None;
+     }
+     let px = (ph - scroll) * pps;
+@@ -2527,10 +2527,8 @@ fn interact(app: &mut FilmcraftApp, ui: &mut egui::Ui, seq: &Sequence, layout: &
+                 Drag::Scrub { initial } => {
+                     app.session.set_playhead(initial);
+                 }
+-                Drag::Volume(v) => {
+-                    if v.changed() {
+-                        let _ = app.session.execute("edit.undo", json!({}));
+-                    }
++                Drag::Volume(v) if v.changed() => {
++                    let _ = app.session.execute("edit.undo", json!({}));
+                 }
+                 Drag::Pan { start_scroll, start_v, .. } => {
+                     let v = &mut app.ui.timeline;
 diff --git a/crates/ui-egui/src/rtl.rs b/crates/ui-egui/src/rtl.rs
 index 7b71769..7df3fe5 100644
 --- a/crates/ui-egui/src/rtl.rs

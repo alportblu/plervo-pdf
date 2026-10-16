@@ -41,6 +41,10 @@ Sources: [RustSec advisories](https://rustsec.org/advisories/),
   actual shipping target graphs before deciding applicability.
 - Some lockfiles retain yanked dependency versions. Review replacements and their
   regression results before public release.
+- **Automation:** Slides' `apps/deckcraft/src/control_server.rs` is opt-in and binds
+  loopback, but currently accepts JSON-lines commands without authentication or
+  connection/request-size limits. Do not expose it or qualify that feature until it
+  is hardened. The other applications' automation paths also require individual review.
 - Slides and Audio currently lack the complete OS-selected multilingual interface
   required for Plervo. The other source trees have differing translation coverage;
   translation presence is not proof of completeness. Develop and Publish now select

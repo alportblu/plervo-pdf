@@ -141,8 +141,24 @@ jobs:
           command: check
           command-arguments: --config products/deny.toml
       - name: Static analysis
+        id: static_analysis
         working-directory: source
         run: cargo clippy --locked --workspace --all-targets -- -D warnings
+      - name: Collect further diagnostics after a failed strict check
+        if: failure() && steps.static_analysis.outcome == 'failure'
+        continue-on-error: true
+        working-directory: source
+        # Diagnostic pass only: the strict check above still fails the job, so no packages
+        # are built/uploaded from this run. Continue across lint failures to report them all.
+        run: cargo clippy --locked --workspace --all-targets --message-format=json -- --cap-lints warn > ../clippy-diagnostics.jsonl
+      - name: Preserve compiler diagnostics
+        if: failure() && steps.static_analysis.outcome == 'failure'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: diagnostics-${{ matrix.app.product }}-${{ runner.os }}-${{ github.sha }}
+          path: clippy-diagnostics.jsonl
+          if-no-files-found: error
+          retention-days: 14
       - name: Feature and regression tests
         working-directory: source
         run: cargo test --locked --workspace

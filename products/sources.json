@@ -117,7 +117,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.photocraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "93266efe63164815c86b42a25395c6e345685c6dc29a0b80d5b9d74a4f0ed452"
+    "patch_sha256": "e4a70db70b2e5366cdfc89d86774ad0f7cd01068888885ebee55e4fa78711198"
   },
   {
     "app": "vectorcraft",
@@ -242,7 +242,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.vectorcraft.png"
     ],
     "fonts_commit": "3d9ab3a132ed0eff457e424226a435a901da30d3",
-    "patch_sha256": "a1a3fce0fce3497b85eda4b5f8282d7658da5a06a0a6199570f1002956838c5a"
+    "patch_sha256": "fc381190001d0c2c1bd7dcc4d70710d4dc487586058338707292f14b0514a6a4"
   },
   {
     "app": "filmcraft",
@@ -375,7 +375,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.filmcraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "20ad6a58e88c608b9fb949833dff4379b6c2d2f0c0657229459a76200d79751b"
+    "patch_sha256": "fb9a1cd71a6021780eae29b2b072ca6dde64cb983f23db1d1ad4e80b6ea21254"
   },
   {
     "app": "lightcraft",
@@ -497,10 +497,14 @@
       "assets/app-icon/hicolor/24x24/apps/ai.storyteller.lightcraft.png",
       "assets/app-icon/hicolor/32x32/apps/ai.storyteller.lightcraft.png",
       "assets/app-icon/hicolor/64x64/apps/ai.storyteller.lightcraft.png",
-      "assets/app-icon/hicolor/16x16/apps/ai.storyteller.lightcraft.png"
+      "assets/app-icon/hicolor/16x16/apps/ai.storyteller.lightcraft.png",
+      "packaging/macos/dmg/background.svg",
+      "packaging/macos/dmg/background.tiff",
+      "packaging/macos/dmg/dmg-layout.DS_Store",
+      "packaging/macos/dmg/generate.py"
     ],
     "fonts_commit": "8dcdacd5153e64560d109541a47d806f26f048c0",
-    "patch_sha256": "969757f185de3fd8627b4092f385fb920b9ba9540596fe515720d5a75158b0f8"
+    "patch_sha256": "bc32b9ffcd3c57781310594c3a16296a7dd57e84939cf687d3fc9c663db6ddc6"
   },
   {
     "app": "effectcraft",
@@ -758,7 +762,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.designcraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "0e98d8281f39429afbb30fd7298542cd43fb67d278d828264e8607521a0b67f3"
+    "patch_sha256": "3df779ce0ee07eefce3d72d56da56bbdd664e86cdb1ab753a9a277c7e154a090"
   },
   {
     "app": "wordcraft",

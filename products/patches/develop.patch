@@ -2154,7 +2154,7 @@ index 66e5a78..bbcecb5 100644
          )
      });
 diff --git a/assets/ATTRIBUTION.md b/assets/ATTRIBUTION.md
-index 7ade9da..f7d8822 100644
+index 7ade9da..575fad8 100644
 --- a/assets/ATTRIBUTION.md
 +++ b/assets/ATTRIBUTION.md
 @@ -9,9 +9,7 @@ covers a whole directory), or if a licence file referenced in the Licence column
@@ -2175,37 +2175,35 @@ index 7ade9da..f7d8822 100644
  | craft-fonts: optional build input, not files in this repository | BIZ UDPGothic (Regular, Bold), BIZ UDMincho Regular, Shippori Mincho Regular, Noto Sans CJK SC Regular | Morisawa Inc. / The BIZ UDGothic and BIZ UDMincho Project Authors; The Shippori Mincho Project Authors; Google and Adobe (Noto Sans CJK, maintainer-approved exception; see AGENTS.md) (per craft-fonts' attribution) | https://github.com/storytold/craft-fonts/blob/main/ATTRIBUTION.md | SIL Open Font License 1.1 (each font's OFL.txt in craft-fonts; release packages ship it as OFL-<family>.txt) | 2026-10-06 | none; native builds made with `CRAFT_FONTS_DIR` embed the manifest fonts (all official releases); the web build embeds BIZ UDPGothic Regular and ships Noto Sans CJK SC Regular as a separate font file |
  | `crates/ui-egui/locales/uk.json`, `crates/ui-egui/locales/uk-formats.json` | Ukrainian interface catalogs | @dmatviichuk with Codex; PhotoCraft, FilmCraft and VectorCraft translation contributors for reused labels | original translations from English source; 337 initial English-key matches reviewed from [PhotoCraft 69c41f3](https://github.com/storytold/photocraft/blob/69c41f3523e147eb215da8c7b4c29b18b35d1c63/crates/ui-egui/src/i18n/uk.tsv), [FilmCraft 4854c27](https://github.com/storytold/filmcraft/blob/4854c277536fe8118257362304b6a7d82d8e704b/crates/ui-egui/src/i18n/uk.tsv), [VectorCraft 4b44265](https://github.com/storytold/vectorcraft/blob/4b44265965fdd6ffedfd6182a892c1a6c360d344/crates/ui-egui/src/i18n/uk.tsv) | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`, also the source repositories' licences) | 2026-10-09 | adapted to LightCraft photo-development context, completed catalogs, reviewed spelling and placeholders |
  
-@@ -34,3 +31,30 @@ Notes
+@@ -34,3 +31,28 @@ Notes
    [storytold/craft-fonts](https://github.com/storytold/craft-fonts), with their licences and attribution in its
    `ATTRIBUTION.md`, and are embedded only in builds made with the optional `CRAFT_FONTS_DIR` build input (all official
    releases). Never commit font files here; add new fonts to craft-fonts (craftrules `standards/fonts.md`).
 +
 +## Plervo application identity
 +
-+| Asset | Author | Source | License | Notes |
-+|---|---|---|---|---|
-+| `assets/app-icon/hicolor/128x128/apps/com.plervo.develop.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 39c6f63e2a8eaa35c32f856fad90caa00fe58ca8204ef6dee9fc26daf82c4592 |
-+| `assets/app-icon/hicolor/16x16/apps/com.plervo.develop.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 da82e4428481899dcaa9c9fdc1cea774ad2413e95b2c2c26a74cc68c5c313db1 |
-+| `assets/app-icon/hicolor/24x24/apps/com.plervo.develop.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 663b243df264faec96ecad0447cb96258e18aebc191a9e955c210cbc1711417f |
-+| `assets/app-icon/hicolor/256x256/apps/com.plervo.develop.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 150b9eccfad2aab1268c345f1b09cbe5de30dddb658155da209940a6369f0d7f |
-+| `assets/app-icon/hicolor/32x32/apps/com.plervo.develop.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 1cab7a9b4e9e47fc4273187f1d850cd5a9c413d4a0a1f438bd9eef6235bf0efa |
-+| `assets/app-icon/hicolor/48x48/apps/com.plervo.develop.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 9c4647d2bedcc4b19dc1c8521124338cec01d2526a662548b4237d5f5e7d463e |
-+| `assets/app-icon/hicolor/512x512/apps/com.plervo.develop.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 c5b6d48d20b76f0d98684ab262033ecc952718be793c28b69a90b8a0982a1482 |
-+| `assets/app-icon/hicolor/64x64/apps/com.plervo.develop.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 7b4c8e7ef614d6b9db26e33b96f26196a1dcd063ddb2c6f0c43c5c618d313b1b |
-+| `assets/app-icon/hicolor/scalable/apps/com.plervo.develop.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 0820219e10803c1c617ad181284d11e443019e3041258ce415e9df743f213f9b |
-+| `assets/app-icon/lightcraft-1024.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 5fd21f5a689e96fca085e4f4239d6646316e5f5b9fe1be594576f320179fc0d4 |
-+| `assets/app-icon/lightcraft-macos-512.png` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 50f09e621e1f267ca68525db45398759f0faabcf15743ed0a4704d2159c3cb5d |
-+| `assets/app-icon/lightcraft-small.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 0820219e10803c1c617ad181284d11e443019e3041258ce415e9df743f213f9b |
-+| `assets/app-icon/lightcraft.icns` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 92695d4d16ae94d39723ca9d519ac6f719c58a71cb9eca6aba6e5812202d99f6 |
-+| `assets/app-icon/lightcraft.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 06087d94bebdc955a8fddefe6007d31d5fa97cb0dea0542e9d20154551048865 |
-+| `assets/app-icon/lightcraft.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 0820219e10803c1c617ad181284d11e443019e3041258ce415e9df743f213f9b |
-+| `assets/app-icon/plervo-develop.icns` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 92695d4d16ae94d39723ca9d519ac6f719c58a71cb9eca6aba6e5812202d99f6 |
-+| `assets/app-icon/plervo-develop.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 06087d94bebdc955a8fddefe6007d31d5fa97cb0dea0542e9d20154551048865 |
-+| `assets/app-icon/plervo-develop.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 0820219e10803c1c617ad181284d11e443019e3041258ce415e9df743f213f9b |
-+
-+| `assets/app-icon/README.md` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | 071c1b7fc26edf9c1630e740a5edd63577f2de12d3fb22c85ad91fbaaef03e8b |
-+
-+| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | 071c1b7fc26edf9c1630e740a5edd63577f2de12d3fb22c85ad91fbaaef03e8b |
++| Path | Asset | Creator | Source | Licence | Added | Modifications |
++|---|---|---|---|---|---|---|
++| `assets/app-icon/hicolor/128x128/apps/com.plervo.develop.png` | Plervo Develop icon | Plervo contributors | Original Plervo vector family | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | 2026-10-16 | Native icon export; SHA-256 39c6f63e2a8eaa35c32f856fad90caa00fe58ca8204ef6dee9fc26daf82c4592 |
++| `assets/app-icon/hicolor/16x16/apps/com.plervo.develop.png` | Plervo Develop icon | Plervo contributors | Original Plervo vector family | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | 2026-10-16 | Native icon export; SHA-256 da82e4428481899dcaa9c9fdc1cea774ad2413e95b2c2c26a74cc68c5c313db1 |
++| `assets/app-icon/hicolor/24x24/apps/com.plervo.develop.png` | Plervo Develop icon | Plervo contributors | Original Plervo vector family | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | 2026-10-16 | Native icon export; SHA-256 663b243df264faec96ecad0447cb96258e18aebc191a9e955c210cbc1711417f |
++| `assets/app-icon/hicolor/256x256/apps/com.plervo.develop.png` | Plervo Develop icon | Plervo contributors | Original Plervo vector family | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | 2026-10-16 | Native icon export; SHA-256 150b9eccfad2aab1268c345f1b09cbe5de30dddb658155da209940a6369f0d7f |
++| `assets/app-icon/hicolor/32x32/apps/com.plervo.develop.png` | Plervo Develop icon | Plervo contributors | Original Plervo vector family | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | 2026-10-16 | Native icon export; SHA-256 1cab7a9b4e9e47fc4273187f1d850cd5a9c413d4a0a1f438bd9eef6235bf0efa |
++| `assets/app-icon/hicolor/48x48/apps/com.plervo.develop.png` | Plervo Develop icon | Plervo contributors | Original Plervo vector family | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | 2026-10-16 | Native icon export; SHA-256 9c4647d2bedcc4b19dc1c8521124338cec01d2526a662548b4237d5f5e7d463e |
++| `assets/app-icon/hicolor/512x512/apps/com.plervo.develop.png` | Plervo Develop icon | Plervo contributors | Original Plervo vector family | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | 2026-10-16 | Native icon export; SHA-256 c5b6d48d20b76f0d98684ab262033ecc952718be793c28b69a90b8a0982a1482 |
++| `assets/app-icon/hicolor/64x64/apps/com.plervo.develop.png` | Plervo Develop icon | Plervo contributors | Original Plervo vector family | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | 2026-10-16 | Native icon export; SHA-256 7b4c8e7ef614d6b9db26e33b96f26196a1dcd063ddb2c6f0c43c5c618d313b1b |
++| `assets/app-icon/hicolor/scalable/apps/com.plervo.develop.svg` | Plervo Develop icon | Plervo contributors | Original Plervo vector family | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | 2026-10-16 | Native icon export; SHA-256 0820219e10803c1c617ad181284d11e443019e3041258ce415e9df743f213f9b |
++| `assets/app-icon/lightcraft-1024.png` | Plervo Develop icon | Plervo contributors | Original Plervo vector family | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | 2026-10-16 | Native icon export; SHA-256 5fd21f5a689e96fca085e4f4239d6646316e5f5b9fe1be594576f320179fc0d4 |
++| `assets/app-icon/lightcraft-macos-512.png` | Plervo Develop icon | Plervo contributors | Original Plervo vector family | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | 2026-10-16 | Native icon export; SHA-256 50f09e621e1f267ca68525db45398759f0faabcf15743ed0a4704d2159c3cb5d |
++| `assets/app-icon/lightcraft-small.svg` | Plervo Develop icon | Plervo contributors | Original Plervo vector family | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | 2026-10-16 | Native icon export; SHA-256 0820219e10803c1c617ad181284d11e443019e3041258ce415e9df743f213f9b |
++| `assets/app-icon/lightcraft.icns` | Plervo Develop icon | Plervo contributors | Original Plervo vector family | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | 2026-10-16 | Native icon export; SHA-256 92695d4d16ae94d39723ca9d519ac6f719c58a71cb9eca6aba6e5812202d99f6 |
++| `assets/app-icon/lightcraft.ico` | Plervo Develop icon | Plervo contributors | Original Plervo vector family | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | 2026-10-16 | Native icon export; SHA-256 06087d94bebdc955a8fddefe6007d31d5fa97cb0dea0542e9d20154551048865 |
++| `assets/app-icon/lightcraft.svg` | Plervo Develop icon | Plervo contributors | Original Plervo vector family | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | 2026-10-16 | Native icon export; SHA-256 0820219e10803c1c617ad181284d11e443019e3041258ce415e9df743f213f9b |
++| `assets/app-icon/plervo-develop.icns` | Plervo Develop icon | Plervo contributors | Original Plervo vector family | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | 2026-10-16 | Native icon export; SHA-256 92695d4d16ae94d39723ca9d519ac6f719c58a71cb9eca6aba6e5812202d99f6 |
++| `assets/app-icon/plervo-develop.ico` | Plervo Develop icon | Plervo contributors | Original Plervo vector family | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | 2026-10-16 | Native icon export; SHA-256 06087d94bebdc955a8fddefe6007d31d5fa97cb0dea0542e9d20154551048865 |
++| `assets/app-icon/plervo-develop.svg` | Plervo Develop icon | Plervo contributors | Original Plervo vector family | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | 2026-10-16 | Native icon export; SHA-256 0820219e10803c1c617ad181284d11e443019e3041258ce415e9df743f213f9b |
++| `assets/app-icon/README.md` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | 2026-10-16 | SHA-256 071c1b7fc26edf9c1630e740a5edd63577f2de12d3fb22c85ad91fbaaef03e8b |
++| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | 2026-10-16 | SHA-256 071c1b7fc26edf9c1630e740a5edd63577f2de12d3fb22c85ad91fbaaef03e8b |
 diff --git a/assets/app-icon/LICENSE.txt b/assets/app-icon/LICENSE.txt
 index 23da456..51602e0 100644
 --- a/assets/app-icon/LICENSE.txt
@@ -2312,6 +2310,31 @@ index 166fbf4..5b06531 100644
  [lints]
  workspace = true
  
+diff --git a/crates/codecs/src/jpeg.rs b/crates/codecs/src/jpeg.rs
+index e40cf7e..ce2d048 100644
+--- a/crates/codecs/src/jpeg.rs
++++ b/crates/codecs/src/jpeg.rs
+@@ -75,14 +75,12 @@ pub(crate) fn parse_markers(b: &[u8]) -> Option<Markers> {
+         let end = (p + 2 + len).min(b.len());
+         let seg = &b[start..end];
+         match marker {
+-            0xC0..=0xCF if marker != 0xC4 && marker != 0xC8 && marker != 0xCC => {
+-                if seg.len() >= 6 && m.components == 0 {
+-                    m.precision = seg[0];
+-                    m.sof = marker;
+-                    m.height = u16::from_be_bytes([seg[1], seg[2]]) as u32;
+-                    m.width = u16::from_be_bytes([seg[3], seg[4]]) as u32;
+-                    m.components = seg[5];
+-                }
++            0xC0..=0xCF if marker != 0xC4 && marker != 0xC8 && marker != 0xCC && seg.len() >= 6 && m.components == 0 => {
++                m.precision = seg[0];
++                m.sof = marker;
++                m.height = u16::from_be_bytes([seg[1], seg[2]]) as u32;
++                m.width = u16::from_be_bytes([seg[3], seg[4]]) as u32;
++                m.components = seg[5];
+             }
+             0xE1 => {
+                 if seg.starts_with(b"Exif\0\0") && m.exif.is_none() {
 diff --git a/crates/color/Cargo.toml b/crates/color/Cargo.toml
 index b16a3dc..86e0c8f 100644
 --- a/crates/color/Cargo.toml
@@ -2848,10 +2871,10 @@ index 0507ab3..04256f5 100644
      fn cmd_q_quits() {
          let mut h = demo([900.0, 600.0]);
 diff --git a/crates/ui-egui/src/i18n.rs b/crates/ui-egui/src/i18n.rs
-index 109accf..fc9e82f 100644
+index 109accf..e0b925a 100644
 --- a/crates/ui-egui/src/i18n.rs
 +++ b/crates/ui-egui/src/i18n.rs
-@@ -147,9 +147,37 @@ thread_local! {
+@@ -147,9 +147,25 @@ thread_local! {
      static LOCALE: std::cell::Cell<Locale> = const { std::cell::Cell::new(Locale::En) };
  }
  
@@ -2876,22 +2899,10 @@ index 109accf..fc9e82f 100644
 +#[cfg(any(test, not(target_arch = "wasm32")))]
 +fn preferred_language(tags: impl IntoIterator<Item = impl AsRef<str>>) -> Locale {
 +    tags.into_iter().find_map(|tag| Locale::parse_tag(tag.as_ref())).unwrap_or(Locale::En)
-+}
-+
-+#[cfg(test)]
-+mod plervo_language_tests {
-+    use super::*;
-+    #[test]
-+    fn first_supported_os_language_wins() {
-+        assert_eq!(preferred_language(["xx-XX", "pt-BR", "en-US"]).code(), "pt-br");
-+        assert_eq!(preferred_language(["es-ES", "en-US"]).code(), "es");
-+        assert_eq!(preferred_language(["en-US", "pt-BR"]), Locale::En);
-+        assert_eq!(preferred_language(["xx-XX"]), Locale::En);
-+    }
  }
  
  pub fn set_language(language: Locale) {
-@@ -206,10 +234,10 @@ include!(concat!(env!("OUT_DIR"), "/tr-formats.rs"));
+@@ -206,10 +222,10 @@ include!(concat!(env!("OUT_DIR"), "/tr-formats.rs"));
  /// (issue #260), in the UI language: the error and, when there is one, the log file to look in.
  pub fn startup_failed_message(error: &str, log_file: Option<&str>) -> (String, String) {
      let text = match log_file {
@@ -2905,7 +2916,7 @@ index 109accf..fc9e82f 100644
  }
  
  pub fn builtin_label(source: &str, builtin: bool) -> &str {
-@@ -485,8 +513,8 @@ mod tests {
+@@ -485,8 +501,8 @@ mod tests {
      /// file, in the UI language.
      #[test]
      fn startup_failure_message_names_the_error_and_the_log() {
@@ -2916,7 +2927,7 @@ index 109accf..fc9e82f 100644
          assert!(text.contains("no adapter") && text.ends_with("lightcraft.log"), "{text}");
          assert!(!startup_failed_message("no adapter", None).1.contains("log file"));
      }
-@@ -681,7 +709,7 @@ mod tests {
+@@ -681,7 +697,7 @@ mod tests {
      #[test]
      fn preferences_round_trip_and_old_settings_remain_readable() {
          let old: crate::state::UiState = serde_json::from_str("{}").unwrap();
@@ -2925,7 +2936,7 @@ index 109accf..fc9e82f 100644
          // Settings written before the language list grew still load.
          let legacy: crate::state::UiState = serde_json::from_str(r#"{"language":"ja"}"#).unwrap();
          assert_eq!(legacy.language, Locale::Ja);
-@@ -900,7 +928,7 @@ mod tests {
+@@ -900,7 +916,7 @@ mod tests {
          app.ui.left_panel = true;
          let text = painted_text(&ctx, &mut app, Locale::Uk);
          assert!(text.contains("Мої фото") && text.contains("Усі фото"), "{text}");
@@ -2934,7 +2945,7 @@ index 109accf..fc9e82f 100644
          {
              app.ui.dialog = None;
              app.run(command, serde_json::json!({})).unwrap();
-@@ -1044,7 +1072,7 @@ mod tests {
+@@ -1044,7 +1060,7 @@ mod tests {
          app.ui.view = crate::state::ViewMode::People;
          let text = painted_text(&ctx, &mut app, Locale::De);
          assert!(text.contains("Benannte Personen"), "{text}");
@@ -2943,7 +2954,7 @@ index 109accf..fc9e82f 100644
              app.ui.dialog = None;
              app.run(command, serde_json::json!({})).unwrap();
              let text = painted_text(&ctx, &mut app, Locale::De);
-@@ -1232,7 +1260,7 @@ mod tests {
+@@ -1232,7 +1248,7 @@ mod tests {
              // replacement-glyph face, which there is Hack, the face that draws Latin.)
              for family in [egui::FontFamily::Proportional, egui::FontFamily::Name(crate::theme::FONT_SEMIBOLD.into())] {
                  let font = egui::FontId::new(13.0, family);
@@ -2952,6 +2963,22 @@ index 109accf..fc9e82f 100644
              }
          });
          let mut app = crate::LightcraftApp::new(lightcraft_engine::Session::with_demo(), Default::default());
+@@ -1350,3 +1366,15 @@ mod tests {
+         set_language(Locale::En);
+     }
+ }
++
++#[cfg(test)]
++mod plervo_language_tests {
++    use super::*;
++    #[test]
++    fn first_supported_os_language_wins() {
++        assert_eq!(preferred_language(["xx-XX", "pt-BR", "en-US"]).code(), "pt-br");
++        assert_eq!(preferred_language(["es-ES", "en-US"]).code(), "es");
++        assert_eq!(preferred_language(["en-US", "pt-BR"]), Locale::En);
++        assert_eq!(preferred_language(["xx-XX"]), Locale::En);
++    }
++}
 diff --git a/crates/ui-egui/src/icons.rs b/crates/ui-egui/src/icons.rs
 index b82194b..8caafb3 100644
 --- a/crates/ui-egui/src/icons.rs
@@ -4358,62 +4385,56 @@ index 03220ab..e2681bc 100644
        <string>QOI Image</string>
        <key>UTTypeConformsTo</key>
 diff --git a/packaging/macos/dmg/README.md b/packaging/macos/dmg/README.md
-index 2b2e1a1..e91a51a 100644
+index 2b2e1a1..42e8888 100644
 --- a/packaging/macos/dmg/README.md
 +++ b/packaging/macos/dmg/README.md
-@@ -7,17 +7,17 @@ Finder scripting on CI, nothing extra installed in the signing job).
+@@ -1,44 +1,3 @@
+-# macOS DMG window
++# Plervo Develop disk image
  
- | File | What |
- |---|---|
+-What Finder shows when the DMG opens: a 660 × 400 pt background with the app icon and the
+-`Applications` link side by side. `package.sh` copies these files into the image; nothing here is
+-generated at build time, so the DMG still builds with `hdiutil makehybrid` (no mounted device, no
+-Finder scripting on CI, nothing extra installed in the signing job).
+-
+-| File | What |
+-|---|---|
 -| `background.svg` | Source of the background: the app icon (`assets/app-icon/lightcraft.svg`, linked, not copied) cropped as a cover on the LightCraft colour field (`#f2a516`), Ink and Paper. Its text (Inter, JetBrains Mono) is outlined, so rendering it needs no fonts. |
-+| `background.svg` | Source of the background: the app icon (`assets/app-icon/plervo-develop.svg`, linked, not copied) cropped as a cover on the Plervo Develop colour field (`#f2a516`), Ink and Paper. Its text (Inter, JetBrains Mono) is outlined, so rendering it needs no fonts. |
- | `background.tiff` | The background at 1x (660 × 400 px, 72 dpi) and 2x (1320 × 800 px, 144 dpi) in one HiDPI TIFF (Deflate, sRGB). Goes to `.background/background.tiff`. |
+-| `background.tiff` | The background at 1x (660 × 400 px, 72 dpi) and 2x (1320 × 800 px, 144 dpi) in one HiDPI TIFF (Deflate, sRGB). Goes to `.background/background.tiff`. |
 -| `dmg-layout.DS_Store` | Finder's view settings for the volume: window size, icon size 128, LightCraft.app at (326, 205), `Applications` at (574, 205), and the background. Goes to `.DS_Store` in the image; named so it isn't mistaken for (or ignored like) a Finder-generated `.DS_Store`. |
-+| `dmg-layout.DS_Store` | Finder's view settings for the volume: window size, icon size 128, Plervo Develop.app at (326, 205), `Applications` at (574, 205), and the background. Goes to `.DS_Store` in the image; named so it isn't mistaken for (or ignored like) a Finder-generated `.DS_Store`. |
- | `generate.py` | Writes `background.tiff` and `dmg-layout.DS_Store` from the SVG and the layout above. |
- 
- ## The volume name has no version
- 
+-| `generate.py` | Writes `background.tiff` and `dmg-layout.DS_Store` from the SVG and the layout above. |
+-
+-## The volume name has no version
+-
 -The mounted volume is called `LightCraft`, not `LightCraft <version>`. The layout points at the background
-+The mounted volume is called `Plervo Develop`, not `Plervo Develop <version>`. The layout points at the background
- through an alias that includes the volume name, and Finder resolves it by that name: with a
- versioned name the window keeps its size and icon positions but shows no background (tested).
+-through an alias that includes the volume name, and Finder resolves it by that name: with a
+-versioned name the window keeps its size and icon positions but shows no background (tested).
 -The DMG file name (`lightcraft-<version>-macos-<arch>.dmg`) still carries the version.
-+The DMG file name (`plervo-develop-<version>-macos-<arch>.dmg`) still carries the version.
- 
- ## Rules
- 
-diff --git a/packaging/macos/dmg/background.svg b/packaging/macos/dmg/background.svg
-index 7dd108e..caaeed2 100644
---- a/packaging/macos/dmg/background.svg
-+++ b/packaging/macos/dmg/background.svg
-@@ -6,7 +6,7 @@
- </filter></defs>
- 
- <rect width="660" height="400" fill="#efe9dc"/><rect width="660" height="400" filter="url(#grain)"/>
--<g clip-path="url(#panel)"><rect width="232" height="400" fill="#f2a516"/><g transform="translate(-134.0,-40.0) scale(1.0)"><image href="../../../assets/app-icon/lightcraft.svg" width="512" height="512"/></g></g>
-+<g clip-path="url(#panel)"><rect width="232" height="400" fill="#f2a516"/><g transform="translate(-134.0,-40.0) scale(1.0)"><image href="../../../assets/app-icon/plervo-develop.svg" width="512" height="512"/></g></g>
- <line x1="232.5" y1="0" x2="232.5" y2="400" stroke="#0b0b0c" stroke-width="1.2"/>
- <line x1="236.5" y1="0" x2="236.5" y2="400" stroke="#0b0b0c" stroke-width="0.5"/>
- 
-diff --git a/packaging/macos/dmg/generate.py b/packaging/macos/dmg/generate.py
-index 3530523..fad65fd 100644
---- a/packaging/macos/dmg/generate.py
-+++ b/packaging/macos/dmg/generate.py
-@@ -24,11 +24,11 @@ from PIL import Image, ImageCms
- HERE = os.path.dirname(os.path.abspath(__file__))
- 
- # Keep in sync with package.sh (volume name) and README.md (layout).
--VOLUME = "LightCraft"
-+VOLUME = "Plervo Develop"
- WIDTH, HEIGHT = 660, 400  # window content, pt; the background's 1x size
- TITLE_BAR = 32
- ICON_SIZE = 128
--ICONS = {"LightCraft.app": (326, 205), "Applications": (574, 205)}
-+ICONS = {"Plervo Develop.app": (326, 205), "Applications": (574, 205)}
- # A fixed date for the alias and the colour profile. Finder never matches it against the image
- # (each build is a new volume): it finds the background by volume name and path.
- FIXED_DATE = datetime.datetime(2026, 10, 8, tzinfo=datetime.timezone.utc)
+-
+-## Rules
+-
+-- **Finder draws the icon labels in black in light and dark mode** when a window has a background,
+-  so the area under both icons stays light (Paper).
+-- **Nothing goes inside the icon boxes:** artwork keeps 10 pt clear of each 128 pt icon box and of
+-  the label strip under it.
+-
+-## Regenerate
+-
+-Edit `background.svg` (or the layout constants in `generate.py`), then run, on any OS:
+-
+-```sh
+-pip install 'pillow>=12' ds_store==1.3.3 mac_alias==2.2.3
+-python3 packaging/macos/dmg/generate.py   # needs resvg on PATH
+-```
+-
+-Both outputs are byte-for-byte reproducible and carry nothing from the machine that ran it: the
+-SVG renders without any fonts, and `dmg-layout.DS_Store` is written from scratch, its background
+-alias holding only the volume name and `/.background/background.tiff`. If you add text to the SVG,
+-outline it (`usvg` from resvg converts text to paths). The window is 660 × 432 with Finder's 32 pt
+-title bar; the content area is 660 × 400.
+-
+-This follows VectorCraft's `packaging/macos/dmg/` (storytold/vectorcraft#493).
++Internal candidates use the system Finder layout with Plervo Develop.app and an Applications shortcut. The upstream custom background and generation assets are omitted.
 diff --git a/packaging/macos/import-cert.sh b/packaging/macos/import-cert.sh
 index ef96603..a7c6c52 100755
 --- a/packaging/macos/import-cert.sh
@@ -4430,7 +4451,7 @@ index ef96603..a7c6c52 100755
  
  trap 'rm -f "$CERT"' EXIT
 diff --git a/packaging/macos/package.sh b/packaging/macos/package.sh
-index b26aa96..57196fc 100755
+index b26aa96..26942a4 100755
 --- a/packaging/macos/package.sh
 +++ b/packaging/macos/package.sh
 @@ -1,8 +1,8 @@
@@ -4519,21 +4540,26 @@ index b26aa96..57196fc 100755
    xcrun stapler staple "$APP"
    xcrun stapler validate "$APP"
    spctl --assess --type execute -vvv "$APP"
-@@ -134,12 +136,10 @@ fi
+@@ -134,15 +136,12 @@ fi
  echo "==> building $DMG"
  STAGE="$WORK/dmg"
  mkdir -p "$STAGE"
 -ditto "$APP" "$STAGE/LightCraft.app"
 +ditto "$APP" "$STAGE/Plervo Develop.app"
  ln -s /Applications "$STAGE/Applications"
- # Finder window layout: background, icon size and positions (packaging/macos/dmg/README.md).
- mkdir -p "$STAGE/.background"
+-# Finder window layout: background, icon size and positions (packaging/macos/dmg/README.md).
+-mkdir -p "$STAGE/.background"
 -cp "$HERE/dmg/background.tiff" "$STAGE/.background/background.tiff"
 -cp "$HERE/dmg/dmg-layout.DS_Store" "$STAGE/.DS_Store"
++# Standard Finder layout for this internal candidate.
  rm -f "$DMG"
  # hdiutil makehybrid -hfs injects FinderInfo metadata into the signed app.
- # create -srcfolder preserves the signed app and the existing .DS_Store layout.
-@@ -158,7 +158,7 @@ hdiutil_retry() {
+-# create -srcfolder preserves the signed app and the existing .DS_Store layout.
++# create -srcfolder preserves the signed app.
+ # hdiutil may transiently return "Resource busy" on CI; retry boundedly.
+ hdiutil_retry() {
+   local attempt
+@@ -158,7 +157,7 @@ hdiutil_retry() {
      sleep $((attempt * 10))
    done
  }
@@ -4542,7 +4568,7 @@ index b26aa96..57196fc 100755
    -imagekey zlib-level=9 -ov "$DMG"
  sign "$DMG"
  codesign --verify --strict --verbose=2 "$DMG"
-@@ -173,21 +173,21 @@ verify_dmg_app() {
+@@ -173,21 +172,21 @@ verify_dmg_app() {
      hdiutil detach "$mount" >/dev/null 2>&1 || true
      return 1
    fi
@@ -4571,7 +4597,7 @@ index b26aa96..57196fc 100755
    fi
    if ! hdiutil_retry detach "$mount" >/dev/null; then
      echo "error: could not detach verification mount" >&2
-@@ -206,20 +206,20 @@ fi
+@@ -206,20 +205,20 @@ fi
  
  # ---- CLI ---------------------------------------------------------------------------------------
  echo "==> building $CLI_ZIP"

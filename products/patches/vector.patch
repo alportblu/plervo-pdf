@@ -2006,6 +2006,19 @@ index aba4d60..b2e31f4 100644
 +        assert_eq!(s.execute("help.links", &json!({})).unwrap()["website"], "https://plervo.com");
      }
  }
+diff --git a/crates/engine/src/cmd/object.rs b/crates/engine/src/cmd/object.rs
+index bbd1591..bd71c07 100644
+--- a/crates/engine/src/cmd/object.rs
++++ b/crates/engine/src/cmd/object.rs
+@@ -459,7 +459,7 @@ pub(crate) fn preview_copies(s: &mut Session, roots: &[NodeId], with_guides: boo
+     if let Some(k) = &it.copies
+         && Arc::ptr_eq(&k.from, &it.doc)
+         && k.roots == roots
+-        && (!k.selection.guides.is_empty() == has_guide_copies)
++        && (k.selection.guides.is_empty() != has_guide_copies)
+     {
+         return Ok(Some(k.clone()));
+     }
 diff --git a/crates/eps/Cargo.toml b/crates/eps/Cargo.toml
 index 4031f89..93bab8a 100644
 --- a/crates/eps/Cargo.toml

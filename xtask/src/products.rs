@@ -67,7 +67,14 @@ fn validate(product: &Product) -> Result<()> {
         ensure!(hex(&icon.sha256, 64) && destinations.insert(&icon.to), "invalid or duplicate icon");
     }
     for path in &product.remove {
-        ensure!(relative(path, "docs/brand/") || relative(path, "assets/app-icon/"), "unsafe removal path");
+        let old_dmg_asset = matches!(
+            path.as_str(),
+            "packaging/macos/dmg/background.svg"
+                | "packaging/macos/dmg/background.tiff"
+                | "packaging/macos/dmg/dmg-layout.DS_Store"
+                | "packaging/macos/dmg/generate.py"
+        );
+        ensure!(relative(path, "docs/brand/") || relative(path, "assets/app-icon/") || old_dmg_asset, "unsafe removal path");
         ensure!(!destinations.contains(path), "an icon cannot also be removed");
     }
     Ok(())
@@ -160,6 +167,8 @@ pub fn run(args: &[String]) -> Result<()> {
                 serde_json::to_vec_pretty(&serde_json::json!({
                     "product":product.name, "version":product.release_version, "upstream":product.source_repository,
                     "upstream_commit":product.commit, "patch_sha256":product.patch_sha256,
+                    "fonts_commit":product.fonts_commit,
+                    "icons":product.icons.iter().map(|icon| serde_json::json!({"path":icon.to,"sha256":icon.sha256})).collect::<Vec<_>>(),
                     "qualification":"internal candidate; not approved for distribution"
                 }))?,
             )?;
@@ -182,6 +191,11 @@ mod tests {
         let mut products: Vec<Product> = serde_json::from_str(include_str!("../../products/sources.json")).unwrap();
         let mut p = products.remove(0);
         validate(&p).unwrap();
+        p.remove.push("packaging/macos/dmg/background.svg".into());
+        validate(&p).unwrap();
+        *p.remove.last_mut().unwrap() = "packaging/macos/dmg/../../outside".into();
+        assert!(validate(&p).is_err());
+        p.remove.pop();
         p.icons[0].to = "assets/app-icon/../../outside".into();
         assert!(validate(&p).is_err());
         p.icons[0].to = "assets/app-icon/icon.png".into();
