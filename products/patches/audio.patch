@@ -55,22 +55,67 @@ index 084f424..8cf23d4 100644
 +
 +| `assets/app-icon/README.md` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | bc72ba46054b6e875abc4424dbddb9f2e5999cd8f27052a3c0ededc04802a827 |
 diff --git a/Cargo.lock b/Cargo.lock
-index b8eb765..107a094 100644
+index b8eb765..1a2ba9f 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -3566,8 +3566,8 @@ dependencies = [
- ]
+@@ -2858,6 +2858,35 @@ version = "0.2.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "b4596b6d070b27117e987119b4dac604f3c58cfb0b191112e24771b2faeac1a6"
  
- [[package]]
--name = "soundcraft"
--version = "0.7.0"
++[[package]]
 +name = "plervo-audio"
 +version = "0.1.0-alpha.4"
- dependencies = [
-  "eframe",
-  "egui",
-@@ -3585,7 +3585,7 @@ dependencies = [
++dependencies = [
++ "eframe",
++ "egui",
++ "log",
++ "muda",
++ "objc2 0.6.5",
++ "objc2-app-kit 0.3.2",
++ "rfd",
++ "serde_json",
++ "soundcraft-engine",
++ "soundcraft-playback",
++ "soundcraft-ui-egui",
++ "winresource",
++]
++
++[[package]]
++name = "plervo-audio-cli"
++version = "0.1.0-alpha.4"
++dependencies = [
++ "serde_json",
++ "soundcraft-audio-io",
++ "soundcraft-automation",
++ "soundcraft-dsp",
++ "soundcraft-engine",
++]
++
+ [[package]]
+ name = "png"
+ version = "0.18.1"
+@@ -3565,27 +3594,9 @@ dependencies = [
+  "serde",
+ ]
  
+-[[package]]
+-name = "soundcraft"
+-version = "0.7.0"
+-dependencies = [
+- "eframe",
+- "egui",
+- "log",
+- "muda",
+- "objc2 0.6.5",
+- "objc2-app-kit 0.3.2",
+- "rfd",
+- "serde_json",
+- "soundcraft-engine",
+- "soundcraft-playback",
+- "soundcraft-ui-egui",
+- "winresource",
+-]
+-
  [[package]]
  name = "soundcraft-au-host"
 -version = "0.7.0"
@@ -78,7 +123,7 @@ index b8eb765..107a094 100644
  dependencies = [
   "log",
   "serde",
-@@ -3595,7 +3595,7 @@ dependencies = [
+@@ -3595,7 +3606,7 @@ dependencies = [
  
  [[package]]
  name = "soundcraft-audio-io"
@@ -87,7 +132,7 @@ index b8eb765..107a094 100644
  dependencies = [
   "log",
   "proptest",
-@@ -3607,7 +3607,7 @@ dependencies = [
+@@ -3607,7 +3618,7 @@ dependencies = [
  
  [[package]]
  name = "soundcraft-automation"
@@ -96,7 +141,7 @@ index b8eb765..107a094 100644
  dependencies = [
   "log",
   "serde_json",
-@@ -3617,7 +3617,7 @@ dependencies = [
+@@ -3617,7 +3628,7 @@ dependencies = [
  
  [[package]]
  name = "soundcraft-clap-host"
@@ -105,19 +150,21 @@ index b8eb765..107a094 100644
  dependencies = [
   "clap-sys",
   "libloading",
-@@ -3629,8 +3629,8 @@ dependencies = [
+@@ -3628,20 +3639,9 @@ dependencies = [
+  "windows-sys 0.61.2",
  ]
  
- [[package]]
+-[[package]]
 -name = "soundcraft-cli"
 -version = "0.7.0"
-+name = "plervo-audio-cli"
-+version = "0.1.0-alpha.4"
- dependencies = [
-  "serde_json",
-  "soundcraft-audio-io",
-@@ -3641,7 +3641,7 @@ dependencies = [
- 
+-dependencies = [
+- "serde_json",
+- "soundcraft-audio-io",
+- "soundcraft-automation",
+- "soundcraft-dsp",
+- "soundcraft-engine",
+-]
+-
  [[package]]
  name = "soundcraft-dsp"
 -version = "0.7.0"
@@ -224,6 +271,18 @@ index b8eb765..107a094 100644
  dependencies = [
   "serde_json",
  ]
+@@ -5558,9 +5558,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "zip"
+-version = "9.0.1"
++version = "9.0.4"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "e49ade69c4434c55dd651d36fe05f38e0578db948b773cbc01c48c4b5e560692"
++checksum = "a954114b47a54df49f83d2722814e86b23d4bb1b54a1b90fb7d92b41619ddc22"
+ dependencies = [
+  "crc32fast",
+  "indexmap",
 diff --git a/Cargo.toml b/Cargo.toml
 index 362e6a9..ba11852 100644
 --- a/Cargo.toml
@@ -238,10 +297,10 @@ index 362e6a9..ba11852 100644
  license = "MIT OR Apache-2.0"
  rust-version = "1.90"
 diff --git a/NOTICE b/NOTICE
-index 34c26cc..49ac456 100644
+index 34c26cc..38ab29a 100644
 --- a/NOTICE
 +++ b/NOTICE
-@@ -15,3 +15,7 @@ list (author, source, license) is in ATTRIBUTION.md.
+@@ -15,3 +15,490 @@ list (author, source, license) is in ATTRIBUTION.md.
  None: every bundled asset is original to SoundCraft. Icons are drawn in code; demo audio is
  synthesised in code. The egui default fonts (Ubuntu-Light, Hack, Noto Emoji, Emoji Icon Font) ship
  inside the egui crate under their own open licenses (see ATTRIBUTION.md).
@@ -249,6 +308,489 @@ index 34c26cc..49ac456 100644
 +Plervo adaptation by AlporT (2026). Product identity and packaging are original Plervo work.
 +Based on storytold/soundcraft at 3a28a657692c1b98b28c276d8f61df9471074f0f.
 +Original authorship and MIT/Apache-2.0 licenses are preserved. No ArtCraft endorsement.
++
++Plervo dependency source notices (reviewed 2026-10-16)
++==========================================================
++
++The dependencies below are included without source modifications. Their original
++source and copyright notices are available at the exact archive links below.
++MPL-covered source remains available under the MPL; the Plervo MIT/Apache terms
++do not restrict the recipient's rights in those dependencies.
++
++symphonia 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia/0.5.5/download
++SHA-256: 5773a4c030a19d9bfaa090f49746ff35c75dfddfa700df7a5939d5e076a57039
++
++symphonia-bundle-flac 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-bundle-flac/0.5.5/download
++SHA-256: c91565e180aea25d9b80a910c546802526ffd0072d0b8974e3ebe59b686c9976
++
++symphonia-bundle-mp3 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-bundle-mp3/0.5.5/download
++SHA-256: 4872dd6bb56bf5eac799e3e957aa1981086c3e613b27e0ac23b176054f7c57ed
++
++symphonia-codec-aac 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>, Kostya Shishkov <kostya.shiskov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-codec-aac/0.5.5/download
++SHA-256: 4c263845aa86881416849c1729a54c7f55164f8b96111dba59de46849e73a790
++
++symphonia-codec-adpcm 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>, Johannes Hackel <geckoxx90@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-codec-adpcm/0.5.5/download
++SHA-256: 2dddc50e2bbea4cfe027441eece77c46b9f319748605ab8f3443350129ddd07f
++
++symphonia-codec-alac 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-codec-alac/0.5.5/download
++SHA-256: 8413fa754942ac16a73634c9dfd1500ed5c61430956b33728567f667fdd393ab
++
++symphonia-codec-pcm 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-codec-pcm/0.5.5/download
++SHA-256: 4e89d716c01541ad3ebe7c91ce4c8d38a7cf266a3f7b2f090b108fb0cb031d95
++
++symphonia-codec-vorbis 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-codec-vorbis/0.5.5/download
++SHA-256: f025837c309cd69ffef572750b4a2257b59552c5399a5e49707cc5b1b85d1c73
++
++symphonia-core 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-core/0.5.5/download
++SHA-256: ea00cc4f79b7f6bb7ff87eddc065a1066f3a43fe1875979056672c9ef948c2af
++
++symphonia-format-caf 0.5.5
++Licence: MPL-2.0
++Authors: Ian Hobson <ian.r.hobson@gmail.com>, Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-format-caf/0.5.5/download
++SHA-256: b8faf379316b6b6e6bbc274d00e7a592e0d63ff1a7e182ce8ba25e24edd3d096
++
++symphonia-format-isomp4 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-format-isomp4/0.5.5/download
++SHA-256: 243739585d11f81daf8dac8d9f3d18cc7898f6c09a259675fc364b382c30e0a5
++
++symphonia-format-mkv 0.5.5
++Licence: MPL-2.0
++Authors: Dariusz Niedoba <dariusz.niedoba@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-format-mkv/0.5.5/download
++SHA-256: 122d786d2c43a49beb6f397551b4a050d8229eaa54c7ddf9ee4b98899b8742d0
++
++symphonia-format-ogg 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-format-ogg/0.5.5/download
++SHA-256: 2b4955c67c1ed3aa8ae8428d04ca8397fbef6a19b2b051e73b5da8b1435639cb
++
++symphonia-format-riff 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>, dedobbin <dedobbindedobbin@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-format-riff/0.5.5/download
++SHA-256: c2d7c3df0e7d94efb68401d81906eae73c02b40d5ec1a141962c592d0f11a96f
++
++symphonia-metadata 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-metadata/0.5.5/download
++SHA-256: 36306ff42b9ffe6e5afc99d49e121e0bd62fe79b9db7b9681d48e29fa19e6b16
++
++symphonia-utils-xiph 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-utils-xiph/0.5.5/download
++SHA-256: ee27c85ab799a338446b68eec77abf42e1a6f1bb490656e121c6e27bfbab9f16
++
++--- MPL-2.0 ---
++
++Mozilla Public License Version 2.0
++==================================
++
++1. Definitions
++--------------
++
++1.1. "Contributor"
++    means each individual or legal entity that creates, contributes to
++    the creation of, or owns Covered Software.
++
++1.2. "Contributor Version"
++    means the combination of the Contributions of others (if any) used
++    by a Contributor and that particular Contributor's Contribution.
++
++1.3. "Contribution"
++    means Covered Software of a particular Contributor.
++
++1.4. "Covered Software"
++    means Source Code Form to which the initial Contributor has attached
++    the notice in Exhibit A, the Executable Form of such Source Code
++    Form, and Modifications of such Source Code Form, in each case
++    including portions thereof.
++
++1.5. "Incompatible With Secondary Licenses"
++    means
++
++    (a) that the initial Contributor has attached the notice described
++        in Exhibit B to the Covered Software; or
++
++    (b) that the Covered Software was made available under the terms of
++        version 1.1 or earlier of the License, but not also under the
++        terms of a Secondary License.
++
++1.6. "Executable Form"
++    means any form of the work other than Source Code Form.
++
++1.7. "Larger Work"
++    means a work that combines Covered Software with other material, in
++    a separate file or files, that is not Covered Software.
++
++1.8. "License"
++    means this document.
++
++1.9. "Licensable"
++    means having the right to grant, to the maximum extent possible,
++    whether at the time of the initial grant or subsequently, any and
++    all of the rights conveyed by this License.
++
++1.10. "Modifications"
++    means any of the following:
++
++    (a) any file in Source Code Form that results from an addition to,
++        deletion from, or modification of the contents of Covered
++        Software; or
++
++    (b) any new file in Source Code Form that contains any Covered
++        Software.
++
++1.11. "Patent Claims" of a Contributor
++    means any patent claim(s), including without limitation, method,
++    process, and apparatus claims, in any patent Licensable by such
++    Contributor that would be infringed, but for the grant of the
++    License, by the making, using, selling, offering for sale, having
++    made, import, or transfer of either its Contributions or its
++    Contributor Version.
++
++1.12. "Secondary License"
++    means either the GNU General Public License, Version 2.0, the GNU
++    Lesser General Public License, Version 2.1, the GNU Affero General
++    Public License, Version 3.0, or any later versions of those
++    licenses.
++
++1.13. "Source Code Form"
++    means the form of the work preferred for making modifications.
++
++1.14. "You" (or "Your")
++    means an individual or a legal entity exercising rights under this
++    License. For legal entities, "You" includes any entity that
++    controls, is controlled by, or is under common control with You. For
++    purposes of this definition, "control" means (a) the power, direct
++    or indirect, to cause the direction or management of such entity,
++    whether by contract or otherwise, or (b) ownership of more than
++    fifty percent (50%) of the outstanding shares or beneficial
++    ownership of such entity.
++
++2. License Grants and Conditions
++--------------------------------
++
++2.1. Grants
++
++Each Contributor hereby grants You a world-wide, royalty-free,
++non-exclusive license:
++
++(a) under intellectual property rights (other than patent or trademark)
++    Licensable by such Contributor to use, reproduce, make available,
++    modify, display, perform, distribute, and otherwise exploit its
++    Contributions, either on an unmodified basis, with Modifications, or
++    as part of a Larger Work; and
++
++(b) under Patent Claims of such Contributor to make, use, sell, offer
++    for sale, have made, import, and otherwise transfer either its
++    Contributions or its Contributor Version.
++
++2.2. Effective Date
++
++The licenses granted in Section 2.1 with respect to any Contribution
++become effective for each Contribution on the date the Contributor first
++distributes such Contribution.
++
++2.3. Limitations on Grant Scope
++
++The licenses granted in this Section 2 are the only rights granted under
++this License. No additional rights or licenses will be implied from the
++distribution or licensing of Covered Software under this License.
++Notwithstanding Section 2.1(b) above, no patent license is granted by a
++Contributor:
++
++(a) for any code that a Contributor has removed from Covered Software;
++    or
++
++(b) for infringements caused by: (i) Your and any other third party's
++    modifications of Covered Software, or (ii) the combination of its
++    Contributions with other software (except as part of its Contributor
++    Version); or
++
++(c) under Patent Claims infringed by Covered Software in the absence of
++    its Contributions.
++
++This License does not grant any rights in the trademarks, service marks,
++or logos of any Contributor (except as may be necessary to comply with
++the notice requirements in Section 3.4).
++
++2.4. Subsequent Licenses
++
++No Contributor makes additional grants as a result of Your choice to
++distribute the Covered Software under a subsequent version of this
++License (see Section 10.2) or under the terms of a Secondary License (if
++permitted under the terms of Section 3.3).
++
++2.5. Representation
++
++Each Contributor represents that the Contributor believes its
++Contributions are its original creation(s) or it has sufficient rights
++to grant the rights to its Contributions conveyed by this License.
++
++2.6. Fair Use
++
++This License is not intended to limit any rights You have under
++applicable copyright doctrines of fair use, fair dealing, or other
++equivalents.
++
++2.7. Conditions
++
++Sections 3.1, 3.2, 3.3, and 3.4 are conditions of the licenses granted
++in Section 2.1.
++
++3. Responsibilities
++-------------------
++
++3.1. Distribution of Source Form
++
++All distribution of Covered Software in Source Code Form, including any
++Modifications that You create or to which You contribute, must be under
++the terms of this License. You must inform recipients that the Source
++Code Form of the Covered Software is governed by the terms of this
++License, and how they can obtain a copy of this License. You may not
++attempt to alter or restrict the recipients' rights in the Source Code
++Form.
++
++3.2. Distribution of Executable Form
++
++If You distribute Covered Software in Executable Form then:
++
++(a) such Covered Software must also be made available in Source Code
++    Form, as described in Section 3.1, and You must inform recipients of
++    the Executable Form how they can obtain a copy of such Source Code
++    Form by reasonable means in a timely manner, at a charge no more
++    than the cost of distribution to the recipient; and
++
++(b) You may distribute such Executable Form under the terms of this
++    License, or sublicense it under different terms, provided that the
++    license for the Executable Form does not attempt to limit or alter
++    the recipients' rights in the Source Code Form under this License.
++
++3.3. Distribution of a Larger Work
++
++You may create and distribute a Larger Work under terms of Your choice,
++provided that You also comply with the requirements of this License for
++the Covered Software. If the Larger Work is a combination of Covered
++Software with a work governed by one or more Secondary Licenses, and the
++Covered Software is not Incompatible With Secondary Licenses, this
++License permits You to additionally distribute such Covered Software
++under the terms of such Secondary License(s), so that the recipient of
++the Larger Work may, at their option, further distribute the Covered
++Software under the terms of either this License or such Secondary
++License(s).
++
++3.4. Notices
++
++You may not remove or alter the substance of any license notices
++(including copyright notices, patent notices, disclaimers of warranty,
++or limitations of liability) contained within the Source Code Form of
++the Covered Software, except that You may alter any license notices to
++the extent required to remedy known factual inaccuracies.
++
++3.5. Application of Additional Terms
++
++You may choose to offer, and to charge a fee for, warranty, support,
++indemnity or liability obligations to one or more recipients of Covered
++Software. However, You may do so only on Your own behalf, and not on
++behalf of any Contributor. You must make it absolutely clear that any
++such warranty, support, indemnity, or liability obligation is offered by
++You alone, and You hereby agree to indemnify every Contributor for any
++liability incurred by such Contributor as a result of warranty, support,
++indemnity or liability terms You offer. You may include additional
++disclaimers of warranty and limitations of liability specific to any
++jurisdiction.
++
++4. Inability to Comply Due to Statute or Regulation
++---------------------------------------------------
++
++If it is impossible for You to comply with any of the terms of this
++License with respect to some or all of the Covered Software due to
++statute, judicial order, or regulation then You must: (a) comply with
++the terms of this License to the maximum extent possible; and (b)
++describe the limitations and the code they affect. Such description must
++be placed in a text file included with all distributions of the Covered
++Software under the name "LEGAL", and included in all Covered Software
++distributed in Source Code Form. Except to the extent prohibited by
++statute or regulation, such description must be sufficiently detailed
++for a recipient of ordinary skill to be able to understand it.
++
++5. Termination
++--------------
++
++5.1. The rights granted under this License will terminate automatically
++if You fail to comply with any of its terms. However, if You become
++compliant, then the rights granted under this License from a particular
++Contributor are reinstated (a) provisionally, unless and until such
++Contributor explicitly and finally terminates Your grants, and (b) on an
++ongoing basis, if such Contributor fails to notify You of the
++non-compliance by some reasonable means prior to 60 days after You have
++come back into compliance. Moreover, Your grants from a particular
++Contributor are reinstated on an ongoing basis if such Contributor
++notifies You of the non-compliance by some reasonable means, this is the
++first time You have received notice of non-compliance with this License
++from such Contributor, and You become compliant prior to 30 days after
++Your receipt of the notice.
++
++5.2. If You initiate litigation against any entity by asserting a patent
++infringement claim (excluding declaratory judgment actions,
++counter-claims, and cross-claims) alleging that a Contributor Version
++directly or indirectly infringes any patent, then the rights granted to
++You by any and all Contributors for the Covered Software under Section
++2.1 of this License shall terminate.
++
++5.3. In the event of termination under Sections 5.1 or 5.2 above, all
++end user license agreements (excluding distributors and resellers) which
++have been validly granted by You or Your distributors under this License
++prior to termination shall survive termination.
++
++************************************************************************
++*                                                                      *
++*  6. Disclaimer of Warranty                                           *
++*  -------------------------                                           *
++*                                                                      *
++*  Covered Software is provided under this License on an "as is"       *
++*  basis, without warranty of any kind, either expressed, implied, or   *
++*  statutory, including, without limitation, warranties that the       *
++*  Covered Software is free of defects, merchantable, fit for a        *
++*  particular purpose or non-infringing. The entire risk as to the     *
++*  quality and performance of the Covered Software is with You.        *
++*  Should any Covered Software prove defective in any respect, You     *
++*  (not any Contributor) assume the cost of any necessary servicing,   *
++*  repair, or correction. This disclaimer of warranty constitutes an   *
++*  essential part of this License. No use of any Covered Software is   *
++*  authorized under this License except under this disclaimer.         *
++*                                                                      *
++************************************************************************
++
++************************************************************************
++*                                                                      *
++*  7. Limitation of Liability                                          *
++*  --------------------------                                          *
++*                                                                      *
++*  Under no circumstances and under no legal theory, whether tort      *
++*  (including negligence), contract, or otherwise, shall any           *
++*  Contributor, or anyone who distributes Covered Software as          *
++*  permitted above, be liable to You for any direct, indirect,         *
++*  special, incidental, or consequential damages of any character      *
++*  including, without limitation, damages for lost profits, loss of    *
++*  goodwill, work stoppage, computer failure or malfunction, or any    *
++*  and all other commercial damages or losses, even if such party      *
++*  shall have been informed of the possibility of such damages. This   *
++*  limitation of liability shall not apply to liability for death or   *
++*  personal injury resulting from such party's negligence to the       *
++*  extent applicable law prohibits such limitation. Some               *
++*  jurisdictions do not allow the exclusion or limitation of           *
++*  incidental or consequential damages, so this exclusion and          *
++*  limitation may not apply to You.                                    *
++*                                                                      *
++************************************************************************
++
++8. Litigation
++-------------
++
++Any litigation relating to this License may be brought only in the
++courts of a jurisdiction where the defendant maintains its principal
++place of business and such litigation shall be governed by laws of that
++jurisdiction, without reference to its conflict-of-law provisions.
++Nothing in this Section shall prevent a party's ability to bring
++cross-claims or counter-claims.
++
++9. Miscellaneous
++----------------
++
++This License represents the complete agreement concerning the subject
++matter hereof. If any provision of this License is held to be
++unenforceable, such provision shall be reformed only to the extent
++necessary to make it enforceable. Any law or regulation which provides
++that the language of a contract shall be construed against the drafter
++shall not be used to construe this License against a Contributor.
++
++10. Versions of the License
++---------------------------
++
++10.1. New Versions
++
++Mozilla Foundation is the license steward. Except as provided in Section
++10.3, no one other than the license steward has the right to modify or
++publish new versions of this License. Each version will be given a
++distinguishing version number.
++
++10.2. Effect of New Versions
++
++You may distribute the Covered Software under the terms of the version
++of the License under which You originally received the Covered Software,
++or under the terms of any subsequent version published by the license
++steward.
++
++10.3. Modified Versions
++
++If you create software not governed by this License, and you want to
++create a new license for such software, you may create and use a
++modified version of this License if you rename the license and remove
++any references to the name of the license steward (except to note that
++such modified license differs from this License).
++
++10.4. Distributing Source Code Form that is Incompatible With Secondary
++Licenses
++
++If You choose to distribute Source Code Form that is Incompatible With
++Secondary Licenses under the terms of this version of the License, the
++notice described in Exhibit B of this License must be attached.
++
++Exhibit A - Source Code Form License Notice
++-------------------------------------------
++
++  This Source Code Form is subject to the terms of the Mozilla Public
++  License, v. 2.0. If a copy of the MPL was not distributed with this
++  file, You can obtain one at https://mozilla.org/MPL/2.0/.
++
++If it is not possible or desirable to put the notice in a particular
++file, then You may include the notice in a location (such as a LICENSE
++file in a relevant directory) where a recipient would be likely to look
++for such a notice.
++
++You may add additional accurate notices of copyright ownership.
++
++Exhibit B - "Incompatible With Secondary Licenses" Notice
++---------------------------------------------------------
++
++  This Source Code Form is "Incompatible With Secondary Licenses", as
++  defined by the Mozilla Public License, v. 2.0.
++
++
 diff --git a/README.md b/README.md
 index d88fee8..f4cdf24 100644
 --- a/README.md
@@ -840,10 +1382,10 @@ index 3682fab..c696a22 100644
              Self::Midi => ("MIDI", MIDI_EXTS),
          }
 diff --git a/apps/soundcraft/Cargo.toml b/apps/soundcraft/Cargo.toml
-index 0f30c7a..342aad5 100644
+index 0f30c7a..0ef0c73 100644
 --- a/apps/soundcraft/Cargo.toml
 +++ b/apps/soundcraft/Cargo.toml
-@@ -1,11 +1,11 @@
+@@ -1,16 +1,20 @@
  [package]
 -name = "soundcraft"
 +name = "plervo-audio"
@@ -857,6 +1399,15 @@ index 0f30c7a..342aad5 100644
  
  [lints]
  workspace = true
+ 
+ [features]
++# Unreviewed loopback automation is excluded from public Plervo builds.
++# Headless CLI/MCP remains available. Enable only in an isolated development environment.
++local-control = []
++
+ # ASIO audio devices on Windows (see soundcraft-playback's `asio` feature).
+ asio = ["soundcraft-playback/asio"]
+ 
 diff --git a/apps/soundcraft/build.rs b/apps/soundcraft/build.rs
 index 4df35b9..813ce2a 100644
 --- a/apps/soundcraft/build.rs
@@ -880,7 +1431,7 @@ index 4df35b9..813ce2a 100644
          if std::env::var_os("SOUNDCRAFT_REQUIRE_WINRES").is_some() {
              eprintln!("embedding Windows resources failed: {e}");
 diff --git a/apps/soundcraft/src/config.rs b/apps/soundcraft/src/config.rs
-index 1ade4ee..950fcde 100644
+index 1ade4ee..2d5d285 100644
 --- a/apps/soundcraft/src/config.rs
 +++ b/apps/soundcraft/src/config.rs
 @@ -10,7 +10,7 @@ enum Platform {
@@ -939,16 +1490,17 @@ index 1ade4ee..950fcde 100644
          let vars = [("HOME", "/user"), ("APPDATA", "/roaming"), ("XDG_CONFIG_HOME", "/xdg")];
 -        assert_eq!(resolve(Platform::Mac, &vars), Some(PathBuf::from("/user/Library/Application Support/SoundCraft")));
 -        assert_eq!(resolve(Platform::Windows, &vars), Some(PathBuf::from("/roaming/SoundCraft")));
+-        assert_eq!(resolve(Platform::Other, &vars), Some(PathBuf::from("/xdg/soundcraft")));
+-        assert_eq!(resolve(Platform::Other, &[("HOME", "/user")]), Some(PathBuf::from("/user/.config/soundcraft")));
 +        assert_eq!(resolve(Platform::Mac, &vars), Some(PathBuf::from("/user/Library/Application Support/Plervo Audio")));
 +        assert_eq!(resolve(Platform::Windows, &vars), Some(PathBuf::from("/roaming/Plervo Audio")));
-         assert_eq!(resolve(Platform::Other, &vars), Some(PathBuf::from("/xdg/soundcraft")));
--        assert_eq!(resolve(Platform::Other, &[("HOME", "/user")]), Some(PathBuf::from("/user/.config/soundcraft")));
++        assert_eq!(resolve(Platform::Other, &vars), Some(PathBuf::from("/xdg/plervo-audio")));
 +        assert_eq!(resolve(Platform::Other, &[("HOME", "/user")]), Some(PathBuf::from("/user/.config/plervo-audio")));
          for platform in [Platform::Mac, Platform::Windows, Platform::Other] {
              assert_eq!(resolve(platform, &[]), None);
          }
 diff --git a/apps/soundcraft/src/control_server.rs b/apps/soundcraft/src/control_server.rs
-index abff7bb..b9e9d38 100644
+index abff7bb..8f0b5b1 100644
 --- a/apps/soundcraft/src/control_server.rs
 +++ b/apps/soundcraft/src/control_server.rs
 @@ -1,5 +1,5 @@
@@ -958,6 +1510,35 @@ index abff7bb..b9e9d38 100644
  //!
  //! Lines are bounded ([`MAX_LINE`]): a longer one is refused and the connection closed, without
  //! buffering the rest. So is the number of connections served at once ([`MAX_CONNECTIONS`]).
+@@ -25,6 +25,10 @@ const MAX_CONNECTIONS: usize = 16;
+ 
+ pub fn start(port: u16, ctx: egui::Context) -> Receiver<ControlRequest> {
+     let (tx, rx) = channel::<ControlRequest>();
++    if !cfg!(feature = "local-control") {
++        log::error!("local control is disabled in public Plervo builds; use headless CLI/MCP");
++        return rx;
++    }
+     let listener = match TcpListener::bind(("127.0.0.1", port)) {
+         Ok(l) => l,
+         Err(e) => {
+@@ -213,3 +217,17 @@ mod tests {
+         drop(held);
+     }
+ }
++
++#[cfg(all(test, not(feature = "local-control")))]
++mod plervo_release_boundary {
++    #[test]
++    fn public_build_never_opens_the_control_port() {
++        let reserved = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
++        let address = reserved.local_addr().unwrap();
++        let port = address.port();
++        drop(reserved);
++        let receiver = super::start(port, egui::Context::default());
++        assert!(matches!(receiver.try_recv(), Err(std::sync::mpsc::TryRecvError::Disconnected)));
++        assert!(std::net::TcpStream::connect_timeout(&address, std::time::Duration::from_millis(100)).is_err());
++    }
++}
 diff --git a/apps/soundcraft/src/graphics.rs b/apps/soundcraft/src/graphics.rs
 index 2a932a6..71106d6 100644
 --- a/apps/soundcraft/src/graphics.rs
@@ -1306,6 +1887,42 @@ index 9b097a0..5241a74 100644
  [dependencies]
  soundcraft-time.workspace = true
  soundcraft-audio-io.workspace = true
+diff --git a/crates/engine/src/autosave.rs b/crates/engine/src/autosave.rs
+index d42e81f..a6228a2 100644
+--- a/crates/engine/src/autosave.rs
++++ b/crates/engine/src/autosave.rs
+@@ -557,13 +557,15 @@ mod tests {
+             std::fs::create_dir_all(path.parent().unwrap()).unwrap();
+             std::fs::write(path, bytes).unwrap();
+         }
+-        let mut paths: Vec<PathBuf> = files.iter().map(|(p, _)| p.clone()).collect();
++        let paths: Vec<PathBuf> = files.iter().map(|(p, _)| p.clone()).collect();
+         #[cfg(unix)]
+-        {
++        let paths = {
++            let mut paths = paths;
+             let link = takes.join("Vox_03.wav");
+             std::os::unix::fs::symlink(&files[1].0, &link).unwrap();
+             paths.push(link);
+-        }
++            paths
++        };
+         let plan = Recording {
+             start: 0,
+             pass: None,
+diff --git a/crates/engine/src/file_access.rs b/crates/engine/src/file_access.rs
+index b0f02fd..1f1a0c5 100644
+--- a/crates/engine/src/file_access.rs
++++ b/crates/engine/src/file_access.rs
+@@ -398,7 +398,7 @@ mod tests {
+     fn windows_ignores_case_and_refuses_devices() {
+         let (base, roots) = folders("case");
+         let upper = s(base.join("IN/a.scraft"));
+-        assert_eq!(roots.check(upper, Access::Read), Ok(()), "{upper}");
++        assert_eq!(roots.check(&upper, Access::Read), Ok(()), "{upper}");
+         assert_eq!(roots.check(s(base.join("In/Sub/New.scraft")), Access::Read), Ok(()));
+         let e = roots.check(s(base.join("out/NUL")), Access::Write).unwrap_err();
+         assert!(e.contains("reserved device names"), "{e}");
 diff --git a/crates/midi/Cargo.toml b/crates/midi/Cargo.toml
 index c32093f..380b9b9 100644
 --- a/crates/midi/Cargo.toml
@@ -1536,6 +2153,20 @@ index 1c1583a..042ca1b 100644
  [dependencies]
  soundcraft-dsp.workspace = true
  serde.workspace = true
+diff --git a/docs/control-protocol.md b/docs/control-protocol.md
+index 95a5bbf..f669140 100644
+--- a/docs/control-protocol.md
++++ b/docs/control-protocol.md
+@@ -1,3 +1,9 @@
++> **Plervo public-build boundary:** this unauthenticated loopback transport is disabled in
++> distributed binaries. Normal editing and headless CLI/MCP continue to work.
++> `--control`/the control-port environment variable do not open a socket. The
++> `local-control` Cargo feature is for isolated development only; it must not be
++> enabled in a public artifact until authentication and replay/resource limits are reviewed.
++
+ # Control protocol
+ 
+ SoundCraft can be driven completely by other programs: scripts, test harnesses and AI agents.
 diff --git a/packaging/env.sh b/packaging/env.sh
 index cb4bcdb..d2d0078 100644
 --- a/packaging/env.sh
@@ -1700,6 +2331,93 @@ index 4a9165e..0000000
 -Categories=AudioVideo;Audio;Midi;Mixer;Sequencer;Recorder;
 -MimeType=application/x-soundcraft-session;audio/x-wav;audio/wav;audio/vnd.wave;audio/x-aiff;audio/aiff;audio/flac;audio/x-flac;audio/mpeg;audio/midi;audio/x-midi;
 -Keywords=daw;audio;mixer;recording;multitrack;midi;editor;music;
+diff --git a/packaging/linux/ai.storyteller.soundcraft.metainfo.xml.in b/packaging/linux/ai.storyteller.soundcraft.metainfo.xml.in
+deleted file mode 100644
+index 9a4fdb5..0000000
+--- a/packaging/linux/ai.storyteller.soundcraft.metainfo.xml.in
++++ /dev/null
+@@ -1,63 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
+-     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
+-<component type="desktop-application">
+-  <id>ai.storyteller.soundcraft</id>
+-  <metadata_license>CC0-1.0</metadata_license>
+-  <project_license>MIT OR Apache-2.0</project_license>
+-  <name>SoundCraft</name>
+-  <summary>Record, edit and mix audio and MIDI</summary>
+-  <developer id="ai.storyteller">
+-    <name>Learning Machines LLC</name>
+-  </developer>
+-  <description>
+-    <p>
+-      SoundCraft is an open-source, native digital audio workstation. Record, edit and mix
+-      multitrack audio and MIDI in Edit and Mix windows that work the way studio engineers expect.
+-    </p>
+-    <ul>
+-      <li>Non-destructive clip editing with fades, playlists, grids and markers</li>
+-      <li>A mixer with inserts, sends, buses, automation and metering</li>
+-      <li>Built-in EQ, dynamics, reverb, delay, modulation and instruments</li>
+-      <li>Imports WAV, AIFF, FLAC, MP3 and MIDI; bounces to disk</li>
+-      <li>A headless command line and an MCP server for scripting and agents</li>
+-    </ul>
+-  </description>
+-  <launchable type="desktop-id">ai.storyteller.soundcraft.desktop</launchable>
+-  <icon type="stock">ai.storyteller.soundcraft</icon>
+-  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
+-  <url type="homepage">https://getartcraft.com/apps/soundcraft</url>
+-  <url type="bugtracker">https://github.com/storytold/soundcraft/issues</url>
+-  <url type="help">https://github.com/storytold/soundcraft</url>
+-  <url type="contact">https://discord.gg/artcraft</url>
+-  <categories>
+-    <category>AudioVideo</category>
+-    <category>Audio</category>
+-  </categories>
+-  <keywords>
+-    <keyword>daw</keyword>
+-    <keyword>audio</keyword>
+-    <keyword>mixer</keyword>
+-    <keyword>recording</keyword>
+-    <keyword>midi</keyword>
+-  </keywords>
+-  <branding>
+-    <color type="primary" scheme_preference="light">#8fd9e6</color>
+-    <color type="primary" scheme_preference="dark">#0b7385</color>
+-  </branding>
+-  <requires>
+-    <display_length compare="ge">760</display_length>
+-  </requires>
+-  <supports>
+-    <control>keyboard</control>
+-    <control>pointing</control>
+-  </supports>
+-  <provides>
+-    <binary>soundcraft</binary>
+-    <mediatype>application/x-soundcraft-session</mediatype>
+-  </provides>
+-  <content_rating type="oars-1.1"/>
+-  <releases>
+-    <release version="@VERSION@" date="@DATE@"/>
+-  </releases>
+-</component>
+diff --git a/packaging/linux/ai.storyteller.soundcraft.mime.xml b/packaging/linux/ai.storyteller.soundcraft.mime.xml
+deleted file mode 100644
+index 901cd3e..0000000
+--- a/packaging/linux/ai.storyteller.soundcraft.mime.xml
++++ /dev/null
+@@ -1,12 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<!-- shared-mime-info definition for SoundCraft's session format. Audio and MIDI types come from
+-     the system database. Installed to /usr/share/mime/packages/ (update-mime-database runs on
+-     install). -->
+-<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+-  <mime-type type="application/x-soundcraft-session">
+-    <comment>SoundCraft session</comment>
+-    <sub-class-of type="application/json"/>
+-    <icon name="ai.storyteller.soundcraft"/>
+-    <glob pattern="*.scraft"/>
+-  </mime-type>
+-</mime-info>
 diff --git a/packaging/linux/com.plervo.audio.desktop b/packaging/linux/com.plervo.audio.desktop
 new file mode 100644
 index 0000000..8a5ed09
@@ -1873,6 +2591,186 @@ index 1b40026..27365e2 100755
    flatpak run --command=sh "$APP_ID" -c 'ls /app/share/applications /app/share/metainfo /app/share/mime/packages /app/share/icons/hicolor/scalable/apps'
  fi
  echo "==> done"
+diff --git a/packaging/linux/flatpak/ai.storyteller.soundcraft.bundle.yml b/packaging/linux/flatpak/ai.storyteller.soundcraft.bundle.yml
+deleted file mode 100644
+index ff502f0..0000000
+--- a/packaging/linux/flatpak/ai.storyteller.soundcraft.bundle.yml
++++ /dev/null
+@@ -1,73 +0,0 @@
+-# Flatpak manifest for the single-file bundle attached to every GitHub release
+-# (soundcraft-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
+-#
+-# It repackages the release's own Linux tarball (soundcraft-<version>-linux-<arch>.tar.gz,
+-# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
+-# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
+-# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
+-# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
+-# Wayland, xkbcommon, Vulkan and libasound at runtime; the freedesktop runtime has all of them
+-# (plus alsa-lib's PulseAudio plugin), and the GPU driver comes from its
+-# org.freedesktop.Platform.GL extension.
+-#
+-# ai.storyteller.soundcraft.yml (same directory) is the from-source manifest for Flathub. Keep
+-# runtime-version, finish-args and add-extensions identical in both (packaging-lint checks this).
+-id: ai.storyteller.soundcraft
+-runtime: org.freedesktop.Platform
+-runtime-version: '25.08'
+-sdk: org.freedesktop.Sdk
+-command: soundcraft
+-finish-args:
+-  # Display: Wayland first; X11 only when no Wayland compositor is running.
+-  - --socket=wayland
+-  - --socket=fallback-x11
+-  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
+-  - --share=ipc
+-  # GPU access for the wgpu UI (Vulkan, or GL as a fallback).
+-  - --device=dri
+-  # Playback and recording. cpal talks to ALSA; the runtime's alsa-lib routes ALSA through its
+-  # PulseAudio plugin to this socket, which PipeWire's pulse server provides on modern desktops
+-  # (and PulseAudio itself on older ones). Deliberately not granted: --device=all (raw /dev/snd
+-  # for direct ALSA hardware access, which would bypass the sound server) and JACK, which
+-  # SoundCraft doesn't use (cpal's jack feature is off; there is no live MIDI I/O either).
+-  - --socket=pulseaudio
+-  # Open/Save dialogs use the file-chooser portal (rfd) and drag-and-drop the document portal,
+-  # so broad filesystem access isn't needed. Music is granted for sessions and their
+-  # "Audio Files" folders opened by path from the command line.
+-  - --filesystem=xdg-music
+-  # VST3 and CLAP plugin hosts. The per-user plugin folders the hosts scan, read-only.
+-  # System folders (/usr/lib/vst3, /usr/lib/clap) aren't reachable from the sandbox, and plugins
+-  # there are linked against the host's libraries rather than the runtime's; sandboxed plugins
+-  # come from Flatpak extensions instead (add-extensions below), found through these paths.
+-  - --filesystem=~/.vst3:ro
+-  - --filesystem=~/.clap:ro
+-  - --env=VST3_PATH=/app/extensions/Plugins/vst3
+-  - --env=CLAP_PATH=/app/extensions/Plugins/clap
+-# Flathub's shared audio-plugin extension point (org.freedesktop.LinuxAudio.Plugins.*, the one
+-# Ardour, Bitwig and friends use). Optional: nothing is downloaded unless the user installs a
+-# plugin extension; merge-dirs lets every installed one appear under .../Plugins/{vst3,clap}.
+-add-extensions:
+-  org.freedesktop.LinuxAudio.Plugins:
+-    directory: extensions/Plugins
+-    version: '25.08'
+-    add-ld-path: lib
+-    merge-dirs: vst3;clap
+-    subdirectories: true
+-    no-autodownload: true
+-modules:
+-  - name: soundcraft
+-    buildsystem: simple
+-    build-commands:
+-      - install -Dm755 bin/soundcraft /app/bin/soundcraft
+-      - install -Dm755 bin/soundcraft-cli /app/bin/soundcraft-cli
+-      - install -Dm644 share/applications/ai.storyteller.soundcraft.desktop /app/share/applications/ai.storyteller.soundcraft.desktop
+-      # Session files; the runtime's shared-mime-info already knows WAV, AIFF, FLAC, MP3 and MIDI.
+-      - install -Dm644 share/mime/packages/ai.storyteller.soundcraft.xml /app/share/mime/packages/ai.storyteller.soundcraft.xml
+-      # Already has the release's version and date substituted by package.sh.
+-      - install -Dm644 share/metainfo/ai.storyteller.soundcraft.metainfo.xml /app/share/metainfo/ai.storyteller.soundcraft.metainfo.xml
+-      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/soundcraft /app/share/doc/
+-      # Mount point for the plugin extensions (add-extensions).
+-      - install -d /app/extensions/Plugins
+-    sources:
+-      - type: dir
+-        path: stage
+diff --git a/packaging/linux/flatpak/ai.storyteller.soundcraft.yml b/packaging/linux/flatpak/ai.storyteller.soundcraft.yml
+deleted file mode 100644
+index bec9ffb..0000000
+--- a/packaging/linux/flatpak/ai.storyteller.soundcraft.yml
++++ /dev/null
+@@ -1,95 +0,0 @@
+-# Flatpak manifest for SoundCraft, ready for a Flathub submission.
+-#
+-# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
+-#
+-#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
+-#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
+-#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.soundcraft.yml
+-#   flatpak run ai.storyteller.soundcraft
+-#
+-# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
+-# ai.storyteller.soundcraft.bundle.yml repackages the release tarball into the .flatpak attached
+-# to each GitHub release; keep runtime-version, finish-args and add-extensions identical in both
+-# (packaging-lint checks this).
+-#
+-# Audio: cpal talks to ALSA. alsa-lib (headers in the Sdk, the library in the Platform) and its
+-# PulseAudio plugin ship with the freedesktop runtime, which routes ALSA through the PulseAudio
+-# socket (PipeWire's pulse server on modern desktops), so no extra module is needed.
+-id: ai.storyteller.soundcraft
+-runtime: org.freedesktop.Platform
+-runtime-version: '25.08'
+-sdk: org.freedesktop.Sdk
+-sdk-extensions:
+-  - org.freedesktop.Sdk.Extension.rust-stable
+-command: soundcraft
+-finish-args:
+-  # Display: Wayland first; X11 only when no Wayland compositor is running.
+-  - --socket=wayland
+-  - --socket=fallback-x11
+-  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
+-  - --share=ipc
+-  # GPU access for the wgpu UI (Vulkan, or GL as a fallback).
+-  - --device=dri
+-  # Playback and recording. cpal talks to ALSA; the runtime's alsa-lib routes ALSA through its
+-  # PulseAudio plugin to this socket, which PipeWire's pulse server provides on modern desktops
+-  # (and PulseAudio itself on older ones). Deliberately not granted: --device=all (raw /dev/snd
+-  # for direct ALSA hardware access, which would bypass the sound server) and JACK, which
+-  # SoundCraft doesn't use (cpal's jack feature is off; there is no live MIDI I/O either).
+-  - --socket=pulseaudio
+-  # Open/Save dialogs use the file-chooser portal (rfd) and drag-and-drop the document portal,
+-  # so broad filesystem access isn't needed. Music is granted for sessions and their
+-  # "Audio Files" folders opened by path from the command line.
+-  - --filesystem=xdg-music
+-  # VST3 and CLAP plugin hosts. The per-user plugin folders the hosts scan, read-only.
+-  # System folders (/usr/lib/vst3, /usr/lib/clap) aren't reachable from the sandbox, and plugins
+-  # there are linked against the host's libraries rather than the runtime's; sandboxed plugins
+-  # come from Flatpak extensions instead (add-extensions below), found through these paths.
+-  - --filesystem=~/.vst3:ro
+-  - --filesystem=~/.clap:ro
+-  - --env=VST3_PATH=/app/extensions/Plugins/vst3
+-  - --env=CLAP_PATH=/app/extensions/Plugins/clap
+-# Flathub's shared audio-plugin extension point (org.freedesktop.LinuxAudio.Plugins.*, the one
+-# Ardour, Bitwig and friends use). Optional: nothing is downloaded unless the user installs a
+-# plugin extension; merge-dirs lets every installed one appear under .../Plugins/{vst3,clap}.
+-add-extensions:
+-  org.freedesktop.LinuxAudio.Plugins:
+-    directory: extensions/Plugins
+-    version: '25.08'
+-    add-ld-path: lib
+-    merge-dirs: vst3;clap
+-    subdirectories: true
+-    no-autodownload: true
+-build-options:
+-  append-path: /usr/lib/sdk/rust-stable/bin
+-modules:
+-  - name: soundcraft
+-    buildsystem: simple
+-    build-options:
+-      env:
+-        CARGO_HOME: /run/build/soundcraft/cargo
+-        CARGO_NET_OFFLINE: 'true'
+-    build-commands:
+-      - cargo --offline build --release --locked -p soundcraft -p soundcraft-cli
+-      - install -Dm755 target/release/soundcraft /app/bin/soundcraft
+-      - install -Dm755 target/release/soundcraft-cli /app/bin/soundcraft-cli
+-      - install -Dm644 packaging/linux/ai.storyteller.soundcraft.desktop /app/share/applications/ai.storyteller.soundcraft.desktop
+-      - install -Dm644 packaging/linux/ai.storyteller.soundcraft.mime.xml /app/share/mime/packages/ai.storyteller.soundcraft.xml
+-      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
+-      - >-
+-        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
+-        install -d /app/share/metainfo;
+-        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+-        packaging/linux/ai.storyteller.soundcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.soundcraft.metainfo.xml
+-      # Mount point for the plugin extensions (add-extensions).
+-      - install -d /app/extensions/Plugins
+-    sources:
+-      - type: dir
+-        path: ../../..
+-        skip:
+-          - target
+-          - dist
+-          - corpus
+-          - plan
+-          - build-flatpak
+-          - .flatpak-builder
+-      - cargo-sources.json
 diff --git a/packaging/linux/flatpak/com.plervo.audio.bundle.yml b/packaging/linux/flatpak/com.plervo.audio.bundle.yml
 new file mode 100644
 index 0000000..e5499bc

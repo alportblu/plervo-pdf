@@ -129,6 +129,9 @@ jobs:
         if: runner.os == 'Linux' && matrix.app.product != 'photo'
         working-directory: source
         run: cargo xtask assets
+      - name: Generate the reviewed policy for this product
+        shell: bash
+        run: cargo xtask products --audit-policy "$PRODUCT" > products/deny-active.toml
       - name: Dependency licences and security advisories
         id: dependencies
         if: runner.os == 'Linux'
@@ -139,7 +142,7 @@ jobs:
         with:
           manifest-path: source/Cargo.toml
           command: check
-          command-arguments: --config products/deny.toml
+          arguments: --all-features --locked --config products/deny-active.toml
       - name: Static analysis
         id: static_analysis
         working-directory: source
@@ -162,6 +165,10 @@ jobs:
       - name: Feature and regression tests
         working-directory: source
         run: cargo test --locked --workspace
+      - name: Web target boundary
+        if: runner.os == 'Linux'
+        working-directory: source
+        run: cargo xtask wasm
       - name: Build desktop and CLI
         working-directory: source
         shell: bash

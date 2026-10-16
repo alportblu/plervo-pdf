@@ -235,10 +235,10 @@ index 9632245..97b2fe0 100644
  license = "MIT OR Apache-2.0"
  rust-version = "1.90"
 diff --git a/NOTICE b/NOTICE
-index 22163da..6cad21a 100644
+index 22163da..c57be13 100644
 --- a/NOTICE
 +++ b/NOTICE
-@@ -22,3 +22,7 @@ each under the SIL Open Font License 1.1.
+@@ -22,3 +22,400 @@ each under the SIL Open Font License 1.1.
  
  CADCraft is an independent project and is not affiliated with, sponsored by or endorsed by
  Autodesk, Inc. AutoCAD and DWG are trademarks of Autodesk, Inc.
@@ -246,6 +246,399 @@ index 22163da..6cad21a 100644
 +Plervo adaptation by AlporT (2026). Product identity and packaging are original Plervo work.
 +Based on storytold/cadcraft at fc4e98315a8d771b5ab832f0ade0b5e7b106df7f.
 +Original authorship and MIT/Apache-2.0 licenses are preserved. No ArtCraft endorsement.
++
++Plervo dependency source notices (reviewed 2026-10-16)
++==========================================================
++
++The dependencies below are included without source modifications. Their original
++source and copyright notices are available at the exact archive links below.
++MPL-covered source remains available under the MPL; the Plervo MIT/Apache terms
++do not restrict the recipient's rights in those dependencies.
++
++acadrust 0.6.4
++Licence: MPL-2.0
++Authors: Hakan AK
++Unmodified source: https://crates.io/api/v1/crates/acadrust/0.6.4/download
++SHA-256: 94862189cab6e282ed0433a801a216cd1a712953813284a48fa81c67223e38f6
++
++--- MPL-2.0 ---
++
++Mozilla Public License Version 2.0
++==================================
++
++1. Definitions
++--------------
++
++1.1. "Contributor"
++    means each individual or legal entity that creates, contributes to
++    the creation of, or owns Covered Software.
++
++1.2. "Contributor Version"
++    means the combination of the Contributions of others (if any) used
++    by a Contributor and that particular Contributor's Contribution.
++
++1.3. "Contribution"
++    means Covered Software of a particular Contributor.
++
++1.4. "Covered Software"
++    means Source Code Form to which the initial Contributor has attached
++    the notice in Exhibit A, the Executable Form of such Source Code
++    Form, and Modifications of such Source Code Form, in each case
++    including portions thereof.
++
++1.5. "Incompatible With Secondary Licenses"
++    means
++
++    (a) that the initial Contributor has attached the notice described
++        in Exhibit B to the Covered Software; or
++
++    (b) that the Covered Software was made available under the terms of
++        version 1.1 or earlier of the License, but not also under the
++        terms of a Secondary License.
++
++1.6. "Executable Form"
++    means any form of the work other than Source Code Form.
++
++1.7. "Larger Work"
++    means a work that combines Covered Software with other material, in
++    a separate file or files, that is not Covered Software.
++
++1.8. "License"
++    means this document.
++
++1.9. "Licensable"
++    means having the right to grant, to the maximum extent possible,
++    whether at the time of the initial grant or subsequently, any and
++    all of the rights conveyed by this License.
++
++1.10. "Modifications"
++    means any of the following:
++
++    (a) any file in Source Code Form that results from an addition to,
++        deletion from, or modification of the contents of Covered
++        Software; or
++
++    (b) any new file in Source Code Form that contains any Covered
++        Software.
++
++1.11. "Patent Claims" of a Contributor
++    means any patent claim(s), including without limitation, method,
++    process, and apparatus claims, in any patent Licensable by such
++    Contributor that would be infringed, but for the grant of the
++    License, by the making, using, selling, offering for sale, having
++    made, import, or transfer of either its Contributions or its
++    Contributor Version.
++
++1.12. "Secondary License"
++    means either the GNU General Public License, Version 2.0, the GNU
++    Lesser General Public License, Version 2.1, the GNU Affero General
++    Public License, Version 3.0, or any later versions of those
++    licenses.
++
++1.13. "Source Code Form"
++    means the form of the work preferred for making modifications.
++
++1.14. "You" (or "Your")
++    means an individual or a legal entity exercising rights under this
++    License. For legal entities, "You" includes any entity that
++    controls, is controlled by, or is under common control with You. For
++    purposes of this definition, "control" means (a) the power, direct
++    or indirect, to cause the direction or management of such entity,
++    whether by contract or otherwise, or (b) ownership of more than
++    fifty percent (50%) of the outstanding shares or beneficial
++    ownership of such entity.
++
++2. License Grants and Conditions
++--------------------------------
++
++2.1. Grants
++
++Each Contributor hereby grants You a world-wide, royalty-free,
++non-exclusive license:
++
++(a) under intellectual property rights (other than patent or trademark)
++    Licensable by such Contributor to use, reproduce, make available,
++    modify, display, perform, distribute, and otherwise exploit its
++    Contributions, either on an unmodified basis, with Modifications, or
++    as part of a Larger Work; and
++
++(b) under Patent Claims of such Contributor to make, use, sell, offer
++    for sale, have made, import, and otherwise transfer either its
++    Contributions or its Contributor Version.
++
++2.2. Effective Date
++
++The licenses granted in Section 2.1 with respect to any Contribution
++become effective for each Contribution on the date the Contributor first
++distributes such Contribution.
++
++2.3. Limitations on Grant Scope
++
++The licenses granted in this Section 2 are the only rights granted under
++this License. No additional rights or licenses will be implied from the
++distribution or licensing of Covered Software under this License.
++Notwithstanding Section 2.1(b) above, no patent license is granted by a
++Contributor:
++
++(a) for any code that a Contributor has removed from Covered Software;
++    or
++
++(b) for infringements caused by: (i) Your and any other third party's
++    modifications of Covered Software, or (ii) the combination of its
++    Contributions with other software (except as part of its Contributor
++    Version); or
++
++(c) under Patent Claims infringed by Covered Software in the absence of
++    its Contributions.
++
++This License does not grant any rights in the trademarks, service marks,
++or logos of any Contributor (except as may be necessary to comply with
++the notice requirements in Section 3.4).
++
++2.4. Subsequent Licenses
++
++No Contributor makes additional grants as a result of Your choice to
++distribute the Covered Software under a subsequent version of this
++License (see Section 10.2) or under the terms of a Secondary License (if
++permitted under the terms of Section 3.3).
++
++2.5. Representation
++
++Each Contributor represents that the Contributor believes its
++Contributions are its original creation(s) or it has sufficient rights
++to grant the rights to its Contributions conveyed by this License.
++
++2.6. Fair Use
++
++This License is not intended to limit any rights You have under
++applicable copyright doctrines of fair use, fair dealing, or other
++equivalents.
++
++2.7. Conditions
++
++Sections 3.1, 3.2, 3.3, and 3.4 are conditions of the licenses granted
++in Section 2.1.
++
++3. Responsibilities
++-------------------
++
++3.1. Distribution of Source Form
++
++All distribution of Covered Software in Source Code Form, including any
++Modifications that You create or to which You contribute, must be under
++the terms of this License. You must inform recipients that the Source
++Code Form of the Covered Software is governed by the terms of this
++License, and how they can obtain a copy of this License. You may not
++attempt to alter or restrict the recipients' rights in the Source Code
++Form.
++
++3.2. Distribution of Executable Form
++
++If You distribute Covered Software in Executable Form then:
++
++(a) such Covered Software must also be made available in Source Code
++    Form, as described in Section 3.1, and You must inform recipients of
++    the Executable Form how they can obtain a copy of such Source Code
++    Form by reasonable means in a timely manner, at a charge no more
++    than the cost of distribution to the recipient; and
++
++(b) You may distribute such Executable Form under the terms of this
++    License, or sublicense it under different terms, provided that the
++    license for the Executable Form does not attempt to limit or alter
++    the recipients' rights in the Source Code Form under this License.
++
++3.3. Distribution of a Larger Work
++
++You may create and distribute a Larger Work under terms of Your choice,
++provided that You also comply with the requirements of this License for
++the Covered Software. If the Larger Work is a combination of Covered
++Software with a work governed by one or more Secondary Licenses, and the
++Covered Software is not Incompatible With Secondary Licenses, this
++License permits You to additionally distribute such Covered Software
++under the terms of such Secondary License(s), so that the recipient of
++the Larger Work may, at their option, further distribute the Covered
++Software under the terms of either this License or such Secondary
++License(s).
++
++3.4. Notices
++
++You may not remove or alter the substance of any license notices
++(including copyright notices, patent notices, disclaimers of warranty,
++or limitations of liability) contained within the Source Code Form of
++the Covered Software, except that You may alter any license notices to
++the extent required to remedy known factual inaccuracies.
++
++3.5. Application of Additional Terms
++
++You may choose to offer, and to charge a fee for, warranty, support,
++indemnity or liability obligations to one or more recipients of Covered
++Software. However, You may do so only on Your own behalf, and not on
++behalf of any Contributor. You must make it absolutely clear that any
++such warranty, support, indemnity, or liability obligation is offered by
++You alone, and You hereby agree to indemnify every Contributor for any
++liability incurred by such Contributor as a result of warranty, support,
++indemnity or liability terms You offer. You may include additional
++disclaimers of warranty and limitations of liability specific to any
++jurisdiction.
++
++4. Inability to Comply Due to Statute or Regulation
++---------------------------------------------------
++
++If it is impossible for You to comply with any of the terms of this
++License with respect to some or all of the Covered Software due to
++statute, judicial order, or regulation then You must: (a) comply with
++the terms of this License to the maximum extent possible; and (b)
++describe the limitations and the code they affect. Such description must
++be placed in a text file included with all distributions of the Covered
++Software under the name "LEGAL", and included in all Covered Software
++distributed in Source Code Form. Except to the extent prohibited by
++statute or regulation, such description must be sufficiently detailed
++for a recipient of ordinary skill to be able to understand it.
++
++5. Termination
++--------------
++
++5.1. The rights granted under this License will terminate automatically
++if You fail to comply with any of its terms. However, if You become
++compliant, then the rights granted under this License from a particular
++Contributor are reinstated (a) provisionally, unless and until such
++Contributor explicitly and finally terminates Your grants, and (b) on an
++ongoing basis, if such Contributor fails to notify You of the
++non-compliance by some reasonable means prior to 60 days after You have
++come back into compliance. Moreover, Your grants from a particular
++Contributor are reinstated on an ongoing basis if such Contributor
++notifies You of the non-compliance by some reasonable means, this is the
++first time You have received notice of non-compliance with this License
++from such Contributor, and You become compliant prior to 30 days after
++Your receipt of the notice.
++
++5.2. If You initiate litigation against any entity by asserting a patent
++infringement claim (excluding declaratory judgment actions,
++counter-claims, and cross-claims) alleging that a Contributor Version
++directly or indirectly infringes any patent, then the rights granted to
++You by any and all Contributors for the Covered Software under Section
++2.1 of this License shall terminate.
++
++5.3. In the event of termination under Sections 5.1 or 5.2 above, all
++end user license agreements (excluding distributors and resellers) which
++have been validly granted by You or Your distributors under this License
++prior to termination shall survive termination.
++
++************************************************************************
++*                                                                      *
++*  6. Disclaimer of Warranty                                           *
++*  -------------------------                                           *
++*                                                                      *
++*  Covered Software is provided under this License on an "as is"       *
++*  basis, without warranty of any kind, either expressed, implied, or   *
++*  statutory, including, without limitation, warranties that the       *
++*  Covered Software is free of defects, merchantable, fit for a        *
++*  particular purpose or non-infringing. The entire risk as to the     *
++*  quality and performance of the Covered Software is with You.        *
++*  Should any Covered Software prove defective in any respect, You     *
++*  (not any Contributor) assume the cost of any necessary servicing,   *
++*  repair, or correction. This disclaimer of warranty constitutes an   *
++*  essential part of this License. No use of any Covered Software is   *
++*  authorized under this License except under this disclaimer.         *
++*                                                                      *
++************************************************************************
++
++************************************************************************
++*                                                                      *
++*  7. Limitation of Liability                                          *
++*  --------------------------                                          *
++*                                                                      *
++*  Under no circumstances and under no legal theory, whether tort      *
++*  (including negligence), contract, or otherwise, shall any           *
++*  Contributor, or anyone who distributes Covered Software as          *
++*  permitted above, be liable to You for any direct, indirect,         *
++*  special, incidental, or consequential damages of any character      *
++*  including, without limitation, damages for lost profits, loss of    *
++*  goodwill, work stoppage, computer failure or malfunction, or any    *
++*  and all other commercial damages or losses, even if such party      *
++*  shall have been informed of the possibility of such damages. This   *
++*  limitation of liability shall not apply to liability for death or   *
++*  personal injury resulting from such party's negligence to the       *
++*  extent applicable law prohibits such limitation. Some               *
++*  jurisdictions do not allow the exclusion or limitation of           *
++*  incidental or consequential damages, so this exclusion and          *
++*  limitation may not apply to You.                                    *
++*                                                                      *
++************************************************************************
++
++8. Litigation
++-------------
++
++Any litigation relating to this License may be brought only in the
++courts of a jurisdiction where the defendant maintains its principal
++place of business and such litigation shall be governed by laws of that
++jurisdiction, without reference to its conflict-of-law provisions.
++Nothing in this Section shall prevent a party's ability to bring
++cross-claims or counter-claims.
++
++9. Miscellaneous
++----------------
++
++This License represents the complete agreement concerning the subject
++matter hereof. If any provision of this License is held to be
++unenforceable, such provision shall be reformed only to the extent
++necessary to make it enforceable. Any law or regulation which provides
++that the language of a contract shall be construed against the drafter
++shall not be used to construe this License against a Contributor.
++
++10. Versions of the License
++---------------------------
++
++10.1. New Versions
++
++Mozilla Foundation is the license steward. Except as provided in Section
++10.3, no one other than the license steward has the right to modify or
++publish new versions of this License. Each version will be given a
++distinguishing version number.
++
++10.2. Effect of New Versions
++
++You may distribute the Covered Software under the terms of the version
++of the License under which You originally received the Covered Software,
++or under the terms of any subsequent version published by the license
++steward.
++
++10.3. Modified Versions
++
++If you create software not governed by this License, and you want to
++create a new license for such software, you may create and use a
++modified version of this License if you rename the license and remove
++any references to the name of the license steward (except to note that
++such modified license differs from this License).
++
++10.4. Distributing Source Code Form that is Incompatible With Secondary
++Licenses
++
++If You choose to distribute Source Code Form that is Incompatible With
++Secondary Licenses under the terms of this version of the License, the
++notice described in Exhibit B of this License must be attached.
++
++Exhibit A - Source Code Form License Notice
++-------------------------------------------
++
++  This Source Code Form is subject to the terms of the Mozilla Public
++  License, v. 2.0. If a copy of the MPL was not distributed with this
++  file, You can obtain one at https://mozilla.org/MPL/2.0/.
++
++If it is not possible or desirable to put the notice in a particular
++file, then You may include the notice in a location (such as a LICENSE
++file in a relevant directory) where a recipient would be likely to look
++for such a notice.
++
++You may add additional accurate notices of copyright ownership.
++
++Exhibit B - "Incompatible With Secondary Licenses" Notice
++---------------------------------------------------------
++
++  This Source Code Form is "Incompatible With Secondary Licenses", as
++  defined by the Mozilla Public License, v. 2.0.
++
++
 diff --git a/README.md b/README.md
 index a259af4..cc89913 100644
 --- a/README.md
@@ -958,10 +1351,10 @@ index 1e5b327..9507e81 100644
      pub fn receive(&self, name: String, bytes: Vec<u8>) {
          match CadApp::open_size_error(&name, bytes.len() as u64) {
 diff --git a/apps/cadcraft/Cargo.toml b/apps/cadcraft/Cargo.toml
-index ec52743..984d7c7 100644
+index ec52743..533429d 100644
 --- a/apps/cadcraft/Cargo.toml
 +++ b/apps/cadcraft/Cargo.toml
-@@ -1,11 +1,11 @@
+@@ -1,15 +1,20 @@
  [package]
 -name = "cadcraft"
 +name = "plervo-cad"
@@ -975,6 +1368,15 @@ index ec52743..984d7c7 100644
  
  [lints]
  workspace = true
+ 
++[features]
++# Unreviewed loopback automation is excluded from public Plervo builds.
++# Headless CLI/MCP remains available. Enable only in an isolated development environment.
++local-control = []
++
+ [dependencies]
+ cadcraft-engine = { workspace = true }
+ cadcraft-ui-egui = { workspace = true }
 diff --git a/apps/cadcraft/build.rs b/apps/cadcraft/build.rs
 index 1349ebe..42cba1b 100644
 --- a/apps/cadcraft/build.rs
@@ -998,7 +1400,7 @@ index 1349ebe..42cba1b 100644
          if std::env::var_os("CADCRAFT_REQUIRE_WINRES").is_some() {
              eprintln!("embedding Windows resources failed: {e}");
 diff --git a/apps/cadcraft/src/control_server.rs b/apps/cadcraft/src/control_server.rs
-index c7753eb..96341bd 100644
+index c7753eb..49e34db 100644
 --- a/apps/cadcraft/src/control_server.rs
 +++ b/apps/cadcraft/src/control_server.rs
 @@ -1,5 +1,5 @@
@@ -1008,6 +1410,35 @@ index c7753eb..96341bd 100644
  //!
  //! Lines are bounded ([`MAX_LINE`]): a longer one is refused and the connection closed, without
  //! buffering the rest. So is the number of connections served at once ([`MAX_CONNECTIONS`]).
+@@ -22,6 +22,10 @@ const MAX_CONNECTIONS: usize = 16;
+ 
+ pub fn start(port: u16, ctx: egui::Context) -> Receiver<ControlRequest> {
+     let (tx, rx) = channel::<ControlRequest>();
++    if !cfg!(feature = "local-control") {
++        log::error!("local control is disabled in public Plervo builds; use headless CLI/MCP");
++        return rx;
++    }
+     let listener = match TcpListener::bind(("127.0.0.1", port)) {
+         Ok(l) => l,
+         Err(e) => {
+@@ -200,3 +204,17 @@ mod tests {
+         drop(held);
+     }
+ }
++
++#[cfg(all(test, not(feature = "local-control")))]
++mod plervo_release_boundary {
++    #[test]
++    fn public_build_never_opens_the_control_port() {
++        let reserved = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
++        let address = reserved.local_addr().unwrap();
++        let port = address.port();
++        drop(reserved);
++        let receiver = super::start(port, egui::Context::default());
++        assert!(matches!(receiver.try_recv(), Err(std::sync::mpsc::TryRecvError::Disconnected)));
++        assert!(std::net::TcpStream::connect_timeout(&address, std::time::Duration::from_millis(100)).is_err());
++    }
++}
 diff --git a/apps/cadcraft/src/logging.rs b/apps/cadcraft/src/logging.rs
 index 6678dec..8a6c925 100644
 --- a/apps/cadcraft/src/logging.rs
@@ -1312,6 +1743,30 @@ index 0c66ef6..6a390a8 100644
  [lints]
  workspace = true
  
+diff --git a/crates/constraints/src/auto.rs b/crates/constraints/src/auto.rs
+index d33185c..8d0a7a8 100644
+--- a/crates/constraints/src/auto.rs
++++ b/crates/constraints/src/auto.rs
+@@ -52,15 +52,11 @@ fn collect(d: &Drawing, handles: &[Handle]) -> Geo {
+                     g.curves.push((GeomRef::whole(h), ga.center, a.radius));
+                 }
+             }
+-            EntityKind::Circle(c) => {
+-                if c.center.is_finite() && c.radius.is_finite() {
+-                    g.curves.push((GeomRef::whole(h), c.center.xy(), c.radius));
+-                }
++            EntityKind::Circle(c) if c.center.is_finite() && c.radius.is_finite() => {
++                g.curves.push((GeomRef::whole(h), c.center.xy(), c.radius));
+             }
+-            EntityKind::Point(p) => {
+-                if p.p.is_finite() {
+-                    g.points.push((GeomRef::whole(h), p.p.xy()));
+-                }
++            EntityKind::Point(p) if p.p.is_finite() => {
++                g.points.push((GeomRef::whole(h), p.p.xy()));
+             }
+             EntityKind::LwPolyline(p) => {
+                 let n = p.vertices.len();
 diff --git a/crates/doc/Cargo.toml b/crates/doc/Cargo.toml
 index 7046fd4..bde8c67 100644
 --- a/crates/doc/Cargo.toml
@@ -1364,6 +1819,55 @@ index 0dad377..27d8915 100644
  [lints]
  workspace = true
  
+diff --git a/crates/engine/src/audit.rs b/crates/engine/src/audit.rs
+index 89df8c0..d2c759c 100644
+--- a/crates/engine/src/audit.rs
++++ b/crates/engine/src/audit.rs
+@@ -454,17 +454,13 @@ fn references(d: &mut Drawing, out: &mut Vec<Issue>) {
+                         m.style = "Standard".into();
+                     }
+                 }
+-                EntityKind::Table(t) => {
+-                    if !has_name(&d.table_styles, &t.style, |s| &s.name) {
+-                        note("table style", &t.style);
+-                        t.style = "Standard".into();
+-                    }
++                EntityKind::Table(t) if !has_name(&d.table_styles, &t.style, |s| &s.name) => {
++                    note("table style", &t.style);
++                    t.style = "Standard".into();
+                 }
+-                EntityKind::Leader(l) => {
+-                    if !ok_dim(d, &l.style) {
+-                        note("dimension style", &l.style);
+-                        l.style = "Standard".into();
+-                    }
++                EntityKind::Leader(l) if !ok_dim(d, &l.style) => {
++                    note("dimension style", &l.style);
++                    l.style = "Standard".into();
+                 }
+                 EntityKind::Dimension(dim) => {
+                     if !ok_dim(d, &dim.style) {
+diff --git a/crates/engine/src/cmd/inquiry.rs b/crates/engine/src/cmd/inquiry.rs
+index f16ad64..36471c9 100644
+--- a/crates/engine/src/cmd/inquiry.rs
++++ b/crates/engine/src/cmd/inquiry.rs
+@@ -528,12 +528,11 @@ impl Interactive for DistM {
+                     let model = model_points(&self.sources);
+                     s.echo(format!("Distance = {}", fmt_d(s, path_len(model.as_deref().unwrap_or(pts)))));
+                 }
+-                Input::Keyword(k) if k == "Undo" => {
+-                    if pts.len() > 1 {
+-                        pts.pop();
+-                        self.sources.pop();
+-                    }
++                Input::Keyword(k) if k == "Undo" && pts.len() > 1 => {
++                    pts.pop();
++                    self.sources.pop();
+                 }
++                Input::Keyword(k) if k == "Undo" => {}
+                 Input::Keyword(k) if k == "Length" => self.length = true,
+                 Input::Keyword(k) if k == "Total" => return self.total(s),
+                 Input::Keyword(k) => s.echo(format!("{k}: not available yet")),
 diff --git a/crates/engine/src/cmd/plotters.rs b/crates/engine/src/cmd/plotters.rs
 index 454b977..459a2dd 100644
 --- a/crates/engine/src/cmd/plotters.rs
@@ -1394,6 +1898,40 @@ index 454b977..459a2dd 100644
                  },
              };
              root.map(|r| r.join("plotters")).ok_or_else(|| "there is no settings folder for plotter configurations".to_string())
+diff --git a/crates/engine/src/mtext_edit.rs b/crates/engine/src/mtext_edit.rs
+index 30da0b8..3567c82 100644
+--- a/crates/engine/src/mtext_edit.rs
++++ b/crates/engine/src/mtext_edit.rs
+@@ -136,12 +136,11 @@ impl Formatted {
+                     i += 2;
+                     match code {
+                         None => {}
+-                        Some('P') => {
+-                            if f.paras.len() < MAX_PARAS {
+-                                f.push_char('\n', &cur);
+-                                f.paras.push(props.clone());
+-                            }
++                        Some('P') if f.paras.len() < MAX_PARAS => {
++                            f.push_char('\n', &cur);
++                            f.paras.push(props.clone());
+                         }
++                        Some('P') => {}
+                         Some(c @ ('\\' | '{' | '}')) => f.push_char(c, &cur),
+                         Some('L') => cur.underline = true,
+                         Some('l') => cur.underline = false,
+diff --git a/crates/engine/src/snap.rs b/crates/engine/src/snap.rs
+index 3b38b97..71e1879 100644
+--- a/crates/engine/src/snap.rs
++++ b/crates/engine/src/snap.rs
+@@ -201,7 +201,7 @@ pub(crate) fn osnap_with_neighborhood(
+         let model_cursor = view.to_model(cursor);
+         let model_aperture = aperture / view.scale;
+         let model_base = base.map(|p| view.to_model(p));
+-        if !model_cursor.is_finite() || !(model_aperture.is_finite() && model_aperture > 0.0) || model_base.is_some_and(|p| !p.is_finite()) {
++        if !(model_cursor.is_finite() && model_aperture.is_finite() && model_aperture > 0.0) || model_base.is_some_and(|p| !p.is_finite()) {
+             continue;
+         }
+         let hit = osnap_in(
 diff --git a/crates/fonts/Cargo.toml b/crates/fonts/Cargo.toml
 index d2bdddf..1422f4e 100644
 --- a/crates/fonts/Cargo.toml
@@ -1420,6 +1958,19 @@ index b19c1f2..dbd485e 100644
  [lints]
  workspace = true
  
+diff --git a/crates/geom/src/nurbs.rs b/crates/geom/src/nurbs.rs
+index df589d3..1b2fb47 100644
+--- a/crates/geom/src/nurbs.rs
++++ b/crates/geom/src/nurbs.rs
+@@ -478,7 +478,7 @@ impl Spline {
+ 
+     /// Arc length between parameters `a` and `b` (adaptive Gauss–Legendre over each knot span).
+     pub fn length_between(&self, a: f64, b: f64) -> f64 {
+-        if !self.is_valid() || !(a.is_finite() && b.is_finite()) {
++        if !(self.is_valid() && a.is_finite() && b.is_finite()) {
+             return 0.0;
+         }
+         let (lo, hi) = self.domain();
 diff --git a/crates/io/Cargo.toml b/crates/io/Cargo.toml
 index 151e1ec..c69877a 100644
 --- a/crates/io/Cargo.toml
@@ -1433,6 +1984,101 @@ index 151e1ec..c69877a 100644
  [lints]
  workspace = true
  
+diff --git a/crates/io/src/dxf_raw.rs b/crates/io/src/dxf_raw.rs
+index 05e8840..234a0a5 100644
+--- a/crates/io/src/dxf_raw.rs
++++ b/crates/io/src/dxf_raw.rs
+@@ -136,10 +136,8 @@ fn head(tags: &[Tag]) -> Head {
+                 h.has_reactors |= group.as_deref() == Some("ACAD_REACTORS");
+             }
+             (_, Some("ACAD_REACTORS")) => h.reactors.push(norm(&t.str())),
+-            (_, Some("ACAD_XDICTIONARY")) => {
+-                if h.xdict.is_none() {
+-                    h.xdict = Some(norm(&t.str()));
+-                }
++            (_, Some("ACAD_XDICTIONARY")) if h.xdict.is_none() => {
++                h.xdict = Some(norm(&t.str()));
+             }
+             (_, Some(_)) => {}
+             (5 | 105, None) if h.handle.is_none() => h.handle = Some(norm(&t.str())),
+diff --git a/crates/io/src/dxf_read.rs b/crates/io/src/dxf_read.rs
+index 7615bc5..3948d69 100644
+--- a/crates/io/src/dxf_read.rs
++++ b/crates/io/src/dxf_read.rs
+@@ -1170,42 +1170,40 @@ fn parse_entities(recs: &[(String, Vec<Tag>)], d: &mut Drawing, rx: &mut Rx, ski
+                 };
+                 kindent = Some((c, k));
+             }
+-            "INSERT" => {
+-                if t.i(66) == Some(1) {
+-                    let mut attribs = Vec::new();
+-                    let ins_layer = kindent.as_ref().map(|(c, _)| c.layer.clone()).unwrap_or_default();
+-                    while let Some((k2, t2)) = recs.get(i) {
+-                        if k2 == "ATTRIB" {
+-                            let tt = T(t2);
+-                            // A multiline attribute has its text as embedded MTEXT after its own groups.
+-                            let (own, embedded) = split_embedded(t2);
+-                            let multiline = multiline_attrib(embedded, &common(&tt));
+-                            let own = T(own);
+-                            let mut text = text_from(&own);
+-                            if let Some(m) = &multiline {
+-                                text.value.clone_from(&m.read_as);
+-                            }
+-                            attribs.push(Attrib {
+-                                tag: own.s(2).unwrap_or_default(),
+-                                text,
+-                                invisible: own.i(70).unwrap_or(0) & 1 != 0,
+-                                constant: false,
+-                                prompt: String::new(),
+-                                props: attrib_props(&tt, &ins_layer),
+-                                multiline,
+-                                modes: attrib_modes(own.0),
+-                            });
++            "INSERT" if t.i(66) == Some(1) => {
++                let mut attribs = Vec::new();
++                let ins_layer = kindent.as_ref().map(|(c, _)| c.layer.clone()).unwrap_or_default();
++                while let Some((k2, t2)) = recs.get(i) {
++                    if k2 == "ATTRIB" {
++                        let tt = T(t2);
++                        // A multiline attribute has its text as embedded MTEXT after its own groups.
++                        let (own, embedded) = split_embedded(t2);
++                        let multiline = multiline_attrib(embedded, &common(&tt));
++                        let own = T(own);
++                        let mut text = text_from(&own);
++                        if let Some(m) = &multiline {
++                            text.value.clone_from(&m.read_as);
++                        }
++                        attribs.push(Attrib {
++                            tag: own.s(2).unwrap_or_default(),
++                            text,
++                            invisible: own.i(70).unwrap_or(0) & 1 != 0,
++                            constant: false,
++                            prompt: String::new(),
++                            props: attrib_props(&tt, &ins_layer),
++                            multiline,
++                            modes: attrib_modes(own.0),
++                        });
++                        i += 1;
++                    } else {
++                        if k2 == "SEQEND" {
+                             i += 1;
+-                        } else {
+-                            if k2 == "SEQEND" {
+-                                i += 1;
+-                            }
+-                            break;
+                         }
++                        break;
+                     }
+-                    if let Some((_, EntityKind::Insert(ins))) = kindent.as_mut() {
+-                        ins.attribs = attribs;
+-                    }
++                }
++                if let Some((_, EntityKind::Insert(ins))) = kindent.as_mut() {
++                    ins.attribs = attribs;
+                 }
+             }
+             // A VERTEX or ATTRIB with no POLYLINE or INSERT before it; a stray SEQEND holds nothing.
 diff --git a/crates/mcp/Cargo.toml b/crates/mcp/Cargo.toml
 index 9bfc18e..becba38 100644
 --- a/crates/mcp/Cargo.toml
@@ -1459,6 +2105,32 @@ index d62af23..ccd3d2e 100644
  [lints]
  workspace = true
  
+diff --git a/crates/render/src/clip.rs b/crates/render/src/clip.rs
+index 0b4c215..1ad8e4f 100644
+--- a/crates/render/src/clip.rs
++++ b/crates/render/src/clip.rs
+@@ -209,7 +209,7 @@ pub fn boundary_polygon(k: &EntityKind) -> Option<Vec<Vec2>> {
+         EntityKind::Ellipse(e) => {
+             let g = cadcraft_geom::Ellipse { center: e.center.xy(), major: e.major.xy(), ratio: e.ratio, start: e.start, end: e.end };
+             let r = g.major.len();
+-            if !g.is_full() || !(r.is_finite() && r > 0.0 && e.ratio.is_finite() && e.ratio > 0.0) {
++            if !(g.is_full() && r.is_finite() && r > 0.0 && e.ratio.is_finite() && e.ratio > 0.0) {
+                 return None;
+             }
+             g.tessellate(r * e.ratio.min(1.0) * 2e-3, &mut pts);
+diff --git a/crates/render/src/text.rs b/crates/render/src/text.rs
+index 6595e14..468db3d 100644
+--- a/crates/render/src/text.rs
++++ b/crates/render/src/text.rs
+@@ -77,7 +77,7 @@ pub(super) fn mesh(g: &TextGlyph, xf: Mat3, pixel: f64) -> Arc<Mesh> {
+     let contours = ttf::glyph_contours(&g.face, g.gid);
+     let points = contours.iter().map(Vec::len).try_fold(0usize, usize::checked_add);
+     // Font data is untrusted; don't hand unbounded or invalid paths to the tessellator.
+-    if !points.is_some_and(|n| n <= MAX_POINTS) || contours.iter().flatten().any(|p| !p.is_finite() || p.x.abs().max(p.y.abs()) > 1.0e6) {
++    if points.is_none_or(|n| n > MAX_POINTS) || contours.iter().flatten().any(|p| !p.is_finite() || p.x.abs().max(p.y.abs()) > 1.0e6) {
+         return Arc::new(Mesh { contours: Arc::default(), triangles: Vec::new() });
+     }
+     let contours = match detail {
 diff --git a/crates/ui-egui/Cargo.toml b/crates/ui-egui/Cargo.toml
 index 630188d..ab03a1b 100644
 --- a/crates/ui-egui/Cargo.toml
@@ -1582,6 +2254,29 @@ index d03fafa..1b221d7 100644
          ui.add_space(4.0);
          ui.label(format!("Save changes to {title}?"));
          ui.label(RichText::new("Your changes will be lost if you don't save them.").color(t.text_dim));
+diff --git a/crates/ui-egui/src/cmdline.rs b/crates/ui-egui/src/cmdline.rs
+index c136b70..434da48 100644
+--- a/crates/ui-egui/src/cmdline.rs
++++ b/crates/ui-egui/src/cmdline.rs
+@@ -322,13 +322,11 @@ pub fn keyboard(app: &mut CadApp, ctx: &egui::Context) {
+                         app.cmd.buffer.pop();
+                     }
+                 }
+-                Key::ArrowUp if !modifiers.any() => {
+-                    if !app.cmd.history.is_empty() {
+-                        let n = app.cmd.history.len();
+-                        let pos = app.cmd.history_pos.map(|p| p.saturating_sub(1)).unwrap_or(n - 1);
+-                        app.cmd.history_pos = Some(pos);
+-                        app.cmd.buffer = app.cmd.history.get(pos).cloned().unwrap_or_default();
+-                    }
++                Key::ArrowUp if !modifiers.any() && !app.cmd.history.is_empty() => {
++                    let n = app.cmd.history.len();
++                    let pos = app.cmd.history_pos.map(|p| p.saturating_sub(1)).unwrap_or(n - 1);
++                    app.cmd.history_pos = Some(pos);
++                    app.cmd.buffer = app.cmd.history.get(pos).cloned().unwrap_or_default();
+                 }
+                 Key::ArrowDown if !modifiers.any() => {
+                     if !options_key(app, 1)
 diff --git a/crates/ui-egui/src/dialogs.rs b/crates/ui-egui/src/dialogs.rs
 index 914de61..1da4e46 100644
 --- a/crates/ui-egui/src/dialogs.rs
@@ -1615,6 +2310,32 @@ index 914de61..1da4e46 100644
                      ui.add_space(6.0);
                      ui.label(RichText::new(crate::tl!("MIT OR Apache-2.0. Not affiliated with Autodesk, Inc.")).small().color(t.text_faint));
                  }
+diff --git a/crates/ui-egui/src/grip_dyn.rs b/crates/ui-egui/src/grip_dyn.rs
+index e6e295a..bb906fd 100644
+--- a/crates/ui-egui/src/grip_dyn.rs
++++ b/crates/ui-egui/src/grip_dyn.rs
+@@ -169,7 +169,7 @@ pub fn draw(app: &mut CadApp, p: &egui::Painter) -> bool {
+             p.line_segment([cs + off * 0.2, cs + off * 1.1], Stroke::new(1.0, t.text_faint));
+             a + off + along * (0.25 + 0.25 * offset_rank.min(2.0))
+         };
+-        let live = locked.is_none() && !(active && !app.cmd.buffer.is_empty());
++        let live = locked.is_none() && (!active || app.cmd.buffer.is_empty());
+         field(p, at, &text, &font, active, locked.is_some(), live);
+     }
+     true
+diff --git a/crates/ui-egui/src/hatchdlg.rs b/crates/ui-egui/src/hatchdlg.rs
+index 7388e5a..eb93ba1 100644
+--- a/crates/ui-egui/src/hatchdlg.rs
++++ b/crates/ui-egui/src/hatchdlg.rs
+@@ -431,7 +431,7 @@ pub fn dialog(app: &mut CadApp, ctx: &egui::Context, open: &mut bool) {
+         }
+         ui.separator();
+         ui.horizontal(|ui| {
+-            let ready = !st.edit.is_empty() || !(st.points.is_empty() && st.handles.is_empty());
++            let ready = !(st.edit.is_empty() && st.points.is_empty() && st.handles.is_empty());
+             if ui.add_enabled(ready, egui::Button::new(crate::tl!("OK"))).clicked() {
+                 action = Action::Ok;
+             }
 diff --git a/crates/ui-egui/src/i18n/ar.tsv b/crates/ui-egui/src/i18n/ar.tsv
 index dd25052..c0fc193 100644
 --- a/crates/ui-egui/src/i18n/ar.tsv
@@ -2744,6 +3465,20 @@ index bac55d0..05c7064 100644
 +    );
      assert_eq!(app.session.docs.len(), 1);
  }
+diff --git a/docs/control-protocol.md b/docs/control-protocol.md
+index e07d758..856233b 100644
+--- a/docs/control-protocol.md
++++ b/docs/control-protocol.md
+@@ -1,3 +1,9 @@
++> **Plervo public-build boundary:** this unauthenticated loopback transport is disabled in
++> distributed binaries. Normal editing and headless CLI/MCP continue to work.
++> `--control`/the control-port environment variable do not open a socket. The
++> `local-control` Cargo feature is for isolated development only; it must not be
++> enabled in a public artifact until authentication and replay/resource limits are reviewed.
++
+ # CADCraft control protocol
+ 
+ Start the desktop app with `--control PORT` (or `CADCRAFT_CONTROL_PORT=PORT`). It listens on
 diff --git a/packaging/env.sh b/packaging/env.sh
 index e703348..f5ae80d 100644
 --- a/packaging/env.sh
@@ -2821,6 +3556,112 @@ index 3cb8ea7..764a3d2 100755
 +resize "$DIR/plervo-cad-macos-512.png" 512 "$SET/icon_512x512.png"
 +iconutil -c icns -o "$DIR/plervo-cad.icns" "$SET"
  echo "icons written to $DIR"
+diff --git a/packaging/linux/ai.storyteller.cadcraft.desktop b/packaging/linux/ai.storyteller.cadcraft.desktop
+deleted file mode 100644
+index c4e0bab..0000000
+--- a/packaging/linux/ai.storyteller.cadcraft.desktop
++++ /dev/null
+@@ -1,14 +0,0 @@
+-[Desktop Entry]
+-Type=Application
+-Name=CADCraft
+-GenericName=Computer-Aided Design
+-Comment=Draft, dimension and plot 2D drawings; open DXF and DWG files
+-Exec=cadcraft %F
+-TryExec=cadcraft
+-Icon=ai.storyteller.cadcraft
+-Terminal=false
+-StartupNotify=true
+-StartupWMClass=ai.storyteller.cadcraft
+-Categories=Graphics;Engineering;VectorGraphics;
+-MimeType=image/vnd.dxf;image/vnd.dwg;application/x-dxf;application/acad;
+-Keywords=cad;drafting;dxf;dwg;drawing;engineering;architecture;mechanical;
+diff --git a/packaging/linux/ai.storyteller.cadcraft.metainfo.xml.in b/packaging/linux/ai.storyteller.cadcraft.metainfo.xml.in
+deleted file mode 100644
+index f878398..0000000
+--- a/packaging/linux/ai.storyteller.cadcraft.metainfo.xml.in
++++ /dev/null
+@@ -1,62 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
+-     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
+-<component type="desktop-application">
+-  <id>ai.storyteller.cadcraft</id>
+-  <metadata_license>CC0-1.0</metadata_license>
+-  <project_license>MIT OR Apache-2.0</project_license>
+-  <name>CADCraft</name>
+-  <summary>Draft, dimension and plot 2D drawings</summary>
+-  <developer id="ai.storyteller">
+-    <name>Learning Machines LLC</name>
+-  </developer>
+-  <description>
+-    <p>
+-      CADCraft is an open-source computer-aided design and drafting application with a familiar
+-      command line, object snaps, layers, dimensions, hatches and blocks. It opens and saves DXF
+-      and DWG drawings, exports SVG and PNG, and can be driven by AI agents over MCP.
+-    </p>
+-  </description>
+-  <launchable type="desktop-id">ai.storyteller.cadcraft.desktop</launchable>
+-  <icon type="stock">ai.storyteller.cadcraft</icon>
+-  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
+-  <url type="homepage">https://getartcraft.com/apps/cadcraft</url>
+-  <url type="bugtracker">https://github.com/storytold/cadcraft/issues</url>
+-  <url type="help">https://github.com/storytold/cadcraft</url>
+-  <url type="contact">https://discord.gg/artcraft</url>
+-  <categories>
+-    <category>Graphics</category>
+-    <category>Engineering</category>
+-  </categories>
+-  <keywords>
+-    <keyword>CAD</keyword>
+-    <keyword>drafting</keyword>
+-    <keyword>DXF</keyword>
+-    <keyword>DWG</keyword>
+-  </keywords>
+-  <screenshots>
+-    <screenshot type="default">
+-      <caption>A mechanical part drawing with dimensions, hatching and layers</caption>
+-      <image>https://raw.githubusercontent.com/storytold/cadcraft/main/docs/images/ui-bracket.png</image>
+-    </screenshot>
+-  </screenshots>
+-  <branding>
+-    <color type="primary" scheme_preference="light">#9ee3f2</color>
+-    <color type="primary" scheme_preference="dark">#0b6f88</color>
+-  </branding>
+-  <requires>
+-    <display_length compare="ge">760</display_length>
+-  </requires>
+-  <supports>
+-    <control>keyboard</control>
+-    <control>pointing</control>
+-    <control>tablet</control>
+-  </supports>
+-  <provides>
+-    <binary>cadcraft</binary>
+-  </provides>
+-  <content_rating type="oars-1.1"/>
+-  <releases>
+-    <release version="@VERSION@" date="@DATE@"/>
+-  </releases>
+-</component>
+diff --git a/packaging/linux/ai.storyteller.cadcraft.mime.xml b/packaging/linux/ai.storyteller.cadcraft.mime.xml
+deleted file mode 100644
+index 98452d7..0000000
+--- a/packaging/linux/ai.storyteller.cadcraft.mime.xml
++++ /dev/null
+@@ -1,12 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+-  <mime-type type="image/vnd.dxf">
+-    <comment>DXF drawing</comment>
+-    <glob pattern="*.dxf"/>
+-  </mime-type>
+-  <mime-type type="image/vnd.dwg">
+-    <comment>DWG drawing</comment>
+-    <magic priority="50"><match type="string" value="AC10" offset="0"/></magic>
+-    <glob pattern="*.dwg"/>
+-  </mime-type>
+-</mime-info>
 diff --git a/packaging/linux/com.plervo.cad.desktop b/packaging/linux/com.plervo.cad.desktop
 new file mode 100644
 index 0000000..f4439e3
@@ -2993,6 +3834,135 @@ index 9baccf9..0ae6383 100755
    flatpak run --command=sh "$APP_ID" -c 'ls /app/share/applications /app/share/metainfo /app/share/mime/packages /app/share/icons/hicolor/256x256/apps'
  fi
  echo "==> done"
+diff --git a/packaging/linux/flatpak/ai.storyteller.cadcraft.bundle.yml b/packaging/linux/flatpak/ai.storyteller.cadcraft.bundle.yml
+deleted file mode 100644
+index b6a64d8..0000000
+--- a/packaging/linux/flatpak/ai.storyteller.cadcraft.bundle.yml
++++ /dev/null
+@@ -1,50 +0,0 @@
+-# Flatpak manifest for the single-file bundle attached to every GitHub release
+-# (cadcraft-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
+-#
+-# It repackages the release's own Linux tarball (cadcraft-<version>-linux-<arch>.tar.gz, built
+-# on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no network and
+-# no vendored crate sources during the build, a few seconds instead of many minutes, and
+-# byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball into
+-# `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11, Wayland,
+-# xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the GPU driver
+-# comes from its org.freedesktop.Platform.GL extension.
+-#
+-# ai.storyteller.cadcraft.yml (same directory) is the from-source manifest for Flathub. Keep
+-# runtime, runtime-version, sdk and finish-args identical in both (packaging-lint checks this).
+-id: ai.storyteller.cadcraft
+-runtime: org.freedesktop.Platform
+-runtime-version: '26.08'
+-sdk: org.freedesktop.Sdk
+-command: cadcraft
+-finish-args:
+-  # Display: Wayland first; X11 only when no Wayland compositor is running.
+-  - --socket=wayland
+-  - --socket=fallback-x11
+-  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
+-  - --share=ipc
+-  # GPU access for the wgpu canvas (Vulkan, or GL as a fallback).
+-  - --device=dri
+-  # Open/Save dialogs go through the file-chooser portal (rfd) and drag-and-drop through the
+-  # document portal, so picked files work anywhere without broad filesystem access. Documents
+-  # and Pictures are granted so drawings passed by path (the command line, Open Recent, xrefs
+-  # and images next to a DXF) work in the usual places.
+-  - --filesystem=xdg-documents
+-  - --filesystem=xdg-pictures
+-  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
+-  # the sandbox; `flatpak override --user --share=network ai.storyteller.cadcraft` exposes it to
+-  # host agents) and home/host filesystem access.
+-modules:
+-  - name: cadcraft
+-    buildsystem: simple
+-    build-commands:
+-      - install -Dm755 bin/cadcraft /app/bin/cadcraft
+-      - install -Dm755 bin/cadcraft-cli /app/bin/cadcraft-cli
+-      - install -Dm644 share/applications/ai.storyteller.cadcraft.desktop /app/share/applications/ai.storyteller.cadcraft.desktop
+-      # .dxf and .dwg.
+-      - install -Dm644 share/mime/packages/ai.storyteller.cadcraft.xml /app/share/mime/packages/ai.storyteller.cadcraft.xml
+-      # Already has the release's version and date substituted by package.sh.
+-      - install -Dm644 share/metainfo/ai.storyteller.cadcraft.metainfo.xml /app/share/metainfo/ai.storyteller.cadcraft.metainfo.xml
+-      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/cadcraft /app/share/doc/
+-    sources:
+-      - type: dir
+-        path: stage
+diff --git a/packaging/linux/flatpak/ai.storyteller.cadcraft.yml b/packaging/linux/flatpak/ai.storyteller.cadcraft.yml
+deleted file mode 100644
+index e70d800..0000000
+--- a/packaging/linux/flatpak/ai.storyteller.cadcraft.yml
++++ /dev/null
+@@ -1,67 +0,0 @@
+-# Flatpak manifest for CADCraft, ready for a Flathub submission.
+-#
+-# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
+-#
+-#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
+-#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
+-#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.cadcraft.yml
+-#   flatpak run ai.storyteller.cadcraft
+-#
+-# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
+-# The single-file .flatpak attached to each release comes from ai.storyteller.cadcraft.bundle.yml,
+-# which repackages the prebuilt release binaries. Keep runtime-version and finish-args identical.
+-id: ai.storyteller.cadcraft
+-runtime: org.freedesktop.Platform
+-runtime-version: '26.08'
+-sdk: org.freedesktop.Sdk
+-sdk-extensions:
+-  - org.freedesktop.Sdk.Extension.rust-stable
+-command: cadcraft
+-finish-args:
+-  # Display: Wayland first; X11 only when no Wayland compositor is running.
+-  - --socket=wayland
+-  - --socket=fallback-x11
+-  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
+-  - --share=ipc
+-  # GPU access for the wgpu canvas (Vulkan, or GL as a fallback).
+-  - --device=dri
+-  # Open/Save dialogs go through the file-chooser portal (rfd) and drag-and-drop through the
+-  # document portal, so picked files work anywhere without broad filesystem access. Documents
+-  # and Pictures are granted so drawings passed by path (the command line, Open Recent, xrefs
+-  # and images next to a DXF) work in the usual places.
+-  - --filesystem=xdg-documents
+-  - --filesystem=xdg-pictures
+-  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
+-  # the sandbox; `flatpak override --user --share=network ai.storyteller.cadcraft` exposes it to
+-  # host agents) and home/host filesystem access.
+-build-options:
+-  append-path: /usr/lib/sdk/rust-stable/bin
+-modules:
+-  - name: cadcraft
+-    buildsystem: simple
+-    build-options:
+-      env:
+-        CARGO_HOME: /run/build/cadcraft/cargo
+-        CARGO_NET_OFFLINE: 'true'
+-    build-commands:
+-      - cargo --offline build --release --locked -p cadcraft -p cadcraft-cli
+-      - install -Dm755 target/release/cadcraft /app/bin/cadcraft
+-      - install -Dm755 target/release/cadcraft-cli /app/bin/cadcraft-cli
+-      - install -Dm644 packaging/linux/ai.storyteller.cadcraft.desktop /app/share/applications/ai.storyteller.cadcraft.desktop
+-      - install -Dm644 packaging/linux/ai.storyteller.cadcraft.mime.xml /app/share/mime/packages/ai.storyteller.cadcraft.xml
+-      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
+-      - >-
+-        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
+-        install -d /app/share/metainfo;
+-        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+-        packaging/linux/ai.storyteller.cadcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.cadcraft.metainfo.xml
+-    sources:
+-      - type: dir
+-        path: ../../..
+-        skip:
+-          - target
+-          - dist
+-          - corpus
+-          - build-flatpak
+-          - .flatpak-builder
+-      - cargo-sources.json
 diff --git a/packaging/linux/flatpak/com.plervo.cad.bundle.yml b/packaging/linux/flatpak/com.plervo.cad.bundle.yml
 new file mode 100644
 index 0000000..9db5b99
@@ -3681,6 +4651,179 @@ index 7caa88e..62012b8 100755
  WORK="$CARGO_TARGET_DIR/web-package"
  rm -rf "$WORK"
  mkdir -p "$WORK/$NAME"
+diff --git a/packaging/windows/cadcraft.wxs b/packaging/windows/cadcraft.wxs
+deleted file mode 100644
+index 50f82f6..0000000
+--- a/packaging/windows/cadcraft.wxs
++++ /dev/null
+@@ -1,167 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<!--
+-  CADCraft MSI (WiX Toolset v5: `dotnet tool install -g wix`, plus the WixUI extension:
+-  `wix extension add -g WixToolset.UI.wixext/5.0.2`). Built by package.ps1:
+-
+-    wix build cadcraft.wxs -arch x64 -ext WixToolset.UI.wixext -d Version=1.2.3 -d BinDir=... -d IconPath=... -o out.msi
+-
+-  Per-machine install into Program Files, a Start Menu shortcut, an optional desktop shortcut, and
+-  CADCraft offered under "Open with" for .dxf and .dwg drawings (without taking over the user's
+-  default app).
+-
+-  Desktop shortcut: the setup wizard asks (unchecked by default). Silent installs leave it out
+-  unless asked: `msiexec /i cadcraft.msi /qn DESKTOPSHORTCUT=1`. Upgrades keep the previous choice
+-  unless DESKTOPSHORTCUT=1 or DESKTOPSHORTCUT=0 is given.
+--->
+-<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+-  <Package
+-      Name="CADCraft"
+-      Manufacturer="Learning Machines LLC"
+-      Version="$(var.Version)"
+-      UpgradeCode="119D7D76-0167-4A9E-8F37-09DA0235F68E"
+-      Scope="perMachine"
+-      Compressed="yes"
+-      Language="1033">
+-    <SummaryInformation Description="CADCraft computer-aided design" Manufacturer="Learning Machines LLC" />
+-    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
+-         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
+-    <MajorUpgrade AllowSameVersionUpgrades="yes"
+-        DowngradeErrorMessage="A newer version of CADCraft is already installed." />
+-    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+-
+-    <Icon Id="CadcraftIcon.ico" SourceFile="$(var.IconPath)" />
+-    <Property Id="ARPPRODUCTICON" Value="CadcraftIcon.ico" />
+-    <Property Id="ARPURLINFOABOUT" Value="https://getartcraft.com/apps/cadcraft" />
+-    <Property Id="ARPURLUPDATEINFO" Value="https://getartcraft.com/apps/cadcraft" />
+-    <Property Id="ARPHELPLINK" Value="https://discord.gg/artcraft" />
+-
+-    <StandardDirectory Id="ProgramFiles6432Folder">
+-      <Directory Id="INSTALLFOLDER" Name="CADCraft" />
+-    </StandardDirectory>
+-    <StandardDirectory Id="ProgramMenuFolder" />
+-    <!-- Per-machine (ALLUSERS=1), so this is the all-users (Public) desktop, like the Start Menu above. -->
+-    <StandardDirectory Id="DesktopFolder" />
+-
+-    <!-- "Create a desktop shortcut": the wizard's checkbox sets it to 1 (cleared = unset), and
+-         silent installs pass DESKTOPSHORTCUT=1. Secure, so the elevated install sees the UI choice. -->
+-    <Property Id="DESKTOPSHORTCUT" Secure="yes" />
+-    <!-- The previous install's choice (the shortcut component's HKCU key path, so the installing
+-         user's), so upgrades keep the desktop shortcut without asking again. -->
+-    <Property Id="PREVIOUSDESKTOPSHORTCUT">
+-      <RegistrySearch Id="PreviousDesktopShortcut" Root="HKCU" Key="Software\Learning Machines LLC\CADCraft"
+-          Name="DesktopShortcut" Type="raw" />
+-    </Property>
+-    <!-- Only when DESKTOPSHORTCUT wasn't given; "first" runs it once (in the UI sequence when there
+-         is one), so unticking the box isn't undone by the execute sequence. -->
+-    <SetProperty Id="DESKTOPSHORTCUT" Value="1" After="AppSearch" Sequence="first"
+-        Condition="NOT DESKTOPSHORTCUT AND PREVIOUSDESKTOPSHORTCUT = &quot;1&quot;" />
+-
+-    <UIRef Id="CadcraftUI" />
+-
+-    <Feature Id="Main" Title="CADCraft" Level="1">
+-      <ComponentGroupRef Id="CadcraftFiles" />
+-    </Feature>
+-  </Package>
+-
+-  <Fragment>
+-    <ComponentGroup Id="CadcraftFiles" Directory="INSTALLFOLDER">
+-      <Component Id="CadcraftApp" Guid="2AC18056-48DE-4079-AB79-4FDEF4FBB075">
+-        <File Id="CadcraftExe" Source="$(var.BinDir)\cadcraft.exe" KeyPath="yes">
+-          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="CADCraft"
+-              Description="CADCraft computer-aided design" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
+-              Icon="CadcraftIcon.ico" IconIndex="0" />
+-        </File>
+-
+-        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\cadcraft.exe" Value="[#CadcraftExe]" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\cadcraft.exe\shell\open\command" Value="&quot;[#CadcraftExe]&quot; &quot;%1&quot;" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.dxf\OpenWithProgids" Name="CADCraft.Drawing" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.dwg\OpenWithProgids" Name="CADCraft.Drawing" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\CADCraft.Drawing\shell\open\command" Value="&quot;[#CadcraftExe]&quot; &quot;%1&quot;" Type="string" />
+-      </Component>
+-
+-      <Component Id="CadcraftCli">
+-        <File Id="CadcraftCliExe" Source="$(var.BinDir)\cadcraft-cli.exe" KeyPath="yes" />
+-      </Component>
+-
+-      <!-- Optional desktop shortcut, removed on uninstall. A non-advertised shortcut needs a registry
+-           key path, and one in a profile folder (DesktopFolder, even though ALLUSERS=1 makes it the
+-           Public desktop) must be under HKCU (ICE38, ICE43, ICE57). -->
+-      <Component Id="DesktopShortcut" Directory="DesktopFolder" Guid="76029CD7-EBDB-420F-AC34-FF0E82A99E32"
+-          Condition="DESKTOPSHORTCUT = &quot;1&quot;">
+-        <Shortcut Id="DesktopShortcut" Name="CADCraft" Description="CADCraft computer-aided design"
+-            Target="[INSTALLFOLDER]cadcraft.exe" WorkingDirectory="INSTALLFOLDER" Icon="CadcraftIcon.ico" IconIndex="0" />
+-        <RegistryValue Root="HKCU" Key="Software\Learning Machines LLC\CADCraft" Name="DesktopShortcut"
+-            Value="1" Type="string" KeyPath="yes" />
+-      </Component>
+-    </ComponentGroup>
+-  </Fragment>
+-
+-  <!--
+-    Setup wizard: WixUI_InstallDir's flow (WiX v5, ext/UI/wixlib/WixUI_InstallDir.wxs) without the
+-    licence and folder pages, plus a Shortcuts page:
+-      install:     Welcome > Shortcuts > Ready to install > Progress > Finish
+-      maintenance: Maintenance welcome > Repair/Remove > Ready > Progress > Finish
+-  -->
+-  <Fragment>
+-    <UI Id="CadcraftUI">
+-      <TextStyle Id="WixUI_Font_Normal" FaceName="Tahoma" Size="8" />
+-      <TextStyle Id="WixUI_Font_Bigger" FaceName="Tahoma" Size="12" />
+-      <TextStyle Id="WixUI_Font_Title" FaceName="Tahoma" Size="9" Bold="yes" />
+-      <Property Id="DefaultUIFont" Value="WixUI_Font_Normal" />
+-
+-      <DialogRef Id="DiskCostDlg" />
+-      <DialogRef Id="ErrorDlg" />
+-      <DialogRef Id="FatalError" />
+-      <DialogRef Id="FilesInUse" />
+-      <DialogRef Id="MsiRMFilesInUse" />
+-      <DialogRef Id="PrepareDlg" />
+-      <DialogRef Id="ProgressDlg" />
+-      <DialogRef Id="ResumeDlg" />
+-      <DialogRef Id="UserExit" />
+-
+-      <Dialog Id="ShortcutsDlg" Width="370" Height="270" Title="!(loc.InstallDirDlg_Title)">
+-        <Control Id="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Text="!(loc.WixUINext)" />
+-        <Control Id="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Text="!(loc.WixUIBack)" />
+-        <Control Id="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Cancel="yes" Text="!(loc.WixUICancel)">
+-          <Publish Event="SpawnDialog" Value="CancelDlg" />
+-        </Control>
+-
+-        <Control Id="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Transparent="yes" NoPrefix="yes"
+-            Text="Choose where to start [ProductName] from." />
+-        <Control Id="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Transparent="yes" NoPrefix="yes"
+-            Text="{\WixUI_Font_Title}Shortcuts" />
+-        <Control Id="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" TabSkip="no" Text="!(loc.InstallDirDlgBannerBitmap)" />
+-        <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
+-        <Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" />
+-
+-        <Control Id="StartMenuText" Type="Text" X="20" Y="60" Width="330" Height="15" NoPrefix="yes"
+-            Text="[ProductName] will be added to the Start menu." />
+-        <Control Id="DesktopShortcutCheckBox" Type="CheckBox" X="20" Y="85" Width="330" Height="17"
+-            Property="DESKTOPSHORTCUT" CheckBoxValue="1" Text="Create a &amp;desktop shortcut" />
+-      </Dialog>
+-
+-      <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999" />
+-
+-      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="ShortcutsDlg" Condition="NOT Installed" />
+-      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg" Condition="Installed AND PATCH" />
+-
+-      <Publish Dialog="ShortcutsDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" />
+-      <Publish Dialog="ShortcutsDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg" />
+-
+-      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="ShortcutsDlg" Order="1" Condition="NOT Installed" />
+-      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg" Order="2" Condition="Installed AND NOT PATCH" />
+-      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" Condition="Installed AND PATCH" />
+-
+-      <Publish Dialog="MaintenanceWelcomeDlg" Control="Next" Event="NewDialog" Value="MaintenanceTypeDlg" />
+-
+-      <Publish Dialog="MaintenanceTypeDlg" Control="RepairButton" Event="NewDialog" Value="VerifyReadyDlg" />
+-      <Publish Dialog="MaintenanceTypeDlg" Control="RemoveButton" Event="NewDialog" Value="VerifyReadyDlg" />
+-      <Publish Dialog="MaintenanceTypeDlg" Control="Back" Event="NewDialog" Value="MaintenanceWelcomeDlg" />
+-
+-      <!-- No "Change" in Apps & features: there is a single feature. -->
+-      <Property Id="ARPNOMODIFY" Value="1" />
+-    </UI>
+-
+-    <UIRef Id="WixUI_Common" />
+-  </Fragment>
+-</Wix>
 diff --git a/packaging/windows/package.ps1 b/packaging/windows/package.ps1
 index a6b8cf2..990a665 100644
 --- a/packaging/windows/package.ps1
@@ -4001,7 +5144,7 @@ index b4eb154..de40277 100644
  
  try {
 diff --git a/xtask/src/layers.rs b/xtask/src/layers.rs
-index 0017c10..064233f 100644
+index 0017c10..10f2eca 100644
 --- a/xtask/src/layers.rs
 +++ b/xtask/src/layers.rs
 @@ -75,7 +75,11 @@ pub const UI_CRATES: &[&str] = &["craft-ui", "egui", "eframe", "egui-wgpu", "wgp
@@ -4017,3 +5160,18 @@ index 0017c10..064233f 100644
  }
  
  pub fn classify(pkg: &str) -> Option<Class> {
+@@ -167,11 +171,10 @@ pub fn check(crates: &[Crate]) -> Vec<Violation> {
+                 match classify(&d.name) {
+                     // Unregistered deps are reported on their own entry.
+                     None => {}
+-                    Some(Class::Testkit) => {
+-                        if d.kind != DepKind::Dev {
+-                            out.push(Violation::TestkitAsNormalDep { krate: c.name.clone() });
+-                        }
++                    Some(Class::Testkit) if d.kind != DepKind::Dev => {
++                        out.push(Violation::TestkitAsNormalDep { krate: c.name.clone() });
+                     }
++                    Some(Class::Testkit) => {}
+                     Some(dc) => {
+                         let to = dc.layer().unwrap_or(u8::MAX);
+                         if to >= layer && !(to == layer && intra_layer_allowed(&c.name, &d.name)) {

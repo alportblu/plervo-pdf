@@ -49,10 +49,163 @@ index 227aee8..ab0fff3 100644
 +
 +| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | efa30dd6b6cc09a5b65932243098832aabc84cf06909f1c5cd207b19c60d07df |
 diff --git a/Cargo.lock b/Cargo.lock
-index 54085cf..f268c87 100644
+index 54085cf..9bac28d 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -4611,53 +4611,9 @@ dependencies = [
+@@ -849,7 +849,7 @@ dependencies = [
+  "maybe-owned",
+  "rustix 1.1.5",
+  "rustix-linux-procfs",
+- "windows-sys 0.60.2",
++ "windows-sys 0.61.2",
+  "winx",
+ ]
+ 
+@@ -1195,15 +1195,6 @@ version = "1.0.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "7f8f80099a98041a3d1622845c271458a2d73e688351bf3cb999266764b81d48"
+ 
+-[[package]]
+-name = "core_maths"
+-version = "0.1.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "77745e017f5edba1a9c1d854f6f3a52dac8a12dd5af5d2f54aecf61e43d80d30"
+-dependencies = [
+- "libm",
+-]
+-
+ [[package]]
+ name = "cpufeatures"
+ version = "0.2.17"
+@@ -1229,7 +1220,7 @@ source = "git+https://github.com/storytold/craft-libs?rev=3d37da389a3618ab9b7610
+ dependencies = [
+  "craft-winprint-gdi",
+  "miniz_oxide 0.8.9",
+- "roxmltree",
++ "roxmltree 0.20.0",
+  "tempfile",
+  "winprint",
+  "winsafe",
+@@ -1700,7 +1691,7 @@ dependencies = [
+  "itertools 0.15.0",
+  "log",
+  "profiling",
+- "resvg",
++ "resvg 0.45.1",
+ ]
+ 
+ [[package]]
+@@ -1891,7 +1882,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "39cab71617ae0d63f51a36d69f866391735b51691dbda63cf6f96d042b63efeb"
+ dependencies = [
+  "libc",
+- "windows-sys 0.59.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -2099,20 +2090,19 @@ version = "0.5.8"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "bbc773e24e02d4ddd8395fd30dc147524273a83e54e0f312d986ea30de5f5646"
+ dependencies = [
+- "roxmltree",
++ "roxmltree 0.20.0",
+ ]
+ 
+ [[package]]
+ name = "fontdb"
+-version = "0.23.0"
++version = "0.24.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "457e789b3d1202543297a350643cf459f836cade38934e7a4cf6a39e7cde2905"
++checksum = "2660c5e9157bf76d2db1294e4a9feba604ef610819a3b591088d0d8392a3290f"
+ dependencies = [
+  "fontconfig-parser",
+  "log",
+  "slotmap",
+  "tinyvec",
+- "ttf-parser",
+ ]
+ 
+ [[package]]
+@@ -2375,16 +2365,6 @@ dependencies = [
+  "wasm-bindgen",
+ ]
+ 
+-[[package]]
+-name = "gif"
+-version = "0.13.3"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "4ae047235e33e2829703574b54fdec96bfbad892062d97fed2f76022287de61b"
+-dependencies = [
+- "color_quant",
+- "weezl",
+-]
+-
+ [[package]]
+ name = "gif"
+ version = "0.14.2"
+@@ -2926,7 +2906,7 @@ dependencies = [
+  "bytemuck",
+  "byteorder-lite",
+  "color_quant",
+- "gif 0.14.2",
++ "gif",
+  "moxcms",
+  "num-traits",
+  "png 0.18.1",
+@@ -2934,8 +2914,8 @@ dependencies = [
+  "ravif",
+  "rgb",
+  "tiff",
+- "zune-core 0.5.3",
+- "zune-jpeg 0.5.15",
++ "zune-core",
++ "zune-jpeg",
+ ]
+ 
+ [[package]]
+@@ -2954,6 +2934,12 @@ version = "0.13.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "edcd27d72f2f071c64249075f42e205ff93c9a4c5f6c6da53e79ed9f9832c285"
+ 
++[[package]]
++name = "imagesize"
++version = "0.15.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "65b27460c2c92b037f3f94c538ed9a3342f3fdf923606781629ccb35f82d042a"
++
+ [[package]]
+ name = "imgref"
+ version = "1.12.3"
+@@ -3028,7 +3014,7 @@ checksum = "3640c1c38b8e4e43584d8df18be5fc6b0aa314ce6ebf51b53313d4306cca8e46"
+ dependencies = [
+  "hermit-abi",
+  "libc",
+- "windows-sys 0.59.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -3690,7 +3676,7 @@ dependencies = [
+  "objc2-foundation 0.3.2",
+  "png 0.18.1",
+  "thiserror 2.0.21",
+- "windows-sys 0.60.2",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -4436,7 +4422,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "7d8fae84b431384b68627d0f9b3b1245fcf9f46f6c0e3dc902e9dce64edd1967"
+ dependencies = [
+  "libc",
+- "windows-sys 0.59.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -4611,53 +4597,9 @@ dependencies = [
   "siphasher",
  ]
  
@@ -107,7 +260,7 @@ index 54085cf..f268c87 100644
  dependencies = [
   "crc32fast",
   "flate2",
-@@ -4667,7 +4623,7 @@ dependencies = [
+@@ -4667,7 +4609,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-algo"
@@ -116,7 +269,7 @@ index 54085cf..f268c87 100644
  dependencies = [
   "photocraft-color",
   "photocraft-geom",
-@@ -4680,7 +4636,7 @@ dependencies = [
+@@ -4680,7 +4622,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-automation"
@@ -125,7 +278,7 @@ index 54085cf..f268c87 100644
  dependencies = [
   "base64 0.22.1",
   "cap-std",
-@@ -4700,23 +4656,9 @@ dependencies = [
+@@ -4700,23 +4642,9 @@ dependencies = [
   "tokio",
  ]
  
@@ -150,7 +303,7 @@ index 54085cf..f268c87 100644
  dependencies = [
   "moxcms",
   "rayon",
-@@ -4724,7 +4666,7 @@ dependencies = [
+@@ -4724,7 +4652,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-codecs"
@@ -159,7 +312,15 @@ index 54085cf..f268c87 100644
  dependencies = [
   "exr",
   "flate2",
-@@ -4745,7 +4687,7 @@ dependencies = [
+@@ -4739,13 +4667,13 @@ dependencies = [
+  "serde_json",
+  "thiserror 2.0.21",
+  "tiff",
+- "zune-core 0.5.3",
+- "zune-jpeg 0.5.15",
++ "zune-core",
++ "zune-jpeg",
+ ]
  
  [[package]]
  name = "photocraft-color"
@@ -168,7 +329,7 @@ index 54085cf..f268c87 100644
  dependencies = [
   "photocraft-cms",
   "serde",
-@@ -4753,7 +4695,7 @@ dependencies = [
+@@ -4753,7 +4681,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-compose"
@@ -177,7 +338,7 @@ index 54085cf..f268c87 100644
  dependencies = [
   "criterion",
   "photocraft-color",
-@@ -4768,7 +4710,7 @@ dependencies = [
+@@ -4768,7 +4696,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-doc"
@@ -186,7 +347,7 @@ index 54085cf..f268c87 100644
  dependencies = [
   "photocraft-color",
   "photocraft-geom",
-@@ -4779,7 +4721,7 @@ dependencies = [
+@@ -4779,7 +4707,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-engine"
@@ -195,7 +356,16 @@ index 54085cf..f268c87 100644
  dependencies = [
   "blake3",
   "craft-print",
-@@ -4814,7 +4756,7 @@ dependencies = [
+@@ -4804,7 +4732,7 @@ dependencies = [
+  "photocraft-text",
+  "photocraft-vector",
+  "rayon",
+- "roxmltree",
++ "roxmltree 0.20.0",
+  "serde",
+  "serde_json",
+  "tempfile",
+@@ -4814,7 +4742,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-format"
@@ -204,7 +374,7 @@ index 54085cf..f268c87 100644
  dependencies = [
   "blake3",
   "crc32fast",
-@@ -4835,14 +4777,14 @@ dependencies = [
+@@ -4835,14 +4763,14 @@ dependencies = [
  
  [[package]]
  name = "photocraft-geom"
@@ -221,7 +391,7 @@ index 54085cf..f268c87 100644
  dependencies = [
   "half",
   "log",
-@@ -4859,14 +4801,14 @@ dependencies = [
+@@ -4859,14 +4787,14 @@ dependencies = [
  
  [[package]]
  name = "photocraft-heif"
@@ -238,7 +408,17 @@ index 54085cf..f268c87 100644
  dependencies = [
   "blake3",
   "crc32fast",
-@@ -4895,14 +4837,14 @@ dependencies = [
+@@ -4887,22 +4815,22 @@ dependencies = [
+  "photocraft-text",
+  "photocraft-vector",
+  "proptest",
+- "resvg",
+- "roxmltree",
++ "resvg 0.48.1",
++ "roxmltree 0.20.0",
+  "serde_json",
+  "thiserror 2.0.21",
+ ]
  
  [[package]]
  name = "photocraft-ops"
@@ -255,7 +435,7 @@ index 54085cf..f268c87 100644
  dependencies = [
   "photocraft-color",
   "photocraft-geom",
-@@ -4913,7 +4855,7 @@ dependencies = [
+@@ -4913,7 +4841,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-plugins"
@@ -264,7 +444,7 @@ index 54085cf..f268c87 100644
  dependencies = [
   "photocraft-color",
   "photocraft-geom",
-@@ -4928,7 +4870,7 @@ dependencies = [
+@@ -4928,7 +4856,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-psd"
@@ -273,7 +453,7 @@ index 54085cf..f268c87 100644
  dependencies = [
   "flate2",
   "photocraft-psd",
-@@ -4939,7 +4881,7 @@ dependencies = [
+@@ -4939,7 +4867,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-raster"
@@ -282,7 +462,7 @@ index 54085cf..f268c87 100644
  dependencies = [
   "photocraft-color",
   "photocraft-geom",
-@@ -4949,7 +4891,7 @@ dependencies = [
+@@ -4949,7 +4877,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-raw"
@@ -291,7 +471,16 @@ index 54085cf..f268c87 100644
  dependencies = [
   "flate2",
   "image",
-@@ -4964,7 +4906,7 @@ dependencies = [
+@@ -4957,14 +4885,14 @@ dependencies = [
+  "photocraft-raw",
+  "png 0.18.1",
+  "rayon",
+- "zune-core 0.5.3",
+- "zune-jpeg 0.5.15",
++ "zune-core",
++ "zune-jpeg",
+  "zune-jpegxl",
+ ]
  
  [[package]]
  name = "photocraft-tablet"
@@ -300,7 +489,7 @@ index 54085cf..f268c87 100644
  dependencies = [
   "block2 0.6.2",
   "objc2 0.6.4",
-@@ -4976,7 +4918,7 @@ dependencies = [
+@@ -4976,7 +4904,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-testkit"
@@ -309,7 +498,7 @@ index 54085cf..f268c87 100644
  dependencies = [
   "memory-stats",
   "photocraft-color",
-@@ -4987,7 +4929,7 @@ dependencies = [
+@@ -4987,7 +4915,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-text"
@@ -318,7 +507,7 @@ index 54085cf..f268c87 100644
  dependencies = [
   "flate2",
   "parley",
-@@ -5001,7 +4943,7 @@ dependencies = [
+@@ -5001,7 +4929,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-ui-egui"
@@ -327,7 +516,7 @@ index 54085cf..f268c87 100644
  dependencies = [
   "base64 0.22.1",
   "craft-print",
-@@ -5042,7 +4984,7 @@ dependencies = [
+@@ -5042,7 +4970,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-vector"
@@ -336,7 +525,7 @@ index 54085cf..f268c87 100644
  dependencies = [
   "photocraft-color",
   "photocraft-doc",
-@@ -5053,7 +4995,7 @@ dependencies = [
+@@ -5053,7 +4981,7 @@ dependencies = [
  
  [[package]]
  name = "photocraft-web"
@@ -345,7 +534,7 @@ index 54085cf..f268c87 100644
  dependencies = [
   "eframe",
   "egui",
-@@ -5153,6 +5095,64 @@ version = "0.2.3"
+@@ -5153,6 +5081,64 @@ version = "0.2.3"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "b4596b6d070b27117e987119b4dac604f3c58cfb0b191112e24771b2faeac1a6"
  
@@ -380,7 +569,7 @@ index 54085cf..f268c87 100644
 + "photocraft-raster",
 + "photocraft-tablet",
 + "photocraft-ui-egui",
-+ "resvg",
++ "resvg 0.45.1",
 + "rfd",
 + "ron",
 + "serde_json",
@@ -410,7 +599,77 @@ index 54085cf..f268c87 100644
  [[package]]
  name = "png"
  version = "0.17.16"
-@@ -5991,9 +5991,9 @@ dependencies = [
+@@ -5457,7 +5443,7 @@ dependencies = [
+  "once_cell",
+  "socket2",
+  "tracing",
+- "windows-sys 0.59.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -5801,15 +5787,30 @@ version = "0.45.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "a8928798c0a55e03c9ca6c4c6846f76377427d2c1e1f7e6de3c06ae57942df43"
+ dependencies = [
+- "gif 0.13.3",
++ "log",
++ "pico-args",
++ "rgb",
++ "svgtypes 0.15.3",
++ "tiny-skia 0.11.4",
++ "usvg 0.45.1",
++]
++
++[[package]]
++name = "resvg"
++version = "0.48.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "67e3803f97b999e80cbf7c6ecdd07a8102204d92e1633cf48783720c521196bd"
++dependencies = [
++ "bytemuck",
++ "gif",
+  "image-webp",
+  "log",
+  "pico-args",
+  "rgb",
+- "svgtypes",
+- "tiny-skia",
+- "usvg",
+- "zune-jpeg 0.4.21",
++ "svgtypes 0.16.1",
++ "tiny-skia 0.12.0",
++ "usvg 0.48.1",
++ "zune-jpeg",
+ ]
+ 
+ [[package]]
+@@ -5918,6 +5919,15 @@ version = "0.20.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "6c20b6793b5c2fa6553b250154b78d6d0db37e72700ae35fad9387a46f487c97"
+ 
++[[package]]
++name = "roxmltree"
++version = "0.21.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "f1964b10c76125c36f8afe190065a4bf9a87bf324842c05701330bba9f1cacbb"
++dependencies = [
++ "memchr",
++]
++
+ [[package]]
+ name = "rustc-hash"
+ version = "1.1.0"
+@@ -5976,7 +5986,7 @@ dependencies = [
+  "errno",
+  "libc",
+  "linux-raw-sys 0.12.1",
+- "windows-sys 0.59.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -5991,9 +6001,9 @@ dependencies = [
  
  [[package]]
  name = "rustls"
@@ -422,8 +681,37 @@ index 54085cf..f268c87 100644
  dependencies = [
   "aws-lc-rs",
   "once_cell",
-@@ -6102,9 +6102,9 @@ dependencies = [
+@@ -6043,7 +6053,7 @@ dependencies = [
+  "security-framework",
+  "security-framework-sys",
+  "webpki-root-certs",
+- "windows-sys 0.59.0",
++ "windows-sys 0.61.2",
+ ]
  
+ [[package]]
+@@ -6082,29 +6092,11 @@ dependencies = [
+  "wait-timeout",
+ ]
+ 
+-[[package]]
+-name = "rustybuzz"
+-version = "0.20.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "fd3c7c96f8a08ee34eff8857b11b49b07d71d1c3f4e88f8a88d4c9e9f90b1702"
+-dependencies = [
+- "bitflags 2.13.2",
+- "bytemuck",
+- "core_maths",
+- "log",
+- "smallvec",
+- "ttf-parser",
+- "unicode-bidi-mirroring",
+- "unicode-ccc",
+- "unicode-properties",
+- "unicode-script",
+-]
+-
  [[package]]
  name = "ruzstd"
 -version = "0.9.0"
@@ -434,7 +722,210 @@ index 54085cf..f268c87 100644
  dependencies = [
   "twox-hash",
  ]
-@@ -8651,7 +8651,7 @@ checksum = "ec7a2a501ed189703dba8b08142f057e887dfc4b2cc4db2d343ac6376ba3e0b9"
+@@ -6681,7 +6673,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "c3d1e2c7f27f8d4cb10542a02c49005dbd6e93095799d6f3be745fae9f8fedd4"
+ dependencies = [
+  "libc",
+- "windows-sys 0.60.2",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -6789,6 +6781,16 @@ dependencies = [
+  "siphasher",
+ ]
+ 
++[[package]]
++name = "svgtypes"
++version = "0.16.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "695b5790b3131dafa99b3bbfd25a216edb3d216dad9ca208d4657bfb8f2abc3d"
++dependencies = [
++ "kurbo 0.13.1",
++ "siphasher",
++]
++
+ [[package]]
+ name = "syn"
+ version = "1.0.109"
+@@ -6908,10 +6910,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd"
+ dependencies = [
+  "fastrand",
+- "getrandom 0.3.4",
++ "getrandom 0.4.3",
+  "once_cell",
+  "rustix 1.1.5",
+- "windows-sys 0.59.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -6974,7 +6976,7 @@ dependencies = [
+  "half",
+  "quick-error 2.0.1",
+  "weezl",
+- "zune-jpeg 0.5.15",
++ "zune-jpeg",
+ ]
+ 
+ [[package]]
+@@ -6989,7 +6991,22 @@ dependencies = [
+  "cfg-if",
+  "log",
+  "png 0.17.16",
+- "tiny-skia-path",
++ "tiny-skia-path 0.11.4",
++]
++
++[[package]]
++name = "tiny-skia"
++version = "0.12.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "47ffee5eaaf5527f630fb0e356b90ebdec84d5d18d937c5e440350f88c5a91ea"
++dependencies = [
++ "arrayref",
++ "arrayvec",
++ "bytemuck",
++ "cfg-if",
++ "log",
++ "png 0.18.1",
++ "tiny-skia-path 0.12.0",
+ ]
+ 
+ [[package]]
+@@ -7003,6 +7020,17 @@ dependencies = [
+  "strict-num",
+ ]
+ 
++[[package]]
++name = "tiny-skia-path"
++version = "0.12.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "edca365c3faccca67d06593c5980fa6c57687de727a03131735bb85f01fdeeb9"
++dependencies = [
++ "arrayref",
++ "bytemuck",
++ "strict-num",
++]
++
+ [[package]]
+ name = "tinystr"
+ version = "0.8.4"
+@@ -7267,15 +7295,6 @@ version = "0.2.5"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "e421abadd41a4225275504ea4d6566923418b7f05506fbc9c0fe86ba7396114b"
+ 
+-[[package]]
+-name = "ttf-parser"
+-version = "0.25.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d2df906b07856748fa3f6e0ad0cbaa047052d4a7dd609e231c4f72cee8c36f31"
+-dependencies = [
+- "core_maths",
+-]
+-
+ [[package]]
+ name = "twox-hash"
+ version = "2.1.4"
+@@ -7311,7 +7330,7 @@ checksum = "f2f6fb2847f6742cd76af783a2a2c49e9375d0a111c7bef6f71cd9e738c72d6e"
+ dependencies = [
+  "memoffset",
+  "tempfile",
+- "windows-sys 0.60.2",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -7326,18 +7345,6 @@ version = "0.3.18"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "5c1cb5db39152898a79168971543b1cb5020dff7fe43c8dc468b0885f5e29df5"
+ 
+-[[package]]
+-name = "unicode-bidi-mirroring"
+-version = "0.4.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "5dfa6e8c60bb66d49db113e0125ee8711b7647b5579dc7f5f19c42357ed039fe"
+-
+-[[package]]
+-name = "unicode-ccc"
+-version = "0.4.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "ce61d488bcdc9bc8b5d1772c404828b17fc481c0a582b5581e95fb233aef503e"
+-
+ [[package]]
+ name = "unicode-general-category"
+ version = "1.1.0"
+@@ -7350,12 +7357,6 @@ version = "1.0.26"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "d245f478577f809a851594d02313b640fb437e0bb33866753cff937863096954"
+ 
+-[[package]]
+-name = "unicode-properties"
+-version = "0.1.4"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "7df058c713841ad818f1dc5d3fd88063241cc61f49f5fbea4b951e8cf5a8d71d"
+-
+ [[package]]
+ name = "unicode-script"
+ version = "0.5.8"
+@@ -7413,18 +7414,40 @@ dependencies = [
+  "base64 0.22.1",
+  "data-url",
+  "flate2",
+- "fontdb",
+- "imagesize",
++ "imagesize 0.13.0",
+  "kurbo 0.11.3",
+  "log",
+  "pico-args",
+- "roxmltree",
+- "rustybuzz",
++ "roxmltree 0.20.0",
++ "simplecss",
++ "siphasher",
++ "strict-num",
++ "svgtypes 0.15.3",
++ "tiny-skia-path 0.11.4",
++ "xmlwriter",
++]
++
++[[package]]
++name = "usvg"
++version = "0.48.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "977d0a4abdef933f424a99fe09f95576e089b90aebc6f016a3bc813762493e91"
++dependencies = [
++ "base64 0.23.1",
++ "data-url",
++ "fontdb",
++ "harfrust",
++ "imagesize 0.15.0",
++ "kurbo 0.13.1",
++ "log",
++ "pico-args",
++ "roxmltree 0.21.1",
+  "simplecss",
+  "siphasher",
++ "skrifa",
+  "strict-num",
+- "svgtypes",
+- "tiny-skia-path",
++ "svgtypes 0.16.1",
++ "tiny-skia-path 0.12.0",
+  "unicode-bidi",
+  "unicode-script",
+  "unicode-vo",
+@@ -8071,7 +8094,7 @@ version = "0.1.11"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "c2a7b1c03c876122aa43f3020e6c3c3ee5c05081c9a00739faf7503aeba10d22"
+ dependencies = [
+- "windows-sys 0.59.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -8651,7 +8674,7 @@ checksum = "ec7a2a501ed189703dba8b08142f057e887dfc4b2cc4db2d343ac6376ba3e0b9"
  
  [[package]]
  name = "xtask"
@@ -443,6 +934,64 @@ index 54085cf..f268c87 100644
  dependencies = [
   "serde",
   "serde_json",
+@@ -8677,9 +8700,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "yoke-derive"
+-version = "0.8.3"
++version = "0.8.4"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "33811428bee40dbceb6d545e95754741d17a6aef9a4849f0fd62e2ba4f412a78"
++checksum = "ec8ebde2db3681e8c9980cc27822030e68752690ddfa9473e739aeb4dbde6d71"
+ dependencies = [
+  "proc-macro2",
+  "quote",
+@@ -8901,12 +8924,6 @@ version = "1.0.23"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "29666d0abbfad1e3dc4dcf6144730dd3a3ab225bbbdac83319345b1b44ccfc1b"
+ 
+-[[package]]
+-name = "zune-core"
+-version = "0.4.12"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "3f423a2c17029964870cfaabb1f13dfab7d092a62a29a89264f4d36990ca414a"
+-
+ [[package]]
+ name = "zune-core"
+ version = "0.5.3"
+@@ -8922,22 +8939,13 @@ dependencies = [
+  "simd-adler32",
+ ]
+ 
+-[[package]]
+-name = "zune-jpeg"
+-version = "0.4.21"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "29ce2c8a9384ad323cf564b67da86e21d3cfdff87908bc1223ed5c99bc792713"
+-dependencies = [
+- "zune-core 0.4.12",
+-]
+-
+ [[package]]
+ name = "zune-jpeg"
+ version = "0.5.15"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "27bc9d5b815bc103f142aa054f561d9187d191692ec7c2d1e2b4737f8dbd7296"
+ dependencies = [
+- "zune-core 0.5.3",
++ "zune-core",
+ ]
+ 
+ [[package]]
+@@ -8946,7 +8954,7 @@ version = "0.5.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "cba11ecd07cc23351500e840ae03841b7e4997923ec8e4832ee3ae199ea0b6b4"
+ dependencies = [
+- "zune-core 0.5.3",
++ "zune-core",
+ ]
+ 
+ [[package]]
 diff --git a/Cargo.toml b/Cargo.toml
 index 663d268..974c740 100644
 --- a/Cargo.toml
@@ -2037,6 +2586,24 @@ index 741d927..3f06b0c 100644
  [lints]
  workspace = true
  
+diff --git a/crates/engine/src/color_to_alpha_cmds.rs b/crates/engine/src/color_to_alpha_cmds.rs
+index a6208e8..beed7e9 100644
+--- a/crates/engine/src/color_to_alpha_cmds.rs
++++ b/crates/engine/src/color_to_alpha_cmds.rs
+@@ -65,9 +65,10 @@ fn validate(p: &Value) -> Result<()> {
+             crate::commands::parse_hex(s).ok_or_else(|| bad(format!("`color` must be \"#rrggbb\", not {s:?}")))?;
+         }
+         Some(Value::Array(a)) if (3..=4).contains(&a.len()) => {
+-            if !a.iter().all(|v| v.as_f64().is_some_and(|x| x.is_finite() && (0.0..=1.0).contains(&x))) {
+-                return Err(bad("`color` as an array must hold 3 or 4 numbers in 0..1"));
+-            }
++            a.iter()
++                .all(|v| v.as_f64().is_some_and(|x| x.is_finite() && (0.0..=1.0).contains(&x)))
++                .then_some(())
++                .ok_or_else(|| bad("`color` as an array must hold 3 or 4 numbers in 0..1"))?;
+         }
+         Some(_) => return Err(bad("`color` must be \"#rrggbb\" or [r, g, b] in 0..1")),
+     }
 diff --git a/crates/engine/src/prefs.rs b/crates/engine/src/prefs.rs
 index b163d40..0fb3559 100644
 --- a/crates/engine/src/prefs.rs
@@ -2126,7 +2693,7 @@ index 18210b0..1da9421 100644
  # Pure Rust, no unsafe. Pinned exactly: a young, single-owner crate that parses untrusted files;
  # moving the pin is a reviewed change (re-run the fuzz target and the heif corpus tests).
 diff --git a/crates/io/Cargo.toml b/crates/io/Cargo.toml
-index 9bd4c55..47ed8e1 100644
+index 9bd4c55..49c581b 100644
 --- a/crates/io/Cargo.toml
 +++ b/crates/io/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -2138,6 +2705,39 @@ index 9bd4c55..47ed8e1 100644
  [lints]
  workspace = true
  
+@@ -40,12 +42,12 @@ flate2 = { workspace = true }
+ # ora.rs reads OpenRaster's stack.xml (already in the tree through usvg).
+ roxmltree = "0.20"
+ # SVG import (svg.rs): usvg parses, resvg rasterises what the shape model can't hold. Both are
+-# already in the tree through the UI's icon loader; text shaping needs the fonts feature set.
++# 0.48 uses maintained HarfRust/Skrifa text shaping; icons keep their smaller parser.
+ [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+-resvg = { version = "0.45", default-features = false, features = ["text", "system-fonts", "raster-images"] }
++resvg = { version = "0.48", default-features = false, features = ["text", "system-fonts", "raster-images"] }
+ 
+ [target.'cfg(target_arch = "wasm32")'.dependencies]
+-resvg = { version = "0.45", default-features = false, features = ["text", "raster-images"] }
++resvg = { version = "0.48", default-features = false, features = ["text", "raster-images"] }
+ 
+ [dev-dependencies]
+ crc32fast = "1.5"
+diff --git a/crates/io/src/svg.rs b/crates/io/src/svg.rs
+index 04fc4be..080a844 100644
+--- a/crates/io/src/svg.rs
++++ b/crates/io/src/svg.rs
+@@ -756,10 +756,10 @@ mod tests {
+             .collect();
+         let off = ours.chunks(4).zip(theirs.chunks(4)).filter(|(a, b)| a.iter().zip(*b).any(|(x, y)| x.abs_diff(*y) > 48)).count();
+         assert!(off < 64, "{off} pixels differ");
+-        // The report's file: PhotoCraft's own icon opens without the clip-path warning.
++        // The Plervo icon imports too; its artwork does not require a clip-path.
+         let icon = import_svg("photocraft.svg", include_bytes!("../../../assets/app-icon/photocraft.svg")).unwrap();
+         assert!(icon.warnings.iter().all(|w| !w.contains("clip-path")), "{:?}", icon.warnings);
+-        assert!(icon.document.layers.iter().any(|l| l.vector_mask.is_some()), "its rounded square is a vector mask");
++        assert!(!icon.document.layers.is_empty(), "the Plervo artwork produces editable layers");
+         // Two shapes in the clip: rasterised, and said so.
+         let two = br##"<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64">
+             <defs><clipPath id="c"><rect width="20" height="20"/><rect x="30" width="20" height="20"/></clipPath></defs>
 diff --git a/crates/io/tests/corpus.rs b/crates/io/tests/corpus.rs
 index 776f27f..61cf5e8 100644
 --- a/crates/io/tests/corpus.rs
@@ -2211,6 +2811,23 @@ index 09a69ca..71bda50 100644
  [lints]
  workspace = true
  
+diff --git a/crates/plugins/src/manifest.rs b/crates/plugins/src/manifest.rs
+index ccabf47..52994bc 100644
+--- a/crates/plugins/src/manifest.rs
++++ b/crates/plugins/src/manifest.rs
+@@ -122,10 +122,8 @@ impl Manifest {
+                 return Err(Error::Manifest(format!("invalid parameter name {k:?}")));
+             }
+             match spec {
+-                ParamSpec::Number { min, max, default } => {
+-                    if !(min.is_finite() && max.is_finite() && default.is_finite()) || min > max {
+-                        return Err(Error::Manifest(format!("parameter `{k}`: bad range")));
+-                    }
++                ParamSpec::Number { min, max, default } if !(min.is_finite() && max.is_finite() && default.is_finite()) || min > max => {
++                    return Err(Error::Manifest(format!("parameter `{k}`: bad range")));
+                 }
+                 ParamSpec::Int { min, max, .. } if min > max => return Err(Error::Manifest(format!("parameter `{k}`: bad range"))),
+                 ParamSpec::Choice { options, default } => {
 diff --git a/crates/psd/Cargo.toml b/crates/psd/Cargo.toml
 index 12662f9..2cb7e2b 100644
 --- a/crates/psd/Cargo.toml
@@ -2370,10 +2987,20 @@ index fc0f3f1..93e7262 100644
  //! the app can win that grab back, but its signature is clear: the pointer "leaves" the window from
  //! well inside the canvas while ⌥ is held with a tool whose ⌥-click matters (X11 and Wayland report
 diff --git a/crates/ui-egui/src/analysis_ui.rs b/crates/ui-egui/src/analysis_ui.rs
-index 09aaf17..943821f 100644
+index 09aaf17..36e8edb 100644
 --- a/crates/ui-egui/src/analysis_ui.rs
 +++ b/crates/ui-egui/src/analysis_ui.rs
-@@ -537,7 +537,7 @@ pub fn options_bar(app: &mut PhotocraftApp, ui: &mut egui::Ui, tool: Tool) -> bo
+@@ -281,7 +281,8 @@ pub fn pointer(app: &mut PhotocraftApp, ev: ToolEvent, mods: egui::Modifiers) ->
+             set_ruler(app, r);
+         }
+         (Tool::Ruler, ToolEvent::Up { .. }) => {
+-            if app.ui.analysis.drag.take() == Some(Drag::RulerNew) && doc.measurement.ruler.is_some_and(|r| dist(r.start, r.end) < 0.5) {
++            let was_new = app.ui.analysis.drag.take() == Some(Drag::RulerNew);
++            if was_new && doc.measurement.ruler.is_some_and(|r| dist(r.start, r.end) < 0.5) {
+                 let _ = app.run("image.analysis.rulerTool", json!({"clear": true}));
+             }
+         }
+@@ -537,7 +538,7 @@ pub fn options_bar(app: &mut PhotocraftApp, ui: &mut egui::Ui, tool: Tool) -> bo
                      let _ = app.run("count.setGroup", json!({"group": gi, "visible": !g.visible}));
                  }
                  let rgb = g.color.to_rgb();
@@ -2382,6 +3009,16 @@ index 09aaf17..943821f 100644
                  if crate::widgets::color_swatch_button(ui, color32(rgb), tl!("Color")).clicked() {
                      crate::color_picker_ui::open_for_command(
                          app,
+@@ -743,7 +744,8 @@ pub fn windows(app: &mut PhotocraftApp, ctx: &egui::Context) {
+                 }
+             }
+             Some((id, p)) => {
+-                if app.run(id, p).is_ok() {
++                let completed = app.run(id, p).is_ok();
++                if completed {
+                     app.ui.analysis.log_selected.clear();
+                 }
+             }
 diff --git a/crates/ui-egui/src/artboard_ui.rs b/crates/ui-egui/src/artboard_ui.rs
 index 1ff452a..ec4ed22 100644
 --- a/crates/ui-egui/src/artboard_ui.rs
@@ -2415,7 +3052,7 @@ index a601e95..902ddd2 100644
  /// The icon's pixels (one transparent pixel if it couldn't be decoded, which a test rules out).
  fn decode() -> egui::ColorImage {
 diff --git a/crates/ui-egui/src/canvas.rs b/crates/ui-egui/src/canvas.rs
-index 676d068..40d1766 100644
+index 676d068..c0cbf39 100644
 --- a/crates/ui-egui/src/canvas.rs
 +++ b/crates/ui-egui/src/canvas.rs
 @@ -2639,7 +2639,7 @@ fn start_screen(app: &mut PhotocraftApp, ui: &mut egui::Ui) {
@@ -2427,6 +3064,24 @@ index 676d068..40d1766 100644
                  let by = ui.painter().layout_no_wrap(tl!("open source").into(), egui::FontId::proportional(13.0), t.text_faint);
                  let total = title.size().x + by.size().x + 10.0;
                  ui.add_space(((card.width() - total) / 2.0).max(0.0));
+@@ -5572,14 +5572,12 @@ pub(crate) fn finish_gesture(app: &mut PhotocraftApp, d: Drag) {
+                 let _ = app.run("select.deselect", json!({}));
+             }
+         }
+-        Tool::Gradient => {
+-            if (end[0] - d.start[0]).abs() + (end[1] - d.start[1]).abs() >= 2.0 {
+-                let o = app.ui.tool_options.clone();
+-                let _ = app.run(
++        Tool::Gradient if (end[0] - d.start[0]).abs() + (end[1] - d.start[1]).abs() >= 2.0 => {
++            let o = app.ui.tool_options.clone();
++            let _ = app.run(
+                     "paint.gradient",
+                     json!({"from": [d.start[0], d.start[1]], "to": [end[0], end[1]], "style": o.gradient_style, "reverse": o.gradient_reverse, "dither": o.gradient_dither, "opacity": o.fill_opacity, "mode": o.gradient_blend_mode.label(), "target": paint_target(app)}),
+                 );
+-            }
+         }
+         Tool::Move => {
+             let (dx, dy) = ((end[0] - d.start[0]).round(), (end[1] - d.start[1]).round());
 diff --git a/crates/ui-egui/src/canvas_tool_menu.rs b/crates/ui-egui/src/canvas_tool_menu.rs
 index e1466f0..0e48bb0 100644
 --- a/crates/ui-egui/src/canvas_tool_menu.rs
@@ -7225,6 +7880,128 @@ index bee0496..0000000
 -# AppRun registers the desktop entry and icons itself (#593); tell external
 -# AppImage integrators (AppImageLauncher, appimaged) not to add a duplicate (#3623).
 -X-AppImage-Integrate=false
+diff --git a/packaging/linux/ai.storyteller.photocraft.metainfo.xml.in b/packaging/linux/ai.storyteller.photocraft.metainfo.xml.in
+deleted file mode 100644
+index 932ff44..0000000
+--- a/packaging/linux/ai.storyteller.photocraft.metainfo.xml.in
++++ /dev/null
+@@ -1,75 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
+-     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
+-<component type="desktop-application">
+-  <id>ai.storyteller.photocraft</id>
+-  <metadata_license>CC0-1.0</metadata_license>
+-  <project_license>MIT OR Apache-2.0</project_license>
+-  <name>PhotoCraft</name>
+-  <summary>Edit photos and layered PSD documents</summary>
+-  <developer id="ai.storyteller">
+-    <name>Learning Machines LLC</name>
+-  </developer>
+-  <description>
+-    <p>
+-      PhotoCraft is an open-source, native image editor with the familiar menus,
+-      shortcuts, panels and tools professionals expect: layers, masks, adjustment
+-      layers, layer styles, type and brushes.
+-    </p>
+-    <ul>
+-      <li>Open, edit and save layered PSD and PSB files</li>
+-      <li>8-bit, 16-bit and 32-bit float documents in RGB, grayscale, CMYK and Lab</li>
+-      <li>A GPU compositor with multithreaded filters</li>
+-      <li>Every action is a command, scriptable from a CLI, a JSON control channel and an MCP server</li>
+-    </ul>
+-  </description>
+-  <launchable type="desktop-id">ai.storyteller.photocraft.desktop</launchable>
+-  <icon type="stock">ai.storyteller.photocraft</icon>
+-  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
+-  <url type="homepage">https://getartcraft.com/apps/photocraft</url>
+-  <url type="bugtracker">https://github.com/storytold/photocraft/issues</url>
+-  <url type="help">https://github.com/storytold/photocraft</url>
+-  <url type="contact">https://discord.gg/artcraft</url>
+-  <categories>
+-    <category>Graphics</category>
+-    <category>RasterGraphics</category>
+-    <category>Photography</category>
+-  </categories>
+-  <keywords>
+-    <keyword>photo</keyword>
+-    <keyword>image editor</keyword>
+-    <keyword>psd</keyword>
+-    <keyword>layers</keyword>
+-  </keywords>
+-  <screenshots>
+-    <screenshot type="default">
+-      <caption>Editing The Great Wave off Kanagawa with type layers and adjustment layers</caption>
+-      <image>https://raw.githubusercontent.com/storytold/photocraft/main/docs/images/photocraft-demo.jpg</image>
+-    </screenshot>
+-  </screenshots>
+-  <branding>
+-    <color type="primary" scheme_preference="light">#9fd0ff</color>
+-    <color type="primary" scheme_preference="dark">#1f64ba</color>
+-  </branding>
+-  <requires>
+-    <display_length compare="ge">760</display_length>
+-  </requires>
+-  <supports>
+-    <control>keyboard</control>
+-    <control>pointing</control>
+-    <control>tablet</control>
+-  </supports>
+-  <provides>
+-    <binary>photocraft</binary>
+-    <mediatype>application/x-photocraft</mediatype>
+-    <mediatype>image/x-paintnet</mediatype>
+-    <mediatype>image/openraster</mediatype>
+-    <mediatype>application/x-krita</mediatype>
+-    <mediatype>image/vnd.adobe.photoshop</mediatype>
+-    <mediatype>image/x-psb</mediatype>
+-  </provides>
+-  <content_rating type="oars-1.1"/>
+-  <releases>
+-    <release version="@VERSION@" date="@DATE@"/>
+-  </releases>
+-</component>
+diff --git a/packaging/linux/ai.storyteller.photocraft.mime.xml b/packaging/linux/ai.storyteller.photocraft.mime.xml
+deleted file mode 100644
+index d7c935a..0000000
+--- a/packaging/linux/ai.storyteller.photocraft.mime.xml
++++ /dev/null
+@@ -1,35 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<!-- shared-mime-info definitions for types the system database may not have.
+-     Installed to /usr/share/mime/packages/ (update-mime-database runs on install). -->
+-<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+-  <mime-type type="application/x-photocraft">
+-    <comment>PhotoCraft document</comment>
+-    <icon name="ai.storyteller.photocraft"/>
+-    <glob pattern="*.pcraft"/>
+-  </mime-type>
+-  <mime-type type="image/x-psb">
+-    <comment>Large PSD document</comment>
+-    <sub-class-of type="image/vnd.adobe.photoshop"/>
+-    <generic-icon name="image-x-generic"/>
+-    <magic priority="60">
+-      <match type="string" value="8BPS\x00\x02" offset="0"/>
+-    </magic>
+-    <glob pattern="*.psb"/>
+-  </mime-type>
+-  <mime-type type="image/qoi">
+-    <comment>QOI image</comment>
+-    <generic-icon name="image-x-generic"/>
+-    <magic priority="50">
+-      <match type="string" value="qoif" offset="0"/>
+-    </magic>
+-    <glob pattern="*.qoi"/>
+-  </mime-type>
+-  <mime-type type="image/x-paintnet">
+-    <comment>Paint.NET document</comment>
+-    <generic-icon name="image-x-generic"/>
+-    <magic priority="50">
+-      <match type="string" value="PDN3" offset="0"/>
+-    </magic>
+-    <glob pattern="*.pdn"/>
+-  </mime-type>
+-</mime-info>
 diff --git a/packaging/linux/apprun-test.sh b/packaging/linux/apprun-test.sh
 index 475fb5e..6bad223 100755
 --- a/packaging/linux/apprun-test.sh
@@ -7480,6 +8257,134 @@ index 5978665..a420fb2 100755
    flatpak run --command=sh "$APP_ID" -c 'ls /app/share/applications /app/share/metainfo /app/share/mime/packages /app/share/icons/hicolor/scalable/apps'
  fi
  echo "==> done"
+diff --git a/packaging/linux/flatpak/ai.storyteller.photocraft.bundle.yml b/packaging/linux/flatpak/ai.storyteller.photocraft.bundle.yml
+deleted file mode 100644
+index 0b771ae..0000000
+--- a/packaging/linux/flatpak/ai.storyteller.photocraft.bundle.yml
++++ /dev/null
+@@ -1,50 +0,0 @@
+-# Flatpak manifest for the single-file bundle attached to every GitHub release
+-# (photocraft-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
+-#
+-# It repackages the release's own Linux tarball (photocraft-<version>-linux-<arch>.tar.gz,
+-# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
+-# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
+-# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
+-# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
+-# Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
+-# GPU driver comes from its org.freedesktop.Platform.GL extension.
+-#
+-# ai.storyteller.photocraft.yml (same directory) is the from-source manifest for Flathub. Keep
+-# runtime-version and finish-args identical in both (packaging-lint checks this).
+-id: ai.storyteller.photocraft
+-runtime: org.freedesktop.Platform
+-runtime-version: '26.08'
+-sdk: org.freedesktop.Sdk
+-command: photocraft
+-finish-args:
+-  # Display: Wayland first; X11 only when no Wayland compositor is running.
+-  - --socket=wayland
+-  - --socket=fallback-x11
+-  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
+-  - --share=ipc
+-  # GPU access for the wgpu compositor (Vulkan, or GL as a fallback).
+-  - --device=dri
+-  # Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
+-  # drag-and-drop through the document portal, so picked files work anywhere without broad
+-  # filesystem access. Pictures and Documents are granted so files passed by path (the command
+-  # line, Open Recent, "Save" next to the original) work in the usual places.
+-  - --filesystem=xdg-pictures
+-  - --filesystem=xdg-documents
+-  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
+-  # the sandbox; `flatpak override --user --share=network ai.storyteller.photocraft` exposes it to
+-  # host agents) and home/host filesystem access.
+-modules:
+-  - name: photocraft
+-    buildsystem: simple
+-    build-commands:
+-      - install -Dm755 bin/photocraft /app/bin/photocraft
+-      - install -Dm755 bin/photocraft-cli /app/bin/photocraft-cli
+-      - install -Dm644 share/applications/ai.storyteller.photocraft.desktop /app/share/applications/ai.storyteller.photocraft.desktop
+-      # .pcraft, .psb and .qoi; the runtime's shared-mime-info already knows PSD and the rest.
+-      - install -Dm644 share/mime/packages/ai.storyteller.photocraft.xml /app/share/mime/packages/ai.storyteller.photocraft.xml
+-      # Already has the release's version and date substituted by package.sh.
+-      - install -Dm644 share/metainfo/ai.storyteller.photocraft.metainfo.xml /app/share/metainfo/ai.storyteller.photocraft.metainfo.xml
+-      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/photocraft /app/share/doc/
+-    sources:
+-      - type: dir
+-        path: stage
+diff --git a/packaging/linux/flatpak/ai.storyteller.photocraft.yml b/packaging/linux/flatpak/ai.storyteller.photocraft.yml
+deleted file mode 100644
+index ee6bbfa..0000000
+--- a/packaging/linux/flatpak/ai.storyteller.photocraft.yml
++++ /dev/null
+@@ -1,66 +0,0 @@
+-# Flatpak manifest for PhotoCraft, ready for a Flathub submission.
+-#
+-# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
+-#
+-#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
+-#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
+-#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.photocraft.yml
+-#   flatpak run ai.storyteller.photocraft
+-#
+-# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
+-# The single-file .flatpak attached to each release comes from ai.storyteller.photocraft.bundle.yml,
+-# which repackages the prebuilt release binaries. Keep runtime-version and finish-args identical.
+-id: ai.storyteller.photocraft
+-runtime: org.freedesktop.Platform
+-runtime-version: '26.08'
+-sdk: org.freedesktop.Sdk
+-sdk-extensions:
+-  - org.freedesktop.Sdk.Extension.rust-stable
+-command: photocraft
+-finish-args:
+-  # Display: Wayland first; X11 only when no Wayland compositor is running.
+-  - --socket=wayland
+-  - --socket=fallback-x11
+-  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
+-  - --share=ipc
+-  # GPU access for the wgpu compositor (Vulkan, or GL as a fallback).
+-  - --device=dri
+-  # Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
+-  # drag-and-drop through the document portal, so picked files work anywhere without broad
+-  # filesystem access. Pictures and Documents are granted so files passed by path (the command
+-  # line, Open Recent, "Save" next to the original) work in the usual places.
+-  - --filesystem=xdg-pictures
+-  - --filesystem=xdg-documents
+-  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
+-  # the sandbox; `flatpak override --user --share=network ai.storyteller.photocraft` exposes it to
+-  # host agents) and home/host filesystem access.
+-build-options:
+-  append-path: /usr/lib/sdk/rust-stable/bin
+-modules:
+-  - name: photocraft
+-    buildsystem: simple
+-    build-options:
+-      env:
+-        CARGO_HOME: /run/build/photocraft/cargo
+-        CARGO_NET_OFFLINE: 'true'
+-    build-commands:
+-      - cargo --offline build --release --locked -p photocraft --features heif
+-      - install -Dm755 target/release/photocraft /app/bin/photocraft
+-      - install -Dm644 packaging/linux/ai.storyteller.photocraft.desktop /app/share/applications/ai.storyteller.photocraft.desktop
+-      - install -Dm644 packaging/linux/ai.storyteller.photocraft.mime.xml /app/share/mime/packages/ai.storyteller.photocraft.xml
+-      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
+-      - >-
+-        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
+-        install -d /app/share/metainfo;
+-        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+-        packaging/linux/ai.storyteller.photocraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.photocraft.metainfo.xml
+-    sources:
+-      - type: dir
+-        path: ../../..
+-        skip:
+-          - target
+-          - dist
+-          - corpus
+-          - build-flatpak
+-          - .flatpak-builder
+-      - cargo-sources.json
 diff --git a/packaging/linux/flatpak/com.plervo.photo.bundle.yml b/packaging/linux/flatpak/com.plervo.photo.bundle.yml
 new file mode 100644
 index 0000000..fc5eaa4
@@ -8519,6 +9424,185 @@ index 53bf286..fdfe253 100644
 +  Write-Output "skipping plervo-photo-cli --version: an $Arch build doesn't run on this $HostArch machine"
  }
  Get-Item $Msi, $Zip | Format-Table Name, Length
+diff --git a/packaging/windows/photocraft.en-us.wxl b/packaging/windows/photocraft.en-us.wxl
+deleted file mode 100644
+index faa2835..0000000
+--- a/packaging/windows/photocraft.en-us.wxl
++++ /dev/null
+@@ -1,11 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<!--
+-  Overrides for the setup wizard's WixUI strings, so its pages name the version being installed
+-  ([PhotocraftVersion] is the full version, pre-release tag included, set in photocraft.wxs).
+--->
+-<WixLocalization Culture="en-US" xmlns="http://wixtoolset.org/schemas/v4/wxl">
+-  <String Id="WelcomeDlgTitle" Value="{\WixUI_Font_Bigger}Welcome to the [ProductName] [PhotocraftVersion] Setup Wizard" />
+-  <String Id="WelcomeDlgDescription" Value="The Setup Wizard will install [ProductName] version [PhotocraftVersion] on your computer. Click Next to continue or Cancel to exit the Setup Wizard." />
+-  <String Id="VerifyReadyDlgInstallTitle" Value="{\WixUI_Font_Title}Ready to install [ProductName] [PhotocraftVersion]" />
+-  <String Id="ExitDialogTitle" Value="{\WixUI_Font_Bigger}Completed the [ProductName] [PhotocraftVersion] Setup Wizard" />
+-</WixLocalization>
+diff --git a/packaging/windows/photocraft.wxs b/packaging/windows/photocraft.wxs
+deleted file mode 100644
+index 8be9ff8..0000000
+--- a/packaging/windows/photocraft.wxs
++++ /dev/null
+@@ -1,156 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<!--
+-  PhotoCraft MSI (WiX Toolset v5: `dotnet tool install -g wix`, plus the UI and Util extensions:
+-  `wix extension add -g WixToolset.UI.wixext/5.0.2 WixToolset.Util.wixext/5.0.2`). Built by package.ps1:
+-
+-    wix build photocraft.wxs -arch x64 -ext WixToolset.UI.wixext -ext WixToolset.Util.wixext
+-      -culture en-US -loc photocraft.en-us.wxl -d Version=1.2.3 -d DisplayVersion=1.2.3-rc.1
+-      -d BinDir=... -d IconPath=... -d BannerBmp=... -d DialogBmp=... -o out.msi
+-
+-  Per-machine install with a setup wizard that names the version: Welcome, install folder
+-  (Program Files\PhotoCraft by default, remembered for upgrades), Ready, a progress page, and a
+-  Finish page with a ticked "Launch PhotoCraft" box. Installs a Start Menu shortcut, makes
+-  PhotoCraft the owner of `.pcraft`, and offers it under "Open with" for PSD/PSB and the image
+-  formats it reads (without taking over the user's default app for them), plus photocraft-cli.
+-  `msiexec /qn` still installs silently.
+--->
+-<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+-     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+-  <Package
+-      Name="PhotoCraft"
+-      Manufacturer="Learning Machines LLC"
+-      Version="$(var.Version)"
+-      UpgradeCode="D9660F32-2D0A-4ABE-B73D-17BE25F1542C"
+-      Scope="perMachine"
+-      Compressed="yes"
+-      Language="1033">
+-    <SummaryInformation Description="PhotoCraft image editor" Manufacturer="Learning Machines LLC" />
+-    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
+-         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
+-    <MajorUpgrade AllowSameVersionUpgrades="yes"
+-        DowngradeErrorMessage="A newer version of PhotoCraft is already installed." />
+-    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+-
+-    <!-- MSI caches this icon using its Id as the filename. Advertised shortcuts to an
+-         .exe need an .exe icon identifier (ICE50), even when the source is an ICO. -->
+-    <Icon Id="PhotocraftIcon.exe" SourceFile="$(var.IconPath)" />
+-    <Property Id="ARPPRODUCTICON" Value="PhotocraftIcon.exe" />
+-    <Property Id="ARPURLINFOABOUT" Value="https://getartcraft.com/apps/photocraft" />
+-    <Property Id="ARPURLUPDATEINFO" Value="https://getartcraft.com/apps/photocraft" />
+-    <Property Id="ARPHELPLINK" Value="https://discord.gg/artcraft" />
+-
+-    <StandardDirectory Id="ProgramFiles6432Folder">
+-      <Directory Id="INSTALLFOLDER" Name="PhotoCraft" />
+-    </StandardDirectory>
+-    <StandardDirectory Id="ProgramMenuFolder" />
+-
+-    <!-- An upgrade installs where the user put the previous version (written by PhotocraftApp). -->
+-    <Property Id="INSTALLFOLDER">
+-      <RegistrySearch Id="PreviousInstallFolder" Root="HKLM" Key="Software\PhotoCraft" Name="InstallDir" Type="raw" />
+-    </Property>
+-
+-    <Feature Id="Main" Title="PhotoCraft" Level="1">
+-      <ComponentGroupRef Id="PhotocraftFiles" />
+-    </Feature>
+-
+-    <!-- The setup wizard: WixUI_InstallDir without its licence page (the code is MIT OR
+-         Apache-2.0; there is nothing to accept). A later NewDialog on the same button wins. -->
+-    <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
+-    <UI>
+-      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2" Condition="NOT Installed" />
+-      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" />
+-      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchPhotocraft"
+-          Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 AND NOT Installed" />
+-    </UI>
+-    <!-- Our own art, generated by package.ps1 from the app icon (not WiX's stock bitmaps). -->
+-    <WixVariable Id="WixUIBannerBmp" Value="$(var.BannerBmp)" />
+-    <WixVariable Id="WixUIDialogBmp" Value="$(var.DialogBmp)" />
+-
+-    <!-- The full version (Version is numeric, so it drops a pre-release tag), shown on the wizard's
+-         pages through photocraft.en-us.wxl. -->
+-    <Property Id="PhotocraftVersion" Value="$(var.DisplayVersion)" />
+-
+-    <!-- Finish page: say where to find the app, and offer to start it (ticked by default). -->
+-    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="PhotoCraft $(var.DisplayVersion) is installed. You can start it any time from the Start menu." />
+-    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch PhotoCraft" />
+-    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
+-    <Property Id="WixShellExecTarget" Value="[#PhotocraftExe]" />
+-    <!-- Runs in the wizard's own (unelevated) process, so the app starts as the user, not as admin. -->
+-    <CustomAction Id="LaunchPhotocraft" BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" DllEntry="WixShellExec" Impersonate="yes" Return="ignore" />
+-  </Package>
+-
+-  <Fragment>
+-    <ComponentGroup Id="PhotocraftFiles" Directory="INSTALLFOLDER">
+-      <Component Id="PhotocraftApp" Guid="A6DE41B7-A80F-4C59-A17E-BB68065BF67E">
+-        <File Id="PhotocraftExe" Source="$(var.BinDir)\photocraft.exe" KeyPath="yes">
+-          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="PhotoCraft"
+-              Description="PhotoCraft image editor" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
+-              Icon="PhotocraftIcon.exe" IconIndex="0" />
+-        </File>
+-
+-        <!-- .pcraft: PhotoCraft's own format; PhotoCraft is its default app. -->
+-        <ProgId Id="Photocraft.Document" Description="PhotoCraft Document" Icon="PhotocraftExe" IconIndex="0">
+-          <Extension Id="pcraft" ContentType="application/x-photocraft">
+-            <Verb Id="open" Command="Open" TargetFile="PhotocraftExe" Argument="&quot;%1&quot;" />
+-          </Extension>
+-        </ProgId>
+-        <!-- PSD/PSB and images: offered under "Open with", never forced as the default. -->
+-        <ProgId Id="Photocraft.PhotoshopDocument" Description="PSD Document" Icon="PhotocraftExe" IconIndex="0" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Photocraft.PhotoshopDocument\shell\open\command" Value="&quot;[#PhotocraftExe]&quot; &quot;%1&quot;" Type="string" />
+-        <ProgId Id="Photocraft.Image" Description="Image" Icon="PhotocraftExe" IconIndex="0" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Photocraft.Image\shell\open\command" Value="&quot;[#PhotocraftExe]&quot; &quot;%1&quot;" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.psd\OpenWithProgids" Name="Photocraft.PhotoshopDocument" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.psb\OpenWithProgids" Name="Photocraft.PhotoshopDocument" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.pdn\OpenWithProgids" Name="Photocraft.Image" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.ora\OpenWithProgids" Name="Photocraft.Image" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.kra\OpenWithProgids" Name="Photocraft.Image" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.krz\OpenWithProgids" Name="Photocraft.Image" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.png\OpenWithProgids" Name="Photocraft.Image" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.jpg\OpenWithProgids" Name="Photocraft.Image" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.jpeg\OpenWithProgids" Name="Photocraft.Image" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.tif\OpenWithProgids" Name="Photocraft.Image" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.tiff\OpenWithProgids" Name="Photocraft.Image" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.webp\OpenWithProgids" Name="Photocraft.Image" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.gif\OpenWithProgids" Name="Photocraft.Image" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.bmp\OpenWithProgids" Name="Photocraft.Image" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.tga\OpenWithProgids" Name="Photocraft.Image" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.exr\OpenWithProgids" Name="Photocraft.Image" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.hdr\OpenWithProgids" Name="Photocraft.Image" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.avif\OpenWithProgids" Name="Photocraft.Image" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.qoi\OpenWithProgids" Name="Photocraft.Image" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.ico\OpenWithProgids" Name="Photocraft.Image" Value="" Type="string" />
+-
+-        <!-- "Open with" app list and the Run dialog (Win+R "photocraft"). -->
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe" Name="FriendlyAppName" Value="PhotoCraft" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\shell\open\command" Value="&quot;[#PhotocraftExe]&quot; &quot;%1&quot;" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\SupportedTypes" Name=".pcraft" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\SupportedTypes" Name=".psd" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\SupportedTypes" Name=".psb" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\SupportedTypes" Name=".pdn" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\SupportedTypes" Name=".ora" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\SupportedTypes" Name=".kra" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\SupportedTypes" Name=".krz" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\SupportedTypes" Name=".png" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\SupportedTypes" Name=".jpg" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\SupportedTypes" Name=".jpeg" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\SupportedTypes" Name=".tif" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\SupportedTypes" Name=".tiff" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\SupportedTypes" Name=".webp" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\SupportedTypes" Name=".gif" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\SupportedTypes" Name=".bmp" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\SupportedTypes" Name=".tga" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\SupportedTypes" Name=".exr" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\SupportedTypes" Name=".hdr" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\SupportedTypes" Name=".avif" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\SupportedTypes" Name=".qoi" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\SupportedTypes" Name=".ico" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\photocraft.exe" Value="[#PhotocraftExe]" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\PhotoCraft" Name="InstallDir" Value="[INSTALLFOLDER]" Type="string" />
+-      </Component>
+-
+-      <Component Id="PhotocraftCli">
+-        <File Id="PhotocraftCliExe" Source="$(var.BinDir)\photocraft-cli.exe" KeyPath="yes" />
+-      </Component>
+-    </ComponentGroup>
+-  </Fragment>
+-</Wix>
 diff --git a/packaging/windows/plervo-photo.en-us.wxl b/packaging/windows/plervo-photo.en-us.wxl
 new file mode 100644
 index 0000000..c0ff7c9
@@ -8747,7 +9831,7 @@ index 5dcefce..d33ebd8 100644
  
  try {
 diff --git a/xtask/src/layers.rs b/xtask/src/layers.rs
-index 2128345..a58491f 100644
+index 2128345..3df67b2 100644
 --- a/xtask/src/layers.rs
 +++ b/xtask/src/layers.rs
 @@ -104,7 +104,11 @@ pub const UI_CRATES: &[&str] = &["egui", "eframe", "winit", "egui_kittest", "cra
@@ -8763,3 +9847,18 @@ index 2128345..a58491f 100644
  }
  
  pub fn classify(pkg: &str) -> Option<Class> {
+@@ -199,11 +203,10 @@ pub fn check(crates: &[Crate]) -> Vec<Violation> {
+                 match classify(&d.name) {
+                     // Unregistered deps are reported on their own entry.
+                     None => {}
+-                    Some(Class::Testkit) => {
+-                        if d.kind != DepKind::Dev {
+-                            out.push(Violation::TestkitAsNormalDep { krate: c.name.clone() });
+-                        }
++                    Some(Class::Testkit) if d.kind != DepKind::Dev => {
++                        out.push(Violation::TestkitAsNormalDep { krate: c.name.clone() });
+                     }
++                    Some(Class::Testkit) => {}
+                     Some(dc) => {
+                         let to = dc.layer().unwrap_or(u8::MAX);
+                         if to >= layer && !(to == layer && intra_layer_allowed(&c.name, &d.name)) {

@@ -2,7 +2,7 @@
 #[cfg(target_os = "macos")]
 use std::path::Path;
 
-use plervo_suite_core::catalog::PDF;
+use plervo_suite_core::catalog::{CraftApp, PDF};
 use plervo_suite_core::platform::{Arch, Os, Platform, pick_asset};
 use plervo_suite_core::protocol::JobPhase;
 use plervo_suite_core::{Installed, PackageKind, Release};
@@ -12,6 +12,11 @@ use crate::install::{self, Job};
 #[cfg(not(target_os = "linux"))]
 use crate::manifest::Manifest;
 use crate::paths::Paths;
+
+/// Never accept caller-supplied paths, names or repositories as a product identity.
+pub(crate) fn known_app(app: &CraftApp) -> Result<(), String> {
+    if CraftApp::by_id(app.id).is_some_and(|known| known == app) { Ok(()) } else { Err("Unknown Plervo product. Nothing was changed.".into()) }
+}
 
 /// Platforms with a qualified installer. Windows remains gated on publisher signing.
 pub fn supported_platform() -> Option<Platform> {
@@ -25,16 +30,23 @@ pub fn supported_platform() -> Option<Platform> {
 }
 
 pub fn latest() -> Result<Release, String> {
+    latest_for(&PDF)
+}
+
+pub fn latest_for(app: &CraftApp) -> Result<Release, String> {
+    known_app(app)?;
     let http = Http::new()?;
     match http.get_api("https://api.github.com/repos/alportblu/plervo-pdf/releases?per_page=20", None)? {
-        Fetched::Body { text, .. } => select_release(&text),
+        Fetched::Body { text, .. } => {
+            select_release_for_app(&text, app, supported_platform().ok_or("Downloads are not released on this platform yet.")?)
+        }
         Fetched::RateLimited { .. } => Err("GitHub's request limit was reached. Please try again later.".into()),
         _ => Err("No published release is available yet.".into()),
     }
 }
 
-/// A Suite-only release must never hide a newer usable PDF release. Ignore drafts and entries
-/// without a PDF package; all asset URLs still pass the upstream repository confinement parser.
+/// A release for another product must never hide a usable release. Ignore drafts and entries
+/// without the requested package; all asset URLs still pass the upstream repository confinement parser.
 pub fn select_release(json: &str) -> Result<Release, String> {
     select_release_for(json, supported_platform().unwrap_or(Platform { os: Os::MacOs, arch: Arch::Arm64 }))
 }
@@ -44,6 +56,11 @@ fn kinds(platform: Platform) -> &'static [PackageKind] {
 }
 
 fn select_release_for(json: &str, platform: Platform) -> Result<Release, String> {
+    select_release_for_app(json, &PDF, platform)
+}
+
+fn select_release_for_app(json: &str, app: &CraftApp, platform: Platform) -> Result<Release, String> {
+    known_app(app)?;
     let values: serde_json::Value = serde_json::from_str(json).map_err(|_| "Unreadable release catalog")?;
     let list = values.as_array().ok_or("Invalid release catalog")?;
     let mut best: Option<Release> = None;
@@ -52,43 +69,48 @@ fn select_release_for(json: &str, platform: Platform) -> Result<Release, String>
             continue;
         }
         let Ok(text) = serde_json::to_string(value) else { continue };
-        let Ok(release) = plervo_suite_core::release::parse_github_release(&text, PDF.repo) else { continue };
+        let Ok(release) = plervo_suite_core::release::parse_github_release(&text, app.repo) else { continue };
         let Some(version) = release.version.as_ref() else { continue };
-        if pick_asset(&release, &[PDF.id], platform, kinds(platform)).is_none() {
+        if pick_asset(&release, &[app.id], platform, kinds(platform)).is_none() {
             continue;
         }
         if best.as_ref().and_then(|r| r.version.as_ref()).is_none_or(|old| version > old) {
             best = Some(release);
         }
     }
-    best.ok_or_else(|| "No published PDF release is available yet.".into())
+    best.ok_or_else(|| format!("No published {} release is available for this platform yet.", app.name))
 }
 
 pub fn detected() -> Option<Installed> {
+    detected_for(&PDF)
+}
+
+pub fn detected_for(app: &CraftApp) -> Option<Installed> {
+    known_app(app).ok()?;
     #[cfg(target_os = "linux")]
     {
-        Paths::new().ok().and_then(|paths| crate::managed_linux::detected(&paths).ok().flatten())
+        Paths::new().ok().and_then(|paths| crate::managed_linux::detected_for(app, &paths).ok().flatten())
     }
     #[cfg(not(target_os = "linux"))]
-    crate::detect::detect(&PDF, &Manifest::default(), &crate::detect::Snapshot::take())
+    crate::detect::detect(app, &Manifest::default(), &crate::detect::Snapshot::take())
 }
 
 /// No path provided by the GUI, a manifest, or a release feed can redirect an operation.
 #[cfg(not(target_os = "linux"))]
-fn verify_installed(found: &Installed) -> Result<(), String> {
+fn verify_installed(app: &CraftApp, found: &Installed) -> Result<(), String> {
     #[cfg(target_os = "macos")]
     {
         let path = Path::new(&found.location);
-        if !crate::detect::macos::candidates(&PDF).contains(&path.to_path_buf())
+        if !crate::detect::macos::candidates(app).contains(&path.to_path_buf())
             || path.symlink_metadata().map_err(|e| e.to_string())?.file_type().is_symlink()
             || !install::macos::signed_by(path, install::macos::TEAM_ID)
         {
-            return Err("This installation could not be verified as Plervo PDF. No files were changed.".into());
+            return Err("This installation could not be verified as the selected Plervo app. No files were changed.".into());
         }
     }
     #[cfg(not(target_os = "macos"))]
     {
-        let _ = found;
+        let _ = (app, found);
         return Err("App management is not released on this platform yet.".into());
     }
     #[allow(unreachable_code)]
@@ -96,32 +118,37 @@ fn verify_installed(found: &Installed) -> Result<(), String> {
 }
 
 pub fn install_pdf(release: &Release, paths: &Paths, stop: &Stop, phase: &mut dyn FnMut(JobPhase)) -> Result<(), String> {
+    install_app(&PDF, release, paths, stop, phase)
+}
+
+pub fn install_app(app: &CraftApp, release: &Release, paths: &Paths, stop: &Stop, phase: &mut dyn FnMut(JobPhase)) -> Result<(), String> {
+    known_app(app)?;
     let platform = supported_platform().ok_or("App installation is not released on this platform yet.")?;
-    let (asset, kind) = pick_asset(release, &[PDF.id], platform, kinds(platform)).ok_or("No compatible PDF download in this release.")?;
-    validate_download(release, asset)?;
+    let (asset, kind) = pick_asset(release, &[app.id], platform, kinds(platform)).ok_or("No compatible app download in this release.")?;
+    validate_download_for(app, release, asset)?;
     #[cfg(target_os = "linux")]
     {
-        let existing = crate::managed_linux::detected(paths)?;
+        let existing = crate::managed_linux::detected_for(app, paths)?;
         if let Some(found) = existing {
             refuse_downgrade(found.version.as_ref(), release.version.as_ref())?;
         }
         let file = install::download(release, asset, &mut Job { http: &Http::new()?, paths, stop, phase })?;
         (phase)(JobPhase::Installing);
-        crate::managed_linux::install_archive(&file, &release.version_label(), paths)?;
+        crate::managed_linux::install_archive_for(app, &file, &release.version_label(), paths)?;
         let _ = std::fs::remove_file(file);
         let _ = kind;
         Ok(())
     }
     #[cfg(not(target_os = "linux"))]
     {
-        let existing = detected();
+        let existing = detected_for(app);
         if let Some(found) = &existing {
-            verify_installed(found)?;
+            verify_installed(app, found)?;
             refuse_downgrade(found.version.as_ref(), release.version.as_ref())?;
         }
-        install::install(&PDF, release, asset, kind, existing.as_ref(), None, &mut Job { http: &Http::new()?, paths, stop, phase })?;
-        let found = detected().ok_or("The installed app could not be located.")?;
-        verify_installed(&found)
+        install::install(app, release, asset, kind, existing.as_ref(), None, &mut Job { http: &Http::new()?, paths, stop, phase })?;
+        let found = detected_for(app).ok_or("The installed app could not be located.")?;
+        verify_installed(app, &found)
     }
 }
 
@@ -135,10 +162,16 @@ fn refuse_downgrade(
     Ok(())
 }
 
+#[cfg(test)]
 fn validate_download(release: &Release, asset: &plervo_suite_core::Asset) -> Result<(), String> {
-    let expected = format!("https://github.com/{}/releases/download/{}/{}", PDF.repo, release.tag, asset.name);
+    validate_download_for(&PDF, release, asset)
+}
+
+fn validate_download_for(app: &CraftApp, release: &Release, asset: &plervo_suite_core::Asset) -> Result<(), String> {
+    known_app(app)?;
+    let expected = format!("https://github.com/{}/releases/download/{}/{}", app.repo, release.tag, asset.name);
     let named_version =
-        plervo_suite_core::platform::parse_asset_name(&asset.name, &[PDF.id]).and_then(|name| plervo_suite_core::version::parse(&name.version));
+        plervo_suite_core::platform::parse_asset_name(&asset.name, &[app.id]).and_then(|name| plervo_suite_core::version::parse(&name.version));
     if named_version.is_none()
         || named_version != release.version
         || !plervo_suite_core::release::valid_file_name(&asset.name)
@@ -155,31 +188,41 @@ fn validate_download(release: &Release, asset: &plervo_suite_core::Asset) -> Res
 }
 
 pub fn open_pdf(paths: &Paths) -> Result<(), String> {
+    open_app(&PDF, paths)
+}
+
+pub fn open_app(app: &CraftApp, paths: &Paths) -> Result<(), String> {
+    known_app(app)?;
     #[cfg(target_os = "linux")]
     {
-        crate::managed_linux::open(paths)
+        crate::managed_linux::open_for(app, paths)
     }
     #[cfg(not(target_os = "linux"))]
     {
-        let found = detected().ok_or("Plervo PDF is not installed.")?;
-        verify_installed(&found)?;
-        install::launch(&PDF, &found, paths)
+        let found = detected_for(app).ok_or("The selected Plervo app is not installed.")?;
+        verify_installed(app, &found)?;
+        install::launch(app, &found, paths)
     }
 }
 
 pub fn uninstall_pdf(paths: &Paths, stop: &Stop, phase: &mut dyn FnMut(JobPhase)) -> Result<(), String> {
+    uninstall_app(&PDF, paths, stop, phase)
+}
+
+pub fn uninstall_app(app: &CraftApp, paths: &Paths, stop: &Stop, phase: &mut dyn FnMut(JobPhase)) -> Result<(), String> {
+    known_app(app)?;
     #[cfg(target_os = "linux")]
     {
         stop.check()?;
         (phase)(JobPhase::Removing);
-        crate::managed_linux::uninstall(paths)
+        crate::managed_linux::uninstall_for(app, paths)
     }
     #[cfg(not(target_os = "linux"))]
     {
-        let found = detected().ok_or("Plervo PDF is not installed.")?;
-        verify_installed(&found)?;
+        let found = detected_for(app).ok_or("The selected Plervo app is not installed.")?;
+        verify_installed(app, &found)?;
         // Native macOS removal moves just the application to Trash. Documents and settings stay put.
-        install::uninstall(&PDF, &found, None, paths, stop, phase)
+        install::uninstall(app, &found, None, paths, stop, phase)
     }
 }
 
@@ -191,6 +234,27 @@ mod tests {
         json!({"tag_name": version, "prerelease": true, "draft": false,
             "assets": [{"name": name, "size": 10, "digest": format!("sha256:{}", "a".repeat(64)),
                 "browser_download_url": format!("https://github.com/alportblu/plervo-pdf/releases/download/{version}/{name}")}]})
+    }
+    #[test]
+    fn a_product_cannot_select_or_install_another_products_download() {
+        let photo = CraftApp::by_id("plervo-photo").unwrap();
+        let mac = Platform { os: Os::MacOs, arch: Arch::Arm64 };
+        let list = json!([
+            item("v0.1.0-alpha.4", "plervo-photo-0.1.0-alpha.4-macos-aarch64.dmg"),
+            item("v0.1.0-alpha.5", "plervo-pdf-0.1.0-alpha.5-macos-aarch64.dmg"),
+            item("v0.1.0-alpha.6", "plervo-photo-0.1.0-alpha.6-linux-x86_64.tar.gz")
+        ])
+        .to_string();
+        let release = select_release_for_app(&list, photo, mac).unwrap();
+        assert_eq!(release.tag, "v0.1.0-alpha.4");
+        validate_download_for(photo, &release, &release.assets[0]).unwrap();
+        assert!(validate_download_for(&PDF, &release, &release.assets[0]).is_err());
+        let changed = CraftApp { name: "../Other", ..*photo };
+        assert!(known_app(&changed).is_err());
+        let changed = CraftApp { repo: "foreign/project", ..*photo };
+        assert!(known_app(&changed).is_err());
+        let draft = json!([{"draft": true, "tag_name": "v9.0.0", "assets": []}]);
+        assert!(select_release_for_app(&draft.to_string(), photo, mac).is_err());
     }
     #[test]
     fn a_linux_release_never_hides_the_mac_release_or_another_architecture() {

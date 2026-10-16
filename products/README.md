@@ -39,6 +39,19 @@ prepared snapshot for upstream asset-inventory gates, without creating a commit.
 downloads, installs, signs, or publishes an application. Internal candidates use
 `0.1.0-alpha.4` as a development version; that version is not a public release promise.
 
+## Development validation
+
+The development Suite manages all 13 canonical product identities, with release metadata,
+platform, hash and signing checks kept per product. Buttons become installable only when a
+matching public release exists. The published Suite has not changed during preparation.
+The local Suite management gate passed 103 tests; native product and installer acceptance
+are separate requirements.
+
+Generate the product-scoped dependency policy with
+`cargo xtask products --audit-policy PRODUCT`; the CI uses the same policy. Eight desktop
+candidates disable the unauthenticated UI control transport by default. Their development-only
+`local-control` feature must not be enabled in a public build; headless CLI/MCP still works.
+
 ## Release requirements
 
 - Preserve upstream notices and asset licences; review all new dependency advisories.

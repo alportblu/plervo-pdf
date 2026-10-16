@@ -413,10 +413,10 @@ index 9f4e9d1..6dfe108 100644
  license = "MIT OR Apache-2.0"
  rust-version = "1.95"
 diff --git a/NOTICE b/NOTICE
-index 65ce4c4..5b824dd 100644
+index 65ce4c4..f5ade86 100644
 --- a/NOTICE
 +++ b/NOTICE
-@@ -15,3 +15,7 @@ list (author, source, license) is in ATTRIBUTION.md.
+@@ -15,3 +15,472 @@ list (author, source, license) is in ATTRIBUTION.md.
  Inter (assets/fonts/Inter-*.ttf) — SIL Open Font License 1.1. See assets/fonts/OFL-Inter.txt.
  Noto Serif (assets/fonts/NotoSerif-Regular.ttf) — SIL Open Font License 1.1. See assets/fonts/OFL-NotoSerif.txt.
  JetBrains Mono (assets/fonts/JetBrainsMono-Regular.ttf) — SIL Open Font License 1.1. See assets/fonts/OFL-JetBrainsMono.txt.
@@ -424,6 +424,471 @@ index 65ce4c4..5b824dd 100644
 +Plervo adaptation by AlporT (2026). Product identity and packaging are original Plervo work.
 +Based on storytold/effectcraft at 05955c08b4fd025f1a09882df72e6dbff1a8148a.
 +Original authorship and MIT/Apache-2.0 licenses are preserved. No ArtCraft endorsement.
++
++Plervo dependency source notices (reviewed 2026-10-16)
++==========================================================
++
++The dependencies below are included without source modifications. Their original
++source and copyright notices are available at the exact archive links below.
++MPL-covered source remains available under the MPL; the Plervo MIT/Apache terms
++do not restrict the recipient's rights in those dependencies.
++
++symphonia 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia/0.5.5/download
++SHA-256: 5773a4c030a19d9bfaa090f49746ff35c75dfddfa700df7a5939d5e076a57039
++
++symphonia-bundle-flac 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-bundle-flac/0.5.5/download
++SHA-256: c91565e180aea25d9b80a910c546802526ffd0072d0b8974e3ebe59b686c9976
++
++symphonia-bundle-mp3 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-bundle-mp3/0.5.5/download
++SHA-256: 4872dd6bb56bf5eac799e3e957aa1981086c3e613b27e0ac23b176054f7c57ed
++
++symphonia-codec-aac 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>, Kostya Shishkov <kostya.shiskov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-codec-aac/0.5.5/download
++SHA-256: 4c263845aa86881416849c1729a54c7f55164f8b96111dba59de46849e73a790
++
++symphonia-codec-alac 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-codec-alac/0.5.5/download
++SHA-256: 8413fa754942ac16a73634c9dfd1500ed5c61430956b33728567f667fdd393ab
++
++symphonia-codec-pcm 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-codec-pcm/0.5.5/download
++SHA-256: 4e89d716c01541ad3ebe7c91ce4c8d38a7cf266a3f7b2f090b108fb0cb031d95
++
++symphonia-codec-vorbis 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-codec-vorbis/0.5.5/download
++SHA-256: f025837c309cd69ffef572750b4a2257b59552c5399a5e49707cc5b1b85d1c73
++
++symphonia-core 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-core/0.5.5/download
++SHA-256: ea00cc4f79b7f6bb7ff87eddc065a1066f3a43fe1875979056672c9ef948c2af
++
++symphonia-format-isomp4 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-format-isomp4/0.5.5/download
++SHA-256: 243739585d11f81daf8dac8d9f3d18cc7898f6c09a259675fc364b382c30e0a5
++
++symphonia-format-ogg 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-format-ogg/0.5.5/download
++SHA-256: 2b4955c67c1ed3aa8ae8428d04ca8397fbef6a19b2b051e73b5da8b1435639cb
++
++symphonia-format-riff 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>, dedobbin <dedobbindedobbin@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-format-riff/0.5.5/download
++SHA-256: c2d7c3df0e7d94efb68401d81906eae73c02b40d5ec1a141962c592d0f11a96f
++
++symphonia-metadata 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-metadata/0.5.5/download
++SHA-256: 36306ff42b9ffe6e5afc99d49e121e0bd62fe79b9db7b9681d48e29fa19e6b16
++
++symphonia-utils-xiph 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-utils-xiph/0.5.5/download
++SHA-256: ee27c85ab799a338446b68eec77abf42e1a6f1bb490656e121c6e27bfbab9f16
++
++--- MPL-2.0 ---
++
++Mozilla Public License Version 2.0
++==================================
++
++1. Definitions
++--------------
++
++1.1. "Contributor"
++    means each individual or legal entity that creates, contributes to
++    the creation of, or owns Covered Software.
++
++1.2. "Contributor Version"
++    means the combination of the Contributions of others (if any) used
++    by a Contributor and that particular Contributor's Contribution.
++
++1.3. "Contribution"
++    means Covered Software of a particular Contributor.
++
++1.4. "Covered Software"
++    means Source Code Form to which the initial Contributor has attached
++    the notice in Exhibit A, the Executable Form of such Source Code
++    Form, and Modifications of such Source Code Form, in each case
++    including portions thereof.
++
++1.5. "Incompatible With Secondary Licenses"
++    means
++
++    (a) that the initial Contributor has attached the notice described
++        in Exhibit B to the Covered Software; or
++
++    (b) that the Covered Software was made available under the terms of
++        version 1.1 or earlier of the License, but not also under the
++        terms of a Secondary License.
++
++1.6. "Executable Form"
++    means any form of the work other than Source Code Form.
++
++1.7. "Larger Work"
++    means a work that combines Covered Software with other material, in
++    a separate file or files, that is not Covered Software.
++
++1.8. "License"
++    means this document.
++
++1.9. "Licensable"
++    means having the right to grant, to the maximum extent possible,
++    whether at the time of the initial grant or subsequently, any and
++    all of the rights conveyed by this License.
++
++1.10. "Modifications"
++    means any of the following:
++
++    (a) any file in Source Code Form that results from an addition to,
++        deletion from, or modification of the contents of Covered
++        Software; or
++
++    (b) any new file in Source Code Form that contains any Covered
++        Software.
++
++1.11. "Patent Claims" of a Contributor
++    means any patent claim(s), including without limitation, method,
++    process, and apparatus claims, in any patent Licensable by such
++    Contributor that would be infringed, but for the grant of the
++    License, by the making, using, selling, offering for sale, having
++    made, import, or transfer of either its Contributions or its
++    Contributor Version.
++
++1.12. "Secondary License"
++    means either the GNU General Public License, Version 2.0, the GNU
++    Lesser General Public License, Version 2.1, the GNU Affero General
++    Public License, Version 3.0, or any later versions of those
++    licenses.
++
++1.13. "Source Code Form"
++    means the form of the work preferred for making modifications.
++
++1.14. "You" (or "Your")
++    means an individual or a legal entity exercising rights under this
++    License. For legal entities, "You" includes any entity that
++    controls, is controlled by, or is under common control with You. For
++    purposes of this definition, "control" means (a) the power, direct
++    or indirect, to cause the direction or management of such entity,
++    whether by contract or otherwise, or (b) ownership of more than
++    fifty percent (50%) of the outstanding shares or beneficial
++    ownership of such entity.
++
++2. License Grants and Conditions
++--------------------------------
++
++2.1. Grants
++
++Each Contributor hereby grants You a world-wide, royalty-free,
++non-exclusive license:
++
++(a) under intellectual property rights (other than patent or trademark)
++    Licensable by such Contributor to use, reproduce, make available,
++    modify, display, perform, distribute, and otherwise exploit its
++    Contributions, either on an unmodified basis, with Modifications, or
++    as part of a Larger Work; and
++
++(b) under Patent Claims of such Contributor to make, use, sell, offer
++    for sale, have made, import, and otherwise transfer either its
++    Contributions or its Contributor Version.
++
++2.2. Effective Date
++
++The licenses granted in Section 2.1 with respect to any Contribution
++become effective for each Contribution on the date the Contributor first
++distributes such Contribution.
++
++2.3. Limitations on Grant Scope
++
++The licenses granted in this Section 2 are the only rights granted under
++this License. No additional rights or licenses will be implied from the
++distribution or licensing of Covered Software under this License.
++Notwithstanding Section 2.1(b) above, no patent license is granted by a
++Contributor:
++
++(a) for any code that a Contributor has removed from Covered Software;
++    or
++
++(b) for infringements caused by: (i) Your and any other third party's
++    modifications of Covered Software, or (ii) the combination of its
++    Contributions with other software (except as part of its Contributor
++    Version); or
++
++(c) under Patent Claims infringed by Covered Software in the absence of
++    its Contributions.
++
++This License does not grant any rights in the trademarks, service marks,
++or logos of any Contributor (except as may be necessary to comply with
++the notice requirements in Section 3.4).
++
++2.4. Subsequent Licenses
++
++No Contributor makes additional grants as a result of Your choice to
++distribute the Covered Software under a subsequent version of this
++License (see Section 10.2) or under the terms of a Secondary License (if
++permitted under the terms of Section 3.3).
++
++2.5. Representation
++
++Each Contributor represents that the Contributor believes its
++Contributions are its original creation(s) or it has sufficient rights
++to grant the rights to its Contributions conveyed by this License.
++
++2.6. Fair Use
++
++This License is not intended to limit any rights You have under
++applicable copyright doctrines of fair use, fair dealing, or other
++equivalents.
++
++2.7. Conditions
++
++Sections 3.1, 3.2, 3.3, and 3.4 are conditions of the licenses granted
++in Section 2.1.
++
++3. Responsibilities
++-------------------
++
++3.1. Distribution of Source Form
++
++All distribution of Covered Software in Source Code Form, including any
++Modifications that You create or to which You contribute, must be under
++the terms of this License. You must inform recipients that the Source
++Code Form of the Covered Software is governed by the terms of this
++License, and how they can obtain a copy of this License. You may not
++attempt to alter or restrict the recipients' rights in the Source Code
++Form.
++
++3.2. Distribution of Executable Form
++
++If You distribute Covered Software in Executable Form then:
++
++(a) such Covered Software must also be made available in Source Code
++    Form, as described in Section 3.1, and You must inform recipients of
++    the Executable Form how they can obtain a copy of such Source Code
++    Form by reasonable means in a timely manner, at a charge no more
++    than the cost of distribution to the recipient; and
++
++(b) You may distribute such Executable Form under the terms of this
++    License, or sublicense it under different terms, provided that the
++    license for the Executable Form does not attempt to limit or alter
++    the recipients' rights in the Source Code Form under this License.
++
++3.3. Distribution of a Larger Work
++
++You may create and distribute a Larger Work under terms of Your choice,
++provided that You also comply with the requirements of this License for
++the Covered Software. If the Larger Work is a combination of Covered
++Software with a work governed by one or more Secondary Licenses, and the
++Covered Software is not Incompatible With Secondary Licenses, this
++License permits You to additionally distribute such Covered Software
++under the terms of such Secondary License(s), so that the recipient of
++the Larger Work may, at their option, further distribute the Covered
++Software under the terms of either this License or such Secondary
++License(s).
++
++3.4. Notices
++
++You may not remove or alter the substance of any license notices
++(including copyright notices, patent notices, disclaimers of warranty,
++or limitations of liability) contained within the Source Code Form of
++the Covered Software, except that You may alter any license notices to
++the extent required to remedy known factual inaccuracies.
++
++3.5. Application of Additional Terms
++
++You may choose to offer, and to charge a fee for, warranty, support,
++indemnity or liability obligations to one or more recipients of Covered
++Software. However, You may do so only on Your own behalf, and not on
++behalf of any Contributor. You must make it absolutely clear that any
++such warranty, support, indemnity, or liability obligation is offered by
++You alone, and You hereby agree to indemnify every Contributor for any
++liability incurred by such Contributor as a result of warranty, support,
++indemnity or liability terms You offer. You may include additional
++disclaimers of warranty and limitations of liability specific to any
++jurisdiction.
++
++4. Inability to Comply Due to Statute or Regulation
++---------------------------------------------------
++
++If it is impossible for You to comply with any of the terms of this
++License with respect to some or all of the Covered Software due to
++statute, judicial order, or regulation then You must: (a) comply with
++the terms of this License to the maximum extent possible; and (b)
++describe the limitations and the code they affect. Such description must
++be placed in a text file included with all distributions of the Covered
++Software under the name "LEGAL", and included in all Covered Software
++distributed in Source Code Form. Except to the extent prohibited by
++statute or regulation, such description must be sufficiently detailed
++for a recipient of ordinary skill to be able to understand it.
++
++5. Termination
++--------------
++
++5.1. The rights granted under this License will terminate automatically
++if You fail to comply with any of its terms. However, if You become
++compliant, then the rights granted under this License from a particular
++Contributor are reinstated (a) provisionally, unless and until such
++Contributor explicitly and finally terminates Your grants, and (b) on an
++ongoing basis, if such Contributor fails to notify You of the
++non-compliance by some reasonable means prior to 60 days after You have
++come back into compliance. Moreover, Your grants from a particular
++Contributor are reinstated on an ongoing basis if such Contributor
++notifies You of the non-compliance by some reasonable means, this is the
++first time You have received notice of non-compliance with this License
++from such Contributor, and You become compliant prior to 30 days after
++Your receipt of the notice.
++
++5.2. If You initiate litigation against any entity by asserting a patent
++infringement claim (excluding declaratory judgment actions,
++counter-claims, and cross-claims) alleging that a Contributor Version
++directly or indirectly infringes any patent, then the rights granted to
++You by any and all Contributors for the Covered Software under Section
++2.1 of this License shall terminate.
++
++5.3. In the event of termination under Sections 5.1 or 5.2 above, all
++end user license agreements (excluding distributors and resellers) which
++have been validly granted by You or Your distributors under this License
++prior to termination shall survive termination.
++
++************************************************************************
++*                                                                      *
++*  6. Disclaimer of Warranty                                           *
++*  -------------------------                                           *
++*                                                                      *
++*  Covered Software is provided under this License on an "as is"       *
++*  basis, without warranty of any kind, either expressed, implied, or   *
++*  statutory, including, without limitation, warranties that the       *
++*  Covered Software is free of defects, merchantable, fit for a        *
++*  particular purpose or non-infringing. The entire risk as to the     *
++*  quality and performance of the Covered Software is with You.        *
++*  Should any Covered Software prove defective in any respect, You     *
++*  (not any Contributor) assume the cost of any necessary servicing,   *
++*  repair, or correction. This disclaimer of warranty constitutes an   *
++*  essential part of this License. No use of any Covered Software is   *
++*  authorized under this License except under this disclaimer.         *
++*                                                                      *
++************************************************************************
++
++************************************************************************
++*                                                                      *
++*  7. Limitation of Liability                                          *
++*  --------------------------                                          *
++*                                                                      *
++*  Under no circumstances and under no legal theory, whether tort      *
++*  (including negligence), contract, or otherwise, shall any           *
++*  Contributor, or anyone who distributes Covered Software as          *
++*  permitted above, be liable to You for any direct, indirect,         *
++*  special, incidental, or consequential damages of any character      *
++*  including, without limitation, damages for lost profits, loss of    *
++*  goodwill, work stoppage, computer failure or malfunction, or any    *
++*  and all other commercial damages or losses, even if such party      *
++*  shall have been informed of the possibility of such damages. This   *
++*  limitation of liability shall not apply to liability for death or   *
++*  personal injury resulting from such party's negligence to the       *
++*  extent applicable law prohibits such limitation. Some               *
++*  jurisdictions do not allow the exclusion or limitation of           *
++*  incidental or consequential damages, so this exclusion and          *
++*  limitation may not apply to You.                                    *
++*                                                                      *
++************************************************************************
++
++8. Litigation
++-------------
++
++Any litigation relating to this License may be brought only in the
++courts of a jurisdiction where the defendant maintains its principal
++place of business and such litigation shall be governed by laws of that
++jurisdiction, without reference to its conflict-of-law provisions.
++Nothing in this Section shall prevent a party's ability to bring
++cross-claims or counter-claims.
++
++9. Miscellaneous
++----------------
++
++This License represents the complete agreement concerning the subject
++matter hereof. If any provision of this License is held to be
++unenforceable, such provision shall be reformed only to the extent
++necessary to make it enforceable. Any law or regulation which provides
++that the language of a contract shall be construed against the drafter
++shall not be used to construe this License against a Contributor.
++
++10. Versions of the License
++---------------------------
++
++10.1. New Versions
++
++Mozilla Foundation is the license steward. Except as provided in Section
++10.3, no one other than the license steward has the right to modify or
++publish new versions of this License. Each version will be given a
++distinguishing version number.
++
++10.2. Effect of New Versions
++
++You may distribute the Covered Software under the terms of the version
++of the License under which You originally received the Covered Software,
++or under the terms of any subsequent version published by the license
++steward.
++
++10.3. Modified Versions
++
++If you create software not governed by this License, and you want to
++create a new license for such software, you may create and use a
++modified version of this License if you rename the license and remove
++any references to the name of the license steward (except to note that
++such modified license differs from this License).
++
++10.4. Distributing Source Code Form that is Incompatible With Secondary
++Licenses
++
++If You choose to distribute Source Code Form that is Incompatible With
++Secondary Licenses under the terms of this version of the License, the
++notice described in Exhibit B of this License must be attached.
++
++Exhibit A - Source Code Form License Notice
++-------------------------------------------
++
++  This Source Code Form is subject to the terms of the Mozilla Public
++  License, v. 2.0. If a copy of the MPL was not distributed with this
++  file, You can obtain one at https://mozilla.org/MPL/2.0/.
++
++If it is not possible or desirable to put the notice in a particular
++file, then You may include the notice in a location (such as a LICENSE
++file in a relevant directory) where a recipient would be likely to look
++for such a notice.
++
++You may add additional accurate notices of copyright ownership.
++
++Exhibit B - "Incompatible With Secondary Licenses" Notice
++---------------------------------------------------------
++
++  This Source Code Form is "Incompatible With Secondary Licenses", as
++  defined by the Mozilla Public License, v. 2.0.
++
++
 diff --git a/README.md b/README.md
 index 914a409..283ad99 100644
 --- a/README.md
@@ -1193,10 +1658,10 @@ index b3a858d..1afa529 100644
          // The tab closes without a clean exit: the next visit offers the auto-save.
          let mut b = Session { config: Some(Arc::new(WebConfig::new(s.clone()))), ..Default::default() };
 diff --git a/apps/effectcraft/Cargo.toml b/apps/effectcraft/Cargo.toml
-index 5ad6c80..a24c78c 100644
+index 5ad6c80..831e5c3 100644
 --- a/apps/effectcraft/Cargo.toml
 +++ b/apps/effectcraft/Cargo.toml
-@@ -1,10 +1,12 @@
+@@ -1,14 +1,21 @@
  [package]
 -name = "effectcraft"
 +name = "plervo-motion"
@@ -1211,6 +1676,15 @@ index 5ad6c80..a24c78c 100644
  
  [lints]
  workspace = true
+ 
++[features]
++# Unreviewed loopback automation is excluded from public Plervo builds.
++# Headless CLI/MCP remains available. Enable only in an isolated development environment.
++local-control = []
++
+ [dependencies]
+ effectcraft-engine = { workspace = true }
+ effectcraft-host = { workspace = true }
 diff --git a/apps/effectcraft/build.rs b/apps/effectcraft/build.rs
 index 50eb5f3..460d7d2 100644
 --- a/apps/effectcraft/build.rs
@@ -1326,6 +1800,39 @@ index b590c7a..0d65688 100644
  //! pass paths on the command line: LaunchServices sends the running (or just-launched) app a
  //! `kAEOpenDocuments` ('odoc') Apple event. winit 0.30 doesn't handle it and owns the
  //! `NSApplicationDelegate`, so the project never opened. Handling it ourselves needs Objective-C
+diff --git a/apps/effectcraft/src/control_server.rs b/apps/effectcraft/src/control_server.rs
+index 0ae8bfa..94b7403 100644
+--- a/apps/effectcraft/src/control_server.rs
++++ b/apps/effectcraft/src/control_server.rs
+@@ -24,6 +24,10 @@ pub const MAX_CONNECTIONS: usize = 16;
+ 
+ pub fn start(port: u16, ctx: egui::Context) -> Receiver<ControlRequest> {
+     let (tx, rx) = channel::<ControlRequest>();
++    if !cfg!(feature = "local-control") {
++        log::error!("local control is disabled in public Plervo builds; use headless CLI/MCP");
++        return rx;
++    }
+     let listener = match TcpListener::bind(("127.0.0.1", port)) {
+         Ok(l) => l,
+         Err(e) => {
+@@ -272,3 +276,17 @@ mod tests {
+         drop(held);
+     }
+ }
++
++#[cfg(all(test, not(feature = "local-control")))]
++mod plervo_release_boundary {
++    #[test]
++    fn public_build_never_opens_the_control_port() {
++        let reserved = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
++        let address = reserved.local_addr().unwrap();
++        let port = address.port();
++        drop(reserved);
++        let receiver = super::start(port, egui::Context::default());
++        assert!(matches!(receiver.try_recv(), Err(std::sync::mpsc::TryRecvError::Disconnected)));
++        assert!(std::net::TcpStream::connect_timeout(&address, std::time::Duration::from_millis(100)).is_err());
++    }
++}
 diff --git a/apps/effectcraft/src/launch_guard.rs b/apps/effectcraft/src/launch_guard.rs
 index fac91c0..0d98b52 100644
 --- a/apps/effectcraft/src/launch_guard.rs
@@ -2105,20 +2612,24 @@ index 68e761a..d99032e 100644
  workspace = true
  
 diff --git a/crates/engine/src/commands/help.rs b/crates/engine/src/commands/help.rs
-index c6f315f..fac4db5 100644
+index c6f315f..4748d24 100644
 --- a/crates/engine/src/commands/help.rs
 +++ b/crates/engine/src/commands/help.rs
-@@ -31,8 +31,8 @@ fn docs(s: &mut Session, p: &Value) -> Result<Value> {
+@@ -31,10 +31,10 @@ fn docs(s: &mut Session, p: &Value) -> Result<Value> {
  pub fn specs() -> Vec<CommandSpec> {
      vec![
          cmd!("help.docs", "EffectCraft Help...", [], Some("F1"), "{page?: help|scripting|expressions|effects|agents}", always, docs),
 -        cmd!("help.discord", "Join the ArtCraft Discord...", ["Help"], None, "{}", always, |s, _| open(s, links::DISCORD.into())),
 -        cmd!("help.website", "ArtCraft Website", ["Help"], None, "{}", always, |s, _| open(s, links::WEBSITE.into())),
+-        cmd!("help.appPage", "EffectCraft Home Page", ["Help"], None, "{}", always, |s, _| open(s, links::APP_PAGE.into())),
+-        cmd!("help.github", "EffectCraft on GitHub", ["Help"], None, "{}", always, |s, _| open(s, links::GITHUB.into())),
 +        cmd!("help.discord", "Support Plervo", ["Help"], None, "{}", always, |s, _| open(s, links::DISCORD.into())),
 +        cmd!("help.website", "Plervo Website", ["Help"], None, "{}", always, |s, _| open(s, links::WEBSITE.into())),
-         cmd!("help.appPage", "EffectCraft Home Page", ["Help"], None, "{}", always, |s, _| open(s, links::APP_PAGE.into())),
-         cmd!("help.github", "EffectCraft on GitHub", ["Help"], None, "{}", always, |s, _| open(s, links::GITHUB.into())),
++        cmd!("help.appPage", "Plervo Motion Home Page", ["Help"], None, "{}", always, |s, _| open(s, links::APP_PAGE.into())),
++        cmd!("help.github", "Plervo Motion on GitHub", ["Help"], None, "{}", always, |s, _| open(s, links::GITHUB.into())),
          cmd!("help.onlineTutorials", "Online Tutorials...", ["Help"], None, "{}", always, |s, _| open(s, links::APP_PAGE.into())),
+         cmd!("help.inAppTutorials", "In-App Tutorials...", ["Help"], None, "{} → the Home screen's Learn tab", always, |s, p| super::frontend(
+             s,
 diff --git a/crates/engine/src/links.rs b/crates/engine/src/links.rs
 index 0a0ad48..16ffb0d 100644
 --- a/crates/engine/src/links.rs
@@ -2170,24 +2681,28 @@ index 0a0ad48..16ffb0d 100644
 +    APP_PAGE.to_owned()
  }
 diff --git a/crates/engine/src/menus.rs b/crates/engine/src/menus.rs
-index bc486a0..3ff02d4 100644
+index bc486a0..9cad88a 100644
 --- a/crates/engine/src/menus.rs
 +++ b/crates/engine/src/menus.rs
-@@ -1244,10 +1244,10 @@ Help
+@@ -1244,12 +1244,12 @@ Help
    Enable Logging | help.enableLogging
    Reveal Logging File | help.revealLogFile
    ---
 -  Join the ArtCraft Discord... | help.discord
-+  Support Plervo... | help.discord
++  Support Plervo | help.discord
    Provide Feedback... | help.reportIssue
    ---
 -  ArtCraft Website | help.website
+-  EffectCraft Home Page | help.appPage
+-  EffectCraft on GitHub | help.github
 +  Plervo Website | help.website
-   EffectCraft Home Page | help.appPage
-   EffectCraft on GitHub | help.github
++  Plervo Motion Home Page | help.appPage
++  Plervo Motion on GitHub | help.github
    Open Demo Project | file.openDemoProject
+   [!mac] ---
+   [!mac] About EffectCraft... | app.about
 diff --git a/crates/engine/src/tests.rs b/crates/engine/src/tests.rs
-index 72133c5..f7330f1 100644
+index 72133c5..1bd51f6 100644
 --- a/crates/engine/src/tests.rs
 +++ b/crates/engine/src/tests.rs
 @@ -380,9 +380,9 @@ fn save_and_open_roundtrip() {
@@ -2195,9 +2710,10 @@ index 72133c5..f7330f1 100644
      let mut s = Session::default();
      let r = s.execute("help.discord", json!({})).unwrap();
 -    assert_eq!(r["url"], "https://discord.gg/artcraft");
-+    assert_eq!(r["url"], "https://buymeacoffee.com/alport");
-     assert!(s.drain_events().iter().any(|e| matches!(e, crate::Event::OpenUrl(u) if u.contains("discord"))));
+-    assert!(s.drain_events().iter().any(|e| matches!(e, crate::Event::OpenUrl(u) if u.contains("discord"))));
 -    assert_eq!(s.execute("help.github", json!({})).unwrap()["url"], "https://github.com/storytold/effectcraft");
++    assert_eq!(r["url"], "https://buymeacoffee.com/alport");
++    assert!(s.drain_events().iter().any(|e| matches!(e, crate::Event::OpenUrl(u) if u == "https://buymeacoffee.com/alport")));
 +    assert_eq!(s.execute("help.github", json!({})).unwrap()["url"], "https://github.com/alportblu/plervo-pdf");
  }
  
@@ -4548,6 +5064,20 @@ index fe2e767..bff07f9 100644
  [lints]
  workspace = true
  
+diff --git a/docs/control-protocol.md b/docs/control-protocol.md
+index 5f7a3b5..bcf0472 100644
+--- a/docs/control-protocol.md
++++ b/docs/control-protocol.md
+@@ -1,3 +1,9 @@
++> **Plervo public-build boundary:** this unauthenticated loopback transport is disabled in
++> distributed binaries. Normal editing and headless CLI/MCP continue to work.
++> `--control`/the control-port environment variable do not open a socket. The
++> `local-control` Cargo feature is for isolated development only; it must not be
++> enabled in a public artifact until authentication and replay/resource limits are reviewed.
++
+ # Control protocol
+ 
+ The desktop app exposes a control channel for agents, tests and the MCP bridge:
 diff --git a/packaging/env.sh b/packaging/env.sh
 index 6a1bfa2..ad071b1 100644
 --- a/packaging/env.sh
@@ -4740,6 +5270,103 @@ index afeb13f..8dbd545 100755
 +  echo "warning: iconutil not found (macOS only); plervo-motion.icns not regenerated" >&2
  fi
  echo "icons written to $DIR"
+diff --git a/packaging/linux/ai.storyteller.effectcraft.desktop b/packaging/linux/ai.storyteller.effectcraft.desktop
+deleted file mode 100644
+index f7cf2dc..0000000
+--- a/packaging/linux/ai.storyteller.effectcraft.desktop
++++ /dev/null
+@@ -1,13 +0,0 @@
+-[Desktop Entry]
+-Type=Application
+-Name=EffectCraft
+-GenericName=Motion Graphics Editor
+-Comment=Motion graphics and visual effects compositor
+-Exec=effectcraft %F
+-TryExec=effectcraft
+-Icon=ai.storyteller.effectcraft
+-Terminal=false
+-StartupNotify=true
+-StartupWMClass=ai.storyteller.effectcraft
+-Categories=AudioVideo;Video;Graphics;2DGraphics;
+-Keywords=motion;graphics;animation;compositor;effects;keyframe;vfx;
+diff --git a/packaging/linux/ai.storyteller.effectcraft.metainfo.xml.in b/packaging/linux/ai.storyteller.effectcraft.metainfo.xml.in
+deleted file mode 100644
+index d8377c4..0000000
+--- a/packaging/linux/ai.storyteller.effectcraft.metainfo.xml.in
++++ /dev/null
+@@ -1,63 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
+-     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
+-<component type="desktop-application">
+-  <id>ai.storyteller.effectcraft</id>
+-  <metadata_license>CC0-1.0</metadata_license>
+-  <project_license>MIT OR Apache-2.0</project_license>
+-  <name>EffectCraft</name>
+-  <summary>Motion graphics and visual effects compositor</summary>
+-  <developer id="ai.storyteller">
+-    <name>Learning Machines LLC</name>
+-  </developer>
+-  <description>
+-    <p>
+-      EffectCraft is an open-source motion graphics and visual effects compositor: layers with
+-      keyframes and a graph editor, masks and shapes, text animators, expressions, 3D cameras and
+-      lights, over 300 effects and a render queue, with GPU compositing.
+-    </p>
+-  </description>
+-  <launchable type="desktop-id">ai.storyteller.effectcraft.desktop</launchable>
+-  <icon type="stock">ai.storyteller.effectcraft</icon>
+-  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
+-  <url type="homepage">https://getartcraft.com/apps/effectcraft</url>
+-  <url type="bugtracker">https://github.com/storytold/effectcraft/issues</url>
+-  <url type="help">https://github.com/storytold/effectcraft</url>
+-  <url type="contact">https://discord.gg/artcraft</url>
+-  <categories>
+-    <category>Graphics</category>
+-    <category>RasterGraphics</category>
+-    <category>Photography</category>
+-  </categories>
+-  <keywords>
+-    <keyword>photo</keyword>
+-    <keyword>image editor</keyword>
+-    <keyword>psd</keyword>
+-    <keyword>layers</keyword>
+-  </keywords>
+-  <screenshots>
+-    <screenshot type="default">
+-      <caption>Editing The Great Wave off Kanagawa with type layers and adjustment layers</caption>
+-      <image>https://raw.githubusercontent.com/storytold/effectcraft/main/docs/images/effectcraft-demo.jpg</image>
+-    </screenshot>
+-  </screenshots>
+-  <branding>
+-    <color type="primary" scheme_preference="light">#9fd0ff</color>
+-    <color type="primary" scheme_preference="dark">#1f64ba</color>
+-  </branding>
+-  <requires>
+-    <display_length compare="ge">760</display_length>
+-  </requires>
+-  <supports>
+-    <control>keyboard</control>
+-    <control>pointing</control>
+-    <control>tablet</control>
+-  </supports>
+-  <provides>
+-    <binary>effectcraft</binary>
+-  </provides>
+-  <content_rating type="oars-1.1"/>
+-  <releases>
+-    <release version="@VERSION@" date="@DATE@"/>
+-  </releases>
+-</component>
+diff --git a/packaging/linux/ai.storyteller.effectcraft.mime.xml b/packaging/linux/ai.storyteller.effectcraft.mime.xml
+deleted file mode 100644
+index be4dcc2..0000000
+--- a/packaging/linux/ai.storyteller.effectcraft.mime.xml
++++ /dev/null
+@@ -1,3 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+-</mime-info>
 diff --git a/packaging/linux/com.plervo.motion.desktop b/packaging/linux/com.plervo.motion.desktop
 new file mode 100644
 index 0000000..efb8c5c
@@ -4903,6 +5530,150 @@ index d5dcdfc..22f4313 100755
    flatpak run --command=sh "$APP_ID" -c 'ls /app/share/applications /app/share/metainfo /app/share/mime/packages /app/share/icons/hicolor/scalable/apps'
  fi
  echo "==> done"
+diff --git a/packaging/linux/flatpak/ai.storyteller.effectcraft.bundle.yml b/packaging/linux/flatpak/ai.storyteller.effectcraft.bundle.yml
+deleted file mode 100644
+index f1074cd..0000000
+--- a/packaging/linux/flatpak/ai.storyteller.effectcraft.bundle.yml
++++ /dev/null
+@@ -1,56 +0,0 @@
+-# Flatpak manifest for the single-file bundle attached to every GitHub release
+-# (effectcraft-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
+-#
+-# It repackages the release's own Linux tarball (effectcraft-<version>-linux-<arch>.tar.gz,
+-# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
+-# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
+-# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
+-# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
+-# Wayland, xkbcommon, ALSA and Vulkan at runtime; the freedesktop runtime has all of them, and
+-# the GPU driver comes from its org.freedesktop.Platform.GL extension.
+-#
+-# ai.storyteller.effectcraft.yml (same directory) is the from-source manifest for Flathub. Keep
+-# runtime-version and finish-args identical in both (packaging-lint checks this).
+-id: ai.storyteller.effectcraft
+-runtime: org.freedesktop.Platform
+-runtime-version: '25.08'
+-sdk: org.freedesktop.Sdk
+-command: effectcraft
+-finish-args:
+-  # Display: Wayland first; X11 only when no Wayland compositor is running.
+-  - --socket=wayland
+-  - --socket=fallback-x11
+-  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
+-  - --share=ipc
+-  # GPU access for the wgpu compositor and renderer (Vulkan, or GL as a fallback).
+-  - --device=dri
+-  # Audio preview and playback (cpal through ALSA, which the runtime routes to PulseAudio or
+-  # PipeWire's Pulse server).
+-  - --socket=pulseaudio
+-  # The optional trained models (Settings ▸ Roto Brush, Settings ▸ Face Tracking) download only
+-  # when the user asks, over HTTPS with curl. It also lets host agents reach the optional
+-  # --control server (127.0.0.1). No telemetry: nothing else uses the network.
+-  - --share=network
+-  # Open/Save and import dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
+-  # drag-and-drop through the document portal, so picked files work anywhere without broad
+-  # filesystem access. Pictures, Videos and Documents are granted so files passed by path (the
+-  # command line, Open Recent, footage a project links to, Render Queue output) work in the
+-  # usual places.
+-  - --filesystem=xdg-pictures
+-  - --filesystem=xdg-videos
+-  - --filesystem=xdg-documents
+-  # Deliberately not granted: home/host filesystem access.
+-modules:
+-  - name: effectcraft
+-    buildsystem: simple
+-    build-commands:
+-      - install -Dm755 bin/effectcraft /app/bin/effectcraft
+-      - install -Dm755 bin/effectcraft-cli /app/bin/effectcraft-cli
+-      - install -Dm644 share/applications/ai.storyteller.effectcraft.desktop /app/share/applications/ai.storyteller.effectcraft.desktop
+-      - install -Dm644 share/mime/packages/ai.storyteller.effectcraft.xml /app/share/mime/packages/ai.storyteller.effectcraft.xml
+-      # Already has the release's version and date substituted by package.sh.
+-      - install -Dm644 share/metainfo/ai.storyteller.effectcraft.metainfo.xml /app/share/metainfo/ai.storyteller.effectcraft.metainfo.xml
+-      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/effectcraft /app/share/doc/
+-    sources:
+-      - type: dir
+-        path: stage
+diff --git a/packaging/linux/flatpak/ai.storyteller.effectcraft.yml b/packaging/linux/flatpak/ai.storyteller.effectcraft.yml
+deleted file mode 100644
+index be9f898..0000000
+--- a/packaging/linux/flatpak/ai.storyteller.effectcraft.yml
++++ /dev/null
+@@ -1,76 +0,0 @@
+-# Flatpak manifest for EffectCraft, ready for a Flathub submission.
+-#
+-# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
+-#
+-#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
+-#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
+-#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.effectcraft.yml
+-#   flatpak run ai.storyteller.effectcraft
+-#
+-# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
+-#
+-# ai.storyteller.effectcraft.bundle.yml (same directory) builds the .flatpak attached to each
+-# release from the release's Linux tarball. Keep runtime-version and finish-args identical in both
+-# (packaging-lint checks this).
+-id: ai.storyteller.effectcraft
+-runtime: org.freedesktop.Platform
+-runtime-version: '25.08'
+-sdk: org.freedesktop.Sdk
+-sdk-extensions:
+-  - org.freedesktop.Sdk.Extension.rust-stable
+-command: effectcraft
+-finish-args:
+-  # Display: Wayland first; X11 only when no Wayland compositor is running.
+-  - --socket=wayland
+-  - --socket=fallback-x11
+-  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
+-  - --share=ipc
+-  # GPU access for the wgpu compositor and renderer (Vulkan, or GL as a fallback).
+-  - --device=dri
+-  # Audio preview and playback (cpal through ALSA, which the runtime routes to PulseAudio or
+-  # PipeWire's Pulse server).
+-  - --socket=pulseaudio
+-  # The optional trained models (Settings ▸ Roto Brush, Settings ▸ Face Tracking) download only
+-  # when the user asks, over HTTPS with curl. It also lets host agents reach the optional
+-  # --control server (127.0.0.1). No telemetry: nothing else uses the network.
+-  - --share=network
+-  # Open/Save and import dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
+-  # drag-and-drop through the document portal, so picked files work anywhere without broad
+-  # filesystem access. Pictures, Videos and Documents are granted so files passed by path (the
+-  # command line, Open Recent, footage a project links to, Render Queue output) work in the
+-  # usual places.
+-  - --filesystem=xdg-pictures
+-  - --filesystem=xdg-videos
+-  - --filesystem=xdg-documents
+-  # Deliberately not granted: home/host filesystem access.
+-build-options:
+-  append-path: /usr/lib/sdk/rust-stable/bin
+-modules:
+-  - name: effectcraft
+-    buildsystem: simple
+-    build-options:
+-      env:
+-        CARGO_HOME: /run/build/effectcraft/cargo
+-        CARGO_NET_OFFLINE: 'true'
+-    build-commands:
+-      - cargo --offline build --release --locked -p effectcraft -p effectcraft-cli
+-      - install -Dm755 target/release/effectcraft /app/bin/effectcraft
+-      - install -Dm755 target/release/effectcraft-cli /app/bin/effectcraft-cli
+-      - install -Dm644 packaging/linux/ai.storyteller.effectcraft.desktop /app/share/applications/ai.storyteller.effectcraft.desktop
+-      - install -Dm644 packaging/linux/ai.storyteller.effectcraft.mime.xml /app/share/mime/packages/ai.storyteller.effectcraft.xml
+-      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
+-      - >-
+-        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
+-        install -d /app/share/metainfo;
+-        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+-        packaging/linux/ai.storyteller.effectcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.effectcraft.metainfo.xml
+-    sources:
+-      - type: dir
+-        path: ../../..
+-        skip:
+-          - target
+-          - dist
+-          - corpus
+-          - build-flatpak
+-          - .flatpak-builder
+-      - cargo-sources.json
 diff --git a/packaging/linux/flatpak/com.plervo.motion.bundle.yml b/packaging/linux/flatpak/com.plervo.motion.bundle.yml
 new file mode 100644
 index 0000000..00965af
@@ -5657,6 +6428,113 @@ index 89d767e..61f1b85 100755
  WORK="$CARGO_TARGET_DIR/web-package"
  rm -rf "$WORK"
  mkdir -p "$WORK/$NAME"
+diff --git a/packaging/windows/effectcraft.wxs b/packaging/windows/effectcraft.wxs
+deleted file mode 100644
+index 00b0c5d..0000000
+--- a/packaging/windows/effectcraft.wxs
++++ /dev/null
+@@ -1,101 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<!--
+-  EffectCraft MSI (WiX Toolset v5: `dotnet tool install -g wix`). Built by package.ps1:
+-
+-    wix build effectcraft.wxs installer-ui.wxs -arch x64 -d Version=1.2.3 -d BinDir=... -d IconPath=... -o out.msi
+-
+-  Per-machine install into Program Files (or a folder the user picks), a Start Menu shortcut and,
+-  unless DESKTOPSHORTCUT=0 (the wizard's "Create a desktop shortcut" box), a desktop shortcut.
+--->
+-<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+-  <Package
+-      Name="EffectCraft"
+-      Manufacturer="Learning Machines LLC"
+-      Version="$(var.Version)"
+-      UpgradeCode="AACA8593-C6ED-40A8-BA6C-CB325D8529F9"
+-      Scope="perMachine"
+-      Compressed="yes"
+-      Language="1033">
+-    <SummaryInformation Description="EffectCraft motion graphics and visual effects" Manufacturer="Learning Machines LLC" />
+-    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
+-         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
+-    <MajorUpgrade AllowSameVersionUpgrades="yes"
+-        DowngradeErrorMessage="A newer version of EffectCraft is already installed." />
+-    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+-    <!-- The setup wizard (installer-ui.wxs): pick the folder on a fresh install. -->
+-    <UIRef Id="EffectcraftUI" />
+-
+-    <Icon Id="EffectcraftIcon.ico" SourceFile="$(var.IconPath)" />
+-    <Property Id="ARPPRODUCTICON" Value="EffectcraftIcon.ico" />
+-    <Property Id="ARPURLINFOABOUT" Value="https://getartcraft.com/apps/effectcraft" />
+-    <Property Id="ARPURLUPDATEINFO" Value="https://getartcraft.com/apps/effectcraft" />
+-    <Property Id="ARPHELPLINK" Value="https://discord.gg/artcraft" />
+-
+-    <!-- An upgrade, repair or silent reinstall goes where the installed copy already is: the App Paths
+-         "Path" value written below, or for releases before this installer change (no Path value; they
+-         could be put elsewhere with INSTALLFOLDER=...) the folder of the effectcraft.exe that App Paths names. A
+-         "file" search with no FileSearch inside yields that file's folder. A folder passed on the
+-         command line (INSTALLFOLDER=...) wins. -->
+-    <Property Id="INSTALLFOLDER" Secure="yes" />
+-    <Property Id="PREVIOUSINSTALLFOLDER" Secure="yes">
+-      <RegistrySearch Id="PreviousInstallFolder" Root="HKLM" Type="directory"
+-          Key="Software\Microsoft\Windows\CurrentVersion\App Paths\effectcraft.exe" Name="Path" />
+-    </Property>
+-    <Property Id="PREVIOUSEXEFOLDER" Secure="yes">
+-      <RegistrySearch Id="PreviousExeFolder" Root="HKLM" Type="file"
+-          Key="Software\Microsoft\Windows\CurrentVersion\App Paths\effectcraft.exe" />
+-    </Property>
+-    <SetProperty Id="INSTALLFOLDER" Value="[PREVIOUSINSTALLFOLDER]" After="AppSearch" Sequence="both"
+-        Condition="PREVIOUSINSTALLFOLDER AND NOT INSTALLFOLDER" />
+-    <SetProperty Id="INSTALLFOLDER" Action="SetINSTALLFOLDERFromExe" Value="[PREVIOUSEXEFOLDER]"
+-        After="SetINSTALLFOLDER" Sequence="both" Condition="PREVIOUSEXEFOLDER AND NOT INSTALLFOLDER" />
+-
+-    <!-- The desktop shortcut: on by default for a fresh install (a box in the wizard, or
+-         DESKTOPSHORTCUT=0 silently); an upgrade keeps what the installed copy chose, and adds none
+-         to an install from before this option. -->
+-    <Property Id="DESKTOPSHORTCUT" Value="1" Secure="yes" />
+-    <Property Id="PREVIOUSDESKTOPSHORTCUT" Secure="yes">
+-      <RegistrySearch Id="PreviousDesktopShortcut" Root="HKLM" Type="raw" Key="Software\EffectCraft" Name="DesktopShortcut" />
+-    </Property>
+-    <SetProperty Id="DESKTOPSHORTCUT" Value="[PREVIOUSDESKTOPSHORTCUT]" After="SetINSTALLFOLDERFromExe" Sequence="both"
+-        Condition="WIX_UPGRADE_DETECTED" />
+-
+-    <StandardDirectory Id="ProgramFiles6432Folder">
+-      <Directory Id="INSTALLFOLDER" Name="EffectCraft" />
+-    </StandardDirectory>
+-    <StandardDirectory Id="ProgramMenuFolder" />
+-    <StandardDirectory Id="DesktopFolder" />
+-
+-    <Feature Id="Main" Title="EffectCraft" Level="1">
+-      <ComponentGroupRef Id="EffectcraftFiles" />
+-    </Feature>
+-  </Package>
+-
+-  <Fragment>
+-    <ComponentGroup Id="EffectcraftFiles" Directory="INSTALLFOLDER">
+-      <Component Id="EffectcraftApp" Guid="BA719860-95FE-4154-B265-47006B8E9083">
+-        <File Id="EffectcraftExe" Source="$(var.BinDir)\effectcraft.exe" KeyPath="yes">
+-          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="EffectCraft"
+-              Description="EffectCraft motion graphics and visual effects" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
+-              Icon="EffectcraftIcon.ico" IconIndex="0" />
+-        </File>
+-
+-        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\effectcraft.exe" Value="[#EffectcraftExe]" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\effectcraft.exe" Name="Path" Value="[INSTALLFOLDER]" Type="string" />
+-        <!-- The desktop shortcut choice, for the next upgrade (empty: none). -->
+-        <RegistryValue Root="HKLM" Key="Software\EffectCraft" Name="DesktopShortcut" Value="[DESKTOPSHORTCUT]" Type="string" />
+-      </Component>
+-
+-      <Component Id="EffectcraftCli">
+-        <File Id="EffectcraftCliExe" Source="$(var.BinDir)\effectcraft-cli.exe" KeyPath="yes" />
+-      </Component>
+-
+-      <!-- A component under the user's profile folders needs an HKCU key path (ICE38, ICE43). -->
+-      <Component Id="DesktopShortcut" Directory="DesktopFolder" Condition="DESKTOPSHORTCUT = &quot;1&quot;">
+-        <Shortcut Id="DesktopShortcut" Name="EffectCraft" Description="EffectCraft motion graphics and visual effects"
+-            Target="[#EffectcraftExe]" WorkingDirectory="INSTALLFOLDER" Icon="EffectcraftIcon.ico" IconIndex="0" />
+-        <RegistryValue Root="HKCU" Key="Software\EffectCraft" Name="DesktopShortcut" Value="1" Type="string" KeyPath="yes" />
+-      </Component>
+-    </ComponentGroup>
+-  </Fragment>
+-</Wix>
 diff --git a/packaging/windows/installer-ui.wxs b/packaging/windows/installer-ui.wxs
 index 16ab58d..4454754 100644
 --- a/packaging/windows/installer-ui.wxs

@@ -100,6 +100,31 @@ fn git_output(root: &Path, args: &[&str]) -> Result<String> {
     Ok(String::from_utf8(result.stdout)?.trim().to_owned())
 }
 
+fn audit_policy(product: &Product) -> Result<String> {
+    let mut policy: toml::Value = toml::from_str(include_str!("../../products/deny.toml"))?;
+    let ignores =
+        policy.get_mut("advisories").and_then(|v| v.get_mut("ignore")).and_then(toml::Value::as_array_mut).context("missing advisory policy")?;
+    let mut add = |id: &str, reason: &str| {
+        ignores.push(toml::Value::Table(toml::map::Map::from_iter([
+            ("id".into(), toml::Value::String(id.into())),
+            ("reason".into(), toml::Value::String(reason.into())),
+        ])));
+    };
+    if matches!(product.product.as_str(), "video" | "develop") {
+        add(
+            "RUSTSEC-2023-0071",
+            "Reviewed 2026-10-16: model-download TLS verifies public server keys only; no client authentication, and the provider rejects every private key. Valid-key regression required. RSA itself is not patched; this exception does not authorize RSA signing/decryption.",
+        );
+    }
+    if product.product == "develop" {
+        add(
+            "RUSTSEC-2026-0192",
+            "Reviewed 2026-10-16: ab_glyph watermark rasterization parses only compile-time embedded Inter and pinned craft-fonts; no user font input. Maintenance advisory, not a known vulnerability. Retain watermark regression tests; migrate rasterization through a reviewed upstream update.",
+        );
+    }
+    Ok(toml::to_string_pretty(&policy)?)
+}
+
 pub fn run(args: &[String]) -> Result<()> {
     let root = crate::gates::root();
     let products: Vec<Product> = serde_json::from_slice(&fs::read(root.join("products/sources.json"))?)?;
@@ -124,6 +149,10 @@ pub fn run(args: &[String]) -> Result<()> {
                 .map(|p| serde_json::json!({"app":p.app,"product":p.product,"upstream":p.source_repository,"commit":p.commit,"fonts":p.fonts_commit}))
                 .collect();
             println!("{}", serde_json::json!({"include":include}));
+        }
+        ["--audit-policy", name] => {
+            let product = products.iter().find(|p| p.product == *name).context("unknown product")?;
+            print!("{}", audit_policy(product)?);
         }
         ["--prepare", name, checkout] => {
             let product = products.iter().find(|p| p.product == *name).context("unknown product")?;
@@ -177,7 +206,7 @@ pub fn run(args: &[String]) -> Result<()> {
             git_output(&checkout, &["add", "--all"])?;
             println!("Prepared {} from {}; no app was installed or published.", product.name, product.commit);
         }
-        _ => bail!("usage: cargo xtask products [--matrix | --prepare PRODUCT CLEAN_CHECKOUT]"),
+        _ => bail!("usage: cargo xtask products [--matrix | --audit-policy PRODUCT | --prepare PRODUCT CLEAN_CHECKOUT]"),
     }
     Ok(())
 }
@@ -185,6 +214,20 @@ pub fn run(args: &[String]) -> Result<()> {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn applicability_exceptions_cannot_spread_to_unreviewed_products() {
+        let products: Vec<Product> = serde_json::from_str(include_str!("../../products/sources.json")).unwrap();
+        for product in products {
+            let policy = audit_policy(&product).unwrap();
+            let parsed: toml::Value = toml::from_str(&policy).unwrap();
+            assert_eq!(policy.contains("RUSTSEC-2023-0071"), matches!(product.product.as_str(), "video" | "develop"));
+            assert_eq!(policy.contains("RUSTSEC-2026-0192"), product.product == "develop");
+            assert!(!policy.contains("RUSTSEC-2026-0206"));
+            assert_eq!(parsed["sources"]["unknown-git"].as_str(), Some("deny"));
+            assert!(parsed["licenses"]["exceptions"].as_array().unwrap().len() >= 20);
+        }
+    }
 
     #[test]
     fn source_boundaries_reject_traversal_foreign_repositories_and_unqualified_release_flags() {

@@ -1,7 +1,7 @@
 # Candidate review — 2026-10-16
 
-These twelve applications are not approved releases. The Suite catalog disables their
-install actions. Candidate artifacts are for isolated testing, including when a later
+These twelve applications are not approved releases. The development Suite can select each product, but enables installation only
+when a qualified matching release exists. No new product has been published yet. Candidate artifacts are for isolated testing, including when a later
 dependency gate marks their CI job failed. No signing credentials are used by the workflow.
 
 ## Dependency changes
@@ -23,32 +23,45 @@ The resulting source and lockfile are covered by each overlay's SHA-256.
 Sources: [RustSec advisories](https://rustsec.org/advisories/),
 [RustCrypto provider](https://github.com/RustCrypto/rustls-rustcrypto).
 
-## Findings that remain open
+## Scoped applicability review and remaining boundaries
 
-- **Video and Develop:** `rsa` 0.9.10 still triggers
+- **Video and Develop:** `rsa` 0.9.10 still has
   [RUSTSEC-2023-0071](https://rustsec.org/advisories/RUSTSEC-2023-0071.html).
-  Develop's `crates/fetch/src/http.rs::tls_config` explicitly disables client authentication.
-  Video's `crates/speech/src/models.rs::agent` supplies no client certificate to ureq;
-  ureq 3.4.2 selects `with_no_client_auth()` in that case. The observed application paths
-  verify server public keys; they do not load an RSA private key. This is an applicability
-  assessment, **not a patched RSA implementation**. No new advisory suppression was added.
-- **Maintenance:** transitive `rustybuzz`, `ttf-parser` and `paste` remain in several
-  graphs. They are tracked separately from known vulnerability advisories. Updating
-  the SVG/PDF/font stack needs compatibility work; the current strict dependency gate
-  continues to report them. Do not remove it just to obtain a green release.
-- **Video:** cargo-audit also reports GLib's old `VariantStrIter` advisory in its
-  all-platform lockfile. The desktop's `muda` dependency is macOS-only; verify the
-  actual shipping target graphs before deciding applicability.
-- Some lockfiles retain yanked dependency versions. Review replacements and their
-  regression results before public release.
-- **Automation:** Slides' `apps/deckcraft/src/control_server.rs` is opt-in and binds
-  loopback, but currently accepts JSON-lines commands without authentication or
-  connection/request-size limits. Do not expose it or qualify that feature until it
-  is hardened. The other applications' automation paths also require individual review.
-- Slides and Audio currently lack the complete OS-selected multilingual interface
-  required for Plervo. The other source trees have differing translation coverage;
-  translation presence is not proof of completeness. Develop and Publish now select
-  the first supported OS language for a new profile and preserve saved selections.
+  The model-download paths use server-public-key verification, explicitly omit client
+  authentication, and now install a provider that refuses every client private key.
+  Both regressions pass a valid synthetic PKCS#8 key that the underlying provider accepts,
+  then verify the application provider rejects it. RSA itself is **not patched**.
+  The reviewed exception is generated only for these two products; it does not authorize
+  RSA signing/decryption or apply to the other products.
+- **Font maintenance:** Photo imports SVG with resvg 0.48.1; Publish's reviewed krilla-svg
+  compatibility overlay uses the same maintained HarfRust/Skrifa stack. Write and Canvas
+  remove unused Krilla simple-text features. Slides notes/footers and Vector's synthetic
+  live-text fixtures now shape with HarfRust. Their format/export regressions passed.
+  Develop's remaining `ttf-parser` use is ab_glyph watermark rasterization, limited to
+  compile-time embedded Inter and pinned craft-fonts; it does not parse user fonts.
+  This maintenance-only exception is generated exclusively for Develop, pending an
+  upstream rasterizer migration. No global `ttf-parser` or `rustybuzz` exception exists.
+- **Compile-time macros:** the paste and proc-macro-error maintenance exceptions cover
+  trusted build-time procedural macros, not shipped runtime parsers. No known
+  vulnerability is being described as fixed by these exceptions.
+- `cargo xtask products --audit-policy PRODUCT` emits the common strict policy plus only
+  that product's reviewed applicability exceptions. Regression coverage prevents an
+  exception from spreading to another product. CI audits this generated policy.
+- **Desktop automation:** Slides requires a private 256-bit capability, caps connections,
+  requests and buffers, and never automatically replays a mutation after losing its reply.
+  Seven MCP and two server tests passed; the authentication test failed with its guard
+  removed and passed after restoration. Photo, Vector and Write already use authenticated
+  transports. The other eight products' unauthenticated loopback UI control is now disabled
+  in default/public builds, with a real-socket refusal regression. Normal GUI editing and
+  headless CLI/MCP remain available. Their `local-control` Cargo feature is for isolated
+  development only and must not be enabled in distributed artifacts. Broader review of
+  those optional transports remains open; disabling them is not an authentication fix.
+- **Languages:** Slides and Audio have English-only interfaces. Their alpha release notes
+  must state that limitation; complete OS-selected multilingual interfaces remain product
+  work, not a completed feature. Preparation continues on that explicit alpha basis under
+  the current request to make the applications available. Other source trees differ in
+  translation coverage. Develop and Publish select the first supported OS language for
+  new profiles and preserve saved choices; 30/11 locale tests passed respectively.
 
 ## Validation and remaining release work
 
@@ -68,3 +81,26 @@ malformed-file and resource-limit tests, platform permission boundaries, locale 
 accessibility checks, licensing/asset gates, signed macOS notarization, approved Windows
 publisher signing, Linux distribution acceptance and qualified installation through
 the Suite. A clean dependency audit alone cannot establish absence of vulnerabilities.
+
+
+## Licence and source review — 2026-10-16
+
+The initial shared policy omitted dependencies already used by these upstream apps.
+The reviewed versions are now explicit exceptions, not a blanket MPL allowance:
+Symphonia 0.5.5 and its codec/container crates, acadrust 0.6.4, imbl 7.0.2,
+imbl-sized-chunks 0.2.0, and webpki-roots 1.0.9. Registry archive SHA-256 values
+were checked against each Cargo.lock. Their sources are unmodified. Each affected
+product's NOTICE now identifies the exact downloadable sources, authors, checksum,
+and applicable licence text; the existing Mac/Linux/Windows packagers include NOTICE.
+MPL-covered source rights are preserved separately from the application's MIT/Apache terms.
+See [Mozilla's distribution guidance](https://www.mozilla.org/en-US/MPL/2.0/FAQ/#q8).
+
+The source allowlist additionally names Motion's FilmCraft codec revision, Publish's
+PdfCraft import revision, and its pinned winit fork. Those immutable revisions are
+recorded beside the allowlist entries and remain covered by the overlay hashes.
+No organization resources, proprietary code, or signing credentials are involved.
+
+The CI cargo-deny invocation previously passed `--config` after `check`, which stopped
+the tool before it could audit the graph. It now passes the global flag before the
+subcommand. Native diagnostics remain separate; a failed dependency audit still fails
+the candidate job and cannot qualify a public package.

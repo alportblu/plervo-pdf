@@ -1,3 +1,15 @@
+## Plervo application family — 2026-10-16
+
+| Area | Implemented and locally checked | Remaining |
+| --- | --- | --- |
+| Suite manager | 13 canonical identities; isolated per-product release, install, update and removal; 103 tests | New-head CI and qualified public artifacts |
+| 12 additional apps | Pinned overlays, separate identities/icons, compiler/branding regressions, maintained font migrations, scoped dependency review | Full native gates, release-feature builds, signed/notarized Mac packages and installation acceptance |
+| Public automation boundary | Slides capability-authenticated; eight unreviewed loopback transports disabled in public builds | Isolated development transports still need authentication/replay review |
+| Languages | Develop/Publish OS-default selection and locale tests | Complete multilingual Slides/Audio interfaces |
+
+The published Mac alpha.2 and Linux alpha.3 assets are unchanged. Windows signing remains
+unconfirmed; no new public download is being claimed by this checkpoint.
+
 Plervo update — 2026-10-15 (M14): Suite-first distribution is under validation. New native Suite manages installation/open/update/removal of Plervo PDF from the personal release repository, with hash, Maintech signature, notarization and rollback checks. Suite UI follows the OS by default (English/Portuguese/Spanish); PDF Auto now prioritizes the display language on macOS/Windows. Public Windows/Linux management remains gated; Suite self-updates are manual. This does not increase upstream Acrobat parity. See [Suite provenance](suite-provenance.md).
 
 ## Plervo platform delivery — 2026-10-15

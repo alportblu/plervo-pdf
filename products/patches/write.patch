@@ -76,33 +76,205 @@ index 7942228..b165d17 100644
 +| `assets/app-icon/wordcraft.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 d1527c1cd456d98e9da3ba2b0cb5fcde2b1d6f2a60c9cc39b2a3f62aa42bc9b2 |
 +| `assets/app-icon/wordcraft.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 a54bb84d9f1d07442f615b529fe4efef7ed2e2215d5bc2c0556aa1322e9be488 |
 diff --git a/Cargo.lock b/Cargo.lock
-index c5a92f4..ba122ae 100644
+index c5a92f4..99f6dec 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -5097,8 +5097,8 @@ dependencies = [
+@@ -819,15 +819,6 @@ dependencies = [
+  "libc",
  ]
  
+-[[package]]
+-name = "core_maths"
+-version = "0.1.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "77745e017f5edba1a9c1d854f6f3a52dac8a12dd5af5d2f54aecf61e43d80d30"
+-dependencies = [
+- "libm",
+-]
+-
  [[package]]
--name = "wordcraft"
--version = "0.7.0"
+ name = "cpubits"
+ version = "0.1.1"
+@@ -2200,7 +2191,6 @@ dependencies = [
+  "pdf-writer",
+  "png",
+  "rustc-hash 2.1.3",
+- "rustybuzz",
+  "siphasher",
+  "skrifa 0.42.1",
+  "smallvec",
+@@ -3016,6 +3006,50 @@ version = "0.2.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "b4596b6d070b27117e987119b4dac604f3c58cfb0b191112e24771b2faeac1a6"
+ 
++[[package]]
 +name = "plervo-write"
 +version = "0.1.0-alpha.4"
- dependencies = [
-  "arboard",
-  "clipboard-win",
-@@ -5129,8 +5129,8 @@ dependencies = [
- ]
- 
- [[package]]
--name = "wordcraft-cli"
--version = "0.7.0"
++dependencies = [
++ "arboard",
++ "clipboard-win",
++ "craft-print",
++ "dispatch2",
++ "eframe",
++ "egui",
++ "fmv-macos-events",
++ "getrandom 0.3.4",
++ "log",
++ "objc2 0.6.5",
++ "objc2-app-kit 0.3.2",
++ "open",
++ "pollster 0.4.0",
++ "rfd",
++ "serde_json",
++ "windows",
++ "winit",
++ "winresource",
++ "wl-clipboard-rs",
++ "wordcraft-control-key",
++ "wordcraft-doc",
++ "wordcraft-engine",
++ "wordcraft-fonts",
++ "wordcraft-proof",
++ "wordcraft-ui-egui",
++ "zbus",
++]
++
++[[package]]
 +name = "plervo-write-cli"
 +version = "0.1.0-alpha.4"
- dependencies = [
-  "serde_json",
-  "wordcraft-doc",
-@@ -5142,11 +5142,11 @@ dependencies = [
++dependencies = [
++ "serde_json",
++ "wordcraft-doc",
++ "wordcraft-engine",
++ "wordcraft-mcp",
++ "wordcraft-render",
++ "wordcraft-zotero",
++]
++
+ [[package]]
+ name = "png"
+ version = "0.18.1"
+@@ -3473,24 +3507,6 @@ dependencies = [
+  "wait-timeout",
+ ]
  
+-[[package]]
+-name = "rustybuzz"
+-version = "0.20.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "fd3c7c96f8a08ee34eff8857b11b49b07d71d1c3f4e88f8a88d4c9e9f90b1702"
+-dependencies = [
+- "bitflags 2.13.2",
+- "bytemuck",
+- "core_maths",
+- "log",
+- "smallvec",
+- "ttf-parser",
+- "unicode-bidi-mirroring",
+- "unicode-ccc",
+- "unicode-properties",
+- "unicode-script",
+-]
+-
+ [[package]]
+ name = "ryu"
+ version = "1.0.23"
+@@ -4078,15 +4094,6 @@ dependencies = [
+  "petgraph",
+ ]
+ 
+-[[package]]
+-name = "ttf-parser"
+-version = "0.25.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d2df906b07856748fa3f6e0ad0cbaa047052d4a7dd609e231c4f72cee8c36f31"
+-dependencies = [
+- "core_maths",
+-]
+-
+ [[package]]
+ name = "type-map"
+ version = "0.5.1"
+@@ -4125,18 +4132,6 @@ version = "0.3.18"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "5c1cb5db39152898a79168971543b1cb5020dff7fe43c8dc468b0885f5e29df5"
+ 
+-[[package]]
+-name = "unicode-bidi-mirroring"
+-version = "0.4.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "5dfa6e8c60bb66d49db113e0125ee8711b7647b5579dc7f5f19c42357ed039fe"
+-
+-[[package]]
+-name = "unicode-ccc"
+-version = "0.4.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "ce61d488bcdc9bc8b5d1772c404828b17fc481c0a582b5581e95fb233aef503e"
+-
+ [[package]]
+ name = "unicode-general-category"
+ version = "1.1.0"
+@@ -4155,12 +4150,6 @@ version = "0.1.5"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "3b09c83c3c29d37506a3e260c08c03743a6bb66a9cd432c6934ab501a190571f"
+ 
+-[[package]]
+-name = "unicode-properties"
+-version = "0.1.4"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "7df058c713841ad818f1dc5d3fd88063241cc61f49f5fbea4b951e8cf5a8d71d"
+-
+ [[package]]
+ name = "unicode-script"
+ version = "0.5.8"
+@@ -5096,57 +5085,13 @@ dependencies = [
+  "wayland-protocols-wlr",
+ ]
+ 
+-[[package]]
+-name = "wordcraft"
+-version = "0.7.0"
+-dependencies = [
+- "arboard",
+- "clipboard-win",
+- "craft-print",
+- "dispatch2",
+- "eframe",
+- "egui",
+- "fmv-macos-events",
+- "getrandom 0.3.4",
+- "log",
+- "objc2 0.6.5",
+- "objc2-app-kit 0.3.2",
+- "open",
+- "pollster 0.4.0",
+- "rfd",
+- "serde_json",
+- "windows",
+- "winit",
+- "winresource",
+- "wl-clipboard-rs",
+- "wordcraft-control-key",
+- "wordcraft-doc",
+- "wordcraft-engine",
+- "wordcraft-fonts",
+- "wordcraft-proof",
+- "wordcraft-ui-egui",
+- "zbus",
+-]
+-
+-[[package]]
+-name = "wordcraft-cli"
+-version = "0.7.0"
+-dependencies = [
+- "serde_json",
+- "wordcraft-doc",
+- "wordcraft-engine",
+- "wordcraft-mcp",
+- "wordcraft-render",
+- "wordcraft-zotero",
+-]
+-
  [[package]]
  name = "wordcraft-control-key"
 -version = "0.7.0"
@@ -115,7 +287,7 @@ index c5a92f4..ba122ae 100644
  dependencies = [
   "proptest",
   "serde",
-@@ -5158,7 +5158,7 @@ dependencies = [
+@@ -5158,7 +5103,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-docbin"
@@ -124,7 +296,7 @@ index c5a92f4..ba122ae 100644
  dependencies = [
   "cfb",
   "image",
-@@ -5173,7 +5173,7 @@ dependencies = [
+@@ -5173,7 +5118,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-docx"
@@ -133,7 +305,7 @@ index c5a92f4..ba122ae 100644
  dependencies = [
   "aes",
   "base64",
-@@ -5195,7 +5195,7 @@ dependencies = [
+@@ -5195,7 +5140,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-engine"
@@ -142,7 +314,7 @@ index c5a92f4..ba122ae 100644
  dependencies = [
   "image",
   "js-sys",
-@@ -5221,7 +5221,7 @@ dependencies = [
+@@ -5221,7 +5166,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-fonts"
@@ -151,7 +323,7 @@ index c5a92f4..ba122ae 100644
  dependencies = [
   "harfrust 0.13.3",
   "kurbo",
-@@ -5234,7 +5234,7 @@ dependencies = [
+@@ -5234,7 +5179,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-formats"
@@ -160,7 +332,7 @@ index c5a92f4..ba122ae 100644
  dependencies = [
   "image",
   "log",
-@@ -5247,14 +5247,14 @@ dependencies = [
+@@ -5247,14 +5192,14 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-geom"
@@ -177,7 +349,7 @@ index c5a92f4..ba122ae 100644
  dependencies = [
   "image",
   "js-sys",
-@@ -5273,7 +5273,7 @@ dependencies = [
+@@ -5273,7 +5218,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-mcp"
@@ -186,7 +358,7 @@ index c5a92f4..ba122ae 100644
  dependencies = [
   "log",
   "serde_json",
-@@ -5285,7 +5285,7 @@ dependencies = [
+@@ -5285,7 +5230,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-metafile"
@@ -195,7 +367,7 @@ index c5a92f4..ba122ae 100644
  dependencies = [
   "kurbo",
   "thiserror 2.0.21",
-@@ -5293,7 +5293,7 @@ dependencies = [
+@@ -5293,7 +5238,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-pdf"
@@ -204,7 +376,7 @@ index c5a92f4..ba122ae 100644
  dependencies = [
   "hayro-cmap",
   "hayro-interpret",
-@@ -5313,7 +5313,7 @@ dependencies = [
+@@ -5313,7 +5258,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-proof"
@@ -213,7 +385,7 @@ index c5a92f4..ba122ae 100644
  dependencies = [
   "log",
   "miniz_oxide 0.8.9",
-@@ -5322,7 +5322,7 @@ dependencies = [
+@@ -5322,7 +5267,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-render"
@@ -222,7 +394,7 @@ index c5a92f4..ba122ae 100644
  dependencies = [
   "image",
   "log",
-@@ -5336,7 +5336,7 @@ dependencies = [
+@@ -5336,7 +5281,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-ui-egui"
@@ -231,7 +403,7 @@ index c5a92f4..ba122ae 100644
  dependencies = [
   "craft-ui",
   "egui",
-@@ -5361,7 +5361,7 @@ dependencies = [
+@@ -5361,7 +5306,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-web"
@@ -240,7 +412,7 @@ index c5a92f4..ba122ae 100644
  dependencies = [
   "eframe",
   "egui",
-@@ -5380,7 +5380,7 @@ dependencies = [
+@@ -5380,7 +5325,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-zotero"
@@ -249,7 +421,7 @@ index c5a92f4..ba122ae 100644
  dependencies = [
   "log",
   "proptest",
-@@ -5493,7 +5493,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
+@@ -5493,7 +5438,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
  
  [[package]]
  name = "xtask"
@@ -259,7 +431,7 @@ index c5a92f4..ba122ae 100644
   "serde_json",
  ]
 diff --git a/Cargo.toml b/Cargo.toml
-index ab12104..6ad0a66 100644
+index ab12104..96dc2d4 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -271,6 +443,16 @@ index ab12104..6ad0a66 100644
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.90"
+@@ -52,7 +52,8 @@ harfrust = "0.13"
+ wuff = "0.2.9"
+ vello_cpu = "0.2"
+ image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp", "gif", "bmp", "tiff"] }
+-krilla = { version = "0.8", features = ["pdf"] }
++# Text is shaped by wordcraft-fonts; avoid the unused legacy simple-text parser.
++krilla = { version = "0.8", default-features = false, features = ["pdf", "raster-images"] }
+ quick-xml = "0.41"
+ zip = { version = "3", default-features = false, features = ["deflate"] }
+ # zlib streams (compressed metafile pictures in `.doc` drawings); already in the lock as a dependency of other crates.
 diff --git a/NOTICE b/NOTICE
 index 751ff5a..be23eb7 100644
 --- a/NOTICE
@@ -683,7 +865,7 @@ index 354b80b..5d3a764 100644
  
  [lints]
 diff --git a/apps/wordcraft-cli/src/main.rs b/apps/wordcraft-cli/src/main.rs
-index 0f3dfec..0ae3695 100644
+index 0f3dfec..e9857c8 100644
 --- a/apps/wordcraft-cli/src/main.rs
 +++ b/apps/wordcraft-cli/src/main.rs
 @@ -1,4 +1,4 @@
@@ -752,6 +934,15 @@ index 0f3dfec..0ae3695 100644
      /// to write to, so stop quietly and exit 0 like other command-line tools.
      StdoutClosed,
  }
+@@ -193,7 +193,7 @@ fn run(args: &[String]) -> Result<(), Failure> {
+             let paths: Vec<&String> = rest
+                 .iter()
+                 .enumerate()
+-                .filter(|(n, a)| !a.starts_with("--") && !(*n > 0 && rest.get(n - 1).is_some_and(|p| p == "--format")))
++                .filter(|(n, a)| !(a.starts_with("--") || *n > 0 && rest.get(n - 1).is_some_and(|p| p == "--format")))
+                 .map(|(_, a)| a)
+                 .collect();
+             let missing = || format!("missing argument\n\n{USAGE}");
 @@ -331,9 +331,9 @@ fn run(args: &[String]) -> Result<(), Failure> {
                      return Err("mcp: --author applies to the headless server; with --connect, run file.setAuthor".into());
                  }
@@ -1222,6 +1413,37 @@ index 3f9d436..e3397bb 100644
  [lints]
  workspace = true
  
+diff --git a/crates/docbin/src/officeart.rs b/crates/docbin/src/officeart.rs
+index 188dbd1..38254fc 100644
+--- a/crates/docbin/src/officeart.rs
++++ b/crates/docbin/src/officeart.rs
+@@ -282,20 +282,16 @@ impl Props {
+                 }
+                 0x0104 => self.pib = Some(op),
+                 0x0181 => self.fill_color = color(op),
+-                0x01BF => {
+-                    // fFilled (bit 4) is valid when fUsefFilled (bit 20) is set.
+-                    if op & (1 << 20) != 0 {
+-                        self.filled = Some(op & (1 << 4) != 0);
+-                    }
++                // fFilled (bit 4) is valid when fUsefFilled (bit 20) is set.
++                0x01BF if op & (1 << 20) != 0 => {
++                    self.filled = Some(op & (1 << 4) != 0);
+                 }
+                 0x01C0 => self.line_color = color(op),
+                 0x01CB => self.line_width = Some(op),
+                 0x01D0 | 0x01D1 => self.arrowhead |= op != 0,
+-                0x01FF => {
+-                    // fLine (bit 3) is valid when fUsefLine (bit 19) is set.
+-                    if op & (1 << 19) != 0 {
+-                        self.line = Some(op & (1 << 3) != 0);
+-                    }
++                // fLine (bit 3) is valid when fUsefLine (bit 19) is set.
++                0x01FF if op & (1 << 19) != 0 => {
++                    self.line = Some(op & (1 << 3) != 0);
+                 }
+                 0x0384..=0x0387 => self.wrap_dist[(pid - 0x0384) as usize] = Some(op),
+                 0x038F => self.posh = Some(op),
 diff --git a/crates/docx/Cargo.toml b/crates/docx/Cargo.toml
 index f51956f..195dcdc 100644
 --- a/crates/docx/Cargo.toml
@@ -1247,6 +1469,19 @@ index 4d58323..b42f5b4 100644
 +
  [lints]
  workspace = true
+ 
+diff --git a/crates/engine/src/cmd/find_pattern.rs b/crates/engine/src/cmd/find_pattern.rs
+index 2c39bca..c36c4ac 100644
+--- a/crates/engine/src/cmd/find_pattern.rs
++++ b/crates/engine/src/cmd/find_pattern.rs
+@@ -154,7 +154,7 @@ pub fn compile(query: &str, o: &Opts) -> Result<Compiled, String> {
+         }
+     };
+     // Word's wildcard search always matches case.
+-    let case_insensitive = !o.match_case && !(o.wildcards && !o.regex);
++    let case_insensitive = (o.regex || !o.wildcards) && !o.match_case;
+     Ok(Compiled { pattern: pat, case_insensitive, spans_paras: spans })
+ }
  
 diff --git a/crates/engine/src/sample.rs b/crates/engine/src/sample.rs
 index 718765f..c1b13be 100644
@@ -1313,6 +1548,23 @@ index d9e7990..507c6fc 100644
      o.push_str("\\documentclass{article}\n");
      o.push_str("\\usepackage[T1]{fontenc}\n");
      if w.uses.ulem {
+diff --git a/crates/formats/src/rtf.rs b/crates/formats/src/rtf.rs
+index 3132022..832d980 100644
+--- a/crates/formats/src/rtf.rs
++++ b/crates/formats/src/rtf.rs
+@@ -1378,10 +1378,8 @@ impl Reader {
+                 self.st.fmt.sub = false;
+             }
+             "fs" => self.st.fmt.size = if pv > 0 { Some((pv as f32 / 2.0).clamp(1.0, 1638.0)) } else { None },
+-            "ansicpg" => {
+-                if pv > 0 && wordcraft_doc::encoding::SINGLE_BYTE_CODE_PAGES.contains(&(pv as u16)) {
+-                    self.ansicpg = pv as u16;
+-                }
++            "ansicpg" if pv > 0 && wordcraft_doc::encoding::SINGLE_BYTE_CODE_PAGES.contains(&(pv as u16)) => {
++                self.ansicpg = pv as u16;
+             }
+             "deff" => self.deff = pv,
+             "f" => {
 diff --git a/crates/geom/Cargo.toml b/crates/geom/Cargo.toml
 index a39d4eb..26b2c3f 100644
 --- a/crates/geom/Cargo.toml
@@ -4751,6 +5003,32 @@ index be77f80..6b424a5 100644
      /// be read says why; a truly empty one says it is empty.
      #[test]
      fn nothing_to_paste_says_what_the_clipboard_holds() {
+diff --git a/crates/ui-egui/src/table_mouse.rs b/crates/ui-egui/src/table_mouse.rs
+index f98c08f..8cce90d 100644
+--- a/crates/ui-egui/src/table_mouse.rs
++++ b/crates/ui-egui/src/table_mouse.rs
+@@ -87,7 +87,7 @@ pub fn pointer(app: &mut WordApp, ui: &Ui, resp: &egui::Response, rects: &[Rect]
+         }
+         return true;
+     }
+-    if !available(app) || !(ui.input(|i| i.pointer.primary_pressed()) && resp.contains_pointer()) {
++    if !(available(app) && ui.input(|i| i.pointer.primary_pressed()) && resp.contains_pointer()) {
+         return false;
+     }
+     let Some(p) = latest else { return false };
+diff --git a/crates/ui-egui/src/table_resize.rs b/crates/ui-egui/src/table_resize.rs
+index 33cfd26..add918d 100644
+--- a/crates/ui-egui/src/table_resize.rs
++++ b/crates/ui-egui/src/table_resize.rs
+@@ -150,7 +150,7 @@ pub fn pointer(app: &mut WordApp, ui: &Ui, resp: &egui::Response, rects: &[Rect]
+         }
+         return true;
+     }
+-    if !available(app) || !(ui.input(|i| i.pointer.primary_pressed()) && resp.contains_pointer()) {
++    if !(available(app) && ui.input(|i| i.pointer.primary_pressed()) && resp.contains_pointer()) {
+         return false;
+     }
+     let Some(p) = latest else { return false };
 diff --git a/crates/ui-egui/src/theme.rs b/crates/ui-egui/src/theme.rs
 index 441ff2a..b1cb390 100644
 --- a/crates/ui-egui/src/theme.rs
@@ -4907,6 +5185,110 @@ index 368f7c5..b2782ce 100755
 +  echo "warning: iconutil not found (macOS only); plervo-write.icns not regenerated" >&2
  fi
  echo "icons written to $DIR"
+diff --git a/packaging/linux/ai.storyteller.wordcraft.desktop b/packaging/linux/ai.storyteller.wordcraft.desktop
+deleted file mode 100644
+index e725883..0000000
+--- a/packaging/linux/ai.storyteller.wordcraft.desktop
++++ /dev/null
+@@ -1,14 +0,0 @@
+-[Desktop Entry]
+-Type=Application
+-Name=WordCraft
+-GenericName=Word Processor
+-Comment=Write and design documents; open and save Word files
+-Exec=wordcraft %F
+-TryExec=wordcraft
+-Icon=ai.storyteller.wordcraft
+-Terminal=false
+-StartupNotify=true
+-StartupWMClass=ai.storyteller.wordcraft
+-Categories=Office;WordProcessor;
+-Keywords=word;processor;document;docx;writer;text;letter;report;
+-MimeType=application/vnd.openxmlformats-officedocument.wordprocessingml.document;application/vnd.ms-word.document.macroEnabled.12;application/vnd.openxmlformats-officedocument.wordprocessingml.template;application/vnd.ms-word.template.macroEnabled.12;application/msword;application/msword-template;application/vnd.oasis.opendocument.text;application/rtf;text/rtf;text/markdown;text/x-tex;text/html;text/plain;
+diff --git a/packaging/linux/ai.storyteller.wordcraft.metainfo.xml.in b/packaging/linux/ai.storyteller.wordcraft.metainfo.xml.in
+deleted file mode 100644
+index be11038..0000000
+--- a/packaging/linux/ai.storyteller.wordcraft.metainfo.xml.in
++++ /dev/null
+@@ -1,69 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
+-     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
+-<component type="desktop-application">
+-  <id>ai.storyteller.wordcraft</id>
+-  <metadata_license>CC0-1.0</metadata_license>
+-  <project_license>MIT OR Apache-2.0</project_license>
+-  <name>WordCraft</name>
+-  <summary>Write and design documents; open and save Word files</summary>
+-  <developer id="ai.storyteller">
+-    <name>Learning Machines LLC</name>
+-  </developer>
+-  <description>
+-    <p>
+-      WordCraft is a fast, open-source word processor with a familiar ribbon: styles, tables, track changes, references, mail merge, and .docx, PDF, ODT, RTF, HTML and Markdown files. It can be driven by AI agents over MCP.
+-    </p>
+-  </description>
+-  <launchable type="desktop-id">ai.storyteller.wordcraft.desktop</launchable>
+-  <icon type="stock">ai.storyteller.wordcraft</icon>
+-  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
+-  <url type="homepage">https://getartcraft.com/apps/wordcraft</url>
+-  <url type="bugtracker">https://github.com/storytold/wordcraft/issues</url>
+-  <url type="help">https://github.com/storytold/wordcraft</url>
+-  <url type="contact">https://discord.gg/artcraft</url>
+-  <categories>
+-    <category>Office</category>
+-    <category>WordProcessor</category>
+-  </categories>
+-  <keywords>
+-    <keyword>word processor</keyword>
+-    <keyword>docx</keyword>
+-    <keyword>document</keyword>
+-    <keyword>writer</keyword>
+-  </keywords>
+-  <screenshots>
+-    <screenshot type="default">
+-      <caption>The Open Studio Handbook sample with the Navigation pane</caption>
+-      <image>https://raw.githubusercontent.com/storytold/wordcraft/main/docs/images/hero.png</image>
+-    </screenshot>
+-  </screenshots>
+-  <branding>
+-    <color type="primary" scheme_preference="light">#b9c7f5</color>
+-    <color type="primary" scheme_preference="dark">#2b47b5</color>
+-  </branding>
+-  <requires>
+-    <display_length compare="ge">760</display_length>
+-  </requires>
+-  <supports>
+-    <control>keyboard</control>
+-    <control>pointing</control>
+-    <control>tablet</control>
+-  </supports>
+-  <!-- Document types WordCraft opens (#295), as in the desktop entry's MimeType=. -->
+-  <provides>
+-    <binary>wordcraft</binary>
+-    <mediatype>application/vnd.openxmlformats-officedocument.wordprocessingml.document</mediatype>
+-    <mediatype>application/vnd.ms-word.document.macroEnabled.12</mediatype>
+-    <mediatype>application/vnd.openxmlformats-officedocument.wordprocessingml.template</mediatype>
+-    <mediatype>application/vnd.ms-word.template.macroEnabled.12</mediatype>
+-    <mediatype>application/msword</mediatype>
+-    <mediatype>application/msword-template</mediatype>
+-    <mediatype>application/vnd.oasis.opendocument.text</mediatype>
+-    <mediatype>application/rtf</mediatype>
+-  </provides>
+-  <content_rating type="oars-1.1"/>
+-  <releases>
+-    <release version="@VERSION@" date="@DATE@"/>
+-  </releases>
+-</component>
+diff --git a/packaging/linux/ai.storyteller.wordcraft.mime.xml b/packaging/linux/ai.storyteller.wordcraft.mime.xml
+deleted file mode 100644
+index be4dcc2..0000000
+--- a/packaging/linux/ai.storyteller.wordcraft.mime.xml
++++ /dev/null
+@@ -1,3 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+-</mime-info>
 diff --git a/packaging/linux/com.plervo.write.desktop b/packaging/linux/com.plervo.write.desktop
 new file mode 100644
 index 0000000..eb10b39
@@ -5077,6 +5459,135 @@ index 43917d9..504dc03 100755
    flatpak run --command=sh "$APP_ID" -c 'ls /app/share/applications /app/share/metainfo /app/share/mime/packages /app/share/icons/hicolor/scalable/apps'
  fi
  echo "==> done"
+diff --git a/packaging/linux/flatpak/ai.storyteller.wordcraft.bundle.yml b/packaging/linux/flatpak/ai.storyteller.wordcraft.bundle.yml
+deleted file mode 100644
+index b76e112..0000000
+--- a/packaging/linux/flatpak/ai.storyteller.wordcraft.bundle.yml
++++ /dev/null
+@@ -1,50 +0,0 @@
+-# Flatpak manifest for the single-file bundle attached to every GitHub release
+-# (wordcraft-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
+-#
+-# It repackages the release's own Linux tarball (wordcraft-<version>-linux-<arch>.tar.gz,
+-# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
+-# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
+-# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
+-# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
+-# Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
+-# GPU driver comes from its org.freedesktop.Platform.GL extension.
+-#
+-# ai.storyteller.wordcraft.yml (same directory) is the from-source manifest for Flathub. Keep
+-# runtime, runtime-version, sdk and finish-args identical in both (packaging-lint checks this).
+-id: ai.storyteller.wordcraft
+-runtime: org.freedesktop.Platform
+-runtime-version: '25.08'
+-sdk: org.freedesktop.Sdk
+-command: wordcraft
+-finish-args:
+-  # Display: Wayland first; X11 only when no Wayland compositor is running.
+-  - --socket=wayland
+-  - --socket=fallback-x11
+-  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
+-  - --share=ipc
+-  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
+-  - --device=dri
+-  # Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
+-  # drag-and-drop through the document portal, so picked files work anywhere without broad
+-  # filesystem access. Documents and Pictures are granted so files passed by path (the command
+-  # line, Open Recent, "Save" next to the original) work in the usual places.
+-  - --filesystem=xdg-documents
+-  - --filesystem=xdg-pictures
+-  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
+-  # the sandbox; `flatpak override --user --share=network ai.storyteller.wordcraft` exposes it to
+-  # host agents) and home/host filesystem access.
+-modules:
+-  - name: wordcraft
+-    buildsystem: simple
+-    build-commands:
+-      - install -Dm755 bin/wordcraft /app/bin/wordcraft
+-      - install -Dm755 bin/wordcraft-cli /app/bin/wordcraft-cli
+-      - install -Dm644 share/applications/ai.storyteller.wordcraft.desktop /app/share/applications/ai.storyteller.wordcraft.desktop
+-      - install -Dm644 share/mime/packages/ai.storyteller.wordcraft.xml /app/share/mime/packages/ai.storyteller.wordcraft.xml
+-      # Already has the release's version and date substituted by package.sh.
+-      - install -Dm644 share/metainfo/ai.storyteller.wordcraft.metainfo.xml /app/share/metainfo/ai.storyteller.wordcraft.metainfo.xml
+-      # Docs include the licences of the embedded craft-fonts (OFL-*.txt).
+-      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/wordcraft /app/share/doc/
+-    sources:
+-      - type: dir
+-        path: stage
+diff --git a/packaging/linux/flatpak/ai.storyteller.wordcraft.yml b/packaging/linux/flatpak/ai.storyteller.wordcraft.yml
+deleted file mode 100644
+index 67ee2ae..0000000
+--- a/packaging/linux/flatpak/ai.storyteller.wordcraft.yml
++++ /dev/null
+@@ -1,67 +0,0 @@
+-# Flatpak manifest for WordCraft, ready for a Flathub submission.
+-#
+-# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
+-#
+-#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
+-#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
+-#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.wordcraft.yml
+-#   flatpak run ai.storyteller.wordcraft
+-#
+-# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
+-# The release's .flatpak bundles come from ai.storyteller.wordcraft.bundle.yml instead (see there);
+-# keep runtime, runtime-version, sdk and finish-args identical in both (packaging-lint checks this).
+-id: ai.storyteller.wordcraft
+-runtime: org.freedesktop.Platform
+-runtime-version: '25.08'
+-sdk: org.freedesktop.Sdk
+-sdk-extensions:
+-  - org.freedesktop.Sdk.Extension.rust-stable
+-command: wordcraft
+-finish-args:
+-  # Display: Wayland first; X11 only when no Wayland compositor is running.
+-  - --socket=wayland
+-  - --socket=fallback-x11
+-  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
+-  - --share=ipc
+-  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
+-  - --device=dri
+-  # Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
+-  # drag-and-drop through the document portal, so picked files work anywhere without broad
+-  # filesystem access. Documents and Pictures are granted so files passed by path (the command
+-  # line, Open Recent, "Save" next to the original) work in the usual places.
+-  - --filesystem=xdg-documents
+-  - --filesystem=xdg-pictures
+-  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
+-  # the sandbox; `flatpak override --user --share=network ai.storyteller.wordcraft` exposes it to
+-  # host agents) and home/host filesystem access.
+-build-options:
+-  append-path: /usr/lib/sdk/rust-stable/bin
+-modules:
+-  - name: wordcraft
+-    buildsystem: simple
+-    build-options:
+-      env:
+-        CARGO_HOME: /run/build/wordcraft/cargo
+-        CARGO_NET_OFFLINE: 'true'
+-    build-commands:
+-      - cargo --offline build --release --locked -p wordcraft -p wordcraft-cli
+-      - install -Dm755 target/release/wordcraft /app/bin/wordcraft
+-      - install -Dm755 target/release/wordcraft-cli /app/bin/wordcraft-cli
+-      - install -Dm644 packaging/linux/ai.storyteller.wordcraft.desktop /app/share/applications/ai.storyteller.wordcraft.desktop
+-      - install -Dm644 packaging/linux/ai.storyteller.wordcraft.mime.xml /app/share/mime/packages/ai.storyteller.wordcraft.xml
+-      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
+-      - >-
+-        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
+-        install -d /app/share/metainfo;
+-        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+-        packaging/linux/ai.storyteller.wordcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.wordcraft.metainfo.xml
+-    sources:
+-      - type: dir
+-        path: ../../..
+-        skip:
+-          - target
+-          - dist
+-          - corpus
+-          - build-flatpak
+-          - .flatpak-builder
+-      - cargo-sources.json
 diff --git a/packaging/linux/flatpak/com.plervo.write.bundle.yml b/packaging/linux/flatpak/com.plervo.write.bundle.yml
 new file mode 100644
 index 0000000..b5227d4
@@ -6242,3 +6753,16 @@ index a1f43d8..454c522 100644
  }
  
  pub fn classify(pkg: &str) -> Option<Class> {
+diff --git a/xtask/src/visual_diff.rs b/xtask/src/visual_diff.rs
+index 20f857c..b0259af 100644
+--- a/xtask/src/visual_diff.rs
++++ b/xtask/src/visual_diff.rs
+@@ -37,7 +37,7 @@ pub fn run(args: &[&str]) -> Result<(), String> {
+         None => 100,
+     };
+     let pos: Vec<&str> =
+-        args.iter().enumerate().filter(|(i, a)| !a.starts_with("--") && !(*i > 0 && args[i - 1] == "--dpi")).map(|(_, a)| *a).collect();
++        args.iter().enumerate().filter(|(i, a)| !(a.starts_with("--") || *i > 0 && args[i - 1] == "--dpi")).map(|(_, a)| *a).collect();
+     let [reference, test, out] = pos.as_slice() else {
+         return Err("usage: cargo xtask visual-diff REF.pdf TEST.pdf OUTDIR [--private] [--dpi N]".into());
+     };

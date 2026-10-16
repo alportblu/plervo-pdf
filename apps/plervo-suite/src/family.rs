@@ -1,4 +1,4 @@
-//! The visible product family. Only the PDF has a qualified public installer.
+//! Product presentation. Downloads are enabled only when the release service has a matching package.
 pub struct Product {
     pub id: &'static str,
     pub name: &'static str,
@@ -17,7 +17,7 @@ macro_rules! product {
     };
 }
 
-pub const PRODUCTS: [Product; 13] = [
+pub static PRODUCTS: [Product; 13] = [
     product!("pdf", "Plervo PDF", "PDF documents", "Documentos PDF", "Documentos PDF"),
     product!("photo", "Plervo Photo", "Image editing", "Edição de imagens", "Edición de imágenes"),
     product!("vector", "Plervo Vector", "Vector illustration", "Ilustração vetorial", "Ilustración vectorial"),
@@ -32,5 +32,3 @@ pub const PRODUCTS: [Product; 13] = [
     product!("audio", "Plervo Audio", "Audio editing", "Edição de áudio", "Edición de audio"),
     product!("canvas", "Plervo Canvas", "Interface design", "Design de interfaces", "Diseño de interfaces"),
 ];
-
-pub const PDF_ICON: &[u8] = include_bytes!("../../../assets/products/pdf/icon-128.png");

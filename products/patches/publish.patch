@@ -65,10 +65,39 @@ index 76052b5..4325b42 100644
 +
 +| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | c98853a7427b62041d651836e94ef44855b8aeff377fd7d8d7a7380d1362647b |
 diff --git a/Cargo.lock b/Cargo.lock
-index e77a81b..e365e5b 100644
+index e77a81b..bd03f7e 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -885,43 +885,9 @@ dependencies = [
+@@ -452,6 +452,12 @@ version = "0.22.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "72b3254f16251a8381aa12e40e3c4d2f0199f8c6508fbecb9d91f575e0fbb8c6"
+ 
++[[package]]
++name = "base64"
++version = "0.23.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "ac07cdecf99051d9a5238b80f35af32cdeba5b336e55d957b318b50137e18da5"
++
+ [[package]]
+ name = "bit-set"
+ version = "0.8.0"
+@@ -787,15 +793,6 @@ dependencies = [
+  "libc",
+ ]
+ 
+-[[package]]
+-name = "core_maths"
+-version = "0.1.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "77745e017f5edba1a9c1d854f6f3a52dac8a12dd5af5d2f54aecf61e43d80d30"
+-dependencies = [
+- "libm",
+-]
+-
+ [[package]]
+ name = "craft-print"
+ version = "0.1.0"
+@@ -885,43 +882,9 @@ dependencies = [
   "syn 2.0.119",
  ]
  
@@ -113,7 +142,7 @@ index e77a81b..e365e5b 100644
  dependencies = [
   "kurbo",
   "moxcms",
-@@ -933,7 +899,7 @@ dependencies = [
+@@ -933,7 +896,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-compose"
@@ -122,7 +151,7 @@ index e77a81b..e365e5b 100644
  dependencies = [
   "designcraft-color",
   "designcraft-doc",
-@@ -951,7 +917,7 @@ dependencies = [
+@@ -951,7 +914,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-doc"
@@ -131,7 +160,7 @@ index e77a81b..e365e5b 100644
  dependencies = [
   "designcraft-color",
   "designcraft-geom",
-@@ -963,7 +929,7 @@ dependencies = [
+@@ -963,7 +926,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-engine"
@@ -140,7 +169,7 @@ index e77a81b..e365e5b 100644
  dependencies = [
   "caseless",
   "craft-print",
-@@ -985,7 +951,7 @@ dependencies = [
+@@ -985,7 +948,7 @@ dependencies = [
   "hayro-syntax",
   "kurbo",
   "log",
@@ -149,7 +178,7 @@ index e77a81b..e365e5b 100644
   "regex",
   "serde",
   "serde_json",
-@@ -998,7 +964,7 @@ dependencies = [
+@@ -998,7 +961,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-epub"
@@ -158,7 +187,7 @@ index e77a81b..e365e5b 100644
  dependencies = [
   "designcraft-color",
   "designcraft-doc",
-@@ -1007,7 +973,7 @@ dependencies = [
+@@ -1007,7 +970,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-fonts"
@@ -167,7 +196,7 @@ index e77a81b..e365e5b 100644
  dependencies = [
   "harfrust 0.13.3",
   "kurbo",
-@@ -1019,7 +985,7 @@ dependencies = [
+@@ -1019,7 +982,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-format"
@@ -176,7 +205,7 @@ index e77a81b..e365e5b 100644
  dependencies = [
   "designcraft-doc",
   "serde",
-@@ -1030,7 +996,7 @@ dependencies = [
+@@ -1030,7 +993,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-geom"
@@ -185,7 +214,7 @@ index e77a81b..e365e5b 100644
  dependencies = [
   "flo_curves",
   "kurbo",
-@@ -1043,20 +1009,20 @@ dependencies = [
+@@ -1043,20 +1006,20 @@ dependencies = [
  
  [[package]]
  name = "designcraft-idml"
@@ -209,7 +238,7 @@ index e77a81b..e365e5b 100644
  dependencies = [
   "designcraft-color",
   "designcraft-fonts",
-@@ -1067,7 +1033,7 @@ dependencies = [
+@@ -1067,7 +1030,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-mcp"
@@ -218,7 +247,7 @@ index e77a81b..e365e5b 100644
  dependencies = [
   "designcraft-engine",
   "designcraft-geom",
-@@ -1080,7 +1046,7 @@ dependencies = [
+@@ -1080,7 +1043,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-pdf"
@@ -227,7 +256,7 @@ index e77a81b..e365e5b 100644
  dependencies = [
   "designcraft-color",
   "designcraft-compose",
-@@ -1102,7 +1068,7 @@ dependencies = [
+@@ -1102,7 +1065,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-render"
@@ -236,7 +265,7 @@ index e77a81b..e365e5b 100644
  dependencies = [
   "designcraft-color",
   "designcraft-compose",
-@@ -1120,16 +1086,16 @@ dependencies = [
+@@ -1120,16 +1083,16 @@ dependencies = [
  
  [[package]]
  name = "designcraft-textimport"
@@ -256,7 +285,7 @@ index e77a81b..e365e5b 100644
  dependencies = [
   "designcraft-color",
   "designcraft-compose",
-@@ -1141,7 +1107,7 @@ dependencies = [
+@@ -1141,7 +1104,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-ui-egui"
@@ -265,7 +294,7 @@ index e77a81b..e365e5b 100644
  dependencies = [
   "craft-ui",
   "designcraft-color",
-@@ -1159,6 +1125,7 @@ dependencies = [
+@@ -1159,6 +1122,7 @@ dependencies = [
   "regex",
   "serde",
   "serde_json",
@@ -273,7 +302,7 @@ index e77a81b..e365e5b 100644
   "tempfile",
   "toml",
   "unicode-bidi",
-@@ -1169,7 +1136,7 @@ dependencies = [
+@@ -1169,7 +1133,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-web"
@@ -282,7 +311,7 @@ index e77a81b..e365e5b 100644
  dependencies = [
   "designcraft-engine",
   "designcraft-format",
-@@ -1486,7 +1453,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+@@ -1486,7 +1450,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "39cab71617ae0d63f51a36d69f866391735b51691dbda63cf6f96d042b63efeb"
  dependencies = [
   "libc",
@@ -291,7 +320,77 @@ index e77a81b..e365e5b 100644
  ]
  
  [[package]]
-@@ -2658,7 +2625,7 @@ dependencies = [
+@@ -1630,16 +1594,15 @@ dependencies = [
+ 
+ [[package]]
+ name = "fontdb"
+-version = "0.23.0"
++version = "0.24.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "457e789b3d1202543297a350643cf459f836cade38934e7a4cf6a39e7cde2905"
++checksum = "2660c5e9157bf76d2db1294e4a9feba604ef610819a3b591088d0d8392a3290f"
+ dependencies = [
+  "fontconfig-parser",
+  "log",
+  "memmap2",
+  "slotmap",
+  "tinyvec",
+- "ttf-parser",
+ ]
+ 
+ [[package]]
+@@ -2266,6 +2229,12 @@ version = "0.14.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "09e54e57b4c48b40f7aec75635392b12b3421fa26fe8b4332e63138ed278459c"
+ 
++[[package]]
++name = "imagesize"
++version = "0.15.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "65b27460c2c92b037f3f94c538ed9a3342f3fdf923606781629ccb35f82d042a"
++
+ [[package]]
+ name = "indexmap"
+ version = "2.14.2"
+@@ -2441,19 +2410,18 @@ version = "0.8.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "27da593198b20eeba65caeb73c2bbeec3e53ab08fa549898312ce81c4fce5e33"
+ dependencies = [
+- "base64",
++ "base64 0.22.1",
+  "bumpalo",
+  "flate2",
+  "float-cmp",
+  "gif",
+  "hayro-write",
+  "image-webp",
+- "imagesize",
++ "imagesize 0.14.0",
+  "indexmap",
+  "pdf-writer",
+  "png",
+  "rustc-hash 2.1.3",
+- "rustybuzz",
+  "siphasher",
+  "skrifa 0.42.1",
+  "smallvec",
+@@ -2467,14 +2435,12 @@ dependencies = [
+ [[package]]
+ name = "krilla-svg"
+ version = "0.8.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "1237d7c37b16ca9fbc2e72dde13a10d321f9a44aceee35c062bc0a43bfc7ce16"
+ dependencies = [
+  "flate2",
+  "fontdb",
+  "krilla",
+  "resvg",
+- "skrifa 0.42.1",
++ "skrifa 0.47.0",
+  "smallvec",
+  "tiny-skia",
+  "usvg",
+@@ -2658,7 +2624,7 @@ dependencies = [
   "once_cell",
   "png",
   "thiserror 2.0.21",
@@ -300,7 +399,7 @@ index e77a81b..e365e5b 100644
  ]
  
  [[package]]
-@@ -2741,7 +2708,7 @@ version = "0.50.3"
+@@ -2741,7 +2707,7 @@ version = "0.50.3"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "7957b9740744892f114936ab4a57b3f487491bbeafaf8083688b16841a4240e5"
  dependencies = [
@@ -309,7 +408,7 @@ index e77a81b..e365e5b 100644
  ]
  
  [[package]]
-@@ -3339,6 +3306,40 @@ version = "0.2.3"
+@@ -3339,6 +3305,40 @@ version = "0.2.3"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "b4596b6d070b27117e987119b4dac604f3c58cfb0b191112e24771b2faeac1a6"
  
@@ -350,7 +449,7 @@ index e77a81b..e365e5b 100644
  [[package]]
  name = "png"
  version = "0.18.1"
-@@ -3506,15 +3507,6 @@ version = "2.0.1"
+@@ -3506,15 +3506,6 @@ version = "2.0.1"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "a993555f31e5a609f617c12db6250dedcac1b0a85076912c436e6fc9b2c8e6a3"
  
@@ -366,6 +465,20 @@ index e77a81b..e365e5b 100644
  [[package]]
  name = "quick-xml"
  version = "0.41.0"
+@@ -3734,10 +3725,11 @@ checksum = "19b30a45b0cd0bcca8037f3d0dc3421eaf95327a17cad11964fb8179b4fc4832"
+ 
+ [[package]]
+ name = "resvg"
+-version = "0.47.0"
++version = "0.48.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "9be183ad6a216aa96f33e4c8033b0988b8b3ea6fd2359d19af5bac4643fd8e81"
++checksum = "67e3803f97b999e80cbf7c6ecdd07a8102204d92e1633cf48783720c521196bd"
+ dependencies = [
++ "bytemuck",
+  "gif",
+  "image-webp",
+  "log",
 @@ -3850,7 +3842,7 @@ dependencies = [
   "errno",
   "libc",
@@ -375,7 +488,32 @@ index e77a81b..e365e5b 100644
  ]
  
  [[package]]
-@@ -4266,6 +4258,15 @@ dependencies = [
+@@ -3871,24 +3863,6 @@ dependencies = [
+  "wait-timeout",
+ ]
+ 
+-[[package]]
+-name = "rustybuzz"
+-version = "0.20.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "fd3c7c96f8a08ee34eff8857b11b49b07d71d1c3f4e88f8a88d4c9e9f90b1702"
+-dependencies = [
+- "bitflags 2.13.2",
+- "bytemuck",
+- "core_maths",
+- "log",
+- "smallvec",
+- "ttf-parser",
+- "unicode-bidi-mirroring",
+- "unicode-ccc",
+- "unicode-properties",
+- "unicode-script",
+-]
+-
+ [[package]]
+ name = "ryu"
+ version = "1.0.23"
+@@ -4266,6 +4240,15 @@ dependencies = [
   "syn 3.0.6",
  ]
  
@@ -391,7 +529,7 @@ index e77a81b..e365e5b 100644
  [[package]]
  name = "tempfile"
  version = "3.27.0"
-@@ -4276,7 +4277,7 @@ dependencies = [
+@@ -4276,7 +4259,7 @@ dependencies = [
   "getrandom 0.4.3",
   "once_cell",
   "rustix 1.1.5",
@@ -400,7 +538,23 @@ index e77a81b..e365e5b 100644
  ]
  
  [[package]]
-@@ -4511,7 +4512,7 @@ checksum = "f2f6fb2847f6742cd76af783a2a2c49e9375d0a111c7bef6f71cd9e738c72d6e"
+@@ -4485,15 +4468,6 @@ dependencies = [
+  "once_cell",
+ ]
+ 
+-[[package]]
+-name = "ttf-parser"
+-version = "0.25.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d2df906b07856748fa3f6e0ad0cbaa047052d4a7dd609e231c4f72cee8c36f31"
+-dependencies = [
+- "core_maths",
+-]
+-
+ [[package]]
+ name = "type-map"
+ version = "0.5.1"
+@@ -4511,7 +4485,7 @@ checksum = "f2f6fb2847f6742cd76af783a2a2c49e9375d0a111c7bef6f71cd9e738c72d6e"
  dependencies = [
   "memoffset",
   "tempfile",
@@ -409,7 +563,53 @@ index e77a81b..e365e5b 100644
  ]
  
  [[package]]
-@@ -5001,7 +5002,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+@@ -4532,12 +4506,6 @@ version = "0.4.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "5dfa6e8c60bb66d49db113e0125ee8711b7647b5579dc7f5f19c42357ed039fe"
+ 
+-[[package]]
+-name = "unicode-ccc"
+-version = "0.4.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "ce61d488bcdc9bc8b5d1772c404828b17fc481c0a582b5581e95fb233aef503e"
+-
+ [[package]]
+ name = "unicode-general-category"
+ version = "1.1.0"
+@@ -4603,26 +4571,26 @@ dependencies = [
+ 
+ [[package]]
+ name = "usvg"
+-version = "0.47.0"
++version = "0.48.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d46cf96c5f498d36b7a9693bc6a7075c0bb9303189d61b2249b0dc3d309c07de"
++checksum = "977d0a4abdef933f424a99fe09f95576e089b90aebc6f016a3bc813762493e91"
+ dependencies = [
+- "base64",
++ "base64 0.23.1",
+  "data-url",
+  "flate2",
+  "fontdb",
+- "imagesize",
++ "harfrust 0.12.0",
++ "imagesize 0.15.0",
+  "kurbo",
+  "log",
+  "pico-args",
+  "roxmltree 0.21.1",
+- "rustybuzz",
+  "simplecss",
+  "siphasher",
++ "skrifa 0.44.0",
+  "strict-num",
+  "svgtypes",
+  "tiny-skia-path",
+- "ttf-parser",
+  "unicode-bidi",
+  "unicode-script",
+  "unicode-vo",
+@@ -5001,7 +4969,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "338e30461b3a2b67d70eb30a6d89f8e0c93a833e07d2ae89085cd070c4a00ac0"
  dependencies = [
   "proc-macro2",
@@ -418,7 +618,7 @@ index e77a81b..e365e5b 100644
   "quote",
  ]
  
-@@ -5248,7 +5249,7 @@ version = "0.1.11"
+@@ -5248,7 +5216,7 @@ version = "0.1.11"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "c2a7b1c03c876122aa43f3020e6c3c3ee5c05081c9a00739faf7503aeba10d22"
  dependencies = [
@@ -427,7 +627,7 @@ index e77a81b..e365e5b 100644
  ]
  
  [[package]]
-@@ -5697,7 +5698,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
+@@ -5697,7 +5665,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
  
  [[package]]
  name = "xtask"
@@ -437,10 +637,14 @@ index e77a81b..e365e5b 100644
   "serde_json",
  ]
 diff --git a/Cargo.toml b/Cargo.toml
-index e76609e..344ed67 100644
+index e76609e..8182dfc 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
-@@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
+@@ -1,10 +1,11 @@
+ [workspace]
+ resolver = "3"
+ members = ["crates/*", "apps/*", "xtask"]
++exclude = ["vendor/krilla-svg"]
  default-members = ["crates/*", "apps/designcraft", "apps/designcraft-cli", "xtask"]
  
  [workspace.package]
@@ -449,20 +653,38 @@ index e76609e..344ed67 100644
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.95"
-@@ -64,7 +64,7 @@ flo_curves = "0.8"
+@@ -56,15 +57,15 @@ image = { version = "0.25", default-features = false, features = ["png", "jpeg",
+ # CMYK TIFF samples for PDF export (`image` decodes them to RGB); the version `image` uses.
+ tiff = "0.11"
+ # SVG (same usvg as krilla-svg).
+-resvg = { version = "0.47", default-features = false, features = ["text"] }
++resvg = { version = "0.48", default-features = false, features = ["text"] }
+ krilla-svg = "0.8"
+ # Boolean operations on Bézier paths (Pathfinder).
+ flo_curves = "0.8"
+ # QR codes (Object › Generate QR Code); MIT.
  qrcodegen = "1.8"
- krilla = { version = "0.8", features = ["pdf"] }
+-krilla = { version = "0.8", features = ["pdf"] }
++krilla = { version = "0.8", default-features = false, features = ["pdf", "raster-images"] }
  hayro = "0.7"
 -quick-xml = "0.38"
 +quick-xml = "0.41"
  zip = { version = "3", default-features = false, features = ["deflate"] }
  
  # ui
+@@ -100,6 +101,7 @@ debug = 0
+ 
+ # Opt-in cancelable macOS termination on the pinned winit 0.30 line.
+ [patch.crates-io]
++krilla-svg = { path = "vendor/krilla-svg" }
+ winit = { git = "https://github.com/skylartaylor/winit.git", rev = "3d51077fd1a966f84df9ef287839dc84fd5b4ca7" }
+ # The hayro crates from pdfcraft's vendor/ directory, with the patches its README lists.
+ hayro = { git = "https://github.com/storytold/pdfcraft", rev = "b5467d93a0ffaa5e5e6658bccdf8655a3ba689c9" }
 diff --git a/NOTICE b/NOTICE
-index 21123ee..c81e0e2 100644
+index 21123ee..b43170b 100644
 --- a/NOTICE
 +++ b/NOTICE
-@@ -68,3 +68,7 @@ Rust dependencies (vello_cpu, kurbo, skrifa, harfrust, image, egui, eframe, …)
+@@ -68,3 +68,19 @@ Rust dependencies (vello_cpu, kurbo, skrifa, harfrust, image, egui, eframe, …)
  licensed (MIT/Apache-2.0/BSD/ISC/Zlib) and fetched through crates.io.
  
  No Adobe icons, images or artwork are included.
@@ -470,6 +692,18 @@ index 21123ee..c81e0e2 100644
 +Plervo adaptation by AlporT (2026). Product identity and packaging are original Plervo work.
 +Based on storytold/designcraft at 11a51d5b665aec8d6e675bd107a8a01514f10d00.
 +Original authorship and MIT/Apache-2.0 licenses are preserved. No ArtCraft endorsement.
++
++# Plervo compatibility overlay
++
++Source: krilla-svg 0.8.1, MIT OR Apache-2.0, Laurenz Stampfl.
++Archive: https://static.crates.io/crates/krilla-svg/krilla-svg-0.8.1.crate
++SHA-256: `1237d7c37b16ca9fbc2e72dde13a10d321f9a44aceee35c062bc0a43bfc7ce16` (verified against Cargo.lock before adaptation).
++
++This overlay updates resvg/usvg to 0.48.1, fontdb to 0.24 and skrifa to 0.47.
++It disables Krilla's unused simple-text default feature. SVG shaping now uses
++maintained HarfRust/Skrifa instead of rustybuzz/ttf-parser. Upstream licence texts
++and source are preserved. The Plervo source overlay hash covers these changes.
++
 diff --git a/README.md b/README.md
 index 0ec6540..90fef61 100644
 --- a/README.md
@@ -1159,10 +1393,10 @@ index fe7cca4..f76df92 100644
              wasm_bindgen_futures::spawn_local(async move {
                  let Some(file) = dialog.pick_file().await else {
 diff --git a/apps/designcraft/Cargo.toml b/apps/designcraft/Cargo.toml
-index 0f08ae8..00f8086 100644
+index 0f08ae8..408b567 100644
 --- a/apps/designcraft/Cargo.toml
 +++ b/apps/designcraft/Cargo.toml
-@@ -1,11 +1,11 @@
+@@ -1,15 +1,20 @@
  [package]
 -name = "designcraft"
 +name = "plervo-publish"
@@ -1176,6 +1410,15 @@ index 0f08ae8..00f8086 100644
  
  [lints]
  workspace = true
+ 
++[features]
++# Unreviewed loopback automation is excluded from public Plervo builds.
++# Headless CLI/MCP remains available. Enable only in an isolated development environment.
++local-control = []
++
+ [dependencies]
+ designcraft-engine = { workspace = true }
+ designcraft-ui-egui = { workspace = true }
 diff --git a/apps/designcraft/build.rs b/apps/designcraft/build.rs
 index f18ce9c..6264ef2 100644
 --- a/apps/designcraft/build.rs
@@ -1199,10 +1442,17 @@ index f18ce9c..6264ef2 100644
          if std::env::var_os("DESIGNCRAFT_REQUIRE_WINRES").is_some() {
              eprintln!("embedding Windows resources failed: {e}");
 diff --git a/apps/designcraft/src/control_server.rs b/apps/designcraft/src/control_server.rs
-index 50e2e4b..8fff4b2 100644
+index 50e2e4b..ed1a3eb 100644
 --- a/apps/designcraft/src/control_server.rs
 +++ b/apps/designcraft/src/control_server.rs
-@@ -28,11 +28,11 @@ pub fn start(port: u16, ctx: egui::Context) -> Receiver<ControlRequest> {
+@@ -25,14 +25,18 @@ pub const MAX_CONNECTIONS: usize = 16;
+ 
+ pub fn start(port: u16, ctx: egui::Context) -> Receiver<ControlRequest> {
+     let (tx, rx) = channel::<ControlRequest>();
++    if !cfg!(feature = "local-control") {
++        log::error!("local control is disabled in public Plervo builds; use headless CLI/MCP");
++        return rx;
++    }
      let listener = match TcpListener::bind(("127.0.0.1", port)) {
          Ok(l) => l,
          Err(e) => {
@@ -1216,6 +1466,24 @@ index 50e2e4b..8fff4b2 100644
      std::thread::spawn(move || accept_loop(listener, tx, ctx));
      rx
  }
+@@ -277,3 +281,17 @@ mod tests {
+         drop(held);
+     }
+ }
++
++#[cfg(all(test, not(feature = "local-control")))]
++mod plervo_release_boundary {
++    #[test]
++    fn public_build_never_opens_the_control_port() {
++        let reserved = std::net::TcpListener::bind("127.0.0.1:0").unwrap();
++        let address = reserved.local_addr().unwrap();
++        let port = address.port();
++        drop(reserved);
++        let receiver = super::start(port, egui::Context::default());
++        assert!(matches!(receiver.try_recv(), Err(std::sync::mpsc::TryRecvError::Disconnected)));
++        assert!(std::net::TcpStream::connect_timeout(&address, std::time::Duration::from_millis(100)).is_err());
++    }
++}
 diff --git a/apps/designcraft/src/gpu.rs b/apps/designcraft/src/gpu.rs
 index 6dfb023..2687424 100644
 --- a/apps/designcraft/src/gpu.rs
@@ -1742,6 +2010,21 @@ index 0db9d19..a69a8bd 100644
  [lints]
  workspace = true
  
+diff --git a/crates/images/src/lib.rs b/crates/images/src/lib.rs
+index 7ce48c0..1c3f52f 100644
+--- a/crates/images/src/lib.rs
++++ b/crates/images/src/lib.rs
+@@ -315,8 +315,8 @@ mod tests {
+     }
+ 
+     /// The family of the font that sets each text glyph of `svg`, and the glyph's id.
+-    fn glyph_families(svg: &str) -> Vec<(String, u16)> {
+-        fn walk(g: &usvg::Group, tree: &usvg::Tree, out: &mut Vec<(String, u16)>) {
++    fn glyph_families(svg: &str) -> Vec<(String, u32)> {
++        fn walk(g: &usvg::Group, tree: &usvg::Tree, out: &mut Vec<(String, u32)>) {
+             for n in g.children() {
+                 match n {
+                     usvg::Node::Group(g) => walk(g, tree, out),
 diff --git a/crates/mcp/Cargo.toml b/crates/mcp/Cargo.toml
 index fa863aa..0f388d3 100644
 --- a/crates/mcp/Cargo.toml
@@ -2093,7 +2376,7 @@ index c2f1cb4..0e61044 100644
                  }
              });
 diff --git a/crates/ui-egui/src/i18n.rs b/crates/ui-egui/src/i18n.rs
-index 6d6503a..4fc6f28 100644
+index 6d6503a..06a0e22 100644
 --- a/crates/ui-egui/src/i18n.rs
 +++ b/crates/ui-egui/src/i18n.rs
 @@ -23,6 +23,36 @@ pub const LANGUAGES: &[(&str, &str)] = &[
@@ -2195,7 +2478,7 @@ index 6d6503a..4fc6f28 100644
 -            "加入 ArtCraft Discord…",
 -        ],
 -    ),
-+    ("Support Plervo", ["Support Plervo", "Support Plervo", "Support Plervo", "Support Plervo", "加入 Plervo Discord…"]),
++    ("Support Plervo", ["Plervo unterstützen", "Soutenir Plervo", "Apoyar a Plervo", "Plervo を支援", "支持 Plervo"]),
      ("Last Object Below", ["Last Object Below", "Last Object Below", "Last Object Below", "Last Object Below", "下方最后一个对象"]),
      ("Library Contents", ["Library Contents", "Library Contents", "Library Contents", "Library Contents", "库内容"]),
      ("Library Items", ["Library Items", "Library Items", "Library Items", "Library Items", "库项目"]),
@@ -2288,16 +2571,15 @@ index 6d6503a..4fc6f28 100644
          ],
      ),
      (
-@@ -2653,7 +2686,7 @@ const TABLE: &[(&str, [&str; 5])] = &[
+@@ -2653,7 +2686,6 @@ const TABLE: &[(&str, [&str; 5])] = &[
      ("H&J Violations", ["H&J Violations", "H&J Violations", "H&J Violations", "H&J Violations", "断字与对齐违规"]),
      ("Include Bleed", ["Include Bleed", "Include Bleed", "Include Bleed", "Include Bleed", "包含出血"]),
      ("Include Stroke Weight", ["Include Stroke Weight", "Include Stroke Weight", "Include Stroke Weight", "Include Stroke Weight", "包含描边粗细"]),
 -    ("Join our Discord", ["Join our Discord", "Join our Discord", "Join our Discord", "Join our Discord", "加入我们的 Discord 社区"]),
-+    ("Support Plervo", ["Support Plervo", "Support Plervo", "Support Plervo", "Support Plervo", "加入我们的 Discord 社区"]),
      ("Keep Violations", ["Keep Violations", "Keep Violations", "Keep Violations", "Keep Violations", "保持选项违规"]),
      (
          "Overprint [Black] Swatch at 100%",
-@@ -3099,3 +3132,21 @@ mod tests {
+@@ -3099,3 +3131,21 @@ mod tests {
          assert_eq!(tr("ja", "PDF/X-4"), "PDF/X-4");
      }
  }
@@ -2320,7 +2602,7 @@ index 6d6503a..4fc6f28 100644
 +    }
 +}
 diff --git a/crates/ui-egui/src/i18n/ar.rs b/crates/ui-egui/src/i18n/ar.rs
-index 7695119..a078c2c 100644
+index 7695119..a76eb68 100644
 --- a/crates/ui-egui/src/i18n/ar.rs
 +++ b/crates/ui-egui/src/i18n/ar.rs
 @@ -150,21 +150,21 @@ pub(super) const TABLE: &[(&str, &str)] = &[
@@ -2343,7 +2625,7 @@ index 7695119..a078c2c 100644
 +    ("Join the Plervo community", "انضم إلى مجتمع Plervo"),
      ("Get help, share your layouts and shape what we build next.", "احصل على المساعدة وشارك تصميماتك وساهم في تطوير التطبيق."),
 -    ("Join our Discord", "انضم إلى Discord"),
-+    ("Support Plervo", "انضم إلى Discord"),
++    ("Support Plervo", "ادعم Plervo"),
      ("Community", "المجتمع"),
      ("Join the community", "انضم إلى المجتمع"),
 -    ("discord.gg/artcraft — help, feedback and show-and-tell", "discord.gg/artcraft — مساعدة وآراء وعرض الأعمال"),
@@ -2391,16 +2673,15 @@ index 7695119..a078c2c 100644
      ("Detach All Objects from Parent", "فصل جميع الكائنات عن الصفحة الأصلية"),
      ("Directional Feather", "الحواف المنعمة الاتجاهية"),
      ("Distribute", "توزيع"),
-@@ -1241,7 +1241,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -1241,7 +1241,6 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Insert Variable", "إدراج متغير"),
      ("Inspect Document", "فحص المستند"),
      ("Interface Color Theme", "نسق ألوان الواجهة"),
 -    ("Join the ArtCraft Discord…", "الانضمام إلى Discord الخاص بـ ArtCraft…"),
-+    ("Support Plervo", "الانضمام إلى Discord الخاص بـ Plervo…"),
      ("Last Object Below", "آخر كائن أسفل"),
      ("Library Contents", "محتويات المكتبة"),
      ("Library Items", "عناصر المكتبة"),
-@@ -1478,7 +1478,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -1478,7 +1477,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ),
      ("Convert Cell Type", "تحويل نوع الخلية"),
      ("Copy Link(s", "نسخ الروابط"),
@@ -2410,7 +2691,7 @@ index 7695119..a078c2c 100644
      ("Export EPUB (Reflowable", "تصدير EPUB (قابل لإعادة التدفق"),
      ("Hyperlinks & Cross-References", "الارتباطات التشعبية والمراجع المتقاطعة"),
 diff --git a/crates/ui-egui/src/i18n/it.rs b/crates/ui-egui/src/i18n/it.rs
-index 747511a..972c954 100644
+index 747511a..f211e23 100644
 --- a/crates/ui-egui/src/i18n/it.rs
 +++ b/crates/ui-egui/src/i18n/it.rs
 @@ -400,8 +400,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
@@ -2451,7 +2732,7 @@ index 747511a..972c954 100644
      ("Inspect Document", "Ispeziona documento"),
      ("Interface Color Theme", "Tema colore dell'interfaccia"),
 -    ("Join the ArtCraft Discord…", "Unisciti al Discord di ArtCraft…"),
-+    ("Support Plervo", "Unisciti al Discord di Plervo…"),
++    ("Support Plervo", "Sostieni Plervo"),
      ("Last Object Below", "Ultimo oggetto sotto"),
      ("Library Contents", "Contenuto libreria"),
      ("Library Items", "Elementi libreria"),
@@ -2504,17 +2785,16 @@ index 747511a..972c954 100644
      ("⌥-click clears overrides", "⌥-clic cancella le modifiche locali"),
      ("⚠ out of date", "⚠ non aggiornato"),
      ("General", "Generale"),
-@@ -1358,7 +1358,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -1358,7 +1358,6 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("H&J Violations", "Violazioni di sillabazione e giustificazione"),
      ("Include Bleed", "Includi pagina al vivo"),
      ("Include Stroke Weight", "Includi spessore traccia"),
 -    ("Join our Discord", "Unisciti al nostro Discord"),
-+    ("Support Plervo", "Unisciti al nostro Discord"),
      ("Keep Violations", "Violazioni opzioni di mantenimento"),
      ("Overprint [Black] Swatch at 100%", "Sovrastampa campione [Nero] al 100%"),
      ("Printer's Marks", "Segni di stampa"),
 diff --git a/crates/ui-egui/src/i18n/ja.rs b/crates/ui-egui/src/i18n/ja.rs
-index 263d422..016c4b9 100644
+index 263d422..8ed8ea7 100644
 --- a/crates/ui-egui/src/i18n/ja.rs
 +++ b/crates/ui-egui/src/i18n/ja.rs
 @@ -402,8 +402,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
@@ -2555,7 +2835,7 @@ index 263d422..016c4b9 100644
      ("Inspect Document", "ドキュメントを調査"),
      ("Interface Color Theme", "インターフェイスのカラーテーマ"),
 -    ("Join the ArtCraft Discord…", "ArtCraft の Discord に参加…"),
-+    ("Support Plervo", "Plervo の Discord に参加…"),
++    ("Support Plervo", "Plervo を支援"),
      ("Last Object Below", "最背面のオブジェクト"),
      ("Library Contents", "ライブラリの内容"),
      ("Library Items", "ライブラリの項目"),
@@ -2608,16 +2888,15 @@ index 263d422..016c4b9 100644
      ("⌥-click clears overrides", "⌥ を押しながらクリックするとオーバーライドを消去します"),
      ("⚠ out of date", "⚠ 要更新"),
      ("General", "一般"),
-@@ -1351,7 +1351,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -1351,7 +1351,6 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("H&J Violations", "H&J の制約違反"),
      ("Include Bleed", "裁ち落としを含める"),
      ("Include Stroke Weight", "線の太さを含める"),
 -    ("Join our Discord", "Discord に参加"),
-+    ("Support Plervo", "Discord に参加"),
      ("Keep Violations", "段落保持の制約違反"),
      ("Overprint [Black] Swatch at 100%", "100% の「黒」スウォッチをオーバープリント"),
      ("Printer's Marks", "プリント用マーク"),
-@@ -1476,16 +1476,16 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -1476,16 +1475,16 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      // few field labels.
      ("Anchored Object Options", "アンカー付きオブジェクトのオプション"),
      ("Apply Parent to Pages", "ページに親ページを適用"),
@@ -2638,17 +2917,16 @@ index 263d422..016c4b9 100644
      ("Document Endnote Options", "ドキュメントの文末脚注オプション"),
      ("Document Footnote Options", "ドキュメントの脚注オプション"),
      ("Export EPUB", "EPUB を書き出し"),
-@@ -1506,7 +1506,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -1506,7 +1505,6 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Insert Cross-Reference", "相互参照を挿入"),
      ("Insert Math Expression", "数式を挿入"),
      ("Insert Pages", "ページを挿入"),
 -    ("Join the ArtCraft Discord", "ArtCraft の Discord に参加"),
-+    ("Support Plervo", "Plervo の Discord に参加"),
      ("Load DTD", "DTD を読み込み"),
      ("Load Swatches", "スウォッチを読み込み"),
      ("Margins and Columns", "マージン・段組"),
 diff --git a/crates/ui-egui/src/i18n/pt_br.rs b/crates/ui-egui/src/i18n/pt_br.rs
-index 3f955f6..6239b75 100644
+index 3f955f6..c97e2a0 100644
 --- a/crates/ui-egui/src/i18n/pt_br.rs
 +++ b/crates/ui-egui/src/i18n/pt_br.rs
 @@ -150,24 +150,24 @@ pub(super) const TABLE: &[(&str, &str)] = &[
@@ -2674,7 +2952,7 @@ index 3f955f6..6239b75 100644
          "Obtenha ajuda, compartilhe seus layouts e ajude a moldar o que construímos em seguida.",
      ),
 -    ("Join our Discord", "Junte-se ao nosso Discord"),
-+    ("Support Plervo", "Junte-se ao nosso Discord"),
++    ("Support Plervo", "Apoie o Plervo"),
      ("Community", "Comunidade"),
      ("Join the community", "Junte-se à comunidade"),
 -    ("discord.gg/artcraft — help, feedback and show-and-tell", "discord.gg/artcraft — ajuda, feedback e demonstrações"),
@@ -2701,7 +2979,7 @@ index 3f955f6..6239b75 100644
      ("Path", "Caminho"),
      ("Place the insertion point in a table, or create one.", "Coloque o ponto de inserção em uma tabela ou crie uma."),
 diff --git a/crates/ui-egui/src/i18n/uk.rs b/crates/ui-egui/src/i18n/uk.rs
-index efccfc1..82ade93 100644
+index efccfc1..506d15a 100644
 --- a/crates/ui-egui/src/i18n/uk.rs
 +++ b/crates/ui-egui/src/i18n/uk.rs
 @@ -1,5 +1,5 @@
@@ -2749,7 +3027,7 @@ index efccfc1..82ade93 100644
      ("Inspect Document", "Перевірити документ"),
      ("Interface Color Theme", "Колірна тема інтерфейсу"),
 -    ("Join the ArtCraft Discord…", "Приєднатися до Discord ArtCraft…"),
-+    ("Support Plervo", "Приєднатися до Discord Plervo…"),
++    ("Support Plervo", "Підтримати Plervo"),
      ("Last Object Below", "Останній об’єкт нижче"),
      ("Library Contents", "Вміст бібліотеки"),
      ("Library Items", "Елементи бібліотеки"),
@@ -2802,12 +3080,11 @@ index efccfc1..82ade93 100644
      ("⌥-click clears overrides", "⌥-клацання скидає перевизначення"),
      ("⚠ out of date", "⚠ застаріле"),
      ("General", "Загальні"),
-@@ -1355,7 +1355,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -1355,7 +1355,6 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("H&J Violations", "Порушення переносів і вирівнювання"),
      ("Include Bleed", "Включати виліт"),
      ("Include Stroke Weight", "Враховувати товщину обведення"),
 -    ("Join our Discord", "Приєднуйтесь до нашого Discord"),
-+    ("Support Plervo", "Приєднуйтесь до нашого Discord"),
      ("Keep Violations", "Порушення правил утримання рядків"),
      ("Overprint [Black] Swatch at 100%", "Накладання зразка [Чорний] на 100%"),
      ("Printer's Marks", "Друкарські позначки"),
@@ -2923,6 +3200,20 @@ index 193abf3..893dc95 100644
                  assert!(galley.size().x > 0.0);
              }
          });
+diff --git a/docs/control-protocol.md b/docs/control-protocol.md
+index 4399872..e9a10f2 100644
+--- a/docs/control-protocol.md
++++ b/docs/control-protocol.md
+@@ -1,3 +1,9 @@
++> **Plervo public-build boundary:** this unauthenticated loopback transport is disabled in
++> distributed binaries. Normal editing and headless CLI/MCP continue to work.
++> `--control`/the control-port environment variable do not open a socket. The
++> `local-control` Cargo feature is for isolated development only; it must not be
++> enabled in a public artifact until authentication and replay/resource limits are reviewed.
++
+ # Control protocol
+ 
+ Start the app with `--control <port>` (or `DESIGNCRAFT_CONTROL_PORT`). The server listens on
 diff --git a/packaging/env.sh b/packaging/env.sh
 index 0eb5802..d6d95ab 100644
 --- a/packaging/env.sh
@@ -3110,6 +3401,101 @@ index 6e06fb9..cebe247 100755
 +  echo "warning: iconutil not found (macOS only); plervo-publish.icns not regenerated" >&2
  fi
  echo "icons written to $DIR"
+diff --git a/packaging/linux/ai.storyteller.designcraft.desktop b/packaging/linux/ai.storyteller.designcraft.desktop
+deleted file mode 100644
+index cdf1461..0000000
+--- a/packaging/linux/ai.storyteller.designcraft.desktop
++++ /dev/null
+@@ -1,13 +0,0 @@
+-[Desktop Entry]
+-Type=Application
+-Name=DesignCraft
+-GenericName=Page Layout
+-Comment=Lay out magazines, books and print documents
+-Exec=designcraft %F
+-TryExec=designcraft
+-Icon=ai.storyteller.designcraft
+-Terminal=false
+-StartupNotify=true
+-StartupWMClass=ai.storyteller.designcraft
+-Categories=Graphics;Publishing;
+-Keywords=layout;page;desktop publishing;dtp;magazine;book;indesign;idml;typesetting;
+diff --git a/packaging/linux/ai.storyteller.designcraft.metainfo.xml.in b/packaging/linux/ai.storyteller.designcraft.metainfo.xml.in
+deleted file mode 100644
+index ea548de..0000000
+--- a/packaging/linux/ai.storyteller.designcraft.metainfo.xml.in
++++ /dev/null
+@@ -1,61 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
+-     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
+-<component type="desktop-application">
+-  <id>ai.storyteller.designcraft</id>
+-  <metadata_license>CC0-1.0</metadata_license>
+-  <project_license>MIT OR Apache-2.0</project_license>
+-  <name>DesignCraft</name>
+-  <summary>Lay out magazines, books and print documents</summary>
+-  <developer id="ai.storyteller">
+-    <name>Learning Machines LLC</name>
+-  </developer>
+-  <description>
+-    <p>
+-      DesignCraft is a page layout. Lay out magazines, books and print documents
+-    </p>
+-  </description>
+-  <launchable type="desktop-id">ai.storyteller.designcraft.desktop</launchable>
+-  <icon type="stock">ai.storyteller.designcraft</icon>
+-  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
+-  <url type="homepage">https://getartcraft.com/apps/designcraft</url>
+-  <url type="bugtracker">https://github.com/storytold/designcraft/issues</url>
+-  <url type="help">https://github.com/storytold/designcraft</url>
+-  <url type="contact">https://discord.gg/artcraft</url>
+-  <categories>
+-    <category>Graphics</category>
+-    <category>RasterGraphics</category>
+-    <category>Photography</category>
+-  </categories>
+-  <keywords>
+-    <keyword>photo</keyword>
+-    <keyword>image editor</keyword>
+-    <keyword>psd</keyword>
+-    <keyword>layers</keyword>
+-  </keywords>
+-  <screenshots>
+-    <screenshot type="default">
+-      <caption>Editing The Great Wave off Kanagawa with type layers and adjustment layers</caption>
+-      <image>https://raw.githubusercontent.com/storytold/designcraft/main/docs/images/designcraft-demo.jpg</image>
+-    </screenshot>
+-  </screenshots>
+-  <branding>
+-    <color type="primary" scheme_preference="light">#9fd0ff</color>
+-    <color type="primary" scheme_preference="dark">#1f64ba</color>
+-  </branding>
+-  <requires>
+-    <display_length compare="ge">760</display_length>
+-  </requires>
+-  <supports>
+-    <control>keyboard</control>
+-    <control>pointing</control>
+-    <control>tablet</control>
+-  </supports>
+-  <provides>
+-    <binary>designcraft</binary>
+-  </provides>
+-  <content_rating type="oars-1.1"/>
+-  <releases>
+-    <release version="@VERSION@" date="@DATE@"/>
+-  </releases>
+-</component>
+diff --git a/packaging/linux/ai.storyteller.designcraft.mime.xml b/packaging/linux/ai.storyteller.designcraft.mime.xml
+deleted file mode 100644
+index be4dcc2..0000000
+--- a/packaging/linux/ai.storyteller.designcraft.mime.xml
++++ /dev/null
+@@ -1,3 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+-</mime-info>
 diff --git a/packaging/linux/com.plervo.publish.desktop b/packaging/linux/com.plervo.publish.desktop
 new file mode 100644
 index 0000000..b5b92c5
@@ -3271,6 +3657,133 @@ index c45a55a..c916b9b 100755
    flatpak run --command=sh "$APP_ID" -c 'ls /app/share/applications /app/share/metainfo /app/share/mime/packages /app/share/icons/hicolor/scalable/apps'
  fi
  echo "==> done"
+diff --git a/packaging/linux/flatpak/ai.storyteller.designcraft.bundle.yml b/packaging/linux/flatpak/ai.storyteller.designcraft.bundle.yml
+deleted file mode 100644
+index 2cfbe6a..0000000
+--- a/packaging/linux/flatpak/ai.storyteller.designcraft.bundle.yml
++++ /dev/null
+@@ -1,49 +0,0 @@
+-# Flatpak manifest for the single-file bundle attached to every GitHub release
+-# (designcraft-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
+-#
+-# It repackages the release's own Linux tarball (designcraft-<version>-linux-<arch>.tar.gz,
+-# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
+-# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
+-# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
+-# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
+-# Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
+-# GPU driver comes from its org.freedesktop.Platform.GL extension.
+-#
+-# ai.storyteller.designcraft.yml (same directory) is the from-source manifest for Flathub. Keep
+-# runtime-version and finish-args identical in both (packaging-lint checks this).
+-id: ai.storyteller.designcraft
+-runtime: org.freedesktop.Platform
+-runtime-version: '25.08'
+-sdk: org.freedesktop.Sdk
+-command: designcraft
+-finish-args:
+-  # Display: Wayland first; X11 only when no Wayland compositor is running.
+-  - --socket=wayland
+-  - --socket=fallback-x11
+-  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
+-  - --share=ipc
+-  # GPU access for egui's renderer (Vulkan, or GL as a fallback).
+-  - --device=dri
+-  # Open/Save, Place and Export go through the file-chooser portal (rfd's xdg-portal backend)
+-  # and drag-and-drop through the document portal, so picked files work anywhere without broad
+-  # filesystem access. Documents and Pictures are granted so files passed by path (the command
+-  # line, Open Recent, linked images placed in a layout) work in the usual places.
+-  - --filesystem=xdg-documents
+-  - --filesystem=xdg-pictures
+-  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
+-  # the sandbox; `flatpak override --user --share=network ai.storyteller.designcraft` exposes it
+-  # to host agents) and home/host filesystem access.
+-modules:
+-  - name: designcraft
+-    buildsystem: simple
+-    build-commands:
+-      - install -Dm755 bin/designcraft /app/bin/designcraft
+-      - install -Dm755 bin/designcraft-cli /app/bin/designcraft-cli
+-      - install -Dm644 share/applications/ai.storyteller.designcraft.desktop /app/share/applications/ai.storyteller.designcraft.desktop
+-      - install -Dm644 share/mime/packages/ai.storyteller.designcraft.xml /app/share/mime/packages/ai.storyteller.designcraft.xml
+-      # Already has the release's version and date substituted by package.sh.
+-      - install -Dm644 share/metainfo/ai.storyteller.designcraft.metainfo.xml /app/share/metainfo/ai.storyteller.designcraft.metainfo.xml
+-      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/designcraft /app/share/doc/
+-    sources:
+-      - type: dir
+-        path: stage
+diff --git a/packaging/linux/flatpak/ai.storyteller.designcraft.yml b/packaging/linux/flatpak/ai.storyteller.designcraft.yml
+deleted file mode 100644
+index aabee2e..0000000
+--- a/packaging/linux/flatpak/ai.storyteller.designcraft.yml
++++ /dev/null
+@@ -1,66 +0,0 @@
+-# Flatpak manifest for DesignCraft, ready for a Flathub submission.
+-#
+-# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
+-#
+-#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
+-#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
+-#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.designcraft.yml
+-#   flatpak run ai.storyteller.designcraft
+-#
+-# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
+-# The single-file .flatpak attached to each release comes from ai.storyteller.designcraft.bundle.yml,
+-# which repackages the prebuilt release binaries. Keep runtime-version and finish-args identical.
+-id: ai.storyteller.designcraft
+-runtime: org.freedesktop.Platform
+-runtime-version: '25.08'
+-sdk: org.freedesktop.Sdk
+-sdk-extensions:
+-  - org.freedesktop.Sdk.Extension.rust-stable
+-command: designcraft
+-finish-args:
+-  # Display: Wayland first; X11 only when no Wayland compositor is running.
+-  - --socket=wayland
+-  - --socket=fallback-x11
+-  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
+-  - --share=ipc
+-  # GPU access for egui's renderer (Vulkan, or GL as a fallback).
+-  - --device=dri
+-  # Open/Save, Place and Export go through the file-chooser portal (rfd's xdg-portal backend)
+-  # and drag-and-drop through the document portal, so picked files work anywhere without broad
+-  # filesystem access. Documents and Pictures are granted so files passed by path (the command
+-  # line, Open Recent, linked images placed in a layout) work in the usual places.
+-  - --filesystem=xdg-documents
+-  - --filesystem=xdg-pictures
+-  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
+-  # the sandbox; `flatpak override --user --share=network ai.storyteller.designcraft` exposes it
+-  # to host agents) and home/host filesystem access.
+-build-options:
+-  append-path: /usr/lib/sdk/rust-stable/bin
+-modules:
+-  - name: designcraft
+-    buildsystem: simple
+-    build-options:
+-      env:
+-        CARGO_HOME: /run/build/designcraft/cargo
+-        CARGO_NET_OFFLINE: 'true'
+-    build-commands:
+-      - cargo --offline build --release --locked -p designcraft
+-      - install -Dm755 target/release/designcraft /app/bin/designcraft
+-      - install -Dm644 packaging/linux/ai.storyteller.designcraft.desktop /app/share/applications/ai.storyteller.designcraft.desktop
+-      - install -Dm644 packaging/linux/ai.storyteller.designcraft.mime.xml /app/share/mime/packages/ai.storyteller.designcraft.xml
+-      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
+-      - >-
+-        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
+-        install -d /app/share/metainfo;
+-        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+-        packaging/linux/ai.storyteller.designcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.designcraft.metainfo.xml
+-    sources:
+-      - type: dir
+-        path: ../../..
+-        skip:
+-          - target
+-          - dist
+-          - corpus
+-          - build-flatpak
+-          - .flatpak-builder
+-      - cargo-sources.json
 diff --git a/packaging/linux/flatpak/com.plervo.publish.bundle.yml b/packaging/linux/flatpak/com.plervo.publish.bundle.yml
 new file mode 100644
 index 0000000..28ed733
@@ -4240,6 +4753,2285 @@ index 81efe52..70233a8 100644
  New-Item -ItemType Directory -Path $tmp | Out-Null
  
  try {
+diff --git a/vendor/krilla-svg/Cargo.lock b/vendor/krilla-svg/Cargo.lock
+new file mode 100644
+index 0000000..9bd1d34
+--- /dev/null
++++ b/vendor/krilla-svg/Cargo.lock
+@@ -0,0 +1,792 @@
++# This file is automatically @generated by Cargo.
++# It is not intended for manual editing.
++version = 4
++
++[[package]]
++name = "adler2"
++version = "2.0.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "320119579fcad9c21884f5c4861d16174d0e06250625266f50fe6898340abefa"
++
++[[package]]
++name = "arrayref"
++version = "0.3.9"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "76a2e8124351fda1ef8aaaa3bbd7ebbcb486bbcd4225aca0aa0d84bb2db8fecb"
++
++[[package]]
++name = "arrayvec"
++version = "0.7.6"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "7c02d123df017efcdfbd739ef81735b36c5ba83ec3c59c80a9d7ecc718f92e50"
++
++[[package]]
++name = "autocfg"
++version = "1.5.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "c08606f8c3cbf4ce6ec8e28fb0014a2c086708fe954eaa885384a6165172e7e8"
++
++[[package]]
++name = "base64"
++version = "0.22.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "72b3254f16251a8381aa12e40e3c4d2f0199f8c6508fbecb9d91f575e0fbb8c6"
++
++[[package]]
++name = "bitflags"
++version = "2.11.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "c4512299f36f043ab09a583e57bceb5a5aab7a73db1805848e8fef3c9e8c78b3"
++
++[[package]]
++name = "bumpalo"
++version = "3.20.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "5d20789868f4b01b2f2caec9f5c4e0213b41e3e5702a50157d699ae31ced2fcb"
++
++[[package]]
++name = "bytemuck"
++version = "1.25.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "c8efb64bd706a16a1bdde310ae86b351e4d21550d98d056f22f8a7f7a2183fec"
++dependencies = [
++ "bytemuck_derive",
++]
++
++[[package]]
++name = "bytemuck_derive"
++version = "1.10.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "f9abbd1bc6865053c427f7198e6af43bfdedc55ab791faed4fbd361d789575ff"
++dependencies = [
++ "proc-macro2",
++ "quote",
++ "syn",
++]
++
++[[package]]
++name = "byteorder-lite"
++version = "0.1.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "8f1fe948ff07f4bd06c30984e69f5b4899c516a3ef74f34df92a2df2ab535495"
++
++[[package]]
++name = "cfg-if"
++version = "1.0.4"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801"
++
++[[package]]
++name = "color_quant"
++version = "1.1.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "3d7b894f5411737b7867f4827955924d7c254fc9f4d91a6aad6b097804b1018b"
++
++[[package]]
++name = "core_maths"
++version = "0.1.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "77745e017f5edba1a9c1d854f6f3a52dac8a12dd5af5d2f54aecf61e43d80d30"
++dependencies = [
++ "libm",
++]
++
++[[package]]
++name = "crc32fast"
++version = "1.5.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "9481c1c90cbf2ac953f07c8d4a58aa3945c425b7185c9154d67a65e4230da511"
++dependencies = [
++ "cfg-if",
++]
++
++[[package]]
++name = "data-url"
++version = "0.3.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "be1e0bca6c3637f992fc1cc7cbc52a78c1ef6db076dbf1059c4323d6a2048376"
++
++[[package]]
++name = "equivalent"
++version = "1.0.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "877a4ace8713b0bcf2a4e7eec82529c029f1d0619886d18145fea96c3ffe5c0f"
++
++[[package]]
++name = "euclid"
++version = "0.22.14"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "f1a05365e3b1c6d1650318537c7460c6923f1abdd272ad6842baa2b509957a06"
++dependencies = [
++ "num-traits",
++]
++
++[[package]]
++name = "fdeflate"
++version = "0.3.7"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "1e6853b52649d4ac5c0bd02320cddc5ba956bdb407c4b75a2c6b75bf51500f8c"
++dependencies = [
++ "simd-adler32",
++]
++
++[[package]]
++name = "flate2"
++version = "1.1.9"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "843fba2746e448b37e26a819579957415c8cef339bf08564fe8b7ddbd959573c"
++dependencies = [
++ "crc32fast",
++ "miniz_oxide",
++]
++
++[[package]]
++name = "float-cmp"
++version = "0.9.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "98de4bbd547a563b716d8dfa9aad1cb19bfab00f4fa09a6a4ed21dbcf44ce9c4"
++dependencies = [
++ "num-traits",
++]
++
++[[package]]
++name = "font-types"
++version = "0.11.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "5b38ad915f6dadd993ced50848a8291a543bd41ca62bc10740d5e64e2ab4cfd7"
++dependencies = [
++ "bytemuck",
++]
++
++[[package]]
++name = "fontconfig-parser"
++version = "0.5.8"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "bbc773e24e02d4ddd8395fd30dc147524273a83e54e0f312d986ea30de5f5646"
++dependencies = [
++ "roxmltree 0.20.0",
++]
++
++[[package]]
++name = "fontdb"
++version = "0.23.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "457e789b3d1202543297a350643cf459f836cade38934e7a4cf6a39e7cde2905"
++dependencies = [
++ "fontconfig-parser",
++ "log",
++ "memmap2",
++ "slotmap",
++ "tinyvec",
++ "ttf-parser",
++]
++
++[[package]]
++name = "gif"
++version = "0.14.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "ee8cfcc411d9adbbaba82fb72661cc1bcca13e8bba98b364e62b2dba8f960159"
++dependencies = [
++ "color_quant",
++ "weezl",
++]
++
++[[package]]
++name = "hashbrown"
++version = "0.17.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "4f467dd6dccf739c208452f8014c75c18bb8301b050ad1cfb27153803edb0f51"
++
++[[package]]
++name = "image-webp"
++version = "0.2.4"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "525e9ff3e1a4be2fbea1fdf0e98686a6d98b4d8f937e1bf7402245af1909e8c3"
++dependencies = [
++ "byteorder-lite",
++ "quick-error",
++]
++
++[[package]]
++name = "imagesize"
++version = "0.14.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "09e54e57b4c48b40f7aec75635392b12b3421fa26fe8b4332e63138ed278459c"
++
++[[package]]
++name = "indexmap"
++version = "2.14.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "d466e9454f08e4a911e14806c24e16fba1b4c121d1ea474396f396069cf949d9"
++dependencies = [
++ "equivalent",
++ "hashbrown",
++]
++
++[[package]]
++name = "itoa"
++version = "1.0.18"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "8f42a60cbdf9a97f5d2305f08a87dc4e09308d1276d28c869c684d7777685682"
++
++[[package]]
++name = "krilla"
++version = "0.8.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "27da593198b20eeba65caeb73c2bbeec3e53ab08fa549898312ce81c4fce5e33"
++dependencies = [
++ "base64",
++ "bumpalo",
++ "flate2",
++ "float-cmp",
++ "gif",
++ "image-webp",
++ "imagesize",
++ "indexmap",
++ "pdf-writer",
++ "png",
++ "rustc-hash",
++ "rustybuzz",
++ "siphasher",
++ "skrifa",
++ "smallvec",
++ "subsetter",
++ "tiny-skia-path",
++ "xmp-writer",
++ "yoke",
++ "zune-jpeg",
++]
++
++[[package]]
++name = "krilla-svg"
++version = "0.8.1"
++dependencies = [
++ "flate2",
++ "fontdb",
++ "krilla",
++ "resvg",
++ "skrifa",
++ "smallvec",
++ "tiny-skia",
++ "usvg",
++]
++
++[[package]]
++name = "kurbo"
++version = "0.13.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "7564e90fe3c0d5771e1f0bc95322b21baaeaa0d9213fa6a0b61c99f8b17b3bfb"
++dependencies = [
++ "arrayvec",
++ "euclid",
++ "smallvec",
++]
++
++[[package]]
++name = "libc"
++version = "0.2.185"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "52ff2c0fe9bc6cb6b14a0592c2ff4fa9ceb83eea9db979b0487cd054946a2b8f"
++
++[[package]]
++name = "libm"
++version = "0.2.16"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "b6d2cec3eae94f9f509c767b45932f1ada8350c4bdb85af2fcab4a3c14807981"
++
++[[package]]
++name = "log"
++version = "0.4.29"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "5e5032e24019045c762d3c0f28f5b6b8bbf38563a65908389bf7978758920897"
++
++[[package]]
++name = "memchr"
++version = "2.8.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "f8ca58f447f06ed17d5fc4043ce1b10dd205e060fb3ce5b979b8ed8e59ff3f79"
++
++[[package]]
++name = "memmap2"
++version = "0.9.10"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "714098028fe011992e1c3962653c96b2d578c4b4bce9036e15ff220319b1e0e3"
++dependencies = [
++ "libc",
++]
++
++[[package]]
++name = "miniz_oxide"
++version = "0.8.9"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "1fa76a2c86f704bdb222d66965fb3d63269ce38518b83cb0575fca855ebb6316"
++dependencies = [
++ "adler2",
++ "simd-adler32",
++]
++
++[[package]]
++name = "num-traits"
++version = "0.2.19"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "071dfc062690e90b734c0b2273ce72ad0ffa95f0c74596bc250dcfd960262841"
++dependencies = [
++ "autocfg",
++]
++
++[[package]]
++name = "pdf-writer"
++version = "0.15.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "f5e456864a7a304047bff84977dc6fb162bd956475d40ba50b2dcecaada7f753"
++dependencies = [
++ "bitflags",
++ "itoa",
++ "memchr",
++ "ryu",
++]
++
++[[package]]
++name = "pico-args"
++version = "0.5.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "5be167a7af36ee22fe3115051bc51f6e6c7054c9348e28deb4f49bd6f705a315"
++
++[[package]]
++name = "png"
++version = "0.18.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "60769b8b31b2a9f263dae2776c37b1b28ae246943cf719eb6946a1db05128a61"
++dependencies = [
++ "bitflags",
++ "crc32fast",
++ "fdeflate",
++ "flate2",
++ "miniz_oxide",
++]
++
++[[package]]
++name = "proc-macro2"
++version = "1.0.106"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "8fd00f0bb2e90d81d1044c2b32617f68fcb9fa3bb7640c23e9c748e53fb30934"
++dependencies = [
++ "unicode-ident",
++]
++
++[[package]]
++name = "quick-error"
++version = "2.0.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "a993555f31e5a609f617c12db6250dedcac1b0a85076912c436e6fc9b2c8e6a3"
++
++[[package]]
++name = "quote"
++version = "1.0.45"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "41f2619966050689382d2b44f664f4bc593e129785a36d6ee376ddf37259b924"
++dependencies = [
++ "proc-macro2",
++]
++
++[[package]]
++name = "read-fonts"
++version = "0.39.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "32d7821ebf634094f5e5ae9d43c3109407f420f03a7a2e021d3a5d955a4f09fc"
++dependencies = [
++ "bytemuck",
++ "font-types",
++]
++
++[[package]]
++name = "resvg"
++version = "0.47.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "9be183ad6a216aa96f33e4c8033b0988b8b3ea6fd2359d19af5bac4643fd8e81"
++dependencies = [
++ "gif",
++ "image-webp",
++ "log",
++ "pico-args",
++ "rgb",
++ "svgtypes",
++ "tiny-skia",
++ "usvg",
++ "zune-jpeg",
++]
++
++[[package]]
++name = "rgb"
++version = "0.8.53"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "47b34b781b31e5d73e9fbc8689c70551fd1ade9a19e3e28cfec8580a79290cc4"
++dependencies = [
++ "bytemuck",
++]
++
++[[package]]
++name = "roxmltree"
++version = "0.20.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "6c20b6793b5c2fa6553b250154b78d6d0db37e72700ae35fad9387a46f487c97"
++
++[[package]]
++name = "roxmltree"
++version = "0.21.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "f1964b10c76125c36f8afe190065a4bf9a87bf324842c05701330bba9f1cacbb"
++dependencies = [
++ "memchr",
++]
++
++[[package]]
++name = "rustc-hash"
++version = "2.1.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "94300abf3f1ae2e2b8ffb7b58043de3d399c73fa6f4b73826402a5c457614dbe"
++
++[[package]]
++name = "rustybuzz"
++version = "0.20.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "fd3c7c96f8a08ee34eff8857b11b49b07d71d1c3f4e88f8a88d4c9e9f90b1702"
++dependencies = [
++ "bitflags",
++ "bytemuck",
++ "core_maths",
++ "log",
++ "smallvec",
++ "ttf-parser",
++ "unicode-bidi-mirroring",
++ "unicode-ccc",
++ "unicode-properties",
++ "unicode-script",
++]
++
++[[package]]
++name = "ryu"
++version = "1.0.23"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "9774ba4a74de5f7b1c1451ed6cd5285a32eddb5cccb8cc655a4e50009e06477f"
++
++[[package]]
++name = "simd-adler32"
++version = "0.3.9"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "703d5c7ef118737c72f1af64ad2f6f8c5e1921f818cdcb97b8fe6fc69bf66214"
++
++[[package]]
++name = "simplecss"
++version = "0.2.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "7a9c6883ca9c3c7c90e888de77b7a5c849c779d25d74a1269b0218b14e8b136c"
++dependencies = [
++ "log",
++]
++
++[[package]]
++name = "siphasher"
++version = "1.0.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "b2aa850e253778c88a04c3d7323b043aeda9d3e30d5971937c1855769763678e"
++
++[[package]]
++name = "skrifa"
++version = "0.42.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "c844316c7318cf6ae9034ee45edd2c432076ef910fdc4bc598183b31f88d03c3"
++dependencies = [
++ "bytemuck",
++ "read-fonts",
++]
++
++[[package]]
++name = "slotmap"
++version = "1.1.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "bdd58c3c93c3d278ca835519292445cb4b0d4dc59ccfdf7ceadaab3f8aeb4038"
++dependencies = [
++ "version_check",
++]
++
++[[package]]
++name = "smallvec"
++version = "1.15.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "67b1b7a3b5fe4f1376887184045fcf45c69e92af734b7aaddc05fb777b6fbd03"
++
++[[package]]
++name = "stable_deref_trait"
++version = "1.2.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "6ce2be8dc25455e1f91df71bfa12ad37d7af1092ae736f3a6cd0e37bc7810596"
++
++[[package]]
++name = "strict-num"
++version = "0.1.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "6637bab7722d379c8b41ba849228d680cc12d0a45ba1fa2b48f2a30577a06731"
++dependencies = [
++ "float-cmp",
++]
++
++[[package]]
++name = "subsetter"
++version = "0.2.6"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "38803281d1c23166c5ebcb455439a5d2afe711cc909cf88af72448c297756ad6"
++dependencies = [
++ "kurbo",
++ "rustc-hash",
++ "skrifa",
++ "write-fonts",
++]
++
++[[package]]
++name = "svgtypes"
++version = "0.16.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "695b5790b3131dafa99b3bbfd25a216edb3d216dad9ca208d4657bfb8f2abc3d"
++dependencies = [
++ "kurbo",
++ "siphasher",
++]
++
++[[package]]
++name = "syn"
++version = "2.0.117"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "e665b8803e7b1d2a727f4023456bbbbe74da67099c585258af0ad9c5013b9b99"
++dependencies = [
++ "proc-macro2",
++ "quote",
++ "unicode-ident",
++]
++
++[[package]]
++name = "synstructure"
++version = "0.13.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "728a70f3dbaf5bab7f0c4b1ac8d7ae5ea60a4b5549c8a5914361c99147a709d2"
++dependencies = [
++ "proc-macro2",
++ "quote",
++ "syn",
++]
++
++[[package]]
++name = "tiny-skia"
++version = "0.12.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "47ffee5eaaf5527f630fb0e356b90ebdec84d5d18d937c5e440350f88c5a91ea"
++dependencies = [
++ "arrayref",
++ "arrayvec",
++ "bytemuck",
++ "cfg-if",
++ "log",
++ "png",
++ "tiny-skia-path",
++]
++
++[[package]]
++name = "tiny-skia-path"
++version = "0.12.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "edca365c3faccca67d06593c5980fa6c57687de727a03131735bb85f01fdeeb9"
++dependencies = [
++ "arrayref",
++ "bytemuck",
++ "strict-num",
++]
++
++[[package]]
++name = "tinyvec"
++version = "1.11.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "3e61e67053d25a4e82c844e8424039d9745781b3fc4f32b8d55ed50f5f667ef3"
++dependencies = [
++ "tinyvec_macros",
++]
++
++[[package]]
++name = "tinyvec_macros"
++version = "0.1.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "1f3ccbac311fea05f86f61904b462b55fb3df8837a366dfc601a0161d0532f20"
++
++[[package]]
++name = "ttf-parser"
++version = "0.25.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "d2df906b07856748fa3f6e0ad0cbaa047052d4a7dd609e231c4f72cee8c36f31"
++dependencies = [
++ "core_maths",
++]
++
++[[package]]
++name = "unicode-bidi"
++version = "0.3.18"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "5c1cb5db39152898a79168971543b1cb5020dff7fe43c8dc468b0885f5e29df5"
++
++[[package]]
++name = "unicode-bidi-mirroring"
++version = "0.4.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "5dfa6e8c60bb66d49db113e0125ee8711b7647b5579dc7f5f19c42357ed039fe"
++
++[[package]]
++name = "unicode-ccc"
++version = "0.4.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "ce61d488bcdc9bc8b5d1772c404828b17fc481c0a582b5581e95fb233aef503e"
++
++[[package]]
++name = "unicode-ident"
++version = "1.0.24"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75"
++
++[[package]]
++name = "unicode-properties"
++version = "0.1.4"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "7df058c713841ad818f1dc5d3fd88063241cc61f49f5fbea4b951e8cf5a8d71d"
++
++[[package]]
++name = "unicode-script"
++version = "0.5.8"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "383ad40bb927465ec0ce7720e033cb4ca06912855fc35db31b5755d0de75b1ee"
++
++[[package]]
++name = "unicode-vo"
++version = "0.1.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "b1d386ff53b415b7fe27b50bb44679e2cc4660272694b7b6f3326d8480823a94"
++
++[[package]]
++name = "usvg"
++version = "0.47.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "d46cf96c5f498d36b7a9693bc6a7075c0bb9303189d61b2249b0dc3d309c07de"
++dependencies = [
++ "base64",
++ "data-url",
++ "flate2",
++ "fontdb",
++ "imagesize",
++ "kurbo",
++ "log",
++ "pico-args",
++ "roxmltree 0.21.1",
++ "rustybuzz",
++ "simplecss",
++ "siphasher",
++ "strict-num",
++ "svgtypes",
++ "tiny-skia-path",
++ "ttf-parser",
++ "unicode-bidi",
++ "unicode-script",
++ "unicode-vo",
++ "xmlwriter",
++]
++
++[[package]]
++name = "version_check"
++version = "0.9.5"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "0b928f33d975fc6ad9f86c8f283853ad26bdd5b10b7f1542aa2fa15e2289105a"
++
++[[package]]
++name = "weezl"
++version = "0.1.12"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "a28ac98ddc8b9274cb41bb4d9d4d5c425b6020c50c46f25559911905610b4a88"
++
++[[package]]
++name = "write-fonts"
++version = "0.48.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "ce8b548f3c4467727d74d4237f48cbc08b8ebee551f7d7f17ac63b853cd9c481"
++dependencies = [
++ "font-types",
++ "indexmap",
++ "kurbo",
++ "log",
++ "read-fonts",
++]
++
++[[package]]
++name = "xmlwriter"
++version = "0.1.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "ec7a2a501ed189703dba8b08142f057e887dfc4b2cc4db2d343ac6376ba3e0b9"
++
++[[package]]
++name = "xmp-writer"
++version = "0.3.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
++
++[[package]]
++name = "yoke"
++version = "0.8.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "abe8c5fda708d9ca3df187cae8bfb9ceda00dd96231bed36e445a1a48e66f9ca"
++dependencies = [
++ "stable_deref_trait",
++ "yoke-derive",
++ "zerofrom",
++]
++
++[[package]]
++name = "yoke-derive"
++version = "0.8.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "de844c262c8848816172cef550288e7dc6c7b7814b4ee56b3e1553f275f1858e"
++dependencies = [
++ "proc-macro2",
++ "quote",
++ "syn",
++ "synstructure",
++]
++
++[[package]]
++name = "zerofrom"
++version = "0.1.7"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "69faa1f2a1ea75661980b013019ed6687ed0e83d069bc1114e2cc74c6c04c4df"
++dependencies = [
++ "zerofrom-derive",
++]
++
++[[package]]
++name = "zerofrom-derive"
++version = "0.1.7"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "11532158c46691caf0f2593ea8358fed6bbf68a0315e80aae9bd41fbade684a1"
++dependencies = [
++ "proc-macro2",
++ "quote",
++ "syn",
++ "synstructure",
++]
++
++[[package]]
++name = "zune-core"
++version = "0.5.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "cb8a0807f7c01457d0379ba880ba6322660448ddebc890ce29bb64da71fb40f9"
++
++[[package]]
++name = "zune-jpeg"
++version = "0.5.15"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "27bc9d5b815bc103f142aa054f561d9187d191692ec7c2d1e2b4737f8dbd7296"
++dependencies = [
++ "zune-core",
++]
+diff --git a/vendor/krilla-svg/Cargo.toml b/vendor/krilla-svg/Cargo.toml
+new file mode 100644
+index 0000000..730f318
+--- /dev/null
++++ b/vendor/krilla-svg/Cargo.toml
+@@ -0,0 +1,66 @@
++# THIS FILE IS AUTOMATICALLY GENERATED BY CARGO
++#
++# When uploading crates to the registry Cargo will automatically
++# "normalize" Cargo.toml files for maximal compatibility
++# with all versions of Cargo and also rewrite `path` dependencies
++# to registry (e.g., crates.io) dependencies.
++#
++# If you are reading this file be aware that the original Cargo.toml
++# will likely look very different (and much more reasonable).
++# See Cargo.toml.orig for the original contents.
++
++[package]
++edition = "2021"
++rust-version = "1.92"
++name = "krilla-svg"
++version = "0.8.1"
++authors = ["Laurenz Stampfl <laurenz.stampfl@gmail.com>"]
++build = false
++autolib = false
++autobins = false
++autoexamples = false
++autotests = false
++autobenches = false
++description = "Converting SVG files to PDF."
++readme = "README.md"
++license = "MIT OR Apache-2.0"
++repository = "https://github.com/LaurenzV/krilla"
++
++[lib]
++name = "krilla_svg"
++path = "src/lib.rs"
++
++[[example]]
++name = "svg"
++path = "examples/svg.rs"
++
++[dependencies.flate2]
++version = "1.1.0"
++
++[dependencies.fontdb]
++version = "0.24.0"
++
++[dependencies.krilla]
++version = "0.8.2"
++default-features = false
++features = ["raster-images"]
++
++[dependencies.resvg]
++version = "0.48.1"
++
++[dependencies.skrifa]
++version = "0.47.0"
++
++[dependencies.smallvec]
++version = "1.15.1"
++features = [
++    "union",
++    "const_new",
++    "write",
++]
++
++[dependencies.tiny-skia]
++version = "0.12.0"
++
++[dependencies.usvg]
++version = "0.48.1"
+diff --git a/vendor/krilla-svg/Cargo.toml.orig b/vendor/krilla-svg/Cargo.toml.orig
+new file mode 100644
+index 0000000..46e8653
+--- /dev/null
++++ b/vendor/krilla-svg/Cargo.toml.orig
+@@ -0,0 +1,19 @@
++[package]
++name = "krilla-svg"
++version = "0.8.1"
++description = "Converting SVG files to PDF."
++authors = { workspace = true }
++edition = { workspace = true }
++repository = { workspace = true }
++rust-version = { workspace = true }
++license = { workspace = true }
++
++[dependencies]
++krilla = { workspace = true, features = ["raster-images"] }
++usvg = { workspace = true }
++tiny-skia = { workspace = true }
++resvg = { workspace = true }
++flate2 = { workspace = true }
++fontdb = { workspace = true }
++skrifa = { workspace = true }
++smallvec = { workspace = true }
+diff --git a/vendor/krilla-svg/PLERVO-PATCH.md b/vendor/krilla-svg/PLERVO-PATCH.md
+new file mode 100644
+index 0000000..70485ca
+--- /dev/null
++++ b/vendor/krilla-svg/PLERVO-PATCH.md
+@@ -0,0 +1,11 @@
++# Plervo compatibility overlay
++
++Source: krilla-svg 0.8.1, MIT OR Apache-2.0, Laurenz Stampfl.
++Archive: https://static.crates.io/crates/krilla-svg/krilla-svg-0.8.1.crate
++SHA-256: `1237d7c37b16ca9fbc2e72dde13a10d321f9a44aceee35c062bc0a43bfc7ce16` (verified against Cargo.lock before adaptation).
++
++This overlay updates resvg/usvg to 0.48.1, fontdb to 0.24 and skrifa to 0.47.
++It disables Krilla's unused simple-text default feature. SVG shaping now uses
++maintained HarfRust/Skrifa instead of rustybuzz/ttf-parser. Upstream licence texts
++and source are preserved. The Plervo source overlay hash covers these changes.
++The glyph id is already u32 in usvg 0.48; its obsolete widening cast is removed.
+diff --git a/vendor/krilla-svg/README.md b/vendor/krilla-svg/README.md
+new file mode 100644
+index 0000000..c0b2d43
+--- /dev/null
++++ b/vendor/krilla-svg/README.md
+@@ -0,0 +1,19 @@
++# krilla-svg
++
++[![Crates.io](https://img.shields.io/crates/v/krilla-svg.svg)](https://crates.io/crates/krilla-svg)
++[![Documentation](https://docs.rs/krilla-svg/badge.svg)](https://docs.rs/krilla-svg)
++
++An extension to [krilla] that allows rendering SVG files to a PDF file.
++
++It is based on [usvg](https://github.com/linebender/resvg) and passes nearly the whole
++resvg test suite. See the [examples](https://github.com/LaurenzV/krilla/tree/main/crates/krilla-svg/examples)
++directory for an example on how to use this crate in combination with krilla to convert SVG files
++to PDF.
++
++[krilla]: https://github.com/LaurenzV/krilla
++
++## Minimum Supported Rust Version (MSRV)
++The minimum supported Rust version is **1.92**.
++
++## License
++This crate is dual-licensed under the MIT and Apache 2.0 licenses.
+diff --git a/vendor/krilla-svg/examples/svg.rs b/vendor/krilla-svg/examples/svg.rs
+new file mode 100644
+index 0000000..d47047e
+--- /dev/null
++++ b/vendor/krilla-svg/examples/svg.rs
+@@ -0,0 +1,48 @@
++//! An example demonstrating how you can create a PDF file with an SVG.
++
++use std::path;
++use std::path::PathBuf;
++use std::sync::Arc;
++
++use fontdb::Database;
++use krilla::geom::Size;
++use krilla::page::PageSettings;
++use krilla::Document;
++use krilla_svg::{SurfaceExt, SvgSettings};
++
++fn main() {
++    // Load an SVG.
++    let svg_tree = {
++        let mut fontdb = Database::new();
++        fontdb.load_system_fonts();
++        let opts = usvg::Options {
++            fontdb: Arc::new(fontdb),
++            ..Default::default()
++        };
++
++        let path = PathBuf::from(env!("CARGO_MANIFEST_DIR"))
++            .join("../../assets/svgs/custom_integration_wikimedia_coat_of_the_arms_of_edinburgh_city_council.svg");
++        let data = std::fs::read(&path).unwrap();
++        usvg::Tree::from_data(&data, &opts).unwrap()
++    };
++
++    // Create a new document.
++    let mut document = Document::new();
++
++    let svg_size = Size::from_wh(svg_tree.size().width(), svg_tree.size().height()).unwrap();
++    // Start a new page, with the same dimensions as the SVG.
++    let mut page = document.start_page_with(PageSettings::new(svg_size));
++    let mut surface = page.surface();
++    // Draw the SVG.
++    surface.draw_svg(&svg_tree, svg_size, SvgSettings::default());
++    surface.finish();
++    page.finish();
++
++    let pdf = document.finish().unwrap();
++
++    let path = path::absolute("svg.pdf").unwrap();
++    eprintln!("Saved PDF to '{}'", path.display());
++
++    // Write the PDF to a file.
++    std::fs::write(path, &pdf).unwrap();
++}
+diff --git a/vendor/krilla-svg/src/clip_path.rs b/vendor/krilla-svg/src/clip_path.rs
+new file mode 100644
+index 0000000..35f89ef
+--- /dev/null
++++ b/vendor/krilla-svg/src/clip_path.rs
+@@ -0,0 +1,220 @@
++use krilla::geom::{Path, PathBuilder};
++use krilla::mask::{Mask, MaskType};
++use krilla::paint::FillRule;
++use krilla::surface::Surface;
++use usvg::tiny_skia_path::{PathSegment, Transform};
++
++use crate::util::{convert_fill_rule, UsvgTransformExt};
++use crate::{group, ProcessContext};
++
++/// Render a clip path into a surface.
++pub(crate) fn render(
++    group: &usvg::Group,
++    clip_path: &usvg::ClipPath,
++    surface: &mut Surface,
++    process_context: &mut ProcessContext,
++) -> u16 {
++    // Unfortunately, clip paths are a bit tricky to deal with, the reason being that clip paths in
++    // SVGs can be much more complex than in PDF. In SVG, clip paths can have transforms, as well as
++    // nested clip paths. The objects inside of the clip path can have transforms as well, making it
++    // even more difficult to deal with. Because in PDF, once you start a clip path operation you
++    // cannot interrupt it, because once you pop the current graphics state, the clip path will be
++    // lost since it is part of the current graphics state. However, if we have various transforms
++    // on the children, we need to be able to push/pop the graphics state, so that the children's
++    // transforms don't affect each other. Initially, because of this, clip paths were only implemented
++    // using soft masks, but Safari has a couple of issues with rendering them properly. Not to mention
++    // the fact that soft masks are obviously also more expensive. Because of this, we proceed the following
++    // way: We first check whether the clip path itself is too "complex" (complex being that it fulfills
++    // some attributes that make it impossible to represent them in our current setup using just native
++    // PDF clip paths. If it is too complex, we fall back to using soft masks. However, if it is simple
++    // enough, we just use the normal clip path operator in PDF. It should be noted that in reality,
++    // only very few SVGs seem to have such complex clipping paths (they are not even rendered correctly
++    // by all online converters that were tested), so in most real-life scenarios, the simple version
++    // should suffice. But in order to conform with the SVG specification, we also handle the case
++    // of more complex clipping paths, even if this means that Safari will in some cases not
++    // display them correctly.
++    let is_simple_clip_path = is_simple_clip_path(clip_path.root());
++    let clip_rules = collect_clip_rules(clip_path.root());
++
++    let mut pop_count = 0;
++
++    if is_simple_clip_path
++        && (clip_rules.iter().all(|f| *f == usvg::FillRule::NonZero)
++        // For even odd, there must be at most one shape in the group, because
++        // overlapping shapes with evenodd render differently in PDF
++        || (clip_rules.iter().all(|f| *f == usvg::FillRule::EvenOdd)
++        && clip_rules.len() == 1))
++    {
++        let clips = create_clip_path(
++            clip_path,
++            clip_rules
++                .first()
++                .copied()
++                .unwrap_or(usvg::FillRule::NonZero),
++        );
++
++        for (clip, rule) in clips {
++            surface.push_clip_path(&clip, &rule);
++            pop_count += 1;
++        }
++    } else {
++        pop_count += render_complex(group, clip_path, surface, process_context);
++    }
++
++    pop_count
++}
++
++/// Create a simple clip path.
++fn create_clip_path(
++    clip_path: &usvg::ClipPath,
++    clip_rule: usvg::FillRule,
++) -> Vec<(Path, FillRule)> {
++    let mut clips = vec![];
++    if let Some(clip_path) = clip_path.clip_path() {
++        clips.extend(create_clip_path(clip_path, clip_rule));
++    }
++
++    // Just a dummy operation, so that in case the clip path only has hidden children the clip
++    // path will still be applied and everything will be hidden.
++    let mut path_builder = PathBuilder::new();
++    path_builder.move_to(0.0, 0.0);
++
++    let base_transform = clip_path.transform();
++    extend_segments_from_group(clip_path.root(), &base_transform, &mut path_builder);
++
++    clips.push((
++        path_builder.finish().unwrap_or_else(|| {
++            let mut builder = PathBuilder::new();
++            builder.move_to(0.0, 0.0);
++            builder.line_to(0.0, 0.0);
++            builder.finish().unwrap()
++        }),
++        convert_fill_rule(&clip_rule),
++    ));
++    clips
++}
++
++/// Collect the paths of a group so that they can be used in the clip path.
++fn extend_segments_from_group(
++    group: &usvg::Group,
++    transform: &Transform,
++    path_builder: &mut PathBuilder,
++) {
++    for child in group.children() {
++        match child {
++            usvg::Node::Path(ref path) => {
++                if path.is_visible() {
++                    path.data().segments().for_each(|segment| match segment {
++                        PathSegment::MoveTo(mut p) => {
++                            transform.map_point(&mut p);
++                            path_builder.move_to(p.x, p.y);
++                        }
++                        PathSegment::LineTo(mut p) => {
++                            transform.map_point(&mut p);
++                            path_builder.line_to(p.x, p.y)
++                        }
++                        PathSegment::QuadTo(p1, p2) => {
++                            let mut points = [p1, p2];
++                            transform.map_points(&mut points);
++                            path_builder.quad_to(
++                                points[0].x,
++                                points[0].y,
++                                points[1].x,
++                                points[1].y,
++                            );
++                        }
++                        PathSegment::CubicTo(p1, p2, p3) => {
++                            let mut points = [p1, p2, p3];
++                            transform.map_points(&mut points);
++                            path_builder.cubic_to(
++                                points[0].x,
++                                points[0].y,
++                                points[1].x,
++                                points[1].y,
++                                points[2].x,
++                                points[2].y,
++                            );
++                        }
++                        PathSegment::Close => path_builder.close(),
++                    })
++                }
++            }
++            usvg::Node::Group(ref group) => {
++                let group_transform = transform.pre_concat(group.transform());
++                extend_segments_from_group(group, &group_transform, path_builder);
++            }
++            usvg::Node::Text(ref text) => {
++                // We could in theory preserve text in clip paths by using the appropriate
++                // rendering mode, but for now we just use the flattened version.
++                extend_segments_from_group(text.flattened(), transform, path_builder);
++            }
++            // Images are not valid in a clip path.
++            _ => {}
++        }
++    }
++}
++
++/// Check if the clip path is simple, i.e. it can be translated into a PDF clip path.
++fn is_simple_clip_path(group: &usvg::Group) -> bool {
++    group.children().iter().all(|n| {
++        match n {
++            usvg::Node::Group(ref group) => {
++                // We can only intersect one clipping path with another one, meaning that we
++                // can convert nested clip paths if a second clip path is defined on the clip
++                // path itself, but not if it is defined on a child.
++                group.clip_path().is_none() && is_simple_clip_path(group)
++            }
++            _ => true,
++        }
++    })
++}
++
++/// Collect the filling rules used in the clip path.
++fn collect_clip_rules(group: &usvg::Group) -> Vec<usvg::FillRule> {
++    let mut clip_rules = vec![];
++    group.children().iter().for_each(|n| match n {
++        usvg::Node::Path(ref path) => {
++            if let Some(fill) = &path.fill() {
++                clip_rules.push(fill.rule());
++            }
++        }
++        usvg::Node::Text(ref text) => clip_rules.extend(collect_clip_rules(text.flattened())),
++        usvg::Node::Group(ref group) => {
++            clip_rules.extend(collect_clip_rules(group));
++        }
++        _ => {}
++    });
++
++    clip_rules
++}
++
++/// Render a clip path by using alpha masks.
++fn render_complex(
++    parent: &usvg::Group,
++    clip_path: &usvg::ClipPath,
++    surface: &mut Surface,
++    process_context: &mut ProcessContext,
++) -> u16 {
++    let mut stream_builder = surface.stream_builder();
++    let mut sub_surface = stream_builder.surface();
++
++    let mut pop_count = 0;
++
++    if let Some(clip_path) = clip_path.clip_path() {
++        pop_count += render(parent, clip_path, &mut sub_surface, process_context);
++    }
++
++    sub_surface.push_transform(&clip_path.transform().to_krilla());
++    pop_count += 1;
++    group::render(clip_path.root(), &mut sub_surface, process_context);
++
++    for _ in 0..pop_count {
++        sub_surface.pop();
++    }
++
++    sub_surface.finish();
++    let stream = stream_builder.finish();
++
++    surface.push_mask(Mask::new(stream, MaskType::Alpha));
++    1
++}
+diff --git a/vendor/krilla-svg/src/filter.rs b/vendor/krilla-svg/src/filter.rs
+new file mode 100644
+index 0000000..4318ac3
+--- /dev/null
++++ b/vendor/krilla-svg/src/filter.rs
+@@ -0,0 +1,99 @@
++use krilla::geom::Size;
++use krilla::image::Image;
++use krilla::surface::Surface;
++use usvg::tiny_skia_path::Transform;
++
++use crate::util::KrillaTransformExt;
++use crate::ProcessContext;
++
++/// Render a filter into a surface by rasterizing it with `resvg` and drawing
++/// the image.
++///
++/// Returns `None` if converting the filter was unsuccessful.
++pub(crate) fn render(
++    group: &usvg::Group,
++    surface: &mut Surface,
++    process_context: &ProcessContext,
++) -> Option<()> {
++    let layer_bbox = group.layer_bounding_box().transform(group.transform())?;
++
++    let raster_scale = {
++        // Find out what dimensions the SVG will actually have in user space units inside of the
++        // PDF.
++        // Note that this is not a 100% accurate, because the `cur_transform` method of surface will
++        // only return the transform in the current content stream, so it's not accurate in case we
++        // are currently in a XObject. But it's as good as it gets.
++        let actual_bbox = group
++            .layer_bounding_box()
++            .transform(surface.cur_transform().to_usvg())?
++            .transform(group.transform())?;
++        // Calculate the necessary scale in the x/y direction, and take the maximum of that.
++        let scale = {
++            let (x_scale, y_scale) = (
++                (actual_bbox.width() / layer_bbox.width()),
++                (actual_bbox.height() / layer_bbox.height()),
++            );
++            x_scale.max(y_scale) * process_context.svg_settings.filter_scale
++        };
++
++        let max_scale = {
++            // Let's try to avoid generating images that have more than 5000 pixels in either direction.
++            const PIXEL_THRESHOLD: f32 = 5000.0;
++            let (x_scale, y_scale) = (
++                (PIXEL_THRESHOLD / layer_bbox.width()),
++                (PIXEL_THRESHOLD / layer_bbox.height()),
++            );
++            // Take the minimum of that.
++            x_scale.min(y_scale)
++        };
++
++        // Take whichever is smaller.
++        scale.min(max_scale)
++    };
++
++    let pixmap_size = Size::from_wh(
++        layer_bbox.width() * raster_scale,
++        layer_bbox.height() * raster_scale,
++    )?;
++    let width = pixmap_size.width().round() as u32;
++    let height = pixmap_size.height().round() as u32;
++
++    let mut pixmap = tiny_skia::Pixmap::new(width, height)?;
++
++    let initial_transform = Transform::from_scale(raster_scale, raster_scale)
++        .pre_concat(Transform::from_translate(-layer_bbox.x(), -layer_bbox.y()))
++        // This one is a hack because resvg::render_node will take the absolute layer bbox into consideration
++        // and translate by -layer_bbox.x() and -layer_bbox.y(), but we don't want that, so we
++        // inverse it.
++        .pre_concat(Transform::from_translate(
++            group.abs_layer_bounding_box().x(),
++            group.abs_layer_bounding_box().y(),
++        ));
++
++    resvg::render_node(
++        &usvg::Node::Group(Box::new(group.clone())),
++        initial_transform,
++        &mut pixmap.as_mut(),
++    );
++
++    let demultiplied = pixmap
++        .pixels()
++        .iter()
++        .flat_map(|p| {
++            let c = p.demultiply();
++            [c.red(), c.green(), c.blue(), c.alpha()]
++        })
++        .collect::<Vec<_>>();
++
++    let image = Image::from_rgba8(demultiplied, width, height);
++    let size = Size::from_wh(layer_bbox.width(), layer_bbox.height())?;
++
++    surface.push_transform(&krilla::geom::Transform::from_translate(
++        layer_bbox.x(),
++        layer_bbox.y(),
++    ));
++    surface.draw_image(image, size);
++    surface.pop();
++
++    Some(())
++}
+diff --git a/vendor/krilla-svg/src/group.rs b/vendor/krilla-svg/src/group.rs
+new file mode 100644
+index 0000000..1a2b7bc
+--- /dev/null
++++ b/vendor/krilla-svg/src/group.rs
+@@ -0,0 +1,73 @@
++use krilla::num::NormalizedF32;
++use krilla::surface::Surface;
++use usvg::{BlendMode, Node, Opacity};
++
++use crate::util::{convert_blend_mode, UsvgTransformExt};
++use crate::{clip_path, filter, image, mask, path, text, ProcessContext};
++
++pub(crate) fn render(
++    group: &usvg::Group,
++    surface: &mut Surface,
++    process_context: &mut ProcessContext,
++) {
++    if !group.filters().is_empty() {
++        filter::render(group, surface, process_context);
++        return;
++    }
++
++    let mut pop_count = 0;
++
++    surface.push_transform(&group.transform().to_krilla());
++    pop_count += 1;
++
++    if let Some(clip_path) = group.clip_path() {
++        pop_count += clip_path::render(group, clip_path, surface, process_context);
++    }
++
++    if let Some(mask) = group.mask() {
++        pop_count += mask::render(mask, surface, process_context);
++    }
++
++    surface.push_blend_mode(convert_blend_mode(&group.blend_mode()));
++    surface.push_opacity(NormalizedF32::new(group.opacity().get()).unwrap());
++    pop_count += 2;
++
++    // There is the `group.should_isolate` method which also returns true if
++    // there is a clip path, since strictly speaking, just a clip path
++    // also requires layer isolation. However, clip paths are very common
++    // and it would be wasteful to generate new isolated XObjects for that
++    // (especially since it shouldn't make any visual difference), so we
++    // don't include this here.
++    let should_isolate = group.isolate()
++        || group.opacity() != Opacity::ONE
++        || group.mask().is_some()
++        || group.blend_mode() != BlendMode::Normal;
++
++    if should_isolate {
++        surface.push_isolated();
++        pop_count += 1
++    }
++
++    for child in group.children() {
++        render_node(child, surface, process_context);
++    }
++
++    for _ in 0..pop_count {
++        surface.pop();
++    }
++}
++
++pub(crate) fn render_node(
++    node: &Node,
++    surface: &mut Surface,
++    process_context: &mut ProcessContext,
++) {
++    match node {
++        Node::Group(g) => render(g, surface, process_context),
++        Node::Path(p) => path::render(p, surface, process_context),
++        Node::Image(i) => {
++            image::render(i, surface, process_context);
++        }
++        Node::Text(t) => text::render(t, surface, process_context),
++    }
++}
+diff --git a/vendor/krilla-svg/src/image.rs b/vendor/krilla-svg/src/image.rs
+new file mode 100644
+index 0000000..d04a649
+--- /dev/null
++++ b/vendor/krilla-svg/src/image.rs
+@@ -0,0 +1,51 @@
++use krilla::geom::{Rect, Size};
++use krilla::image::Image;
++use krilla::paint::FillRule;
++use krilla::surface::Surface;
++use usvg::ImageKind;
++
++use crate::util::RectExt;
++use crate::{group, ProcessContext};
++
++/// Render an image into a surface.
++///
++/// Returns `None` if the image could not be rendered.
++pub(crate) fn render(
++    image: &usvg::Image,
++    surface: &mut Surface,
++    process_context: &mut ProcessContext,
++) -> Option<()> {
++    if !image.is_visible() {
++        return Some(());
++    }
++
++    let size = Size::from_wh(image.size().width(), image.size().height()).unwrap();
++
++    match image.kind() {
++        ImageKind::JPEG(d) => {
++            let image = Image::from_jpeg(d.clone().into(), false).ok()?;
++            surface.draw_image(image, size);
++        }
++        ImageKind::PNG(d) => {
++            let image = Image::from_png(d.clone().into(), false).ok()?;
++            surface.draw_image(image, size);
++        }
++        ImageKind::GIF(d) => {
++            let image = Image::from_gif(d.clone().into(), false).ok()?;
++            surface.draw_image(image, size);
++        }
++        ImageKind::WEBP(d) => {
++            let image = Image::from_webp(d.clone().into(), false).ok()?;
++            surface.draw_image(image, size);
++        }
++        ImageKind::SVG(t) => {
++            let clip_path =
++                Rect::from_xywh(0.0, 0.0, t.size().width(), t.size().height())?.to_clip_path();
++            surface.push_clip_path(&clip_path, &FillRule::NonZero);
++            group::render(t.root(), surface, process_context);
++            surface.pop();
++        }
++    }
++
++    Some(())
++}
+diff --git a/vendor/krilla-svg/src/lib.rs b/vendor/krilla-svg/src/lib.rs
+new file mode 100644
+index 0000000..c45ee7b
+--- /dev/null
++++ b/vendor/krilla-svg/src/lib.rs
+@@ -0,0 +1,190 @@
++/*!
++An extension to krilla that allows rendering SVG files to a PDF file.
++
++It is based on [usvg](https://github.com/linebender/resvg) and passes nearly the whole
++resvg test suite. See the [examples]( https://github.com/LaurenzV/krilla/tree/main/crates/krilla-svg/examples)
++directory for an example on how to use this crate in combination with krilla to convert SVG files
++to PDF.
++*/
++
++#![deny(missing_docs)]
++
++use std::io::Read;
++use std::sync::Arc;
++
++use fontdb::Database;
++use krilla::color::rgb;
++use krilla::geom::{Rect, Size, Transform};
++use krilla::paint::FillRule;
++use krilla::surface::Surface;
++use krilla::text::GlyphId;
++use usvg::{fontdb, roxmltree, Node, Tree};
++
++use crate::text::Fonts;
++use crate::util::RectExt;
++
++mod clip_path;
++mod filter;
++mod group;
++mod image;
++mod mask;
++mod path;
++mod text;
++mod util;
++
++/// Settings that should be applied when converting a SVG.
++#[derive(Copy, Clone, Debug)]
++pub struct SvgSettings {
++    /// Whether text should be embedded as properly selectable text. Otherwise,
++    /// it will be drawn as outlined paths instead.
++    pub embed_text: bool,
++    /// How much filters, which will be converted to bitmaps, should be scaled. Higher values
++    /// mean better quality, but also bigger file sizes.
++    pub filter_scale: f32,
++}
++
++impl Default for SvgSettings {
++    fn default() -> Self {
++        Self {
++            embed_text: true,
++            filter_scale: 4.0,
++        }
++    }
++}
++
++/// An extension trait for the `Surface` struct that allows you to draw SVGs onto a surface.
++pub trait SurfaceExt {
++    /// Draw a `usvg` tree onto a surface with the given size and settings.
++    fn draw_svg(&mut self, tree: &Tree, size: Size, svg_settings: SvgSettings) -> Option<()>;
++}
++
++impl SurfaceExt for Surface<'_> {
++    fn draw_svg(&mut self, tree: &Tree, size: Size, svg_settings: SvgSettings) -> Option<()> {
++        let old_fill = self.get_fill().cloned();
++        let old_stroke = self.get_stroke().cloned();
++
++        let transform = Transform::from_scale(
++            size.width() / tree.size().width(),
++            size.height() / tree.size().height(),
++        );
++        self.push_transform(&transform);
++        self.push_clip_path(
++            &Rect::from_xywh(0.0, 0.0, tree.size().width(), tree.size().height())
++                .unwrap()
++                .to_clip_path(),
++            &FillRule::NonZero,
++        );
++        render_tree(tree, svg_settings, self);
++        self.pop();
++        self.pop();
++
++        self.set_fill(old_fill);
++        self.set_stroke(old_stroke);
++
++        Some(())
++    }
++}
++
++struct ProcessContext<'a> {
++    pub(crate) fonts: Fonts<'a>,
++    svg_settings: SvgSettings,
++}
++
++impl<'a> ProcessContext<'a> {
++    fn new(tree_fontdb: &'a mut Database, svg_settings: SvgSettings) -> Self {
++        Self {
++            fonts: Fonts::new(tree_fontdb),
++            svg_settings,
++        }
++    }
++}
++
++pub(crate) fn render_tree(tree: &Tree, svg_settings: SvgSettings, surface: &mut Surface) {
++    let mut db = tree.fontdb().clone();
++    let mut fc = ProcessContext::new(Arc::make_mut(&mut db), svg_settings);
++    group::render(tree.root(), surface, &mut fc);
++}
++
++pub(crate) fn render_node(
++    node: &Node,
++    mut tree_fontdb: Arc<Database>,
++    svg_settings: SvgSettings,
++    surface: &mut Surface,
++) {
++    let mut fc = ProcessContext::new(Arc::make_mut(&mut tree_fontdb), svg_settings);
++    group::render_node(node, surface, &mut fc);
++}
++
++/// Render an SVG glyph from an OpenType font into a surface. You can plug this method into the
++/// `render_svg_glyph_fn` field of `SerializeSettings` in krilla..
++pub fn render_svg_glyph(
++    data: &[u8],
++    context_color: rgb::Color,
++    glyph: GlyphId,
++    default_size: (f32, f32),
++    surface: &mut Surface,
++) -> Option<()> {
++    let mut data = data;
++    let settings = SvgSettings::default();
++
++    let default_size = usvg::Size::from_wh(default_size.0, default_size.1).unwrap();
++
++    let mut decoded = vec![];
++    if data.starts_with(&[0x1f, 0x8b]) {
++        let mut decoder = flate2::read::GzDecoder::new(data);
++        decoder.read_to_end(&mut decoded).ok()?;
++        data = &decoded;
++    }
++
++    let xml = std::str::from_utf8(data).ok()?;
++    // Incredibly hacky, but hopefully that's enough for SVG glyphs.
++    let has_viewbox = xml.contains("viewBox");
++    let document = roxmltree::Document::parse(xml).ok()?;
++
++    // Reparsing every time might be pretty slow in some cases, because Noto Color Emoji
++    // for example contains hundreds of glyphs in the same SVG document, meaning that we have
++    // to reparse it every time. However, Twitter Color Emoji does have each glyph in a
++    // separate SVG document, and since we use COLRv1 for Noto Color Emoji anyway, this is
++    // good enough.
++    let opts = usvg::Options {
++        style_sheet: Some(format!(
++            "svg {{ color: rgb({}, {}, {}) }}",
++            context_color.red(),
++            context_color.green(),
++            context_color.blue()
++        )),
++        default_size,
++        ..Default::default()
++    };
++    let tree = Tree::from_xmltree(&document, &opts).ok()?;
++
++    let apply_scale = default_size != tree.size() && has_viewbox;
++
++    // From the specification:
++    //
++    // The size of the initial viewport for the SVG document is the em square:
++    // height and width both equal to head.unitsPerEm. If a viewBox
++    // attribute is specified on the <svg> element with width or
++    // height values different from the unitsPerEm value,
++    // this will have the effect of a scale transformation on the SVG “user” coordinate
++    // system.
++    if apply_scale {
++        let scale = (default_size.width() / tree.size().width())
++            .min(default_size.height() / tree.size().height());
++        surface.push_transform(&Transform::from_scale(scale, scale))
++    }
++
++    if let Some(node) = tree.node_by_id(&format!("glyph{}", glyph.to_u32())) {
++        render_node(node, tree.fontdb().clone(), settings, surface)
++    } else {
++        // Twitter Color Emoji SVGs contain the glyph ID on the root element, which isn't saved by
++        // usvg. So in this case, we simply draw the whole document.
++        render_tree(&tree, settings, surface)
++    };
++
++    if apply_scale {
++        surface.pop();
++    }
++
++    Some(())
++}
+diff --git a/vendor/krilla-svg/src/mask.rs b/vendor/krilla-svg/src/mask.rs
+new file mode 100644
+index 0000000..3faf10a
+--- /dev/null
++++ b/vendor/krilla-svg/src/mask.rs
+@@ -0,0 +1,43 @@
++use krilla::geom::Rect;
++use krilla::mask::Mask;
++use krilla::paint::FillRule;
++use krilla::surface::Surface;
++
++use crate::util::{convert_mask_type, RectExt};
++use crate::{group, ProcessContext};
++
++/// Render a usvg `Mask` into a surface.
++#[must_use]
++pub(crate) fn render(
++    mask: &usvg::Mask,
++    surface: &mut Surface,
++    process_context: &mut ProcessContext,
++) -> u16 {
++    let mut stream_builder = surface.stream_builder();
++    let mut sub_surface = stream_builder.surface();
++    let mut pop_count = 0;
++    if let Some(sub_mask) = mask.mask() {
++        pop_count += render(sub_mask, &mut sub_surface, process_context)
++    }
++
++    let clip_path = {
++        let rect = mask.rect().to_rect();
++        Rect::from_ltrb(rect.left(), rect.top(), rect.right(), rect.bottom())
++            .unwrap()
++            .to_clip_path()
++    };
++
++    sub_surface.push_clip_path(&clip_path, &FillRule::NonZero);
++    pop_count += 1;
++    group::render(mask.root(), &mut sub_surface, process_context);
++
++    for _ in 0..pop_count {
++        sub_surface.pop();
++    }
++
++    sub_surface.finish();
++    let stream = stream_builder.finish();
++
++    surface.push_mask(Mask::new(stream, convert_mask_type(&mask.kind())));
++    1
++}
+diff --git a/vendor/krilla-svg/src/path.rs b/vendor/krilla-svg/src/path.rs
+new file mode 100644
+index 0000000..f8c788e
+--- /dev/null
++++ b/vendor/krilla-svg/src/path.rs
+@@ -0,0 +1,61 @@
++use krilla::surface::Surface;
++use usvg::{Fill, PaintOrder, Stroke};
++
++use crate::util::{convert_fill, convert_stroke, PathExt};
++use crate::ProcessContext;
++
++/// Render a path into a surface.
++pub(crate) fn render(
++    path: &usvg::Path,
++    surface: &mut Surface,
++    process_context: &mut ProcessContext,
++) {
++    if !path.is_visible() {
++        return;
++    }
++
++    match path.paint_order() {
++        PaintOrder::FillAndStroke => {
++            draw_path(path, path.fill(), path.stroke(), surface, process_context);
++        }
++        PaintOrder::StrokeAndFill => {
++            draw_path(path, None, path.stroke(), surface, process_context);
++            draw_path(path, path.fill(), None, surface, process_context);
++        }
++    }
++}
++
++/// Render a filled and/or stroked path into a surface.
++pub(crate) fn draw_path(
++    path: &usvg::Path,
++    fill: Option<&Fill>,
++    stroke: Option<&Stroke>,
++    surface: &mut Surface,
++    process_context: &mut ProcessContext,
++) {
++    let fill = fill.map(|f| {
++        convert_fill(
++            f,
++            surface.stream_builder(),
++            process_context,
++            usvg::Transform::identity(),
++        )
++    });
++
++    let stroke = stroke.map(|s| {
++        convert_stroke(
++            s,
++            surface.stream_builder(),
++            process_context,
++            usvg::Transform::identity(),
++        )
++    });
++
++    // Otherwise krilla will fill with black by default.
++    if fill.is_some() || stroke.is_some() {
++        surface.set_fill(fill);
++        surface.set_stroke(stroke);
++
++        surface.draw_path(&path.to_krilla());
++    }
++}
+diff --git a/vendor/krilla-svg/src/text.rs b/vendor/krilla-svg/src/text.rs
+new file mode 100644
+index 0000000..13020a5
+--- /dev/null
++++ b/vendor/krilla-svg/src/text.rs
+@@ -0,0 +1,232 @@
++use std::collections::hash_map::Entry;
++use std::collections::HashMap;
++
++use fontdb::Database;
++use krilla::color::rgb;
++use krilla::geom::Point;
++use krilla::num::NormalizedF32;
++use krilla::paint::{Fill, Stroke};
++use krilla::surface::Surface;
++use krilla::text::{Font, GlyphId, KrillaGlyph};
++use skrifa::{FontRef, MetadataProvider};
++use smallvec::SmallVec;
++use usvg::tiny_skia_path::Transform;
++use usvg::{FontOpticalSizing, FontVariation, PaintOrder};
++
++use crate::util::{convert_fill, convert_stroke, UsvgTransformExt};
++use crate::{path, ProcessContext};
++
++/// Render a text into a surface.
++pub(crate) fn render(
++    text: &usvg::Text,
++    surface: &mut Surface,
++    process_context: &mut ProcessContext,
++) {
++    for span in text.layouted() {
++        if !span.visible {
++            continue;
++        }
++
++        if let Some(overline) = &span.overline {
++            path::render(overline, surface, process_context);
++        }
++
++        if let Some(underline) = &span.underline {
++            path::render(underline, surface, process_context);
++        }
++
++        for glyph in &span.positioned_glyphs {
++            // Ignore glyph if font can't be fetched.
++            let Some(font) = process_context.fonts.retrieve(span, glyph.font) else {
++                continue;
++            };
++
++            let upem = font.units_per_em();
++
++            // The text transform contains the scale transform `font_size / upem`, we need to invert that
++            // so we only get the raw transform to account for the glyph position, and the font size
++            // is being taken care of by krilla.
++            let transform = glyph.transform().pre_concat(Transform::from_scale(
++                upem / span.font_size.get(),
++                upem / span.font_size.get(),
++            ));
++
++            let Some(inverted) = transform.invert() else {
++                continue;
++            };
++
++            // We need to apply the inverse transform to fill/stroke because we don't
++            // want the paint to be affected by the transform applied to the glyph. See docs
++            // of `convert_paint`.
++            let fill = span
++                .fill
++                .as_ref()
++                .map(|f| convert_fill(f, surface.stream_builder(), process_context, inverted));
++
++            let stroke = span
++                .stroke
++                .as_ref()
++                .map(|s| convert_stroke(s, surface.stream_builder(), process_context, inverted));
++
++            let draw_op = |s: &mut Surface,
++                           fill: Option<Fill>,
++                           stroke: Option<Stroke>,
++                           font: Font,
++                           embed_text: bool| {
++                s.set_fill(fill);
++                s.set_stroke(stroke);
++
++                s.draw_glyphs(
++                    Point::from_xy(0.0, 0.0),
++                    &[KrillaGlyph::new(
++                        GlyphId::new(glyph.id.0),
++                        // Don't care about those, since we render only one glyph.
++                        0.0,
++                        0.0,
++                        0.0,
++                        0.0,
++                        0..glyph.text.len(),
++                        None,
++                    )],
++                    font,
++                    &glyph.text,
++                    span.font_size.get(),
++                    !embed_text,
++                );
++            };
++
++            surface.push_transform(&transform.to_krilla());
++
++            if fill.is_none() && stroke.is_none() {
++                // Emulate invisible glyph by drawing it with an opacity of zero.
++                draw_op(
++                    surface,
++                    Some(Fill {
++                        paint: rgb::Color::new(0, 0, 0).into(),
++                        opacity: NormalizedF32::ZERO,
++                        rule: Default::default(),
++                    }),
++                    None,
++                    font,
++                    process_context.svg_settings.embed_text,
++                )
++            } else if matches!(span.paint_order, PaintOrder::FillAndStroke)
++                || fill.is_none()
++                || stroke.is_none()
++            {
++                draw_op(
++                    surface,
++                    fill,
++                    stroke,
++                    font.clone(),
++                    process_context.svg_settings.embed_text,
++                );
++            } else {
++                // Paint order stroke and fill, and we have BOTH, a fill and
++                // stroke.
++
++                // We always draw the text outlined in this case, so that
++                // text won't be embedded twice.
++                draw_op(surface, None, stroke, font.clone(), false);
++
++                draw_op(
++                    surface,
++                    fill,
++                    None,
++                    font.clone(),
++                    process_context.svg_settings.embed_text,
++                );
++            }
++
++            surface.pop();
++        }
++
++        if let Some(line_through) = &span.line_through {
++            path::render(line_through, surface, process_context);
++        }
++    }
++}
++
++/// Manages the krilla fonts used by an SVG.
++pub(crate) struct Fonts<'a> {
++    db: &'a mut Database,
++    fonts: HashMap<FontInstance, Option<Font>>,
++    supported_axes: HashMap<fontdb::ID, SmallVec<[[u8; 4]; 2]>>,
++}
++
++/// Identifies a font at specific variation coordinates.
++type FontInstance = (fontdb::ID, FontVariations);
++type FontVariations = SmallVec<[FontVariation; 2]>;
++
++impl<'a> Fonts<'a> {
++    pub(crate) fn new(db: &'a mut Database) -> Self {
++        Self {
++            db,
++            fonts: HashMap::new(),
++            supported_axes: HashMap::new(),
++        }
++    }
++
++    /// Retrieves the font identified by `id` from the cache or loads it.
++    fn retrieve(&mut self, span: &usvg::layout::Span, id: fontdb::ID) -> Option<Font> {
++        let variations = self.resolve_variations(span, id);
++        match self.fonts.entry((id, variations)) {
++            Entry::Occupied(entry) => entry.get().clone(),
++            Entry::Vacant(entry) => {
++                let font = if let Some((font_data, index)) =
++                    unsafe { self.db.make_shared_face_data(id) }
++                {
++                    let variations = &entry.key().1;
++                    let coords: SmallVec<[_; 2]> = variations
++                        .iter()
++                        .map(|var| (krilla::text::Tag::new(&var.tag), var.value))
++                        .collect();
++                    Font::new_variable(font_data.into(), index, &coords)
++                } else {
++                    None
++                };
++
++                entry.insert(font.clone());
++                font
++            }
++        }
++    }
++
++    /// Resolves which variations are applicable for the given font (filtering out undefined axis
++    /// values and taking into account optical sizing).
++    fn resolve_variations(&mut self, span: &usvg::layout::Span, id: fontdb::ID) -> FontVariations {
++        let supported_axes = self.supported_axes.entry(id).or_insert_with(|| {
++            self.db
++                .with_face_data(id, |data, index| {
++                    FontRef::from_index(data, index)
++                        .into_iter()
++                        .flat_map(|font| font.axes().iter())
++                        .map(|axis| axis.tag().to_be_bytes())
++                        .collect()
++                })
++                .unwrap_or_default()
++        });
++        let is_supported = |tag| supported_axes.contains(tag);
++
++        let mut variations: FontVariations = span
++            .variations
++            .iter()
++            .filter(|var| is_supported(&var.tag))
++            .copied()
++            .collect();
++
++        // Set the font size for optical sizing if desired, supported, and not manually set.
++        const OPSZ: &[u8; 4] = b"opsz";
++        if span.font_optical_sizing == FontOpticalSizing::Auto
++            && is_supported(OPSZ)
++            && !variations.iter().any(|v| v.tag == *OPSZ)
++        {
++            variations.push(FontVariation {
++                tag: *OPSZ,
++                value: span.font_size.get(),
++            });
++        }
++
++        variations
++    }
++}
+diff --git a/vendor/krilla-svg/src/util.rs b/vendor/krilla-svg/src/util.rs
+new file mode 100644
+index 0000000..2bc7518
+--- /dev/null
++++ b/vendor/krilla-svg/src/util.rs
+@@ -0,0 +1,265 @@
++use krilla::blend::BlendMode;
++use krilla::color::{luma, rgb};
++use krilla::geom::{Path, PathBuilder, Rect};
++use krilla::mask::MaskType;
++use krilla::num::NormalizedF32;
++use krilla::paint::{
++    Fill, FillRule, LineCap, LineJoin, LinearGradient, Paint, Pattern, RadialGradient,
++    SpreadMethod, Stop, Stroke, StrokeDash,
++};
++use krilla::stream::StreamBuilder;
++use tiny_skia::PathSegment;
++use usvg::tiny_skia_path::Transform;
++
++use crate::{group, ProcessContext};
++
++/// Convert a usvg `SpreadMethod` into a krilla `SpreadMethod`.
++pub(crate) fn convert_spread_method(spread_method: &usvg::SpreadMethod) -> SpreadMethod {
++    match spread_method {
++        usvg::SpreadMethod::Pad => SpreadMethod::Pad,
++        usvg::SpreadMethod::Reflect => SpreadMethod::Reflect,
++        usvg::SpreadMethod::Repeat => SpreadMethod::Repeat,
++    }
++}
++
++/// Convert a usvg `Stop` into a krilla `Stop`.
++pub(crate) fn convert_stop(stop: &usvg::Stop) -> Stop {
++    Stop {
++        offset: NormalizedF32::new(stop.offset().get()).unwrap(),
++        color: rgb::Color::new(stop.color().red, stop.color().green, stop.color().blue).into(),
++        opacity: NormalizedF32::new(stop.opacity().get()).unwrap(),
++    }
++}
++
++/// Convert a usvg `Paint` into a krilla `Paint`.
++pub(crate) fn convert_paint(
++    paint: &usvg::Paint,
++    mut stream_builder: StreamBuilder,
++    process_context: &mut ProcessContext,
++    // The additional transform is needed because in krilla, a transform to a shape will also apply
++    // the transform to the paint server. However, in the case of SVG glyphs, we don't want the transform
++    // to be shifted for each glyph we draw (since we draw them separately instead of in a glyph run),
++    // so we need to apply an additional inverse transform to counter that effect.
++    additional_transform: Transform,
++) -> Paint {
++    match paint {
++        usvg::Paint::Color(c) => {
++            if c.red == c.green && c.green == c.blue {
++                // Use gray-scale color if possible.
++                luma::Color::new(c.red).into()
++            } else {
++                rgb::Color::new(c.red, c.green, c.blue).into()
++            }
++        }
++        usvg::Paint::LinearGradient(lg) => LinearGradient {
++            x1: lg.x1(),
++            y1: lg.y1(),
++            x2: lg.x2(),
++            y2: lg.y2(),
++            transform: additional_transform.pre_concat(lg.transform()).to_krilla(),
++            spread_method: convert_spread_method(&lg.spread_method()),
++            stops: lg.stops().iter().map(convert_stop).collect::<Vec<_>>(),
++            anti_alias: false,
++        }
++        .into(),
++        usvg::Paint::RadialGradient(rg) => RadialGradient {
++            cx: rg.cx(),
++            cy: rg.cy(),
++            cr: rg.r().get(),
++            fx: rg.fx(),
++            fy: rg.fy(),
++            fr: 0.0,
++            transform: additional_transform.pre_concat(rg.transform()).to_krilla(),
++            spread_method: convert_spread_method(&rg.spread_method()),
++            stops: rg.stops().iter().map(convert_stop).collect::<Vec<_>>(),
++            anti_alias: false,
++        }
++        .into(),
++        usvg::Paint::Pattern(pat) => {
++            let mut surface = stream_builder.surface();
++            group::render(pat.root(), &mut surface, process_context);
++            surface.finish();
++            let stream = stream_builder.finish();
++
++            Pattern {
++                stream,
++                transform: additional_transform
++                    .pre_concat(pat.transform())
++                    .pre_concat(Transform::from_translate(pat.rect().x(), pat.rect().y()))
++                    .to_krilla(),
++                width: pat.rect().width(),
++                height: pat.rect().height(),
++            }
++            .into()
++        }
++    }
++}
++
++/// Convert a usvg `LineCap` into a krilla `LineCap`.
++pub(crate) fn convert_line_cap(line_cap: &usvg::LineCap) -> LineCap {
++    match line_cap {
++        usvg::LineCap::Butt => LineCap::Butt,
++        usvg::LineCap::Round => LineCap::Round,
++        usvg::LineCap::Square => LineCap::Square,
++    }
++}
++
++/// Convert a usvg `LineJoin` into a krilla `LineJoin`.
++pub(crate) fn convert_line_join(line_join: &usvg::LineJoin) -> LineJoin {
++    match line_join {
++        usvg::LineJoin::Miter => LineJoin::Miter,
++        usvg::LineJoin::MiterClip => LineJoin::Miter,
++        usvg::LineJoin::Round => LineJoin::Round,
++        usvg::LineJoin::Bevel => LineJoin::Bevel,
++    }
++}
++
++/// Convert a usvg `FillRule` into a krilla `FillRule`.
++pub(crate) fn convert_fill_rule(fill_rule: &usvg::FillRule) -> FillRule {
++    match fill_rule {
++        usvg::FillRule::NonZero => FillRule::NonZero,
++        usvg::FillRule::EvenOdd => FillRule::EvenOdd,
++    }
++}
++
++/// Convert a usvg `Fill` into a krilla `Fill`.
++pub(crate) fn convert_fill(
++    fill: &usvg::Fill,
++    stream_builder: StreamBuilder,
++    process_context: &mut ProcessContext,
++    additional_transform: Transform,
++) -> Fill {
++    Fill {
++        paint: convert_paint(
++            fill.paint(),
++            stream_builder,
++            process_context,
++            additional_transform,
++        ),
++        opacity: NormalizedF32::new(fill.opacity().get()).unwrap(),
++        rule: convert_fill_rule(&fill.rule()),
++    }
++}
++
++/// Convert a usvg `Stroke` into a krilla `Stroke`.
++pub(crate) fn convert_stroke(
++    stroke: &usvg::Stroke,
++    stream_builder: StreamBuilder,
++    process_context: &mut ProcessContext,
++    additional_transform: Transform,
++) -> Stroke {
++    let dash = stroke.dasharray().map(|dash_array| StrokeDash {
++        offset: stroke.dashoffset(),
++        array: dash_array.to_vec(),
++    });
++
++    Stroke {
++        paint: convert_paint(
++            stroke.paint(),
++            stream_builder,
++            process_context,
++            additional_transform,
++        ),
++        width: stroke.width().get(),
++        miter_limit: stroke.miterlimit().get(),
++        line_cap: convert_line_cap(&stroke.linecap()),
++        line_join: convert_line_join(&stroke.linejoin()),
++        opacity: NormalizedF32::new(stroke.opacity().get()).unwrap(),
++        dash,
++    }
++}
++
++/// Convert a usvg `BlendMode` into a krilla `BlendMode`.
++pub(crate) fn convert_blend_mode(blend_mode: &usvg::BlendMode) -> BlendMode {
++    match blend_mode {
++        usvg::BlendMode::Normal => BlendMode::Normal,
++        usvg::BlendMode::Multiply => BlendMode::Multiply,
++        usvg::BlendMode::Screen => BlendMode::Screen,
++        usvg::BlendMode::Overlay => BlendMode::Overlay,
++        usvg::BlendMode::Darken => BlendMode::Darken,
++        usvg::BlendMode::Lighten => BlendMode::Lighten,
++        usvg::BlendMode::ColorDodge => BlendMode::ColorDodge,
++        usvg::BlendMode::ColorBurn => BlendMode::ColorBurn,
++        usvg::BlendMode::HardLight => BlendMode::HardLight,
++        usvg::BlendMode::SoftLight => BlendMode::SoftLight,
++        usvg::BlendMode::Difference => BlendMode::Difference,
++        usvg::BlendMode::Exclusion => BlendMode::Exclusion,
++        usvg::BlendMode::Hue => BlendMode::Hue,
++        usvg::BlendMode::Saturation => BlendMode::Saturation,
++        usvg::BlendMode::Color => BlendMode::Color,
++        usvg::BlendMode::Luminosity => BlendMode::Luminosity,
++    }
++}
++
++/// Convert a usvg `MaskType` into a krilla `MaskType`.
++pub(crate) fn convert_mask_type(mask_type: &usvg::MaskType) -> MaskType {
++    match mask_type {
++        usvg::MaskType::Luminance => MaskType::Luminosity,
++        usvg::MaskType::Alpha => MaskType::Alpha,
++    }
++}
++
++pub(crate) trait RectExt {
++    fn to_clip_path(&self) -> Path;
++}
++
++impl RectExt for Rect {
++    fn to_clip_path(&self) -> Path {
++        let mut path_builder = PathBuilder::new();
++        path_builder.move_to(self.left(), self.top());
++        path_builder.line_to(self.right(), self.top());
++        path_builder.line_to(self.right(), self.bottom());
++        path_builder.line_to(self.left(), self.bottom());
++        path_builder.close();
++        path_builder.finish().unwrap()
++    }
++}
++
++pub(crate) trait KrillaTransformExt {
++    fn to_usvg(&self) -> Transform;
++}
++
++impl KrillaTransformExt for krilla::geom::Transform {
++    fn to_usvg(&self) -> Transform {
++        Transform::from_row(
++            self.sx(),
++            self.ky(),
++            self.kx(),
++            self.sy(),
++            self.tx(),
++            self.ty(),
++        )
++    }
++}
++
++pub(crate) trait UsvgTransformExt {
++    fn to_krilla(&self) -> krilla::geom::Transform;
++}
++
++impl UsvgTransformExt for Transform {
++    fn to_krilla(&self) -> krilla::geom::Transform {
++        krilla::geom::Transform::from_row(self.sx, self.ky, self.kx, self.sy, self.tx, self.ty)
++    }
++}
++
++pub(crate) trait PathExt {
++    fn to_krilla(&self) -> Path;
++}
++
++impl PathExt for usvg::Path {
++    fn to_krilla(&self) -> Path {
++        let mut pb = PathBuilder::new();
++
++        for seg in self.data().segments() {
++            match seg {
++                PathSegment::MoveTo(p) => pb.move_to(p.x, p.y),
++                PathSegment::LineTo(p) => pb.line_to(p.x, p.y),
++                PathSegment::QuadTo(p1, p2) => pb.quad_to(p1.x, p1.y, p2.x, p2.y),
++                PathSegment::CubicTo(p1, p2, p3) => pb.cubic_to(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y),
++                PathSegment::Close => pb.close(),
++            }
++        }
++
++        pb.finish().unwrap()
++    }
++}
 diff --git a/xtask/src/layers.rs b/xtask/src/layers.rs
 index 9493515..bb696f8 100644
 --- a/xtask/src/layers.rs

@@ -75,22 +75,180 @@ index 81b0bd6..f4c4fe2 100644
 +
 +| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | 2a40ee6e580a985695afdd9a78d8125a7da4428358f22fe0b366a760a1d5069e |
 diff --git a/Cargo.lock b/Cargo.lock
-index eca4758..5a8fb34 100644
+index eca4758..13cdd37 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -4506,8 +4506,8 @@ dependencies = [
- ]
+@@ -2232,7 +2232,6 @@ dependencies = [
+  "pdf-writer",
+  "png 0.18.1",
+  "rustc-hash 2.1.3",
+- "rustybuzz",
+  "siphasher",
+  "skrifa 0.42.1",
+  "smallvec",
+@@ -3121,6 +3120,63 @@ version = "0.2.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "b4596b6d070b27117e987119b4dac604f3c58cfb0b191112e24771b2faeac1a6"
  
- [[package]]
--name = "vectorcraft"
--version = "0.12.0"
++[[package]]
 +name = "plervo-vector"
 +version = "0.1.0-alpha.4"
- dependencies = [
-  "arboard",
-  "block2 0.6.2",
-@@ -4542,7 +4542,7 @@ dependencies = [
++dependencies = [
++ "arboard",
++ "block2 0.6.2",
++ "clipboard-win",
++ "craft-print",
++ "eframe",
++ "egui",
++ "image",
++ "log",
++ "muda",
++ "objc2 0.6.4",
++ "objc2-app-kit 0.3.2",
++ "objc2-core-foundation",
++ "objc2-core-text",
++ "objc2-foundation 0.3.2",
++ "pollster 1.0.1",
++ "raw-window-handle",
++ "rfd",
++ "serde_json",
++ "socket2",
++ "vectorcraft-engine",
++ "vectorcraft-text",
++ "vectorcraft-ui-egui",
++ "wayland-client",
++ "wayland-protocols",
++ "webbrowser",
++ "windows",
++ "winit",
++ "winresource",
++ "winsafe",
++]
++
++[[package]]
++name = "plervo-vector-cli"
++version = "0.1.0-alpha.4"
++dependencies = [
++ "log",
++ "objc2-core-foundation",
++ "objc2-core-text",
++ "serde_json",
++ "vectorcraft-color",
++ "vectorcraft-doc",
++ "vectorcraft-engine",
++ "vectorcraft-format",
++ "vectorcraft-geom",
++ "vectorcraft-mcp",
++ "vectorcraft-render",
++ "vectorcraft-svg",
++ "vectorcraft-testkit",
++ "vectorcraft-text",
++ "windows",
++ "winsafe",
++]
++
+ [[package]]
+ name = "png"
+ version = "0.17.16"
+@@ -3617,24 +3673,6 @@ dependencies = [
+  "wait-timeout",
+ ]
  
+-[[package]]
+-name = "rustybuzz"
+-version = "0.20.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "fd3c7c96f8a08ee34eff8857b11b49b07d71d1c3f4e88f8a88d4c9e9f90b1702"
+-dependencies = [
+- "bitflags 2.13.2",
+- "bytemuck",
+- "core_maths",
+- "log",
+- "smallvec",
+- "ttf-parser",
+- "unicode-bidi-mirroring",
+- "unicode-ccc",
+- "unicode-properties",
+- "unicode-script",
+-]
+-
+ [[package]]
+ name = "ruzstd"
+ version = "0.9.1"
+@@ -4310,15 +4348,6 @@ dependencies = [
+  "petgraph",
+ ]
+ 
+-[[package]]
+-name = "ttf-parser"
+-version = "0.25.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d2df906b07856748fa3f6e0ad0cbaa047052d4a7dd609e231c4f72cee8c36f31"
+-dependencies = [
+- "core_maths",
+-]
+-
+ [[package]]
+ name = "twox-hash"
+ version = "2.1.5"
+@@ -4363,18 +4392,6 @@ version = "0.3.18"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "5c1cb5db39152898a79168971543b1cb5020dff7fe43c8dc468b0885f5e29df5"
+ 
+-[[package]]
+-name = "unicode-bidi-mirroring"
+-version = "0.4.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "5dfa6e8c60bb66d49db113e0125ee8711b7647b5579dc7f5f19c42357ed039fe"
+-
+-[[package]]
+-name = "unicode-ccc"
+-version = "0.4.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "ce61d488bcdc9bc8b5d1772c404828b17fc481c0a582b5581e95fb233aef503e"
+-
+ [[package]]
+ name = "unicode-general-category"
+ version = "1.1.0"
+@@ -4505,44 +4522,9 @@ dependencies = [
+  "wasm-bindgen",
+ ]
+ 
+-[[package]]
+-name = "vectorcraft"
+-version = "0.12.0"
+-dependencies = [
+- "arboard",
+- "block2 0.6.2",
+- "clipboard-win",
+- "craft-print",
+- "eframe",
+- "egui",
+- "image",
+- "log",
+- "muda",
+- "objc2 0.6.4",
+- "objc2-app-kit 0.3.2",
+- "objc2-core-foundation",
+- "objc2-core-text",
+- "objc2-foundation 0.3.2",
+- "pollster 1.0.1",
+- "raw-window-handle",
+- "rfd",
+- "serde_json",
+- "socket2",
+- "vectorcraft-engine",
+- "vectorcraft-text",
+- "vectorcraft-ui-egui",
+- "wayland-client",
+- "wayland-protocols",
+- "webbrowser",
+- "windows",
+- "winit",
+- "winresource",
+- "winsafe",
+-]
+-
  [[package]]
  name = "vectorcraft-affinity"
 -version = "0.12.0"
@@ -98,7 +256,7 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "crc32fast",
   "flate2",
-@@ -4553,7 +4553,7 @@ dependencies = [
+@@ -4553,7 +4535,7 @@ dependencies = [
  
  [[package]]
  name = "vectorcraft-brush"
@@ -107,7 +265,7 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "kurbo 0.13.1",
   "serde",
-@@ -4565,7 +4565,7 @@ dependencies = [
+@@ -4565,7 +4547,7 @@ dependencies = [
  
  [[package]]
  name = "vectorcraft-cad"
@@ -116,19 +274,32 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "image",
   "kurbo 0.13.1",
-@@ -4580,8 +4580,8 @@ dependencies = [
+@@ -4579,31 +4561,9 @@ dependencies = [
+  "vectorcraft-text",
  ]
  
- [[package]]
+-[[package]]
 -name = "vectorcraft-cli"
 -version = "0.12.0"
-+name = "plervo-vector-cli"
-+version = "0.1.0-alpha.4"
- dependencies = [
-  "log",
-  "objc2-core-foundation",
-@@ -4603,7 +4603,7 @@ dependencies = [
- 
+-dependencies = [
+- "log",
+- "objc2-core-foundation",
+- "objc2-core-text",
+- "serde_json",
+- "vectorcraft-color",
+- "vectorcraft-doc",
+- "vectorcraft-engine",
+- "vectorcraft-format",
+- "vectorcraft-geom",
+- "vectorcraft-mcp",
+- "vectorcraft-render",
+- "vectorcraft-svg",
+- "vectorcraft-testkit",
+- "vectorcraft-text",
+- "windows",
+- "winsafe",
+-]
+-
  [[package]]
  name = "vectorcraft-color"
 -version = "0.12.0"
@@ -136,7 +307,7 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "kurbo 0.13.1",
   "moxcms",
-@@ -4615,7 +4615,7 @@ dependencies = [
+@@ -4615,7 +4575,7 @@ dependencies = [
  
  [[package]]
  name = "vectorcraft-doc"
@@ -145,7 +316,7 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "image",
   "jpeg-encoder",
-@@ -4632,7 +4632,7 @@ dependencies = [
+@@ -4632,7 +4592,7 @@ dependencies = [
  
  [[package]]
  name = "vectorcraft-effects"
@@ -154,7 +325,7 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "image",
   "kurbo 0.13.1",
-@@ -4648,7 +4648,7 @@ dependencies = [
+@@ -4648,7 +4608,7 @@ dependencies = [
  
  [[package]]
  name = "vectorcraft-engine"
@@ -163,7 +334,7 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "crc32fast",
   "flate2",
-@@ -4684,7 +4684,7 @@ dependencies = [
+@@ -4684,7 +4644,7 @@ dependencies = [
  
  [[package]]
  name = "vectorcraft-eps"
@@ -172,7 +343,7 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "flate2",
   "image",
-@@ -4705,7 +4705,7 @@ dependencies = [
+@@ -4705,7 +4665,7 @@ dependencies = [
  
  [[package]]
  name = "vectorcraft-format"
@@ -181,7 +352,7 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "flate2",
   "proptest",
-@@ -4720,7 +4720,7 @@ dependencies = [
+@@ -4720,7 +4680,7 @@ dependencies = [
  
  [[package]]
  name = "vectorcraft-geom"
@@ -190,7 +361,7 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "kurbo 0.13.1",
   "proptest",
-@@ -4732,7 +4732,7 @@ dependencies = [
+@@ -4732,7 +4692,7 @@ dependencies = [
  
  [[package]]
  name = "vectorcraft-mcp"
@@ -199,7 +370,7 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "image",
   "log",
-@@ -4751,7 +4751,7 @@ dependencies = [
+@@ -4751,7 +4711,7 @@ dependencies = [
  
  [[package]]
  name = "vectorcraft-metafile"
@@ -208,7 +379,7 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "image",
   "kurbo 0.13.1",
-@@ -4765,7 +4765,7 @@ dependencies = [
+@@ -4765,7 +4725,7 @@ dependencies = [
  
  [[package]]
  name = "vectorcraft-pathops"
@@ -217,7 +388,7 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "kurbo 0.13.1",
   "linesweeper",
-@@ -4777,7 +4777,7 @@ dependencies = [
+@@ -4777,11 +4737,12 @@ dependencies = [
  
  [[package]]
  name = "vectorcraft-pdf"
@@ -226,7 +397,12 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "aes",
   "craft-pdf",
-@@ -4807,7 +4807,7 @@ dependencies = [
+  "flate2",
++ "harfrust 0.13.3",
+  "image",
+  "jpeg-encoder",
+  "krilla",
+@@ -4807,7 +4768,7 @@ dependencies = [
  
  [[package]]
  name = "vectorcraft-plugins"
@@ -235,7 +411,7 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "serde",
   "serde_json",
-@@ -4821,7 +4821,7 @@ dependencies = [
+@@ -4821,7 +4782,7 @@ dependencies = [
  
  [[package]]
  name = "vectorcraft-render"
@@ -244,7 +420,7 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "flate2",
   "gif",
-@@ -4848,14 +4848,14 @@ dependencies = [
+@@ -4848,14 +4809,14 @@ dependencies = [
  
  [[package]]
  name = "vectorcraft-scriptcheck"
@@ -261,7 +437,7 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "flate2",
   "image",
-@@ -4879,7 +4879,7 @@ dependencies = [
+@@ -4879,7 +4840,7 @@ dependencies = [
  
  [[package]]
  name = "vectorcraft-testkit"
@@ -270,7 +446,7 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "image",
   "kurbo 0.13.1",
-@@ -4896,7 +4896,7 @@ dependencies = [
+@@ -4896,7 +4857,7 @@ dependencies = [
  
  [[package]]
  name = "vectorcraft-text"
@@ -279,7 +455,7 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "harfrust 0.13.3",
   "icu_segmenter",
-@@ -4916,7 +4916,7 @@ dependencies = [
+@@ -4916,7 +4877,7 @@ dependencies = [
  
  [[package]]
  name = "vectorcraft-three-d"
@@ -288,7 +464,7 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "vectorcraft-geom",
   "vectorcraft-pathops",
-@@ -4924,7 +4924,7 @@ dependencies = [
+@@ -4924,7 +4885,7 @@ dependencies = [
  
  [[package]]
  name = "vectorcraft-tools"
@@ -297,7 +473,7 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "image",
   "kurbo 0.13.1",
-@@ -4940,7 +4940,7 @@ dependencies = [
+@@ -4940,7 +4901,7 @@ dependencies = [
  
  [[package]]
  name = "vectorcraft-trace"
@@ -306,7 +482,7 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "image",
   "kurbo 0.13.1",
-@@ -4952,7 +4952,7 @@ dependencies = [
+@@ -4952,7 +4913,7 @@ dependencies = [
  
  [[package]]
  name = "vectorcraft-ui-egui"
@@ -315,7 +491,7 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "craft-ui",
   "egui",
-@@ -4986,7 +4986,7 @@ dependencies = [
+@@ -4986,7 +4947,7 @@ dependencies = [
  
  [[package]]
  name = "vectorcraft-web"
@@ -324,7 +500,7 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "eframe",
   "egui",
-@@ -6096,7 +6096,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
+@@ -6096,7 +6057,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
  
  [[package]]
  name = "xtask"
@@ -333,6 +509,18 @@ index eca4758..5a8fb34 100644
  dependencies = [
   "serde_json",
  ]
+@@ -6114,9 +6075,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "yoke-derive"
+-version = "0.8.3"
++version = "0.8.4"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "33811428bee40dbceb6d545e95754741d17a6aef9a4849f0fd62e2ba4f412a78"
++checksum = "ec8ebde2db3681e8c9980cc27822030e68752690ddfa9473e739aeb4dbde6d71"
+ dependencies = [
+  "proc-macro2",
+  "quote",
 diff --git a/Cargo.toml b/Cargo.toml
 index 1c10d55..a85ba07 100644
 --- a/Cargo.toml
@@ -2098,7 +2286,7 @@ index 87e80da..f014831 100644
  workspace = true
  
 diff --git a/crates/pdf/Cargo.toml b/crates/pdf/Cargo.toml
-index a9c110a..309132b 100644
+index a9c110a..4769b78 100644
 --- a/crates/pdf/Cargo.toml
 +++ b/crates/pdf/Cargo.toml
 @@ -5,6 +5,8 @@ edition.workspace = true
@@ -2110,6 +2298,111 @@ index a9c110a..309132b 100644
  [lints]
  workspace = true
  
+@@ -39,5 +41,6 @@ vectorcraft-testkit = { workspace = true }
+ # A variable font built in code (no font file is committed).
+ vectorcraft-text = { workspace = true, features = ["test-fonts"] }
+ serde_json = { workspace = true }
+-# `draw_text`, to write test files with live text as other writers do.
+-krilla = { workspace = true, features = ["simple-text"] }
++# Shape synthetic live-text fixtures with the maintained HarfRust engine.
++krilla = { workspace = true }
++harfrust = { workspace = true }
+diff --git a/crates/pdf/src/tests_live_text.rs b/crates/pdf/src/tests_live_text.rs
+index 63ebb0d..1a48361 100644
+--- a/crates/pdf/src/tests_live_text.rs
++++ b/crates/pdf/src/tests_live_text.rs
+@@ -3,7 +3,7 @@
+ use craft_pdf::write::backend as krilla;
+ use krilla::geom::{Point as KPoint, Transform};
+ use krilla::page::PageSettings;
+-use krilla::text::{Font, TextDirection};
++use krilla::text::{Font, GlyphId, KrillaGlyph};
+ use kurbo::Shape;
+ use vectorcraft_doc::{Document, NodeKind, TextObject};
+ 
+@@ -12,6 +12,38 @@ use crate::*;
+ const SOURCE_SANS: &[u8] = include_bytes!("../../../assets/fonts/SourceSans3-Regular.ttf");
+ const SOURCE_SERIF: &[u8] = include_bytes!("../../../assets/fonts/SourceSerif4-Regular.ttf");
+ 
++/// Synthetic PDF text writer; the production importer is tested against shaped glyphs.
++fn draw_fixture_text(s: &mut krilla::surface::Surface, at: KPoint, font: Font, bytes: &[u8], size: f32, text: &str) {
++    let face = harfrust::FontRef::from_index(bytes, 0).unwrap();
++    let data = harfrust::ShaperData::new(&face);
++    let shaper = data.shaper(&face).build();
++    let mut buffer = harfrust::UnicodeBuffer::new();
++    buffer.push_str(text);
++    buffer.guess_segment_properties();
++    let shaped = shaper.shape(buffer, harfrust::ShapeOptions::default());
++    let boundaries: std::collections::BTreeSet<usize> = shaped.glyph_infos().iter().map(|i| i.cluster as usize).chain([text.len()]).collect();
++    let upem = font.units_per_em();
++    let glyphs: Vec<KrillaGlyph> = shaped
++        .glyph_infos()
++        .iter()
++        .zip(shaped.glyph_positions())
++        .map(|(info, pos)| {
++            let start = info.cluster as usize;
++            let end = boundaries.range((std::ops::Bound::Excluded(start), std::ops::Bound::Unbounded)).next().copied().unwrap();
++            KrillaGlyph::new(
++                GlyphId::new(info.glyph_id),
++                pos.x_advance as f32 / upem,
++                pos.x_offset as f32 / upem,
++                pos.y_offset as f32 / upem,
++                pos.y_advance as f32 / upem,
++                start..end,
++                None,
++            )
++        })
++        .collect();
++    s.draw_glyphs(at, &glyphs, font, text, size, false);
++}
++
+ /// A 300 × 200 pt page with `lines` of (x, y from the top, size, text) in Source Sans 3, and the
+ /// same rotated 90° when `rotated`.
+ pub(crate) fn text_pdf(lines: &[(f32, f32, f32, &str)], rotated: bool) -> Vec<u8> {
+@@ -23,7 +55,7 @@ pub(crate) fn text_pdf(lines: &[(f32, f32, f32, &str)], rotated: bool) -> Vec<u8
+         s.push_transform(&Transform::from_row(0.0, 1.0, -1.0, 0.0, 150.0, 20.0));
+     }
+     for &(x, y, size, text) in lines {
+-        s.draw_text(KPoint::from_xy(x, y), font.clone(), size, text, false, TextDirection::Auto);
++        draw_fixture_text(&mut s, KPoint::from_xy(x, y), font.clone(), SOURCE_SANS, size, text);
+     }
+     if rotated {
+         s.pop();
+@@ -193,7 +225,7 @@ fn one_line_pdf(font: Vec<u8>, text: &str) -> Vec<u8> {
+     let mut pdf = krilla::Document::new();
+     let mut page = pdf.start_page_with(PageSettings::from_wh(300.0, 200.0).unwrap());
+     let mut s = page.surface();
+-    s.draw_text(KPoint::from_xy(20.0, 50.0), Font::new(font.into(), 0).unwrap(), 24.0, text, false, TextDirection::Auto);
++    draw_fixture_text(&mut s, KPoint::from_xy(20.0, 50.0), Font::new(font.clone().into(), 0).unwrap(), &font, 24.0, text);
+     s.finish();
+     page.finish();
+     pdf.finish().unwrap()
+@@ -238,7 +270,7 @@ fn text_in_a_missing_font_stays_live_type() {
+             s.set_fill(None);
+             s.set_stroke(Some(krilla::paint::Stroke::default()));
+         }
+-        s.draw_text(KPoint::from_xy(20.0, 50.0), font, 24.0, "Gagaku", false, TextDirection::Auto);
++        draw_fixture_text(&mut s, KPoint::from_xy(20.0, 50.0), font, &uninstalled_font(), 24.0, "Gagaku");
+         s.finish();
+         page.finish();
+         let r = import_with_report(&pdf.finish().unwrap(), &ImportOptions::default()).unwrap();
+@@ -315,13 +347,13 @@ fn a_tagged_span_inside_a_line_leaves_the_line_whole() {
+     let font = Font::new(SOURCE_SANS.into(), 0).unwrap();
+     // "Ga" "ga" "ku" with the middle part in its own marked content (a span, as apps write for
+     // actual text), all on one baseline.
+-    s.draw_text(KPoint::from_xy(20.0, 50.0), font.clone(), 24.0, "Ga", false, TextDirection::Auto);
++    draw_fixture_text(&mut s, KPoint::from_xy(20.0, 50.0), font.clone(), SOURCE_SANS, 24.0, "Ga");
+     let x = 20.0 + ink_width_of(&font, 24.0, "Ga");
+     s.start_tagged(ContentTag::Span(SpanTag::empty()));
+-    s.draw_text(KPoint::from_xy(x, 50.0), font.clone(), 24.0, "ga", false, TextDirection::Auto);
++    draw_fixture_text(&mut s, KPoint::from_xy(x, 50.0), font.clone(), SOURCE_SANS, 24.0, "ga");
+     s.end_tagged();
+     let x = x + ink_width_of(&font, 24.0, "ga");
+-    s.draw_text(KPoint::from_xy(x, 50.0), font, 24.0, "ku", false, TextDirection::Auto);
++    draw_fixture_text(&mut s, KPoint::from_xy(x, 50.0), font, SOURCE_SANS, 24.0, "ku");
+     s.finish();
+     page.finish();
+     let d = import(&pdf.finish().unwrap()).unwrap();
 diff --git a/crates/plugins/Cargo.toml b/crates/plugins/Cargo.toml
 index 1fb4bd7..fc3b55d 100644
 --- a/crates/plugins/Cargo.toml
@@ -2227,6 +2520,19 @@ index a605a69..bd27be5 100644
  [lints]
  workspace = true
  
+diff --git a/crates/trace/tests/shared_boundaries.rs b/crates/trace/tests/shared_boundaries.rs
+index 926ecd0..9210c5a 100644
+--- a/crates/trace/tests/shared_boundaries.rs
++++ b/crates/trace/tests/shared_boundaries.rs
+@@ -270,7 +270,7 @@ fn variants(art: &Art, n: usize, soft: bool, settings: &[Setting]) -> Vec<String
+         for &(name, set) in settings {
+             let mut params = params.clone();
+             set(&mut params);
+-            let expect = (!soft && !(tiny && name == LOOSEST.0)).then_some(counts.as_slice());
++            let expect = (!(soft || tiny && name == LOOSEST.0)).then_some(counts.as_slice());
+             let (line, w) = run(art, soft, bw, &params, name, expect);
+             println!("{line}");
+             wrong.extend(w);
 diff --git a/crates/ui-egui/Cargo.toml b/crates/ui-egui/Cargo.toml
 index 193832b..8b575b1 100644
 --- a/crates/ui-egui/Cargo.toml
@@ -9190,6 +9496,106 @@ index 5c8620b..a0a837c 100755
 +  echo "warning: iconutil not found (macOS only); plervo-vector.icns not regenerated" >&2
  fi
  echo "icons written to $DIR"
+diff --git a/packaging/linux/ai.storyteller.vectorcraft.desktop b/packaging/linux/ai.storyteller.vectorcraft.desktop
+deleted file mode 100644
+index af34553..0000000
+--- a/packaging/linux/ai.storyteller.vectorcraft.desktop
++++ /dev/null
+@@ -1,14 +0,0 @@
+-[Desktop Entry]
+-Type=Application
+-Name=VectorCraft
+-GenericName=Vector Graphics Editor
+-Comment=Draw and edit vector illustrations, SVG and PDF
+-Exec=vectorcraft %F
+-TryExec=vectorcraft
+-Icon=ai.storyteller.vectorcraft
+-Terminal=false
+-StartupNotify=true
+-StartupWMClass=ai.storyteller.vectorcraft
+-Categories=Graphics;2DGraphics;VectorGraphics;
+-Keywords=vector;illustration;svg;pdf;drawing;bezier;
+-MimeType=image/svg+xml;application/pdf;
+diff --git a/packaging/linux/ai.storyteller.vectorcraft.metainfo.xml.in b/packaging/linux/ai.storyteller.vectorcraft.metainfo.xml.in
+deleted file mode 100644
+index a19681a..0000000
+--- a/packaging/linux/ai.storyteller.vectorcraft.metainfo.xml.in
++++ /dev/null
+@@ -1,65 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
+-     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
+-<component type="desktop-application">
+-  <id>ai.storyteller.vectorcraft</id>
+-  <metadata_license>CC0-1.0</metadata_license>
+-  <project_license>MIT OR Apache-2.0</project_license>
+-  <name>VectorCraft</name>
+-  <summary>Draw and edit vector illustrations, SVG and PDF</summary>
+-  <developer id="ai.storyteller">
+-    <name>Learning Machines LLC</name>
+-  </developer>
+-  <description>
+-    <p>
+-      VectorCraft is an open-source vector illustration app. Draw with pen, shape and brush tools,
+-      style art with fills, strokes, gradients and live effects, lay out artboards and type, and
+-      open and save SVG and PDF.
+-    </p>
+-  </description>
+-  <launchable type="desktop-id">ai.storyteller.vectorcraft.desktop</launchable>
+-  <icon type="stock">ai.storyteller.vectorcraft</icon>
+-  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
+-  <url type="homepage">https://getartcraft.com/apps/vectorcraft</url>
+-  <url type="bugtracker">https://github.com/storytold/vectorcraft/issues</url>
+-  <url type="help">https://github.com/storytold/vectorcraft</url>
+-  <url type="contact">https://discord.gg/artcraft</url>
+-  <categories>
+-    <category>Graphics</category>
+-    <category>2DGraphics</category>
+-    <category>VectorGraphics</category>
+-  </categories>
+-  <keywords>
+-    <keyword>vector</keyword>
+-    <keyword>illustration</keyword>
+-    <keyword>svg</keyword>
+-    <keyword>pdf</keyword>
+-    <keyword>drawing</keyword>
+-    <keyword>bezier</keyword>
+-  </keywords>
+-  <screenshots>
+-    <screenshot type="default">
+-      <caption>Editing the Neon Drive poster with a live glow effect in the Appearance panel</caption>
+-      <image>https://raw.githubusercontent.com/storytold/vectorcraft/main/docs/images/shot-1-neon.png</image>
+-    </screenshot>
+-  </screenshots>
+-  <branding>
+-    <color type="primary" scheme_preference="light">#9fd0ff</color>
+-    <color type="primary" scheme_preference="dark">#1f64ba</color>
+-  </branding>
+-  <requires>
+-    <display_length compare="ge">760</display_length>
+-  </requires>
+-  <supports>
+-    <control>keyboard</control>
+-    <control>pointing</control>
+-    <control>tablet</control>
+-  </supports>
+-  <provides>
+-    <binary>vectorcraft</binary>
+-  </provides>
+-  <content_rating type="oars-1.1"/>
+-  <releases>
+-    <release version="@VERSION@" date="@DATE@"/>
+-  </releases>
+-</component>
+diff --git a/packaging/linux/ai.storyteller.vectorcraft.mime.xml b/packaging/linux/ai.storyteller.vectorcraft.mime.xml
+deleted file mode 100644
+index be4dcc2..0000000
+--- a/packaging/linux/ai.storyteller.vectorcraft.mime.xml
++++ /dev/null
+@@ -1,3 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+-</mime-info>
 diff --git a/packaging/linux/com.plervo.vector.desktop b/packaging/linux/com.plervo.vector.desktop
 new file mode 100644
 index 0000000..5729e8b
@@ -9356,6 +9762,128 @@ index bb84419..549798c 100755
    flatpak run --command=sh "$APP_ID" -c 'ls /app/share/applications /app/share/metainfo /app/share/mime/packages /app/share/icons/hicolor/scalable/apps'
  fi
  echo "==> done"
+diff --git a/packaging/linux/flatpak/ai.storyteller.vectorcraft.bundle.yml b/packaging/linux/flatpak/ai.storyteller.vectorcraft.bundle.yml
+deleted file mode 100644
+index b245e0b..0000000
+--- a/packaging/linux/flatpak/ai.storyteller.vectorcraft.bundle.yml
++++ /dev/null
+@@ -1,51 +0,0 @@
+-# Flatpak manifest for the single-file bundle attached to every GitHub release
+-# (vectorcraft-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
+-#
+-# It repackages the release's own Linux tarball (vectorcraft-<version>-linux-<arch>.tar.gz,
+-# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
+-# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
+-# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
+-# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
+-# Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
+-# GPU driver comes from its org.freedesktop.Platform.GL extension.
+-#
+-# ai.storyteller.vectorcraft.yml (same directory) is the from-source manifest for Flathub. Keep
+-# runtime, runtime-version, sdk and finish-args identical in both (packaging-lint checks this).
+-id: ai.storyteller.vectorcraft
+-runtime: org.freedesktop.Platform
+-runtime-version: '25.08'
+-sdk: org.freedesktop.Sdk
+-command: vectorcraft
+-finish-args:
+-  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
+-  - --share=ipc
+-  # Display: Wayland first; X11 only when no Wayland compositor is running.
+-  - --socket=wayland
+-  - --socket=fallback-x11
+-  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
+-  - --device=dri
+-  # Open/Save dialogs use the file-chooser portal (rfd), and drag-and-drop uses the document
+-  # portal, so broad filesystem access isn't needed. Pictures is granted for opening files by
+-  # path from the command line.
+-  - --filesystem=xdg-pictures
+-  # Font managers (FontBase and others) activate fonts into ~/.fonts, which Flatpak does not open
+-  # to a sandbox: it exposes /usr/share/fonts and ~/.local/share/fonts, and nothing else. Without
+-  # this the font list holds none of the activated families, while native apps see them.
+-  - --filesystem=~/.fonts:ro
+-  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
+-  # the sandbox; `flatpak override --user --share=network ai.storyteller.vectorcraft` exposes it
+-  # to host agents) and home/host filesystem access beyond the read-only folders above.
+-modules:
+-  - name: vectorcraft
+-    buildsystem: simple
+-    build-commands:
+-      - install -Dm755 bin/vectorcraft /app/bin/vectorcraft
+-      - install -Dm755 bin/vectorcraft-cli /app/bin/vectorcraft-cli
+-      - install -Dm644 share/applications/ai.storyteller.vectorcraft.desktop /app/share/applications/ai.storyteller.vectorcraft.desktop
+-      - install -Dm644 share/mime/packages/ai.storyteller.vectorcraft.xml /app/share/mime/packages/ai.storyteller.vectorcraft.xml
+-      # Already has the release's version and date substituted by package.sh.
+-      - install -Dm644 share/metainfo/ai.storyteller.vectorcraft.metainfo.xml /app/share/metainfo/ai.storyteller.vectorcraft.metainfo.xml
+-      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/vectorcraft /app/share/doc/
+-    sources:
+-      - type: dir
+-        path: stage
+diff --git a/packaging/linux/flatpak/ai.storyteller.vectorcraft.yml b/packaging/linux/flatpak/ai.storyteller.vectorcraft.yml
+deleted file mode 100644
+index 8656095..0000000
+--- a/packaging/linux/flatpak/ai.storyteller.vectorcraft.yml
++++ /dev/null
+@@ -1,59 +0,0 @@
+-# Flatpak manifest for VectorCraft, ready for a Flathub submission.
+-#
+-# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
+-#
+-#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
+-#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
+-#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.vectorcraft.yml
+-#   flatpak run ai.storyteller.vectorcraft
+-#
+-# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
+-# Release bundles (.flatpak on GitHub Releases) use ai.storyteller.vectorcraft.bundle.yml instead.
+-id: ai.storyteller.vectorcraft
+-runtime: org.freedesktop.Platform
+-runtime-version: '25.08'
+-sdk: org.freedesktop.Sdk
+-sdk-extensions:
+-  - org.freedesktop.Sdk.Extension.rust-stable
+-command: vectorcraft
+-finish-args:
+-  # Keep identical to ai.storyteller.vectorcraft.bundle.yml (the release bundle); comments there.
+-  - --share=ipc
+-  - --socket=wayland
+-  - --socket=fallback-x11
+-  - --device=dri
+-  # Open/Save dialogs use the file-chooser portal (rfd), and drag-and-drop uses the document
+-  # portal, so broad filesystem access isn't needed. Pictures is granted for opening files by
+-  # path from the command line.
+-  - --filesystem=xdg-pictures
+-  - --filesystem=~/.fonts:ro
+-build-options:
+-  append-path: /usr/lib/sdk/rust-stable/bin
+-modules:
+-  - name: vectorcraft
+-    buildsystem: simple
+-    build-options:
+-      env:
+-        CARGO_HOME: /run/build/vectorcraft/cargo
+-        CARGO_NET_OFFLINE: 'true'
+-    build-commands:
+-      - cargo --offline build --release --locked -p vectorcraft
+-      - install -Dm755 target/release/vectorcraft /app/bin/vectorcraft
+-      - install -Dm644 packaging/linux/ai.storyteller.vectorcraft.desktop /app/share/applications/ai.storyteller.vectorcraft.desktop
+-      - install -Dm644 packaging/linux/ai.storyteller.vectorcraft.mime.xml /app/share/mime/packages/ai.storyteller.vectorcraft.xml
+-      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
+-      - >-
+-        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
+-        install -d /app/share/metainfo;
+-        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+-        packaging/linux/ai.storyteller.vectorcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.vectorcraft.metainfo.xml
+-    sources:
+-      - type: dir
+-        path: ../../..
+-        skip:
+-          - target
+-          - dist
+-          - corpus
+-          - build-flatpak
+-          - .flatpak-builder
+-      - cargo-sources.json
 diff --git a/packaging/linux/flatpak/com.plervo.vector.bundle.yml b/packaging/linux/flatpak/com.plervo.vector.bundle.yml
 new file mode 100644
 index 0000000..a8a746d
@@ -10425,6 +10953,174 @@ index 2cd610f..1dea93e 100644
  New-Item -ItemType Directory -Force -Path $tmp | Out-Null
  
  try {
+diff --git a/packaging/windows/vectorcraft.en-us.wxl b/packaging/windows/vectorcraft.en-us.wxl
+deleted file mode 100644
+index 353499d..0000000
+--- a/packaging/windows/vectorcraft.en-us.wxl
++++ /dev/null
+@@ -1,15 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<!--
+-  Overrides for the setup wizard's WixUI strings, so its pages name the version being installed
+-  ([VectorcraftVersion] is the full version, pre-release tag included, set in vectorcraft.wxs).
+--->
+-<WixLocalization Culture="en-US" xmlns="http://wixtoolset.org/schemas/v4/wxl">
+-  <String Id="WelcomeDlgTitle" Value="{\WixUI_Font_Bigger}Welcome to the [ProductName] [VectorcraftVersion] Setup Wizard" />
+-  <String Id="WelcomeDlgDescription" Value="The Setup Wizard will install [ProductName] version [VectorcraftVersion] on your computer. Click Next to continue or Cancel to exit the Setup Wizard." />
+-  <String Id="VerifyReadyDlgInstallTitle" Value="{\WixUI_Font_Title}Ready to install [ProductName] [VectorcraftVersion]" />
+-  <String Id="ShortcutsDlgTitle" Value="{\WixUI_Font_Title}Shortcuts" />
+-  <String Id="ShortcutsDlgDescription" Value="Choose where you can start [ProductName] from." />
+-  <String Id="ShortcutsDlgDesktop" Value="Create a &amp;desktop shortcut" />
+-  <String Id="ShortcutsDlgStartMenu" Value="[ProductName] is always added to the Start menu." />
+-  <String Id="ExitDialogTitle" Value="{\WixUI_Font_Bigger}Completed the [ProductName] [VectorcraftVersion] Setup Wizard" />
+-</WixLocalization>
+diff --git a/packaging/windows/vectorcraft.wxs b/packaging/windows/vectorcraft.wxs
+deleted file mode 100644
+index 679d11d..0000000
+--- a/packaging/windows/vectorcraft.wxs
++++ /dev/null
+@@ -1,141 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<!--
+-  VectorCraft MSI (WiX Toolset v5: `dotnet tool install -g wix`, plus the UI and Util extensions:
+-  `wix extension add -g WixToolset.UI.wixext/5.0.2 WixToolset.Util.wixext/5.0.2`). Built by package.ps1:
+-
+-    wix build vectorcraft.wxs -arch x64 -ext WixToolset.UI.wixext -ext WixToolset.Util.wixext
+-      -culture en-US -loc vectorcraft.en-us.wxl -d Version=1.2.3 -d DisplayVersion=1.2.3-rc.1
+-      -d BinDir=... -d IconPath=... -d BannerBmp=... -d DialogBmp=... -o out.msi
+-
+-  Per-machine install with a setup wizard that names the version: Welcome, install folder (Program Files\VectorCraft by
+-  default, remembered for upgrades), Ready, a progress page, and a Finish page with a ticked
+-  "Launch VectorCraft" box. Installs a Start Menu shortcut and an App Paths entry (so `vectorcraft`
+-  starts from the Run dialog), plus vectorcraft-cli. A Shortcuts page after the install folder offers
+-  a desktop shortcut (ticked). `msiexec /qn` still installs silently, with the desktop shortcut
+-  unless INSTALLDESKTOPSHORTCUT="" is passed.
+--->
+-<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+-     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+-  <Package
+-      Name="VectorCraft"
+-      Manufacturer="Learning Machines LLC"
+-      Version="$(var.Version)"
+-      UpgradeCode="601C6437-08AE-4645-ADCC-27F036C2EA2F"
+-      Scope="perMachine"
+-      Compressed="yes"
+-      Language="1033">
+-    <SummaryInformation Description="VectorCraft vector illustration app" Manufacturer="Learning Machines LLC" />
+-    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
+-         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
+-    <MajorUpgrade AllowSameVersionUpgrades="yes"
+-        DowngradeErrorMessage="A newer version of VectorCraft is already installed." />
+-    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+-
+-    <Icon Id="VectorcraftIcon.ico" SourceFile="$(var.IconPath)" />
+-    <Property Id="ARPPRODUCTICON" Value="VectorcraftIcon.ico" />
+-    <Property Id="ARPURLINFOABOUT" Value="https://getartcraft.com/apps/vectorcraft" />
+-    <Property Id="ARPURLUPDATEINFO" Value="https://getartcraft.com/apps/vectorcraft" />
+-    <Property Id="ARPHELPLINK" Value="https://discord.gg/artcraft" />
+-
+-    <StandardDirectory Id="ProgramFiles6432Folder">
+-      <Directory Id="INSTALLFOLDER" Name="VectorCraft" />
+-    </StandardDirectory>
+-    <StandardDirectory Id="ProgramMenuFolder" />
+-    <StandardDirectory Id="DesktopFolder" />
+-
+-    <!-- An upgrade installs where the user put the previous version (written by VectorcraftApp). -->
+-    <Property Id="INSTALLFOLDER">
+-      <RegistrySearch Id="PreviousInstallFolder" Root="HKLM" Key="Software\VectorCraft" Name="InstallDir" Type="raw" />
+-    </Property>
+-
+-    <Feature Id="Main" Title="VectorCraft" Level="1">
+-      <ComponentGroupRef Id="VectorcraftFiles" />
+-      <ComponentGroupRef Id="PdfDocumentation" />
+-      <ComponentRef Id="DesktopShortcut" />
+-    </Feature>
+-
+-    <!-- A desktop shortcut: the Shortcuts page's box (ticked), or INSTALLDESKTOPSHORTCUT="" on the
+-         msiexec command line for none. Secure, so the wizard's choice reaches the install. -->
+-    <Property Id="INSTALLDESKTOPSHORTCUT" Value="1" Secure="yes" />
+-
+-    <!-- The setup wizard: WixUI_InstallDir without its licence page (the code is MIT OR
+-         Apache-2.0; there is nothing to accept). A later NewDialog on the same button wins. -->
+-    <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
+-    <UI>
+-      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2" Condition="NOT Installed" />
+-      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" />
+-      <!-- The Shortcuts page sits between the install folder and Ready (once the folder is valid). -->
+-      <Publish Dialog="InstallDirDlg" Control="Next" Event="NewDialog" Value="ShortcutsDlg" Order="5"
+-          Condition="WIXUI_DONTVALIDATEPATH OR WIXUI_INSTALLDIR_VALID=&quot;1&quot;" />
+-      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="ShortcutsDlg" Order="5" Condition="NOT Installed" />
+-
+-      <Dialog Id="ShortcutsDlg" Width="370" Height="270" Title="!(loc.InstallDirDlg_Title)">
+-        <Control Id="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Text="!(loc.WixUINext)">
+-          <Publish Event="NewDialog" Value="VerifyReadyDlg" />
+-        </Control>
+-        <Control Id="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Text="!(loc.WixUIBack)">
+-          <Publish Event="NewDialog" Value="InstallDirDlg" />
+-        </Control>
+-        <Control Id="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Cancel="yes" Text="!(loc.WixUICancel)">
+-          <Publish Event="SpawnDialog" Value="CancelDlg" />
+-        </Control>
+-        <Control Id="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" TabSkip="no" Text="!(loc.InstallDirDlgBannerBitmap)" />
+-        <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
+-        <Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" />
+-        <Control Id="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Transparent="yes" NoPrefix="yes" Text="!(loc.ShortcutsDlgTitle)" />
+-        <Control Id="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Transparent="yes" NoPrefix="yes" Text="!(loc.ShortcutsDlgDescription)" />
+-        <Control Id="DesktopShortcutCheckBox" Type="CheckBox" X="20" Y="60" Width="330" Height="18"
+-            Property="INSTALLDESKTOPSHORTCUT" CheckBoxValue="1" Text="!(loc.ShortcutsDlgDesktop)" />
+-        <Control Id="StartMenuNote" Type="Text" X="20" Y="84" Width="330" Height="30" NoPrefix="yes" Text="!(loc.ShortcutsDlgStartMenu)" />
+-      </Dialog>
+-      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchVectorcraft"
+-          Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 AND NOT Installed" />
+-    </UI>
+-    <!-- Our own art, generated by package.ps1 from the app icon (not WiX's stock bitmaps). -->
+-    <WixVariable Id="WixUIBannerBmp" Value="$(var.BannerBmp)" />
+-    <WixVariable Id="WixUIDialogBmp" Value="$(var.DialogBmp)" />
+-
+-    <!-- The full version (Version is numeric, so it drops a pre-release tag), shown on the wizard's
+-         pages through vectorcraft.en-us.wxl. -->
+-    <Property Id="VectorcraftVersion" Value="$(var.DisplayVersion)" />
+-
+-    <!-- Finish page: say where to find the app, and offer to start it (ticked by default). -->
+-    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="VectorCraft $(var.DisplayVersion) is installed. You can start it any time from the Start menu." />
+-    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch VectorCraft" />
+-    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
+-    <Property Id="WixShellExecTarget" Value="[#VectorcraftExe]" />
+-    <!-- Runs in the wizard's own (unelevated) process, so the app starts as the user, not as admin. -->
+-    <CustomAction Id="LaunchVectorcraft" BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" DllEntry="WixShellExec" Impersonate="yes" Return="ignore" />
+-  </Package>
+-
+-  <Fragment>
+-    <ComponentGroup Id="PdfDocumentation" Directory="INSTALLFOLDER">
+-      <Files Include="$(var.DocsDir)\**" />
+-    </ComponentGroup>
+-    <ComponentGroup Id="VectorcraftFiles" Directory="INSTALLFOLDER">
+-      <Component Id="VectorcraftApp" Guid="0E8C6C5E-DE4A-4E1D-9DB0-44E8E38C2103">
+-        <File Id="VectorcraftExe" Source="$(var.BinDir)\vectorcraft.exe" KeyPath="yes">
+-          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="VectorCraft"
+-              Description="VectorCraft vector illustration app" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
+-              Icon="VectorcraftIcon.ico" IconIndex="0" />
+-        </File>
+-
+-        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\vectorcraft.exe" Value="[#VectorcraftExe]" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\VectorCraft" Name="InstallDir" Value="[INSTALLFOLDER]" Type="string" />
+-      </Component>
+-
+-      <Component Id="VectorcraftCli">
+-        <File Id="VectorcraftCliExe" Source="$(var.BinDir)\vectorcraft-cli.exe" KeyPath="yes" />
+-      </Component>
+-    </ComponentGroup>
+-
+-    <!-- Installed only with INSTALLDESKTOPSHORTCUT set (the Shortcuts page's box); removed with the
+-         app. A per-machine install puts it on the common desktop. `wix msi validate` reports ICE38,
+-         ICE43 and ICE57 for it: they take a desktop shortcut for per-user data, which it isn't here. -->
+-    <Component Id="DesktopShortcut" Directory="DesktopFolder" Guid="498F2D4C-E655-47F6-B406-2D4C449B8D26" Condition="INSTALLDESKTOPSHORTCUT">
+-      <Shortcut Id="DesktopShortcut" Name="VectorCraft" Description="VectorCraft vector illustration app"
+-          Target="[#VectorcraftExe]" WorkingDirectory="INSTALLFOLDER" Icon="VectorcraftIcon.ico" IconIndex="0" />
+-      <RegistryValue Root="HKLM" Key="Software\VectorCraft" Name="DesktopShortcut" Value="1" Type="integer" KeyPath="yes" />
+-    </Component>
+-  </Fragment>
+-</Wix>
 diff --git a/packaging/windows/windows7.ps1 b/packaging/windows/windows7.ps1
 index dbfa715..923a65d 100644
 --- a/packaging/windows/windows7.ps1

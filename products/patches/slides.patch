@@ -53,10 +53,26 @@ index 9ca8e5e..7a9c293 100644
 +| `assets/app-icon/plervo-slides.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 d6b064274b5e14a1e4003c6356202318f7300f75241e6cc0d71b9260d09155d7 |
 +| `assets/app-icon/plervo-slides.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 0b67772ec5dc6840df0e25603e7acafa72fd49e0e93ca0ee2006fc70f3ebbc08 |
 diff --git a/Cargo.lock b/Cargo.lock
-index 4cf2cd8..df2270c 100644
+index 4cf2cd8..75dfccd 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -875,28 +875,9 @@ version = "0.11.0"
+@@ -765,15 +765,6 @@ version = "1.0.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "7f8f80099a98041a3d1622845c271458a2d73e688351bf3cb999266764b81d48"
+ 
+-[[package]]
+-name = "core_maths"
+-version = "0.1.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "77745e017f5edba1a9c1d854f6f3a52dac8a12dd5af5d2f54aecf61e43d80d30"
+-dependencies = [
+- "libm",
+-]
+-
+ [[package]]
+ name = "coreaudio-rs"
+ version = "0.13.0"
+@@ -875,28 +866,9 @@ version = "0.11.0"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "0c87e182de0887fd5361989c677c4e8f5000cd9491d6d563161a8f3a5519fc7f"
  
@@ -86,7 +102,7 @@ index 4cf2cd8..df2270c 100644
  dependencies = [
   "deckcraft-geom",
   "deckcraft-model",
-@@ -905,7 +886,7 @@ dependencies = [
+@@ -905,7 +877,7 @@ dependencies = [
  
  [[package]]
  name = "deckcraft-av1"
@@ -95,7 +111,7 @@ index 4cf2cd8..df2270c 100644
  dependencies = [
   "deckcraft-bitstream",
   "rayon",
-@@ -914,30 +895,21 @@ dependencies = [
+@@ -914,30 +886,21 @@ dependencies = [
  
  [[package]]
  name = "deckcraft-bitstream"
@@ -129,7 +145,7 @@ index 4cf2cd8..df2270c 100644
  dependencies = [
   "deckcraft-color",
   "deckcraft-fonts",
-@@ -959,7 +931,7 @@ dependencies = [
+@@ -959,7 +922,7 @@ dependencies = [
  
  [[package]]
  name = "deckcraft-fonts"
@@ -138,7 +154,7 @@ index 4cf2cd8..df2270c 100644
  dependencies = [
   "epaint_default_fonts",
   "harfrust 0.13.3",
-@@ -971,7 +943,7 @@ dependencies = [
+@@ -971,7 +934,7 @@ dependencies = [
  
  [[package]]
  name = "deckcraft-format"
@@ -147,7 +163,7 @@ index 4cf2cd8..df2270c 100644
  dependencies = [
   "deckcraft-model",
   "serde",
-@@ -982,7 +954,7 @@ dependencies = [
+@@ -982,7 +945,7 @@ dependencies = [
  
  [[package]]
  name = "deckcraft-geom"
@@ -156,7 +172,7 @@ index 4cf2cd8..df2270c 100644
  dependencies = [
   "kurbo",
   "serde",
-@@ -990,7 +962,7 @@ dependencies = [
+@@ -990,7 +953,7 @@ dependencies = [
  
  [[package]]
  name = "deckcraft-h264"
@@ -165,7 +181,7 @@ index 4cf2cd8..df2270c 100644
  dependencies = [
   "deckcraft-bitstream",
   "rayon",
-@@ -999,7 +971,7 @@ dependencies = [
+@@ -999,7 +962,7 @@ dependencies = [
  
  [[package]]
  name = "deckcraft-hevc"
@@ -174,7 +190,7 @@ index 4cf2cd8..df2270c 100644
  dependencies = [
   "deckcraft-bitstream",
   "rayon",
-@@ -1008,7 +980,7 @@ dependencies = [
+@@ -1008,7 +971,7 @@ dependencies = [
  
  [[package]]
  name = "deckcraft-isobmff"
@@ -183,7 +199,7 @@ index 4cf2cd8..df2270c 100644
  dependencies = [
   "deckcraft-bitstream",
   "thiserror 2.0.21",
-@@ -1016,11 +988,11 @@ dependencies = [
+@@ -1016,21 +979,22 @@ dependencies = [
  
  [[package]]
  name = "deckcraft-matroska"
@@ -197,7 +213,10 @@ index 4cf2cd8..df2270c 100644
  dependencies = [
   "deckcraft-engine",
   "deckcraft-render",
-@@ -1030,7 +1002,7 @@ dependencies = [
+  "log",
+  "serde_json",
++ "tempfile",
+ ]
  
  [[package]]
  name = "deckcraft-media"
@@ -206,7 +225,7 @@ index 4cf2cd8..df2270c 100644
  dependencies = [
   "deckcraft-av1",
   "deckcraft-h264",
-@@ -1048,7 +1020,7 @@ dependencies = [
+@@ -1048,7 +1012,7 @@ dependencies = [
  
  [[package]]
  name = "deckcraft-metafile"
@@ -215,7 +234,7 @@ index 4cf2cd8..df2270c 100644
  dependencies = [
   "kurbo",
   "thiserror 2.0.21",
-@@ -1056,7 +1028,7 @@ dependencies = [
+@@ -1056,7 +1020,7 @@ dependencies = [
  
  [[package]]
  name = "deckcraft-model"
@@ -224,7 +243,7 @@ index 4cf2cd8..df2270c 100644
  dependencies = [
   "deckcraft-color",
   "deckcraft-geom",
-@@ -1068,15 +1040,15 @@ dependencies = [
+@@ -1068,20 +1032,21 @@ dependencies = [
  
  [[package]]
  name = "deckcraft-ogg"
@@ -243,7 +262,13 @@ index 4cf2cd8..df2270c 100644
  dependencies = [
   "deckcraft-fonts",
   "deckcraft-model",
-@@ -1091,7 +1063,7 @@ dependencies = [
+  "deckcraft-render",
+  "deckcraft-text",
++ "harfrust 0.13.3",
+  "krilla",
+  "kurbo",
+  "log",
+@@ -1091,7 +1056,7 @@ dependencies = [
  
  [[package]]
  name = "deckcraft-pptx"
@@ -252,7 +277,7 @@ index 4cf2cd8..df2270c 100644
  dependencies = [
   "deckcraft-color",
   "deckcraft-engine",
-@@ -1099,7 +1071,7 @@ dependencies = [
+@@ -1099,7 +1064,7 @@ dependencies = [
   "deckcraft-model",
   "image",
   "log",
@@ -261,7 +286,7 @@ index 4cf2cd8..df2270c 100644
   "serde_json",
   "thiserror 2.0.21",
   "zip",
-@@ -1107,7 +1079,7 @@ dependencies = [
+@@ -1107,7 +1072,7 @@ dependencies = [
  
  [[package]]
  name = "deckcraft-render"
@@ -270,7 +295,7 @@ index 4cf2cd8..df2270c 100644
  dependencies = [
   "deckcraft-anim",
   "deckcraft-color",
-@@ -1126,7 +1098,7 @@ dependencies = [
+@@ -1126,7 +1091,7 @@ dependencies = [
  
  [[package]]
  name = "deckcraft-text"
@@ -279,7 +304,7 @@ index 4cf2cd8..df2270c 100644
  dependencies = [
   "chrono",
   "deckcraft-color",
-@@ -1140,7 +1112,7 @@ dependencies = [
+@@ -1140,7 +1105,7 @@ dependencies = [
  
  [[package]]
  name = "deckcraft-ui-egui"
@@ -288,7 +313,7 @@ index 4cf2cd8..df2270c 100644
  dependencies = [
   "deckcraft-anim",
   "deckcraft-color",
-@@ -1162,7 +1134,7 @@ dependencies = [
+@@ -1162,7 +1127,7 @@ dependencies = [
  
  [[package]]
  name = "deckcraft-vp9"
@@ -297,7 +322,7 @@ index 4cf2cd8..df2270c 100644
  dependencies = [
   "deckcraft-bitstream",
   "rayon",
-@@ -1171,7 +1143,7 @@ dependencies = [
+@@ -1171,7 +1136,7 @@ dependencies = [
  
  [[package]]
  name = "deckcraft-web"
@@ -306,7 +331,15 @@ index 4cf2cd8..df2270c 100644
  dependencies = [
   "deckcraft-engine",
   "deckcraft-ui-egui",
-@@ -3290,6 +3262,34 @@ version = "0.2.3"
+@@ -2441,7 +2406,6 @@ dependencies = [
+  "pdf-writer",
+  "png",
+  "rustc-hash 2.1.3",
+- "rustybuzz",
+  "siphasher",
+  "skrifa 0.42.1",
+  "smallvec",
+@@ -3290,6 +3254,35 @@ version = "0.2.3"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "b4596b6d070b27117e987119b4dac604f3c58cfb0b191112e24771b2faeac1a6"
  
@@ -317,6 +350,7 @@ index 4cf2cd8..df2270c 100644
 + "arboard",
 + "cpal",
 + "deckcraft-engine",
++ "deckcraft-mcp",
 + "deckcraft-media",
 + "deckcraft-ui-egui",
 + "eframe",
@@ -341,7 +375,7 @@ index 4cf2cd8..df2270c 100644
  [[package]]
  name = "png"
  version = "0.18.1"
-@@ -3438,15 +3438,6 @@ version = "2.0.1"
+@@ -3438,15 +3431,6 @@ version = "2.0.1"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "a993555f31e5a609f617c12db6250dedcac1b0a85076912c436e6fc9b2c8e6a3"
  
@@ -357,7 +391,86 @@ index 4cf2cd8..df2270c 100644
  [[package]]
  name = "quick-xml"
  version = "0.41.0"
-@@ -4881,7 +4872,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+@@ -3733,24 +3717,6 @@ dependencies = [
+  "wait-timeout",
+ ]
+ 
+-[[package]]
+-name = "rustybuzz"
+-version = "0.20.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "fd3c7c96f8a08ee34eff8857b11b49b07d71d1c3f4e88f8a88d4c9e9f90b1702"
+-dependencies = [
+- "bitflags 2.13.2",
+- "bytemuck",
+- "core_maths",
+- "log",
+- "smallvec",
+- "ttf-parser",
+- "unicode-bidi-mirroring",
+- "unicode-ccc",
+- "unicode-properties",
+- "unicode-script",
+-]
+-
+ [[package]]
+ name = "ryu"
+ version = "1.0.23"
+@@ -4488,15 +4454,6 @@ dependencies = [
+  "once_cell",
+ ]
+ 
+-[[package]]
+-name = "ttf-parser"
+-version = "0.25.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d2df906b07856748fa3f6e0ad0cbaa047052d4a7dd609e231c4f72cee8c36f31"
+-dependencies = [
+- "core_maths",
+-]
+-
+ [[package]]
+ name = "type-map"
+ version = "0.5.1"
+@@ -4529,18 +4486,6 @@ version = "0.3.18"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "5c1cb5db39152898a79168971543b1cb5020dff7fe43c8dc468b0885f5e29df5"
+ 
+-[[package]]
+-name = "unicode-bidi-mirroring"
+-version = "0.4.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "5dfa6e8c60bb66d49db113e0125ee8711b7647b5579dc7f5f19c42357ed039fe"
+-
+-[[package]]
+-name = "unicode-ccc"
+-version = "0.4.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "ce61d488bcdc9bc8b5d1772c404828b17fc481c0a582b5581e95fb233aef503e"
+-
+ [[package]]
+ name = "unicode-general-category"
+ version = "1.1.0"
+@@ -4559,18 +4504,6 @@ version = "0.1.5"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "3b09c83c3c29d37506a3e260c08c03743a6bb66a9cd432c6934ab501a190571f"
+ 
+-[[package]]
+-name = "unicode-properties"
+-version = "0.1.4"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "7df058c713841ad818f1dc5d3fd88063241cc61f49f5fbea4b951e8cf5a8d71d"
+-
+-[[package]]
+-name = "unicode-script"
+-version = "0.5.8"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "383ad40bb927465ec0ce7720e033cb4ca06912855fc35db31b5755d0de75b1ee"
+-
+ [[package]]
+ name = "unicode-segmentation"
+ version = "1.13.3"
+@@ -4881,7 +4814,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "338e30461b3a2b67d70eb30a6d89f8e0c93a833e07d2ae89085cd070c4a00ac0"
  dependencies = [
   "proc-macro2",
@@ -366,7 +479,7 @@ index 4cf2cd8..df2270c 100644
   "quote",
  ]
  
-@@ -5667,7 +5658,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
+@@ -5667,7 +5600,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
  
  [[package]]
  name = "xtask"
@@ -376,7 +489,7 @@ index 4cf2cd8..df2270c 100644
   "serde_json",
  ]
 diff --git a/Cargo.toml b/Cargo.toml
-index 5bb1f9a..5cf42c6 100644
+index 5bb1f9a..67f86bf 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -388,9 +501,12 @@ index 5bb1f9a..5cf42c6 100644
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.90"
-@@ -59,7 +59,7 @@ vello_common = { version = "0.2", default-features = false }
+@@ -57,9 +57,9 @@ harfrust = "0.13"
+ vello_cpu = "0.2"
+ vello_common = { version = "0.2", default-features = false }
  image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp", "gif", "tiff", "bmp"] }
- krilla = { version = "0.8", features = ["pdf"] }
+-krilla = { version = "0.8", features = ["pdf"] }
++krilla = { version = "0.8", default-features = false, features = ["pdf", "raster-images"] }
  i_overlay = "9"
 -quick-xml = "0.38"
 +quick-xml = "0.41"
@@ -398,16 +514,499 @@ index 5bb1f9a..5cf42c6 100644
  
  # ui
 diff --git a/NOTICE b/NOTICE
-index fb209cf..ea46ea7 100644
+index fb209cf..7ea4879 100644
 --- a/NOTICE
 +++ b/NOTICE
-@@ -27,3 +27,6 @@ Code dependencies
+@@ -27,3 +27,489 @@ Code dependencies
    https://github.com/pdeljanov/Symphonia.
  - The H.264, HEVC, VP9, AV1, Opus, MP4, Matroska and Ogg crates under crates/ are ported from
    FilmCraft (same owner, MIT OR Apache-2.0).
 +
 +Plervo adaptation by AlporT (2026). Original authorship and MIT/Apache-2.0 licenses preserved.
 +Based on storytold/deckcraft at d78e657e4cb1e490ceb5445785c052d9cf5ad963.
++
++Plervo dependency source notices (reviewed 2026-10-16)
++==========================================================
++
++The dependencies below are included without source modifications. Their original
++source and copyright notices are available at the exact archive links below.
++MPL-covered source remains available under the MPL; the Plervo MIT/Apache terms
++do not restrict the recipient's rights in those dependencies.
++
++symphonia 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia/0.5.5/download
++SHA-256: 5773a4c030a19d9bfaa090f49746ff35c75dfddfa700df7a5939d5e076a57039
++
++symphonia-bundle-flac 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-bundle-flac/0.5.5/download
++SHA-256: c91565e180aea25d9b80a910c546802526ffd0072d0b8974e3ebe59b686c9976
++
++symphonia-bundle-mp3 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-bundle-mp3/0.5.5/download
++SHA-256: 4872dd6bb56bf5eac799e3e957aa1981086c3e613b27e0ac23b176054f7c57ed
++
++symphonia-codec-aac 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>, Kostya Shishkov <kostya.shiskov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-codec-aac/0.5.5/download
++SHA-256: 4c263845aa86881416849c1729a54c7f55164f8b96111dba59de46849e73a790
++
++symphonia-codec-adpcm 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>, Johannes Hackel <geckoxx90@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-codec-adpcm/0.5.5/download
++SHA-256: 2dddc50e2bbea4cfe027441eece77c46b9f319748605ab8f3443350129ddd07f
++
++symphonia-codec-alac 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-codec-alac/0.5.5/download
++SHA-256: 8413fa754942ac16a73634c9dfd1500ed5c61430956b33728567f667fdd393ab
++
++symphonia-codec-pcm 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-codec-pcm/0.5.5/download
++SHA-256: 4e89d716c01541ad3ebe7c91ce4c8d38a7cf266a3f7b2f090b108fb0cb031d95
++
++symphonia-codec-vorbis 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-codec-vorbis/0.5.5/download
++SHA-256: f025837c309cd69ffef572750b4a2257b59552c5399a5e49707cc5b1b85d1c73
++
++symphonia-core 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-core/0.5.5/download
++SHA-256: ea00cc4f79b7f6bb7ff87eddc065a1066f3a43fe1875979056672c9ef948c2af
++
++symphonia-format-caf 0.5.5
++Licence: MPL-2.0
++Authors: Ian Hobson <ian.r.hobson@gmail.com>, Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-format-caf/0.5.5/download
++SHA-256: b8faf379316b6b6e6bbc274d00e7a592e0d63ff1a7e182ce8ba25e24edd3d096
++
++symphonia-format-isomp4 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-format-isomp4/0.5.5/download
++SHA-256: 243739585d11f81daf8dac8d9f3d18cc7898f6c09a259675fc364b382c30e0a5
++
++symphonia-format-mkv 0.5.5
++Licence: MPL-2.0
++Authors: Dariusz Niedoba <dariusz.niedoba@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-format-mkv/0.5.5/download
++SHA-256: 122d786d2c43a49beb6f397551b4a050d8229eaa54c7ddf9ee4b98899b8742d0
++
++symphonia-format-ogg 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-format-ogg/0.5.5/download
++SHA-256: 2b4955c67c1ed3aa8ae8428d04ca8397fbef6a19b2b051e73b5da8b1435639cb
++
++symphonia-format-riff 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>, dedobbin <dedobbindedobbin@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-format-riff/0.5.5/download
++SHA-256: c2d7c3df0e7d94efb68401d81906eae73c02b40d5ec1a141962c592d0f11a96f
++
++symphonia-metadata 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-metadata/0.5.5/download
++SHA-256: 36306ff42b9ffe6e5afc99d49e121e0bd62fe79b9db7b9681d48e29fa19e6b16
++
++symphonia-utils-xiph 0.5.5
++Licence: MPL-2.0
++Authors: Philip Deljanov <philip.deljanov@gmail.com>
++Unmodified source: https://crates.io/api/v1/crates/symphonia-utils-xiph/0.5.5/download
++SHA-256: ee27c85ab799a338446b68eec77abf42e1a6f1bb490656e121c6e27bfbab9f16
++
++--- MPL-2.0 ---
++
++Mozilla Public License Version 2.0
++==================================
++
++1. Definitions
++--------------
++
++1.1. "Contributor"
++    means each individual or legal entity that creates, contributes to
++    the creation of, or owns Covered Software.
++
++1.2. "Contributor Version"
++    means the combination of the Contributions of others (if any) used
++    by a Contributor and that particular Contributor's Contribution.
++
++1.3. "Contribution"
++    means Covered Software of a particular Contributor.
++
++1.4. "Covered Software"
++    means Source Code Form to which the initial Contributor has attached
++    the notice in Exhibit A, the Executable Form of such Source Code
++    Form, and Modifications of such Source Code Form, in each case
++    including portions thereof.
++
++1.5. "Incompatible With Secondary Licenses"
++    means
++
++    (a) that the initial Contributor has attached the notice described
++        in Exhibit B to the Covered Software; or
++
++    (b) that the Covered Software was made available under the terms of
++        version 1.1 or earlier of the License, but not also under the
++        terms of a Secondary License.
++
++1.6. "Executable Form"
++    means any form of the work other than Source Code Form.
++
++1.7. "Larger Work"
++    means a work that combines Covered Software with other material, in
++    a separate file or files, that is not Covered Software.
++
++1.8. "License"
++    means this document.
++
++1.9. "Licensable"
++    means having the right to grant, to the maximum extent possible,
++    whether at the time of the initial grant or subsequently, any and
++    all of the rights conveyed by this License.
++
++1.10. "Modifications"
++    means any of the following:
++
++    (a) any file in Source Code Form that results from an addition to,
++        deletion from, or modification of the contents of Covered
++        Software; or
++
++    (b) any new file in Source Code Form that contains any Covered
++        Software.
++
++1.11. "Patent Claims" of a Contributor
++    means any patent claim(s), including without limitation, method,
++    process, and apparatus claims, in any patent Licensable by such
++    Contributor that would be infringed, but for the grant of the
++    License, by the making, using, selling, offering for sale, having
++    made, import, or transfer of either its Contributions or its
++    Contributor Version.
++
++1.12. "Secondary License"
++    means either the GNU General Public License, Version 2.0, the GNU
++    Lesser General Public License, Version 2.1, the GNU Affero General
++    Public License, Version 3.0, or any later versions of those
++    licenses.
++
++1.13. "Source Code Form"
++    means the form of the work preferred for making modifications.
++
++1.14. "You" (or "Your")
++    means an individual or a legal entity exercising rights under this
++    License. For legal entities, "You" includes any entity that
++    controls, is controlled by, or is under common control with You. For
++    purposes of this definition, "control" means (a) the power, direct
++    or indirect, to cause the direction or management of such entity,
++    whether by contract or otherwise, or (b) ownership of more than
++    fifty percent (50%) of the outstanding shares or beneficial
++    ownership of such entity.
++
++2. License Grants and Conditions
++--------------------------------
++
++2.1. Grants
++
++Each Contributor hereby grants You a world-wide, royalty-free,
++non-exclusive license:
++
++(a) under intellectual property rights (other than patent or trademark)
++    Licensable by such Contributor to use, reproduce, make available,
++    modify, display, perform, distribute, and otherwise exploit its
++    Contributions, either on an unmodified basis, with Modifications, or
++    as part of a Larger Work; and
++
++(b) under Patent Claims of such Contributor to make, use, sell, offer
++    for sale, have made, import, and otherwise transfer either its
++    Contributions or its Contributor Version.
++
++2.2. Effective Date
++
++The licenses granted in Section 2.1 with respect to any Contribution
++become effective for each Contribution on the date the Contributor first
++distributes such Contribution.
++
++2.3. Limitations on Grant Scope
++
++The licenses granted in this Section 2 are the only rights granted under
++this License. No additional rights or licenses will be implied from the
++distribution or licensing of Covered Software under this License.
++Notwithstanding Section 2.1(b) above, no patent license is granted by a
++Contributor:
++
++(a) for any code that a Contributor has removed from Covered Software;
++    or
++
++(b) for infringements caused by: (i) Your and any other third party's
++    modifications of Covered Software, or (ii) the combination of its
++    Contributions with other software (except as part of its Contributor
++    Version); or
++
++(c) under Patent Claims infringed by Covered Software in the absence of
++    its Contributions.
++
++This License does not grant any rights in the trademarks, service marks,
++or logos of any Contributor (except as may be necessary to comply with
++the notice requirements in Section 3.4).
++
++2.4. Subsequent Licenses
++
++No Contributor makes additional grants as a result of Your choice to
++distribute the Covered Software under a subsequent version of this
++License (see Section 10.2) or under the terms of a Secondary License (if
++permitted under the terms of Section 3.3).
++
++2.5. Representation
++
++Each Contributor represents that the Contributor believes its
++Contributions are its original creation(s) or it has sufficient rights
++to grant the rights to its Contributions conveyed by this License.
++
++2.6. Fair Use
++
++This License is not intended to limit any rights You have under
++applicable copyright doctrines of fair use, fair dealing, or other
++equivalents.
++
++2.7. Conditions
++
++Sections 3.1, 3.2, 3.3, and 3.4 are conditions of the licenses granted
++in Section 2.1.
++
++3. Responsibilities
++-------------------
++
++3.1. Distribution of Source Form
++
++All distribution of Covered Software in Source Code Form, including any
++Modifications that You create or to which You contribute, must be under
++the terms of this License. You must inform recipients that the Source
++Code Form of the Covered Software is governed by the terms of this
++License, and how they can obtain a copy of this License. You may not
++attempt to alter or restrict the recipients' rights in the Source Code
++Form.
++
++3.2. Distribution of Executable Form
++
++If You distribute Covered Software in Executable Form then:
++
++(a) such Covered Software must also be made available in Source Code
++    Form, as described in Section 3.1, and You must inform recipients of
++    the Executable Form how they can obtain a copy of such Source Code
++    Form by reasonable means in a timely manner, at a charge no more
++    than the cost of distribution to the recipient; and
++
++(b) You may distribute such Executable Form under the terms of this
++    License, or sublicense it under different terms, provided that the
++    license for the Executable Form does not attempt to limit or alter
++    the recipients' rights in the Source Code Form under this License.
++
++3.3. Distribution of a Larger Work
++
++You may create and distribute a Larger Work under terms of Your choice,
++provided that You also comply with the requirements of this License for
++the Covered Software. If the Larger Work is a combination of Covered
++Software with a work governed by one or more Secondary Licenses, and the
++Covered Software is not Incompatible With Secondary Licenses, this
++License permits You to additionally distribute such Covered Software
++under the terms of such Secondary License(s), so that the recipient of
++the Larger Work may, at their option, further distribute the Covered
++Software under the terms of either this License or such Secondary
++License(s).
++
++3.4. Notices
++
++You may not remove or alter the substance of any license notices
++(including copyright notices, patent notices, disclaimers of warranty,
++or limitations of liability) contained within the Source Code Form of
++the Covered Software, except that You may alter any license notices to
++the extent required to remedy known factual inaccuracies.
++
++3.5. Application of Additional Terms
++
++You may choose to offer, and to charge a fee for, warranty, support,
++indemnity or liability obligations to one or more recipients of Covered
++Software. However, You may do so only on Your own behalf, and not on
++behalf of any Contributor. You must make it absolutely clear that any
++such warranty, support, indemnity, or liability obligation is offered by
++You alone, and You hereby agree to indemnify every Contributor for any
++liability incurred by such Contributor as a result of warranty, support,
++indemnity or liability terms You offer. You may include additional
++disclaimers of warranty and limitations of liability specific to any
++jurisdiction.
++
++4. Inability to Comply Due to Statute or Regulation
++---------------------------------------------------
++
++If it is impossible for You to comply with any of the terms of this
++License with respect to some or all of the Covered Software due to
++statute, judicial order, or regulation then You must: (a) comply with
++the terms of this License to the maximum extent possible; and (b)
++describe the limitations and the code they affect. Such description must
++be placed in a text file included with all distributions of the Covered
++Software under the name "LEGAL", and included in all Covered Software
++distributed in Source Code Form. Except to the extent prohibited by
++statute or regulation, such description must be sufficiently detailed
++for a recipient of ordinary skill to be able to understand it.
++
++5. Termination
++--------------
++
++5.1. The rights granted under this License will terminate automatically
++if You fail to comply with any of its terms. However, if You become
++compliant, then the rights granted under this License from a particular
++Contributor are reinstated (a) provisionally, unless and until such
++Contributor explicitly and finally terminates Your grants, and (b) on an
++ongoing basis, if such Contributor fails to notify You of the
++non-compliance by some reasonable means prior to 60 days after You have
++come back into compliance. Moreover, Your grants from a particular
++Contributor are reinstated on an ongoing basis if such Contributor
++notifies You of the non-compliance by some reasonable means, this is the
++first time You have received notice of non-compliance with this License
++from such Contributor, and You become compliant prior to 30 days after
++Your receipt of the notice.
++
++5.2. If You initiate litigation against any entity by asserting a patent
++infringement claim (excluding declaratory judgment actions,
++counter-claims, and cross-claims) alleging that a Contributor Version
++directly or indirectly infringes any patent, then the rights granted to
++You by any and all Contributors for the Covered Software under Section
++2.1 of this License shall terminate.
++
++5.3. In the event of termination under Sections 5.1 or 5.2 above, all
++end user license agreements (excluding distributors and resellers) which
++have been validly granted by You or Your distributors under this License
++prior to termination shall survive termination.
++
++************************************************************************
++*                                                                      *
++*  6. Disclaimer of Warranty                                           *
++*  -------------------------                                           *
++*                                                                      *
++*  Covered Software is provided under this License on an "as is"       *
++*  basis, without warranty of any kind, either expressed, implied, or   *
++*  statutory, including, without limitation, warranties that the       *
++*  Covered Software is free of defects, merchantable, fit for a        *
++*  particular purpose or non-infringing. The entire risk as to the     *
++*  quality and performance of the Covered Software is with You.        *
++*  Should any Covered Software prove defective in any respect, You     *
++*  (not any Contributor) assume the cost of any necessary servicing,   *
++*  repair, or correction. This disclaimer of warranty constitutes an   *
++*  essential part of this License. No use of any Covered Software is   *
++*  authorized under this License except under this disclaimer.         *
++*                                                                      *
++************************************************************************
++
++************************************************************************
++*                                                                      *
++*  7. Limitation of Liability                                          *
++*  --------------------------                                          *
++*                                                                      *
++*  Under no circumstances and under no legal theory, whether tort      *
++*  (including negligence), contract, or otherwise, shall any           *
++*  Contributor, or anyone who distributes Covered Software as          *
++*  permitted above, be liable to You for any direct, indirect,         *
++*  special, incidental, or consequential damages of any character      *
++*  including, without limitation, damages for lost profits, loss of    *
++*  goodwill, work stoppage, computer failure or malfunction, or any    *
++*  and all other commercial damages or losses, even if such party      *
++*  shall have been informed of the possibility of such damages. This   *
++*  limitation of liability shall not apply to liability for death or   *
++*  personal injury resulting from such party's negligence to the       *
++*  extent applicable law prohibits such limitation. Some               *
++*  jurisdictions do not allow the exclusion or limitation of           *
++*  incidental or consequential damages, so this exclusion and          *
++*  limitation may not apply to You.                                    *
++*                                                                      *
++************************************************************************
++
++8. Litigation
++-------------
++
++Any litigation relating to this License may be brought only in the
++courts of a jurisdiction where the defendant maintains its principal
++place of business and such litigation shall be governed by laws of that
++jurisdiction, without reference to its conflict-of-law provisions.
++Nothing in this Section shall prevent a party's ability to bring
++cross-claims or counter-claims.
++
++9. Miscellaneous
++----------------
++
++This License represents the complete agreement concerning the subject
++matter hereof. If any provision of this License is held to be
++unenforceable, such provision shall be reformed only to the extent
++necessary to make it enforceable. Any law or regulation which provides
++that the language of a contract shall be construed against the drafter
++shall not be used to construe this License against a Contributor.
++
++10. Versions of the License
++---------------------------
++
++10.1. New Versions
++
++Mozilla Foundation is the license steward. Except as provided in Section
++10.3, no one other than the license steward has the right to modify or
++publish new versions of this License. Each version will be given a
++distinguishing version number.
++
++10.2. Effect of New Versions
++
++You may distribute the Covered Software under the terms of the version
++of the License under which You originally received the Covered Software,
++or under the terms of any subsequent version published by the license
++steward.
++
++10.3. Modified Versions
++
++If you create software not governed by this License, and you want to
++create a new license for such software, you may create and use a
++modified version of this License if you rename the license and remove
++any references to the name of the license steward (except to note that
++such modified license differs from this License).
++
++10.4. Distributing Source Code Form that is Incompatible With Secondary
++Licenses
++
++If You choose to distribute Source Code Form that is Incompatible With
++Secondary Licenses under the terms of this version of the License, the
++notice described in Exhibit B of this License must be attached.
++
++Exhibit A - Source Code Form License Notice
++-------------------------------------------
++
++  This Source Code Form is subject to the terms of the Mozilla Public
++  License, v. 2.0. If a copy of the MPL was not distributed with this
++  file, You can obtain one at https://mozilla.org/MPL/2.0/.
++
++If it is not possible or desirable to put the notice in a particular
++file, then You may include the notice in a location (such as a LICENSE
++file in a relevant directory) where a recipient would be likely to look
++for such a notice.
++
++You may add additional accurate notices of copyright ownership.
++
++Exhibit B - "Incompatible With Secondary Licenses" Notice
++---------------------------------------------------------
++
++  This Source Code Form is "Incompatible With Secondary Licenses", as
++  defined by the Mozilla Public License, v. 2.0.
++
++
 diff --git a/README.md b/README.md
 index f25aef2..f75ab34 100644
 --- a/README.md
@@ -726,7 +1325,7 @@ index 898a1fb..2745b49 100644
  
  [dependencies]
 diff --git a/apps/deckcraft-cli/src/main.rs b/apps/deckcraft-cli/src/main.rs
-index fd1d96e..f593015 100644
+index fd1d96e..ee413c8 100644
 --- a/apps/deckcraft-cli/src/main.rs
 +++ b/apps/deckcraft-cli/src/main.rs
 @@ -1,16 +1,16 @@
@@ -752,7 +1351,7 @@ index fd1d96e..f593015 100644
 +//! plervo-slides-cli commands [FILTER]               # list commands (JSON)
 +//! plervo-slides-cli describe ID                     # one command
 +//! plervo-slides-cli app [--port PORT] COMMAND [JSON] | --method METHOD [JSON]   # drive the running app
-+//! plervo-slides-cli mcp [--connect PORT] [--sample] # MCP server over stdio
++//! plervo-slides-cli mcp [--connect PORT --control-token-file FILE] [--sample] # MCP server over stdio
 +//! plervo-slides-cli links | --version
  //! ```
  #![deny(clippy::unwrap_used, clippy::expect_used, clippy::panic, clippy::unimplemented, clippy::todo, clippy::unreachable)]
@@ -786,7 +1385,7 @@ index fd1d96e..f593015 100644
 +       plervo-slides-cli commands [FILTER]
 +       plervo-slides-cli describe COMMAND
 +       plervo-slides-cli app [--port PORT] COMMAND [JSON] | --method METHOD [JSON]
-+       plervo-slides-cli mcp [--connect PORT] [--sample]
++       plervo-slides-cli mcp [--connect PORT --control-token-file FILE] [--sample]
 +       plervo-slides-cli links | --version";
  
  fn main() -> ExitCode {
@@ -808,15 +1407,66 @@ index fd1d96e..f593015 100644
              ExitCode::FAILURE
          }
      }
-@@ -314,7 +314,7 @@ fn app(args: &[String]) -> Result<(), String> {
+@@ -300,21 +300,32 @@ fn describe(id: Option<&str>) -> Result<(), String> {
+     Ok(())
+ }
+ 
++fn connect_control(addr: &str, token_file: Option<&String>) -> Result<deckcraft_mcp::Remote, String> {
++    let result = match token_file {
++        Some(path) => {
++            deckcraft_mcp::read_control_token(std::path::Path::new(path)).and_then(|token| deckcraft_mcp::Remote::connect_with_token(addr, token))
++        }
++        None => deckcraft_mcp::Remote::connect(addr),
++    };
++    result.map_err(|e| format!("Could not connect to the Plervo Slides control channel: {e}"))
++}
++
+ fn app(args: &[String]) -> Result<(), String> {
+-    use deckcraft_mcp::{Backend, Remote, control_addr};
++    use deckcraft_mcp::{Backend, control_addr};
+     let mut port = deckcraft_mcp::DEFAULT_PORT.to_string();
++    let mut token_file = None;
+     let mut method: Option<String> = None;
+     let mut rest = vec![];
+     let mut it = args.iter();
+     while let Some(a) = it.next() {
+         match a.as_str() {
+             "--port" => port = it.next().cloned().ok_or("--port needs a value")?,
++            "--control-token-file" => token_file = Some(it.next().ok_or("--control-token-file needs a path")?),
+             "--method" => method = Some(it.next().cloned().ok_or("--method needs a name")?),
+             other => rest.push(other.to_string()),
          }
      }
-     let mut r = Remote::connect(&control_addr(&port))
+-    let mut r = Remote::connect(&control_addr(&port))
 -        .map_err(|e| format!("no DeckCraft app on port {port} ({e}); start it with `deckcraft --control {port}`"))?;
-+        .map_err(|e| format!("no Plervo Slides app on port {port} ({e}); start it with `plervo-slides --control {port}`"))?;
++    let mut r = connect_control(&control_addr(&port), token_file)?;
      let parse = |s: Option<&String>| -> Result<Value, String> {
          s.map(|j| serde_json::from_str(j).map_err(|e| format!("bad JSON: {e}"))).transpose().map(|v| v.unwrap_or(json!({})))
      };
+@@ -330,19 +341,21 @@ fn app(args: &[String]) -> Result<(), String> {
+ }
+ 
+ fn mcp(args: &[String]) -> Result<(), String> {
+-    use deckcraft_mcp::{Backend, Headless, Remote, Server, control_addr};
++    use deckcraft_mcp::{Backend, Headless, Server, control_addr};
+     let mut connect: Option<String> = None;
++    let mut token_file = None;
+     let mut sample = false;
+     let mut it = args.iter();
+     while let Some(a) = it.next() {
+         match a.as_str() {
+             "--connect" => connect = Some(it.next().cloned().ok_or("--connect needs a port or host:port")?),
++            "--control-token-file" => token_file = Some(it.next().ok_or("--control-token-file needs a path")?),
+             "--sample" => sample = true,
+             other => return Err(format!("unknown mcp option `{other}`")),
+         }
+     }
+     let backend: Box<dyn Backend> = match connect {
+-        Some(c) => Box::new(Remote::connect(&control_addr(&c)).map_err(|e| format!("can't reach the app at {c}: {e}"))?),
++        Some(c) => Box::new(connect_control(&control_addr(&c), token_file)?),
+         None => {
+             let mut h = Headless::new();
+             if sample {
 diff --git a/apps/deckcraft-web/src/main.rs b/apps/deckcraft-web/src/main.rs
 index 366ea34..70f6b54 100644
 --- a/apps/deckcraft-web/src/main.rs
@@ -843,10 +1493,10 @@ index f0199a5..0c705bb 100644
          }
      });
 diff --git a/apps/deckcraft/Cargo.toml b/apps/deckcraft/Cargo.toml
-index 26ea308..7f0595e 100644
+index 26ea308..1ae85cc 100644
 --- a/apps/deckcraft/Cargo.toml
 +++ b/apps/deckcraft/Cargo.toml
-@@ -1,11 +1,11 @@
+@@ -1,17 +1,18 @@
  [package]
 -name = "deckcraft"
 +name = "plervo-slides"
@@ -860,6 +1510,13 @@ index 26ea308..7f0595e 100644
  
  [lints]
  workspace = true
+ 
+ [dependencies]
+ deckcraft-engine = { workspace = true }
++deckcraft-mcp = { workspace = true }
+ deckcraft-ui-egui = { workspace = true }
+ deckcraft-media = { workspace = true }
+ eframe = { workspace = true, features = ["default_fonts", "wgpu", "accesskit", "links", "wayland", "x11"] }
 diff --git a/apps/deckcraft/build.rs b/apps/deckcraft/build.rs
 index 5bb30d5..b896061 100644
 --- a/apps/deckcraft/build.rs
@@ -883,16 +1540,177 @@ index 5bb30d5..b896061 100644
          if std::env::var_os("DECKCRAFT_REQUIRE_WINRES").is_some() {
              eprintln!("embedding Windows resources failed: {e}");
 diff --git a/apps/deckcraft/src/control_server.rs b/apps/deckcraft/src/control_server.rs
-index f50de02..f486317 100644
+index f50de02..0864cc3 100644
 --- a/apps/deckcraft/src/control_server.rs
 +++ b/apps/deckcraft/src/control_server.rs
-@@ -1,5 +1,5 @@
- //! Loopback JSON-lines control server: one request per line, one reply per line.
+@@ -1,16 +1,32 @@
+-//! Loopback JSON-lines control server: one request per line, one reply per line.
 -//! This is the transport the MCP server (`deckcraft-cli mcp --connect`) wraps.
-+//! This is the transport the MCP server (`plervo-slides-cli mcp --connect`) wraps.
- 
- use std::io::{BufRead, BufReader, Write};
+-
+-use std::io::{BufRead, BufReader, Write};
++//! Explicit, authenticated loopback control. Nothing listens unless --control is requested.
++use std::io::{BufRead, BufReader, Read, Write};
  use std::net::{TcpListener, TcpStream};
+-use std::sync::mpsc::{Receiver, Sender, channel};
++use std::sync::{
++    Arc,
++    atomic::{AtomicUsize, Ordering},
++    mpsc::{Receiver, SyncSender, sync_channel},
++};
+ use std::time::Duration;
+ 
+ use deckcraft_ui_egui::ControlRequest;
+ use serde_json::{Value, json};
+ 
+-pub fn start(port: u16, ctx: egui::Context) -> Receiver<ControlRequest> {
+-    let (tx, rx) = channel::<ControlRequest>();
++const MAX_REQUEST: u64 = 1024 * 1024;
++const MAX_CONNECTIONS: usize = 4;
++
++struct Connection(Arc<AtomicUsize>);
++impl Drop for Connection {
++    fn drop(&mut self) {
++        self.0.fetch_sub(1, Ordering::Relaxed);
++    }
++}
++
++pub fn start(port: u16, token: String, ctx: egui::Context) -> Receiver<ControlRequest> {
++    let (tx, rx) = sync_channel::<ControlRequest>(MAX_CONNECTIONS);
++    if !deckcraft_mcp::valid_control_token(&token) {
++        log::error!("control server requires a valid private token file");
++        return rx;
++    }
+     let listener = match TcpListener::bind(("127.0.0.1", port)) {
+         Ok(l) => l,
+         Err(e) => {
+@@ -18,32 +34,63 @@ pub fn start(port: u16, ctx: egui::Context) -> Receiver<ControlRequest> {
+             return rx;
+         }
+     };
+-    log::info!("control server listening on 127.0.0.1:{port}");
+-    std::thread::spawn(move || {
+-        for stream in listener.incoming().flatten() {
+-            let tx = tx.clone();
+-            let ctx = ctx.clone();
+-            std::thread::spawn(move || serve(stream, tx, ctx));
+-        }
+-    });
++    let connections = Arc::new(AtomicUsize::new(0));
++    let token: Arc<str> = token.into();
++    if std::thread::Builder::new()
++        .name("plervo-control".into())
++        .spawn(move || {
++            for stream in listener.incoming().flatten() {
++                if connections.fetch_update(Ordering::Relaxed, Ordering::Relaxed, |n| (n < MAX_CONNECTIONS).then_some(n + 1)).is_err() {
++                    continue;
++                }
++                let slot = Connection(connections.clone());
++                let tx = tx.clone();
++                let ctx = ctx.clone();
++                let token = token.clone();
++                let _ = std::thread::Builder::new().name("plervo-control-client".into()).spawn(move || {
++                    let _slot = slot;
++                    serve(stream, tx, ctx, &token);
++                });
++            }
++        })
++        .is_err()
++    {
++        log::error!("control server could not start its worker");
++    }
+     rx
+ }
+ 
+-fn serve(stream: TcpStream, tx: Sender<ControlRequest>, ctx: egui::Context) {
++fn request(msg: Value, token: &str) -> Result<(Value, String, Value), &'static str> {
++    if msg.get("token").and_then(Value::as_str) != Some(token) {
++        return Err("unauthorized");
++    }
++    let method = msg.get("method").and_then(Value::as_str).filter(|s| !s.is_empty() && s.len() <= 128).ok_or("invalid method")?;
++    let params = msg.get("params").cloned().unwrap_or(json!({}));
++    if !params.is_object() {
++        return Err("params must be an object");
++    }
++    Ok((msg.get("id").cloned().unwrap_or(Value::Null), method.to_owned(), params))
++}
++
++fn serve(stream: TcpStream, tx: SyncSender<ControlRequest>, ctx: egui::Context, token: &str) {
++    if stream.set_read_timeout(Some(Duration::from_secs(10))).is_err() || stream.set_write_timeout(Some(Duration::from_secs(10))).is_err() {
++        return;
++    }
+     let Ok(read) = stream.try_clone() else { return };
++    let mut reader = BufReader::new(read);
+     let mut out = stream;
+-    for line in BufReader::new(read).lines() {
+-        let Ok(line) = line else { break };
+-        if line.trim().is_empty() {
+-            continue;
++    for _ in 0..1024 {
++        let mut line = String::new();
++        match (&mut reader).take(MAX_REQUEST + 1).read_line(&mut line) {
++            Ok(0) | Err(_) => break,
++            Ok(_) if line.len() as u64 > MAX_REQUEST || !line.ends_with('\n') => break,
++            _ => {}
+         }
+-        let reply = match serde_json::from_str::<Value>(&line) {
+-            Ok(msg) => {
+-                let id = msg.get("id").cloned().unwrap_or(Value::Null);
+-                let method = msg.get("method").and_then(Value::as_str).unwrap_or("").to_string();
+-                let params = msg.get("params").cloned().unwrap_or(json!({}));
++        let parsed = serde_json::from_str::<Value>(&line).map_err(|_| "bad JSON").and_then(|msg| request(msg, token));
++        let reply = match parsed {
++            Ok((id, method, params)) => {
+                 let (req, rrx) = ControlRequest::new(method, params);
+-                if tx.send(req).is_err() {
++                if tx.try_send(req).is_err() {
+                     break;
+                 }
+                 ctx.request_repaint();
+@@ -53,10 +100,43 @@ fn serve(stream: TcpStream, tx: Sender<ControlRequest>, ctx: egui::Context) {
+                 }
+                 r
+             }
+-            Err(e) => json!({"ok": false, "error": format!("bad JSON: {e}")}),
++            Err(e) => {
++                let _ = writeln!(out, "{}", json!({"ok": false, "error": e}));
++                break;
++            }
+         };
+         if writeln!(out, "{reply}").is_err() {
+             break;
+         }
+     }
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++    #[test]
++    fn requests_require_the_capability_and_valid_arguments() {
++        let token = "a".repeat(64);
++        assert!(request(json!({"method":"engine.execute","params":{}}), &token).is_err());
++        assert!(request(json!({"token":"wrong","method":"engine.execute","params":{}}), &token).is_err());
++        assert!(request(json!({"token":token,"method":"engine.execute","params":[]}), &token).is_err());
++        assert!(request(json!({"token":token,"method":"engine.execute","params":{}}), &token).is_ok());
++    }
++    #[test]
++    fn unauthenticated_and_oversized_connections_cannot_reach_the_ui() {
++        for payload in [b"{\"method\":\"document.inspect\"}\n".to_vec(), vec![b'x'; MAX_REQUEST as usize + 1]] {
++            let listener = TcpListener::bind(("127.0.0.1", 0)).unwrap();
++            let addr = listener.local_addr().unwrap();
++            let (tx, rx) = sync_channel(4);
++            let worker = std::thread::spawn(move || {
++                let (stream, _) = listener.accept().unwrap();
++                serve(stream, tx, egui::Context::default(), &"a".repeat(64));
++            });
++            let mut client = TcpStream::connect(addr).unwrap();
++            let _ = client.write_all(&payload);
++            drop(client);
++            worker.join().unwrap();
++            assert!(rx.try_recv().is_err());
++        }
++    }
++}
 diff --git a/apps/deckcraft/src/logging.rs b/apps/deckcraft/src/logging.rs
 index a0ca504..c7904ea 100644
 --- a/apps/deckcraft/src/logging.rs
@@ -925,7 +1743,7 @@ index a0ca504..c7904ea 100644
          assert!(logger.enabled(&log::Metadata::builder().level(log::Level::Info).target("deckcraft_engine::recovery").build()));
          assert!(!logger.enabled(&log::Metadata::builder().level(log::Level::Info).target("naga").build()));
 diff --git a/apps/deckcraft/src/main.rs b/apps/deckcraft/src/main.rs
-index 7b5e48b..d20f9f4 100644
+index 7b5e48b..774de76 100644
 --- a/apps/deckcraft/src/main.rs
 +++ b/apps/deckcraft/src/main.rs
 @@ -1,4 +1,4 @@
@@ -992,7 +1810,19 @@ index 7b5e48b..d20f9f4 100644
      eframe::icon_data::from_png_bytes(png).map_err(|e| log::warn!("app icon: {e}")).ok()
  }
  
-@@ -149,13 +149,13 @@ fn main() -> eframe::Result {
+@@ -139,6 +139,7 @@ fn main() -> eframe::Result {
+     // Session) is captured; see `logging`.
+     let logger = logging::install();
+     let mut control_port: Option<u16> = std::env::var("DECKCRAFT_CONTROL_PORT").ok().and_then(|p| p.parse().ok());
++    let mut token_file = std::env::var_os("PLERVO_SLIDES_CONTROL_TOKEN_FILE").map(std::path::PathBuf::from);
+     let mut files = Vec::new();
+     let mut sample = false;
+     let mut show = false;
+@@ -146,16 +147,17 @@ fn main() -> eframe::Result {
+     while let Some(a) = args.next() {
+         match a.as_str() {
+             "--control" => control_port = args.next().and_then(|p| p.parse().ok()),
++            "--control-token-file" => token_file = args.next().map(std::path::PathBuf::from),
              "--sample" => sample = true,
              "--show" => show = true,
              "--version" => {
@@ -1008,7 +1838,7 @@ index 7b5e48b..d20f9f4 100644
      // The log file lives under the settings directory; opened after the arguments, so `--version`
      // leaves no file behind. Records logged until now are written to it first.
      if let Some(logger) = logger {
-@@ -170,7 +170,7 @@ fn main() -> eframe::Result {
+@@ -170,7 +172,7 @@ fn main() -> eframe::Result {
      }
      let mut options = eframe::NativeOptions {
          viewport: egui::ViewportBuilder::default()
@@ -1017,7 +1847,7 @@ index 7b5e48b..d20f9f4 100644
              .with_inner_size([1440.0, 900.0])
              .with_min_inner_size([900.0, 560.0])
              .with_drag_and_drop(true)
-@@ -194,7 +194,7 @@ fn main() -> eframe::Result {
+@@ -194,7 +196,7 @@ fn main() -> eframe::Result {
      #[cfg(target_os = "windows")]
      graphics::configure(&mut options, eframe::wgpu::Backends::from_env());
      eframe::run_native(
@@ -1026,6 +1856,23 @@ index 7b5e48b..d20f9f4 100644
          options,
          Box::new(move |cc| {
              let mut app = SlideApp::new(Session::new(), services());
+@@ -210,8 +212,14 @@ fn main() -> eframe::Result {
+             }
+             app.integrated_titlebar = cfg!(target_os = "macos");
+             if let Some(port) = control_port {
+-                let rx = control_server::start(port, cc.egui_ctx.clone());
+-                app = app.with_control(rx);
++                let token = token_file
++                    .as_deref()
++                    .ok_or_else(|| std::io::Error::other("--control requires --control-token-file"))
++                    .and_then(deckcraft_mcp::read_control_token);
++                match token {
++                    Ok(token) => app = app.with_control(control_server::start(port, token, cc.egui_ctx.clone())),
++                    Err(e) => app.set_status(format!("Control server was not started: {e}")),
++                }
+             }
+             if sample && let Err(e) = deckcraft_engine::sample::open_sample(&mut app.session) {
+                 log::error!("sample: {e}");
 diff --git a/crates/anim/Cargo.toml b/crates/anim/Cargo.toml
 index fd9c9ec..056dc22 100644
 --- a/crates/anim/Cargo.toml
@@ -1238,8 +2085,25 @@ index 48d2c23..42f5fe0 100644
  [lints]
  workspace = true
  
+diff --git a/crates/matroska/src/demux.rs b/crates/matroska/src/demux.rs
+index 7d5241b..5ccefe3 100644
+--- a/crates/matroska/src/demux.rs
++++ b/crates/matroska/src/demux.rs
+@@ -713,10 +713,8 @@ impl Walker<'_> {
+         match h.id {
+             SEEK_HEAD => file.seek_head.extend(parse_seekhead(&data)),
+             INFO => file.info = parse_info(&data),
+-            TRACKS => {
+-                if file.tracks.is_empty() {
+-                    file.tracks = parse_tracks(&data, file.info.timestamp_scale);
+-                }
++            TRACKS if file.tracks.is_empty() => {
++                file.tracks = parse_tracks(&data, file.info.timestamp_scale);
+             }
+             CUES => parse_cues(&data, &mut file.cues),
+             CHAPTERS => parse_chapters(&data, &mut file.chapters),
 diff --git a/crates/mcp/Cargo.toml b/crates/mcp/Cargo.toml
-index ab2efad..5c32ba9 100644
+index ab2efad..f37362f 100644
 --- a/crates/mcp/Cargo.toml
 +++ b/crates/mcp/Cargo.toml
 @@ -5,6 +5,8 @@ edition.workspace = true
@@ -1251,6 +2115,245 @@ index ab2efad..5c32ba9 100644
  [lints]
  workspace = true
  
+@@ -13,3 +15,6 @@ deckcraft-engine = { workspace = true }
+ deckcraft-render = { workspace = true }
+ serde_json = { workspace = true }
+ log = { workspace = true }
++
++[dev-dependencies]
++tempfile = "3"
+diff --git a/crates/mcp/src/backend.rs b/crates/mcp/src/backend.rs
+index f368654..65a959a 100644
+--- a/crates/mcp/src/backend.rs
++++ b/crates/mcp/src/backend.rs
+@@ -1,6 +1,6 @@
+ //! Where MCP tool calls end up: a control-channel method call.
+ 
+-use std::io::{BufRead, BufReader, Write};
++use std::io::{BufRead, BufReader, Read, Write};
+ use std::net::{TcpStream, ToSocketAddrs};
+ use std::time::Duration;
+ 
+@@ -20,6 +20,7 @@ pub trait Backend {
+ /// A running DeckCraft app, reached through its loopback control port.
+ pub struct Remote {
+     addr: String,
++    token: String,
+     conn: Option<(BufReader<TcpStream>, TcpStream)>,
+     next_id: u64,
+ }
+@@ -27,7 +28,16 @@ pub struct Remote {
+ impl Remote {
+     /// Connect to `addr` (`127.0.0.1:7979`), failing fast when nothing is listening.
+     pub fn connect(addr: &str) -> std::io::Result<Self> {
+-        let mut r = Self { addr: addr.to_string(), conn: None, next_id: 1 };
++        let path = std::env::var_os("PLERVO_SLIDES_CONTROL_TOKEN_FILE")
++            .ok_or_else(|| std::io::Error::other("set PLERVO_SLIDES_CONTROL_TOKEN_FILE or pass --control-token-file"))?;
++        Self::connect_with_token(addr, crate::read_control_token(std::path::Path::new(&path))?)
++    }
++
++    pub fn connect_with_token(addr: &str, token: String) -> std::io::Result<Self> {
++        if !crate::valid_control_token(&token) {
++            return Err(std::io::Error::other("invalid control token"));
++        }
++        let mut r = Self { addr: addr.to_string(), token, conn: None, next_id: 1 };
+         r.reconnect()?;
+         Ok(r)
+     }
+@@ -39,12 +49,17 @@ impl Remote {
+     fn reconnect(&mut self) -> std::io::Result<()> {
+         self.conn = None;
+         let mut last = std::io::Error::new(std::io::ErrorKind::NotFound, format!("cannot resolve {}", self.addr));
+-        for sa in self.addr.to_socket_addrs()? {
++        let addresses: Vec<_> = self.addr.to_socket_addrs()?.collect();
++        if addresses.iter().any(|sa| !sa.ip().is_loopback()) {
++            return Err(std::io::Error::other("control connections are restricted to loopback"));
++        }
++        for sa in addresses {
+             match TcpStream::connect_timeout(&sa, Duration::from_millis(800)) {
+                 Ok(s) => {
+-                    s.set_nodelay(true).ok();
++                    s.set_nodelay(true)?;
++                    s.set_write_timeout(Some(Duration::from_secs(10)))?;
+                     // The app answers within 60 s (its own timeout); leave headroom.
+-                    s.set_read_timeout(Some(Duration::from_secs(90))).ok();
++                    s.set_read_timeout(Some(Duration::from_secs(90)))?;
+                     let read = s.try_clone()?;
+                     self.conn = Some((BufReader::new(read), s));
+                     return Ok(());
+@@ -66,8 +81,9 @@ impl Remote {
+         writer.write_all(b"\n")?;
+         writer.flush()?;
+         let mut reply = String::new();
+-        if reader.read_line(&mut reply)? == 0 {
+-            return Err(std::io::Error::new(std::io::ErrorKind::UnexpectedEof, "control channel closed"));
++        let limit = 32 * 1024 * 1024;
++        if reader.take(limit + 1).read_line(&mut reply)? == 0 || reply.len() as u64 > limit || !reply.ends_with('\n') {
++            return Err(std::io::Error::new(std::io::ErrorKind::UnexpectedEof, "closed or oversized control reply"));
+         }
+         Ok(reply)
+     }
+@@ -76,20 +92,21 @@ impl Remote {
+ impl Backend for Remote {
+     fn call(&mut self, method: &str, params: Value) -> Result<Value, String> {
+         let id = self.next_id;
+-        self.next_id += 1;
+-        let line = json!({"id": id, "method": method, "params": params}).to_string();
+-        // One retry with a fresh connection (the app may have restarted).
+-        let reply = match self.roundtrip(&line) {
+-            Ok(r) => r,
+-            Err(_) => {
+-                self.conn = None;
+-                self.roundtrip(&line).map_err(|e| {
+-                    self.conn = None;
+-                    format!("DeckCraft app at {} is not reachable: {e}", self.addr)
+-                })?
+-            }
+-        };
++        self.next_id = self.next_id.checked_add(1).ok_or("control request id exhausted")?;
++        let line = json!({"id": id, "token": self.token, "method": method, "params": params}).to_string();
++        if line.len() >= 1024 * 1024 {
++            return Err("control request exceeds 1 MiB".into());
++        }
++        // A lost reply may follow a successful edit. Never replay a potentially mutating request.
++        let reply = self.roundtrip(&line).map_err(|e| {
++            self.conn = None;
++            format!("Control connection ended; check the document before retrying: {e}")
++        })?;
+         let v: Value = serde_json::from_str(reply.trim()).map_err(|e| format!("bad reply from app: {e}"))?;
++        if v.get("id").and_then(Value::as_u64) != Some(id) {
++            self.conn = None;
++            return Err("unexpected control response id".into());
++        }
+         if v.get("ok").and_then(Value::as_bool) == Some(true) {
+             Ok(v.get("result").cloned().unwrap_or(Value::Null))
+         } else {
+@@ -105,3 +122,38 @@ impl Backend for Remote {
+         format!("connected to the DeckCraft app at {}", self.addr)
+     }
+ }
++
++#[cfg(test)]
++mod tests {
++    use super::*;
++    #[test]
++    fn credentials_are_never_sent_to_a_non_loopback_host() {
++        assert!(Remote::connect_with_token("192.0.2.1:7979", "a".repeat(64)).is_err());
++        assert!(Remote::connect_with_token("127.0.0.1:7979", "short".into()).is_err());
++    }
++    #[test]
++    fn a_lost_response_never_replays_an_edit() {
++        let listener = std::net::TcpListener::bind(("127.0.0.1", 0)).unwrap();
++        let addr = listener.local_addr().unwrap();
++        let worker = std::thread::spawn(move || {
++            let (stream, _) = listener.accept().unwrap();
++            let mut reader = BufReader::new(stream);
++            let mut line = String::new();
++            reader.read_line(&mut line).unwrap();
++            assert_eq!(serde_json::from_str::<Value>(&line).unwrap()["token"], "a".repeat(64));
++            drop(reader);
++            listener.set_nonblocking(true).unwrap();
++            for _ in 0..100 {
++                if let Ok((mut second, _)) = listener.accept() {
++                    let _ = writeln!(second, "{}", json!({"id":1,"ok":true,"result":null}));
++                    return true;
++                }
++                std::thread::sleep(Duration::from_millis(5));
++            }
++            false
++        });
++        let mut remote = Remote::connect_with_token(&addr.to_string(), "a".repeat(64)).unwrap();
++        assert!(remote.call("engine.execute", json!({"command":"slide.new"})).is_err());
++        assert!(!worker.join().unwrap());
++    }
++}
+diff --git a/crates/mcp/src/lib.rs b/crates/mcp/src/lib.rs
+index b51ff31..ab1a5f4 100644
+--- a/crates/mcp/src/lib.rs
++++ b/crates/mcp/src/lib.rs
+@@ -5,7 +5,7 @@
+ //! tools and resources and forwards everything to a [`Backend`]:
+ //!
+ //! - [`Remote`] talks to a running desktop app through its loopback JSON-lines control channel
+-//!   (`deckcraft --control 7979`): one `{"id","method","params"}` line in, one
++//!   (`deckcraft --control 7979`): one `{"id","token","method","params"}` line in, one
+ //!   `{"id","ok","result"|"error"}` line out (see `docs/control-protocol.md`).
+ //! - [`Headless`] hosts an in-process [`deckcraft_engine::Session`] and implements the
+ //!   engine-level control-channel methods itself (rendering pages with `deckcraft-render`), so
+@@ -33,5 +33,32 @@ pub fn control_addr(s: &str) -> String {
+     if s.parse::<u16>().is_ok() { format!("127.0.0.1:{s}") } else { s.to_string() }
+ }
+ 
++/// Read an operator-provided 256-bit capability. Never put this value in logs or command arguments.
++pub fn read_control_token(path: &std::path::Path) -> std::io::Result<String> {
++    use std::io::{Error, ErrorKind, Read};
++    let metadata = path.symlink_metadata()?;
++    if !metadata.is_file() || metadata.len() > 128 {
++        return Err(Error::new(ErrorKind::InvalidInput, "control token must be a regular file of at most 128 bytes"));
++    }
++    #[cfg(unix)]
++    {
++        use std::os::unix::fs::PermissionsExt;
++        if metadata.permissions().mode() & 0o077 != 0 {
++            return Err(Error::new(ErrorKind::PermissionDenied, "control token file must be private (chmod 600)"));
++        }
++    }
++    let mut text = String::new();
++    std::fs::File::open(path)?.take(129).read_to_string(&mut text)?;
++    let token = text.trim();
++    if !valid_control_token(token) {
++        return Err(Error::new(ErrorKind::InvalidInput, "control token must contain 64 hexadecimal characters"));
++    }
++    Ok(token.to_owned())
++}
++
++pub fn valid_control_token(token: &str) -> bool {
++    token.len() == 64 && token.bytes().all(|b| b.is_ascii_hexdigit())
++}
++
+ #[cfg(test)]
+ mod tests;
+diff --git a/crates/mcp/src/tests.rs b/crates/mcp/src/tests.rs
+index b152152..426bc66 100644
+--- a/crates/mcp/src/tests.rs
++++ b/crates/mcp/src/tests.rs
+@@ -117,3 +117,36 @@ fn export_tool_lists_pdf_and_its_options() {
+     }
+     let _ = std::fs::remove_dir_all(&dir);
+ }
++
++#[test]
++fn control_token_file_is_bounded_and_private() {
++    use std::io::Write;
++    let dir = tempfile::tempdir().unwrap();
++    let path = dir.path().join("control-token");
++    let mut options = std::fs::OpenOptions::new();
++    options.write(true).create_new(true);
++    #[cfg(unix)]
++    {
++        use std::os::unix::fs::OpenOptionsExt;
++        options.mode(0o600);
++    }
++    let mut file = options.open(&path).unwrap();
++    writeln!(file, "{}", "a".repeat(64)).unwrap();
++    drop(file);
++    assert_eq!(crate::read_control_token(&path).unwrap(), "a".repeat(64));
++    std::fs::write(&path, "a".repeat(129)).unwrap();
++    assert!(crate::read_control_token(&path).is_err());
++    std::fs::write(&path, "invalid").unwrap();
++    assert!(crate::read_control_token(&path).is_err());
++    assert!(crate::read_control_token(dir.path()).is_err());
++    #[cfg(unix)]
++    {
++        use std::os::unix::fs::{PermissionsExt, symlink};
++        std::fs::write(&path, "a".repeat(64)).unwrap();
++        let link = dir.path().join("link");
++        symlink(&path, &link).unwrap();
++        assert!(crate::read_control_token(&link).is_err());
++        std::fs::set_permissions(&path, std::fs::Permissions::from_mode(0o644)).unwrap();
++        assert!(crate::read_control_token(&path).is_err());
++    }
++}
 diff --git a/crates/media/Cargo.toml b/crates/media/Cargo.toml
 index e785f36..b3ac921 100644
 --- a/crates/media/Cargo.toml
@@ -1317,7 +2420,7 @@ index 257cd81..2c21233 100644
  workspace = true
  
 diff --git a/crates/pdf/Cargo.toml b/crates/pdf/Cargo.toml
-index 50f9adb..72df239 100644
+index 50f9adb..efb58e6 100644
 --- a/crates/pdf/Cargo.toml
 +++ b/crates/pdf/Cargo.toml
 @@ -5,6 +5,8 @@ edition.workspace = true
@@ -1329,6 +2432,92 @@ index 50f9adb..72df239 100644
  [lints]
  workspace = true
  
+@@ -14,6 +16,7 @@ deckcraft-fonts = { workspace = true }
+ deckcraft-text = { workspace = true }
+ deckcraft-render = { workspace = true }
+ krilla = { workspace = true }
++harfrust = { workspace = true }
+ kurbo = { workspace = true }
+ serde = { workspace = true }
+ thiserror = { workspace = true }
+diff --git a/crates/pdf/src/lib.rs b/crates/pdf/src/lib.rs
+index 97eb641..6bf36fd 100644
+--- a/crates/pdf/src/lib.rs
++++ b/crates/pdf/src/lib.rs
+@@ -25,7 +25,7 @@ use krilla::outline::{Outline, OutlineNode};
+ use krilla::page::PageSettings;
+ use krilla::paint::Fill;
+ use krilla::surface::Surface;
+-use krilla::text::{Font, GlyphId, KrillaGlyph, TextDirection};
++use krilla::text::{Font, GlyphId, KrillaGlyph};
+ use kurbo::{Affine, Rect};
+ use serde::{Deserialize, Serialize};
+ 
+@@ -377,7 +377,7 @@ impl Exporter<'_> {
+                     if y > area.y1 {
+                         break 'outer;
+                     }
+-                    s.draw_text(Point::from_xy(area.x0 as f32, y as f32), font.clone(), size as f32, &line, false, TextDirection::Auto);
++                    draw_note_text(s, Point::from_xy(area.x0 as f32, y as f32), &face, font.clone(), size as f32, &line);
+                     y += lh;
+                     line = word.to_string();
+                 } else {
+@@ -388,7 +388,7 @@ impl Exporter<'_> {
+                 break;
+             }
+             if !line.is_empty() {
+-                s.draw_text(Point::from_xy(area.x0 as f32, y as f32), font.clone(), size as f32, &line, false, TextDirection::Auto);
++                draw_note_text(s, Point::from_xy(area.x0 as f32, y as f32), &face, font.clone(), size as f32, &line);
+             }
+             y += lh;
+         }
+@@ -416,13 +416,44 @@ impl Exporter<'_> {
+     }
+ 
+     fn footer(&mut self, s: &mut Surface, pw: f64, ph: f64, n: usize) {
+-        let Some((font, _)) = self.ui_font() else { return };
++        let Some((font, face)) = self.ui_font() else { return };
+         s.set_fill(Some(grey(0x60, 1.0)));
+-        s.draw_text(Point::from_xy((pw - 72.0) as f32, (ph - 30.0) as f32), font, 9.0, &n.to_string(), false, TextDirection::Auto);
++        draw_note_text(s, Point::from_xy((pw - 72.0) as f32, (ph - 30.0) as f32), &face, font, 9.0, &n.to_string());
+         s.set_fill(None);
+     }
+ }
+ 
++/// Shape notes and page numbers with the same maintained OpenType engine as slide text.
++fn draw_note_text(s: &mut Surface, at: Point, face: &deckcraft_fonts::FontFace, font: Font, size: f32, text: &str) {
++    let Some(hb) = face.hb() else { return };
++    let mut buffer = harfrust::UnicodeBuffer::new();
++    buffer.push_str(text);
++    buffer.guess_segment_properties();
++    let shaper = face.shaper.shaper(&hb).instance(face.instance.as_ref()).build();
++    let shaped = shaper.shape(buffer, harfrust::ShapeOptions::default());
++    let boundaries: std::collections::BTreeSet<usize> = shaped.glyph_infos().iter().map(|i| i.cluster as usize).chain([text.len()]).collect();
++    let upem = font.units_per_em().max(1.0);
++    let glyphs: Vec<KrillaGlyph> = shaped
++        .glyph_infos()
++        .iter()
++        .zip(shaped.glyph_positions())
++        .map(|(info, pos)| {
++            let start = info.cluster as usize;
++            let end = boundaries.range((std::ops::Bound::Excluded(start), std::ops::Bound::Unbounded)).next().copied().unwrap_or(text.len());
++            KrillaGlyph::new(
++                GlyphId::new(info.glyph_id),
++                pos.x_advance as f32 / upem,
++                pos.x_offset as f32 / upem,
++                pos.y_offset as f32 / upem,
++                pos.y_advance as f32 / upem,
++                start..end,
++                None,
++            )
++        })
++        .collect();
++    s.draw_glyphs(at, &glyphs, font, text, size, false);
++}
++
+ fn to_path(bp: &kurbo::BezPath) -> Option<krilla::geom::Path> {
+     use kurbo::PathEl;
+     let mut pb = krilla::geom::PathBuilder::new();
 diff --git a/crates/pptx/Cargo.toml b/crates/pptx/Cargo.toml
 index 0ea79d6..54457bb 100644
 --- a/crates/pptx/Cargo.toml
@@ -1704,6 +2893,54 @@ index 31776a6..85a8526 100644
  [lints]
  workspace = true
  
+diff --git a/docs/control-protocol.md b/docs/control-protocol.md
+index 07741fd..1bd5367 100644
+--- a/docs/control-protocol.md
++++ b/docs/control-protocol.md
+@@ -1,5 +1,31 @@
+ # Control protocol
+ 
++## Plervo authentication and limits
++
++The control channel is off by default and binds only `127.0.0.1`. In Plervo builds,
++`--control PORT` also requires `--control-token-file FILE` (or
++`PLERVO_SLIDES_CONTROL_TOKEN_FILE`). Create a new 256-bit random token for each session,
++keep the file private, and never place the token itself in a command argument or log.
++For example, on macOS/Linux:
++
++```sh
++umask 077
++openssl rand -hex 32 > /private/session/slides.token
++plervo-slides --control 7990 --control-token-file /private/session/slides.token
++plervo-slides-cli mcp --connect 7990 --control-token-file /private/session/slides.token
++```
++
++Create the private session directory first. On Windows, keep the token in a directory
++accessible only to your account. Unix token files with group/other access and symlinked
++files are rejected. Every JSON request must include a `token` field; the official CLI
++adds it from the file. Unauthenticated requests never reach the UI.
++
++There are at most four client connections, 1 MiB per request, 1,024 requests per
++connection, and a 10-second socket idle timeout. A connection can be reopened by the
++client. Lost responses do not automatically replay commands, because an edit may have
++already succeeded; inspect the document before retrying.
++
++
+ Start the app with `--control <port>`. The server listens on `127.0.0.1` only and speaks JSON
+ lines: one request object per line, one reply per line.
+ 
+diff --git a/docs/mcp.md b/docs/mcp.md
+index f7e24c7..e9351b1 100644
+--- a/docs/mcp.md
++++ b/docs/mcp.md
+@@ -1,5 +1,7 @@
+ # MCP server
+ 
++Plervo desktop connections require `--control-token-file FILE` in both the desktop and CLI commands (or `PLERVO_SLIDES_CONTROL_TOKEN_FILE`); see [the authenticated protocol](control-protocol.md). Headless stdio MCP is unchanged.
++
+ `deckcraft-cli mcp` runs a Model Context Protocol server on stdio. By default it drives its own
+ headless engine (no window); with `--connect PORT` it drives a running DeckCraft started with
+ `--control PORT`, so an agent and a person can work on the same deck. `--sample` opens the sample
 diff --git a/packaging/common.sh b/packaging/common.sh
 index bcb3695..2157f9f 100644
 --- a/packaging/common.sh
@@ -1864,6 +3101,86 @@ index 4f6471e..0000000
 -Categories=Office;Presentation;
 -MimeType=application/x-deckcraft;application/vnd.openxmlformats-officedocument.presentationml.presentation;application/vnd.openxmlformats-officedocument.presentationml.template;application/vnd.openxmlformats-officedocument.presentationml.slideshow;
 -Keywords=presentation;slides;slide show;deck;pptx;keynote;powerpoint;
+diff --git a/packaging/linux/ai.storyteller.deckcraft.metainfo.xml.in b/packaging/linux/ai.storyteller.deckcraft.metainfo.xml.in
+deleted file mode 100644
+index 4e6f0ae..0000000
+--- a/packaging/linux/ai.storyteller.deckcraft.metainfo.xml.in
++++ /dev/null
+@@ -1,59 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
+-     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
+-<component type="desktop-application">
+-  <id>ai.storyteller.deckcraft</id>
+-  <metadata_license>CC0-1.0</metadata_license>
+-  <project_license>MIT OR Apache-2.0</project_license>
+-  <name>DeckCraft</name>
+-  <summary>Create and present slide decks</summary>
+-  <developer id="ai.storyteller">
+-    <name>Learning Machines LLC</name>
+-  </developer>
+-  <description>
+-    <p>
+-      DeckCraft builds presentations and slide shows: themes, layouts, shapes, pictures,
+-      tables, charts, transitions and animations. It opens and saves PowerPoint (.pptx) files
+-      and presents them full screen with a presenter view.
+-    </p>
+-    <p>
+-      Every action is also a command that the command line and AI agents (through MCP) can drive.
+-    </p>
+-  </description>
+-  <launchable type="desktop-id">ai.storyteller.deckcraft.desktop</launchable>
+-  <icon type="stock">ai.storyteller.deckcraft</icon>
+-  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
+-  <url type="homepage">https://getartcraft.com/apps/deckcraft</url>
+-  <url type="bugtracker">https://github.com/storytold/deckcraft/issues</url>
+-  <url type="help">https://github.com/storytold/deckcraft</url>
+-  <url type="contact">https://discord.gg/artcraft</url>
+-  <categories>
+-    <category>Office</category>
+-    <category>Presentation</category>
+-  </categories>
+-  <keywords>
+-    <keyword>presentation</keyword>
+-    <keyword>slides</keyword>
+-    <keyword>slide show</keyword>
+-    <keyword>pptx</keyword>
+-  </keywords>
+-  <branding>
+-    <color type="primary" scheme_preference="light">#ffc9a8</color>
+-    <color type="primary" scheme_preference="dark">#b8471f</color>
+-  </branding>
+-  <requires>
+-    <display_length compare="ge">760</display_length>
+-  </requires>
+-  <supports>
+-    <control>keyboard</control>
+-    <control>pointing</control>
+-  </supports>
+-  <provides>
+-    <binary>deckcraft</binary>
+-    <mediatype>application/x-deckcraft</mediatype>
+-  </provides>
+-  <content_rating type="oars-1.1"/>
+-  <releases>
+-    <release version="@VERSION@" date="@DATE@"/>
+-  </releases>
+-</component>
+diff --git a/packaging/linux/ai.storyteller.deckcraft.mime.xml b/packaging/linux/ai.storyteller.deckcraft.mime.xml
+deleted file mode 100644
+index 64e2c01..0000000
+--- a/packaging/linux/ai.storyteller.deckcraft.mime.xml
++++ /dev/null
+@@ -1,9 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+-  <mime-type type="application/x-deckcraft">
+-    <comment>DeckCraft presentation</comment>
+-    <sub-class-of type="application/zip"/>
+-    <glob pattern="*.deckcraft"/>
+-    <icon name="ai.storyteller.deckcraft"/>
+-  </mime-type>
+-</mime-info>
 diff --git a/packaging/linux/com.plervo.slides.desktop b/packaging/linux/com.plervo.slides.desktop
 new file mode 100644
 index 0000000..e67dcf2
@@ -2030,6 +3347,136 @@ index 3097755..355263b 100755
    flatpak run --command=sh "$APP_ID" -c 'ls /app/share/applications /app/share/metainfo /app/share/mime/packages /app/share/icons/hicolor/256x256/apps'
  fi
  echo "==> done"
+diff --git a/packaging/linux/flatpak/ai.storyteller.deckcraft.bundle.yml b/packaging/linux/flatpak/ai.storyteller.deckcraft.bundle.yml
+deleted file mode 100644
+index 6245147..0000000
+--- a/packaging/linux/flatpak/ai.storyteller.deckcraft.bundle.yml
++++ /dev/null
+@@ -1,51 +0,0 @@
+-# Flatpak manifest for the single-file bundle attached to every GitHub release
+-# (deckcraft-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
+-#
+-# It repackages the release's own Linux tarball (deckcraft-<version>-linux-<arch>.tar.gz, built
+-# on Ubuntu 22.04 by package.sh with the craft-fonts embedded) instead of compiling Rust inside
+-# flatpak-builder: no network and no vendored crate sources during the build, a few seconds
+-# instead of 20+ minutes, and byte-for-byte the same binaries as the AppImage/deb/rpm. The script
+-# unpacks the tarball into `stage/` next to a copy of this file. The binaries need glibc >= 2.35
+-# and load X11, Wayland, xkbcommon, Vulkan and ALSA at runtime; the freedesktop runtime has all
+-# of them, and the GPU driver comes from its org.freedesktop.Platform.GL extension.
+-#
+-# ai.storyteller.deckcraft.yml (same directory) is the from-source manifest for Flathub. Keep
+-# runtime-version and finish-args identical in both (packaging-lint checks this).
+-id: ai.storyteller.deckcraft
+-runtime: org.freedesktop.Platform
+-runtime-version: '25.08'
+-sdk: org.freedesktop.Sdk
+-command: deckcraft
+-finish-args:
+-  # Display: Wayland first; X11 only when no Wayland compositor is running.
+-  - --socket=wayland
+-  - --socket=fallback-x11
+-  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
+-  - --share=ipc
+-  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
+-  - --device=dri
+-  # Sound for audio and video in slide shows (cpal over ALSA, routed to PulseAudio/PipeWire by
+-  # the runtime's ALSA plugin).
+-  - --socket=pulseaudio
+-  # Open/Save dialogs go through the file-chooser portal (rfd) and drag-and-drop through the
+-  # document portal, so picked files work anywhere without broad filesystem access. Documents is
+-  # granted so decks passed by path (the command line, Open Recent) work in the usual place.
+-  - --filesystem=xdg-documents
+-  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
+-  # the sandbox; `flatpak override --user --share=network ai.storyteller.deckcraft` exposes it to
+-  # host agents) and home/host filesystem access.
+-modules:
+-  - name: deckcraft
+-    buildsystem: simple
+-    build-commands:
+-      - install -Dm755 bin/deckcraft /app/bin/deckcraft
+-      - install -Dm755 bin/deckcraft-cli /app/bin/deckcraft-cli
+-      - install -Dm644 share/applications/ai.storyteller.deckcraft.desktop /app/share/applications/ai.storyteller.deckcraft.desktop
+-      # .deckcraft; the runtime's shared-mime-info already knows the PowerPoint types.
+-      - install -Dm644 share/mime/packages/ai.storyteller.deckcraft.xml /app/share/mime/packages/ai.storyteller.deckcraft.xml
+-      # Already has the release's version and date substituted by package.sh.
+-      - install -Dm644 share/metainfo/ai.storyteller.deckcraft.metainfo.xml /app/share/metainfo/ai.storyteller.deckcraft.metainfo.xml
+-      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/deckcraft /app/share/doc/
+-    sources:
+-      - type: dir
+-        path: stage
+diff --git a/packaging/linux/flatpak/ai.storyteller.deckcraft.yml b/packaging/linux/flatpak/ai.storyteller.deckcraft.yml
+deleted file mode 100644
+index 85abe9a..0000000
+--- a/packaging/linux/flatpak/ai.storyteller.deckcraft.yml
++++ /dev/null
+@@ -1,67 +0,0 @@
+-# Flatpak manifest for DeckCraft, ready for a Flathub submission.
+-#
+-# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
+-#
+-#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
+-#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
+-#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.deckcraft.yml
+-#   flatpak run ai.storyteller.deckcraft
+-#
+-# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
+-# The release's .flatpak bundles are built from ai.storyteller.deckcraft.bundle.yml instead (it
+-# repackages the Linux tarball); keep runtime-version and finish-args identical in both.
+-id: ai.storyteller.deckcraft
+-runtime: org.freedesktop.Platform
+-runtime-version: '25.08'
+-sdk: org.freedesktop.Sdk
+-sdk-extensions:
+-  - org.freedesktop.Sdk.Extension.rust-stable
+-command: deckcraft
+-finish-args:
+-  # Display: Wayland first; X11 only when no Wayland compositor is running.
+-  - --socket=wayland
+-  - --socket=fallback-x11
+-  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
+-  - --share=ipc
+-  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
+-  - --device=dri
+-  # Sound for audio and video in slide shows (cpal over ALSA, routed to PulseAudio/PipeWire by
+-  # the runtime's ALSA plugin).
+-  - --socket=pulseaudio
+-  # Open/Save dialogs go through the file-chooser portal (rfd) and drag-and-drop through the
+-  # document portal, so picked files work anywhere without broad filesystem access. Documents is
+-  # granted so decks passed by path (the command line, Open Recent) work in the usual place.
+-  - --filesystem=xdg-documents
+-  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
+-  # the sandbox; `flatpak override --user --share=network ai.storyteller.deckcraft` exposes it to
+-  # host agents) and home/host filesystem access.
+-build-options:
+-  append-path: /usr/lib/sdk/rust-stable/bin
+-modules:
+-  - name: deckcraft
+-    buildsystem: simple
+-    build-options:
+-      env:
+-        CARGO_HOME: /run/build/deckcraft/cargo
+-        CARGO_NET_OFFLINE: 'true'
+-    build-commands:
+-      - cargo --offline build --release --locked -p deckcraft
+-      - install -Dm755 target/release/deckcraft /app/bin/deckcraft
+-      - install -Dm644 packaging/linux/ai.storyteller.deckcraft.desktop /app/share/applications/ai.storyteller.deckcraft.desktop
+-      - install -Dm644 packaging/linux/ai.storyteller.deckcraft.mime.xml /app/share/mime/packages/ai.storyteller.deckcraft.xml
+-      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
+-      - >-
+-        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
+-        install -d /app/share/metainfo;
+-        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+-        packaging/linux/ai.storyteller.deckcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.deckcraft.metainfo.xml
+-    sources:
+-      - type: dir
+-        path: ../../..
+-        skip:
+-          - target
+-          - dist
+-          - corpus
+-          - build-flatpak
+-          - .flatpak-builder
+-      - cargo-sources.json
 diff --git a/packaging/linux/flatpak/com.plervo.slides.bundle.yml b/packaging/linux/flatpak/com.plervo.slides.bundle.yml
 new file mode 100644
 index 0000000..333b8b3
@@ -3037,7 +4484,7 @@ index b1275fe..9405419 100644
  
  try {
 diff --git a/xtask/src/layers.rs b/xtask/src/layers.rs
-index b9bb409..30dc24e 100644
+index b9bb409..0d5e643 100644
 --- a/xtask/src/layers.rs
 +++ b/xtask/src/layers.rs
 @@ -91,7 +91,11 @@ pub const UI_CRATES: &[&str] = &["egui", "eframe", "winit", "egui_kittest", "rfd
@@ -3053,3 +4500,18 @@ index b9bb409..30dc24e 100644
  }
  
  pub fn classify(pkg: &str) -> Option<Class> {
+@@ -183,11 +187,10 @@ pub fn check(crates: &[Crate]) -> Vec<Violation> {
+                 match classify(&d.name) {
+                     // Unregistered deps are reported on their own entry.
+                     None => {}
+-                    Some(Class::Testkit) => {
+-                        if d.kind != DepKind::Dev {
+-                            out.push(Violation::TestkitAsNormalDep { krate: c.name.clone() });
+-                        }
++                    Some(Class::Testkit) if d.kind != DepKind::Dev => {
++                        out.push(Violation::TestkitAsNormalDep { krate: c.name.clone() });
+                     }
++                    Some(Class::Testkit) => {}
+                     Some(dc) => {
+                         let to = dc.layer().unwrap_or(u8::MAX);
+                         let dev_ok = d.kind == DepKind::Dev && DEV_EXCEPTIONS.contains(&(short_name(&c.name), short_name(&d.name)));
