@@ -29,7 +29,7 @@ jobs:
         with:
           toolchain: '1.95.0'
       - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6
-      - run: cargo test --locked -p xtask products::
+      - run: 'cargo test --locked -p xtask products::'
       - id: catalog
         run: echo "matrix=$(cargo xtask products --matrix)" >> "$GITHUB_OUTPUT"
 
@@ -102,9 +102,11 @@ jobs:
           echo "${prefix}_BUILD_SHA=$GITHUB_SHA" >> "$GITHUB_ENV"
           echo "${prefix}_BUILD_DATE=$(date -u +%Y-%m-%d)" >> "$GITHUB_ENV"
           if [ "$RUNNER_OS" = Windows ]; then
-            echo 'CARGO_BUILD_TARGET=x86_64-pc-windows-msvc' >> "$GITHUB_ENV"
-            echo 'CARGO_TARGET_X86_64_PC_WINDOWS_MSVC_RUSTFLAGS=-C target-feature=+crt-static' >> "$GITHUB_ENV"
-            echo "${prefix}_REQUIRE_WINRES=1" >> "$GITHUB_ENV"
+            {
+              echo 'CARGO_BUILD_TARGET=x86_64-pc-windows-msvc'
+              echo 'CARGO_TARGET_X86_64_PC_WINDOWS_MSVC_RUSTFLAGS=-C target-feature=+crt-static'
+              echo "${prefix}_REQUIRE_WINRES=1"
+            } >> "$GITHUB_ENV"
           fi
       - name: Formatting and source boundaries
         if: runner.os == 'Linux'
@@ -146,7 +148,8 @@ jobs:
         working-directory: source
         run: |
           go install github.com/goreleaser/nfpm/v2/cmd/nfpm@v2.48.0
-          export PATH="$(go env GOPATH)/bin:$PATH"
+          go_path="$(go env GOPATH)"
+          export PATH="$go_path/bin:$PATH"
           packaging/linux/package.sh --skip-build --formats 'deb rpm tar'
       - name: macOS internal package (not notarized)
         if: runner.os == 'macOS'
