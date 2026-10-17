@@ -6733,7 +6733,7 @@ index 0000000..1c99325
 +          - .flatpak-builder
 +      - cargo-sources.json
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
-index e7103f7..5574b27 100644
+index e7103f7..c18d275 100644
 --- a/packaging/linux/nfpm.yaml
 +++ b/packaging/linux/nfpm.yaml
 @@ -3,7 +3,7 @@
@@ -6763,7 +6763,7 @@ index e7103f7..5574b27 100644
    and command runner.
  
  # The binaries link only glibc and libgcc_s directly. Windowing (X11/Wayland, xkbcommon) and the
-@@ -29,7 +29,7 @@ description: |-
+@@ -29,38 +29,44 @@ description: |-
  overrides:
    deb:
      depends:
@@ -6771,16 +6771,35 @@ index e7103f7..5574b27 100644
 +      - libc6 (>= ${PLERVO_MIN_GLIBC})
        - libgcc-s1
        - libxkbcommon0
++      - libxkbcommon-x11-0
        - libvulkan1 | libegl1
-@@ -44,6 +44,7 @@ overrides:
+-    recommends:
+       - libwayland-client0
+       - libx11-6
+       - libx11-xcb1
++      - libxcb1
+       - libxcursor1
+       - libxi6
++    recommends:
+       - libxrandr2
+       - mesa-vulkan-drivers
        - xdg-desktop-portal
    rpm:
      depends:
 +      - glibc >= ${PLERVO_MIN_GLIBC}
        - libxkbcommon
++      - libxkbcommon-x11
        - (vulkan-loader or libglvnd-egl)
-     recommends:
-@@ -56,11 +57,11 @@ overrides:
+-    recommends:
+       - libwayland-client
+       - libX11
++      - libX11-xcb
++      - libxcb
+       - libXcursor
+       - libXi
++    recommends:
+       - libXrandr
+       - mesa-vulkan-drivers
        - xdg-desktop-portal
  
  contents:

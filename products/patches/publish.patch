@@ -4194,7 +4194,7 @@ index 0000000..64a30ab
 +          - .flatpak-builder
 +      - cargo-sources.json
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
-index e2ce72b..3229d5c 100644
+index e2ce72b..aa34e80 100644
 --- a/packaging/linux/nfpm.yaml
 +++ b/packaging/linux/nfpm.yaml
 @@ -3,7 +3,7 @@
@@ -4224,7 +4224,7 @@ index e2ce72b..3229d5c 100644
  
  # The binaries link only glibc and libgcc_s directly. Windowing (X11/Wayland, xkbcommon) and the
  # GPU (Vulkan, EGL/GL) are loaded at runtime, so they are dependencies/recommendations here
-@@ -28,7 +28,7 @@ description: |-
+@@ -28,38 +28,44 @@ description: |-
  overrides:
    deb:
      depends:
@@ -4232,16 +4232,35 @@ index e2ce72b..3229d5c 100644
 +      - libc6 (>= ${PLERVO_MIN_GLIBC})
        - libgcc-s1
        - libxkbcommon0
++      - libxkbcommon-x11-0
        - libvulkan1 | libegl1
-@@ -43,6 +43,7 @@ overrides:
+-    recommends:
+       - libwayland-client0
+       - libx11-6
+       - libx11-xcb1
++      - libxcb1
+       - libxcursor1
+       - libxi6
++    recommends:
+       - libxrandr2
+       - mesa-vulkan-drivers
        - xdg-desktop-portal
    rpm:
      depends:
 +      - glibc >= ${PLERVO_MIN_GLIBC}
        - libxkbcommon
++      - libxkbcommon-x11
        - (vulkan-loader or libglvnd-egl)
-     recommends:
-@@ -55,11 +56,11 @@ overrides:
+-    recommends:
+       - libwayland-client
+       - libX11
++      - libX11-xcb
++      - libxcb
+       - libXcursor
+       - libXi
++    recommends:
+       - libXrandr
+       - mesa-vulkan-drivers
        - xdg-desktop-portal
  
  contents:

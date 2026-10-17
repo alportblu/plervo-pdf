@@ -6101,7 +6101,7 @@ index 0000000..95f7462
 +          - .flatpak-builder
 +      - cargo-sources.json
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
-index 76d4145..c517a6d 100644
+index 76d4145..afa4851 100644
 --- a/packaging/linux/nfpm.yaml
 +++ b/packaging/linux/nfpm.yaml
 @@ -3,7 +3,7 @@
@@ -6132,7 +6132,7 @@ index 76d4145..c517a6d 100644
  
  # The binaries link only glibc and libgcc_s directly. Windowing (X11/Wayland, xkbcommon) and the
  # GPU (Vulkan, EGL/GL) are loaded at runtime, so they are dependencies/recommendations here
-@@ -29,7 +29,7 @@ description: |-
+@@ -29,40 +29,47 @@ description: |-
  overrides:
    deb:
      depends:
@@ -6140,16 +6140,39 @@ index 76d4145..c517a6d 100644
 +      - libc6 (>= ${PLERVO_MIN_GLIBC})
        - libgcc-s1
        - libxkbcommon0
++      - libxkbcommon-x11-0
        - libvulkan1 | libegl1
-@@ -45,6 +45,7 @@ overrides:
+-      - libasound2 | libasound2t64
+-    recommends:
++      # Prefer the real ALSA t64 library; the legacy virtual name can select OSS.
++      - libasound2t64 | libasound2
+       - libwayland-client0
+       - libx11-6
+       - libx11-xcb1
++      - libxcb1
+       - libxcursor1
+       - libxi6
++    recommends:
+       - libxrandr2
+       - mesa-vulkan-drivers
        - xdg-desktop-portal
    rpm:
      depends:
 +      - glibc >= ${PLERVO_MIN_GLIBC}
        - libxkbcommon
++      - libxkbcommon-x11
        - (vulkan-loader or libglvnd-egl)
        - alsa-lib
-@@ -58,11 +59,11 @@ overrides:
+-    recommends:
+       - libwayland-client
+       - libX11
++      - libX11-xcb
++      - libxcb
+       - libXcursor
+       - libXi
++    recommends:
+       - libXrandr
+       - mesa-vulkan-drivers
        - xdg-desktop-portal
  
  contents:

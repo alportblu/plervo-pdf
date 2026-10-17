@@ -242,7 +242,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.vectorcraft.png"
     ],
     "fonts_commit": "3d9ab3a132ed0eff457e424226a435a901da30d3",
-    "patch_sha256": "72268172505e4085eba67f181759bc8d3a262ed7618fa29ed2164dc267712f7e"
+    "patch_sha256": "9ed3a9ef572be4fe5cb13ef867749e9ff88f416cb28387148b90b9a18cd28350"
   },
   {
     "app": "filmcraft",
@@ -375,7 +375,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.filmcraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "d1202b169bcb71e4350b5046c8a1b22cf182b77a363d43acf637d85a04b96fb9"
+    "patch_sha256": "ba83afa87ae4127e55fe01a47edc30ac874da2047e8b8db409c9642d8b0781b8"
   },
   {
     "app": "lightcraft",
@@ -504,7 +504,7 @@
       "packaging/macos/dmg/generate.py"
     ],
     "fonts_commit": "8dcdacd5153e64560d109541a47d806f26f048c0",
-    "patch_sha256": "510153bbacce7466a26c1c5f3cc0fc7f1e30e03197b04c38e7b1efd6143ef21c"
+    "patch_sha256": "accbe0b441ccc21ee87e0f03bf8c1b654698f9c300814e768b84528f1cdf8821"
   },
   {
     "app": "effectcraft",
@@ -637,7 +637,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.effectcraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "1b82d9d5266b3945b7a4df5b91c3dbe27883ff5ab04a017941333cc262edcd15"
+    "patch_sha256": "ee8bd602c1eff0cad8fbea680996a3b2bf3e86c22024d760ae5816a14a6f1b50"
   },
   {
     "app": "designcraft",
@@ -762,7 +762,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.designcraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "01bc2b806f1cbbf2a922a15e709d992778102fec03a53b009c8d1d9de678bf4b"
+    "patch_sha256": "471530232f666e1b7711fff4be6a926206bfc7b18cdd81343b34f4ccc40aecef"
   },
   {
     "app": "wordcraft",
@@ -882,7 +882,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.wordcraft.png"
     ],
     "fonts_commit": "8dcdacd5153e64560d109541a47d806f26f048c0",
-    "patch_sha256": "a38f0d93b844bf7b505f552533f4a3572abcc7848d0525e7433a250485f273b9"
+    "patch_sha256": "8266dbaed5f107bcce02518b2bbbac4b2fdea2312fe82f575522f48b46711f19"
   },
   {
     "app": "deckcraft",
@@ -993,7 +993,7 @@
       "assets/app-icon/icon-source.deckcraft"
     ],
     "fonts_commit": "43913056ce82a3fdad0ef69f6b88d1dc922a8104",
-    "patch_sha256": "1e8ab787f0ee0bcbdce4ad3bf5824a4114aa6965ee7da4ba296a03523371fe10"
+    "patch_sha256": "310b434f7eb0ffaa4f726846f32f954b7dcaba99888708960bedf849581cc582"
   },
   {
     "app": "gridcraft",
@@ -1113,7 +1113,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.gridcraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "ae8dc474e7275c850fc457c8b6b6a776b4aeb929eaa11e0c53b353ca8006141b"
+    "patch_sha256": "2c18ad02c5026e3addb26c0a2aa092277e5c90a6228b1d056ae9fabf50478f7b"
   },
   {
     "app": "cadcraft",
@@ -1232,7 +1232,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.cadcraft.png"
     ],
     "fonts_commit": "3d9ab3a132ed0eff457e424226a435a901da30d3",
-    "patch_sha256": "354c80143ca76a089dcf1041068f01ade5c0b6a0dd5645ba56fd7c5e97b865cd"
+    "patch_sha256": "d75511cd0082cee810aad68aa80ae667c96d6cfcfe2e83928674844742b17429"
   },
   {
     "app": "soundcraft",
@@ -1352,7 +1352,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.soundcraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "69bb05e216f23bbb1ade52e409472cd09ccff9275fc0bbfbd324d7b99ead2de5"
+    "patch_sha256": "dd89ffa8322a87bd82ce3b2bf66469fe78fda4ff4c9658784427622e49a85f13"
   },
   {
     "app": "figcraft",

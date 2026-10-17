@@ -2041,9 +2041,18 @@ index 4de5f59..5df4e79 100644
  //! behaviour, so there the button is left alone.
  
 diff --git a/crates/ui-egui/src/backstage.rs b/crates/ui-egui/src/backstage.rs
-index 28dc72f..121ac88 100644
+index 28dc72f..d2153d0 100644
 --- a/crates/ui-egui/src/backstage.rs
 +++ b/crates/ui-egui/src/backstage.rs
+@@ -111,7 +111,7 @@ pub fn show(app: &mut WordApp, ui: &mut Ui) {
+                 }
+             }
+             ui.with_layout(egui::Layout::bottom_up(egui::Align::Min), |ui| {
+-                for (label, id) in [("About", "about"), ("Discord community", "discord")] {
++                for (label, id) in [("About", "about"), ("Support Plervo", "discord")] {
+                     let (r, resp) = ui.allocate_exact_size(vec2(200.0, 32.0), Sense::click());
+                     resp.widget_info(|| egui::WidgetInfo::labeled(egui::WidgetType::Button, ui.is_enabled(), tl!(label)));
+                     if resp.hovered() {
 @@ -298,11 +298,11 @@ fn open_page(app: &mut WordApp, ui: &mut Ui) {
          let _ = app.run("ui.openFileDialog", json!({}));
      }
@@ -6044,7 +6053,7 @@ index 0000000..d9b340b
 +          - .flatpak-builder
 +      - cargo-sources.json
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
-index bf75ccc..4aeab74 100644
+index bf75ccc..cbe0d7d 100644
 --- a/packaging/linux/nfpm.yaml
 +++ b/packaging/linux/nfpm.yaml
 @@ -3,7 +3,7 @@
@@ -6074,7 +6083,7 @@ index bf75ccc..4aeab74 100644
  
  # The binaries link only glibc and libgcc_s directly. Windowing (X11/Wayland, xkbcommon) and the
  # GPU (Vulkan, EGL/GL) are loaded at runtime, so they are dependencies/recommendations here
-@@ -28,7 +28,7 @@ description: |-
+@@ -28,38 +28,44 @@ description: |-
  overrides:
    deb:
      depends:
@@ -6082,16 +6091,35 @@ index bf75ccc..4aeab74 100644
 +      - libc6 (>= ${PLERVO_MIN_GLIBC})
        - libgcc-s1
        - libxkbcommon0
++      - libxkbcommon-x11-0
        - libvulkan1 | libegl1
-@@ -43,6 +43,7 @@ overrides:
+-    recommends:
+       - libwayland-client0
+       - libx11-6
+       - libx11-xcb1
++      - libxcb1
+       - libxcursor1
+       - libxi6
++    recommends:
+       - libxrandr2
+       - mesa-vulkan-drivers
        - xdg-desktop-portal
    rpm:
      depends:
 +      - glibc >= ${PLERVO_MIN_GLIBC}
        - libxkbcommon
++      - libxkbcommon-x11
        - (vulkan-loader or libglvnd-egl)
-     recommends:
-@@ -55,11 +56,11 @@ overrides:
+-    recommends:
+       - libwayland-client
+       - libX11
++      - libX11-xcb
++      - libxcb
+       - libXcursor
+       - libXi
++    recommends:
+       - libXrandr
+       - mesa-vulkan-drivers
        - xdg-desktop-portal
  
  contents:
@@ -7221,6 +7249,26 @@ index a1f43d8..454c522 100644
  }
  
  pub fn classify(pkg: &str) -> Option<Class> {
+diff --git a/xtask/src/main.rs b/xtask/src/main.rs
+index 3568ae9..cf90d00 100644
+--- a/xtask/src/main.rs
++++ b/xtask/src/main.rs
+@@ -176,8 +176,13 @@ fn cmd_ci() -> Result<(), String> {
+             "test",
+             Box::new(|| {
+                 let mut c = cargo();
+-                c.args(["test", "--workspace"]);
+-                run(c, "cargo test --workspace")
++                // Run the export timing ratio after the other tests, so concurrent PDF
++                // exports cannot inflate its large-document sample. Its limit is unchanged.
++                c.args(["test", "--workspace", "--", "--skip", "tests::internal_links_export_in_linear_time"]);
++                run(c, "cargo test --workspace (isolated export timing follows)")?;
++                let mut c = cargo();
++                c.args(["test", "-p", "wordcraft-pdf", "--lib", "tests::internal_links_export_in_linear_time", "--", "--exact", "--test-threads=1"]);
++                run(c, "cargo test: isolated PDF export scaling")
+             }),
+         ),
+         ("assets", Box::new(|| assets::run(&root()))),
 diff --git a/xtask/src/visual_diff.rs b/xtask/src/visual_diff.rs
 index 20f857c..b0259af 100644
 --- a/xtask/src/visual_diff.rs

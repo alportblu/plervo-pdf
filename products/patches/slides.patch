@@ -2028,6 +2028,28 @@ index 1f4dbfc..2330f1f 100644
  [lints]
  workspace = true
  
+diff --git a/crates/engine/src/cmd/file.rs b/crates/engine/src/cmd/file.rs
+index f6424f7..d8f1925 100644
+--- a/crates/engine/src/cmd/file.rs
++++ b/crates/engine/src/cmd/file.rs
+@@ -46,6 +46,8 @@ pub fn specs() -> Vec<CommandSpec> {
+ }
+ 
+ fn theme_named(name: &str) -> Option<deckcraft_model::Theme> {
++    // Existing scripts may still request the inherited default theme by its original name.
++    let name = if name.eq_ignore_ascii_case("DeckCraft") { "Plervo Slides" } else { name };
+     deckcraft_model::theme::builtin_themes().into_iter().find(|t| t.name.eq_ignore_ascii_case(name))
+ }
+ 
+@@ -83,7 +85,7 @@ pub fn open_presentation(name: &str, bytes: &[u8]) -> Result<Presentation> {
+         }
+         return Ok(p);
+     }
+-    Err(EngineError::Other(format!("{name}: not a presentation DeckCraft can read")))
++    Err(EngineError::Other(format!("{name}: not a presentation Plervo Slides can read")))
+ }
+ 
+ pub fn add_opened(s: &mut Session, name: &str, path: Option<String>, p: Presentation) -> usize {
 diff --git a/crates/engine/src/links.rs b/crates/engine/src/links.rs
 index ac0c787..9eb12c8 100644
 --- a/crates/engine/src/links.rs
@@ -2067,6 +2089,35 @@ index 30daa81..9136446 100644
  }
  
  fn files(dir: &Path, uid: u64) -> (PathBuf, PathBuf) {
+diff --git a/crates/engine/src/sample.rs b/crates/engine/src/sample.rs
+index 80c11ca..bd9572b 100644
+--- a/crates/engine/src/sample.rs
++++ b/crates/engine/src/sample.rs
+@@ -15,13 +15,13 @@ fn last_id(v: &Value) -> u64 {
+ 
+ /// Open the sample presentation in a new document.
+ pub fn open_sample(s: &mut Session) -> Result<()> {
+-    run(s, "file.new", json!({"theme": "DeckCraft"}))?;
++    run(s, "file.new", json!({"theme": "Plervo Slides"}))?;
+     let st = s.doc()?;
+     let title = st.current_slide().and_then(|x| x.shapes.first()).map(|x| x.id.0).unwrap_or(0);
+     let sub = st.current_slide().and_then(|x| x.shapes.get(1)).map(|x| x.id.0).unwrap_or(0);
+     run(s, "text.set", json!({"id": title, "text": "Northern Lights"}))?;
+     run(s, "text.set", json!({"id": sub, "text": "A short tour of the aurora — where it comes from, when to look, and how to photograph it"}))?;
+-    run(s, "slide.notes", json!({"text": "Welcome everyone. This deck was made in DeckCraft."}))?;
++    run(s, "slide.notes", json!({"text": "Welcome everyone. This deck was made in Plervo Slides."}))?;
+     // Decorative bands on the title slide.
+     let b = run(s, "shape.insert", json!({"preset": "rect", "rect": [0, 470, 960, 70]}))?;
+     run(s, "shape.fill", json!({"id": last_id(&b), "gradient": {"stops": [[0, "accent1"], [0.5, "accent4"], [1, "accent2"]], "angle": 0}}))?;
+@@ -114,7 +114,7 @@ pub fn open_sample(s: &mut Session) -> Result<()> {
+     run(s, "transition.set", json!({"kind": "split"}))?;
+ 
+     // Closing.
+-    run(s, "slide.new", json!({"layout": "title", "title": "Clear skies!", "body": "Made with DeckCraft — free and open source"}))?;
++    run(s, "slide.new", json!({"layout": "title", "title": "Clear skies!", "body": "Made with Plervo Slides — free and open source"}))?;
+     let moon = run(s, "shape.insert", json!({"preset": "moon", "rect": [820, 40, 80, 120]}))?;
+     run(s, "shape.fill", json!({"id": last_id(&moon), "color": "accent6"}))?;
+     run(s, "shape.line", json!({"id": last_id(&moon), "none": true}))?;
 diff --git a/crates/fonts/Cargo.toml b/crates/fonts/Cargo.toml
 index 64944f0..f78c698 100644
 --- a/crates/fonts/Cargo.toml
@@ -2189,6 +2240,28 @@ index 252529e..aa3d631 100644
  [lints]
  workspace = true
  
+diff --git a/crates/format/src/lib.rs b/crates/format/src/lib.rs
+index 1b37a23..26a4b09 100644
+--- a/crates/format/src/lib.rs
++++ b/crates/format/src/lib.rs
+@@ -21,7 +21,7 @@ const MAX_ENTRY: u64 = 2 << 30;
+ 
+ #[derive(Debug, thiserror::Error)]
+ pub enum FormatError {
+-    #[error("not a DeckCraft file: {0}")]
++    #[error("not a Plervo Slides presentation: {0}")]
+     NotOurs(String),
+     #[error("damaged file: {0}")]
+     Damaged(String),
+@@ -52,7 +52,7 @@ pub fn save(p: &Presentation) -> Result<Vec<u8>> {
+         let m = Manifest {
+             format: "deckcraft".into(),
+             version: VERSION,
+-            generator: format!("DeckCraft {}", env!("CARGO_PKG_VERSION")),
++            generator: format!("Plervo Slides {}", env!("CARGO_PKG_VERSION")),
+             presentation: p.clone(),
+         };
+         let json = serde_json::to_vec(&m).map_err(|e| FormatError::Write(e.to_string()))?;
 diff --git a/crates/geom/Cargo.toml b/crates/geom/Cargo.toml
 index b648d9e..412b142 100644
 --- a/crates/geom/Cargo.toml
@@ -2309,7 +2382,7 @@ index ab2efad..f37362f 100644
 +[dev-dependencies]
 +tempfile = "3"
 diff --git a/crates/mcp/src/backend.rs b/crates/mcp/src/backend.rs
-index f368654..65a959a 100644
+index f368654..889c892 100644
 --- a/crates/mcp/src/backend.rs
 +++ b/crates/mcp/src/backend.rs
 @@ -1,6 +1,6 @@
@@ -2414,10 +2487,14 @@ index f368654..65a959a 100644
          if v.get("ok").and_then(Value::as_bool) == Some(true) {
              Ok(v.get("result").cloned().unwrap_or(Value::Null))
          } else {
-@@ -105,3 +122,38 @@ impl Backend for Remote {
-         format!("connected to the DeckCraft app at {}", self.addr)
+@@ -102,6 +119,41 @@ impl Backend for Remote {
      }
- }
+ 
+     fn describe(&self) -> String {
+-        format!("connected to the DeckCraft app at {}", self.addr)
++        format!("connected to the Plervo Slides app at {}", self.addr)
++    }
++}
 +
 +#[cfg(test)]
 +mod tests {
@@ -2451,8 +2528,8 @@ index f368654..65a959a 100644
 +        let mut remote = Remote::connect_with_token(&addr.to_string(), "a".repeat(64)).unwrap();
 +        assert!(remote.call("engine.execute", json!({"command":"slide.new"})).is_err());
 +        assert!(!worker.join().unwrap());
-+    }
-+}
+     }
+ }
 diff --git a/crates/mcp/src/lib.rs b/crates/mcp/src/lib.rs
 index b51ff31..ab1a5f4 100644
 --- a/crates/mcp/src/lib.rs
@@ -2499,10 +2576,41 @@ index b51ff31..ab1a5f4 100644
 +
  #[cfg(test)]
  mod tests;
+diff --git a/crates/mcp/src/server.rs b/crates/mcp/src/server.rs
+index 576e0b4..cc629ec 100644
+--- a/crates/mcp/src/server.rs
++++ b/crates/mcp/src/server.rs
+@@ -18,7 +18,7 @@ const INVALID_PARAMS: i64 = -32602;
+ const INTERNAL_ERROR: i64 = -32603;
+ const RESOURCE_NOT_FOUND: i64 = -32002;
+ 
+-const INSTRUCTIONS: &str = "DeckCraft is a presentation app (a PowerPoint clone). Coordinates are points on the \
++const INSTRUCTIONS: &str = "Plervo Slides is a presentation app. Coordinates are points on the \
+ current slide (y down; the default 16:9 slide is 960×540). Every action is a command: find ids and parameters with \
+ list_commands and run them with run_command (or several with batch). Typical flow: new_presentation → add_slide \
+ {layout:\"titleAndContent\", title, body} → add_shape / add_text_box / insert_picture / insert_chart → \
+@@ -135,7 +135,7 @@ impl Server {
+                 Ok(json!({
+                     "protocolVersion": version,
+                     "capabilities": {"tools": {}, "resources": {}},
+-                    "serverInfo": {"name": "deckcraft", "title": "DeckCraft", "version": env!("CARGO_PKG_VERSION"), "websiteUrl": deckcraft_engine::links::APP_PAGE},
++                    "serverInfo": {"name": "plervo-slides", "title": "Plervo Slides", "version": env!("CARGO_PKG_VERSION"), "websiteUrl": deckcraft_engine::links::APP_PAGE},
+                     "instructions": format!(
+                         "{INSTRUCTIONS} Backend: {}. Community: {} (Discord), {} (app page), {} (source). The `app.links` command returns these links.",
+                         self.backend.describe(),
 diff --git a/crates/mcp/src/tests.rs b/crates/mcp/src/tests.rs
-index b152152..426bc66 100644
+index b152152..bbc3624 100644
 --- a/crates/mcp/src/tests.rs
 +++ b/crates/mcp/src/tests.rs
+@@ -23,7 +23,7 @@ fn tool(s: &mut Server, name: &str, args: Value) -> Value {
+ fn handshake_and_tool_list() {
+     let mut s = Server::new(Box::new(Headless::new()));
+     let r = call(&mut s, 1, "initialize", json!({"protocolVersion": "2025-06-18"}));
+-    assert_eq!(r["result"]["serverInfo"]["name"], "deckcraft");
++    assert_eq!(r["result"]["serverInfo"]["name"], "plervo-slides");
+     let tools = call(&mut s, 2, "tools/list", json!({}));
+     let names: Vec<&str> = tools["result"]["tools"].as_array().unwrap().iter().map(|t| t["name"].as_str().unwrap()).collect();
+     for n in ["run_command", "render_slide", "add_slide", "add_shape", "pointer", "inspect_slide"] {
 @@ -117,3 +117,36 @@ fn export_tool_lists_pdf_and_its_options() {
      }
      let _ = std::fs::remove_dir_all(&dir);
@@ -2540,6 +2648,34 @@ index b152152..426bc66 100644
 +        assert!(crate::read_control_token(&path).is_err());
 +    }
 +}
+diff --git a/crates/mcp/src/tools.rs b/crates/mcp/src/tools.rs
+index 1a457dd..8d9fe97 100644
+--- a/crates/mcp/src/tools.rs
++++ b/crates/mcp/src/tools.rs
+@@ -94,7 +94,7 @@ pub fn tool_definitions() -> Vec<Value> {
+         tool(
+             "new_presentation",
+             "New presentation",
+-            "Start a new presentation (one title slide). Optional theme: DeckCraft, Harbor, Ember, Meadow, Nocturne, Paper, Coral Reef, Slate.",
++            "Start a new presentation (one title slide). Optional theme: Plervo Slides, Harbor, Ember, Meadow, Nocturne, Paper, Coral Reef, Slate. DeckCraft remains a legacy alias for the default theme.",
+             obj(json!({"theme": string("Theme name"), "blank": boolean("No first slide")}), &[]),
+             false,
+         ),
+@@ -268,7 +268,13 @@ pub fn tool_definitions() -> Vec<Value> {
+             obj(json!({"text": string("Text")}), &["text"]),
+             false,
+         ),
+-        tool("screenshot", "Screenshot", &format!("Screenshot of the whole DeckCraft window (UI included).{APP_ONLY}"), obj(json!({}), &[]), true),
++        tool(
++            "screenshot",
++            "Screenshot",
++            &format!("Screenshot of the whole Plervo Slides window (UI included).{APP_ONLY}"),
++            obj(json!({}), &[]),
++            true,
++        ),
+         tool(
+             "call_app",
+             "Call app method",
 diff --git a/crates/media/Cargo.toml b/crates/media/Cargo.toml
 index e785f36..b3ac921 100644
 --- a/crates/media/Cargo.toml
@@ -2579,6 +2715,55 @@ index 2894f00..5975541 100644
  [lints]
  workspace = true
  
+diff --git a/crates/model/src/tests.rs b/crates/model/src/tests.rs
+index 2c3b4ce..6bdc624 100644
+--- a/crates/model/src/tests.rs
++++ b/crates/model/src/tests.rs
+@@ -11,7 +11,7 @@ fn new_presentation_is_valid() {
+     let s = &p.slides[0];
+     let (m, l) = p.master_for(s).unwrap();
+     assert_eq!(l.unwrap().kind, LayoutType::Title);
+-    assert_eq!(m.theme.name, "DeckCraft");
++    assert_eq!(m.theme.name, "Plervo Slides");
+     // Title slide has a centred title and a subtitle.
+     let kinds: Vec<_> = s.shapes.iter().filter_map(|x| x.ph_type()).collect();
+     assert_eq!(kinds, vec![PhType::CtrTitle, PhType::SubTitle]);
+diff --git a/crates/model/src/theme.rs b/crates/model/src/theme.rs
+index 582f072..2619430 100644
+--- a/crates/model/src/theme.rs
++++ b/crates/model/src/theme.rs
+@@ -68,8 +68,8 @@ pub struct Theme {
+ impl Default for Theme {
+     fn default() -> Self {
+         builtin_themes().into_iter().next().unwrap_or_else(|| Theme {
+-            name: "DeckCraft".into(),
+-            colors: ColorScheme { name: "DeckCraft".into(), colors: [Rgba::BLACK; 12] },
++            name: "Plervo Slides".into(),
++            colors: ColorScheme { name: "Plervo Slides".into(), colors: [Rgba::BLACK; 12] },
+             fonts: FontScheme::default(),
+             format: FormatScheme::default(),
+             raw_extra: None,
+@@ -118,7 +118,7 @@ pub fn default_format() -> FormatScheme {
+         })
+     };
+     FormatScheme {
+-        name: "DeckCraft".into(),
++        name: "Plervo Slides".into(),
+         fills: vec![Fill::solid(ph()), grad(110000, 92000), grad(105000, 80000)],
+         lines: vec![Line::solid(ph(), 0.75), Line::solid(ph(), 1.0), Line::solid(ph(), 1.5)],
+         effects: vec![
+@@ -164,9 +164,9 @@ pub fn builtin_themes() -> Vec<Theme> {
+     };
+     vec![
+         t(
+-            "DeckCraft",
++            "Plervo Slides",
+             scheme(
+-                "DeckCraft",
++                "Plervo Slides",
+                 ["000000", "FFFFFF", "1E2B3C", "EDEBE7", "2E6FD8", "F26B1D", "2EA36F", "8A5CD8", "D83F6B", "E3B21C", "2E6FD8", "7A5BA6"],
+             ),
+             "Inter",
 diff --git a/crates/ogg/Cargo.toml b/crates/ogg/Cargo.toml
 index 9e38883..18369c4 100644
 --- a/crates/ogg/Cargo.toml
@@ -2627,7 +2812,7 @@ index 50f9adb..efb58e6 100644
  serde = { workspace = true }
  thiserror = { workspace = true }
 diff --git a/crates/pdf/src/lib.rs b/crates/pdf/src/lib.rs
-index 97eb641..6bf36fd 100644
+index 97eb641..53100fe 100644
 --- a/crates/pdf/src/lib.rs
 +++ b/crates/pdf/src/lib.rs
 @@ -25,7 +25,7 @@ use krilla::outline::{Outline, OutlineNode};
@@ -2639,6 +2824,15 @@ index 97eb641..6bf36fd 100644
  use kurbo::{Affine, Rect};
  use serde::{Deserialize, Serialize};
  
+@@ -97,7 +97,7 @@ pub fn export(pres: &Presentation, opts: &PdfOptions) -> Result<Vec<u8>> {
+     }
+     let mut pdf = krilla::Document::new();
+     let title = opts.title.clone().unwrap_or_else(|| pres.props.title.clone());
+-    let mut meta = Metadata::new().creator("DeckCraft".into()).producer("DeckCraft".into());
++    let mut meta = Metadata::new().creator("Plervo Slides".into()).producer("Plervo Slides".into());
+     if !title.trim().is_empty() {
+         meta = meta.title(title);
+     }
 @@ -377,7 +377,7 @@ impl Exporter<'_> {
                      if y > area.y1 {
                          break 'outer;
@@ -2736,6 +2930,19 @@ index 4ef21c3..9352f4c 100644
              let declared = f.size();
              if declared > MAX_PART {
                  log::warn!("pptx: skipping oversized part {name} ({declared} bytes)");
+diff --git a/crates/pptx/src/write/mod.rs b/crates/pptx/src/write/mod.rs
+index 7fb6a71..28b380a 100644
+--- a/crates/pptx/src/write/mod.rs
++++ b/crates/pptx/src/write/mod.rs
+@@ -826,7 +826,7 @@ fn app_xml(p: &Presentation) -> Vec<u8> {
+             .a("xmlns", "http://schemas.openxmlformats.org/officeDocument/2006/extended-properties")
+             .a("xmlns:vt", "http://schemas.openxmlformats.org/officeDocument/2006/docPropsVTypes"),
+     );
+-    w.elt("Application", "DeckCraft");
++    w.elt("Application", "Plervo Slides");
+     w.elt("Slides", &p.slides.len().to_string());
+     w.elt("Notes", &p.slides.iter().filter(|s| !s.notes.is_empty()).count().to_string());
+     w.elt("HiddenSlides", &p.slides.iter().filter(|s| s.hidden).count().to_string());
 diff --git a/crates/pptx/src/xml.rs b/crates/pptx/src/xml.rs
 index 60a9481..4146d22 100644
 --- a/crates/pptx/src/xml.rs
@@ -4125,7 +4332,7 @@ index 0000000..d0a7653
 +          - .flatpak-builder
 +      - cargo-sources.json
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
-index 0d41fc7..8c643ff 100644
+index 0d41fc7..1ac6dde 100644
 --- a/packaging/linux/nfpm.yaml
 +++ b/packaging/linux/nfpm.yaml
 @@ -3,7 +3,7 @@
@@ -4156,7 +4363,7 @@ index 0d41fc7..8c643ff 100644
  
  # The binaries link only glibc and libgcc_s directly. Windowing (X11/Wayland, xkbcommon) and the
  # GPU (Vulkan, EGL/GL) are loaded at runtime, so they are dependencies/recommendations here
-@@ -29,7 +29,7 @@ description: |-
+@@ -29,40 +29,47 @@ description: |-
  overrides:
    deb:
      depends:
@@ -4164,16 +4371,39 @@ index 0d41fc7..8c643ff 100644
 +      - libc6 (>= ${PLERVO_MIN_GLIBC})
        - libgcc-s1
        - libxkbcommon0
-       - libasound2 | libasound2t64
-@@ -45,6 +45,7 @@ overrides:
+-      - libasound2 | libasound2t64
++      - libxkbcommon-x11-0
++      # Prefer the real ALSA t64 library; the legacy virtual name can select OSS.
++      - libasound2t64 | libasound2
+       - libvulkan1 | libegl1
+-    recommends:
+       - libwayland-client0
+       - libx11-6
+       - libx11-xcb1
++      - libxcb1
+       - libxcursor1
+       - libxi6
++    recommends:
+       - libxrandr2
+       - mesa-vulkan-drivers
        - xdg-desktop-portal
    rpm:
      depends:
 +      - glibc >= ${PLERVO_MIN_GLIBC}
        - libxkbcommon
++      - libxkbcommon-x11
        - alsa-lib
        - (vulkan-loader or libglvnd-egl)
-@@ -58,11 +59,11 @@ overrides:
+-    recommends:
+       - libwayland-client
+       - libX11
++      - libX11-xcb
++      - libxcb
+       - libXcursor
+       - libXi
++    recommends:
+       - libXrandr
+       - mesa-vulkan-drivers
        - xdg-desktop-portal
  
  contents:

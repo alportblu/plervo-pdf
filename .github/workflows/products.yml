@@ -175,7 +175,19 @@ jobs:
           retention-days: 14
       - name: Feature and regression tests
         working-directory: source
-        run: cargo test --locked --workspace --no-fail-fast
+        shell: bash
+        run: |
+          if [ "$PRODUCT" = write ]; then
+            # This wall-clock ratio is required in the isolated step below. Concurrent
+            # PDF exports can distort it even when the indexed implementation is linear.
+            cargo test --locked --workspace --no-fail-fast -- --skip tests::internal_links_export_in_linear_time
+          else
+            cargo test --locked --workspace --no-fail-fast
+          fi
+      - name: Write PDF export scaling in an isolated test process
+        if: matrix.app.product == 'write'
+        working-directory: source
+        run: cargo test --locked -p wordcraft-pdf --lib tests::internal_links_export_in_linear_time -- --exact --test-threads=1
       - name: Web target boundary
         if: runner.os == 'Linux'
         working-directory: source
@@ -248,6 +260,10 @@ jobs:
           test -f "/usr/share/applications/com.plervo.$PRODUCT.desktop"
           sudo apt-get install -y --reinstall --no-install-recommends "$package"
           "$cli" --version
+          version="$(python -c 'import pathlib,tomllib; print(tomllib.loads(pathlib.Path("Cargo.toml").read_text())["workspace"]["package"]["version"])')"
+          python "$GITHUB_WORKSPACE/products/accept_cli.py" --product "$PRODUCT" --binary "$cli" \
+            --output dist/validation/cli-installed --expected-version "$version" \
+            --source "installed DEB candidate $GITHUB_SHA"
           cleanup
           trap - EXIT
           [ ! -e "$app" ] && [ ! -e "$cli" ]
@@ -262,12 +278,12 @@ jobs:
           [ "${#packages[@]}" = 1 ] && [ -f "${packages[0]}" ]
           PLERVO_ACCEPTANCE=1 timeout 90 target/debug/examples/product_acceptance "$PRODUCT" "${packages[0]}" \
             2>&1 | tee source/dist/validation/suite-install.txt
-      - name: Debian and Fedora package acceptance
+      - name: Clean Ubuntu, Debian and Fedora package acceptance
         if: runner.os == 'Linux'
         working-directory: source
         shell: bash
         run: |
-          for image in debian:13 fedora:44; do
+          for image in ubuntu:24.04 debian:13 fedora:44; do
             evidence="$PWD/dist/validation/${image//:/-}"
             mkdir -p "$evidence"
             docker pull "$image"

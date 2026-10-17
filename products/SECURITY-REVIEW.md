@@ -129,6 +129,39 @@ version as different from the alpha release, then recognized all twelve correcte
 templates. The candidate workflow also runs that detector against each mounted bundle;
 synthetic metadata checks alone do not qualify a signed package or installation.
 
+A clean Ubuntu 24.04 installation exposed two runtime-metadata failures hidden by
+the build runner's development libraries. The legacy virtual `libasound2` dependency
+could select an OSS compatibility provider lacking `snd_pcm_get_params`; the four
+audio-using DEBs now prefer the actual `libasound2t64` package. Opening the Video
+window then exposed missing X11 keyboard/cursor libraries. The affected DEB/RPM
+packages now require their window-system libraries rather than recommending them.
+The Suite's Linux package also supplies the ALSA runtime needed by its managed
+audio/video products. The original failures are retained alongside private,
+metadata-only repacks whose installed files are byte-identical. Those diagnostic
+repacks are not release artifacts. Clean Ubuntu, Debian and Fedora CI now includes
+an unprivileged GUI first launch and screenshot after package installation; the
+new native packages and visual reviews remain required before publication.
+
+The private AMD64-on-Apple-Silicon probes open the corrected packages, but Publish,
+Slides, Sheets, Develop and Write show corrupted text under the emulated renderer.
+Publish's document raster export also differs from the readable native Linux CI
+output. The private package has stripped binaries, so that comparison does not yet
+isolate packaging from CPU emulation. No font or graphics workaround is accepted
+as a fix. Native clean-container screenshots and representative file operations
+using the actually installed DEB executable are required to resolve this finding.
+
+Write's Mac run failed its wall-clock PDF-link export ratio while other PDF tests
+ran concurrently; the unchanged regression passed alone locally. Both local
+`xtask ci` and the native candidate workflow now run that one measurement in a
+required separate test process after the functional tests. Its 4x input and 9x
+ratio limit remain unchanged; native confirmation is still required.
+
+Openly licensed Source Sans/Serif and Noto CJK inputs inherited by some independent
+products conflict with this repository's stricter asset policy. Their final
+disposition requires the owner's pending decision; the request does not approve
+an exception or alter any licence notice. No replacement font input is included
+in this revision, and affected packages remain blocked from publication.
+
 The Windows installed-app check now waits for the exact GUI process and reads its
 exit code through [`Start-Process -Wait -PassThru`](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/start-process).
 It records both output streams and verifies the source version instead of relying

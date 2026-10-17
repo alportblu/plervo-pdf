@@ -36,13 +36,14 @@ overrides:
       - libxkbcommon0
       - libxkbcommon-x11-0
       - libvulkan1 | libegl1
-    recommends:
-      - cups-client
       - libwayland-client0
       - libx11-6
       - libx11-xcb1
+      - libxcb1
       - libxcursor1
       - libxi6
+    recommends:
+      - cups-client
       - libxrandr2
       - mesa-vulkan-drivers
       - xdg-desktop-portal
@@ -53,12 +54,14 @@ overrides:
       - libxkbcommon
       - libxkbcommon-x11
       - (vulkan-loader or libglvnd-egl)
-    recommends:
-      - cups-client
       - libwayland-client
       - libX11
+      - libX11-xcb
+      - libxcb
       - libXcursor
       - libXi
+    recommends:
+      - cups-client
       - libXrandr
       - mesa-vulkan-drivers
       - xdg-desktop-portal

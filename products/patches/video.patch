@@ -3451,6 +3451,27 @@ index c99e5c6..f97fb42 100644
          cmd!("timeline.selectGap", "Select Gap", [], None, r#"{"track":"V1"|id,"time":ticks|"frame":n|"seconds":f}"#, has_seq, select_gap),
          cmd!(
              "timeline.move",
+diff --git a/crates/engine/src/demo.rs b/crates/engine/src/demo.rs
+index c60fc0f..bbdaad7 100644
+--- a/crates/engine/src/demo.rs
++++ b/crates/engine/src/demo.rs
+@@ -42,14 +42,14 @@ pub fn add_generator(p: &mut Project, pool: &MediaPool, src: GeneratorSource, na
+ pub fn demo_project(pool: &MediaPool) -> (Project, ItemId) {
+     build_demo(pool).unwrap_or_else(|| {
+         // Only reachable if the built-in items could not be placed: an empty demo, not a crash.
+-        let mut p = Project::new("FilmCraft Demo");
++        let mut p = Project::new("Plervo Video Demo");
+         let seq = p.new_sequence("Main Edit", SequenceSettings::default(), 3, 3, None);
+         (p, seq)
+     })
+ }
+ 
+ fn build_demo(pool: &MediaPool) -> Option<(Project, ItemId)> {
+-    let mut p = Project::new("FilmCraft Demo");
++    let mut p = Project::new("Plervo Video Demo");
+     let footage = p.add_bin("Footage", None);
+     let audio_bin = p.add_bin("Audio", None);
+     let gfx = p.add_bin("Graphics", None);
 diff --git a/crates/engine/src/project_tools.rs b/crates/engine/src/project_tools.rs
 index bcda383..4c5bdf9 100644
 --- a/crates/engine/src/project_tools.rs
@@ -7882,7 +7903,7 @@ index 033fe9b..16c6557 100755
    *":$prefix/bin:"*) ;;
    *) printf 'For terminal commands, add %s/bin to your PATH.\n' "$prefix" ;;
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
-index 657f0bb..5cade50 100644
+index 657f0bb..0460e5c 100644
 --- a/packaging/linux/nfpm.yaml
 +++ b/packaging/linux/nfpm.yaml
 @@ -3,7 +3,7 @@
@@ -7913,7 +7934,7 @@ index 657f0bb..5cade50 100644
  
  # The binaries link only glibc and libgcc_s directly. Windowing (X11/Wayland, xkbcommon) and the
  # GPU (Vulkan, EGL/GL) are loaded at runtime, so they are dependencies/recommendations here
-@@ -29,7 +29,7 @@ description: |-
+@@ -29,17 +29,20 @@ description: |-
  overrides:
    deb:
      depends:
@@ -7921,17 +7942,42 @@ index 657f0bb..5cade50 100644
 +      - libc6 (>= ${PLERVO_MIN_GLIBC})
        - libgcc-s1
        - libxkbcommon0
++      - libxkbcommon-x11-0
        - libvulkan1 | libegl1
-@@ -47,7 +47,7 @@ overrides:
+-      - libasound2 | libasound2t64
+-    recommends:
++      # Prefer the real ALSA t64 library; the legacy virtual name can select OSS.
++      - libasound2t64 | libasound2
+       - libwayland-client0
+       - libx11-6
+       - libx11-xcb1
++      - libxcb1
+       - libxcursor1
+       - libxi6
++    recommends:
+       - libxrandr2
+       - mesa-vulkan-drivers
+       - xdg-desktop-portal
+@@ -47,25 +50,28 @@ overrides:
      depends:
        # the same floor as the deb: built on glibc 2.35, so RHEL 9 (2.34) must refuse the install
        # instead of installing binaries that can't start (#93)
 -      - glibc >= 2.35
 +      - glibc >= ${PLERVO_MIN_GLIBC}
        - libxkbcommon
++      - libxkbcommon-x11
        - (vulkan-loader or libglvnd-egl)
        - alsa-lib
-@@ -61,11 +61,11 @@ overrides:
+-    recommends:
+       - libwayland-client
+       - libX11
++      - libX11-xcb
++      - libxcb
+       - libXcursor
+       - libXi
++    recommends:
+       - libXrandr
+       - mesa-vulkan-drivers
        - xdg-desktop-portal
  
  contents:

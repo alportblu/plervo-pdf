@@ -48,10 +48,15 @@ The local Suite management gate passed 103 tests; native product and installer a
 are separate requirements.
 
 The candidate workflow additionally exercises installed DEB/MSI binaries, Linux
-reinstallation, Windows repair, and removal on disposable runners. Debian 13 and
-Fedora 44 containers test DEB/RPM installation, reinstallation and removal, recording
+reinstallation, Windows repair, and removal on disposable runners. Clean Ubuntu 24.04,
+Debian 13 and Fedora 44 containers test DEB/RPM installation, reinstallation and removal, recording
 the exact container digest alongside the installed executable checks. macOS candidates
 are copied out of their DMGs and checked alongside the separately extracted CLI.
+The clean Linux containers also open the installed GUI in a fresh, unprivileged Xvfb
+session and retain a screenshot for visual review. This catches runtime libraries
+missing from package metadata without using the runner's already-provisioned desktop.
+The native Linux runner repeats file-operation acceptance with the installed DEB
+CLI, so packaging changes are exercised beyond executable version/help checks.
 The actual Suite detector must recognize each mounted Mac bundle's exact release
 version, including its alpha suffix.
 Each Linux TAR candidate is also installed, detected, reinstalled and removed by the
