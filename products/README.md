@@ -52,6 +52,8 @@ reinstallation, Windows repair, and removal on disposable runners. Debian 13 and
 Fedora 44 containers test DEB/RPM installation, reinstallation and removal, recording
 the exact container digest alongside the installed executable checks. macOS candidates
 are copied out of their DMGs and checked alongside the separately extracted CLI.
+The actual Suite detector must recognize each mounted Mac bundle's exact release
+version, including its alpha suffix.
 Each Linux TAR candidate is also installed, detected, reinstalled and removed by the
 Suite's real manager in a temporary profile. The helper checks both installed executable
 versions, CLI help and preservation of sentinel documents and preferences. It is a CI

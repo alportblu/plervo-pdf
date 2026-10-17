@@ -6267,7 +6267,7 @@ index 0000000..2a99601
 +  fi
 +done
 diff --git a/packaging/macos/Info.plist.in b/packaging/macos/Info.plist.in
-index 1dce256..1adf4cc 100644
+index 1dce256..36fb3ab 100644
 --- a/packaging/macos/Info.plist.in
 +++ b/packaging/macos/Info.plist.in
 @@ -7,13 +7,13 @@
@@ -6293,10 +6293,10 @@ index 1dce256..1adf4cc 100644
    <key>CFBundleVersion</key>
    <string>@SHORT_VERSION@</string>
 -  <key>WordCraftVersion</key>
-+  <key>Plervo WriteVersion</key>
++  <key>PlervoWriteVersion</key>
    <string>@VERSION@</string>
 -  <key>WordCraftBuildCommit</key>
-+  <key>Plervo WriteBuildCommit</key>
++  <key>PlervoWriteBuildCommit</key>
    <string>@BUILD_SHA@</string>
    <key>CFBundleIconFile</key>
 -  <string>WordCraft</string>

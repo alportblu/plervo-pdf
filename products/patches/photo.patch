@@ -8944,7 +8944,7 @@ index 0000000..2a99601
 +  fi
 +done
 diff --git a/packaging/macos/Info.plist.in b/packaging/macos/Info.plist.in
-index d325b2b..c7d7c7b 100644
+index d325b2b..27121c3 100644
 --- a/packaging/macos/Info.plist.in
 +++ b/packaging/macos/Info.plist.in
 @@ -33,13 +33,13 @@
@@ -8970,10 +8970,10 @@ index d325b2b..c7d7c7b 100644
    <key>CFBundleVersion</key>
    <string>@SHORT_VERSION@</string>
 -  <key>PhotoCraftVersion</key>
-+  <key>Plervo PhotoVersion</key>
++  <key>PlervoPhotoVersion</key>
    <string>@VERSION@</string>
 -  <key>PhotoCraftBuildCommit</key>
-+  <key>Plervo PhotoBuildCommit</key>
++  <key>PlervoPhotoBuildCommit</key>
    <string>@BUILD_SHA@</string>
    <key>CFBundleIconFile</key>
 -  <string>PhotoCraft</string>

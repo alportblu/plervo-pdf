@@ -4472,7 +4472,7 @@ index 0000000..2a99601
 +  fi
 +done
 diff --git a/packaging/macos/Info.plist.in b/packaging/macos/Info.plist.in
-index 5620772..1a94ad8 100644
+index 5620772..c12ccd7 100644
 --- a/packaging/macos/Info.plist.in
 +++ b/packaging/macos/Info.plist.in
 @@ -7,13 +7,13 @@
@@ -4498,10 +4498,10 @@ index 5620772..1a94ad8 100644
    <key>CFBundleVersion</key>
    <string>@SHORT_VERSION@</string>
 -  <key>CADCraftVersion</key>
-+  <key>Plervo CADVersion</key>
++  <key>PlervoCADVersion</key>
    <string>@VERSION@</string>
 -  <key>CADCraftBuildCommit</key>
-+  <key>Plervo CADBuildCommit</key>
++  <key>PlervoCADBuildCommit</key>
    <string>@BUILD_SHA@</string>
    <key>CFBundleIconFile</key>
 -  <string>CADCraft</string>

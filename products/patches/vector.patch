@@ -10399,7 +10399,7 @@ index 0000000..2a99601
 +  fi
 +done
 diff --git a/packaging/macos/Info.plist.in b/packaging/macos/Info.plist.in
-index c0745cb..1b48f11 100644
+index c0745cb..e070cc5 100644
 --- a/packaging/macos/Info.plist.in
 +++ b/packaging/macos/Info.plist.in
 @@ -7,13 +7,13 @@
@@ -10425,10 +10425,10 @@ index c0745cb..1b48f11 100644
    <key>CFBundleVersion</key>
    <string>@SHORT_VERSION@</string>
 -  <key>VectorCraftVersion</key>
-+  <key>Plervo VectorVersion</key>
++  <key>PlervoVectorVersion</key>
    <string>@VERSION@</string>
 -  <key>VectorCraftBuildCommit</key>
-+  <key>Plervo VectorBuildCommit</key>
++  <key>PlervoVectorBuildCommit</key>
    <string>@BUILD_SHA@</string>
    <key>CFBundleIconFile</key>
 -  <string>VectorCraft</string>

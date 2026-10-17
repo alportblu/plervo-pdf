@@ -6325,7 +6325,7 @@ index 0000000..2a99601
 +  fi
 +done
 diff --git a/packaging/macos/Info.plist.in b/packaging/macos/Info.plist.in
-index 3e3b889..bea48e3 100644
+index 3e3b889..a0e58db 100644
 --- a/packaging/macos/Info.plist.in
 +++ b/packaging/macos/Info.plist.in
 @@ -7,13 +7,13 @@
@@ -6351,10 +6351,10 @@ index 3e3b889..bea48e3 100644
    <key>CFBundleVersion</key>
    <string>@SHORT_VERSION@</string>
 -  <key>EffectCraftVersion</key>
-+  <key>Plervo MotionVersion</key>
++  <key>PlervoMotionVersion</key>
    <string>@VERSION@</string>
 -  <key>EffectCraftBuildCommit</key>
-+  <key>Plervo MotionBuildCommit</key>
++  <key>PlervoMotionBuildCommit</key>
    <string>@BUILD_SHA@</string>
    <key>CFBundleIconFile</key>
 -  <string>EffectCraft</string>

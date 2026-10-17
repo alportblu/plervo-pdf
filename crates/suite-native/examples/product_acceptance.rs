@@ -1,7 +1,7 @@
-//! Install the real candidate through Suite in an isolated Linux acceptance directory.
+//! Check the real Mac bundle identity or install the real candidate through Suite on Linux.
 //! This example is a validation tool and is never included in public app packages.
 
-#[cfg(unix)]
+#[cfg(target_os = "linux")]
 fn main() -> Result<(), String> {
     use plervo_suite_core::{Asset, Release, catalog::SUITE};
     use plervo_suite_native::{
@@ -12,7 +12,7 @@ fn main() -> Result<(), String> {
     use std::path::PathBuf;
     use std::process::Command;
 
-    if !cfg!(target_os = "linux") || std::env::var("PLERVO_ACCEPTANCE").as_deref() != Ok("1") {
+    if std::env::var("PLERVO_ACCEPTANCE").as_deref() != Ok("1") {
         return Err("Only for disposable Linux acceptance environments (PLERVO_ACCEPTANCE=1).".into());
     }
     let product = std::env::args().nth(1).ok_or("Expected product ID")?;
@@ -71,7 +71,29 @@ fn main() -> Result<(), String> {
     Ok(())
 }
 
-#[cfg(not(unix))]
+#[cfg(target_os = "macos")]
 fn main() -> Result<(), String> {
-    Err("This acceptance helper requires Linux".into())
+    use plervo_suite_core::{catalog::SUITE, version};
+    use plervo_suite_native::detect;
+    use std::path::PathBuf;
+
+    if std::env::var("PLERVO_ACCEPTANCE").as_deref() != Ok("1") {
+        return Err("Only for explicit bundle acceptance (PLERVO_ACCEPTANCE=1).".into());
+    }
+    let product = std::env::args().nth(1).ok_or("Expected product ID")?;
+    let id = format!("plervo-{product}");
+    let app = SUITE.iter().find(|app| app.id == id).ok_or("Unknown product")?;
+    let bundle = PathBuf::from(std::env::args_os().nth(2).ok_or("Expected candidate bundle")?);
+    let found = detect::macos::read_bundle(app, &bundle).ok_or("Suite did not recognize the candidate bundle")?;
+    let expected = version::parse(env!("CARGO_PKG_VERSION")).ok_or("Invalid source version")?;
+    if found.version.as_ref() != Some(&expected) {
+        return Err(format!("Suite detected {:?}, expected {expected:?}", found.version));
+    }
+    println!("{}: Suite recognized the bundle and exact release version {}.", app.name, env!("CARGO_PKG_VERSION"));
+    Ok(())
+}
+
+#[cfg(not(any(target_os = "linux", target_os = "macos")))]
+fn main() -> Result<(), String> {
+    Err("This acceptance helper requires Linux or macOS".into())
 }

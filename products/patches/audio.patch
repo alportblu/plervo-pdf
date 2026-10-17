@@ -3295,7 +3295,7 @@ index 0000000..2a99601
 +  fi
 +done
 diff --git a/packaging/macos/Info.plist.in b/packaging/macos/Info.plist.in
-index 1b23ea7..09b2670 100644
+index 1b23ea7..e5d0c47 100644
 --- a/packaging/macos/Info.plist.in
 +++ b/packaging/macos/Info.plist.in
 @@ -7,13 +7,13 @@
@@ -3321,10 +3321,10 @@ index 1b23ea7..09b2670 100644
    <key>CFBundleVersion</key>
    <string>@SHORT_VERSION@</string>
 -  <key>SoundCraftVersion</key>
-+  <key>Plervo AudioVersion</key>
++  <key>PlervoAudioVersion</key>
    <string>@VERSION@</string>
 -  <key>SoundCraftBuildCommit</key>
-+  <key>Plervo AudioBuildCommit</key>
++  <key>PlervoAudioBuildCommit</key>
    <string>@BUILD_SHA@</string>
    <key>CFBundleIconFile</key>
 -  <string>SoundCraft</string>

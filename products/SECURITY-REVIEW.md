@@ -123,6 +123,12 @@ reproduced the old signature failure; the corrected image and a normal copied ap
 both passed strict verification. No metadata was stripped to conceal a bad package.
 These ad-hoc packaging checks do not qualify the final Developer ID artifacts.
 
+All twelve Mac bundle templates now use the canonical space-free full-version and
+build-commit keys. The actual Suite detector rejected the old templates' numeric-only
+version as different from the alpha release, then recognized all twelve corrected
+templates. The candidate workflow also runs that detector against each mounted bundle;
+synthetic metadata checks alone do not qualify a signed package or installation.
+
 The Windows installed-app check now waits for the exact GUI process and reads its
 exit code through [`Start-Process -Wait -PassThru`](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/start-process).
 It records both output streams and verifies the source version instead of relying

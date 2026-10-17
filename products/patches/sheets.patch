@@ -3415,7 +3415,7 @@ index 0000000..2a99601
 +  fi
 +done
 diff --git a/packaging/macos/Info.plist.in b/packaging/macos/Info.plist.in
-index 4ed6d97..b3cb899 100644
+index 4ed6d97..c8067c8 100644
 --- a/packaging/macos/Info.plist.in
 +++ b/packaging/macos/Info.plist.in
 @@ -7,13 +7,13 @@
@@ -3441,10 +3441,10 @@ index 4ed6d97..b3cb899 100644
    <key>CFBundleVersion</key>
    <string>@SHORT_VERSION@</string>
 -  <key>GridCraftVersion</key>
-+  <key>Plervo SheetsVersion</key>
++  <key>PlervoSheetsVersion</key>
    <string>@VERSION@</string>
 -  <key>GridCraftBuildCommit</key>
-+  <key>Plervo SheetsBuildCommit</key>
++  <key>PlervoSheetsBuildCommit</key>
    <string>@BUILD_SHA@</string>
    <key>CFBundleIconFile</key>
 -  <string>GridCraft</string>

@@ -5094,7 +5094,7 @@ index 0000000..2a99601
 +  fi
 +done
 diff --git a/packaging/macos/Info.plist.in b/packaging/macos/Info.plist.in
-index bbcec20..a58699e 100644
+index bbcec20..5cc53e2 100644
 --- a/packaging/macos/Info.plist.in
 +++ b/packaging/macos/Info.plist.in
 @@ -7,13 +7,13 @@
@@ -5120,10 +5120,10 @@ index bbcec20..a58699e 100644
    <key>CFBundleVersion</key>
    <string>@SHORT_VERSION@</string>
 -  <key>FigCraftVersion</key>
-+  <key>Plervo CanvasVersion</key>
++  <key>PlervoCanvasVersion</key>
    <string>@VERSION@</string>
 -  <key>FigCraftBuildCommit</key>
-+  <key>Plervo CanvasBuildCommit</key>
++  <key>PlervoCanvasBuildCommit</key>
    <string>@BUILD_SHA@</string>
    <key>CFBundleIconFile</key>
 -  <string>FigCraft</string>

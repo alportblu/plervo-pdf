@@ -8216,7 +8216,7 @@ index 0000000..2a99601
 +  fi
 +done
 diff --git a/packaging/macos/Info.plist.in b/packaging/macos/Info.plist.in
-index 115be36..dd766ac 100644
+index 115be36..fee7575 100644
 --- a/packaging/macos/Info.plist.in
 +++ b/packaging/macos/Info.plist.in
 @@ -7,13 +7,13 @@
@@ -8242,10 +8242,10 @@ index 115be36..dd766ac 100644
    <key>CFBundleVersion</key>
    <string>@SHORT_VERSION@</string>
 -  <key>FilmCraftVersion</key>
-+  <key>Plervo VideoVersion</key>
++  <key>PlervoVideoVersion</key>
    <string>@VERSION@</string>
 -  <key>FilmCraftBuildCommit</key>
-+  <key>Plervo VideoBuildCommit</key>
++  <key>PlervoVideoBuildCommit</key>
    <string>@BUILD_SHA@</string>
    <key>CFBundleIconFile</key>
 -  <string>FilmCraft</string>

@@ -4349,7 +4349,7 @@ index 0000000..2a99601
 +  fi
 +done
 diff --git a/packaging/macos/Info.plist.in b/packaging/macos/Info.plist.in
-index 22afe13..094afdc 100644
+index 22afe13..c7a98c4 100644
 --- a/packaging/macos/Info.plist.in
 +++ b/packaging/macos/Info.plist.in
 @@ -7,13 +7,13 @@
@@ -4375,10 +4375,10 @@ index 22afe13..094afdc 100644
    <key>CFBundleVersion</key>
    <string>@SHORT_VERSION@</string>
 -  <key>DeckCraftVersion</key>
-+  <key>Plervo SlidesVersion</key>
++  <key>PlervoSlidesVersion</key>
    <string>@VERSION@</string>
 -  <key>DeckCraftBuildCommit</key>
-+  <key>Plervo SlidesBuildCommit</key>
++  <key>PlervoSlidesBuildCommit</key>
    <string>@BUILD_SHA@</string>
    <key>CFBundleIconFile</key>
 -  <string>DeckCraft</string>

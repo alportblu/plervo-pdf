@@ -4417,7 +4417,7 @@ index 0000000..2a99601
 +  fi
 +done
 diff --git a/packaging/macos/Info.plist.in b/packaging/macos/Info.plist.in
-index 4348942..70b58a4 100644
+index 4348942..9fad4da 100644
 --- a/packaging/macos/Info.plist.in
 +++ b/packaging/macos/Info.plist.in
 @@ -7,13 +7,13 @@
@@ -4443,10 +4443,10 @@ index 4348942..70b58a4 100644
    <key>CFBundleVersion</key>
    <string>@SHORT_VERSION@</string>
 -  <key>DesignCraftVersion</key>
-+  <key>Plervo PublishVersion</key>
++  <key>PlervoPublishVersion</key>
    <string>@VERSION@</string>
 -  <key>DesignCraftBuildCommit</key>
-+  <key>Plervo PublishBuildCommit</key>
++  <key>PlervoPublishBuildCommit</key>
    <string>@BUILD_SHA@</string>
    <key>CFBundleIconFile</key>
 -  <string>DesignCraft</string>

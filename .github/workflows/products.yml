@@ -305,6 +305,9 @@ jobs:
           trap - EXIT
           codesign --verify --deep --strict "$bundle"
           [ "$(plutil -extract CFBundleIdentifier raw -o - "$bundle/Contents/Info.plist")" = "com.plervo.$PRODUCT" ]
+          (cd "$GITHUB_WORKSPACE" && cargo build --locked -p plervo-suite-native --example product_acceptance)
+          PLERVO_ACCEPTANCE=1 "$GITHUB_WORKSPACE/target/debug/examples/product_acceptance" "$PRODUCT" "$bundle" \
+            | tee dist/validation/suite-bundle-identity.txt
           "$bundle/Contents/MacOS/$app_name" --version
           ditto -x -k "${archives[0]}" "$work/cli"
           cli=("$work"/cli/*/plervo-"$PRODUCT"-cli)
