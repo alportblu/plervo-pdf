@@ -861,8 +861,7 @@ pub mod macos {
         Ok(user)
     }
 
-    /// The Apple Developer team that signs every Craft App and Plervo Suite (Learning
-    /// Machines LLC): the macOS side of the Windows publisher check.
+    /// The Apple Developer team that signs the Plervo apps (Maintech Solutions LLC).
     pub const TEAM_ID: &str = "52527829PM";
 
     /// What a new copy must prove before it replaces anything. The checksum shows the download is

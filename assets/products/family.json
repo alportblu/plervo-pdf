@@ -1,0 +1,86 @@
+[
+  {
+    "id": "suite",
+    "name": "Plervo Suite",
+    "color": "#CDF570",
+    "description": "Your apps. One place."
+  },
+  {
+    "id": "pdf",
+    "name": "Plervo PDF",
+    "color": "#CDF570",
+    "description": "Documents"
+  },
+  {
+    "id": "photo",
+    "name": "Plervo Photo",
+    "color": "#85D6CF",
+    "description": "Image editing"
+  },
+  {
+    "id": "vector",
+    "name": "Plervo Vector",
+    "color": "#F4B787",
+    "description": "Vector illustration"
+  },
+  {
+    "id": "video",
+    "name": "Plervo Video",
+    "color": "#B3ABEF",
+    "description": "Video editing"
+  },
+  {
+    "id": "develop",
+    "name": "Plervo Develop",
+    "color": "#F1D393",
+    "description": "RAW photography"
+  },
+  {
+    "id": "motion",
+    "name": "Plervo Motion",
+    "color": "#E4A5CE",
+    "description": "Motion and effects"
+  },
+  {
+    "id": "publish",
+    "name": "Plervo Publish",
+    "color": "#C4C99F",
+    "description": "Page layout"
+  },
+  {
+    "id": "write",
+    "name": "Plervo Write",
+    "color": "#9CBFE8",
+    "description": "Writing"
+  },
+  {
+    "id": "slides",
+    "name": "Plervo Slides",
+    "color": "#EDA990",
+    "description": "Presentations"
+  },
+  {
+    "id": "sheets",
+    "name": "Plervo Sheets",
+    "color": "#9DD4AC",
+    "description": "Spreadsheets"
+  },
+  {
+    "id": "cad",
+    "name": "Plervo CAD",
+    "color": "#96C6D5",
+    "description": "Technical drawing"
+  },
+  {
+    "id": "audio",
+    "name": "Plervo Audio",
+    "color": "#DBA9B0",
+    "description": "Audio editing"
+  },
+  {
+    "id": "canvas",
+    "name": "Plervo Canvas",
+    "color": "#C7B7DF",
+    "description": "Interface design"
+  }
+]

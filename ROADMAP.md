@@ -1,3 +1,15 @@
+Plervo update — 2026-10-16: the development Suite can manage each of the 13 canonical apps.
+The additional 12 remain internal candidates while product/platform acceptance runs.
+Local management tests (103) passed. Per-product dependency policy, bounded/authenticated
+Slides control and disabled unreviewed public UI-control transports are in validation.
+See [candidate review](products/SECURITY-REVIEW.md); this does not change upstream parity estimates.
+
+2026-10-17 follow-up: representative debug CLI acceptance covers all twelve new products.
+Native CI exposed recovery, input, font fallback and packaging defects; scoped fixes passed
+locally and all twelve source overlays reproduced byte-for-byte. The candidate workflow now
+checks actual release CLI output and real Suite Linux archive installation. Final native
+acceptance and signing remain pending; no additional public release is qualified yet.
+
 Plervo update — 2026-10-15 (M14): Suite-first distribution is under validation. New native Suite manages installation/open/update/removal of Plervo PDF from the personal release repository, with hash, Maintech signature, notarization and rollback checks. Suite UI follows the OS by default (English/Portuguese/Spanish); PDF Auto now prioritizes the display language on macOS/Windows. Public Windows/Linux management remains gated; Suite self-updates are manual. This does not increase upstream Acrobat parity. See [Suite provenance](docs/suite-provenance.md).
 
 ## Plervo fork — 2026-10-14
@@ -156,6 +168,8 @@ Ranked; detail and the full milestone table in [docs/roadmap.md](docs/roadmap.md
 | 8 | 1.0 polish: performance, right-to-left, missing languages, keyboard-only (M14) | 55–95 |
 
 ## Progress log
+
+- **2026-10-17 (Plervo app family):** Corrected Publish Windows recovery identity checks, Write focus and bounded format probing, Video independent selection/Delete, Slides bounded font fallback, Audio hardened plugin loading and remaining DMG builders. Targeted regressions, strict Clippy, source/asset gates, Slides WASM and twelve clean overlay reproductions passed locally. The final native matrix must confirm release CLIs, installed packages and Suite-managed archives; no new public assets or publisher-signing claim.
 
 - **2026-10-15 (Plervo, M14 Suite helper reliability):** Linux testing exposed a failed version probe. A deterministic Linux test reproduced `ExecutableFileBusy` while a writer remains open; the process runner now retries only that pre-execution refusal within the original deadline. The regression failed before the fix and passed afterwards, with a second test confirming refusal of a permanently busy executable. Native Mac PDF alpha.2 opened with Auto language and English controls on an English system, using a synthetic document.
 - **2026-10-14 (Plervo, M14 Windows refusal timing):** Windows CI reproduced a test reading the GoToR non-file refusal before its worker completed. Added the existing bounded state wait, preserving the error-message and no-new-tab assertions. Production sources are unchanged. Final signed Mac PDFs also passed independent Poppler/pypdf readback and OpenSSL signature/tamper checks; font coverage identifies Telugu/Chinese gaps without system fallback.

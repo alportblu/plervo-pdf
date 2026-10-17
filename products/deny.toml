@@ -1,0 +1,198 @@
+# Policy for the additional Plervo candidates. Known vulnerabilities remain release blockers.
+# Permissive code by default; reviewed, unmodified MPL dependencies have exact-version exceptions.
+# Their source links and original licence texts ship in each affected product's NOTICE.
+# Copyleft (GPL, AGPL, LGPL) is never linked; such tools run only as external oracle processes.
+
+[graph]
+all-features = true
+
+[licenses]
+confidence-threshold = 0.9
+allow = [
+    "MIT",
+    "MIT-0",
+    "Apache-2.0",
+    "Apache-2.0 WITH LLVM-exception",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "ISC",
+    "Zlib",
+    "Unicode-3.0",
+    "BSL-1.0",
+    "CC0-1.0",
+]
+
+[licenses.private]
+ignore = true
+
+[bans]
+multiple-versions = "allow"
+wildcards = "deny"
+allow-wildcard-paths = true
+
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"
+# Shared UI components and spooler; Cargo.toml pins the immutable revision. craft-print pins
+# storytold's winprint fork (Windows printing, #1107) to an immutable revision of its own.
+allow-git = ["https://github.com/storytold/craft-libs", "https://github.com/storytold/winprint.rs",
+    "https://github.com/storytold/filmcraft", # Motion codecs: 2c5ba7a72619935f0481f99d59409e0d1844b234
+    "https://github.com/storytold/pdfcraft", # Publish PDF import: b5467d93a0ffaa5e5e6658bccdf8655a3ba689c9
+    "https://github.com/skylartaylor/winit.git", # Publish window backend: 3d51077fd1a966f84df9ef287839dc84fd5b4ca7
+]
+
+[advisories]
+yanked = "warn"
+ignore = [
+    # Reviewed 2026-10-16: token-pasting procedural macro of rav1e/pulp/faer/candle.
+    # It executes on trusted source at build time, is absent from shipped runtime code,
+    # and this advisory reports maintenance status, not a known vulnerability.
+    { id = "RUSTSEC-2024-0436", reason = "compile-time-only paste macro; pinned source, no runtime parsing; replace through upstream updates" },
+    # proc-macro-error is unmaintained (no vulnerability). It reaches the tree as a proc macro of
+    # winprint's fmt-derive (craft-print's Windows spooler), so it runs at compile time on Windows
+    # and is not in the binary.
+    { id = "RUSTSEC-2024-0370", reason = "compile-time proc macro of winprint's fmt-derive (craft-print Windows printing, #1107)" },
+]
+
+# egui's default UI fonts (Ubuntu-Light, Hack, emoji-icon-font): font licences on the AGENTS.md
+# §1.2 allowlist, attributed in ATTRIBUTION.toml as dependency-bundled assets.
+[[licenses.exceptions]]
+crate = "epaint_default_fonts"
+allow = ["OFL-1.1", "Ubuntu-font-1.0"]
+
+# winprint (craft-print's Windows spooler, #1107) lists reqwest as a build-dependency for its
+# PDFium download, which only runs with its `pdfium` feature; craft-print turns that off. The CA
+# bundle reqwest brings is CDLA-Permissive-2.0 data and is compiled into winprint's build script
+# only, never into PdfCraft. Remove when winprint makes those build-dependencies optional.
+[[licenses.exceptions]]
+crate = "webpki-root-certs"
+allow = ["CDLA-Permissive-2.0"]
+
+# JPEG codec and fuzz-test tooling: both additional terms are permissive.
+[[licenses.exceptions]]
+crate = "jpeg-encoder"
+allow = ["IJG"]
+
+[[licenses.exceptions]]
+crate = "libfuzzer-sys"
+allow = ["NCSA"]
+
+# Unmodified dependency, reviewed 2026-10-16; source and terms in the product NOTICE.
+[[licenses.exceptions]]
+name = "symphonia"
+version = "=0.5.5"
+allow = ["MPL-2.0"]
+
+# Unmodified dependency, reviewed 2026-10-16; source and terms in the product NOTICE.
+[[licenses.exceptions]]
+name = "symphonia-bundle-flac"
+version = "=0.5.5"
+allow = ["MPL-2.0"]
+
+# Unmodified dependency, reviewed 2026-10-16; source and terms in the product NOTICE.
+[[licenses.exceptions]]
+name = "symphonia-bundle-mp3"
+version = "=0.5.5"
+allow = ["MPL-2.0"]
+
+# Unmodified dependency, reviewed 2026-10-16; source and terms in the product NOTICE.
+[[licenses.exceptions]]
+name = "symphonia-codec-aac"
+version = "=0.5.5"
+allow = ["MPL-2.0"]
+
+# Unmodified dependency, reviewed 2026-10-16; source and terms in the product NOTICE.
+[[licenses.exceptions]]
+name = "symphonia-codec-adpcm"
+version = "=0.5.5"
+allow = ["MPL-2.0"]
+
+# Unmodified dependency, reviewed 2026-10-16; source and terms in the product NOTICE.
+[[licenses.exceptions]]
+name = "symphonia-codec-alac"
+version = "=0.5.5"
+allow = ["MPL-2.0"]
+
+# Unmodified dependency, reviewed 2026-10-16; source and terms in the product NOTICE.
+[[licenses.exceptions]]
+name = "symphonia-codec-pcm"
+version = "=0.5.5"
+allow = ["MPL-2.0"]
+
+# Unmodified dependency, reviewed 2026-10-16; source and terms in the product NOTICE.
+[[licenses.exceptions]]
+name = "symphonia-codec-vorbis"
+version = "=0.5.5"
+allow = ["MPL-2.0"]
+
+# Unmodified dependency, reviewed 2026-10-16; source and terms in the product NOTICE.
+[[licenses.exceptions]]
+name = "symphonia-core"
+version = "=0.5.5"
+allow = ["MPL-2.0"]
+
+# Unmodified dependency, reviewed 2026-10-16; source and terms in the product NOTICE.
+[[licenses.exceptions]]
+name = "symphonia-format-caf"
+version = "=0.5.5"
+allow = ["MPL-2.0"]
+
+# Unmodified dependency, reviewed 2026-10-16; source and terms in the product NOTICE.
+[[licenses.exceptions]]
+name = "symphonia-format-isomp4"
+version = "=0.5.5"
+allow = ["MPL-2.0"]
+
+# Unmodified dependency, reviewed 2026-10-16; source and terms in the product NOTICE.
+[[licenses.exceptions]]
+name = "symphonia-format-mkv"
+version = "=0.5.5"
+allow = ["MPL-2.0"]
+
+# Unmodified dependency, reviewed 2026-10-16; source and terms in the product NOTICE.
+[[licenses.exceptions]]
+name = "symphonia-format-ogg"
+version = "=0.5.5"
+allow = ["MPL-2.0"]
+
+# Unmodified dependency, reviewed 2026-10-16; source and terms in the product NOTICE.
+[[licenses.exceptions]]
+name = "symphonia-format-riff"
+version = "=0.5.5"
+allow = ["MPL-2.0"]
+
+# Unmodified dependency, reviewed 2026-10-16; source and terms in the product NOTICE.
+[[licenses.exceptions]]
+name = "symphonia-metadata"
+version = "=0.5.5"
+allow = ["MPL-2.0"]
+
+# Unmodified dependency, reviewed 2026-10-16; source and terms in the product NOTICE.
+[[licenses.exceptions]]
+name = "symphonia-utils-xiph"
+version = "=0.5.5"
+allow = ["MPL-2.0"]
+
+# Unmodified dependency, reviewed 2026-10-16; source and terms in the product NOTICE.
+[[licenses.exceptions]]
+name = "acadrust"
+version = "=0.6.4"
+allow = ["MPL-2.0"]
+
+# Unmodified dependency, reviewed 2026-10-16; source and terms in the product NOTICE.
+[[licenses.exceptions]]
+name = "imbl"
+version = "=7.0.2"
+allow = ["MPL-2.0"]
+
+# Unmodified dependency, reviewed 2026-10-16; source and terms in the product NOTICE.
+[[licenses.exceptions]]
+name = "imbl-sized-chunks"
+version = "=0.2.0"
+allow = ["MPL-2.0"]
+
+# Unmodified dependency, reviewed 2026-10-16; source and terms in the product NOTICE.
+[[licenses.exceptions]]
+name = "webpki-roots"
+version = "=1.0.9"
+allow = ["CDLA-Permissive-2.0"]

@@ -1,6 +1,6 @@
 # Plervo Suite implementation and provenance
 
-Status: experimental alpha implementation. Publication and artifact status are recorded in the [release notes](https://github.com/alportblu/plervo-pdf/releases). Updated 2026-10-15.
+Status: experimental alpha implementation. Publication and artifact status are recorded in the [release notes](https://github.com/alportblu/plervo-pdf/releases). Updated 2026-10-16.
 
 The install engine is adapted from the MIT/Apache-2.0 source of [storytold/craft-launcher](https://github.com/storytold/craft-launcher/tree/0f295d4b9c90d15c2e38e36c322bdbc0fa943a54), version 0.4.1, commit 0f295d4b9c90d15c2e38e36c322bdbc0fa943a54. Original authors retain their copyright. The root MIT and Apache licences apply to these derived modules. No upstream trademark icon or screenshot is bundled. The upstream product names appear only in preserved synthetic regression fixtures and attribution.
 
@@ -9,16 +9,16 @@ The installed universal launcher was inspected read-only with REA: SHA-256 3b18b
 ## Scope and intentional changes
 
 - Original Plervo native UI, with English, Portuguese and Spanish. Auto is the default and resolves the operating system's preferred UI languages. User overrides persist separately from the PDF preferences.
-- Only Plervo PDF is in the shipped catalogue; identifiers and credentials never target an upstream app or an organization account. The Suite and PDF can coexist with ArtCraft/PdfCraft.
+- The development catalogue has thirteen separate Plervo identities. Selecting an app resets the previous release/install state, and installation becomes available only when a matching public package exists for the current platform. The published alpha.2/alpha.3 Suite still manages PDF only. Identifiers and credentials never target an upstream app or an organization account; upstream installations can coexist.
 - No ArtCraft catalogue, screenshots service, telemetry, login item, tray daemon, required GitHub credentials, control listener or background updater. Public release checks use the personal alportblu/plervo-pdf repository. Optional donation opens buymeacoffee.com/alport only after a click.
 - Reuse of platform selection, bounded HTTP transfer, SHA-256 verification, retries, atomic replacement/rollback and native installer code. Mac ARM64 uses the qualified signed/notarized packages. Linux x86_64 has a separate per-user payload installer: bounded link-free extraction, verified ELF architecture, binary hash receipts and one atomic directory replacement. Windows remains unavailable until signing and native acceptance are complete.
 - Mac installations require the expected bundle identifier/version, Maintech team 52527829PM, strict signature validation and Gatekeeper assessment before replacement. Full pre-release versions must match exactly. A failed move to Trash leaves the app installed, never permanently deletes it. Staging uses a unique temporary directory; occupied unrecognized destinations are preserved. Existing installations are revalidated before launch/removal/update; removal moves only the app to Trash and leaves documents/preferences intact.
-- No self-update replacement yet: the Suite manages PDF updates, while a new Suite version is obtained from the official site. This limitation is explicit in release notes.
-- `plervo-suite --check`, `--status`, `--install-pdf`, `--open-pdf`, `--uninstall-pdf` exercise the same engine as the GUI. Mutating commands and the GUI use an OS file lock. Never pass arbitrary source URLs or destinations.
+- No self-update replacement yet: the Suite manages qualified product updates, while a new Suite version is obtained from the official site. This limitation is explicit in release notes.
+- `plervo-suite --check [PRODUCT]`, `--status [PRODUCT]`, `--install PRODUCT`, `--open PRODUCT`, and `--uninstall PRODUCT` exercise the same engine as the GUI. PDF-only legacy flags remain compatible. Product IDs must match the compiled catalogue; URLs, arbitrary metadata and path-like IDs are rejected. Mutating commands and the GUI use an OS file lock. Never pass arbitrary source URLs or destinations.
 
 ## Validation
 
-Core/native unit tests preserve upstream security cases: corrupt/resumed downloads, cancellation, rollback, signatures and version mismatch. Plervo adds catalogue confinement, missing/invalid checksums, limits and path checks. GUI tests check all three languages and cancellation of uninstall. The screenshot example renders the actual UI without global keyboard/mouse input.
+Core/native unit tests preserve upstream security cases: corrupt/resumed downloads, cancellation, rollback, signatures and version mismatch. Plervo adds catalogue confinement, missing/invalid checksums, limits and path checks. Family regressions reject cross-product releases and altered repository/bundle metadata; separate Linux install receipts permit PDF/Photo coexistence and removal of only the selected app. GUI tests check all three languages and cancellation of uninstall. The screenshot example renders the actual UI without global keyboard/mouse input.
 
 Linux helper execution retries only `ExecutableFileBusy` before a program starts, within the original timeout. A deterministic Linux regression holds a write handle briefly, then releases it; this failed before the fix. A permanently busy executable remains refused. Permissions failures and failures after a helper starts are not retried.
 
