@@ -143,7 +143,7 @@ an unprivileged GUI first launch and screenshot after package installation; the
 new native packages and visual reviews remain required before publication.
 
 The private AMD64-on-Apple-Silicon probes open the corrected packages, but Publish,
-Slides, Sheets, Develop and Write show corrupted text under the emulated renderer.
+Slides, Sheets, Develop, Write and Audio show corrupted text under the emulated renderer.
 Publish's document raster export also differs from the readable native Linux CI
 output. The private package has stripped binaries, so that comparison does not yet
 isolate packaging from CPU emulation. No font or graphics workaround is accepted
@@ -170,6 +170,16 @@ an overly narrow comparison: Photo and Write append parenthesized build details.
 The check now matches the exact product and full version token with that optional
 suffix, preserving the original output in the report. Native Windows confirmation
 is still required; earlier installer failures remain in the evidence.
+
+Vector's Windows portable package failed when its dependency `licenses` directory
+collided with supplemental `Licenses` notices on the case-insensitive filesystem.
+The packager now copies the dependency tree first and adds supplemental files into
+that existing directory. Executing the actual packaging blocks in portable
+PowerShell on a case-insensitive Mac volume reproduced the old failure; the fixed
+ZIP preserved all 42 expected payload files byte-for-byte. Synthetic executables
+were used for that scoped check; native Windows MSI/ZIP acceptance remains required.
+The installed-version expression also passed 15 actual PowerShell cases, including
+rejection of a different product, alpha version and trailing unrecognized text.
 
 Video's individual-selection command now honors the existing UI flag that suppresses
 linked audio selection. Deleting the current selection preserves deliberately

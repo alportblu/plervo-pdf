@@ -242,7 +242,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.vectorcraft.png"
     ],
     "fonts_commit": "3d9ab3a132ed0eff457e424226a435a901da30d3",
-    "patch_sha256": "9ed3a9ef572be4fe5cb13ef867749e9ff88f416cb28387148b90b9a18cd28350"
+    "patch_sha256": "427012cd2fb915c8af402195b3f4196c734382af55344b48596eaf5d2db79473"
   },
   {
     "app": "filmcraft",

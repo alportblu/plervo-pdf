@@ -10890,7 +10890,7 @@ index ea6ce8a..28e61de 100755
  rm -rf "$WORK"
  mkdir -p "$WORK/$NAME"
 diff --git a/packaging/windows/package.ps1 b/packaging/windows/package.ps1
-index 3e97b12..5ddac80 100644
+index 3e97b12..5e488bc 100644
 --- a/packaging/windows/package.ps1
 +++ b/packaging/windows/package.ps1
 @@ -1,11 +1,11 @@
@@ -10994,7 +10994,7 @@ index 3e97b12..5ddac80 100644
      -d "DocsDir=$Docs" -d "BannerBmp=$Banner" -d "DialogBmp=$Dialog" `
      -o $Msi
  }
-@@ -160,15 +177,16 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
+@@ -160,15 +177,20 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
  & (Join-Path $PSScriptRoot 'sign.ps1') $Msi
  
  # ---- portable zip ------------------------------------------------------------------------------
@@ -11003,10 +11003,14 @@ index 3e97b12..5ddac80 100644
  Remove-Item -Recurse -Force $Portable -ErrorAction SilentlyContinue
  New-Item -ItemType Directory -Force -Path $Portable | Out-Null
  Copy-Item (Join-Path $Stage '*.exe') $Portable
-+Copy-Item $Legal (Join-Path $Portable 'Licenses') -Recurse
  Copy-Item -Recurse (Join-Path $Docs '*') $Portable
 -# portable.txt beside vectorcraft.exe switches on portable mode: settings, libraries, recovery
 -# files and logs go to VectorCraftData\ next to the exe instead of %APPDATA% (#1366; see profile.rs).
++# Docs already contains the dependency licences. Windows treats licenses and
++# Licenses as the same directory, so add the supplemental files to that directory.
++$PortableLegal = Join-Path $Portable 'licenses'
++New-Item -ItemType Directory -Force -Path $PortableLegal | Out-Null
++Copy-Item (Join-Path $Legal '*') $PortableLegal
 +# portable.txt beside plervo-vector.exe switches on portable mode: settings, libraries, recovery
 +# files and logs go to Plervo VectorData\ next to the exe instead of %APPDATA% (#1366; see profile.rs).
  Copy-Item (Join-Path $PSScriptRoot 'portable.txt') $Portable
@@ -11015,7 +11019,7 @@ index 3e97b12..5ddac80 100644
  Remove-Item -Force $Zip -ErrorAction SilentlyContinue
  Compress-Archive -Path $Portable -DestinationPath $Zip
  
-@@ -176,8 +194,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
+@@ -176,8 +198,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
  # here; .github/workflows/windows-arm64.yml installs and runs it on ARM64 instead.
  $HostArch = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString().ToLowerInvariant()
  if ($Arch -ne 'arm64' -or $HostArch -eq 'arm64') {
