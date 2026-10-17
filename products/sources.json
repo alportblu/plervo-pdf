@@ -375,7 +375,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.filmcraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "ba83afa87ae4127e55fe01a47edc30ac874da2047e8b8db409c9642d8b0781b8"
+    "patch_sha256": "e3f122cf2f166f97ca2bb58bdc9067aaa08d5712a96f1e20e852c53aae00baed"
   },
   {
     "app": "lightcraft",
@@ -504,7 +504,7 @@
       "packaging/macos/dmg/generate.py"
     ],
     "fonts_commit": "8dcdacd5153e64560d109541a47d806f26f048c0",
-    "patch_sha256": "accbe0b441ccc21ee87e0f03bf8c1b654698f9c300814e768b84528f1cdf8821"
+    "patch_sha256": "1d9590487bf3afbf336e7d616326eb1ad131908a1694fa59c3da6529ef13a6b7"
   },
   {
     "app": "effectcraft",
@@ -1352,7 +1352,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.soundcraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "dd89ffa8322a87bd82ce3b2bf66469fe78fda4ff4c9658784427622e49a85f13"
+    "patch_sha256": "cfb06a710658fa431bf4b4f39e97d26bff22a6b09527320610b8ba684c6c0237"
   },
   {
     "app": "figcraft",
@@ -1496,6 +1496,6 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.figcraft.png"
     ],
     "fonts_commit": "43913056ce82a3fdad0ef69f6b88d1dc922a8104",
-    "patch_sha256": "79799b9ad3b34115a66be8df988fe5b05a8549ffc0ad015cb3f17f06237e029b"
+    "patch_sha256": "1db9a5a912b9ec25a01df8f9cdc8167027db54addf8f7303935a6d98a7c08f42"
   }
 ]

@@ -200,6 +200,7 @@ jobs:
           if [ "$PRODUCT" = photo ]; then features=(--features heif); fi
           cargo build --release --locked -p "plervo-$PRODUCT" -p "plervo-$PRODUCT-cli" "${features[@]}"
       - name: Headless executable checks
+        timeout-minutes: 2
         working-directory: source
         shell: bash
         run: |

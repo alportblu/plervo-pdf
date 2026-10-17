@@ -16,7 +16,9 @@ trap cleanup EXIT
 for attempt in $(seq 1 90); do
   kill -0 "$app" 2>/dev/null || { cat "$out/gui-startup.log"; exit 1; }
   xwininfo -root -tree > "$out/window-tree.txt"
-  if grep -Fq "$title" "$out/window-tree.txt"; then
+  # Document editors can replace the title with the document's name (e.g. Book1).
+  # Their X11 application class remains the canonical product identity.
+  if grep -Fq "\"com.plervo.$PRODUCT\"" "$out/window-tree.txt" || grep -Fq "$title" "$out/window-tree.txt"; then
     sleep 5
     kill -0 "$app"
     if command -v import >/dev/null; then

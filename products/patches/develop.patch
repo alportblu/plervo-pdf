@@ -5907,6 +5907,25 @@ index 10783ff..340bed6 100644
      assert_eq!(p["temporarySession"], false);
  
      // still locked: Try Again keeps the window, with the error
+diff --git a/crates/ui-egui/src/tests_offline.rs b/crates/ui-egui/src/tests_offline.rs
+index e06fe14..64c05a5 100644
+--- a/crates/ui-egui/src/tests_offline.rs
++++ b/crates/ui-egui/src/tests_offline.rs
+@@ -128,6 +128,14 @@ fn offline_originals_never_block_a_frame() {
+ 
+     // the grid: every cell asks for its thumbnail (which asks whether the original is there)
+     h.app.session.execute("library.select", &json!({"ids": [1]})).unwrap();
++    // Wait for the worker to start while its probe remains blocked. Rendering frames
++    // alone need not yield a CPU to it on a busy native test runner.
++    let started = Instant::now();
++    while calls.n.load(Ordering::SeqCst) == 0 && started.elapsed() < Duration::from_secs(20) {
++        frames_while_asleep(&mut h, &nas, 1, "grid startup");
++        std::thread::sleep(Duration::from_millis(1));
++    }
++    assert!(calls.n.load(Ordering::SeqCst) > 0, "the probe was asked");
+     frames_while_asleep(&mut h, &nas, 20, "grid");
+ 
+     // the Info panel of the active photo, in the loupe
 diff --git a/crates/ui-egui/src/tests_open_lightroom.rs b/crates/ui-egui/src/tests_open_lightroom.rs
 index 028801b..8f7632b 100644
 --- a/crates/ui-egui/src/tests_open_lightroom.rs

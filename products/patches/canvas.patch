@@ -1674,6 +1674,32 @@ index e2f0d44..6df6391 100644
  //! `docs/collab-protocol.md`; running it: `docs/server.md`).
  //!
  //! It keeps many files in a data directory ([`store`]), each with share links that let people
+diff --git a/apps/figcraft-server/src/public_tests.rs b/apps/figcraft-server/src/public_tests.rs
+index fea2667..0e44053 100644
+--- a/apps/figcraft-server/src/public_tests.rs
++++ b/apps/figcraft-server/src/public_tests.rs
+@@ -83,7 +83,7 @@ fn anyone_publishes_and_the_owner_token_manages_the_file() {
+     let links = manage(&mut a, json!({"action": "links"})).unwrap();
+     assert_eq!(links["links"].as_array().unwrap().len(), 2);
+     let made = manage(&mut a, json!({"action": "createLink", "access": "view", "label": "Review"})).unwrap();
+-    assert!(made["link"].as_str().unwrap().starts_with("figcraft://join?host="), "{made}");
++    assert!(made["link"].as_str().unwrap().starts_with("plervo-canvas://join?host="), "{made}");
+     let view_id = links["links"].as_array().unwrap().iter().find(|l| l["access"] == "view").unwrap()["id"].as_str().unwrap().to_string();
+     assert_eq!(manage(&mut a, json!({"action": "revoke", "link": view_id})).unwrap()["done"], true);
+     manage(&mut a, json!({"action": "rename", "name": "Poster v2"})).unwrap();
+diff --git a/apps/figcraft-server/src/server_tests.rs b/apps/figcraft-server/src/server_tests.rs
+index 153bb5a..a151b85 100644
+--- a/apps/figcraft-server/src/server_tests.rs
++++ b/apps/figcraft-server/src/server_tests.rs
+@@ -38,7 +38,7 @@ fn publish_then_edit_and_view_together() {
+     let p = a.live().published.clone().unwrap();
+     assert_eq!(a.docs.len(), 1, "the open tab syncs; no new tab");
+     assert_eq!(a.live_summary()["readOnly"], false);
+-    assert!(p.edit.starts_with("figcraft://join?host=127.0.0.1:") && p.view.starts_with("figcraft://join?host=127.0.0.1:"));
++    assert!(p.edit.starts_with("plervo-canvas://join?host=127.0.0.1:") && p.view.starts_with("plervo-canvas://join?host=127.0.0.1:"));
+     assert_ne!(p.edit, p.view);
+     // Bo joins with the edit link, Cy with the view link.
+     let mut b = join(&p.edit, "Bo");
 diff --git a/apps/figcraft-server/src/store.rs b/apps/figcraft-server/src/store.rs
 index e5e56b8..a9dda3f 100644
 --- a/apps/figcraft-server/src/store.rs
@@ -2424,6 +2450,28 @@ index 09c5831..aecde9e 100644
      }
  }
  
+diff --git a/crates/engine/src/live_share_tests.rs b/crates/engine/src/live_share_tests.rs
+index c52e1cc..234c7ae 100644
+--- a/crates/engine/src/live_share_tests.rs
++++ b/crates/engine/src/live_share_tests.rs
+@@ -59,7 +59,7 @@ impl LiveLink for Link {
+         })
+     }
+     fn join(&mut self, session: u64, link: &str, _: &str) -> Result<(), String> {
+-        if !link.starts_with("figcraft://join?") {
++        if !link.starts_with("plervo-canvas://join?") && !link.starts_with("figcraft://join?") {
+             return Err("that's not a live session invite".into());
+         }
+         let mut s = self.0.lock().unwrap();
+@@ -363,7 +363,7 @@ fn sharing_on_the_local_network_shows_a_code_that_carries_the_address() {
+ fn joining_takes_a_code_of_either_kind_or_a_link() {
+     let (mut s, script) = session();
+     ex(&mut s, "pref.publishServer", json!({"url": "wss://share.example/"}));
+-    let asks = "figcraft://join?server=wss://share.example/&code=K7M2QX9TD";
++    let asks = "plervo-canvas://join?server=wss://share.example/&code=K7M2QX9TD";
+     let local = HOST.link();
+     let link = "figcraft://join?host=10.0.0.5:47900&file=abc&token=AbCdEfGhIjKlMnOpQrStUv";
+     let shown = code::grouped(&HOST.code());
 diff --git a/crates/format/Cargo.toml b/crates/format/Cargo.toml
 index 3dca391..e052cf1 100644
 --- a/crates/format/Cargo.toml
@@ -3783,9 +3831,18 @@ index 2e21eb5..a75018c 100644
                  open = false;
              }
 diff --git a/crates/ui-egui/src/dialogs.rs b/crates/ui-egui/src/dialogs.rs
-index 221ee63..1828c4d 100644
+index 221ee63..804ca46 100644
 --- a/crates/ui-egui/src/dialogs.rs
 +++ b/crates/ui-egui/src/dialogs.rs
+@@ -51,7 +51,7 @@ impl AboutTab {
+ }
+ 
+ /// The About window's width, the same on every tab (the Contributors table needs the room).
+-pub const ABOUT_WIDTH: f32 = 640.0;
++pub const ABOUT_WIDTH: f32 = 680.0;
+ 
+ /// The About window's tab row, drawn like the Design / Prototype tabs of the right panel.
+ /// A row of tabs (the About window's, the shortcuts panel's): the current one highlighted.
 @@ -82,20 +82,20 @@ fn about_body(ui: &mut egui::Ui, t: &Tokens) {
          ui.painter().rect_filled(r, CornerRadius::same(10), ACCENT);
          icons::paint(ui.painter(), r.shrink(10.0), Icon::Logo, Color32::WHITE);
@@ -3897,6 +3954,36 @@ index 726f62f..c21728c 100644
              // stroke: a shaft along the bottom, then three half turns, each tighter than the last.
              let mut tail = vec![(13.75, 13.0)];
              tail.extend(arc_pts(7.25, 8.0, 5.0, FRAC_PI_2, 3.0 * FRAC_PI_2));
+diff --git a/crates/ui-egui/src/layers_rename_tests.rs b/crates/ui-egui/src/layers_rename_tests.rs
+index 652522d..00b3f3d 100644
+--- a/crates/ui-egui/src/layers_rename_tests.rs
++++ b/crates/ui-egui/src/layers_rename_tests.rs
+@@ -100,16 +100,21 @@ fn tab_on_the_last_row_commits_and_ends() {
+ 
+ #[test]
+ fn cmd_r_renames_the_selection_and_opens_its_parents() {
+-    // Cmd+R on macOS; Ctrl+R elsewhere, where egui sets both `ctrl` and `command`.
+-    let ctrl = Modifiers { ctrl: true, command: true, ..Default::default() };
+-    for (k, held) in [Modifiers::MAC_CMD | Modifiers::COMMAND, ctrl].into_iter().enumerate() {
++    // Use the current OS's modifier; Ctrl+Cmd is a different shortcut on macOS.
++    // The engine's keymap tests cover both platforms without changing global UI state.
++    let held = if cfg!(target_os = "macos") {
++        Modifiers::MAC_CMD | Modifiers::COMMAND
++    } else {
++        Modifiers { ctrl: true, command: true, ..Default::default() }
++    };
++    for (k, key) in [Key::R, Key::F2].into_iter().enumerate() {
+         let (mut u, _, frame, child, _) = setup();
+         u.app.session.execute("select.set", &json!({"ids": [child]})).unwrap();
+         u.frame(vec![]);
+         // Collapsed again after the selection was revealed.
+         u.app.ui.expanded.clear();
+         u.frame(vec![]);
+-        press(&mut u, Key::R, held);
++        press(&mut u, key, if key == Key::R { held } else { Modifiers::NONE });
+         assert!(u.app.ui.expanded.contains(&frame), "the renamed layer's parent opens ({k})");
+         assert_eq!(renaming(&u), Some(child), "({k})");
+         u.frame(vec![]);
 diff --git a/crates/ui-egui/src/lib.rs b/crates/ui-egui/src/lib.rs
 index 613f18f..cf2c006 100644
 --- a/crates/ui-egui/src/lib.rs
@@ -3987,6 +4074,37 @@ index d745216..f923130 100644
 +        "In the browser you can join sessions the desktop app hosts and files on a Plervo Canvas server. A page opened over https reaches other computers only through wss:// links (a server behind TLS)."
      ));
  }
+diff --git a/crates/ui-egui/src/live_share_tests.rs b/crates/ui-egui/src/live_share_tests.rs
+index 66750ca..d0e1561 100644
+--- a/crates/ui-egui/src/live_share_tests.rs
++++ b/crates/ui-egui/src/live_share_tests.rs
+@@ -395,7 +395,7 @@ fn the_join_field_takes_a_code_or_a_link_and_enter_joins() {
+     type_text(&mut h, " k7m 2qx-9td ");
+     assert_eq!(crate::live::inspect(&h.app)["joinField"], " k7m 2qx-9td ");
+     key(&mut h, Key::Enter);
+-    assert_eq!(script.lock().unwrap().joined, ["figcraft://join?server=wss://share.example/&code=K7M2QX9TD"]);
++    assert_eq!(script.lock().unwrap().joined, ["plervo-canvas://join?server=wss://share.example/&code=K7M2QX9TD"]);
+     assert!(h.app.ui.live.code.is_empty(), "the field is cleared once the join started");
+     let shapes = h.frames(2);
+     assert!(has_text(&shapes, "Joining…") && has_text(&shapes, "Leave session"));
+@@ -431,7 +431,7 @@ fn the_home_screen_joins_with_a_code_and_opens_the_file() {
+     click(&mut h, &shapes, "Code or invite link");
+     type_text(&mut h, "K7M-2QX-9TD");
+     key(&mut h, Key::Enter);
+-    assert_eq!(script.lock().unwrap().joined, ["figcraft://join?server=wss://share.example/&code=K7M2QX9TD"]);
++    assert_eq!(script.lock().unwrap().joined, ["plervo-canvas://join?server=wss://share.example/&code=K7M2QX9TD"]);
+     let shapes = h.frames(2);
+     assert!(has_text(&shapes, "Joining…") && h.app.ui.home);
+     // It failed: the reason shows under the field, and the home screen stays.
+@@ -460,7 +460,7 @@ fn the_join_dialog_is_the_same_field() {
+     type_text(&mut h, "4fh j8r 2wn");
+     key(&mut h, Key::Enter);
+     h.frames(1);
+-    assert_eq!(script.lock().unwrap().joined, ["figcraft://join?server=wss://share.example/&code=4FHJ8R2WN"]);
++    assert_eq!(script.lock().unwrap().joined, ["plervo-canvas://join?server=wss://share.example/&code=4FHJ8R2WN"]);
+     assert!(h.app.ui.live.join.is_none(), "it closes once the join started");
+ }
+ 
 diff --git a/crates/ui-egui/src/plugins_ui.rs b/crates/ui-egui/src/plugins_ui.rs
 index 0d4da40..7278cc8 100644
 --- a/crates/ui-egui/src/plugins_ui.rs
