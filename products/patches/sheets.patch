@@ -73,22 +73,69 @@ index 36678d8..b2a681b 100644
 +
 +| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | 77e7cc78fe8e6b8bc4fde5ce9158e286fdde4f5892a0716511acce251167ca25 |
 diff --git a/Cargo.lock b/Cargo.lock
-index 6d618a0..310f891 100644
+index 6d618a0..70d8032 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -1495,8 +1495,8 @@ dependencies = [
+@@ -200,15 +200,6 @@ version = "1.0.104"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "330a5ed07fa54e4702c9d6c4174f74427fc0ef6e214bbd677ae50a5099946470"
+ 
+-[[package]]
+-name = "arbitrary"
+-version = "1.5.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "3bc62ac97cc33321f50863d514c3bc38a453947a8f9e781137e47c7401020aed"
+-dependencies = [
+- "derive_arbitrary",
+-]
+-
+ [[package]]
+ name = "arboard"
+ version = "3.6.1"
+@@ -822,17 +813,6 @@ version = "1.2.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "f27ae1dd37df86211c42e150270f82743308803d90a6f6e6651cd730d5e1732f"
+ 
+-[[package]]
+-name = "derive_arbitrary"
+-version = "1.5.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "1b034bd7d5f032402a2479444dcc6f74e36a03f31854d41680fb240ef682a1ac"
+-dependencies = [
+- "proc-macro2",
+- "quote",
+- "syn 3.0.6",
+-]
+-
+ [[package]]
+ name = "dify"
+ version = "0.8.0"
+@@ -1494,31 +1474,9 @@ dependencies = [
+  "windows",
  ]
  
- [[package]]
+-[[package]]
 -name = "gridcraft"
 -version = "0.7.0"
-+name = "plervo-sheets"
-+version = "0.1.0-alpha.4"
- dependencies = [
-  "arboard",
-  "craft-print",
-@@ -1518,7 +1518,7 @@ dependencies = [
- 
+-dependencies = [
+- "arboard",
+- "craft-print",
+- "eframe",
+- "egui",
+- "fmv-macos-events",
+- "gridcraft-engine",
+- "gridcraft-ui-egui",
+- "image",
+- "log",
+- "muda",
+- "objc2 0.6.5",
+- "objc2-app-kit 0.3.2",
+- "pollster 1.0.1",
+- "rfd",
+- "serde_json",
+- "winresource",
+-]
+-
  [[package]]
  name = "gridcraft-calc"
 -version = "0.7.0"
@@ -96,7 +143,7 @@ index 6d618a0..310f891 100644
  dependencies = [
   "gridcraft-core",
   "gridcraft-formula",
-@@ -1530,7 +1530,7 @@ dependencies = [
+@@ -1530,7 +1488,7 @@ dependencies = [
  
  [[package]]
  name = "gridcraft-chart"
@@ -105,19 +152,22 @@ index 6d618a0..310f891 100644
  dependencies = [
   "gridcraft-calc",
   "gridcraft-core",
-@@ -1540,8 +1540,8 @@ dependencies = [
+@@ -1539,21 +1497,9 @@ dependencies = [
+  "serde",
  ]
  
- [[package]]
+-[[package]]
 -name = "gridcraft-cli"
 -version = "0.7.0"
-+name = "plervo-sheets-cli"
-+version = "0.1.0-alpha.4"
- dependencies = [
-  "gridcraft-engine",
-  "gridcraft-mcp",
-@@ -1553,7 +1553,7 @@ dependencies = [
- 
+-dependencies = [
+- "gridcraft-engine",
+- "gridcraft-mcp",
+- "log",
+- "quick-xml",
+- "serde_json",
+- "zip",
+-]
+-
  [[package]]
  name = "gridcraft-core"
 -version = "0.7.0"
@@ -125,7 +175,7 @@ index 6d618a0..310f891 100644
  dependencies = [
   "js-sys",
   "serde",
-@@ -1563,7 +1563,7 @@ dependencies = [
+@@ -1563,7 +1509,7 @@ dependencies = [
  
  [[package]]
  name = "gridcraft-engine"
@@ -134,7 +184,7 @@ index 6d618a0..310f891 100644
  dependencies = [
   "gridcraft-calc",
   "gridcraft-chart",
-@@ -1584,7 +1584,7 @@ dependencies = [
+@@ -1584,7 +1530,7 @@ dependencies = [
  
  [[package]]
  name = "gridcraft-formula"
@@ -143,7 +193,7 @@ index 6d618a0..310f891 100644
  dependencies = [
   "gridcraft-core",
   "serde",
-@@ -1593,7 +1593,7 @@ dependencies = [
+@@ -1593,7 +1539,7 @@ dependencies = [
  
  [[package]]
  name = "gridcraft-functions"
@@ -152,7 +202,7 @@ index 6d618a0..310f891 100644
  dependencies = [
   "gridcraft-core",
   "regex",
-@@ -1601,7 +1601,7 @@ dependencies = [
+@@ -1601,7 +1547,7 @@ dependencies = [
  
  [[package]]
  name = "gridcraft-mcp"
@@ -161,7 +211,7 @@ index 6d618a0..310f891 100644
  dependencies = [
   "gridcraft-engine",
   "log",
-@@ -1610,7 +1610,7 @@ dependencies = [
+@@ -1610,7 +1556,7 @@ dependencies = [
  
  [[package]]
  name = "gridcraft-model"
@@ -170,7 +220,7 @@ index 6d618a0..310f891 100644
  dependencies = [
   "gridcraft-core",
   "gridcraft-formula",
-@@ -1622,18 +1622,18 @@ dependencies = [
+@@ -1622,18 +1568,18 @@ dependencies = [
  
  [[package]]
  name = "gridcraft-numfmt"
@@ -192,7 +242,7 @@ index 6d618a0..310f891 100644
  dependencies = [
   "craft-ui",
   "egui",
-@@ -1655,7 +1655,7 @@ dependencies = [
+@@ -1655,7 +1601,7 @@ dependencies = [
  
  [[package]]
  name = "gridcraft-web"
@@ -201,7 +251,7 @@ index 6d618a0..310f891 100644
  dependencies = [
   "eframe",
   "egui",
-@@ -1672,7 +1672,7 @@ dependencies = [
+@@ -1672,7 +1618,7 @@ dependencies = [
  
  [[package]]
  name = "gridcraft-xlsx"
@@ -210,7 +260,80 @@ index 6d618a0..310f891 100644
  dependencies = [
   "aes",
   "gridcraft-core",
-@@ -4526,7 +4526,7 @@ checksum = "e450f9b2ed1dff33c94c12589a87338689467b9c4f5d8a5710bd09a847d2c8a7"
+@@ -2184,6 +2130,18 @@ dependencies = [
+  "jni-sys 0.3.1",
+ ]
+ 
++[[package]]
++name = "nix"
++version = "0.31.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "cf20d2fde8ff38632c426f1165ed7436270b44f199fc55284c38276f9db47c3d"
++dependencies = [
++ "bitflags 2.13.2",
++ "cfg-if",
++ "cfg_aliases",
++ "libc",
++]
++
+ [[package]]
+ name = "nohash-hasher"
+ version = "0.2.0"
+@@ -2748,6 +2706,40 @@ version = "0.2.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "b4596b6d070b27117e987119b4dac604f3c58cfb0b191112e24771b2faeac1a6"
+ 
++[[package]]
++name = "plervo-sheets"
++version = "0.1.0-alpha.4"
++dependencies = [
++ "arboard",
++ "craft-print",
++ "eframe",
++ "egui",
++ "fmv-macos-events",
++ "gridcraft-engine",
++ "gridcraft-ui-egui",
++ "image",
++ "log",
++ "muda",
++ "objc2 0.6.5",
++ "objc2-app-kit 0.3.2",
++ "pollster 1.0.1",
++ "rfd",
++ "serde_json",
++ "winresource",
++]
++
++[[package]]
++name = "plervo-sheets-cli"
++version = "0.1.0-alpha.4"
++dependencies = [
++ "gridcraft-engine",
++ "gridcraft-mcp",
++ "log",
++ "quick-xml",
++ "serde_json",
++ "zip",
++]
++
+ [[package]]
+ name = "png"
+ version = "0.18.1"
+@@ -3579,6 +3571,12 @@ dependencies = [
+  "rustc-hash 2.1.3",
+ ]
+ 
++[[package]]
++name = "typed-path"
++version = "0.12.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "8e28f89b80c87b8fb0cf04ab448d5dd0dd0ade2f8891bae878de66a75a28600e"
++
+ [[package]]
+ name = "typenum"
+ version = "1.20.1"
+@@ -4526,7 +4524,7 @@ checksum = "e450f9b2ed1dff33c94c12589a87338689467b9c4f5d8a5710bd09a847d2c8a7"
  
  [[package]]
  name = "xtask"
@@ -219,8 +342,28 @@ index 6d618a0..310f891 100644
  dependencies = [
   "gridcraft-engine",
   "serde_json",
+@@ -4660,15 +4658,16 @@ dependencies = [
+ 
+ [[package]]
+ name = "zip"
+-version = "3.0.0"
++version = "9.0.4"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "12598812502ed0105f607f941c386f43d441e00148fce9dec3ca5ffb0bde9308"
++checksum = "a954114b47a54df49f83d2722814e86b23d4bb1b54a1b90fb7d92b41619ddc22"
+ dependencies = [
+- "arbitrary",
+  "crc32fast",
+  "flate2",
+  "indexmap",
+  "memchr",
++ "nix",
++ "typed-path",
+  "zopfli",
+ ]
+ 
 diff --git a/Cargo.toml b/Cargo.toml
-index 98dd572..5aedcf1 100644
+index 98dd572..748b6d7 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -232,6 +375,15 @@ index 98dd572..5aedcf1 100644
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.90"
+@@ -33,7 +33,7 @@ log = "0.4"
+ rayon = "1"
+ regex = { version = "1", default-features = false, features = ["std", "unicode", "perf"] }
+ quick-xml = "0.41"
+-zip = { version = "3", default-features = false, features = ["deflate"] }
++zip = { version = "9.0.4", default-features = false, features = ["deflate"] }
+ sha2 = { version = "0.11", default-features = false }
+ # Decrypting password-protected workbooks ([MS-OFFCRYPTO]): AES and SHA-1, pure Rust (wasm-safe).
+ aes = { version = "0.9", default-features = false }
 diff --git a/NOTICE b/NOTICE
 index 1e3668b..d2e50ed 100644
 --- a/NOTICE
@@ -620,7 +772,7 @@ index 21e9580..2d70ad4 100644
  
  [dependencies]
 diff --git a/apps/gridcraft-cli/src/check.rs b/apps/gridcraft-cli/src/check.rs
-index 2b85298..5eb7879 100644
+index 2b85298..b44386c 100644
 --- a/apps/gridcraft-cli/src/check.rs
 +++ b/apps/gridcraft-cli/src/check.rs
 @@ -2,12 +2,12 @@
@@ -727,7 +879,18 @@ index 2b85298..5eb7879 100644
  /// `source` (the file `wb` was read from), reads it back and compares.
  pub fn round_trip(wb: &Workbook, source: &[u8], opts: &Options) -> RoundTrip {
      let bytes = match gridcraft_engine::io::save_bytes(wb, "roundtrip.xlsx") {
-@@ -1231,7 +1231,7 @@ fn print_human(reports: &[FileReport], opts: &Options) {
+@@ -807,7 +807,9 @@ fn resolve_target(source_dir: &str, target: &str) -> String {
+ type Zip<'a> = zip::ZipArchive<Cursor<&'a [u8]>>;
+ 
+ fn zip_names(zip: &mut Zip<'_>) -> Vec<String> {
+-    (0..zip.len().min(MAX_ENTRIES)).filter_map(|i| zip.by_index_raw(i).ok().filter(|f| !f.is_dir()).map(|f| f.name().to_string())).collect()
++    (0..zip.len().min(MAX_ENTRIES))
++        .filter_map(|i| zip.by_index_raw(i).ok().filter(|f| !f.is_dir()).and_then(|f| f.name().ok().map(|name| name.into_owned())))
++        .collect()
+ }
+ 
+ fn read_zip_part(zip: &mut Zip<'_>, name: &str) -> Result<Vec<u8>, String> {
+@@ -1231,7 +1233,7 @@ fn print_human(reports: &[FileReport], opts: &Options) {
      sigs.sort_by(|a, b| b.1.cmp(a.1).then(a.0.cmp(b.0)));
      if !sigs.is_empty() {
          outln!("");
@@ -736,7 +899,7 @@ index 2b85298..5eb7879 100644
          for (sig, n) in sigs.iter().take(opts.max_report.max(1)) {
              outln!("  {n:>8}  {sig}");
          }
-@@ -1310,7 +1310,7 @@ mod tests {
+@@ -1310,7 +1312,7 @@ mod tests {
  
      #[test]
      fn wrong_cached_value_is_a_mismatch_and_ranks_its_function() {
@@ -745,7 +908,7 @@ index 2b85298..5eb7879 100644
          // Excel's 7, so it mismatches too, but only as a downstream effect.
          let wb = book(&[("A1", "2", n(2.0)), ("A2", "4", n(4.0)), ("B1", "=SUM(A1:A2)", n(7.0)), ("C1", "=B1+1", n(8.0))]);
          let r = check(&wb, &Options::default());
-@@ -1389,7 +1389,7 @@ mod tests {
+@@ -1389,7 +1391,7 @@ mod tests {
  
      #[test]
      fn full_calc_on_load_means_no_oracle() {
@@ -754,7 +917,16 @@ index 2b85298..5eb7879 100644
          // `fullCalcOnLoad`, like libraries that store 0 for every formula: B1's wrong "cached"
          // value must not count as a mismatch then.
          let wb = book(&[("A1", "=1+1", Value::Empty), ("B1", "=2+2", n(0.0))]);
-@@ -1552,7 +1552,7 @@ mod tests {
+@@ -1521,7 +1523,7 @@ mod tests {
+         let mut pending: Vec<(&str, &str)> = rels.to_vec();
+         for i in 0..src.len() {
+             let mut f = src.by_index(i).unwrap();
+-            let name = f.name().to_string();
++            let name = f.name().unwrap().into_owned();
+             let mut body = String::new();
+             f.read_to_string(&mut body).unwrap();
+             if let Some(at) = pending.iter().position(|(r, _)| *r == name) {
+@@ -1552,7 +1554,7 @@ mod tests {
  
      #[test]
      fn package_reports_relationship_kinds_the_output_lost() {
@@ -763,7 +935,7 @@ index 2b85298..5eb7879 100644
          // (Excel rebuilds it), so its absence isn't a loss.
          let calc_chain = r#"<Relationship Id="rId91" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/calcChain" Target="calcChain.xml"/>"#;
          let source = with_rels(&plain(), &[(WB_RELS, &format!("{MADE_UP}{calc_chain}"))], &[MADE_UP_PART, ("xl/calcChain.xml", "<calcChain/>")]);
-@@ -1564,7 +1564,7 @@ mod tests {
+@@ -1564,7 +1566,7 @@ mod tests {
  
      #[test]
      fn an_internal_link_written_as_a_relationship_is_not_a_loss() {
@@ -1167,7 +1339,7 @@ index e3b56a8..cc0a9f9 100644
  use std::fs::File;
  use std::io::Write;
 diff --git a/apps/gridcraft/src/main.rs b/apps/gridcraft/src/main.rs
-index 7c0eb04..12c6cf8 100644
+index 7c0eb04..c71714f 100644
 --- a/apps/gridcraft/src/main.rs
 +++ b/apps/gridcraft/src/main.rs
 @@ -1,4 +1,4 @@
@@ -1252,7 +1424,7 @@ index 7c0eb04..12c6cf8 100644
              options,
              Box::new(|cc| {
                  let Some(mut app) = pending.take() else {
-@@ -396,8 +396,8 @@ mod packaging_tests {
+@@ -396,19 +396,19 @@ mod packaging_tests {
          v
      }
  
@@ -1263,7 +1435,11 @@ index 7c0eb04..12c6cf8 100644
      /// Linux only.
      #[test]
      fn macos_and_windows_offer_the_same_file_types() {
-@@ -408,7 +408,7 @@ mod packaging_tests {
+         let plist = include_str!("../../../packaging/macos/Info.plist.in");
+-        let wxs = include_str!("../../../packaging/windows/gridcraft.wxs");
++        let wxs = include_str!("../../../packaging/windows/plervo-sheets.wxs");
+         let mac = extensions(plist, "<key>CFBundleTypeExtensions</key>", "<string>", '<');
+         let win = extensions(wxs, "Key=\"Software\\Classes\\.", "", '\\');
          assert!(mac.iter().any(|e| e == "xlsx"), "Info.plist.in extensions not found: {mac:?}");
          assert_eq!(mac, win);
          for ext in &mac {
@@ -2120,10 +2296,75 @@ index b53a448..8f36ce9 100644
  [lints]
  workspace = true
  
+diff --git a/crates/xlsx/src/ods.rs b/crates/xlsx/src/ods.rs
+index 8415ce3..4e6a487 100644
+--- a/crates/xlsx/src/ods.rs
++++ b/crates/xlsx/src/ods.rs
+@@ -278,9 +278,10 @@ impl Import {
+                 }
+                 Event::CData(t) => self.append(&t.decode().map_err(xml_error)?)?,
+                 Event::GeneralRef(r) => {
++                    let entity: &[u8] = r.as_ref();
+                     let ch = match r.resolve_char_ref().map_err(xml_error)? {
+                         Some(c) => c,
+-                        None => match r.as_ref() {
++                        None => match entity {
+                             b"amp" => '&',
+                             b"lt" => '<',
+                             b"gt" => '>',
+diff --git a/crates/xlsx/src/package.rs b/crates/xlsx/src/package.rs
+index 9a28999..0cc48df 100644
+--- a/crates/xlsx/src/package.rs
++++ b/crates/xlsx/src/package.rs
+@@ -46,7 +46,8 @@ impl<'a> Package<'a> {
+         let mut names = HashMap::new();
+         for i in 0..zip.len() {
+             if let Some(n) = zip.name_for_index(i) {
+-                names.entry(normalize(n)).or_insert(i);
++                let n = n.map_err(|e| IoError::Zip(e.to_string()))?;
++                names.entry(normalize(&n)).or_insert(i);
+             }
+         }
+         Ok(Package { zip, names, total: 0 })
+diff --git a/crates/xlsx/src/tests/fixtures.rs b/crates/xlsx/src/tests/fixtures.rs
+index 39ea309..2094fb4 100644
+--- a/crates/xlsx/src/tests/fixtures.rs
++++ b/crates/xlsx/src/tests/fixtures.rs
+@@ -372,7 +372,7 @@ fn drawing_with_picture_and_chart() {
+             let mut f = z.by_index(i).unwrap();
+             let mut d = vec![];
+             std::io::Read::read_to_end(&mut f, &mut d).unwrap();
+-            parts.push((f.name().to_string(), d));
++            parts.push((f.name().unwrap().into_owned(), d));
+         }
+         parts.push(("xl/media/image1.png".into(), png.to_vec()));
+         let refs: Vec<(&str, &[u8])> = parts.iter().map(|(n, d)| (n.as_str(), d.as_slice())).collect();
+diff --git a/crates/xlsx/src/tests/malformed.rs b/crates/xlsx/src/tests/malformed.rs
+index 5e47c1f..204253e 100644
+--- a/crates/xlsx/src/tests/malformed.rs
++++ b/crates/xlsx/src/tests/malformed.rs
+@@ -140,7 +140,7 @@ fn hostile_threaded_comments_persons_and_note_vml() {
+         let mut f = z.by_index(i).unwrap();
+         let mut d = vec![];
+         std::io::Read::read_to_end(&mut f, &mut d).unwrap();
+-        parts.push((f.name().to_string(), d));
++        parts.push((f.name().unwrap().into_owned(), d));
+     }
+     let ns = r#"xmlns="http://schemas.microsoft.com/office/spreadsheetml/2018/threadedcomments""#;
+     let deep = "<v:group>".repeat(300) + &"</v:group>".repeat(300);
 diff --git a/crates/xlsx/src/tests/passthrough_tests.rs b/crates/xlsx/src/tests/passthrough_tests.rs
-index d844daa..eff8370 100644
+index d844daa..daa087e 100644
 --- a/crates/xlsx/src/tests/passthrough_tests.rs
 +++ b/crates/xlsx/src/tests/passthrough_tests.rs
+@@ -129,7 +129,7 @@ impl Unpacked {
+             let mut f = z.by_index(i).unwrap();
+             let mut v = vec![];
+             f.read_to_end(&mut v).unwrap();
+-            parts.insert(f.name().to_string(), v);
++            parts.insert(f.name().unwrap().into_owned(), v);
+         }
+         Unpacked { parts }
+     }
 @@ -477,7 +477,7 @@ fn kept_vml_drawings_are_charged_to_the_kept_total() {
          + wb.sheets.iter().filter_map(|s| s.preserved.as_ref()).map(|p| p.byte_len()).sum::<usize>();
      assert!(kept <= one + VML.len() / 2, "kept {kept} bytes");
@@ -2133,6 +2374,54 @@ index d844daa..eff8370 100644
      assert!(rep.warnings.iter().any(|w| w.contains("\"Other\"") && w.contains("too large")), "{:?}", rep.warnings);
      // Both sheets keep their drawings when there is room.
      let (wb, _) = read_xlsx(&rich_package_with(CONTENT_TYPES, true)).unwrap();
+diff --git a/crates/xlsx/src/tests/pivot_tests.rs b/crates/xlsx/src/tests/pivot_tests.rs
+index 99a15d6..baf46cb 100644
+--- a/crates/xlsx/src/tests/pivot_tests.rs
++++ b/crates/xlsx/src/tests/pivot_tests.rs
+@@ -205,7 +205,7 @@ fn unzip(bytes: &[u8]) -> HashMap<String, Vec<u8>> {
+         let mut f = z.by_index(i).unwrap();
+         let mut b = Vec::new();
+         f.read_to_end(&mut b).unwrap();
+-        m.insert(f.name().to_string(), b);
++        m.insert(f.name().unwrap().into_owned(), b);
+     }
+     m
+ }
+diff --git a/crates/xlsx/src/tests/roundtrip.rs b/crates/xlsx/src/tests/roundtrip.rs
+index 9018029..4955460 100644
+--- a/crates/xlsx/src/tests/roundtrip.rs
++++ b/crates/xlsx/src/tests/roundtrip.rs
+@@ -562,7 +562,7 @@ fn full_roundtrip() {
+ fn package_structure() {
+     let bytes = write_xlsx(&sample()).unwrap();
+     let mut z = zip::ZipArchive::new(std::io::Cursor::new(bytes)).unwrap();
+-    let names: Vec<String> = (0..z.len()).map(|i| z.name_for_index(i).unwrap().to_string()).collect();
++    let names: Vec<String> = (0..z.len()).map(|i| z.name_for_index(i).unwrap().unwrap().into_owned()).collect();
+     assert_eq!(names[0], "[Content_Types].xml");
+     for n in [
+         "_rels/.rels",
+@@ -742,7 +742,7 @@ fn vba_project_roundtrip() {
+     assert_eq!(write_xlsx(&wb).unwrap(), bytes, "output is deterministic");
+ 
+     let mut z = zip::ZipArchive::new(std::io::Cursor::new(bytes.clone())).unwrap();
+-    let names: Vec<String> = (0..z.len()).map(|i| z.name_for_index(i).unwrap().to_string()).collect();
++    let names: Vec<String> = (0..z.len()).map(|i| z.name_for_index(i).unwrap().unwrap().into_owned()).collect();
+     assert!(names.iter().any(|x| x == "xl/vbaProject.bin"), "missing vbaProject.bin");
+     let mut bin = vec![];
+     z.by_name("xl/vbaProject.bin").unwrap().read_to_end(&mut bin).unwrap();
+diff --git a/crates/xlsx/src/tests/trendline_roundtrip.rs b/crates/xlsx/src/tests/trendline_roundtrip.rs
+index d954c9b..19bf972 100644
+--- a/crates/xlsx/src/tests/trendline_roundtrip.rs
++++ b/crates/xlsx/src/tests/trendline_roundtrip.rs
+@@ -104,7 +104,7 @@ fn every_trendline_kind_round_trips_in_every_chart_group() {
+ fn chart_parts(bytes: &[u8]) -> Vec<String> {
+     let mut z = zip::ZipArchive::new(std::io::Cursor::new(bytes.to_vec())).unwrap();
+     let mut names: Vec<String> =
+-        (0..z.len()).map(|i| z.name_for_index(i).unwrap().to_string()).filter(|n| n.starts_with("xl/charts/chart")).collect();
++        (0..z.len()).map(|i| z.name_for_index(i).unwrap().unwrap().into_owned()).filter(|n| n.starts_with("xl/charts/chart")).collect();
+     names.sort();
+     names
+         .iter()
 diff --git a/crates/xlsx/src/xls/mod.rs b/crates/xlsx/src/xls/mod.rs
 index dde8641..47cceff 100644
 --- a/crates/xlsx/src/xls/mod.rs
@@ -2903,7 +3192,7 @@ index 0000000..907a64b
 +          - .flatpak-builder
 +      - cargo-sources.json
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
-index 5e8c3a1..95b04a2 100644
+index 5e8c3a1..099acb7 100644
 --- a/packaging/linux/nfpm.yaml
 +++ b/packaging/linux/nfpm.yaml
 @@ -3,7 +3,7 @@
@@ -2933,7 +3222,24 @@ index 5e8c3a1..95b04a2 100644
  
  # The binaries link only glibc and libgcc_s directly. Windowing (X11/Wayland, xkbcommon) and the
  # GPU (Vulkan, EGL/GL) are loaded at runtime, so they are dependencies/recommendations here
-@@ -55,11 +55,11 @@ overrides:
+@@ -28,7 +28,7 @@ description: |-
+ overrides:
+   deb:
+     depends:
+-      - libc6 (>= 2.35)
++      - libc6 (>= ${PLERVO_MIN_GLIBC})
+       - libgcc-s1
+       - libxkbcommon0
+       - libvulkan1 | libegl1
+@@ -43,6 +43,7 @@ overrides:
+       - xdg-desktop-portal
+   rpm:
+     depends:
++      - glibc >= ${PLERVO_MIN_GLIBC}
+       - libxkbcommon
+       - (vulkan-loader or libglvnd-egl)
+     recommends:
+@@ -55,11 +56,11 @@ overrides:
        - xdg-desktop-portal
  
  contents:
@@ -2950,7 +3256,7 @@ index 5e8c3a1..95b04a2 100644
    - src: ${STAGE}/usr/share/
      dst: /usr/share/
 diff --git a/packaging/linux/package.sh b/packaging/linux/package.sh
-index 9fde2c5..c72d251 100755
+index 9fde2c5..38127d6 100755
 --- a/packaging/linux/package.sh
 +++ b/packaging/linux/package.sh
 @@ -1,11 +1,11 @@
@@ -2980,13 +3286,13 @@ index 9fde2c5..c72d251 100755
  
  SKIP_BUILD=0
  FORMATS="appimage deb rpm tar"
-@@ -37,16 +37,16 @@ case "$ARCH" in
+@@ -37,27 +37,30 @@ case "$ARCH" in
    aarch64 | arm64) ARCH=aarch64; DEB_ARCH=arm64 ;;
    *) echo "unsupported architecture $ARCH" >&2; exit 2 ;;
  esac
 -export GRIDCRAFT_MAINTAINER="${GRIDCRAFT_MAINTAINER:-GridCraft maintainers <gridcraft@storyteller.ai>}"
 -BASENAME="gridcraft-$VERSION-linux-$ARCH"
-+export GRIDCRAFT_MAINTAINER="${GRIDCRAFT_MAINTAINER:-Plervo Sheets maintainers <plervo-sheets@storyteller.ai>}"
++export GRIDCRAFT_MAINTAINER="${GRIDCRAFT_MAINTAINER:-Plervo contributors}"
 +BASENAME="plervo-sheets-$VERSION-linux-$ARCH"
  
 -echo "==> GridCraft $VERSION for Linux $ARCH ($FORMATS)"
@@ -3002,7 +3308,11 @@ index 9fde2c5..c72d251 100755
    fi
  fi
  BIN="$CARGO_TARGET_DIR/${CROSS_TARGET:+$CROSS_TARGET/}release"
-@@ -55,9 +55,9 @@ STAGE="$WORK/root"
++# Match the declared Ubuntu 24.04 baseline to the actual ELF requirements.
++export PLERVO_MIN_GLIBC=2.39
++bash "$HERE/verify-glibc.sh" "$PLERVO_MIN_GLIBC" "$BIN/plervo-sheets" "$BIN/plervo-sheets-cli"
+ WORK="$CARGO_TARGET_DIR/linux-package"
+ STAGE="$WORK/root"
  rm -rf "$WORK"
  
  # ---- stage an FHS tree (shared by every format) -------------------------------------------------
@@ -3015,7 +3325,7 @@ index 9fde2c5..c72d251 100755
  install -Dm644 "$HERE/$APP_ID.desktop" "$STAGE/usr/share/applications/$APP_ID.desktop"
  install -Dm644 "$HERE/$APP_ID.mime.xml" "$STAGE/usr/share/mime/packages/$APP_ID.xml"
  mkdir -p "$STAGE/usr/share/metainfo"
-@@ -65,8 +65,8 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$GRIDCRAFT_BUILD_DATE/g" \
+@@ -65,8 +68,8 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$GRIDCRAFT_BUILD_DATE/g" \
    "$HERE/$APP_ID.metainfo.xml.in" >"$STAGE/usr/share/metainfo/$APP_ID.metainfo.xml"
  mkdir -p "$STAGE/usr/share/icons"
  cp -R "$ROOT/assets/app-icon/hicolor" "$STAGE/usr/share/icons/"
@@ -3026,7 +3336,7 @@ index 9fde2c5..c72d251 100755
  
  if command -v desktop-file-validate >/dev/null; then
    desktop-file-validate "$STAGE/usr/share/applications/$APP_ID.desktop"
-@@ -99,10 +99,10 @@ fi
+@@ -99,10 +102,10 @@ fi
  
  # ---- AppImage -----------------------------------------------------------------------------------
  if has appimage; then
@@ -3039,7 +3349,7 @@ index 9fde2c5..c72d251 100755
    cp "$HERE/$APP_ID.desktop" "$APPDIR/$APP_ID.desktop"
    cp "$ROOT/assets/app-icon/hicolor/256x256/apps/$APP_ID.png" "$APPDIR/$APP_ID.png"
    ln -s "$APP_ID.png" "$APPDIR/.DirIcon"
-@@ -126,8 +126,8 @@ if has appimage; then
+@@ -126,8 +129,8 @@ if has appimage; then
    # fetch only the blocks that changed in a newer release, through the .zsync published next to
    # each AppImage on GitHub Releases. `latest` is the newest published release that is not a
    # pre-release. A fork's builds point at its own releases through GITHUB_REPOSITORY.
@@ -3050,7 +3360,7 @@ index 9fde2c5..c72d251 100755
    # Extract-and-run: works without FUSE (containers, CI). The output embeds the static runtime,
    # so users don't need libfuse2 either. With zsyncmake on the host (CI installs the zsync
    # package) appimagetool also writes the .zsync, into its working directory, hence the cd.
-@@ -141,9 +141,9 @@ if has appimage; then
+@@ -141,9 +144,9 @@ if has appimage; then
  fi
  
  if [ -z "${CROSS_TARGET:-}" ]; then
@@ -3062,6 +3372,48 @@ index 9fde2c5..c72d251 100755
  fi
  echo "==> done"
  ls -lh "$DIST"
+diff --git a/packaging/linux/verify-glibc.sh b/packaging/linux/verify-glibc.sh
+new file mode 100755
+index 0000000..2a99601
+--- /dev/null
++++ b/packaging/linux/verify-glibc.sh
+@@ -0,0 +1,36 @@
++#!/usr/bin/env bash
++# Refuse binaries that require a newer glibc than the package declares. Does not execute them.
++set -euo pipefail
++if [ "$#" -lt 2 ] || [[ ! "$1" =~ ^[0-9]+\.[0-9]+$ ]]; then
++  echo "usage: verify-glibc.sh MAX_MAJOR.MINOR ELF..." >&2
++  exit 2
++fi
++ceiling="$1"
++shift
++for binary in "$@"; do
++  headers="$(LC_ALL=C "${CROSS_COMPILE:-}objdump" -p "$binary")"
++  if ! printf '%s\n' "$headers" | LC_ALL=C awk -v ceiling="$ceiling" '
++    BEGIN { split(ceiling, cap, /[.]/) }
++    $NF ~ /^GLIBC_/ {
++      seen = 1
++      if ($NF !~ /^GLIBC_[0-9]+\.[0-9]+(\.[0-9]+)?$/) {
++        print "unsupported glibc requirement: " $NF > "/dev/stderr"
++        bad = 1
++        next
++      }
++      split(substr($NF, 7), version, /[.]/)
++      if (version[1] > cap[1] || (version[1] == cap[1] &&
++          (version[2] > cap[2] || (version[2] == cap[2] && version[3] > 0)))) {
++        print "requires " $NF ", package baseline is " ceiling > "/dev/stderr"
++        bad = 1
++      }
++    }
++    END {
++      if (!seen) print "no glibc version requirements found" > "/dev/stderr"
++      exit (bad || !seen)
++    }
++  '; then
++    echo "error: incompatible or unreadable Linux runtime requirements: $binary" >&2
++    exit 1
++  fi
++done
 diff --git a/packaging/macos/Info.plist.in b/packaging/macos/Info.plist.in
 index 4ed6d97..b3cb899 100644
 --- a/packaging/macos/Info.plist.in

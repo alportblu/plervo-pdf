@@ -65,6 +65,49 @@ Sources: [RustSec advisories](https://rustsec.org/advisories/),
 
 ## Validation and remaining release work
 
+The next overlay revision addresses failures found after the first full native run:
+Photo's generated batch launcher now invokes the packaged Plervo executable; native
+document extensions remain compatible in the Vector, Slides and Canvas installers;
+Publish declares its actual document format, and Develop no longer exports an
+unrelated inherited document type. Canvas uses its own invite-link registration while
+accepting legacy links, preserving another app's Windows registration. Regressions
+reproduced the old executable, rejected new link, and overwritten-registration failures.
+Locale keys and menu labels are aligned, with explicit upstream credit retained.
+Video contains optional effect-pipeline driver failures and retains the tested CPU
+effect fallback. Required GPU effects and golden-scene comparisons passed locally
+on Metal; the Windows FXC failure still requires confirmation on the corrected runner.
+Slides maps the existing Symbol double-arrow code to its Unicode glyph when the
+named font lacks the private-use alias. A regression using an open bundled font
+failed before the mapping and passed after it; all 67 text-library tests passed.
+Audio's recovery tests exposed a real autosave collision: sessions with the same
+name created within one millisecond could reuse a retained recovery directory.
+Directory creation now reserves a new path atomically and never reopens an existing
+session folder. A deterministic same-clock-tick regression reproduced the overwrite
+and verifies that discarding the second session preserves the first session's audio.
+These changes still require the final overlay/CI run before release.
+
+Representative debug CLI acceptance passed for all twelve products (125 recorded
+checks) using original synthetic fixtures and independent image/document/audio readers
+where applicable. These reports identify their binary hashes and inputs; they do not
+qualify later release binaries. Develop's settled headless interface was also visually
+reviewed. Failed harness assumptions remain recorded separately.
+
+A fresh RustSec database (`64f92cdc64401fab47baa10e2e11fe382aa57155`) identified three
+additional ZIP advisories (RUSTSEC-2026-0367, 0368, 0369) after the previous cached audit.
+The affected products now require ZIP 9.0.4 and explicitly handle its fallible member-name
+API. Video and Develop retain Candle 0.9.2 via a reviewed source overlay that updates ZIP,
+adapts NPZ/PTH member-name decoding, and includes a synthetic Unicode NPZ regression.
+All other Candle Rust source is unchanged; upstream licence and modification notices
+are preserved and packaged. Fresh dependency policy checks passed for all twelve
+products. Scoped document-format and inference compatibility checks passed, including
+Unicode NPZ tensor names/values, eager/lazy NPZ reading and PTH member discovery.
+Final native checks remain required. No ZIP advisory suppression was added.
+
+All twelve Linux packagers now share the existing ELF-version guard with a declared
+glibc 2.39 floor matching the Ubuntu 24.04 build runner. DEB and RPM metadata use that
+same value; final binaries must still pass the guard. Package maintainer defaults use
+Plervo contributors rather than inventing addresses in an upstream publisher's domain.
+
 Local targeted tests passed for Photo's CLI conversions, Develop's fetch/TLS and
 metadata/lens code, Video's speech/download code, Publish's DOCX/IDML import,
 Slides' PPTX/ISO-BMFF code, Write's dictionary parser and Motion's model parser.

@@ -1710,7 +1710,7 @@ index 525f8bc..08202c8 100644
  //! Windows.Data.Pdf is unavailable there.
  #[cfg(not(all(windows, any(feature = "windows7", target_vendor = "win7"))))]
 diff --git a/apps/vectorcraft/src/profile.rs b/apps/vectorcraft/src/profile.rs
-index 4030d0a..81e8894 100644
+index 4030d0a..aa2ed02 100644
 --- a/apps/vectorcraft/src/profile.rs
 +++ b/apps/vectorcraft/src/profile.rs
 @@ -1,17 +1,17 @@
@@ -1802,7 +1802,7 @@ index 4030d0a..81e8894 100644
              };
              assert_eq!(prefs_path_with(os, false, env, installed), Some("/isolated/ui.json".into()));
              assert_eq!(prefs_path_with(os, true, env, installed), None);
-@@ -207,16 +207,16 @@ mod tests {
+@@ -207,28 +207,31 @@ mod tests {
  
      #[test]
      fn empty_override_does_not_fall_back_to_user_files() {
@@ -1815,14 +1815,22 @@ index 4030d0a..81e8894 100644
      #[test]
      fn unset_override_keeps_platform_paths_and_legacy_migration() {
 -        assert_eq!(prefs_path_with("macos", false, environment, installed), Some("/user/Library/Application Support/VectorCraft/ui.json".into()));
-+        assert_eq!(prefs_path_with("macos", false, environment, installed), Some("/user/Library/Application Support/Plervo Vector/ui.json".into()));
-         assert_eq!(prefs_path_with("macos", true, environment, installed), Some("/user/Library/Application Support/DrawCraft/ui.json".into()));
+-        assert_eq!(prefs_path_with("macos", true, environment, installed), Some("/user/Library/Application Support/DrawCraft/ui.json".into()));
 -        assert_eq!(prefs_path_with("windows", false, environment, installed), Some("/roaming/VectorCraft/ui.json".into()));
+-        assert_eq!(prefs_path_with("linux", false, environment, installed), Some("/xdg-config/vectorcraft/ui.json".into()));
++        assert_eq!(prefs_path_with("macos", false, environment, installed), Some("/user/Library/Application Support/Plervo Vector/ui.json".into()));
++        assert_eq!(
++            prefs_path_with("macos", true, environment, installed),
++            Some("/user/Library/Application Support/Plervo Vector Legacy/ui.json".into())
++        );
 +        assert_eq!(prefs_path_with("windows", false, environment, installed), Some("/roaming/Plervo Vector/ui.json".into()));
-         assert_eq!(prefs_path_with("linux", false, environment, installed), Some("/xdg-config/vectorcraft/ui.json".into()));
++        assert_eq!(prefs_path_with("linux", false, environment, installed), Some("/xdg-config/plervo-vector/ui.json".into()));
          assert_eq!(
              prefs_path_with("linux", true, |key| if key == "HOME" { environment(key) } else { None }, installed),
-@@ -226,9 +226,9 @@ mod tests {
+-            Some("/user/.config/drawcraft/ui.json".into())
++            Some("/user/.config/plervo-vector-legacy/ui.json".into())
+         );
+     }
  
      #[test]
      fn portable_mode_keeps_the_settings_beside_the_executable_and_skips_the_drawcraft_profile() {
@@ -1834,7 +1842,7 @@ index 4030d0a..81e8894 100644
              // A portable copy is self-contained: the one-time read of DrawCraft's old settings is skipped.
              assert_eq!(prefs_path_with(os, true, environment, portable), None, "{os}");
          }
-@@ -236,34 +236,34 @@ mod tests {
+@@ -236,34 +239,34 @@ mod tests {
  
      #[test]
      fn the_config_dir_override_wins_over_portable_mode_without_probing_it() {
@@ -1851,10 +1859,11 @@ index 4030d0a..81e8894 100644
 -        let env = |key: &str| if key == "VECTORCRAFT_NO_PREFS" { Some("1".into()) } else { environment(key) };
 -        let portable = || -> Option<PathBuf> { panic!("the portable folder is not looked for under VECTORCRAFT_NO_PREFS") };
 -        assert_eq!(prefs_path_with("windows", false, env, portable), Some("/roaming/VectorCraft/ui.json".into()));
+-        assert_eq!(prefs_path_with("windows", true, env, portable), Some("/roaming/DrawCraft/ui.json".into()));
 +        let env = |key: &str| if key == "PLERVO_VECTOR_NO_PREFS" { Some("1".into()) } else { environment(key) };
 +        let portable = || -> Option<PathBuf> { panic!("the portable folder is not looked for under PLERVO_VECTOR_NO_PREFS") };
 +        assert_eq!(prefs_path_with("windows", false, env, portable), Some("/roaming/Plervo Vector/ui.json".into()));
-         assert_eq!(prefs_path_with("windows", true, env, portable), Some("/roaming/DrawCraft/ui.json".into()));
++        assert_eq!(prefs_path_with("windows", true, env, portable), Some("/roaming/Plervo Vector Legacy/ui.json".into()));
      }
  
      #[test]
@@ -1879,7 +1888,7 @@ index 4030d0a..81e8894 100644
          assert_eq!(install_dir("linux", mounted, &appimage), Some("/home/user/Apps".into()));
          assert_eq!(install_dir("linux", mounted, &environment), Some("/tmp/.mount_vc/usr/bin".into()));
          let empty = |key: &str| if key == "APPIMAGE" { Some(OsString::new()) } else { environment(key) };
-@@ -297,7 +297,7 @@ mod tests {
+@@ -297,7 +300,7 @@ mod tests {
      #[test]
      fn a_fake_app_bundle_keeps_the_marker_and_the_data_outside_the_bundle() {
          let folder = temp("bundle");
@@ -10007,7 +10016,7 @@ index 0000000..593f3b4
 +          - .flatpak-builder
 +      - cargo-sources.json
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
-index a0c0481..55d5a0b 100644
+index a0c0481..9e4d80c 100644
 --- a/packaging/linux/nfpm.yaml
 +++ b/packaging/linux/nfpm.yaml
 @@ -3,7 +3,7 @@
@@ -10037,7 +10046,24 @@ index a0c0481..55d5a0b 100644
  
  # The binaries link only glibc and libgcc_s directly. Windowing (X11/Wayland, xkbcommon) and the
  # GPU (Vulkan, EGL/GL) are loaded at runtime, so they are dependencies/recommendations here
-@@ -63,11 +63,11 @@ overrides:
+@@ -28,7 +28,7 @@ description: |-
+ overrides:
+   deb:
+     depends:
+-      - libc6 (>= 2.35)
++      - libc6 (>= ${PLERVO_MIN_GLIBC})
+       - libgcc-s1
+       - libxkbcommon0
+       - libvulkan1 | libegl1
+@@ -48,6 +48,7 @@ overrides:
+     # The glibc floor names libm because the binaries' GLIBC_2.35 symbols (hypot, hypotf) are
+     # libm's: RHEL 9's glibc 2.34 provides libc.so.6(GLIBC_2.35) through backports, but not this.
+     depends:
++      - glibc >= ${PLERVO_MIN_GLIBC}
+       - libc.so.6()(64bit)
+       - libm.so.6(GLIBC_2.35)(64bit)
+       - libgcc_s.so.1()(64bit)
+@@ -63,11 +64,11 @@ overrides:
        - xdg-desktop-portal
  
  contents:
@@ -10054,7 +10080,7 @@ index a0c0481..55d5a0b 100644
    - src: ${STAGE}/usr/share/
      dst: /usr/share/
 diff --git a/packaging/linux/package.sh b/packaging/linux/package.sh
-index 7efbaf4..03f2a8d 100755
+index 7efbaf4..0c59809 100755
 --- a/packaging/linux/package.sh
 +++ b/packaging/linux/package.sh
 @@ -1,11 +1,11 @@
@@ -10084,13 +10110,13 @@ index 7efbaf4..03f2a8d 100755
  
  SKIP_BUILD=0
  FORMATS="appimage deb rpm tar"
-@@ -41,16 +41,16 @@ case "$ARCH" in
+@@ -41,27 +41,30 @@ case "$ARCH" in
    aarch64 | arm64) ARCH=aarch64; DEB_ARCH=arm64 ;;
    *) echo "unsupported architecture $ARCH" >&2; exit 2 ;;
  esac
 -export VECTORCRAFT_MAINTAINER="${VECTORCRAFT_MAINTAINER:-VectorCraft maintainers <vectorcraft@storyteller.ai>}"
 -BASENAME="vectorcraft-$VERSION-linux-$ARCH"
-+export VECTORCRAFT_MAINTAINER="${VECTORCRAFT_MAINTAINER:-Plervo Vector maintainers <plervo-vector@storyteller.ai>}"
++export VECTORCRAFT_MAINTAINER="${VECTORCRAFT_MAINTAINER:-Plervo contributors}"
 +BASENAME="plervo-vector-$VERSION-linux-$ARCH"
  
 -echo "==> VectorCraft $VERSION for Linux $ARCH ($FORMATS)"
@@ -10106,7 +10132,11 @@ index 7efbaf4..03f2a8d 100755
    fi
  fi
  BIN="$CARGO_TARGET_DIR/${CROSS_TARGET:+$CROSS_TARGET/}release"
-@@ -59,9 +59,9 @@ STAGE="$WORK/root"
++# Match the declared Ubuntu 24.04 baseline to the actual ELF requirements.
++export PLERVO_MIN_GLIBC=2.39
++bash "$HERE/verify-glibc.sh" "$PLERVO_MIN_GLIBC" "$BIN/plervo-vector" "$BIN/plervo-vector-cli"
+ WORK="$CARGO_TARGET_DIR/linux-package"
+ STAGE="$WORK/root"
  rm -rf "$WORK"
  
  # ---- stage an FHS tree (shared by every format) -------------------------------------------------
@@ -10119,7 +10149,7 @@ index 7efbaf4..03f2a8d 100755
  install -Dm644 "$HERE/$APP_ID.desktop" "$STAGE/usr/share/applications/$APP_ID.desktop"
  install -Dm644 "$HERE/$APP_ID.mime.xml" "$STAGE/usr/share/mime/packages/$APP_ID.xml"
  mkdir -p "$STAGE/usr/share/metainfo"
-@@ -69,8 +69,8 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$VECTORCRAFT_BUILD_DATE/g" \
+@@ -69,8 +72,8 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$VECTORCRAFT_BUILD_DATE/g" \
    "$HERE/$APP_ID.metainfo.xml.in" >"$STAGE/usr/share/metainfo/$APP_ID.metainfo.xml"
  mkdir -p "$STAGE/usr/share/icons"
  cp -R "$ROOT/assets/app-icon/hicolor" "$STAGE/usr/share/icons/"
@@ -10130,7 +10160,7 @@ index 7efbaf4..03f2a8d 100755
  
  if command -v desktop-file-validate >/dev/null; then
    desktop-file-validate "$STAGE/usr/share/applications/$APP_ID.desktop"
-@@ -103,10 +103,10 @@ fi
+@@ -103,10 +106,10 @@ fi
  
  # ---- AppImage -----------------------------------------------------------------------------------
  if has appimage; then
@@ -10143,7 +10173,7 @@ index 7efbaf4..03f2a8d 100755
    cp "$HERE/$APP_ID.desktop" "$APPDIR/$APP_ID.desktop"
    cp "$ROOT/assets/app-icon/hicolor/256x256/apps/$APP_ID.png" "$APPDIR/$APP_ID.png"
    ln -s "$APP_ID.png" "$APPDIR/.DirIcon"
-@@ -130,8 +130,8 @@ if has appimage; then
+@@ -130,8 +133,8 @@ if has appimage; then
    # fetch only the blocks that changed in a newer release, through the .zsync published next to
    # each AppImage on GitHub Releases. `latest` is the newest published release that is not a
    # pre-release. A fork's builds point at its own releases through GITHUB_REPOSITORY.
@@ -10154,7 +10184,7 @@ index 7efbaf4..03f2a8d 100755
    # Extract-and-run: works without FUSE (containers, CI). The output embeds the static runtime,
    # so users don't need libfuse2 either. With zsyncmake on the host (CI installs the zsync
    # package) appimagetool also writes the .zsync, into its working directory, hence the cd.
-@@ -145,9 +145,9 @@ if has appimage; then
+@@ -145,9 +148,9 @@ if has appimage; then
  fi
  
  if [ -z "${CROSS_TARGET:-}" ]; then
@@ -10166,8 +10196,50 @@ index 7efbaf4..03f2a8d 100755
  fi
  echo "==> done"
  ls -lh "$DIST"
+diff --git a/packaging/linux/verify-glibc.sh b/packaging/linux/verify-glibc.sh
+new file mode 100755
+index 0000000..2a99601
+--- /dev/null
++++ b/packaging/linux/verify-glibc.sh
+@@ -0,0 +1,36 @@
++#!/usr/bin/env bash
++# Refuse binaries that require a newer glibc than the package declares. Does not execute them.
++set -euo pipefail
++if [ "$#" -lt 2 ] || [[ ! "$1" =~ ^[0-9]+\.[0-9]+$ ]]; then
++  echo "usage: verify-glibc.sh MAX_MAJOR.MINOR ELF..." >&2
++  exit 2
++fi
++ceiling="$1"
++shift
++for binary in "$@"; do
++  headers="$(LC_ALL=C "${CROSS_COMPILE:-}objdump" -p "$binary")"
++  if ! printf '%s\n' "$headers" | LC_ALL=C awk -v ceiling="$ceiling" '
++    BEGIN { split(ceiling, cap, /[.]/) }
++    $NF ~ /^GLIBC_/ {
++      seen = 1
++      if ($NF !~ /^GLIBC_[0-9]+\.[0-9]+(\.[0-9]+)?$/) {
++        print "unsupported glibc requirement: " $NF > "/dev/stderr"
++        bad = 1
++        next
++      }
++      split(substr($NF, 7), version, /[.]/)
++      if (version[1] > cap[1] || (version[1] == cap[1] &&
++          (version[2] > cap[2] || (version[2] == cap[2] && version[3] > 0)))) {
++        print "requires " $NF ", package baseline is " ceiling > "/dev/stderr"
++        bad = 1
++      }
++    }
++    END {
++      if (!seen) print "no glibc version requirements found" > "/dev/stderr"
++      exit (bad || !seen)
++    }
++  '; then
++    echo "error: incompatible or unreadable Linux runtime requirements: $binary" >&2
++    exit 1
++  fi
++done
 diff --git a/packaging/macos/Info.plist.in b/packaging/macos/Info.plist.in
-index c0745cb..19cc6ec 100644
+index c0745cb..1b48f11 100644
 --- a/packaging/macos/Info.plist.in
 +++ b/packaging/macos/Info.plist.in
 @@ -7,13 +7,13 @@
@@ -10260,8 +10332,7 @@ index c0745cb..19cc6ec 100644
        <key>UTTypeTagSpecification</key>
        <dict>
          <key>public.filename-extension</key>
--        <array><string>vectorcraft</string><string>drawcraft</string></array>
-+        <array><string>plervo-vector</string><string>drawcraft</string></array>
+         <array><string>vectorcraft</string><string>drawcraft</string></array>
          <key>public.mime-type</key>
 -        <array><string>application/x-vectorcraft</string></array>
 +        <array><string>application/x-plervo-vector</string></array>

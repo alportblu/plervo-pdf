@@ -4,6 +4,10 @@ Local management tests (103) passed. Per-product dependency policy, bounded/auth
 Slides control and disabled unreviewed public UI-control transports are in validation.
 See [candidate review](products/SECURITY-REVIEW.md); this does not change upstream parity estimates.
 
+2026-10-16 follow-up: representative debug CLI acceptance now covers ten new products.
+Native CI exposed packaging, locale and platform-test mismatches; fixes and installer
+acceptance gates are in preparation. No additional public release is qualified yet.
+
 Plervo update — 2026-10-15 (M14): Suite-first distribution is under validation. New native Suite manages installation/open/update/removal of Plervo PDF from the personal release repository, with hash, Maintech signature, notarization and rollback checks. Suite UI follows the OS by default (English/Portuguese/Spanish); PDF Auto now prioritizes the display language on macOS/Windows. Public Windows/Linux management remains gated; Suite self-updates are manual. This does not increase upstream Acrobat parity. See [Suite provenance](docs/suite-provenance.md).
 
 ## Plervo fork — 2026-10-14

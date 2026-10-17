@@ -73,33 +73,46 @@ index 4257a3a..5b7eade 100644
 +| `assets/app-icon/plervo-cad.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 4e4da3fc37c7f2856ad8ecb9bb339b901fab280c9f71ab7c4979d867c3fdcb6b |
 +| `assets/app-icon/plervo-cad.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 e0a88bd8bf36b8fad310476610a5460a112c07261585433e4a40c4a55a8b93f2 |
 diff --git a/Cargo.lock b/Cargo.lock
-index c054dcf..d68e54a 100644
+index c054dcf..4520249 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -546,8 +546,8 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+@@ -545,49 +545,16 @@ version = "1.12.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "fc652a48c352aef3ea3aed32080501cf3ef6ed5da78602a020c991775b0aff04"
  
- [[package]]
+-[[package]]
 -name = "cadcraft"
 -version = "0.7.0"
-+name = "plervo-cad"
-+version = "0.1.0-alpha.4"
- dependencies = [
-  "cadcraft-engine",
-  "cadcraft-io",
-@@ -568,8 +568,8 @@ dependencies = [
- ]
- 
- [[package]]
+-dependencies = [
+- "cadcraft-engine",
+- "cadcraft-io",
+- "cadcraft-ui-egui",
+- "eframe",
+- "egui",
+- "hidapi",
+- "log",
+- "muda",
+- "objc2-app-kit 0.3.2",
+- "rfd",
+- "serde_json",
+- "sys-locale",
+- "windows",
+- "winit",
+- "winresource",
+- "zbus",
+-]
+-
+-[[package]]
 -name = "cadcraft-cli"
 -version = "0.7.0"
-+name = "plervo-cad-cli"
-+version = "0.1.0-alpha.4"
- dependencies = [
-  "cadcraft-engine",
-  "cadcraft-io",
-@@ -580,14 +580,14 @@ dependencies = [
- 
+-dependencies = [
+- "cadcraft-engine",
+- "cadcraft-io",
+- "cadcraft-mcp",
+- "cadcraft-render",
+- "serde_json",
+-]
+-
  [[package]]
  name = "cadcraft-color"
 -version = "0.7.0"
@@ -115,7 +128,7 @@ index c054dcf..d68e54a 100644
  dependencies = [
   "cadcraft-doc",
   "cadcraft-geom",
-@@ -597,7 +597,7 @@ dependencies = [
+@@ -597,7 +564,7 @@ dependencies = [
  
  [[package]]
  name = "cadcraft-doc"
@@ -124,7 +137,7 @@ index c054dcf..d68e54a 100644
  dependencies = [
   "cadcraft-color",
   "cadcraft-geom",
-@@ -608,14 +608,14 @@ dependencies = [
+@@ -608,14 +575,14 @@ dependencies = [
  
  [[package]]
  name = "cadcraft-dwg"
@@ -141,7 +154,7 @@ index c054dcf..d68e54a 100644
  dependencies = [
   "encoding_rs",
   "log",
-@@ -624,7 +624,7 @@ dependencies = [
+@@ -624,7 +591,7 @@ dependencies = [
  
  [[package]]
  name = "cadcraft-engine"
@@ -150,7 +163,7 @@ index c054dcf..d68e54a 100644
  dependencies = [
   "cadcraft-color",
   "cadcraft-constraints",
-@@ -643,7 +643,7 @@ dependencies = [
+@@ -643,7 +610,7 @@ dependencies = [
  
  [[package]]
  name = "cadcraft-fonts"
@@ -159,7 +172,7 @@ index c054dcf..d68e54a 100644
  dependencies = [
   "cadcraft-geom",
   "harfrust",
-@@ -653,14 +653,14 @@ dependencies = [
+@@ -653,14 +620,14 @@ dependencies = [
  
  [[package]]
  name = "cadcraft-geom"
@@ -176,7 +189,7 @@ index c054dcf..d68e54a 100644
  dependencies = [
   "cadcraft-color",
   "cadcraft-doc",
-@@ -679,7 +679,7 @@ dependencies = [
+@@ -679,7 +646,7 @@ dependencies = [
  
  [[package]]
  name = "cadcraft-mcp"
@@ -185,7 +198,7 @@ index c054dcf..d68e54a 100644
  dependencies = [
   "cadcraft-engine",
   "cadcraft-io",
-@@ -690,7 +690,7 @@ dependencies = [
+@@ -690,7 +657,7 @@ dependencies = [
  
  [[package]]
  name = "cadcraft-render"
@@ -194,7 +207,7 @@ index c054dcf..d68e54a 100644
  dependencies = [
   "cadcraft-color",
   "cadcraft-doc",
-@@ -704,7 +704,7 @@ dependencies = [
+@@ -704,7 +671,7 @@ dependencies = [
  
  [[package]]
  name = "cadcraft-ui-egui"
@@ -203,7 +216,7 @@ index c054dcf..d68e54a 100644
  dependencies = [
   "cadcraft-color",
   "cadcraft-doc",
-@@ -726,7 +726,7 @@ dependencies = [
+@@ -726,7 +693,7 @@ dependencies = [
  
  [[package]]
  name = "cadcraft-web"
@@ -212,6 +225,46 @@ index c054dcf..d68e54a 100644
  dependencies = [
   "cadcraft-engine",
   "cadcraft-io",
+@@ -2924,6 +2891,39 @@ version = "0.2.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "b4596b6d070b27117e987119b4dac604f3c58cfb0b191112e24771b2faeac1a6"
+ 
++[[package]]
++name = "plervo-cad"
++version = "0.1.0-alpha.4"
++dependencies = [
++ "cadcraft-engine",
++ "cadcraft-io",
++ "cadcraft-ui-egui",
++ "eframe",
++ "egui",
++ "hidapi",
++ "log",
++ "muda",
++ "objc2-app-kit 0.3.2",
++ "rfd",
++ "serde_json",
++ "sys-locale",
++ "windows",
++ "winit",
++ "winresource",
++ "zbus",
++]
++
++[[package]]
++name = "plervo-cad-cli"
++version = "0.1.0-alpha.4"
++dependencies = [
++ "cadcraft-engine",
++ "cadcraft-io",
++ "cadcraft-mcp",
++ "cadcraft-render",
++ "serde_json",
++]
++
+ [[package]]
+ name = "png"
+ version = "0.17.16"
 @@ -4804,7 +4804,7 @@ checksum = "e450f9b2ed1dff33c94c12589a87338689467b9c4f5d8a5710bd09a847d2c8a7"
  
  [[package]]
@@ -235,10 +288,10 @@ index 9632245..97b2fe0 100644
  license = "MIT OR Apache-2.0"
  rust-version = "1.90"
 diff --git a/NOTICE b/NOTICE
-index 22163da..c57be13 100644
+index 22163da..0142600 100644
 --- a/NOTICE
 +++ b/NOTICE
-@@ -22,3 +22,400 @@ each under the SIL Open Font License 1.1.
+@@ -22,3 +22,398 @@ each under the SIL Open Font License 1.1.
  
  CADCraft is an independent project and is not affiliated with, sponsored by or endorsed by
  Autodesk, Inc. AutoCAD and DWG are trademarks of Autodesk, Inc.
@@ -637,8 +690,6 @@ index 22163da..c57be13 100644
 +
 +  This Source Code Form is "Incompatible With Secondary Licenses", as
 +  defined by the Mozilla Public License, v. 2.0.
-+
-+
 diff --git a/README.md b/README.md
 index a259af4..cc89913 100644
 --- a/README.md
@@ -1066,7 +1117,7 @@ index b852183..629ecaf 100644
  version.workspace = true
  edition.workspace = true
 diff --git a/apps/cadcraft-cli/src/main.rs b/apps/cadcraft-cli/src/main.rs
-index 8e303ec..80ce8b3 100644
+index 8e303ec..b5d28f4 100644
 --- a/apps/cadcraft-cli/src/main.rs
 +++ b/apps/cadcraft-cli/src/main.rs
 @@ -1,18 +1,18 @@
@@ -1153,16 +1204,21 @@ index 8e303ec..80ce8b3 100644
          },
          McpTarget::Headless => Box::new(cadcraft_mcp::Headless::default()),
      };
-@@ -663,7 +663,7 @@ fn cli() -> ExitCode {
+@@ -662,8 +662,12 @@ fn cli() -> ExitCode {
+             outln!("{}", serde_json::to_string_pretty(&v).unwrap_or_default());
          }),
          Some("mcp") => mcp(&rest),
++        Some("--help" | "-h" | "help") => {
++            outln!("{USAGE}");
++            Ok(())
++        }
          Some("--version" | "-V") => {
 -            outln!("cadcraft-cli {}", env!("CARGO_PKG_VERSION"));
 +            outln!("plervo-cad-cli {}", env!("CARGO_PKG_VERSION"));
              Ok(())
          }
          _ => Err(USAGE.into()),
-@@ -811,7 +811,7 @@ mod tests {
+@@ -811,7 +815,7 @@ mod tests {
  
      #[test]
      fn run_export_honours_zoom() {
@@ -3334,29 +3390,6 @@ index 91c48e5..b58b9dc 100644
          assert!(a.run("ui.saveformat", json!({ "format": "pdf" })).is_err());
          assert_eq!(a.run("ui.saveformat", json!({ "format": "DWG" })).ok(), Some(json!({ "saveFormat": "dwg" })));
          assert_eq!(a.run("ui.saveformat", json!({})).ok(), Some(json!({ "saveFormat": "dwg" })), "no format: report it");
-diff --git a/crates/ui-egui/src/managers.rs b/crates/ui-egui/src/managers.rs
-index 4e008dd..425778d 100644
---- a/crates/ui-egui/src/managers.rs
-+++ b/crates/ui-egui/src/managers.rs
-@@ -1159,14 +1159,14 @@ mod plot_dialog_tests {
-     #[test]
-     fn a_device_brings_its_papers_and_the_plot_names_them() {
-         let mut st = state("Model");
--        apply_page_change(&mut st.page, "device", &json!("CADCraft PNG"));
--        assert_eq!(st.page.device, "CADCraft PNG");
--        let dev = cadcraft_engine::cmd::plotters::find_device("CADCraft PNG").unwrap();
-+        apply_page_change(&mut st.page, "device", &json!("Plervo CAD PNG"));
-+        assert_eq!(st.page.device, "Plervo CAD PNG");
-+        let dev = cadcraft_engine::cmd::plotters::find_device("Plervo CAD PNG").unwrap();
-         assert!(dev.papers.iter().any(|p| p.name == st.page.paper), "a paper of the device: {}", st.page.paper);
-         assert!(st.page.margins_mm.iter().any(|m| *m > 0.0), "the paper's printable area");
-         apply_page_change(&mut st.page, "plotStyleTable", &json!("monochrome.ctb"));
-         let p = plot_params(&st, None);
--        assert_eq!((p["device"].as_str(), p["paper"].as_str()), (Some("CADCraft PNG"), Some(st.page.paper.as_str())));
-+        assert_eq!((p["device"].as_str(), p["paper"].as_str()), (Some("Plervo CAD PNG"), Some(st.page.paper.as_str())));
-         assert_eq!(p["plotStyleTable"], json!("monochrome.ctb"));
-         // The preview plots the same sheet to PNG, whatever the device.
-         let q = plot_params(&st, Some(150.0));
 diff --git a/crates/ui-egui/src/menus.rs b/crates/ui-egui/src/menus.rs
 index 9672270..79bd2b2 100644
 --- a/crates/ui-egui/src/menus.rs
@@ -4093,7 +4126,7 @@ index 0000000..d802e9d
 +          - .flatpak-builder
 +      - cargo-sources.json
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
-index 80225bf..b659289 100644
+index 80225bf..43b843f 100644
 --- a/packaging/linux/nfpm.yaml
 +++ b/packaging/linux/nfpm.yaml
 @@ -3,7 +3,7 @@
@@ -4123,7 +4156,24 @@ index 80225bf..b659289 100644
  
  # The binaries link only glibc and libgcc_s directly. Windowing (X11/Wayland, xkbcommon) and the
  # GPU (Vulkan, EGL/GL) are loaded at runtime, so they are dependencies/recommendations here
-@@ -55,11 +55,11 @@ overrides:
+@@ -28,7 +28,7 @@ description: |-
+ overrides:
+   deb:
+     depends:
+-      - libc6 (>= 2.35)
++      - libc6 (>= ${PLERVO_MIN_GLIBC})
+       - libgcc-s1
+       - libxkbcommon0
+       - libvulkan1 | libegl1
+@@ -43,6 +43,7 @@ overrides:
+       - xdg-desktop-portal
+   rpm:
+     depends:
++      - glibc >= ${PLERVO_MIN_GLIBC}
+       - libxkbcommon
+       - (vulkan-loader or libglvnd-egl)
+     recommends:
+@@ -55,11 +56,11 @@ overrides:
        - xdg-desktop-portal
  
  contents:
@@ -4140,7 +4190,7 @@ index 80225bf..b659289 100644
    - src: ${STAGE}/usr/share/
      dst: /usr/share/
 diff --git a/packaging/linux/package.sh b/packaging/linux/package.sh
-index c11fd3b..dc06363 100755
+index c11fd3b..935e759 100755
 --- a/packaging/linux/package.sh
 +++ b/packaging/linux/package.sh
 @@ -1,11 +1,11 @@
@@ -4170,13 +4220,13 @@ index c11fd3b..dc06363 100755
  
  SKIP_BUILD=0
  FORMATS="appimage deb rpm tar"
-@@ -39,16 +39,16 @@ case "$ARCH" in
+@@ -39,27 +39,30 @@ case "$ARCH" in
    aarch64 | arm64) ARCH=aarch64; DEB_ARCH=arm64 ;;
    *) echo "unsupported architecture $ARCH" >&2; exit 2 ;;
  esac
 -export CADCRAFT_MAINTAINER="${CADCRAFT_MAINTAINER:-CADCraft maintainers <cadcraft@storyteller.ai>}"
 -BASENAME="cadcraft-$VERSION-linux-$ARCH"
-+export CADCRAFT_MAINTAINER="${CADCRAFT_MAINTAINER:-Plervo CAD maintainers <plervo-cad@storyteller.ai>}"
++export CADCRAFT_MAINTAINER="${CADCRAFT_MAINTAINER:-Plervo contributors}"
 +BASENAME="plervo-cad-$VERSION-linux-$ARCH"
  
 -echo "==> CADCraft $VERSION for Linux $ARCH ($FORMATS)"
@@ -4192,7 +4242,11 @@ index c11fd3b..dc06363 100755
    fi
  fi
  BIN="$CARGO_TARGET_DIR/${CROSS_TARGET:+$CROSS_TARGET/}release"
-@@ -57,9 +57,9 @@ STAGE="$WORK/root"
++# Match the declared Ubuntu 24.04 baseline to the actual ELF requirements.
++export PLERVO_MIN_GLIBC=2.39
++bash "$HERE/verify-glibc.sh" "$PLERVO_MIN_GLIBC" "$BIN/plervo-cad" "$BIN/plervo-cad-cli"
+ WORK="$CARGO_TARGET_DIR/linux-package"
+ STAGE="$WORK/root"
  rm -rf "$WORK"
  
  # ---- stage an FHS tree (shared by every format) -------------------------------------------------
@@ -4205,7 +4259,7 @@ index c11fd3b..dc06363 100755
  install -Dm644 "$HERE/$APP_ID.desktop" "$STAGE/usr/share/applications/$APP_ID.desktop"
  install -Dm644 "$HERE/$APP_ID.mime.xml" "$STAGE/usr/share/mime/packages/$APP_ID.xml"
  mkdir -p "$STAGE/usr/share/metainfo"
-@@ -67,8 +67,8 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$CADCRAFT_BUILD_DATE/g" \
+@@ -67,8 +70,8 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$CADCRAFT_BUILD_DATE/g" \
    "$HERE/$APP_ID.metainfo.xml.in" >"$STAGE/usr/share/metainfo/$APP_ID.metainfo.xml"
  mkdir -p "$STAGE/usr/share/icons"
  cp -R "$ROOT/assets/app-icon/hicolor" "$STAGE/usr/share/icons/"
@@ -4216,7 +4270,7 @@ index c11fd3b..dc06363 100755
  
  if command -v desktop-file-validate >/dev/null; then
    desktop-file-validate "$STAGE/usr/share/applications/$APP_ID.desktop"
-@@ -101,10 +101,10 @@ fi
+@@ -101,10 +104,10 @@ fi
  
  # ---- AppImage -----------------------------------------------------------------------------------
  if has appimage; then
@@ -4229,7 +4283,7 @@ index c11fd3b..dc06363 100755
    cp "$HERE/$APP_ID.desktop" "$APPDIR/$APP_ID.desktop"
    cp "$ROOT/assets/app-icon/hicolor/256x256/apps/$APP_ID.png" "$APPDIR/$APP_ID.png"
    ln -s "$APP_ID.png" "$APPDIR/.DirIcon"
-@@ -128,8 +128,8 @@ if has appimage; then
+@@ -128,8 +131,8 @@ if has appimage; then
    # fetch only the blocks that changed in a newer release, through the .zsync published next to
    # each AppImage on GitHub Releases. `latest` is the newest published release that is not a
    # pre-release. A fork's builds point at its own releases through GITHUB_REPOSITORY.
@@ -4240,7 +4294,7 @@ index c11fd3b..dc06363 100755
    # Extract-and-run: works without FUSE (containers, CI). The output embeds the static runtime,
    # so users don't need libfuse2 either. With zsyncmake on the host (CI installs the zsync
    # package) appimagetool also writes the .zsync, into its working directory, hence the cd.
-@@ -143,9 +143,9 @@ if has appimage; then
+@@ -143,9 +146,9 @@ if has appimage; then
  fi
  
  if [ -z "${CROSS_TARGET:-}" ]; then
@@ -4252,6 +4306,48 @@ index c11fd3b..dc06363 100755
  fi
  echo "==> done"
  ls -lh "$DIST"
+diff --git a/packaging/linux/verify-glibc.sh b/packaging/linux/verify-glibc.sh
+new file mode 100755
+index 0000000..2a99601
+--- /dev/null
++++ b/packaging/linux/verify-glibc.sh
+@@ -0,0 +1,36 @@
++#!/usr/bin/env bash
++# Refuse binaries that require a newer glibc than the package declares. Does not execute them.
++set -euo pipefail
++if [ "$#" -lt 2 ] || [[ ! "$1" =~ ^[0-9]+\.[0-9]+$ ]]; then
++  echo "usage: verify-glibc.sh MAX_MAJOR.MINOR ELF..." >&2
++  exit 2
++fi
++ceiling="$1"
++shift
++for binary in "$@"; do
++  headers="$(LC_ALL=C "${CROSS_COMPILE:-}objdump" -p "$binary")"
++  if ! printf '%s\n' "$headers" | LC_ALL=C awk -v ceiling="$ceiling" '
++    BEGIN { split(ceiling, cap, /[.]/) }
++    $NF ~ /^GLIBC_/ {
++      seen = 1
++      if ($NF !~ /^GLIBC_[0-9]+\.[0-9]+(\.[0-9]+)?$/) {
++        print "unsupported glibc requirement: " $NF > "/dev/stderr"
++        bad = 1
++        next
++      }
++      split(substr($NF, 7), version, /[.]/)
++      if (version[1] > cap[1] || (version[1] == cap[1] &&
++          (version[2] > cap[2] || (version[2] == cap[2] && version[3] > 0)))) {
++        print "requires " $NF ", package baseline is " ceiling > "/dev/stderr"
++        bad = 1
++      }
++    }
++    END {
++      if (!seen) print "no glibc version requirements found" > "/dev/stderr"
++      exit (bad || !seen)
++    }
++  '; then
++    echo "error: incompatible or unreadable Linux runtime requirements: $binary" >&2
++    exit 1
++  fi
++done
 diff --git a/packaging/macos/Info.plist.in b/packaging/macos/Info.plist.in
 index 5620772..1a94ad8 100644
 --- a/packaging/macos/Info.plist.in

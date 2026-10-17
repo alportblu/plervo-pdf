@@ -297,10 +297,10 @@ index 362e6a9..ba11852 100644
  license = "MIT OR Apache-2.0"
  rust-version = "1.90"
 diff --git a/NOTICE b/NOTICE
-index 34c26cc..38ab29a 100644
+index 34c26cc..207883b 100644
 --- a/NOTICE
 +++ b/NOTICE
-@@ -15,3 +15,490 @@ list (author, source, license) is in ATTRIBUTION.md.
+@@ -15,3 +15,488 @@ list (author, source, license) is in ATTRIBUTION.md.
  None: every bundled asset is original to SoundCraft. Icons are drawn in code; demo audio is
  synthesised in code. The egui default fonts (Ubuntu-Light, Hack, Noto Emoji, Emoji Icon Font) ship
  inside the egui crate under their own open licenses (see ATTRIBUTION.md).
@@ -789,8 +789,6 @@ index 34c26cc..38ab29a 100644
 +
 +  This Source Code Form is "Incompatible With Secondary Licenses", as
 +  defined by the Mozilla Public License, v. 2.0.
-+
-+
 diff --git a/README.md b/README.md
 index d88fee8..f4cdf24 100644
 --- a/README.md
@@ -1888,10 +1886,74 @@ index 9b097a0..5241a74 100644
  soundcraft-time.workspace = true
  soundcraft-audio-io.workspace = true
 diff --git a/crates/engine/src/autosave.rs b/crates/engine/src/autosave.rs
-index d42e81f..a6228a2 100644
+index d42e81f..e0262c4 100644
 --- a/crates/engine/src/autosave.rs
 +++ b/crates/engine/src/autosave.rs
-@@ -557,13 +557,15 @@ mod tests {
+@@ -179,10 +179,27 @@ impl Autosave {
+     /// A new folder under `root` for the session called `name`.
+     fn create(root: &Path, name: &str) -> Result<Autosave> {
+         let stamp = SystemTime::now().duration_since(SystemTime::UNIX_EPOCH).unwrap_or_default().as_millis();
+-        let dir = root.join(format!("{} {stamp}-{}", sanitize_name(name), std::process::id()));
+-        let lock = std::fs::create_dir_all(&dir).and_then(|()| std::fs::File::create(dir.join(LOCK))).map_err(|err| io_error(&dir, err))?;
+-        lock.try_lock().map_err(|err| EngineError::Io(format!("{}: {err}", dir.display())))?;
+-        Ok(Autosave { dir, lock: Some(lock), copies: BTreeMap::new(), next: 1, recording: false })
++        Self::create_at(root, name, stamp)
++    }
++
++    fn create_at(root: &Path, name: &str, stamp: u128) -> Result<Autosave> {
++        std::fs::create_dir_all(root).map_err(|err| io_error(root, err))?;
++        let prefix = format!("{} {stamp}-{}", sanitize_name(name), std::process::id());
++        // A clock tick is not a unique session identity. Atomically reserve a fresh directory;
++        // never reopen an existing one, which may contain unsaved work from a prior session.
++        for suffix in 0..1024 {
++            let dir = root.join(format!("{prefix}-{suffix}"));
++            match std::fs::create_dir(&dir) {
++                Ok(()) => {
++                    let lock = std::fs::OpenOptions::new().write(true).create_new(true).open(dir.join(LOCK)).map_err(|err| io_error(&dir, err))?;
++                    lock.try_lock().map_err(|err| EngineError::Io(format!("{}: {err}", dir.display())))?;
++                    return Ok(Autosave { dir, lock: Some(lock), copies: BTreeMap::new(), next: 1, recording: false });
++                }
++                Err(err) if err.kind() == std::io::ErrorKind::AlreadyExists => continue,
++                Err(err) => return Err(io_error(&dir, err)),
++            }
++        }
++        Err(EngineError::Io(format!("{}: could not reserve a new autosave folder; existing sessions were preserved", root.display())))
+     }
+ 
+     /// Write `session`, opened from the session file `origin`, and the plan of the `recording`
+@@ -442,6 +459,31 @@ mod tests {
+         s.sources.iter().map(|src| s.pool.get(src.id).map_or(f32::NAN, |a| a.buffer.channels[0][0])).collect()
+     }
+ 
++    #[test]
++    fn autosaves_created_in_the_same_millisecond_keep_both_sessions() {
++        let root = folder("autosave-same-tick");
++        let mut first = Engine::default();
++        record(&mut first, 0.25);
++        let mut a = Autosave::create_at(&root, "Untitled", 1234).unwrap();
++        a.write(first.session(), None, None).unwrap();
++        let first_dir = a.dir.clone();
++        drop(a);
++
++        let mut second = Engine::default();
++        record(&mut second, 0.75);
++        let mut b = Autosave::create_at(&root, "Untitled", 1234).unwrap();
++        b.write(second.session(), None, None).unwrap();
++        assert_ne!(first_dir, b.dir, "a new session must never reuse a retained autosave folder");
++        b.discard();
++
++        let remaining = leftovers(&root);
++        assert_eq!(remaining.len(), 1, "closing the second session must retain the first");
++        let mut recovered = Engine::default();
++        recover(&mut recovered, &remaining[0]).unwrap();
++        assert_eq!(levels(&recovered), vec![0.25]);
++        let _ = std::fs::remove_dir_all(root);
++    }
++
+     #[test]
+     fn saved_audio_is_referenced_and_takes_are_copied_once() {
+         let dir = folder("autosave-copies");
+@@ -557,13 +599,15 @@ mod tests {
              std::fs::create_dir_all(path.parent().unwrap()).unwrap();
              std::fs::write(path, bytes).unwrap();
          }
@@ -2952,7 +3014,7 @@ index 0000000..1db5143
 +          - .flatpak-builder
 +      - cargo-sources.json
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
-index c9f2eb7..840f2ea 100644
+index c9f2eb7..9c08f0a 100644
 --- a/packaging/linux/nfpm.yaml
 +++ b/packaging/linux/nfpm.yaml
 @@ -3,7 +3,7 @@
@@ -2982,7 +3044,24 @@ index c9f2eb7..840f2ea 100644
  
  # The app links glibc, libgcc_s and ALSA (libasound, for audio I/O through cpal; PulseAudio and
  # PipeWire are reached through their ALSA plugins). Windowing (X11/Wayland, xkbcommon) and the GPU
-@@ -60,11 +60,11 @@ overrides:
+@@ -29,7 +29,7 @@ description: |-
+ overrides:
+   deb:
+     depends:
+-      - libc6 (>= 2.35)
++      - libc6 (>= ${PLERVO_MIN_GLIBC})
+       - libgcc-s1
+       - libasound2 | libasound2t64
+       - libxkbcommon0
+@@ -46,6 +46,7 @@ overrides:
+       - pipewire-alsa | pulseaudio
+   rpm:
+     depends:
++      - glibc >= ${PLERVO_MIN_GLIBC}
+       - alsa-lib
+       - libxkbcommon
+       - (vulkan-loader or libglvnd-egl)
+@@ -60,11 +61,11 @@ overrides:
        - (pipewire-alsa or alsa-plugins-pulseaudio)
  
  contents:
@@ -2999,7 +3078,7 @@ index c9f2eb7..840f2ea 100644
    - src: ${STAGE}/usr/share/
      dst: /usr/share/
 diff --git a/packaging/linux/package.sh b/packaging/linux/package.sh
-index a949dba..b20455a 100755
+index a949dba..4e733d8 100755
 --- a/packaging/linux/package.sh
 +++ b/packaging/linux/package.sh
 @@ -1,11 +1,11 @@
@@ -3029,13 +3108,13 @@ index a949dba..b20455a 100755
  
  SKIP_BUILD=0
  FORMATS="appimage deb rpm tar"
-@@ -41,16 +41,16 @@ case "$ARCH" in
+@@ -41,27 +41,30 @@ case "$ARCH" in
    riscv64) DEB_ARCH=riscv64 ;;
    *) echo "unsupported architecture $ARCH" >&2; exit 2 ;;
  esac
 -export SOUNDCRAFT_MAINTAINER="${SOUNDCRAFT_MAINTAINER:-SoundCraft maintainers <soundcraft@storyteller.ai>}"
 -BASENAME="soundcraft-$VERSION-linux-$ARCH"
-+export SOUNDCRAFT_MAINTAINER="${SOUNDCRAFT_MAINTAINER:-Plervo Audio maintainers <plervo-audio@storyteller.ai>}"
++export SOUNDCRAFT_MAINTAINER="${SOUNDCRAFT_MAINTAINER:-Plervo contributors}"
 +BASENAME="plervo-audio-$VERSION-linux-$ARCH"
  
 -echo "==> SoundCraft $VERSION for Linux $ARCH ($FORMATS)"
@@ -3051,7 +3130,11 @@ index a949dba..b20455a 100755
    fi
  fi
  BIN="$CARGO_TARGET_DIR/${CROSS_TARGET:+$CROSS_TARGET/}release"
-@@ -59,9 +59,9 @@ STAGE="$WORK/root"
++# Match the declared Ubuntu 24.04 baseline to the actual ELF requirements.
++export PLERVO_MIN_GLIBC=2.39
++bash "$HERE/verify-glibc.sh" "$PLERVO_MIN_GLIBC" "$BIN/plervo-audio" "$BIN/plervo-audio-cli"
+ WORK="$CARGO_TARGET_DIR/linux-package"
+ STAGE="$WORK/root"
  rm -rf "$WORK"
  
  # ---- stage an FHS tree (shared by every format) -------------------------------------------------
@@ -3064,7 +3147,7 @@ index a949dba..b20455a 100755
  install -Dm644 "$HERE/$APP_ID.desktop" "$STAGE/usr/share/applications/$APP_ID.desktop"
  install -Dm644 "$HERE/$APP_ID.mime.xml" "$STAGE/usr/share/mime/packages/$APP_ID.xml"
  mkdir -p "$STAGE/usr/share/metainfo"
-@@ -69,8 +69,8 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$SOUNDCRAFT_BUILD_DATE/g" \
+@@ -69,8 +72,8 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$SOUNDCRAFT_BUILD_DATE/g" \
    "$HERE/$APP_ID.metainfo.xml.in" >"$STAGE/usr/share/metainfo/$APP_ID.metainfo.xml"
  mkdir -p "$STAGE/usr/share/icons"
  cp -R "$ROOT/assets/app-icon/hicolor" "$STAGE/usr/share/icons/"
@@ -3075,7 +3158,7 @@ index a949dba..b20455a 100755
  
  if command -v desktop-file-validate >/dev/null; then
    desktop-file-validate "$STAGE/usr/share/applications/$APP_ID.desktop"
-@@ -103,10 +103,10 @@ fi
+@@ -103,10 +106,10 @@ fi
  
  # ---- AppImage -----------------------------------------------------------------------------------
  if has appimage; then
@@ -3088,7 +3171,7 @@ index a949dba..b20455a 100755
    cp "$HERE/$APP_ID.desktop" "$APPDIR/$APP_ID.desktop"
    cp "$ROOT/assets/app-icon/hicolor/256x256/apps/$APP_ID.png" "$APPDIR/$APP_ID.png"
    ln -s "$APP_ID.png" "$APPDIR/.DirIcon"
-@@ -130,8 +130,8 @@ if has appimage; then
+@@ -130,8 +133,8 @@ if has appimage; then
    # fetch only the blocks that changed in a newer release, through the .zsync published next to
    # each AppImage on GitHub Releases. `latest` is the newest published release that is not a
    # pre-release. A fork's builds point at its own releases through GITHUB_REPOSITORY.
@@ -3099,7 +3182,7 @@ index a949dba..b20455a 100755
    # Extract-and-run: works without FUSE (containers, CI). The output embeds the static runtime,
    # so users don't need libfuse2 either. With zsyncmake on the host (CI installs the zsync
    # package) appimagetool also writes the .zsync, into its working directory, hence the cd.
-@@ -145,9 +145,9 @@ if has appimage; then
+@@ -145,9 +148,9 @@ if has appimage; then
  fi
  
  if [ -z "${CROSS_TARGET:-}" ]; then
@@ -3111,6 +3194,48 @@ index a949dba..b20455a 100755
  fi
  echo "==> done"
  ls -lh "$DIST"
+diff --git a/packaging/linux/verify-glibc.sh b/packaging/linux/verify-glibc.sh
+new file mode 100755
+index 0000000..2a99601
+--- /dev/null
++++ b/packaging/linux/verify-glibc.sh
+@@ -0,0 +1,36 @@
++#!/usr/bin/env bash
++# Refuse binaries that require a newer glibc than the package declares. Does not execute them.
++set -euo pipefail
++if [ "$#" -lt 2 ] || [[ ! "$1" =~ ^[0-9]+\.[0-9]+$ ]]; then
++  echo "usage: verify-glibc.sh MAX_MAJOR.MINOR ELF..." >&2
++  exit 2
++fi
++ceiling="$1"
++shift
++for binary in "$@"; do
++  headers="$(LC_ALL=C "${CROSS_COMPILE:-}objdump" -p "$binary")"
++  if ! printf '%s\n' "$headers" | LC_ALL=C awk -v ceiling="$ceiling" '
++    BEGIN { split(ceiling, cap, /[.]/) }
++    $NF ~ /^GLIBC_/ {
++      seen = 1
++      if ($NF !~ /^GLIBC_[0-9]+\.[0-9]+(\.[0-9]+)?$/) {
++        print "unsupported glibc requirement: " $NF > "/dev/stderr"
++        bad = 1
++        next
++      }
++      split(substr($NF, 7), version, /[.]/)
++      if (version[1] > cap[1] || (version[1] == cap[1] &&
++          (version[2] > cap[2] || (version[2] == cap[2] && version[3] > 0)))) {
++        print "requires " $NF ", package baseline is " ceiling > "/dev/stderr"
++        bad = 1
++      }
++    }
++    END {
++      if (!seen) print "no glibc version requirements found" > "/dev/stderr"
++      exit (bad || !seen)
++    }
++  '; then
++    echo "error: incompatible or unreadable Linux runtime requirements: $binary" >&2
++    exit 1
++  fi
++done
 diff --git a/packaging/macos/Info.plist.in b/packaging/macos/Info.plist.in
 index 1b23ea7..09b2670 100644
 --- a/packaging/macos/Info.plist.in

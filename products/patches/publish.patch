@@ -65,10 +65,26 @@ index 76052b5..4325b42 100644
 +
 +| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | c98853a7427b62041d651836e94ef44855b8aeff377fd7d8d7a7380d1362647b |
 diff --git a/Cargo.lock b/Cargo.lock
-index e77a81b..bd03f7e 100644
+index e77a81b..326843e 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -452,6 +452,12 @@ version = "0.22.1"
+@@ -210,15 +210,6 @@ version = "1.0.104"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "330a5ed07fa54e4702c9d6c4174f74427fc0ef6e214bbd677ae50a5099946470"
+ 
+-[[package]]
+-name = "arbitrary"
+-version = "1.4.2"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "c3d036a3c4ab069c7b410a2ce876bd74808d2d0888a82667669f8e783a898bf1"
+-dependencies = [
+- "derive_arbitrary",
+-]
+-
+ [[package]]
+ name = "arboard"
+ version = "3.6.1"
+@@ -452,6 +443,12 @@ version = "0.22.1"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "72b3254f16251a8381aa12e40e3c4d2f0199f8c6508fbecb9d91f575e0fbb8c6"
  
@@ -81,7 +97,7 @@ index e77a81b..bd03f7e 100644
  [[package]]
  name = "bit-set"
  version = "0.8.0"
-@@ -787,15 +793,6 @@ dependencies = [
+@@ -787,15 +784,6 @@ dependencies = [
   "libc",
  ]
  
@@ -97,10 +113,21 @@ index e77a81b..bd03f7e 100644
  [[package]]
  name = "craft-print"
  version = "0.1.0"
-@@ -885,43 +882,9 @@ dependencies = [
-  "syn 2.0.119",
- ]
+@@ -874,54 +862,9 @@ version = "0.3.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "be1e0bca6c3637f992fc1cc7cbc52a78c1ef6db076dbf1059c4323d6a2048376"
  
+-[[package]]
+-name = "derive_arbitrary"
+-version = "1.4.2"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "1e567bd82dcff979e4b03460c307b3cdc9e96fde3d73bed1496d2bc75d9dd62a"
+-dependencies = [
+- "proc-macro2",
+- "quote",
+- "syn 2.0.119",
+-]
+-
 -[[package]]
 -name = "designcraft"
 -version = "0.8.0"
@@ -142,7 +169,7 @@ index e77a81b..bd03f7e 100644
  dependencies = [
   "kurbo",
   "moxcms",
-@@ -933,7 +896,7 @@ dependencies = [
+@@ -933,7 +876,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-compose"
@@ -151,7 +178,7 @@ index e77a81b..bd03f7e 100644
  dependencies = [
   "designcraft-color",
   "designcraft-doc",
-@@ -951,7 +914,7 @@ dependencies = [
+@@ -951,7 +894,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-doc"
@@ -160,7 +187,7 @@ index e77a81b..bd03f7e 100644
  dependencies = [
   "designcraft-color",
   "designcraft-geom",
-@@ -963,7 +926,7 @@ dependencies = [
+@@ -963,7 +906,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-engine"
@@ -169,7 +196,7 @@ index e77a81b..bd03f7e 100644
  dependencies = [
   "caseless",
   "craft-print",
-@@ -985,7 +948,7 @@ dependencies = [
+@@ -985,7 +928,7 @@ dependencies = [
   "hayro-syntax",
   "kurbo",
   "log",
@@ -178,7 +205,7 @@ index e77a81b..bd03f7e 100644
   "regex",
   "serde",
   "serde_json",
-@@ -998,7 +961,7 @@ dependencies = [
+@@ -998,7 +941,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-epub"
@@ -187,7 +214,7 @@ index e77a81b..bd03f7e 100644
  dependencies = [
   "designcraft-color",
   "designcraft-doc",
-@@ -1007,7 +970,7 @@ dependencies = [
+@@ -1007,7 +950,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-fonts"
@@ -196,7 +223,7 @@ index e77a81b..bd03f7e 100644
  dependencies = [
   "harfrust 0.13.3",
   "kurbo",
-@@ -1019,7 +982,7 @@ dependencies = [
+@@ -1019,7 +962,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-format"
@@ -205,7 +232,7 @@ index e77a81b..bd03f7e 100644
  dependencies = [
   "designcraft-doc",
   "serde",
-@@ -1030,7 +993,7 @@ dependencies = [
+@@ -1030,7 +973,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-geom"
@@ -214,7 +241,7 @@ index e77a81b..bd03f7e 100644
  dependencies = [
   "flo_curves",
   "kurbo",
-@@ -1043,20 +1006,20 @@ dependencies = [
+@@ -1043,20 +986,20 @@ dependencies = [
  
  [[package]]
  name = "designcraft-idml"
@@ -238,7 +265,7 @@ index e77a81b..bd03f7e 100644
  dependencies = [
   "designcraft-color",
   "designcraft-fonts",
-@@ -1067,7 +1030,7 @@ dependencies = [
+@@ -1067,7 +1010,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-mcp"
@@ -247,7 +274,7 @@ index e77a81b..bd03f7e 100644
  dependencies = [
   "designcraft-engine",
   "designcraft-geom",
-@@ -1080,7 +1043,7 @@ dependencies = [
+@@ -1080,7 +1023,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-pdf"
@@ -256,7 +283,7 @@ index e77a81b..bd03f7e 100644
  dependencies = [
   "designcraft-color",
   "designcraft-compose",
-@@ -1102,7 +1065,7 @@ dependencies = [
+@@ -1102,7 +1045,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-render"
@@ -265,7 +292,7 @@ index e77a81b..bd03f7e 100644
  dependencies = [
   "designcraft-color",
   "designcraft-compose",
-@@ -1120,16 +1083,16 @@ dependencies = [
+@@ -1120,16 +1063,16 @@ dependencies = [
  
  [[package]]
  name = "designcraft-textimport"
@@ -285,7 +312,7 @@ index e77a81b..bd03f7e 100644
  dependencies = [
   "designcraft-color",
   "designcraft-compose",
-@@ -1141,7 +1104,7 @@ dependencies = [
+@@ -1141,7 +1084,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-ui-egui"
@@ -294,7 +321,7 @@ index e77a81b..bd03f7e 100644
  dependencies = [
   "craft-ui",
   "designcraft-color",
-@@ -1159,6 +1122,7 @@ dependencies = [
+@@ -1159,6 +1102,7 @@ dependencies = [
   "regex",
   "serde",
   "serde_json",
@@ -302,7 +329,7 @@ index e77a81b..bd03f7e 100644
   "tempfile",
   "toml",
   "unicode-bidi",
-@@ -1169,7 +1133,7 @@ dependencies = [
+@@ -1169,7 +1113,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-web"
@@ -311,7 +338,7 @@ index e77a81b..bd03f7e 100644
  dependencies = [
   "designcraft-engine",
   "designcraft-format",
-@@ -1486,7 +1450,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+@@ -1486,7 +1430,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "39cab71617ae0d63f51a36d69f866391735b51691dbda63cf6f96d042b63efeb"
  dependencies = [
   "libc",
@@ -320,7 +347,7 @@ index e77a81b..bd03f7e 100644
  ]
  
  [[package]]
-@@ -1630,16 +1594,15 @@ dependencies = [
+@@ -1630,16 +1574,15 @@ dependencies = [
  
  [[package]]
  name = "fontdb"
@@ -339,7 +366,7 @@ index e77a81b..bd03f7e 100644
  ]
  
  [[package]]
-@@ -2266,6 +2229,12 @@ version = "0.14.0"
+@@ -2266,6 +2209,12 @@ version = "0.14.0"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "09e54e57b4c48b40f7aec75635392b12b3421fa26fe8b4332e63138ed278459c"
  
@@ -352,7 +379,7 @@ index e77a81b..bd03f7e 100644
  [[package]]
  name = "indexmap"
  version = "2.14.2"
-@@ -2441,19 +2410,18 @@ version = "0.8.2"
+@@ -2441,19 +2390,18 @@ version = "0.8.2"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "27da593198b20eeba65caeb73c2bbeec3e53ab08fa549898312ce81c4fce5e33"
  dependencies = [
@@ -374,7 +401,7 @@ index e77a81b..bd03f7e 100644
   "siphasher",
   "skrifa 0.42.1",
   "smallvec",
-@@ -2467,14 +2435,12 @@ dependencies = [
+@@ -2467,14 +2415,12 @@ dependencies = [
  [[package]]
  name = "krilla-svg"
  version = "0.8.1"
@@ -390,7 +417,7 @@ index e77a81b..bd03f7e 100644
   "smallvec",
   "tiny-skia",
   "usvg",
-@@ -2658,7 +2624,7 @@ dependencies = [
+@@ -2658,7 +2604,7 @@ dependencies = [
   "once_cell",
   "png",
   "thiserror 2.0.21",
@@ -399,7 +426,26 @@ index e77a81b..bd03f7e 100644
  ]
  
  [[package]]
-@@ -2741,7 +2707,7 @@ version = "0.50.3"
+@@ -2729,6 +2675,18 @@ dependencies = [
+  "jni-sys 0.3.1",
+ ]
+ 
++[[package]]
++name = "nix"
++version = "0.31.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "cf20d2fde8ff38632c426f1165ed7436270b44f199fc55284c38276f9db47c3d"
++dependencies = [
++ "bitflags 2.13.2",
++ "cfg-if",
++ "cfg_aliases",
++ "libc",
++]
++
+ [[package]]
+ name = "nohash-hasher"
+ version = "0.2.0"
+@@ -2741,7 +2699,7 @@ version = "0.50.3"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "7957b9740744892f114936ab4a57b3f487491bbeafaf8083688b16841a4240e5"
  dependencies = [
@@ -408,7 +454,7 @@ index e77a81b..bd03f7e 100644
  ]
  
  [[package]]
-@@ -3339,6 +3305,40 @@ version = "0.2.3"
+@@ -3339,6 +3297,40 @@ version = "0.2.3"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "b4596b6d070b27117e987119b4dac604f3c58cfb0b191112e24771b2faeac1a6"
  
@@ -449,7 +495,7 @@ index e77a81b..bd03f7e 100644
  [[package]]
  name = "png"
  version = "0.18.1"
-@@ -3506,15 +3506,6 @@ version = "2.0.1"
+@@ -3506,15 +3498,6 @@ version = "2.0.1"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "a993555f31e5a609f617c12db6250dedcac1b0a85076912c436e6fc9b2c8e6a3"
  
@@ -465,7 +511,7 @@ index e77a81b..bd03f7e 100644
  [[package]]
  name = "quick-xml"
  version = "0.41.0"
-@@ -3734,10 +3725,11 @@ checksum = "19b30a45b0cd0bcca8037f3d0dc3421eaf95327a17cad11964fb8179b4fc4832"
+@@ -3734,10 +3717,11 @@ checksum = "19b30a45b0cd0bcca8037f3d0dc3421eaf95327a17cad11964fb8179b4fc4832"
  
  [[package]]
  name = "resvg"
@@ -479,7 +525,7 @@ index e77a81b..bd03f7e 100644
   "gif",
   "image-webp",
   "log",
-@@ -3850,7 +3842,7 @@ dependencies = [
+@@ -3850,7 +3834,7 @@ dependencies = [
   "errno",
   "libc",
   "linux-raw-sys 0.12.1",
@@ -488,7 +534,7 @@ index e77a81b..bd03f7e 100644
  ]
  
  [[package]]
-@@ -3871,24 +3863,6 @@ dependencies = [
+@@ -3871,24 +3855,6 @@ dependencies = [
   "wait-timeout",
  ]
  
@@ -513,7 +559,7 @@ index e77a81b..bd03f7e 100644
  [[package]]
  name = "ryu"
  version = "1.0.23"
-@@ -4266,6 +4240,15 @@ dependencies = [
+@@ -4266,6 +4232,15 @@ dependencies = [
   "syn 3.0.6",
  ]
  
@@ -529,7 +575,7 @@ index e77a81b..bd03f7e 100644
  [[package]]
  name = "tempfile"
  version = "3.27.0"
-@@ -4276,7 +4259,7 @@ dependencies = [
+@@ -4276,7 +4251,7 @@ dependencies = [
   "getrandom 0.4.3",
   "once_cell",
   "rustix 1.1.5",
@@ -538,7 +584,7 @@ index e77a81b..bd03f7e 100644
  ]
  
  [[package]]
-@@ -4485,15 +4468,6 @@ dependencies = [
+@@ -4485,15 +4460,6 @@ dependencies = [
   "once_cell",
  ]
  
@@ -554,7 +600,20 @@ index e77a81b..bd03f7e 100644
  [[package]]
  name = "type-map"
  version = "0.5.1"
-@@ -4511,7 +4485,7 @@ checksum = "f2f6fb2847f6742cd76af783a2a2c49e9375d0a111c7bef6f71cd9e738c72d6e"
+@@ -4503,6 +4469,12 @@ dependencies = [
+  "rustc-hash 2.1.3",
+ ]
+ 
++[[package]]
++name = "typed-path"
++version = "0.12.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "8e28f89b80c87b8fb0cf04ab448d5dd0dd0ade2f8891bae878de66a75a28600e"
++
+ [[package]]
+ name = "uds_windows"
+ version = "1.2.1"
+@@ -4511,7 +4483,7 @@ checksum = "f2f6fb2847f6742cd76af783a2a2c49e9375d0a111c7bef6f71cd9e738c72d6e"
  dependencies = [
   "memoffset",
   "tempfile",
@@ -563,7 +622,7 @@ index e77a81b..bd03f7e 100644
  ]
  
  [[package]]
-@@ -4532,12 +4506,6 @@ version = "0.4.0"
+@@ -4532,12 +4504,6 @@ version = "0.4.0"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "5dfa6e8c60bb66d49db113e0125ee8711b7647b5579dc7f5f19c42357ed039fe"
  
@@ -576,7 +635,7 @@ index e77a81b..bd03f7e 100644
  [[package]]
  name = "unicode-general-category"
  version = "1.1.0"
-@@ -4603,26 +4571,26 @@ dependencies = [
+@@ -4603,26 +4569,26 @@ dependencies = [
  
  [[package]]
  name = "usvg"
@@ -609,7 +668,7 @@ index e77a81b..bd03f7e 100644
   "unicode-bidi",
   "unicode-script",
   "unicode-vo",
-@@ -5001,7 +4969,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+@@ -5001,7 +4967,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "338e30461b3a2b67d70eb30a6d89f8e0c93a833e07d2ae89085cd070c4a00ac0"
  dependencies = [
   "proc-macro2",
@@ -618,7 +677,7 @@ index e77a81b..bd03f7e 100644
   "quote",
  ]
  
-@@ -5248,7 +5216,7 @@ version = "0.1.11"
+@@ -5248,7 +5214,7 @@ version = "0.1.11"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "c2a7b1c03c876122aa43f3020e6c3c3ee5c05081c9a00739faf7503aeba10d22"
  dependencies = [
@@ -627,7 +686,7 @@ index e77a81b..bd03f7e 100644
  ]
  
  [[package]]
-@@ -5697,7 +5665,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
+@@ -5697,7 +5663,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
  
  [[package]]
  name = "xtask"
@@ -636,8 +695,28 @@ index e77a81b..bd03f7e 100644
  dependencies = [
   "serde_json",
  ]
+@@ -5913,15 +5879,16 @@ dependencies = [
+ 
+ [[package]]
+ name = "zip"
+-version = "3.0.0"
++version = "9.0.4"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "12598812502ed0105f607f941c386f43d441e00148fce9dec3ca5ffb0bde9308"
++checksum = "a954114b47a54df49f83d2722814e86b23d4bb1b54a1b90fb7d92b41619ddc22"
+ dependencies = [
+- "arbitrary",
+  "crc32fast",
+  "flate2",
+  "indexmap",
+  "memchr",
++ "nix",
++ "typed-path",
+  "zopfli",
+ ]
+ 
 diff --git a/Cargo.toml b/Cargo.toml
-index e76609e..8182dfc 100644
+index e76609e..7f94459 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -1,10 +1,11 @@
@@ -653,7 +732,7 @@ index e76609e..8182dfc 100644
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.95"
-@@ -56,15 +57,15 @@ image = { version = "0.25", default-features = false, features = ["png", "jpeg",
+@@ -56,16 +57,16 @@ image = { version = "0.25", default-features = false, features = ["png", "jpeg",
  # CMYK TIFF samples for PDF export (`image` decodes them to RGB); the version `image` uses.
  tiff = "0.11"
  # SVG (same usvg as krilla-svg).
@@ -668,10 +747,12 @@ index e76609e..8182dfc 100644
 +krilla = { version = "0.8", default-features = false, features = ["pdf", "raster-images"] }
  hayro = "0.7"
 -quick-xml = "0.38"
+-zip = { version = "3", default-features = false, features = ["deflate"] }
 +quick-xml = "0.41"
- zip = { version = "3", default-features = false, features = ["deflate"] }
++zip = { version = "9.0.4", default-features = false, features = ["deflate"] }
  
  # ui
+ # Shared frontend components; keep this dependency above the engine boundary.
 @@ -100,6 +101,7 @@ debug = 0
  
  # Opt-in cancelable macOS termination on the pinned winit 0.30 line.
@@ -681,10 +762,10 @@ index e76609e..8182dfc 100644
  # The hayro crates from pdfcraft's vendor/ directory, with the patches its README lists.
  hayro = { git = "https://github.com/storytold/pdfcraft", rev = "b5467d93a0ffaa5e5e6658bccdf8655a3ba689c9" }
 diff --git a/NOTICE b/NOTICE
-index 21123ee..b43170b 100644
+index 21123ee..afc28c3 100644
 --- a/NOTICE
 +++ b/NOTICE
-@@ -68,3 +68,19 @@ Rust dependencies (vello_cpu, kurbo, skrifa, harfrust, image, egui, eframe, …)
+@@ -68,3 +68,18 @@ Rust dependencies (vello_cpu, kurbo, skrifa, harfrust, image, egui, eframe, …)
  licensed (MIT/Apache-2.0/BSD/ISC/Zlib) and fetched through crates.io.
  
  No Adobe icons, images or artwork are included.
@@ -703,7 +784,6 @@ index 21123ee..b43170b 100644
 +It disables Krilla's unused simple-text default feature. SVG shaping now uses
 +maintained HarfRust/Skrifa instead of rustybuzz/ttf-parser. Upstream licence texts
 +and source are preserved. The Plervo source overlay hash covers these changes.
-+
 diff --git a/README.md b/README.md
 index 0ec6540..90fef61 100644
 --- a/README.md
@@ -1854,6 +1934,19 @@ index 1de90d1..41ba052 100644
  [lints]
  workspace = true
  
+diff --git a/crates/engine/src/cmd/text.rs b/crates/engine/src/cmd/text.rs
+index 0b87820..4dc22ca 100644
+--- a/crates/engine/src/cmd/text.rs
++++ b/crates/engine/src/cmd/text.rs
+@@ -2194,7 +2194,7 @@ mod language_tests {
+             .map(|i| {
+                 let mut f = z.by_index(i).unwrap();
+                 let mut x = String::new();
+-                if f.name().starts_with("Stories/") {
++                if f.name().unwrap().starts_with("Stories/") {
+                     f.read_to_string(&mut x).unwrap();
+                 }
+                 x
 diff --git a/crates/engine/src/links.rs b/crates/engine/src/links.rs
 index ead5bd6..53a0bf6 100644
 --- a/crates/engine/src/links.rs
@@ -1929,6 +2022,19 @@ index 0cbe167..feb5568 100644
  [lints]
  workspace = true
  
+diff --git a/crates/epub/src/lib.rs b/crates/epub/src/lib.rs
+index 77b509d..abd3c35 100644
+--- a/crates/epub/src/lib.rs
++++ b/crates/epub/src/lib.rs
+@@ -775,7 +775,7 @@ mod tests {
+         d.add_text_frame(SpreadRef::Doc(0), Rect::new(36.0, 36.0, 300.0, 100.0), lid, "First\nline two", ParaFormat::default()).unwrap();
+         let bytes = export_epub(&d, &EpubOptions::default()).unwrap();
+         let mut z = zip::ZipArchive::new(std::io::Cursor::new(bytes)).unwrap();
+-        assert_eq!(z.by_index(0).unwrap().name(), "mimetype");
++        assert_eq!(z.by_index(0).unwrap().name().unwrap(), "mimetype");
+         let mut html = String::new();
+         z.by_name("OEBPS/content.xhtml").unwrap().read_to_string(&mut html).unwrap();
+         let a = html.find("First").unwrap();
 diff --git a/crates/fonts/Cargo.toml b/crates/fonts/Cargo.toml
 index d30d210..77a9f89 100644
 --- a/crates/fonts/Cargo.toml
@@ -1955,6 +2061,32 @@ index c3b8ac4..8099a36 100644
  [lints]
  workspace = true
  
+diff --git a/crates/format/src/lib.rs b/crates/format/src/lib.rs
+index 1c89107..3bd4a90 100644
+--- a/crates/format/src/lib.rs
++++ b/crates/format/src/lib.rs
+@@ -106,7 +106,11 @@ fn load_zip(bytes: &[u8]) -> Result<Document, FormatError> {
+     let mut v: Value = serde_json::from_slice(&json).map_err(|e| FormatError::NotOurs(e.to_string()))?;
+     upgrade_json(&mut v);
+     let mut doc: Document = serde_json::from_value(v).map_err(|e| FormatError::NotOurs(e.to_string()))?;
+-    let names: Vec<String> = z.file_names().map(str::to_string).collect();
++    let names: Vec<String> = z
++        .file_names()
++        .map(|name| name.map(|n| n.into_owned()))
++        .collect::<zip::result::ZipResult<_>>()
++        .map_err(|e| FormatError::NotOurs(e.to_string()))?;
+     // Files saved with one copy per placement: identical copies share one buffer as they are
+     // read, so memory holds each distinct file once.
+     let fingerprint = std::collections::hash_map::RandomState::new();
+@@ -310,7 +314,7 @@ mod tests {
+ 
+     fn asset_entries(bytes: &[u8]) -> usize {
+         let z = zip::ZipArchive::new(Cursor::new(bytes)).unwrap();
+-        z.file_names().filter(|n| n.starts_with("assets/")).count()
++        z.file_names().map(|name| name.unwrap()).filter(|n| n.starts_with("assets/")).count()
+     }
+ 
+     /// Zip `d` the way files were saved with one asset per placement (nothing merged or pruned).
 diff --git a/crates/geom/Cargo.toml b/crates/geom/Cargo.toml
 index 30e4570..4fce694 100644
 --- a/crates/geom/Cargo.toml
@@ -1981,6 +2113,32 @@ index 7e11a33..e4535b9 100644
  [lints]
  workspace = true
  
+diff --git a/crates/idml/src/import.rs b/crates/idml/src/import.rs
+index 1a4fa65..a6ecd49 100644
+--- a/crates/idml/src/import.rs
++++ b/crates/idml/src/import.rs
+@@ -71,7 +71,7 @@ pub fn import_idml_report(bytes: &[u8], read_link: &dyn Fn(&str) -> Option<Vec<u
+         if f.is_dir() {
+             continue;
+         }
+-        let name = f.name().to_string();
++        let name = f.name().map_err(|e| IdmlError::NotIdml(e.to_string()))?.into_owned();
+         // The size is what the archive claims: don't reserve more than a sane part up front.
+         let mut buf = Vec::with_capacity((f.size() as usize).min(1 << 24));
+         f.read_to_end(&mut buf).map_err(|e| IdmlError::Part { part: name.clone(), msg: e.to_string() })?;
+diff --git a/crates/idml/src/tests.rs b/crates/idml/src/tests.rs
+index 57801e3..d2e1baf 100644
+--- a/crates/idml/src/tests.rs
++++ b/crates/idml/src/tests.rs
+@@ -39,7 +39,7 @@ fn zip_text(bytes: &[u8], prefix: &str) -> String {
+     let mut out = String::new();
+     for i in 0..z.len() {
+         let mut f = z.by_index(i).unwrap();
+-        if f.name().starts_with(prefix) {
++        if f.name().unwrap().starts_with(prefix) {
+             f.read_to_string(&mut out).unwrap();
+         }
+     }
 diff --git a/crates/idml/src/xml.rs b/crates/idml/src/xml.rs
 index cb09249..97aab23 100644
 --- a/crates/idml/src/xml.rs
@@ -3171,10 +3329,10 @@ index dc8b88b..f9456c2 100644
          "{open?: true, tab?: \"about\"|\"contributors\"|\"models\"} — the About window: splash with community links, contributor and model credits (open: false closes it)",
      ),
 diff --git a/crates/ui-egui/src/rtl.rs b/crates/ui-egui/src/rtl.rs
-index a554bc6..9cbf2f7 100644
+index a554bc6..2a3b6c6 100644
 --- a/crates/ui-egui/src/rtl.rs
 +++ b/crates/ui-egui/src/rtl.rs
-@@ -489,7 +489,7 @@ mod tests {
+@@ -489,12 +489,13 @@ mod tests {
      #[test]
      fn isolates_arabic_names_from_latin_brand_and_zoom_suffix() {
          with_fonts(|ctx| {
@@ -3183,6 +3341,13 @@ index a554bc6..9cbf2f7 100644
              {
                  let galley = plain(ctx, &text, FontId::proportional(15.0), Color32::WHITE);
                  let glyphs = &galley.rows[0].glyphs;
+                 let x = |c| glyphs.iter().find(|g| g.chr == c && g.advance_width > 0.0).unwrap().pos.x;
+-                assert!(x('ج') < x('P') && x('P') < x('ف'), "Arabic name must keep its internal RTL order");
++                // D occurs only inside the isolated PDF label; P also occurs in Plervo Publish.
++                assert!(x('ج') < x('D') && x('D') < x('ف'), "Arabic name must keep its internal RTL order");
+                 assert_eq!(galley.job.text, text);
+             }
+         });
 diff --git a/crates/ui-egui/src/theme.rs b/crates/ui-egui/src/theme.rs
 index 193abf3..893dc95 100644
 --- a/crates/ui-egui/src/theme.rs
@@ -3215,10 +3380,10 @@ index 4399872..e9a10f2 100644
  
  Start the app with `--control <port>` (or `DESIGNCRAFT_CONTROL_PORT`). The server listens on
 diff --git a/packaging/env.sh b/packaging/env.sh
-index 0eb5802..d6d95ab 100644
+index 0eb5802..b658816 100644
 --- a/packaging/env.sh
 +++ b/packaging/env.sh
-@@ -47,10 +47,17 @@ warn() {
+@@ -47,10 +47,24 @@ warn() {
  # Copy licence and readme files that exist into a package directory.
  copy_docs() {
    local dest="$1" f
@@ -3227,6 +3392,13 @@ index 0eb5802..d6d95ab 100644
      if [ -f "$ROOT/$f" ]; then cp "$ROOT/$f" "$dest/"; fi
    done
    copy_font_licences "$dest"
++  # Keep licence and patch notices for reviewed local dependency sources.
++  if [ -d "$ROOT/vendor" ]; then
++    while IFS= read -r -d '' notice; do
++      local rel="${notice#"$ROOT/"}"
++      cp "$notice" "$dest/${rel//\//_}.txt"
++    done < <(find "$ROOT/vendor" -type f \( -iname '*license*' -o -iname '*licence*' -o -iname 'notice*' -o -name 'PLERVO-PATCH.md' \) -print0)
++  fi
 +  # Embedded resources retain their original licence notices.
 +  while IFS= read -r -d '' lic; do
 +    local rel="${lic#"$ROOT/"}"
@@ -3912,7 +4084,7 @@ index 0000000..64a30ab
 +          - .flatpak-builder
 +      - cargo-sources.json
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
-index e2ce72b..33e28cd 100644
+index e2ce72b..3229d5c 100644
 --- a/packaging/linux/nfpm.yaml
 +++ b/packaging/linux/nfpm.yaml
 @@ -3,7 +3,7 @@
@@ -3942,7 +4114,24 @@ index e2ce72b..33e28cd 100644
  
  # The binaries link only glibc and libgcc_s directly. Windowing (X11/Wayland, xkbcommon) and the
  # GPU (Vulkan, EGL/GL) are loaded at runtime, so they are dependencies/recommendations here
-@@ -55,11 +55,11 @@ overrides:
+@@ -28,7 +28,7 @@ description: |-
+ overrides:
+   deb:
+     depends:
+-      - libc6 (>= 2.35)
++      - libc6 (>= ${PLERVO_MIN_GLIBC})
+       - libgcc-s1
+       - libxkbcommon0
+       - libvulkan1 | libegl1
+@@ -43,6 +43,7 @@ overrides:
+       - xdg-desktop-portal
+   rpm:
+     depends:
++      - glibc >= ${PLERVO_MIN_GLIBC}
+       - libxkbcommon
+       - (vulkan-loader or libglvnd-egl)
+     recommends:
+@@ -55,11 +56,11 @@ overrides:
        - xdg-desktop-portal
  
  contents:
@@ -3959,7 +4148,7 @@ index e2ce72b..33e28cd 100644
    - src: ${STAGE}/usr/share/
      dst: /usr/share/
 diff --git a/packaging/linux/package.sh b/packaging/linux/package.sh
-index fd7fc4e..8b19cae 100755
+index fd7fc4e..b586ae1 100755
 --- a/packaging/linux/package.sh
 +++ b/packaging/linux/package.sh
 @@ -1,11 +1,11 @@
@@ -3989,13 +4178,13 @@ index fd7fc4e..8b19cae 100755
  
  SKIP_BUILD=0
  FORMATS="appimage deb rpm tar"
-@@ -37,16 +37,16 @@ case "$ARCH" in
+@@ -37,27 +37,30 @@ case "$ARCH" in
    aarch64 | arm64) ARCH=aarch64; DEB_ARCH=arm64 ;;
    *) echo "unsupported architecture $ARCH" >&2; exit 2 ;;
  esac
 -export DESIGNCRAFT_MAINTAINER="${DESIGNCRAFT_MAINTAINER:-DesignCraft maintainers <designcraft@storyteller.ai>}"
 -BASENAME="designcraft-$VERSION-linux-$ARCH"
-+export DESIGNCRAFT_MAINTAINER="${DESIGNCRAFT_MAINTAINER:-Plervo Publish maintainers <plervo-publish@storyteller.ai>}"
++export DESIGNCRAFT_MAINTAINER="${DESIGNCRAFT_MAINTAINER:-Plervo contributors}"
 +BASENAME="plervo-publish-$VERSION-linux-$ARCH"
  
 -echo "==> DesignCraft $VERSION for Linux $ARCH ($FORMATS)"
@@ -4011,7 +4200,11 @@ index fd7fc4e..8b19cae 100755
    fi
  fi
  BIN="$CARGO_TARGET_DIR/${CROSS_TARGET:+$CROSS_TARGET/}release"
-@@ -55,9 +55,9 @@ STAGE="$WORK/root"
++# Match the declared Ubuntu 24.04 baseline to the actual ELF requirements.
++export PLERVO_MIN_GLIBC=2.39
++bash "$HERE/verify-glibc.sh" "$PLERVO_MIN_GLIBC" "$BIN/plervo-publish" "$BIN/plervo-publish-cli"
+ WORK="$CARGO_TARGET_DIR/linux-package"
+ STAGE="$WORK/root"
  rm -rf "$WORK"
  
  # ---- stage an FHS tree (shared by every format) -------------------------------------------------
@@ -4024,7 +4217,7 @@ index fd7fc4e..8b19cae 100755
  install -Dm644 "$HERE/$APP_ID.desktop" "$STAGE/usr/share/applications/$APP_ID.desktop"
  install -Dm644 "$HERE/$APP_ID.mime.xml" "$STAGE/usr/share/mime/packages/$APP_ID.xml"
  mkdir -p "$STAGE/usr/share/metainfo"
-@@ -65,8 +65,8 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$DESIGNCRAFT_BUILD_DATE/g" \
+@@ -65,8 +68,8 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$DESIGNCRAFT_BUILD_DATE/g" \
    "$HERE/$APP_ID.metainfo.xml.in" >"$STAGE/usr/share/metainfo/$APP_ID.metainfo.xml"
  mkdir -p "$STAGE/usr/share/icons"
  cp -R "$ROOT/assets/app-icon/hicolor" "$STAGE/usr/share/icons/"
@@ -4035,7 +4228,7 @@ index fd7fc4e..8b19cae 100755
  
  if command -v desktop-file-validate >/dev/null; then
    desktop-file-validate "$STAGE/usr/share/applications/$APP_ID.desktop"
-@@ -104,10 +104,10 @@ if has appimage; then
+@@ -104,10 +107,10 @@ if has appimage; then
      x86_64) APPIMAGETOOL_SHA256=ed4ce84f0d9caff66f50bcca6ff6f35aae54ce8135408b3fa33abfc3cb384eb0 ;;
      aarch64) APPIMAGETOOL_SHA256=f0837e7448a0c1e4e650a93bb3e85802546e60654ef287576f46c71c126a9158 ;;
    esac
@@ -4048,7 +4241,7 @@ index fd7fc4e..8b19cae 100755
    cp "$HERE/$APP_ID.desktop" "$APPDIR/$APP_ID.desktop"
    cp "$ROOT/assets/app-icon/hicolor/256x256/apps/$APP_ID.png" "$APPDIR/$APP_ID.png"
    ln -s "$APP_ID.png" "$APPDIR/.DirIcon"
-@@ -136,8 +136,8 @@ if has appimage; then
+@@ -136,8 +139,8 @@ if has appimage; then
    # fetch only the blocks that changed in a newer release, through the .zsync published next to
    # each AppImage on GitHub Releases. `latest` is the newest published release that is not a
    # pre-release. A fork's builds point at its own releases through GITHUB_REPOSITORY.
@@ -4059,7 +4252,7 @@ index fd7fc4e..8b19cae 100755
    # Extract-and-run: works without FUSE (containers, CI). The output embeds the static runtime,
    # so users don't need libfuse2 either. With zsyncmake on the host (CI installs the zsync
    # package) appimagetool also writes the .zsync, into its working directory, hence the cd.
-@@ -151,9 +151,9 @@ if has appimage; then
+@@ -151,9 +154,9 @@ if has appimage; then
  fi
  
  if [ -z "${CROSS_TARGET:-}" ]; then
@@ -4071,8 +4264,50 @@ index fd7fc4e..8b19cae 100755
  fi
  echo "==> done"
  ls -lh "$DIST"
+diff --git a/packaging/linux/verify-glibc.sh b/packaging/linux/verify-glibc.sh
+new file mode 100755
+index 0000000..2a99601
+--- /dev/null
++++ b/packaging/linux/verify-glibc.sh
+@@ -0,0 +1,36 @@
++#!/usr/bin/env bash
++# Refuse binaries that require a newer glibc than the package declares. Does not execute them.
++set -euo pipefail
++if [ "$#" -lt 2 ] || [[ ! "$1" =~ ^[0-9]+\.[0-9]+$ ]]; then
++  echo "usage: verify-glibc.sh MAX_MAJOR.MINOR ELF..." >&2
++  exit 2
++fi
++ceiling="$1"
++shift
++for binary in "$@"; do
++  headers="$(LC_ALL=C "${CROSS_COMPILE:-}objdump" -p "$binary")"
++  if ! printf '%s\n' "$headers" | LC_ALL=C awk -v ceiling="$ceiling" '
++    BEGIN { split(ceiling, cap, /[.]/) }
++    $NF ~ /^GLIBC_/ {
++      seen = 1
++      if ($NF !~ /^GLIBC_[0-9]+\.[0-9]+(\.[0-9]+)?$/) {
++        print "unsupported glibc requirement: " $NF > "/dev/stderr"
++        bad = 1
++        next
++      }
++      split(substr($NF, 7), version, /[.]/)
++      if (version[1] > cap[1] || (version[1] == cap[1] &&
++          (version[2] > cap[2] || (version[2] == cap[2] && version[3] > 0)))) {
++        print "requires " $NF ", package baseline is " ceiling > "/dev/stderr"
++        bad = 1
++      }
++    }
++    END {
++      if (!seen) print "no glibc version requirements found" > "/dev/stderr"
++      exit (bad || !seen)
++    }
++  '; then
++    echo "error: incompatible or unreadable Linux runtime requirements: $binary" >&2
++    exit 1
++  fi
++done
 diff --git a/packaging/macos/Info.plist.in b/packaging/macos/Info.plist.in
-index 4348942..0390fb2 100644
+index 4348942..70b58a4 100644
 --- a/packaging/macos/Info.plist.in
 +++ b/packaging/macos/Info.plist.in
 @@ -7,13 +7,13 @@
@@ -4116,7 +4351,8 @@ index 4348942..0390fb2 100644
 -  <string>Copyright © the DesignCraft authors. MIT OR Apache-2.0.</string>
 +  <string>Copyright © the Plervo Publish authors. MIT OR Apache-2.0.</string>
  
-   <!-- Designcraft's own format. -->
+-  <!-- Designcraft's own format. -->
++  <!-- Plervo Publish's native document format. -->
    <key>UTExportedTypeDeclarations</key>
    <array>
      <dict>
@@ -4137,7 +4373,8 @@ index 4348942..0390fb2 100644
        <key>UTTypeTagSpecification</key>
        <dict>
          <key>public.filename-extension</key>
-         <array><string>pcraft</string></array>
+-        <array><string>pcraft</string></array>
++        <array><string>designcraft</string></array>
          <key>public.mime-type</key>
 -        <array><string>application/x-designcraft</string></array>
 +        <array><string>application/x-plervo-publish</string></array>
@@ -4542,7 +4779,7 @@ index 8e2de81..0000000
 -  </Fragment>
 -</Wix>
 diff --git a/packaging/windows/package.ps1 b/packaging/windows/package.ps1
-index 7ca2ec1..bf2ea6f 100644
+index 7ca2ec1..74a4c68 100644
 --- a/packaging/windows/package.ps1
 +++ b/packaging/windows/package.ps1
 @@ -1,11 +1,11 @@
@@ -4587,7 +4824,7 @@ index 7ca2ec1..bf2ea6f 100644
    $h = Get-PeHeader (Join-Path $Bin $check[0])
    if ($h.Machine -ne $Machine) { throw "$($check[0]) is for machine 0x$('{0:X}' -f $h.Machine), expected 0x$('{0:X}' -f $Machine) ($Arch)" }
    if ($h.Subsystem -ne $check[1]) { throw "$($check[0]) has PE subsystem $($h.Subsystem), expected $($check[1])" }
-@@ -86,15 +86,32 @@ foreach ($check in @(@('designcraft.exe', 2), @('designcraft-cli.exe', 3))) {
+@@ -86,15 +86,39 @@ foreach ($check in @(@('designcraft.exe', 2), @('designcraft-cli.exe', 3))) {
  $Stage = Join-Path $TargetDir "windows-package\$Arch"
  Remove-Item -Recurse -Force $Stage -ErrorAction SilentlyContinue
  New-Item -ItemType Directory -Force -Path $Stage | Out-Null
@@ -4616,6 +4853,13 @@ index 7ca2ec1..bf2ea6f 100644
  
  # ---- MSI ---------------------------------------------------------------------------------------
 -$Msi = Join-Path $Dist "designcraft-$Version-windows-$Arch.msi"
++$Vendor = Join-Path $Root 'vendor'
++if (Test-Path -LiteralPath $Vendor) {
++  Get-ChildItem $Vendor -Recurse -File | Where-Object { $_.Name -match '(?i)licen[cs]e|^notice|^PLERVO-PATCH\.md$' } | ForEach-Object {
++    $name = ($_.FullName.Substring($Root.Length + 1) -replace '[\\/]', '_') + '.txt'
++    Copy-Item $_.FullName (Join-Path $Legal $name)
++  }
++}
 +$Msi = Join-Path $Dist "plervo-publish-$Version-windows-$Arch.msi"
  Invoke-Native 'wix build' {
 -  wix build (Join-Path $PSScriptRoot 'designcraft.wxs') -arch $Arch `
@@ -4625,7 +4869,7 @@ index 7ca2ec1..bf2ea6f 100644
      -o $Msi
  }
  # wix writes its debug symbols (.wixpdb) next to the MSI; keep them out of the release assets.
-@@ -102,10 +119,11 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
+@@ -102,10 +126,11 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
  & (Join-Path $PSScriptRoot 'sign.ps1') $Msi
  
  # ---- portable zip ------------------------------------------------------------------------------
@@ -4638,7 +4882,7 @@ index 7ca2ec1..bf2ea6f 100644
  foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE') {
    $p = Join-Path $Root $f
    if (Test-Path $p) { Copy-Item $p $Portable }
-@@ -116,7 +134,7 @@ if ($env:CRAFT_FONTS_DIR) {
+@@ -116,7 +141,7 @@ if ($env:CRAFT_FONTS_DIR) {
      Copy-Item $ofl.FullName (Join-Path $Portable "OFL-$($ofl.Directory.Name).txt")
    }
  }
@@ -4647,7 +4891,7 @@ index 7ca2ec1..bf2ea6f 100644
  Remove-Item -Force $Zip -ErrorAction SilentlyContinue
  Compress-Archive -Path $Portable -DestinationPath $Zip
  
-@@ -124,8 +142,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
+@@ -124,8 +149,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
  # here; .github/workflows/windows-arm64.yml installs and runs it on ARM64 instead.
  $HostArch = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString().ToLowerInvariant()
  if ($Arch -ne 'arm64' -or $HostArch -eq 'arm64') {
@@ -5648,12 +5892,248 @@ index 0000000..46e8653
 +fontdb = { workspace = true }
 +skrifa = { workspace = true }
 +smallvec = { workspace = true }
+diff --git a/vendor/krilla-svg/LICENSE_APACHE b/vendor/krilla-svg/LICENSE_APACHE
+new file mode 100644
+index 0000000..d645695
+--- /dev/null
++++ b/vendor/krilla-svg/LICENSE_APACHE
+@@ -0,0 +1,202 @@
++
++                                 Apache License
++                           Version 2.0, January 2004
++                        http://www.apache.org/licenses/
++
++   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
++
++   1. Definitions.
++
++      "License" shall mean the terms and conditions for use, reproduction,
++      and distribution as defined by Sections 1 through 9 of this document.
++
++      "Licensor" shall mean the copyright owner or entity authorized by
++      the copyright owner that is granting the License.
++
++      "Legal Entity" shall mean the union of the acting entity and all
++      other entities that control, are controlled by, or are under common
++      control with that entity. For the purposes of this definition,
++      "control" means (i) the power, direct or indirect, to cause the
++      direction or management of such entity, whether by contract or
++      otherwise, or (ii) ownership of fifty percent (50%) or more of the
++      outstanding shares, or (iii) beneficial ownership of such entity.
++
++      "You" (or "Your") shall mean an individual or Legal Entity
++      exercising permissions granted by this License.
++
++      "Source" form shall mean the preferred form for making modifications,
++      including but not limited to software source code, documentation
++      source, and configuration files.
++
++      "Object" form shall mean any form resulting from mechanical
++      transformation or translation of a Source form, including but
++      not limited to compiled object code, generated documentation,
++      and conversions to other media types.
++
++      "Work" shall mean the work of authorship, whether in Source or
++      Object form, made available under the License, as indicated by a
++      copyright notice that is included in or attached to the work
++      (an example is provided in the Appendix below).
++
++      "Derivative Works" shall mean any work, whether in Source or Object
++      form, that is based on (or derived from) the Work and for which the
++      editorial revisions, annotations, elaborations, or other modifications
++      represent, as a whole, an original work of authorship. For the purposes
++      of this License, Derivative Works shall not include works that remain
++      separable from, or merely link (or bind by name) to the interfaces of,
++      the Work and Derivative Works thereof.
++
++      "Contribution" shall mean any work of authorship, including
++      the original version of the Work and any modifications or additions
++      to that Work or Derivative Works thereof, that is intentionally
++      submitted to Licensor for inclusion in the Work by the copyright owner
++      or by an individual or Legal Entity authorized to submit on behalf of
++      the copyright owner. For the purposes of this definition, "submitted"
++      means any form of electronic, verbal, or written communication sent
++      to the Licensor or its representatives, including but not limited to
++      communication on electronic mailing lists, source code control systems,
++      and issue tracking systems that are managed by, or on behalf of, the
++      Licensor for the purpose of discussing and improving the Work, but
++      excluding communication that is conspicuously marked or otherwise
++      designated in writing by the copyright owner as "Not a Contribution."
++
++      "Contributor" shall mean Licensor and any individual or Legal Entity
++      on behalf of whom a Contribution has been received by Licensor and
++      subsequently incorporated within the Work.
++
++   2. Grant of Copyright License. Subject to the terms and conditions of
++      this License, each Contributor hereby grants to You a perpetual,
++      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
++      copyright license to reproduce, prepare Derivative Works of,
++      publicly display, publicly perform, sublicense, and distribute the
++      Work and such Derivative Works in Source or Object form.
++
++   3. Grant of Patent License. Subject to the terms and conditions of
++      this License, each Contributor hereby grants to You a perpetual,
++      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
++      (except as stated in this section) patent license to make, have made,
++      use, offer to sell, sell, import, and otherwise transfer the Work,
++      where such license applies only to those patent claims licensable
++      by such Contributor that are necessarily infringed by their
++      Contribution(s) alone or by combination of their Contribution(s)
++      with the Work to which such Contribution(s) was submitted. If You
++      institute patent litigation against any entity (including a
++      cross-claim or counterclaim in a lawsuit) alleging that the Work
++      or a Contribution incorporated within the Work constitutes direct
++      or contributory patent infringement, then any patent licenses
++      granted to You under this License for that Work shall terminate
++      as of the date such litigation is filed.
++
++   4. Redistribution. You may reproduce and distribute copies of the
++      Work or Derivative Works thereof in any medium, with or without
++      modifications, and in Source or Object form, provided that You
++      meet the following conditions:
++
++      (a) You must give any other recipients of the Work or
++          Derivative Works a copy of this License; and
++
++      (b) You must cause any modified files to carry prominent notices
++          stating that You changed the files; and
++
++      (c) You must retain, in the Source form of any Derivative Works
++          that You distribute, all copyright, patent, trademark, and
++          attribution notices from the Source form of the Work,
++          excluding those notices that do not pertain to any part of
++          the Derivative Works; and
++
++      (d) If the Work includes a "NOTICE" text file as part of its
++          distribution, then any Derivative Works that You distribute must
++          include a readable copy of the attribution notices contained
++          within such NOTICE file, excluding those notices that do not
++          pertain to any part of the Derivative Works, in at least one
++          of the following places: within a NOTICE text file distributed
++          as part of the Derivative Works; within the Source form or
++          documentation, if provided along with the Derivative Works; or,
++          within a display generated by the Derivative Works, if and
++          wherever such third-party notices normally appear. The contents
++          of the NOTICE file are for informational purposes only and
++          do not modify the License. You may add Your own attribution
++          notices within Derivative Works that You distribute, alongside
++          or as an addendum to the NOTICE text from the Work, provided
++          that such additional attribution notices cannot be construed
++          as modifying the License.
++
++      You may add Your own copyright statement to Your modifications and
++      may provide additional or different license terms and conditions
++      for use, reproduction, or distribution of Your modifications, or
++      for any such Derivative Works as a whole, provided Your use,
++      reproduction, and distribution of the Work otherwise complies with
++      the conditions stated in this License.
++
++   5. Submission of Contributions. Unless You explicitly state otherwise,
++      any Contribution intentionally submitted for inclusion in the Work
++      by You to the Licensor shall be under the terms and conditions of
++      this License, without any additional terms or conditions.
++      Notwithstanding the above, nothing herein shall supersede or modify
++      the terms of any separate license agreement you may have executed
++      with Licensor regarding such Contributions.
++
++   6. Trademarks. This License does not grant permission to use the trade
++      names, trademarks, service marks, or product names of the Licensor,
++      except as required for reasonable and customary use in describing the
++      origin of the Work and reproducing the content of the NOTICE file.
++
++   7. Disclaimer of Warranty. Unless required by applicable law or
++      agreed to in writing, Licensor provides the Work (and each
++      Contributor provides its Contributions) on an "AS IS" BASIS,
++      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
++      implied, including, without limitation, any warranties or conditions
++      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
++      PARTICULAR PURPOSE. You are solely responsible for determining the
++      appropriateness of using or redistributing the Work and assume any
++      risks associated with Your exercise of permissions under this License.
++
++   8. Limitation of Liability. In no event and under no legal theory,
++      whether in tort (including negligence), contract, or otherwise,
++      unless required by applicable law (such as deliberate and grossly
++      negligent acts) or agreed to in writing, shall any Contributor be
++      liable to You for damages, including any direct, indirect, special,
++      incidental, or consequential damages of any character arising as a
++      result of this License or out of the use or inability to use the
++      Work (including but not limited to damages for loss of goodwill,
++      work stoppage, computer failure or malfunction, or any and all
++      other commercial damages or losses), even if such Contributor
++      has been advised of the possibility of such damages.
++
++   9. Accepting Warranty or Additional Liability. While redistributing
++      the Work or Derivative Works thereof, You may choose to offer,
++      and charge a fee for, acceptance of support, warranty, indemnity,
++      or other liability obligations and/or rights consistent with this
++      License. However, in accepting such obligations, You may act only
++      on Your own behalf and on Your sole responsibility, not on behalf
++      of any other Contributor, and only if You agree to indemnify,
++      defend, and hold each Contributor harmless for any liability
++      incurred by, or claims asserted against, such Contributor by reason
++      of your accepting any such warranty or additional liability.
++
++   END OF TERMS AND CONDITIONS
++
++   APPENDIX: How to apply the Apache License to your work.
++
++      To apply the Apache License to your work, attach the following
++      boilerplate notice, with the fields enclosed by brackets "[]"
++      replaced with your own identifying information. (Don't include
++      the brackets!)  The text should be enclosed in the appropriate
++      comment syntax for the file format. We also recommend that a
++      file or class name and description of purpose be included on the
++      same "printed page" as the copyright notice for easier
++      identification within third-party archives.
++
++   Copyright [yyyy] [name of copyright owner]
++
++   Licensed under the Apache License, Version 2.0 (the "License");
++   you may not use this file except in compliance with the License.
++   You may obtain a copy of the License at
++
++       http://www.apache.org/licenses/LICENSE-2.0
++
++   Unless required by applicable law or agreed to in writing, software
++   distributed under the License is distributed on an "AS IS" BASIS,
++   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++   See the License for the specific language governing permissions and
++   limitations under the License.
+diff --git a/vendor/krilla-svg/LICENSE_MIT b/vendor/krilla-svg/LICENSE_MIT
+new file mode 100644
+index 0000000..63b1625
+--- /dev/null
++++ b/vendor/krilla-svg/LICENSE_MIT
+@@ -0,0 +1,21 @@
++MIT License
++
++Copyright (c) 2024 Laurenz Stampfl
++
++Permission is hereby granted, free of charge, to any person obtaining a copy
++of this software and associated documentation files (the "Software"), to deal
++in the Software without restriction, including without limitation the rights
++to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++copies of the Software, and to permit persons to whom the Software is
++furnished to do so, subject to the following conditions:
++
++The above copyright notice and this permission notice shall be included in all
++copies or substantial portions of the Software.
++
++THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
++AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
++SOFTWARE.
+\ No newline at end of file
 diff --git a/vendor/krilla-svg/PLERVO-PATCH.md b/vendor/krilla-svg/PLERVO-PATCH.md
 new file mode 100644
-index 0000000..70485ca
+index 0000000..52ea3a1
 --- /dev/null
 +++ b/vendor/krilla-svg/PLERVO-PATCH.md
-@@ -0,0 +1,11 @@
+@@ -0,0 +1,16 @@
 +# Plervo compatibility overlay
 +
 +Source: krilla-svg 0.8.1, MIT OR Apache-2.0, Laurenz Stampfl.
@@ -5665,6 +6145,11 @@ index 0000000..70485ca
 +maintained HarfRust/Skrifa instead of rustybuzz/ttf-parser. Upstream licence texts
 +and source are preserved. The Plervo source overlay hash covers these changes.
 +The glyph id is already u32 in usvg 0.48; its obsolete widening cast is removed.
++
++The crate archive omits workspace licence files. LICENSE_MIT and LICENSE_APACHE
++are copied from its .cargo_vcs_info.json commit, LaurenzV/krilla
++3ffdf0588cf98050aad6edba51ca70162e1fb5b5. Their exact source URLs and hashes are recorded
++in the local validation evidence.
 diff --git a/vendor/krilla-svg/README.md b/vendor/krilla-svg/README.md
 new file mode 100644
 index 0000000..c0b2d43

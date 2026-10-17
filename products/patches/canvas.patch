@@ -55,10 +55,26 @@ index 1f72aeb..1b6d446 100644
 +
 +| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | 1a19be67a88404ccfe381bf5611409914a7b63e6ef1a5695f9726beec98e6972 |
 diff --git a/Cargo.lock b/Cargo.lock
-index 5e9c6f6..9bf9070 100644
+index 5e9c6f6..c10fffb 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -828,15 +828,6 @@ dependencies = [
+@@ -233,15 +233,6 @@ dependencies = [
+  "windows-sys 0.61.2",
+ ]
+ 
+-[[package]]
+-name = "arbitrary"
+-version = "1.5.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "3bc62ac97cc33321f50863d514c3bc38a453947a8f9e781137e47c7401020aed"
+-dependencies = [
+- "derive_arbitrary",
+-]
+-
+ [[package]]
+ name = "arboard"
+ version = "3.6.1"
+@@ -828,15 +819,6 @@ dependencies = [
   "libc",
  ]
  
@@ -74,7 +90,25 @@ index 5e9c6f6..9bf9070 100644
  [[package]]
  name = "cpufeatures"
  version = "0.2.17"
-@@ -1405,46 +1396,9 @@ version = "0.4.1"
+@@ -974,17 +956,6 @@ dependencies = [
+  "thiserror 2.0.21",
+ ]
+ 
+-[[package]]
+-name = "derive_arbitrary"
+-version = "1.5.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "1b034bd7d5f032402a2479444dcc6f74e36a03f31854d41680fb240ef682a1ac"
+-dependencies = [
+- "proc-macro2",
+- "quote",
+- "syn 3.0.6",
+-]
+-
+ [[package]]
+ name = "digest"
+ version = "0.10.7"
+@@ -1405,46 +1376,9 @@ version = "0.4.1"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "b97b65636e5b9ef369943878ac74335ba1c55c1cb6adbf1e2c293c624248d693"
  
@@ -122,7 +156,7 @@ index 5e9c6f6..9bf9070 100644
  dependencies = [
   "base64 0.22.1",
   "figcraft-color",
-@@ -1459,7 +1413,7 @@ dependencies = [
+@@ -1459,7 +1393,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-collab-net"
@@ -131,7 +165,7 @@ index 5e9c6f6..9bf9070 100644
  dependencies = [
   "base64 0.22.1",
   "figcraft-collab",
-@@ -1482,7 +1436,7 @@ dependencies = [
+@@ -1482,7 +1416,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-color"
@@ -140,7 +174,7 @@ index 5e9c6f6..9bf9070 100644
  dependencies = [
   "kurbo",
   "serde",
-@@ -1491,7 +1445,7 @@ dependencies = [
+@@ -1491,7 +1425,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-doc"
@@ -149,7 +183,7 @@ index 5e9c6f6..9bf9070 100644
  dependencies = [
   "figcraft-color",
   "figcraft-geom",
-@@ -1503,7 +1457,7 @@ dependencies = [
+@@ -1503,7 +1437,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-engine"
@@ -158,7 +192,7 @@ index 5e9c6f6..9bf9070 100644
  dependencies = [
   "base64 0.22.1",
   "figcraft-collab",
-@@ -1530,7 +1484,7 @@ dependencies = [
+@@ -1530,7 +1464,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-format"
@@ -167,7 +201,7 @@ index 5e9c6f6..9bf9070 100644
  dependencies = [
   "figcraft-doc",
   "figcraft-pathops",
-@@ -1545,7 +1499,7 @@ dependencies = [
+@@ -1545,7 +1479,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-geom"
@@ -176,7 +210,7 @@ index 5e9c6f6..9bf9070 100644
  dependencies = [
   "kurbo",
   "serde",
-@@ -1553,7 +1507,7 @@ dependencies = [
+@@ -1553,7 +1487,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-layout"
@@ -185,7 +219,7 @@ index 5e9c6f6..9bf9070 100644
  dependencies = [
   "figcraft-doc",
   "figcraft-geom",
-@@ -1561,7 +1515,7 @@ dependencies = [
+@@ -1561,7 +1495,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-mcp"
@@ -194,7 +228,7 @@ index 5e9c6f6..9bf9070 100644
  dependencies = [
   "base64 0.22.1",
   "figcraft-collab-net",
-@@ -1577,7 +1531,7 @@ dependencies = [
+@@ -1577,7 +1511,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-pathops"
@@ -203,7 +237,7 @@ index 5e9c6f6..9bf9070 100644
  dependencies = [
   "figcraft-doc",
   "figcraft-geom",
-@@ -1586,7 +1540,7 @@ dependencies = [
+@@ -1586,7 +1520,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-pdf"
@@ -212,7 +246,7 @@ index 5e9c6f6..9bf9070 100644
  dependencies = [
   "figcraft-color",
   "figcraft-doc",
-@@ -1603,7 +1557,7 @@ dependencies = [
+@@ -1603,7 +1537,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-plugin"
@@ -221,7 +255,7 @@ index 5e9c6f6..9bf9070 100644
  dependencies = [
   "figcraft-color",
   "serde",
-@@ -1616,7 +1570,7 @@ dependencies = [
+@@ -1616,7 +1550,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-render"
@@ -230,7 +264,7 @@ index 5e9c6f6..9bf9070 100644
  dependencies = [
   "crc32fast",
   "figcraft-color",
-@@ -1634,7 +1588,7 @@ dependencies = [
+@@ -1634,7 +1568,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-server"
@@ -239,7 +273,7 @@ index 5e9c6f6..9bf9070 100644
  dependencies = [
   "crc32fast",
   "ctrlc",
-@@ -1658,7 +1612,7 @@ dependencies = [
+@@ -1658,7 +1592,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-svg"
@@ -248,7 +282,7 @@ index 5e9c6f6..9bf9070 100644
  dependencies = [
   "base64 0.22.1",
   "figcraft-color",
-@@ -1674,7 +1628,7 @@ dependencies = [
+@@ -1674,7 +1608,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-text"
@@ -257,7 +291,7 @@ index 5e9c6f6..9bf9070 100644
  dependencies = [
   "figcraft-doc",
   "figcraft-geom",
-@@ -1687,7 +1641,7 @@ dependencies = [
+@@ -1687,7 +1621,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-ui-egui"
@@ -266,7 +300,7 @@ index 5e9c6f6..9bf9070 100644
  dependencies = [
   "base64 0.22.1",
   "egui",
-@@ -1711,7 +1665,7 @@ dependencies = [
+@@ -1711,7 +1645,7 @@ dependencies = [
  
  [[package]]
  name = "figcraft-web"
@@ -275,7 +309,7 @@ index 5e9c6f6..9bf9070 100644
  dependencies = [
   "eframe",
   "egui",
-@@ -2543,7 +2497,6 @@ dependencies = [
+@@ -2543,7 +2477,6 @@ dependencies = [
   "pdf-writer",
   "png",
   "rustc-hash 2.1.3",
@@ -283,7 +317,7 @@ index 5e9c6f6..9bf9070 100644
   "siphasher",
   "skrifa 0.42.1",
   "smallvec",
-@@ -3347,6 +3300,43 @@ version = "0.2.3"
+@@ -3347,6 +3280,43 @@ version = "0.2.3"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "b4596b6d070b27117e987119b4dac604f3c58cfb0b191112e24771b2faeac1a6"
  
@@ -327,7 +361,7 @@ index 5e9c6f6..9bf9070 100644
  [[package]]
  name = "png"
  version = "0.18.1"
-@@ -3855,9 +3845,9 @@ dependencies = [
+@@ -3855,9 +3825,9 @@ dependencies = [
  
  [[package]]
  name = "rustls"
@@ -339,7 +373,7 @@ index 5e9c6f6..9bf9070 100644
  dependencies = [
   "log",
   "once_cell",
-@@ -3906,24 +3896,6 @@ dependencies = [
+@@ -3906,24 +3876,6 @@ dependencies = [
   "wait-timeout",
  ]
  
@@ -364,16 +398,7 @@ index 5e9c6f6..9bf9070 100644
  [[package]]
  name = "ruzstd"
  version = "0.9.1"
-@@ -4356,7 +4328,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
- checksum = "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd"
- dependencies = [
-  "fastrand",
-- "getrandom 0.4.3",
-+ "getrandom 0.3.4",
-  "once_cell",
-  "rustix 1.1.5",
-  "windows-sys 0.61.2",
-@@ -4559,15 +4531,6 @@ dependencies = [
+@@ -4559,15 +4511,6 @@ dependencies = [
   "once_cell",
  ]
  
@@ -389,7 +414,20 @@ index 5e9c6f6..9bf9070 100644
  [[package]]
  name = "tungstenite"
  version = "0.30.0"
-@@ -4622,18 +4585,6 @@ version = "0.3.18"
+@@ -4593,6 +4536,12 @@ dependencies = [
+  "rustc-hash 2.1.3",
+ ]
+ 
++[[package]]
++name = "typed-path"
++version = "0.12.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "8e28f89b80c87b8fb0cf04ab448d5dd0dd0ade2f8891bae878de66a75a28600e"
++
+ [[package]]
+ name = "typenum"
+ version = "1.20.1"
+@@ -4622,18 +4571,6 @@ version = "0.3.18"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "5c1cb5db39152898a79168971543b1cb5020dff7fe43c8dc468b0885f5e29df5"
  
@@ -408,7 +446,7 @@ index 5e9c6f6..9bf9070 100644
  [[package]]
  name = "unicode-general-category"
  version = "1.1.0"
-@@ -4646,12 +4597,6 @@ version = "1.0.26"
+@@ -4646,12 +4583,6 @@ version = "1.0.26"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "d245f478577f809a851594d02313b640fb437e0bb33866753cff937863096954"
  
@@ -421,7 +459,7 @@ index 5e9c6f6..9bf9070 100644
  [[package]]
  name = "unicode-script"
  version = "0.5.8"
-@@ -5807,7 +5752,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
+@@ -5807,7 +5738,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
  
  [[package]]
  name = "xtask"
@@ -430,29 +468,31 @@ index 5e9c6f6..9bf9070 100644
  dependencies = [
   "figcraft-engine",
   "serde_json",
-@@ -6024,18 +5969,16 @@ dependencies = [
+@@ -6024,18 +5955,16 @@ dependencies = [
  
  [[package]]
  name = "zip"
 -version = "2.4.2"
-+version = "2.6.1"
++version = "9.0.4"
  source = "registry+https://github.com/rust-lang/crates.io-index"
 -checksum = "fabe6324e908f85a1c52063ce7aa26b68dcb7eb6dbc83a2d148403c9bc3eba50"
-+checksum = "1dcb24d0152526ae49b9b96c1dcf71850ca1e0b882e4e28ed898a93c41334744"
++checksum = "a954114b47a54df49f83d2722814e86b23d4bb1b54a1b90fb7d92b41619ddc22"
  dependencies = [
-  "arbitrary",
+- "arbitrary",
   "crc32fast",
-  "crossbeam-utils",
+- "crossbeam-utils",
 - "displaydoc",
   "flate2",
   "indexmap",
   "memchr",
 - "thiserror 2.0.21",
++ "nix",
++ "typed-path",
   "zopfli",
  ]
  
 diff --git a/Cargo.toml b/Cargo.toml
-index 8f125ac..96da546 100644
+index 8f125ac..c177831 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -6,7 +6,7 @@ exclude = ["plugins"]
@@ -464,7 +504,7 @@ index 8f125ac..96da546 100644
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.95"
-@@ -50,7 +50,8 @@ image = { version = "0.25", default-features = false, features = ["png", "jpeg",
+@@ -50,13 +50,14 @@ image = { version = "0.25", default-features = false, features = ["png", "jpeg",
  moxcms = "0.8"
  png = "0.18"
  usvg = "0.48"
@@ -474,6 +514,13 @@ index 8f125ac..96da546 100644
  skrifa = "0.47"
  harfrust = "0.13"
  unicode-bidi = "0.3"
+ unicode-segmentation = "1.13"
+ linesweeper = "0.4"
+-zip = { version = "2", default-features = false, features = ["deflate"] }
++zip = { version = "9.0.4", default-features = false, features = ["deflate"] }
+ # `.fig` import: raw deflate chunks (already built for zip) and zstd chunks (pure Rust, MIT, wasm-safe).
+ flate2 = { version = "1", default-features = false, features = ["rust_backend"] }
+ ruzstd = { version = "0.9.1", default-features = false, features = ["std"] }
 @@ -85,7 +86,6 @@ unsafe_code = "forbid"
  dbg_macro = "warn"
  # Style lints from newer toolchains that fight index-heavy pixel code.
@@ -483,10 +530,10 @@ index 8f125ac..96da546 100644
  # AGENTS.md › Never crash). Tests may unwrap (clippy.toml).
  unwrap_used = "deny"
 diff --git a/NOTICE b/NOTICE
-index 9aaba82..f4821ab 100644
+index 9aaba82..a8bb063 100644
 --- a/NOTICE
 +++ b/NOTICE
-@@ -20,3 +20,457 @@ licence texts.
+@@ -20,3 +20,456 @@ licence texts.
  Rust crate dependencies keep their own licenses (MIT, Apache-2.0, BSD, ISC, Zlib, OFL for egui's
  default fonts, CDLA-Permissive-2.0 for the root certificate list webpki-roots compiles in, and
  similar permissive licenses); see each crate's metadata.
@@ -943,7 +990,6 @@ index 9aaba82..f4821ab 100644
 +5.4. "Results" means any outcome obtained by computational analysis
 +of Data, including for example machine learning models and models'
 +insights.
-+
 diff --git a/README.md b/README.md
 index 9b67078..b2d30a1 100644
 --- a/README.md
@@ -1697,6 +1743,47 @@ index 64f9783..3a1cba6 100644
          if let Err(e) = res.compile() {
              println!("cargo::warning=winresource: {e}");
          }
+diff --git a/apps/figcraft/src/args.rs b/apps/figcraft/src/args.rs
+index 2e3099c..2914563 100644
+--- a/apps/figcraft/src/args.rs
++++ b/apps/figcraft/src/args.rs
+@@ -1,5 +1,5 @@
+-//! The command line: `figcraft [--control <port>] [files…] [figcraft://join?…]`. An invite link
+-//! (what the system passes when a `figcraft://` link is opened) joins that session once the window
++//! The command line: `figcraft [--control <port>] [files…] [plervo-canvas://join?…]`. An invite link
++//! (what the system passes when a `plervo-canvas://` link is opened) joins that session once the window
+ //! is up; everything else that isn't a flag is a file to open, as a path or a `file://` URL (the
+ //! Linux desktop entry passes URLs, `%U`, so that it can also hand over invite links).
+ 
+@@ -13,9 +13,9 @@ pub struct Args {
+     pub join: Option<String>,
+ }
+ 
+-/// An invite link rather than a file (`figcraft:` links, in any case).
++/// An invite link rather than a file; legacy links remain readable.
+ pub fn is_invite(arg: &str) -> bool {
+-    arg.get(..9).is_some_and(|s| s.eq_ignore_ascii_case("figcraft:"))
++    arg.split_once(':').is_some_and(|(scheme, _)| scheme.eq_ignore_ascii_case("plervo-canvas") || scheme.eq_ignore_ascii_case("figcraft"))
+ }
+ 
+ /// The path a local `file://` URL names (`%XX` escapes decoded); `None` for anything else.
+diff --git a/apps/figcraft/src/args_tests.rs b/apps/figcraft/src/args_tests.rs
+index 0ed404c..ae49d3c 100644
+--- a/apps/figcraft/src/args_tests.rs
++++ b/apps/figcraft/src/args_tests.rs
+@@ -41,3 +41,12 @@ fn file_urls_are_paths() {
+         assert_eq!(file_url_path(bad), None, "{bad}");
+     }
+ }
++#[test]
++fn plervo_invite_is_a_link_and_not_a_document() {
++    for scheme in ["plervo-canvas", "PLERVO-CANVAS", "figcraft"] {
++        let link = format!("{scheme}://join?host=127.0.0.1:47900&file=abc&token=AbCdEfGhIjKlMnOpQrStUv");
++        let args = super::args::parse(std::slice::from_ref(&link));
++        assert_eq!(args.join.as_deref(), Some(link.as_str()));
++        assert!(args.files.is_empty());
++    }
++}
 diff --git a/apps/figcraft/src/control_server.rs b/apps/figcraft/src/control_server.rs
 index 5cfe129..0d42045 100644
 --- a/apps/figcraft/src/control_server.rs
@@ -1888,9 +1975,63 @@ index 67c4d84..c0c204d 100644
  workspace = true
  
 diff --git a/crates/collab-net/src/invite.rs b/crates/collab-net/src/invite.rs
-index bfa2e60..617ad51 100644
+index bfa2e60..fbf41e7 100644
 --- a/crates/collab-net/src/invite.rs
 +++ b/crates/collab-net/src/invite.rs
+@@ -1,8 +1,8 @@
+ //! Invite links and server addresses.
+ //!
+ //! An invite (or share) link names a session's endpoint, its file and a token:
+-//! `figcraft://join?host=<host:port>&file=<id>&token=<secret>` for a plain `ws://` endpoint at `/`
+-//! (what the desktop app hosts), `figcraft://join?server=<ws(s)://host[:port][/path]>&file=…&token=…`
++//! `plervo-canvas://join?host=<host:port>&file=<id>&token=<secret>` for a plain `ws://` endpoint at `/`
++//! (what the desktop app hosts), `plervo-canvas://join?server=<ws(s)://host[:port][/path]>&file=…&token=…`
+ //! for any endpoint (a `figcraft-server` behind a TLS reverse proxy, under a path), or the same
+ //! session as a WebSocket URL `ws(s)://host[:port][/path]?file=<id>&token=<secret>`.
+ //!
+@@ -12,7 +12,7 @@
+ //! link or an address.
+ //!
+ //! A join by code names the server to ask and the code:
+-//! `figcraft://join?server=<ws(s)://…>&code=<code>` ([`Invite::parse_join`]); the server says which
++//! `plervo-canvas://join?server=<ws(s)://…>&code=<code>` ([`Invite::parse_join`]); the server says which
+ //! file and token the code stands for.
+ 
+ /// Where a session or a server listens: `ws://host:port/path` or `wss://…` (TLS).
+@@ -39,7 +39,7 @@ pub struct Invite {
+ /// Longest link accepted (anything longer isn't one of ours).
+ const MAX_LINK: usize = 2048;
+ 
+-const NOT: &str = "that's not a live session invite: expected figcraft://join?host=…&file=…&token=… or ws://host:port/?file=…&token=…";
++const NOT: &str = "that's not a live session invite: expected plervo-canvas://join?host=…&file=…&token=… or ws://host:port/?file=…&token=…";
+ 
+ impl Endpoint {
+     /// A plain `ws://host/` endpoint.
+@@ -112,12 +112,12 @@ impl Invite {
+         Self { server: Endpoint::plain(host), file: file.into(), token: token.into() }
+     }
+ 
+-    /// The `figcraft://join?…` link.
++    /// The `plervo-canvas://join?…` link.
+     pub fn link(&self) -> String {
+         if self.server.is_plain() {
+-            format!("figcraft://join?host={}&file={}&token={}", self.server.host, self.file, self.token)
++            format!("plervo-canvas://join?host={}&file={}&token={}", self.server.host, self.file, self.token)
+         } else {
+-            format!("figcraft://join?server={}&file={}&token={}", self.server.url(), self.file, self.token)
++            format!("plervo-canvas://join?server={}&file={}&token={}", self.server.url(), self.file, self.token)
+         }
+     }
+ 
+@@ -152,7 +152,7 @@ impl Invite {
+             return Err(NOT.into());
+         }
+         let (scheme, rest) = link.split_once("://").ok_or(NOT)?;
+-        let (server, query) = if scheme.eq_ignore_ascii_case("figcraft") {
++        let (server, query) = if scheme.eq_ignore_ascii_case("plervo-canvas") || scheme.eq_ignore_ascii_case("figcraft") {
+             let (path, query) = rest.split_once('?').unwrap_or((rest, ""));
+             if !path.trim_end_matches('/').eq_ignore_ascii_case("join") {
+                 return Err(NOT.into());
 @@ -203,7 +203,7 @@ fn pairs(query: &str) -> Result<Vec<(String, String)>, String> {
  fn with_port(authority: &str, default: u16) -> String {
      let has_port = match authority.rsplit_once(':') {
@@ -1900,10 +2041,106 @@ index bfa2e60..617ad51 100644
          None => false,
      };
      if has_port { authority.to_string() } else { format!("{authority}:{default}") }
+diff --git a/crates/collab-net/src/invite_tests.rs b/crates/collab-net/src/invite_tests.rs
+index 0201751..1e03d9c 100644
+--- a/crates/collab-net/src/invite_tests.rs
++++ b/crates/collab-net/src/invite_tests.rs
+@@ -14,7 +14,7 @@ fn invite() -> Invite {
+ #[test]
+ fn both_forms_read_back() {
+     let i = invite();
+-    assert_eq!(i.link(), format!("figcraft://join?host=192.168.1.20:47900&file=0123456789abcdef&token={TOKEN}"));
++    assert_eq!(i.link(), format!("plervo-canvas://join?host=192.168.1.20:47900&file=0123456789abcdef&token={TOKEN}"));
+     assert_eq!(Invite::parse(&i.link()), Ok(i.clone()));
+     assert_eq!(Invite::parse(&i.url()), Ok(i.clone()));
+     // Pasted with spaces, quotes or angle brackets, or with escapes.
+@@ -40,7 +40,7 @@ fn hosts_can_be_v6_or_names() {
+ fn server_links_carry_tls_and_a_path() {
+     // A server behind a TLS reverse proxy, under a path: the server= form.
+     let i = Invite { server: Endpoint { host: "figcraft.example.com:443".into(), path: "/live/".into(), secure: true }, ..invite() };
+-    assert_eq!(i.link(), format!("figcraft://join?server=wss://figcraft.example.com:443/live/&file=0123456789abcdef&token={TOKEN}"));
++    assert_eq!(i.link(), format!("plervo-canvas://join?server=wss://figcraft.example.com:443/live/&file=0123456789abcdef&token={TOKEN}"));
+     assert_eq!(i.url(), format!("wss://figcraft.example.com:443/live/?file=0123456789abcdef&token={TOKEN}"));
+     assert_eq!(i.endpoint(), "wss://figcraft.example.com:443/live/");
+     assert_eq!(i.server.display(), "wss://figcraft.example.com:443/live/");
+@@ -55,7 +55,7 @@ fn server_links_carry_tls_and_a_path() {
+     // A plain server at / is the same as an app's invite.
+     let plain = Invite::parse(&format!("figcraft://join?server=ws://10.0.0.5:47900&file=0123456789abcdef&token={TOKEN}")).unwrap();
+     assert_eq!(plain, Invite::new("10.0.0.5:47900", "0123456789abcdef", TOKEN));
+-    assert!(plain.link().starts_with("figcraft://join?host=10.0.0.5:47900&"));
++    assert!(plain.link().starts_with("plervo-canvas://join?host=10.0.0.5:47900&"));
+ }
+ 
+ #[test]
+@@ -123,3 +123,11 @@ proptest! {
+         prop_assert_eq!(Invite::parse(&i.url()), Ok(i));
+     }
+ }
++#[test]
++fn plervo_invites_round_trip_and_accept_legacy_links() {
++    let legacy = "figcraft://join?host=127.0.0.1:47900&file=abc&token=AbCdEfGhIjKlMnOpQrStUv";
++    let expected = Invite::parse(legacy).unwrap();
++    let current = legacy.replacen("figcraft:", "plervo-canvas:", 1);
++    assert_eq!(Invite::parse(&current), Ok(expected.clone()));
++    assert_eq!(expected.link(), current);
++}
+diff --git a/crates/collab-net/src/links.rs b/crates/collab-net/src/links.rs
+index 0b87a17..2c7ca6a 100644
+--- a/crates/collab-net/src/links.rs
++++ b/crates/collab-net/src/links.rs
+@@ -1,9 +1,9 @@
+-//! Making the desktop app the opener of `figcraft://` invite links (the engine's
++//! Making the desktop app the opener of `plervo-canvas://` invite links (the engine's
+ //! [`LinkRegistrar`]). On Windows that's a per-user URL scheme under
+-//! `HKEY_CURRENT_USER\Software\Classes\figcraft` (no administrator rights; uninstalling the user's
++//! `HKEY_CURRENT_USER\Software\Classes\plervo-canvas` (no administrator rights; uninstalling the user's
+ //! registration removes nothing else); the shell then starts `figcraft.exe "<link>"`, and the app
+ //! joins the session it names. macOS and Linux declare the scheme in their packages
+-//! (`CFBundleURLTypes`, the desktop entry's `x-scheme-handler/figcraft`), so there is nothing to
++//! (`CFBundleURLTypes`, the desktop entry's `x-scheme-handler/plervo-canvas`), so there is nothing to
+ //! register at run time.
+ //!
+ //! The registry sits behind [`Registry`] so tests use a fake: nothing here touches the real
+@@ -15,7 +15,7 @@ use std::path::{Path, PathBuf};
+ use figcraft_engine::invite_links::LinkRegistrar;
+ 
+ /// The scheme's key under the current user's hive.
+-pub const KEY: &str = r"Software\Classes\figcraft";
++pub const KEY: &str = r"Software\Classes\plervo-canvas";
+ 
+ /// String values in a registry hive (the current user's).
+ pub trait Registry: Send {
+@@ -27,7 +27,7 @@ pub trait Registry: Send {
+     fn remove_tree(&mut self, key: &str) -> Result<(), String>;
+ }
+ 
+-/// The app's registration as the opener of `figcraft://` links.
++/// The app's registration as the opener of `plervo-canvas://` links.
+ pub struct UrlScheme<R> {
+     reg: R,
+     exe: PathBuf,
+@@ -47,7 +47,7 @@ impl<R: Registry> UrlScheme<R> {
+ 
+     fn values(&self) -> [(String, &'static str, String); 4] {
+         [
+-            (KEY.into(), "", "URL:FigCraft invite link".into()),
++            (KEY.into(), "", "URL:Plervo Canvas invite link".into()),
+             (KEY.into(), "URL Protocol", String::new()),
+             (format!(r"{KEY}\DefaultIcon"), "", format!("\"{}\",0", self.exe.display())),
+             (format!(r"{KEY}\shell\open\command"), "", self.command()),
 diff --git a/crates/collab-net/src/links_tests.rs b/crates/collab-net/src/links_tests.rs
-index 8d81b80..e828fe7 100644
+index 8d81b80..27c54e2 100644
 --- a/crates/collab-net/src/links_tests.rs
 +++ b/crates/collab-net/src/links_tests.rs
+@@ -41,7 +41,7 @@ fn registers_the_scheme_for_this_copy() {
+     s.set(true).unwrap();
+     assert!(s.registered());
+     let reg = s.registry();
+-    assert_eq!(reg.get(KEY, "").as_deref(), Some("URL:FigCraft invite link"));
++    assert_eq!(reg.get(KEY, "").as_deref(), Some("URL:Plervo Canvas invite link"));
+     assert_eq!(reg.get(KEY, "URL Protocol").as_deref(), Some(""), "marks the key as a URL scheme");
+     assert_eq!(reg.get(&format!(r"{KEY}\DefaultIcon"), "").as_deref(), Some(r#""C:\Apps\FigCraft\figcraft.exe",0"#));
+     assert_eq!(reg.get(&format!(r"{KEY}\shell\open\command"), "").as_deref(), Some(r#""C:\Apps\FigCraft\figcraft.exe" "%1""#));
 @@ -80,7 +80,7 @@ fn cargo_builds_are_not_installed() {
      std::fs::create_dir_all(&bin).unwrap();
      std::fs::write(target.join("CACHEDIR.TAG"), "Signature: 8a477f597d28d172789f06886806bc55").unwrap();
@@ -1913,6 +2150,36 @@ index 8d81b80..e828fe7 100644
      std::fs::create_dir_all(&installed).unwrap();
      // Debug builds (these tests) never count as installed either.
      assert_eq!(installed_build(&installed.join("figcraft.exe")), !cfg!(debug_assertions));
+@@ -88,3 +88,16 @@ fn cargo_builds_are_not_installed() {
+     // The test binary itself runs from a Cargo build directory.
+     assert!(!installed_build(&std::env::current_exe().unwrap()));
+ }
++#[test]
++fn plervo_registration_preserves_the_upstream_scheme() {
++    let legacy_key = r"Software\Classes\figcraft\shell\open\command";
++    let mut registry = Fake::default();
++    registry.set(legacy_key, "", "existing upstream opener").unwrap();
++    let mut scheme = UrlScheme::new(registry, exe(r"C:\Apps\Plervo Canvas\plervo-canvas.exe"), true);
++    scheme.set(true).unwrap();
++    assert_eq!(scheme.registry().get(legacy_key, "").as_deref(), Some("existing upstream opener"));
++    assert!(scheme.registry().get(r"Software\Classes\plervo-canvas\shell\open\command", "").is_some());
++    scheme.set(false).unwrap();
++    assert_eq!(scheme.registry().get(legacy_key, "").as_deref(), Some("existing upstream opener"));
++    assert_eq!(scheme.registry().values.len(), 1);
++}
+diff --git a/crates/collab-net/src/session_tests.rs b/crates/collab-net/src/session_tests.rs
+index 3292012..6b2f600 100644
+--- a/crates/collab-net/src/session_tests.rs
++++ b/crates/collab-net/src/session_tests.rs
+@@ -43,7 +43,7 @@ fn host_and_join() -> (Session, Session, u32, u32) {
+     assert_eq!(r["role"], "host");
+     assert_eq!(r["network"], false, "shared on this machine only by default");
+     let link = r["link"].as_str().unwrap().to_string();
+-    assert!(link.starts_with("figcraft://join?host=127.0.0.1:"), "{link}");
++    assert!(link.starts_with("plervo-canvas://join?host=127.0.0.1:"), "{link}");
+     let r = guest.execute("collab.join", &json!({"link": link})).unwrap();
+     assert_eq!(r["status"], "connecting");
+     pump(&mut host, &mut guest, "the join", |h, g| {
 diff --git a/crates/collab/Cargo.toml b/crates/collab/Cargo.toml
 index 89a7968..84fd8c2 100644
 --- a/crates/collab/Cargo.toml
@@ -1926,6 +2193,39 @@ index 89a7968..84fd8c2 100644
  [lints]
  workspace = true
  
+diff --git a/crates/collab/src/code.rs b/crates/collab/src/code.rs
+index c046682..3e33a68 100644
+--- a/crates/collab/src/code.rs
++++ b/crates/collab/src/code.rs
+@@ -126,13 +126,13 @@ impl Local {
+ 
+     /// The session's invite link (what a joiner's app connects with).
+     pub fn link(&self) -> String {
+-        format!("figcraft://join?host={}:{}&file={LOCAL_FILE}&token={}", self.ip, self.port, self.token())
++        format!("plervo-canvas://join?host={}:{}&file={LOCAL_FILE}&token={}", self.ip, self.port, self.token())
+     }
+ 
+     /// The session behind a local session's invite link (`None` for any other link: only IPv4
+     /// hosts with a code-sized secret have a code).
+     pub fn from_link(link: &str) -> Option<Local> {
+-        let query = link.strip_prefix("figcraft://join?")?;
++        let query = link.strip_prefix("plervo-canvas://join?").or_else(|| link.strip_prefix("figcraft://join?"))?;
+         let get = |key: &str| query.split('&').find_map(|kv| kv.split_once('=').filter(|(k, _)| *k == key).map(|(_, v)| v));
+         let addr: std::net::SocketAddrV4 = get("host")?.parse().ok()?;
+         let hex = get("token")?.strip_prefix(TOKEN_PREFIX).filter(|h| h.len() == 11)?;
+diff --git a/crates/collab/src/code_tests.rs b/crates/collab/src/code_tests.rs
+index 2dd902b..82aefa1 100644
+--- a/crates/collab/src/code_tests.rs
++++ b/crates/collab/src/code_tests.rs
+@@ -65,7 +65,7 @@ fn local_codes_round_trip() {
+         assert_eq!(parse(&shown.to_lowercase().replace('-', " ")), Ok(Code::Local(local)));
+         // The link a joiner connects with names the same session, and gives the code back.
+         let link = local.link();
+-        assert_eq!(link, format!("figcraft://join?host={}:{port}&file=local&token={}", Ipv4Addr::from(ip), local.token()));
++        assert_eq!(link, format!("plervo-canvas://join?host={}:{port}&file=local&token={}", Ipv4Addr::from(ip), local.token()));
+         assert_eq!(local.token().len(), 17);
+         assert_eq!(Local::from_link(&link), Some(local));
+     }
 diff --git a/crates/color/Cargo.toml b/crates/color/Cargo.toml
 index 0bd5885..c5c986b 100644
 --- a/crates/color/Cargo.toml
@@ -1965,6 +2265,19 @@ index f610c38..7e8a1f8 100644
  [lints]
  workspace = true
  
+diff --git a/crates/engine/src/catalog.rs b/crates/engine/src/catalog.rs
+index c8f34fc..11ba996 100644
+--- a/crates/engine/src/catalog.rs
++++ b/crates/engine/src/catalog.rs
+@@ -259,7 +259,7 @@ pub static MENU: &[MenuItem] = &[
+     m!("Help", "Getting started", "help.gettingStarted"),
+     m!("Help", "Keyboard shortcuts", "help.shortcuts"),
+     m!("Help", "Help page", "help.page"),
+-    m!("Help", "About FigCraft", "help.about"),
++    m!("Help", "About Plervo Canvas", "help.about"),
+     // Toolbar
+     m!("Tools", "Move", "tool.move"),
+     m!("Tools", "Scale", "tool.scale"),
 diff --git a/crates/engine/src/cmd/component.rs b/crates/engine/src/cmd/component.rs
 index 0fb6481..14ffb19 100644
 --- a/crates/engine/src/cmd/component.rs
@@ -1991,6 +2304,19 @@ index 57ba9fb..69a1047 100644
          return Err(bad(CMD, "`source` must be a layer"));
      }
      if req_targets(CMD, s, p)?.iter().any(|t| doc.is_ancestor(*t, src)) {
+diff --git a/crates/engine/src/cmd/view.rs b/crates/engine/src/cmd/view.rs
+index 6135e5d..a9fb63d 100644
+--- a/crates/engine/src/cmd/view.rs
++++ b/crates/engine/src/cmd/view.rs
+@@ -384,7 +384,7 @@ pub fn specs() -> Vec<CommandSpec> {
+         spec!("app.preferences", "Preferences", "{}", false, |s, _| ui(s, "dialog.preferences")),
+         spec!("app.actions", "Actions", "{}", false, |s, _| ui(s, "palette.actions")),
+         spec!("help.shortcuts", "Keyboard shortcuts", "{}", false, |s, _| ui(s, "panel.shortcuts")),
+-        spec!("help.about", "About FigCraft", "{}", false, |s, _| ui(s, "dialog.about")),
++        spec!("help.about", "About Plervo Canvas", "{}", false, |s, _| ui(s, "dialog.about")),
+         spec!("help.page", "Help page", "{}", false, |s, _| ui(s, "open.help")),
+         spec!(
+             "help.gettingStarted",
 diff --git a/crates/engine/src/components.rs b/crates/engine/src/components.rs
 index c6bf041..691ea08 100644
 --- a/crates/engine/src/components.rs
@@ -2004,6 +2330,87 @@ index c6bf041..691ea08 100644
                  .collect();
              if gs.is_empty() {
                  continue;
+diff --git a/crates/engine/src/invite_links.rs b/crates/engine/src/invite_links.rs
+index f57f7fc..1ee6bb9 100644
+--- a/crates/engine/src/invite_links.rs
++++ b/crates/engine/src/invite_links.rs
+@@ -1,7 +1,7 @@
+-//! Opening invite links from the system: a `figcraft://join?…` link clicked in a browser, a chat
++//! Opening invite links from the system: a `plervo-canvas://join?…` link clicked in a browser, a chat
+ //! or an email opens FigCraft, which joins the session (milestone M9).
+ //!
+-//! The app makes itself the opener of the `figcraft` URL scheme. Where the app registers it at run
++//! The app makes itself the opener of the `plervo-canvas` URL scheme. Where the app registers it at run
+ //! time (Windows: per user, no administrator rights), the desktop app installs a
+ //! [`LinkRegistrar`] (like the [`LiveLink`](crate::live::LiveLink)); the engine keeps the
+ //! preference ([`Prefs::invite_links`](crate::Prefs::invite_links)) and the
+@@ -15,7 +15,7 @@ use crate::cmd::CommandSpec;
+ use crate::params::boolean;
+ use crate::{EngineError, Result, Session, spec};
+ 
+-/// Registers this copy of the app as the opener of `figcraft://` links (the desktop app installs
++/// Registers this copy of the app as the opener of `plervo-canvas://` links (the desktop app installs
+ /// one: `session.live.links`).
+ pub trait LinkRegistrar: Send {
+     /// This copy of the app is the registered opener.
+@@ -58,7 +58,7 @@ fn register(s: &mut Session, p: &Value) -> Result<Value> {
+     let Some(r) = s.live.links.as_mut() else {
+         return Err(EngineError::Disabled(
+             CMD.into(),
+-            "this app doesn't register link openers itself (the Windows desktop app does; the macOS and Linux packages declare figcraft:// when installed)"
++            "this app doesn't register link openers itself (the Windows desktop app does; the macOS and Linux packages declare plervo-canvas:// when installed)"
+                 .into(),
+         ));
+     };
+@@ -72,8 +72,8 @@ fn register(s: &mut Session, p: &Value) -> Result<Value> {
+ pub fn specs() -> Vec<CommandSpec> {
+     vec![spec!(
+         "collab.registerLinks",
+-        "Open invite links in FigCraft",
+-        "{on? (default: switch)} → {on, registered}: make this app the opener of figcraft:// invite links (or stop); also the Preferences checkbox",
++        "Open invite links in Plervo Canvas",
++        "{on? (default: switch)} → {on, registered}: make this app the opener of plervo-canvas:// invite links (or stop); also the Preferences checkbox",
+         false,
+         register
+     )]
+diff --git a/crates/engine/src/library_server.rs b/crates/engine/src/library_server.rs
+index dbd97a0..9643fc3 100644
+--- a/crates/engine/src/library_server.rs
++++ b/crates/engine/src/library_server.rs
+@@ -30,7 +30,7 @@ pub const MAX_USAGE: usize = 10_000;
+ /// Whether a library's path is a share link of a file on a server (else it is a library file).
+ pub fn is_server_link(path: &str) -> bool {
+     let p = path.trim_start().to_ascii_lowercase();
+-    ["figcraft://", "ws://", "wss://"].iter().any(|s| p.starts_with(s))
++    ["plervo-canvas://", "figcraft://", "ws://", "wss://"].iter().any(|s| p.starts_with(s))
+ }
+ 
+ /// A library path to show: a server link without its token.
+diff --git a/crates/engine/src/library_server_tests.rs b/crates/engine/src/library_server_tests.rs
+index a8f321a..e6d3b58 100644
+--- a/crates/engine/src/library_server_tests.rs
++++ b/crates/engine/src/library_server_tests.rs
+@@ -7,6 +7,7 @@ fn links_archives_and_junk() {
+     assert!(is_server_link("figcraft://join?host=h:1&file=f&token=t") && is_server_link(" WS://h:1/?file=f&token=t"));
+     assert!(!is_server_link("C:/kits/ui.figcraft") && !is_server_link("/srv/ws://x"));
+     assert_eq!(shown_path("figcraft://join?host=h:1&file=f&token=secret&x=1"), "figcraft://join?host=h:1&file=f&token=…&x=1");
++    assert_eq!(shown_path("plervo-canvas://join?host=h:1&file=f&token=secret&x=1"), "plervo-canvas://join?host=h:1&file=f&token=…&x=1");
+     assert_eq!(shown_path("ws://h:1/?file=f&token=secret"), "ws://h:1/?file=f&token=…");
+     assert_eq!(shown_path("/kits/token=ui.figcraft"), "/kits/token=ui.figcraft", "files are shown as they are");
+ 
+diff --git a/crates/engine/src/live.rs b/crates/engine/src/live.rs
+index 09c5831..aecde9e 100644
+--- a/crates/engine/src/live.rs
++++ b/crates/engine/src/live.rs
+@@ -266,7 +266,7 @@ pub fn join_target(server: &str, typed: &str) -> std::result::Result<String, Str
+     match code::parse(typed)? {
+         Code::Local(local) => Ok(local.link()),
+         Code::Online(_) if server.trim().is_empty() => Err(format!("that is an online join code, and {ONLINE_OFF}")),
+-        Code::Online(code) => Ok(format!("figcraft://join?server={}&code={code}", server.trim())),
++        Code::Online(code) => Ok(format!("plervo-canvas://join?server={}&code={code}", server.trim())),
+     }
+ }
+ 
 diff --git a/crates/format/Cargo.toml b/crates/format/Cargo.toml
 index 3dca391..e052cf1 100644
 --- a/crates/format/Cargo.toml
@@ -2050,6 +2457,85 @@ index 2224335..c92af01 100644
      {
          return None;
      }
+diff --git a/crates/format/src/fig/interop_tests.rs b/crates/format/src/fig/interop_tests.rs
+index b51760c..578693f 100644
+--- a/crates/format/src/fig/interop_tests.rs
++++ b/crates/format/src/fig/interop_tests.rs
+@@ -364,7 +364,7 @@ fn mask_types_round_trip() {
+ fn the_archive_lists_its_members_and_describes_the_file() {
+     let (bytes, _) = export(&sample(), Some(&super::tests::png())).unwrap();
+     let mut z = zip::ZipArchive::new(std::io::Cursor::new(&bytes[..])).unwrap();
+-    let names: Vec<String> = (0..z.len()).map(|i| z.by_index(i).unwrap().name().to_string()).collect();
++    let names: Vec<String> = (0..z.len()).map(|i| z.by_index(i).unwrap().name().unwrap().into_owned()).collect();
+     assert_eq!(names, ["canvas.fig", "thumbnail.png", "meta.json"]);
+     let meta: serde_json::Value = serde_json::from_slice(&crate::read_member(&mut z, "meta.json", 1 << 20).unwrap()).unwrap();
+     assert_eq!(meta["file_name"], "Interop");
+diff --git a/crates/format/src/fig/mod.rs b/crates/format/src/fig/mod.rs
+index ec2a0e2..2faa400 100644
+--- a/crates/format/src/fig/mod.rs
++++ b/crates/format/src/fig/mod.rs
+@@ -46,7 +46,7 @@ pub fn is_fig(bytes: &[u8]) -> bool {
+ }
+ 
+ fn zip_has_canvas(bytes: &[u8]) -> bool {
+-    zip::ZipArchive::new(std::io::Cursor::new(bytes)).is_ok_and(|z| z.file_names().any(|n| n == "canvas.fig"))
++    zip::ZipArchive::new(std::io::Cursor::new(bytes)).is_ok_and(|z| z.file_names().any(|n| n.is_ok_and(|name| name == "canvas.fig")))
+ }
+ 
+ /// Import `bytes` when they are a `.fig` file; `None` when they are something else.
+diff --git a/crates/format/src/image_tests.rs b/crates/format/src/image_tests.rs
+index bc925ef..ce06041 100644
+--- a/crates/format/src/image_tests.rs
++++ b/crates/format/src/image_tests.rs
+@@ -25,7 +25,7 @@ fn doc_with_image() -> (Document, String) {
+ /// The archive of `d` rebuilt with `edit` applied to each member (None drops it).
+ fn rebuild(bytes: &[u8], edit: impl Fn(&str, Vec<u8>) -> Option<Vec<u8>>) -> Vec<u8> {
+     let mut z = zip::ZipArchive::new(std::io::Cursor::new(bytes)).unwrap();
+-    let names: Vec<String> = z.file_names().map(str::to_string).collect();
++    let names: Vec<String> = z.file_names().map(|name| name.unwrap().into_owned()).collect();
+     let mut buf = std::io::Cursor::new(Vec::new());
+     let mut w = zip::ZipWriter::new(&mut buf);
+     for n in names {
+diff --git a/crates/format/src/lib.rs b/crates/format/src/lib.rs
+index a989f3f..70de8cd 100644
+--- a/crates/format/src/lib.rs
++++ b/crates/format/src/lib.rs
+@@ -464,7 +464,8 @@ pub fn load_bytes_with_versions(bytes: &[u8]) -> Result<Loaded, FormatError> {
+     let mut z = zip::ZipArchive::new(std::io::Cursor::new(bytes)).map_err(|e| FormatError::Corrupt(e.to_string()))?;
+     let text = String::from_utf8(read_member(&mut z, "document.json", MAX_MEMBER)?).map_err(|e| FormatError::Corrupt(e.to_string()))?;
+     let (mut doc, mut issues, own_images) = parse_json(&text)?;
+-    let names: Vec<String> = z.file_names().filter(|n| n.starts_with("images/")).map(str::to_string).collect();
++    let names = z.file_names().collect::<zip::result::ZipResult<Vec<_>>>().map_err(|e| FormatError::Corrupt(e.to_string()))?;
++    let names: Vec<String> = names.into_iter().filter(|n| n.starts_with("images/")).map(|n| n.into_owned()).collect();
+     let mut images = BTreeMap::new();
+     let mut unread = Vec::new();
+     for name in names {
+diff --git a/crates/format/src/library_tests.rs b/crates/format/src/library_tests.rs
+index 1296b1e..2b5ae59 100644
+--- a/crates/format/src/library_tests.rs
++++ b/crates/format/src/library_tests.rs
+@@ -71,7 +71,7 @@ fn replace_member(zip_bytes: &[u8], name: &str, bytes: Option<&[u8]>) -> Vec<u8>
+     let mut out = zip::ZipWriter::new(std::io::Cursor::new(Vec::new()));
+     for i in 0..src.len() {
+         let mut f = src.by_index(i).unwrap();
+-        let n = f.name().to_string();
++        let n = f.name().unwrap().into_owned();
+         let mut data = Vec::new();
+         f.read_to_end(&mut data).unwrap();
+         let data = if n == name { bytes.map(<[u8]>::to_vec) } else { Some(data) };
+diff --git a/crates/format/src/thumbnail.rs b/crates/format/src/thumbnail.rs
+index a5e7e2b..a1066c6 100644
+--- a/crates/format/src/thumbnail.rs
++++ b/crates/format/src/thumbnail.rs
+@@ -129,7 +129,7 @@ pub fn file_preview(path: &Path, fit: u32) -> Preview {
+ pub fn archive_preview<R: Read + Seek>(archive: R, fit: u32) -> Preview {
+     let Ok(mut z) = zip::ZipArchive::new(archive) else { return Preview::default() };
+     let picture = crate::read_member(&mut z, "thumbnail.png", MAX_THUMBNAIL_BYTES).ok().and_then(|png| decode_thumbnail(&png, fit));
+-    let page = if z.file_names().any(|n| n == "document.json") {
++    let page = if z.file_names().any(|n| n.is_ok_and(|name| name == "document.json")) {
+         crate::read_member(&mut z, "document.json", MAX_DOCUMENT_BYTES).ok().and_then(|json| figcraft_page(&json))
+     } else {
+         crate::read_member(&mut z, "meta.json", MAX_META_BYTES).ok().and_then(|json| fig_page(&json))
 diff --git a/crates/geom/Cargo.toml b/crates/geom/Cargo.toml
 index e173e58..27d2bce 100644
 --- a/crates/geom/Cargo.toml
@@ -2180,6 +2666,1011 @@ index b14c04f..0ca3652 100644
  [lints]
  workspace = true
  
+diff --git a/crates/ui-egui/locales/de.toml b/crates/ui-egui/locales/de.toml
+index 7552cca..c85f3e1 100644
+--- a/crates/ui-egui/locales/de.toml
++++ b/crates/ui-egui/locales/de.toml
+@@ -1,4 +1,4 @@
+-# FigCraft interface strings: German.
++# Plervo Canvas interface strings: German.
+ #
+ # Draft — needs native review: machine-drafted from the English catalog. Brand names and keyboard
+ # glyphs stay as they are. Formal address (Sie); a no-break space ( ) between a number and %
+@@ -19,7 +19,7 @@ status = "draft — needs native review"
+ "A collection of this file with these modes and variables: override their values per mode and add variables of its own" = "Eine Sammlung dieser Datei mit diesen Modi und Variablen: Überschreiben Sie ihre Werte je Modus und fügen Sie eigene Variablen hinzu"
+ "A spring plays until it settles: its mass, stiffness and damping set how long" = "Eine Feder läuft, bis sie zur Ruhe kommt: Masse, Steifigkeit und Dämpfung bestimmen die Dauer"
+ "About" = "Über"
+-"About FigCraft" = "Über FigCraft"
++"About Plervo Canvas" = "Über Plervo Canvas"
+ "About this server" = "Über diesen Server"
+ "Action" = "Aktion"
+ "Actions" = "Aktionen"
+@@ -89,7 +89,7 @@ status = "draft — needs native review"
+ "All variables" = "Alle Variablen"
+ "Alpha" = "Alpha"
+ "Alt+drag" = "Alt+Ziehen"
+-"An invite link that opens FigCraft and joins" = "Ein Einladungslink, der FigCraft öffnet und beitritt"
++"An invite link that opens Plervo Canvas and joins" = "Ein Einladungslink, der Plervo Canvas öffnet und beitritt"
+ "Anchor" = "Anker"
+ "Android" = "Android"
+ "Angular" = "Winkel"
+@@ -129,7 +129,7 @@ status = "draft — needs native review"
+ "Auto layout" = "Auto-Layout"
+ "Auto rows" = "Automatische Zeilen"
+ "Auto width" = "Automatische Breite"
+-"Back to the FigCraft server" = "Zurück zum FigCraft-Server"
++"Back to the Plervo Canvas server" = "Zurück zum Plervo Canvas-Server"
+ "Back to the font's value" = "Zurück zum Wert der Schrift"
+ "Back" = "Zurück"
+ "Back to Ready for dev" = "Zurück zu „Bereit für Entwicklung“"
+@@ -390,7 +390,7 @@ status = "draft — needs native review"
+ "Draw" = "Zeichnen"
+ "Drawing tools" = "Zeichenwerkzeuge"
+ "Drop shadow" = "Schlagschatten"
+-"Dual-licensed MIT OR Apache-2.0. Made by the ArtCraft team and community." = "Doppelt lizenziert unter MIT OR Apache-2.0. Entwickelt vom ArtCraft-Team und der Community."
++"MIT OR Apache-2.0. Based on FigCraft by the ArtCraft team and community; adapted for Plervo." = "MIT OR Apache-2.0. Basiert auf FigCraft vom ArtCraft-Team und der Community; für Plervo angepasst."
+ "Duo" = "Duo"
+ "Duplicate" = "Duplizieren"
+ "Duplicate by dragging" = "Durch Ziehen duplizieren"
+@@ -580,7 +580,7 @@ status = "draft — needs native review"
+ "Imported {n} new variables, updated {updated}" = { one = "{n} neue Variable importiert, {updated} aktualisiert", other = "{n} neue Variablen importiert, {updated} aktualisiert" }
+ "Import…" = "Importieren…"
+ "In an instance, this comes from the main component" = "In einer Instanz kommt dies von der Hauptkomponente"
+-"In the browser you can join sessions the desktop app hosts and files on a FigCraft server. A page opened over https reaches other computers only through wss:// links (a server behind TLS)." = "Im Browser können Sie Sitzungen beitreten, die die Desktop-App hostet, sowie Dateien auf einem FigCraft-Server. Eine über https geöffnete Seite erreicht andere Computer nur über wss://-Links (ein Server hinter TLS)."
++"In the browser you can join sessions the desktop app hosts and files on a Plervo Canvas server. A page opened over https reaches other computers only through wss:// links (a server behind TLS)." = "Im Browser können Sie Sitzungen beitreten, die die Desktop-App hostet, sowie Dateien auf einem Plervo Canvas-Server. Eine über https geöffnete Seite erreicht andere Computer nur über wss://-Links (ein Server hinter TLS)."
+ "Include bounding box" = "Begrenzungsrahmen einbeziehen"
+ "Include id attribute" = "id-Attribut einbeziehen"
+ "Included" = "Einbezogen"
+@@ -605,7 +605,7 @@ status = "draft — needs native review"
+ "Instant" = "Sofort"
+ "Interaction" = "Interaktion"
+ "Interactions" = "Interaktionen"
+-"Interface design and prototyping. A free, open-source, clean-room design tool written from scratch in Rust, part of the ArtCraft Crafting Apps." = "Interface-Design und Prototyping. Ein kostenloses Open-Source-Designwerkzeug, als Clean-Room-Entwicklung von Grund auf in Rust geschrieben, Teil der ArtCraft Crafting Apps."
++"Interface design and prototyping. An open-source Rust application in the Plervo suite." = "Oberflächendesign und Prototyping. Eine Open-Source-Anwendung in Rust aus der Plervo-Suite."
+ "Intersect" = "Schnittmenge"
+ "Intersects" = "Schnittmengen"
+ "Invite link" = "Einladungslink"
+@@ -615,7 +615,7 @@ status = "draft — needs native review"
+ "Join code copied" = "Beitrittscode kopiert"
+ "Join code or invite link" = "Beitrittscode oder Einladungslink"
+ "Join live session" = "Live-Sitzung beitreten"
+-"Join us on Discord" = "Besuchen Sie uns auf Discord"
++"Support Plervo" = "Plervo unterstützen"
+ "Join with a code" = "Mit einem Code beitreten"
+ "Joined" = "Beigetreten"
+ "Joined {file}" = "{file} beigetreten"
+@@ -845,7 +845,7 @@ status = "draft — needs native review"
+ "Open files" = "Geöffnete Dateien"
+ "Open in focus view" = "In Fokusansicht öffnen"
+ "Open in new window" = "In neuem Fenster öffnen"
+-"Open invite links in FigCraft" = "Einladungslinks in FigCraft öffnen"
++"Open invite links in Plervo Canvas" = "Einladungslinks in Plervo Canvas öffnen"
+ "Open link" = "Link öffnen"
+ "Open link {url}" = "Link {url} öffnen"
+ "Open overlay" = "Overlay öffnen"
+@@ -910,7 +910,7 @@ status = "draft — needs native review"
+ "Place automatically" = "Automatisch platzieren"
+ "Place image" = "Bild platzieren"
+ "Plugins" = "Plugins"
+-"Plugins run in FigCraft's sandbox, without files, network or clock. Install only plugins you trust." = "Plugins laufen in der Sandbox von FigCraft, ohne Dateien, Netzwerk oder Uhr. Installieren Sie nur Plugins, denen Sie vertrauen."
++"Plugins run in Plervo Canvas's sandbox, without files, network or clock. Install only plugins you trust." = "Plugins laufen in der Sandbox von Plervo Canvas, ohne Dateien, Netzwerk oder Uhr. Installieren Sie nur Plugins, denen Sie vertrauen."
+ "Plus darker" = "Plus dunkler"
+ "Plus lighter" = "Plus heller"
+ "Point" = "Punkt"
+@@ -1322,7 +1322,7 @@ status = "draft — needs native review"
+ "Update plugin" = "Plugin aktualisieren"
+ "Updated {components} and {styles}" = "{components} und {styles} aktualisiert"
+ "Updated {name}" = "{name} aktualisiert"
+-"Uploads this file to a FigCraft server and keeps this tab in sync with it. You get a link to edit and a link to view." = "Lädt diese Datei auf einen FigCraft-Server hoch und hält diesen Tab mit ihm synchron. Sie erhalten einen Link zum Bearbeiten und einen zum Ansehen."
++"Uploads this file to a Plervo Canvas server and keeps this tab in sync with it. You get a link to edit and a link to view." = "Lädt diese Datei auf einen Plervo Canvas-Server hoch und hält diesen Tab mit ihm synchron. Sie erhalten einen Link zum Bearbeiten und einen zum Ansehen."
+ "Uppercase" = "Großbuchstaben"
+ "Use a fixed value" = "Festen Wert verwenden"
+ "Use an expression, e.g. count + 1" = "Ausdruck verwenden, z. B. count + 1"
+@@ -1374,7 +1374,7 @@ status = "draft — needs native review"
+ "What changed since it was marked ready for dev" = "Was sich seit der Markierung als bereit für die Entwicklung geändert hat"
+ "What is wrong with this file? The server's operator gets your report." = "Was stimmt mit dieser Datei nicht? Der Betreiber des Servers erhält Ihre Meldung."
+ "What it's for" = "Wofür sie gedacht ist"
+-"What this changed from isn't known: it changed before FigCraft kept a copy of ready-for-dev frames. Resolve the change (or mark it ready again) to compare from now on." = "Der Ausgangsstand dieser Änderung ist unbekannt: Sie erfolgte, bevor FigCraft Kopien von Rahmen mit dem Status „Bereit für Entwicklung“ aufbewahrte. Erledigen Sie die Änderung (oder markieren Sie den Rahmen erneut als bereit), um ab jetzt zu vergleichen."
++"What this changed from isn't known: it changed before Plervo Canvas kept a copy of ready-for-dev frames. Resolve the change (or mark it ready again) to compare from now on." = "Der Ausgangsstand dieser Änderung ist unbekannt: Sie erfolgte, bevor Plervo Canvas Kopien von Rahmen mit dem Status „Bereit für Entwicklung“ aufbewahrte. Erledigen Sie die Änderung (oder markieren Sie den Rahmen erneut als bereit), um ab jetzt zu vergleichen."
+ "While hovering" = "Beim Überfahren"
+ "While pressing" = "Beim Drücken"
+ "White" = "Weiß"
+@@ -1567,7 +1567,7 @@ status = "draft — needs native review"
+ "collab.peers" = "Personen in dieser Datei"
+ "collab.publish" = "Auf Server veröffentlichen"
+ "collab.recoverFile" = "Online-Datei wiederherstellen"
+-"collab.registerLinks" = "Einladungslinks in FigCraft öffnen"
++"collab.registerLinks" = "Einladungslinks in Plervo Canvas öffnen"
+ "collab.report" = "Datei dem Serverbetreiber melden"
+ "collab.serverInfo" = "Serverinformationen"
+ "collab.share" = "Mit Beitrittscode teilen"
+@@ -1684,7 +1684,7 @@ status = "draft — needs native review"
+ "guide.move" = "Hilfslinie verschieben"
+ "guide.remove" = "Hilfslinie entfernen"
+ "guide.select" = "Hilfslinie auswählen"
+-"help.about" = "Über FigCraft"
++"help.about" = "Über Plervo Canvas"
+ "help.page" = "Hilfeseite"
+ "help.shortcuts" = "Tastenkürzel"
+ "image.adjust" = "Bild anpassen"
+diff --git a/crates/ui-egui/locales/en.toml b/crates/ui-egui/locales/en.toml
+index c35b167..753141d 100644
+--- a/crates/ui-egui/locales/en.toml
++++ b/crates/ui-egui/locales/en.toml
+@@ -1,4 +1,4 @@
+-# FigCraft interface strings: English, the source language.
++# Plervo Canvas interface strings: English, the source language.
+ #
+ # Keys are the English text as the code writes it (`tr("…")`, `trf`, `trn`, `tr_noop`); values are
+ # the same text, except plural entries ({ one, other }). Command labels come from the engine.
+@@ -21,7 +21,7 @@ name = "English"
+ "A title, an agenda, a big figure, a chart and a closing slide" = "A title, an agenda, a big figure, a chart and a closing slide"
+ "A to Z" = "A to Z"
+ "About" = "About"
+-"About FigCraft" = "About FigCraft"
++"About Plervo Canvas" = "About Plervo Canvas"
+ "About this server" = "About this server"
+ "Action" = "Action"
+ "Actions" = "Actions"
+@@ -93,7 +93,7 @@ name = "English"
+ "Alphabetical" = "Alphabetical"
+ "Alt+drag" = "Alt+drag"
+ "An analytics screen on a grid: figures, charts drawn from vectors and a table" = "An analytics screen on a grid: figures, charts drawn from vectors and a table"
+-"An invite link that opens FigCraft and joins" = "An invite link that opens FigCraft and joins"
++"An invite link that opens Plervo Canvas and joins" = "An invite link that opens Plervo Canvas and joins"
+ "Anchor" = "Anchor"
+ "Android" = "Android"
+ "Angular" = "Angular"
+@@ -136,7 +136,7 @@ name = "English"
+ "Auto layout" = "Auto layout"
+ "Auto rows" = "Auto rows"
+ "Auto width" = "Auto width"
+-"Back to the FigCraft server" = "Back to the FigCraft server"
++"Back to the Plervo Canvas server" = "Back to the Plervo Canvas server"
+ "Back to the font's value" = "Back to the font's value"
+ "Back" = "Back"
+ "Back to Ready for dev" = "Back to Ready for dev"
+@@ -405,7 +405,7 @@ name = "English"
+ "Draw a frame" = "Draw a frame"
+ "Drawing tools" = "Drawing tools"
+ "Drop shadow" = "Drop shadow"
+-"Dual-licensed MIT OR Apache-2.0. Made by the ArtCraft team and community." = "Dual-licensed MIT OR Apache-2.0. Made by the ArtCraft team and community."
++"MIT OR Apache-2.0. Based on FigCraft by the ArtCraft team and community; adapted for Plervo." = "MIT OR Apache-2.0. Based on FigCraft by the ArtCraft team and community; adapted for Plervo."
+ "Duo" = "Duo"
+ "Duplicate" = "Duplicate"
+ "Duplicate by dragging" = "Duplicate by dragging"
+@@ -606,7 +606,7 @@ name = "English"
+ "Imported {n} new variables, updated {updated}" = { one = "Imported {n} new variable, updated {updated}", other = "Imported {n} new variables, updated {updated}" }
+ "Import…" = "Import…"
+ "In an instance, this comes from the main component" = "In an instance, this comes from the main component"
+-"In the browser you can join sessions the desktop app hosts and files on a FigCraft server. A page opened over https reaches other computers only through wss:// links (a server behind TLS)." = "In the browser you can join sessions the desktop app hosts and files on a FigCraft server. A page opened over https reaches other computers only through wss:// links (a server behind TLS)."
++"In the browser you can join sessions the desktop app hosts and files on a Plervo Canvas server. A page opened over https reaches other computers only through wss:// links (a server behind TLS)." = "In the browser you can join sessions the desktop app hosts and files on a Plervo Canvas server. A page opened over https reaches other computers only through wss:// links (a server behind TLS)."
+ "Include bounding box" = "Include bounding box"
+ "Include id attribute" = "Include id attribute"
+ "Included" = "Included"
+@@ -631,7 +631,7 @@ name = "English"
+ "Instant" = "Instant"
+ "Interaction" = "Interaction"
+ "Interactions" = "Interactions"
+-"Interface design and prototyping. A free, open-source, clean-room design tool written from scratch in Rust, part of the ArtCraft Crafting Apps." = "Interface design and prototyping. A free, open-source, clean-room design tool written from scratch in Rust, part of the ArtCraft Crafting Apps."
++"Interface design and prototyping. An open-source Rust application in the Plervo suite." = "Interface design and prototyping. An open-source Rust application in the Plervo suite."
+ "Intersect" = "Intersect"
+ "Intersects" = "Intersects"
+ "Invite link" = "Invite link"
+@@ -642,7 +642,7 @@ name = "English"
+ "Join code copied" = "Join code copied"
+ "Join code or invite link" = "Join code or invite link"
+ "Join live session" = "Join live session"
+-"Join us on Discord" = "Join us on Discord"
++"Support Plervo" = "Support Plervo"
+ "Join with a code" = "Join with a code"
+ "Joined" = "Joined"
+ "Joined {file}" = "Joined {file}"
+@@ -888,7 +888,7 @@ name = "English"
+ "Open files" = "Open files"
+ "Open in focus view" = "Open in focus view"
+ "Open in new window" = "Open in new window"
+-"Open invite links in FigCraft" = "Open invite links in FigCraft"
++"Open invite links in Plervo Canvas" = "Open invite links in Plervo Canvas"
+ "Open link" = "Open link"
+ "Open link {url}" = "Open link {url}"
+ "Open overlay" = "Open overlay"
+@@ -954,7 +954,7 @@ name = "English"
+ "Place a shape or frame (its tool chosen)" = "Place a shape or frame (its tool chosen)"
+ "Place automatically" = "Place automatically"
+ "Place image" = "Place image"
+-"Plugins run in FigCraft's sandbox, without files, network or clock. Install only plugins you trust." = "Plugins run in FigCraft's sandbox, without files, network or clock. Install only plugins you trust."
++"Plugins run in Plervo Canvas's sandbox, without files, network or clock. Install only plugins you trust." = "Plugins run in Plervo Canvas's sandbox, without files, network or clock. Install only plugins you trust."
+ "Plugins" = "Plugins"
+ "Plus darker" = "Plus darker"
+ "Plus lighter" = "Plus lighter"
+@@ -1388,7 +1388,7 @@ name = "English"
+ "Update from selection" = "Update from selection"
+ "Updated {components} and {styles}" = "Updated {components} and {styles}"
+ "Updated {name}" = "Updated {name}"
+-"Uploads this file to a FigCraft server and keeps this tab in sync with it. You get a link to edit and a link to view." = "Uploads this file to a FigCraft server and keeps this tab in sync with it. You get a link to edit and a link to view."
++"Uploads this file to a Plervo Canvas server and keeps this tab in sync with it. You get a link to edit and a link to view." = "Uploads this file to a Plervo Canvas server and keeps this tab in sync with it. You get a link to edit and a link to view."
+ "Uppercase" = "Uppercase"
+ "Use a fixed value" = "Use a fixed value"
+ "Use an expression, e.g. count + 1" = "Use an expression, e.g. count + 1"
+@@ -1443,7 +1443,7 @@ name = "English"
+ "What changed since it was marked ready for dev" = "What changed since it was marked ready for dev"
+ "What is wrong with this file? The server's operator gets your report." = "What is wrong with this file? The server's operator gets your report."
+ "What it's for" = "What it's for"
+-"What this changed from isn't known: it changed before FigCraft kept a copy of ready-for-dev frames. Resolve the change (or mark it ready again) to compare from now on." = "What this changed from isn't known: it changed before FigCraft kept a copy of ready-for-dev frames. Resolve the change (or mark it ready again) to compare from now on."
++"What this changed from isn't known: it changed before Plervo Canvas kept a copy of ready-for-dev frames. Resolve the change (or mark it ready again) to compare from now on." = "What this changed from isn't known: it changed before Plervo Canvas kept a copy of ready-for-dev frames. Resolve the change (or mark it ready again) to compare from now on."
+ "While hovering" = "While hovering"
+ "While pressing" = "While pressing"
+ "White" = "White"
+@@ -1584,4 +1584,4 @@ name = "English"
+ "⌘ arrows" = "⌘ arrows"
+ "⌘ click" = "⌘ click"
+ "⌘ scroll" = "⌘ scroll"
+-"⌥ drag" = "⌥ drag"
+\ No newline at end of file
++"⌥ drag" = "⌥ drag"
+diff --git a/crates/ui-egui/locales/es.toml b/crates/ui-egui/locales/es.toml
+index 6514ac7..c7a886a 100644
+--- a/crates/ui-egui/locales/es.toml
++++ b/crates/ui-egui/locales/es.toml
+@@ -1,4 +1,4 @@
+-# FigCraft interface strings: Spanish.
++# Plervo Canvas interface strings: Spanish.
+ #
+ # Draft — needs native review: machine-drafted from the English catalog. Brand names and keyboard
+ # glyphs stay as they are. See docs/translating.md.
+@@ -22,7 +22,7 @@ status = "draft — needs native review"
+ "A title, an agenda, a big figure, a chart and a closing slide" = "Un título, una agenda, una gran cifra, un gráfico y una diapositiva de cierre"
+ "A to Z" = "De la A a la Z"
+ "About" = "Acerca de"
+-"About FigCraft" = "Acerca de FigCraft"
++"About Plervo Canvas" = "Acerca de Plervo Canvas"
+ "About this server" = "Acerca de este servidor"
+ "Action" = "Acción"
+ "Actions" = "Acciones"
+@@ -94,7 +94,7 @@ status = "draft — needs native review"
+ "Alphabetical" = "Alfabético"
+ "Alt+drag" = "Alt+arrastrar"
+ "An analytics screen on a grid: figures, charts drawn from vectors and a table" = "Una pantalla de analítica en cuadrícula: cifras, gráficos dibujados con vectores y una tabla"
+-"An invite link that opens FigCraft and joins" = "Un enlace de invitación que abre FigCraft y se une"
++"An invite link that opens Plervo Canvas and joins" = "Un enlace de invitación que abre Plervo Canvas y se une"
+ "Anchor" = "Ancla"
+ "Android" = "Android"
+ "Angular" = "Angular"
+@@ -137,7 +137,7 @@ status = "draft — needs native review"
+ "Auto layout" = "Diseño automático"
+ "Auto rows" = "Filas automáticas"
+ "Auto width" = "Ancho automático"
+-"Back to the FigCraft server" = "Volver al servidor de FigCraft"
++"Back to the Plervo Canvas server" = "Volver al servidor de Plervo Canvas"
+ "Back to the font's value" = "Volver al valor de la fuente"
+ "Back" = "Atrás"
+ "Back to Ready for dev" = "Volver a Listo para desarrollo"
+@@ -406,7 +406,7 @@ status = "draft — needs native review"
+ "Draw a frame" = "Dibuja un marco"
+ "Drawing tools" = "Herramientas de dibujo"
+ "Drop shadow" = "Sombra paralela"
+-"Dual-licensed MIT OR Apache-2.0. Made by the ArtCraft team and community." = "Con doble licencia MIT OR Apache-2.0. Hecho por el equipo y la comunidad de ArtCraft."
++"MIT OR Apache-2.0. Based on FigCraft by the ArtCraft team and community; adapted for Plervo." = "MIT OR Apache-2.0. Basado en FigCraft, del equipo y la comunidad de ArtCraft; adaptado para Plervo."
+ "Duo" = "Duo"
+ "Duplicate" = "Duplicar"
+ "Duplicate by dragging" = "Duplicar arrastrando"
+@@ -607,7 +607,7 @@ status = "draft — needs native review"
+ "Imported {n} new variables, updated {updated}" = { one = "Variables importadas: {n} nueva; actualizadas: {updated}", other = "Variables importadas: {n} nuevas; actualizadas: {updated}" }
+ "Import…" = "Importar…"
+ "In an instance, this comes from the main component" = "En una instancia, esto viene del componente principal"
+-"In the browser you can join sessions the desktop app hosts and files on a FigCraft server. A page opened over https reaches other computers only through wss:// links (a server behind TLS)." = "En el navegador puedes unirte a sesiones alojadas por la app de escritorio y a archivos de un servidor FigCraft. Una página abierta por https solo llega a otros equipos mediante enlaces wss:// (un servidor con TLS)."
++"In the browser you can join sessions the desktop app hosts and files on a Plervo Canvas server. A page opened over https reaches other computers only through wss:// links (a server behind TLS)." = "En el navegador puedes unirte a sesiones alojadas por la app de escritorio y a archivos de un servidor Plervo Canvas. Una página abierta por https solo llega a otros equipos mediante enlaces wss:// (un servidor con TLS)."
+ "Include bounding box" = "Incluir cuadro delimitador"
+ "Include id attribute" = "Incluir atributo id"
+ "Included" = "Incluidos"
+@@ -632,7 +632,7 @@ status = "draft — needs native review"
+ "Instant" = "Instantánea"
+ "Interaction" = "Interacción"
+ "Interactions" = "Interacciones"
+-"Interface design and prototyping. A free, open-source, clean-room design tool written from scratch in Rust, part of the ArtCraft Crafting Apps." = "Diseño de interfaces y prototipos. Una herramienta de diseño gratuita y de código abierto, de implementación independiente (clean-room), escrita desde cero en Rust, parte de las Crafting Apps de ArtCraft."
++"Interface design and prototyping. An open-source Rust application in the Plervo suite." = "Diseño de interfaces y prototipos. Una aplicación Rust de código abierto de la suite Plervo."
+ "Intersect" = "Intersecar"
+ "Intersects" = "Intersecciones"
+ "Invite link" = "Enlace de invitación"
+@@ -643,7 +643,7 @@ status = "draft — needs native review"
+ "Join code copied" = "Código para unirse copiado"
+ "Join code or invite link" = "Código para unirse o enlace de invitación"
+ "Join live session" = "Unirse a sesión en vivo"
+-"Join us on Discord" = "Únete a nosotros en Discord"
++"Support Plervo" = "Apoyar a Plervo"
+ "Join with a code" = "Unirse con un código"
+ "Joined" = "Conectado"
+ "Joined {file}" = "Conectado a {file}"
+@@ -889,7 +889,7 @@ status = "draft — needs native review"
+ "Open files" = "Archivos abiertos"
+ "Open in focus view" = "Abrir en vista de enfoque"
+ "Open in new window" = "Abrir en una ventana nueva"
+-"Open invite links in FigCraft" = "Abrir enlaces de invitación en FigCraft"
++"Open invite links in Plervo Canvas" = "Abrir enlaces de invitación en Plervo Canvas"
+ "Open link" = "Abrir enlace"
+ "Open link {url}" = "Abrir enlace {url}"
+ "Open overlay" = "Abrir superposición"
+@@ -955,7 +955,7 @@ status = "draft — needs native review"
+ "Place a shape or frame (its tool chosen)" = "Colocar forma o marco (herramienta elegida)"
+ "Place automatically" = "Colocar automáticamente"
+ "Place image" = "Colocar imagen"
+-"Plugins run in FigCraft's sandbox, without files, network or clock. Install only plugins you trust." = "Los plugins se ejecutan en el entorno aislado de FigCraft, sin archivos, red ni reloj. Instala solo plugins de confianza."
++"Plugins run in Plervo Canvas's sandbox, without files, network or clock. Install only plugins you trust." = "Los plugins se ejecutan en el entorno aislado de Plervo Canvas, sin archivos, red ni reloj. Instala solo plugins de confianza."
+ "Plugins" = "Plugins"
+ "Plus darker" = "Más oscuro"
+ "Plus lighter" = "Más claro"
+@@ -1389,7 +1389,7 @@ status = "draft — needs native review"
+ "Update from selection" = "Actualizar desde la selección"
+ "Updated {components} and {styles}" = "Actualizados {components} y {styles}"
+ "Updated {name}" = "{name} actualizado"
+-"Uploads this file to a FigCraft server and keeps this tab in sync with it. You get a link to edit and a link to view." = "Sube este archivo a un servidor FigCraft y mantiene esta pestaña sincronizada con él. Obtienes un enlace para editar y otro para ver."
++"Uploads this file to a Plervo Canvas server and keeps this tab in sync with it. You get a link to edit and a link to view." = "Sube este archivo a un servidor Plervo Canvas y mantiene esta pestaña sincronizada con él. Obtienes un enlace para editar y otro para ver."
+ "Uppercase" = "Mayúsculas"
+ "Use a fixed value" = "Usar un valor fijo"
+ "Use an expression, e.g. count + 1" = "Usar una expresión, p. ej. count + 1"
+@@ -1444,7 +1444,7 @@ status = "draft — needs native review"
+ "What changed since it was marked ready for dev" = "Qué cambió desde que se marcó como listo para desarrollo"
+ "What is wrong with this file? The server's operator gets your report." = "¿Qué tiene de malo este archivo? El operador del servidor recibirá tu denuncia."
+ "What it's for" = "Para qué sirve"
+-"What this changed from isn't known: it changed before FigCraft kept a copy of ready-for-dev frames. Resolve the change (or mark it ready again) to compare from now on." = "No se sabe desde qué cambió: cambió antes de que FigCraft guardara copias de los marcos listos para desarrollo. Resuelve el cambio (o vuelve a marcarlo como listo) para comparar a partir de ahora."
++"What this changed from isn't known: it changed before Plervo Canvas kept a copy of ready-for-dev frames. Resolve the change (or mark it ready again) to compare from now on." = "No se sabe desde qué cambió: cambió antes de que Plervo Canvas guardara copias de los marcos listos para desarrollo. Resuelve el cambio (o vuelve a marcarlo como listo) para comparar a partir de ahora."
+ "While hovering" = "Mientras se pasa el puntero"
+ "While pressing" = "Mientras se presiona"
+ "White" = "Blanco"
+@@ -1642,7 +1642,7 @@ status = "draft — needs native review"
+ "collab.peers" = "Personas en este archivo"
+ "collab.publish" = "Publicar en el servidor"
+ "collab.recoverFile" = "Recuperar archivo en línea"
+-"collab.registerLinks" = "Abrir enlaces de invitación en FigCraft"
++"collab.registerLinks" = "Abrir enlaces de invitación en Plervo Canvas"
+ "collab.report" = "Denunciar archivo al operador del servidor"
+ "collab.serverInfo" = "Información del servidor"
+ "collab.share" = "Compartir con un código para unirse"
+@@ -1763,7 +1763,7 @@ status = "draft — needs native review"
+ "guide.remove" = "Quitar guía"
+ "guide.select" = "Seleccionar guía"
+ "help.gettingStarted" = "Primeros pasos"
+-"help.about" = "Acerca de FigCraft"
++"help.about" = "Acerca de Plervo Canvas"
+ "help.page" = "Página de ayuda"
+ "help.shortcuts" = "Atajos de teclado"
+ "image.adjust" = "Ajustar imagen"
+diff --git a/crates/ui-egui/locales/fr.toml b/crates/ui-egui/locales/fr.toml
+index c866593..84a4d38 100644
+--- a/crates/ui-egui/locales/fr.toml
++++ b/crates/ui-egui/locales/fr.toml
+@@ -1,4 +1,4 @@
+-# FigCraft interface strings: French.
++# Plervo Canvas interface strings: French.
+ #
+ # Draft — needs native review: machine-drafted from the English catalog. Brand names and keyboard
+ # glyphs stay as they are. French typography: a no-break space ( ) before : ; ? ! and inside
+@@ -19,7 +19,7 @@ status = "draft — needs native review"
+ "A collection of this file with these modes and variables: override their values per mode and add variables of its own" = "Une collection de ce fichier avec ces modes et ces variables : remplacez leurs valeurs par mode et ajoutez vos propres variables"
+ "A spring plays until it settles: its mass, stiffness and damping set how long" = "Un ressort joue jusqu’à ce qu’il se stabilise : sa masse, sa rigidité et son amortissement en fixent la durée"
+ "About" = "À propos"
+-"About FigCraft" = "À propos de FigCraft"
++"About Plervo Canvas" = "À propos de Plervo Canvas"
+ "About this server" = "À propos de ce serveur"
+ "Action" = "Action"
+ "Actions" = "Actions"
+@@ -89,7 +89,7 @@ status = "draft — needs native review"
+ "All variables" = "Toutes les variables"
+ "Alpha" = "Alpha"
+ "Alt+drag" = "Alt+glisser"
+-"An invite link that opens FigCraft and joins" = "Un lien d’invitation qui ouvre FigCraft et rejoint la session"
++"An invite link that opens Plervo Canvas and joins" = "Un lien d’invitation qui ouvre Plervo Canvas et rejoint la session"
+ "Anchor" = "Ancre"
+ "Android" = "Android"
+ "Angular" = "Angulaire"
+@@ -129,7 +129,7 @@ status = "draft — needs native review"
+ "Auto layout" = "Mise en page auto"
+ "Auto rows" = "Lignes auto"
+ "Auto width" = "Largeur auto"
+-"Back to the FigCraft server" = "Revenir au serveur FigCraft"
++"Back to the Plervo Canvas server" = "Revenir au serveur Plervo Canvas"
+ "Back to the font's value" = "Revenir à la valeur de la police"
+ "Back" = "Retour"
+ "Back to Ready for dev" = "Revenir à Prêt pour le dev"
+@@ -390,7 +390,7 @@ status = "draft — needs native review"
+ "Draw" = "Dessin"
+ "Drawing tools" = "Outils de dessin"
+ "Drop shadow" = "Ombre portée"
+-"Dual-licensed MIT OR Apache-2.0. Made by the ArtCraft team and community." = "Double licence MIT OR Apache-2.0. Réalisé par l’équipe et la communauté ArtCraft."
++"MIT OR Apache-2.0. Based on FigCraft by the ArtCraft team and community; adapted for Plervo." = "MIT OR Apache-2.0. Basé sur FigCraft de l’équipe et de la communauté ArtCraft ; adapté pour Plervo."
+ "Duo" = "Duo"
+ "Duplicate" = "Dupliquer"
+ "Duplicate by dragging" = "Dupliquer en faisant glisser"
+@@ -580,7 +580,7 @@ status = "draft — needs native review"
+ "Imported {n} new variables, updated {updated}" = { one = "{n} nouvelle variable importée, {updated} mises à jour", other = "{n} nouvelles variables importées, {updated} mises à jour" }
+ "Import…" = "Importer…"
+ "In an instance, this comes from the main component" = "Dans une instance, cette valeur vient du composant principal"
+-"In the browser you can join sessions the desktop app hosts and files on a FigCraft server. A page opened over https reaches other computers only through wss:// links (a server behind TLS)." = "Dans le navigateur, vous pouvez rejoindre les sessions hébergées par l’application de bureau et les fichiers d’un serveur FigCraft. Une page ouverte en https n’atteint d’autres ordinateurs que par des liens wss:// (un serveur derrière TLS)."
++"In the browser you can join sessions the desktop app hosts and files on a Plervo Canvas server. A page opened over https reaches other computers only through wss:// links (a server behind TLS)." = "Dans le navigateur, vous pouvez rejoindre les sessions hébergées par l’application de bureau et les fichiers d’un serveur Plervo Canvas. Une page ouverte en https n’atteint d’autres ordinateurs que par des liens wss:// (un serveur derrière TLS)."
+ "Include bounding box" = "Inclure le cadre de délimitation"
+ "Include id attribute" = "Inclure l’attribut id"
+ "Included" = "Inclus"
+@@ -605,7 +605,7 @@ status = "draft — needs native review"
+ "Instant" = "Instantané"
+ "Interaction" = "Interaction"
+ "Interactions" = "Interactions"
+-"Interface design and prototyping. A free, open-source, clean-room design tool written from scratch in Rust, part of the ArtCraft Crafting Apps." = "Design d’interfaces et prototypage. Un outil de design libre et gratuit, développé en salle blanche (clean-room) et écrit de zéro en Rust, membre des Crafting Apps d’ArtCraft."
++"Interface design and prototyping. An open-source Rust application in the Plervo suite." = "Conception d’interfaces et prototypage. Une application Rust open source de la suite Plervo."
+ "Intersect" = "Intersection"
+ "Intersects" = "Intersections"
+ "Invite link" = "Lien d’invitation"
+@@ -615,7 +615,7 @@ status = "draft — needs native review"
+ "Join code copied" = "Code d’accès copié"
+ "Join code or invite link" = "Code d’accès ou lien d’invitation"
+ "Join live session" = "Rejoindre la session en direct"
+-"Join us on Discord" = "Rejoignez-nous sur Discord"
++"Support Plervo" = "Soutenir Plervo"
+ "Join with a code" = "Rejoindre avec un code"
+ "Joined" = "Connecté"
+ "Joined {file}" = "Connecté à {file}"
+@@ -845,7 +845,7 @@ status = "draft — needs native review"
+ "Open files" = "Fichiers ouverts"
+ "Open in focus view" = "Ouvrir en vue ciblée"
+ "Open in new window" = "Ouvrir dans une nouvelle fenêtre"
+-"Open invite links in FigCraft" = "Ouvrir les liens d’invitation dans FigCraft"
++"Open invite links in Plervo Canvas" = "Ouvrir les liens d’invitation dans Plervo Canvas"
+ "Open link" = "Ouvrir le lien"
+ "Open link {url}" = "Ouvrir le lien {url}"
+ "Open overlay" = "Ouvrir une superposition"
+@@ -910,7 +910,7 @@ status = "draft — needs native review"
+ "Place automatically" = "Placer automatiquement"
+ "Place image" = "Placer une image"
+ "Plugins" = "Plugins"
+-"Plugins run in FigCraft's sandbox, without files, network or clock. Install only plugins you trust." = "Les plugins s’exécutent dans le bac à sable de FigCraft, sans fichiers, réseau ni horloge. N’installez que des plugins de confiance."
++"Plugins run in Plervo Canvas's sandbox, without files, network or clock. Install only plugins you trust." = "Les plugins s’exécutent dans le bac à sable de Plervo Canvas, sans fichiers, réseau ni horloge. N’installez que des plugins de confiance."
+ "Plus darker" = "Plus foncé"
+ "Plus lighter" = "Plus clair"
+ "Point" = "Point"
+@@ -1322,7 +1322,7 @@ status = "draft — needs native review"
+ "Update plugin" = "Mettre à jour le plugin"
+ "Updated {components} and {styles}" = "{components} et {styles} mis à jour"
+ "Updated {name}" = "{name} mis à jour"
+-"Uploads this file to a FigCraft server and keeps this tab in sync with it. You get a link to edit and a link to view." = "Envoie ce fichier sur un serveur FigCraft et garde cet onglet synchronisé avec lui. Vous obtenez un lien de modification et un lien de consultation."
++"Uploads this file to a Plervo Canvas server and keeps this tab in sync with it. You get a link to edit and a link to view." = "Envoie ce fichier sur un serveur Plervo Canvas et garde cet onglet synchronisé avec lui. Vous obtenez un lien de modification et un lien de consultation."
+ "Uppercase" = "Majuscules"
+ "Use a fixed value" = "Utiliser une valeur fixe"
+ "Use an expression, e.g. count + 1" = "Utiliser une expression, p. ex. count + 1"
+@@ -1374,7 +1374,7 @@ status = "draft — needs native review"
+ "What changed since it was marked ready for dev" = "Ce qui a changé depuis le marquage prêt pour le dev"
+ "What is wrong with this file? The server's operator gets your report." = "Qu’est-ce qui ne va pas avec ce fichier ? L’opérateur du serveur reçoit votre signalement."
+ "What it's for" = "À quoi il sert"
+-"What this changed from isn't known: it changed before FigCraft kept a copy of ready-for-dev frames. Resolve the change (or mark it ready again) to compare from now on." = "L’état d’origine de cette modification est inconnu : elle date d’avant que FigCraft ne conserve une copie des cadres prêts pour le dev. Résolvez la modification (ou marquez-la à nouveau comme prête) pour comparer à partir de maintenant."
++"What this changed from isn't known: it changed before Plervo Canvas kept a copy of ready-for-dev frames. Resolve the change (or mark it ready again) to compare from now on." = "L’état d’origine de cette modification est inconnu : elle date d’avant que Plervo Canvas ne conserve une copie des cadres prêts pour le dev. Résolvez la modification (ou marquez-la à nouveau comme prête) pour comparer à partir de maintenant."
+ "While hovering" = "Pendant le survol"
+ "While pressing" = "Pendant l’appui"
+ "White" = "Blanc"
+@@ -1567,7 +1567,7 @@ status = "draft — needs native review"
+ "collab.peers" = "Personnes dans ce fichier"
+ "collab.publish" = "Publier sur un serveur"
+ "collab.recoverFile" = "Récupérer un fichier en ligne"
+-"collab.registerLinks" = "Ouvrir les liens d’invitation dans FigCraft"
++"collab.registerLinks" = "Ouvrir les liens d’invitation dans Plervo Canvas"
+ "collab.report" = "Signaler le fichier à l’opérateur du serveur"
+ "collab.serverInfo" = "Informations sur le serveur"
+ "collab.share" = "Partager avec un code d’accès"
+@@ -1684,7 +1684,7 @@ status = "draft — needs native review"
+ "guide.move" = "Déplacer le repère"
+ "guide.remove" = "Retirer le repère"
+ "guide.select" = "Sélectionner le repère"
+-"help.about" = "À propos de FigCraft"
++"help.about" = "À propos de Plervo Canvas"
+ "help.page" = "Page d’aide"
+ "help.shortcuts" = "Raccourcis clavier"
+ "image.adjust" = "Régler l’image"
+diff --git a/crates/ui-egui/locales/ja.toml b/crates/ui-egui/locales/ja.toml
+index f7b9cf9..04c819e 100644
+--- a/crates/ui-egui/locales/ja.toml
++++ b/crates/ui-egui/locales/ja.toml
+@@ -1,4 +1,4 @@
+-# FigCraft interface strings: Japanese.
++# Plervo Canvas interface strings: Japanese.
+ #
+ # Draft — needs native review: machine-drafted from the English catalog. Brand names, keyboard
+ # glyphs and {placeholders} stay as they are. Concise UI style without です/ます endings,
+@@ -21,7 +21,7 @@ status = "draft — needs native review"
+ "A collection of this file with these modes and variables: override their values per mode and add variables of its own" = "このファイルのコレクションとそのモード・変数：モードごとに値を上書きし、独自の変数を追加できる"
+ "A spring plays until it settles: its mass, stiffness and damping set how long" = "スプリングは静止するまで再生。長さは質量・剛性・減衰で決まる"
+ "About" = "情報"
+-"About FigCraft" = "FigCraft について"
++"About Plervo Canvas" = "Plervo Canvas について"
+ "About this server" = "このサーバーについて"
+ "Action" = "アクション"
+ "Actions" = "アクション"
+@@ -91,7 +91,7 @@ status = "draft — needs native review"
+ "All variables" = "すべての変数"
+ "Alpha" = "アルファ"
+ "Alt+drag" = "Alt+ドラッグ"
+-"An invite link that opens FigCraft and joins" = "FigCraft を開いて参加する招待リンク"
++"An invite link that opens Plervo Canvas and joins" = "Plervo Canvas を開いて参加する招待リンク"
+ "Anchor" = "アンカー"
+ "Android" = "Android"
+ "Angular" = "角度"
+@@ -131,7 +131,7 @@ status = "draft — needs native review"
+ "Auto layout" = "オートレイアウト"
+ "Auto rows" = "自動行"
+ "Auto width" = "幅を自動調整"
+-"Back to the FigCraft server" = "FigCraft のサーバーに戻す"
++"Back to the Plervo Canvas server" = "Plervo Canvas のサーバーに戻す"
+ "Back to the font's value" = "フォントの値に戻す"
+ "Back" = "戻る"
+ "Back to Ready for dev" = "開発準備完了に戻す"
+@@ -392,7 +392,7 @@ status = "draft — needs native review"
+ "Draw" = "描画"
+ "Drawing tools" = "描画ツール"
+ "Drop shadow" = "ドロップシャドウ"
+-"Dual-licensed MIT OR Apache-2.0. Made by the ArtCraft team and community." = "MIT または Apache-2.0 のデュアルライセンス。ArtCraft チームとコミュニティが制作。"
++"MIT OR Apache-2.0. Based on FigCraft by the ArtCraft team and community; adapted for Plervo." = "MIT OR Apache-2.0。ArtCraftチームとコミュニティのFigCraftを基に、Plervo向けに改変。"
+ "Duo" = "デュオ"
+ "Duplicate" = "複製"
+ "Duplicate by dragging" = "ドラッグで複製"
+@@ -582,7 +582,7 @@ status = "draft — needs native review"
+ "Imported {n} new variables, updated {updated}" = { other = "新しい変数を {n} 個インポートし、{updated} 個を更新" }
+ "Import…" = "インポート…"
+ "In an instance, this comes from the main component" = "インスタンスでは、この値はメインコンポーネントから取得"
+-"In the browser you can join sessions the desktop app hosts and files on a FigCraft server. A page opened over https reaches other computers only through wss:// links (a server behind TLS)." = "ブラウザーでは、デスクトップアプリがホストするセッションや FigCraft サーバー上のファイルに参加できる。https で開いたページが他のコンピューターに接続できるのは wss:// リンク（TLS の背後にあるサーバー）のみ。"
++"In the browser you can join sessions the desktop app hosts and files on a Plervo Canvas server. A page opened over https reaches other computers only through wss:// links (a server behind TLS)." = "ブラウザーでは、デスクトップアプリがホストするセッションや Plervo Canvas サーバー上のファイルに参加できる。https で開いたページが他のコンピューターに接続できるのは wss:// リンク（TLS の背後にあるサーバー）のみ。"
+ "Include bounding box" = "バウンディングボックスを含める"
+ "Include id attribute" = "id 属性を含める"
+ "Included" = "含む"
+@@ -607,7 +607,7 @@ status = "draft — needs native review"
+ "Instant" = "即時"
+ "Interaction" = "インタラクション"
+ "Interactions" = "インタラクション"
+-"Interface design and prototyping. A free, open-source, clean-room design tool written from scratch in Rust, part of the ArtCraft Crafting Apps." = "インターフェースデザインとプロトタイピング。Rust でゼロから書かれた、無料でオープンソースのクリーンルーム設計のデザインツール。ArtCraft Crafting Apps の一つ。"
++"Interface design and prototyping. An open-source Rust application in the Plervo suite." = "インターフェース設計とプロトタイピング。PlervoスイートのオープンソースRustアプリケーション。"
+ "Intersect" = "交差"
+ "Intersects" = "交差"
+ "Invite link" = "招待リンク"
+@@ -617,7 +617,7 @@ status = "draft — needs native review"
+ "Join code copied" = "参加コードをコピー済み"
+ "Join code or invite link" = "参加コードまたは招待リンク"
+ "Join live session" = "ライブセッションに参加"
+-"Join us on Discord" = "Discord に参加する"
++"Support Plervo" = "Plervoを支援"
+ "Join with a code" = "コードで参加"
+ "Joined" = "参加済み"
+ "Joined {file}" = "{file} に参加済み"
+@@ -847,7 +847,7 @@ status = "draft — needs native review"
+ "Open files" = "開いているファイル"
+ "Open in focus view" = "フォーカスビューで開く"
+ "Open in new window" = "新しいウィンドウで開く"
+-"Open invite links in FigCraft" = "招待リンクを FigCraft で開く"
++"Open invite links in Plervo Canvas" = "招待リンクを Plervo Canvas で開く"
+ "Open link" = "リンクを開く"
+ "Open link {url}" = "リンク {url} を開く"
+ "Open overlay" = "オーバーレイを開く"
+@@ -912,7 +912,7 @@ status = "draft — needs native review"
+ "Place automatically" = "自動で配置"
+ "Place image" = "画像を配置"
+ "Plugins" = "プラグイン"
+-"Plugins run in FigCraft's sandbox, without files, network or clock. Install only plugins you trust." = "プラグインは FigCraft のサンドボックス内で、ファイル、ネットワーク、時計なしで実行される。信頼できるプラグインのみをインストールすること。"
++"Plugins run in Plervo Canvas's sandbox, without files, network or clock. Install only plugins you trust." = "プラグインは Plervo Canvas のサンドボックス内で、ファイル、ネットワーク、時計なしで実行される。信頼できるプラグインのみをインストールすること。"
+ "Plus darker" = "プラス（暗）"
+ "Plus lighter" = "プラス（明）"
+ "Point" = "ポイント"
+@@ -1324,7 +1324,7 @@ status = "draft — needs native review"
+ "Update plugin" = "プラグインを更新"
+ "Updated {components} and {styles}" = "{components}と{styles}を更新済み"
+ "Updated {name}" = "{name} を更新済み"
+-"Uploads this file to a FigCraft server and keeps this tab in sync with it. You get a link to edit and a link to view." = "このファイルを FigCraft サーバーにアップロードし、このタブを同期した状態に保つ。編集用リンクと閲覧用リンクが発行される。"
++"Uploads this file to a Plervo Canvas server and keeps this tab in sync with it. You get a link to edit and a link to view." = "このファイルを Plervo Canvas サーバーにアップロードし、このタブを同期した状態に保つ。編集用リンクと閲覧用リンクが発行される。"
+ "Uppercase" = "大文字"
+ "Use a fixed value" = "固定値を使用"
+ "Use an expression, e.g. count + 1" = "式を使用（例：count + 1）"
+@@ -1376,7 +1376,7 @@ status = "draft — needs native review"
+ "What changed since it was marked ready for dev" = "開発準備完了にしてからの変更内容"
+ "What is wrong with this file? The server's operator gets your report." = "このファイルの何が問題ですか？ 報告はサーバーの運営者に届く。"
+ "What it's for" = "用途"
+-"What this changed from isn't known: it changed before FigCraft kept a copy of ready-for-dev frames. Resolve the change (or mark it ready again) to compare from now on." = "変更前の状態は不明：FigCraft が開発準備完了フレームのコピーを保存するようになる前に変更された。変更を解決する（または再度準備完了にする）と、今後はそこから比較する。"
++"What this changed from isn't known: it changed before Plervo Canvas kept a copy of ready-for-dev frames. Resolve the change (or mark it ready again) to compare from now on." = "変更前の状態は不明：Plervo Canvas が開発準備完了フレームのコピーを保存するようになる前に変更された。変更を解決する（または再度準備完了にする）と、今後はそこから比較する。"
+ "While hovering" = "ホバー中"
+ "While pressing" = "押している間"
+ "White" = "白"
+@@ -1569,7 +1569,7 @@ status = "draft — needs native review"
+ "collab.peers" = "このファイルにいるユーザー"
+ "collab.publish" = "サーバーに公開"
+ "collab.recoverFile" = "オンラインファイルを復元"
+-"collab.registerLinks" = "招待リンクを FigCraft で開く"
++"collab.registerLinks" = "招待リンクを Plervo Canvas で開く"
+ "collab.report" = "ファイルをサーバーの運営者に報告"
+ "collab.serverInfo" = "サーバー情報"
+ "collab.share" = "参加コードで共有"
+@@ -1686,7 +1686,7 @@ status = "draft — needs native review"
+ "guide.move" = "ガイドを移動"
+ "guide.remove" = "ガイドを削除"
+ "guide.select" = "ガイドを選択"
+-"help.about" = "FigCraft について"
++"help.about" = "Plervo Canvas について"
+ "help.page" = "ヘルプページ"
+ "help.shortcuts" = "キーボードショートカット"
+ "image.adjust" = "画像を調整"
+diff --git a/crates/ui-egui/locales/ko.toml b/crates/ui-egui/locales/ko.toml
+index 59bb238..454a398 100644
+--- a/crates/ui-egui/locales/ko.toml
++++ b/crates/ui-egui/locales/ko.toml
+@@ -1,4 +1,4 @@
+-# FigCraft interface strings: Korean.
++# Plervo Canvas interface strings: Korean.
+ #
+ # Draft — needs native review: machine-drafted from the English catalog. Brand names, keyboard
+ # glyphs and {placeholders} stay as they are. Concise UI labels without 합니다 endings
+@@ -20,7 +20,7 @@ status = "draft — needs native review"
+ "A collection of this file with these modes and variables: override their values per mode and add variables of its own" = "이 파일의 컬렉션과 그 모드 및 변수: 모드별로 값을 재정의하고 자체 변수를 추가할 수 있음"
+ "A spring plays until it settles: its mass, stiffness and damping set how long" = "스프링은 멈출 때까지 재생됨. 길이는 질량, 강성, 감쇠로 결정됨"
+ "About" = "정보"
+-"About FigCraft" = "FigCraft 정보"
++"About Plervo Canvas" = "Plervo Canvas 정보"
+ "About this server" = "이 서버 정보"
+ "Action" = "액션"
+ "Actions" = "액션"
+@@ -90,7 +90,7 @@ status = "draft — needs native review"
+ "All variables" = "모든 변수"
+ "Alpha" = "알파"
+ "Alt+drag" = "Alt+드래그"
+-"An invite link that opens FigCraft and joins" = "FigCraft를 열고 참여하는 초대 링크"
++"An invite link that opens Plervo Canvas and joins" = "Plervo Canvas를 열고 참여하는 초대 링크"
+ "Anchor" = "앵커"
+ "Android" = "Android"
+ "Angular" = "각도"
+@@ -130,7 +130,7 @@ status = "draft — needs native review"
+ "Auto layout" = "자동 레이아웃"
+ "Auto rows" = "자동 행"
+ "Auto width" = "자동 너비"
+-"Back to the FigCraft server" = "FigCraft 서버로 되돌리기"
++"Back to the Plervo Canvas server" = "Plervo Canvas 서버로 되돌리기"
+ "Back to the font's value" = "글꼴 값으로 되돌리기"
+ "Back" = "뒤로"
+ "Back to Ready for dev" = "개발 준비 완료로 되돌리기"
+@@ -391,7 +391,7 @@ status = "draft — needs native review"
+ "Draw" = "그리기"
+ "Drawing tools" = "그리기 도구"
+ "Drop shadow" = "드롭 섀도"
+-"Dual-licensed MIT OR Apache-2.0. Made by the ArtCraft team and community." = "MIT 또는 Apache-2.0 이중 라이선스. ArtCraft 팀과 커뮤니티가 만듦."
++"MIT OR Apache-2.0. Based on FigCraft by the ArtCraft team and community; adapted for Plervo." = "MIT OR Apache-2.0. ArtCraft 팀과 커뮤니티의 FigCraft를 기반으로 Plervo용으로 수정했습니다."
+ "Duo" = "2색"
+ "Duplicate" = "복제"
+ "Duplicate by dragging" = "드래그해 복제"
+@@ -581,7 +581,7 @@ status = "draft — needs native review"
+ "Imported {n} new variables, updated {updated}" = { other = "새 변수 {n}개를 가져오고 {updated}개를 업데이트함" }
+ "Import…" = "가져오기…"
+ "In an instance, this comes from the main component" = "인스턴스에서는 메인 컴포넌트의 값을 사용함"
+-"In the browser you can join sessions the desktop app hosts and files on a FigCraft server. A page opened over https reaches other computers only through wss:// links (a server behind TLS)." = "브라우저에서는 데스크톱 앱이 호스팅하는 세션과 FigCraft 서버의 파일에 참여할 수 있음. https로 연 페이지는 wss:// 링크(TLS 뒤의 서버)를 통해서만 다른 컴퓨터에 연결됨."
++"In the browser you can join sessions the desktop app hosts and files on a Plervo Canvas server. A page opened over https reaches other computers only through wss:// links (a server behind TLS)." = "브라우저에서는 데스크톱 앱이 호스팅하는 세션과 Plervo Canvas 서버의 파일에 참여할 수 있음. https로 연 페이지는 wss:// 링크(TLS 뒤의 서버)를 통해서만 다른 컴퓨터에 연결됨."
+ "Include bounding box" = "경계 상자 포함"
+ "Include id attribute" = "id 속성 포함"
+ "Included" = "포함됨"
+@@ -606,7 +606,7 @@ status = "draft — needs native review"
+ "Instant" = "즉시"
+ "Interaction" = "인터랙션"
+ "Interactions" = "인터랙션"
+-"Interface design and prototyping. A free, open-source, clean-room design tool written from scratch in Rust, part of the ArtCraft Crafting Apps." = "인터페이스 디자인과 프로토타이핑. Rust로 처음부터 작성한 무료 오픈 소스 클린룸 디자인 도구이며 ArtCraft Crafting Apps의 하나."
++"Interface design and prototyping. An open-source Rust application in the Plervo suite." = "인터페이스 디자인 및 프로토타이핑. Plervo 제품군의 오픈 소스 Rust 애플리케이션입니다."
+ "Intersect" = "교차"
+ "Intersects" = "교차"
+ "Invite link" = "초대 링크"
+@@ -616,7 +616,7 @@ status = "draft — needs native review"
+ "Join code copied" = "참여 코드 복사됨"
+ "Join code or invite link" = "참여 코드 또는 초대 링크"
+ "Join live session" = "라이브 세션 참여"
+-"Join us on Discord" = "Discord에서 함께하기"
++"Support Plervo" = "Plervo 후원"
+ "Join with a code" = "코드로 참여"
+ "Joined" = "참여함"
+ "Joined {file}" = "{file}에 참여함"
+@@ -846,7 +846,7 @@ status = "draft — needs native review"
+ "Open files" = "열린 파일"
+ "Open in focus view" = "포커스 보기로 열기"
+ "Open in new window" = "새 창에서 열기"
+-"Open invite links in FigCraft" = "초대 링크를 FigCraft에서 열기"
++"Open invite links in Plervo Canvas" = "초대 링크를 Plervo Canvas에서 열기"
+ "Open link" = "링크 열기"
+ "Open link {url}" = "링크 {url} 열기"
+ "Open overlay" = "오버레이 열기"
+@@ -911,7 +911,7 @@ status = "draft — needs native review"
+ "Place automatically" = "자동 배치"
+ "Place image" = "이미지 배치"
+ "Plugins" = "플러그인"
+-"Plugins run in FigCraft's sandbox, without files, network or clock. Install only plugins you trust." = "플러그인은 FigCraft 샌드박스에서 파일, 네트워크, 시계 없이 실행됨. 신뢰할 수 있는 플러그인만 설치하세요."
++"Plugins run in Plervo Canvas's sandbox, without files, network or clock. Install only plugins you trust." = "플러그인은 Plervo Canvas 샌드박스에서 파일, 네트워크, 시계 없이 실행됨. 신뢰할 수 있는 플러그인만 설치하세요."
+ "Plus darker" = "더 어둡게"
+ "Plus lighter" = "더 밝게"
+ "Point" = "점"
+@@ -1323,7 +1323,7 @@ status = "draft — needs native review"
+ "Update plugin" = "플러그인 업데이트"
+ "Updated {components} and {styles}" = "{components} 및 {styles} 업데이트됨"
+ "Updated {name}" = "{name} 업데이트됨"
+-"Uploads this file to a FigCraft server and keeps this tab in sync with it. You get a link to edit and a link to view." = "이 파일을 FigCraft 서버에 업로드하고 이 탭을 동기화된 상태로 유지함. 편집 링크와 보기 링크가 생성됨."
++"Uploads this file to a Plervo Canvas server and keeps this tab in sync with it. You get a link to edit and a link to view." = "이 파일을 Plervo Canvas 서버에 업로드하고 이 탭을 동기화된 상태로 유지함. 편집 링크와 보기 링크가 생성됨."
+ "Uppercase" = "대문자"
+ "Use a fixed value" = "고정 값 사용"
+ "Use an expression, e.g. count + 1" = "수식 사용(예: count + 1)"
+@@ -1375,7 +1375,7 @@ status = "draft — needs native review"
+ "What changed since it was marked ready for dev" = "개발 준비 완료로 표시된 뒤 변경된 내용"
+ "What is wrong with this file? The server's operator gets your report." = "이 파일에 어떤 문제가 있나요? 신고는 서버 운영자에게 전달됨."
+ "What it's for" = "용도"
+-"What this changed from isn't known: it changed before FigCraft kept a copy of ready-for-dev frames. Resolve the change (or mark it ready again) to compare from now on." = "무엇에서 바뀌었는지 알 수 없음: FigCraft가 개발 준비 완료 프레임의 사본을 보관하기 전에 변경됨. 변경을 해결(또는 다시 준비 완료로 표시)하면 이후부터 비교함."
++"What this changed from isn't known: it changed before Plervo Canvas kept a copy of ready-for-dev frames. Resolve the change (or mark it ready again) to compare from now on." = "무엇에서 바뀌었는지 알 수 없음: Plervo Canvas가 개발 준비 완료 프레임의 사본을 보관하기 전에 변경됨. 변경을 해결(또는 다시 준비 완료로 표시)하면 이후부터 비교함."
+ "While hovering" = "마우스를 올린 동안"
+ "While pressing" = "누르는 동안"
+ "White" = "흰색"
+@@ -1568,7 +1568,7 @@ status = "draft — needs native review"
+ "collab.peers" = "이 파일의 사용자"
+ "collab.publish" = "서버에 게시"
+ "collab.recoverFile" = "온라인 파일 복구"
+-"collab.registerLinks" = "초대 링크를 FigCraft에서 열기"
++"collab.registerLinks" = "초대 링크를 Plervo Canvas에서 열기"
+ "collab.report" = "서버 운영자에게 파일 신고"
+ "collab.serverInfo" = "서버 정보"
+ "collab.share" = "참여 코드로 공유"
+@@ -1685,7 +1685,7 @@ status = "draft — needs native review"
+ "guide.move" = "안내선 이동"
+ "guide.remove" = "안내선 제거"
+ "guide.select" = "안내선 선택"
+-"help.about" = "FigCraft 정보"
++"help.about" = "Plervo Canvas 정보"
+ "help.page" = "도움말 페이지"
+ "help.shortcuts" = "키보드 단축키"
+ "image.adjust" = "이미지 조정"
+diff --git a/crates/ui-egui/locales/pt-BR.toml b/crates/ui-egui/locales/pt-BR.toml
+index a692a8c..443fa3d 100644
+--- a/crates/ui-egui/locales/pt-BR.toml
++++ b/crates/ui-egui/locales/pt-BR.toml
+@@ -1,4 +1,4 @@
+-# FigCraft interface strings: Portuguese (Brazil).
++# Plervo Canvas interface strings: Portuguese (Brazil).
+ #
+ # Draft — needs native review: machine-drafted from the English catalog. Brand names and keyboard
+ # glyphs stay as they are. Brazilian usage (você, arquivo, salvar, tela). See docs/translating.md.
+@@ -18,7 +18,7 @@ status = "draft — needs native review"
+ "A collection of this file with these modes and variables: override their values per mode and add variables of its own" = "Uma coleção deste arquivo com estes modos e variáveis: substitua os valores por modo e adicione variáveis próprias"
+ "A spring plays until it settles: its mass, stiffness and damping set how long" = "Uma mola se move até se estabilizar: sua massa, rigidez e amortecimento definem a duração"
+ "About" = "Sobre"
+-"About FigCraft" = "Sobre o FigCraft"
++"About Plervo Canvas" = "Sobre o Plervo Canvas"
+ "About this server" = "Sobre este servidor"
+ "Action" = "Ação"
+ "Actions" = "Ações"
+@@ -88,7 +88,7 @@ status = "draft — needs native review"
+ "All variables" = "Todas as variáveis"
+ "Alpha" = "Alfa"
+ "Alt+drag" = "Alt+arrastar"
+-"An invite link that opens FigCraft and joins" = "Um link de convite que abre o FigCraft e entra na sessão"
++"An invite link that opens Plervo Canvas and joins" = "Um link de convite que abre o Plervo Canvas e entra na sessão"
+ "Anchor" = "Âncora"
+ "Android" = "Android"
+ "Angular" = "Angular"
+@@ -128,7 +128,7 @@ status = "draft — needs native review"
+ "Auto layout" = "Layout automático"
+ "Auto rows" = "Linhas automáticas"
+ "Auto width" = "Largura automática"
+-"Back to the FigCraft server" = "Voltar ao servidor do FigCraft"
++"Back to the Plervo Canvas server" = "Voltar ao servidor do Plervo Canvas"
+ "Back to the font's value" = "Voltar ao valor da fonte"
+ "Back" = "Voltar"
+ "Back to Ready for dev" = "Voltar para Pronto para dev"
+@@ -389,7 +389,7 @@ status = "draft — needs native review"
+ "Draw" = "Desenhar"
+ "Drawing tools" = "Ferramentas de desenho"
+ "Drop shadow" = "Sombra projetada"
+-"Dual-licensed MIT OR Apache-2.0. Made by the ArtCraft team and community." = "Licença dupla MIT OR Apache-2.0. Feito pela equipe e pela comunidade ArtCraft."
++"MIT OR Apache-2.0. Based on FigCraft by the ArtCraft team and community; adapted for Plervo." = "MIT OR Apache-2.0. Baseado no FigCraft, da equipe e comunidade ArtCraft; adaptado para o Plervo."
+ "Duo" = "Duo"
+ "Duplicate" = "Duplicar"
+ "Duplicate by dragging" = "Duplicar arrastando"
+@@ -579,7 +579,7 @@ status = "draft — needs native review"
+ "Imported {n} new variables, updated {updated}" = { one = "{n} variável nova importada, {updated} atualizadas", other = "{n} variáveis novas importadas, {updated} atualizadas" }
+ "Import…" = "Importar…"
+ "In an instance, this comes from the main component" = "Em uma instância, isto vem do componente principal"
+-"In the browser you can join sessions the desktop app hosts and files on a FigCraft server. A page opened over https reaches other computers only through wss:// links (a server behind TLS)." = "No navegador você pode entrar em sessões hospedadas pelo app para desktop e em arquivos de um servidor FigCraft. Uma página aberta via https só alcança outros computadores por links wss:// (um servidor atrás de TLS)."
++"In the browser you can join sessions the desktop app hosts and files on a Plervo Canvas server. A page opened over https reaches other computers only through wss:// links (a server behind TLS)." = "No navegador você pode entrar em sessões hospedadas pelo app para desktop e em arquivos de um servidor Plervo Canvas. Uma página aberta via https só alcança outros computadores por links wss:// (um servidor atrás de TLS)."
+ "Include bounding box" = "Incluir caixa delimitadora"
+ "Include id attribute" = "Incluir atributo id"
+ "Included" = "Incluídos"
+@@ -604,7 +604,7 @@ status = "draft — needs native review"
+ "Instant" = "Instantâneo"
+ "Interaction" = "Interação"
+ "Interactions" = "Interações"
+-"Interface design and prototyping. A free, open-source, clean-room design tool written from scratch in Rust, part of the ArtCraft Crafting Apps." = "Design de interfaces e prototipagem. Uma ferramenta de design gratuita e de código aberto, com implementação independente (clean-room), escrita do zero em Rust, parte dos Crafting Apps da ArtCraft."
++"Interface design and prototyping. An open-source Rust application in the Plervo suite." = "Design de interfaces e prototipagem. Um aplicativo Rust de código aberto da suíte Plervo."
+ "Intersect" = "Interseção"
+ "Intersects" = "Interseções"
+ "Invite link" = "Link de convite"
+@@ -614,7 +614,7 @@ status = "draft — needs native review"
+ "Join code copied" = "Código de acesso copiado"
+ "Join code or invite link" = "Código de acesso ou link de convite"
+ "Join live session" = "Entrar na sessão ao vivo"
+-"Join us on Discord" = "Junte-se a nós no Discord"
++"Support Plervo" = "Apoiar o Plervo"
+ "Join with a code" = "Entrar com um código"
+ "Joined" = "Conectado"
+ "Joined {file}" = "Conectado a {file}"
+@@ -844,7 +844,7 @@ status = "draft — needs native review"
+ "Open files" = "Arquivos abertos"
+ "Open in focus view" = "Abrir na visualização em foco"
+ "Open in new window" = "Abrir em nova janela"
+-"Open invite links in FigCraft" = "Abrir links de convite no FigCraft"
++"Open invite links in Plervo Canvas" = "Abrir links de convite no Plervo Canvas"
+ "Open link" = "Abrir link"
+ "Open link {url}" = "Abrir link {url}"
+ "Open overlay" = "Abrir sobreposição"
+@@ -909,7 +909,7 @@ status = "draft — needs native review"
+ "Place automatically" = "Posicionar automaticamente"
+ "Place image" = "Inserir imagem"
+ "Plugins" = "Plugins"
+-"Plugins run in FigCraft's sandbox, without files, network or clock. Install only plugins you trust." = "Os plugins são executados na sandbox do FigCraft, sem arquivos, rede nem relógio. Instale apenas plugins em que você confia."
++"Plugins run in Plervo Canvas's sandbox, without files, network or clock. Install only plugins you trust." = "Os plugins são executados na sandbox do Plervo Canvas, sem arquivos, rede nem relógio. Instale apenas plugins em que você confia."
+ "Plus darker" = "Mais escuro"
+ "Plus lighter" = "Mais claro"
+ "Point" = "Ponto"
+@@ -1321,7 +1321,7 @@ status = "draft — needs native review"
+ "Update plugin" = "Atualizar plugin"
+ "Updated {components} and {styles}" = "{components} e {styles} atualizados"
+ "Updated {name}" = "{name} atualizado"
+-"Uploads this file to a FigCraft server and keeps this tab in sync with it. You get a link to edit and a link to view." = "Envia este arquivo para um servidor FigCraft e mantém esta aba sincronizada com ele. Você recebe um link para editar e outro para visualizar."
++"Uploads this file to a Plervo Canvas server and keeps this tab in sync with it. You get a link to edit and a link to view." = "Envia este arquivo para um servidor Plervo Canvas e mantém esta aba sincronizada com ele. Você recebe um link para editar e outro para visualizar."
+ "Uppercase" = "Maiúsculas"
+ "Use a fixed value" = "Usar um valor fixo"
+ "Use an expression, e.g. count + 1" = "Usar uma expressão, por ex. count + 1"
+@@ -1373,7 +1373,7 @@ status = "draft — needs native review"
+ "What changed since it was marked ready for dev" = "O que mudou desde que foi marcado como pronto para dev"
+ "What is wrong with this file? The server's operator gets your report." = "O que há de errado com este arquivo? O operador do servidor recebe a sua denúncia."
+ "What it's for" = "Para que serve"
+-"What this changed from isn't known: it changed before FigCraft kept a copy of ready-for-dev frames. Resolve the change (or mark it ready again) to compare from now on." = "Não se sabe de onde esta alteração partiu: ela ocorreu antes de o FigCraft guardar cópias dos quadros prontos para dev. Resolva a alteração (ou marque-o como pronto de novo) para comparar daqui em diante."
++"What this changed from isn't known: it changed before Plervo Canvas kept a copy of ready-for-dev frames. Resolve the change (or mark it ready again) to compare from now on." = "Não se sabe de onde esta alteração partiu: ela ocorreu antes de o Plervo Canvas guardar cópias dos quadros prontos para dev. Resolva a alteração (ou marque-o como pronto de novo) para comparar daqui em diante."
+ "While hovering" = "Enquanto passa o cursor"
+ "While pressing" = "Enquanto pressiona"
+ "White" = "Branco"
+@@ -1566,7 +1566,7 @@ status = "draft — needs native review"
+ "collab.peers" = "Pessoas neste arquivo"
+ "collab.publish" = "Publicar no servidor"
+ "collab.recoverFile" = "Recuperar arquivo online"
+-"collab.registerLinks" = "Abrir links de convite no FigCraft"
++"collab.registerLinks" = "Abrir links de convite no Plervo Canvas"
+ "collab.report" = "Denunciar arquivo ao operador do servidor"
+ "collab.serverInfo" = "Informações do servidor"
+ "collab.share" = "Compartilhar com um código de acesso"
+@@ -1683,7 +1683,7 @@ status = "draft — needs native review"
+ "guide.move" = "Mover guia"
+ "guide.remove" = "Remover guia"
+ "guide.select" = "Selecionar guia"
+-"help.about" = "Sobre o FigCraft"
++"help.about" = "Sobre o Plervo Canvas"
+ "help.page" = "Página de ajuda"
+ "help.shortcuts" = "Atalhos de teclado"
+ "image.adjust" = "Ajustar imagem"
+diff --git a/crates/ui-egui/locales/zh-Hans.toml b/crates/ui-egui/locales/zh-Hans.toml
+index d2431df..a7cda1d 100644
+--- a/crates/ui-egui/locales/zh-Hans.toml
++++ b/crates/ui-egui/locales/zh-Hans.toml
+@@ -1,4 +1,4 @@
+-# FigCraft interface strings: Simplified Chinese.
++# Plervo Canvas interface strings: Simplified Chinese.
+ #
+ # Draft — needs native review: machine-drafted from the English catalog. Brand names, keyboard
+ # glyphs and {placeholders} stay as they are. Concise UI style, full-width punctuation （）：，、。“”
+@@ -21,7 +21,7 @@ status = "draft — needs native review"
+ "A collection of this file with these modes and variables: override their values per mode and add variables of its own" = "本文件中带有这些模式和变量的集合：可按模式覆盖其值，并添加自己的变量"
+ "A spring plays until it settles: its mass, stiffness and damping set how long" = "弹簧动画播放至静止，时长由质量、刚度和阻尼决定"
+ "About" = "关于"
+-"About FigCraft" = "关于 FigCraft"
++"About Plervo Canvas" = "关于 Plervo Canvas"
+ "About this server" = "关于此服务器"
+ "Action" = "操作"
+ "Actions" = "操作"
+@@ -91,7 +91,7 @@ status = "draft — needs native review"
+ "All variables" = "全部变量"
+ "Alpha" = "Alpha"
+ "Alt+drag" = "Alt+拖动"
+-"An invite link that opens FigCraft and joins" = "可打开 FigCraft 并加入的邀请链接"
++"An invite link that opens Plervo Canvas and joins" = "可打开 Plervo Canvas 并加入的邀请链接"
+ "Anchor" = "锚点"
+ "Android" = "Android"
+ "Angular" = "角度"
+@@ -131,7 +131,7 @@ status = "draft — needs native review"
+ "Auto layout" = "自动布局"
+ "Auto rows" = "自动行"
+ "Auto width" = "自动宽度"
+-"Back to the FigCraft server" = "恢复为 FigCraft 服务器"
++"Back to the Plervo Canvas server" = "恢复为 Plervo Canvas 服务器"
+ "Back to the font's value" = "恢复为字体的值"
+ "Back" = "返回"
+ "Back to Ready for dev" = "退回可供开发"
+@@ -392,7 +392,7 @@ status = "draft — needs native review"
+ "Draw" = "绘制"
+ "Drawing tools" = "绘图工具"
+ "Drop shadow" = "投影"
+-"Dual-licensed MIT OR Apache-2.0. Made by the ArtCraft team and community." = "采用 MIT 或 Apache-2.0 双重许可。由 ArtCraft 团队和社区打造。"
++"MIT OR Apache-2.0. Based on FigCraft by the ArtCraft team and community; adapted for Plervo." = "MIT OR Apache-2.0。基于 ArtCraft 团队及社区的 FigCraft，为 Plervo 改编。"
+ "Duo" = "双色"
+ "Duplicate" = "创建副本"
+ "Duplicate by dragging" = "拖动创建副本"
+@@ -582,7 +582,7 @@ status = "draft — needs native review"
+ "Imported {n} new variables, updated {updated}" = { other = "已导入 {n} 个新变量，更新 {updated} 个" }
+ "Import…" = "导入…"
+ "In an instance, this comes from the main component" = "在实例中，此项来自主组件"
+-"In the browser you can join sessions the desktop app hosts and files on a FigCraft server. A page opened over https reaches other computers only through wss:// links (a server behind TLS)." = "在浏览器中，你可以加入桌面应用主持的会话以及 FigCraft 服务器上的文件。通过 https 打开的页面只能经由 wss:// 链接（TLS 后的服务器）访问其他计算机。"
++"In the browser you can join sessions the desktop app hosts and files on a Plervo Canvas server. A page opened over https reaches other computers only through wss:// links (a server behind TLS)." = "在浏览器中，你可以加入桌面应用主持的会话以及 Plervo Canvas 服务器上的文件。通过 https 打开的页面只能经由 wss:// 链接（TLS 后的服务器）访问其他计算机。"
+ "Include bounding box" = "包含边界框"
+ "Include id attribute" = "包含 id 属性"
+ "Included" = "已包含"
+@@ -607,7 +607,7 @@ status = "draft — needs native review"
+ "Instant" = "即时"
+ "Interaction" = "交互"
+ "Interactions" = "交互"
+-"Interface design and prototyping. A free, open-source, clean-room design tool written from scratch in Rust, part of the ArtCraft Crafting Apps." = "界面设计与原型制作。一款以 Rust 从零编写的免费、开源、净室设计工具，属于 ArtCraft Crafting Apps 系列。"
++"Interface design and prototyping. An open-source Rust application in the Plervo suite." = "界面设计与原型制作。Plervo 套件中的开源 Rust 应用。"
+ "Intersect" = "相交"
+ "Intersects" = "相交"
+ "Invite link" = "邀请链接"
+@@ -617,7 +617,7 @@ status = "draft — needs native review"
+ "Join code copied" = "已复制加入代码"
+ "Join code or invite link" = "加入代码或邀请链接"
+ "Join live session" = "加入实时会话"
+-"Join us on Discord" = "加入我们的 Discord"
++"Support Plervo" = "支持 Plervo"
+ "Join with a code" = "用代码加入"
+ "Joined" = "已加入"
+ "Joined {file}" = "已加入 {file}"
+@@ -847,7 +847,7 @@ status = "draft — needs native review"
+ "Open files" = "打开的文件"
+ "Open in focus view" = "在聚焦视图中打开"
+ "Open in new window" = "在新窗口中打开"
+-"Open invite links in FigCraft" = "在 FigCraft 中打开邀请链接"
++"Open invite links in Plervo Canvas" = "在 Plervo Canvas 中打开邀请链接"
+ "Open link" = "打开链接"
+ "Open link {url}" = "打开链接 {url}"
+ "Open overlay" = "打开浮层"
+@@ -912,7 +912,7 @@ status = "draft — needs native review"
+ "Place automatically" = "自动放置"
+ "Place image" = "置入图片"
+ "Plugins" = "插件"
+-"Plugins run in FigCraft's sandbox, without files, network or clock. Install only plugins you trust." = "插件在 FigCraft 的沙盒中运行，无法使用文件、网络或时钟。请只安装你信任的插件。"
++"Plugins run in Plervo Canvas's sandbox, without files, network or clock. Install only plugins you trust." = "插件在 Plervo Canvas 的沙盒中运行，无法使用文件、网络或时钟。请只安装你信任的插件。"
+ "Plus darker" = "加深"
+ "Plus lighter" = "增亮"
+ "Point" = "点"
+@@ -1324,7 +1324,7 @@ status = "draft — needs native review"
+ "Update plugin" = "更新插件"
+ "Updated {components} and {styles}" = "已更新 {components} 和 {styles}"
+ "Updated {name}" = "已更新 {name}"
+-"Uploads this file to a FigCraft server and keeps this tab in sync with it. You get a link to edit and a link to view." = "将此文件上传到 FigCraft 服务器，并使此标签页与之保持同步。你会获得一个编辑链接和一个查看链接。"
++"Uploads this file to a Plervo Canvas server and keeps this tab in sync with it. You get a link to edit and a link to view." = "将此文件上传到 Plervo Canvas 服务器，并使此标签页与之保持同步。你会获得一个编辑链接和一个查看链接。"
+ "Uppercase" = "大写"
+ "Use a fixed value" = "使用固定值"
+ "Use an expression, e.g. count + 1" = "使用表达式，例如 count + 1"
+@@ -1376,7 +1376,7 @@ status = "draft — needs native review"
+ "What changed since it was marked ready for dev" = "自标记为可供开发以来的更改"
+ "What is wrong with this file? The server's operator gets your report." = "此文件有什么问题？你的举报会发送给服务器的运营者。"
+ "What it's for" = "用途"
+-"What this changed from isn't known: it changed before FigCraft kept a copy of ready-for-dev frames. Resolve the change (or mark it ready again) to compare from now on." = "无法得知更改前的状态：它在 FigCraft 开始保存可供开发画框的副本之前就已更改。请解决此更改（或重新标记为可供开发），以便今后进行比较。"
++"What this changed from isn't known: it changed before Plervo Canvas kept a copy of ready-for-dev frames. Resolve the change (or mark it ready again) to compare from now on." = "无法得知更改前的状态：它在 Plervo Canvas 开始保存可供开发画框的副本之前就已更改。请解决此更改（或重新标记为可供开发），以便今后进行比较。"
+ "While hovering" = "悬停时"
+ "While pressing" = "按住时"
+ "White" = "白"
+@@ -1569,7 +1569,7 @@ status = "draft — needs native review"
+ "collab.peers" = "此文件中的成员"
+ "collab.publish" = "发布到服务器"
+ "collab.recoverFile" = "恢复在线文件"
+-"collab.registerLinks" = "在 FigCraft 中打开邀请链接"
++"collab.registerLinks" = "在 Plervo Canvas 中打开邀请链接"
+ "collab.report" = "向服务器运营者举报文件"
+ "collab.serverInfo" = "服务器信息"
+ "collab.share" = "用加入代码分享"
+@@ -1686,7 +1686,7 @@ status = "draft — needs native review"
+ "guide.move" = "移动参考线"
+ "guide.remove" = "移除参考线"
+ "guide.select" = "选择参考线"
+-"help.about" = "关于 FigCraft"
++"help.about" = "关于 Plervo Canvas"
+ "help.page" = "帮助页面"
+ "help.shortcuts" = "键盘快捷键"
+ "image.adjust" = "调整图片"
 diff --git a/crates/ui-egui/src/branch_ui.rs b/crates/ui-egui/src/branch_ui.rs
 index 1e3c558..7271dbd 100644
 --- a/crates/ui-egui/src/branch_ui.rs
@@ -2279,7 +3770,7 @@ index 2e21eb5..a75018c 100644
                  open = false;
              }
 diff --git a/crates/ui-egui/src/dialogs.rs b/crates/ui-egui/src/dialogs.rs
-index 221ee63..15ecec3 100644
+index 221ee63..1828c4d 100644
 --- a/crates/ui-egui/src/dialogs.rs
 +++ b/crates/ui-egui/src/dialogs.rs
 @@ -82,20 +82,20 @@ fn about_body(ui: &mut egui::Ui, t: &Tokens) {
@@ -2292,19 +3783,21 @@ index 221ee63..15ecec3 100644
          });
      });
      ui.add_space(12.0);
-     ui.label(tr(
+-    ui.label(tr(
 -        "Interface design and prototyping. A free, open-source, clean-room design tool written from scratch in Rust, part of the ArtCraft Crafting Apps.",
-+        "Interface design and prototyping. A free, open-source, clean-room design tool written from scratch in Rust, part of the Plervo Crafting Apps.",
-     ));
+-    ));
++    ui.label(tr("Interface design and prototyping. An open-source Rust application in the Plervo suite."));
      ui.add_space(8.0);
 -    ui.hyperlink_to("getartcraft.com/apps/figcraft", "https://getartcraft.com/apps/figcraft");
 -    ui.hyperlink_to(tr("Join us on Discord"), "https://discord.gg/artcraft");
-+    ui.hyperlink_to("plervo.com/apps/figcraft", "https://plervo.com/");
++    ui.hyperlink_to("plervo.com", "https://plervo.com/");
 +    ui.hyperlink_to(tr("Support Plervo"), "https://buymeacoffee.com/alport");
      ui.add_space(8.0);
      ui.label(
 -        RichText::new(tr("Dual-licensed MIT OR Apache-2.0. Made by the ArtCraft team and community.")).color(t.text_secondary).font(regular(11.0)),
-+        RichText::new(tr("Dual-licensed MIT OR Apache-2.0. Made by the Plervo team and community.")).color(t.text_secondary).font(regular(11.0)),
++        RichText::new(tr("MIT OR Apache-2.0. Based on FigCraft by the ArtCraft team and community; adapted for Plervo."))
++            .color(t.text_secondary)
++            .font(regular(11.0)),
      );
  }
  
@@ -3043,7 +4536,7 @@ index 0000000..2224348
 +</component>
 diff --git a/packaging/linux/com.plervo.canvas.mime.xml b/packaging/linux/com.plervo.canvas.mime.xml
 new file mode 100644
-index 0000000..5219bd0
+index 0000000..badc3e5
 --- /dev/null
 +++ b/packaging/linux/com.plervo.canvas.mime.xml
 @@ -0,0 +1,11 @@
@@ -3055,7 +4548,7 @@ index 0000000..5219bd0
 +  <mime-type type="application/x-plervo-canvas">
 +    <comment>Plervo Canvas document</comment>
 +    <icon name="com.plervo.canvas"/>
-+    <glob pattern="*.plervo-canvas"/>
++    <glob pattern="*.figcraft"/>
 +  </mime-type>
 +</mime-info>
 diff --git a/packaging/linux/flatpak-bundle.sh b/packaging/linux/flatpak-bundle.sh
@@ -3398,7 +4891,7 @@ index 0000000..d5ae186
 +          - .flatpak-builder
 +      - cargo-sources.json
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
-index 69667a2..b5d625b 100644
+index 69667a2..3c77c71 100644
 --- a/packaging/linux/nfpm.yaml
 +++ b/packaging/linux/nfpm.yaml
 @@ -1,10 +1,10 @@
@@ -3425,7 +4918,24 @@ index 69667a2..b5d625b 100644
  license: MIT OR Apache-2.0
  description: |-
    Open-source, native interface design and prototyping tool.
-@@ -66,11 +66,11 @@ overrides:
+@@ -33,7 +33,7 @@ description: |-
+ overrides:
+   deb:
+     depends:
+-      - libc6 (>= 2.35)
++      - libc6 (>= ${PLERVO_MIN_GLIBC})
+       - libgcc-s1
+       - libxkbcommon0
+       - libxkbcommon-x11-0
+@@ -52,6 +52,7 @@ overrides:
+     # Soname provides rather than package names, so the same requirements resolve on Fedora/RHEL
+     # (libxkbcommon-x11, libX11-xcb, ...) and openSUSE (libxkbcommon-x11-0, libX11-xcb1, ...).
+     depends:
++      - glibc >= ${PLERVO_MIN_GLIBC}
+       - libxkbcommon.so.0()(64bit)
+       - libxkbcommon-x11.so.0()(64bit)
+       - libwayland-client.so.0()(64bit)
+@@ -66,11 +67,11 @@ overrides:
        - xdg-desktop-portal
  
  contents:
@@ -3442,7 +4952,7 @@ index 69667a2..b5d625b 100644
    - src: ${STAGE}/usr/share/
      dst: /usr/share/
 diff --git a/packaging/linux/package.sh b/packaging/linux/package.sh
-index 20da2f7..e1e98ac 100755
+index 20da2f7..4da737a 100755
 --- a/packaging/linux/package.sh
 +++ b/packaging/linux/package.sh
 @@ -1,13 +1,13 @@
@@ -3475,13 +4985,13 @@ index 20da2f7..e1e98ac 100755
  
  SKIP_BUILD=0
  FORMATS="appimage deb rpm tar"
-@@ -43,10 +43,10 @@ case "$ARCH" in
+@@ -43,15 +43,18 @@ case "$ARCH" in
    aarch64 | arm64) ARCH=aarch64; DEB_ARCH=arm64 ;;
    *) echo "unsupported architecture $ARCH" >&2; exit 2 ;;
  esac
 -export FIGCRAFT_MAINTAINER="${FIGCRAFT_MAINTAINER:-FigCraft maintainers <figcraft@storyteller.ai>}"
 -BASENAME="figcraft-$VERSION-linux-$ARCH"
-+export FIGCRAFT_MAINTAINER="${FIGCRAFT_MAINTAINER:-Plervo Canvas maintainers <plervo-canvas@storyteller.ai>}"
++export FIGCRAFT_MAINTAINER="${FIGCRAFT_MAINTAINER:-Plervo contributors}"
 +BASENAME="plervo-canvas-$VERSION-linux-$ARCH"
  
 -echo "==> FigCraft $VERSION for Linux $ARCH ($FORMATS; ${BINS[*]})"
@@ -3489,7 +4999,15 @@ index 20da2f7..e1e98ac 100755
  
  if [ "$SKIP_BUILD" = 0 ]; then
    (cd "$ROOT" && cargo build --release --locked "${CARGO_PKGS[@]}" ${CROSS_TARGET:+--target "$CROSS_TARGET"})
-@@ -68,8 +68,8 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$FIGCRAFT_BUILD_DATE/g" \
+ fi
+ BIN="$CARGO_TARGET_DIR/${CROSS_TARGET:+$CROSS_TARGET/}release"
++# Match the declared Ubuntu 24.04 baseline to the actual ELF requirements.
++export PLERVO_MIN_GLIBC=2.39
++bash "$HERE/verify-glibc.sh" "$PLERVO_MIN_GLIBC" "$BIN/plervo-canvas" "$BIN/plervo-canvas-cli"
+ WORK="$CARGO_TARGET_DIR/linux-package"
+ STAGE="$WORK/root"
+ rm -rf "$WORK"
+@@ -68,8 +71,8 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$FIGCRAFT_BUILD_DATE/g" \
    "$HERE/$APP_ID.metainfo.xml.in" >"$STAGE/usr/share/metainfo/$APP_ID.metainfo.xml"
  mkdir -p "$STAGE/usr/share/icons"
  cp -R "$ROOT/assets/app-icon/hicolor" "$STAGE/usr/share/icons/"
@@ -3500,7 +5018,7 @@ index 20da2f7..e1e98ac 100755
  
  if command -v desktop-file-validate >/dev/null; then
    desktop-file-validate "$STAGE/usr/share/applications/$APP_ID.desktop"
-@@ -105,7 +105,7 @@ fi
+@@ -105,7 +108,7 @@ fi
  
  # ---- AppImage -----------------------------------------------------------------------------------
  if has appimage; then
@@ -3509,7 +5027,7 @@ index 20da2f7..e1e98ac 100755
    cp -R "$STAGE" "$APPDIR"
    mv "$APPDIR/usr/share/doc" "$WORK/doc-unused"
    # AppRun is a script, not a symlink: it installs the .desktop entry and icons into
-@@ -136,8 +136,8 @@ if has appimage; then
+@@ -136,8 +139,8 @@ if has appimage; then
    # file and fetch only the blocks that changed in a newer release, through the .zsync published
    # next to each AppImage on GitHub Releases. `latest` is the newest published release that is
    # not a pre-release. A fork's builds point at its own releases through GITHUB_REPOSITORY.
@@ -3520,8 +5038,50 @@ index 20da2f7..e1e98ac 100755
    # Extract-and-run: works without FUSE (containers, CI). The output embeds the static runtime,
    # so users don't need libfuse2 either. With zsyncmake on the host (CI installs the zsync
    # package) appimagetool also writes the .zsync, into its working directory, hence the cd.
+diff --git a/packaging/linux/verify-glibc.sh b/packaging/linux/verify-glibc.sh
+new file mode 100755
+index 0000000..2a99601
+--- /dev/null
++++ b/packaging/linux/verify-glibc.sh
+@@ -0,0 +1,36 @@
++#!/usr/bin/env bash
++# Refuse binaries that require a newer glibc than the package declares. Does not execute them.
++set -euo pipefail
++if [ "$#" -lt 2 ] || [[ ! "$1" =~ ^[0-9]+\.[0-9]+$ ]]; then
++  echo "usage: verify-glibc.sh MAX_MAJOR.MINOR ELF..." >&2
++  exit 2
++fi
++ceiling="$1"
++shift
++for binary in "$@"; do
++  headers="$(LC_ALL=C "${CROSS_COMPILE:-}objdump" -p "$binary")"
++  if ! printf '%s\n' "$headers" | LC_ALL=C awk -v ceiling="$ceiling" '
++    BEGIN { split(ceiling, cap, /[.]/) }
++    $NF ~ /^GLIBC_/ {
++      seen = 1
++      if ($NF !~ /^GLIBC_[0-9]+\.[0-9]+(\.[0-9]+)?$/) {
++        print "unsupported glibc requirement: " $NF > "/dev/stderr"
++        bad = 1
++        next
++      }
++      split(substr($NF, 7), version, /[.]/)
++      if (version[1] > cap[1] || (version[1] == cap[1] &&
++          (version[2] > cap[2] || (version[2] == cap[2] && version[3] > 0)))) {
++        print "requires " $NF ", package baseline is " ceiling > "/dev/stderr"
++        bad = 1
++      }
++    }
++    END {
++      if (!seen) print "no glibc version requirements found" > "/dev/stderr"
++      exit (bad || !seen)
++    }
++  '; then
++    echo "error: incompatible or unreadable Linux runtime requirements: $binary" >&2
++    exit 1
++  fi
++done
 diff --git a/packaging/macos/Info.plist.in b/packaging/macos/Info.plist.in
-index bbcec20..8a5f23c 100644
+index bbcec20..a58699e 100644
 --- a/packaging/macos/Info.plist.in
 +++ b/packaging/macos/Info.plist.in
 @@ -7,13 +7,13 @@
@@ -3587,8 +5147,7 @@ index bbcec20..8a5f23c 100644
        <key>UTTypeTagSpecification</key>
        <dict>
          <key>public.filename-extension</key>
--        <array><string>figcraft</string></array>
-+        <array><string>plervo-canvas</string></array>
+         <array><string>figcraft</string></array>
          <key>public.mime-type</key>
 -        <array><string>application/x-figcraft</string></array>
 +        <array><string>application/x-plervo-canvas</string></array>
@@ -4990,7 +6549,7 @@ index 0000000..9a6b3ec
 +</WixLocalization>
 diff --git a/packaging/windows/plervo-canvas.wxs b/packaging/windows/plervo-canvas.wxs
 new file mode 100644
-index 0000000..c35e781
+index 0000000..8566cd2
 --- /dev/null
 +++ b/packaging/windows/plervo-canvas.wxs
 @@ -0,0 +1,131 @@
@@ -5089,7 +6648,7 @@ index 0000000..c35e781
 +
 +        <!-- .plervo-canvas: Plervo Canvas's own format; Plervo Canvas is its default app. -->
 +        <ProgId Id="PlervoCanvas.Document" Description="Plervo Canvas Document" Icon="FigcraftExe" IconIndex="0">
-+          <Extension Id="plervo-canvas" ContentType="application/x-plervo-canvas">
++          <Extension Id="figcraft" ContentType="application/x-plervo-canvas">
 +            <Verb Id="open" Command="Open" TargetFile="FigcraftExe" Argument="&quot;%1&quot;" />
 +          </Extension>
 +        </ProgId>
@@ -5104,7 +6663,7 @@ index 0000000..c35e781
 +        <!-- "Open with" app list and the Run dialog (Win+R "plervo-canvas"). -->
 +        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\plervo-canvas.exe" Name="FriendlyAppName" Value="Plervo Canvas" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\plervo-canvas.exe\shell\open\command" Value="&quot;[#FigcraftExe]&quot; &quot;%1&quot;" Type="string" />
-+        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\plervo-canvas.exe\SupportedTypes" Name=".plervo-canvas" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\plervo-canvas.exe\SupportedTypes" Name=".figcraft" Value="" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\plervo-canvas.exe\SupportedTypes" Name=".svg" Value="" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\plervo-canvas.exe\SupportedTypes" Name=".png" Value="" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\plervo-canvas.exe\SupportedTypes" Name=".jpg" Value="" Type="string" />

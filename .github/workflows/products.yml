@@ -2,6 +2,11 @@ name: Plervo product candidates
 
 on:
   workflow_dispatch:
+    inputs:
+      upstream_baseline:
+        description: Re-run the untouched Slides baseline for source comparison
+        type: boolean
+        default: false
   pull_request:
     paths:
       - 'products/**'
@@ -38,7 +43,7 @@ jobs:
     needs: catalog
     strategy:
       fail-fast: false
-      max-parallel: 9
+      max-parallel: 18
       matrix:
         app: ${{ fromJSON(needs.catalog.outputs.matrix).include }}
         os: [ubuntu-24.04, macos-15, windows-2025]
@@ -91,12 +96,12 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends libxkbcommon-dev libwayland-dev libx11-dev libxrandr-dev libxi-dev libgl1-mesa-dev libgtk-3-dev libasound2-dev libudev-dev libva-dev libdrm-dev xvfb
       - name: Slides upstream baseline before adaptation
-        if: runner.os == 'Linux' && matrix.app.product == 'slides'
+        if: runner.os == 'Linux' && matrix.app.product == 'slides' && inputs.upstream_baseline
         continue-on-error: true
         working-directory: source
         run: cargo xtask ci 2>&1 | tee "$GITHUB_WORKSPACE/slides-upstream-baseline.log"
       - name: Preserve the untouched Slides baseline result
-        if: always() && runner.os == 'Linux' && matrix.app.product == 'slides'
+        if: always() && runner.os == 'Linux' && matrix.app.product == 'slides' && inputs.upstream_baseline
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: slides-upstream-baseline-${{ github.sha }}
@@ -112,6 +117,11 @@ jobs:
           prefix="$(printf '%s' "$UPSTREAM_APP" | tr '[:lower:]' '[:upper:]')"
           echo "${prefix}_BUILD_SHA=$GITHUB_SHA" >> "$GITHUB_ENV"
           echo "${prefix}_BUILD_DATE=$(date -u +%Y-%m-%d)" >> "$GITHUB_ENV"
+          # The macOS runner exercises GPU effects; software-only runners still
+          # verify composited output and the CPU effect fallback.
+          if [ "$PRODUCT" = video ] && [ "$RUNNER_OS" = macOS ]; then
+            echo 'PLERVO_REQUIRE_GPU_EFFECTS=1' >> "$GITHUB_ENV"
+          fi
           if [ "$RUNNER_OS" = Windows ]; then
             {
               echo 'CARGO_BUILD_TARGET=x86_64-pc-windows-msvc'
@@ -164,7 +174,7 @@ jobs:
           retention-days: 14
       - name: Feature and regression tests
         working-directory: source
-        run: cargo test --locked --workspace
+        run: cargo test --locked --workspace --no-fail-fast
       - name: Web target boundary
         if: runner.os == 'Linux'
         working-directory: source
@@ -193,6 +203,45 @@ jobs:
           go_path="$(go env GOPATH)"
           export PATH="$go_path/bin:$PATH"
           packaging/linux/package.sh --skip-build --formats 'deb rpm tar'
+      - name: Linux installed binaries, reinstall and removal
+        if: runner.os == 'Linux'
+        working-directory: source
+        shell: bash
+        run: |
+          packages=(dist/release/plervo-"$PRODUCT"-*-linux-x86_64.deb)
+          [ "${#packages[@]}" = 1 ] && [ -f "${packages[0]}" ]
+          app="/usr/bin/plervo-$PRODUCT"
+          cli="/usr/bin/plervo-$PRODUCT-cli"
+          [ ! -e "$app" ] && [ ! -e "$cli" ]
+          mkdir -p dist/validation
+          package="$(realpath "${packages[0]}")"
+          cleanup() { sudo apt-get remove -y "plervo-$PRODUCT"; }
+          sudo apt-get install -y --no-install-recommends "$package"
+          trap cleanup EXIT
+          "$app" --version
+          "$cli" --version
+          "$cli" --help > dist/validation/installed-cli-help.txt
+          test -f "/usr/share/applications/com.plervo.$PRODUCT.desktop"
+          sudo apt-get install -y --reinstall --no-install-recommends "$package"
+          "$cli" --version
+          cleanup
+          trap - EXIT
+          [ ! -e "$app" ] && [ ! -e "$cli" ]
+          printf '%s\n' 'DEB install, installed binaries, desktop entry, reinstall and removal passed.' > dist/validation/linux-install.txt
+      - name: Debian and Fedora package acceptance
+        if: runner.os == 'Linux'
+        working-directory: source
+        shell: bash
+        run: |
+          for image in debian:13 fedora:44; do
+            evidence="$PWD/dist/validation/${image//:/-}"
+            mkdir -p "$evidence"
+            docker pull "$image"
+            docker image inspect "$image" --format '{{json .RepoDigests}}' > "$evidence/container-digest.json"
+            docker run --rm --network bridge -e PLERVO_ACCEPTANCE=1 -e PRODUCT \
+              -v "$PWD/dist/release:/packages:ro" -v "$GITHUB_WORKSPACE/products:/test:ro" \
+              -v "$evidence:/evidence" "$image" bash /test/test-linux-container.sh
+          done
       - name: macOS internal package (not notarized)
         if: runner.os == 'macOS'
         working-directory: source
@@ -201,6 +250,33 @@ jobs:
           mkdir -p "target/$target/release"
           cp "target/release/plervo-$PRODUCT" "target/release/plervo-$PRODUCT-cli" "target/$target/release/"
           packaging/macos/package.sh --arch aarch64 --skip-build
+      - name: macOS mounted bundle and standalone CLI
+        if: runner.os == 'macOS'
+        working-directory: source
+        shell: bash
+        run: |
+          images=(dist/release/plervo-"$PRODUCT"-*-macos-aarch64.dmg)
+          archives=(dist/release/plervo-"$PRODUCT"-cli-*-macos-aarch64.zip)
+          [ "${#images[@]}" = 1 ] && [ -f "${images[0]}" ]
+          [ "${#archives[@]}" = 1 ] && [ -f "${archives[0]}" ]
+          work="$(mktemp -d "$RUNNER_TEMP/plervo-package.XXXXXX")"
+          mount="$work/mounted"
+          mkdir -p "$mount" dist/validation
+          app_name="$(python3 -c 'import json,os,pathlib; print(next(p["name"] for p in json.loads((pathlib.Path(os.environ["GITHUB_WORKSPACE"])/"products/sources.json").read_text()) if p["product"]==os.environ["PRODUCT"]))')"
+          hdiutil attach "${images[0]}" -readonly -nobrowse -mountpoint "$mount"
+          trap 'hdiutil detach "$mount"' EXIT
+          bundle="$work/$app_name.app"
+          ditto "$mount/$app_name.app" "$bundle"
+          hdiutil detach "$mount"
+          trap - EXIT
+          codesign --verify --deep --strict "$bundle"
+          [ "$(plutil -extract CFBundleIdentifier raw -o - "$bundle/Contents/Info.plist")" = "com.plervo.$PRODUCT" ]
+          "$bundle/Contents/MacOS/$app_name" --version
+          ditto -x -k "${archives[0]}" "$work/cli"
+          cli=("$work"/cli/*/plervo-"$PRODUCT"-cli)
+          [ "${#cli[@]}" = 1 ] && [ -x "${cli[0]}" ]
+          "${cli[0]}" --help > dist/validation/standalone-cli-help.txt
+          printf '%s\n' 'DMG mount/copy, bundle identity and ad-hoc signature, bundled app version and extracted standalone CLI passed. Developer ID and notarization remain required.' > dist/validation/macos-package.txt
       - name: Windows internal package (unsigned)
         if: runner.os == 'Windows'
         working-directory: source
@@ -211,6 +287,51 @@ jobs:
           wix extension add -g WixToolset.UI.wixext/5.0.2 WixToolset.Util.wixext/5.0.2
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           packaging/windows/package.ps1 -Arch x64 -SkipBuild
+      - name: Windows installed binaries, repair and removal
+        if: runner.os == 'Windows'
+        working-directory: source
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $packages = @(Get-ChildItem "dist/release/plervo-$env:PRODUCT-*.msi")
+          if ($packages.Count -ne 1) { throw 'Expected exactly one MSI candidate' }
+          $catalog = Get-Content (Join-Path $env:GITHUB_WORKSPACE 'products/sources.json') -Raw | ConvertFrom-Json
+          $definition = @($catalog | Where-Object { $_.product -eq $env:PRODUCT })
+          if ($definition.Count -ne 1) { throw 'Unknown product identity' }
+          $install = Join-Path $env:ProgramFiles $definition[0].name
+          if (Test-Path -LiteralPath $install) { throw 'Refusing to replace an existing installation' }
+          $evidence = New-Item -ItemType Directory -Force dist/validation
+          function Invoke-CandidateMsi([string] $operation, [string] $label) {
+            $log = Join-Path $evidence.FullName "windows-$label.log"
+            $process = Start-Process msiexec.exe -ArgumentList @($operation, "`"$($packages[0].FullName)`"", '/qn', '/norestart', '/L*v', "`"$log`"") -Wait -PassThru
+            if ($process.ExitCode -notin @(0, 3010)) { throw "MSI $label failed: $($process.ExitCode)" }
+          }
+          $installed = $false
+          try {
+            Invoke-CandidateMsi '/i' 'install'
+            $installed = $true
+            $desktop = Join-Path $install "plervo-$env:PRODUCT.exe"
+            $cli = Join-Path $install "plervo-$env:PRODUCT-cli.exe"
+            & $desktop --version
+            if ($LASTEXITCODE -ne 0) { throw 'Installed app version check failed' }
+            & $cli --help | Set-Content (Join-Path $evidence.FullName 'installed-cli-help.txt')
+            if ($LASTEXITCODE -ne 0) { throw 'Installed CLI failed' }
+            Invoke-CandidateMsi '/fa' 'repair'
+            & $cli --version
+            if ($LASTEXITCODE -ne 0) { throw 'Repaired CLI failed' }
+          } finally {
+            if ($installed) { Invoke-CandidateMsi '/x' 'uninstall' }
+          }
+          if ((Test-Path -LiteralPath $desktop) -or (Test-Path -LiteralPath $cli)) { throw 'Uninstall left a product executable' }
+          'MSI install, installed binaries, repair and removal passed.' | Set-Content (Join-Path $evidence.FullName 'windows-install.txt')
+      - name: Preserve native installation evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: installation-${{ matrix.app.product }}-${{ runner.os }}-${{ github.sha }}
+          path: source/dist/validation/
+          if-no-files-found: ignore
+          retention-days: 14
       - name: Preserve qualification status and source provenance
         working-directory: source
         shell: bash

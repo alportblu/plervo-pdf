@@ -1919,10 +1919,10 @@ index 2897beb..640b6a3 100644
      }
  }
 diff --git a/apps/photocraft/src/app_icon.rs b/apps/photocraft/src/app_icon.rs
-index 90ce94e..10c0f94 100644
+index 90ce94e..f30f07a 100644
 --- a/apps/photocraft/src/app_icon.rs
 +++ b/apps/photocraft/src/app_icon.rs
-@@ -29,7 +29,7 @@ pub fn window_icon() -> egui::IconData {
+@@ -29,14 +29,14 @@ pub fn window_icon() -> egui::IconData {
  #[cfg(target_os = "macos")]
  const PNG: &[u8] = include_bytes!("../../../assets/app-icon/photocraft-1024.png");
  #[cfg(not(target_os = "macos"))]
@@ -1931,6 +1931,14 @@ index 90ce94e..10c0f94 100644
  
  #[cfg(test)]
  mod tests {
+     use super::*;
+ 
+     const ICO: &[u8] = include_bytes!("../../../assets/app-icon/photocraft.ico");
+-    const WXS: &str = include_str!("../../../packaging/windows/photocraft.wxs");
++    const WXS: &str = include_str!("../../../packaging/windows/plervo-photo.wxs");
+ 
+     fn u16_at(b: &[u8], i: usize) -> usize {
+         u16::from_le_bytes([b[i], b[i + 1]]) as usize
 diff --git a/apps/photocraft/src/apple_events.rs b/apps/photocraft/src/apple_events.rs
 index c41c809..3c4da5d 100644
 --- a/apps/photocraft/src/apple_events.rs
@@ -2586,6 +2594,81 @@ index 741d927..3f06b0c 100644
  [lints]
  workspace = true
  
+diff --git a/crates/engine/src/automate_cmds.rs b/crates/engine/src/automate_cmds.rs
+index 6a98ee3..60de4da 100644
+--- a/crates/engine/src/automate_cmds.rs
++++ b/crates/engine/src/automate_cmds.rs
+@@ -328,7 +328,7 @@ fn write_shim(droplet: &str) -> Result<String> {
+     // quoted segment, emit a literal quote, then resume it.
+     let quoted_abs = format!("'{}'", abs.replace('\'', "'\\''"));
+     let body = format!(
+-        "#!/bin/sh\n# PhotoCraft droplet: runs the action on the files given (or dropped).\nexec \"${{PHOTOCRAFT_CLI:-photocraft-cli}}\" droplet {quoted_abs} \"$@\"\n"
++        "#!/bin/sh\n# Plervo Photo droplet: runs the action on the files given (or dropped).\nexec \"${{PLERVO_PHOTO_CLI:-plervo-photo-cli}}\" droplet {quoted_abs} \"$@\"\n"
+     );
+     crate::file_cmds::write_file(&shim, body.as_bytes())?;
+     #[cfg(unix)]
+@@ -536,7 +536,7 @@ pub fn specs() -> Vec<CommandSpec> {
+             "file.automate.createDroplet",
+             "Create Droplet…",
+             &["File", "Automate"],
+-            r##"{"path":str (.pcdroplet),"steps":[[id,params]…] (the action),"name":str?,"output":folder?,"format":"same|png|jpg|…"?,"quality":0..12?,"shim":bool=true on Unix (writes <name>.command calling `photocraft-cli droplet`)} → {path, shim} (the actions its Play Action steps call are saved in the droplet)"##,
++            r##"{"path":str (.pcdroplet),"steps":[[id,params]…] (the action),"name":str?,"output":folder?,"format":"same|png|jpg|…"?,"quality":0..12?,"shim":bool=true on Unix (writes <name>.command calling `plervo-photo-cli droplet`)} → {path, shim} (the actions its Play Action steps call are saved in the droplet)"##,
+             native,
+             create_droplet
+         ),
+diff --git a/crates/engine/src/automate_cmds/tests.rs b/crates/engine/src/automate_cmds/tests.rs
+index 6785253..30d8f3f 100644
+--- a/crates/engine/src/automate_cmds/tests.rs
++++ b/crates/engine/src/automate_cmds/tests.rs
+@@ -147,7 +147,7 @@ fn droplets_are_written_and_run() {
+ 
+ #[cfg(unix)]
+ #[test]
+-fn droplet_shim_passes_shell_metacharacters_as_a_literal_path() {
++fn droplet_shim_uses_plervo_cli_and_keeps_shell_metacharacters_literal() {
+     use std::os::unix::fs::PermissionsExt;
+ 
+     let dir = tmp("droplet-shell-quote");
+@@ -167,19 +167,26 @@ fn droplet_shim_passes_shell_metacharacters_as_a_literal_path() {
+     )
+     .unwrap();
+     std::fs::set_permissions(&cli, std::fs::Permissions::from_mode(0o755)).unwrap();
+-    let output = std::process::Command::new(shim)
+-        .arg(&input)
+-        .current_dir(&dir)
+-        .env("PHOTOCRAFT_CLI", &cli)
+-        .env("PHOTOCRAFT_CAPTURE", &capture)
+-        .env("PHOTOCRAFT_EXPECTED_INPUT", &input)
+-        .output()
+-        .unwrap();
+-
+-    assert!(output.status.success(), "shim exited {:?}: {}", output.status, String::from_utf8_lossy(&output.stderr));
+-    assert!(!std::path::Path::new(&marker).exists(), "filename command substitution ran");
+-    let expected = std::fs::canonicalize(droplet).unwrap();
+-    assert_eq!(std::fs::read(&capture).unwrap(), expected.to_string_lossy().as_bytes());
++    std::fs::copy(&cli, format!("{dir}/plervo-photo-cli")).unwrap();
++    for override_cli in [false, true] {
++        let mut command = std::process::Command::new(shim);
++        command
++            .arg(&input)
++            .current_dir(&dir)
++            .env("PATH", &dir)
++            .env_remove("PHOTOCRAFT_CLI")
++            .env_remove("PLERVO_PHOTO_CLI")
++            .env("PHOTOCRAFT_CAPTURE", &capture)
++            .env("PHOTOCRAFT_EXPECTED_INPUT", &input);
++        if override_cli {
++            command.env("PLERVO_PHOTO_CLI", &cli);
++        }
++        let output = command.output().unwrap();
++        assert!(output.status.success(), "shim exited {:?}: {}", output.status, String::from_utf8_lossy(&output.stderr));
++        assert!(!std::path::Path::new(&marker).exists(), "filename command substitution ran");
++        let expected = std::fs::canonicalize(droplet).unwrap();
++        assert_eq!(std::fs::read(&capture).unwrap(), expected.to_string_lossy().as_bytes());
++    }
+ }
+ 
+ #[test]
 diff --git a/crates/engine/src/color_to_alpha_cmds.rs b/crates/engine/src/color_to_alpha_cmds.rs
 index a6208e8..beed7e9 100644
 --- a/crates/engine/src/color_to_alpha_cmds.rs
@@ -8514,7 +8597,7 @@ index 0000000..471d3b1
 +          - .flatpak-builder
 +      - cargo-sources.json
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
-index bed6e1e..2d19cfc 100644
+index bed6e1e..99862f4 100644
 --- a/packaging/linux/nfpm.yaml
 +++ b/packaging/linux/nfpm.yaml
 @@ -3,7 +3,7 @@
@@ -8544,7 +8627,7 @@ index bed6e1e..2d19cfc 100644
  
  # The binaries link only glibc and libgcc_s directly. Windowing (X11/Wayland, xkbcommon) and the
  # GPU (Vulkan, EGL/GL) are loaded at runtime with dlopen, so they aren't ELF NEEDED entries and
-@@ -29,7 +29,7 @@ description: |-
+@@ -29,11 +29,11 @@ description: |-
  # libxkbcommon-x11 panicked in #201); for Wayland: libwayland-client and libxkbcommon. wgpu needs
  # libvulkan or libEGL. RandR goes through x11rb's protocol code and fonts are found by scanning
  # directories, so libXrandr and fontconfig aren't loaded. The app also checks for these at start
@@ -8553,7 +8636,20 @@ index bed6e1e..2d19cfc 100644
  overrides:
    deb:
      depends:
-@@ -66,11 +66,11 @@ overrides:
+-      - libc6 (>= 2.35)
++      - libc6 (>= ${PLERVO_MIN_GLIBC})
+       - libgcc-s1
+       - libxkbcommon0
+       - libxkbcommon-x11-0
+@@ -52,6 +52,7 @@ overrides:
+     # Soname provides rather than package names, so the same requirements resolve on Fedora/RHEL
+     # (libxkbcommon-x11, libX11-xcb, ...) and openSUSE (libxkbcommon-x11-0, libX11-xcb1, ...).
+     depends:
++      - glibc >= ${PLERVO_MIN_GLIBC}
+       - libxkbcommon.so.0()(64bit)
+       - libxkbcommon-x11.so.0()(64bit)
+       - libwayland-client.so.0()(64bit)
+@@ -66,11 +67,11 @@ overrides:
        - xdg-desktop-portal
  
  contents:
@@ -8570,7 +8666,7 @@ index bed6e1e..2d19cfc 100644
    - src: ${STAGE}/usr/share/
      dst: /usr/share/
 diff --git a/packaging/linux/package.sh b/packaging/linux/package.sh
-index 615bef2..364fc93 100755
+index 615bef2..ab81b34 100755
 --- a/packaging/linux/package.sh
 +++ b/packaging/linux/package.sh
 @@ -1,11 +1,11 @@
@@ -8600,13 +8696,13 @@ index 615bef2..364fc93 100755
  
  SKIP_BUILD=0
  FORMATS="appimage deb rpm tar"
-@@ -43,16 +43,16 @@ case "$ARCH" in
+@@ -43,27 +43,30 @@ case "$ARCH" in
    aarch64 | arm64) ARCH=aarch64; DEB_ARCH=arm64 ;;
    *) echo "unsupported architecture $ARCH" >&2; exit 2 ;;
  esac
 -export PHOTOCRAFT_MAINTAINER="${PHOTOCRAFT_MAINTAINER:-PhotoCraft maintainers <photocraft@storyteller.ai>}"
 -BASENAME="photocraft-$VERSION-linux-$ARCH"
-+export PHOTOCRAFT_MAINTAINER="${PHOTOCRAFT_MAINTAINER:-Plervo Photo maintainers <plervo-photo@storyteller.ai>}"
++export PHOTOCRAFT_MAINTAINER="${PHOTOCRAFT_MAINTAINER:-Plervo contributors}"
 +BASENAME="plervo-photo-$VERSION-linux-$ARCH"
  
 -echo "==> PhotoCraft $VERSION for Linux $ARCH ($FORMATS)"
@@ -8622,7 +8718,11 @@ index 615bef2..364fc93 100755
    fi
  fi
  BIN="$CARGO_TARGET_DIR/${CROSS_TARGET:+$CROSS_TARGET/}release"
-@@ -61,9 +61,9 @@ STAGE="$WORK/root"
++# Match the declared Ubuntu 24.04 baseline to the actual ELF requirements.
++export PLERVO_MIN_GLIBC=2.39
++bash "$HERE/verify-glibc.sh" "$PLERVO_MIN_GLIBC" "$BIN/plervo-photo" "$BIN/plervo-photo-cli"
+ WORK="$CARGO_TARGET_DIR/linux-package"
+ STAGE="$WORK/root"
  rm -rf "$WORK"
  
  # ---- stage an FHS tree (shared by every format) -------------------------------------------------
@@ -8635,7 +8735,7 @@ index 615bef2..364fc93 100755
  install -Dm644 "$HERE/$APP_ID.desktop" "$STAGE/usr/share/applications/$APP_ID.desktop"
  install -Dm644 "$HERE/$APP_ID.mime.xml" "$STAGE/usr/share/mime/packages/$APP_ID.xml"
  mkdir -p "$STAGE/usr/share/metainfo"
-@@ -71,8 +71,8 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$PHOTOCRAFT_BUILD_DATE/g" \
+@@ -71,8 +74,8 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$PHOTOCRAFT_BUILD_DATE/g" \
    "$HERE/$APP_ID.metainfo.xml.in" >"$STAGE/usr/share/metainfo/$APP_ID.metainfo.xml"
  mkdir -p "$STAGE/usr/share/icons"
  cp -R "$ROOT/assets/app-icon/hicolor" "$STAGE/usr/share/icons/"
@@ -8646,7 +8746,7 @@ index 615bef2..364fc93 100755
  
  if command -v desktop-file-validate >/dev/null; then
    desktop-file-validate "$STAGE/usr/share/applications/$APP_ID.desktop"
-@@ -105,7 +105,7 @@ fi
+@@ -105,7 +108,7 @@ fi
  
  # ---- AppImage -----------------------------------------------------------------------------------
  if has appimage; then
@@ -8655,7 +8755,7 @@ index 615bef2..364fc93 100755
    cp -R "$STAGE" "$APPDIR"
    mv "$APPDIR/usr/share/doc" "$WORK/doc-unused"
    # AppRun is a script, not a symlink: it installs the .desktop entry and icons into
-@@ -159,8 +159,8 @@ if has appimage; then
+@@ -159,8 +162,8 @@ if has appimage; then
    # file and fetch only the blocks that changed in a newer release, through the .zsync published
    # next to each AppImage on GitHub Releases. `latest` is the newest published release that is
    # not a pre-release. A fork's builds point at its own releases through GITHUB_REPOSITORY.
@@ -8666,7 +8766,7 @@ index 615bef2..364fc93 100755
    # Extract-and-run: works without FUSE (containers, CI). The output embeds the static runtime,
    # so users don't need libfuse2 either. With zsyncmake on the host (CI installs the zsync
    # package) appimagetool also writes the .zsync, into its working directory, hence the cd.
-@@ -175,9 +175,9 @@ if has appimage; then
+@@ -175,9 +178,9 @@ if has appimage; then
  fi
  
  if [ -z "${CROSS_TARGET:-}" ]; then
@@ -8678,6 +8778,48 @@ index 615bef2..364fc93 100755
  fi
  echo "==> done"
  ls -lh "$DIST"
+diff --git a/packaging/linux/verify-glibc.sh b/packaging/linux/verify-glibc.sh
+new file mode 100755
+index 0000000..2a99601
+--- /dev/null
++++ b/packaging/linux/verify-glibc.sh
+@@ -0,0 +1,36 @@
++#!/usr/bin/env bash
++# Refuse binaries that require a newer glibc than the package declares. Does not execute them.
++set -euo pipefail
++if [ "$#" -lt 2 ] || [[ ! "$1" =~ ^[0-9]+\.[0-9]+$ ]]; then
++  echo "usage: verify-glibc.sh MAX_MAJOR.MINOR ELF..." >&2
++  exit 2
++fi
++ceiling="$1"
++shift
++for binary in "$@"; do
++  headers="$(LC_ALL=C "${CROSS_COMPILE:-}objdump" -p "$binary")"
++  if ! printf '%s\n' "$headers" | LC_ALL=C awk -v ceiling="$ceiling" '
++    BEGIN { split(ceiling, cap, /[.]/) }
++    $NF ~ /^GLIBC_/ {
++      seen = 1
++      if ($NF !~ /^GLIBC_[0-9]+\.[0-9]+(\.[0-9]+)?$/) {
++        print "unsupported glibc requirement: " $NF > "/dev/stderr"
++        bad = 1
++        next
++      }
++      split(substr($NF, 7), version, /[.]/)
++      if (version[1] > cap[1] || (version[1] == cap[1] &&
++          (version[2] > cap[2] || (version[2] == cap[2] && version[3] > 0)))) {
++        print "requires " $NF ", package baseline is " ceiling > "/dev/stderr"
++        bad = 1
++      }
++    }
++    END {
++      if (!seen) print "no glibc version requirements found" > "/dev/stderr"
++      exit (bad || !seen)
++    }
++  '; then
++    echo "error: incompatible or unreadable Linux runtime requirements: $binary" >&2
++    exit 1
++  fi
++done
 diff --git a/packaging/macos/Info.plist.in b/packaging/macos/Info.plist.in
 index d325b2b..c7d7c7b 100644
 --- a/packaging/macos/Info.plist.in

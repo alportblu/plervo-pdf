@@ -47,6 +47,21 @@ matching public release exists. The published Suite has not changed during prepa
 The local Suite management gate passed 103 tests; native product and installer acceptance
 are separate requirements.
 
+The candidate workflow additionally exercises installed DEB/MSI binaries, Linux
+reinstallation, Windows repair, and removal on disposable runners. Debian 13 and
+Fedora 44 containers test DEB/RPM installation, reinstallation and removal, recording
+the exact container digest alongside the installed executable checks. macOS candidates
+are copied out of their DMGs and checked alongside the separately extracted CLI.
+These internal checks do not establish publisher signing, notarization, clean-machine
+Gatekeeper acceptance, or a complete GUI workflow. Installation evidence is retained
+separately from the packages, including when a subsequent gate fails.
+
+Video's macOS qualification runner requires the GPU effect stage. Direct stage
+comparisons report an unavailable optional stage on other adapters; composited-output
+and explicit CPU-fallback comparisons still run. The previously recorded untouched
+Slides baseline can be repeated through the manual workflow input; normal candidate
+runs validate the adapted source without recompiling that unchanged baseline.
+
 Generate the product-scoped dependency policy with
 `cargo xtask products --audit-policy PRODUCT`; the CI uses the same policy. Eight desktop
 candidates disable the unauthenticated UI control transport by default. Their development-only

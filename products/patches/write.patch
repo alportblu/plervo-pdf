@@ -76,10 +76,26 @@ index 7942228..b165d17 100644
 +| `assets/app-icon/wordcraft.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 d1527c1cd456d98e9da3ba2b0cb5fcde2b1d6f2a60c9cc39b2a3f62aa42bc9b2 |
 +| `assets/app-icon/wordcraft.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 a54bb84d9f1d07442f615b529fe4efef7ed2e2215d5bc2c0556aa1322e9be488 |
 diff --git a/Cargo.lock b/Cargo.lock
-index c5a92f4..99f6dec 100644
+index c5a92f4..7de72b5 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -819,15 +819,6 @@ dependencies = [
+@@ -215,15 +215,6 @@ version = "1.0.104"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "330a5ed07fa54e4702c9d6c4174f74427fc0ef6e214bbd677ae50a5099946470"
+ 
+-[[package]]
+-name = "arbitrary"
+-version = "1.4.2"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "c3d036a3c4ab069c7b410a2ce876bd74808d2d0888a82667669f8e783a898bf1"
+-dependencies = [
+- "derive_arbitrary",
+-]
+-
+ [[package]]
+ name = "arboard"
+ version = "3.6.1"
+@@ -819,15 +810,6 @@ dependencies = [
   "libc",
  ]
  
@@ -95,7 +111,25 @@ index c5a92f4..99f6dec 100644
  [[package]]
  name = "cpubits"
  version = "0.1.1"
-@@ -2200,7 +2191,6 @@ dependencies = [
+@@ -932,17 +914,6 @@ version = "1.2.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "f27ae1dd37df86211c42e150270f82743308803d90a6f6e6651cd730d5e1732f"
+ 
+-[[package]]
+-name = "derive_arbitrary"
+-version = "1.4.2"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "1e567bd82dcff979e4b03460c307b3cdc9e96fde3d73bed1496d2bc75d9dd62a"
+-dependencies = [
+- "proc-macro2",
+- "quote",
+- "syn 2.0.119",
+-]
+-
+ [[package]]
+ name = "dify"
+ version = "0.8.0"
+@@ -2200,7 +2171,6 @@ dependencies = [
   "pdf-writer",
   "png",
   "rustc-hash 2.1.3",
@@ -103,7 +137,35 @@ index c5a92f4..99f6dec 100644
   "siphasher",
   "skrifa 0.42.1",
   "smallvec",
-@@ -3016,6 +3006,50 @@ version = "0.2.3"
+@@ -2431,6 +2401,18 @@ dependencies = [
+  "jni-sys 0.3.1",
+ ]
+ 
++[[package]]
++name = "nix"
++version = "0.31.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "cf20d2fde8ff38632c426f1165ed7436270b44f199fc55284c38276f9db47c3d"
++dependencies = [
++ "bitflags 2.13.2",
++ "cfg-if",
++ "cfg_aliases",
++ "libc",
++]
++
+ [[package]]
+ name = "nohash-hasher"
+ version = "0.2.0"
+@@ -2850,7 +2832,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "7d8fae84b431384b68627d0f9b3b1245fcf9f46f6c0e3dc902e9dce64edd1967"
+ dependencies = [
+  "libc",
+- "windows-sys 0.52.0",
++ "windows-sys 0.61.2",
+ ]
+ 
+ [[package]]
+@@ -3016,6 +2998,50 @@ version = "0.2.3"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "b4596b6d070b27117e987119b4dac604f3c58cfb0b191112e24771b2faeac1a6"
  
@@ -154,7 +216,7 @@ index c5a92f4..99f6dec 100644
  [[package]]
  name = "png"
  version = "0.18.1"
-@@ -3473,24 +3507,6 @@ dependencies = [
+@@ -3473,24 +3499,6 @@ dependencies = [
   "wait-timeout",
  ]
  
@@ -179,7 +241,7 @@ index c5a92f4..99f6dec 100644
  [[package]]
  name = "ryu"
  version = "1.0.23"
-@@ -4078,15 +4094,6 @@ dependencies = [
+@@ -4078,15 +4086,6 @@ dependencies = [
   "petgraph",
  ]
  
@@ -195,7 +257,20 @@ index c5a92f4..99f6dec 100644
  [[package]]
  name = "type-map"
  version = "0.5.1"
-@@ -4125,18 +4132,6 @@ version = "0.3.18"
+@@ -4096,6 +4095,12 @@ dependencies = [
+  "rustc-hash 2.1.3",
+ ]
+ 
++[[package]]
++name = "typed-path"
++version = "0.12.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "8e28f89b80c87b8fb0cf04ab448d5dd0dd0ade2f8891bae878de66a75a28600e"
++
+ [[package]]
+ name = "typenum"
+ version = "1.20.1"
+@@ -4125,18 +4130,6 @@ version = "0.3.18"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "5c1cb5db39152898a79168971543b1cb5020dff7fe43c8dc468b0885f5e29df5"
  
@@ -214,7 +289,7 @@ index c5a92f4..99f6dec 100644
  [[package]]
  name = "unicode-general-category"
  version = "1.1.0"
-@@ -4155,12 +4150,6 @@ version = "0.1.5"
+@@ -4155,12 +4148,6 @@ version = "0.1.5"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "3b09c83c3c29d37506a3e260c08c03743a6bb66a9cd432c6934ab501a190571f"
  
@@ -227,7 +302,7 @@ index c5a92f4..99f6dec 100644
  [[package]]
  name = "unicode-script"
  version = "0.5.8"
-@@ -5096,57 +5085,13 @@ dependencies = [
+@@ -5096,57 +5083,13 @@ dependencies = [
   "wayland-protocols-wlr",
  ]
  
@@ -287,7 +362,7 @@ index c5a92f4..99f6dec 100644
  dependencies = [
   "proptest",
   "serde",
-@@ -5158,7 +5103,7 @@ dependencies = [
+@@ -5158,7 +5101,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-docbin"
@@ -296,7 +371,7 @@ index c5a92f4..99f6dec 100644
  dependencies = [
   "cfb",
   "image",
-@@ -5173,7 +5118,7 @@ dependencies = [
+@@ -5173,7 +5116,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-docx"
@@ -305,7 +380,7 @@ index c5a92f4..99f6dec 100644
  dependencies = [
   "aes",
   "base64",
-@@ -5195,7 +5140,7 @@ dependencies = [
+@@ -5195,7 +5138,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-engine"
@@ -314,7 +389,7 @@ index c5a92f4..99f6dec 100644
  dependencies = [
   "image",
   "js-sys",
-@@ -5221,7 +5166,7 @@ dependencies = [
+@@ -5221,7 +5164,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-fonts"
@@ -323,7 +398,7 @@ index c5a92f4..99f6dec 100644
  dependencies = [
   "harfrust 0.13.3",
   "kurbo",
-@@ -5234,7 +5179,7 @@ dependencies = [
+@@ -5234,7 +5177,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-formats"
@@ -332,7 +407,7 @@ index c5a92f4..99f6dec 100644
  dependencies = [
   "image",
   "log",
-@@ -5247,14 +5192,14 @@ dependencies = [
+@@ -5247,14 +5190,14 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-geom"
@@ -349,7 +424,7 @@ index c5a92f4..99f6dec 100644
  dependencies = [
   "image",
   "js-sys",
-@@ -5273,7 +5218,7 @@ dependencies = [
+@@ -5273,7 +5216,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-mcp"
@@ -358,7 +433,7 @@ index c5a92f4..99f6dec 100644
  dependencies = [
   "log",
   "serde_json",
-@@ -5285,7 +5230,7 @@ dependencies = [
+@@ -5285,7 +5228,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-metafile"
@@ -367,7 +442,7 @@ index c5a92f4..99f6dec 100644
  dependencies = [
   "kurbo",
   "thiserror 2.0.21",
-@@ -5293,7 +5238,7 @@ dependencies = [
+@@ -5293,7 +5236,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-pdf"
@@ -376,7 +451,7 @@ index c5a92f4..99f6dec 100644
  dependencies = [
   "hayro-cmap",
   "hayro-interpret",
-@@ -5313,7 +5258,7 @@ dependencies = [
+@@ -5313,7 +5256,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-proof"
@@ -385,7 +460,7 @@ index c5a92f4..99f6dec 100644
  dependencies = [
   "log",
   "miniz_oxide 0.8.9",
-@@ -5322,7 +5267,7 @@ dependencies = [
+@@ -5322,7 +5265,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-render"
@@ -394,7 +469,7 @@ index c5a92f4..99f6dec 100644
  dependencies = [
   "image",
   "log",
-@@ -5336,7 +5281,7 @@ dependencies = [
+@@ -5336,7 +5279,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-ui-egui"
@@ -403,7 +478,7 @@ index c5a92f4..99f6dec 100644
  dependencies = [
   "craft-ui",
   "egui",
-@@ -5361,7 +5306,7 @@ dependencies = [
+@@ -5361,7 +5304,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-web"
@@ -412,7 +487,7 @@ index c5a92f4..99f6dec 100644
  dependencies = [
   "eframe",
   "egui",
-@@ -5380,7 +5325,7 @@ dependencies = [
+@@ -5380,7 +5323,7 @@ dependencies = [
  
  [[package]]
  name = "wordcraft-zotero"
@@ -421,7 +496,7 @@ index c5a92f4..99f6dec 100644
  dependencies = [
   "log",
   "proptest",
-@@ -5493,7 +5438,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
+@@ -5493,7 +5436,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
  
  [[package]]
  name = "xtask"
@@ -430,8 +505,28 @@ index c5a92f4..99f6dec 100644
  dependencies = [
   "serde_json",
  ]
+@@ -5709,15 +5652,16 @@ dependencies = [
+ 
+ [[package]]
+ name = "zip"
+-version = "3.0.0"
++version = "9.0.4"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "12598812502ed0105f607f941c386f43d441e00148fce9dec3ca5ffb0bde9308"
++checksum = "a954114b47a54df49f83d2722814e86b23d4bb1b54a1b90fb7d92b41619ddc22"
+ dependencies = [
+- "arbitrary",
+  "crc32fast",
+  "flate2",
+  "indexmap",
+  "memchr",
++ "nix",
++ "typed-path",
+  "zopfli",
+ ]
+ 
 diff --git a/Cargo.toml b/Cargo.toml
-index ab12104..96dc2d4 100644
+index ab12104..37a1d57 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -443,7 +538,7 @@ index ab12104..96dc2d4 100644
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.90"
-@@ -52,7 +52,8 @@ harfrust = "0.13"
+@@ -52,9 +52,10 @@ harfrust = "0.13"
  wuff = "0.2.9"
  vello_cpu = "0.2"
  image = { version = "0.25", default-features = false, features = ["png", "jpeg", "webp", "gif", "bmp", "tiff"] }
@@ -451,8 +546,11 @@ index ab12104..96dc2d4 100644
 +# Text is shaped by wordcraft-fonts; avoid the unused legacy simple-text parser.
 +krilla = { version = "0.8", default-features = false, features = ["pdf", "raster-images"] }
  quick-xml = "0.41"
- zip = { version = "3", default-features = false, features = ["deflate"] }
+-zip = { version = "3", default-features = false, features = ["deflate"] }
++zip = { version = "9.0.4", default-features = false, features = ["deflate"] }
  # zlib streams (compressed metafile pictures in `.doc` drawings); already in the lock as a dependency of other crates.
+ miniz_oxide = "0.8"
+ cfb = "0.15"
 diff --git a/NOTICE b/NOTICE
 index 751ff5a..be23eb7 100644
 --- a/NOTICE
@@ -1115,7 +1213,7 @@ index 54828d5..4f15bbc 100644
  //! Every request needs the window's key (`docs/control-protocol.md`, Keys): once the port is
  //! bound, the app writes a random key to `<settings>/control-key.<instance>` (mode 0600) and
 diff --git a/apps/wordcraft/src/default_apps.rs b/apps/wordcraft/src/default_apps.rs
-index 263fc73..645b5de 100644
+index 263fc73..f571c7d 100644
 --- a/apps/wordcraft/src/default_apps.rs
 +++ b/apps/wordcraft/src/default_apps.rs
 @@ -1,12 +1,12 @@
@@ -1182,7 +1280,7 @@ index 263fc73..645b5de 100644
          assert_eq!(&args[2..], WORD_MIME_TYPES);
          for t in [
              "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-@@ -155,7 +155,7 @@ mod tests {
+@@ -155,13 +155,13 @@ mod tests {
      /// Every type the button claims is one the desktop entry declares, or desktops ignore it.
      #[test]
      fn the_desktop_entry_declares_every_claimed_type() {
@@ -1191,6 +1289,13 @@ index 263fc73..645b5de 100644
          let declared: Vec<&str> =
              entry.lines().find_map(|l| l.strip_prefix("MimeType=")).map(|v| v.split(';').filter(|s| !s.is_empty()).collect()).unwrap_or_default();
          for t in WORD_MIME_TYPES {
+             assert!(declared.contains(t), "{t} missing from MimeType=");
+         }
+-        assert!(entry.lines().any(|l| l == "Exec=wordcraft %F"), "files are passed on the command line");
++        assert!(entry.lines().any(|l| l == "Exec=plervo-write %F"), "files are passed on the command line");
+     }
+ 
+     #[cfg(unix)]
 diff --git a/apps/wordcraft/src/file_dialogs.rs b/apps/wordcraft/src/file_dialogs.rs
 index 651cddf..af2bef9 100644
 --- a/apps/wordcraft/src/file_dialogs.rs
@@ -1351,7 +1456,7 @@ index 0884e52..a61dbaa 100644
  [lints]
  workspace = true
 diff --git a/crates/control-key/src/lib.rs b/crates/control-key/src/lib.rs
-index 1cb7a1e..05b7534 100644
+index 1cb7a1e..e180bbe 100644
 --- a/crates/control-key/src/lib.rs
 +++ b/crates/control-key/src/lib.rs
 @@ -4,18 +4,18 @@
@@ -1360,8 +1465,8 @@ index 1cb7a1e..05b7534 100644
  /// The app's settings folder (preferences, logs, key files): macOS
 -/// `~/Library/Application Support/WordCraft`, Windows `%APPDATA%\WordCraft`, otherwise
 -/// `$XDG_CONFIG_HOME/wordcraft` or `~/.config/wordcraft`.
-+/// `~/Library/Application Support/Plervo Write`, Windows `%APPDATA%\WordCraft`, otherwise
-+/// `$XDG_CONFIG_HOME/wordcraft` or `~/.config/plervo-write`.
++/// `~/Library/Application Support/Plervo Write`, Windows `%APPDATA%\Plervo Write`, otherwise
++/// `$XDG_CONFIG_HOME/plervo-write` or `~/.config/plervo-write`.
  pub fn settings_dir() -> Option<PathBuf> {
      if cfg!(target_os = "macos") {
 -        std::env::var_os("HOME").map(|h| PathBuf::from(h).join("Library/Application Support/WordCraft"))
@@ -1387,6 +1492,16 @@ index 1cb7a1e..05b7534 100644
      }
  
      #[test]
+@@ -77,7 +77,8 @@ mod tests {
+     fn settings_dir_is_the_apps_folder() {
+         if let Some(d) = settings_dir() {
+             let name = d.file_name().and_then(|n| n.to_str()).unwrap_or("");
+-            assert!(name == "wordcraft" || name == "WordCraft", "{}", d.display());
++            let expected = if cfg!(any(target_os = "macos", windows)) { "Plervo Write" } else { "plervo-write" };
++            assert_eq!(name, expected, "{}", d.display());
+         }
+     }
+ }
 diff --git a/crates/doc/Cargo.toml b/crates/doc/Cargo.toml
 index f0111eb..55291dc 100644
 --- a/crates/doc/Cargo.toml
@@ -1457,6 +1572,86 @@ index f51956f..195dcdc 100644
  [lints]
  workspace = true
  
+diff --git a/crates/docx/src/package.rs b/crates/docx/src/package.rs
+index dcb956a..ceca873 100644
+--- a/crates/docx/src/package.rs
++++ b/crates/docx/src/package.rs
+@@ -163,7 +163,13 @@ impl Package {
+             if f.is_dir() {
+                 continue;
+             }
+-            let name = f.name().trim_start_matches('/').to_string();
++            let name = match f.name() {
++                Ok(name) => name.trim_start_matches('/').to_string(),
++                Err(e) => {
++                    log::warn!("docx: skipping zip entry {i} with unreadable name: {e}");
++                    continue;
++                }
++            };
+             if f.size() > max_part {
+                 return Err(DocxError::Limit(format!("part {name} declares {} bytes", f.size())));
+             }
+diff --git a/crates/docx/tests/custom_xml.rs b/crates/docx/tests/custom_xml.rs
+index 53c1f0c..3105b37 100644
+--- a/crates/docx/tests/custom_xml.rs
++++ b/crates/docx/tests/custom_xml.rs
+@@ -49,7 +49,7 @@ fn unzip(bytes: &[u8]) -> BTreeMap<String, Vec<u8>> {
+     let mut parts = BTreeMap::new();
+     for i in 0..z.len() {
+         let mut f = z.by_index(i).unwrap();
+-        let name = f.name().to_string();
++        let name = f.name().unwrap().into_owned();
+         let mut bytes = Vec::new();
+         f.read_to_end(&mut bytes).unwrap();
+         assert!(parts.insert(name, bytes).is_none(), "duplicate ZIP entry");
+diff --git a/crates/docx/tests/fixtures.rs b/crates/docx/tests/fixtures.rs
+index 350a007..b4cedb2 100644
+--- a/crates/docx/tests/fixtures.rs
++++ b/crates/docx/tests/fixtures.rs
+@@ -840,7 +840,7 @@ fn unzip(bytes: &[u8]) -> std::collections::BTreeMap<String, Vec<u8>> {
+         let mut f = z.by_index(i).unwrap();
+         let mut b = Vec::new();
+         f.read_to_end(&mut b).unwrap();
+-        out.insert(f.name().to_string(), b);
++        out.insert(f.name().unwrap().into_owned(), b);
+     }
+     out
+ }
+@@ -1442,7 +1442,7 @@ fn includepicture_keeps_its_embedded_picture() {
+                 let mut f = z.by_index(i).unwrap();
+                 let mut v = Vec::new();
+                 std::io::Read::read_to_end(&mut f, &mut v).unwrap();
+-                entries.push((f.name().to_string(), v));
++                entries.push((f.name().unwrap().into_owned(), v));
+             }
+             entries.push(("word/media/picture.png".into(), png.to_vec()));
+             zip(&entries.iter().map(|(n, v)| (n.as_str(), v.as_slice())).collect::<Vec<_>>())
+diff --git a/crates/docx/tests/privacy.rs b/crates/docx/tests/privacy.rs
+index cb345ef..823dc99 100644
+--- a/crates/docx/tests/privacy.rs
++++ b/crates/docx/tests/privacy.rs
+@@ -23,7 +23,7 @@ fn unzip(bytes: &[u8]) -> BTreeMap<String, String> {
+         let mut f = z.by_index(i).unwrap();
+         let mut s = String::new();
+         if f.read_to_string(&mut s).is_ok() {
+-            parts.insert(f.name().to_string(), s);
++            parts.insert(f.name().unwrap().into_owned(), s);
+         }
+     }
+     parts
+diff --git a/crates/docx/tests/roundtrip.rs b/crates/docx/tests/roundtrip.rs
+index 791cf20..c0df720 100644
+--- a/crates/docx/tests/roundtrip.rs
++++ b/crates/docx/tests/roundtrip.rs
+@@ -2204,7 +2204,7 @@ fn replace_part(zip_bytes: &[u8], name: &str, data: &[u8]) -> Vec<u8> {
+     let mut out = zip::ZipWriter::new(std::io::Cursor::new(Vec::new()));
+     for i in 0..src.len() {
+         let mut f = src.by_index(i).unwrap();
+-        let n = f.name().to_string();
++        let n = f.name().unwrap().into_owned();
+         out.start_file(n.as_str(), zip::write::SimpleFileOptions::default()).unwrap();
+         if n == name {
+             std::io::Write::write_all(&mut out, data).unwrap();
 diff --git a/crates/engine/Cargo.toml b/crates/engine/Cargo.toml
 index 4d58323..b42f5b4 100644
 --- a/crates/engine/Cargo.toml
@@ -1496,6 +1691,32 @@ index 718765f..c1b13be 100644
      );
      add(&mut h, " for events.", CharProps::default());
      b.push(Block::Para(h));
+diff --git a/crates/engine/src/tests.rs b/crates/engine/src/tests.rs
+index 143cc47..e3d68df 100644
+--- a/crates/engine/src/tests.rs
++++ b/crates/engine/src/tests.rs
+@@ -4659,7 +4659,7 @@ fn smart_art_round_trips_through_docx() {
+     let mut out = zip::ZipWriter::new(std::io::Cursor::new(Vec::new()));
+     for i in 0..zip.len() {
+         let mut f = zip.by_index(i).unwrap();
+-        let name = f.name().to_string();
++        let name = f.name().unwrap().into_owned();
+         let mut buf = Vec::new();
+         f.read_to_end(&mut buf).unwrap();
+         if name.ends_with("data1.xml") {
+diff --git a/crates/engine/tests/macro_packages.rs b/crates/engine/tests/macro_packages.rs
+index 5932f98..8b4a5a6 100644
+--- a/crates/engine/tests/macro_packages.rs
++++ b/crates/engine/tests/macro_packages.rs
+@@ -24,7 +24,7 @@ fn unzip(bytes: &[u8]) -> BTreeMap<String, Vec<u8>> {
+         let mut f = z.by_index(i).expect("entry");
+         let mut b = Vec::new();
+         f.read_to_end(&mut b).expect("read entry");
+-        out.insert(f.name().to_string(), b);
++        out.insert(f.name().unwrap().into_owned(), b);
+     }
+     out
+ }
 diff --git a/crates/fonts/Cargo.toml b/crates/fonts/Cargo.toml
 index 9107da4..30c02de 100644
 --- a/crates/fonts/Cargo.toml
@@ -5718,7 +5939,7 @@ index 0000000..d9b340b
 +          - .flatpak-builder
 +      - cargo-sources.json
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
-index bf75ccc..bd9df63 100644
+index bf75ccc..4aeab74 100644
 --- a/packaging/linux/nfpm.yaml
 +++ b/packaging/linux/nfpm.yaml
 @@ -3,7 +3,7 @@
@@ -5748,7 +5969,24 @@ index bf75ccc..bd9df63 100644
  
  # The binaries link only glibc and libgcc_s directly. Windowing (X11/Wayland, xkbcommon) and the
  # GPU (Vulkan, EGL/GL) are loaded at runtime, so they are dependencies/recommendations here
-@@ -55,11 +55,11 @@ overrides:
+@@ -28,7 +28,7 @@ description: |-
+ overrides:
+   deb:
+     depends:
+-      - libc6 (>= 2.35)
++      - libc6 (>= ${PLERVO_MIN_GLIBC})
+       - libgcc-s1
+       - libxkbcommon0
+       - libvulkan1 | libegl1
+@@ -43,6 +43,7 @@ overrides:
+       - xdg-desktop-portal
+   rpm:
+     depends:
++      - glibc >= ${PLERVO_MIN_GLIBC}
+       - libxkbcommon
+       - (vulkan-loader or libglvnd-egl)
+     recommends:
+@@ -55,11 +56,11 @@ overrides:
        - xdg-desktop-portal
  
  contents:
@@ -5765,7 +6003,7 @@ index bf75ccc..bd9df63 100644
    - src: ${STAGE}/usr/share/
      dst: /usr/share/
 diff --git a/packaging/linux/package.sh b/packaging/linux/package.sh
-index eed6e0a..6eb1fa2 100755
+index eed6e0a..723a090 100755
 --- a/packaging/linux/package.sh
 +++ b/packaging/linux/package.sh
 @@ -1,11 +1,11 @@
@@ -5795,13 +6033,13 @@ index eed6e0a..6eb1fa2 100755
  
  SKIP_BUILD=0
  FORMATS="appimage deb rpm tar"
-@@ -37,16 +37,16 @@ case "$ARCH" in
+@@ -37,27 +37,30 @@ case "$ARCH" in
    aarch64 | arm64) ARCH=aarch64; DEB_ARCH=arm64 ;;
    *) echo "unsupported architecture $ARCH" >&2; exit 2 ;;
  esac
 -export WORDCRAFT_MAINTAINER="${WORDCRAFT_MAINTAINER:-WordCraft maintainers <wordcraft@storyteller.ai>}"
 -BASENAME="wordcraft-$VERSION-linux-$ARCH"
-+export WORDCRAFT_MAINTAINER="${WORDCRAFT_MAINTAINER:-Plervo Write maintainers <plervo-write@storyteller.ai>}"
++export WORDCRAFT_MAINTAINER="${WORDCRAFT_MAINTAINER:-Plervo contributors}"
 +BASENAME="plervo-write-$VERSION-linux-$ARCH"
  
 -echo "==> WordCraft $VERSION for Linux $ARCH ($FORMATS)"
@@ -5817,7 +6055,11 @@ index eed6e0a..6eb1fa2 100755
    fi
  fi
  BIN="$CARGO_TARGET_DIR/${CROSS_TARGET:+$CROSS_TARGET/}release"
-@@ -55,9 +55,9 @@ STAGE="$WORK/root"
++# Match the declared Ubuntu 24.04 baseline to the actual ELF requirements.
++export PLERVO_MIN_GLIBC=2.39
++bash "$HERE/verify-glibc.sh" "$PLERVO_MIN_GLIBC" "$BIN/plervo-write" "$BIN/plervo-write-cli"
+ WORK="$CARGO_TARGET_DIR/linux-package"
+ STAGE="$WORK/root"
  rm -rf "$WORK"
  
  # ---- stage an FHS tree (shared by every format) -------------------------------------------------
@@ -5830,7 +6072,7 @@ index eed6e0a..6eb1fa2 100755
  install -Dm644 "$HERE/$APP_ID.desktop" "$STAGE/usr/share/applications/$APP_ID.desktop"
  install -Dm644 "$HERE/$APP_ID.mime.xml" "$STAGE/usr/share/mime/packages/$APP_ID.xml"
  mkdir -p "$STAGE/usr/share/metainfo"
-@@ -65,8 +65,8 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$WORDCRAFT_BUILD_DATE/g" \
+@@ -65,8 +68,8 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@DATE@/$WORDCRAFT_BUILD_DATE/g" \
    "$HERE/$APP_ID.metainfo.xml.in" >"$STAGE/usr/share/metainfo/$APP_ID.metainfo.xml"
  mkdir -p "$STAGE/usr/share/icons"
  cp -R "$ROOT/assets/app-icon/hicolor" "$STAGE/usr/share/icons/"
@@ -5841,7 +6083,7 @@ index eed6e0a..6eb1fa2 100755
  
  if command -v desktop-file-validate >/dev/null; then
    desktop-file-validate "$STAGE/usr/share/applications/$APP_ID.desktop"
-@@ -99,10 +99,10 @@ fi
+@@ -99,10 +102,10 @@ fi
  
  # ---- AppImage -----------------------------------------------------------------------------------
  if has appimage; then
@@ -5854,7 +6096,7 @@ index eed6e0a..6eb1fa2 100755
    cp "$HERE/$APP_ID.desktop" "$APPDIR/$APP_ID.desktop"
    cp "$ROOT/assets/app-icon/hicolor/256x256/apps/$APP_ID.png" "$APPDIR/$APP_ID.png"
    ln -s "$APP_ID.png" "$APPDIR/.DirIcon"
-@@ -126,8 +126,8 @@ if has appimage; then
+@@ -126,8 +129,8 @@ if has appimage; then
    # fetch only the blocks that changed in a newer release, through the .zsync published next to
    # each AppImage on GitHub Releases. `latest` is the newest published release that is not a
    # pre-release. A fork's builds point at its own releases through GITHUB_REPOSITORY.
@@ -5865,7 +6107,7 @@ index eed6e0a..6eb1fa2 100755
    # Extract-and-run: works without FUSE (containers, CI). The output embeds the static runtime,
    # so users don't need libfuse2 either. With zsyncmake on the host (CI installs the zsync
    # package) appimagetool also writes the .zsync, into its working directory, hence the cd.
-@@ -141,9 +141,9 @@ if has appimage; then
+@@ -141,9 +144,9 @@ if has appimage; then
  fi
  
  if [ -z "${CROSS_TARGET:-}" ]; then
@@ -5877,6 +6119,48 @@ index eed6e0a..6eb1fa2 100755
  fi
  echo "==> done"
  ls -lh "$DIST"
+diff --git a/packaging/linux/verify-glibc.sh b/packaging/linux/verify-glibc.sh
+new file mode 100755
+index 0000000..2a99601
+--- /dev/null
++++ b/packaging/linux/verify-glibc.sh
+@@ -0,0 +1,36 @@
++#!/usr/bin/env bash
++# Refuse binaries that require a newer glibc than the package declares. Does not execute them.
++set -euo pipefail
++if [ "$#" -lt 2 ] || [[ ! "$1" =~ ^[0-9]+\.[0-9]+$ ]]; then
++  echo "usage: verify-glibc.sh MAX_MAJOR.MINOR ELF..." >&2
++  exit 2
++fi
++ceiling="$1"
++shift
++for binary in "$@"; do
++  headers="$(LC_ALL=C "${CROSS_COMPILE:-}objdump" -p "$binary")"
++  if ! printf '%s\n' "$headers" | LC_ALL=C awk -v ceiling="$ceiling" '
++    BEGIN { split(ceiling, cap, /[.]/) }
++    $NF ~ /^GLIBC_/ {
++      seen = 1
++      if ($NF !~ /^GLIBC_[0-9]+\.[0-9]+(\.[0-9]+)?$/) {
++        print "unsupported glibc requirement: " $NF > "/dev/stderr"
++        bad = 1
++        next
++      }
++      split(substr($NF, 7), version, /[.]/)
++      if (version[1] > cap[1] || (version[1] == cap[1] &&
++          (version[2] > cap[2] || (version[2] == cap[2] && version[3] > 0)))) {
++        print "requires " $NF ", package baseline is " ceiling > "/dev/stderr"
++        bad = 1
++      }
++    }
++    END {
++      if (!seen) print "no glibc version requirements found" > "/dev/stderr"
++      exit (bad || !seen)
++    }
++  '; then
++    echo "error: incompatible or unreadable Linux runtime requirements: $binary" >&2
++    exit 1
++  fi
++done
 diff --git a/packaging/macos/Info.plist.in b/packaging/macos/Info.plist.in
 index 1dce256..1adf4cc 100644
 --- a/packaging/macos/Info.plist.in
