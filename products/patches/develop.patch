@@ -2634,7 +2634,7 @@ index c482499..4007741 100644
      }
      let m = Mat3(m.0.map(|r| r.map(|v| v / k)));
 diff --git a/crates/engine/src/config.rs b/crates/engine/src/config.rs
-index b3ded1f..52c95a5 100644
+index b3ded1f..dff0236 100644
 --- a/crates/engine/src/config.rs
 +++ b/crates/engine/src/config.rs
 @@ -2,13 +2,13 @@
@@ -2712,18 +2712,29 @@ index b3ded1f..52c95a5 100644
      fn config_unset_override_keeps_platform_defaults() {
          let vars = [("HOME", "/user"), ("APPDATA", "/roaming"), ("XDG_CONFIG_HOME", "/xdg")];
 -        assert_eq!(resolve(Platform::Mac, &vars), Some(PathBuf::from("/user/Library/Application Support/LightCraft")));
-+        assert_eq!(resolve(Platform::Mac, &vars), Some(PathBuf::from("/user/Library/Application Support/Plervo Develop")));
-         assert_eq!(resolve(Platform::Windows, &vars), Some(PathBuf::from("/roaming/LightCraft")));
-         assert_eq!(resolve(Platform::Other, &vars), Some(PathBuf::from("/xdg/lightcraft")));
+-        assert_eq!(resolve(Platform::Windows, &vars), Some(PathBuf::from("/roaming/LightCraft")));
+-        assert_eq!(resolve(Platform::Other, &vars), Some(PathBuf::from("/xdg/lightcraft")));
 -        assert_eq!(resolve(Platform::Other, &[("HOME", "/user")]), Some(PathBuf::from("/user/.config/lightcraft")));
++        assert_eq!(resolve(Platform::Mac, &vars), Some(PathBuf::from("/user/Library/Application Support/Plervo Develop")));
++        assert_eq!(resolve(Platform::Windows, &vars), Some(PathBuf::from("/roaming/Plervo Develop")));
++        assert_eq!(resolve(Platform::Other, &vars), Some(PathBuf::from("/xdg/plervo-develop")));
 +        assert_eq!(resolve(Platform::Other, &[("HOME", "/user")]), Some(PathBuf::from("/user/.config/plervo-develop")));
          for platform in [Platform::Mac, Platform::Windows, Platform::Other] {
              assert_eq!(resolve(platform, &[]), None);
          }
 diff --git a/crates/engine/src/media.rs b/crates/engine/src/media.rs
-index 0688410..0d0677b 100644
+index 0688410..d31b6ef 100644
 --- a/crates/engine/src/media.rs
 +++ b/crates/engine/src/media.rs
+@@ -925,7 +925,7 @@ impl RenderJob {
+         let was_loaded = matches!(self.source, SourceRef::Loaded(_));
+         // The app is closing (issue #620): nobody is left to show this, and quitting waits for the
+         // jobs that are running. Without this, one that lost the GPU mid-way would render on the CPU.
+-        let closing = || lightcraft_gpu::shutting_down().then(|| "LightCraft is closing".to_string());
++        let closing = || lightcraft_gpu::shutting_down().then(|| "Plervo Develop is closing".to_string());
+         let source = match closing() {
+             Some(e) => Err(e),
+             None => self.source.load_source().and_then(|s| closing().map_or(Ok(s), Err)),
 @@ -1525,7 +1525,7 @@ impl crate::Session {
      /// says and what a smart preview renders with. Only for raws edited in Kelvin.
      fn learn_as_shot_wb(&mut self, id: PhotoId, info: &SourceInfo) {
@@ -5365,27 +5376,28 @@ index 195e63e..7c1364f 100644
  
  /// Whether a Lightroom task currently owns the catalog transition.
 diff --git a/crates/ui-egui/src/links.rs b/crates/ui-egui/src/links.rs
-index 151fac9..43da276 100644
+index 151fac9..b32a788 100644
 --- a/crates/ui-egui/src/links.rs
 +++ b/crates/ui-egui/src/links.rs
 @@ -1,31 +1,31 @@
  //! Community and project links (Help menu, About dialog, top-bar Discord button).
  
 -/// The app's id in ArtCraft URLs.
-+/// The app's id in Plervo URLs.
- pub const APP: &str = "lightcraft";
+-pub const APP: &str = "lightcraft";
 -/// The ArtCraft community Discord.
 -pub const DISCORD: &str = "https://discord.gg/artcraft";
 -/// The ArtCraft website.
 -pub const WEBSITE: &str = "https://getartcraft.com";
 -/// This app's page on the ArtCraft website.
 -pub const APP_PAGE: &str = "https://getartcraft.com/apps/lightcraft";
-+/// The Plervo community Discord.
++/// The app's id in Plervo URLs.
++pub const APP: &str = "develop";
++/// The Plervo support page.
 +pub const DISCORD: &str = "https://buymeacoffee.com/alport";
 +/// The Plervo website.
 +pub const WEBSITE: &str = "https://plervo.com";
 +/// This app's page on the Plervo website.
-+pub const APP_PAGE: &str = "https://plervo.com/";
++pub const APP_PAGE: &str = "https://plervo.com/#app-develop";
  /// This app's source repository.
 -pub const GITHUB: &str = "https://github.com/storytold/lightcraft";
 +pub const GITHUB: &str = "https://github.com/alportblu/plervo-pdf";
@@ -5415,6 +5427,16 @@ index 151fac9..43da276 100644
  
  /// The URL behind a link command id.
  pub fn url_of(cmd: &str) -> Option<&'static str> {
+@@ -50,7 +50,7 @@ mod tests {
+             assert!(!label.is_empty());
+             assert_eq!(url_of(id), Some(*url));
+         }
+-        assert!(APP_PAGE.ends_with(&format!("/apps/{APP}")));
+-        assert!(GITHUB.ends_with(&format!("/storytold/{APP}")));
++        assert_eq!(APP_PAGE, format!("{WEBSITE}/#app-{APP}"));
++        assert_eq!(GITHUB, "https://github.com/alportblu/plervo-pdf");
+     }
+ }
 diff --git a/crates/ui-egui/src/menubar.rs b/crates/ui-egui/src/menubar.rs
 index fe6905c..dacf085 100644
 --- a/crates/ui-egui/src/menubar.rs
@@ -7084,7 +7106,7 @@ index ef96603..a7c6c52 100755
  
  trap 'rm -f "$CERT"' EXIT
 diff --git a/packaging/macos/package.sh b/packaging/macos/package.sh
-index b26aa96..26942a4 100755
+index b26aa96..304169f 100755
 --- a/packaging/macos/package.sh
 +++ b/packaging/macos/package.sh
 @@ -1,8 +1,8 @@
@@ -7098,7 +7120,19 @@ index b26aa96..26942a4 100755
  #
  # Usage: packaging/macos/package.sh [--arch universal|aarch64|x86_64] [--skip-build]
  #
-@@ -39,9 +39,9 @@ export MACOSX_DEPLOYMENT_TARGET=11.0
+@@ -10,8 +10,9 @@
+ #   MACOS_SIGN_IDENTITY   codesign identity (name or SHA-1). Default "-" = ad-hoc (local testing;
+ #                         Gatekeeper will reject the result on other Macs). In CI, import-cert.sh sets it.
+ #   MACOS_KEYCHAIN        keychain holding the identity (optional)
+-# Notarization (env; all three needed, and a real identity):
+-#   APPLE_ID, APPLE_PASSWORD (app-specific password), APPLE_TEAM_ID
++# Notarization (env; requires a real signing identity):
++#   MACOS_NOTARY_PROFILE  preferred notarytool profile in MACOS_KEYCHAIN
++#   Or APPLE_ID, APPLE_PASSWORD (app-specific password), APPLE_TEAM_ID
+ set -euo pipefail
+ # shellcheck source=../env.sh
+ . "$(dirname "${BASH_SOURCE[0]}")/../env.sh"
+@@ -39,31 +40,43 @@ export MACOSX_DEPLOYMENT_TARGET=11.0
  IDENTITY="${MACOS_SIGN_IDENTITY:--}"
  SHORT_VERSION="${VERSION%%-*}"
  WORK="$CARGO_TARGET_DIR/macos-package"
@@ -7110,9 +7144,25 @@ index b26aa96..26942a4 100755
 +CLI_ZIP="$DIST/plervo-develop-cli-$VERSION-macos-$ARCH.zip"
  
  NOTARIZE=0
++NOTARY_ARGS=()
  if [ "$IDENTITY" = "-" ]; then
-@@ -52,18 +52,18 @@ else
-   warn "macOS: APPLE_ID / APPLE_PASSWORD / APPLE_TEAM_ID incomplete; signed but not notarized"
++  if [ -n "${MACOS_NOTARY_PROFILE:-}" ]; then
++    echo "error: MACOS_NOTARY_PROFILE requires a real MACOS_SIGN_IDENTITY" >&2
++    exit 2
++  fi
+   warn "macOS: ad-hoc signing (no MACOS_SIGN_IDENTITY); artifacts are not notarized"
++elif [ -n "${MACOS_NOTARY_PROFILE:-}" ]; then
++  NOTARIZE=1
++  NOTARY_ARGS=(--keychain-profile "$MACOS_NOTARY_PROFILE")
++  if [ -n "${MACOS_KEYCHAIN:-}" ]; then
++    NOTARY_ARGS+=(--keychain "$MACOS_KEYCHAIN")
++  fi
+ elif [ -n "${APPLE_ID:-}" ] && [ -n "${APPLE_PASSWORD:-}" ] && [ -n "${APPLE_TEAM_ID:-}" ]; then
+   NOTARIZE=1
++  NOTARY_ARGS=(--apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$APPLE_TEAM_ID")
+ else
+-  warn "macOS: APPLE_ID / APPLE_PASSWORD / APPLE_TEAM_ID incomplete; signed but not notarized"
++  warn "macOS: no Keychain profile or complete Apple credentials; signed but not notarized"
  fi
  
 -echo "==> LightCraft $VERSION for macOS ($ARCH), identity: $IDENTITY, notarize: $NOTARIZE"
@@ -7133,7 +7183,24 @@ index b26aa96..26942a4 100755
    inputs=()
    for t in "${TARGETS[@]}"; do inputs+=("$CARGO_TARGET_DIR/$t/release/$bin"); done
    lipo -create -output "$WORK/bin/$bin" "${inputs[@]}"
-@@ -97,17 +97,19 @@ notarize() {
+@@ -83,31 +96,33 @@ sign() {
+ notarize() {
+   local file="$1" out id status
+   echo "==> notarizing $(basename "$file") (this can take a few minutes)"
+-  out="$(xcrun notarytool submit "$file" --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" \
+-    --team-id "$APPLE_TEAM_ID" --wait --timeout 1h --output-format json)" || true
++  out="$(xcrun notarytool submit "$file" "${NOTARY_ARGS[@]}" \
++    --wait --timeout 1h --output-format json)" || true
+   echo "$out"
+   id="$(printf '%s' "$out" | plutil -extract id raw -o - - 2>/dev/null || true)"
+   status="$(printf '%s' "$out" | plutil -extract status raw -o - - 2>/dev/null || true)"
+   if [ "$status" != "Accepted" ]; then
+     if [ -n "$id" ]; then
+-      xcrun notarytool log "$id" --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$APPLE_TEAM_ID" || true
++      xcrun notarytool log "$id" "${NOTARY_ARGS[@]}" || true
+     fi
+     echo "error: notarization of $(basename "$file") failed (status: ${status:-unknown})" >&2
+     exit 1
    fi
  }
  
@@ -7156,7 +7223,7 @@ index b26aa96..26942a4 100755
  # Licences (and the craft-fonts font licences when built with CRAFT_FONTS_DIR) inside the bundle.
  mkdir -p "$APP/Contents/Resources/Licenses"
  copy_docs "$APP/Contents/Resources/Licenses"
-@@ -118,13 +120,13 @@ xattr -cr "$APP"
+@@ -118,13 +133,13 @@ xattr -cr "$APP"
  
  # Sign inside-out: nested code first, then the bundle itself (no --deep on the final signature).
  # Today the only nested code is the main executable; frameworks/helpers would be signed here too.
@@ -7173,7 +7240,7 @@ index b26aa96..26942a4 100755
    xcrun stapler staple "$APP"
    xcrun stapler validate "$APP"
    spctl --assess --type execute -vvv "$APP"
-@@ -134,15 +136,12 @@ fi
+@@ -134,15 +149,12 @@ fi
  echo "==> building $DMG"
  STAGE="$WORK/dmg"
  mkdir -p "$STAGE"
@@ -7192,7 +7259,7 @@ index b26aa96..26942a4 100755
  # hdiutil may transiently return "Resource busy" on CI; retry boundedly.
  hdiutil_retry() {
    local attempt
-@@ -158,7 +157,7 @@ hdiutil_retry() {
+@@ -158,7 +170,7 @@ hdiutil_retry() {
      sleep $((attempt * 10))
    done
  }
@@ -7201,7 +7268,7 @@ index b26aa96..26942a4 100755
    -imagekey zlib-level=9 -ov "$DMG"
  sign "$DMG"
  codesign --verify --strict --verbose=2 "$DMG"
-@@ -173,21 +172,21 @@ verify_dmg_app() {
+@@ -173,21 +185,21 @@ verify_dmg_app() {
      hdiutil detach "$mount" >/dev/null 2>&1 || true
      return 1
    fi
@@ -7230,7 +7297,7 @@ index b26aa96..26942a4 100755
    fi
    if ! hdiutil_retry detach "$mount" >/dev/null; then
      echo "error: could not detach verification mount" >&2
-@@ -206,20 +205,20 @@ fi
+@@ -206,20 +218,20 @@ fi
  
  # ---- CLI ---------------------------------------------------------------------------------------
  echo "==> building $CLI_ZIP"

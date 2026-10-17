@@ -1410,7 +1410,7 @@ index 0b94fa0..3e121dc 100644
  //!   (View › Hide Edges) and ⌥⌘H.
  
 diff --git a/apps/vectorcraft/src/main.rs b/apps/vectorcraft/src/main.rs
-index bfa0f3a..41b951a 100644
+index bfa0f3a..afc363d 100644
 --- a/apps/vectorcraft/src/main.rs
 +++ b/apps/vectorcraft/src/main.rs
 @@ -1,7 +1,7 @@
@@ -1517,7 +1517,8 @@ index bfa0f3a..41b951a 100644
 -/// `vectorcraft --help`. Headless work (convert, run, MCP) is `vectorcraft-cli`'s.
 +/// `plervo-vector --help`. Headless work (convert, run, MCP) is `plervo-vector-cli`'s.
  const USAGE: &str = "\
- Usage: vectorcraft [options] [files…]
+-Usage: vectorcraft [options] [files…]
++Usage: plervo-vector [options] [files…]
  
 -Opens the VectorCraft desktop app with the given files.
 +Opens the Plervo Vector desktop app with the given files.
@@ -1917,7 +1918,7 @@ index 6752aef..86f543f 100644
  //!
  //! DirectWrite is COM, which has no safe API, hence the scoped `unsafe_code` allowance.
 diff --git a/apps/vectorcraft/tests/automation_args.rs b/apps/vectorcraft/tests/automation_args.rs
-index ffb8773..f5ab91b 100644
+index ffb8773..f90a0ef 100644
 --- a/apps/vectorcraft/tests/automation_args.rs
 +++ b/apps/vectorcraft/tests/automation_args.rs
 @@ -4,7 +4,7 @@
@@ -1938,8 +1939,33 @@ index ffb8773..f5ab91b 100644
          .envs(env.iter().copied())
          .stdin(Stdio::null())
          .stdout(Stdio::piped())
+@@ -42,7 +42,7 @@ fn rejects_with_env(args: &[&str], env: &[(&str, &str)], message: &str) {
+     assert!(out.stdout.is_empty(), "{args:?}: {:?}", out.stdout);
+     // Exact stderr excludes unrelated startup warnings or display errors that could otherwise
+     // make a malformed invocation fail for an unrelated reason.
+-    assert_eq!(String::from_utf8(out.stderr).unwrap(), format!("vectorcraft: {message}\n"), "{args:?}");
++    assert_eq!(String::from_utf8(out.stderr).unwrap(), format!("plervo-vector: {message}\n"), "{args:?}");
+ }
+ 
+ #[test]
+@@ -70,7 +70,7 @@ fn duplicate_roots_fail_for_both_spellings() {
+ fn explicit_dash_folder_does_not_consume_version() {
+     let out = Command::new(BIN).args(["--automation-read-root=-folder", "--automation-write-root", "./-folder", "--version"]).output().unwrap();
+     assert!(out.status.success(), "{}", String::from_utf8_lossy(&out.stderr));
+-    assert_eq!(String::from_utf8(out.stdout).unwrap(), format!("vectorcraft {}\n", env!("CARGO_PKG_VERSION")));
++    assert_eq!(String::from_utf8(out.stdout).unwrap(), format!("plervo-vector {}\n", env!("CARGO_PKG_VERSION")));
+     assert!(out.stderr.is_empty());
+ }
+ 
+@@ -92,5 +92,5 @@ fn control_without_a_valid_port_fails_before_startup() {
+ fn version_wins_over_a_bad_control_port_variable() {
+     let out = Command::new(BIN).arg("--version").env("VECTORCRAFT_CONTROL_PORT", "abc").output().unwrap();
+     assert!(out.status.success(), "{}", String::from_utf8_lossy(&out.stderr));
+-    assert_eq!(String::from_utf8(out.stdout).unwrap(), format!("vectorcraft {}\n", env!("CARGO_PKG_VERSION")));
++    assert_eq!(String::from_utf8(out.stdout).unwrap(), format!("plervo-vector {}\n", env!("CARGO_PKG_VERSION")));
+ }
 diff --git a/apps/vectorcraft/tests/help.rs b/apps/vectorcraft/tests/help.rs
-index 5c77ecd..761d73c 100644
+index 5c77ecd..685e384 100644
 --- a/apps/vectorcraft/tests/help.rs
 +++ b/apps/vectorcraft/tests/help.rs
 @@ -1,13 +1,13 @@
@@ -1967,7 +1993,13 @@ index 5c77ecd..761d73c 100644
          .envs(env.iter().copied())
          .stdin(Stdio::null())
          .stdout(Stdio::piped())
-@@ -45,7 +45,7 @@ fn prints_usage(args: &[&str], env: &[(&str, &str)]) {
+@@ -40,12 +40,12 @@ fn prints_usage(args: &[&str], env: &[(&str, &str)]) {
+     let stdout = String::from_utf8(out.stdout).unwrap();
+     assert!(out.status.success(), "{args:?}: {}", String::from_utf8_lossy(&out.stderr));
+     assert!(out.stderr.is_empty(), "{args:?}: {}", String::from_utf8_lossy(&out.stderr));
+-    assert!(stdout.starts_with("Usage: vectorcraft "), "{args:?}: {stdout}");
++    assert!(stdout.starts_with("Usage: plervo-vector "), "{args:?}: {stdout}");
+     for flag in ["--control", "--automation-read-root", "--automation-write-root", "--in-window-menus", "--version", "--help"] {
          assert!(stdout.contains(flag), "{args:?}: usage doesn't mention {flag}: {stdout}");
      }
      // Headless work is the CLI's: the usage says where to go.
@@ -2148,6 +2180,69 @@ index c51728e..78a4a14 100644
  [lints]
  workspace = true
  
+diff --git a/crates/engine/src/cmd/fileio/load.rs b/crates/engine/src/cmd/fileio/load.rs
+index 5820016..3529269 100644
+--- a/crates/engine/src/cmd/fileio/load.rs
++++ b/crates/engine/src/cmd/fileio/load.rs
+@@ -462,7 +462,7 @@ pub fn raster_image(bytes: &[u8]) -> Result<RasterImage> {
+     let mut limits = image::Limits::default();
+     limits.max_alloc = Some(MAX_RASTER_ALLOC);
+     reader.limits(limits);
+-    let kind = reader.format().ok_or_else(|| err("not an image VectorCraft reads (see document.formats)"))?;
++    let kind = reader.format().ok_or_else(|| err("not an image Plervo Vector reads (see document.formats)"))?;
+     let f = image_format(kind).ok_or_else(|| err(format!("{kind:?} images can't be opened (see document.formats)")))?;
+     let cmyk = || ImageBlob::new(f.mime, bytes.to_vec()).cmyk().is_some();
+     if matches!(f.id, "png" | "jpg" | "gif" | "webp") || (f.id == "tiff" && cmyk()) {
+diff --git a/crates/engine/src/cmd/fileio/mod.rs b/crates/engine/src/cmd/fileio/mod.rs
+index 93282d3..956eff4 100644
+--- a/crates/engine/src/cmd/fileio/mod.rs
++++ b/crates/engine/src/cmd/fileio/mod.rs
+@@ -510,7 +510,7 @@ const fn reader(id: &'static str, label: &'static str, extensions: &'static [&'s
+ pub const FORMATS: &[Format] = &[
+     Format {
+         id: "vectorcraft",
+-        label: "VectorCraft",
++        label: "Plervo Vector",
+         extensions: &[vectorcraft_format::EXTENSION, vectorcraft_format::LEGACY_EXTENSION],
+         mime: "application/json",
+         read: true,
+@@ -611,7 +611,7 @@ pub const FORMATS: &[Format] = &[
+     Format { id: "bmp", label: "BMP", extensions: &["bmp"], mime: "image/bmp", read: true, write: true, raster: true, options: BMP_OPTIONS },
+     Format {
+         id: "template",
+-        label: "VectorCraft Template",
++        label: "Plervo Vector Template",
+         extensions: &["vctemplate"],
+         mime: "application/json",
+         read: true,
+diff --git a/crates/engine/src/cmd/findfiles/walk.rs b/crates/engine/src/cmd/findfiles/walk.rs
+index 26c453f..8e3909d 100644
+--- a/crates/engine/src/cmd/findfiles/walk.rs
++++ b/crates/engine/src/cmd/findfiles/walk.rs
+@@ -399,8 +399,8 @@ impl Shared {
+             Ok(folder) if !folder.is_dir() => Err(format!("{path} is not a folder")),
+             Ok(folder) => match rules.refusal(&folder) {
+                 None => Ok(folder),
+-                Some(Refusal::Shared) => Err(format!("VectorCraft doesn't search the Shared or Public folder in Users: {path}")),
+-                Some(Refusal::Apps) => Err(format!("VectorCraft doesn't search other apps' or the system's folders: {path}")),
++                Some(Refusal::Shared) => Err(format!("Plervo Vector doesn't search the Shared or Public folder in Users: {path}")),
++                Some(Refusal::Apps) => Err(format!("Plervo Vector doesn't search other apps' or the system's folders: {path}")),
+             },
+         };
+         let mut w = self.lock();
+diff --git a/crates/engine/src/cmd/fontfiles.rs b/crates/engine/src/cmd/fontfiles.rs
+index c981c24..1b5c0d1 100644
+--- a/crates/engine/src/cmd/fontfiles.rs
++++ b/crates/engine/src/cmd/fontfiles.rs
+@@ -336,7 +336,7 @@ fn add(s: &mut Session, p: &Value) -> Result<Value> {
+     files.sort();
+     files.dedup();
+     let dir = vectorcraft_text::app_font_dir()
+-        .ok_or_else(|| EngineError::Other("VectorCraft's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it".into()))?;
++        .ok_or_else(|| EngineError::Other("Plervo Vector's Fonts folder isn't set here: the desktop app and plervo-vector-cli set it".into()))?;
+     let found: Vec<PathBuf> =
+         s.font_search.as_ref().map(|f| f.search.progress().hits.into_iter().map(|(path, _)| path).collect()).unwrap_or_default();
+     if let Some(f) = files.iter().find(|f| !found.contains(f)) {
 diff --git a/crates/engine/src/cmd/help.rs b/crates/engine/src/cmd/help.rs
 index aba4d60..b2e31f4 100644
 --- a/crates/engine/src/cmd/help.rs
@@ -2216,6 +2311,19 @@ index bbd1591..bd71c07 100644
      {
          return Ok(Some(k.clone()));
      }
+diff --git a/crates/engine/src/tests_rasterfilters.rs b/crates/engine/src/tests_rasterfilters.rs
+index 3ac0fdf..7919cd4 100644
+--- a/crates/engine/src/tests_rasterfilters.rs
++++ b/crates/engine/src/tests_rasterfilters.rs
+@@ -246,7 +246,7 @@ fn glass_refuses_a_texture_that_is_not_an_image() {
+     let junk = vectorcraft_format::base64_encode(b"not an image");
+     let not_stored = "textureImage: give {path} or {name, dataBase64}";
+     let refused = [
+-        (json!({"name": "a.png", "dataBase64": junk}), "not an image VectorCraft reads"),
++        (json!({"name": "a.png", "dataBase64": junk}), "not an image Plervo Vector reads"),
+         (json!("bm90IGEgdGV4dHVyZQ=="), not_stored),
+         (json!(5), not_stored),
+         (json!({"path": "C:/no/such/texture.png"}), "texture.png"),
 diff --git a/crates/eps/Cargo.toml b/crates/eps/Cargo.toml
 index 4031f89..93bab8a 100644
 --- a/crates/eps/Cargo.toml
@@ -2229,6 +2337,19 @@ index 4031f89..93bab8a 100644
  [lints]
  workspace = true
  
+diff --git a/crates/eps/src/import/ai/read.rs b/crates/eps/src/import/ai/read.rs
+index a4fc4ea..44f88b6 100644
+--- a/crates/eps/src/import/ai/read.rs
++++ b/crates/eps/src/import/ai/read.rs
+@@ -2012,7 +2012,7 @@ impl<'a> Reader<'a> {
+         }
+         if !self.unsupported.is_empty() {
+             let list: Vec<&str> = self.unsupported.iter().map(String::as_str).collect();
+-            return Err(format!("it has {}, which VectorCraft doesn't read from it yet", join_and(&list)));
++            return Err(format!("it has {}, which Plervo Vector doesn't read from it yet", join_and(&list)));
+         }
+         if self.doc.layers.is_empty() {
+             return Err("it has no layers".into());
 diff --git a/crates/format/Cargo.toml b/crates/format/Cargo.toml
 index 6ab9ce5..b1ea12c 100644
 --- a/crates/format/Cargo.toml
@@ -2242,6 +2363,32 @@ index 6ab9ce5..b1ea12c 100644
  [lints]
  workspace = true
  
+diff --git a/crates/format/src/lib.rs b/crates/format/src/lib.rs
+index 4811b8c..a138409 100644
+--- a/crates/format/src/lib.rs
++++ b/crates/format/src/lib.rs
+@@ -88,17 +88,17 @@ pub fn is_native_name(name: &str) -> bool {
+ 
+ #[derive(Debug, thiserror::Error)]
+ pub enum FormatError {
+-    #[error("not a VectorCraft file: {0}")]
++    #[error("not a Plervo Vector file: {0}")]
+     NotVectorcraft(String),
+-    #[error("file version {0} is newer than this VectorCraft supports ({VERSION})")]
++    #[error("file version {0} is newer than this Plervo Vector supports ({VERSION})")]
+     TooNew(u32),
+     #[error("invalid image data for `{0}`")]
+     BadImage(String),
+-    #[error("can't save version {0}: VectorCraft writes versions {MIN_VERSION} to {VERSION}")]
++    #[error("can't save version {0}: Plervo Vector writes versions {MIN_VERSION} to {VERSION}")]
+     BadVersion(u32),
+     #[error("version {0} files can't be compressed: only version {COMPRESSED_SINCE} and later open compressed files")]
+     CompressedTooOld(u32),
+-    #[error("the compressed file unpacks to more than VectorCraft reads ({} MB of document, {} MB per image)", MAX_JSON >> 20, MAX_BLOB >> 20)]
++    #[error("the compressed file unpacks to more than Plervo Vector reads ({} MB of document, {} MB per image)", MAX_JSON >> 20, MAX_BLOB >> 20)]
+     TooBig,
+     #[error("the document is too large to save compressed ({0}): save it with Use Compression off")]
+     TooBigToCompress(String),
 diff --git a/crates/geom/Cargo.toml b/crates/geom/Cargo.toml
 index ab404c6..8b01a89 100644
 --- a/crates/geom/Cargo.toml
@@ -2477,6 +2624,19 @@ index 7b67936..87f5b8d 100644
  [lints]
  workspace = true
  
+diff --git a/crates/svg/src/import/files.rs b/crates/svg/src/import/files.rs
+index 8860727..9ae2b88 100644
+--- a/crates/svg/src/import/files.rs
++++ b/crates/svg/src/import/files.rs
+@@ -127,7 +127,7 @@ impl Files {
+                 let (path, local) = target(h, opts.folder);
+                 let read = if local { opts.read.and_then(|read| read(&path)) } else { None };
+                 let source = match read {
+-                    Some((bytes, link)) => files.source(bytes, link).ok_or("is not an image VectorCraft reads"),
++                    Some((bytes, link)) => files.source(bytes, link).ok_or("is not an image Plervo Vector reads"),
+                     None => Err("not found"),
+                 };
+                 let source = source.or_else(|why| {
 diff --git a/crates/text/Cargo.toml b/crates/text/Cargo.toml
 index 7f3b52b..07dd9a9 100644
 --- a/crates/text/Cargo.toml
@@ -3064,7 +3224,7 @@ index 5a84ca7..212325d 100644
      let (rect, _) = ui.allocate_exact_size(vec2(30.0, 22.0), egui::Sense::hover());
      let Some(style) = WarpStyle::from_id(suffix) else { return };
 diff --git a/crates/ui-egui/src/i18n/bg.tsv b/crates/ui-egui/src/i18n/bg.tsv
-index 9acbb54..83708bf 100644
+index 9acbb54..96a0520 100644
 --- a/crates/ui-egui/src/i18n/bg.tsv
 +++ b/crates/ui-egui/src/i18n/bg.tsv
 @@ -2,7 +2,7 @@
@@ -3315,7 +3475,7 @@ index 9acbb54..83708bf 100644
  @msg	searching a folder isn't available on the web	търсенето в папка не е достъпно в уеб версията
  @msg	every search thread stopped on an internal error (please report this bug)	всяка нишка за търсене спря поради вътрешна грешка (моля, докладвайте този бъг)
 -@msg	VectorCraft's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	Папката със шрифтове на VectorCraft не е зададена тук: десктоп приложението и vectorcraft-cli я задават
-+@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	Папката със шрифтове на Plervo Vector не е зададена тук: десктоп приложението и vectorcraft-cli я задават
++@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and plervo-vector-cli set it	Папката със шрифтове на Plervo Vector не е зададена тук: десктоп приложението и plervo-vector-cli я задават
  @msg	choose the font files to add	изберете шрифтовите файлове за добавяне
  @msg	{n} font file(s) are now in {folder}	{n} шрифтов(и) файл(а) вече са в {folder}
  @msg	{n} font file(s) are now in {folder}; {failed} couldn't be added: {reason}	{n} шрифтов(и) файл(а) вече са в {folder}; {failed} не можаха да бъдат добавени: {reason}
@@ -3416,7 +3576,7 @@ index 9acbb54..83708bf 100644
  	[1P-High View]	[Висок изглед (1P)]
  	[1P-Low View]	[Нисък изглед (1P)]
 diff --git a/crates/ui-egui/src/i18n/cs.tsv b/crates/ui-egui/src/i18n/cs.tsv
-index b289026..5180bd5 100644
+index b289026..8563a5a 100644
 --- a/crates/ui-egui/src/i18n/cs.tsv
 +++ b/crates/ui-egui/src/i18n/cs.tsv
 @@ -1,7 +1,7 @@
@@ -3728,7 +3888,7 @@ index b289026..5180bd5 100644
  @msg	searching a folder isn't available on the web	prohledávání složky není na webu k dispozici
  @msg	every search thread stopped on an internal error (please report this bug)	všechna vlákna hledání se zastavila na vnitřní chybě (nahlaste prosím tuto chybu)
 -@msg	VectorCraft's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	složka Fonts VectorCraftu zde není nastavena: nastavuje ji desktopová aplikace a vectorcraft-cli
-+@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	složka Fonts Plervo Vectoru zde není nastavena: nastavuje ji desktopová aplikace a vectorcraft-cli
++@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and plervo-vector-cli set it	složka Fonts Plervo Vectoru zde není nastavena: nastavuje ji desktopová aplikace a plervo-vector-cli
  @msg	choose the font files to add	vyberte soubory písem, které chcete přidat
  @msg	{n} font file(s) are now in {folder}	soubory písem ({n}) jsou nyní ve složce {folder}
  @msg	{n} font file(s) are now in {folder}; {failed} couldn't be added: {reason}	soubory písem ({n}) jsou nyní ve složce {folder}; nepodařilo se přidat {failed}: {reason}
@@ -3760,7 +3920,7 @@ index b289026..5180bd5 100644
  @msg	the file stopped being read (please report this bug)	čtení souboru se přerušilo (nahlaste prosím tuto chybu)
  	Concentric Dividers:	Soustředné dělicí čáry:
 diff --git a/crates/ui-egui/src/i18n/de.tsv b/crates/ui-egui/src/i18n/de.tsv
-index 0dd9438..b7d1224 100644
+index 0dd9438..5c0d2f0 100644
 --- a/crates/ui-egui/src/i18n/de.tsv
 +++ b/crates/ui-egui/src/i18n/de.tsv
 @@ -1,7 +1,7 @@
@@ -4011,7 +4171,7 @@ index 0dd9438..b7d1224 100644
  @msg	searching a folder isn't available on the web	das Durchsuchen eines Ordners ist im Web nicht verfügbar
  @msg	every search thread stopped on an internal error (please report this bug)	alle Such-Threads wurden mit einem internen Fehler beendet (bitte melden Sie diesen Fehler)
 -@msg	VectorCraft's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	der Schriftenordner von VectorCraft ist hier nicht festgelegt: Die Desktop-App und vectorcraft-cli legen ihn fest
-+@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	der Schriftenordner von Plervo Vector ist hier nicht festgelegt: Die Desktop-App und vectorcraft-cli legen ihn fest
++@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and plervo-vector-cli set it	der Schriftenordner von Plervo Vector ist hier nicht festgelegt: Die Desktop-App und plervo-vector-cli legen ihn fest
  @msg	choose the font files to add	wählen Sie die Schriftdateien aus, die hinzugefügt werden sollen
  @msg	{n} font file(s) are now in {folder}	{n} Schriftdatei(en) liegen jetzt in {folder}
  @msg	{n} font file(s) are now in {folder}; {failed} couldn't be added: {reason}	{n} Schriftdatei(en) liegen jetzt in {folder}; {failed} konnten nicht hinzugefügt werden: {reason}
@@ -4043,7 +4203,7 @@ index 0dd9438..b7d1224 100644
  @msg	the file stopped being read (please report this bug)	das Lesen der Datei wurde abgebrochen (bitte melden Sie diesen Fehler)
  	Concentric Dividers:	Konzentrische Trennlinien:
 diff --git a/crates/ui-egui/src/i18n/el.tsv b/crates/ui-egui/src/i18n/el.tsv
-index 56703ae..71070b9 100644
+index 56703ae..c120241 100644
 --- a/crates/ui-egui/src/i18n/el.tsv
 +++ b/crates/ui-egui/src/i18n/el.tsv
 @@ -1,6 +1,6 @@
@@ -4312,7 +4472,7 @@ index 56703ae..71070b9 100644
  @msg	searching a folder isn't available on the web	η αναζήτηση σε φάκελο δεν υποστηρίζεται στο web
  @msg	every search thread stopped on an internal error (please report this bug)	όλα τα νήματα αναζήτησης σταμάτησαν λόγω εσωτερικού σφάλματος (αναφέρετε το πρόβλημα)
 -@msg	VectorCraft's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	ο φάκελος γραμματοσειρών του VectorCraft δεν έχει καθοριστεί εδώ: τον ορίζουν η εφαρμογή υπολογιστή και το vectorcraft-cli
-+@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	ο φάκελος γραμματοσειρών του Plervo Vector δεν έχει καθοριστεί εδώ: τον ορίζουν η εφαρμογή υπολογιστή και το vectorcraft-cli
++@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and plervo-vector-cli set it	ο φάκελος γραμματοσειρών του Plervo Vector δεν έχει καθοριστεί εδώ: τον ορίζουν η εφαρμογή υπολογιστή και το plervo-vector-cli
  @msg	choose the font files to add	επιλέξτε τα αρχεία γραμματοσειρών που θέλετε να προσθέσετε
  @msg	{n} font file(s) are now in {folder}	{n} αρχεία γραμματοσειρών βρίσκονται πλέον στον φάκελο {folder}
  @msg	{n} font file(s) are now in {folder}; {failed} couldn't be added: {reason}	{n} αρχεία γραμματοσειρών βρίσκονται πλέον στον φάκελο {folder}· δεν ήταν δυνατή η προσθήκη {failed}: {reason}
@@ -4393,7 +4553,7 @@ index 56703ae..71070b9 100644
  	x Height	Ύψος x
  	▾ Default Actions	▾ Προεπιλεγμένες ενέργειες
 diff --git a/crates/ui-egui/src/i18n/es.tsv b/crates/ui-egui/src/i18n/es.tsv
-index 4c6b07c..2404944 100644
+index 4c6b07c..356522a 100644
 --- a/crates/ui-egui/src/i18n/es.tsv
 +++ b/crates/ui-egui/src/i18n/es.tsv
 @@ -1,7 +1,7 @@
@@ -4644,7 +4804,7 @@ index 4c6b07c..2404944 100644
  @msg	searching a folder isn't available on the web	en la web no se puede buscar en una carpeta
  @msg	every search thread stopped on an internal error (please report this bug)	todos los hilos de búsqueda se detuvieron por un error interno (informa de este error)
 -@msg	VectorCraft's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	La carpeta Fonts de VectorCraft no está configurada aquí: la configuran la aplicación de escritorio y vectorcraft-cli
-+@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	La carpeta Fonts de Plervo Vector no está configurada aquí: la configuran la aplicación de escritorio y vectorcraft-cli
++@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and plervo-vector-cli set it	La carpeta Fonts de Plervo Vector no está configurada aquí: la configuran la aplicación de escritorio y plervo-vector-cli
  @msg	choose the font files to add	elige los archivos de fuentes que quieres agregar
  @msg	{n} font file(s) are now in {folder}	{n} archivo(s) de fuentes ahora están en {folder}
  @msg	{n} font file(s) are now in {folder}; {failed} couldn't be added: {reason}	{n} archivo(s) de fuentes ahora están en {folder}; no se pudieron agregar {failed}: {reason}
@@ -4716,7 +4876,7 @@ index 4c6b07c..2404944 100644
  	Vertical Type	Texto vertical
  	Vertical Type on a Path	Texto vertical en trazado
 diff --git a/crates/ui-egui/src/i18n/fi.tsv b/crates/ui-egui/src/i18n/fi.tsv
-index f2750d8..ac72584 100644
+index f2750d8..154c3e0 100644
 --- a/crates/ui-egui/src/i18n/fi.tsv
 +++ b/crates/ui-egui/src/i18n/fi.tsv
 @@ -2,7 +2,7 @@
@@ -5028,7 +5188,7 @@ index f2750d8..ac72584 100644
  @msg	searching a folder isn't available on the web	kansion haku ei ole käytettävissä verkossa
  @msg	every search thread stopped on an internal error (please report this bug)	jokainen hakusäie pysähtyi sisäiseen virheeseen (ilmoita tästä virheestä)
 -@msg	VectorCraft's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	VectorCraftin Fonts-kansiota ei ole määritetty täällä: työpöytäsovellus ja vectorcraft-cli määrittävät sen
-+@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	Plervo Vectorin Fonts-kansiota ei ole määritetty täällä: työpöytäsovellus ja vectorcraft-cli määrittävät sen
++@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and plervo-vector-cli set it	Plervo Vectorin Fonts-kansiota ei ole määritetty täällä: työpöytäsovellus ja plervo-vector-cli määrittävät sen
  @msg	choose the font files to add	valitse lisättävät fonttitiedostot
  @msg	{n} font file(s) are now in {folder}	{n} fonttitiedosto(a) on nyt kansiossa {folder}
  @msg	{n} font file(s) are now in {folder}; {failed} couldn't be added: {reason}	{n} fonttitiedosto(a) on nyt kansiossa {folder}; {failed} ei voitu lisätä: {reason}
@@ -5060,7 +5220,7 @@ index f2750d8..ac72584 100644
  @msg	the file stopped being read (please report this bug)	tiedoston lukeminen keskeytyi (ilmoita tästä virheestä)
  	Concentric Dividers:	Samankeskiset jakajat:
 diff --git a/crates/ui-egui/src/i18n/fr.tsv b/crates/ui-egui/src/i18n/fr.tsv
-index 03146f1..8b6a9ac 100644
+index 03146f1..9f747ed 100644
 --- a/crates/ui-egui/src/i18n/fr.tsv
 +++ b/crates/ui-egui/src/i18n/fr.tsv
 @@ -1,7 +1,7 @@
@@ -5311,7 +5471,7 @@ index 03146f1..8b6a9ac 100644
  @msg	searching a folder isn't available on the web	la recherche dans un dossier n’est pas disponible sur le web
  @msg	every search thread stopped on an internal error (please report this bug)	tous les fils de recherche se sont arrêtés sur une erreur interne (veuillez signaler ce bogue)
 -@msg	VectorCraft's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	Le dossier Fonts de VectorCraft n’est pas défini ici : l’application de bureau et vectorcraft-cli le définissent
-+@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	Le dossier Fonts de Plervo Vector n’est pas défini ici : l’application de bureau et vectorcraft-cli le définissent
++@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and plervo-vector-cli set it	Le dossier Fonts de Plervo Vector n’est pas défini ici : l’application de bureau et plervo-vector-cli le définissent
  @msg	choose the font files to add	choisissez les fichiers de polices à ajouter
  @msg	{n} font file(s) are now in {folder}	{n} fichier(s) de polices se trouvent maintenant dans {folder}
  @msg	{n} font file(s) are now in {folder}; {failed} couldn't be added: {reason}	{n} fichier(s) de polices se trouvent maintenant dans {folder} ; {failed} n’ont pas pu être ajoutés : {reason}
@@ -5403,7 +5563,7 @@ index 03146f1..8b6a9ac 100644
  mark-style	Japanese	Japonais
  theme	Appearance	Apparence
 diff --git a/crates/ui-egui/src/i18n/hu.tsv b/crates/ui-egui/src/i18n/hu.tsv
-index 461070d..11a080e 100644
+index 461070d..76b434c 100644
 --- a/crates/ui-egui/src/i18n/hu.tsv
 +++ b/crates/ui-egui/src/i18n/hu.tsv
 @@ -2,7 +2,7 @@
@@ -5702,7 +5862,7 @@ index 461070d..11a080e 100644
 +@msg	Plervo Vector doesn't search other apps' or the system's folders: {path}	a Plervo Vector nem keres más alkalmazások és a rendszer mappáiban: {path}
 +@msg	Plervo Vector doesn't search the Shared or Public folder in Users: {path}	a Plervo Vector nem keres a Users alatti Shared és Public mappában: {path}
 +@msg	Plervo Vector failed to start: {e}	A Plervo Vector nem tudott elindulni: {e}
-+@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	a Plervo Vector Fonts mappája itt nincs beállítva: az asztali alkalmazás és a vectorcraft-cli állítja be
++@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and plervo-vector-cli set it	a Plervo Vector Fonts mappája itt nincs beállítva: az asztali alkalmazás és a plervo-vector-cli állítja be
  @msg	version {0} files can't be compressed: only version {COMPRESSED_SINCE} and later open compressed files	ilyen verziójú fájl nem tömöríthető: {0}; tömörített fájlt csak ez a verzió és az újabbak nyitnak meg: {COMPRESSED_SINCE}
  @msg	width and height are at least 1 pixel	a szélesség és a magasság legalább 1 pixel
  @msg	workspace name can't be empty	a munkaterület neve nem lehet üres
@@ -5716,7 +5876,7 @@ index 461070d..11a080e 100644
  @msg	the file stopped being read (please report this bug)	a fájl beolvasása megszakadt (kérjük, jelentsd ezt a hibát)
  	Concentric Dividers:	Koncentrikus osztók:
 diff --git a/crates/ui-egui/src/i18n/it.tsv b/crates/ui-egui/src/i18n/it.tsv
-index 21cfcf1..25b43fc 100644
+index 21cfcf1..6ed3ee2 100644
 --- a/crates/ui-egui/src/i18n/it.tsv
 +++ b/crates/ui-egui/src/i18n/it.tsv
 @@ -1,7 +1,7 @@
@@ -5967,7 +6127,7 @@ index 21cfcf1..25b43fc 100644
  @msg	searching a folder isn't available on the web	la ricerca in una cartella non è disponibile sul web
  @msg	every search thread stopped on an internal error (please report this bug)	tutti i thread di ricerca si sono fermati per un errore interno (segnala questo bug)
 -@msg	VectorCraft's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	La cartella Fonts di VectorCraft non è impostata qui: la impostano l'app desktop e vectorcraft-cli
-+@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	La cartella Fonts di Plervo Vector non è impostata qui: la impostano l'app desktop e vectorcraft-cli
++@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and plervo-vector-cli set it	La cartella Fonts di Plervo Vector non è impostata qui: la impostano l'app desktop e plervo-vector-cli
  @msg	choose the font files to add	scegli i file dei font da aggiungere
  @msg	{n} font file(s) are now in {folder}	File di font ora in {folder}: {n}
  @msg	{n} font file(s) are now in {folder}; {failed} couldn't be added: {reason}	File di font ora in {folder}: {n}; impossibile aggiungerne {failed}: {reason}
@@ -5999,7 +6159,7 @@ index 21cfcf1..25b43fc 100644
  @msg	the file stopped being read (please report this bug)	la lettura del file si è interrotta (segnala questo errore)
  	Concentric Dividers:	Divisori concentrici:
 diff --git a/crates/ui-egui/src/i18n/ja.tsv b/crates/ui-egui/src/i18n/ja.tsv
-index 525c112..ff43601 100644
+index 525c112..4417b3c 100644
 --- a/crates/ui-egui/src/i18n/ja.tsv
 +++ b/crates/ui-egui/src/i18n/ja.tsv
 @@ -2,7 +2,7 @@
@@ -6293,7 +6453,7 @@ index 525c112..ff43601 100644
  @msg	searching a folder isn't available on the web	Web 版ではフォルダーを検索できません
  @msg	every search thread stopped on an internal error (please report this bug)	すべての検索スレッドが内部エラーで停止しました (このバグを報告してください)
 -@msg	VectorCraft's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	この環境では VectorCraft の Fonts フォルダーが設定されていません: デスクトップアプリと vectorcraft-cli が設定します
-+@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	この環境では Plervo Vector の Fonts フォルダーが設定されていません: デスクトップアプリと vectorcraft-cli が設定します
++@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and plervo-vector-cli set it	この環境では Plervo Vector の Fonts フォルダーが設定されていません: デスクトップアプリと plervo-vector-cli が設定します
  @msg	choose the font files to add	追加するフォントファイルを選択してください
  @msg	{n} font file(s) are now in {folder}	{n} 個のフォントファイルが {folder} に入りました
  @msg	{n} font file(s) are now in {folder}; {failed} couldn't be added: {reason}	{n} 個のフォントファイルが {folder} に入りましたが、{failed} 個は追加できませんでした: {reason}
@@ -6307,7 +6467,7 @@ index 525c112..ff43601 100644
  @msg	the file stopped being read (please report this bug)	ファイルの読み込みが中断されました (このバグを報告してください)
  	Concentric Dividers:	同心円の分割線:
 diff --git a/crates/ui-egui/src/i18n/ko.tsv b/crates/ui-egui/src/i18n/ko.tsv
-index 6443cfc..d53d01c 100644
+index 6443cfc..76b598b 100644
 --- a/crates/ui-egui/src/i18n/ko.tsv
 +++ b/crates/ui-egui/src/i18n/ko.tsv
 @@ -1,7 +1,7 @@
@@ -6596,7 +6756,7 @@ index 6443cfc..d53d01c 100644
  @msg	searching a folder isn't available on the web	웹에서는 폴더 검색을 사용할 수 없습니다
  @msg	every search thread stopped on an internal error (please report this bug)	내부 오류로 모든 검색 스레드가 중지되었습니다(이 버그를 신고해 주세요)
 -@msg	VectorCraft's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	여기에는 VectorCraft의 글꼴 폴더가 설정되어 있지 않습니다: 데스크톱 앱과 vectorcraft-cli가 설정합니다
-+@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	여기에는 Plervo Vector의 글꼴 폴더가 설정되어 있지 않습니다: 데스크톱 앱과 vectorcraft-cli가 설정합니다
++@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and plervo-vector-cli set it	여기에는 Plervo Vector의 글꼴 폴더가 설정되어 있지 않습니다: 데스크톱 앱과 plervo-vector-cli가 설정합니다
  @msg	choose the font files to add	추가할 글꼴 파일을 선택하세요
  @msg	{n} font file(s) are now in {folder}	글꼴 파일 {n}개가 이제 {folder}에 있습니다
  @msg	{n} font file(s) are now in {folder}; {failed} couldn't be added: {reason}	글꼴 파일 {n}개가 이제 {folder}에 있으며, {failed}개는 추가할 수 없었습니다: {reason}
@@ -6610,7 +6770,7 @@ index 6443cfc..d53d01c 100644
  @msg	the file stopped being read (please report this bug)	파일 읽기가 중단되었습니다(이 버그를 신고해 주세요)
  	Concentric Dividers:	동심원 구분선:
 diff --git a/crates/ui-egui/src/i18n/pl.tsv b/crates/ui-egui/src/i18n/pl.tsv
-index ae9765d..9228be7 100644
+index ae9765d..3e626ee 100644
 --- a/crates/ui-egui/src/i18n/pl.tsv
 +++ b/crates/ui-egui/src/i18n/pl.tsv
 @@ -1,7 +1,7 @@
@@ -6834,7 +6994,7 @@ index ae9765d..9228be7 100644
  @msg	searching a folder isn't available on the web	przeszukiwanie folderu nie jest dostępne w wersji webowej
  @msg	every search thread stopped on an internal error (please report this bug)	wszystkie wątki wyszukiwania zatrzymały się na błędzie wewnętrznym (zgłoś ten błąd)
 -@msg	VectorCraft's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	folder czcionek VectorCraft nie jest tu ustawiony: ustawia go aplikacja desktopowa i vectorcraft-cli
-+@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	folder czcionek Plervo Vector nie jest tu ustawiony: ustawia go aplikacja desktopowa i vectorcraft-cli
++@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and plervo-vector-cli set it	folder czcionek Plervo Vector nie jest tu ustawiony: ustawia go aplikacja desktopowa i plervo-vector-cli
  @msg	choose the font files to add	wybierz pliki czcionek do dodania
  @msg	{n} font file(s) are now in {folder}	pliki czcionek w {folder}: {n}
  @msg	{n} font file(s) are now in {folder}; {failed} couldn't be added: {reason}	pliki czcionek w {folder}: {n}; nie udało się dodać: {failed} ({reason})
@@ -6890,7 +7050,7 @@ index ae9765d..9228be7 100644
  @msg	the file stopped being read (please report this bug)	odczyt pliku został przerwany (zgłoś ten błąd)
  	Concentric Dividers:	Podziały koncentryczne:
 diff --git a/crates/ui-egui/src/i18n/pt-br.tsv b/crates/ui-egui/src/i18n/pt-br.tsv
-index 63e725e..e1a31ea 100644
+index 63e725e..92dba94 100644
 --- a/crates/ui-egui/src/i18n/pt-br.tsv
 +++ b/crates/ui-egui/src/i18n/pt-br.tsv
 @@ -14,7 +14,7 @@
@@ -7105,7 +7265,7 @@ index 63e725e..e1a31ea 100644
  @msg	searching a folder isn't available on the web	pesquisar em uma pasta não está disponível na web
  @msg	every search thread stopped on an internal error (please report this bug)	todos os processos de pesquisa pararam por um erro interno (relate este bug)
 -@msg	VectorCraft's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	A pasta Fontes do VectorCraft não está definida aqui: o aplicativo para desktop e o vectorcraft-cli a definem
-+@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	A pasta Fontes do Plervo Vector não está definida aqui: o aplicativo para desktop e o vectorcraft-cli a definem
++@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and plervo-vector-cli set it	A pasta Fontes do Plervo Vector não está definida aqui: o aplicativo para desktop e o plervo-vector-cli a definem
  @msg	choose the font files to add	escolha os arquivos de fonte a adicionar
  @msg	{n} font file(s) are now in {folder}	{n} arquivo(s) de fonte agora está(ão) em {folder}
  @msg	{n} font file(s) are now in {folder}; {failed} couldn't be added: {reason}	{n} arquivo(s) de fonte agora está(ão) em {folder}; {failed} não pôde(puderam) ser adicionado(s): {reason}
@@ -7212,7 +7372,7 @@ index 63e725e..e1a31ea 100644
  	Vertical Type	Texto Vertical
  	Vertical Type on a Path	Texto Vertical em um Caminho
 diff --git a/crates/ui-egui/src/i18n/ru.tsv b/crates/ui-egui/src/i18n/ru.tsv
-index ee7c6e5..b83654f 100644
+index ee7c6e5..4e3bfea 100644
 --- a/crates/ui-egui/src/i18n/ru.tsv
 +++ b/crates/ui-egui/src/i18n/ru.tsv
 @@ -1,7 +1,7 @@
@@ -7463,7 +7623,7 @@ index ee7c6e5..b83654f 100644
  @msg	searching a folder isn't available on the web	поиск в папке недоступен в веб-версии
  @msg	every search thread stopped on an internal error (please report this bug)	все потоки поиска остановились из-за внутренней ошибки (сообщите об этой ошибке)
 -@msg	VectorCraft's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	Папка Fonts VectorCraft здесь не задана: её задают настольное приложение и vectorcraft-cli
-+@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	Папка Fonts Plervo Vector здесь не задана: её задают настольное приложение и vectorcraft-cli
++@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and plervo-vector-cli set it	Папка Fonts Plervo Vector здесь не задана: её задают настольное приложение и plervo-vector-cli
  @msg	choose the font files to add	выберите файлы шрифтов для добавления
  @msg	{n} font file(s) are now in {folder}	Файлов шрифтов теперь в {folder}: {n}
  @msg	{n} font file(s) are now in {folder}; {failed} couldn't be added: {reason}	Файлов шрифтов теперь в {folder}: {n}; не удалось добавить {failed}: {reason}
@@ -7495,7 +7655,7 @@ index ee7c6e5..b83654f 100644
  @msg	the file stopped being read (please report this bug)	чтение файла прервалось (пожалуйста, сообщите об этой ошибке)
  	Concentric Dividers:	Концентрические разделители:
 diff --git a/crates/ui-egui/src/i18n/sv.tsv b/crates/ui-egui/src/i18n/sv.tsv
-index fb6ef9f..f1e981b 100644
+index fb6ef9f..b1259bf 100644
 --- a/crates/ui-egui/src/i18n/sv.tsv
 +++ b/crates/ui-egui/src/i18n/sv.tsv
 @@ -5,7 +5,7 @@
@@ -7746,7 +7906,7 @@ index fb6ef9f..f1e981b 100644
  @msg	searching a folder isn't available on the web	sökning i en mapp är inte tillgänglig på webben
  @msg	every search thread stopped on an internal error (please report this bug)	alla söktrådar stoppades av ett internt fel (rapportera gärna felet)
 -@msg	VectorCraft's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	VectorCrafts mapp Fonts anges inte här: den anges av skrivbordsappen och vectorcraft-cli
-+@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	Plervo Vectors mapp Fonts anges inte här: den anges av skrivbordsappen och vectorcraft-cli
++@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and plervo-vector-cli set it	Plervo Vectors mapp Fonts anges inte här: den anges av skrivbordsappen och plervo-vector-cli
  @msg	choose the font files to add	välj de typsnittsfiler som ska läggas till
  @msg	{n} font file(s) are now in {folder}	{n} teckensnittsfil(er) finns nu i {folder}
  @msg	{n} font file(s) are now in {folder}; {failed} couldn't be added: {reason}	{n} teckensnittsfil(er) finns nu i {folder}; {failed} kunde inte läggas till: {reason}
@@ -7875,7 +8035,7 @@ index 3592276..28dda72 100644
      }
      assert_eq!(tr_ctx(cs(), "diagnostics", "render"), "vykreslení");
 diff --git a/crates/ui-egui/src/i18n/uk.tsv b/crates/ui-egui/src/i18n/uk.tsv
-index d80b765..7bbd462 100644
+index d80b765..62df78c 100644
 --- a/crates/ui-egui/src/i18n/uk.tsv
 +++ b/crates/ui-egui/src/i18n/uk.tsv
 @@ -1,7 +1,7 @@
@@ -8126,7 +8286,7 @@ index d80b765..7bbd462 100644
  @msg	searching a folder isn't available on the web	пошук у папці недоступний у веб-версії
  @msg	every search thread stopped on an internal error (please report this bug)	усі потоки пошуку зупинилися через внутрішню помилку (повідомте про цю помилку)
 -@msg	VectorCraft's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	Папку Fonts VectorCraft тут не задано: її задають настільна програма та vectorcraft-cli
-+@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	Папку Fonts Plervo Vector тут не задано: її задають настільна програма та vectorcraft-cli
++@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and plervo-vector-cli set it	Папку Fonts Plervo Vector тут не задано: її задають настільна програма та plervo-vector-cli
  @msg	choose the font files to add	виберіть файли шрифтів для додавання
  @msg	{n} font file(s) are now in {folder}	Файлів шрифтів тепер у {folder}: {n}
  @msg	{n} font file(s) are now in {folder}; {failed} couldn't be added: {reason}	Файлів шрифтів тепер у {folder}: {n}; не вдалося додати {failed}: {reason}
@@ -8158,7 +8318,7 @@ index d80b765..7bbd462 100644
  @msg	the file stopped being read (please report this bug)	читання файлу перервалося (будь ласка, повідомте про цю помилку)
  	Concentric Dividers:	Концентричні розділювачі:
 diff --git a/crates/ui-egui/src/i18n/vi.tsv b/crates/ui-egui/src/i18n/vi.tsv
-index 68faa3b..684abda 100644
+index 68faa3b..81b7aa4 100644
 --- a/crates/ui-egui/src/i18n/vi.tsv
 +++ b/crates/ui-egui/src/i18n/vi.tsv
 @@ -2,7 +2,7 @@
@@ -8423,7 +8583,7 @@ index 68faa3b..684abda 100644
 +@msg	Plervo Vector doesn't search other apps' or the system's folders: {path}	Plervo Vector không tìm kiếm trong thư mục của ứng dụng khác hoặc hệ thống: {path}
 +@msg	Plervo Vector doesn't search the Shared or Public folder in Users: {path}	Plervo Vector không tìm kiếm thư mục Shared hoặc Public trong Users: {path}
 +@msg	Plervo Vector failed to start: {e}	Plervo Vector khởi động thất bại: {e}
-+@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and vectorcraft-cli set it	Thư mục Phông chữ của Plervo Vector chưa được đặt ở đây: ứng dụng máy tính và vectorcraft-cli đặt nó
++@msg	Plervo Vector's Fonts folder isn't set here: the desktop app and plervo-vector-cli set it	Thư mục Phông chữ của Plervo Vector chưa được đặt ở đây: ứng dụng máy tính và plervo-vector-cli đặt nó
  @msg	version {0} files can't be compressed: only version {COMPRESSED_SINCE} and later open compressed files	tệp phiên bản {0} không thể nén: chỉ phiên bản {COMPRESSED_SINCE} trở lên mới mở tệp nén
  @msg	width and height are at least 1 pixel	chiều rộng và chiều cao phải ít nhất 1 pixel
  @msg	workspace name can't be empty	tên không gian làm việc không được để trống
@@ -10412,7 +10572,7 @@ index 3940a64..a765492 100755
  
  trap 'rm -f "$CERT"' EXIT
 diff --git a/packaging/macos/package.sh b/packaging/macos/package.sh
-index a860712..984837d 100755
+index a860712..7255e72 100755
 --- a/packaging/macos/package.sh
 +++ b/packaging/macos/package.sh
 @@ -1,8 +1,8 @@
@@ -10426,7 +10586,19 @@ index a860712..984837d 100755
  #
  # Usage: packaging/macos/package.sh [--arch universal|aarch64|x86_64] [--skip-build]
  #
-@@ -39,9 +39,9 @@ export MACOSX_DEPLOYMENT_TARGET=11.0
+@@ -10,8 +10,9 @@
+ #   MACOS_SIGN_IDENTITY   codesign identity (name or SHA-1). Default "-" = ad-hoc (local testing;
+ #                         Gatekeeper will reject the result on other Macs). In CI, import-cert.sh sets it.
+ #   MACOS_KEYCHAIN        keychain holding the identity (optional)
+-# Notarization (env; all three needed, and a real identity):
+-#   APPLE_ID, APPLE_PASSWORD (app-specific password), APPLE_TEAM_ID
++# Notarization (env; requires a real signing identity):
++#   MACOS_NOTARY_PROFILE  preferred notarytool profile in MACOS_KEYCHAIN
++#   Or APPLE_ID, APPLE_PASSWORD (app-specific password), APPLE_TEAM_ID
+ set -euo pipefail
+ # shellcheck source=../env.sh
+ . "$(dirname "${BASH_SOURCE[0]}")/../env.sh"
+@@ -39,31 +40,43 @@ export MACOSX_DEPLOYMENT_TARGET=11.0
  IDENTITY="${MACOS_SIGN_IDENTITY:--}"
  SHORT_VERSION="${VERSION%%-*}"
  WORK="$CARGO_TARGET_DIR/macos-package"
@@ -10438,9 +10610,25 @@ index a860712..984837d 100755
 +CLI_ZIP="$DIST/plervo-vector-cli-$VERSION-macos-$ARCH.zip"
  
  NOTARIZE=0
++NOTARY_ARGS=()
  if [ "$IDENTITY" = "-" ]; then
-@@ -52,18 +52,18 @@ else
-   warn "macOS: APPLE_ID / APPLE_PASSWORD / APPLE_TEAM_ID incomplete; signed but not notarized"
++  if [ -n "${MACOS_NOTARY_PROFILE:-}" ]; then
++    echo "error: MACOS_NOTARY_PROFILE requires a real MACOS_SIGN_IDENTITY" >&2
++    exit 2
++  fi
+   warn "macOS: ad-hoc signing (no MACOS_SIGN_IDENTITY); artifacts are not notarized"
++elif [ -n "${MACOS_NOTARY_PROFILE:-}" ]; then
++  NOTARIZE=1
++  NOTARY_ARGS=(--keychain-profile "$MACOS_NOTARY_PROFILE")
++  if [ -n "${MACOS_KEYCHAIN:-}" ]; then
++    NOTARY_ARGS+=(--keychain "$MACOS_KEYCHAIN")
++  fi
+ elif [ -n "${APPLE_ID:-}" ] && [ -n "${APPLE_PASSWORD:-}" ] && [ -n "${APPLE_TEAM_ID:-}" ]; then
+   NOTARIZE=1
++  NOTARY_ARGS=(--apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$APPLE_TEAM_ID")
+ else
+-  warn "macOS: APPLE_ID / APPLE_PASSWORD / APPLE_TEAM_ID incomplete; signed but not notarized"
++  warn "macOS: no Keychain profile or complete Apple credentials; signed but not notarized"
  fi
  
 -echo "==> VectorCraft $VERSION for macOS ($ARCH), identity: $IDENTITY, notarize: $NOTARIZE"
@@ -10461,7 +10649,24 @@ index a860712..984837d 100755
    inputs=()
    for t in "${TARGETS[@]}"; do inputs+=("$CARGO_TARGET_DIR/$t/release/$bin"); done
    lipo -create -output "$WORK/bin/$bin" "${inputs[@]}"
-@@ -97,29 +97,31 @@ notarize() {
+@@ -83,43 +96,45 @@ sign() {
+ notarize() {
+   local file="$1" out id status
+   echo "==> notarizing $(basename "$file") (this can take a few minutes)"
+-  out="$(xcrun notarytool submit "$file" --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" \
+-    --team-id "$APPLE_TEAM_ID" --wait --timeout 1h --output-format json)" || true
++  out="$(xcrun notarytool submit "$file" "${NOTARY_ARGS[@]}" \
++    --wait --timeout 1h --output-format json)" || true
+   echo "$out"
+   id="$(printf '%s' "$out" | plutil -extract id raw -o - - 2>/dev/null || true)"
+   status="$(printf '%s' "$out" | plutil -extract status raw -o - - 2>/dev/null || true)"
+   if [ "$status" != "Accepted" ]; then
+     if [ -n "$id" ]; then
+-      xcrun notarytool log "$id" --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$APPLE_TEAM_ID" || true
++      xcrun notarytool log "$id" "${NOTARY_ARGS[@]}" || true
+     fi
+     echo "error: notarization of $(basename "$file") failed (status: ${status:-unknown})" >&2
+     exit 1
    fi
  }
  
@@ -10499,7 +10704,7 @@ index a860712..984837d 100755
    xcrun stapler staple "$APP"
    xcrun stapler validate "$APP"
    spctl --assess --type execute -vvv "$APP"
-@@ -129,12 +131,10 @@ fi
+@@ -129,12 +144,10 @@ fi
  echo "==> building $DMG"
  STAGE="$WORK/dmg"
  mkdir -p "$STAGE"
@@ -10513,7 +10718,7 @@ index a860712..984837d 100755
  rm -f "$DMG"
  # `hdiutil create -srcfolder` writes the files as they are. `makehybrid -hfs` gave every file a
  # com.apple.FinderInfo, which `codesign --verify --strict` rejects as "Finder information, or
-@@ -155,7 +155,7 @@ hdiutil_retry() {
+@@ -155,7 +168,7 @@ hdiutil_retry() {
      sleep $((attempt * 10))
    done
  }
@@ -10522,7 +10727,7 @@ index a860712..984837d 100755
  sign "$DMG"
  codesign --verify --strict --verbose=2 "$DMG"
  # The app inside the image must still pass --strict, so a makehybrid-style regression can't ship.
-@@ -163,7 +163,7 @@ MOUNT="$WORK/dmg-check"
+@@ -163,7 +176,7 @@ MOUNT="$WORK/dmg-check"
  rm -rf "$MOUNT"
  mkdir -p "$MOUNT"
  hdiutil_retry attach attach -nobrowse -readonly -mountpoint "$MOUNT" "$DMG" >/dev/null
@@ -10531,7 +10736,7 @@ index a860712..984837d 100755
    hdiutil_retry detach detach "$MOUNT" >/dev/null || true
    exit 1
  fi
-@@ -177,17 +177,17 @@ fi
+@@ -177,17 +190,17 @@ fi
  
  # ---- CLI ---------------------------------------------------------------------------------------
  echo "==> building $CLI_ZIP"

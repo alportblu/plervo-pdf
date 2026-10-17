@@ -1532,7 +1532,7 @@ index 6678dec..8a6c925 100644
          assert!(logger.enabled(&log::Metadata::builder().level(log::Level::Info).target("cadcraft_ui_egui::gpu").build()));
          assert!(!logger.enabled(&log::Metadata::builder().level(log::Level::Info).target("naga").build()));
 diff --git a/apps/cadcraft/src/main.rs b/apps/cadcraft/src/main.rs
-index 157294a..e96ba40 100644
+index 157294a..bda2da7 100644
 --- a/apps/cadcraft/src/main.rs
 +++ b/apps/cadcraft/src/main.rs
 @@ -1,4 +1,4 @@
@@ -1589,6 +1589,15 @@ index 157294a..e96ba40 100644
  
  /// Stencil bits of the window's render pass (see `NativeOptions::stencil_buffer`).
  const STENCIL_BITS: u8 = 8;
+@@ -198,7 +198,7 @@ fn app_icon() -> Option<egui::IconData> {
+ 
+ fn version_string() -> String {
+     let sha = option_env!("CADCRAFT_BUILD_SHA").unwrap_or("dev");
+-    format!("cadcraft {} ({sha})", env!("CARGO_PKG_VERSION"))
++    format!("plervo-cad {} ({sha})", env!("CARGO_PKG_VERSION"))
+ }
+ 
+ /// The control port from `--control <port>` or `CADCRAFT_CONTROL_PORT` (`source`); a value that is
 @@ -253,7 +253,7 @@ fn main() -> eframe::Result {
              Some(Err(e)) => log::warn!("no log file: {e}"),
              None => {
@@ -1735,7 +1744,7 @@ index 0ea892d..1ccd140 100644
  
  /// Watches the OS setting.
 diff --git a/apps/cadcraft/src/workspace.rs b/apps/cadcraft/src/workspace.rs
-index e2a429d..2551353 100644
+index e2a429d..de74563 100644
 --- a/apps/cadcraft/src/workspace.rs
 +++ b/apps/cadcraft/src/workspace.rs
 @@ -20,14 +20,14 @@ pub struct Workspace {
@@ -1757,7 +1766,7 @@ index e2a429d..2551353 100644
      }
  }
  
-@@ -185,13 +185,13 @@ mod tests {
+@@ -185,17 +185,17 @@ mod tests {
      #[test]
      fn profile_override_isolated_or_explicitly_disabled() {
          let get = |key: &str| match key {
@@ -1773,6 +1782,11 @@ index e2a429d..2551353 100644
          }
          assert_eq!(
              config_dir_from("linux", |key| (key == "XDG_CONFIG_HOME").then(|| OsString::from("/config"))),
+-            Some(PathBuf::from("/config/cadcraft"))
++            Some(PathBuf::from("/config/plervo-cad"))
+         );
+         assert_eq!(config_dir_from("macos", |_| None), None);
+     }
 diff --git a/crates/color/Cargo.toml b/crates/color/Cargo.toml
 index cdad405..ef4bc76 100644
 --- a/crates/color/Cargo.toml
@@ -2148,6 +2162,115 @@ index 9bfc18e..becba38 100644
  [lints]
  workspace = true
  
+diff --git a/crates/mcp/src/backend.rs b/crates/mcp/src/backend.rs
+index cbde5c7..377f06f 100644
+--- a/crates/mcp/src/backend.rs
++++ b/crates/mcp/src/backend.rs
+@@ -16,7 +16,7 @@ pub trait Backend {
+     fn describe(&self) -> String;
+ }
+ 
+-/// A running CADCraft app reached through its loopback control port.
++/// A running Plervo CAD app reached through its loopback control port.
+ pub struct Remote {
+     addr: String,
+     conn: Option<(BufReader<TcpStream>, TcpStream)>,
+@@ -60,7 +60,7 @@ impl Remote {
+         Err(std::io::Error::new(
+             std::io::ErrorKind::TimedOut,
+             format!(
+-                "CADCraft was opened but its control port {} did not answer; if it was already open without the port, quit it and try again",
++                "Plervo CAD was opened but its control port {} did not answer; if it was already open without the port, quit it and try again",
+                 self.addr
+             ),
+         ))
+@@ -126,19 +126,19 @@ fn not_open(addr: &str, e: std::io::Error) -> std::io::Error {
+     std::io::Error::new(
+         e.kind(),
+         format!(
+-            "CADCraft is not answering at {addr} ({e}). Open CADCraft with its control port (`--control PORT` or CADCRAFT_CONTROL_PORT), then try again"
++            "Plervo CAD is not answering at {addr} ({e}). Open Plervo CAD with its control port (`--control PORT` or CADCRAFT_CONTROL_PORT), then try again"
+         ),
+     )
+ }
+ 
+-/// Open the app with the control port of `addr` (macOS: `open -a CADCraft`).
++/// Open the app with the control port of `addr` (macOS: `open -a Plervo CAD`).
+ fn launch_app(addr: &str) -> std::io::Result<()> {
+     let port = addr.rsplit(':').next().filter(|p| p.parse::<u16>().is_ok()).ok_or_else(|| std::io::Error::other(format!("no port in {addr}")))?;
+     if cfg!(target_os = "macos") {
+-        let ok = std::process::Command::new("open").args(["-a", "CADCraft", "--args", "--control", port]).status()?.success();
+-        if ok { Ok(()) } else { Err(std::io::Error::other("could not open CADCraft (is it in Applications?)")) }
++        let ok = std::process::Command::new("open").args(["-a", "Plervo CAD", "--args", "--control", port]).status()?.success();
++        if ok { Ok(()) } else { Err(std::io::Error::other("could not open Plervo CAD (is it in Applications?)")) }
+     } else {
+-        Err(std::io::Error::other(format!("CADCraft is not running; start it with `cadcraft --control {port}`")))
++        Err(std::io::Error::other(format!("Plervo CAD is not running; start it with `plervo-cad --control {port}`")))
+     }
+ }
+ 
+@@ -167,10 +167,10 @@ impl Backend for Remote {
+             Ok(r) => r,
+             // Resend only when the request cannot have been applied. After a sent mutation with no reply the outcome is unknown, and
+             // resending could apply it twice (for example two circles from one call), so report that instead.
+-            Err((_, sent)) if !sent || is_read_only(method) => self.roundtrip(&line).map_err(|(e, _)| format!("CADCraft at {}: {e}", self.addr))?,
++            Err((_, sent)) if !sent || is_read_only(method) => self.roundtrip(&line).map_err(|(e, _)| format!("Plervo CAD at {}: {e}", self.addr))?,
+             Err((e, _)) => {
+                 return Err(format!(
+-                    "CADCraft at {}: {e}; the reply was lost, so `{method}` may or may not have been applied. Inspect the drawing first",
++                    "Plervo CAD at {}: {e}; the reply was lost, so `{method}` may or may not have been applied. Inspect the drawing first",
+                     self.addr
+                 ));
+             }
+@@ -182,7 +182,7 @@ impl Backend for Remote {
+             let e = v.get("error").and_then(Value::as_str).unwrap_or("error");
+             // A timeout says whether the request can still have run (#345).
+             Err(match v.get("state").and_then(Value::as_str) {
+-                Some("not-run") => format!("{e}: CADCraft did not start `{method}` and won't; it is safe to send again"),
++                Some("not-run") => format!("{e}: Plervo CAD did not start `{method}` and won't; it is safe to send again"),
+                 Some("may-have-run") => format!("{e}: `{method}` may or may not have been applied. Inspect the drawing first"),
+                 _ => e.to_string(),
+             })
+@@ -192,7 +192,7 @@ impl Backend for Remote {
+         true
+     }
+     fn describe(&self) -> String {
+-        format!("connected to CADCraft at {}", self.addr)
++        format!("connected to Plervo CAD at {}", self.addr)
+     }
+ }
+ 
+@@ -347,7 +347,7 @@ impl Backend for Headless {
+         false
+     }
+     fn describe(&self) -> String {
+-        "headless CADCraft session".into()
++        "headless Plervo CAD session".into()
+     }
+ }
+ 
+diff --git a/crates/mcp/src/server.rs b/crates/mcp/src/server.rs
+index ba6627c..b62263a 100644
+--- a/crates/mcp/src/server.rs
++++ b/crates/mcp/src/server.rs
+@@ -15,7 +15,7 @@ const INVALID_REQUEST: i64 = -32600;
+ const METHOD_NOT_FOUND: i64 = -32601;
+ const INVALID_PARAMS: i64 = -32602;
+ 
+-const INSTRUCTIONS: &str = "CADCraft is a 2D/3D CAD drafting app (an AutoCAD clone). Coordinates are drawing units, \
++const INSTRUCTIONS: &str = "Plervo CAD is a 2D/3D CAD drafting app. Coordinates are drawing units, \
+ y up. Fastest path: command_line with AutoCAD syntax, e.g. `line 0,0 10,0 10,5 c`, `circle 5,2.5 1`, \
+ `rectang 0,0 4,3`, `offset 1` then pick, `zoom e`. Or execute with JSON (list_commands shows ids and params). \
+ Verify with inspect_drawing / query_entities and look with render.";
+@@ -104,7 +104,7 @@ impl Server {
+                 Ok(json!({
+                     "protocolVersion": version,
+                     "capabilities": {"tools": {"listChanged": false}, "resources": {"listChanged": false}},
+-                    "serverInfo": {"name": "cadcraft", "title": "CADCraft", "version": env!("CARGO_PKG_VERSION")},
++                    "serverInfo": {"name": "cadcraft", "title": "Plervo CAD", "version": env!("CARGO_PKG_VERSION")},
+                     "instructions": format!("{INSTRUCTIONS} Backend: {}.", self.backend.describe()),
+                 }))
+             }
 diff --git a/crates/render/Cargo.toml b/crates/render/Cargo.toml
 index d62af23..ccd3d2e 100644
 --- a/crates/render/Cargo.toml
@@ -4511,7 +4634,7 @@ index e36c0c1..d23b28d 100755
  
  trap 'rm -f "$CERT"' EXIT
 diff --git a/packaging/macos/package.sh b/packaging/macos/package.sh
-index 203dc20..a76aadf 100755
+index 203dc20..fa2958f 100755
 --- a/packaging/macos/package.sh
 +++ b/packaging/macos/package.sh
 @@ -1,8 +1,8 @@
@@ -4525,7 +4648,19 @@ index 203dc20..a76aadf 100755
  #
  # Usage: packaging/macos/package.sh [--arch universal|aarch64|x86_64] [--skip-build]
  #
-@@ -39,9 +39,9 @@ export MACOSX_DEPLOYMENT_TARGET=11.0
+@@ -10,8 +10,9 @@
+ #   MACOS_SIGN_IDENTITY   codesign identity (name or SHA-1). Default "-" = ad-hoc (local testing;
+ #                         Gatekeeper will reject the result on other Macs). In CI, import-cert.sh sets it.
+ #   MACOS_KEYCHAIN        keychain holding the identity (optional)
+-# Notarization (env; all three needed, and a real identity):
+-#   APPLE_ID, APPLE_PASSWORD (app-specific password), APPLE_TEAM_ID
++# Notarization (env; requires a real signing identity):
++#   MACOS_NOTARY_PROFILE  preferred notarytool profile in MACOS_KEYCHAIN
++#   Or APPLE_ID, APPLE_PASSWORD (app-specific password), APPLE_TEAM_ID
+ set -euo pipefail
+ # shellcheck source=../env.sh
+ . "$(dirname "${BASH_SOURCE[0]}")/../env.sh"
+@@ -39,31 +40,43 @@ export MACOSX_DEPLOYMENT_TARGET=11.0
  IDENTITY="${MACOS_SIGN_IDENTITY:--}"
  SHORT_VERSION="${VERSION%%-*}"
  WORK="$CARGO_TARGET_DIR/macos-package"
@@ -4537,9 +4672,25 @@ index 203dc20..a76aadf 100755
 +CLI_ZIP="$DIST/plervo-cad-cli-$VERSION-macos-$ARCH.zip"
  
  NOTARIZE=0
++NOTARY_ARGS=()
  if [ "$IDENTITY" = "-" ]; then
-@@ -52,18 +52,18 @@ else
-   warn "macOS: APPLE_ID / APPLE_PASSWORD / APPLE_TEAM_ID incomplete; signed but not notarized"
++  if [ -n "${MACOS_NOTARY_PROFILE:-}" ]; then
++    echo "error: MACOS_NOTARY_PROFILE requires a real MACOS_SIGN_IDENTITY" >&2
++    exit 2
++  fi
+   warn "macOS: ad-hoc signing (no MACOS_SIGN_IDENTITY); artifacts are not notarized"
++elif [ -n "${MACOS_NOTARY_PROFILE:-}" ]; then
++  NOTARIZE=1
++  NOTARY_ARGS=(--keychain-profile "$MACOS_NOTARY_PROFILE")
++  if [ -n "${MACOS_KEYCHAIN:-}" ]; then
++    NOTARY_ARGS+=(--keychain "$MACOS_KEYCHAIN")
++  fi
+ elif [ -n "${APPLE_ID:-}" ] && [ -n "${APPLE_PASSWORD:-}" ] && [ -n "${APPLE_TEAM_ID:-}" ]; then
+   NOTARIZE=1
++  NOTARY_ARGS=(--apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$APPLE_TEAM_ID")
+ else
+-  warn "macOS: APPLE_ID / APPLE_PASSWORD / APPLE_TEAM_ID incomplete; signed but not notarized"
++  warn "macOS: no Keychain profile or complete Apple credentials; signed but not notarized"
  fi
  
 -echo "==> CADCraft $VERSION for macOS ($ARCH), identity: $IDENTITY, notarize: $NOTARIZE"
@@ -4560,7 +4711,24 @@ index 203dc20..a76aadf 100755
    inputs=()
    for t in "${TARGETS[@]}"; do inputs+=("$CARGO_TARGET_DIR/$t/release/$bin"); done
    lipo -create -output "$WORK/bin/$bin" "${inputs[@]}"
-@@ -97,12 +97,12 @@ notarize() {
+@@ -83,26 +96,26 @@ sign() {
+ notarize() {
+   local file="$1" out id status
+   echo "==> notarizing $(basename "$file") (this can take a few minutes)"
+-  out="$(xcrun notarytool submit "$file" --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" \
+-    --team-id "$APPLE_TEAM_ID" --wait --timeout 1h --output-format json)" || true
++  out="$(xcrun notarytool submit "$file" "${NOTARY_ARGS[@]}" \
++    --wait --timeout 1h --output-format json)" || true
+   echo "$out"
+   id="$(printf '%s' "$out" | plutil -extract id raw -o - - 2>/dev/null || true)"
+   status="$(printf '%s' "$out" | plutil -extract status raw -o - - 2>/dev/null || true)"
+   if [ "$status" != "Accepted" ]; then
+     if [ -n "$id" ]; then
+-      xcrun notarytool log "$id" --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$APPLE_TEAM_ID" || true
++      xcrun notarytool log "$id" "${NOTARY_ARGS[@]}" || true
+     fi
+     echo "error: notarization of $(basename "$file") failed (status: ${status:-unknown})" >&2
+     exit 1
    fi
  }
  
@@ -4576,7 +4744,7 @@ index 203dc20..a76aadf 100755
  # Licences of the embedded craft-fonts fonts (only when built with CRAFT_FONTS_DIR).
  copy_font_licences "$APP/Contents/Resources"
  sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
-@@ -110,16 +110,18 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
+@@ -110,16 +123,18 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
    "$HERE/Info.plist.in" >"$APP/Contents/Info.plist"
  plutil -lint "$APP/Contents/Info.plist"
  printf 'APPL????' >"$APP/Contents/PkgInfo"
@@ -4598,7 +4766,7 @@ index 203dc20..a76aadf 100755
    xcrun stapler staple "$APP"
    xcrun stapler validate "$APP"
    spctl --assess --type execute -vvv "$APP"
-@@ -129,17 +131,15 @@ fi
+@@ -129,21 +144,43 @@ fi
  echo "==> building $DMG"
  STAGE="$WORK/dmg"
  mkdir -p "$STAGE"
@@ -4609,16 +4777,50 @@ index 203dc20..a76aadf 100755
  mkdir -p "$STAGE/.background"
 -cp "$HERE/dmg/background.tiff" "$STAGE/.background/background.tiff"
 -cp "$HERE/dmg/dmg-layout.DS_Store" "$STAGE/.DS_Store"
- rm -f "$DMG" "$WORK/raw.dmg"
- # makehybrid + convert builds the image without attaching a device, unlike `create -srcfolder`,
- # which is flaky on CI runners ("Resource busy") and hangs in sandboxed sessions.
- # The volume name has no version: .DS_Store finds the background through an alias that includes it.
+-rm -f "$DMG" "$WORK/raw.dmg"
+-# makehybrid + convert builds the image without attaching a device, unlike `create -srcfolder`,
+-# which is flaky on CI runners ("Resource busy") and hangs in sandboxed sessions.
+-# The volume name has no version: .DS_Store finds the background through an alias that includes it.
 -hdiutil makehybrid -hfs -hfs-volume-name "CADCraft" -hfs-openfolder "$STAGE" -o "$WORK/raw.dmg" "$STAGE"
-+hdiutil makehybrid -hfs -hfs-volume-name "Plervo CAD" -hfs-openfolder "$STAGE" -o "$WORK/raw.dmg" "$STAGE"
- hdiutil convert "$WORK/raw.dmg" -format UDZO -imagekey zlib-level=9 -o "$DMG"
- rm -f "$WORK/raw.dmg"
+-hdiutil convert "$WORK/raw.dmg" -format UDZO -imagekey zlib-level=9 -o "$DMG"
+-rm -f "$WORK/raw.dmg"
++rm -f "$DMG"
++# `hdiutil create -srcfolder` writes the files as they are. `makehybrid -hfs` gave every file a
++# com.apple.FinderInfo (a Finder location of -1,-1), which `codesign --verify --strict` rejects as
++# "Finder information, or similar detritus" on the app in the image and on a copy installed from it,
++# so MDM and compliance checks reported a correctly notarized app as damaged (#390). `create`
++# attaches a device while it copies, which fails now and then on CI runners ("Resource busy"), so
++# it gets a few tries.
++# Usage: hdiutil_retry <what> <hdiutil args…>; tries five times with growing pauses.
++hdiutil_retry() {
++  local what="$1" attempt
++  shift
++  for attempt in 1 2 3 4 5; do
++    if hdiutil "$@"; then
++      return 0
++    fi
++    [ "$attempt" = 5 ] && { echo "hdiutil $what failed 5 times" >&2; return 1; }
++    warn "hdiutil $what failed (attempt $attempt of 5); retrying in $((attempt * 10))s"
++    sleep $((attempt * 10))
++  done
++}
++hdiutil_retry create create -srcfolder "$STAGE" -volname "Plervo CAD" -fs HFS+ -format UDZO -imagekey zlib-level=9 -ov "$DMG"
  sign "$DMG"
-@@ -153,17 +153,17 @@ fi
+ codesign --verify --strict --verbose=2 "$DMG"
++# The app inside the image must still pass --strict, so a makehybrid-style regression can't ship.
++MOUNT="$WORK/dmg-check"
++rm -rf "$MOUNT"
++mkdir -p "$MOUNT"
++hdiutil_retry attach attach -nobrowse -readonly -noautoopen -mountpoint "$MOUNT" "$DMG" >/dev/null
++if ! codesign --verify --strict --deep --verbose=2 "$MOUNT/Plervo CAD.app"; then
++  hdiutil_retry detach detach "$MOUNT" >/dev/null || true
++  exit 1
++fi
++hdiutil_retry detach detach "$MOUNT" >/dev/null
+ if [ "$NOTARIZE" = 1 ]; then
+   notarize "$DMG"
+   xcrun stapler staple "$DMG"
+@@ -153,17 +190,17 @@ fi
  
  # ---- CLI ---------------------------------------------------------------------------------------
  echo "==> building $CLI_ZIP"

@@ -52,6 +52,16 @@ reinstallation, Windows repair, and removal on disposable runners. Debian 13 and
 Fedora 44 containers test DEB/RPM installation, reinstallation and removal, recording
 the exact container digest alongside the installed executable checks. macOS candidates
 are copied out of their DMGs and checked alongside the separately extracted CLI.
+Each Linux TAR candidate is also installed, detected, reinstalled and removed by the
+Suite's real manager in a temporary profile. The helper checks both installed executable
+versions, CLI help and preservation of sentinel documents and preferences. It is a CI
+example, not a public application or an alternative production release source.
+The same workflow runs representative native release CLI operations with original
+synthetic files: conversions, native-format round trips, document/audio rendering,
+spreadsheet values and expected failures. Independent Pillow, pypdf, openpyxl and
+Python standard-library readers inspect the outputs. Their validation-only environment
+uses exact versions and wheel hashes in `acceptance-requirements.txt`; none of these
+Python packages is included in a Plervo application. Reports retain binary/input hashes.
 These internal checks do not establish publisher signing, notarization, clean-machine
 Gatekeeper acceptance, or a complete GUI workflow. Installation evidence is retained
 separately from the packages, including when a subsequent gate fails.
@@ -82,6 +92,12 @@ candidates disable the unauthenticated UI control transport by default. Their de
 
 The Windows packages in this workflow are unsigned and the Mac packages are not
 notarized. They must not be promoted automatically to public releases.
+
+For an approved macOS candidate, the product packager accepts the existing
+`MACOS_SIGN_IDENTITY`, `MACOS_KEYCHAIN` and `MACOS_NOTARY_PROFILE` settings used by
+the Suite. The same Developer ID Application identity can sign each product, but
+each application and its distribution artifacts require their own verification
+and notarization. No signing credentials are stored in this catalog or workflow.
 
 ## Identity and attribution
 

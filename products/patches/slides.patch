@@ -2080,6 +2080,102 @@ index 64944f0..f78c698 100644
  [lints]
  workspace = true
  
+diff --git a/crates/fonts/src/fontdb.rs b/crates/fonts/src/fontdb.rs
+index 5425c02..35c674e 100644
+--- a/crates/fonts/src/fontdb.rs
++++ b/crates/fonts/src/fontdb.rs
+@@ -1024,9 +1024,27 @@ impl FontDb {
+         None
+     }
+ 
++    /// A fallback accepted by the caller, continuing past unsuitable faces. Interface clients
++    /// can limit copied font bytes and reject colour faces without changing document fallback.
++    /// A constrained miss must not hide that character from later, unrestricted lookups.
++    pub fn fallback_for_matching(&self, c: char, accept: impl Fn(&FontFace) -> bool) -> Option<Arc<FontFace>> {
++        if let Some(f) = self.loaded_fallback_matching(c, u32::MAX, &accept) {
++            return Some(f);
++        }
++        #[cfg(not(target_arch = "wasm32"))]
++        if self.system_fallback_matching(c, &accept, false) {
++            return self.loaded_fallback_matching(c, u32::MAX, &accept);
++        }
++        None
++    }
++
+     fn loaded_fallback(&self, c: char, exclude: u32) -> Option<Arc<FontFace>> {
++        self.loaded_fallback_matching(c, exclude, &|_| true)
++    }
++
++    fn loaded_fallback_matching(&self, c: char, exclude: u32, accept: &dyn Fn(&FontFace) -> bool) -> Option<Arc<FontFace>> {
+         let faces = self.read_faces();
+-        let mut order: Vec<&Arc<FontFace>> = faces.iter().filter(|f| f.id != exclude).collect();
++        let mut order: Vec<&Arc<FontFace>> = faces.iter().filter(|f| f.id != exclude && accept(f)).collect();
+         order.sort_by_key(|f| (!f.family.eq_ignore_ascii_case(FALLBACK_FAMILY), f.italic, (f.weight - 400.0).abs() as i32));
+         order.into_iter().find(|f| f.covers(c)).cloned()
+     }
+@@ -1035,6 +1053,11 @@ impl FontDb {
+     /// file under 40 MB). Returns true if one was loaded. Misses are remembered.
+     #[cfg(not(target_arch = "wasm32"))]
+     pub(crate) fn system_fallback(&self, c: char) -> bool {
++        self.system_fallback_matching(c, &|_| true, true)
++    }
++
++    #[cfg(not(target_arch = "wasm32"))]
++    fn system_fallback_matching(&self, c: char, accept: &dyn Fn(&FontFace) -> bool, remember_miss: bool) -> bool {
+         if c.is_control() || c.is_whitespace() {
+             return false;
+         }
+@@ -1044,7 +1067,7 @@ impl FontDb {
+                 return false;
+             }
+         }
+-        let covered = |db: &FontDb| db.read_faces().iter().any(|f| f.covers(c));
++        let covered = |db: &FontDb| db.read_faces().iter().any(|f| accept(f) && f.covers(c));
+         let cataloged: Vec<String> = self.read_catalog().iter().map(|e| e.family.clone()).collect();
+         for fam in SYSTEM_FALLBACKS {
+             if !self.is_loaded(fam) && cataloged.iter().any(|f| f.eq_ignore_ascii_case(fam)) {
+@@ -1068,7 +1091,9 @@ impl FontDb {
+                 return true;
+             }
+         }
+-        self.sys.lock().unwrap_or_else(|e| e.into_inner()).misses.insert(c);
++        if remember_miss {
++            self.sys.lock().unwrap_or_else(|e| e.into_inner()).misses.insert(c);
++        }
+         false
+     }
+ 
+@@ -1241,3 +1266,30 @@ impl OutlinePen for FlipPen {
+         self.0.close_path();
+     }
+ }
++
++#[cfg(test)]
++mod fallback_filter_tests {
++    use super::*;
++
++    #[test]
++    fn rejected_face_does_not_hide_an_acceptable_fallback() {
++        let db = FontDb::with_font_dirs(Vec::new());
++        db.add_font(epaint_default_fonts::HACK_REGULAR.to_vec());
++        let first = db.fallback_for('A', u32::MAX).unwrap();
++        let other = db.fallback_for_matching('A', |face| face.id() != first.id()).unwrap();
++        assert!(other.covers('A'));
++        assert_ne!(other.id(), first.id());
++        assert!(db.fallback_for_matching('A', |_| false).is_none());
++        assert_eq!(db.fallback_for('A', u32::MAX).unwrap().id(), first.id(), "UI constraints do not change document fallback");
++    }
++
++    #[test]
++    fn accepted_fallback_respects_the_byte_limit() {
++        let db = FontDb::with_font_dirs(Vec::new());
++        db.add_font(epaint_default_fonts::HACK_REGULAR.to_vec());
++        let cap = db.read_faces().iter().filter(|face| face.covers('A')).map(|face| face.data().len()).min().unwrap();
++        let face = db.fallback_for_matching('A', |face| !face.is_color() && face.data().len() <= cap).unwrap();
++        assert!(face.covers('A') && face.data().len() <= cap && !face.is_color());
++        assert!(db.fallback_for_matching('A', |face| face.data().is_empty()).is_none());
++    }
++}
 diff --git a/crates/format/Cargo.toml b/crates/format/Cargo.toml
 index 252529e..aa3d631 100644
 --- a/crates/format/Cargo.toml
@@ -3127,6 +3223,25 @@ index 5450914..2432400 100644
          #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
          pub enum Icon {
              $($(#[$m])* $v,)*
+diff --git a/crates/ui-egui/src/ime_tests.rs b/crates/ui-egui/src/ime_tests.rs
+index 911a2d1..8248ce3 100644
+--- a/crates/ui-egui/src/ime_tests.rs
++++ b/crates/ui-egui/src/ime_tests.rs
+@@ -200,6 +200,14 @@ fn cjk_text_in_the_interface_is_drawn_with_real_glyphs() {
+         }
+         for family in [FontId::proportional(13.0), crate::theme::bold(13.0)] {
+             let missing: String = text.chars().filter(|c| !c.is_whitespace() && !h.ctx.fonts_mut(|f| f.has_glyph(&family, *c))).collect();
++            if !missing.is_empty() {
++                for c in missing.chars() {
++                    if let Some(face) = deckcraft_fonts::FontDb::global().fallback_for(c, u32::MAX) {
++                        eprintln!("fallback for {c}: {} / {}, index {}, {} bytes", face.family, face.style, face.index(), face.data().len());
++                    }
++                }
++                eprintln!("borrowed faces: {:?}", h.state().ui_fonts.faces.iter().map(|f| (&f.family, &f.style, f.index())).collect::<Vec<_>>());
++            }
+             assert!(missing.is_empty(), "{family:?} draws {missing:?} of {text:?} as boxes");
+         }
+         checked += 1;
 diff --git a/crates/ui-egui/src/lib.rs b/crates/ui-egui/src/lib.rs
 index ec97e6e..6de52c0 100644
 --- a/crates/ui-egui/src/lib.rs
@@ -3224,6 +3339,25 @@ index 1847d47..29a6d5a 100644
      pub accent: Color32,
      pub accent_text: Color32,
      pub contextual: Color32,
+diff --git a/crates/ui-egui/src/uifonts.rs b/crates/ui-egui/src/uifonts.rs
+index 50ebc87..bbebd07 100644
+--- a/crates/ui-egui/src/uifonts.rs
++++ b/crates/ui-egui/src/uifonts.rs
+@@ -67,7 +67,13 @@ impl UiFonts {
+         }
+         let font = egui::FontId::proportional(13.0);
+         let new = ctx.fonts_mut(|f| {
+-            faces_for_text(text, &self.faces, &mut self.seen, |c| f.has_glyph(&font, c), |c| FontDb::global().fallback_for(c, u32::MAX))
++            faces_for_text(
++                text,
++                &self.faces,
++                &mut self.seen,
++                |c| f.has_glyph(&font, c),
++                |c| FontDb::global().fallback_for_matching(c, |face| !face.is_color() && face.data().len() <= MAX_FACE_BYTES),
++            )
+         });
+         if !new.is_empty() {
+             log::debug!("interface fallback fonts: {}", new.iter().map(|f| f.family.as_str()).collect::<Vec<_>>().join(", "));
 diff --git a/crates/vp9/Cargo.toml b/crates/vp9/Cargo.toml
 index 31776a6..85a8526 100644
 --- a/crates/vp9/Cargo.toml
@@ -3273,6 +3407,45 @@ index 07741fd..1bd5367 100644
  Start the app with `--control <port>`. The server listens on `127.0.0.1` only and speaks JSON
  lines: one request object per line, one reply per line.
  
+diff --git a/docs/localization-parity.md b/docs/localization-parity.md
+index 3437cf5..7880387 100644
+--- a/docs/localization-parity.md
++++ b/docs/localization-parity.md
+@@ -1,6 +1,6 @@
+ # Localization parity with PowerPoint
+ 
+-> **Last reviewed:** 2026-10-10 · **Last updated:** 2026-10-12 · **Change:** minor (IME composition and CJK interface text, #101; previous: major, created; string count measured from source, PowerPoint's localizations read from its bundle) · **Target:** Microsoft PowerPoint for Mac 16.113 (Microsoft 365)
++> **Last reviewed:** 2026-10-10 · **Last updated:** 2026-10-17 · **Change:** minor (IME composition and CJK interface text, #101; previous: major, created; string count measured from source, PowerPoint's localizations read from its bundle) · **Target:** Microsoft PowerPoint for Mac 16.113 (Microsoft 365)
+ 
+ DeckCraft's interface is English only today: strings are literals in the UI and engine code, with
+ no catalog and no language switch. Requests: #15 (follow the system language), #30 and PR #34
+@@ -47,6 +47,19 @@ the system (#15), plural and number formatting, and an `xtask` check that every
+ translation. IME composition landed with #101 (slide text, notes and text fields; one undo step
+ per composition); the hours that included it are kept until the next re-measure.
+ 
++## Plervo validation — 2026-10-17
++
++The interface remains English-only. The existing CJK interface test failed on macOS
++when the first installed fallback was a collection larger than the UI's 48 MiB limit.
++Fallback selection now continues to a smaller, non-colour face instead of abandoning
++the character. The limit is unchanged, document font selection is unchanged, and a
++UI-only rejection does not mark the character missing for other callers. Font assets
++are unchanged; installed faces are borrowed in memory and are not distributed.
++
++The failure reproduced locally before the correction. The 23 font tests, five IME/UI
++script tests, two UI-font tests and strict scoped Clippy passed on the development Mac.
++The final native candidate matrix must confirm the updated source on all platforms.
++
+ ## Proofing languages
+ 
+ PowerPoint checks spelling in dozens of languages and lets each run carry a proofing language.
+@@ -57,5 +70,6 @@ common misspellings (`crates/engine/src/cmd/review.rs`); see [gaps.md](gaps.md#p
+ 
+ | Date | Change | Summary |
+ |---|---|---|
++| 2026-10-17 | minor | Plervo: preserve the 48 MiB interface-font limit while trying smaller fallback faces; local CJK/IME regressions passed, final native matrix pending |
+ | 2026-10-12 | minor | IME composition for Chinese, Japanese and Korean, and interface text in any installed script (#101) |
+ | 2026-10-10 | major | Created: twelve-language table, ~1,050 UI strings measured, PowerPoint for Mac's 26 languages from its bundle |
 diff --git a/docs/mcp.md b/docs/mcp.md
 index f7e24c7..e9351b1 100644
 --- a/docs/mcp.md
@@ -4335,7 +4508,7 @@ index f27d322..a92c83d 100755
  
  trap 'rm -f "$CERT"' EXIT
 diff --git a/packaging/macos/package.sh b/packaging/macos/package.sh
-index 4eed67a..008fee2 100755
+index 4eed67a..93cfcb3 100755
 --- a/packaging/macos/package.sh
 +++ b/packaging/macos/package.sh
 @@ -1,8 +1,8 @@
@@ -4349,7 +4522,19 @@ index 4eed67a..008fee2 100755
  #
  # Usage: packaging/macos/package.sh [--arch universal|aarch64|x86_64] [--skip-build]
  #
-@@ -39,9 +39,9 @@ export MACOSX_DEPLOYMENT_TARGET=11.0
+@@ -10,8 +10,9 @@
+ #   MACOS_SIGN_IDENTITY   codesign identity (name or SHA-1). Default "-" = ad-hoc (local testing;
+ #                         Gatekeeper will reject the result on other Macs). In CI, import-cert.sh sets it.
+ #   MACOS_KEYCHAIN        keychain holding the identity (optional)
+-# Notarization (env; all three needed, and a real identity):
+-#   APPLE_ID, APPLE_PASSWORD (app-specific password), APPLE_TEAM_ID
++# Notarization (env; requires a real signing identity):
++#   MACOS_NOTARY_PROFILE  preferred notarytool profile in MACOS_KEYCHAIN
++#   Or APPLE_ID, APPLE_PASSWORD (app-specific password), APPLE_TEAM_ID
+ set -euo pipefail
+ # shellcheck source=../common.sh
+ . "$(dirname "${BASH_SOURCE[0]}")/../common.sh"
+@@ -39,31 +40,43 @@ export MACOSX_DEPLOYMENT_TARGET=11.0
  IDENTITY="${MACOS_SIGN_IDENTITY:--}"
  SHORT_VERSION="${VERSION%%-*}"
  WORK="$CARGO_TARGET_DIR/macos-package"
@@ -4361,9 +4546,25 @@ index 4eed67a..008fee2 100755
 +CLI_ZIP="$DIST/plervo-slides-cli-$VERSION-macos-$ARCH.zip"
  
  NOTARIZE=0
++NOTARY_ARGS=()
  if [ "$IDENTITY" = "-" ]; then
-@@ -52,18 +52,18 @@ else
-   warn "macOS: APPLE_ID / APPLE_PASSWORD / APPLE_TEAM_ID incomplete; signed but not notarized"
++  if [ -n "${MACOS_NOTARY_PROFILE:-}" ]; then
++    echo "error: MACOS_NOTARY_PROFILE requires a real MACOS_SIGN_IDENTITY" >&2
++    exit 2
++  fi
+   warn "macOS: ad-hoc signing (no MACOS_SIGN_IDENTITY); artifacts are not notarized"
++elif [ -n "${MACOS_NOTARY_PROFILE:-}" ]; then
++  NOTARIZE=1
++  NOTARY_ARGS=(--keychain-profile "$MACOS_NOTARY_PROFILE")
++  if [ -n "${MACOS_KEYCHAIN:-}" ]; then
++    NOTARY_ARGS+=(--keychain "$MACOS_KEYCHAIN")
++  fi
+ elif [ -n "${APPLE_ID:-}" ] && [ -n "${APPLE_PASSWORD:-}" ] && [ -n "${APPLE_TEAM_ID:-}" ]; then
+   NOTARIZE=1
++  NOTARY_ARGS=(--apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$APPLE_TEAM_ID")
+ else
+-  warn "macOS: APPLE_ID / APPLE_PASSWORD / APPLE_TEAM_ID incomplete; signed but not notarized"
++  warn "macOS: no Keychain profile or complete Apple credentials; signed but not notarized"
  fi
  
 -echo "==> DeckCraft $VERSION for macOS ($ARCH), identity: $IDENTITY, notarize: $NOTARIZE"
@@ -4384,7 +4585,24 @@ index 4eed67a..008fee2 100755
    inputs=()
    for t in "${TARGETS[@]}"; do inputs+=("$CARGO_TARGET_DIR/$t/release/$bin"); done
    lipo -create -output "$WORK/bin/$bin" "${inputs[@]}"
-@@ -97,12 +97,12 @@ notarize() {
+@@ -83,26 +96,26 @@ sign() {
+ notarize() {
+   local file="$1" out id status
+   echo "==> notarizing $(basename "$file") (this can take a few minutes)"
+-  out="$(xcrun notarytool submit "$file" --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" \
+-    --team-id "$APPLE_TEAM_ID" --wait --timeout 1h --output-format json)" || true
++  out="$(xcrun notarytool submit "$file" "${NOTARY_ARGS[@]}" \
++    --wait --timeout 1h --output-format json)" || true
+   echo "$out"
+   id="$(printf '%s' "$out" | plutil -extract id raw -o - - 2>/dev/null || true)"
+   status="$(printf '%s' "$out" | plutil -extract status raw -o - - 2>/dev/null || true)"
+   if [ "$status" != "Accepted" ]; then
+     if [ -n "$id" ]; then
+-      xcrun notarytool log "$id" --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$APPLE_TEAM_ID" || true
++      xcrun notarytool log "$id" "${NOTARY_ARGS[@]}" || true
+     fi
+     echo "error: notarization of $(basename "$file") failed (status: ${status:-unknown})" >&2
+     exit 1
    fi
  }
  
@@ -4400,7 +4618,7 @@ index 4eed67a..008fee2 100755
  # Licences of the embedded craft-fonts fonts (only when built with CRAFT_FONTS_DIR).
  copy_font_licences "$APP/Contents/Resources"
  sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
-@@ -110,16 +110,18 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
+@@ -110,16 +123,18 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
    "$HERE/Info.plist.in" >"$APP/Contents/Info.plist"
  plutil -lint "$APP/Contents/Info.plist"
  printf 'APPL????' >"$APP/Contents/PkgInfo"
@@ -4422,7 +4640,7 @@ index 4eed67a..008fee2 100755
    xcrun stapler staple "$APP"
    xcrun stapler validate "$APP"
    spctl --assess --type execute -vvv "$APP"
-@@ -129,17 +131,15 @@ fi
+@@ -129,21 +144,43 @@ fi
  echo "==> building $DMG"
  STAGE="$WORK/dmg"
  mkdir -p "$STAGE"
@@ -4433,16 +4651,50 @@ index 4eed67a..008fee2 100755
  mkdir -p "$STAGE/.background"
 -cp "$HERE/dmg/background.tiff" "$STAGE/.background/background.tiff"
 -cp "$HERE/dmg/dmg-layout.DS_Store" "$STAGE/.DS_Store"
- rm -f "$DMG" "$WORK/raw.dmg"
- # makehybrid + convert builds the image without attaching a device, unlike `create -srcfolder`,
- # which is flaky on CI runners ("Resource busy") and hangs in sandboxed sessions.
- # The volume name has no version: .DS_Store finds the background through an alias that includes it.
+-rm -f "$DMG" "$WORK/raw.dmg"
+-# makehybrid + convert builds the image without attaching a device, unlike `create -srcfolder`,
+-# which is flaky on CI runners ("Resource busy") and hangs in sandboxed sessions.
+-# The volume name has no version: .DS_Store finds the background through an alias that includes it.
 -hdiutil makehybrid -hfs -hfs-volume-name "DeckCraft" -hfs-openfolder "$STAGE" -o "$WORK/raw.dmg" "$STAGE"
-+hdiutil makehybrid -hfs -hfs-volume-name "Plervo Slides" -hfs-openfolder "$STAGE" -o "$WORK/raw.dmg" "$STAGE"
- hdiutil convert "$WORK/raw.dmg" -format UDZO -imagekey zlib-level=9 -o "$DMG"
- rm -f "$WORK/raw.dmg"
+-hdiutil convert "$WORK/raw.dmg" -format UDZO -imagekey zlib-level=9 -o "$DMG"
+-rm -f "$WORK/raw.dmg"
++rm -f "$DMG"
++# `hdiutil create -srcfolder` writes the files as they are. `makehybrid -hfs` gave every file a
++# com.apple.FinderInfo (a Finder location of -1,-1), which `codesign --verify --strict` rejects as
++# "Finder information, or similar detritus" on the app in the image and on a copy installed from it,
++# so MDM and compliance checks reported a correctly notarized app as damaged (#390). `create`
++# attaches a device while it copies, which fails now and then on CI runners ("Resource busy"), so
++# it gets a few tries.
++# Usage: hdiutil_retry <what> <hdiutil args…>; tries five times with growing pauses.
++hdiutil_retry() {
++  local what="$1" attempt
++  shift
++  for attempt in 1 2 3 4 5; do
++    if hdiutil "$@"; then
++      return 0
++    fi
++    [ "$attempt" = 5 ] && { echo "hdiutil $what failed 5 times" >&2; return 1; }
++    warn "hdiutil $what failed (attempt $attempt of 5); retrying in $((attempt * 10))s"
++    sleep $((attempt * 10))
++  done
++}
++hdiutil_retry create create -srcfolder "$STAGE" -volname "Plervo Slides" -fs HFS+ -format UDZO -imagekey zlib-level=9 -ov "$DMG"
  sign "$DMG"
-@@ -153,17 +153,17 @@ fi
+ codesign --verify --strict --verbose=2 "$DMG"
++# The app inside the image must still pass --strict, so a makehybrid-style regression can't ship.
++MOUNT="$WORK/dmg-check"
++rm -rf "$MOUNT"
++mkdir -p "$MOUNT"
++hdiutil_retry attach attach -nobrowse -readonly -noautoopen -mountpoint "$MOUNT" "$DMG" >/dev/null
++if ! codesign --verify --strict --deep --verbose=2 "$MOUNT/Plervo Slides.app"; then
++  hdiutil_retry detach detach "$MOUNT" >/dev/null || true
++  exit 1
++fi
++hdiutil_retry detach detach "$MOUNT" >/dev/null
+ if [ "$NOTARIZE" = 1 ]; then
+   notarize "$DMG"
+   xcrun stapler staple "$DMG"
+@@ -153,17 +190,17 @@ fi
  
  # ---- CLI ---------------------------------------------------------------------------------------
  echo "==> building $CLI_ZIP"

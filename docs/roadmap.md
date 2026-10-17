@@ -1,4 +1,4 @@
-## Plervo application family — 2026-10-16
+## Plervo application family — 2026-10-17
 
 | Area | Implemented and locally checked | Remaining |
 | --- | --- | --- |
@@ -6,7 +6,7 @@
 | 12 additional apps | Pinned overlays, separate identities/icons, compiler/branding regressions, maintained font migrations, scoped dependency review | Full native gates, release-feature builds, signed/notarized Mac packages and installation acceptance |
 | Public automation boundary | Slides capability-authenticated; eight unreviewed loopback transports disabled in public builds | Isolated development transports still need authentication/replay review |
 | Languages | Develop/Publish OS-default selection and locale tests | Complete multilingual Slides/Audio interfaces |
-| Follow-up qualification | Twelve representative debug CLI acceptance reports (125 recorded checks); reproduced launcher/link faults and identified native association/locale mismatches | ZIP 9 compatibility checks, final overlays, native installer runs and release-binary acceptance |
+| Follow-up qualification | Twelve debug CLI reports (125 checks); ZIP 9 compatibility, recovery/input/font fixes, safe DMG creation, scoped Clippy and source/asset checks; twelve byte-identical overlay reproductions | Updated native matrix, actual release CLI acceptance and real Suite-managed Linux TAR installation |
 
 The published Mac alpha.2 and Linux alpha.3 assets are unchanged. Windows signing remains
 unconfirmed; no new public download is being claimed by this checkpoint.

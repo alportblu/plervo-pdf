@@ -1018,10 +1018,10 @@ index 887010d..de80e6f 100644
 +Based on storytold/photocraft at c699e3cda69f4852b43c0b191ab0091aaeff9d6a.
 +Original authorship and MIT/Apache-2.0 licenses are preserved. No ArtCraft endorsement.
 diff --git a/README.md b/README.md
-index b272705..190b025 100644
+index b272705..a8e3777 100644
 --- a/README.md
 +++ b/README.md
-@@ -1,435 +1,10 @@
+@@ -1,435 +1,15 @@
 -<p align="center">
 -  <a href="https://getartcraft.com/">
 -    <picture>
@@ -1054,13 +1054,15 @@ index b272705..190b025 100644
 -<p align="center">
 -  <a href="https://discord.gg/artcraft"><img alt="Join the ArtCraft community on Discord" src="https://img.shields.io/badge/Join%20us%20on%20Discord-5865F2?style=for-the-badge&logo=discord&logoColor=white" height="40"></a>
 -</p>
--
++Website: https://plervo.com/ · Optional support: https://buymeacoffee.com/alport
+ 
 -<p align="center">
 -  <a href="https://getartcraft.com/apps/photocraft"><b>PhotoCraft on getartcraft.com</b></a> ·
 -  <a href="https://getartcraft.com/">ArtCraft</a> ·
 -  <a href="https://getartcraft.com/apps">All Crafting Apps</a>
 -</p>
--
++## Editing tools
+ 
 -<br>
 -
 -<p align="center">
@@ -1462,7 +1464,8 @@ index b272705..190b025 100644
 -## Star history
 -
 -[![Star History Chart](https://api.star-history.com/svg?repos=storytold/photocraft&type=Date&legend=top-left)](https://www.star-history.com/?repos=storytold%2Fphotocraft&type=date&legend=top-left)
-+Website: https://plervo.com/ · Optional support: https://buymeacoffee.com/alport
++<h4>🧰 67 tools</h4>
++Move · Artboard · Rectangular and Elliptical Marquee · Single Row Marquee · Single Column Marquee · Lasso · Polygonal Lasso · Magnetic Lasso · Object Selection · Quick Selection · Magic Wand · Crop · Perspective Crop · Slice · Slice Select · Frame · Eyedropper · Color Sampler · Ruler · Note · Count · Remove · Spot Healing Brush · Healing Brush · Patch · Content-Aware Move · Red Eye · Brush · Pencil · Mixer Brush · Color Replacement · Clone Stamp · Pattern Stamp · History Brush · Eraser · Background Eraser · Magic Eraser · Gradient · Paint Bucket · Blur · Sharpen · Smudge · Dodge · Burn · Sponge · Pen · Freeform Pen · Curvature Pen · Add Anchor Point · Delete Anchor Point · Convert Point · Horizontal and Vertical Type · Horizontal and Vertical Type Mask · Path Selection · Direct Selection · Rectangle · Ellipse · Triangle · Polygon · Line · Custom Shape · Hand · Rotate View · Zoom
 diff --git a/apps/photocraft-cli/Cargo.toml b/apps/photocraft-cli/Cargo.toml
 index a6d3b49..71780c2 100644
 --- a/apps/photocraft-cli/Cargo.toml
@@ -2008,6 +2011,19 @@ index 8632fd2..74fe81d 100644
  /// other GPU keeps wgpu's default. `WGPU_VALIDATION_INDIRECT_CALL=1` still wins.
  fn skips_indirect_validation(os: Os, intel: bool) -> bool {
      os == Os::Mac && intel
+diff --git a/apps/photocraft/src/linux_libs.rs b/apps/photocraft/src/linux_libs.rs
+index b168214..33ca505 100644
+--- a/apps/photocraft/src/linux_libs.rs
++++ b/apps/photocraft/src/linux_libs.rs
+@@ -215,7 +215,7 @@ pub fn missing_message(session: DisplaySession, missing: &[AnyOf], distro: Distr
+             packages.push(p);
+         }
+     }
+-    let mut msg = format!("photocraft: cannot start: the {session_name} session needs libraries that are not installed: {}.\n", names.join(", "));
++    let mut msg = format!("plervo-photo: cannot start: the {session_name} session needs libraries that are not installed: {}.\n", names.join(", "));
+     msg.push_str(&format!("Install them with:\n  {}\n", install_command(&packages, distro)));
+     if distro == Distro::Unknown {
+         let fedora: Vec<&str> = missing.iter().filter_map(|any| any.first()).map(|l| l.fedora).collect();
 diff --git a/apps/photocraft/src/logging.rs b/apps/photocraft/src/logging.rs
 index 292428b..88adcaa 100644
 --- a/apps/photocraft/src/logging.rs
@@ -3382,7 +3398,7 @@ index bbbc997..9fed3c5 100644
                  ui.label(&reason);
              });
 diff --git a/crates/ui-egui/src/i18n/cs.tsv b/crates/ui-egui/src/i18n/cs.tsv
-index 01a8b9e..be58040 100644
+index 01a8b9e..43dd564 100644
 --- a/crates/ui-egui/src/i18n/cs.tsv
 +++ b/crates/ui-egui/src/i18n/cs.tsv
 @@ -16,7 +16,7 @@
@@ -3407,7 +3423,7 @@ index 01a8b9e..be58040 100644
 +	Plervo Photo Website	Web Plervo Photo
 +	Plervo Photo on GitHub	Plervo Photo na GitHubu
 +	Plervo Website	Web Plervo
-+	Support Plervo	Support Plervo
++	Support Plervo	Podpořit Plervo
  	Report an Issue…	Nahlásit problém…
  	WIA Support…	Podpora WIA…
  	Apply	Použít
@@ -3566,8 +3582,13 @@ index 01a8b9e..be58040 100644
  @plural	Saved {n} action to {file}|Saved {n} actions to {file}	Uložena {n} akce do souboru {file}|Uloženy {n} akce do souboru {file}|Uloženo {n} akcí do souboru {file}
  @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	Vynechán {n} krok bez obdoby v Photoshopu|Vynechány {n} kroky bez obdoby v Photoshopu|Vynecháno {n} kroků bez obdoby v Photoshopu
  
+@@ -3752,3 +3749,4 @@ navigator	Zoom	Zvětšení
+ 	Sent to {printer}	Odesláno do {printer}
+ 	set in Print Settings…	nastavuje se v nastavení tisku…
+ 	ICO is limited to 256 × 256 pixels	ICO je omezen na 256 × 256 pixelů
++	Support	Podpořit
 diff --git a/crates/ui-egui/src/i18n/de.tsv b/crates/ui-egui/src/i18n/de.tsv
-index 489647e..a1514df 100644
+index 489647e..eb28096 100644
 --- a/crates/ui-egui/src/i18n/de.tsv
 +++ b/crates/ui-egui/src/i18n/de.tsv
 @@ -12,7 +12,7 @@
@@ -3592,7 +3613,7 @@ index 489647e..a1514df 100644
 +	Plervo Photo Website	Plervo Photo-Website
 +	Plervo Photo on GitHub	Plervo Photo auf GitHub
 +	Plervo Website	Plervo-Website
-+	Support Plervo	Support Plervo
++	Support Plervo	Plervo unterstützen
  	Report an Issue…	Problem melden…
  	WIA Support…	WIA-Unterstützung…
  	Apply	Anwenden
@@ -3730,8 +3751,13 @@ index 489647e..a1514df 100644
  @plural	Saved {n} action to {file}|Saved {n} actions to {file}	{n} Aktion in {file} gespeichert|{n} Aktionen in {file} gespeichert
  @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	{n} Schritt ohne Photoshop-Entsprechung ausgelassen|{n} Schritte ohne Photoshop-Entsprechung ausgelassen
  
+@@ -3142,3 +3139,4 @@ curves	Smooth	Glätten
+ 	Sent to {printer}	An {printer} gesendet
+ 	set in Print Settings…	in den Druckeinstellungen festlegen…
+ 	ICO is limited to 256 × 256 pixels	ICO ist auf 256 × 256 Pixel begrenzt
++	Support	Unterstützen
 diff --git a/crates/ui-egui/src/i18n/el.tsv b/crates/ui-egui/src/i18n/el.tsv
-index 410da1a..10e5fa4 100644
+index 410da1a..09636e0 100644
 --- a/crates/ui-egui/src/i18n/el.tsv
 +++ b/crates/ui-egui/src/i18n/el.tsv
 @@ -1,4 +1,4 @@
@@ -3792,7 +3818,7 @@ index 410da1a..10e5fa4 100644
  	32-bit Preview Options	Επιλογές προεπισκόπησης 32 bit
  	New Guide	Νέος οδηγός
 -	Join the ArtCraft Discord	Συμμετοχή στο Discord του ArtCraft
-+	Support Plervo	Support Plervo
++	Support Plervo	Υποστηρίξτε το Plervo
  	Report an Issue	Αναφορά προβλήματος
  	Load Files into Stack	Φόρτωση αρχείων σε στοίβα
  	Statistics	Στατιστικά
@@ -3930,8 +3956,13 @@ index 410da1a..10e5fa4 100644
  @plural	Saved {n} action to {file}|Saved {n} actions to {file}	Αποθηκεύτηκε {n} ενέργεια στο {file}|Αποθηκεύτηκαν {n} ενέργειες στο {file}
  @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	Παραλείφθηκε {n} βήμα χωρίς αντίστοιχο στο Photoshop|Παραλείφθηκαν {n} βήματα χωρίς αντίστοιχο στο Photoshop
  
+@@ -3842,3 +3839,4 @@ curves	Smooth	Εξομάλυνση
+ 	Sent to {printer}	Στάλθηκε στον {printer}
+ 	set in Print Settings…	ορίζεται στις ρυθμίσεις εκτύπωσης…
+ 	ICO is limited to 256 × 256 pixels	Το ICO περιορίζεται σε 256 × 256 εικονοστοιχεία
++	Support	Υποστήριξη
 diff --git a/crates/ui-egui/src/i18n/es.tsv b/crates/ui-egui/src/i18n/es.tsv
-index b5db4e9..280822a 100644
+index b5db4e9..8fd2130 100644
 --- a/crates/ui-egui/src/i18n/es.tsv
 +++ b/crates/ui-egui/src/i18n/es.tsv
 @@ -9,7 +9,7 @@
@@ -4086,8 +4117,13 @@ index b5db4e9..280822a 100644
  @plural	Saved {n} action to {file}|Saved {n} actions to {file}	Se guardó {n} acción en {file}|Se guardaron {n} acciones en {file}
  @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	{n} paso sin equivalente en Photoshop omitido|{n} pasos sin equivalente en Photoshop omitidos
  
+@@ -2829,3 +2827,4 @@ curves	Smooth	Suavizar
+ 	Sent to {printer}	Enviado a {printer}
+ 	set in Print Settings…	se establece en Ajustes de impresión…
+ 	ICO is limited to 256 × 256 pixels	ICO está limitado a 256 × 256 píxeles
++	Support	Apoyar
 diff --git a/crates/ui-egui/src/i18n/fr.tsv b/crates/ui-egui/src/i18n/fr.tsv
-index ab0cca6..0ee47d5 100644
+index ab0cca6..e25d14d 100644
 --- a/crates/ui-egui/src/i18n/fr.tsv
 +++ b/crates/ui-egui/src/i18n/fr.tsv
 @@ -15,7 +15,7 @@
@@ -4112,7 +4148,7 @@ index ab0cca6..0ee47d5 100644
 +	Plervo Photo Website	Site web de Plervo Photo
 +	Plervo Photo on GitHub	Plervo Photo sur GitHub
 +	Plervo Website	Site web d'Plervo
-+	Support Plervo	Support Plervo
++	Support Plervo	Soutenir Plervo
  	Report an Issue…	Signaler un problème…
  	WIA Support…	Prise en charge de WIA…
  	Apply	Appliquer
@@ -4242,8 +4278,13 @@ index ab0cca6..0ee47d5 100644
  @plural	Saved {n} action to {file}|Saved {n} actions to {file}	{n} action enregistrée dans {file}|{n} actions enregistrées dans {file}
  @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	{n} étape sans équivalent Photoshop omise|{n} étapes sans équivalent Photoshop omises
  
+@@ -3146,3 +3144,4 @@ curves	Smooth	Lisser
+ 	Sent to {printer}	Envoyé à {printer}
+ 	set in Print Settings…	défini dans les paramètres d’impression…
+ 	ICO is limited to 256 × 256 pixels	Le format ICO est limité à 256 × 256 pixels
++	Support	Soutenir
 diff --git a/crates/ui-egui/src/i18n/hu.tsv b/crates/ui-egui/src/i18n/hu.tsv
-index 9a7283a..279d1d1 100644
+index 9a7283a..8f7baaa 100644
 --- a/crates/ui-egui/src/i18n/hu.tsv
 +++ b/crates/ui-egui/src/i18n/hu.tsv
 @@ -12,7 +12,7 @@
@@ -4279,7 +4320,7 @@ index 9a7283a..279d1d1 100644
  	Iris Blur…	Íriszelmosás…
 -	Join the ArtCraft Discord	Csatlakozás az ArtCraft Discordhoz
 -	Join the ArtCraft Discord…	Csatlakozás az ArtCraft Discordhoz…
-+	Support Plervo	Support Plervo
++	Support Plervo	A Plervo támogatása
  	Language	Nyelv
  	Language Options	Nyelvi beállítások
  	Large	Nagy
@@ -4447,8 +4488,13 @@ index 9a7283a..279d1d1 100644
  @plural	Saved {n} action to {file}|Saved {n} actions to {file}	{n} művelet mentve. Cél: {file}
  @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	{n} Photoshop-megfelelő nélküli lépés kihagyva
  
+@@ -4065,3 +4061,4 @@ cameraRaw	Yellow	Sárga
+ 	Ink Characteristics	Festék jellemzői
+ 	Solidity:	Fedőképesség:
+ 	Redrawing	Újrarajzolás
++	Support	Támogatás
 diff --git a/crates/ui-egui/src/i18n/id.tsv b/crates/ui-egui/src/i18n/id.tsv
-index 6924c45..a3b769e 100644
+index 6924c45..8cd37e3 100644
 --- a/crates/ui-egui/src/i18n/id.tsv
 +++ b/crates/ui-egui/src/i18n/id.tsv
 @@ -9,7 +9,7 @@
@@ -4473,7 +4519,7 @@ index 6924c45..a3b769e 100644
 +	Plervo Photo Website	Situs Web Plervo Photo
 +	Plervo Photo on GitHub	Plervo Photo di GitHub
 +	Plervo Website	Situs Web Plervo
-+	Support Plervo	Support Plervo
++	Support Plervo	Dukung Plervo
  	Report an Issue…	Laporkan Masalah…
  	WIA Support…	Dukungan WIA…
  	Apply	Terapkan
@@ -4603,8 +4649,13 @@ index 6924c45..a3b769e 100644
  @plural	Saved {n} action to {file}|Saved {n} actions to {file}	{n} tindakan disimpan ke {file}
  @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	{n} langkah tanpa padanan Photoshop dilewati
  
+@@ -3133,3 +3131,4 @@ curves	Smooth	Haluskan
+ 	Sent to {printer}	Dikirim ke {printer}
+ 	set in Print Settings…	diatur di Pengaturan Cetak…
+ 	ICO is limited to 256 × 256 pixels	ICO dibatasi hingga 256 × 256 piksel
++	Support	Dukung
 diff --git a/crates/ui-egui/src/i18n/it.tsv b/crates/ui-egui/src/i18n/it.tsv
-index 2d42c55..44f697f 100644
+index 2d42c55..ef8dbba 100644
 --- a/crates/ui-egui/src/i18n/it.tsv
 +++ b/crates/ui-egui/src/i18n/it.tsv
 @@ -9,7 +9,7 @@
@@ -4629,7 +4680,7 @@ index 2d42c55..44f697f 100644
 +	Plervo Photo Website	Sito web Plervo Photo
 +	Plervo Photo on GitHub	Plervo Photo su GitHub
 +	Plervo Website	Sito web Plervo
-+	Support Plervo	Support Plervo
++	Support Plervo	Sostieni Plervo
  	Report an Issue…	Segnala un problema…
  	WIA Support…	Supporto WIA…
  	Apply	Applica
@@ -4805,8 +4856,13 @@ index 2d42c55..44f697f 100644
  @plural	Saved {n} action to {file}|Saved {n} actions to {file}	Salvata {n} azione in {file}|Salvate {n} azioni in {file}
  @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	Omesso {n} passaggio senza equivalente in Photoshop|Omessi {n} passaggi senza equivalente in Photoshop
  
+@@ -4107,3 +4103,4 @@ navigator	Zoom	Zoom
+ 	Sent to {printer}	Inviato a {printer}
+ 	set in Print Settings…	impostato nelle impostazioni di stampa…
+ 	ICO is limited to 256 × 256 pixels	ICO è limitato a 256 × 256 pixel
++	Support	Sostieni
 diff --git a/crates/ui-egui/src/i18n/ja.tsv b/crates/ui-egui/src/i18n/ja.tsv
-index e05f27d..293f731 100644
+index e05f27d..91ce78a 100644
 --- a/crates/ui-egui/src/i18n/ja.tsv
 +++ b/crates/ui-egui/src/i18n/ja.tsv
 @@ -12,7 +12,7 @@
@@ -4831,7 +4887,7 @@ index e05f27d..293f731 100644
 +	Plervo Photo Website	Plervo Photo の Web サイト
 +	Plervo Photo on GitHub	GitHub 上の Plervo Photo
 +	Plervo Website	Plervo の Web サイト
-+	Support Plervo	Support Plervo
++	Support Plervo	Plervo を支援
  	Report an Issue…	問題を報告…
  	WIA Support…	WIA サポート…
  	Apply	適用
@@ -4978,8 +5034,13 @@ index e05f27d..293f731 100644
  @plural	Saved {n} action to {file}|Saved {n} actions to {file}	{file} にアクション {n} 個を保存しました
  @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	Photoshop に対応するもののない {n} 個のステップを省きました
  
+@@ -3821,3 +3818,4 @@ curves	Smooth	スムーズ
+ 	Reset All Locked Settings	ロックされた設定をすべて初期化
+ 	Copy Texture to Other Tools	テクスチャを他のツールにコピー
+ 	ICO is limited to 256 × 256 pixels	ICO は 256 × 256 ピクセルまでです
++	Support	支援
 diff --git a/crates/ui-egui/src/i18n/ko.tsv b/crates/ui-egui/src/i18n/ko.tsv
-index 7de9f61..e869110 100644
+index 7de9f61..8af3357 100644
 --- a/crates/ui-egui/src/i18n/ko.tsv
 +++ b/crates/ui-egui/src/i18n/ko.tsv
 @@ -2,7 +2,7 @@
@@ -5004,7 +5065,7 @@ index 7de9f61..e869110 100644
 +	Plervo Photo Website	Plervo Photo 웹사이트
 +	Plervo Photo on GitHub	GitHub의 Plervo Photo
 +	Plervo Website	Plervo 웹사이트
-+	Support Plervo	Support Plervo
++	Support Plervo	Plervo 후원
  	Report an Issue…	문제 신고…
  	WIA Support…	WIA 지원…
  	Apply	적용
@@ -5142,6 +5203,11 @@ index 7de9f61..e869110 100644
  @plural	Saved {n} action to {file}|Saved {n} actions to {file}	{file}에 액션 {n}개를 저장했습니다
  @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	Photoshop에 해당하는 기능이 없는 {n}개 단계를 제외했습니다
  
+@@ -3319,3 +3316,4 @@ curves	Smooth	매끄럽게
+ 	Sent to {printer}	{printer}(으)로 전송됨
+ 	set in Print Settings…	인쇄 설정에서 지정…
+ 	ICO is limited to 256 × 256 pixels	ICO는 256 × 256픽셀로 제한됩니다
++	Support	후원
 diff --git a/crates/ui-egui/src/i18n/live_tests.rs b/crates/ui-egui/src/i18n/live_tests.rs
 index 89c47ef..d8175c5 100644
 --- a/crates/ui-egui/src/i18n/live_tests.rs
@@ -5165,7 +5231,7 @@ index 89c47ef..d8175c5 100644
                  None,
              );
 diff --git a/crates/ui-egui/src/i18n/nl.tsv b/crates/ui-egui/src/i18n/nl.tsv
-index 4ed7d8a..ce3d850 100644
+index 4ed7d8a..605aa28 100644
 --- a/crates/ui-egui/src/i18n/nl.tsv
 +++ b/crates/ui-egui/src/i18n/nl.tsv
 @@ -4,7 +4,7 @@
@@ -5190,7 +5256,7 @@ index 4ed7d8a..ce3d850 100644
 +	Plervo Photo Website	Website van Plervo Photo
 +	Plervo Photo on GitHub	Plervo Photo op GitHub
 +	Plervo Website	Website van Plervo
-+	Support Plervo	Support Plervo
++	Support Plervo	Plervo steunen
  	Report an Issue…	Probleem melden…
  	WIA Support…	WIA-ondersteuning…
  	Apply	Toepassen
@@ -5346,8 +5412,13 @@ index 4ed7d8a..ce3d850 100644
  @plural	Saved {n} action to {file}|Saved {n} actions to {file}	{n} handeling opgeslagen in {file}|{n} handelingen opgeslagen in {file}
  @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	{n} stap zonder Photoshop-equivalent weggelaten|{n} stappen zonder Photoshop-equivalent weggelaten
  
+@@ -3904,3 +3901,4 @@ curves	Smooth	Vloeiend maken
+ 	Sent to {printer}	Verzonden naar {printer}
+ 	set in Print Settings…	instellen in de afdrukinstellingen…
+ 	ICO is limited to 256 × 256 pixels	ICO is beperkt tot 256 × 256 pixels
++	Support	Steunen
 diff --git a/crates/ui-egui/src/i18n/pl.tsv b/crates/ui-egui/src/i18n/pl.tsv
-index a27cb4a..4e4163f 100644
+index a27cb4a..ee930ea 100644
 --- a/crates/ui-egui/src/i18n/pl.tsv
 +++ b/crates/ui-egui/src/i18n/pl.tsv
 @@ -13,7 +13,7 @@
@@ -5372,7 +5443,7 @@ index a27cb4a..4e4163f 100644
 +	Plervo Photo Website	Strona internetowa Plervo Photo
 +	Plervo Photo on GitHub	Plervo Photo na GitHubie
 +	Plervo Website	Strona internetowa Plervo
-+	Support Plervo	Support Plervo
++	Support Plervo	Wesprzyj Plervo
  	Report an Issue…	Zgłoś problem…
  	WIA Support…	Obsługa WIA…
  	Apply	Zastosuj
@@ -5519,8 +5590,13 @@ index a27cb4a..4e4163f 100644
  @plural	Saved {n} action to {file}|Saved {n} actions to {file}	Zapisano {n} operację do {file}|Zapisano {n} operacje do {file}|Zapisano {n} operacji do {file}
  @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	Pominięto {n} krok bez odpowiednika w Photoshopie|Pominięto {n} kroki bez odpowiednika w Photoshopie|Pominięto {n} kroków bez odpowiednika w Photoshopie
  
+@@ -3742,3 +3739,4 @@ curves	Smooth	Wygładź
+ 	Sent to {printer}	Wysłano do {printer}
+ 	set in Print Settings…	ustawiane w ustawieniach druku…
+ 	ICO is limited to 256 × 256 pixels	ICO jest ograniczony do 256 × 256 pikseli
++	Support	Wesprzyj
 diff --git a/crates/ui-egui/src/i18n/pt-br.tsv b/crates/ui-egui/src/i18n/pt-br.tsv
-index 0a64497..8b925ff 100644
+index 0a64497..3eed9b4 100644
 --- a/crates/ui-egui/src/i18n/pt-br.tsv
 +++ b/crates/ui-egui/src/i18n/pt-br.tsv
 @@ -12,7 +12,7 @@
@@ -5701,8 +5777,13 @@ index 0a64497..8b925ff 100644
  @plural	Saved {n} action to {file}|Saved {n} actions to {file}	{n} ação salva em {file}|{n} ações salvas em {file}
  @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	{n} etapa sem equivalente no Photoshop foi omitida|{n} etapas sem equivalente no Photoshop foram omitidas
  
+@@ -3934,3 +3931,4 @@ layerLabel	No Color	Sem cor
+ 	Sent to {printer}	Enviado para {printer}
+ 	set in Print Settings…	definido nas configurações de impressão…
+ 	ICO is limited to 256 × 256 pixels	ICO é limitado a 256 × 256 pixels
++	Support	Apoiar
 diff --git a/crates/ui-egui/src/i18n/ru.tsv b/crates/ui-egui/src/i18n/ru.tsv
-index 2dbbf40..010f5a1 100644
+index 2dbbf40..a468796 100644
 --- a/crates/ui-egui/src/i18n/ru.tsv
 +++ b/crates/ui-egui/src/i18n/ru.tsv
 @@ -13,7 +13,7 @@
@@ -5728,7 +5809,7 @@ index 2dbbf40..010f5a1 100644
 -	ArtCraft Website	Сайт ArtCraft
 -	Join the ArtCraft Discord…	Discord сообщества ArtCraft…
 +	Plervo Website	Сайт Plervo
-+	Support Plervo	Support Plervo
++	Support Plervo	Поддержать Plervo
  	System Info…	Информация о системе…
  
  # Tools and options bar
@@ -5844,8 +5925,13 @@ index 2dbbf40..010f5a1 100644
  @plural	Saved {n} action to {file}|Saved {n} actions to {file}	Сохранена {n} операция в {file}|Сохранены {n} операции в {file}|Сохранено {n} операций в {file}
  @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	Пропущен {n} шаг без эквивалента в Photoshop|Пропущены {n} шага без эквивалента в Photoshop|Пропущено {n} шагов без эквивалента в Photoshop
  
+@@ -3110,3 +3108,4 @@ curves	Smooth	Сгладить
+ 	Gray Value (Median)	Уровень серого (медиана)
+ 	Integrated Density	Интегральная плотность
+ 	Length	Длина
++	Support	Поддержать
 diff --git a/crates/ui-egui/src/i18n/sr.tsv b/crates/ui-egui/src/i18n/sr.tsv
-index 4a5f745..a0e77f7 100644
+index 4a5f745..2caa3d4 100644
 --- a/crates/ui-egui/src/i18n/sr.tsv
 +++ b/crates/ui-egui/src/i18n/sr.tsv
 @@ -18,7 +18,7 @@
@@ -5870,7 +5956,7 @@ index 4a5f745..a0e77f7 100644
 +	Plervo Photo Website	Veb-sajt Plervo Photo-a
 +	Plervo Photo on GitHub	Plervo Photo na GitHub-u
 +	Plervo Website	Veb-sajt Plervo-a
-+	Support Plervo	Support Plervo
++	Support Plervo	Podrži Plervo
  	Report an Issue…	Prijavi problem…
  	WIA Support…	WIA podrška…
  	Apply	Primeni
@@ -6046,8 +6132,13 @@ index 4a5f745..a0e77f7 100644
  @plural	Saved {n} action to {file}|Saved {n} actions to {file}	Sačuvana je {n} radnja u {file}|Sačuvane su {n} radnje u {file}|Sačuvano je {n} radnji u {file}
  @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	Izostavljen je {n} korak bez ekvivalenta u Photoshopu|Izostavljena su {n} koraka bez ekvivalenta u Photoshopu|Izostavljeno je {n} koraka bez ekvivalenta u Photoshopu
  	Insert Stop…	Umetni zaustavljanje…
+@@ -4219,3 +4215,4 @@ shape	Appearance	Izgled
+ 	Ink Characteristics	Karakteristike mastila
+ 	Solidity:	Punoća:
+ 	Redrawing	Ponovno iscrtavanje
++	Support	Podrži
 diff --git a/crates/ui-egui/src/i18n/tr.tsv b/crates/ui-egui/src/i18n/tr.tsv
-index 01c37a1..f81b333 100644
+index 01c37a1..50e956b 100644
 --- a/crates/ui-egui/src/i18n/tr.tsv
 +++ b/crates/ui-egui/src/i18n/tr.tsv
 @@ -4,7 +4,7 @@
@@ -6072,7 +6163,7 @@ index 01c37a1..f81b333 100644
 +	Plervo Photo Website	Plervo Photo Web Sitesi
 +	Plervo Photo on GitHub	GitHub'da Plervo Photo
 +	Plervo Website	Plervo Web Sitesi
-+	Support Plervo	Support Plervo
++	Support Plervo	Plervo’yu destekle
  	Report an Issue…	Bir Sorun Bildirin…
  	WIA Support…	WIA Desteği…
  	Apply	Uygula
@@ -6228,8 +6319,13 @@ index 01c37a1..f81b333 100644
  @plural	Saved {n} action to {file}|Saved {n} actions to {file}	{n} eylem {file} dosyasına kaydedildi
  @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	Photoshop karşılığı olmayan {n} adım atlandı
  
+@@ -3876,3 +3873,4 @@ cameraData	Lens	Lens
+ 	Ink Characteristics	Mürekkep Özellikleri
+ 	Solidity:	Doluluk:
+ 	Redrawing	Yeniden çiziliyor
++	Support	Destekle
 diff --git a/crates/ui-egui/src/i18n/uk.tsv b/crates/ui-egui/src/i18n/uk.tsv
-index 79ebc8d..0cd523a 100644
+index 79ebc8d..c4e95a7 100644
 --- a/crates/ui-egui/src/i18n/uk.tsv
 +++ b/crates/ui-egui/src/i18n/uk.tsv
 @@ -4,7 +4,7 @@
@@ -6255,7 +6351,7 @@ index 79ebc8d..0cd523a 100644
 -	ArtCraft Website	Вебсайт ArtCraft
 -	Join the ArtCraft Discord…	Приєднатися до Discord ArtCraft…
 +	Plervo Website	Вебсайт Plervo
-+	Support Plervo	Support Plervo
++	Support Plervo	Підтримати Plervo
  	System Info…	Інформація про систему…
  
  # Tools and options bar
@@ -6379,8 +6475,13 @@ index 79ebc8d..0cd523a 100644
  @plural	Saved {n} action to {file}|Saved {n} actions to {file}	Збережено {n} операцію до {file}|Збережено {n} операції до {file}|Збережено {n} операцій до {file}
  @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	Пропущено {n} крок без відповідника в Photoshop|Пропущено {n} кроки без відповідника в Photoshop|Пропущено {n} кроків без відповідника в Photoshop
  
+@@ -3843,3 +3840,4 @@ curves	Smooth	Згладити
+ 	Sent to {printer}	Надіслано на {printer}
+ 	set in Print Settings…	задається в параметрах друку…
+ 	ICO is limited to 256 × 256 pixels	ICO обмежено розміром 256 × 256 пікселів
++	Support	Підтримати
 diff --git a/crates/ui-egui/src/i18n/vi.tsv b/crates/ui-egui/src/i18n/vi.tsv
-index 1fea5e6..7ba4309 100644
+index 1fea5e6..e8d1538 100644
 --- a/crates/ui-egui/src/i18n/vi.tsv
 +++ b/crates/ui-egui/src/i18n/vi.tsv
 @@ -15,7 +15,7 @@
@@ -6409,7 +6510,7 @@ index 1fea5e6..7ba4309 100644
  	History	Lịch sử
  	Info	Thông tin
 -	Join the ArtCraft Discord…	Tham gia Discord ArtCraft…
-+	Support Plervo	Support Plervo
++	Support Plervo	Ủng hộ Plervo
  	Layer Comps	Tổ hợp lớp
  	Lock Workspace	Khóa không gian làm việc
  	Match All	Đồng bộ tất cả
@@ -6565,8 +6666,13 @@ index 1fea5e6..7ba4309 100644
  @plural	Saved {n} action to {file}|Saved {n} actions to {file}	Đã lưu {n} hành động vào {file}
  @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	Đã bỏ qua {n} bước không có chức năng tương ứng trong Photoshop
  
+@@ -3631,3 +3629,4 @@ curves	Smooth	Làm mượt
+ 	Sent to {printer}	Đã gửi tới {printer}
+ 	set in Print Settings…	đặt trong thiết lập in…
+ 	ICO is limited to 256 × 256 pixels	ICO giới hạn ở 256 × 256 pixel
++	Support	Ủng hộ
 diff --git a/crates/ui-egui/src/i18n/zh-hans.tsv b/crates/ui-egui/src/i18n/zh-hans.tsv
-index 375b61c..2e22efb 100644
+index 375b61c..defc9d8 100644
 --- a/crates/ui-egui/src/i18n/zh-hans.tsv
 +++ b/crates/ui-egui/src/i18n/zh-hans.tsv
 @@ -5,7 +5,7 @@
@@ -6591,7 +6697,7 @@ index 375b61c..2e22efb 100644
 +	Plervo Photo Website	Plervo Photo 网站
 +	Plervo Photo on GitHub	Plervo Photo 的 GitHub 页面
 +	Plervo Website	Plervo 网站
-+	Support Plervo	Support Plervo
++	Support Plervo	支持 Plervo
  	Report an Issue…	报告问题…
  	WIA Support…	WIA 支持…
  	Apply	应用
@@ -6721,8 +6827,13 @@ index 375b61c..2e22efb 100644
  @plural	Saved {n} action to {file}|Saved {n} actions to {file}	已将 {n} 个动作存储到 {file}
  @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	已省略 {n} 个没有 Photoshop 对应功能的步骤
  
+@@ -2754,3 +2752,4 @@ curves	Smooth	平滑
+ 	Sent to {printer}	已发送到 {printer}
+ 	set in Print Settings…	在打印设置中设置…
+ 	ICO is limited to 256 × 256 pixels	ICO 最大为 256 × 256 像素
++	Support	支持
 diff --git a/crates/ui-egui/src/i18n/zh-hant.tsv b/crates/ui-egui/src/i18n/zh-hant.tsv
-index de93103..6ca2d8d 100644
+index de93103..d39914e 100644
 --- a/crates/ui-egui/src/i18n/zh-hant.tsv
 +++ b/crates/ui-egui/src/i18n/zh-hant.tsv
 @@ -14,7 +14,7 @@
@@ -6747,7 +6858,7 @@ index de93103..6ca2d8d 100644
 +	Plervo Photo Website	Plervo Photo 網站
 +	Plervo Photo on GitHub	GitHub 上的 Plervo Photo
 +	Plervo Website	Plervo 網站
-+	Support Plervo	Support Plervo
++	Support Plervo	支持 Plervo
  	Report an Issue…	回報問題…
  	WIA Support…	WIA 支援…
  	Apply	套用
@@ -6877,6 +6988,11 @@ index de93103..6ca2d8d 100644
  @plural	Saved {n} action to {file}|Saved {n} actions to {file}	已將 {n} 個動作儲存到 {file}
  @plural	{n} step with no Photoshop equivalent left out|{n} steps with no Photoshop equivalent left out	已略過 {n} 個沒有 Photoshop 對應功能的步驟
  
+@@ -2739,3 +2737,4 @@ curves	Smooth	平滑
+ 	Sent to {printer}	已傳送至 {printer}
+ 	set in Print Settings…	在列印設定中設定…
+ 	ICO is limited to 256 × 256 pixels	ICO 最大為 256 × 256 像素
++	Support	支持
 diff --git a/crates/ui-egui/src/icon_data.rs b/crates/ui-egui/src/icon_data.rs
 index 4839fdf..095282f 100644
 --- a/crates/ui-egui/src/icon_data.rs
@@ -7305,7 +7421,7 @@ index 146b8b8..8a567c2 100644
      let id = post(app, "Native file drag-and-drop is unavailable", lines, false, Some(WAYLAND_FILE_DROP_DISMISSED));
      if let Some(notice) = app.ui.notices.iter_mut().find(|notice| notice.id == id) {
 diff --git a/crates/ui-egui/src/panels.rs b/crates/ui-egui/src/panels.rs
-index 733f923..a5e3b57 100644
+index 733f923..90f17cd 100644
 --- a/crates/ui-egui/src/panels.rs
 +++ b/crates/ui-egui/src/panels.rs
 @@ -596,7 +596,8 @@ pub fn title_bar(app: &mut PhotocraftApp, ui: &mut egui::Ui) {
@@ -7318,7 +7434,14 @@ index 733f923..a5e3b57 100644
              // The menus and the far-end controls are laid out first; the title is centred in
              // whatever room is left between them (`free`, left to right: menus then controls, or
              // controls then menus in a right-to-left UI), shortened or dropped rather than drawn
-@@ -685,13 +686,13 @@ pub fn title_bar(app: &mut PhotocraftApp, ui: &mut egui::Ui) {
+@@ -680,18 +681,18 @@ pub fn title_bar(app: &mut PhotocraftApp, ui: &mut egui::Ui) {
+                         }
+                         button.context_menu(|ui| crate::prefs_ui::appearance_context_menu(app, ui));
+                     }
+-                    // The community Discord, one click away while the bar has room for it
+-                    // (narrow windows drop it first; it is also Help › Discord).
++                    // Optional project support, also available from the Help menu.
++                    // Narrow windows drop this shortcut first.
                      if ui.available_width() >= DISCORD_ROOM {
                          let discord = egui::Button::image_and_text(
                              icons::image("message-square", 14.0, t.text_dim),
@@ -9037,7 +9160,7 @@ index 236f443..141abb1 100755
  
  trap 'rm -f "$CERT"' EXIT
 diff --git a/packaging/macos/package.sh b/packaging/macos/package.sh
-index 194b379..8c3832e 100755
+index 194b379..669f93c 100755
 --- a/packaging/macos/package.sh
 +++ b/packaging/macos/package.sh
 @@ -1,8 +1,8 @@
@@ -9051,7 +9174,19 @@ index 194b379..8c3832e 100755
  #
  # Usage: packaging/macos/package.sh [--arch universal|aarch64|x86_64] [--skip-build]
  #
-@@ -39,9 +39,9 @@ export MACOSX_DEPLOYMENT_TARGET=11.0
+@@ -10,8 +10,9 @@
+ #   MACOS_SIGN_IDENTITY   codesign identity (name or SHA-1). Default "-" = ad-hoc (local testing;
+ #                         Gatekeeper will reject the result on other Macs). In CI, import-cert.sh sets it.
+ #   MACOS_KEYCHAIN        keychain holding the identity (optional)
+-# Notarization (env; all three needed, and a real identity):
+-#   APPLE_ID, APPLE_PASSWORD (app-specific password), APPLE_TEAM_ID
++# Notarization (env; requires a real signing identity):
++#   MACOS_NOTARY_PROFILE  preferred notarytool profile in MACOS_KEYCHAIN
++#   Or APPLE_ID, APPLE_PASSWORD (app-specific password), APPLE_TEAM_ID
+ set -euo pipefail
+ # shellcheck source=../env.sh
+ . "$(dirname "${BASH_SOURCE[0]}")/../env.sh"
+@@ -39,31 +40,43 @@ export MACOSX_DEPLOYMENT_TARGET=11.0
  IDENTITY="${MACOS_SIGN_IDENTITY:--}"
  SHORT_VERSION="${VERSION%%-*}"
  WORK="$CARGO_TARGET_DIR/macos-package"
@@ -9063,9 +9198,25 @@ index 194b379..8c3832e 100755
 +CLI_ZIP="$DIST/plervo-photo-cli-$VERSION-macos-$ARCH.zip"
  
  NOTARIZE=0
++NOTARY_ARGS=()
  if [ "$IDENTITY" = "-" ]; then
-@@ -52,18 +52,18 @@ else
-   warn "macOS: APPLE_ID / APPLE_PASSWORD / APPLE_TEAM_ID incomplete; signed but not notarized"
++  if [ -n "${MACOS_NOTARY_PROFILE:-}" ]; then
++    echo "error: MACOS_NOTARY_PROFILE requires a real MACOS_SIGN_IDENTITY" >&2
++    exit 2
++  fi
+   warn "macOS: ad-hoc signing (no MACOS_SIGN_IDENTITY); artifacts are not notarized"
++elif [ -n "${MACOS_NOTARY_PROFILE:-}" ]; then
++  NOTARIZE=1
++  NOTARY_ARGS=(--keychain-profile "$MACOS_NOTARY_PROFILE")
++  if [ -n "${MACOS_KEYCHAIN:-}" ]; then
++    NOTARY_ARGS+=(--keychain "$MACOS_KEYCHAIN")
++  fi
+ elif [ -n "${APPLE_ID:-}" ] && [ -n "${APPLE_PASSWORD:-}" ] && [ -n "${APPLE_TEAM_ID:-}" ]; then
+   NOTARIZE=1
++  NOTARY_ARGS=(--apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$APPLE_TEAM_ID")
+ else
+-  warn "macOS: APPLE_ID / APPLE_PASSWORD / APPLE_TEAM_ID incomplete; signed but not notarized"
++  warn "macOS: no Keychain profile or complete Apple credentials; signed but not notarized"
  fi
  
 -echo "==> PhotoCraft $VERSION for macOS ($ARCH), identity: $IDENTITY, notarize: $NOTARIZE"
@@ -9086,7 +9237,24 @@ index 194b379..8c3832e 100755
    inputs=()
    for t in "${TARGETS[@]}"; do inputs+=("$CARGO_TARGET_DIR/$t/release/$bin"); done
    lipo -create -output "$WORK/bin/$bin" "${inputs[@]}"
-@@ -97,12 +97,12 @@ notarize() {
+@@ -83,26 +96,26 @@ sign() {
+ notarize() {
+   local file="$1" out id status
+   echo "==> notarizing $(basename "$file") (this can take a few minutes)"
+-  out="$(xcrun notarytool submit "$file" --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" \
+-    --team-id "$APPLE_TEAM_ID" --wait --timeout 1h --output-format json)" || true
++  out="$(xcrun notarytool submit "$file" "${NOTARY_ARGS[@]}" \
++    --wait --timeout 1h --output-format json)" || true
+   echo "$out"
+   id="$(printf '%s' "$out" | plutil -extract id raw -o - - 2>/dev/null || true)"
+   status="$(printf '%s' "$out" | plutil -extract status raw -o - - 2>/dev/null || true)"
+   if [ "$status" != "Accepted" ]; then
+     if [ -n "$id" ]; then
+-      xcrun notarytool log "$id" --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$APPLE_TEAM_ID" || true
++      xcrun notarytool log "$id" "${NOTARY_ARGS[@]}" || true
+     fi
+     echo "error: notarization of $(basename "$file") failed (status: ${status:-unknown})" >&2
+     exit 1
    fi
  }
  
@@ -9102,7 +9270,7 @@ index 194b379..8c3832e 100755
  # Licences of the embedded craft-fonts fonts (only when built with CRAFT_FONTS_DIR).
  if [ -n "${CRAFT_FONTS_DIR:-}" ]; then
    mkdir -p "$APP/Contents/Resources/Licenses"
-@@ -113,16 +113,18 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
+@@ -113,16 +126,18 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
    "$HERE/Info.plist.in" >"$APP/Contents/Info.plist"
  plutil -lint "$APP/Contents/Info.plist"
  printf 'APPL????' >"$APP/Contents/PkgInfo"
@@ -9124,7 +9292,7 @@ index 194b379..8c3832e 100755
    xcrun stapler staple "$APP"
    xcrun stapler validate "$APP"
    spctl --assess --type execute -vvv "$APP"
-@@ -132,17 +134,15 @@ fi
+@@ -132,21 +147,43 @@ fi
  echo "==> building $DMG"
  STAGE="$WORK/dmg"
  mkdir -p "$STAGE"
@@ -9135,16 +9303,50 @@ index 194b379..8c3832e 100755
  mkdir -p "$STAGE/.background"
 -cp "$HERE/dmg/background.tiff" "$STAGE/.background/background.tiff"
 -cp "$HERE/dmg/dmg-layout.DS_Store" "$STAGE/.DS_Store"
- rm -f "$DMG" "$WORK/raw.dmg"
- # makehybrid + convert builds the image without attaching a device, unlike `create -srcfolder`,
- # which is flaky on CI runners ("Resource busy") and hangs in sandboxed sessions.
- # The volume name has no version: .DS_Store finds the background through an alias that includes it.
+-rm -f "$DMG" "$WORK/raw.dmg"
+-# makehybrid + convert builds the image without attaching a device, unlike `create -srcfolder`,
+-# which is flaky on CI runners ("Resource busy") and hangs in sandboxed sessions.
+-# The volume name has no version: .DS_Store finds the background through an alias that includes it.
 -hdiutil makehybrid -hfs -hfs-volume-name "PhotoCraft" -hfs-openfolder "$STAGE" -o "$WORK/raw.dmg" "$STAGE"
-+hdiutil makehybrid -hfs -hfs-volume-name "Plervo Photo" -hfs-openfolder "$STAGE" -o "$WORK/raw.dmg" "$STAGE"
- hdiutil convert "$WORK/raw.dmg" -format UDZO -imagekey zlib-level=9 -o "$DMG"
- rm -f "$WORK/raw.dmg"
+-hdiutil convert "$WORK/raw.dmg" -format UDZO -imagekey zlib-level=9 -o "$DMG"
+-rm -f "$WORK/raw.dmg"
++rm -f "$DMG"
++# `hdiutil create -srcfolder` writes the files as they are. `makehybrid -hfs` gave every file a
++# com.apple.FinderInfo (a Finder location of -1,-1), which `codesign --verify --strict` rejects as
++# "Finder information, or similar detritus" on the app in the image and on a copy installed from it,
++# so MDM and compliance checks reported a correctly notarized app as damaged (#390). `create`
++# attaches a device while it copies, which fails now and then on CI runners ("Resource busy"), so
++# it gets a few tries.
++# Usage: hdiutil_retry <what> <hdiutil args…>; tries five times with growing pauses.
++hdiutil_retry() {
++  local what="$1" attempt
++  shift
++  for attempt in 1 2 3 4 5; do
++    if hdiutil "$@"; then
++      return 0
++    fi
++    [ "$attempt" = 5 ] && { echo "hdiutil $what failed 5 times" >&2; return 1; }
++    warn "hdiutil $what failed (attempt $attempt of 5); retrying in $((attempt * 10))s"
++    sleep $((attempt * 10))
++  done
++}
++hdiutil_retry create create -srcfolder "$STAGE" -volname "Plervo Photo" -fs HFS+ -format UDZO -imagekey zlib-level=9 -ov "$DMG"
  sign "$DMG"
-@@ -156,20 +156,20 @@ fi
+ codesign --verify --strict --verbose=2 "$DMG"
++# The app inside the image must still pass --strict, so a makehybrid-style regression can't ship.
++MOUNT="$WORK/dmg-check"
++rm -rf "$MOUNT"
++mkdir -p "$MOUNT"
++hdiutil_retry attach attach -nobrowse -readonly -noautoopen -mountpoint "$MOUNT" "$DMG" >/dev/null
++if ! codesign --verify --strict --deep --verbose=2 "$MOUNT/Plervo Photo.app"; then
++  hdiutil_retry detach detach "$MOUNT" >/dev/null || true
++  exit 1
++fi
++hdiutil_retry detach detach "$MOUNT" >/dev/null
+ if [ "$NOTARIZE" = 1 ]; then
+   notarize "$DMG"
+   xcrun stapler staple "$DMG"
+@@ -156,20 +193,20 @@ fi
  
  # ---- CLI ---------------------------------------------------------------------------------------
  echo "==> building $CLI_ZIP"

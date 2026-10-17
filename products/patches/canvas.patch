@@ -1651,6 +1651,19 @@ index bd587b7..dc93185 100644
              return Err("`terms_url` must be a web address (https://…)".into());
          }
          if self.operator_contact.chars().count() > 120 || self.operator_contact.chars().any(char::is_control) || terms.len() > 500 {
+diff --git a/apps/figcraft-server/src/hardening_tests.rs b/apps/figcraft-server/src/hardening_tests.rs
+index 6a74e61..d022912 100644
+--- a/apps/figcraft-server/src/hardening_tests.rs
++++ b/apps/figcraft-server/src/hardening_tests.rs
+@@ -59,7 +59,7 @@ fn archive(bomb: usize, padding: usize) -> Vec<u8> {
+     let mut out = zip::ZipWriter::new(Cursor::new(Vec::new()));
+     for i in 0..src.len() {
+         let f = src.by_index_raw(i).unwrap();
+-        if bomb > 0 && f.name() == "library/document.json" {
++        if bomb > 0 && f.name().expect("synthetic archive entry name") == "library/document.json" {
+             continue;
+         }
+         out.raw_copy_file(f).unwrap();
 diff --git a/apps/figcraft-server/src/lib.rs b/apps/figcraft-server/src/lib.rs
 index e2f0d44..6df6391 100644
 --- a/apps/figcraft-server/src/lib.rs
@@ -5218,7 +5231,7 @@ index 1150163..8dd815f 100755
  
  trap 'rm -f "$CERT"' EXIT
 diff --git a/packaging/macos/package.sh b/packaging/macos/package.sh
-index 87abe94..b1047c8 100755
+index 87abe94..b758c2e 100755
 --- a/packaging/macos/package.sh
 +++ b/packaging/macos/package.sh
 @@ -1,8 +1,8 @@
@@ -5232,7 +5245,19 @@ index 87abe94..b1047c8 100755
  #
  # Usage: packaging/macos/package.sh [--arch universal|aarch64|x86_64] [--skip-build]
  #
-@@ -39,9 +39,9 @@ export MACOSX_DEPLOYMENT_TARGET=11.0
+@@ -10,8 +10,9 @@
+ #   MACOS_SIGN_IDENTITY   codesign identity (name or SHA-1). Default "-" = ad-hoc (local testing;
+ #                         Gatekeeper will reject the result on other Macs). In CI, import-cert.sh sets it.
+ #   MACOS_KEYCHAIN        keychain holding the identity (optional)
+-# Notarization (env; all three needed, and a real identity):
+-#   APPLE_ID, APPLE_PASSWORD (app-specific password), APPLE_TEAM_ID
++# Notarization (env; requires a real signing identity):
++#   MACOS_NOTARY_PROFILE  preferred notarytool profile in MACOS_KEYCHAIN
++#   Or APPLE_ID, APPLE_PASSWORD (app-specific password), APPLE_TEAM_ID
+ set -euo pipefail
+ # shellcheck source=../env.sh
+ . "$(dirname "${BASH_SOURCE[0]}")/../env.sh"
+@@ -39,20 +40,32 @@ export MACOSX_DEPLOYMENT_TARGET=11.0
  IDENTITY="${MACOS_SIGN_IDENTITY:--}"
  SHORT_VERSION="${VERSION%%-*}"
  WORK="$CARGO_TARGET_DIR/macos-package"
@@ -5244,9 +5269,25 @@ index 87abe94..b1047c8 100755
 +CLI_ZIP="$DIST/plervo-canvas-cli-$VERSION-macos-$ARCH.zip"
  
  NOTARIZE=0
++NOTARY_ARGS=()
  if [ "$IDENTITY" = "-" ]; then
-@@ -52,7 +52,7 @@ else
-   warn "macOS: APPLE_ID / APPLE_PASSWORD / APPLE_TEAM_ID incomplete; signed but not notarized"
++  if [ -n "${MACOS_NOTARY_PROFILE:-}" ]; then
++    echo "error: MACOS_NOTARY_PROFILE requires a real MACOS_SIGN_IDENTITY" >&2
++    exit 2
++  fi
+   warn "macOS: ad-hoc signing (no MACOS_SIGN_IDENTITY); artifacts are not notarized"
++elif [ -n "${MACOS_NOTARY_PROFILE:-}" ]; then
++  NOTARIZE=1
++  NOTARY_ARGS=(--keychain-profile "$MACOS_NOTARY_PROFILE")
++  if [ -n "${MACOS_KEYCHAIN:-}" ]; then
++    NOTARY_ARGS+=(--keychain "$MACOS_KEYCHAIN")
++  fi
+ elif [ -n "${APPLE_ID:-}" ] && [ -n "${APPLE_PASSWORD:-}" ] && [ -n "${APPLE_TEAM_ID:-}" ]; then
+   NOTARIZE=1
++  NOTARY_ARGS=(--apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$APPLE_TEAM_ID")
+ else
+-  warn "macOS: APPLE_ID / APPLE_PASSWORD / APPLE_TEAM_ID incomplete; signed but not notarized"
++  warn "macOS: no Keychain profile or complete Apple credentials; signed but not notarized"
  fi
  
 -echo "==> FigCraft $VERSION for macOS ($ARCH; ${BINS[*]}), identity: $IDENTITY, notarize: $NOTARIZE"
@@ -5254,7 +5295,25 @@ index 87abe94..b1047c8 100755
  
  # ---- build -------------------------------------------------------------------------------------
  if [ "$SKIP_BUILD" = 0 ]; then
-@@ -98,23 +98,23 @@ notarize() {
+@@ -83,14 +96,14 @@ sign() {
+ notarize() {
+   local file="$1" out id status
+   echo "==> notarizing $(basename "$file") (this can take a few minutes)"
+-  out="$(xcrun notarytool submit "$file" --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" \
+-    --team-id "$APPLE_TEAM_ID" --wait --timeout 1h --output-format json)" || true
++  out="$(xcrun notarytool submit "$file" "${NOTARY_ARGS[@]}" \
++    --wait --timeout 1h --output-format json)" || true
+   echo "$out"
+   id="$(printf '%s' "$out" | plutil -extract id raw -o - - 2>/dev/null || true)"
+   status="$(printf '%s' "$out" | plutil -extract status raw -o - - 2>/dev/null || true)"
+   if [ "$status" != "Accepted" ]; then
+     if [ -n "$id" ]; then
+-      xcrun notarytool log "$id" --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$APPLE_TEAM_ID" || true
++      xcrun notarytool log "$id" "${NOTARY_ARGS[@]}" || true
+     fi
+     echo "error: notarization of $(basename "$file") failed (status: ${status:-unknown})" >&2
+     exit 1
+@@ -98,23 +111,23 @@ notarize() {
  }
  
  # ---- icon --------------------------------------------------------------------------------------
@@ -5286,7 +5345,7 @@ index 87abe94..b1047c8 100755
  # Licences of the embedded craft-fonts fonts (only when built with CRAFT_FONTS_DIR).
  if [ -n "${CRAFT_FONTS_DIR:-}" ]; then
    mkdir -p "$APP/Contents/Resources/Licenses"
-@@ -125,16 +125,18 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
+@@ -125,16 +138,18 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
    "$HERE/Info.plist.in" >"$APP/Contents/Info.plist"
  plutil -lint "$APP/Contents/Info.plist"
  printf 'APPL????' >"$APP/Contents/PkgInfo"
@@ -5308,22 +5367,56 @@ index 87abe94..b1047c8 100755
    retry xcrun stapler staple "$APP"
    retry xcrun stapler validate "$APP"
    spctl --assess --type execute -vvv "$APP"
-@@ -144,12 +146,12 @@ fi
+@@ -144,16 +159,41 @@ fi
  echo "==> building $DMG"
  STAGE="$WORK/dmg"
  mkdir -p "$STAGE"
 -ditto "$APP" "$STAGE/FigCraft.app"
 +ditto "$APP" "$STAGE/Plervo Canvas.app"
  ln -s /Applications "$STAGE/Applications"
- rm -f "$DMG" "$WORK/raw.dmg"
- # makehybrid + convert builds the image without attaching a device, unlike `create -srcfolder`,
- # which is flaky on CI runners ("Resource busy") and hangs in sandboxed sessions.
+-rm -f "$DMG" "$WORK/raw.dmg"
+-# makehybrid + convert builds the image without attaching a device, unlike `create -srcfolder`,
+-# which is flaky on CI runners ("Resource busy") and hangs in sandboxed sessions.
 -hdiutil makehybrid -hfs -hfs-volume-name "FigCraft" -hfs-openfolder "$STAGE" -o "$WORK/raw.dmg" "$STAGE"
-+hdiutil makehybrid -hfs -hfs-volume-name "Plervo Canvas" -hfs-openfolder "$STAGE" -o "$WORK/raw.dmg" "$STAGE"
- hdiutil convert "$WORK/raw.dmg" -format UDZO -imagekey zlib-level=9 -o "$DMG"
- rm -f "$WORK/raw.dmg"
+-hdiutil convert "$WORK/raw.dmg" -format UDZO -imagekey zlib-level=9 -o "$DMG"
+-rm -f "$WORK/raw.dmg"
++rm -f "$DMG"
++# `hdiutil create -srcfolder` writes the files as they are. `makehybrid -hfs` gave every file a
++# com.apple.FinderInfo (a Finder location of -1,-1), which `codesign --verify --strict` rejects as
++# "Finder information, or similar detritus" on the app in the image and on a copy installed from it,
++# so MDM and compliance checks reported a correctly notarized app as damaged (#390). `create`
++# attaches a device while it copies, which fails now and then on CI runners ("Resource busy"), so
++# it gets a few tries.
++# Usage: hdiutil_retry <what> <hdiutil args…>; tries five times with growing pauses.
++hdiutil_retry() {
++  local what="$1" attempt
++  shift
++  for attempt in 1 2 3 4 5; do
++    if hdiutil "$@"; then
++      return 0
++    fi
++    [ "$attempt" = 5 ] && { echo "hdiutil $what failed 5 times" >&2; return 1; }
++    warn "hdiutil $what failed (attempt $attempt of 5); retrying in $((attempt * 10))s"
++    sleep $((attempt * 10))
++  done
++}
++hdiutil_retry create create -srcfolder "$STAGE" -volname "Plervo Canvas" -fs HFS+ -format UDZO -imagekey zlib-level=9 -ov "$DMG"
  sign "$DMG"
-@@ -164,25 +166,25 @@ fi
+ codesign --verify --strict --verbose=2 "$DMG"
++# The app inside the image must still pass --strict, so a makehybrid-style regression can't ship.
++MOUNT="$WORK/dmg-check"
++rm -rf "$MOUNT"
++mkdir -p "$MOUNT"
++hdiutil_retry attach attach -nobrowse -readonly -noautoopen -mountpoint "$MOUNT" "$DMG" >/dev/null
++if ! codesign --verify --strict --deep --verbose=2 "$MOUNT/Plervo Canvas.app"; then
++  hdiutil_retry detach detach "$MOUNT" >/dev/null || true
++  exit 1
++fi
++hdiutil_retry detach detach "$MOUNT" >/dev/null
+ if [ "$NOTARIZE" = 1 ]; then
+   notarize "$DMG"
+   retry xcrun stapler staple "$DMG"
+@@ -164,25 +204,25 @@ fi
  # ---- CLI ---------------------------------------------------------------------------------------
  if [ "$HAS_CLI" = 1 ]; then
    echo "==> building $CLI_ZIP"

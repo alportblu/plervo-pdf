@@ -65,7 +65,7 @@ index 76052b5..4325b42 100644
 +
 +| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | c98853a7427b62041d651836e94ef44855b8aeff377fd7d8d7a7380d1362647b |
 diff --git a/Cargo.lock b/Cargo.lock
-index e77a81b..326843e 100644
+index e77a81b..03e8597 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -210,15 +210,6 @@ version = "1.0.104"
@@ -205,7 +205,13 @@ index e77a81b..326843e 100644
   "regex",
   "serde",
   "serde_json",
-@@ -998,7 +941,7 @@ dependencies = [
+@@ -993,12 +936,13 @@ dependencies = [
+  "thiserror 2.0.21",
+  "unicode-segmentation",
+  "wasm-bindgen-test",
++ "winapi-util",
+  "zip",
+ ]
  
  [[package]]
  name = "designcraft-epub"
@@ -214,7 +220,7 @@ index e77a81b..326843e 100644
  dependencies = [
   "designcraft-color",
   "designcraft-doc",
-@@ -1007,7 +950,7 @@ dependencies = [
+@@ -1007,7 +951,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-fonts"
@@ -223,7 +229,7 @@ index e77a81b..326843e 100644
  dependencies = [
   "harfrust 0.13.3",
   "kurbo",
-@@ -1019,7 +962,7 @@ dependencies = [
+@@ -1019,7 +963,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-format"
@@ -232,7 +238,7 @@ index e77a81b..326843e 100644
  dependencies = [
   "designcraft-doc",
   "serde",
-@@ -1030,7 +973,7 @@ dependencies = [
+@@ -1030,7 +974,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-geom"
@@ -241,7 +247,7 @@ index e77a81b..326843e 100644
  dependencies = [
   "flo_curves",
   "kurbo",
-@@ -1043,20 +986,20 @@ dependencies = [
+@@ -1043,20 +987,20 @@ dependencies = [
  
  [[package]]
  name = "designcraft-idml"
@@ -265,7 +271,7 @@ index e77a81b..326843e 100644
  dependencies = [
   "designcraft-color",
   "designcraft-fonts",
-@@ -1067,7 +1010,7 @@ dependencies = [
+@@ -1067,7 +1011,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-mcp"
@@ -274,7 +280,7 @@ index e77a81b..326843e 100644
  dependencies = [
   "designcraft-engine",
   "designcraft-geom",
-@@ -1080,7 +1023,7 @@ dependencies = [
+@@ -1080,7 +1024,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-pdf"
@@ -283,7 +289,7 @@ index e77a81b..326843e 100644
  dependencies = [
   "designcraft-color",
   "designcraft-compose",
-@@ -1102,7 +1045,7 @@ dependencies = [
+@@ -1102,7 +1046,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-render"
@@ -292,7 +298,7 @@ index e77a81b..326843e 100644
  dependencies = [
   "designcraft-color",
   "designcraft-compose",
-@@ -1120,16 +1063,16 @@ dependencies = [
+@@ -1120,16 +1064,16 @@ dependencies = [
  
  [[package]]
  name = "designcraft-textimport"
@@ -312,7 +318,7 @@ index e77a81b..326843e 100644
  dependencies = [
   "designcraft-color",
   "designcraft-compose",
-@@ -1141,7 +1084,7 @@ dependencies = [
+@@ -1141,7 +1085,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-ui-egui"
@@ -321,7 +327,7 @@ index e77a81b..326843e 100644
  dependencies = [
   "craft-ui",
   "designcraft-color",
-@@ -1159,6 +1102,7 @@ dependencies = [
+@@ -1159,6 +1103,7 @@ dependencies = [
   "regex",
   "serde",
   "serde_json",
@@ -329,7 +335,7 @@ index e77a81b..326843e 100644
   "tempfile",
   "toml",
   "unicode-bidi",
-@@ -1169,7 +1113,7 @@ dependencies = [
+@@ -1169,7 +1114,7 @@ dependencies = [
  
  [[package]]
  name = "designcraft-web"
@@ -338,7 +344,7 @@ index e77a81b..326843e 100644
  dependencies = [
   "designcraft-engine",
   "designcraft-format",
-@@ -1486,7 +1430,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+@@ -1486,7 +1431,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "39cab71617ae0d63f51a36d69f866391735b51691dbda63cf6f96d042b63efeb"
  dependencies = [
   "libc",
@@ -347,7 +353,7 @@ index e77a81b..326843e 100644
  ]
  
  [[package]]
-@@ -1630,16 +1574,15 @@ dependencies = [
+@@ -1630,16 +1575,15 @@ dependencies = [
  
  [[package]]
  name = "fontdb"
@@ -366,7 +372,7 @@ index e77a81b..326843e 100644
  ]
  
  [[package]]
-@@ -2266,6 +2209,12 @@ version = "0.14.0"
+@@ -2266,6 +2210,12 @@ version = "0.14.0"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "09e54e57b4c48b40f7aec75635392b12b3421fa26fe8b4332e63138ed278459c"
  
@@ -379,7 +385,7 @@ index e77a81b..326843e 100644
  [[package]]
  name = "indexmap"
  version = "2.14.2"
-@@ -2441,19 +2390,18 @@ version = "0.8.2"
+@@ -2441,19 +2391,18 @@ version = "0.8.2"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "27da593198b20eeba65caeb73c2bbeec3e53ab08fa549898312ce81c4fce5e33"
  dependencies = [
@@ -401,7 +407,7 @@ index e77a81b..326843e 100644
   "siphasher",
   "skrifa 0.42.1",
   "smallvec",
-@@ -2467,14 +2415,12 @@ dependencies = [
+@@ -2467,14 +2416,12 @@ dependencies = [
  [[package]]
  name = "krilla-svg"
  version = "0.8.1"
@@ -417,7 +423,7 @@ index e77a81b..326843e 100644
   "smallvec",
   "tiny-skia",
   "usvg",
-@@ -2658,7 +2604,7 @@ dependencies = [
+@@ -2658,7 +2605,7 @@ dependencies = [
   "once_cell",
   "png",
   "thiserror 2.0.21",
@@ -426,7 +432,7 @@ index e77a81b..326843e 100644
  ]
  
  [[package]]
-@@ -2729,6 +2675,18 @@ dependencies = [
+@@ -2729,6 +2676,18 @@ dependencies = [
   "jni-sys 0.3.1",
  ]
  
@@ -445,7 +451,7 @@ index e77a81b..326843e 100644
  [[package]]
  name = "nohash-hasher"
  version = "0.2.0"
-@@ -2741,7 +2699,7 @@ version = "0.50.3"
+@@ -2741,7 +2700,7 @@ version = "0.50.3"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "7957b9740744892f114936ab4a57b3f487491bbeafaf8083688b16841a4240e5"
  dependencies = [
@@ -454,7 +460,7 @@ index e77a81b..326843e 100644
  ]
  
  [[package]]
-@@ -3339,6 +3297,40 @@ version = "0.2.3"
+@@ -3339,6 +3298,40 @@ version = "0.2.3"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "b4596b6d070b27117e987119b4dac604f3c58cfb0b191112e24771b2faeac1a6"
  
@@ -495,7 +501,7 @@ index e77a81b..326843e 100644
  [[package]]
  name = "png"
  version = "0.18.1"
-@@ -3506,15 +3498,6 @@ version = "2.0.1"
+@@ -3506,15 +3499,6 @@ version = "2.0.1"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "a993555f31e5a609f617c12db6250dedcac1b0a85076912c436e6fc9b2c8e6a3"
  
@@ -511,7 +517,7 @@ index e77a81b..326843e 100644
  [[package]]
  name = "quick-xml"
  version = "0.41.0"
-@@ -3734,10 +3717,11 @@ checksum = "19b30a45b0cd0bcca8037f3d0dc3421eaf95327a17cad11964fb8179b4fc4832"
+@@ -3734,10 +3718,11 @@ checksum = "19b30a45b0cd0bcca8037f3d0dc3421eaf95327a17cad11964fb8179b4fc4832"
  
  [[package]]
  name = "resvg"
@@ -525,7 +531,7 @@ index e77a81b..326843e 100644
   "gif",
   "image-webp",
   "log",
-@@ -3850,7 +3834,7 @@ dependencies = [
+@@ -3850,7 +3835,7 @@ dependencies = [
   "errno",
   "libc",
   "linux-raw-sys 0.12.1",
@@ -534,7 +540,7 @@ index e77a81b..326843e 100644
  ]
  
  [[package]]
-@@ -3871,24 +3855,6 @@ dependencies = [
+@@ -3871,24 +3856,6 @@ dependencies = [
   "wait-timeout",
  ]
  
@@ -559,7 +565,7 @@ index e77a81b..326843e 100644
  [[package]]
  name = "ryu"
  version = "1.0.23"
-@@ -4266,6 +4232,15 @@ dependencies = [
+@@ -4266,6 +4233,15 @@ dependencies = [
   "syn 3.0.6",
  ]
  
@@ -575,7 +581,7 @@ index e77a81b..326843e 100644
  [[package]]
  name = "tempfile"
  version = "3.27.0"
-@@ -4276,7 +4251,7 @@ dependencies = [
+@@ -4276,7 +4252,7 @@ dependencies = [
   "getrandom 0.4.3",
   "once_cell",
   "rustix 1.1.5",
@@ -584,7 +590,7 @@ index e77a81b..326843e 100644
  ]
  
  [[package]]
-@@ -4485,15 +4460,6 @@ dependencies = [
+@@ -4485,15 +4461,6 @@ dependencies = [
   "once_cell",
  ]
  
@@ -600,7 +606,7 @@ index e77a81b..326843e 100644
  [[package]]
  name = "type-map"
  version = "0.5.1"
-@@ -4503,6 +4469,12 @@ dependencies = [
+@@ -4503,6 +4470,12 @@ dependencies = [
   "rustc-hash 2.1.3",
  ]
  
@@ -613,7 +619,7 @@ index e77a81b..326843e 100644
  [[package]]
  name = "uds_windows"
  version = "1.2.1"
-@@ -4511,7 +4483,7 @@ checksum = "f2f6fb2847f6742cd76af783a2a2c49e9375d0a111c7bef6f71cd9e738c72d6e"
+@@ -4511,7 +4484,7 @@ checksum = "f2f6fb2847f6742cd76af783a2a2c49e9375d0a111c7bef6f71cd9e738c72d6e"
  dependencies = [
   "memoffset",
   "tempfile",
@@ -622,7 +628,7 @@ index e77a81b..326843e 100644
  ]
  
  [[package]]
-@@ -4532,12 +4504,6 @@ version = "0.4.0"
+@@ -4532,12 +4505,6 @@ version = "0.4.0"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "5dfa6e8c60bb66d49db113e0125ee8711b7647b5579dc7f5f19c42357ed039fe"
  
@@ -635,7 +641,7 @@ index e77a81b..326843e 100644
  [[package]]
  name = "unicode-general-category"
  version = "1.1.0"
-@@ -4603,26 +4569,26 @@ dependencies = [
+@@ -4603,26 +4570,26 @@ dependencies = [
  
  [[package]]
  name = "usvg"
@@ -668,7 +674,7 @@ index e77a81b..326843e 100644
   "unicode-bidi",
   "unicode-script",
   "unicode-vo",
-@@ -5001,7 +4967,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+@@ -5001,7 +4968,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "338e30461b3a2b67d70eb30a6d89f8e0c93a833e07d2ae89085cd070c4a00ac0"
  dependencies = [
   "proc-macro2",
@@ -677,7 +683,7 @@ index e77a81b..326843e 100644
   "quote",
  ]
  
-@@ -5248,7 +5214,7 @@ version = "0.1.11"
+@@ -5248,7 +5215,7 @@ version = "0.1.11"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "c2a7b1c03c876122aa43f3020e6c3c3ee5c05081c9a00739faf7503aeba10d22"
  dependencies = [
@@ -686,7 +692,7 @@ index e77a81b..326843e 100644
  ]
  
  [[package]]
-@@ -5697,7 +5663,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
+@@ -5697,7 +5664,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
  
  [[package]]
  name = "xtask"
@@ -695,7 +701,7 @@ index e77a81b..326843e 100644
  dependencies = [
   "serde_json",
  ]
-@@ -5913,15 +5879,16 @@ dependencies = [
+@@ -5913,15 +5880,16 @@ dependencies = [
  
  [[package]]
  name = "zip"
@@ -1731,7 +1737,7 @@ index f51db19..6a7761c 100644
              &about,
              &discord,
 diff --git a/apps/designcraft/src/profile.rs b/apps/designcraft/src/profile.rs
-index 3e90879..3b8a94b 100644
+index 3e90879..7df5904 100644
 --- a/apps/designcraft/src/profile.rs
 +++ b/apps/designcraft/src/profile.rs
 @@ -8,24 +8,25 @@ pub fn config_dir() -> Option<PathBuf> {
@@ -1793,10 +1799,11 @@ index 3e90879..3b8a94b 100644
      fn unset_override_preserves_existing_platform_paths() {
 -        assert_eq!(config_dir_with("macos", environment), Some("/user/Library/Application Support/DesignCraft".into()));
 -        assert_eq!(config_dir_with("windows", environment), Some("/roaming/DesignCraft".into()));
+-        assert_eq!(config_dir_with("linux", environment), Some("/xdg-config/designcraft".into()));
+-        assert_eq!(config_dir_with("linux", |key| if key == "HOME" { environment(key) } else { None }), Some("/user/.config/designcraft".into()));
 +        assert_eq!(config_dir_with("macos", environment), Some("/user/Library/Application Support/Plervo Publish".into()));
 +        assert_eq!(config_dir_with("windows", environment), Some("/roaming/Plervo Publish".into()));
-         assert_eq!(config_dir_with("linux", environment), Some("/xdg-config/designcraft".into()));
--        assert_eq!(config_dir_with("linux", |key| if key == "HOME" { environment(key) } else { None }), Some("/user/.config/designcraft".into()));
++        assert_eq!(config_dir_with("linux", environment), Some("/xdg-config/plervo-publish".into()));
 +        assert_eq!(config_dir_with("linux", |key| if key == "HOME" { environment(key) } else { None }), Some("/user/.config/plervo-publish".into()));
          assert_eq!(recovery_dir_with(None, || Some("/existing/recovery".into())), Some("/existing/recovery".into()));
      }
@@ -1922,7 +1929,7 @@ index ed7430d..a25cdf5 100644
  workspace = true
  
 diff --git a/crates/engine/Cargo.toml b/crates/engine/Cargo.toml
-index 1de90d1..41ba052 100644
+index 1de90d1..b87cf7a 100644
 --- a/crates/engine/Cargo.toml
 +++ b/crates/engine/Cargo.toml
 @@ -5,6 +5,8 @@ edition.workspace = true
@@ -1934,6 +1941,34 @@ index 1de90d1..41ba052 100644
  [lints]
  workspace = true
  
+@@ -35,6 +37,9 @@ unicode-segmentation = { workspace = true }
+ [target.'cfg(not(target_arch = "wasm32"))'.dependencies]
+ tempfile = { workspace = true }
+ 
++[target.'cfg(windows)'.dependencies]
++winapi-util = "0.1.11"
++
+ [dev-dependencies]
+ designcraft-fonts = { workspace = true, features = ["testing"] }
+ zip = { workspace = true }
+diff --git a/crates/engine/src/cmd/book/safety_tests.rs b/crates/engine/src/cmd/book/safety_tests.rs
+index e4ec20e..60f2393 100644
+--- a/crates/engine/src/cmd/book/safety_tests.rs
++++ b/crates/engine/src/cmd/book/safety_tests.rs
+@@ -34,8 +34,11 @@ fn a_commit_failure_reports_the_completed_prefix_and_cleans_staging() {
+     assert!(error.contains("synthetic disk full"), "{error}");
+     assert!(error.contains(second.to_str().unwrap()), "{error}");
+     let completed = error.split("completed chapter paths:").nth(1).unwrap();
+-    assert!(completed.contains(first.to_str().unwrap()), "{error}");
+-    assert!(!completed.contains(second.to_str().unwrap()) && !completed.contains(third.to_str().unwrap()), "{error}");
++    assert!(completed.contains(&format!("{:?}", first.to_str().unwrap())), "{error}");
++    assert!(
++        !completed.contains(&format!("{:?}", second.to_str().unwrap())) && !completed.contains(&format!("{:?}", third.to_str().unwrap())),
++        "{error}"
++    );
+     assert_eq!(designcraft_format::load(&std::fs::read(first).unwrap()).unwrap().sections.first().unwrap().start_number, Some(9));
+     assert_eq!(std::fs::read(second).unwrap(), old_bytes);
+     assert_eq!(std::fs::read(third).unwrap(), old_bytes);
 diff --git a/crates/engine/src/cmd/text.rs b/crates/engine/src/cmd/text.rs
 index 0b87820..4dc22ca 100644
 --- a/crates/engine/src/cmd/text.rs
@@ -1990,7 +2025,7 @@ index ead5bd6..53a0bf6 100644
          for k in ["discord", "website", "appPage", "github", "issues"] {
              assert!(get(k).is_some_and(|u| u.starts_with("https://")), "{k}");
 diff --git a/crates/engine/src/recovery.rs b/crates/engine/src/recovery.rs
-index 33b9a2a..25d4861 100644
+index 33b9a2a..6f6bb8d 100644
 --- a/crates/engine/src/recovery.rs
 +++ b/crates/engine/src/recovery.rs
 @@ -28,12 +28,12 @@ use crate::{DocState, EngineError, Result, Session};
@@ -2009,6 +2044,81 @@ index 33b9a2a..25d4861 100644
  }
  
  /// This process's folder in a recovery folder, with the lock that says it is still running.
+@@ -161,6 +161,13 @@ fn validate_lock(dir: &Path, lock: &std::fs::File) -> Result<()> {
+     }
+     #[cfg(not(unix))]
+     let _ = (held, current);
++    // Windows locks are mandatory even for another handle opened by this process.
++    // Compare the native file identity without reading through that blocked handle.
++    #[cfg(windows)]
++    if !same_windows_file(lock, &named).map_err(|_| fail())? {
++        return Err(fail());
++    }
++    #[cfg(not(windows))]
+     if lock_marker(lock).map_err(|_| fail())? != lock_marker(&named).map_err(|_| fail())? {
+         return Err(fail());
+     }
+@@ -175,10 +182,24 @@ fn validate_lock(dir: &Path, lock: &std::fs::File) -> Result<()> {
+             return Err(fail());
+         }
+     }
++    #[cfg(windows)]
++    {
++        let named_after = std::fs::File::open(&path).map_err(|_| fail())?;
++        if !same_windows_file(lock, &named_after).map_err(|_| fail())? {
++            return Err(fail());
++        }
++    }
+     Ok(())
+ }
+ 
+-#[cfg(not(target_arch = "wasm32"))]
++#[cfg(windows)]
++fn same_windows_file(held: &std::fs::File, named: &std::fs::File) -> std::io::Result<bool> {
++    let held = winapi_util::file::information(held)?;
++    let named = winapi_util::file::information(named)?;
++    Ok(held.volume_serial_number() == named.volume_serial_number() && held.file_index() == named.file_index())
++}
++
++#[cfg(all(not(target_arch = "wasm32"), not(windows)))]
+ fn lock_marker(file: &std::fs::File) -> std::io::Result<Vec<u8>> {
+     use std::io::{Read, Seek};
+     let mut file = file.try_clone()?;
+@@ -917,6 +938,21 @@ mod tests {
+         assert!(std::fs::symlink_metadata(&link).unwrap().file_type().is_symlink());
+     }
+ 
++    #[test]
++    fn a_locked_file_is_valid_but_another_file_with_the_same_marker_is_not() {
++        let first = tempfile::tempdir().unwrap();
++        let second = tempfile::tempdir().unwrap();
++        let lock = new_lock(first.path()).unwrap();
++        let marker = std::fs::read(first.path().join(LOCK)).unwrap();
++        std::fs::write(second.path().join(LOCK), &marker).unwrap();
++        lock.try_lock().unwrap();
++        validate_lock(first.path(), &lock).unwrap();
++        assert!(validate_lock(second.path(), &lock).is_err(), "matching contents do not establish ownership");
++        validate_lock(first.path(), &lock).unwrap();
++        let competing = std::fs::File::open(first.path().join(LOCK)).unwrap();
++        assert!(matches!(competing.try_lock(), Err(std::fs::TryLockError::WouldBlock)), "validation must retain the exclusive lock");
++    }
++
+     #[test]
+     fn a_run_has_a_locked_folder_of_its_own() {
+         let root = tempfile::tempdir().unwrap();
+diff --git a/crates/engine/tests/save_state_atomicity.rs b/crates/engine/tests/save_state_atomicity.rs
+index 326d83b..ac0f30f 100644
+--- a/crates/engine/tests/save_state_atomicity.rs
++++ b/crates/engine/tests/save_state_atomicity.rs
+@@ -58,7 +58,7 @@ fn save_a_copy_rebases_its_data_source_without_changing_the_open_document() {
+     session.execute("file.saveACopy", &json!({"path": destination})).unwrap();
+ 
+     let copy = designcraft_format::load(&std::fs::read(destination).unwrap()).unwrap();
+-    assert_eq!(copy.data_merge.sources[0].relative_path.as_deref(), Some("../../source/contacts.csv"));
++    assert_eq!(copy.data_merge.sources[0].relative_path.as_deref().map(Path::new), Some(Path::new("../../source/contacts.csv")));
+     let after = session.doc().unwrap();
+     assert!(Arc::ptr_eq(&before.doc, &after.doc));
+     assert!(Arc::ptr_eq(&before.saved_doc, &after.saved_doc));
 diff --git a/crates/epub/Cargo.toml b/crates/epub/Cargo.toml
 index 0cbe167..feb5568 100644
 --- a/crates/epub/Cargo.toml
@@ -4464,7 +4574,7 @@ index 9e54961..fe87444 100755
  
  trap 'rm -f "$CERT"' EXIT
 diff --git a/packaging/macos/package.sh b/packaging/macos/package.sh
-index c818ae6..fcee6e4 100755
+index c818ae6..df12d71 100755
 --- a/packaging/macos/package.sh
 +++ b/packaging/macos/package.sh
 @@ -1,8 +1,8 @@
@@ -4478,7 +4588,19 @@ index c818ae6..fcee6e4 100755
  #
  # Usage: packaging/macos/package.sh [--arch universal|aarch64|x86_64] [--skip-build]
  #
-@@ -39,9 +39,9 @@ export MACOSX_DEPLOYMENT_TARGET=11.0
+@@ -10,8 +10,9 @@
+ #   MACOS_SIGN_IDENTITY   codesign identity (name or SHA-1). Default "-" = ad-hoc (local testing;
+ #                         Gatekeeper will reject the result on other Macs). In CI, import-cert.sh sets it.
+ #   MACOS_KEYCHAIN        keychain holding the identity (optional)
+-# Notarization (env; all three needed, and a real identity):
+-#   APPLE_ID, APPLE_PASSWORD (app-specific password), APPLE_TEAM_ID
++# Notarization (env; requires a real signing identity):
++#   MACOS_NOTARY_PROFILE  preferred notarytool profile in MACOS_KEYCHAIN
++#   Or APPLE_ID, APPLE_PASSWORD (app-specific password), APPLE_TEAM_ID
+ set -euo pipefail
+ # shellcheck source=../env.sh
+ . "$(dirname "${BASH_SOURCE[0]}")/../env.sh"
+@@ -39,31 +40,43 @@ export MACOSX_DEPLOYMENT_TARGET=11.0
  IDENTITY="${MACOS_SIGN_IDENTITY:--}"
  SHORT_VERSION="${VERSION%%-*}"
  WORK="$CARGO_TARGET_DIR/macos-package"
@@ -4490,9 +4612,25 @@ index c818ae6..fcee6e4 100755
 +CLI_ZIP="$DIST/plervo-publish-cli-$VERSION-macos-$ARCH.zip"
  
  NOTARIZE=0
++NOTARY_ARGS=()
  if [ "$IDENTITY" = "-" ]; then
-@@ -52,18 +52,18 @@ else
-   warn "macOS: APPLE_ID / APPLE_PASSWORD / APPLE_TEAM_ID incomplete; signed but not notarized"
++  if [ -n "${MACOS_NOTARY_PROFILE:-}" ]; then
++    echo "error: MACOS_NOTARY_PROFILE requires a real MACOS_SIGN_IDENTITY" >&2
++    exit 2
++  fi
+   warn "macOS: ad-hoc signing (no MACOS_SIGN_IDENTITY); artifacts are not notarized"
++elif [ -n "${MACOS_NOTARY_PROFILE:-}" ]; then
++  NOTARIZE=1
++  NOTARY_ARGS=(--keychain-profile "$MACOS_NOTARY_PROFILE")
++  if [ -n "${MACOS_KEYCHAIN:-}" ]; then
++    NOTARY_ARGS+=(--keychain "$MACOS_KEYCHAIN")
++  fi
+ elif [ -n "${APPLE_ID:-}" ] && [ -n "${APPLE_PASSWORD:-}" ] && [ -n "${APPLE_TEAM_ID:-}" ]; then
+   NOTARIZE=1
++  NOTARY_ARGS=(--apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$APPLE_TEAM_ID")
+ else
+-  warn "macOS: APPLE_ID / APPLE_PASSWORD / APPLE_TEAM_ID incomplete; signed but not notarized"
++  warn "macOS: no Keychain profile or complete Apple credentials; signed but not notarized"
  fi
  
 -echo "==> DesignCraft $VERSION for macOS ($ARCH), identity: $IDENTITY, notarize: $NOTARIZE"
@@ -4513,7 +4651,24 @@ index c818ae6..fcee6e4 100755
    inputs=()
    for t in "${TARGETS[@]}"; do inputs+=("$CARGO_TARGET_DIR/$t/release/$bin"); done
    lipo -create -output "$WORK/bin/$bin" "${inputs[@]}"
-@@ -97,12 +97,12 @@ notarize() {
+@@ -83,26 +96,26 @@ sign() {
+ notarize() {
+   local file="$1" out id status
+   echo "==> notarizing $(basename "$file") (this can take a few minutes)"
+-  out="$(xcrun notarytool submit "$file" --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" \
+-    --team-id "$APPLE_TEAM_ID" --wait --timeout 1h --output-format json)" || true
++  out="$(xcrun notarytool submit "$file" "${NOTARY_ARGS[@]}" \
++    --wait --timeout 1h --output-format json)" || true
+   echo "$out"
+   id="$(printf '%s' "$out" | plutil -extract id raw -o - - 2>/dev/null || true)"
+   status="$(printf '%s' "$out" | plutil -extract status raw -o - - 2>/dev/null || true)"
+   if [ "$status" != "Accepted" ]; then
+     if [ -n "$id" ]; then
+-      xcrun notarytool log "$id" --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$APPLE_TEAM_ID" || true
++      xcrun notarytool log "$id" "${NOTARY_ARGS[@]}" || true
+     fi
+     echo "error: notarization of $(basename "$file") failed (status: ${status:-unknown})" >&2
+     exit 1
    fi
  }
  
@@ -4529,7 +4684,7 @@ index c818ae6..fcee6e4 100755
  # Licences of the embedded craft-fonts fonts (only when built with CRAFT_FONTS_DIR).
  copy_font_licences "$APP/Contents/Resources"
  sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
-@@ -110,16 +110,18 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
+@@ -110,16 +123,18 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
    "$HERE/Info.plist.in" >"$APP/Contents/Info.plist"
  plutil -lint "$APP/Contents/Info.plist"
  printf 'APPL????' >"$APP/Contents/PkgInfo"
@@ -4551,7 +4706,7 @@ index c818ae6..fcee6e4 100755
    xcrun stapler staple "$APP"
    xcrun stapler validate "$APP"
    spctl --assess --type execute -vvv "$APP"
-@@ -129,12 +131,10 @@ fi
+@@ -129,12 +144,10 @@ fi
  echo "==> building $DMG"
  STAGE="$WORK/dmg"
  mkdir -p "$STAGE"
@@ -4565,7 +4720,7 @@ index c818ae6..fcee6e4 100755
  rm -f "$DMG"
  # `hdiutil create -srcfolder` writes the files as they are. `makehybrid -hfs` gave every file a
  # com.apple.FinderInfo, which `codesign --verify --strict` rejects as "Finder information, or
-@@ -156,7 +156,7 @@ hdiutil_retry() {
+@@ -156,7 +169,7 @@ hdiutil_retry() {
      sleep $((attempt * 10))
    done
  }
@@ -4574,7 +4729,7 @@ index c818ae6..fcee6e4 100755
  sign "$DMG"
  codesign --verify --strict --verbose=2 "$DMG"
  # The app inside the image must still pass --strict, so a makehybrid-style regression can't ship.
-@@ -164,7 +164,7 @@ MOUNT="$WORK/dmg-check"
+@@ -164,7 +177,7 @@ MOUNT="$WORK/dmg-check"
  rm -rf "$MOUNT"
  mkdir -p "$MOUNT"
  hdiutil_retry attach attach -nobrowse -readonly -mountpoint "$MOUNT" "$DMG" >/dev/null
@@ -4583,7 +4738,7 @@ index c818ae6..fcee6e4 100755
    hdiutil_retry detach detach "$MOUNT" >/dev/null || true
    exit 1
  fi
-@@ -178,17 +178,17 @@ fi
+@@ -178,17 +191,17 @@ fi
  
  # ---- CLI ---------------------------------------------------------------------------------------
  echo "==> building $CLI_ZIP"

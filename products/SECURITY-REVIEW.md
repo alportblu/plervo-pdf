@@ -86,11 +86,92 @@ session folder. A deterministic same-clock-tick regression reproduced the overwr
 and verifies that discarding the second session preserves the first session's audio.
 These changes still require the final overlay/CI run before release.
 
+The next native run exposed Windows-specific Publish recovery failures: reading a
+second handle to its exclusively locked file is refused by
+[Windows file-lock semantics](https://learn.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-lockfileex).
+The correction
+compares volume/file identities through the safe `winapi-util` API, keeping the lock
+held and rejecting a different file even with identical contents. Existing native
+recovery tests and a same-marker/different-file regression cover this boundary; final
+Windows confirmation remains required. Audio's plugin test fixtures also now account
+for the explicit Cargo build target used by the Windows runner. Their default and
+explicit-target paths passed locally; production plugin behavior is unchanged.
+
+Audio's macOS GUI and CLI now include Apple's
+[`com.apple.security.cs.disable-library-validation` entitlement](https://developer.apple.com/documentation/bundleresources/entitlements/com.apple.security.cs.disable-library-validation),
+which allows a plugin host to load libraries signed by other developers. An isolated
+synthetic CLAP processing test failed under the previous hardened-runtime policy and
+passed with that exception. CLAP and VST3 processing then passed under both the GUI
+and CLI entitlement files. The GUI retains its microphone entitlement; the offline CLI
+does not request microphone access. No JIT or executable-memory exception was added.
+These tests use ad-hoc signatures on disposable copies, never a Developer ID key or
+the owner's installed application. They cover native plugin processing, not editor
+windows, arbitrary third-party plugins, or the final notarized distribution.
+
+All twelve macOS packagers now accept `MACOS_NOTARY_PROFILE` with an explicit
+`MACOS_KEYCHAIN`, using the same policy and submission function as the existing
+Suite/PDF packager. The previous product scripts ignored that profile. Isolated
+mock checks verify profile routing with spaces, accepted/rejected responses, and
+refusal to notarize an ad-hoc identity; shell syntax passed for all twelve scripts.
+These checks do not unlock a Keychain, access a signing key, or submit anything to Apple.
+
+The mounted Sheets candidate exposed a packaging defect: `hdiutil makehybrid -hfs`
+added Finder metadata that strict code-signature verification rejected. The eight
+remaining packagers using that builder now use the existing Suite/PDF `create`
+workflow and verify the app inside the mounted image. A disposable original app
+reproduced the old signature failure; the corrected image and a normal copied app
+both passed strict verification. No metadata was stripped to conceal a bad package.
+These ad-hoc packaging checks do not qualify the final Developer ID artifacts.
+
+The Windows installed-app check now waits for the exact GUI process and reads its
+exit code through [`Start-Process -Wait -PassThru`](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/start-process).
+It records both output streams and verifies the source version instead of relying
+on the shell's potentially unset `LASTEXITCODE`. Native Windows confirmation is
+still required; the Sheets installer failure remains in the earlier evidence.
+
+Video's individual-selection command now honors the existing UI flag that suppresses
+linked audio selection. Deleting the current selection preserves deliberately
+unselected linked clips; explicit clip arguments retain their linked-edit behavior.
+Both engine regressions failed before the correction and passed afterwards, along
+with the offscreen Alt-marquee/Delete workflow and undo coverage.
+
+Write's existing offscreen focus regression reproduced a lost first keystroke after
+clicking a style gallery tile. The canvas input pass now honors its pending focus
+request; the regression and all 386 UI tests passed (two existing ignored cases),
+including the font-size field retaining its own editing focus. Word 2003 XML format
+probing also now goes through the checked I/O module and its bounded regular-file
+reader, preserving the existing automation read-root restriction.
+
+Slides' interface fallback previously stopped at an oversized installed font, leaving
+Chinese/Korean text as boxes despite suitable smaller fonts being available. A local
+Mac reproduced the failure. The font database now continues past faces rejected by
+the interface's existing 48 MiB and non-colour limits, without changing document
+fallback or caching constrained misses globally. All 23 font tests, five IME/interface
+tests and two UI-font tests passed locally, with strict scoped Clippy. Installed fonts
+remain runtime-only; no font asset was added or copied into a package or screenshot.
+
+Canvas' standalone server hardening fixture now handles ZIP 9's fallible entry name.
+All 22 hardening tests and strict server Clippy passed locally. CAD's MCP description,
+launch target and error messages now identify Plervo CAD; its four CLI connection tests
+and ten MCP tests passed. Motion's three Windows path assertions now compare resolved
+paths rather than drive or separator spellings; native Windows reruns remain required.
+
 Representative debug CLI acceptance passed for all twelve products (125 recorded
 checks) using original synthetic fixtures and independent image/document/audio readers
 where applicable. These reports identify their binary hashes and inputs; they do not
 qualify later release binaries. Develop's settled headless interface was also visually
-reviewed. Failed harness assumptions remain recorded separately.
+reviewed, followed by offscreen Photo, Audio, Portuguese Sheets, Write, Publish and Motion
+examples. These visual checks opened no native window and do not qualify installed
+release GUI behavior. Failed harness assumptions remain recorded separately.
+
+The candidate workflow now repeats those representative file operations against the
+actual native release CLI on each platform. The portable harness was checked locally
+with Write, Sheets and Audio, and its independent PDF reader accepted the five earlier
+synthetic product PDFs. Its validation-only Python dependencies have exact wheel hashes
+from the maintainers' PyPI releases: [Pillow](https://pypi.org/project/pillow/) (MIT-CMU),
+[pypdf](https://pypi.org/project/pypdf/) (BSD-3-Clause),
+[openpyxl](https://pypi.org/project/openpyxl/) and its et-xmlfile dependency (MIT).
+They are not bundled with the applications. Final native release results remain required.
 
 A fresh RustSec database (`64f92cdc64401fab47baa10e2e11fe382aa57155`) identified three
 additional ZIP advisories (RUSTSEC-2026-0367, 0368, 0369) after the previous cached audit.
@@ -107,6 +188,12 @@ All twelve Linux packagers now share the existing ELF-version guard with a decla
 glibc 2.39 floor matching the Ubuntu 24.04 build runner. DEB and RPM metadata use that
 same value; final binaries must still pass the guard. Package maintainer defaults use
 Plervo contributors rather than inventing addresses in an upstream publisher's domain.
+Video's TAR layout was corrected to contain only `bin/` and `share/`, matching the
+Suite's existing archive policy; a legacy standalone install script remains in source
+but is not included in that archive. The candidate workflow now runs the real Suite
+installer against each Linux TAR, including detection, executable checks, reinstall,
+removal and preservation of documents/preferences in an isolated temporary profile.
+Final archive acceptance remains required; the production archive policy was not relaxed.
 
 Local targeted tests passed for Photo's CLI conversions, Develop's fetch/TLS and
 metadata/lens code, Video's speech/download code, Publish's DOCX/IDML import,

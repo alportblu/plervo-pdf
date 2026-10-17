@@ -19,7 +19,8 @@ permissions:
 
 concurrency:
   group: products-${{ github.ref }}
-  cancel-in-progress: true
+  # Finish the current native diagnostics; a newer revision waits for the full matrix.
+  cancel-in-progress: false
 
 jobs:
   catalog:
@@ -195,6 +196,29 @@ jobs:
           if [ "$RUNNER_OS" = Windows ]; then bin=target/x86_64-pc-windows-msvc/release; ext=.exe; fi
           "$bin/plervo-$PRODUCT$ext" --version
           "$bin/plervo-$PRODUCT-cli$ext" --help
+      - name: Python for independent candidate file readers
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.14'
+      - name: Install hash-pinned acceptance readers
+        run: |
+          python -m pip install --require-hashes --only-binary=:all: -r products/acceptance-requirements.txt
+      - name: Audio native plugins with hardened-runtime entitlements
+        if: runner.os == 'macOS' && matrix.app.product == 'audio'
+        working-directory: source
+        timeout-minutes: 10
+        run: bash packaging/macos/test-plugins.sh dist/validation/hardened-plugins
+      - name: Native release file operations and failure handling
+        timeout-minutes: 10
+        shell: bash
+        run: |
+          bin=source/target/release
+          ext=
+          if [ "$RUNNER_OS" = Windows ]; then bin=source/target/x86_64-pc-windows-msvc/release; ext=.exe; fi
+          version="$(python -c 'import pathlib,tomllib; print(tomllib.loads(pathlib.Path("Cargo.toml").read_text())["workspace"]["package"]["version"])')"
+          python products/accept_cli.py --product "$PRODUCT" --binary "$bin/plervo-$PRODUCT-cli$ext" \
+            --output source/dist/validation/cli-release --expected-version "$version" \
+            --source "native release candidate $GITHUB_SHA"
       - name: Linux internal packages
         if: runner.os == 'Linux'
         working-directory: source
@@ -228,6 +252,16 @@ jobs:
           trap - EXIT
           [ ! -e "$app" ] && [ ! -e "$cli" ]
           printf '%s\n' 'DEB install, installed binaries, desktop entry, reinstall and removal passed.' > dist/validation/linux-install.txt
+      - name: Suite installs the real product archive
+        if: runner.os == 'Linux'
+        shell: bash
+        timeout-minutes: 10
+        run: |
+          cargo build --locked -p plervo-suite-native --example product_acceptance
+          packages=(source/dist/release/plervo-"$PRODUCT"-*-linux-x86_64.tar.gz)
+          [ "${#packages[@]}" = 1 ] && [ -f "${packages[0]}" ]
+          PLERVO_ACCEPTANCE=1 timeout 90 target/debug/examples/product_acceptance "$PRODUCT" "${packages[0]}" \
+            2>&1 | tee source/dist/validation/suite-install.txt
       - name: Debian and Fedora package acceptance
         if: runner.os == 'Linux'
         working-directory: source
@@ -301,6 +335,8 @@ jobs:
           $install = Join-Path $env:ProgramFiles $definition[0].name
           if (Test-Path -LiteralPath $install) { throw 'Refusing to replace an existing installation' }
           $evidence = New-Item -ItemType Directory -Force dist/validation
+          $expectedVersion = python -c 'import pathlib,tomllib; print(tomllib.loads(pathlib.Path("Cargo.toml").read_text())["workspace"]["package"]["version"])'
+          if ($LASTEXITCODE -ne 0 -or [string]::IsNullOrWhiteSpace($expectedVersion)) { throw 'Cannot read candidate version' }
           function Invoke-CandidateMsi([string] $operation, [string] $label) {
             $log = Join-Path $evidence.FullName "windows-$label.log"
             $process = Start-Process msiexec.exe -ArgumentList @($operation, "`"$($packages[0].FullName)`"", '/qn', '/norestart', '/L*v', "`"$log`"") -Wait -PassThru
@@ -312,8 +348,17 @@ jobs:
             $installed = $true
             $desktop = Join-Path $install "plervo-$env:PRODUCT.exe"
             $cli = Join-Path $install "plervo-$env:PRODUCT-cli.exe"
-            & $desktop --version
-            if ($LASTEXITCODE -ne 0) { throw 'Installed app version check failed' }
+            # A Windows GUI executable need not update PowerShell's LASTEXITCODE.
+            # Wait for this exact process and preserve its output and exit status.
+            $versionLog = Join-Path $evidence.FullName 'installed-app-version.txt'
+            $versionError = Join-Path $evidence.FullName 'installed-app-version-stderr.txt'
+            $desktopProcess = Start-Process -FilePath $desktop -ArgumentList '--version' -Wait -PassThru `
+              -RedirectStandardOutput $versionLog -RedirectStandardError $versionError
+            if ($desktopProcess.ExitCode -ne 0) { throw "Installed app version check failed: $($desktopProcess.ExitCode)" }
+            $versionOutput = Get-Content -LiteralPath $versionLog -Raw
+            if ([string]::IsNullOrWhiteSpace($versionOutput) -or -not $versionOutput.Trim().EndsWith(" $expectedVersion")) {
+              throw 'Installed app reported a missing or unexpected version'
+            }
             & $cli --help | Set-Content (Join-Path $evidence.FullName 'installed-cli-help.txt')
             if ($LASTEXITCODE -ne 0) { throw 'Installed CLI failed' }
             Invoke-CandidateMsi '/fa' 'repair'

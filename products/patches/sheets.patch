@@ -3550,7 +3550,7 @@ index 41d9538..cd0fc62 100755
  
  trap 'rm -f "$CERT"' EXIT
 diff --git a/packaging/macos/package.sh b/packaging/macos/package.sh
-index b128c3c..46d47d6 100755
+index b128c3c..bc21535 100755
 --- a/packaging/macos/package.sh
 +++ b/packaging/macos/package.sh
 @@ -1,8 +1,8 @@
@@ -3564,7 +3564,19 @@ index b128c3c..46d47d6 100755
  #
  # Usage: packaging/macos/package.sh [--arch universal|aarch64|x86_64] [--skip-build]
  #
-@@ -39,9 +39,9 @@ export MACOSX_DEPLOYMENT_TARGET=11.0
+@@ -10,8 +10,9 @@
+ #   MACOS_SIGN_IDENTITY   codesign identity (name or SHA-1). Default "-" = ad-hoc (local testing;
+ #                         Gatekeeper will reject the result on other Macs). In CI, import-cert.sh sets it.
+ #   MACOS_KEYCHAIN        keychain holding the identity (optional)
+-# Notarization (env; all three needed, and a real identity):
+-#   APPLE_ID, APPLE_PASSWORD (app-specific password), APPLE_TEAM_ID
++# Notarization (env; requires a real signing identity):
++#   MACOS_NOTARY_PROFILE  preferred notarytool profile in MACOS_KEYCHAIN
++#   Or APPLE_ID, APPLE_PASSWORD (app-specific password), APPLE_TEAM_ID
+ set -euo pipefail
+ # shellcheck source=../env.sh
+ . "$(dirname "${BASH_SOURCE[0]}")/../env.sh"
+@@ -39,31 +40,43 @@ export MACOSX_DEPLOYMENT_TARGET=11.0
  IDENTITY="${MACOS_SIGN_IDENTITY:--}"
  SHORT_VERSION="${VERSION%%-*}"
  WORK="$CARGO_TARGET_DIR/macos-package"
@@ -3576,9 +3588,25 @@ index b128c3c..46d47d6 100755
 +CLI_ZIP="$DIST/plervo-sheets-cli-$VERSION-macos-$ARCH.zip"
  
  NOTARIZE=0
++NOTARY_ARGS=()
  if [ "$IDENTITY" = "-" ]; then
-@@ -52,18 +52,18 @@ else
-   warn "macOS: APPLE_ID / APPLE_PASSWORD / APPLE_TEAM_ID incomplete; signed but not notarized"
++  if [ -n "${MACOS_NOTARY_PROFILE:-}" ]; then
++    echo "error: MACOS_NOTARY_PROFILE requires a real MACOS_SIGN_IDENTITY" >&2
++    exit 2
++  fi
+   warn "macOS: ad-hoc signing (no MACOS_SIGN_IDENTITY); artifacts are not notarized"
++elif [ -n "${MACOS_NOTARY_PROFILE:-}" ]; then
++  NOTARIZE=1
++  NOTARY_ARGS=(--keychain-profile "$MACOS_NOTARY_PROFILE")
++  if [ -n "${MACOS_KEYCHAIN:-}" ]; then
++    NOTARY_ARGS+=(--keychain "$MACOS_KEYCHAIN")
++  fi
+ elif [ -n "${APPLE_ID:-}" ] && [ -n "${APPLE_PASSWORD:-}" ] && [ -n "${APPLE_TEAM_ID:-}" ]; then
+   NOTARIZE=1
++  NOTARY_ARGS=(--apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$APPLE_TEAM_ID")
+ else
+-  warn "macOS: APPLE_ID / APPLE_PASSWORD / APPLE_TEAM_ID incomplete; signed but not notarized"
++  warn "macOS: no Keychain profile or complete Apple credentials; signed but not notarized"
  fi
  
 -echo "==> GridCraft $VERSION for macOS ($ARCH), identity: $IDENTITY, notarize: $NOTARIZE"
@@ -3599,7 +3627,24 @@ index b128c3c..46d47d6 100755
    inputs=()
    for t in "${TARGETS[@]}"; do inputs+=("$CARGO_TARGET_DIR/$t/release/$bin"); done
    lipo -create -output "$WORK/bin/$bin" "${inputs[@]}"
-@@ -97,12 +97,12 @@ notarize() {
+@@ -83,26 +96,26 @@ sign() {
+ notarize() {
+   local file="$1" out id status
+   echo "==> notarizing $(basename "$file") (this can take a few minutes)"
+-  out="$(xcrun notarytool submit "$file" --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" \
+-    --team-id "$APPLE_TEAM_ID" --wait --timeout 1h --output-format json)" || true
++  out="$(xcrun notarytool submit "$file" "${NOTARY_ARGS[@]}" \
++    --wait --timeout 1h --output-format json)" || true
+   echo "$out"
+   id="$(printf '%s' "$out" | plutil -extract id raw -o - - 2>/dev/null || true)"
+   status="$(printf '%s' "$out" | plutil -extract status raw -o - - 2>/dev/null || true)"
+   if [ "$status" != "Accepted" ]; then
+     if [ -n "$id" ]; then
+-      xcrun notarytool log "$id" --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$APPLE_TEAM_ID" || true
++      xcrun notarytool log "$id" "${NOTARY_ARGS[@]}" || true
+     fi
+     echo "error: notarization of $(basename "$file") failed (status: ${status:-unknown})" >&2
+     exit 1
    fi
  }
  
@@ -3615,7 +3660,7 @@ index b128c3c..46d47d6 100755
  # Licences of the embedded craft-fonts fonts (only when built with CRAFT_FONTS_DIR).
  copy_font_licences "$APP/Contents/Resources"
  sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
-@@ -110,16 +110,18 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
+@@ -110,16 +123,18 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
    "$HERE/Info.plist.in" >"$APP/Contents/Info.plist"
  plutil -lint "$APP/Contents/Info.plist"
  printf 'APPL????' >"$APP/Contents/PkgInfo"
@@ -3637,7 +3682,7 @@ index b128c3c..46d47d6 100755
    xcrun stapler staple "$APP"
    xcrun stapler validate "$APP"
    spctl --assess --type execute -vvv "$APP"
-@@ -129,17 +131,15 @@ fi
+@@ -129,21 +144,43 @@ fi
  echo "==> building $DMG"
  STAGE="$WORK/dmg"
  mkdir -p "$STAGE"
@@ -3648,16 +3693,50 @@ index b128c3c..46d47d6 100755
  mkdir -p "$STAGE/.background"
 -cp "$HERE/dmg/background.tiff" "$STAGE/.background/background.tiff"
 -cp "$HERE/dmg/dmg-layout.DS_Store" "$STAGE/.DS_Store"
- rm -f "$DMG" "$WORK/raw.dmg"
- # makehybrid + convert builds the image without attaching a device, unlike `create -srcfolder`,
- # which is flaky on CI runners ("Resource busy") and hangs in sandboxed sessions.
- # The volume name has no version: .DS_Store finds the background through an alias that includes it.
+-rm -f "$DMG" "$WORK/raw.dmg"
+-# makehybrid + convert builds the image without attaching a device, unlike `create -srcfolder`,
+-# which is flaky on CI runners ("Resource busy") and hangs in sandboxed sessions.
+-# The volume name has no version: .DS_Store finds the background through an alias that includes it.
 -hdiutil makehybrid -hfs -hfs-volume-name "GridCraft" -hfs-openfolder "$STAGE" -o "$WORK/raw.dmg" "$STAGE"
-+hdiutil makehybrid -hfs -hfs-volume-name "Plervo Sheets" -hfs-openfolder "$STAGE" -o "$WORK/raw.dmg" "$STAGE"
- hdiutil convert "$WORK/raw.dmg" -format UDZO -imagekey zlib-level=9 -o "$DMG"
- rm -f "$WORK/raw.dmg"
+-hdiutil convert "$WORK/raw.dmg" -format UDZO -imagekey zlib-level=9 -o "$DMG"
+-rm -f "$WORK/raw.dmg"
++rm -f "$DMG"
++# `hdiutil create -srcfolder` writes the files as they are. `makehybrid -hfs` gave every file a
++# com.apple.FinderInfo (a Finder location of -1,-1), which `codesign --verify --strict` rejects as
++# "Finder information, or similar detritus" on the app in the image and on a copy installed from it,
++# so MDM and compliance checks reported a correctly notarized app as damaged (#390). `create`
++# attaches a device while it copies, which fails now and then on CI runners ("Resource busy"), so
++# it gets a few tries.
++# Usage: hdiutil_retry <what> <hdiutil args…>; tries five times with growing pauses.
++hdiutil_retry() {
++  local what="$1" attempt
++  shift
++  for attempt in 1 2 3 4 5; do
++    if hdiutil "$@"; then
++      return 0
++    fi
++    [ "$attempt" = 5 ] && { echo "hdiutil $what failed 5 times" >&2; return 1; }
++    warn "hdiutil $what failed (attempt $attempt of 5); retrying in $((attempt * 10))s"
++    sleep $((attempt * 10))
++  done
++}
++hdiutil_retry create create -srcfolder "$STAGE" -volname "Plervo Sheets" -fs HFS+ -format UDZO -imagekey zlib-level=9 -ov "$DMG"
  sign "$DMG"
-@@ -153,17 +153,17 @@ fi
+ codesign --verify --strict --verbose=2 "$DMG"
++# The app inside the image must still pass --strict, so a makehybrid-style regression can't ship.
++MOUNT="$WORK/dmg-check"
++rm -rf "$MOUNT"
++mkdir -p "$MOUNT"
++hdiutil_retry attach attach -nobrowse -readonly -noautoopen -mountpoint "$MOUNT" "$DMG" >/dev/null
++if ! codesign --verify --strict --deep --verbose=2 "$MOUNT/Plervo Sheets.app"; then
++  hdiutil_retry detach detach "$MOUNT" >/dev/null || true
++  exit 1
++fi
++hdiutil_retry detach detach "$MOUNT" >/dev/null
+ if [ "$NOTARIZE" = 1 ]; then
+   notarize "$DMG"
+   xcrun stapler staple "$DMG"
+@@ -153,17 +190,17 @@ fi
  
  # ---- CLI ---------------------------------------------------------------------------------------
  echo "==> building $CLI_ZIP"

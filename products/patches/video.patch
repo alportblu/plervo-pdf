@@ -2149,10 +2149,10 @@ index 5aaa5f1..bf3a72a 100644
          // The activity lasts while the token is alive: keep it for the life of the process.
          std::mem::forget(token);
 diff --git a/apps/filmcraft/src/args.rs b/apps/filmcraft/src/args.rs
-index c64e350..61a21b0 100644
+index c64e350..f87de2e 100644
 --- a/apps/filmcraft/src/args.rs
 +++ b/apps/filmcraft/src/args.rs
-@@ -1,9 +1,9 @@
+@@ -1,11 +1,11 @@
 -//! The desktop app's command line (`filmcraft --help`).
 +//! The desktop app's command line (`plervo-video --help`).
  
@@ -2162,8 +2162,11 @@ index c64e350..61a21b0 100644
 -/// `filmcraft --help`.
 +/// `plervo-video --help`.
  pub const USAGE: &str = "\
- Usage: filmcraft [options] [project.fcproj | media files...]
+-Usage: filmcraft [options] [project.fcproj | media files...]
++Usage: plervo-video [options] [project.fcproj | media files...]
  
+ Options:
+   --control <port>   start the localhost JSON-lines control server
 @@ -17,7 +17,7 @@ Options:
    --recover          recover the newest unsaved changes without asking
    --no-recover       start without asking about unsaved changes
@@ -2297,7 +2300,7 @@ index d3b40f3..423a94c 100644
 +    }
 +}
 diff --git a/apps/filmcraft/src/dev_icon.rs b/apps/filmcraft/src/dev_icon.rs
-index 8c98767..59e3e49 100644
+index 8c98767..86f186b 100644
 --- a/apps/filmcraft/src/dev_icon.rs
 +++ b/apps/filmcraft/src/dev_icon.rs
 @@ -3,7 +3,7 @@
@@ -2327,7 +2330,15 @@ index 8c98767..59e3e49 100644
  /// `Exec` pointing at this exact binary (a dev build isn't on `$PATH`, so `TryExec` is left out)
  /// and the icon by theme name.
  fn desktop_file_content(app_id: &str, name: &str, exe: &str) -> String {
-@@ -263,14 +263,14 @@ mod tests {
+@@ -215,6 +215,7 @@ fn desktop_file_content(app_id: &str, name: &str, exe: &str) -> String {
+     out.push_str("StartupNotify=true\n");
+     out.push_str(&format!("StartupWMClass={app_id}\n"));
+     out.push_str("Categories=AudioVideo;Video;AudioVideoEditing;\n");
++    out.push_str("MimeType=application/x-plervo-video;video/mp4;video/x-m4v;video/quicktime;video/x-matroska;video/webm;video/vnd.avi;video/x-msvideo;application/mxf;video/mp2t;video/mpeg;video/3gpp;\n");
+     out.push_str("Keywords=video;editor;film;timeline;color;grading;nle;\n");
+     out
+ }
+@@ -263,22 +264,22 @@ mod tests {
      #[test]
      fn icon_sources_exist_in_the_checkout() {
          for size in ICON_SIZES {
@@ -2344,16 +2355,17 @@ index 8c98767..59e3e49 100644
          let expected = packaged
              .lines()
              .filter(|l| !l.starts_with("TryExec="))
-@@ -278,7 +278,7 @@ mod tests {
+-            .map(|l| if l.starts_with("Exec=") { "Exec=\"/target/debug/filmcraft\" %F" } else { l })
++            .map(|l| if l.starts_with("Exec=") { "Exec=\"/target/debug/plervo-video\" %F" } else { l })
              .collect::<Vec<_>>()
              .join("\n")
              + "\n";
 -        let body = desktop_file_content("ai.storyteller.filmcraft", "FilmCraft", "/target/debug/filmcraft");
-+        let body = desktop_file_content("com.plervo.video", "Plervo Video", "/target/debug/filmcraft");
++        let body = desktop_file_content("com.plervo.video", "Plervo Video", "/target/debug/plervo-video");
          assert_eq!(body, expected);
      }
  
-@@ -298,7 +298,7 @@ mod tests {
+@@ -298,7 +299,7 @@ mod tests {
      #[test]
      fn exec_round_trips_through_both_layers() {
          for exe in ["/home/dev/Projects/filmcraft/target/debug/filmcraft", "/opt/film craft/filmcraft", "/a$b\"c`d\\e"] {
@@ -2362,7 +2374,7 @@ index 8c98767..59e3e49 100644
              assert_eq!(exec_line(&body).as_deref(), Some(exe));
              assert!(desktop_file_exec_is_ours(&body, exe));
          }
-@@ -308,7 +308,7 @@ mod tests {
+@@ -308,7 +309,7 @@ mod tests {
      /// prefix, and a packaged `Exec=filmcraft` are all someone else's entry.
      #[test]
      fn desktop_file_exec_is_ours_matches_only_our_binary() {
@@ -2409,7 +2421,7 @@ index 3d7c713..1caaf82 100644
          assert!(logger.enabled(&log::Metadata::builder().level(log::Level::Info).target("filmcraft_engine::autosave").build()));
          assert!(!logger.enabled(&log::Metadata::builder().level(log::Level::Info).target("naga").build()));
 diff --git a/apps/filmcraft/src/main.rs b/apps/filmcraft/src/main.rs
-index f850b16..91bc189 100644
+index f850b16..67b06b7 100644
 --- a/apps/filmcraft/src/main.rs
 +++ b/apps/filmcraft/src/main.rs
 @@ -1,4 +1,4 @@
@@ -2454,7 +2466,19 @@ index f850b16..91bc189 100644
      }
  }
  
-@@ -98,7 +98,7 @@ fn main() -> eframe::Result {
+@@ -88,17 +88,17 @@ fn main() -> eframe::Result {
+             return Ok(());
+         }
+         Ok(Cli::Version) => {
+-            tell(&format!("filmcraft {}\n", env!("CARGO_PKG_VERSION")), false);
++            tell(&format!("plervo-video {}\n", env!("CARGO_PKG_VERSION")), false);
+             return Ok(());
+         }
+         Err(e) => {
+-            tell(&format!("filmcraft: {e}\n\n{}", args::USAGE), true);
++            tell(&format!("plervo-video: {e}\n\n{}", args::USAGE), true);
+             std::process::exit(2);
+         }
      };
      let data_root = launch.data_dir.clone().or_else(default_data_dir);
      let log_dir = data_root.as_ref().map(|d| d.join(logging::LOG_DIR));
@@ -3334,6 +3358,99 @@ index 8af0fef..f23e0c3 100644
  }
  
  pub fn unix_now() -> i64 {
+diff --git a/crates/engine/src/commands.rs b/crates/engine/src/commands.rs
+index c99e5c6..f97fb42 100644
+--- a/crates/engine/src/commands.rs
++++ b/crates/engine/src/commands.rs
+@@ -1646,7 +1646,10 @@ fn build() -> Vec<CommandSpec> {
+                 let caps = s.state.caption_selection.clone();
+                 return crate::captions::delete(s, &caps, false);
+             }
+-            let sel = with_links(s, &clips_p(s, p));
++            // The visible selection is already expanded when appropriate. Alt gestures
++            // deliberately exclude linked clips, which Delete must leave untouched.
++            let clips = clips_p(s, p);
++            let sel = if p.get("clips").is_some() || p.get("clip").is_some() { with_links(s, &clips) } else { clips };
+             s.edit_sequence("Clear", |q, _, st| {
+                 edit::delete_items(q, &sel);
+                 st.selection.clear();
+@@ -2586,39 +2589,47 @@ fn build() -> Vec<CommandSpec> {
+                 None => place_one(s, p),
+             }
+         ),
+-        cmd!("timeline.select", "Select Clips", [], None, r#"{"clips":[id],"transitions":[id]?,"add":bool,"toggle":bool}"#, has_seq, |s, p| {
+-            if let Some(ids) = p.get("transitions") {
+-                return select_transitions(s, ids, bool_p(p, "add").unwrap_or(false), bool_p(p, "toggle").unwrap_or(false));
+-            }
+-            let clips: Vec<ClipId> =
+-                p.get("clips").and_then(Value::as_array).map(|a| a.iter().filter_map(|v| v.as_u64().map(ClipId)).collect()).unwrap_or_default();
+-            let clips = with_links(s, &clips);
+-            // selecting clips leaves trim mode (Premiere: clip and edit point selections are exclusive)
+-            s.state.edit_points.clear();
+-            s.state.trim_shift = Default::default();
+-            // and a clip selection replaces a transition or gap one
+-            s.state.transition_selection.clear();
+-            s.state.gap_selection = None;
+-            if bool_p(p, "toggle").unwrap_or(false) {
+-                for c in clips {
+-                    if let Some(i) = s.state.selection.iter().position(|x| *x == c) {
+-                        s.state.selection.remove(i);
+-                    } else {
+-                        s.state.selection.push(c);
+-                    }
++        cmd!(
++            "timeline.select",
++            "Select Clips",
++            [],
++            None,
++            r#"{"clips":[id],"transitions":[id]?,"add":bool,"toggle":bool,"linked":bool?=true}"#,
++            has_seq,
++            |s, p| {
++                if let Some(ids) = p.get("transitions") {
++                    return select_transitions(s, ids, bool_p(p, "add").unwrap_or(false), bool_p(p, "toggle").unwrap_or(false));
+                 }
+-            } else if bool_p(p, "add").unwrap_or(false) {
+-                for c in clips {
+-                    if !s.state.selection.contains(&c) {
+-                        s.state.selection.push(c);
++                let clips: Vec<ClipId> =
++                    p.get("clips").and_then(Value::as_array).map(|a| a.iter().filter_map(|v| v.as_u64().map(ClipId)).collect()).unwrap_or_default();
++                let clips = if bool_p(p, "linked").unwrap_or(true) { with_links(s, &clips) } else { clips };
++                // selecting clips leaves trim mode (Premiere: clip and edit point selections are exclusive)
++                s.state.edit_points.clear();
++                s.state.trim_shift = Default::default();
++                // and a clip selection replaces a transition or gap one
++                s.state.transition_selection.clear();
++                s.state.gap_selection = None;
++                if bool_p(p, "toggle").unwrap_or(false) {
++                    for c in clips {
++                        if let Some(i) = s.state.selection.iter().position(|x| *x == c) {
++                            s.state.selection.remove(i);
++                        } else {
++                            s.state.selection.push(c);
++                        }
++                    }
++                } else if bool_p(p, "add").unwrap_or(false) {
++                    for c in clips {
++                        if !s.state.selection.contains(&c) {
++                            s.state.selection.push(c);
++                        }
+                     }
++                } else {
++                    s.state.selection = clips;
++                    s.state.caption_selection.clear();
+                 }
+-            } else {
+-                s.state.selection = clips;
+-                s.state.caption_selection.clear();
++                Ok(json!({"selection": s.state.selection.iter().map(|c| c.0).collect::<Vec<_>>()}))
+             }
+-            Ok(json!({"selection": s.state.selection.iter().map(|c| c.0).collect::<Vec<_>>()}))
+-        }),
++        ),
+         cmd!("timeline.selectGap", "Select Gap", [], None, r#"{"track":"V1"|id,"time":ticks|"frame":n|"seconds":f}"#, has_seq, select_gap),
+         cmd!(
+             "timeline.move",
 diff --git a/crates/engine/src/project_tools.rs b/crates/engine/src/project_tools.rs
 index bcda383..4c5bdf9 100644
 --- a/crates/engine/src/project_tools.rs
@@ -3409,6 +3526,54 @@ index 79ecd60..a812dad 100644
          ],
      },
      Category {
+diff --git a/crates/engine/src/tests.rs b/crates/engine/src/tests.rs
+index fe3e351..6dc14f3 100644
+--- a/crates/engine/src/tests.rs
++++ b/crates/engine/src/tests.rs
+@@ -139,6 +139,43 @@ fn trim_linked_and_ripple_delete() {
+     assert_eq!(q.video_tracks[0].items[0].start, s.sequence_rate().tick_of(12), "the trim gap remains");
+ }
+ 
++#[test]
++fn individual_selection_does_not_expand_to_linked_audio() {
++    let mut s = demo();
++    let video = s.active_sequence().unwrap().video_tracks[0].items[0].id;
++    assert!(s.state.linked_selection);
++    s.execute("timeline.select", json!({"clips": [video.0]})).unwrap();
++    assert_eq!(s.state.selection.len(), 2, "ordinary selection still follows links");
++    s.execute("timeline.select", json!({"clips": [video.0], "linked": false})).unwrap();
++    assert_eq!(s.state.selection, vec![video], "Alt selection keeps only the requested clip");
++    assert!(s.state.linked_selection, "an individual gesture must not change the global preference");
++    s.state.linked_selection = false;
++    s.execute("timeline.select", json!({"clips": [video.0], "linked": true})).unwrap();
++    assert_eq!(s.state.selection, vec![video], "normal gestures respect the disabled global preference");
++}
++
++#[test]
++fn clear_current_selection_preserves_unselected_linked_audio() {
++    let mut s = demo();
++    let seq = s.active_sequence().unwrap();
++    let video = seq.video_tracks[0].items[0].clone();
++    let audio = seq.audio_tracks[0].items.iter().find(|clip| clip.link == video.link).unwrap().id;
++    // Alt-click already stores an individual selection directly; Delete must honor it.
++    s.state.selection = vec![video.id];
++    s.execute("edit.clear", json!({})).unwrap();
++    let seq = s.active_sequence().unwrap();
++    assert!(seq.find_item(video.id).is_none());
++    assert!(seq.find_item(audio).is_some(), "Delete must not remove the unselected audio");
++    seq.check().unwrap();
++    s.execute("edit.undo", json!({})).unwrap();
++    let seq = s.active_sequence().unwrap();
++    assert!(seq.find_item(video.id).is_some() && seq.find_item(audio).is_some());
++    // Preserve the existing command behavior when the caller supplies explicit clip IDs.
++    s.execute("edit.clear", json!({"clips": [video.id.0]})).unwrap();
++    let seq = s.active_sequence().unwrap();
++    assert!(seq.find_item(video.id).is_none() && seq.find_item(audio).is_none());
++}
++
+ #[test]
+ fn slide_moves_linked_audio_with_the_video() {
+     let mut s = demo();
 diff --git a/crates/engine/src/voiceover.rs b/crates/engine/src/voiceover.rs
 index fa3dd42..e718b12 100644
 --- a/crates/engine/src/voiceover.rs
@@ -6745,6 +6910,19 @@ index c01d2e1..a41bdf0 100644
  /// system clipboard holds no text at all. A plain V press and release (the Selection tool) pastes
  /// nothing and doesn't read the clipboard.
  #[test]
+diff --git a/crates/ui-egui/tests/graphics_notice_ui.rs b/crates/ui-egui/tests/graphics_notice_ui.rs
+index 272eecb..bd743ef 100644
+--- a/crates/ui-egui/tests/graphics_notice_ui.rs
++++ b/crates/ui-egui/tests/graphics_notice_ui.rs
+@@ -117,7 +117,7 @@ fn the_notice_follows_the_interface_language() {
+     let mut d = Driver::new(Some(notice));
+     d.app().ui.language = filmcraft_ui_egui::i18n::Language::Es;
+     d.frames(3);
+-    assert_eq!(d.label("graphics.notice"), "Modo gráfico seguro: renderizado por software");
++    assert_eq!(d.label("graphics.notice"), "Modo gráfico seguro: procesamiento por software");
+     assert_eq!(d.label("graphics.notice.reset"), "Usar gráficos predeterminados");
+     filmcraft_ui_egui::i18n::set_current(filmcraft_ui_egui::i18n::Language::En);
+ }
 diff --git a/crates/ui-egui/tests/graphics_templates_ui.rs b/crates/ui-egui/tests/graphics_templates_ui.rs
 index 7affec8..b4cc978 100644
 --- a/crates/ui-egui/tests/graphics_templates_ui.rs
@@ -6758,6 +6936,30 @@ index 7affec8..b4cc978 100644
  /// to .fcgt) from the Browse panel must say why on the status bar, not do nothing.
  #[test]
  fn install_refused_shows_the_reason_on_the_status_bar() {
+diff --git a/crates/ui-egui/tests/scripted.rs b/crates/ui-egui/tests/scripted.rs
+index 0bb1dd7..1d56609 100644
+--- a/crates/ui-egui/tests/scripted.rs
++++ b/crates/ui-egui/tests/scripted.rs
+@@ -596,12 +596,15 @@ fn eyedropper_picks_a_key_color_on_a_selected_clip() {
+     let before = color(&mut d);
+     d.ok("ui.click", json!({"id": "effectControls.color_key.color.eyedropper"}));
+     d.frames(2);
++    assert!(d.harness.state().ui.eyedropper.is_some(), "the eyedropper is armed");
+     d.ok("ui.click", json!({"id": "program.picture"}));
+-    for _ in 0..200 {
+-        if color(&mut d) != before {
+-            break;
+-        }
++    // Sampling waits for a background render. A tight frame loop can finish before
++    // that worker gets CPU time on the Windows runner; await its bounded completion.
++    let deadline = std::time::Instant::now() + std::time::Duration::from_secs(20);
++    while d.harness.state().ui.eyedropper.is_some() {
++        assert!(std::time::Instant::now() < deadline, "eyedropper render did not complete: {}", d.harness.state().ui.status);
+         d.frames(1);
++        std::thread::sleep(std::time::Duration::from_millis(5));
+     }
+     assert_ne!(color(&mut d), before, "the eyedropper filled Key Color from the Program picture");
+ }
 diff --git a/crates/ui-egui/tests/sequence_ui.rs b/crates/ui-egui/tests/sequence_ui.rs
 index 229821d..9718ddb 100644
 --- a/crates/ui-egui/tests/sequence_ui.rs
@@ -6821,6 +7023,39 @@ index 80802cf..aeba13d 100644
  # Control protocol & MCP
  
  ## Desktop control channel
+diff --git a/docs/releasing.md b/docs/releasing.md
+index 58c2837..201aee2 100644
+--- a/docs/releasing.md
++++ b/docs/releasing.md
+@@ -108,19 +108,15 @@ nor the portable zip needs the Visual C++ redistributable.
+ `.tar.gz` tree. The packages install both programs, the desktop entry, the AppStream metainfo, the
+ icons and the licence files.
+ 
+-The Linux tarball includes `install.sh`. Extract it, open a terminal in the extracted
+-directory and run `./install.sh` to install both programs and their desktop integration
+-under `~/.local` (no administrator permissions needed). The application-menu entry uses
+-the installed binary's absolute path; add `~/.local/bin` to `PATH` for terminal commands.
+-Run the installer again to update. For a system-wide installation, use
+-`sudo ./install.sh --prefix /usr/local`. A custom absolute `--prefix` is also supported;
+-its `share` directory must be in the desktop's data search path to appear in the menu.
+-Prefixes containing `=`, `%` or control characters are rejected for desktop-launcher compatibility.
+-
+-The jobs run on `ubuntu-22.04`, the oldest GitHub-hosted image, so the binaries only need
+-glibc 2.35 or newer: Ubuntu 22.04+, Debian 12+, Fedora 36+ and RHEL 10. The deb (`libc6 (>= 2.35)`)
+-and the rpm (`glibc >= 2.35`) both declare that floor, so older systems refuse the install. Moving
+-the job to a newer image raises the floor, so do it deliberately and update `nfpm.yaml` with it.
++The Plervo Linux tarball contains only the `bin/` and `share/` trees accepted by
++Plervo Suite. Suite handles installation, updates and removal in its managed app
++directory. Use the DEB or RPM package for a system-wide installation. The source
++repository retains the upstream `install.sh` helper, but Plervo tarballs do not ship it.
++
++Plervo candidates build on Ubuntu 24.04 and require glibc 2.39 or newer. The ELF
++version check and DEB/RPM metadata enforce that same floor. Distribution acceptance
++is recorded by the Plervo candidate workflow; the upstream platform table above does
++not qualify additional Plervo architectures or distributions.
+ After packaging, the job prints the `.deb`'s metadata and contents, runs `ldd` on the binary and
+ runs each AppImage with `--version`.
+ 
 diff --git a/packaging/env.sh b/packaging/env.sh
 index d227a71..e8785db 100644
 --- a/packaging/env.sh
@@ -7713,7 +7948,7 @@ index 657f0bb..5cade50 100644
    - src: ${STAGE}/usr/share/
      dst: /usr/share/
 diff --git a/packaging/linux/package.sh b/packaging/linux/package.sh
-index 5001bf7..7443913 100755
+index 5001bf7..4b63497 100755
 --- a/packaging/linux/package.sh
 +++ b/packaging/linux/package.sh
 @@ -1,11 +1,11 @@
@@ -7793,7 +8028,15 @@ index 5001bf7..7443913 100755
  
  if command -v desktop-file-validate >/dev/null; then
    desktop-file-validate "$STAGE/usr/share/applications/$APP_ID.desktop"
-@@ -104,10 +107,10 @@ fi
+@@ -85,7 +88,6 @@ has() { case " $FORMATS " in *" $1 "*) return 0 ;; *) return 1 ;; esac; }
+ if has tar; then
+   mkdir -p "$WORK/tar"
+   cp -R "$STAGE/usr" "$WORK/tar/$BASENAME"
+-  install -m755 "$HERE/install.sh" "$WORK/tar/$BASENAME/install.sh"
+   tar -C "$WORK/tar" -czf "$DIST/$BASENAME.tar.gz" "$BASENAME"
+   echo "wrote $DIST/$BASENAME.tar.gz"
+ fi
+@@ -104,10 +106,10 @@ fi
  
  # ---- AppImage -----------------------------------------------------------------------------------
  if has appimage; then
@@ -7806,7 +8049,7 @@ index 5001bf7..7443913 100755
    cp "$HERE/$APP_ID.desktop" "$APPDIR/$APP_ID.desktop"
    cp "$ROOT/assets/app-icon/hicolor/256x256/apps/$APP_ID.png" "$APPDIR/$APP_ID.png"
    ln -s "$APP_ID.png" "$APPDIR/.DirIcon"
-@@ -131,8 +134,8 @@ if has appimage; then
+@@ -131,8 +133,8 @@ if has appimage; then
    # fetch only the blocks that changed in a newer release, through the .zsync published next to
    # each AppImage on GitHub Releases. `latest` is the newest published release that is not a
    # pre-release. A fork's builds point at its own releases through GITHUB_REPOSITORY.
@@ -7817,7 +8060,7 @@ index 5001bf7..7443913 100755
    # Extract-and-run: works without FUSE (containers, CI). The output embeds the static runtime,
    # so users don't need libfuse2 either. With zsyncmake on the host (CI installs the zsync
    # package) appimagetool also writes the .zsync, into its working directory, hence the cd.
-@@ -146,9 +149,9 @@ if has appimage; then
+@@ -146,9 +148,9 @@ if has appimage; then
  fi
  
  if [ -z "${CROSS_TARGET:-}" ]; then
@@ -8167,7 +8410,7 @@ index 2a11b53..98b3f9b 100755
  
  trap 'rm -f "$CERT"' EXIT
 diff --git a/packaging/macos/package.sh b/packaging/macos/package.sh
-index 85902b9..342d36f 100755
+index 85902b9..12faf50 100755
 --- a/packaging/macos/package.sh
 +++ b/packaging/macos/package.sh
 @@ -1,8 +1,8 @@
@@ -8181,7 +8424,19 @@ index 85902b9..342d36f 100755
  #
  # Usage: packaging/macos/package.sh [--arch universal|aarch64|x86_64] [--skip-build]
  #
-@@ -39,9 +39,9 @@ export MACOSX_DEPLOYMENT_TARGET=11.0
+@@ -10,8 +10,9 @@
+ #   MACOS_SIGN_IDENTITY   codesign identity (name or SHA-1). Default "-" = ad-hoc (local testing;
+ #                         Gatekeeper will reject the result on other Macs). In CI, import-cert.sh sets it.
+ #   MACOS_KEYCHAIN        keychain holding the identity (optional)
+-# Notarization (env; all three needed, and a real identity):
+-#   APPLE_ID, APPLE_PASSWORD (app-specific password), APPLE_TEAM_ID
++# Notarization (env; requires a real signing identity):
++#   MACOS_NOTARY_PROFILE  preferred notarytool profile in MACOS_KEYCHAIN
++#   Or APPLE_ID, APPLE_PASSWORD (app-specific password), APPLE_TEAM_ID
+ set -euo pipefail
+ # shellcheck source=../env.sh
+ . "$(dirname "${BASH_SOURCE[0]}")/../env.sh"
+@@ -39,31 +40,43 @@ export MACOSX_DEPLOYMENT_TARGET=11.0
  IDENTITY="${MACOS_SIGN_IDENTITY:--}"
  SHORT_VERSION="${VERSION%%-*}"
  WORK="$CARGO_TARGET_DIR/macos-package"
@@ -8193,9 +8448,25 @@ index 85902b9..342d36f 100755
 +CLI_ZIP="$DIST/plervo-video-cli-$VERSION-macos-$ARCH.zip"
  
  NOTARIZE=0
++NOTARY_ARGS=()
  if [ "$IDENTITY" = "-" ]; then
-@@ -52,18 +52,18 @@ else
-   warn "macOS: APPLE_ID / APPLE_PASSWORD / APPLE_TEAM_ID incomplete; signed but not notarized"
++  if [ -n "${MACOS_NOTARY_PROFILE:-}" ]; then
++    echo "error: MACOS_NOTARY_PROFILE requires a real MACOS_SIGN_IDENTITY" >&2
++    exit 2
++  fi
+   warn "macOS: ad-hoc signing (no MACOS_SIGN_IDENTITY); artifacts are not notarized"
++elif [ -n "${MACOS_NOTARY_PROFILE:-}" ]; then
++  NOTARIZE=1
++  NOTARY_ARGS=(--keychain-profile "$MACOS_NOTARY_PROFILE")
++  if [ -n "${MACOS_KEYCHAIN:-}" ]; then
++    NOTARY_ARGS+=(--keychain "$MACOS_KEYCHAIN")
++  fi
+ elif [ -n "${APPLE_ID:-}" ] && [ -n "${APPLE_PASSWORD:-}" ] && [ -n "${APPLE_TEAM_ID:-}" ]; then
+   NOTARIZE=1
++  NOTARY_ARGS=(--apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$APPLE_TEAM_ID")
+ else
+-  warn "macOS: APPLE_ID / APPLE_PASSWORD / APPLE_TEAM_ID incomplete; signed but not notarized"
++  warn "macOS: no Keychain profile or complete Apple credentials; signed but not notarized"
  fi
  
 -echo "==> FilmCraft $VERSION for macOS ($ARCH), identity: $IDENTITY, notarize: $NOTARIZE"
@@ -8216,7 +8487,24 @@ index 85902b9..342d36f 100755
    inputs=()
    for t in "${TARGETS[@]}"; do inputs+=("$CARGO_TARGET_DIR/$t/release/$bin"); done
    lipo -create -output "$WORK/bin/$bin" "${inputs[@]}"
-@@ -97,29 +97,31 @@ notarize() {
+@@ -83,43 +96,45 @@ sign() {
+ notarize() {
+   local file="$1" out id status
+   echo "==> notarizing $(basename "$file") (this can take a few minutes)"
+-  out="$(xcrun notarytool submit "$file" --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" \
+-    --team-id "$APPLE_TEAM_ID" --wait --timeout 1h --output-format json)" || true
++  out="$(xcrun notarytool submit "$file" "${NOTARY_ARGS[@]}" \
++    --wait --timeout 1h --output-format json)" || true
+   echo "$out"
+   id="$(printf '%s' "$out" | plutil -extract id raw -o - - 2>/dev/null || true)"
+   status="$(printf '%s' "$out" | plutil -extract status raw -o - - 2>/dev/null || true)"
+   if [ "$status" != "Accepted" ]; then
+     if [ -n "$id" ]; then
+-      xcrun notarytool log "$id" --apple-id "$APPLE_ID" --password "$APPLE_PASSWORD" --team-id "$APPLE_TEAM_ID" || true
++      xcrun notarytool log "$id" "${NOTARY_ARGS[@]}" || true
+     fi
+     echo "error: notarization of $(basename "$file") failed (status: ${status:-unknown})" >&2
+     exit 1
    fi
  }
  
@@ -8254,7 +8542,7 @@ index 85902b9..342d36f 100755
    xcrun stapler staple "$APP"
    xcrun stapler validate "$APP"
    spctl --assess --type execute -vvv "$APP"
-@@ -129,17 +131,15 @@ fi
+@@ -129,21 +144,43 @@ fi
  echo "==> building $DMG"
  STAGE="$WORK/dmg"
  mkdir -p "$STAGE"
@@ -8265,16 +8553,50 @@ index 85902b9..342d36f 100755
  mkdir -p "$STAGE/.background"
 -cp "$HERE/dmg/background.tiff" "$STAGE/.background/background.tiff"
 -cp "$HERE/dmg/dmg-layout.DS_Store" "$STAGE/.DS_Store"
- rm -f "$DMG" "$WORK/raw.dmg"
- # makehybrid + convert builds the image without attaching a device, unlike `create -srcfolder`,
- # which is flaky on CI runners ("Resource busy") and hangs in sandboxed sessions.
- # The volume name has no version: .DS_Store finds the background through an alias that includes it.
+-rm -f "$DMG" "$WORK/raw.dmg"
+-# makehybrid + convert builds the image without attaching a device, unlike `create -srcfolder`,
+-# which is flaky on CI runners ("Resource busy") and hangs in sandboxed sessions.
+-# The volume name has no version: .DS_Store finds the background through an alias that includes it.
 -hdiutil makehybrid -hfs -hfs-volume-name "FilmCraft" -hfs-openfolder "$STAGE" -o "$WORK/raw.dmg" "$STAGE"
-+hdiutil makehybrid -hfs -hfs-volume-name "Plervo Video" -hfs-openfolder "$STAGE" -o "$WORK/raw.dmg" "$STAGE"
- hdiutil convert "$WORK/raw.dmg" -format UDZO -imagekey zlib-level=9 -o "$DMG"
- rm -f "$WORK/raw.dmg"
+-hdiutil convert "$WORK/raw.dmg" -format UDZO -imagekey zlib-level=9 -o "$DMG"
+-rm -f "$WORK/raw.dmg"
++rm -f "$DMG"
++# `hdiutil create -srcfolder` writes the files as they are. `makehybrid -hfs` gave every file a
++# com.apple.FinderInfo (a Finder location of -1,-1), which `codesign --verify --strict` rejects as
++# "Finder information, or similar detritus" on the app in the image and on a copy installed from it,
++# so MDM and compliance checks reported a correctly notarized app as damaged (#390). `create`
++# attaches a device while it copies, which fails now and then on CI runners ("Resource busy"), so
++# it gets a few tries.
++# Usage: hdiutil_retry <what> <hdiutil args…>; tries five times with growing pauses.
++hdiutil_retry() {
++  local what="$1" attempt
++  shift
++  for attempt in 1 2 3 4 5; do
++    if hdiutil "$@"; then
++      return 0
++    fi
++    [ "$attempt" = 5 ] && { echo "hdiutil $what failed 5 times" >&2; return 1; }
++    warn "hdiutil $what failed (attempt $attempt of 5); retrying in $((attempt * 10))s"
++    sleep $((attempt * 10))
++  done
++}
++hdiutil_retry create create -srcfolder "$STAGE" -volname "Plervo Video" -fs HFS+ -format UDZO -imagekey zlib-level=9 -ov "$DMG"
  sign "$DMG"
-@@ -153,17 +153,17 @@ fi
+ codesign --verify --strict --verbose=2 "$DMG"
++# The app inside the image must still pass --strict, so a makehybrid-style regression can't ship.
++MOUNT="$WORK/dmg-check"
++rm -rf "$MOUNT"
++mkdir -p "$MOUNT"
++hdiutil_retry attach attach -nobrowse -readonly -noautoopen -mountpoint "$MOUNT" "$DMG" >/dev/null
++if ! codesign --verify --strict --deep --verbose=2 "$MOUNT/Plervo Video.app"; then
++  hdiutil_retry detach detach "$MOUNT" >/dev/null || true
++  exit 1
++fi
++hdiutil_retry detach detach "$MOUNT" >/dev/null
+ if [ "$NOTARIZE" = 1 ]; then
+   notarize "$DMG"
+   xcrun stapler staple "$DMG"
+@@ -153,17 +190,17 @@ fi
  
  # ---- CLI ---------------------------------------------------------------------------------------
  echo "==> building $CLI_ZIP"
