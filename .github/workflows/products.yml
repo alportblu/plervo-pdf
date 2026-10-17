@@ -375,7 +375,10 @@ jobs:
               -RedirectStandardOutput $versionLog -RedirectStandardError $versionError
             if ($desktopProcess.ExitCode -ne 0) { throw "Installed app version check failed: $($desktopProcess.ExitCode)" }
             $versionOutput = Get-Content -LiteralPath $versionLog -Raw
-            if ([string]::IsNullOrWhiteSpace($versionOutput) -or -not $versionOutput.Trim().EndsWith(" $expectedVersion")) {
+            # Photo and Write append build provenance. Match the exact product and
+            # complete version token while allowing their parenthesized build details.
+            $versionPattern = '^plervo[- ]' + [regex]::Escape($env:PRODUCT) + ' ' + [regex]::Escape($expectedVersion) + '(?: \([^)]+\))?$'
+            if ([string]::IsNullOrWhiteSpace($versionOutput) -or $versionOutput.Trim() -notmatch $versionPattern) {
               throw 'Installed app reported a missing or unexpected version'
             }
             & $cli --help | Set-Content (Join-Path $evidence.FullName 'installed-cli-help.txt')

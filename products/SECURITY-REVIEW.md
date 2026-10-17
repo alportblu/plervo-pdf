@@ -165,8 +165,11 @@ in this revision, and affected packages remain blocked from publication.
 The Windows installed-app check now waits for the exact GUI process and reads its
 exit code through [`Start-Process -Wait -PassThru`](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.management/start-process).
 It records both output streams and verifies the source version instead of relying
-on the shell's potentially unset `LASTEXITCODE`. Native Windows confirmation is
-still required; the Sheets installer failure remains in the earlier evidence.
+on the shell's potentially unset `LASTEXITCODE`. Photo's next native run exposed
+an overly narrow comparison: Photo and Write append parenthesized build details.
+The check now matches the exact product and full version token with that optional
+suffix, preserving the original output in the report. Native Windows confirmation
+is still required; earlier installer failures remain in the evidence.
 
 Video's individual-selection command now honors the existing UI flag that suppresses
 linked audio selection. Deleting the current selection preserves deliberately
