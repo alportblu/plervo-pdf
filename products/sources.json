@@ -637,7 +637,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.effectcraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "ee8bd602c1eff0cad8fbea680996a3b2bf3e86c22024d760ae5816a14a6f1b50"
+    "patch_sha256": "a265d9f2ff54b07a37e731a04916f7b5c608dfd3a0ac2c083845855ad7049bd5"
   },
   {
     "app": "designcraft",
