@@ -1,14 +1,16 @@
-//! Per-user Linux PDF payloads. Only our fixed destination is ever executed or replaced.
+//! Per-user Linux app payloads. Only our fixed destination is ever executed or replaced.
 use std::io::Read;
 use std::os::unix::fs::PermissionsExt;
 use std::path::{Component, Path, PathBuf};
 
-use plervo_suite_core::{InstallSource, Installed};
+use plervo_suite_core::{
+    InstallSource, Installed,
+    catalog::{CraftApp, PDF},
+};
 use serde::{Deserialize, Serialize};
 
 use crate::{http, install, paths::Paths, process};
 
-const APP: &str = "plervo-pdf";
 const RECEIPT: &str = ".plervo-receipt.json";
 const MAX_EXPANDED: u64 = 2 * 1024 * 1024 * 1024;
 
@@ -27,15 +29,20 @@ fn real_dir(path: &Path) -> Result<(), String> {
     }
 }
 
-fn root(paths: &Paths) -> Result<PathBuf, String> {
-    for path in [&paths.data, &paths.apps(), &paths.apps().join(APP), &paths.apps().join(APP).join("current")] {
+fn root(app: &CraftApp, paths: &Paths) -> Result<PathBuf, String> {
+    crate::manager::known_app(app)?;
+    for path in [&paths.data, &paths.apps(), &paths.apps().join(app.id), &paths.apps().join(app.id).join("current")] {
         real_dir(path)?;
     }
-    Ok(paths.apps().join(APP))
+    Ok(paths.apps().join(app.id))
 }
 
 pub fn detected(paths: &Paths) -> Result<Option<Installed>, String> {
-    let current = root(paths)?.join("current");
+    detected_for(&PDF, paths)
+}
+
+pub fn detected_for(app: &CraftApp, paths: &Paths) -> Result<Option<Installed>, String> {
+    let current = root(app, paths)?.join("current");
     if !current.exists() {
         return Ok(None);
     }
@@ -48,17 +55,17 @@ pub fn detected(paths: &Paths) -> Result<Option<Installed>, String> {
         serde_json::from_slice(&std::fs::read(receipt_path).map_err(|e| e.to_string())?).map_err(|_| "Unreadable installation receipt")?;
     let version = plervo_suite_core::version::parse(&receipt.version).ok_or("Invalid installed version")?;
     real_dir(&current.join("bin"))?;
-    let binary = current.join("bin").join(APP);
+    let binary = current.join("bin").join(app.id);
     let metadata = binary.symlink_metadata().map_err(|e| e.to_string())?;
     if !metadata.is_file() || metadata.len() > 512 * 1024 * 1024 || http::sha256_file(&binary)? != receipt.binary_sha256 {
-        return Err("The installed PDF binary changed; it was not opened or replaced.".into());
+        return Err("The installed app binary changed; it was not opened or replaced.".into());
     }
     Ok(Some(Installed { version: Some(version), source: InstallSource::Launcher, location: binary.display().to_string(), package: None }))
 }
 
-fn require_stopped(paths: &Paths) -> Result<(), String> {
-    if detected(paths)?.is_some() && process::is_running(&root(paths)?.join("current/bin").join(APP)) {
-        return Err("Plervo PDF is running. Quit it, then try again.".into());
+fn require_stopped(app: &CraftApp, paths: &Paths) -> Result<(), String> {
+    if detected_for(app, paths)?.is_some() && process::is_running(&root(app, paths)?.join("current/bin").join(app.id)) {
+        return Err("The selected Plervo app is running. Quit it, then try again.".into());
     }
     Ok(())
 }
@@ -66,29 +73,33 @@ fn require_stopped(paths: &Paths) -> Result<(), String> {
 /// Install a checksum-verified archive. Stage the complete payload on the same filesystem,
 /// then atomically replace it; preferences and documents live outside this directory.
 pub fn install_archive(file: &Path, version: &str, paths: &Paths) -> Result<(), String> {
+    install_archive_for(&PDF, file, version, paths)
+}
+
+pub fn install_archive_for(app: &CraftApp, file: &Path, version: &str, paths: &Paths) -> Result<(), String> {
     plervo_suite_core::version::parse(version).ok_or("Invalid release version")?;
-    require_stopped(paths)?;
-    let root = root(paths)?;
+    require_stopped(app, paths)?;
+    let root = root(app, paths)?;
     std::fs::create_dir_all(&root).map_err(|e| e.to_string())?;
     let stage = tempfile::Builder::new().prefix(".stage-").tempdir_in(&root).map_err(|e| e.to_string())?;
     let tree = unpack(file, stage.path())?;
-    let binary = tree.join("bin").join(APP);
+    let binary = tree.join("bin").join(app.id);
     if binary.metadata().map_err(|e| e.to_string())?.len() > 512 * 1024 * 1024 {
-        return Err("The PDF executable exceeds the size limit.".into());
+        return Err("The app executable exceeds the size limit.".into());
     }
     let mut header = [0u8; 20];
-    std::fs::File::open(&binary).and_then(|mut f| f.read_exact(&mut header)).map_err(|e| format!("Missing PDF executable: {e}"))?;
+    std::fs::File::open(&binary).and_then(|mut f| f.read_exact(&mut header)).map_err(|e| format!("Missing app executable: {e}"))?;
     // ELF64 little-endian x86_64, the architecture qualified for this release.
     if header.get(..6) != Some(b"\x7fELF\x02\x01") || header.get(18..20) != Some(&[62, 0]) {
-        return Err("This archive does not contain a Linux x86_64 PDF executable.".into());
+        return Err("This archive does not contain a Linux x86_64 app executable.".into());
     }
     let receipt = Receipt { version: version.into(), binary_sha256: http::sha256_file(&binary)? };
     let bytes = serde_json::to_vec(&receipt).map_err(|e| e.to_string())?;
     std::fs::write(tree.join(RECEIPT), bytes).map_err(|e| e.to_string())?;
     // Check again after download/extraction, before replacing the installed copy.
-    require_stopped(paths)?;
+    require_stopped(app, paths)?;
     install::swap_into_place(&tree, &root.join("current"))?;
-    detected(paths)?.ok_or("The installed app could not be verified.")?;
+    detected_for(app, paths)?.ok_or("The installed app could not be verified.")?;
     Ok(())
 }
 
@@ -133,22 +144,35 @@ fn unpack(file: &Path, stage: &Path) -> Result<PathBuf, String> {
 }
 
 pub fn open(paths: &Paths) -> Result<(), String> {
-    detected(paths)?.ok_or("Plervo PDF is not installed.")?;
-    process::launch_binary(&root(paths)?.join("current/bin").join(APP), &[])
+    open_for(&PDF, paths)
+}
+
+pub fn open_for(app: &CraftApp, paths: &Paths) -> Result<(), String> {
+    detected_for(app, paths)?.ok_or("The selected Plervo app is not installed.")?;
+    process::launch_binary(&root(app, paths)?.join("current/bin").join(app.id), &[])
 }
 
 pub fn uninstall(paths: &Paths) -> Result<(), String> {
-    require_stopped(paths)?;
-    detected(paths)?.ok_or("Plervo PDF is not installed.")?;
-    std::fs::remove_dir_all(root(paths)?.join("current")).map_err(|e| e.to_string())
+    uninstall_for(&PDF, paths)
+}
+
+pub fn uninstall_for(app: &CraftApp, paths: &Paths) -> Result<(), String> {
+    require_stopped(app, paths)?;
+    detected_for(app, paths)?.ok_or("The selected Plervo app is not installed.")?;
+    std::fs::remove_dir_all(root(app, paths)?.join("current")).map_err(|e| e.to_string())
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
+    const APP: &str = "plervo-pdf";
     use flate2::{Compression, write::GzEncoder};
 
     fn archive(path: &Path, link: bool, marker: u8) {
+        archive_for(&PDF, path, link, marker);
+    }
+
+    fn archive_for(app: &CraftApp, path: &Path, link: bool, marker: u8) {
         let mut tar = tar::Builder::new(GzEncoder::new(std::fs::File::create(path).unwrap(), Compression::fast()));
         let mut bytes = [0u8; 21];
         bytes[..6].copy_from_slice(b"\x7fELF\x02\x01");
@@ -158,7 +182,7 @@ mod tests {
         header.set_size(bytes.len() as u64);
         header.set_mode(0o755);
         header.set_cksum();
-        tar.append_data(&mut header, "app/bin/plervo-pdf", bytes.as_slice()).unwrap();
+        tar.append_data(&mut header, format!("app/bin/{}", app.id), bytes.as_slice()).unwrap();
         if link {
             let mut header = tar::Header::new_gnu();
             header.set_entry_type(tar::EntryType::Symlink);
@@ -169,6 +193,27 @@ mod tests {
             tar.append_data(&mut header, "app/share/escape", std::io::empty()).unwrap();
         }
         tar.into_inner().unwrap().finish().unwrap();
+    }
+    #[test]
+    fn products_coexist_and_wrong_payloads_never_replace_an_installation() {
+        let temp = tempfile::tempdir().unwrap();
+        let paths = Paths::under(temp.path());
+        let package = temp.path().join("app.tar.gz");
+        let photo = CraftApp::by_id("plervo-photo").unwrap();
+        archive(&package, false, 1);
+        install_archive(&package, "0.1.0-alpha.3", &paths).unwrap();
+        assert!(install_archive_for(photo, &package, "0.1.0-alpha.4", &paths).is_err());
+        let pdf = detected(&paths).unwrap().unwrap();
+        archive_for(photo, &package, false, 2);
+        install_archive_for(photo, &package, "0.1.0-alpha.4", &paths).unwrap();
+        assert_eq!(detected(&paths).unwrap().unwrap(), pdf);
+        let installed_photo = detected_for(photo, &paths).unwrap().unwrap();
+        assert_ne!(installed_photo.location, pdf.location);
+        let invalid = CraftApp { id: "../outside", ..*photo };
+        assert!(install_archive_for(&invalid, &package, "0.1.0-alpha.4", &paths).is_err());
+        uninstall_for(photo, &paths).unwrap();
+        assert!(detected_for(photo, &paths).unwrap().is_none());
+        assert_eq!(detected(&paths).unwrap().unwrap(), pdf);
     }
     #[test]
     fn update_and_uninstall_preserve_documents_and_reject_bad_archives() {

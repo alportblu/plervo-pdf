@@ -1,9 +1,14 @@
 //! The Plervo Suite shell. Slow operations run outside the UI; headless checks use the same engine.
 #![deny(clippy::unwrap_used, clippy::expect_used, clippy::panic, clippy::unimplemented, clippy::todo, clippy::unreachable)]
+mod family;
 mod locale;
 use egui::{Color32, RichText, Vec2};
 use locale::Language;
-use plervo_suite_core::{Installed, Release, protocol::JobPhase};
+use plervo_suite_core::{
+    Installed, Release,
+    catalog::{CraftApp, PDF},
+    protocol::JobPhase,
+};
 use plervo_suite_native::{http::Stop, manager, paths::Paths};
 use std::{
     fs::File,
@@ -44,6 +49,9 @@ pub struct SuiteApp {
     language: Language,
     system_language: Language,
     settings: bool,
+    catalog: bool,
+    selected: &'static family::Product,
+    icons: std::collections::BTreeMap<&'static str, egui::TextureHandle>,
     release: Option<Release>,
     installed: Option<Installed>,
     paths: Option<Paths>,
@@ -64,6 +72,9 @@ impl Default for SuiteApp {
             language: Language::Auto,
             system_language: Language::Auto.resolve(),
             settings: false,
+            catalog: false,
+            selected: &family::PRODUCTS[0],
+            icons: Default::default(),
             release: None,
             installed: None,
             paths: None,
@@ -120,11 +131,79 @@ impl SuiteApp {
     fn lang(&self) -> Language {
         if self.language == Language::Auto { self.system_language } else { self.language }
     }
+    fn icon(&mut self, ui: &mut egui::Ui, id: &'static str, bytes: &'static [u8], size: f32) {
+        if let std::collections::btree_map::Entry::Vacant(entry) = self.icons.entry(id)
+            && let Ok(icon) = eframe::icon_data::from_png_bytes(bytes)
+        {
+            let pixels = egui::ColorImage::from_rgba_unmultiplied([icon.width as usize, icon.height as usize], &icon.rgba);
+            entry.insert(ui.ctx().load_texture(id, pixels, egui::TextureOptions::LINEAR));
+        }
+        if let Some(texture) = self.icons.get(id) {
+            ui.image((texture.id(), Vec2::splat(size)));
+        } else {
+            ui.label(id);
+        }
+    }
+    fn catalog(&mut self, ui: &mut egui::Ui) {
+        let l = self.lang();
+        let t = |en, pt, es| l.text(en, pt, es);
+        ui.heading(RichText::new(t("Your tools, together.", "Suas ferramentas, juntas.", "Tus herramientas, juntas.")).size(30.0));
+        ui.label(t(
+            "Choose an app to see its available downloads and updates.",
+            "Escolha um app para ver os downloads e as atualizações disponíveis.",
+            "Elige un app para ver las descargas y actualizaciones disponibles.",
+        ));
+        ui.add_space(20.0);
+        let count = if ui.available_width() >= 690.0 {
+            3
+        } else if ui.available_width() >= 440.0 {
+            2
+        } else {
+            1
+        };
+        egui::ScrollArea::vertical().show(ui, |ui| {
+            for row in family::PRODUCTS.chunks(count) {
+                ui.columns(count, |columns| {
+                    for (product, column) in row.iter().zip(columns) {
+                        egui::Frame::new().fill(Color32::WHITE).corner_radius(12).inner_margin(16).show(column, |ui| {
+                            ui.set_min_width(ui.available_width());
+                            ui.set_min_height(176.0);
+                            self.icon(ui, product.id, product.icon, 48.0);
+                            ui.label(RichText::new(product.name).size(19.0).strong());
+                            ui.label(RichText::new(t(product.description[0], product.description[1], product.description[2])).color(MUTED));
+                            let label = format!("{} {}", t("Manage", "Gerenciar", "Gestionar"), product.name);
+                            if ui.add_enabled(!self.busy, egui::Button::new(label)).clicked() {
+                                self.select(product, ui.ctx());
+                            }
+                        });
+                    }
+                });
+                ui.add_space(12.0);
+            }
+        });
+    }
+    fn select(&mut self, product: &'static family::Product, ctx: &egui::Context) {
+        if self.busy {
+            return;
+        }
+        self.selected = product;
+        self.catalog = false;
+        self.release = None;
+        self.installed = None;
+        self.error = None;
+        self.success = false;
+        self.confirm_remove = false;
+        self.start(Action::Refresh, ctx);
+    }
     fn start(&mut self, action: Action, ctx: &egui::Context) {
         if self.busy {
             return;
         }
         let Some(paths) = self.paths.clone() else { return };
+        let Some(app) = CraftApp::by_id(&format!("plervo-{}", self.selected.id)) else {
+            self.error = Some("Unknown Plervo product".into());
+            return;
+        };
         let release = self.release.clone();
         if matches!(action, Action::Install) && release.is_none() {
             return;
@@ -144,18 +223,18 @@ impl SuiteApp {
             };
             let outcome = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
                 if matches!(action, Action::Refresh) {
-                    let _ = tx.send(Event::Refreshed(manager::latest(), manager::detected()));
+                    let _ = tx.send(Event::Refreshed(manager::latest_for(app), manager::detected_for(app)));
                 } else {
                     let result = match action {
                         Action::Install => match release {
-                            Some(r) => manager::install_pdf(&r, &paths, &stop, &mut progress),
+                            Some(r) => manager::install_app(app, &r, &paths, &stop, &mut progress),
                             None => Err("No release selected".into()),
                         },
-                        Action::Open => manager::open_pdf(&paths),
-                        Action::Remove => manager::uninstall_pdf(&paths, &stop, &mut progress),
+                        Action::Open => manager::open_app(app, &paths),
+                        Action::Remove => manager::uninstall_app(app, &paths, &stop, &mut progress),
                         Action::Refresh => Ok(()),
                     };
-                    let _ = tx.send(Event::Finished(result, manager::detected()));
+                    let _ = tx.send(Event::Finished(result, manager::detected_for(app)));
                 }
             }));
             if outcome.is_err() {
@@ -208,12 +287,24 @@ impl SuiteApp {
             ui.add_space(58.0);
             if ui
                 .selectable_label(
-                    !self.settings,
-                    RichText::new(t("My apps", "Meus apps", "Mis apps")).color(if self.settings { Color32::WHITE } else { INK }),
+                    !self.settings && !self.catalog,
+                    RichText::new(t("My apps", "Meus apps", "Mis apps")).color(if self.settings || self.catalog { Color32::WHITE } else { INK }),
                 )
                 .clicked()
             {
                 self.settings = false;
+                self.catalog = false;
+            }
+            ui.add_space(8.0);
+            if ui
+                .selectable_label(
+                    self.catalog,
+                    RichText::new(t("All apps", "Todos os apps", "Todos los apps")).color(if self.catalog { INK } else { Color32::WHITE }),
+                )
+                .clicked()
+            {
+                self.settings = false;
+                self.catalog = true;
             }
             ui.add_space(8.0);
             if ui
@@ -224,6 +315,7 @@ impl SuiteApp {
                 .clicked()
             {
                 self.settings = true;
+                self.catalog = false;
             }
             ui.with_layout(egui::Layout::bottom_up(egui::Align::LEFT), |ui| {
                 ui.label(RichText::new(format!("Alpha · {}", env!("CARGO_PKG_VERSION"))).size(11.0).color(Color32::from_gray(180)));
@@ -273,6 +365,10 @@ impl SuiteApp {
                 ui.label(RichText::new("Installation engine adapted from ArtCraft Launcher · MIT / Apache-2.0").small().color(MUTED));
                 return;
             }
+            if self.catalog {
+                self.catalog(ui);
+                return;
+            }
             ui.label(RichText::new(t("YOUR WORKSPACE", "SEU ESPAÇO DE TRABALHO", "TU ESPACIO DE TRABAJO")).size(11.0).color(MUTED));
             ui.add_space(7.0);
             ui.heading(RichText::new(t("Good tools. All yours.", "Boas ferramentas. Suas.", "Buenas herramientas. Tuyas.")).size(34.0));
@@ -294,27 +390,21 @@ impl SuiteApp {
                 .show(ui, |ui| {
                     ui.set_min_width((ui.available_width() - 2.0).max(0.0));
                     ui.horizontal(|ui| {
-                        let (rect, _) = ui.allocate_exact_size(Vec2::splat(68.0), egui::Sense::hover());
-                        ui.painter().rect_filled(rect, 12.0, LIME);
-                        ui.painter().text(rect.center(), egui::Align2::CENTER_CENTER, "PDF", egui::FontId::proportional(21.0), INK);
+                        self.icon(ui, self.selected.id, self.selected.icon, 68.0);
                         ui.add_space(10.0);
                         ui.vertical(|ui| {
-                            ui.label(RichText::new("Plervo PDF").size(24.0).strong());
+                            ui.label(RichText::new(self.selected.name).size(24.0).strong());
                             ui.label(
-                                RichText::new(t(
-                                    "Documents, without the subscription.",
-                                    "Documentos, sem assinatura.",
-                                    "Documentos, sin suscripción.",
-                                ))
-                                .color(MUTED),
+                                RichText::new(t(self.selected.description[0], self.selected.description[1], self.selected.description[2]))
+                                    .color(MUTED),
                             );
                         });
                     });
                     ui.add_space(24.0);
                     ui.label(t(
-                        "Read, edit, annotate and organize your PDFs. Your files stay on your computer.",
-                        "Leia, edite, anote e organize seus PDFs. Seus arquivos ficam no seu computador.",
-                        "Lee, edita, anota y organiza tus PDF. Tus archivos se quedan en tu equipo.",
+                        "Install, update or open this app from your Suite.",
+                        "Instale, atualize ou abra este app pelo Suite.",
+                        "Instala, actualiza o abre este app desde Suite.",
                     ));
                     ui.add_space(20.0);
                     ui.separator();
@@ -324,7 +414,10 @@ impl SuiteApp {
                     ui.horizontal_wrapped(|ui| {
                         let ready = !self.busy && self.paths.is_some();
                         if self.installed.is_some() {
-                            if ui.add_enabled(ready, egui::Button::new(t("Open PDF", "Abrir PDF", "Abrir PDF")).fill(LIME)).clicked() {
+                            if ui
+                                .add_enabled(ready, egui::Button::new(format!("{} {}", t("Open", "Abrir", "Abrir"), self.selected.name)).fill(LIME))
+                                .clicked()
+                            {
                                 self.start(Action::Open, ctx);
                             }
                             if update && ui.add_enabled(ready, egui::Button::new(t("Update", "Atualizar", "Actualizar"))).clicked() {
@@ -336,7 +429,7 @@ impl SuiteApp {
                         } else if ui
                             .add_enabled(
                                 ready && self.release.is_some() && manager::supported_platform().is_some(),
-                                egui::Button::new(t("Install Plervo PDF", "Instalar Plervo PDF", "Instalar Plervo PDF")).fill(LIME),
+                                egui::Button::new(format!("{} {}", t("Install", "Instalar", "Instalar"), self.selected.name)).fill(LIME),
                             )
                             .clicked()
                         {
@@ -414,7 +507,7 @@ impl SuiteApp {
             });
         });
         if self.confirm_remove {
-            egui::Window::new(t("Uninstall Plervo PDF?", "Desinstalar o Plervo PDF?", "¿Desinstalar Plervo PDF?"))
+            egui::Window::new(format!("{} {}?", t("Uninstall", "Desinstalar", "Desinstalar"), self.selected.name))
                 .collapsible(false)
                 .resizable(false)
                 .show(ctx, |ui| {
@@ -450,28 +543,41 @@ impl eframe::App for SuiteApp {
 /// Explicit commands only: no listener, background service, login item or agent registration.
 pub fn headless(args: &[String]) -> Result<(), String> {
     let cmd = args.first().map(String::as_str).unwrap_or_default();
+    let legacy = matches!(cmd, "--install-pdf" | "--open-pdf" | "--uninstall-pdf");
+    let product = args.get(1).map(String::as_str);
+    let valid = match cmd {
+        "--check" | "--status" => args.len() == 1 || args.len() == 2,
+        "--install" | "--open" | "--uninstall" => args.len() == 2,
+        _ => legacy && args.len() == 1,
+    };
+    if !valid {
+        return Err("Usage: plervo-suite [--version | --check [PRODUCT] | --status [PRODUCT] | --install PRODUCT | --open PRODUCT | --uninstall PRODUCT]. PRODUCT: pdf, photo, vector, video, develop, motion, publish, write, slides, sheets, cad, audio, canvas. Legacy PDF commands remain supported.".into());
+    }
+    let app = match product {
+        Some(id) => CraftApp::by_id(&format!("plervo-{id}")).ok_or("Unknown Plervo product")?,
+        None => &PDF,
+    };
     match cmd {
-        "--check" if args.len() == 1 => {
-            let r = manager::latest()?;
+        "--check" => {
+            let r = manager::latest_for(app)?;
             println!("{}", serde_json::to_string_pretty(&r).map_err(|e| e.to_string())?);
             Ok(())
         }
-        "--status" if args.len() == 1 => {
-            println!("{}", serde_json::to_string_pretty(&manager::detected()).map_err(|e| e.to_string())?);
+        "--status" => {
+            println!("{}", serde_json::to_string_pretty(&manager::detected_for(app)).map_err(|e| e.to_string())?);
             Ok(())
         }
-        "--install-pdf" | "--open-pdf" | "--uninstall-pdf" if args.len() == 1 => {
+        _ => {
             let paths = Paths::new()?;
             let _lock = acquire(&paths)?;
             let stop = Stop::default();
             let mut progress = |p| eprintln!("{p:?}");
             match cmd {
-                "--install-pdf" => manager::install_pdf(&manager::latest()?, &paths, &stop, &mut progress),
-                "--open-pdf" => manager::open_pdf(&paths),
-                _ => manager::uninstall_pdf(&paths, &stop, &mut progress),
+                "--install" | "--install-pdf" => manager::install_app(app, &manager::latest_for(app)?, &paths, &stop, &mut progress),
+                "--open" | "--open-pdf" => manager::open_app(app, &paths),
+                _ => manager::uninstall_app(app, &paths, &stop, &mut progress),
             }
         }
-        _ => Err("Usage: plervo-suite [--version | --check | --status | --install-pdf | --open-pdf | --uninstall-pdf]".into()),
     }
 }
 
@@ -515,5 +621,52 @@ mod tests {
     #[test]
     fn unknown_commands_do_not_start_the_gui_or_an_installer() {
         assert!(headless(&["--install-pdf".into(), "https://evil.test".into()]).is_err());
+        assert!(headless(&["--install".into(), "../other".into()]).is_err());
+        assert!(headless(&["--open".into(), "https://evil.test".into()]).is_err());
+    }
+    #[test]
+    fn catalog_selects_products_without_reusing_another_apps_release() -> Result<(), String> {
+        use egui_kittest::kittest::NodeT;
+        let mut h = harness();
+        SuiteApp::style(&h.ctx);
+        h.run();
+        h.get_by_label("All apps").click();
+        h.run();
+        h.get_by_label("Plervo Photo");
+        if let Some(path) = std::env::var_os("PLERVO_CATALOG_PREVIEW") {
+            h.render()?.save(path).map_err(|e| e.to_string())?;
+        }
+        assert!(!h.state().busy);
+        let release = serde_json::json!({"tag_name":"v0.1.0-alpha.2","draft":false,"assets":[]});
+        h.state_mut().release = Some(plervo_suite_core::release::parse_github_release(&release.to_string(), PDF.repo).unwrap());
+        h.get_by_label("Manage Plervo Photo").click();
+        h.run();
+        assert!(!h.state().catalog);
+        assert_eq!(h.state().selected.id, "photo");
+        assert!(h.state().release.is_none());
+        assert!(h.get_by_label("Install Plervo Photo").accesskit_node().is_disabled());
+        h.get_by_label("All apps").click();
+        h.run();
+        h.get_by_label("Manage Plervo PDF").click();
+        h.run();
+        assert_eq!(h.state().selected.id, "pdf");
+        h.get_by_label("Install Plervo PDF");
+        Ok(())
+    }
+
+    #[test]
+    fn candidate_catalog_uses_the_selected_language_at_minimum_window_size() -> Result<(), String> {
+        let app = SuiteApp { system_language: Language::Pt, catalog: true, ..Default::default() };
+        let mut h = Harness::builder().with_size(egui::vec2(760.0, 580.0)).build_ui_state(|ui, app: &mut SuiteApp| app.show(ui), app);
+        SuiteApp::style(&h.ctx);
+        h.run();
+        h.get_by_label("Suas ferramentas, juntas.");
+        h.get_by_label("Gerenciar Plervo PDF");
+        h.get_by_label("Gerenciar Plervo Photo");
+        assert!(!h.state().busy);
+        if let Some(path) = std::env::var_os("PLERVO_CATALOG_PREVIEW_SMALL") {
+            h.render()?.save(path).map_err(|e| e.to_string())?;
+        }
+        Ok(())
     }
 }

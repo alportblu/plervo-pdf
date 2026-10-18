@@ -23,9 +23,13 @@ overrides:
       - libgl1
       - libegl1
       - libx11-6
+      - libx11-xcb1
+      - libxcb1
       - libxcursor1
       - libxi6
       - libxrandr2
+      # Managed audio/video products use ALSA even for their version check.
+      - libasound2t64 | libasound2
     recommends:
       - libwayland-client0
       - xdg-desktop-portal
@@ -39,9 +43,12 @@ overrides:
       - libglvnd-glx
       - libglvnd-egl
       - libX11
+      - libX11-xcb
+      - libxcb
       - libXcursor
       - libXi
       - libXrandr
+      - alsa-lib
     recommends:
       - libwayland-client
       - xdg-desktop-portal

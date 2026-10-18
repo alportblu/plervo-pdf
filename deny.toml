@@ -39,6 +39,13 @@ allow-git = ["https://github.com/storytold/craft-libs", "https://github.com/stor
 [advisories]
 yanked = "warn"
 ignore = [
+    # Informational deprecations after the zbus 6 merge; AccessKit/AT-SPI still require
+    # zbus 5. Keep accessibility enabled and remove these three entries when that
+    # dependency chain migrates. No known-vulnerability advisory is covered here.
+    # Review: products/SECURITY-REVIEW.md, https://github.com/z-galaxy/zbus/issues/2043.
+    { id = "RUSTSEC-2026-0370", reason = "zvariant moved into zbus 6; pinned AccessKit/AT-SPI still depend on zbus 5; maintenance-only transition" },
+    { id = "RUSTSEC-2026-0371", reason = "zbus_names moved into zbus 6; pinned AccessKit/AT-SPI still depend on zbus 5; maintenance-only transition" },
+    { id = "RUSTSEC-2026-0372", reason = "zvariant_derive moved into zbus 6; compile-time macros of the same pinned Linux accessibility stack; maintenance-only transition" },
     # Marvin (RSA private-key timing side channel, no fixed `rsa` release). pdfcraft-sign uses
     # `rsa` only for public-key signature verification, which the advisory does not affect; RSA
     # private-key operations use aws-lc-rs on native targets and are refused in the browser

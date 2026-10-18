@@ -1,4 +1,4 @@
-//! The shipped Plervo catalog contains only products with reviewed releases.
+//! Plervo identities. Installation still requires a published, verified release for the product.
 use serde::{Deserialize, Serialize};
 
 /// Which generation of the suite an app belongs to.
@@ -89,14 +89,39 @@ pub const PDF: CraftApp = CraftApp {
     former_ids: &[],
     former_names: &[],
 };
-pub const SUITE: [CraftApp; 1] = [PDF];
+pub const SUITE: [CraftApp; 13] = [
+    PDF,
+    CraftApp { id: "plervo-photo", name: "Plervo Photo", tagline: "Image editing", ..PDF },
+    CraftApp { id: "plervo-vector", name: "Plervo Vector", tagline: "Vector illustration", ..PDF },
+    CraftApp { id: "plervo-video", name: "Plervo Video", tagline: "Video editing", ..PDF },
+    CraftApp { id: "plervo-develop", name: "Plervo Develop", tagline: "RAW photography", ..PDF },
+    CraftApp { id: "plervo-motion", name: "Plervo Motion", tagline: "Motion and effects", ..PDF },
+    CraftApp { id: "plervo-publish", name: "Plervo Publish", tagline: "Page layout", ..PDF },
+    CraftApp { id: "plervo-write", name: "Plervo Write", tagline: "Writing", group: AppGroup::New, ..PDF },
+    CraftApp { id: "plervo-slides", name: "Plervo Slides", tagline: "Presentations", group: AppGroup::New, ..PDF },
+    CraftApp { id: "plervo-sheets", name: "Plervo Sheets", tagline: "Spreadsheets", group: AppGroup::New, ..PDF },
+    CraftApp { id: "plervo-cad", name: "Plervo CAD", tagline: "Technical drawing", group: AppGroup::New, ..PDF },
+    CraftApp { id: "plervo-audio", name: "Plervo Audio", tagline: "Audio editing", group: AppGroup::New, ..PDF },
+    CraftApp { id: "plervo-canvas", name: "Plervo Canvas", tagline: "Interface design", group: AppGroup::New, ..PDF },
+];
 pub const LAUNCHER: CraftApp = CraftApp { id: "plervo-suite", name: "Plervo Suite", tagline: "Your apps. One place.", ..PDF };
 #[cfg(test)]
 mod tests {
     use super::*;
     #[test]
-    fn only_our_published_products_and_names_are_recognized() {
-        assert_eq!(SUITE.len(), 1);
+    fn every_plervo_product_has_its_own_identity() {
+        let ids = ["pdf", "photo", "vector", "video", "develop", "motion", "publish", "write", "slides", "sheets", "cad", "audio", "canvas"];
+        for id in ids {
+            let app = CraftApp::by_id(&format!("plervo-{id}")).expect("product must be manageable");
+            assert_eq!(app.bundle_id(), format!("com.plervo.{id}"));
+            assert_eq!(app.repo, "alportblu/plervo-pdf");
+        }
+        assert!(CraftApp::by_id("../plervo-photo").is_none());
+        assert!(CraftApp::by_id("plervo-suite").is_none());
+    }
+    #[test]
+    fn only_our_products_and_names_are_recognized() {
+        assert_eq!(SUITE.len(), 13);
         assert_eq!(PDF.bundle_id(), "com.plervo.pdf");
         assert_eq!(LAUNCHER.bundle_id(), "com.plervo.suite");
         assert!(CraftApp::by_id("pdfcraft").is_none());
