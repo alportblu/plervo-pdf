@@ -2943,6 +2943,20 @@ index 3abf336..8705948 100644
                  ),
                  Section("Repair"),
                  Button { label: "Reset Settings", command: "prefs.reset", params: "{}" },
+diff --git a/crates/engine/src/session_settings.rs b/crates/engine/src/session_settings.rs
+index 55c8e41..b29499d 100644
+--- a/crates/engine/src/session_settings.rs
++++ b/crates/engine/src/session_settings.rs
+@@ -116,6 +116,9 @@ impl Session {
+             self.layer_cache.set_disk(None);
+             return;
+         };
++        // Every test that installs the process-wide segmentation store shares its guard.
++        #[cfg(test)]
++        crate::tests_roto::hold_roto_cache_test_lock();
+         let dc = match &self.disk_cache {
+             Some(c) if c.folder() == folder.as_path() => {
+                 c.set_max_bytes(max);
 diff --git a/crates/engine/src/tests.rs b/crates/engine/src/tests.rs
 index 72133c5..1bd51f6 100644
 --- a/crates/engine/src/tests.rs

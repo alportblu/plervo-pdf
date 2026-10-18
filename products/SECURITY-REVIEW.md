@@ -153,3 +153,7 @@ of every vulnerability or malware.
 ## Canvas recent-file test readiness — 2026-10-18
 
 The native Windows run reached 303 passing UI tests but failed the first-run/recent-file transition: twelve rendered frames did not guarantee that its background metadata reader had returned. The test now waits up to five seconds for the inspected metadata state before checking the same visible labels and template removal. No assertion was removed and no production file changed. Eleven home-screen tests and scoped Clippy passed locally with the pinned Canvas fonts; native confirmation remains required.
+
+## Motion cache test isolation — 2026-10-18
+
+The Windows engine run passed 611 tests but failed Object Matte disk persistence while other fixtures could replace the process-wide segmentation store. The existing test guard covered selected tests, but the shared disk-cache setup and settings fixtures could also install a store. Test builds now acquire that same guard at the configuration boundary; release behavior is unchanged. The existing persistence assertions remain, and the local engine suite passed 614 tests (two existing ignored tests), with strict scoped Clippy and byte-for-byte source reproduction. Native Windows confirmation remains required.
