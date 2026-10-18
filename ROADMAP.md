@@ -1,3 +1,13 @@
+Plervo update — 2026-10-18: alpha.4 is public for Mac Apple Silicon and Linux x86_64.
+The release notes identify qualified products and platform limits. Public Suite download,
+installation and reinstallation passed for the eleven initial apps on each platform;
+Linux also passed removal and synthetic user-data preservation. Audio/Canvas qualification
+is tracked separately. The Windows Suite now has an internal MSI/portable packaging workflow,
+native resources and compiled-MSI/lifecycle acceptance; its native CI and SignPath integration
+remain required before public Windows downloads. See [Windows Suite](docs/windows-suite.md).
+
+Historical development checkpoints:
+
 Plervo update — 2026-10-16: the development Suite can manage each of the 13 canonical apps.
 The additional 12 remain internal candidates while product/platform acceptance runs.
 Local management tests (103) passed. Per-product dependency policy, bounded/authenticated

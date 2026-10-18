@@ -1,0 +1,66 @@
+name: Plervo Windows Suite candidate
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/windows-suite.yml'
+      - 'apps/plervo-suite/**'
+      - 'crates/suite-*/**'
+      - 'assets/products/suite/**'
+      - 'packaging/windows/**'
+      - 'Cargo.lock'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: windows-suite-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  candidate:
+    runs-on: windows-2025
+    timeout-minutes: 120
+    env:
+      CARGO_BUILD_JOBS: 2
+      CARGO_INCREMENTAL: 0
+      CARGO_BUILD_TARGET: x86_64-pc-windows-msvc
+      CARGO_TARGET_X86_64_PC_WINDOWS_MSVC_RUSTFLAGS: '-C target-feature=+crt-static'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: dtolnay/rust-toolchain@686976e191b89faba57d3206551f0f330d8cb249
+        with:
+          toolchain: '1.95.0'
+      - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6
+      - name: Build Suite with native icon and version resources
+        run: cargo build --release --locked -p plervo-suite
+      - name: Install the pinned MSI compiler
+        shell: pwsh
+        run: |
+          dotnet tool install --global wix --version 5.0.2
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Package internal MSI and portable ZIP
+        shell: pwsh
+        run: packaging/windows/package-suite.ps1 -SkipBuild
+      - name: Inspect MSI and install, render, repair and remove Suite
+        shell: pwsh
+        run: |
+          $msi = @(Get-ChildItem dist/windows-suite-internal/*.msi)
+          if ($msi.Count -ne 1) { throw 'Expected exactly one Suite MSI' }
+          packaging/windows/test-suite-install.ps1 -Path $msi[0].FullName
+      - name: Preserve native acceptance evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: plervo-windows-suite-validation-${{ github.sha }}
+          path: dist/validation/windows-suite/
+          if-no-files-found: ignore
+          retention-days: 14
+      - name: Upload internal candidate only
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: plervo-windows-suite-internal-${{ github.sha }}
+          path: dist/windows-suite-internal/
+          if-no-files-found: error
+          retention-days: 14
