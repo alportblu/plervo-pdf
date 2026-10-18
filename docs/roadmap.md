@@ -1,3 +1,13 @@
+## Plervo distribution — 2026-10-18
+
+| Delivery | Verified state | Remaining |
+| --- | --- | --- |
+| Mac/Linux alpha.4 | Public Suite and eleven initial products per platform; exact public download/install/reinstall acceptance, with Linux removal and data preservation | Audio/Canvas qualification is separate; complete feature, hardware and linguistic coverage is not claimed |
+| Windows Suite | Internal MSI/portable workflow, native icon/version/manifest and compiled-MSI lifecycle checks implemented | Native Windows CI, approved SignPath identity/integration and exact signed-package acceptance before public download |
+
+The [release notes](https://github.com/alportblu/plervo-pdf/releases/tag/v0.1.0-alpha.4)
+are the current product/asset inventory. The entries below are historical checkpoints.
+
 ## Plervo application family — 2026-10-17
 
 | Area | Implemented and locally checked | Remaining |

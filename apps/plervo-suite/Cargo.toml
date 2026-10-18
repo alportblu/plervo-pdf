@@ -22,3 +22,6 @@ png = "0.18"
 
 [dev-dependencies]
 egui_kittest = { workspace = true, features = ["eframe", "wgpu"] }
+
+[build-dependencies]
+winresource = "0.1"

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+  <Package Name="Plervo Suite" Manufacturer="Plervo" Version="$(var.Version)"
+      UpgradeCode="F6B6995D-D00A-48C8-B9AA-AF869D661D30" Scope="perMachine" Compressed="yes" Language="1033">
+    <SummaryInformation Description="Plervo Suite internal installer" Manufacturer="Plervo" />
+    <Launch Condition="ALLUSERS = 1 OR (Installed AND REMOVE = &quot;ALL&quot;)"
+        Message="Plervo Suite must be installed for all users. Run setup with administrator privileges and ALLUSERS=1." />
+    <MajorUpgrade AllowSameVersionUpgrades="yes" DowngradeErrorMessage="A newer version of Plervo Suite is installed." />
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+    <Icon Id="PlervoSuite.ico" SourceFile="$(var.IconPath)" />
+    <Property Id="ARPPRODUCTICON" Value="PlervoSuite.ico" />
+    <Property Id="ARPURLINFOABOUT" Value="https://plervo.com" />
+    <Property Id="ARPHELPLINK" Value="https://plervo.com/support/" />
+    <UIRef Id="PdfcraftInstallerUI" />
+    <StandardDirectory Id="ProgramFiles6432Folder">
+      <Directory Id="INSTALLFOLDER" Name="Plervo Suite">
+        <Directory Id="SuiteNoticesFolder" Name="docs" />
+      </Directory>
+    </StandardDirectory>
+    <StandardDirectory Id="ProgramMenuFolder" />
+    <Feature Id="Main" Title="Plervo Suite" Level="1">
+      <ComponentGroupRef Id="SuiteFiles" />
+      <ComponentGroupRef Id="SuiteNotices" />
+    </Feature>
+  </Package>
+  <Fragment>
+    <ComponentGroup Id="SuiteFiles" Directory="INSTALLFOLDER">
+      <Component Id="SuiteApplication">
+        <File Id="SuiteExecutable" Source="$(var.BinDir)\plervo-suite.exe" KeyPath="yes">
+          <Shortcut Id="SuiteStartMenu" Directory="ProgramMenuFolder" Name="Plervo Suite"
+              WorkingDirectory="INSTALLFOLDER" Advertise="yes" Icon="PlervoSuite.ico" />
+        </File>
+        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\plervo-suite.exe"
+            Value="[#SuiteExecutable]" Type="string" />
+      </Component>
+    </ComponentGroup>
+    <ComponentGroup Id="SuiteNotices" Directory="SuiteNoticesFolder">
+      <Files Include="$(var.BinDir)\docs\*" />
+    </ComponentGroup>
+  </Fragment>
+</Wix>

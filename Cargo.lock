@@ -4596,6 +4596,7 @@ dependencies = [
  "serde",
  "serde_json",
  "sys-locale",
+ "winresource",
 ]
 
 [[package]]
