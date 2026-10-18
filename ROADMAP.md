@@ -1,10 +1,11 @@
-Plervo update — 2026-10-18: alpha.4 is public for Mac Apple Silicon and Linux x86_64.
-The release notes identify qualified products and platform limits. Public Suite download,
-installation and reinstallation passed for the eleven initial apps on each platform;
-Linux also passed removal and synthetic user-data preservation. Audio/Canvas qualification
-is tracked separately. The Windows Suite now has an internal MSI/portable packaging workflow,
-native resources and compiled-MSI/lifecycle acceptance; its native CI and SignPath integration
-remain required before public Windows downloads. See [Windows Suite](docs/windows-suite.md).
+Plervo update — 2026-10-18: alpha.4 is public for Mac Apple Silicon and Linux x86_64,
+with the Suite and all 13 apps. The release notes identify exact packages and platform
+limits. Public app download, installation and reinstallation passed through the Suite;
+Linux also passed removal and synthetic user-data preservation. Windows Suite and app
+candidates passed native checks, but remain internal while SignPath approval, signing
+integration and final signed-package acceptance are pending. See
+[Windows Suite](docs/windows-suite.md). Public GitHub presentation and Plervo documentation
+are now in English; app and website localization is preserved.
 
 Historical development checkpoints:
 
@@ -178,6 +179,8 @@ Ranked; detail and the full milestone table in [docs/roadmap.md](docs/roadmap.md
 | 8 | 1.0 polish: performance, right-to-left, missing languages, keyboard-only (M14) | 55–95 |
 
 ## Progress log
+
+- **2026-10-18 (Plervo documentation):** Translate the public README, security notes, historical validation record and website README into English. Present all 13 apps and current Mac/Linux availability, preserve upstream attribution and alpha limitations, and keep Windows signing pending. Application behavior and release artifacts are unchanged.
 
 - **2026-10-17 (Plervo app family):** Corrected Publish Windows recovery identity checks, Write focus and bounded format probing, Video independent selection/Delete, Slides bounded font fallback, Audio hardened plugin loading and remaining DMG builders. Targeted regressions, strict Clippy, source/asset gates, Slides WASM and twelve clean overlay reproductions passed locally. The final native matrix must confirm release CLIs, installed packages and Suite-managed archives; no new public assets or publisher-signing claim.
 

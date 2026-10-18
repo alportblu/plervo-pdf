@@ -2,8 +2,9 @@
 
 | Delivery | Verified state | Remaining |
 | --- | --- | --- |
-| Mac/Linux alpha.4 | Public Suite and eleven initial products per platform; exact public download/install/reinstall acceptance, with Linux removal and data preservation | Audio/Canvas qualification is separate; complete feature, hardware and linguistic coverage is not claimed |
-| Windows Suite | Internal MSI/portable workflow, native icon/version/manifest and compiled-MSI lifecycle checks implemented | Native Windows CI, approved SignPath identity/integration and exact signed-package acceptance before public download |
+| Mac/Linux alpha.4 | Public Suite and all 13 apps per platform; exact public download/install/reinstall acceptance, with Linux removal and data preservation | Final Mac GUI/clean-machine acceptance and broader hardware/linguistic coverage remain incomplete; see release limits |
+| Windows Suite and apps | Internal native package, representative CLI and GUI startup/close checks passed | Approved SignPath identity/integration and exact signed-package/Suite acceptance before public download |
+| International presentation | Public GitHub descriptions and Plervo documentation in English; all 13 apps described | Existing app/site translations remain available; Slides/Audio interfaces are English-only in this alpha |
 
 The [release notes](https://github.com/alportblu/plervo-pdf/releases/tag/v0.1.0-alpha.4)
 are the current product/asset inventory. The entries below are historical checkpoints.
