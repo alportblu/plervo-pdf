@@ -1,7 +1,12 @@
-# Plervo application candidates
+# Plervo applications
 
-These twelve independent forks are **internal candidates**, not public downloads.
-The currently published Suite still distributes the qualified PDF releases only.
+These twelve independent forks join Plervo PDF in the **13-app Plervo Suite**.
+All thirteen apps are available for Mac Apple Silicon and Linux x86_64 in
+[alpha.4](https://github.com/alportblu/plervo-pdf/releases/tag/v0.1.0-alpha.4).
+Windows candidates remain internal while publisher signing and final signed-package
+acceptance are pending. Start with [Plervo Suite](https://plervo.com) to install apps.
+
+This directory records reproducible source inputs and candidate-build requirements.
 Passing a compile check does not qualify an app, installer, or platform for release.
 Current findings and remaining gates are recorded in [SECURITY-REVIEW.md](SECURITY-REVIEW.md).
 
@@ -36,14 +41,15 @@ no credentials or signing keys in this catalog.
 The preparation command refuses dirty checkouts, unknown products, mismatched
 source/patch/icon hashes, traversal, and linked asset destinations. It stages the
 prepared snapshot for upstream asset-inventory gates, without creating a commit. It never
-downloads, installs, signs, or publishes an application. Internal candidates use
-`0.1.0-alpha.4` as a development version; that version is not a public release promise.
+downloads, installs, signs, or publishes an application. A candidate using the
+`0.1.0-alpha.4` version is not necessarily the qualified public package. The release's
+provenance and checksum manifests identify the exact published artifacts.
 
 ## Development validation
 
-The development Suite manages all 13 canonical product identities, with release metadata,
+The Suite manages all 13 canonical product identities, with release metadata,
 platform, hash and signing checks kept per product. Buttons become installable only when a
-matching public release exists. The published Suite has not changed during preparation.
+matching public release exists for the current platform.
 The local Suite management gate passed 103 tests; native product and installer acceptance
 are separate requirements.
 

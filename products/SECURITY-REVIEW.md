@@ -1,8 +1,16 @@
-# Candidate review — 2026-10-17
+# Product security review
 
-These twelve applications are not approved releases. The development Suite can select each product, but enables installation only
-when a qualified matching release exists. No new product has been published yet. Candidate artifacts are for isolated testing, including when a later
-dependency gate marks their CI job failed. No signing credentials are used by the workflow.
+Release status updated October 18, 2026: all twelve applications below, plus PDF, are
+published for Mac Apple Silicon and Linux x86_64 in
+[alpha.4](https://github.com/alportblu/plervo-pdf/releases/tag/v0.1.0-alpha.4).
+The release notes and provenance identify the exact qualified packages and remaining
+alpha limits. Windows candidates are internal; SignPath approval, signing integration
+and final signed-package acceptance remain pending.
+
+The review below records candidate findings and fixes through October 18. Its historical
+failures are retained; they are not claims that every later package has the same status.
+Workflow candidate artifacts are for isolated testing, including when a later dependency
+gate marks their CI job failed. No signing credentials are used by that workflow.
 
 ## Dependency changes
 

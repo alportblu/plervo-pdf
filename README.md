@@ -1,24 +1,68 @@
 # Plervo Suite
 
-Instale primeiro o **Plervo Suite**. A central permite instalar, abrir, atualizar e remover os apps Plervo. O instalador principal do site é o da Suite; cada editor é instalado por dentro dela.
+**13 open-source desktop apps for documents, design and media. One place to install and manage them.**
 
-A Suite tem interface própria em inglês, português e espanhol, com **idioma do sistema** como padrão. Seu mecanismo de instalação foi adaptado do [ArtCraft Launcher 0.4.1](docs/suite-provenance.md). O editor de PDF é baseado no [PdfCraft 0.8.0](https://github.com/storytold/pdfcraft/tree/v0.8.0), mantendo os créditos e licenças originais.
+Start with **Plervo Suite**, then choose the apps you need from its catalog. The Suite installs, opens, updates and removes each app. Plervo is maintained by **AlporT**, with optional community support.
 
-**Estado: alpha experimental; não estável.** A [alpha.4](https://github.com/alportblu/plervo-pdf/releases/tag/v0.1.0-alpha.4) oferece a Suite e os apps aprovados para Mac Apple Silicon e Linux x86_64 (DEB/RPM/TAR, glibc 2.39+). Os pacotes Mac são assinados e notarizados. A matriz de aceitação Linux verifica Ubuntu 24.04/26.04, Debian 13 e Fedora 44; Linux Mint 22 usa a base Ubuntu 24.04, mas não tem teste de desktop separado. As notas da release identificam os produtos disponíveis e as limitações verificadas. Windows tem um [instalador interno em validação](docs/windows-suite.md) e continua aguardando confirmação e integração da SignPath.
+[Download Plervo Suite](https://plervo.com) · [Release notes](https://github.com/alportblu/plervo-pdf/releases/tag/v0.1.0-alpha.4) · [Support on Buy Me a Coffee](https://buymeacoffee.com/alport)
 
-No Linux, a Suite instala cada app por usuário em `~/.local/share/plervo-suite/apps/plervo-<produto>/current` (respeitando XDG_DATA_HOME), sem senha de administrador. Downloads exigem SHA-256 e origem oficial; pacotes com links, caminhos inseguros ou tamanho excessivo são recusados. A substituição do pacote é atômica; documentos e preferências ficam fora dessa pasta e são preservados na remoção.
+## The apps
 
-Site: https://plervo.com · Apoio voluntário: https://buymeacoffee.com/alport
+| App | Purpose |
+| --- | --- |
+| Plervo PDF | PDF editing and document tools |
+| Plervo Photo | Raster image editing |
+| Plervo Vector | Vector illustration |
+| Plervo Video | Video editing |
+| Plervo Develop | RAW photo development |
+| Plervo Motion | Motion graphics |
+| Plervo Publish | Page layout |
+| Plervo Write | Word processing |
+| Plervo Slides | Presentations |
+| Plervo Sheets | Spreadsheets |
+| Plervo CAD | Technical drawing |
+| Plervo Audio | Audio editing |
+| Plervo Canvas | Interface design |
 
-## Idiomas
+This repository contains the Suite, PDF, and the pinned source catalog and overlays for the other twelve apps. See [product sources and build instructions](products/README.md).
 
-O PDF mantém os 22 idiomas da base, incluindo português do Brasil. Em **Editar → Preferências → Idioma da interface**, escolha o idioma ou use a detecção automática do sistema. A escolha é salva; trocar de idioma preserva os documentos abertos e os comandos de automação. Novas telas e ações da Plervo devem usar o mesmo sistema de tradução.
+## Downloads and platform support
 
-Os catálogos têm diferentes níveis de cobertura; textos ainda não traduzidos usam inglês. A revisão visual nos três sistemas, fontes para todas as escritas e o layout da direita para a esquerda continuam como critérios de lançamento. Veja [localização](docs/localization.md) e [limitações por idioma](docs/localization-parity.md).
+**Current release: 0.1.0-alpha.4 — experimental, not stable.**
 
-## Desenvolvimento
+| Platform | Availability |
+| --- | --- |
+| macOS, Apple Silicon | Suite and all 13 apps. Signed by Maintech Solutions LLC and notarized by Apple. |
+| Linux, x86_64 | Suite and all 13 apps. DEB/RPM installers; glibc 2.39 or newer. |
+| Windows | Internal candidates have passed native checks. Public downloads await SignPath approval, signing integration and validation of the final signed packages. |
 
-Rust 1.95, dependências do sistema documentadas em `.github/workflows/ci.yml`.
+1. Download the Suite for your computer from [plervo.com](https://plervo.com).
+2. Install and open **Plervo Suite**.
+3. Select an app in the catalog and choose **Install**.
+
+Linux app packages were exercised on Ubuntu 24.04, Debian 13 and Fedora 44; the Suite also passed Ubuntu 26.04 acceptance. Linux Mint 22 shares the Ubuntu 24.04 base but has not been tested separately. macOS Intel, Linux ARM and native Wayland sessions are not qualified.
+
+The alpha has known limits. Final Mac GUI acceptance, installation on a clean Mac and broader hardware coverage remain pending. The Suite manages app updates; updates to the Suite itself are installed manually. Check the [release notes](https://github.com/alportblu/plervo-pdf/releases/tag/v0.1.0-alpha.4) for package-specific validation and limitations.
+
+## Languages
+
+The Suite follows the **operating system's display language** on a new profile and offers English, Portuguese and Spanish. A saved manual choice takes priority.
+
+PDF retains the upstream's 22 interface language catalogs. Choose **Edit → Preferences → Interface language** to select a language or use automatic system detection. Your choice is saved; switching languages preserves open documents and automation commands. New Plervo screens and actions must use the same translation system.
+
+Translation coverage varies between apps, with English fallback for untranslated text. **Slides and Audio are English-only in this alpha.** Full linguistic review, script/font coverage and right-to-left layout remain ongoing work. See [localization](docs/localization.md) and [language limitations](docs/localization-parity.md).
+
+## Security and privacy
+
+The Suite verifies official release origins, package versions and SHA-256 checksums before installation. Mac packages also require the expected publisher signature and Gatekeeper assessment. Linux installs each app for the current user under `~/.local/share/plervo-suite/apps/plervo-<product>/current` (respecting `XDG_DATA_HOME`), without an administrator password. Its installer rejects links, unsafe paths and oversized archives, and replaces the verified payload atomically. Removing an app preserves documents and preferences.
+
+Automation is opt-in. Donations open an external support page only when you choose the link; the apps contain no payment SDK or financial credentials. Support is always optional.
+
+Read the [security notes](SECURITY-PLERVO.md) or [report a vulnerability privately](https://github.com/alportblu/plervo-pdf/security). Tests, package scans and notarization do not guarantee the absence of vulnerabilities.
+
+## Development
+
+Rust 1.95. System dependencies are documented in [.github/workflows/ci.yml](.github/workflows/ci.yml).
 
 ```sh
 cargo build --locked -p plervo-suite -p plervo-pdf -p plervo-pdf-cli -j 2
@@ -30,16 +74,14 @@ cargo test --locked -p pdfcraft-ui-egui --lib control::transport_tests -j 2
 cargo xtask assets
 ```
 
-Os crates internos mantêm os nomes `pdfcraft-*` para facilitar rastreamento e futuras correções da base. A identidade pública, os executáveis e as configurações do Plervo são próprios. Não migramos nem alteramos automaticamente dados de PdfCraft/PrintCraft.
+Internal PDF crates retain their `pdfcraft-*` names to support upstream tracking and future fixes. Plervo has separate public branding, executables and settings. It does not automatically migrate or modify PdfCraft/PrintCraft data.
 
-## Segurança e publicação
+Candidate workflows produce internal artifacts; they do not publish releases automatically. Native acceptance and macOS/Windows publisher signing are required before public distribution.
 
-Veja [SECURITY-PLERVO.md](SECURITY-PLERVO.md). A automação continua desligada por padrão. Contribuições são opcionais e abrem uma página no navegador; não há SDK de pagamentos, cartão ou segredo financeiro no aplicativo.
+## License and credits
 
-O workflow de candidatos produz artefatos internos; não publica uma release automaticamente. As assinaturas de macOS/Windows e a validação nativa são etapas obrigatórias antes da distribuição pública.
+Plervo Suite adapts installation components from [ArtCraft Launcher 0.4.1](docs/suite-provenance.md). Plervo PDF is based on [PdfCraft 0.8.0](https://github.com/storytold/pdfcraft/tree/v0.8.0). The other apps' upstream sources are listed in the [product catalog](products/README.md). Original authors' credits and license notices are preserved.
 
-## Licenças e créditos
+MIT OR Apache-2.0, as described in [LICENSE-MIT](LICENSE-MIT), [LICENSE-APACHE](LICENSE-APACHE) and [NOTICE](NOTICE). Third-party assets are documented in [ATTRIBUTION.md](ATTRIBUTION.md).
 
-MIT OR Apache-2.0, conforme [LICENSE-MIT](LICENSE-MIT), [LICENSE-APACHE](LICENSE-APACHE) e [NOTICE](NOTICE). Créditos dos autores originais preservados. Recursos de terceiros em [ATTRIBUTION.md](ATTRIBUTION.md).
-
-Plervo não é afiliado à Adobe ou à equipe ArtCraft. Nenhuma marca gráfica da Adobe ou ArtCraft é incluída nesta distribuição.
+Plervo is independent and is not affiliated with Adobe or the ArtCraft team. This distribution includes no Adobe or ArtCraft brand artwork.
