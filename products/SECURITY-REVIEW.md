@@ -149,3 +149,7 @@ signature verification, and Suite installation/update acceptance against the
 published checksums. No unsigned candidate is described as a signed public release.
 Security checks reduce specific demonstrated risks; they do not prove the absence
 of every vulnerability or malware.
+
+## Canvas recent-file test readiness — 2026-10-18
+
+The native Windows run reached 303 passing UI tests but failed the first-run/recent-file transition: twelve rendered frames did not guarantee that its background metadata reader had returned. The test now waits up to five seconds for the inspected metadata state before checking the same visible labels and template removal. No assertion was removed and no production file changed. Eleven home-screen tests and scoped Clippy passed locally with the pinned Canvas fonts; native confirmation remains required.

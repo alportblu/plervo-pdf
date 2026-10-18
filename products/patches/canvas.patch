@@ -3935,6 +3935,28 @@ index dbc5850..0f2e412 100644
                  app.ui.home = false;
              }
          }
+diff --git a/crates/ui-egui/src/home_tests.rs b/crates/ui-egui/src/home_tests.rs
+index 1179b1c..d118f13 100644
+--- a/crates/ui-egui/src/home_tests.rs
++++ b/crates/ui-egui/src/home_tests.rs
+@@ -216,6 +216,17 @@ fn a_first_run_offers_templates_on_recents_and_recent_files_replace_them() {
+     // With a recent file, the list shows in the row's place.
+     u.app.ui.home = true;
+     u.app.session.prefs.recent_files = vec!["/tmp/ridgeline.figcraft".into()];
++    // File metadata is read on a worker; painting a fixed number of frames can leave its skeleton.
++    let deadline = std::time::Instant::now() + std::time::Duration::from_secs(5);
++    loop {
++        u.frame(vec![]);
++        let recents = &u.app.inspect()["homeRecents"]["files"];
++        if recents.as_array().is_some_and(|files| files.len() == 1 && files[0]["exists"].is_boolean()) {
++            break;
++        }
++        assert!(std::time::Instant::now() < deadline, "recent file metadata did not arrive: {recents}");
++        std::thread::sleep(std::time::Duration::from_millis(5));
++    }
+     let s = settle(&mut u);
+     assert!(has_text(&s, "Recent files") && has_text(&s, "ridgeline"));
+     assert!(!has_text(&s, "Start from a template") && !has_text(&s, "See all templates"));
 diff --git a/crates/ui-egui/src/icons.rs b/crates/ui-egui/src/icons.rs
 index 726f62f..c21728c 100644
 --- a/crates/ui-egui/src/icons.rs
