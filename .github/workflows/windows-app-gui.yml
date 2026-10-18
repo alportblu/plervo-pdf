@@ -14,25 +14,13 @@ permissions:
   contents: read
   actions: read
 jobs:
-  candidates:
-    runs-on: ubuntu-24.04
-    outputs:
-      products: ${{ steps.select.outputs.products }}
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
-        with:
-          persist-credentials: false
-      - id: select
-        env:
-          PRODUCT: ${{ inputs.product || 'all' }}
-        run: python3 products/windows-gui/matrix.py
   gui:
-    needs: candidates
     strategy:
       fail-fast: false
       max-parallel: 3
       matrix:
-        product: ${{ fromJSON(needs.candidates.outputs.products) }}
+        # This diagnostic batch is pinned to the exact candidates.json entries.
+        product: ${{ fromJSON(inputs.product && inputs.product != 'all' && format('["{0}"]', inputs.product) || '["pdf","photo","vector","video","develop","publish","write","slides","sheets","cad","audio","canvas"]') }}
     runs-on: windows-2025
     timeout-minutes: 15
     steps:

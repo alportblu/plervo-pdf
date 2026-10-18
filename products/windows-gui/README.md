@@ -24,3 +24,7 @@ The initial pinned set contains twelve apps. Motion is added only after its exac
 corrected Windows candidate passes native qualification. Existing failed runs
 remain recorded. Reproduction uses the pinned workflow/source commit and artifact
 digests, not a mutable latest download.
+
+The Windows matrix repeats the exact pinned batch IDs so a separate Ubuntu
+selector cannot hold up these diagnostics. A follow-up batch must update both
+that list and `candidates.json`; each runner still validates its pinned candidate.
