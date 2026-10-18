@@ -1,7 +1,7 @@
 # Internal Windows GUI diagnostics
 
-This manual workflow opens only the exact native-passed MSI packages in
-`candidates.json`, on a disposable GitHub Windows runner. It verifies the native
+This workflow opens only the exact native-passed MSI packages in
+`candidates.json`, on a separate disposable GitHub Windows runner per app. It verifies the native
 job, artifact source and SHA-256, and the MSI's own pinned SHA-256 before installing.
 The download token is scoped to the fetch step; the GUI step receives no GitHub token.
 
@@ -15,7 +15,10 @@ Nothing is published and consumer trust settings are not changed.
 Window positioning uses asynchronous cross-thread requests after a bounded
 responsiveness check. Each phase is logged, and the summary is saved after each
 app. The GUI step has its own timeout so partial diagnostics can still upload
-before the job's overall deadline. Earlier failed or stalled runs are retained.
+before the job's overall deadline. MSI starts directly with an argument list,
+without shell activation or a recursive service-process kill. Earlier failed or
+stalled sequential runs are retained; isolated success alone does not prove
+coexistence or explain a previous installation failure.
 
 The initial pinned set contains twelve apps. Motion is added only after its exact
 corrected Windows candidate passes native qualification. Existing failed runs

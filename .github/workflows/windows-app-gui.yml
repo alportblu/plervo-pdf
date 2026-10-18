@@ -14,9 +14,27 @@ permissions:
   contents: read
   actions: read
 jobs:
+  candidates:
+    runs-on: ubuntu-24.04
+    outputs:
+      products: ${{ steps.select.outputs.products }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - id: select
+        env:
+          PRODUCT: ${{ inputs.product || 'all' }}
+        run: python3 products/windows-gui/matrix.py
   gui:
+    needs: candidates
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        product: ${{ fromJSON(needs.candidates.outputs.products) }}
     runs-on: windows-2025
-    timeout-minutes: 45
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -29,16 +47,16 @@ jobs:
       - name: Fetch exact native-passed MSI bytes
         env:
           GH_TOKEN: ${{ github.token }}
-          PRODUCT: ${{ inputs.product || 'all' }}
+          PRODUCT: ${{ matrix.product }}
         run: python products/windows-gui/fetch.py --product "$env:PRODUCT"
       - name: Install and inspect each native application window
-        timeout-minutes: 30
+        timeout-minutes: 10
         run: products/windows-gui/inspect.ps1
       - name: Preserve diagnostics including failed applications
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
-          name: plervo-windows-gui-${{ github.sha }}-${{ inputs.product || 'all' }}
+          name: plervo-windows-gui-${{ github.sha }}-${{ matrix.product }}
           path: |
             dist/windows-gui/**/*.json
             dist/windows-gui/**/*.txt

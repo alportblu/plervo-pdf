@@ -20,9 +20,20 @@ $Rows = Get-Content -Raw -LiteralPath (Join-Path $Root 'selected.json') | Conver
 $Results = [Collections.Generic.List[object]]::new()
 function Invoke-Msi([string] $Msi, [string] $Folder, [string] $Operation, [string] $Label) {
   $Log = Join-Path $Folder "$Label-msi.log"
-  $Job = Start-Process msiexec.exe -ArgumentList @($Operation, "`"$Msi`"", '/qn', '/norestart', '/L*v', "`"$Log`"") -PassThru
-  if (-not $Job.WaitForExit(180000)) { $Job.Kill($true); throw "MSI $Label timed out" }
-  if ($Job.ExitCode -notin @(0, 3010)) { throw "MSI $Label failed: $($Job.ExitCode)" }
+  $Info = [Diagnostics.ProcessStartInfo]::new((Join-Path $env:SystemRoot 'System32/msiexec.exe'))
+  $Info.UseShellExecute = $false
+  $Info.CreateNoWindow = $true
+  foreach ($Argument in @($Operation, $Msi, '/qn', '/norestart', '/L*v', $Log)) { $Info.ArgumentList.Add($Argument) }
+  $Job = [Diagnostics.Process]::new()
+  $Job.StartInfo = $Info
+  try {
+    if (-not $Job.Start()) { throw "Cannot start MSI $Label" }
+    if (-not $Job.WaitForExit(180000)) { $Job.Kill(); throw "MSI $Label timed out" }
+    if ($Job.ExitCode -notin @(0, 3010)) {
+      Select-String -LiteralPath $Log -Pattern 'Return value 3|Error [0-9]{4}' -Context 8,3 | Select-Object -Last 5 | Out-Host
+      throw "MSI $Label failed: $($Job.ExitCode)"
+    }
+  } finally { $Job.Dispose() }
 }
 foreach ($Row in $Rows) {
   if ($Row.product -notin @('pdf','photo','vector','video','develop','motion','publish','write','slides','sheets','cad','audio','canvas')) { throw 'Unknown product' }
@@ -83,7 +94,20 @@ foreach ($Row in $Rows) {
     $Result.capture_height = $Capture.Height
     $Result.clipped_by_display = ($Bounds.Width -ne $Capture.Width -or $Bounds.Height -ne $Capture.Height)
     Write-Host "$Name : captured client area; requesting normal close"
-    if (-not $App.CloseMainWindow() -or -not $App.WaitForExit(15000)) { throw 'Application did not close normally' }
+    if (-not $App.CloseMainWindow() -or -not $App.WaitForExit(15000)) {
+      if (-not $App.HasExited) {
+        # Preserve a possible save/quit prompt before the isolated process is stopped.
+        try {
+          $ClosingImage = [Drawing.Bitmap]::new($Capture.Width, $Capture.Height)
+          $ClosingGraphics = [Drawing.Graphics]::FromImage($ClosingImage)
+          try {
+            $ClosingGraphics.CopyFromScreen($Capture.Location, [Drawing.Point]::Empty, $Capture.Size)
+            $ClosingImage.Save((Join-Path $Folder 'close-request.png'), [Drawing.Imaging.ImageFormat]::Png)
+          } finally { $ClosingGraphics.Dispose(); $ClosingImage.Dispose() }
+        } catch { Write-Warning "Could not capture the close failure: $($_.ToString())" }
+      }
+      throw 'Application did not close normally'
+    }
     if ($App.ExitCode -ne 0) { throw "Application closed with error: $($App.ExitCode)" }
     $Result.normal_close = $true
   } catch { $Failure = $_.ToString() }
