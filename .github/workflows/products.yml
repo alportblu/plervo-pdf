@@ -3,6 +3,11 @@ name: Plervo product candidates
 on:
   workflow_dispatch:
     inputs:
+      product:
+        description: Product to qualify, or all
+        type: choice
+        default: all
+        options: [all, photo, vector, video, develop, motion, publish, write, slides, sheets, cad, audio, canvas]
       upstream_baseline:
         description: Re-run the untouched Slides baseline for source comparison
         type: boolean
@@ -37,7 +42,14 @@ jobs:
       - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6
       - run: 'cargo test --locked -p xtask products::'
       - id: catalog
-        run: echo "matrix=$(cargo xtask products --matrix)" >> "$GITHUB_OUTPUT"
+        env:
+          PRODUCT_FILTER: ${{ inputs.product || 'all' }}
+        run: |
+          matrix=$(cargo xtask products --matrix)
+          if [ "$PRODUCT_FILTER" != all ]; then
+            matrix=$(printf '%s' "$matrix" | jq -ce --arg product "$PRODUCT_FILTER" '{include: [.include[] | select(.product == $product)]} | select(.include | length == 1)')
+          fi
+          echo "matrix=$matrix" >> "$GITHUB_OUTPUT"
 
   candidate:
     name: ${{ matrix.app.product }} (${{ matrix.os }})

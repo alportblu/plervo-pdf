@@ -637,7 +637,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.effectcraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "ee8bd602c1eff0cad8fbea680996a3b2bf3e86c22024d760ae5816a14a6f1b50"
+    "patch_sha256": "a265d9f2ff54b07a37e731a04916f7b5c608dfd3a0ac2c083845855ad7049bd5"
   },
   {
     "app": "designcraft",
@@ -1496,6 +1496,6 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.figcraft.png"
     ],
     "fonts_commit": "43913056ce82a3fdad0ef69f6b88d1dc922a8104",
-    "patch_sha256": "1db9a5a912b9ec25a01df8f9cdc8167027db54addf8f7303935a6d98a7c08f42"
+    "patch_sha256": "2cdfd433e8efbd9af5924342451d5a6e87c5ec0c92fb8247eee71ab5cf529633"
   }
 ]

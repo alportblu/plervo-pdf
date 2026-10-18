@@ -47,6 +47,10 @@ matching public release exists. The published Suite has not changed during prepa
 The local Suite management gate passed 103 tests; native product and installer acceptance
 are separate requirements.
 
+For a focused native rerun, manually dispatch `Plervo product candidates` with a
+`product` choice. The default and pull-request runs still validate all twelve
+products; an unknown selection fails instead of silently producing an empty matrix.
+
 The candidate workflow additionally exercises installed DEB/MSI binaries, Linux
 reinstallation, Windows repair, and removal on disposable runners. Clean Ubuntu 24.04,
 Debian 13 and Fedora 44 containers test DEB/RPM installation, reinstallation and removal, recording
