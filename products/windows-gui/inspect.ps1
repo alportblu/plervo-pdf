@@ -4,15 +4,39 @@ if ($env:GITHUB_ACTIONS -ne 'true' -or $env:RUNNER_OS -ne 'Windows') { throw 'Di
 Add-Type -AssemblyName System.Drawing, System.Windows.Forms
 Add-Type @'
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Text;
 public static class PlervoWindow {
   [StructLayout(LayoutKind.Sequential)] public struct Rect { public int Left, Top, Right, Bottom; }
   [StructLayout(LayoutKind.Sequential)] public struct Point { public int X, Y; }
+  public sealed class WindowInfo { public long Handle; public string Title; public string ClassName; public int Width; public int Height; }
+  private delegate bool EnumProc(IntPtr window, IntPtr parameter);
+  [DllImport("user32.dll")] private static extern bool EnumWindows(EnumProc callback, IntPtr parameter);
+  [DllImport("user32.dll")] private static extern bool IsWindowVisible(IntPtr window);
+  [DllImport("user32.dll")] private static extern uint GetWindowThreadProcessId(IntPtr window, out uint process);
+  [DllImport("user32.dll", CharSet = CharSet.Unicode)] private static extern int GetWindowText(IntPtr window, StringBuilder text, int count);
+  [DllImport("user32.dll", CharSet = CharSet.Unicode)] private static extern int GetClassName(IntPtr window, StringBuilder text, int count);
+  [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)] public static extern bool PostMessage(IntPtr window, uint message, IntPtr wParam, IntPtr lParam);
+  [DllImport("user32.dll", CharSet = CharSet.Unicode, SetLastError = true)] private static extern IntPtr SendMessageTimeout(IntPtr window, uint message, IntPtr wParam, IntPtr lParam, uint flags, uint timeout, out IntPtr result);
   [DllImport("user32.dll")] public static extern bool GetClientRect(IntPtr window, out Rect rect);
   [DllImport("user32.dll")] public static extern bool ClientToScreen(IntPtr window, ref Point point);
   [DllImport("user32.dll")] public static extern bool SetWindowPos(IntPtr window, IntPtr after, int x, int y, int width, int height, uint flags);
   [DllImport("user32.dll")] public static extern bool SetForegroundWindow(IntPtr window);
   [DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr window, int command);
+  public static bool Responding(IntPtr window) { IntPtr result; return SendMessageTimeout(window, 0, IntPtr.Zero, IntPtr.Zero, 2, 1000, out result) != IntPtr.Zero; }
+  public static WindowInfo[] ForProcess(uint process) {
+    var windows = new List<WindowInfo>();
+    EnumWindows((window, parameter) => {
+      uint owner; GetWindowThreadProcessId(window, out owner);
+      if (owner != process || !IsWindowVisible(window)) return true;
+      var title = new StringBuilder(512); var name = new StringBuilder(256); Rect bounds;
+      GetWindowText(window, title, title.Capacity); GetClassName(window, name, name.Capacity);
+      if (GetClientRect(window, out bounds)) windows.Add(new WindowInfo { Handle = window.ToInt64(), Title = title.ToString(), ClassName = name.ToString(), Width = bounds.Right - bounds.Left, Height = bounds.Bottom - bounds.Top });
+      return true;
+    }, IntPtr.Zero);
+    return windows.ToArray();
+  }
 }
 '@
 $Root = (Resolve-Path 'dist/windows-gui').Path
@@ -58,16 +82,22 @@ foreach ($Row in $Rows) {
     # No token is passed to this step. The app has no user document to open or modify.
     $App = Start-Process -FilePath $Binary -PassThru -RedirectStandardOutput (Join-Path $Folder 'gui-stdout.txt') -RedirectStandardError (Join-Path $Folder 'gui-stderr.txt')
     $Deadline = [DateTime]::UtcNow.AddSeconds(90)
+    $Selected = $null
     do {
       Start-Sleep -Milliseconds 500
       $App.Refresh()
       if ($App.HasExited) { throw "Application exited before opening a window: $($App.ExitCode)" }
-    } while ($App.MainWindowHandle -eq [IntPtr]::Zero -and [DateTime]::UtcNow -lt $Deadline)
-    if ($App.MainWindowHandle -eq [IntPtr]::Zero) { throw 'No application window within 90 seconds' }
-    $Window = $App.MainWindowHandle
+      # GPU initialization may expose an untitled helper before the actual app.
+      # Enumerate only this process and require its branded, rendered window.
+      $Windows = @([PlervoWindow]::ForProcess($App.Id))
+      $Selected = $Windows | Where-Object { $_.Title.Contains($Name, [StringComparison]::Ordinal) -and $_.Width -ge 320 -and $_.Height -ge 240 } | Sort-Object { $_.Width * $_.Height } -Descending | Select-Object -First 1
+    } while (-not $Selected -and [DateTime]::UtcNow -lt $Deadline)
+    ConvertTo-Json -InputObject $Windows -Depth 5 | Set-Content -LiteralPath (Join-Path $Folder 'observed-windows.json') -Encoding utf8
+    if (-not $Selected) { throw 'No branded application window within 90 seconds' }
+    $Window = [IntPtr] $Selected.Handle
     $Screen = [Windows.Forms.Screen]::PrimaryScreen.WorkingArea
     Write-Host "$Name : native window found; checking responsiveness"
-    if (-not $App.Responding) { throw 'Application window is not responding after startup' }
+    if (-not [PlervoWindow]::Responding($Window)) { throw 'Application window is not responding after startup' }
     # Cross-thread window requests must not wait forever on a hung application.
     # https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setwindowpos
     [void] [PlervoWindow]::ShowWindowAsync($Window, 9)
@@ -75,7 +105,9 @@ foreach ($Row in $Rows) {
     [void] [PlervoWindow]::SetForegroundWindow($Window)
     Start-Sleep -Seconds 5
     $App.Refresh()
-    if ($App.HasExited -or -not $App.Responding) { throw 'Application window exited or stopped responding' }
+    if ($App.HasExited -or -not [PlervoWindow]::Responding($Window)) { throw 'Application window exited or stopped responding' }
+    $Selected = @([PlervoWindow]::ForProcess($App.Id)) | Where-Object { $_.Handle -eq $Window.ToInt64() -and $_.Title.Contains($Name, [StringComparison]::Ordinal) } | Select-Object -First 1
+    if (-not $Selected) { throw 'Selected application window changed before capture' }
     $Rect = [PlervoWindow+Rect]::new()
     $Origin = [PlervoWindow+Point]::new()
     if (-not [PlervoWindow]::GetClientRect($Window, [ref] $Rect) -or -not [PlervoWindow]::ClientToScreen($Window, [ref] $Origin)) { throw 'Cannot inspect the application client area' }
@@ -89,12 +121,15 @@ foreach ($Row in $Rows) {
       $Graphics.CopyFromScreen($Capture.Location, [Drawing.Point]::Empty, $Capture.Size)
       $Bitmap.Save((Join-Path $Folder 'first-launch.png'), [Drawing.Imaging.ImageFormat]::Png)
     } finally { $Graphics.Dispose(); $Bitmap.Dispose() }
-    $Result.window_title = $App.MainWindowTitle
+    $Result.window_title = $Selected.Title
+    $Result.window_class = $Selected.ClassName
+    $Result.window_handle = $Selected.Handle
     $Result.capture_width = $Capture.Width
     $Result.capture_height = $Capture.Height
     $Result.clipped_by_display = ($Bounds.Width -ne $Capture.Width -or $Bounds.Height -ne $Capture.Height)
     Write-Host "$Name : captured client area; requesting normal close"
-    if (-not $App.CloseMainWindow() -or -not $App.WaitForExit(15000)) {
+    # Request a normal close on the exact captured app HWND, never a helper HWND.
+    if (-not [PlervoWindow]::PostMessage($Window, 0x10, [IntPtr]::Zero, [IntPtr]::Zero) -or -not $App.WaitForExit(15000)) {
       if (-not $App.HasExited) {
         # Preserve a possible save/quit prompt before the isolated process is stopped.
         try {

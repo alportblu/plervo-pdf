@@ -20,8 +20,12 @@ without shell activation or a recursive service-process kill. Earlier failed or
 stalled sequential runs are retained; isolated success alone does not prove
 coexistence or explain a previous installation failure.
 
-The initial pinned set contains twelve apps. Motion is added only after its exact
-corrected Windows candidate passes native qualification. Existing failed runs
+This focused batch checks PDF, Photo and Vector with the original pinned MSI
+bytes. The earlier blank-title captures selected a graphics helper window; this
+revision enumerates visible windows owned by the app, requires its product title,
+and sends normal WM_CLOSE to the same HWND it captures. Window identities are
+preserved for review. Motion is added only after its exact corrected Windows
+candidate passes native qualification. Existing failed runs
 remain recorded. Reproduction uses the pinned workflow/source commit and artifact
 digests, not a mutable latest download.
 
