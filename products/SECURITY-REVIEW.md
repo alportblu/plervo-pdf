@@ -44,6 +44,20 @@ Sources: [RustSec advisories](https://rustsec.org/advisories/),
 - **Compile-time macros:** the paste and proc-macro-error maintenance exceptions cover
   trusted build-time procedural macros, not shipped runtime parsers. No known
   vulnerability is being described as fixed by these exceptions.
+- **Linux D-Bus transition (reviewed 2026-10-17):** RUSTSEC-2026-0370,
+  0371 and 0372 are explicitly informational maintenance notices for `zvariant`,
+  `zbus_names` and `zvariant_derive`. Their code moved into zbus 6; they are not
+  reports of a new exploitable flaw. The pinned AccessKit/AT-SPI accessibility
+  dependencies still require zbus 5 and standalone types, as do some desktop-portal
+  integrations. Updating only our direct zbus dependency cannot remove that chain.
+  The review accepts these three exact maintenance IDs temporarily, preserves Linux
+  accessibility and portal features, and leaves all other advisories enforced.
+  Remove the exceptions when those upstream integrations migrate to zbus 6.
+  No runtime library, lockfile, installed permission or security mechanism changed.
+  Sources: [maintainer transition](https://github.com/z-galaxy/zbus/issues/2043),
+  [zvariant notice](https://github.com/RustSec/advisory-db/blob/main/crates/zvariant/RUSTSEC-2026-0370.md),
+  [names notice](https://github.com/RustSec/advisory-db/blob/main/crates/zbus_names/RUSTSEC-2026-0371.md),
+  [derive notice](https://github.com/RustSec/advisory-db/blob/main/crates/zvariant_derive/RUSTSEC-2026-0372.md).
 - `cargo xtask products --audit-policy PRODUCT` emits the common strict policy plus only
   that product's reviewed applicability exceptions. Regression coverage prevents an
   exception from spreading to another product. CI audits this generated policy.

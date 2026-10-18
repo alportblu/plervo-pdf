@@ -224,6 +224,14 @@ mod tests {
             assert_eq!(policy.contains("RUSTSEC-2023-0071"), matches!(product.product.as_str(), "video" | "develop"));
             assert_eq!(policy.contains("RUSTSEC-2026-0192"), product.product == "develop");
             assert!(!policy.contains("RUSTSEC-2026-0206"));
+            let advisory_ids: Vec<_> = parsed["advisories"]["ignore"].as_array().unwrap().iter().map(|v| v["id"].as_str().unwrap()).collect();
+            for id in ["RUSTSEC-2026-0370", "RUSTSEC-2026-0371", "RUSTSEC-2026-0372"] {
+                assert_eq!(advisory_ids.iter().filter(|&&found| found == id).count(), 1);
+            }
+            assert_eq!(
+                advisory_ids.len(),
+                5 + usize::from(matches!(product.product.as_str(), "video" | "develop")) + usize::from(product.product == "develop")
+            );
             assert_eq!(parsed["sources"]["unknown-git"].as_str(), Some("deny"));
             assert!(parsed["licenses"]["exceptions"].as_array().unwrap().len() >= 20);
         }

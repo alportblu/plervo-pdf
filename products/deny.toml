@@ -44,6 +44,13 @@ allow-git = ["https://github.com/storytold/craft-libs", "https://github.com/stor
 [advisories]
 yanked = "warn"
 ignore = [
+    # Informational deprecations after the zbus 6 merge. The pinned Linux accessibility
+    # and desktop-portal stacks still use zbus 5; removing those features is not a fix.
+    # Remove these exact IDs when their upstream dependency chains migrate to zbus 6.
+    # Review: SECURITY-REVIEW.md, https://github.com/z-galaxy/zbus/issues/2043.
+    { id = "RUSTSEC-2026-0370", reason = "zvariant moved into zbus 6; pinned AccessKit/AT-SPI and portals still depend on zbus 5; maintenance-only transition" },
+    { id = "RUSTSEC-2026-0371", reason = "zbus_names moved into zbus 6; pinned AccessKit/AT-SPI and portals still depend on zbus 5; maintenance-only transition" },
+    { id = "RUSTSEC-2026-0372", reason = "zvariant_derive moved into zbus 6; compile-time macros of the same pinned Linux integration stack; maintenance-only transition" },
     # Reviewed 2026-10-16: token-pasting procedural macro of rav1e/pulp/faer/candle.
     # It executes on trusted source at build time, is absent from shipped runtime code,
     # and this advisory reports maintenance status, not a known vulnerability.
