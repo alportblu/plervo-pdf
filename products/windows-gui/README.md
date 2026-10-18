@@ -20,13 +20,12 @@ without shell activation or a recursive service-process kill. Earlier failed or
 stalled sequential runs are retained; isolated success alone does not prove
 coexistence or explain a previous installation failure.
 
-This follow-up covers eight remaining apps, including the exact corrected Motion
-candidate whose native job, source and malware scan passed. The focused Photo
-check already passed with a correctly selected branded window. Earlier blank-title
-captures selected Winit's event-target helper; the corrected probe enumerates
-visible windows owned by the app, requires the product title and responsiveness
-within a bounded startup deadline, then sends normal WM_CLOSE to that same HWND.
-Window identities and earlier failures remain preserved for review. Existing failed runs
+This focused PDF follow-up preserves the original native-passed MSI bytes. A
+previous correctly selected GUI reached removal and stopped producing progress;
+its result remains unqualified. This probe reports normal-close evidence before
+removal and polls the installer with a bounded deadline and periodic action logs,
+so a stalled cleanup can be distinguished from a GUI failure. The earlier batch
+and other apps' evidence remain unchanged. Existing failed runs
 remain recorded. Reproduction uses the pinned workflow/source commit and artifact
 digests, not a mutable latest download.
 

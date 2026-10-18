@@ -20,7 +20,7 @@ jobs:
       max-parallel: 3
       matrix:
         # This diagnostic batch is pinned to the exact candidates.json entries.
-        product: ${{ fromJSON(inputs.product && inputs.product != 'all' && format('["{0}"]', inputs.product) || '["vector","video","develop","sheets","cad","audio","canvas","motion"]') }}
+        product: ${{ fromJSON(inputs.product && inputs.product != 'all' && format('["{0}"]', inputs.product) || '["pdf"]') }}
     runs-on: windows-2025
     timeout-minutes: 15
     steps:

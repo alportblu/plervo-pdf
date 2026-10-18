@@ -52,7 +52,21 @@ function Invoke-Msi([string] $Msi, [string] $Folder, [string] $Operation, [strin
   $Job.StartInfo = $Info
   try {
     if (-not $Job.Start()) { throw "Cannot start MSI $Label" }
-    if (-not $Job.WaitForExit(180000)) { $Job.Kill(); throw "MSI $Label timed out" }
+    Write-Host "MSI $Label : started process $($Job.Id)"
+    $MsiDeadline = [DateTime]::UtcNow.AddSeconds(180)
+    $NextLog = [DateTime]::UtcNow.AddSeconds(15)
+    while (-not $Job.HasExited) {
+      if ([DateTime]::UtcNow -ge $MsiDeadline) { $Job.Kill(); throw "MSI $Label timed out" }
+      if ([DateTime]::UtcNow -ge $NextLog) {
+        Write-Host "MSI $Label : still running; recent installer actions follow"
+        if (Test-Path -LiteralPath $Log) {
+          Select-String -LiteralPath $Log -Pattern 'Action start|Action ended|Return value 3|Error [0-9]{4}|Restart Manager' | Select-Object -Last 5 | ForEach-Object { Write-Host $_.Line }
+        }
+        $NextLog = [DateTime]::UtcNow.AddSeconds(15)
+      }
+      Start-Sleep -Seconds 1
+      $Job.Refresh()
+    }
     if ($Job.ExitCode -notin @(0, 3010)) {
       Select-String -LiteralPath $Log -Pattern 'Return value 3|Error [0-9]{4}' -Context 8,3 | Select-Object -Last 5 | Out-Host
       throw "MSI $Label failed: $($Job.ExitCode)"
@@ -153,6 +167,8 @@ foreach ($Row in $Rows) {
     if ($App -and -not $App.HasExited) { $App.Kill($true); [void] $App.WaitForExit(10000) }
     if ($Installed) {
       try {
+        Write-Host "GUI before removal: normal_close=$($Result.normal_close); failure=$Failure"
+        $Result | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath (Join-Path $Folder 'gui-before-uninstall.json') -Encoding utf8
         Write-Host "$Name : removing isolated CI installation"
         Invoke-Msi $Msi $Folder '/x' 'uninstall'
         if (Test-Path -LiteralPath (Join-Path $Install "plervo-$($Row.product).exe")) { throw 'Uninstall left the executable' }
