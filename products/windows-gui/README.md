@@ -12,6 +12,11 @@ Screenshots require visual review; startup does not establish complete feature,
 physical hardware, upgrade, publisher-signature or public-release acceptance.
 Nothing is published and consumer trust settings are not changed.
 
+Window positioning uses asynchronous cross-thread requests after a bounded
+responsiveness check. Each phase is logged, and the summary is saved after each
+app. The GUI step has its own timeout so partial diagnostics can still upload
+before the job's overall deadline. Earlier failed or stalled runs are retained.
+
 The initial pinned set contains twelve apps. Motion is added only after its exact
 corrected Windows candidate passes native qualification. Existing failed runs
 remain recorded. Reproduction uses the pinned workflow/source commit and artifact

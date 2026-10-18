@@ -12,7 +12,7 @@ public static class PlervoWindow {
   [DllImport("user32.dll")] public static extern bool ClientToScreen(IntPtr window, ref Point point);
   [DllImport("user32.dll")] public static extern bool SetWindowPos(IntPtr window, IntPtr after, int x, int y, int width, int height, uint flags);
   [DllImport("user32.dll")] public static extern bool SetForegroundWindow(IntPtr window);
-  [DllImport("user32.dll")] public static extern bool ShowWindow(IntPtr window, int command);
+  [DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr window, int command);
 }
 '@
 $Root = (Resolve-Path 'dist/windows-gui').Path
@@ -38,10 +38,12 @@ foreach ($Row in $Rows) {
   $Failure = $null
   $Result = [ordered] @{ product = $Row.product; native_run = $Row.run; native_head = $Row.head; msi_sha256 = $Row.msi_sha256; passed = $false; signed = $false; public_qualification = $false; scope = 'Native startup, window capture and normal close. Screenshot requires visual review; no complete feature or hardware acceptance.' }
   try {
+    Write-Host "$Name : installing exact MSI"
     Invoke-Msi $Msi $Folder '/i' 'install'
     $Installed = $true
     $Binary = Join-Path $Install "plervo-$($Row.product).exe"
     $Result.binary_sha256 = (Get-FileHash -LiteralPath $Binary -Algorithm SHA256).Hash.ToLowerInvariant()
+    Write-Host "$Name : starting installed app"
     # No token is passed to this step. The app has no user document to open or modify.
     $App = Start-Process -FilePath $Binary -PassThru -RedirectStandardOutput (Join-Path $Folder 'gui-stdout.txt') -RedirectStandardError (Join-Path $Folder 'gui-stderr.txt')
     $Deadline = [DateTime]::UtcNow.AddSeconds(90)
@@ -53,8 +55,12 @@ foreach ($Row in $Rows) {
     if ($App.MainWindowHandle -eq [IntPtr]::Zero) { throw 'No application window within 90 seconds' }
     $Window = $App.MainWindowHandle
     $Screen = [Windows.Forms.Screen]::PrimaryScreen.WorkingArea
-    [void] [PlervoWindow]::ShowWindow($Window, 9)
-    if (-not [PlervoWindow]::SetWindowPos($Window, [IntPtr]::Zero, $Screen.X, $Screen.Y, [Math]::Min(1280, $Screen.Width), [Math]::Min(800, $Screen.Height - 40), 0)) { throw 'Cannot position the CI test window' }
+    Write-Host "$Name : native window found; checking responsiveness"
+    if (-not $App.Responding) { throw 'Application window is not responding after startup' }
+    # Cross-thread window requests must not wait forever on a hung application.
+    # https://learn.microsoft.com/windows/win32/api/winuser/nf-winuser-setwindowpos
+    [void] [PlervoWindow]::ShowWindowAsync($Window, 9)
+    if (-not [PlervoWindow]::SetWindowPos($Window, [IntPtr]::Zero, $Screen.X, $Screen.Y, [Math]::Min(1280, $Screen.Width), [Math]::Min(800, $Screen.Height - 40), 0x4000)) { throw 'Cannot position the CI test window' }
     [void] [PlervoWindow]::SetForegroundWindow($Window)
     Start-Sleep -Seconds 5
     $App.Refresh()
@@ -76,6 +82,7 @@ foreach ($Row in $Rows) {
     $Result.capture_width = $Capture.Width
     $Result.capture_height = $Capture.Height
     $Result.clipped_by_display = ($Bounds.Width -ne $Capture.Width -or $Bounds.Height -ne $Capture.Height)
+    Write-Host "$Name : captured client area; requesting normal close"
     if (-not $App.CloseMainWindow() -or -not $App.WaitForExit(15000)) { throw 'Application did not close normally' }
     if ($App.ExitCode -ne 0) { throw "Application closed with error: $($App.ExitCode)" }
     $Result.normal_close = $true
@@ -84,6 +91,7 @@ foreach ($Row in $Rows) {
     if ($App -and -not $App.HasExited) { $App.Kill($true); [void] $App.WaitForExit(10000) }
     if ($Installed) {
       try {
+        Write-Host "$Name : removing isolated CI installation"
         Invoke-Msi $Msi $Folder '/x' 'uninstall'
         if (Test-Path -LiteralPath (Join-Path $Install "plervo-$($Row.product).exe")) { throw 'Uninstall left the executable' }
       } catch { $Failure = "$Failure Uninstall: $($_.ToString())" }
@@ -93,6 +101,8 @@ foreach ($Row in $Rows) {
   if ($Failure) { $Result.error = $Failure; Write-Warning "$Name : $Failure" }
   $Result | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath (Join-Path $Folder 'gui-result.json') -Encoding utf8
   $Results.Add($Result)
+  ConvertTo-Json -InputObject $Results -Depth 5 | Set-Content -LiteralPath (Join-Path $Root 'summary.json') -Encoding utf8
+  Write-Host "$Name : diagnostics complete; passed=$($Result.passed)"
 }
 ConvertTo-Json -InputObject $Results -Depth 5 | Set-Content -LiteralPath (Join-Path $Root 'summary.json') -Encoding utf8
 if (@($Results | Where-Object { -not $_.passed }).Count) { throw 'One or more native GUI checks failed; all available diagnostics were preserved.' }

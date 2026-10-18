@@ -32,6 +32,7 @@ jobs:
           PRODUCT: ${{ inputs.product || 'all' }}
         run: python products/windows-gui/fetch.py --product "$env:PRODUCT"
       - name: Install and inspect each native application window
+        timeout-minutes: 30
         run: products/windows-gui/inspect.ps1
       - name: Preserve diagnostics including failed applications
         if: always()
