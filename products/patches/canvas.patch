@@ -5371,7 +5371,7 @@ index 1150163..8dd815f 100755
  
  trap 'rm -f "$CERT"' EXIT
 diff --git a/packaging/macos/package.sh b/packaging/macos/package.sh
-index 87abe94..b758c2e 100755
+index 87abe94..eb0b903 100755
 --- a/packaging/macos/package.sh
 +++ b/packaging/macos/package.sh
 @@ -1,8 +1,8 @@
@@ -5453,25 +5453,22 @@ index 87abe94..b758c2e 100755
      fi
      echo "error: notarization of $(basename "$file") failed (status: ${status:-unknown})" >&2
      exit 1
-@@ -98,23 +111,23 @@ notarize() {
+@@ -98,23 +111,15 @@ notarize() {
  }
  
  # ---- icon --------------------------------------------------------------------------------------
 -# The .icns is generated here from the committed PNGs (assets/app-icon/figcraft-<size>.png, made by
-+# The .icns is generated here from the committed PNGs (assets/app-icon/plervo-canvas-<size>.png, made by
- # `cargo xtask icon`); it is never committed.
- ICONS="$ROOT/assets/app-icon"
+-# `cargo xtask icon`); it is never committed.
+-ICONS="$ROOT/assets/app-icon"
 -ICONSET="$WORK/FigCraft.iconset"
-+ICONSET="$WORK/Plervo Canvas.iconset"
- mkdir -p "$ICONSET"
- for s in 16 32 128 256 512; do
+-mkdir -p "$ICONSET"
+-for s in 16 32 128 256 512; do
 -  cp "$ICONS/figcraft-$s.png" "$ICONSET/icon_${s}x${s}.png"
 -  cp "$ICONS/figcraft-$((s * 2)).png" "$ICONSET/icon_${s}x${s}@2x.png"
-+  cp "$ICONS/plervo-canvas-$s.png" "$ICONSET/icon_${s}x${s}.png"
-+  cp "$ICONS/plervo-canvas-$((s * 2)).png" "$ICONSET/icon_${s}x${s}@2x.png"
- done
+-done
 -iconutil -c icns -o "$WORK/FigCraft.icns" "$ICONSET"
-+iconutil -c icns -o "$WORK/Plervo Canvas.icns" "$ICONSET"
++# Preparation verifies and supplies the original Plervo icon from the product catalog.
++cp "$ROOT/assets/app-icon/plervo-canvas.icns" "$WORK/Plervo Canvas.icns"
  
 -# ---- FigCraft.app ------------------------------------------------------------------------------
 +# ---- Plervo Canvas.app ------------------------------------------------------------------------------
@@ -5485,7 +5482,7 @@ index 87abe94..b758c2e 100755
  # Licences of the embedded craft-fonts fonts (only when built with CRAFT_FONTS_DIR).
  if [ -n "${CRAFT_FONTS_DIR:-}" ]; then
    mkdir -p "$APP/Contents/Resources/Licenses"
-@@ -125,16 +138,18 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
+@@ -125,16 +130,18 @@ sed -e "s/@VERSION@/$VERSION/g" -e "s/@SHORT_VERSION@/$SHORT_VERSION/g" \
    "$HERE/Info.plist.in" >"$APP/Contents/Info.plist"
  plutil -lint "$APP/Contents/Info.plist"
  printf 'APPL????' >"$APP/Contents/PkgInfo"
@@ -5507,7 +5504,7 @@ index 87abe94..b758c2e 100755
    retry xcrun stapler staple "$APP"
    retry xcrun stapler validate "$APP"
    spctl --assess --type execute -vvv "$APP"
-@@ -144,16 +159,41 @@ fi
+@@ -144,16 +151,41 @@ fi
  echo "==> building $DMG"
  STAGE="$WORK/dmg"
  mkdir -p "$STAGE"
@@ -5556,7 +5553,7 @@ index 87abe94..b758c2e 100755
  if [ "$NOTARIZE" = 1 ]; then
    notarize "$DMG"
    retry xcrun stapler staple "$DMG"
-@@ -164,25 +204,25 @@ fi
+@@ -164,25 +196,25 @@ fi
  # ---- CLI ---------------------------------------------------------------------------------------
  if [ "$HAS_CLI" = 1 ]; then
    echo "==> building $CLI_ZIP"

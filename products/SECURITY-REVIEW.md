@@ -152,4 +152,6 @@ of every vulnerability or malware.
 
 ## Canvas recent-file test readiness — 2026-10-18
 
-The native Windows run reached 303 passing UI tests but failed the first-run/recent-file transition: twelve rendered frames did not guarantee that its background metadata reader had returned. The test now waits up to five seconds for the inspected metadata state before checking the same visible labels and template removal. No assertion was removed and no production file changed. Eleven home-screen tests and scoped Clippy passed locally with the pinned Canvas fonts; native confirmation remains required.
+The native Windows run reached 303 passing UI tests but failed the first-run/recent-file transition: twelve rendered frames did not guarantee that its background metadata reader had returned. The test now waits up to five seconds for the inspected metadata state before checking the same visible labels and template removal. No assertion was removed or runtime behavior changed. Eleven home-screen tests and scoped Clippy passed locally with the pinned Canvas fonts. The follow-up native feature/regression tests passed on macOS, Windows and Linux.
+
+The follow-up macOS packaging step then exposed stale PNG names. The packager now copies the catalog's verified Plervo Canvas ICNS directly, as the other product packagers do. Shell syntax and the actual ICNS decoding passed locally; a complete native package and mounted-bundle rerun is required before signing or publication. The failed original job remains recorded.
