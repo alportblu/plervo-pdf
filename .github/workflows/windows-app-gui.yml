@@ -1,5 +1,8 @@
 name: Windows app GUI diagnostics
 on:
+  push:
+    branches: [test/windows-app-gui, test/windows-motion-gui]
+    paths: ['products/windows-gui/**', '.github/workflows/windows-app-gui.yml']
   workflow_dispatch:
     inputs:
       product:
@@ -26,7 +29,7 @@ jobs:
       - name: Fetch exact native-passed MSI bytes
         env:
           GH_TOKEN: ${{ github.token }}
-          PRODUCT: ${{ inputs.product }}
+          PRODUCT: ${{ inputs.product || 'all' }}
         run: python products/windows-gui/fetch.py --product "$env:PRODUCT"
       - name: Install and inspect each native application window
         run: products/windows-gui/inspect.ps1
@@ -34,7 +37,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
-          name: plervo-windows-gui-${{ github.sha }}-${{ inputs.product }}
+          name: plervo-windows-gui-${{ github.sha }}-${{ inputs.product || 'all' }}
           path: |
             dist/windows-gui/**/*.json
             dist/windows-gui/**/*.txt
