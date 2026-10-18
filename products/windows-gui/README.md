@@ -20,12 +20,13 @@ without shell activation or a recursive service-process kill. Earlier failed or
 stalled sequential runs are retained; isolated success alone does not prove
 coexistence or explain a previous installation failure.
 
-This focused PDF follow-up preserves the original native-passed MSI bytes. A
-previous correctly selected GUI reached removal and stopped producing progress;
-its result remains unqualified. This probe reports normal-close evidence before
-removal and polls the installer with a bounded deadline and periodic action logs,
-so a stalled cleanup can be distinguished from a GUI failure. The earlier batch
-and other apps' evidence remain unchanged. Existing failed runs
+This focused Sheets follow-up preserves the original native-passed MSI bytes.
+The previous probe required the brand in its window title, but Sheets correctly
+replaces that caption with the untouched workbook name `Book1` (confirmed in the
+captured window inventory and pinned UI source). The probe now expects `Book1`
+for Sheets, still only within the verified installed process, at a usable size
+and with bounded responsiveness. The Winit event-target helper remains excluded.
+No application source or installer bytes were changed. Existing failed runs
 remain recorded. Reproduction uses the pinned workflow/source commit and artifact
 digests, not a mutable latest download.
 

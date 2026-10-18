@@ -1,16 +1,16 @@
 [
   {
-    "product": "pdf",
-    "name": "Plervo PDF",
+    "product": "sheets",
+    "name": "Plervo Sheets",
     "version": "0.1.0-alpha.4",
-    "run": 39081672718,
-    "head": "70197a85ca726768e1f1d4b7b14258e0bc4098b9",
-    "job": 117554228857,
-    "job_name": "build (windows-2025)",
-    "artifact_id": 12121946323,
-    "artifact_name": "plervo-internal-Windows-X64",
-    "artifact_digest": "sha256:bc6694bd1d990337481331fa7e55c233c19c71128b7c88db21bc290a72c49adc",
-    "msi": "plervo-pdf-0.1.0-alpha.4-windows-x64.msi",
-    "msi_sha256": "5b91672dbacf682610c52ca49603ede2760ebb05c434b4f675bb7f062f9fbfeb"
+    "run": 39080944168,
+    "head": "d26bb34386dc3e6f45f0c205acba20b8c12c3f3c",
+    "job": 117537839176,
+    "artifact_id": 12121701887,
+    "artifact_name": "internal-plervo-sheets-Windows-b3220fa66fc51b8dba1e89b50cbcf7f97aad743f",
+    "artifact_digest": "sha256:b69f766079eee2f1847fbf4c7cb30472aeda95fec1aa0dd55677189ebb243231",
+    "msi": "plervo-sheets-0.1.0-alpha.4-windows-x64.msi",
+    "msi_sha256": "9a05ef8b790e4c6f436c5db7b33502d12e9a0d882efcdb3dab5fe1b71cb52e2e",
+    "job_name": "sheets (windows-2025)"
   }
 ]

@@ -77,6 +77,8 @@ foreach ($Row in $Rows) {
   if ($Row.product -notin @('pdf','photo','vector','video','develop','motion','publish','write','slides','sheets','cad','audio','canvas')) { throw 'Unknown product' }
   $Name = if ($Row.product -in @('pdf','cad')) { 'Plervo ' + $Row.product.ToUpperInvariant() } else { 'Plervo ' + [cultureinfo]::InvariantCulture.TextInfo.ToTitleCase($Row.product) }
   if ($Row.name -cne $Name -or $Row.msi -cne "plervo-$($Row.product)-0.1.0-alpha.4-windows-x64.msi") { throw 'Unexpected candidate identity' }
+  # Sheets replaces the application caption with its untouched workbook title.
+  $ExpectedTitle = if ($Row.product -eq 'sheets') { 'Book1' } else { $Name }
   $Folder = Join-Path $Root $Row.product
   $Msi = Join-Path $Folder $Row.msi
   if ((Get-FileHash -LiteralPath $Msi -Algorithm SHA256).Hash.ToLowerInvariant() -cne $Row.msi_sha256) { throw 'Candidate MSI changed after verification' }
@@ -103,14 +105,14 @@ foreach ($Row in $Rows) {
       $App.Refresh()
       if ($App.HasExited) { throw "Application exited before opening a window: $($App.ExitCode)" }
       # Winit exposes an untitled event-target helper alongside the actual app.
-      # Enumerate only this process and require its branded, rendered window.
+      # Enumerate only this process and require its expected, rendered window.
       $Windows = @([PlervoWindow]::ForProcess($App.Id))
-      $Selected = $Windows | Where-Object { $_.Title.Contains($Name, [StringComparison]::Ordinal) -and $_.Width -ge 320 -and $_.Height -ge 240 } | Sort-Object { $_.Width * $_.Height } -Descending | Select-Object -First 1
+      $Selected = $Windows | Where-Object { $_.Title.Contains($ExpectedTitle, [StringComparison]::Ordinal) -and $_.Width -ge 320 -and $_.Height -ge 240 } | Sort-Object { $_.Width * $_.Height } -Descending | Select-Object -First 1
       # A titled window may exist while the software renderer is still starting.
       $Ready = $Selected -and [PlervoWindow]::Responding([IntPtr] $Selected.Handle)
     } while (-not $Ready -and [DateTime]::UtcNow -lt $Deadline)
     ConvertTo-Json -InputObject $Windows -Depth 5 | Set-Content -LiteralPath (Join-Path $Folder 'observed-windows.json') -Encoding utf8
-    if (-not $Ready) { throw 'No responsive branded application window within 90 seconds' }
+    if (-not $Ready) { throw 'No responsive expected application window within 90 seconds' }
     $Window = [IntPtr] $Selected.Handle
     $Screen = [Windows.Forms.Screen]::PrimaryScreen.WorkingArea
     Write-Host "$Name : native window found; checking responsiveness"
@@ -123,7 +125,7 @@ foreach ($Row in $Rows) {
     Start-Sleep -Seconds 5
     $App.Refresh()
     if ($App.HasExited -or -not [PlervoWindow]::Responding($Window)) { throw 'Application window exited or stopped responding' }
-    $Selected = @([PlervoWindow]::ForProcess($App.Id)) | Where-Object { $_.Handle -eq $Window.ToInt64() -and $_.Title.Contains($Name, [StringComparison]::Ordinal) } | Select-Object -First 1
+    $Selected = @([PlervoWindow]::ForProcess($App.Id)) | Where-Object { $_.Handle -eq $Window.ToInt64() -and $_.Title.Contains($ExpectedTitle, [StringComparison]::Ordinal) } | Select-Object -First 1
     if (-not $Selected) { throw 'Selected application window changed before capture' }
     $Rect = [PlervoWindow+Rect]::new()
     $Origin = [PlervoWindow+Point]::new()
