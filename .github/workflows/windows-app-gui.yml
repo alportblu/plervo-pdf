@@ -1,0 +1,44 @@
+name: Windows app GUI diagnostics
+on:
+  workflow_dispatch:
+    inputs:
+      product:
+        description: Pinned native-passed candidate, or all pinned candidates
+        type: choice
+        default: all
+        options: [all, pdf, photo, vector, video, develop, motion, publish, write, slides, sheets, cad, audio, canvas]
+permissions:
+  contents: read
+  actions: read
+jobs:
+  gui:
+    runs-on: windows-2025
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.14'
+      - name: Check the candidate extraction boundary
+        run: python -m unittest discover -s products/windows-gui -v
+      - name: Fetch exact native-passed MSI bytes
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PRODUCT: ${{ inputs.product }}
+        run: python products/windows-gui/fetch.py --product "$env:PRODUCT"
+      - name: Install and inspect each native application window
+        run: products/windows-gui/inspect.ps1
+      - name: Preserve diagnostics including failed applications
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: plervo-windows-gui-${{ github.sha }}-${{ inputs.product }}
+          path: |
+            dist/windows-gui/**/*.json
+            dist/windows-gui/**/*.txt
+            dist/windows-gui/**/*.log
+            dist/windows-gui/**/*.png
+          if-no-files-found: error
+          retention-days: 14
