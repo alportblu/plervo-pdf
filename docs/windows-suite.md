@@ -4,6 +4,8 @@
 
 The native gate inspects the compiled MSI, rejects per-user scope overrides, installs the exact binary, checks the CLI, captures the native Suite window, deletes/restores the installed executable through MSI repair, and uninstalls while preserving synthetic preferences, documents and the default PDF handler. A failed GUI capture fails the job. This is not signed-package or clean consumer-device acceptance.
 
+Windows uses eframe's existing wgpu renderer rather than requiring an OpenGL 2+ vendor driver. The initial native candidate installed successfully but could not open with the runner's stock OpenGL 1.1 driver; the native capture remains a required regression check. Mac/Linux keep their existing renderer.
+
 ```powershell
 dotnet tool install --global wix --version 5.0.2
 packaging/windows/package-suite.ps1

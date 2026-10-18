@@ -22,6 +22,11 @@ fn main() {
         }
         return;
     }
+    // Windows' stock OpenGL driver is 1.1, so use wgpu's native graphics backend there.
+    #[cfg(windows)]
+    let renderer = eframe::Renderer::Wgpu;
+    #[cfg(not(windows))]
+    let renderer = eframe::Renderer::Glow;
     let options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
             .with_app_id("com.plervo.suite")
@@ -29,7 +34,7 @@ fn main() {
             .with_icon(eframe::icon_data::from_png_bytes(include_bytes!("../../../assets/products/suite/icon-256.png")).unwrap_or_default())
             .with_inner_size([1000.0, 700.0])
             .with_min_inner_size([760.0, 580.0]),
-        renderer: eframe::Renderer::Glow,
+        renderer,
         ..Default::default()
     };
     let capture = probe_path.clone();
