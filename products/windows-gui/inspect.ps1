@@ -24,7 +24,7 @@ public static class PlervoWindow {
   [DllImport("user32.dll")] public static extern bool SetWindowPos(IntPtr window, IntPtr after, int x, int y, int width, int height, uint flags);
   [DllImport("user32.dll")] public static extern bool SetForegroundWindow(IntPtr window);
   [DllImport("user32.dll")] public static extern bool ShowWindowAsync(IntPtr window, int command);
-  public static bool Responding(IntPtr window) { IntPtr result; return SendMessageTimeout(window, 0, IntPtr.Zero, IntPtr.Zero, 2, 1000, out result) != IntPtr.Zero; }
+  public static bool Responding(IntPtr window) { IntPtr result; return SendMessageTimeout(window, 0, IntPtr.Zero, IntPtr.Zero, 2, 5000, out result) != IntPtr.Zero; }
   public static WindowInfo[] ForProcess(uint process) {
     var windows = new List<WindowInfo>();
     EnumWindows((window, parameter) => {
@@ -83,17 +83,20 @@ foreach ($Row in $Rows) {
     $App = Start-Process -FilePath $Binary -PassThru -RedirectStandardOutput (Join-Path $Folder 'gui-stdout.txt') -RedirectStandardError (Join-Path $Folder 'gui-stderr.txt')
     $Deadline = [DateTime]::UtcNow.AddSeconds(90)
     $Selected = $null
+    $Ready = $false
     do {
       Start-Sleep -Milliseconds 500
       $App.Refresh()
       if ($App.HasExited) { throw "Application exited before opening a window: $($App.ExitCode)" }
-      # GPU initialization may expose an untitled helper before the actual app.
+      # Winit exposes an untitled event-target helper alongside the actual app.
       # Enumerate only this process and require its branded, rendered window.
       $Windows = @([PlervoWindow]::ForProcess($App.Id))
       $Selected = $Windows | Where-Object { $_.Title.Contains($Name, [StringComparison]::Ordinal) -and $_.Width -ge 320 -and $_.Height -ge 240 } | Sort-Object { $_.Width * $_.Height } -Descending | Select-Object -First 1
-    } while (-not $Selected -and [DateTime]::UtcNow -lt $Deadline)
+      # A titled window may exist while the software renderer is still starting.
+      $Ready = $Selected -and [PlervoWindow]::Responding([IntPtr] $Selected.Handle)
+    } while (-not $Ready -and [DateTime]::UtcNow -lt $Deadline)
     ConvertTo-Json -InputObject $Windows -Depth 5 | Set-Content -LiteralPath (Join-Path $Folder 'observed-windows.json') -Encoding utf8
-    if (-not $Selected) { throw 'No branded application window within 90 seconds' }
+    if (-not $Ready) { throw 'No responsive branded application window within 90 seconds' }
     $Window = [IntPtr] $Selected.Handle
     $Screen = [Windows.Forms.Screen]::PrimaryScreen.WorkingArea
     Write-Host "$Name : native window found; checking responsiveness"
