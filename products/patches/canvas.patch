@@ -2986,18 +2986,6 @@ index c35b167..21a463f 100644
 -"⌥ drag" = "⌥ drag"
 \ No newline at end of file
 +"⌥ drag" = "⌥ drag"
-diff --git a/crates/ui-egui/locales/es-419.toml b/crates/ui-egui/locales/es-419.toml
-index 6b42ac2..9bc6069 100644
---- a/crates/ui-egui/locales/es-419.toml
-+++ b/crates/ui-egui/locales/es-419.toml
-@@ -10,6 +10,7 @@ name = "Español (Latinoamérica)"
- status = "draft — needs native review"
- 
- [ui]
-+"Support" = "Apoyar"
- "A collection of this file with these modes and variables: override their values per mode and add variables of its own" = "Una colección de este archivo con estos modos y variables: modifica sus valores por modo y agrega variables propias"
- "A spring plays until it settles: its mass, stiffness and damping set how long" = "Un resorte se reproduce hasta que se asienta: su masa, rigidez y amortiguación fijan cuánto dura"
- "Add a category" = "Agregar una categoría"
 diff --git a/crates/ui-egui/locales/es.toml b/crates/ui-egui/locales/es.toml
 index 6514ac7..73473c8 100644
 --- a/crates/ui-egui/locales/es.toml
@@ -4033,6 +4021,18 @@ index 1179b1c..d118f13 100644
      let s = settle(&mut u);
      assert!(has_text(&s, "Recent files") && has_text(&s, "ridgeline"));
      assert!(!has_text(&s, "Start from a template") && !has_text(&s, "See all templates"));
+diff --git a/crates/ui-egui/src/i18n_tests.rs b/crates/ui-egui/src/i18n_tests.rs
+index 768434e..b995c3e 100644
+--- a/crates/ui-egui/src/i18n_tests.rs
++++ b/crates/ui-egui/src/i18n_tests.rs
+@@ -335,6 +335,7 @@ fn latin_american_spanish_overlays_spanish() {
+     // Its own wording, else Spanish's, else English's.
+     assert!(matches!(lookup(la, "Add fill"), Some(Text::Plain("Agregar relleno"))));
+     assert!(matches!(lookup(la, "Fill"), Some(Text::Plain("Relleno"))));
++    assert!(matches!(lookup(la, "Support"), Some(Text::Plain("Apoyar"))));
+     let undo = |i: usize| chain(i).find_map(|l| find(l.commands, "edit.undo")).map(forms);
+     assert!(undo(es).is_some() && undo(la) == undo(es), "command labels fall back too");
+     // An overlay lists only what differs from the catalog under it.
 diff --git a/crates/ui-egui/src/icons.rs b/crates/ui-egui/src/icons.rs
 index 726f62f..c21728c 100644
 --- a/crates/ui-egui/src/icons.rs
@@ -4353,6 +4353,26 @@ index 27ff085..96279fb 100644
          ui.painter().line_segment([pos2(x, rect.min.y), pos2(x, rect.max.y)], Stroke::new(1.0, t.border));
          let mut switch = None;
          let mut close = None;
+diff --git a/crates/ui-egui/src/titlebar_tests.rs b/crates/ui-egui/src/titlebar_tests.rs
+index 796cb67..2fc6f9a 100644
+--- a/crates/ui-egui/src/titlebar_tests.rs
++++ b/crates/ui-egui/src/titlebar_tests.rs
+@@ -125,12 +125,12 @@ fn edges_and_corners_resize_the_window() {
+ fn tabs_and_new_tab_keep_their_clicks() {
+     let mut u = Ui::new(TitleBar::Custom);
+     u.app.ui.home = true;
+-    // The open file's tab switches to it.
+-    assert!(u.click(pos2(100.0, 20.0)).is_empty());
++    // The open file's tab, after Home and Support, switches to it.
++    assert!(u.click(pos2(200.0, 20.0)).is_empty());
+     assert!(!u.app.ui.home);
+     // The `+` right of it opens a new file (found by clicking along the bar past the tab).
+     let mut opened = false;
+-    for x in (176..320).step_by(4) {
++    for x in (256..440).step_by(4) {
+         u.time += 1.0;
+         assert!(u.click(pos2(x as f32, 20.0)).is_empty(), "{x}");
+         if u.app.session.docs.len() > 1 {
 diff --git a/crates/ui-egui/src/toolbar.rs b/crates/ui-egui/src/toolbar.rs
 index 1e6e38a..5532c55 100644
 --- a/crates/ui-egui/src/toolbar.rs
