@@ -9,6 +9,12 @@ are now in English; app and website localization is preserved.
 
 Historical development checkpoints:
 
+Development update — 2026-10-18: alpha.5 adds visible optional support buttons to the
+Suite header and the apps that previously exposed donations only in menus, About,
+or an unlabeled icon. Existing header labels use the active interface language.
+Headless click checks cover the new controls; native candidate qualification and
+publication are separate gates. The public alpha.4 artifacts remain unchanged.
+
 Plervo update — 2026-10-16: the development Suite can manage each of the 13 canonical apps.
 The additional 12 remain internal candidates while product/platform acceptance runs.
 Local management tests (103) passed. Per-product dependency policy, bounded/authenticated

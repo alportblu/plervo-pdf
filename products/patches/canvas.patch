@@ -55,7 +55,7 @@ index 1f72aeb..1b6d446 100644
 +
 +| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | 1a19be67a88404ccfe381bf5611409914a7b63e6ef1a5695f9726beec98e6972 |
 diff --git a/Cargo.lock b/Cargo.lock
-index 5e9c6f6..c10fffb 100644
+index 5e9c6f6..9ff3983 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -233,15 +233,6 @@ dependencies = [
@@ -152,7 +152,7 @@ index 5e9c6f6..c10fffb 100644
  [[package]]
  name = "figcraft-collab"
 -version = "0.6.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "base64 0.22.1",
   "figcraft-color",
@@ -161,7 +161,7 @@ index 5e9c6f6..c10fffb 100644
  [[package]]
  name = "figcraft-collab-net"
 -version = "0.6.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "base64 0.22.1",
   "figcraft-collab",
@@ -170,7 +170,7 @@ index 5e9c6f6..c10fffb 100644
  [[package]]
  name = "figcraft-color"
 -version = "0.6.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "kurbo",
   "serde",
@@ -179,7 +179,7 @@ index 5e9c6f6..c10fffb 100644
  [[package]]
  name = "figcraft-doc"
 -version = "0.6.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "figcraft-color",
   "figcraft-geom",
@@ -188,7 +188,7 @@ index 5e9c6f6..c10fffb 100644
  [[package]]
  name = "figcraft-engine"
 -version = "0.6.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "base64 0.22.1",
   "figcraft-collab",
@@ -197,7 +197,7 @@ index 5e9c6f6..c10fffb 100644
  [[package]]
  name = "figcraft-format"
 -version = "0.6.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "figcraft-doc",
   "figcraft-pathops",
@@ -206,7 +206,7 @@ index 5e9c6f6..c10fffb 100644
  [[package]]
  name = "figcraft-geom"
 -version = "0.6.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "kurbo",
   "serde",
@@ -215,7 +215,7 @@ index 5e9c6f6..c10fffb 100644
  [[package]]
  name = "figcraft-layout"
 -version = "0.6.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "figcraft-doc",
   "figcraft-geom",
@@ -224,7 +224,7 @@ index 5e9c6f6..c10fffb 100644
  [[package]]
  name = "figcraft-mcp"
 -version = "0.6.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "base64 0.22.1",
   "figcraft-collab-net",
@@ -233,7 +233,7 @@ index 5e9c6f6..c10fffb 100644
  [[package]]
  name = "figcraft-pathops"
 -version = "0.6.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "figcraft-doc",
   "figcraft-geom",
@@ -242,7 +242,7 @@ index 5e9c6f6..c10fffb 100644
  [[package]]
  name = "figcraft-pdf"
 -version = "0.6.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "figcraft-color",
   "figcraft-doc",
@@ -251,7 +251,7 @@ index 5e9c6f6..c10fffb 100644
  [[package]]
  name = "figcraft-plugin"
 -version = "0.6.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "figcraft-color",
   "serde",
@@ -260,7 +260,7 @@ index 5e9c6f6..c10fffb 100644
  [[package]]
  name = "figcraft-render"
 -version = "0.6.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "crc32fast",
   "figcraft-color",
@@ -269,7 +269,7 @@ index 5e9c6f6..c10fffb 100644
  [[package]]
  name = "figcraft-server"
 -version = "0.6.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "crc32fast",
   "ctrlc",
@@ -278,7 +278,7 @@ index 5e9c6f6..c10fffb 100644
  [[package]]
  name = "figcraft-svg"
 -version = "0.6.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "base64 0.22.1",
   "figcraft-color",
@@ -287,7 +287,7 @@ index 5e9c6f6..c10fffb 100644
  [[package]]
  name = "figcraft-text"
 -version = "0.6.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "figcraft-doc",
   "figcraft-geom",
@@ -296,7 +296,7 @@ index 5e9c6f6..c10fffb 100644
  [[package]]
  name = "figcraft-ui-egui"
 -version = "0.6.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "base64 0.22.1",
   "egui",
@@ -305,7 +305,7 @@ index 5e9c6f6..c10fffb 100644
  [[package]]
  name = "figcraft-web"
 -version = "0.6.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "eframe",
   "egui",
@@ -323,7 +323,7 @@ index 5e9c6f6..c10fffb 100644
  
 +[[package]]
 +name = "plervo-canvas"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "arboard",
 + "eframe",
@@ -346,7 +346,7 @@ index 5e9c6f6..c10fffb 100644
 +
 +[[package]]
 +name = "plervo-canvas-cli"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "figcraft-doc",
 + "figcraft-engine",
@@ -464,7 +464,7 @@ index 5e9c6f6..c10fffb 100644
  [[package]]
  name = "xtask"
 -version = "0.6.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "figcraft-engine",
   "serde_json",
@@ -492,7 +492,7 @@ index 5e9c6f6..c10fffb 100644
  ]
  
 diff --git a/Cargo.toml b/Cargo.toml
-index 8f125ac..c177831 100644
+index 8f125ac..54112b3 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -6,7 +6,7 @@ exclude = ["plugins"]
@@ -500,7 +500,7 @@ index 8f125ac..c177831 100644
  
  [workspace.package]
 -version = "0.6.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.95"
@@ -2728,7 +2728,7 @@ index b14c04f..0ca3652 100644
  workspace = true
  
 diff --git a/crates/ui-egui/locales/de.toml b/crates/ui-egui/locales/de.toml
-index 7552cca..c85f3e1 100644
+index 7552cca..f33daba 100644
 --- a/crates/ui-egui/locales/de.toml
 +++ b/crates/ui-egui/locales/de.toml
 @@ -1,4 +1,4 @@
@@ -2737,7 +2737,15 @@ index 7552cca..c85f3e1 100644
  #
  # Draft — needs native review: machine-drafted from the English catalog. Brand names and keyboard
  # glyphs stay as they are. Formal address (Sie); a no-break space ( ) between a number and %
-@@ -19,7 +19,7 @@ status = "draft — needs native review"
+@@ -9,6 +9,7 @@ name = "Deutsch"
+ status = "draft — needs native review"
+ 
+ [ui]
++"Support" = "Unterstützen"
+ "% of all commits" = "% aller Commits"
+ "(no longer published)" = "(nicht mehr veröffentlicht)"
+ "({n} warnings: some entries were skipped)" = { one = "({n} Warnung: einige Einträge wurden übersprungen)", other = "({n} Warnungen: einige Einträge wurden übersprungen)" }
+@@ -19,7 +20,7 @@ status = "draft — needs native review"
  "A collection of this file with these modes and variables: override their values per mode and add variables of its own" = "Eine Sammlung dieser Datei mit diesen Modi und Variablen: Überschreiben Sie ihre Werte je Modus und fügen Sie eigene Variablen hinzu"
  "A spring plays until it settles: its mass, stiffness and damping set how long" = "Eine Feder läuft, bis sie zur Ruhe kommt: Masse, Steifigkeit und Dämpfung bestimmen die Dauer"
  "About" = "Über"
@@ -2746,7 +2754,7 @@ index 7552cca..c85f3e1 100644
  "About this server" = "Über diesen Server"
  "Action" = "Aktion"
  "Actions" = "Aktionen"
-@@ -89,7 +89,7 @@ status = "draft — needs native review"
+@@ -89,7 +90,7 @@ status = "draft — needs native review"
  "All variables" = "Alle Variablen"
  "Alpha" = "Alpha"
  "Alt+drag" = "Alt+Ziehen"
@@ -2755,7 +2763,7 @@ index 7552cca..c85f3e1 100644
  "Anchor" = "Anker"
  "Android" = "Android"
  "Angular" = "Winkel"
-@@ -129,7 +129,7 @@ status = "draft — needs native review"
+@@ -129,7 +130,7 @@ status = "draft — needs native review"
  "Auto layout" = "Auto-Layout"
  "Auto rows" = "Automatische Zeilen"
  "Auto width" = "Automatische Breite"
@@ -2764,7 +2772,7 @@ index 7552cca..c85f3e1 100644
  "Back to the font's value" = "Zurück zum Wert der Schrift"
  "Back" = "Zurück"
  "Back to Ready for dev" = "Zurück zu „Bereit für Entwicklung“"
-@@ -390,7 +390,7 @@ status = "draft — needs native review"
+@@ -390,7 +391,7 @@ status = "draft — needs native review"
  "Draw" = "Zeichnen"
  "Drawing tools" = "Zeichenwerkzeuge"
  "Drop shadow" = "Schlagschatten"
@@ -2773,7 +2781,7 @@ index 7552cca..c85f3e1 100644
  "Duo" = "Duo"
  "Duplicate" = "Duplizieren"
  "Duplicate by dragging" = "Durch Ziehen duplizieren"
-@@ -580,7 +580,7 @@ status = "draft — needs native review"
+@@ -580,7 +581,7 @@ status = "draft — needs native review"
  "Imported {n} new variables, updated {updated}" = { one = "{n} neue Variable importiert, {updated} aktualisiert", other = "{n} neue Variablen importiert, {updated} aktualisiert" }
  "Import…" = "Importieren…"
  "In an instance, this comes from the main component" = "In einer Instanz kommt dies von der Hauptkomponente"
@@ -2782,7 +2790,7 @@ index 7552cca..c85f3e1 100644
  "Include bounding box" = "Begrenzungsrahmen einbeziehen"
  "Include id attribute" = "id-Attribut einbeziehen"
  "Included" = "Einbezogen"
-@@ -605,7 +605,7 @@ status = "draft — needs native review"
+@@ -605,7 +606,7 @@ status = "draft — needs native review"
  "Instant" = "Sofort"
  "Interaction" = "Interaktion"
  "Interactions" = "Interaktionen"
@@ -2791,7 +2799,7 @@ index 7552cca..c85f3e1 100644
  "Intersect" = "Schnittmenge"
  "Intersects" = "Schnittmengen"
  "Invite link" = "Einladungslink"
-@@ -615,7 +615,7 @@ status = "draft — needs native review"
+@@ -615,7 +616,7 @@ status = "draft — needs native review"
  "Join code copied" = "Beitrittscode kopiert"
  "Join code or invite link" = "Beitrittscode oder Einladungslink"
  "Join live session" = "Live-Sitzung beitreten"
@@ -2800,7 +2808,7 @@ index 7552cca..c85f3e1 100644
  "Join with a code" = "Mit einem Code beitreten"
  "Joined" = "Beigetreten"
  "Joined {file}" = "{file} beigetreten"
-@@ -845,7 +845,7 @@ status = "draft — needs native review"
+@@ -845,7 +846,7 @@ status = "draft — needs native review"
  "Open files" = "Geöffnete Dateien"
  "Open in focus view" = "In Fokusansicht öffnen"
  "Open in new window" = "In neuem Fenster öffnen"
@@ -2809,7 +2817,7 @@ index 7552cca..c85f3e1 100644
  "Open link" = "Link öffnen"
  "Open link {url}" = "Link {url} öffnen"
  "Open overlay" = "Overlay öffnen"
-@@ -910,7 +910,7 @@ status = "draft — needs native review"
+@@ -910,7 +911,7 @@ status = "draft — needs native review"
  "Place automatically" = "Automatisch platzieren"
  "Place image" = "Bild platzieren"
  "Plugins" = "Plugins"
@@ -2818,7 +2826,7 @@ index 7552cca..c85f3e1 100644
  "Plus darker" = "Plus dunkler"
  "Plus lighter" = "Plus heller"
  "Point" = "Punkt"
-@@ -1322,7 +1322,7 @@ status = "draft — needs native review"
+@@ -1322,7 +1323,7 @@ status = "draft — needs native review"
  "Update plugin" = "Plugin aktualisieren"
  "Updated {components} and {styles}" = "{components} und {styles} aktualisiert"
  "Updated {name}" = "{name} aktualisiert"
@@ -2827,7 +2835,7 @@ index 7552cca..c85f3e1 100644
  "Uppercase" = "Großbuchstaben"
  "Use a fixed value" = "Festen Wert verwenden"
  "Use an expression, e.g. count + 1" = "Ausdruck verwenden, z. B. count + 1"
-@@ -1374,7 +1374,7 @@ status = "draft — needs native review"
+@@ -1374,7 +1375,7 @@ status = "draft — needs native review"
  "What changed since it was marked ready for dev" = "Was sich seit der Markierung als bereit für die Entwicklung geändert hat"
  "What is wrong with this file? The server's operator gets your report." = "Was stimmt mit dieser Datei nicht? Der Betreiber des Servers erhält Ihre Meldung."
  "What it's for" = "Wofür sie gedacht ist"
@@ -2836,7 +2844,7 @@ index 7552cca..c85f3e1 100644
  "While hovering" = "Beim Überfahren"
  "While pressing" = "Beim Drücken"
  "White" = "Weiß"
-@@ -1567,7 +1567,7 @@ status = "draft — needs native review"
+@@ -1567,7 +1568,7 @@ status = "draft — needs native review"
  "collab.peers" = "Personen in dieser Datei"
  "collab.publish" = "Auf Server veröffentlichen"
  "collab.recoverFile" = "Online-Datei wiederherstellen"
@@ -2845,7 +2853,7 @@ index 7552cca..c85f3e1 100644
  "collab.report" = "Datei dem Serverbetreiber melden"
  "collab.serverInfo" = "Serverinformationen"
  "collab.share" = "Mit Beitrittscode teilen"
-@@ -1684,7 +1684,7 @@ status = "draft — needs native review"
+@@ -1684,7 +1685,7 @@ status = "draft — needs native review"
  "guide.move" = "Hilfslinie verschieben"
  "guide.remove" = "Hilfslinie entfernen"
  "guide.select" = "Hilfslinie auswählen"
@@ -2855,7 +2863,7 @@ index 7552cca..c85f3e1 100644
  "help.shortcuts" = "Tastenkürzel"
  "image.adjust" = "Bild anpassen"
 diff --git a/crates/ui-egui/locales/en.toml b/crates/ui-egui/locales/en.toml
-index c35b167..753141d 100644
+index c35b167..21a463f 100644
 --- a/crates/ui-egui/locales/en.toml
 +++ b/crates/ui-egui/locales/en.toml
 @@ -1,4 +1,4 @@
@@ -2864,7 +2872,15 @@ index c35b167..753141d 100644
  #
  # Keys are the English text as the code writes it (`tr("…")`, `trf`, `trn`, `tr_noop`); values are
  # the same text, except plural entries ({ one, other }). Command labels come from the engine.
-@@ -21,7 +21,7 @@ name = "English"
+@@ -8,6 +8,7 @@
+ name = "English"
+ 
+ [ui]
++"Support" = "Support"
+ "% of all commits" = "% of all commits"
+ "(no longer published)" = "(no longer published)"
+ "({n} warnings: some entries were skipped)" = { one = "({n} warning: some entries were skipped)", other = "({n} warnings: some entries were skipped)" }
+@@ -21,7 +22,7 @@ name = "English"
  "A title, an agenda, a big figure, a chart and a closing slide" = "A title, an agenda, a big figure, a chart and a closing slide"
  "A to Z" = "A to Z"
  "About" = "About"
@@ -2873,7 +2889,7 @@ index c35b167..753141d 100644
  "About this server" = "About this server"
  "Action" = "Action"
  "Actions" = "Actions"
-@@ -93,7 +93,7 @@ name = "English"
+@@ -93,7 +94,7 @@ name = "English"
  "Alphabetical" = "Alphabetical"
  "Alt+drag" = "Alt+drag"
  "An analytics screen on a grid: figures, charts drawn from vectors and a table" = "An analytics screen on a grid: figures, charts drawn from vectors and a table"
@@ -2882,7 +2898,7 @@ index c35b167..753141d 100644
  "Anchor" = "Anchor"
  "Android" = "Android"
  "Angular" = "Angular"
-@@ -136,7 +136,7 @@ name = "English"
+@@ -136,7 +137,7 @@ name = "English"
  "Auto layout" = "Auto layout"
  "Auto rows" = "Auto rows"
  "Auto width" = "Auto width"
@@ -2891,7 +2907,7 @@ index c35b167..753141d 100644
  "Back to the font's value" = "Back to the font's value"
  "Back" = "Back"
  "Back to Ready for dev" = "Back to Ready for dev"
-@@ -405,7 +405,7 @@ name = "English"
+@@ -405,7 +406,7 @@ name = "English"
  "Draw a frame" = "Draw a frame"
  "Drawing tools" = "Drawing tools"
  "Drop shadow" = "Drop shadow"
@@ -2900,7 +2916,7 @@ index c35b167..753141d 100644
  "Duo" = "Duo"
  "Duplicate" = "Duplicate"
  "Duplicate by dragging" = "Duplicate by dragging"
-@@ -606,7 +606,7 @@ name = "English"
+@@ -606,7 +607,7 @@ name = "English"
  "Imported {n} new variables, updated {updated}" = { one = "Imported {n} new variable, updated {updated}", other = "Imported {n} new variables, updated {updated}" }
  "Import…" = "Import…"
  "In an instance, this comes from the main component" = "In an instance, this comes from the main component"
@@ -2909,7 +2925,7 @@ index c35b167..753141d 100644
  "Include bounding box" = "Include bounding box"
  "Include id attribute" = "Include id attribute"
  "Included" = "Included"
-@@ -631,7 +631,7 @@ name = "English"
+@@ -631,7 +632,7 @@ name = "English"
  "Instant" = "Instant"
  "Interaction" = "Interaction"
  "Interactions" = "Interactions"
@@ -2918,7 +2934,7 @@ index c35b167..753141d 100644
  "Intersect" = "Intersect"
  "Intersects" = "Intersects"
  "Invite link" = "Invite link"
-@@ -642,7 +642,7 @@ name = "English"
+@@ -642,7 +643,7 @@ name = "English"
  "Join code copied" = "Join code copied"
  "Join code or invite link" = "Join code or invite link"
  "Join live session" = "Join live session"
@@ -2927,7 +2943,7 @@ index c35b167..753141d 100644
  "Join with a code" = "Join with a code"
  "Joined" = "Joined"
  "Joined {file}" = "Joined {file}"
-@@ -888,7 +888,7 @@ name = "English"
+@@ -888,7 +889,7 @@ name = "English"
  "Open files" = "Open files"
  "Open in focus view" = "Open in focus view"
  "Open in new window" = "Open in new window"
@@ -2936,7 +2952,7 @@ index c35b167..753141d 100644
  "Open link" = "Open link"
  "Open link {url}" = "Open link {url}"
  "Open overlay" = "Open overlay"
-@@ -954,7 +954,7 @@ name = "English"
+@@ -954,7 +955,7 @@ name = "English"
  "Place a shape or frame (its tool chosen)" = "Place a shape or frame (its tool chosen)"
  "Place automatically" = "Place automatically"
  "Place image" = "Place image"
@@ -2945,7 +2961,7 @@ index c35b167..753141d 100644
  "Plugins" = "Plugins"
  "Plus darker" = "Plus darker"
  "Plus lighter" = "Plus lighter"
-@@ -1388,7 +1388,7 @@ name = "English"
+@@ -1388,7 +1389,7 @@ name = "English"
  "Update from selection" = "Update from selection"
  "Updated {components} and {styles}" = "Updated {components} and {styles}"
  "Updated {name}" = "Updated {name}"
@@ -2954,7 +2970,7 @@ index c35b167..753141d 100644
  "Uppercase" = "Uppercase"
  "Use a fixed value" = "Use a fixed value"
  "Use an expression, e.g. count + 1" = "Use an expression, e.g. count + 1"
-@@ -1443,7 +1443,7 @@ name = "English"
+@@ -1443,7 +1444,7 @@ name = "English"
  "What changed since it was marked ready for dev" = "What changed since it was marked ready for dev"
  "What is wrong with this file? The server's operator gets your report." = "What is wrong with this file? The server's operator gets your report."
  "What it's for" = "What it's for"
@@ -2963,7 +2979,7 @@ index c35b167..753141d 100644
  "While hovering" = "While hovering"
  "While pressing" = "While pressing"
  "White" = "White"
-@@ -1584,4 +1584,4 @@ name = "English"
+@@ -1584,4 +1585,4 @@ name = "English"
  "⌘ arrows" = "⌘ arrows"
  "⌘ click" = "⌘ click"
  "⌘ scroll" = "⌘ scroll"
@@ -2971,7 +2987,7 @@ index c35b167..753141d 100644
 \ No newline at end of file
 +"⌥ drag" = "⌥ drag"
 diff --git a/crates/ui-egui/locales/es.toml b/crates/ui-egui/locales/es.toml
-index 6514ac7..c7a886a 100644
+index 6514ac7..73473c8 100644
 --- a/crates/ui-egui/locales/es.toml
 +++ b/crates/ui-egui/locales/es.toml
 @@ -1,4 +1,4 @@
@@ -2980,7 +2996,15 @@ index 6514ac7..c7a886a 100644
  #
  # Draft — needs native review: machine-drafted from the English catalog. Brand names and keyboard
  # glyphs stay as they are. See docs/translating.md.
-@@ -22,7 +22,7 @@ status = "draft — needs native review"
+@@ -8,6 +8,7 @@ name = "Español"
+ status = "draft — needs native review"
+ 
+ [ui]
++"Support" = "Apoyar"
+ 
+ "% of all commits" = "% del total de commits"
+ "(no longer published)" = "(ya no publicado)"
+@@ -22,7 +23,7 @@ status = "draft — needs native review"
  "A title, an agenda, a big figure, a chart and a closing slide" = "Un título, una agenda, una gran cifra, un gráfico y una diapositiva de cierre"
  "A to Z" = "De la A a la Z"
  "About" = "Acerca de"
@@ -2989,7 +3013,7 @@ index 6514ac7..c7a886a 100644
  "About this server" = "Acerca de este servidor"
  "Action" = "Acción"
  "Actions" = "Acciones"
-@@ -94,7 +94,7 @@ status = "draft — needs native review"
+@@ -94,7 +95,7 @@ status = "draft — needs native review"
  "Alphabetical" = "Alfabético"
  "Alt+drag" = "Alt+arrastrar"
  "An analytics screen on a grid: figures, charts drawn from vectors and a table" = "Una pantalla de analítica en cuadrícula: cifras, gráficos dibujados con vectores y una tabla"
@@ -2998,7 +3022,7 @@ index 6514ac7..c7a886a 100644
  "Anchor" = "Ancla"
  "Android" = "Android"
  "Angular" = "Angular"
-@@ -137,7 +137,7 @@ status = "draft — needs native review"
+@@ -137,7 +138,7 @@ status = "draft — needs native review"
  "Auto layout" = "Diseño automático"
  "Auto rows" = "Filas automáticas"
  "Auto width" = "Ancho automático"
@@ -3007,7 +3031,7 @@ index 6514ac7..c7a886a 100644
  "Back to the font's value" = "Volver al valor de la fuente"
  "Back" = "Atrás"
  "Back to Ready for dev" = "Volver a Listo para desarrollo"
-@@ -406,7 +406,7 @@ status = "draft — needs native review"
+@@ -406,7 +407,7 @@ status = "draft — needs native review"
  "Draw a frame" = "Dibuja un marco"
  "Drawing tools" = "Herramientas de dibujo"
  "Drop shadow" = "Sombra paralela"
@@ -3016,7 +3040,7 @@ index 6514ac7..c7a886a 100644
  "Duo" = "Duo"
  "Duplicate" = "Duplicar"
  "Duplicate by dragging" = "Duplicar arrastrando"
-@@ -607,7 +607,7 @@ status = "draft — needs native review"
+@@ -607,7 +608,7 @@ status = "draft — needs native review"
  "Imported {n} new variables, updated {updated}" = { one = "Variables importadas: {n} nueva; actualizadas: {updated}", other = "Variables importadas: {n} nuevas; actualizadas: {updated}" }
  "Import…" = "Importar…"
  "In an instance, this comes from the main component" = "En una instancia, esto viene del componente principal"
@@ -3025,7 +3049,7 @@ index 6514ac7..c7a886a 100644
  "Include bounding box" = "Incluir cuadro delimitador"
  "Include id attribute" = "Incluir atributo id"
  "Included" = "Incluidos"
-@@ -632,7 +632,7 @@ status = "draft — needs native review"
+@@ -632,7 +633,7 @@ status = "draft — needs native review"
  "Instant" = "Instantánea"
  "Interaction" = "Interacción"
  "Interactions" = "Interacciones"
@@ -3034,7 +3058,7 @@ index 6514ac7..c7a886a 100644
  "Intersect" = "Intersecar"
  "Intersects" = "Intersecciones"
  "Invite link" = "Enlace de invitación"
-@@ -643,7 +643,7 @@ status = "draft — needs native review"
+@@ -643,7 +644,7 @@ status = "draft — needs native review"
  "Join code copied" = "Código para unirse copiado"
  "Join code or invite link" = "Código para unirse o enlace de invitación"
  "Join live session" = "Unirse a sesión en vivo"
@@ -3043,7 +3067,7 @@ index 6514ac7..c7a886a 100644
  "Join with a code" = "Unirse con un código"
  "Joined" = "Conectado"
  "Joined {file}" = "Conectado a {file}"
-@@ -889,7 +889,7 @@ status = "draft — needs native review"
+@@ -889,7 +890,7 @@ status = "draft — needs native review"
  "Open files" = "Archivos abiertos"
  "Open in focus view" = "Abrir en vista de enfoque"
  "Open in new window" = "Abrir en una ventana nueva"
@@ -3052,7 +3076,7 @@ index 6514ac7..c7a886a 100644
  "Open link" = "Abrir enlace"
  "Open link {url}" = "Abrir enlace {url}"
  "Open overlay" = "Abrir superposición"
-@@ -955,7 +955,7 @@ status = "draft — needs native review"
+@@ -955,7 +956,7 @@ status = "draft — needs native review"
  "Place a shape or frame (its tool chosen)" = "Colocar forma o marco (herramienta elegida)"
  "Place automatically" = "Colocar automáticamente"
  "Place image" = "Colocar imagen"
@@ -3061,7 +3085,7 @@ index 6514ac7..c7a886a 100644
  "Plugins" = "Plugins"
  "Plus darker" = "Más oscuro"
  "Plus lighter" = "Más claro"
-@@ -1389,7 +1389,7 @@ status = "draft — needs native review"
+@@ -1389,7 +1390,7 @@ status = "draft — needs native review"
  "Update from selection" = "Actualizar desde la selección"
  "Updated {components} and {styles}" = "Actualizados {components} y {styles}"
  "Updated {name}" = "{name} actualizado"
@@ -3070,7 +3094,7 @@ index 6514ac7..c7a886a 100644
  "Uppercase" = "Mayúsculas"
  "Use a fixed value" = "Usar un valor fijo"
  "Use an expression, e.g. count + 1" = "Usar una expresión, p. ej. count + 1"
-@@ -1444,7 +1444,7 @@ status = "draft — needs native review"
+@@ -1444,7 +1445,7 @@ status = "draft — needs native review"
  "What changed since it was marked ready for dev" = "Qué cambió desde que se marcó como listo para desarrollo"
  "What is wrong with this file? The server's operator gets your report." = "¿Qué tiene de malo este archivo? El operador del servidor recibirá tu denuncia."
  "What it's for" = "Para qué sirve"
@@ -3079,7 +3103,7 @@ index 6514ac7..c7a886a 100644
  "While hovering" = "Mientras se pasa el puntero"
  "While pressing" = "Mientras se presiona"
  "White" = "Blanco"
-@@ -1642,7 +1642,7 @@ status = "draft — needs native review"
+@@ -1642,7 +1643,7 @@ status = "draft — needs native review"
  "collab.peers" = "Personas en este archivo"
  "collab.publish" = "Publicar en el servidor"
  "collab.recoverFile" = "Recuperar archivo en línea"
@@ -3088,7 +3112,7 @@ index 6514ac7..c7a886a 100644
  "collab.report" = "Denunciar archivo al operador del servidor"
  "collab.serverInfo" = "Información del servidor"
  "collab.share" = "Compartir con un código para unirse"
-@@ -1763,7 +1763,7 @@ status = "draft — needs native review"
+@@ -1763,7 +1764,7 @@ status = "draft — needs native review"
  "guide.remove" = "Quitar guía"
  "guide.select" = "Seleccionar guía"
  "help.gettingStarted" = "Primeros pasos"
@@ -3098,7 +3122,7 @@ index 6514ac7..c7a886a 100644
  "help.shortcuts" = "Atajos de teclado"
  "image.adjust" = "Ajustar imagen"
 diff --git a/crates/ui-egui/locales/fr.toml b/crates/ui-egui/locales/fr.toml
-index c866593..84a4d38 100644
+index c866593..8740b46 100644
 --- a/crates/ui-egui/locales/fr.toml
 +++ b/crates/ui-egui/locales/fr.toml
 @@ -1,4 +1,4 @@
@@ -3107,7 +3131,15 @@ index c866593..84a4d38 100644
  #
  # Draft — needs native review: machine-drafted from the English catalog. Brand names and keyboard
  # glyphs stay as they are. French typography: a no-break space ( ) before : ; ? ! and inside
-@@ -19,7 +19,7 @@ status = "draft — needs native review"
+@@ -9,6 +9,7 @@ name = "Français"
+ status = "draft — needs native review"
+ 
+ [ui]
++"Support" = "Soutenir"
+ "% of all commits" = "% de tous les commits"
+ "(no longer published)" = "(plus publié)"
+ "({n} warnings: some entries were skipped)" = { one = "({n} avertissement : certaines entrées ont été ignorées)", other = "({n} avertissements : certaines entrées ont été ignorées)" }
+@@ -19,7 +20,7 @@ status = "draft — needs native review"
  "A collection of this file with these modes and variables: override their values per mode and add variables of its own" = "Une collection de ce fichier avec ces modes et ces variables : remplacez leurs valeurs par mode et ajoutez vos propres variables"
  "A spring plays until it settles: its mass, stiffness and damping set how long" = "Un ressort joue jusqu’à ce qu’il se stabilise : sa masse, sa rigidité et son amortissement en fixent la durée"
  "About" = "À propos"
@@ -3116,7 +3148,7 @@ index c866593..84a4d38 100644
  "About this server" = "À propos de ce serveur"
  "Action" = "Action"
  "Actions" = "Actions"
-@@ -89,7 +89,7 @@ status = "draft — needs native review"
+@@ -89,7 +90,7 @@ status = "draft — needs native review"
  "All variables" = "Toutes les variables"
  "Alpha" = "Alpha"
  "Alt+drag" = "Alt+glisser"
@@ -3125,7 +3157,7 @@ index c866593..84a4d38 100644
  "Anchor" = "Ancre"
  "Android" = "Android"
  "Angular" = "Angulaire"
-@@ -129,7 +129,7 @@ status = "draft — needs native review"
+@@ -129,7 +130,7 @@ status = "draft — needs native review"
  "Auto layout" = "Mise en page auto"
  "Auto rows" = "Lignes auto"
  "Auto width" = "Largeur auto"
@@ -3134,7 +3166,7 @@ index c866593..84a4d38 100644
  "Back to the font's value" = "Revenir à la valeur de la police"
  "Back" = "Retour"
  "Back to Ready for dev" = "Revenir à Prêt pour le dev"
-@@ -390,7 +390,7 @@ status = "draft — needs native review"
+@@ -390,7 +391,7 @@ status = "draft — needs native review"
  "Draw" = "Dessin"
  "Drawing tools" = "Outils de dessin"
  "Drop shadow" = "Ombre portée"
@@ -3143,7 +3175,7 @@ index c866593..84a4d38 100644
  "Duo" = "Duo"
  "Duplicate" = "Dupliquer"
  "Duplicate by dragging" = "Dupliquer en faisant glisser"
-@@ -580,7 +580,7 @@ status = "draft — needs native review"
+@@ -580,7 +581,7 @@ status = "draft — needs native review"
  "Imported {n} new variables, updated {updated}" = { one = "{n} nouvelle variable importée, {updated} mises à jour", other = "{n} nouvelles variables importées, {updated} mises à jour" }
  "Import…" = "Importer…"
  "In an instance, this comes from the main component" = "Dans une instance, cette valeur vient du composant principal"
@@ -3152,7 +3184,7 @@ index c866593..84a4d38 100644
  "Include bounding box" = "Inclure le cadre de délimitation"
  "Include id attribute" = "Inclure l’attribut id"
  "Included" = "Inclus"
-@@ -605,7 +605,7 @@ status = "draft — needs native review"
+@@ -605,7 +606,7 @@ status = "draft — needs native review"
  "Instant" = "Instantané"
  "Interaction" = "Interaction"
  "Interactions" = "Interactions"
@@ -3161,7 +3193,7 @@ index c866593..84a4d38 100644
  "Intersect" = "Intersection"
  "Intersects" = "Intersections"
  "Invite link" = "Lien d’invitation"
-@@ -615,7 +615,7 @@ status = "draft — needs native review"
+@@ -615,7 +616,7 @@ status = "draft — needs native review"
  "Join code copied" = "Code d’accès copié"
  "Join code or invite link" = "Code d’accès ou lien d’invitation"
  "Join live session" = "Rejoindre la session en direct"
@@ -3170,7 +3202,7 @@ index c866593..84a4d38 100644
  "Join with a code" = "Rejoindre avec un code"
  "Joined" = "Connecté"
  "Joined {file}" = "Connecté à {file}"
-@@ -845,7 +845,7 @@ status = "draft — needs native review"
+@@ -845,7 +846,7 @@ status = "draft — needs native review"
  "Open files" = "Fichiers ouverts"
  "Open in focus view" = "Ouvrir en vue ciblée"
  "Open in new window" = "Ouvrir dans une nouvelle fenêtre"
@@ -3179,7 +3211,7 @@ index c866593..84a4d38 100644
  "Open link" = "Ouvrir le lien"
  "Open link {url}" = "Ouvrir le lien {url}"
  "Open overlay" = "Ouvrir une superposition"
-@@ -910,7 +910,7 @@ status = "draft — needs native review"
+@@ -910,7 +911,7 @@ status = "draft — needs native review"
  "Place automatically" = "Placer automatiquement"
  "Place image" = "Placer une image"
  "Plugins" = "Plugins"
@@ -3188,7 +3220,7 @@ index c866593..84a4d38 100644
  "Plus darker" = "Plus foncé"
  "Plus lighter" = "Plus clair"
  "Point" = "Point"
-@@ -1322,7 +1322,7 @@ status = "draft — needs native review"
+@@ -1322,7 +1323,7 @@ status = "draft — needs native review"
  "Update plugin" = "Mettre à jour le plugin"
  "Updated {components} and {styles}" = "{components} et {styles} mis à jour"
  "Updated {name}" = "{name} mis à jour"
@@ -3197,7 +3229,7 @@ index c866593..84a4d38 100644
  "Uppercase" = "Majuscules"
  "Use a fixed value" = "Utiliser une valeur fixe"
  "Use an expression, e.g. count + 1" = "Utiliser une expression, p. ex. count + 1"
-@@ -1374,7 +1374,7 @@ status = "draft — needs native review"
+@@ -1374,7 +1375,7 @@ status = "draft — needs native review"
  "What changed since it was marked ready for dev" = "Ce qui a changé depuis le marquage prêt pour le dev"
  "What is wrong with this file? The server's operator gets your report." = "Qu’est-ce qui ne va pas avec ce fichier ? L’opérateur du serveur reçoit votre signalement."
  "What it's for" = "À quoi il sert"
@@ -3206,7 +3238,7 @@ index c866593..84a4d38 100644
  "While hovering" = "Pendant le survol"
  "While pressing" = "Pendant l’appui"
  "White" = "Blanc"
-@@ -1567,7 +1567,7 @@ status = "draft — needs native review"
+@@ -1567,7 +1568,7 @@ status = "draft — needs native review"
  "collab.peers" = "Personnes dans ce fichier"
  "collab.publish" = "Publier sur un serveur"
  "collab.recoverFile" = "Récupérer un fichier en ligne"
@@ -3215,7 +3247,7 @@ index c866593..84a4d38 100644
  "collab.report" = "Signaler le fichier à l’opérateur du serveur"
  "collab.serverInfo" = "Informations sur le serveur"
  "collab.share" = "Partager avec un code d’accès"
-@@ -1684,7 +1684,7 @@ status = "draft — needs native review"
+@@ -1684,7 +1685,7 @@ status = "draft — needs native review"
  "guide.move" = "Déplacer le repère"
  "guide.remove" = "Retirer le repère"
  "guide.select" = "Sélectionner le repère"
@@ -3225,7 +3257,7 @@ index c866593..84a4d38 100644
  "help.shortcuts" = "Raccourcis clavier"
  "image.adjust" = "Régler l’image"
 diff --git a/crates/ui-egui/locales/ja.toml b/crates/ui-egui/locales/ja.toml
-index f7b9cf9..04c819e 100644
+index f7b9cf9..5f7c51e 100644
 --- a/crates/ui-egui/locales/ja.toml
 +++ b/crates/ui-egui/locales/ja.toml
 @@ -1,4 +1,4 @@
@@ -3234,7 +3266,15 @@ index f7b9cf9..04c819e 100644
  #
  # Draft — needs native review: machine-drafted from the English catalog. Brand names, keyboard
  # glyphs and {placeholders} stay as they are. Concise UI style without です/ます endings,
-@@ -21,7 +21,7 @@ status = "draft — needs native review"
+@@ -11,6 +11,7 @@ name = "日本語"
+ status = "draft — needs native review"
+ 
+ [ui]
++"Support" = "支援"
+ "% of all commits" = "全コミット中の %"
+ "(no longer published)" = "（公開終了）"
+ "({n} warnings: some entries were skipped)" = { other = "（警告 {n} 件：一部の項目をスキップ）" }
+@@ -21,7 +22,7 @@ status = "draft — needs native review"
  "A collection of this file with these modes and variables: override their values per mode and add variables of its own" = "このファイルのコレクションとそのモード・変数：モードごとに値を上書きし、独自の変数を追加できる"
  "A spring plays until it settles: its mass, stiffness and damping set how long" = "スプリングは静止するまで再生。長さは質量・剛性・減衰で決まる"
  "About" = "情報"
@@ -3243,7 +3283,7 @@ index f7b9cf9..04c819e 100644
  "About this server" = "このサーバーについて"
  "Action" = "アクション"
  "Actions" = "アクション"
-@@ -91,7 +91,7 @@ status = "draft — needs native review"
+@@ -91,7 +92,7 @@ status = "draft — needs native review"
  "All variables" = "すべての変数"
  "Alpha" = "アルファ"
  "Alt+drag" = "Alt+ドラッグ"
@@ -3252,7 +3292,7 @@ index f7b9cf9..04c819e 100644
  "Anchor" = "アンカー"
  "Android" = "Android"
  "Angular" = "角度"
-@@ -131,7 +131,7 @@ status = "draft — needs native review"
+@@ -131,7 +132,7 @@ status = "draft — needs native review"
  "Auto layout" = "オートレイアウト"
  "Auto rows" = "自動行"
  "Auto width" = "幅を自動調整"
@@ -3261,7 +3301,7 @@ index f7b9cf9..04c819e 100644
  "Back to the font's value" = "フォントの値に戻す"
  "Back" = "戻る"
  "Back to Ready for dev" = "開発準備完了に戻す"
-@@ -392,7 +392,7 @@ status = "draft — needs native review"
+@@ -392,7 +393,7 @@ status = "draft — needs native review"
  "Draw" = "描画"
  "Drawing tools" = "描画ツール"
  "Drop shadow" = "ドロップシャドウ"
@@ -3270,7 +3310,7 @@ index f7b9cf9..04c819e 100644
  "Duo" = "デュオ"
  "Duplicate" = "複製"
  "Duplicate by dragging" = "ドラッグで複製"
-@@ -582,7 +582,7 @@ status = "draft — needs native review"
+@@ -582,7 +583,7 @@ status = "draft — needs native review"
  "Imported {n} new variables, updated {updated}" = { other = "新しい変数を {n} 個インポートし、{updated} 個を更新" }
  "Import…" = "インポート…"
  "In an instance, this comes from the main component" = "インスタンスでは、この値はメインコンポーネントから取得"
@@ -3279,7 +3319,7 @@ index f7b9cf9..04c819e 100644
  "Include bounding box" = "バウンディングボックスを含める"
  "Include id attribute" = "id 属性を含める"
  "Included" = "含む"
-@@ -607,7 +607,7 @@ status = "draft — needs native review"
+@@ -607,7 +608,7 @@ status = "draft — needs native review"
  "Instant" = "即時"
  "Interaction" = "インタラクション"
  "Interactions" = "インタラクション"
@@ -3288,7 +3328,7 @@ index f7b9cf9..04c819e 100644
  "Intersect" = "交差"
  "Intersects" = "交差"
  "Invite link" = "招待リンク"
-@@ -617,7 +617,7 @@ status = "draft — needs native review"
+@@ -617,7 +618,7 @@ status = "draft — needs native review"
  "Join code copied" = "参加コードをコピー済み"
  "Join code or invite link" = "参加コードまたは招待リンク"
  "Join live session" = "ライブセッションに参加"
@@ -3297,7 +3337,7 @@ index f7b9cf9..04c819e 100644
  "Join with a code" = "コードで参加"
  "Joined" = "参加済み"
  "Joined {file}" = "{file} に参加済み"
-@@ -847,7 +847,7 @@ status = "draft — needs native review"
+@@ -847,7 +848,7 @@ status = "draft — needs native review"
  "Open files" = "開いているファイル"
  "Open in focus view" = "フォーカスビューで開く"
  "Open in new window" = "新しいウィンドウで開く"
@@ -3306,7 +3346,7 @@ index f7b9cf9..04c819e 100644
  "Open link" = "リンクを開く"
  "Open link {url}" = "リンク {url} を開く"
  "Open overlay" = "オーバーレイを開く"
-@@ -912,7 +912,7 @@ status = "draft — needs native review"
+@@ -912,7 +913,7 @@ status = "draft — needs native review"
  "Place automatically" = "自動で配置"
  "Place image" = "画像を配置"
  "Plugins" = "プラグイン"
@@ -3315,7 +3355,7 @@ index f7b9cf9..04c819e 100644
  "Plus darker" = "プラス（暗）"
  "Plus lighter" = "プラス（明）"
  "Point" = "ポイント"
-@@ -1324,7 +1324,7 @@ status = "draft — needs native review"
+@@ -1324,7 +1325,7 @@ status = "draft — needs native review"
  "Update plugin" = "プラグインを更新"
  "Updated {components} and {styles}" = "{components}と{styles}を更新済み"
  "Updated {name}" = "{name} を更新済み"
@@ -3324,7 +3364,7 @@ index f7b9cf9..04c819e 100644
  "Uppercase" = "大文字"
  "Use a fixed value" = "固定値を使用"
  "Use an expression, e.g. count + 1" = "式を使用（例：count + 1）"
-@@ -1376,7 +1376,7 @@ status = "draft — needs native review"
+@@ -1376,7 +1377,7 @@ status = "draft — needs native review"
  "What changed since it was marked ready for dev" = "開発準備完了にしてからの変更内容"
  "What is wrong with this file? The server's operator gets your report." = "このファイルの何が問題ですか？ 報告はサーバーの運営者に届く。"
  "What it's for" = "用途"
@@ -3333,7 +3373,7 @@ index f7b9cf9..04c819e 100644
  "While hovering" = "ホバー中"
  "While pressing" = "押している間"
  "White" = "白"
-@@ -1569,7 +1569,7 @@ status = "draft — needs native review"
+@@ -1569,7 +1570,7 @@ status = "draft — needs native review"
  "collab.peers" = "このファイルにいるユーザー"
  "collab.publish" = "サーバーに公開"
  "collab.recoverFile" = "オンラインファイルを復元"
@@ -3342,7 +3382,7 @@ index f7b9cf9..04c819e 100644
  "collab.report" = "ファイルをサーバーの運営者に報告"
  "collab.serverInfo" = "サーバー情報"
  "collab.share" = "参加コードで共有"
-@@ -1686,7 +1686,7 @@ status = "draft — needs native review"
+@@ -1686,7 +1687,7 @@ status = "draft — needs native review"
  "guide.move" = "ガイドを移動"
  "guide.remove" = "ガイドを削除"
  "guide.select" = "ガイドを選択"
@@ -3352,7 +3392,7 @@ index f7b9cf9..04c819e 100644
  "help.shortcuts" = "キーボードショートカット"
  "image.adjust" = "画像を調整"
 diff --git a/crates/ui-egui/locales/ko.toml b/crates/ui-egui/locales/ko.toml
-index 59bb238..454a398 100644
+index 59bb238..c67bffc 100644
 --- a/crates/ui-egui/locales/ko.toml
 +++ b/crates/ui-egui/locales/ko.toml
 @@ -1,4 +1,4 @@
@@ -3361,7 +3401,15 @@ index 59bb238..454a398 100644
  #
  # Draft — needs native review: machine-drafted from the English catalog. Brand names, keyboard
  # glyphs and {placeholders} stay as they are. Concise UI labels without 합니다 endings
-@@ -20,7 +20,7 @@ status = "draft — needs native review"
+@@ -10,6 +10,7 @@ name = "한국어"
+ status = "draft — needs native review"
+ 
+ [ui]
++"Support" = "후원"
+ "% of all commits" = "전체 커밋 중 %"
+ "(no longer published)" = "(게시 중단됨)"
+ "({n} warnings: some entries were skipped)" = { other = "(경고 {n}개: 일부 항목을 건너뜀)" }
+@@ -20,7 +21,7 @@ status = "draft — needs native review"
  "A collection of this file with these modes and variables: override their values per mode and add variables of its own" = "이 파일의 컬렉션과 그 모드 및 변수: 모드별로 값을 재정의하고 자체 변수를 추가할 수 있음"
  "A spring plays until it settles: its mass, stiffness and damping set how long" = "스프링은 멈출 때까지 재생됨. 길이는 질량, 강성, 감쇠로 결정됨"
  "About" = "정보"
@@ -3370,7 +3418,7 @@ index 59bb238..454a398 100644
  "About this server" = "이 서버 정보"
  "Action" = "액션"
  "Actions" = "액션"
-@@ -90,7 +90,7 @@ status = "draft — needs native review"
+@@ -90,7 +91,7 @@ status = "draft — needs native review"
  "All variables" = "모든 변수"
  "Alpha" = "알파"
  "Alt+drag" = "Alt+드래그"
@@ -3379,7 +3427,7 @@ index 59bb238..454a398 100644
  "Anchor" = "앵커"
  "Android" = "Android"
  "Angular" = "각도"
-@@ -130,7 +130,7 @@ status = "draft — needs native review"
+@@ -130,7 +131,7 @@ status = "draft — needs native review"
  "Auto layout" = "자동 레이아웃"
  "Auto rows" = "자동 행"
  "Auto width" = "자동 너비"
@@ -3388,7 +3436,7 @@ index 59bb238..454a398 100644
  "Back to the font's value" = "글꼴 값으로 되돌리기"
  "Back" = "뒤로"
  "Back to Ready for dev" = "개발 준비 완료로 되돌리기"
-@@ -391,7 +391,7 @@ status = "draft — needs native review"
+@@ -391,7 +392,7 @@ status = "draft — needs native review"
  "Draw" = "그리기"
  "Drawing tools" = "그리기 도구"
  "Drop shadow" = "드롭 섀도"
@@ -3397,7 +3445,7 @@ index 59bb238..454a398 100644
  "Duo" = "2색"
  "Duplicate" = "복제"
  "Duplicate by dragging" = "드래그해 복제"
-@@ -581,7 +581,7 @@ status = "draft — needs native review"
+@@ -581,7 +582,7 @@ status = "draft — needs native review"
  "Imported {n} new variables, updated {updated}" = { other = "새 변수 {n}개를 가져오고 {updated}개를 업데이트함" }
  "Import…" = "가져오기…"
  "In an instance, this comes from the main component" = "인스턴스에서는 메인 컴포넌트의 값을 사용함"
@@ -3406,7 +3454,7 @@ index 59bb238..454a398 100644
  "Include bounding box" = "경계 상자 포함"
  "Include id attribute" = "id 속성 포함"
  "Included" = "포함됨"
-@@ -606,7 +606,7 @@ status = "draft — needs native review"
+@@ -606,7 +607,7 @@ status = "draft — needs native review"
  "Instant" = "즉시"
  "Interaction" = "인터랙션"
  "Interactions" = "인터랙션"
@@ -3415,7 +3463,7 @@ index 59bb238..454a398 100644
  "Intersect" = "교차"
  "Intersects" = "교차"
  "Invite link" = "초대 링크"
-@@ -616,7 +616,7 @@ status = "draft — needs native review"
+@@ -616,7 +617,7 @@ status = "draft — needs native review"
  "Join code copied" = "참여 코드 복사됨"
  "Join code or invite link" = "참여 코드 또는 초대 링크"
  "Join live session" = "라이브 세션 참여"
@@ -3424,7 +3472,7 @@ index 59bb238..454a398 100644
  "Join with a code" = "코드로 참여"
  "Joined" = "참여함"
  "Joined {file}" = "{file}에 참여함"
-@@ -846,7 +846,7 @@ status = "draft — needs native review"
+@@ -846,7 +847,7 @@ status = "draft — needs native review"
  "Open files" = "열린 파일"
  "Open in focus view" = "포커스 보기로 열기"
  "Open in new window" = "새 창에서 열기"
@@ -3433,7 +3481,7 @@ index 59bb238..454a398 100644
  "Open link" = "링크 열기"
  "Open link {url}" = "링크 {url} 열기"
  "Open overlay" = "오버레이 열기"
-@@ -911,7 +911,7 @@ status = "draft — needs native review"
+@@ -911,7 +912,7 @@ status = "draft — needs native review"
  "Place automatically" = "자동 배치"
  "Place image" = "이미지 배치"
  "Plugins" = "플러그인"
@@ -3442,7 +3490,7 @@ index 59bb238..454a398 100644
  "Plus darker" = "더 어둡게"
  "Plus lighter" = "더 밝게"
  "Point" = "점"
-@@ -1323,7 +1323,7 @@ status = "draft — needs native review"
+@@ -1323,7 +1324,7 @@ status = "draft — needs native review"
  "Update plugin" = "플러그인 업데이트"
  "Updated {components} and {styles}" = "{components} 및 {styles} 업데이트됨"
  "Updated {name}" = "{name} 업데이트됨"
@@ -3451,7 +3499,7 @@ index 59bb238..454a398 100644
  "Uppercase" = "대문자"
  "Use a fixed value" = "고정 값 사용"
  "Use an expression, e.g. count + 1" = "수식 사용(예: count + 1)"
-@@ -1375,7 +1375,7 @@ status = "draft — needs native review"
+@@ -1375,7 +1376,7 @@ status = "draft — needs native review"
  "What changed since it was marked ready for dev" = "개발 준비 완료로 표시된 뒤 변경된 내용"
  "What is wrong with this file? The server's operator gets your report." = "이 파일에 어떤 문제가 있나요? 신고는 서버 운영자에게 전달됨."
  "What it's for" = "용도"
@@ -3460,7 +3508,7 @@ index 59bb238..454a398 100644
  "While hovering" = "마우스를 올린 동안"
  "While pressing" = "누르는 동안"
  "White" = "흰색"
-@@ -1568,7 +1568,7 @@ status = "draft — needs native review"
+@@ -1568,7 +1569,7 @@ status = "draft — needs native review"
  "collab.peers" = "이 파일의 사용자"
  "collab.publish" = "서버에 게시"
  "collab.recoverFile" = "온라인 파일 복구"
@@ -3469,7 +3517,7 @@ index 59bb238..454a398 100644
  "collab.report" = "서버 운영자에게 파일 신고"
  "collab.serverInfo" = "서버 정보"
  "collab.share" = "참여 코드로 공유"
-@@ -1685,7 +1685,7 @@ status = "draft — needs native review"
+@@ -1685,7 +1686,7 @@ status = "draft — needs native review"
  "guide.move" = "안내선 이동"
  "guide.remove" = "안내선 제거"
  "guide.select" = "안내선 선택"
@@ -3479,7 +3527,7 @@ index 59bb238..454a398 100644
  "help.shortcuts" = "키보드 단축키"
  "image.adjust" = "이미지 조정"
 diff --git a/crates/ui-egui/locales/pt-BR.toml b/crates/ui-egui/locales/pt-BR.toml
-index a692a8c..443fa3d 100644
+index a692a8c..20607b7 100644
 --- a/crates/ui-egui/locales/pt-BR.toml
 +++ b/crates/ui-egui/locales/pt-BR.toml
 @@ -1,4 +1,4 @@
@@ -3488,7 +3536,15 @@ index a692a8c..443fa3d 100644
  #
  # Draft — needs native review: machine-drafted from the English catalog. Brand names and keyboard
  # glyphs stay as they are. Brazilian usage (você, arquivo, salvar, tela). See docs/translating.md.
-@@ -18,7 +18,7 @@ status = "draft — needs native review"
+@@ -8,6 +8,7 @@ name = "Português (Brasil)"
+ status = "draft — needs native review"
+ 
+ [ui]
++"Support" = "Apoiar"
+ "% of all commits" = "% de todos os commits"
+ "(no longer published)" = "(não publicado mais)"
+ "({n} warnings: some entries were skipped)" = { one = "({n} aviso: algumas entradas foram ignoradas)", other = "({n} avisos: algumas entradas foram ignoradas)" }
+@@ -18,7 +19,7 @@ status = "draft — needs native review"
  "A collection of this file with these modes and variables: override their values per mode and add variables of its own" = "Uma coleção deste arquivo com estes modos e variáveis: substitua os valores por modo e adicione variáveis próprias"
  "A spring plays until it settles: its mass, stiffness and damping set how long" = "Uma mola se move até se estabilizar: sua massa, rigidez e amortecimento definem a duração"
  "About" = "Sobre"
@@ -3497,7 +3553,7 @@ index a692a8c..443fa3d 100644
  "About this server" = "Sobre este servidor"
  "Action" = "Ação"
  "Actions" = "Ações"
-@@ -88,7 +88,7 @@ status = "draft — needs native review"
+@@ -88,7 +89,7 @@ status = "draft — needs native review"
  "All variables" = "Todas as variáveis"
  "Alpha" = "Alfa"
  "Alt+drag" = "Alt+arrastar"
@@ -3506,7 +3562,7 @@ index a692a8c..443fa3d 100644
  "Anchor" = "Âncora"
  "Android" = "Android"
  "Angular" = "Angular"
-@@ -128,7 +128,7 @@ status = "draft — needs native review"
+@@ -128,7 +129,7 @@ status = "draft — needs native review"
  "Auto layout" = "Layout automático"
  "Auto rows" = "Linhas automáticas"
  "Auto width" = "Largura automática"
@@ -3515,7 +3571,7 @@ index a692a8c..443fa3d 100644
  "Back to the font's value" = "Voltar ao valor da fonte"
  "Back" = "Voltar"
  "Back to Ready for dev" = "Voltar para Pronto para dev"
-@@ -389,7 +389,7 @@ status = "draft — needs native review"
+@@ -389,7 +390,7 @@ status = "draft — needs native review"
  "Draw" = "Desenhar"
  "Drawing tools" = "Ferramentas de desenho"
  "Drop shadow" = "Sombra projetada"
@@ -3524,7 +3580,7 @@ index a692a8c..443fa3d 100644
  "Duo" = "Duo"
  "Duplicate" = "Duplicar"
  "Duplicate by dragging" = "Duplicar arrastando"
-@@ -579,7 +579,7 @@ status = "draft — needs native review"
+@@ -579,7 +580,7 @@ status = "draft — needs native review"
  "Imported {n} new variables, updated {updated}" = { one = "{n} variável nova importada, {updated} atualizadas", other = "{n} variáveis novas importadas, {updated} atualizadas" }
  "Import…" = "Importar…"
  "In an instance, this comes from the main component" = "Em uma instância, isto vem do componente principal"
@@ -3533,7 +3589,7 @@ index a692a8c..443fa3d 100644
  "Include bounding box" = "Incluir caixa delimitadora"
  "Include id attribute" = "Incluir atributo id"
  "Included" = "Incluídos"
-@@ -604,7 +604,7 @@ status = "draft — needs native review"
+@@ -604,7 +605,7 @@ status = "draft — needs native review"
  "Instant" = "Instantâneo"
  "Interaction" = "Interação"
  "Interactions" = "Interações"
@@ -3542,7 +3598,7 @@ index a692a8c..443fa3d 100644
  "Intersect" = "Interseção"
  "Intersects" = "Interseções"
  "Invite link" = "Link de convite"
-@@ -614,7 +614,7 @@ status = "draft — needs native review"
+@@ -614,7 +615,7 @@ status = "draft — needs native review"
  "Join code copied" = "Código de acesso copiado"
  "Join code or invite link" = "Código de acesso ou link de convite"
  "Join live session" = "Entrar na sessão ao vivo"
@@ -3551,7 +3607,7 @@ index a692a8c..443fa3d 100644
  "Join with a code" = "Entrar com um código"
  "Joined" = "Conectado"
  "Joined {file}" = "Conectado a {file}"
-@@ -844,7 +844,7 @@ status = "draft — needs native review"
+@@ -844,7 +845,7 @@ status = "draft — needs native review"
  "Open files" = "Arquivos abertos"
  "Open in focus view" = "Abrir na visualização em foco"
  "Open in new window" = "Abrir em nova janela"
@@ -3560,7 +3616,7 @@ index a692a8c..443fa3d 100644
  "Open link" = "Abrir link"
  "Open link {url}" = "Abrir link {url}"
  "Open overlay" = "Abrir sobreposição"
-@@ -909,7 +909,7 @@ status = "draft — needs native review"
+@@ -909,7 +910,7 @@ status = "draft — needs native review"
  "Place automatically" = "Posicionar automaticamente"
  "Place image" = "Inserir imagem"
  "Plugins" = "Plugins"
@@ -3569,7 +3625,7 @@ index a692a8c..443fa3d 100644
  "Plus darker" = "Mais escuro"
  "Plus lighter" = "Mais claro"
  "Point" = "Ponto"
-@@ -1321,7 +1321,7 @@ status = "draft — needs native review"
+@@ -1321,7 +1322,7 @@ status = "draft — needs native review"
  "Update plugin" = "Atualizar plugin"
  "Updated {components} and {styles}" = "{components} e {styles} atualizados"
  "Updated {name}" = "{name} atualizado"
@@ -3578,7 +3634,7 @@ index a692a8c..443fa3d 100644
  "Uppercase" = "Maiúsculas"
  "Use a fixed value" = "Usar um valor fixo"
  "Use an expression, e.g. count + 1" = "Usar uma expressão, por ex. count + 1"
-@@ -1373,7 +1373,7 @@ status = "draft — needs native review"
+@@ -1373,7 +1374,7 @@ status = "draft — needs native review"
  "What changed since it was marked ready for dev" = "O que mudou desde que foi marcado como pronto para dev"
  "What is wrong with this file? The server's operator gets your report." = "O que há de errado com este arquivo? O operador do servidor recebe a sua denúncia."
  "What it's for" = "Para que serve"
@@ -3587,7 +3643,7 @@ index a692a8c..443fa3d 100644
  "While hovering" = "Enquanto passa o cursor"
  "While pressing" = "Enquanto pressiona"
  "White" = "Branco"
-@@ -1566,7 +1566,7 @@ status = "draft — needs native review"
+@@ -1566,7 +1567,7 @@ status = "draft — needs native review"
  "collab.peers" = "Pessoas neste arquivo"
  "collab.publish" = "Publicar no servidor"
  "collab.recoverFile" = "Recuperar arquivo online"
@@ -3596,7 +3652,7 @@ index a692a8c..443fa3d 100644
  "collab.report" = "Denunciar arquivo ao operador do servidor"
  "collab.serverInfo" = "Informações do servidor"
  "collab.share" = "Compartilhar com um código de acesso"
-@@ -1683,7 +1683,7 @@ status = "draft — needs native review"
+@@ -1683,7 +1684,7 @@ status = "draft — needs native review"
  "guide.move" = "Mover guia"
  "guide.remove" = "Remover guia"
  "guide.select" = "Selecionar guia"
@@ -3606,7 +3662,7 @@ index a692a8c..443fa3d 100644
  "help.shortcuts" = "Atalhos de teclado"
  "image.adjust" = "Ajustar imagem"
 diff --git a/crates/ui-egui/locales/zh-Hans.toml b/crates/ui-egui/locales/zh-Hans.toml
-index d2431df..a7cda1d 100644
+index d2431df..3ef3c24 100644
 --- a/crates/ui-egui/locales/zh-Hans.toml
 +++ b/crates/ui-egui/locales/zh-Hans.toml
 @@ -1,4 +1,4 @@
@@ -3615,7 +3671,15 @@ index d2431df..a7cda1d 100644
  #
  # Draft — needs native review: machine-drafted from the English catalog. Brand names, keyboard
  # glyphs and {placeholders} stay as they are. Concise UI style, full-width punctuation （）：，、。“”
-@@ -21,7 +21,7 @@ status = "draft — needs native review"
+@@ -11,6 +11,7 @@ name = "简体中文"
+ status = "draft — needs native review"
+ 
+ [ui]
++"Support" = "支持"
+ "% of all commits" = "占全部提交的 %"
+ "(no longer published)" = "（已停止发布）"
+ "({n} warnings: some entries were skipped)" = { other = "（{n} 条警告：已跳过部分条目）" }
+@@ -21,7 +22,7 @@ status = "draft — needs native review"
  "A collection of this file with these modes and variables: override their values per mode and add variables of its own" = "本文件中带有这些模式和变量的集合：可按模式覆盖其值，并添加自己的变量"
  "A spring plays until it settles: its mass, stiffness and damping set how long" = "弹簧动画播放至静止，时长由质量、刚度和阻尼决定"
  "About" = "关于"
@@ -3624,7 +3688,7 @@ index d2431df..a7cda1d 100644
  "About this server" = "关于此服务器"
  "Action" = "操作"
  "Actions" = "操作"
-@@ -91,7 +91,7 @@ status = "draft — needs native review"
+@@ -91,7 +92,7 @@ status = "draft — needs native review"
  "All variables" = "全部变量"
  "Alpha" = "Alpha"
  "Alt+drag" = "Alt+拖动"
@@ -3633,7 +3697,7 @@ index d2431df..a7cda1d 100644
  "Anchor" = "锚点"
  "Android" = "Android"
  "Angular" = "角度"
-@@ -131,7 +131,7 @@ status = "draft — needs native review"
+@@ -131,7 +132,7 @@ status = "draft — needs native review"
  "Auto layout" = "自动布局"
  "Auto rows" = "自动行"
  "Auto width" = "自动宽度"
@@ -3642,7 +3706,7 @@ index d2431df..a7cda1d 100644
  "Back to the font's value" = "恢复为字体的值"
  "Back" = "返回"
  "Back to Ready for dev" = "退回可供开发"
-@@ -392,7 +392,7 @@ status = "draft — needs native review"
+@@ -392,7 +393,7 @@ status = "draft — needs native review"
  "Draw" = "绘制"
  "Drawing tools" = "绘图工具"
  "Drop shadow" = "投影"
@@ -3651,7 +3715,7 @@ index d2431df..a7cda1d 100644
  "Duo" = "双色"
  "Duplicate" = "创建副本"
  "Duplicate by dragging" = "拖动创建副本"
-@@ -582,7 +582,7 @@ status = "draft — needs native review"
+@@ -582,7 +583,7 @@ status = "draft — needs native review"
  "Imported {n} new variables, updated {updated}" = { other = "已导入 {n} 个新变量，更新 {updated} 个" }
  "Import…" = "导入…"
  "In an instance, this comes from the main component" = "在实例中，此项来自主组件"
@@ -3660,7 +3724,7 @@ index d2431df..a7cda1d 100644
  "Include bounding box" = "包含边界框"
  "Include id attribute" = "包含 id 属性"
  "Included" = "已包含"
-@@ -607,7 +607,7 @@ status = "draft — needs native review"
+@@ -607,7 +608,7 @@ status = "draft — needs native review"
  "Instant" = "即时"
  "Interaction" = "交互"
  "Interactions" = "交互"
@@ -3669,7 +3733,7 @@ index d2431df..a7cda1d 100644
  "Intersect" = "相交"
  "Intersects" = "相交"
  "Invite link" = "邀请链接"
-@@ -617,7 +617,7 @@ status = "draft — needs native review"
+@@ -617,7 +618,7 @@ status = "draft — needs native review"
  "Join code copied" = "已复制加入代码"
  "Join code or invite link" = "加入代码或邀请链接"
  "Join live session" = "加入实时会话"
@@ -3678,7 +3742,7 @@ index d2431df..a7cda1d 100644
  "Join with a code" = "用代码加入"
  "Joined" = "已加入"
  "Joined {file}" = "已加入 {file}"
-@@ -847,7 +847,7 @@ status = "draft — needs native review"
+@@ -847,7 +848,7 @@ status = "draft — needs native review"
  "Open files" = "打开的文件"
  "Open in focus view" = "在聚焦视图中打开"
  "Open in new window" = "在新窗口中打开"
@@ -3687,7 +3751,7 @@ index d2431df..a7cda1d 100644
  "Open link" = "打开链接"
  "Open link {url}" = "打开链接 {url}"
  "Open overlay" = "打开浮层"
-@@ -912,7 +912,7 @@ status = "draft — needs native review"
+@@ -912,7 +913,7 @@ status = "draft — needs native review"
  "Place automatically" = "自动放置"
  "Place image" = "置入图片"
  "Plugins" = "插件"
@@ -3696,7 +3760,7 @@ index d2431df..a7cda1d 100644
  "Plus darker" = "加深"
  "Plus lighter" = "增亮"
  "Point" = "点"
-@@ -1324,7 +1324,7 @@ status = "draft — needs native review"
+@@ -1324,7 +1325,7 @@ status = "draft — needs native review"
  "Update plugin" = "更新插件"
  "Updated {components} and {styles}" = "已更新 {components} 和 {styles}"
  "Updated {name}" = "已更新 {name}"
@@ -3705,7 +3769,7 @@ index d2431df..a7cda1d 100644
  "Uppercase" = "大写"
  "Use a fixed value" = "使用固定值"
  "Use an expression, e.g. count + 1" = "使用表达式，例如 count + 1"
-@@ -1376,7 +1376,7 @@ status = "draft — needs native review"
+@@ -1376,7 +1377,7 @@ status = "draft — needs native review"
  "What changed since it was marked ready for dev" = "自标记为可供开发以来的更改"
  "What is wrong with this file? The server's operator gets your report." = "此文件有什么问题？你的举报会发送给服务器的运营者。"
  "What it's for" = "用途"
@@ -3714,7 +3778,7 @@ index d2431df..a7cda1d 100644
  "While hovering" = "悬停时"
  "While pressing" = "按住时"
  "White" = "白"
-@@ -1569,7 +1569,7 @@ status = "draft — needs native review"
+@@ -1569,7 +1570,7 @@ status = "draft — needs native review"
  "collab.peers" = "此文件中的成员"
  "collab.publish" = "发布到服务器"
  "collab.recoverFile" = "恢复在线文件"
@@ -3723,7 +3787,7 @@ index d2431df..a7cda1d 100644
  "collab.report" = "向服务器运营者举报文件"
  "collab.serverInfo" = "服务器信息"
  "collab.share" = "用加入代码分享"
-@@ -1686,7 +1686,7 @@ status = "draft — needs native review"
+@@ -1686,7 +1687,7 @@ status = "draft — needs native review"
  "guide.move" = "移动参考线"
  "guide.remove" = "移除参考线"
  "guide.select" = "选择参考线"
@@ -3957,6 +4021,18 @@ index 1179b1c..d118f13 100644
      let s = settle(&mut u);
      assert!(has_text(&s, "Recent files") && has_text(&s, "ridgeline"));
      assert!(!has_text(&s, "Start from a template") && !has_text(&s, "See all templates"));
+diff --git a/crates/ui-egui/src/i18n_tests.rs b/crates/ui-egui/src/i18n_tests.rs
+index 768434e..b995c3e 100644
+--- a/crates/ui-egui/src/i18n_tests.rs
++++ b/crates/ui-egui/src/i18n_tests.rs
+@@ -335,6 +335,7 @@ fn latin_american_spanish_overlays_spanish() {
+     // Its own wording, else Spanish's, else English's.
+     assert!(matches!(lookup(la, "Add fill"), Some(Text::Plain("Agregar relleno"))));
+     assert!(matches!(lookup(la, "Fill"), Some(Text::Plain("Relleno"))));
++    assert!(matches!(lookup(la, "Support"), Some(Text::Plain("Apoyar"))));
+     let undo = |i: usize| chain(i).find_map(|l| find(l.commands, "edit.undo")).map(forms);
+     assert!(undo(es).is_some() && undo(la) == undo(es), "command labels fall back too");
+     // An overlay lists only what differs from the catalog under it.
 diff --git a/crates/ui-egui/src/icons.rs b/crates/ui-egui/src/icons.rs
 index 726f62f..c21728c 100644
 --- a/crates/ui-egui/src/icons.rs
@@ -4007,7 +4083,7 @@ index 652522d..00b3f3d 100644
          assert_eq!(renaming(&u), Some(child), "({k})");
          u.frame(vec![]);
 diff --git a/crates/ui-egui/src/lib.rs b/crates/ui-egui/src/lib.rs
-index 613f18f..cf2c006 100644
+index 613f18f..8d5d575 100644
 --- a/crates/ui-egui/src/lib.rs
 +++ b/crates/ui-egui/src/lib.rs
 @@ -1,4 +1,4 @@
@@ -4043,6 +4119,13 @@ index 613f18f..cf2c006 100644
                  "layers.collapseAll" => layers::collapse_all(self),
                  "contextMenu" => self.ui.key_menu = true,
                  "selectArea" => self.start_key_box(),
+@@ -1193,3 +1193,6 @@ impl FigApp {
+         })
+     }
+ }
++
++#[cfg(test)]
++mod plervo_support_tests;
 diff --git a/crates/ui-egui/src/live.rs b/crates/ui-egui/src/live.rs
 index 46687a6..ddffbf4 100644
 --- a/crates/ui-egui/src/live.rs
@@ -4127,6 +4210,80 @@ index 66750ca..d0e1561 100644
      assert!(h.app.ui.live.join.is_none(), "it closes once the join started");
  }
  
+diff --git a/crates/ui-egui/src/plervo_support_tests.rs b/crates/ui-egui/src/plervo_support_tests.rs
+new file mode 100644
+index 0000000..e069091
+--- /dev/null
++++ b/crates/ui-egui/src/plervo_support_tests.rs
+@@ -0,0 +1,68 @@
++//! The support action is visible in the header and opens only after a deliberate click.
++use egui::{Event, Modifiers, PointerButton, Pos2, RawInput, Rect, vec2};
++use std::{cell::RefCell, rc::Rc};
++
++struct RecordingServices(Rc<RefCell<Vec<String>>>);
++
++impl crate::Services for RecordingServices {
++    fn open_url(&mut self, url: &str) {
++        self.0.borrow_mut().push(url.to_owned());
++    }
++}
++
++fn support_text(shapes: &[egui::epaint::ClippedShape]) -> Option<Rect> {
++    fn find(shape: &egui::epaint::Shape) -> Option<Rect> {
++        match shape {
++            egui::epaint::Shape::Text(text)
++                if ["Support", "Apoiar", "Apoyar", "Soutenir", "Unterstützen", "支援", "支持", "후원"].contains(&text.galley.job.text.as_str()) =>
++            {
++                Some(Rect::from_min_size(text.pos, text.galley.size()))
++            }
++            egui::epaint::Shape::Vec(shapes) => shapes.iter().find_map(find),
++            _ => None,
++        }
++    }
++    shapes.iter().find_map(|s| find(&s.shape).filter(|r| s.clip_rect.contains_rect(*r)))
++}
++
++#[test]
++fn support_header_is_visible_and_opens_only_the_donation_page() {
++    for width in [1024.0, 1440.0] {
++        for native in [false, true] {
++            let _ = native;
++            let ctx = egui::Context::default();
++            let urls = Rc::new(RefCell::new(Vec::new()));
++            let mut app = crate::FigApp::new(figcraft_engine::Session::new(), Box::new(RecordingServices(urls.clone())));
++
++            let mut frame = |events| {
++                let mut output = ctx.run_ui(
++                    RawInput { screen_rect: Some(Rect::from_min_size(Pos2::ZERO, vec2(width, 720.0))), events, ..Default::default() },
++                    |ui| {
++                        crate::tabs::tab_bar(&mut app, ui);
++                    },
++                );
++                output.textures_delta.clear();
++                output
++            };
++            let mut output = frame(vec![]);
++            for _ in 0..3 {
++                output = frame(vec![]);
++            }
++            assert!(output.platform_output.commands.is_empty(), "drawing the bar must not open a browser");
++            assert!(urls.borrow().is_empty(), "drawing the bar must not call the host's browser service");
++            let text = support_text(&output.shapes).expect("support label must be visible");
++            assert!(text.min.x >= 0.0 && text.max.x <= width && text.max.y <= 100.0, "{text:?}");
++            let pos = text.center();
++            frame(vec![
++                Event::PointerMoved(pos),
++                Event::PointerButton { pos, button: PointerButton::Primary, pressed: true, modifiers: Modifiers::NONE },
++            ]);
++            let output = frame(vec![
++                Event::PointerMoved(pos),
++                Event::PointerButton { pos, button: PointerButton::Primary, pressed: false, modifiers: Modifiers::NONE },
++            ]);
++            assert_eq!(*urls.borrow(), ["https://buymeacoffee.com/alport"]);
++            assert!(output.platform_output.commands.is_empty(), "the host opens the link exactly once");
++        }
++    }
++}
 diff --git a/crates/ui-egui/src/plugins_ui.rs b/crates/ui-egui/src/plugins_ui.rs
 index 0d4da40..7278cc8 100644
 --- a/crates/ui-egui/src/plugins_ui.rs
@@ -4179,6 +4336,43 @@ index 3a4e7b1..bb51d86 100644
                  app.ui.style_folds.insert(f);
              }
          }
+diff --git a/crates/ui-egui/src/tabs.rs b/crates/ui-egui/src/tabs.rs
+index 27ff085..96279fb 100644
+--- a/crates/ui-egui/src/tabs.rs
++++ b/crates/ui-egui/src/tabs.rs
+@@ -45,6 +45,12 @@ pub fn tab_bar(app: &mut FigApp, ui: &mut Ui) {
+             app.ui.home = true;
+         }
+         x += 44.0;
++        let support_width = ui.painter().layout_no_wrap(tr("Support").into(), regular(12.0), t.text).size().x + 24.0;
++        let support = Rect::from_min_size(pos2(x + 6.0, rect.center().y - 13.0), vec2(support_width, 26.0));
++        if ui.put(support, egui::Button::new(tr("Support"))).on_hover_text("https://buymeacoffee.com/alport").clicked() {
++            app.services.open_url("https://buymeacoffee.com/alport");
++        }
++        x += support_width + 12.0;
+         ui.painter().line_segment([pos2(x, rect.min.y), pos2(x, rect.max.y)], Stroke::new(1.0, t.border));
+         let mut switch = None;
+         let mut close = None;
+diff --git a/crates/ui-egui/src/titlebar_tests.rs b/crates/ui-egui/src/titlebar_tests.rs
+index 796cb67..2fc6f9a 100644
+--- a/crates/ui-egui/src/titlebar_tests.rs
++++ b/crates/ui-egui/src/titlebar_tests.rs
+@@ -125,12 +125,12 @@ fn edges_and_corners_resize_the_window() {
+ fn tabs_and_new_tab_keep_their_clicks() {
+     let mut u = Ui::new(TitleBar::Custom);
+     u.app.ui.home = true;
+-    // The open file's tab switches to it.
+-    assert!(u.click(pos2(100.0, 20.0)).is_empty());
++    // The open file's tab, after Home and Support, switches to it.
++    assert!(u.click(pos2(200.0, 20.0)).is_empty());
+     assert!(!u.app.ui.home);
+     // The `+` right of it opens a new file (found by clicking along the bar past the tab).
+     let mut opened = false;
+-    for x in (176..320).step_by(4) {
++    for x in (256..440).step_by(4) {
+         u.time += 1.0;
+         assert!(u.click(pos2(x as f32, 20.0)).is_empty(), "{x}");
+         if u.app.session.docs.len() > 1 {
 diff --git a/crates/ui-egui/src/toolbar.rs b/crates/ui-egui/src/toolbar.rs
 index 1e6e38a..5532c55 100644
 --- a/crates/ui-egui/src/toolbar.rs

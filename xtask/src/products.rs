@@ -55,7 +55,7 @@ fn validate(product: &Product) -> Result<()> {
     ensure!(hex(&product.commit, 40) && hex(&product.fonts_commit, 40) && hex(&product.patch_sha256, 64), "invalid source or patch pin");
     ensure!(product.tag.starts_with('v') && !product.tag.contains(['/', '\\', ' ', '\n']), "invalid upstream tag");
     ensure!(product.name.starts_with("Plervo ") && !product.name.contains(['\n', '\r']), "invalid product name");
-    ensure!(product.release_version == "0.1.0-alpha.4" && product.status == "preparing", "unqualified products must stay internal");
+    ensure!(product.release_version == "0.1.0-alpha.5" && product.status == "preparing", "unqualified products must stay internal");
     ensure!(
         product.windows_upgrade_code.len() == 36 && product.windows_upgrade_code.bytes().all(|b| b.is_ascii_hexdigit() || b == b'-'),
         "invalid Windows identity"

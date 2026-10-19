@@ -5,6 +5,7 @@
 | Mac/Linux alpha.4 | Public Suite and all 13 apps per platform; exact public download/install/reinstall acceptance, with Linux removal and data preservation | Final Mac GUI/clean-machine acceptance and broader hardware/linguistic coverage remain incomplete; see release limits |
 | Windows Suite and apps | Internal native package, representative CLI and GUI startup/close checks passed | Approved SignPath identity/integration and exact signed-package/Suite acceptance before public download |
 | International presentation | Public GitHub descriptions and Plervo documentation in English; all 13 apps described | Existing app/site translations remain available; Slides/Audio interfaces are English-only in this alpha |
+| Optional header support (alpha.5 development) | Suite and app support controls use the fixed donation link and existing language catalogs; headless visibility/click checks | Native candidate qualification, signing and publication; alpha.4 assets remain unchanged |
 
 The [release notes](https://github.com/alportblu/plervo-pdf/releases/tag/v0.1.0-alpha.4)
 are the current product/asset inventory. The entries below are historical checkpoints.

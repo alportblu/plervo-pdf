@@ -77,7 +77,7 @@ index be99cdc..88d8120 100644
 +
 +| `packaging/macos/dmg/background.svg` | @XusBadia | Original work: macOS DMG Finder window background, derived from the EffectCraft app icon (`assets/app-icon/effectcraft.svg`); rendered to a TIFF by `packaging/macos/package.sh` at package time | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) |
 diff --git a/Cargo.lock b/Cargo.lock
-index ce8fe12..6655b6e 100644
+index ce8fe12..4f4afbb 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -1141,34 +1141,9 @@ dependencies = [
@@ -112,7 +112,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-automation"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "effectcraft-engine",
   "effectcraft-host",
@@ -121,7 +121,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-av1enc"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-av1",
  ]
@@ -145,7 +145,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-color"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "proptest",
   "serde",
@@ -154,7 +154,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-effects"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "effectcraft-color",
   "effectcraft-geom",
@@ -163,7 +163,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-engine"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "effectcraft-color",
   "effectcraft-effects",
@@ -172,7 +172,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-export"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "effectcraft-av1enc",
   "effectcraft-color",
@@ -181,7 +181,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-expr"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "boa_engine",
   "effectcraft-color",
@@ -190,7 +190,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-geom"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "proptest",
   "serde",
@@ -199,7 +199,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-gpu"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "bytemuck",
   "effectcraft-color",
@@ -208,7 +208,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-hevcenc"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-hevc",
  ]
@@ -216,7 +216,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-host"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "effectcraft-engine",
   "effectcraft-export",
@@ -225,7 +225,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-interchange"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "effectcraft-color",
   "effectcraft-keyframe",
@@ -234,7 +234,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-keyframe"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "effectcraft-color",
   "effectcraft-geom",
@@ -243,7 +243,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-lottie"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "effectcraft-color",
   "effectcraft-effects",
@@ -252,7 +252,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-media"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "effectcraft-model",
   "effectcraft-pdf",
@@ -261,7 +261,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-model"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "effectcraft-geom",
   "image",
@@ -270,7 +270,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-opusenc"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-opus",
  ]
@@ -278,7 +278,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-path"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "effectcraft-geom",
   "effectcraft-keyframe",
@@ -287,7 +287,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-pdf"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "effectcraft-raster",
   "effectcraft-svg",
@@ -296,7 +296,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-plugin"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "effectcraft-effects",
   "effectcraft-keyframe",
@@ -305,7 +305,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-project"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "effectcraft-color",
   "effectcraft-geom",
@@ -314,7 +314,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-psd"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "miniz_oxide 0.8.9",
  ]
@@ -322,7 +322,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-raster"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "effectcraft-color",
   "effectcraft-geom",
@@ -331,7 +331,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-render"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "effectcraft-color",
   "effectcraft-effects",
@@ -340,7 +340,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-script"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "boa_engine",
   "effectcraft-engine",
@@ -349,7 +349,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-segment"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "miniz_oxide 0.8.9",
   "ndarray",
@@ -358,7 +358,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-svg"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "effectcraft-geom",
   "effectcraft-path",
@@ -367,7 +367,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-text"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "effectcraft-keyframe",
   "harfrust",
@@ -376,7 +376,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-time"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "proptest",
   "serde",
@@ -385,7 +385,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-track"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "effectcraft-raster",
   "effectcraft-segment",
@@ -394,7 +394,7 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-ui-egui"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "craft-ui",
   "effectcraft-color",
@@ -403,12 +403,12 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "effectcraft-vp9enc"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  
  [[package]]
  name = "effectcraft-web"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "effectcraft-engine",
   "effectcraft-export",
@@ -418,7 +418,7 @@ index ce8fe12..6655b6e 100644
  
 +[[package]]
 +name = "plervo-motion"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "cpal",
 + "effectcraft-engine",
@@ -443,7 +443,7 @@ index ce8fe12..6655b6e 100644
 +
 +[[package]]
 +name = "plervo-motion-cli"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "cpu-time",
 + "effectcraft-automation",
@@ -465,12 +465,12 @@ index ce8fe12..6655b6e 100644
  [[package]]
  name = "xtask"
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "serde_json",
  ]
 diff --git a/Cargo.toml b/Cargo.toml
-index 9f4e9d1..6dfe108 100644
+index 9f4e9d1..24e8fa6 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -478,7 +478,7 @@ index 9f4e9d1..6dfe108 100644
  
  [workspace.package]
 -version = "0.10.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.95"
@@ -4239,7 +4239,7 @@ index 3ab1155..eee161d 100644
  const JAPANESE_EFFECTS: &[Row] = &[];
  
 diff --git a/crates/ui-egui/src/i18n/ui.rs b/crates/ui-egui/src/i18n/ui.rs
-index 3a4dd4a..0cb5287 100644
+index 3a4dd4a..1a481f4 100644
 --- a/crates/ui-egui/src/i18n/ui.rs
 +++ b/crates/ui-egui/src/i18n/ui.rs
 @@ -97,10 +97,10 @@ const JAPANESE: &[(&str, &str)] = &[
@@ -4261,7 +4261,7 @@ index 3a4dd4a..0cb5287 100644
      ("Delete this template", "このテンプレートを削除"),
      ("Depth of Field", "被写界深度"),
 -    ("Discord", "Discord"),
-+    ("Support", "Support"),
++    ("Support", "支援"),
      ("Distribute Layers:", "レイヤーの分布:"),
      ("Don't Recover", "復元しない"),
      ("Don't Save", "保存しない"),
@@ -4348,7 +4348,7 @@ index 3a4dd4a..0cb5287 100644
      ("Delete this template", "删除此模板"),
      ("Depth of Field", "景深"),
 -    ("Discord", "Discord"),
-+    ("Support", "Support"),
++    ("Support", "支持"),
      ("Distribute Layers:", "分布图层："),
      ("Don't Recover", "不恢复"),
      ("Don't Save", "不保存"),
@@ -4466,7 +4466,7 @@ index 3a4dd4a..0cb5287 100644
      ("Delete this template", "刪除此範本"),
      ("Depth of Field", "景深"),
 -    ("Discord", "Discord"),
-+    ("Support", "Support"),
++    ("Support", "支持"),
      ("Distribute Layers:", "分佈圖層："),
      ("Don't Recover", "不恢復"),
      ("Don't Save", "不儲存"),
@@ -4584,7 +4584,7 @@ index 3a4dd4a..0cb5287 100644
      ("Delete this template", "Видалити цей шаблон"),
      ("Depth of Field", "Глибина різкості"),
 -    ("Discord", "Discord"),
-+    ("Support", "Support"),
++    ("Support", "Підтримати"),
      ("Distribute Layers:", "Розподілити шари:"),
      ("Don't Recover", "Не відновлювати"),
      ("Don't Save", "Не зберігати"),
@@ -4671,7 +4671,7 @@ index 3a4dd4a..0cb5287 100644
      ("Delete this template", "Excluir este modelo"),
      ("Depth of Field", "Profundidade de campo"),
 -    ("Discord", "Discord"),
-+    ("Support", "Support"),
++    ("Support", "Apoiar"),
      ("Distribute Layers:", "Distribuir camadas:"),
      ("Don't Recover", "Não recuperar"),
      ("Don't Save", "Não salvar"),
@@ -4730,7 +4730,7 @@ index 3a4dd4a..0cb5287 100644
      ("Delete this template", "Odstranit tuto šablonu"),
      ("Depth of Field", "Hloubka ostrosti"),
 -    ("Discord", "Discord"),
-+    ("Support", "Support"),
++    ("Support", "Podpořit"),
      ("Distribute Layers:", "Rozmístit vrstvy:"),
      ("Don't Recover", "Neobnovovat"),
      ("Don't Save", "Neukládat"),
@@ -4817,7 +4817,7 @@ index 3a4dd4a..0cb5287 100644
      ("Delete this template", "Eliminar esta plantilla"),
      ("Depth of Field", "Profundidad de campo"),
 -    ("Discord", "Discord"),
-+    ("Support", "Support"),
++    ("Support", "Apoyar"),
      ("Distribute Layers:", "Distribuir capas:"),
      ("Don't Recover", "No recuperar"),
      ("Don't Save", "No guardar"),

@@ -6,7 +6,7 @@
     "product": "photo",
     "name": "Plervo Photo",
     "source_repository": "storytold/photocraft",
-    "release_version": "0.1.0-alpha.4",
+    "release_version": "0.1.0-alpha.5",
     "status": "preparing",
     "windows_upgrade_code": "2CB8F228-1AEE-55FC-AE4F-A896FE091593",
     "icons": [
@@ -117,7 +117,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.photocraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "cfe0605a179b1b9e068ab9f60b31e007c98c6ed992deb9df202dbaa77f3e77d7"
+    "patch_sha256": "e5f4c77f94eaa43bcf3086906124a9c3d269b3c4f20d996fec983d0740447800"
   },
   {
     "app": "vectorcraft",
@@ -126,7 +126,7 @@
     "product": "vector",
     "name": "Plervo Vector",
     "source_repository": "storytold/vectorcraft",
-    "release_version": "0.1.0-alpha.4",
+    "release_version": "0.1.0-alpha.5",
     "status": "preparing",
     "windows_upgrade_code": "4E77F4BC-EA07-505A-AC52-3B5CF0B63AFB",
     "icons": [
@@ -242,7 +242,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.vectorcraft.png"
     ],
     "fonts_commit": "3d9ab3a132ed0eff457e424226a435a901da30d3",
-    "patch_sha256": "427012cd2fb915c8af402195b3f4196c734382af55344b48596eaf5d2db79473"
+    "patch_sha256": "856242816112ef3ee4c4a673087383185f05c86863ad2948e1827230eb1da38f"
   },
   {
     "app": "filmcraft",
@@ -251,7 +251,7 @@
     "product": "video",
     "name": "Plervo Video",
     "source_repository": "storytold/filmcraft",
-    "release_version": "0.1.0-alpha.4",
+    "release_version": "0.1.0-alpha.5",
     "status": "preparing",
     "windows_upgrade_code": "530B6F84-F2AD-5386-BB7E-4C5F1598BC8F",
     "icons": [
@@ -375,7 +375,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.filmcraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "e3f122cf2f166f97ca2bb58bdc9067aaa08d5712a96f1e20e852c53aae00baed"
+    "patch_sha256": "b9fa759ab02d58dbba7dd780125ee90397962e6e2e25021d4e8b84867a0ed591"
   },
   {
     "app": "lightcraft",
@@ -384,7 +384,7 @@
     "product": "develop",
     "name": "Plervo Develop",
     "source_repository": "storytold/lightcraft",
-    "release_version": "0.1.0-alpha.4",
+    "release_version": "0.1.0-alpha.5",
     "status": "preparing",
     "windows_upgrade_code": "239494FA-3C4E-5882-B4D8-A9EE70FEB27F",
     "icons": [
@@ -504,7 +504,7 @@
       "packaging/macos/dmg/generate.py"
     ],
     "fonts_commit": "8dcdacd5153e64560d109541a47d806f26f048c0",
-    "patch_sha256": "1d9590487bf3afbf336e7d616326eb1ad131908a1694fa59c3da6529ef13a6b7"
+    "patch_sha256": "0cc3e9c3a57734a1cfd918d3f0af70573c88e0221484f0d21be6392c950b9049"
   },
   {
     "app": "effectcraft",
@@ -513,7 +513,7 @@
     "product": "motion",
     "name": "Plervo Motion",
     "source_repository": "storytold/effectcraft",
-    "release_version": "0.1.0-alpha.4",
+    "release_version": "0.1.0-alpha.5",
     "status": "preparing",
     "windows_upgrade_code": "42123901-2034-53E0-954A-732EA0A8BA53",
     "icons": [
@@ -637,7 +637,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.effectcraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "a265d9f2ff54b07a37e731a04916f7b5c608dfd3a0ac2c083845855ad7049bd5"
+    "patch_sha256": "9923e92d6173bdefebfebb3b9a9b0207ff3ac31b2ee1a52e4c4f42e2f486ce44"
   },
   {
     "app": "designcraft",
@@ -646,7 +646,7 @@
     "product": "publish",
     "name": "Plervo Publish",
     "source_repository": "storytold/designcraft",
-    "release_version": "0.1.0-alpha.4",
+    "release_version": "0.1.0-alpha.5",
     "status": "preparing",
     "windows_upgrade_code": "AE9CFB65-DD6A-5DC3-AEE0-7FF4FB70B2B0",
     "icons": [
@@ -762,7 +762,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.designcraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "471530232f666e1b7711fff4be6a926206bfc7b18cdd81343b34f4ccc40aecef"
+    "patch_sha256": "99ed2437ee08e82fc8eebef1b2491e416ebea52e517f1345f01fb3e319d26b72"
   },
   {
     "app": "wordcraft",
@@ -771,7 +771,7 @@
     "product": "write",
     "name": "Plervo Write",
     "source_repository": "storytold/wordcraft",
-    "release_version": "0.1.0-alpha.4",
+    "release_version": "0.1.0-alpha.5",
     "status": "preparing",
     "windows_upgrade_code": "CE064997-FB3B-5197-97DC-993B16D1FD1F",
     "icons": [
@@ -882,7 +882,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.wordcraft.png"
     ],
     "fonts_commit": "8dcdacd5153e64560d109541a47d806f26f048c0",
-    "patch_sha256": "8266dbaed5f107bcce02518b2bbbac4b2fdea2312fe82f575522f48b46711f19"
+    "patch_sha256": "d77441b425b005f2ab974856488df86ffbe4136d5084d74e2ac69a288a083e62"
   },
   {
     "app": "deckcraft",
@@ -891,7 +891,7 @@
     "product": "slides",
     "name": "Plervo Slides",
     "source_repository": "storytold/deckcraft",
-    "release_version": "0.1.0-alpha.4",
+    "release_version": "0.1.0-alpha.5",
     "status": "preparing",
     "windows_upgrade_code": "3334BC21-5855-5837-855E-F2387D7F5EF9",
     "icons": [
@@ -993,7 +993,7 @@
       "assets/app-icon/icon-source.deckcraft"
     ],
     "fonts_commit": "43913056ce82a3fdad0ef69f6b88d1dc922a8104",
-    "patch_sha256": "310b434f7eb0ffaa4f726846f32f954b7dcaba99888708960bedf849581cc582"
+    "patch_sha256": "d7d944dcf0336906cde98530ce98a562c6bf29d48b615d381a1edaff18010719"
   },
   {
     "app": "gridcraft",
@@ -1002,7 +1002,7 @@
     "product": "sheets",
     "name": "Plervo Sheets",
     "source_repository": "storytold/gridcraft",
-    "release_version": "0.1.0-alpha.4",
+    "release_version": "0.1.0-alpha.5",
     "status": "preparing",
     "windows_upgrade_code": "367F8F49-1509-5881-ADC8-508107C73287",
     "icons": [
@@ -1113,7 +1113,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.gridcraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "2c18ad02c5026e3addb26c0a2aa092277e5c90a6228b1d056ae9fabf50478f7b"
+    "patch_sha256": "f54f00319aa4239431a42346c7611991f24ba58963c484c2e470f2fa803dd7df"
   },
   {
     "app": "cadcraft",
@@ -1122,7 +1122,7 @@
     "product": "cad",
     "name": "Plervo CAD",
     "source_repository": "storytold/cadcraft",
-    "release_version": "0.1.0-alpha.4",
+    "release_version": "0.1.0-alpha.5",
     "status": "preparing",
     "windows_upgrade_code": "FEB394DD-66FC-5B23-8F72-4C5708917D40",
     "icons": [
@@ -1232,7 +1232,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.cadcraft.png"
     ],
     "fonts_commit": "3d9ab3a132ed0eff457e424226a435a901da30d3",
-    "patch_sha256": "d75511cd0082cee810aad68aa80ae667c96d6cfcfe2e83928674844742b17429"
+    "patch_sha256": "7710c87cb8a9688efcb32b22cac073d772cbea2a8c74781cde11485f0a475ebd"
   },
   {
     "app": "soundcraft",
@@ -1241,7 +1241,7 @@
     "product": "audio",
     "name": "Plervo Audio",
     "source_repository": "storytold/soundcraft",
-    "release_version": "0.1.0-alpha.4",
+    "release_version": "0.1.0-alpha.5",
     "status": "preparing",
     "windows_upgrade_code": "329B5207-506E-58CF-AE84-DA597DCE380B",
     "icons": [
@@ -1352,7 +1352,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.soundcraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "cfb06a710658fa431bf4b4f39e97d26bff22a6b09527320610b8ba684c6c0237"
+    "patch_sha256": "b5bdfb62e64dd364d7f8065d4c74a9eb5533f2bcbd3aeb8bc1fc54c52929ffb4"
   },
   {
     "app": "figcraft",
@@ -1361,7 +1361,7 @@
     "product": "canvas",
     "name": "Plervo Canvas",
     "source_repository": "storytold/figcraft",
-    "release_version": "0.1.0-alpha.4",
+    "release_version": "0.1.0-alpha.5",
     "status": "preparing",
     "windows_upgrade_code": "10B07941-A89D-5B5B-B651-B9B8970A85DC",
     "icons": [
@@ -1496,6 +1496,6 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.figcraft.png"
     ],
     "fonts_commit": "43913056ce82a3fdad0ef69f6b88d1dc922a8104",
-    "patch_sha256": "2cdfd433e8efbd9af5924342451d5a6e87c5ec0c92fb8247eee71ab5cf529633"
+    "patch_sha256": "e1c867a604c750229f027b771b445991727112ecef0c746b83ba8bd733b1a6a5"
   }
 ]

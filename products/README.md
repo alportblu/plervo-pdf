@@ -1,14 +1,21 @@
 # Plervo applications
 
 These twelve independent forks join Plervo PDF in the **13-app Plervo Suite**.
-All thirteen apps are available for Mac Apple Silicon and Linux x86_64 in
-[alpha.4](https://github.com/alportblu/plervo-pdf/releases/tag/v0.1.0-alpha.4).
+All thirteen apps have published packages for Mac Apple Silicon and Linux x86_64.
+The [release notes](https://github.com/alportblu/plervo-pdf/releases) identify the
+qualified version of each app; the Suite selects releases independently per app.
 Windows candidates remain internal while publisher signing and final signed-package
 acceptance are pending. Start with [Plervo Suite](https://plervo.com) to install apps.
 
 This directory records reproducible source inputs and candidate-build requirements.
 Passing a compile check does not qualify an app, installer, or platform for release.
 Current findings and remaining gates are recorded in [SECURITY-REVIEW.md](SECURITY-REVIEW.md).
+
+The development catalog targets alpha.5: visible optional Support actions in the
+application headers, localized through each app's existing language catalogs.
+All support actions point to https://buymeacoffee.com/alport and require a click.
+Earlier alpha.4 packages remain unchanged. New packages are published separately
+after native qualification, signing where required, and installation checks.
 
 | Product | Purpose | Public upstream |
 | --- | --- | --- |
@@ -42,7 +49,7 @@ The preparation command refuses dirty checkouts, unknown products, mismatched
 source/patch/icon hashes, traversal, and linked asset destinations. It stages the
 prepared snapshot for upstream asset-inventory gates, without creating a commit. It never
 downloads, installs, signs, or publishes an application. A candidate using the
-`0.1.0-alpha.4` version is not necessarily the qualified public package. The release's
+`0.1.0-alpha.5` version is not necessarily the qualified public package. The release's
 provenance and checksum manifests identify the exact published artifacts.
 
 ## Development validation
