@@ -319,12 +319,18 @@ impl SuiteApp {
             }
             ui.with_layout(egui::Layout::bottom_up(egui::Align::LEFT), |ui| {
                 ui.label(RichText::new(format!("Alpha · {}", env!("CARGO_PKG_VERSION"))).size(11.0).color(Color32::from_gray(180)));
-                ui.hyperlink_to(t("Support Plervo ↗", "Apoie o Plervo ↗", "Apoya Plervo ↗"), "https://buymeacoffee.com/alport");
                 ui.add_space(8.0);
                 ui.hyperlink_to(t("Visit website ↗", "Visitar site ↗", "Visitar web ↗"), "https://plervo.com");
             });
         });
         egui::CentralPanel::default().frame(egui::Frame::new().fill(PAPER).inner_margin(36)).show(root, |ui| {
+            ui.horizontal(|ui| {
+                ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
+                    if ui.button(t("Support", "Apoiar", "Apoyar")).on_hover_text("https://buymeacoffee.com/alport").clicked() {
+                        ui.ctx().open_url(egui::OpenUrl::new_tab("https://buymeacoffee.com/alport"));
+                    }
+                });
+            });
             ui.add_space(8.0);
             if self.settings {
                 ui.heading(RichText::new(t("Make it yours.", "Do seu jeito.", "A tu manera.")).size(34.0));
@@ -588,6 +594,30 @@ mod tests {
     fn harness() -> Harness<'static, SuiteApp> {
         let app = SuiteApp { system_language: Language::En, ..Default::default() };
         Harness::builder().with_size(egui::vec2(1000.0, 700.0)).build_ui_state(|ui, app| app.show(ui), app)
+    }
+    #[test]
+    fn support_is_visible_on_every_page_and_opens_only_after_click() {
+        for (language, label) in [(Language::En, "Support"), (Language::Pt, "Apoiar"), (Language::Es, "Apoyar")] {
+            for (settings, catalog) in [(false, false), (true, false), (false, true)] {
+                let app = SuiteApp { language, settings, catalog, ..Default::default() };
+                let mut h = Harness::builder().with_size(egui::vec2(760.0, 580.0)).build_ui_state(|ui, app: &mut SuiteApp| app.show(ui), app);
+                h.run_steps(2);
+                assert!(h.output().platform_output.commands.is_empty());
+                let button = h.get_by_role_and_label(egui::accesskit::Role::Button, label);
+                assert!(button.rect().max.y < 100.0);
+                button.click();
+                let mut urls = Vec::new();
+                for _ in 0..3 {
+                    h.run_steps(1);
+                    for command in &h.output().platform_output.commands {
+                        if let egui::OutputCommand::OpenUrl(url) = command {
+                            urls.push((url.url.clone(), url.new_tab));
+                        }
+                    }
+                }
+                assert_eq!(urls, [("https://buymeacoffee.com/alport".into(), true)]);
+            }
+        }
     }
     #[test]
     fn settings_offer_system_english_portuguese_and_spanish() {

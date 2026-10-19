@@ -73,7 +73,7 @@ index 4257a3a..5b7eade 100644
 +| `assets/app-icon/plervo-cad.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 4e4da3fc37c7f2856ad8ecb9bb339b901fab280c9f71ab7c4979d867c3fdcb6b |
 +| `assets/app-icon/plervo-cad.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 e0a88bd8bf36b8fad310476610a5460a112c07261585433e4a40c4a55a8b93f2 |
 diff --git a/Cargo.lock b/Cargo.lock
-index c054dcf..4520249 100644
+index c054dcf..4c3a406 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -545,49 +545,16 @@ version = "1.12.1"
@@ -116,7 +116,7 @@ index c054dcf..4520249 100644
  [[package]]
  name = "cadcraft-color"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "serde",
  ]
@@ -124,7 +124,7 @@ index c054dcf..4520249 100644
  [[package]]
  name = "cadcraft-constraints"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "cadcraft-doc",
   "cadcraft-geom",
@@ -133,7 +133,7 @@ index c054dcf..4520249 100644
  [[package]]
  name = "cadcraft-doc"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "cadcraft-color",
   "cadcraft-geom",
@@ -142,7 +142,7 @@ index c054dcf..4520249 100644
  [[package]]
  name = "cadcraft-dwg"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "acadrust",
  ]
@@ -150,7 +150,7 @@ index c054dcf..4520249 100644
  [[package]]
  name = "cadcraft-dxf"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "encoding_rs",
   "log",
@@ -159,7 +159,7 @@ index c054dcf..4520249 100644
  [[package]]
  name = "cadcraft-engine"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "cadcraft-color",
   "cadcraft-constraints",
@@ -168,7 +168,7 @@ index c054dcf..4520249 100644
  [[package]]
  name = "cadcraft-fonts"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "cadcraft-geom",
   "harfrust",
@@ -177,7 +177,7 @@ index c054dcf..4520249 100644
  [[package]]
  name = "cadcraft-geom"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "serde",
  ]
@@ -185,7 +185,7 @@ index c054dcf..4520249 100644
  [[package]]
  name = "cadcraft-io"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "cadcraft-color",
   "cadcraft-doc",
@@ -194,7 +194,7 @@ index c054dcf..4520249 100644
  [[package]]
  name = "cadcraft-mcp"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "cadcraft-engine",
   "cadcraft-io",
@@ -203,7 +203,7 @@ index c054dcf..4520249 100644
  [[package]]
  name = "cadcraft-render"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "cadcraft-color",
   "cadcraft-doc",
@@ -212,7 +212,7 @@ index c054dcf..4520249 100644
  [[package]]
  name = "cadcraft-ui-egui"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "cadcraft-color",
   "cadcraft-doc",
@@ -221,7 +221,7 @@ index c054dcf..4520249 100644
  [[package]]
  name = "cadcraft-web"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "cadcraft-engine",
   "cadcraft-io",
@@ -231,7 +231,7 @@ index c054dcf..4520249 100644
  
 +[[package]]
 +name = "plervo-cad"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "cadcraft-engine",
 + "cadcraft-io",
@@ -253,7 +253,7 @@ index c054dcf..4520249 100644
 +
 +[[package]]
 +name = "plervo-cad-cli"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "cadcraft-engine",
 + "cadcraft-io",
@@ -270,12 +270,12 @@ index c054dcf..4520249 100644
  [[package]]
  name = "xtask"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "serde_json",
  ]
 diff --git a/Cargo.toml b/Cargo.toml
-index 9632245..97b2fe0 100644
+index 9632245..32a633b 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -283,7 +283,7 @@ index 9632245..97b2fe0 100644
  
  [workspace.package]
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.90"
@@ -2371,7 +2371,7 @@ index c7ea384..804e0d0 100644
              ui.collapsing("Details", |ui| {
                  ui.label(RichText::new(&n.fault.message).color(t.text_dim).monospace());
 diff --git a/crates/ui-egui/src/chrome.rs b/crates/ui-egui/src/chrome.rs
-index 3e0860e..6bdf594 100644
+index 3e0860e..2f8b48c 100644
 --- a/crates/ui-egui/src/chrome.rs
 +++ b/crates/ui-egui/src/chrome.rs
 @@ -70,8 +70,8 @@ pub fn title_and_toolbar(app: &mut CadApp, ui: &mut egui::Ui) {
@@ -2385,7 +2385,20 @@ index 3e0860e..6bdf594 100644
              };
              // Centred on the traffic lights' centre line (the row's middle): with the system font
              // the capitals' middle is the text box's middle, so no optical nudge.
-@@ -523,7 +523,13 @@ pub fn start_page(app: &mut CadApp, ui: &mut egui::Ui) {
+@@ -91,6 +91,12 @@ pub fn title_and_toolbar(app: &mut CadApp, ui: &mut egui::Ui) {
+         }
+         if tb_h > 0.0 {
+             let row = Rect::from_min_size(pos2(r.left(), r.top() + title_h), vec2(r.width(), tb_h));
++            let support_width = ui.painter().layout_no_wrap(crate::tl!("Support").into(), egui::FontId::proportional(12.0), t.text).size().x + 24.0;
++            let support = Rect::from_min_size(pos2(row.right() - support_width - 12.0, row.center().y - 13.0), vec2(support_width, 26.0));
++            if ui.put(support, egui::Button::new(crate::tl!("Support"))).on_hover_text("https://buymeacoffee.com/alport").clicked() {
++                ui.ctx().open_url(egui::OpenUrl::new_tab("https://buymeacoffee.com/alport"));
++            }
++            let row = Rect::from_min_max(row.min, pos2(support.left() - 8.0, row.max.y));
+             let mut x = r.left() + if app.integrated_titlebar { 120.0 } else { 12.0 };
+             let size = 26.0;
+             let mut clicked = None;
+@@ -523,7 +529,13 @@ pub fn start_page(app: &mut CadApp, ui: &mut egui::Ui) {
      let left = Rect::from_min_size(r.min, vec2(300.0, r.height()));
      p.rect_filled(left, 0.0, t.chrome_dark);
      p.rect_filled(Rect::from_min_max(pos2(left.right(), r.top()), r.max), 0.0, t.chrome);
@@ -2516,7 +2529,7 @@ index 7388e5a..eb93ba1 100644
                  action = Action::Ok;
              }
 diff --git a/crates/ui-egui/src/i18n/ar.tsv b/crates/ui-egui/src/i18n/ar.tsv
-index dd25052..c0fc193 100644
+index dd25052..bd8d0b0 100644
 --- a/crates/ui-egui/src/i18n/ar.tsv
 +++ b/crates/ui-egui/src/i18n/ar.tsv
 @@ -1,6 +1,6 @@
@@ -2585,8 +2598,13 @@ index dd25052..c0fc193 100644
  	Radius	نصف القطر
  	Raster Image	صورة نقطية
  	Ray	شعاع
+@@ -1233,3 +1232,4 @@ menu	Modify	تعديل
+ menu	View	عرض
+ @plural	{n} commit	{n} إيداع|{n} إيداع|{n} إيداعان|{n} إيداعات|{n} إيداعاً|{n} إيداع
+ @plural	{n} contributor	{n} مساهم|{n} مساهم|{n} مساهمان|{n} مساهمين|{n} مساهماً|{n} مساهم
++	Support	ادعم
 diff --git a/crates/ui-egui/src/i18n/cs.tsv b/crates/ui-egui/src/i18n/cs.tsv
-index 1c94d73..0e0a326 100644
+index 1c94d73..81bf748 100644
 --- a/crates/ui-egui/src/i18n/cs.tsv
 +++ b/crates/ui-egui/src/i18n/cs.tsv
 @@ -1,6 +1,6 @@
@@ -2671,8 +2689,13 @@ index 1c94d73..0e0a326 100644
  	More toolbar commands	Další příkazy panelu nástrojů
  menu	View	Zobrazení
  menu	Draw	Kreslení
+@@ -1217,3 +1216,4 @@ menu	Modify	Modifikace
+ 	Search for pattern	Hledat vzor
+ 	Not a number or distance: {text}	Není číslo ani vzdálenost: {text}
+ 	Query Texts	Dotaz na texty
++	Support	Podpořit
 diff --git a/crates/ui-egui/src/i18n/de.tsv b/crates/ui-egui/src/i18n/de.tsv
-index bd1f77d..bab0db5 100644
+index bd1f77d..7a2b6d3 100644
 --- a/crates/ui-egui/src/i18n/de.tsv
 +++ b/crates/ui-egui/src/i18n/de.tsv
 @@ -1,6 +1,6 @@
@@ -2739,8 +2762,13 @@ index bd1f77d..bab0db5 100644
  	Hide Others	Andere ausblenden
  	Accessibility	Bedienungshilfen
  	Show System Cursor	Systemzeiger anzeigen
+@@ -1034,3 +1033,4 @@
+ 	Justify	Blocksatz
+ 	Text color	Textfarbe
+ 	Click the ruler to add a tab stop, right-click to remove one	Klick auf das Lineal setzt einen Tabstopp, Rechtsklick entfernt ihn
++	Support	Unterstützen
 diff --git a/crates/ui-egui/src/i18n/es.tsv b/crates/ui-egui/src/i18n/es.tsv
-index f4ad008..21f55cf 100644
+index f4ad008..931effd 100644
 --- a/crates/ui-egui/src/i18n/es.tsv
 +++ b/crates/ui-egui/src/i18n/es.tsv
 @@ -1,6 +1,6 @@
@@ -2811,8 +2839,13 @@ index f4ad008..21f55cf 100644
  	Hide Others	Ocultar otros
  	Accessibility	Accesibilidad
  	Show System Cursor	Mostrar cursor del sistema
+@@ -1243,3 +1242,4 @@
+ 	Search for pattern	Buscar patrón
+ 	Not a number or distance: {text}	No es un número ni una distancia: {text}
+ 	Query Texts	Consultar textos
++	Support	Apoyar
 diff --git a/crates/ui-egui/src/i18n/fr.tsv b/crates/ui-egui/src/i18n/fr.tsv
-index eeb6a21..773aaf0 100644
+index eeb6a21..da692e9 100644
 --- a/crates/ui-egui/src/i18n/fr.tsv
 +++ b/crates/ui-egui/src/i18n/fr.tsv
 @@ -1,6 +1,6 @@
@@ -2879,8 +2912,13 @@ index eeb6a21..773aaf0 100644
  	Hide Others	Masquer les autres
  	Accessibility	Accessibilité
  	Show System Cursor	Afficher le curseur système
+@@ -1007,3 +1006,4 @@
+ 	Search for pattern	Rechercher un motif
+ 	Not a number or distance: {text}	Ni un nombre ni une distance : {text}
+ 	Query Texts	Interroger les textes
++	Support	Soutenir
 diff --git a/crates/ui-egui/src/i18n/it.tsv b/crates/ui-egui/src/i18n/it.tsv
-index d95d323..774943a 100644
+index d95d323..d8b89fc 100644
 --- a/crates/ui-egui/src/i18n/it.tsv
 +++ b/crates/ui-egui/src/i18n/it.tsv
 @@ -1,6 +1,6 @@
@@ -2956,8 +2994,13 @@ index d95d323..774943a 100644
  	Hide Others	Nascondi altre
  	Accessibility	Accessibilità
  	Show System Cursor	Mostra cursore di sistema
+@@ -1237,3 +1236,4 @@ menu	Modify	Edita
+ 	Search for pattern	Cerca modello
+ 	Run Script...	Esegui script...
+ 	Select closed objects (regions, closed polylines, circles).	Selezionare oggetti chiusi (regioni, polilinee chiuse, cerchi).
++	Support	Sostieni
 diff --git a/crates/ui-egui/src/i18n/ko.tsv b/crates/ui-egui/src/i18n/ko.tsv
-index d60c7e1..1226e52 100644
+index d60c7e1..1d6868d 100644
 --- a/crates/ui-egui/src/i18n/ko.tsv
 +++ b/crates/ui-egui/src/i18n/ko.tsv
 @@ -1,6 +1,6 @@
@@ -3033,7 +3076,7 @@ index d60c7e1..1226e52 100644
  	Hide Others	다른 앱 숨기기
  	Accessibility	접근성
  	Show System Cursor	시스템 커서 표시
-@@ -1233,7 +1232,7 @@
+@@ -1233,8 +1232,9 @@
  	X	X
  	Y	Y
  	B	B
@@ -3042,8 +3085,10 @@ index d60c7e1..1226e52 100644
  menu	View	보기
  menu	Draw	그리기
  menu	Dimension	치수
+ menu	Modify	수정
++	Support	후원
 diff --git a/crates/ui-egui/src/i18n/pt_br.tsv b/crates/ui-egui/src/i18n/pt_br.tsv
-index 0d0e3f7..60817ed 100644
+index 0d0e3f7..7b9a87d 100644
 --- a/crates/ui-egui/src/i18n/pt_br.tsv
 +++ b/crates/ui-egui/src/i18n/pt_br.tsv
 @@ -1,6 +1,6 @@
@@ -3083,7 +3128,7 @@ index 0d0e3f7..60817ed 100644
  	Join	Unir
 -	Join the ArtCraft Discord…	Entrar no Discord do ArtCraft…
 -	Join us on Discord	Junte-se a nós no Discord
-+	Support Plervo	Apoiar a Plervo
++	Support Plervo	Apoiar o Plervo
  	Keep the system cursor visible over the drawing area	Manter o cursor do sistema visível sobre a área de desenho
  	Language	Idioma
  	Largest array	Matriz maior
@@ -3114,8 +3159,13 @@ index 0d0e3f7..60817ed 100644
  	Hide Others	Ocultar outros
  	Accessibility	Acessibilidade
  	Show System Cursor	Exibir cursor do sistema
+@@ -1244,3 +1243,4 @@
+ 	Query Texts	Consultar textos
+ 	Run Script...	Executar script...
+ 	Not a number or distance: {text}	Não é um número nem uma distância: {text}
++	Support	Apoiar
 diff --git a/crates/ui-egui/src/i18n/ru.tsv b/crates/ui-egui/src/i18n/ru.tsv
-index f6b1ae7..c396ec9 100644
+index f6b1ae7..c35c468 100644
 --- a/crates/ui-egui/src/i18n/ru.tsv
 +++ b/crates/ui-egui/src/i18n/ru.tsv
 @@ -1,6 +1,6 @@
@@ -3182,8 +3232,13 @@ index f6b1ae7..c396ec9 100644
  	Hide Others	Скрыть остальные
  	Accessibility	Специальные возможности
  	Show System Cursor	Показывать системный курсор
+@@ -1008,3 +1007,4 @@
+ 	Sheet Books to PDF...	Книги листов в PDF...
+ 	Not a number or distance: {text}	Не число и не расстояние: {text}
+ 	Query Texts	Запрос текстов
++	Support	Поддержать
 diff --git a/crates/ui-egui/src/i18n/sv.tsv b/crates/ui-egui/src/i18n/sv.tsv
-index 8a2e5eb..e01e082 100644
+index 8a2e5eb..345734c 100644
 --- a/crates/ui-egui/src/i18n/sv.tsv
 +++ b/crates/ui-egui/src/i18n/sv.tsv
 @@ -1,6 +1,6 @@
@@ -3254,6 +3309,11 @@ index 8a2e5eb..e01e082 100644
  	Hide Others	Dölj övriga
  	Accessibility	Tillgänglighet
  	Show System Cursor	Visa systemets muspekare
+@@ -1245,3 +1244,4 @@ menu	View	Visa
+ menu	Draw	Rita
+ menu	Dimension	Måttsättning
+ menu	Modify	Ändra
++	Support	Stöd
 diff --git a/crates/ui-egui/src/i18n/tests.rs b/crates/ui-egui/src/i18n/tests.rs
 index 15de435..fa08c2f 100644
 --- a/crates/ui-egui/src/i18n/tests.rs
@@ -3304,7 +3364,7 @@ index 15de435..fa08c2f 100644
          ("layers", "Hantera lageregenskaper"),
          ("qselect", "Snabbmarkering"),
 diff --git a/crates/ui-egui/src/i18n/uk.tsv b/crates/ui-egui/src/i18n/uk.tsv
-index adce43a..8ec8d15 100644
+index adce43a..5ced20f 100644
 --- a/crates/ui-egui/src/i18n/uk.tsv
 +++ b/crates/ui-egui/src/i18n/uk.tsv
 @@ -1,6 +1,6 @@
@@ -3380,8 +3440,13 @@ index adce43a..8ec8d15 100644
  	Hide Others	Приховати інші
  	Accessibility	Спеціальні можливості
  	Show System Cursor	Показувати системний курсор
+@@ -1330,3 +1329,4 @@
+ 	Justify	За шириною
+ 	Text color	Колір тексту
+ 	Click the ruler to add a tab stop, right-click to remove one	Натисніть на лінійку, щоб додати табуляцію; права кнопка видаляє її
++	Support	Підтримати
 diff --git a/crates/ui-egui/src/i18n/zh.tsv b/crates/ui-egui/src/i18n/zh.tsv
-index af691a8..acdf8c1 100644
+index af691a8..a25ede0 100644
 --- a/crates/ui-egui/src/i18n/zh.tsv
 +++ b/crates/ui-egui/src/i18n/zh.tsv
 @@ -1,6 +1,6 @@
@@ -3457,6 +3522,11 @@ index af691a8..acdf8c1 100644
  	Reset to Defaults	恢复默认设置
  	Copy as JSON	复制为 JSON
  	Reset keeps the interface language.	重置时会保留界面语言。
+@@ -1116,3 +1115,4 @@
+ 	Polar angle measurement	极轴角测量
+ 	Relative to last segment	相对于上一线段
+ 	Show command prompting near the crosshairs	在光标附近显示命令提示
++	Support	支持
 diff --git a/crates/ui-egui/src/icons.rs b/crates/ui-egui/src/icons.rs
 index e0e2389..9f1994b 100644
 --- a/crates/ui-egui/src/icons.rs
@@ -3477,7 +3547,7 @@ index e0e2389..9f1994b 100644
      let t = Tokens::get();
      let visuals = |fill| ButtonVisuals { fill, stroke: Stroke::NONE, icon: t.icon };
 diff --git a/crates/ui-egui/src/lib.rs b/crates/ui-egui/src/lib.rs
-index 91c48e5..b58b9dc 100644
+index 91c48e5..0b0f984 100644
 --- a/crates/ui-egui/src/lib.rs
 +++ b/crates/ui-egui/src/lib.rs
 @@ -1,4 +1,4 @@
@@ -3513,6 +3583,13 @@ index 91c48e5..b58b9dc 100644
          assert!(a.run("ui.saveformat", json!({ "format": "pdf" })).is_err());
          assert_eq!(a.run("ui.saveformat", json!({ "format": "DWG" })).ok(), Some(json!({ "saveFormat": "dwg" })));
          assert_eq!(a.run("ui.saveformat", json!({})).ok(), Some(json!({ "saveFormat": "dwg" })), "no format: report it");
+@@ -848,3 +848,6 @@ mod tests {
+         assert_eq!(ui.save_format, SaveFormat::Dwg);
+     }
+ }
++
++#[cfg(test)]
++mod plervo_support_tests;
 diff --git a/crates/ui-egui/src/menus.rs b/crates/ui-egui/src/menus.rs
 index 9672270..79bd2b2 100644
 --- a/crates/ui-egui/src/menus.rs
@@ -3561,6 +3638,73 @@ index 852b065..3b39d5e 100644
  //! OPTIONS opens the Options dialog ([`dialog`]). A JSON call never opens it: `options {}` reports
  //! every preference and `options {"PICKBOX": 5, "modelBackground": "#ffffff"}` changes some (all
  //! or nothing; `"reset": true` restores the defaults first). Upper-case names are the engine's
+diff --git a/crates/ui-egui/src/plervo_support_tests.rs b/crates/ui-egui/src/plervo_support_tests.rs
+new file mode 100644
+index 0000000..80b2269
+--- /dev/null
++++ b/crates/ui-egui/src/plervo_support_tests.rs
+@@ -0,0 +1,61 @@
++//! The support action is visible in the header and opens only after a deliberate click.
++use egui::{Event, Modifiers, PointerButton, Pos2, RawInput, Rect, vec2};
++
++fn support_text(shapes: &[egui::epaint::ClippedShape]) -> Option<Rect> {
++    fn find(shape: &egui::epaint::Shape) -> Option<Rect> {
++        match shape {
++            egui::epaint::Shape::Text(text)
++                if ["Support", "Apoiar", "Apoyar", "Soutenir", "Unterstützen", "支援", "支持", "후원"].contains(&text.galley.job.text.as_str()) =>
++            {
++                Some(Rect::from_min_size(text.pos, text.galley.size()))
++            }
++            egui::epaint::Shape::Vec(shapes) => shapes.iter().find_map(find),
++            _ => None,
++        }
++    }
++    shapes.iter().find_map(|s| find(&s.shape).filter(|r| s.clip_rect.contains_rect(*r)))
++}
++
++#[test]
++fn support_header_is_visible_and_opens_only_the_donation_page() {
++    for width in [1024.0, 1440.0] {
++        for native in [false, true] {
++            let _ = native;
++            let ctx = egui::Context::default();
++            let mut app = crate::CadApp::new(cadcraft_engine::Session::new(), crate::Services::default());
++            crate::theme::install_fonts(&ctx, "en");
++            app.integrated_titlebar = native;
++            let mut frame = |events| {
++                ctx.run_ui(RawInput { screen_rect: Some(Rect::from_min_size(Pos2::ZERO, vec2(width, 720.0))), events, ..Default::default() }, |ui| {
++                    crate::i18n::with_language("en", || crate::chrome::title_and_toolbar(&mut app, ui));
++                })
++            };
++            let mut output = frame(vec![]);
++            for _ in 0..3 {
++                output = frame(vec![]);
++            }
++            assert!(output.platform_output.commands.is_empty(), "drawing the bar must not open a browser");
++            let text = support_text(&output.shapes).expect("support label must be visible");
++            assert!(text.min.x >= 0.0 && text.max.x <= width && text.max.y <= 100.0, "{text:?}");
++            let pos = text.center();
++            frame(vec![
++                Event::PointerMoved(pos),
++                Event::PointerButton { pos, button: PointerButton::Primary, pressed: true, modifiers: Modifiers::NONE },
++            ]);
++            let output = frame(vec![
++                Event::PointerMoved(pos),
++                Event::PointerButton { pos, button: PointerButton::Primary, pressed: false, modifiers: Modifiers::NONE },
++            ]);
++            let urls: Vec<_> = output
++                .platform_output
++                .commands
++                .iter()
++                .filter_map(|command| match command {
++                    egui::OutputCommand::OpenUrl(url) => Some((url.url.as_str(), url.new_tab)),
++                    _ => None,
++                })
++                .collect();
++            assert_eq!(urls, [("https://buymeacoffee.com/alport", true)]);
++        }
++    }
++}
 diff --git a/crates/ui-egui/src/theme.rs b/crates/ui-egui/src/theme.rs
 index 9064b92..5893ad5 100644
 --- a/crates/ui-egui/src/theme.rs

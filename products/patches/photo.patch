@@ -49,7 +49,7 @@ index 227aee8..ab0fff3 100644
 +
 +| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | efa30dd6b6cc09a5b65932243098832aabc84cf06909f1c5cd207b19c60d07df |
 diff --git a/Cargo.lock b/Cargo.lock
-index 54085cf..9bac28d 100644
+index 54085cf..bd936ec 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -849,7 +849,7 @@ dependencies = [
@@ -256,7 +256,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-affinity"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "crc32fast",
   "flate2",
@@ -265,7 +265,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-algo"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "photocraft-color",
   "photocraft-geom",
@@ -274,7 +274,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-automation"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "base64 0.22.1",
   "cap-std",
@@ -299,7 +299,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-cms"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "moxcms",
   "rayon",
@@ -308,7 +308,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-codecs"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "exr",
   "flate2",
@@ -325,7 +325,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-color"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "photocraft-cms",
   "serde",
@@ -334,7 +334,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-compose"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "criterion",
   "photocraft-color",
@@ -343,7 +343,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-doc"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "photocraft-color",
   "photocraft-geom",
@@ -352,7 +352,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-engine"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "blake3",
   "craft-print",
@@ -370,7 +370,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-format"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "blake3",
   "crc32fast",
@@ -379,7 +379,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-geom"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "serde",
  ]
@@ -387,7 +387,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-gpu"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "half",
   "log",
@@ -396,7 +396,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-heif"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "heic-rs",
  ]
@@ -404,7 +404,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-io"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "blake3",
   "crc32fast",
@@ -423,7 +423,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-ops"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "photocraft-doc",
  ]
@@ -431,7 +431,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-paint"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "photocraft-color",
   "photocraft-geom",
@@ -440,7 +440,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-plugins"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "photocraft-color",
   "photocraft-geom",
@@ -449,7 +449,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-psd"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "flate2",
   "photocraft-psd",
@@ -458,7 +458,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-raster"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "photocraft-color",
   "photocraft-geom",
@@ -467,7 +467,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-raw"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "flate2",
   "image",
@@ -485,7 +485,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-tablet"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "block2 0.6.2",
   "objc2 0.6.4",
@@ -494,7 +494,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-testkit"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "memory-stats",
   "photocraft-color",
@@ -503,7 +503,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-text"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "flate2",
   "parley",
@@ -512,7 +512,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-ui-egui"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "base64 0.22.1",
   "craft-print",
@@ -521,7 +521,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-vector"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "photocraft-color",
   "photocraft-doc",
@@ -530,7 +530,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "photocraft-web"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "eframe",
   "egui",
@@ -540,7 +540,7 @@ index 54085cf..9bac28d 100644
  
 +[[package]]
 +name = "plervo-photo"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "arboard",
 + "async-io",
@@ -584,7 +584,7 @@ index 54085cf..9bac28d 100644
 +
 +[[package]]
 +name = "plervo-photo-cli"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "photocraft-automation",
 + "photocraft-codecs",
@@ -930,7 +930,7 @@ index 54085cf..9bac28d 100644
  [[package]]
  name = "xtask"
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "serde",
   "serde_json",
@@ -993,7 +993,7 @@ index 54085cf..9bac28d 100644
  
  [[package]]
 diff --git a/Cargo.toml b/Cargo.toml
-index 663d268..974c740 100644
+index 663d268..4218118 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -1001,7 +1001,7 @@ index 663d268..974c740 100644
  
  [workspace.package]
 -version = "0.9.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.95"
@@ -5596,7 +5596,7 @@ index a27cb4a..ee930ea 100644
  	ICO is limited to 256 × 256 pixels	ICO jest ograniczony do 256 × 256 pikseli
 +	Support	Wesprzyj
 diff --git a/crates/ui-egui/src/i18n/pt-br.tsv b/crates/ui-egui/src/i18n/pt-br.tsv
-index 0a64497..3eed9b4 100644
+index 0a64497..d246d99 100644
 --- a/crates/ui-egui/src/i18n/pt-br.tsv
 +++ b/crates/ui-egui/src/i18n/pt-br.tsv
 @@ -12,7 +12,7 @@
@@ -5621,7 +5621,7 @@ index 0a64497..3eed9b4 100644
 +	Plervo Photo Website	Site do Plervo Photo
 +	Plervo Photo on GitHub	Plervo Photo no GitHub
 +	Plervo Website	Site do Plervo
-+	Support Plervo	Apoiar a Plervo
++	Support Plervo	Apoiar o Plervo
  	Report an Issue…	Relatar um problema…
  	WIA Support…	Suporte a WIA…
  	Apply	Aplicar
@@ -5931,7 +5931,7 @@ index 2dbbf40..a468796 100644
  	Length	Длина
 +	Support	Поддержать
 diff --git a/crates/ui-egui/src/i18n/sr.tsv b/crates/ui-egui/src/i18n/sr.tsv
-index 4a5f745..2caa3d4 100644
+index 4a5f745..5901241 100644
 --- a/crates/ui-egui/src/i18n/sr.tsv
 +++ b/crates/ui-egui/src/i18n/sr.tsv
 @@ -18,7 +18,7 @@
@@ -6136,7 +6136,7 @@ index 4a5f745..2caa3d4 100644
  	Ink Characteristics	Karakteristike mastila
  	Solidity:	Punoća:
  	Redrawing	Ponovno iscrtavanje
-+	Support	Podrži
++	Support	Подржи
 diff --git a/crates/ui-egui/src/i18n/tr.tsv b/crates/ui-egui/src/i18n/tr.tsv
 index 01c37a1..50e956b 100644
 --- a/crates/ui-egui/src/i18n/tr.tsv

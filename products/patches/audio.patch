@@ -55,7 +55,7 @@ index 084f424..8cf23d4 100644
 +
 +| `assets/app-icon/README.md` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | bc72ba46054b6e875abc4424dbddb9f2e5999cd8f27052a3c0ededc04802a827 |
 diff --git a/Cargo.lock b/Cargo.lock
-index b8eb765..1a2ba9f 100644
+index b8eb765..320b467 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -2858,6 +2858,35 @@ version = "0.2.3"
@@ -64,7 +64,7 @@ index b8eb765..1a2ba9f 100644
  
 +[[package]]
 +name = "plervo-audio"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "eframe",
 + "egui",
@@ -82,7 +82,7 @@ index b8eb765..1a2ba9f 100644
 +
 +[[package]]
 +name = "plervo-audio-cli"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "serde_json",
 + "soundcraft-audio-io",
@@ -119,7 +119,7 @@ index b8eb765..1a2ba9f 100644
  [[package]]
  name = "soundcraft-au-host"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "log",
   "serde",
@@ -128,7 +128,7 @@ index b8eb765..1a2ba9f 100644
  [[package]]
  name = "soundcraft-audio-io"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "log",
   "proptest",
@@ -137,7 +137,7 @@ index b8eb765..1a2ba9f 100644
  [[package]]
  name = "soundcraft-automation"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "log",
   "serde_json",
@@ -146,7 +146,7 @@ index b8eb765..1a2ba9f 100644
  [[package]]
  name = "soundcraft-clap-host"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "clap-sys",
   "libloading",
@@ -168,7 +168,7 @@ index b8eb765..1a2ba9f 100644
  [[package]]
  name = "soundcraft-dsp"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "log",
   "proptest",
@@ -177,7 +177,7 @@ index b8eb765..1a2ba9f 100644
  [[package]]
  name = "soundcraft-engine"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "log",
   "proptest",
@@ -186,7 +186,7 @@ index b8eb765..1a2ba9f 100644
  [[package]]
  name = "soundcraft-midi"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "proptest",
   "serde",
@@ -195,7 +195,7 @@ index b8eb765..1a2ba9f 100644
  [[package]]
  name = "soundcraft-mix"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "log",
   "rayon",
@@ -204,7 +204,7 @@ index b8eb765..1a2ba9f 100644
  [[package]]
  name = "soundcraft-model"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "proptest",
   "serde",
@@ -213,7 +213,7 @@ index b8eb765..1a2ba9f 100644
  [[package]]
  name = "soundcraft-playback"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "cpal",
   "log",
@@ -222,7 +222,7 @@ index b8eb765..1a2ba9f 100644
  [[package]]
  name = "soundcraft-time"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "proptest",
   "serde",
@@ -231,7 +231,7 @@ index b8eb765..1a2ba9f 100644
  [[package]]
  name = "soundcraft-ui-egui"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "craft-ui",
   "egui",
@@ -240,7 +240,7 @@ index b8eb765..1a2ba9f 100644
  [[package]]
  name = "soundcraft-video"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "image",
   "proptest",
@@ -249,7 +249,7 @@ index b8eb765..1a2ba9f 100644
  [[package]]
  name = "soundcraft-vst3-host"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "libloading",
   "log",
@@ -258,7 +258,7 @@ index b8eb765..1a2ba9f 100644
  [[package]]
  name = "soundcraft-web"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "eframe",
   "egui",
@@ -267,7 +267,7 @@ index b8eb765..1a2ba9f 100644
  [[package]]
  name = "xtask"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "serde_json",
  ]
@@ -284,7 +284,7 @@ index b8eb765..1a2ba9f 100644
   "crc32fast",
   "indexmap",
 diff --git a/Cargo.toml b/Cargo.toml
-index 362e6a9..ba11852 100644
+index 362e6a9..23da0f4 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -292,7 +292,7 @@ index 362e6a9..ba11852 100644
  
  [workspace.package]
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.90"
@@ -2147,7 +2147,7 @@ index 55953ff..9b30e19 100644
  
  use egui::{Color32, Painter, Pos2, Rect, Shape, Stroke, pos2, vec2};
 diff --git a/crates/ui-egui/src/lib.rs b/crates/ui-egui/src/lib.rs
-index ddd5427..f4985d5 100644
+index ddd5427..46a8abe 100644
 --- a/crates/ui-egui/src/lib.rs
 +++ b/crates/ui-egui/src/lib.rs
 @@ -1,4 +1,4 @@
@@ -2186,8 +2186,26 @@ index ddd5427..f4985d5 100644
              ),
              OutputTrouble::Gone => {
                  (format!("“{name}” was disconnected"), "Plug it back in, then use Reconnect audio device in Setup ▸ Playback Engine.")
+@@ -1217,9 +1217,7 @@ impl SoundApp {
+         }
+         shortcuts::handle(self, &ctx);
+         self.sample_drop_targets.clear();
+-        if !self.native_menu_bar {
+-            menus::menu_bar(self, ui);
+-        }
++        menus::menu_bar(self, ui);
+         // With the Mix window in its own native window, the main window keeps Edit.
+         match if self.ui.mix_separate { MainWindow::Edit } else { self.ui.window } {
+             MainWindow::Edit => edit_window::show(self, ui),
+@@ -1568,3 +1566,6 @@ mod tests {
+         assert!((speed(&app) - 1.0).abs() < 1e-3, "a half-speed pass that ends on its own restores full speed");
+     }
+ }
++
++#[cfg(test)]
++mod plervo_support_tests;
 diff --git a/crates/ui-egui/src/menus.rs b/crates/ui-egui/src/menus.rs
-index 9eef0b2..7cbf65c 100644
+index 9eef0b2..c5e75e9 100644
 --- a/crates/ui-egui/src/menus.rs
 +++ b/crates/ui-egui/src/menus.rs
 @@ -23,7 +23,7 @@ pub const UI_COMMANDS: &[(&str, &str, &str, Option<&str>)] = &[
@@ -2199,18 +2217,104 @@ index 9eef0b2..7cbf65c 100644
      ("window.close", "Close Window", "Window > Close Window", Some("Cmd+W")),
      ("window.hide_floating", "Hide All Floating Windows", "Window > Hide All Floating Windows", Some("Cmd+Ctrl+W")),
      ("window.midi_editor", "MIDI Editor", "Window > MIDI Editor", None),
-@@ -220,8 +220,8 @@ pub fn menu_bar(app: &mut SoundApp, ui: &mut egui::Ui) {
+@@ -220,47 +220,49 @@ pub fn menu_bar(app: &mut SoundApp, ui: &mut egui::Ui) {
          ui,
          |ui| {
              egui::MenuBar::new().ui(ui, |ui| {
 -                ui.menu_button("SoundCraft", |ui| {
 -                    if ui.button("About SoundCraft").clicked() {
-+                ui.menu_button("Plervo Audio", |ui| {
-+                    if ui.button("About Plervo Audio").clicked() {
-                         app.ui.show_about = true;
-                     }
-                     if ui.button("Session Info").clicked() {
-@@ -405,7 +405,7 @@ fn params_for(path: &str, id: &str) -> Value {
+-                        app.ui.show_about = true;
+-                    }
+-                    if ui.button("Session Info").clicked() {
+-                        app.ui.show_session_info = true;
+-                    }
+-                    if ui.button("Session Audio Health").clicked() {
+-                        let _ = app.run("window.audio_health", json!({"value": true}));
+-                    }
+-                    ui.separator();
+-                    if ui.button("Quit").clicked() {
+-                        let _ = crate::dialogs::run_or_ask(app, "app.quit", json!({}));
+-                    }
+-                });
+-                let extra = ui_aliases();
+-                for root in tree() {
+-                    ui.menu_button(&root.label, |ui| {
+-                        for c in &root.children {
+-                            menu_node(app, ui, c, &extra);
+-                            if c.path == "File > Open" {
+-                                crate::recent::menu(app, ui);
+-                            }
++                if !app.native_menu_bar {
++                    ui.menu_button("Plervo Audio", |ui| {
++                        if ui.button("About Plervo Audio").clicked() {
++                            app.ui.show_about = true;
+                         }
+-                        if root.label == "AudioSuite" {
+-                            ui.separator();
+-                            ui.label(egui::RichText::new("Processes selected clips offline").small().color(t.text_dim));
++                        if ui.button("Session Info").clicked() {
++                            app.ui.show_session_info = true;
+                         }
+-                        if root.label == "Window" {
+-                            ui.separator();
+-                            let mut separate = app.ui.mix_separate;
+-                            if ui
+-                                .checkbox(&mut separate, "Mix in Separate Window")
+-                                .on_hover_text("Show Edit and Mix at once, e.g. one per monitor")
+-                                .changed()
+-                            {
+-                                let _ = run_ui_command(app, "window.mix_separate", &json!({"value": separate}));
+-                                ui.close();
+-                            }
++                        if ui.button("Session Audio Health").clicked() {
++                            let _ = app.run("window.audio_health", json!({"value": true}));
++                        }
++                        ui.separator();
++                        if ui.button("Quit").clicked() {
++                            let _ = crate::dialogs::run_or_ask(app, "app.quit", json!({}));
+                         }
+                     });
++                    let extra = ui_aliases();
++                    for root in tree() {
++                        ui.menu_button(&root.label, |ui| {
++                            for c in &root.children {
++                                menu_node(app, ui, c, &extra);
++                                if c.path == "File > Open" {
++                                    crate::recent::menu(app, ui);
++                                }
++                            }
++                            if root.label == "AudioSuite" {
++                                ui.separator();
++                                ui.label(egui::RichText::new("Processes selected clips offline").small().color(t.text_dim));
++                            }
++                            if root.label == "Window" {
++                                ui.separator();
++                                let mut separate = app.ui.mix_separate;
++                                if ui
++                                    .checkbox(&mut separate, "Mix in Separate Window")
++                                    .on_hover_text("Show Edit and Mix at once, e.g. one per monitor")
++                                    .changed()
++                                {
++                                    let _ = run_ui_command(app, "window.mix_separate", &json!({"value": separate}));
++                                    ui.close();
++                                }
++                            }
++                        });
++                    }
+                 }
+                 let title = format!(
+                     "{}{}  —  {}",
+@@ -269,6 +271,9 @@ pub fn menu_bar(app: &mut SoundApp, ui: &mut egui::Ui) {
+                     if app.ui.window == MainWindow::Edit || app.ui.mix_separate { "Edit" } else { "Mix" }
+                 );
+                 ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
++                    if ui.button("Support").on_hover_text("https://buymeacoffee.com/alport").clicked() {
++                        ui.ctx().open_url(egui::OpenUrl::new_tab("https://buymeacoffee.com/alport"));
++                    }
+                     ui.label(egui::RichText::new(title).color(t.text_dim));
+                 });
+             });
+@@ -405,7 +410,7 @@ fn params_for(path: &str, id: &str) -> Value {
      }
  }
  
@@ -2249,6 +2353,72 @@ index dda31ce..168bb06 100644
              }
          }
      });
+diff --git a/crates/ui-egui/src/plervo_support_tests.rs b/crates/ui-egui/src/plervo_support_tests.rs
+new file mode 100644
+index 0000000..6e6447c
+--- /dev/null
++++ b/crates/ui-egui/src/plervo_support_tests.rs
+@@ -0,0 +1,60 @@
++//! The support action is visible in the header and opens only after a deliberate click.
++use egui::{Event, Modifiers, PointerButton, Pos2, RawInput, Rect, vec2};
++
++fn support_text(shapes: &[egui::epaint::ClippedShape]) -> Option<Rect> {
++    fn find(shape: &egui::epaint::Shape) -> Option<Rect> {
++        match shape {
++            egui::epaint::Shape::Text(text)
++                if ["Support", "Apoiar", "Apoyar", "Soutenir", "Unterstützen", "支援", "支持", "후원"].contains(&text.galley.job.text.as_str()) =>
++            {
++                Some(Rect::from_min_size(text.pos, text.galley.size()))
++            }
++            egui::epaint::Shape::Vec(shapes) => shapes.iter().find_map(find),
++            _ => None,
++        }
++    }
++    shapes.iter().find_map(|s| find(&s.shape).filter(|r| s.clip_rect.contains_rect(*r)))
++}
++
++#[test]
++fn support_header_is_visible_and_opens_only_the_donation_page() {
++    for width in [1024.0, 1440.0] {
++        for native in [false, true] {
++            let _ = native;
++            let ctx = egui::Context::default();
++            let mut app = crate::SoundApp::new(soundcraft_engine::Engine::default(), None, crate::Services::default());
++            app.native_menu_bar = native;
++            let mut frame = |events| {
++                ctx.run_ui(RawInput { screen_rect: Some(Rect::from_min_size(Pos2::ZERO, vec2(width, 720.0))), events, ..Default::default() }, |ui| {
++                    crate::menus::menu_bar(&mut app, ui);
++                })
++            };
++            let mut output = frame(vec![]);
++            for _ in 0..3 {
++                output = frame(vec![]);
++            }
++            assert!(output.platform_output.commands.is_empty(), "drawing the bar must not open a browser");
++            let text = support_text(&output.shapes).expect("support label must be visible");
++            assert!(text.min.x >= 0.0 && text.max.x <= width && text.max.y <= 100.0, "{text:?}");
++            let pos = text.center();
++            frame(vec![
++                Event::PointerMoved(pos),
++                Event::PointerButton { pos, button: PointerButton::Primary, pressed: true, modifiers: Modifiers::NONE },
++            ]);
++            let output = frame(vec![
++                Event::PointerMoved(pos),
++                Event::PointerButton { pos, button: PointerButton::Primary, pressed: false, modifiers: Modifiers::NONE },
++            ]);
++            let urls: Vec<_> = output
++                .platform_output
++                .commands
++                .iter()
++                .filter_map(|command| match command {
++                    egui::OutputCommand::OpenUrl(url) => Some((url.url.as_str(), url.new_tab)),
++                    _ => None,
++                })
++                .collect();
++            assert_eq!(urls, [("https://buymeacoffee.com/alport", true)]);
++        }
++    }
++}
 diff --git a/crates/ui-egui/src/theme.rs b/crates/ui-egui/src/theme.rs
 index 0cf5b9b..5aadf50 100644
 --- a/crates/ui-egui/src/theme.rs

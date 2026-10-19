@@ -73,7 +73,7 @@ index 36678d8..b2a681b 100644
 +
 +| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | 77e7cc78fe8e6b8bc4fde5ce9158e286fdde4f5892a0716511acce251167ca25 |
 diff --git a/Cargo.lock b/Cargo.lock
-index 6d618a0..70d8032 100644
+index 6d618a0..7c7fb25 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -200,15 +200,6 @@ version = "1.0.104"
@@ -139,7 +139,7 @@ index 6d618a0..70d8032 100644
  [[package]]
  name = "gridcraft-calc"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "gridcraft-core",
   "gridcraft-formula",
@@ -148,7 +148,7 @@ index 6d618a0..70d8032 100644
  [[package]]
  name = "gridcraft-chart"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "gridcraft-calc",
   "gridcraft-core",
@@ -171,7 +171,7 @@ index 6d618a0..70d8032 100644
  [[package]]
  name = "gridcraft-core"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "js-sys",
   "serde",
@@ -180,7 +180,7 @@ index 6d618a0..70d8032 100644
  [[package]]
  name = "gridcraft-engine"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "gridcraft-calc",
   "gridcraft-chart",
@@ -189,7 +189,7 @@ index 6d618a0..70d8032 100644
  [[package]]
  name = "gridcraft-formula"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "gridcraft-core",
   "serde",
@@ -198,7 +198,7 @@ index 6d618a0..70d8032 100644
  [[package]]
  name = "gridcraft-functions"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "gridcraft-core",
   "regex",
@@ -207,7 +207,7 @@ index 6d618a0..70d8032 100644
  [[package]]
  name = "gridcraft-mcp"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "gridcraft-engine",
   "log",
@@ -216,7 +216,7 @@ index 6d618a0..70d8032 100644
  [[package]]
  name = "gridcraft-model"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "gridcraft-core",
   "gridcraft-formula",
@@ -225,7 +225,7 @@ index 6d618a0..70d8032 100644
  [[package]]
  name = "gridcraft-numfmt"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "gridcraft-core",
  ]
@@ -233,12 +233,12 @@ index 6d618a0..70d8032 100644
  [[package]]
  name = "gridcraft-pdf"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  
  [[package]]
  name = "gridcraft-ui-egui"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "craft-ui",
   "egui",
@@ -247,7 +247,7 @@ index 6d618a0..70d8032 100644
  [[package]]
  name = "gridcraft-web"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "eframe",
   "egui",
@@ -256,7 +256,7 @@ index 6d618a0..70d8032 100644
  [[package]]
  name = "gridcraft-xlsx"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "aes",
   "gridcraft-core",
@@ -285,7 +285,7 @@ index 6d618a0..70d8032 100644
  
 +[[package]]
 +name = "plervo-sheets"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "arboard",
 + "craft-print",
@@ -307,7 +307,7 @@ index 6d618a0..70d8032 100644
 +
 +[[package]]
 +name = "plervo-sheets-cli"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "gridcraft-engine",
 + "gridcraft-mcp",
@@ -338,7 +338,7 @@ index 6d618a0..70d8032 100644
  [[package]]
  name = "xtask"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "gridcraft-engine",
   "serde_json",
@@ -363,7 +363,7 @@ index 6d618a0..70d8032 100644
  ]
  
 diff --git a/Cargo.toml b/Cargo.toml
-index 98dd572..748b6d7 100644
+index 98dd572..5932c0a 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -371,7 +371,7 @@ index 98dd572..748b6d7 100644
  
  [workspace.package]
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.90"
@@ -1878,10 +1878,18 @@ index 97b787e..4490a12 100644
              }
              _ => {}
 diff --git a/crates/ui-egui/src/i18n.rs b/crates/ui-egui/src/i18n.rs
-index 061698d..291c1f2 100644
+index 061698d..f61173c 100644
 --- a/crates/ui-egui/src/i18n.rs
 +++ b/crates/ui-egui/src/i18n.rs
-@@ -411,7 +411,7 @@ const JAPANESE: &[(&str, &str)] = &[
+@@ -176,6 +176,7 @@ pub fn set_current(ctx: &egui::Context, language: Language) {
+ /// English label → Japanese. Keys are the exact interface strings (command ids, file names and
+ /// document text are never translated); anything absent falls back to English.
+ const JAPANESE: &[(&str, &str)] = &[
++    ("Support", "支援"),
+     ("Paste", "貼り付け"),
+     ("Paste Values", "値の貼り付け"),
+     ("Paste Formulas", "数式の貼り付け"),
+@@ -411,7 +412,7 @@ const JAPANESE: &[(&str, &str)] = &[
      ("Command\nPalette", "コマンド パレット"),
      ("Agent\nControl", "エージェント制御"),
      ("Action\nJournal", "操作ジャーナル"),
@@ -1891,10 +1899,18 @@ index 061698d..291c1f2 100644
      ("Add Chart\nElement", "グラフ要素を追加"),
      ("Change\nChart Type", "グラフの種類の変更"),
 diff --git a/crates/ui-egui/src/i18n/cs.rs b/crates/ui-egui/src/i18n/cs.rs
-index 7ed8372..6f416c7 100644
+index 7ed8372..d90368a 100644
 --- a/crates/ui-egui/src/i18n/cs.rs
 +++ b/crates/ui-egui/src/i18n/cs.rs
-@@ -340,7 +340,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+@@ -2,6 +2,7 @@
+ 
+ pub(super) fn translate(text: &str) -> Option<&'static str> {
+     Some(match text {
++        "Support" => "Podpořit",
+         "Paste" => "Vložit",
+         "Paste Values" => "Vložit hodnoty",
+         "Paste Formulas" => "Vložit vzorce",
+@@ -340,7 +341,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
          "Command\nPalette" => "Paleta\npříkazů",
          "Agent\nControl" => "Řízení\nagenty",
          "Action\nJournal" => "Deník\nakcí",
@@ -1903,7 +1919,7 @@ index 7ed8372..6f416c7 100644
          "Share" => "Sdílet",
          "Add Chart\nElement" => "Přidat prvek\ngrafu",
          "Change\nChart Type" => "Změnit\ntyp grafu",
-@@ -460,7 +460,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+@@ -460,7 +461,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
          "Hide Sheet" => "Skrýt list",
          "Hierarchy & more" => "Hierarchické a další grafy",
          "Highlighter" => "Zvýrazňovač",
@@ -1913,10 +1929,18 @@ index 7ed8372..6f416c7 100644
          "Insert\nSlicer" => "Vložit\nprůřez",
          "Insert Function (⇧F3)" => "Vložit funkci (⇧F3)",
 diff --git a/crates/ui-egui/src/i18n/de.rs b/crates/ui-egui/src/i18n/de.rs
-index c20c7d1..07b6a95 100644
+index c20c7d1..750be92 100644
 --- a/crates/ui-egui/src/i18n/de.rs
 +++ b/crates/ui-egui/src/i18n/de.rs
-@@ -338,7 +338,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+@@ -3,6 +3,7 @@
+ 
+ pub(super) fn translate(text: &str) -> Option<&'static str> {
+     Some(match text {
++        "Support" => "Unterstützen",
+         "Paste" => "Einfügen",
+         "Paste Values" => "Werte einfügen",
+         "Paste Formulas" => "Formeln einfügen",
+@@ -338,7 +339,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
          "Command\nPalette" => "Befehls-\npalette",
          "Agent\nControl" => "Agenten-\nsteuerung",
          "Action\nJournal" => "Aktions-\nprotokoll",
@@ -1926,10 +1950,18 @@ index c20c7d1..07b6a95 100644
          "Add Chart\nElement" => "Diagrammelement\nhinzufügen",
          "Change\nChart Type" => "Diagrammtyp\nändern",
 diff --git a/crates/ui-egui/src/i18n/es.rs b/crates/ui-egui/src/i18n/es.rs
-index 4ce231b..e253fe0 100644
+index 4ce231b..63541ed 100644
 --- a/crates/ui-egui/src/i18n/es.rs
 +++ b/crates/ui-egui/src/i18n/es.rs
-@@ -337,7 +337,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+@@ -4,6 +4,7 @@
+ 
+ pub(super) fn translate(text: &str) -> Option<&'static str> {
+     Some(match text {
++        "Support" => "Apoyar",
+         "Paste" => "Pegar",
+         "Paste Values" => "Pegar valores",
+         "Paste Formulas" => "Pegar fórmulas",
+@@ -337,7 +338,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
          "Command\nPalette" => "Paleta de\ncomandos",
          "Agent\nControl" => "Control\ndel agente",
          "Action\nJournal" => "Registro\nde acciones",
@@ -1939,10 +1971,18 @@ index 4ce231b..e253fe0 100644
          "Add Chart\nElement" => "Agregar elemento\nde gráfico",
          "Change\nChart Type" => "Cambiar tipo\nde gráfico",
 diff --git a/crates/ui-egui/src/i18n/fr.rs b/crates/ui-egui/src/i18n/fr.rs
-index 5d20ab0..1777708 100644
+index 5d20ab0..fbdb0b9 100644
 --- a/crates/ui-egui/src/i18n/fr.rs
 +++ b/crates/ui-egui/src/i18n/fr.rs
-@@ -238,7 +238,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+@@ -2,6 +2,7 @@
+ 
+ pub(super) fn translate(text: &str) -> Option<&'static str> {
+     Some(match text {
++        "Support" => "Soutenir",
+         "Different First Page" => "Première page différente",
+         "Different Odd & Even Pages" => "Pages paires et impaires différentes",
+         "Paste" => "Coller",
+@@ -238,7 +239,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
          "Command\nPalette" => "Palette de\ncommandes",
          "Agent\nControl" => "Contrôle de\nl'agent",
          "Action\nJournal" => "Journal des\nactions",
@@ -1952,10 +1992,18 @@ index 5d20ab0..1777708 100644
          "Add Chart\nElement" => "Ajouter un élément\nde graphique",
          "Change\nChart Type" => "Modifier le type\nde graphique",
 diff --git a/crates/ui-egui/src/i18n/ko.rs b/crates/ui-egui/src/i18n/ko.rs
-index 1902ad3..d3e28be 100644
+index 1902ad3..f6353a4 100644
 --- a/crates/ui-egui/src/i18n/ko.rs
 +++ b/crates/ui-egui/src/i18n/ko.rs
-@@ -227,7 +227,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+@@ -2,6 +2,7 @@
+ 
+ pub(super) fn translate(text: &str) -> Option<&'static str> {
+     Some(match text {
++        "Support" => "후원",
+         "Paste" => "붙여넣기",
+         "Paste Values" => "값 붙여넣기",
+         "Paste Formulas" => "수식 붙여넣기",
+@@ -227,7 +228,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
          "Command\nPalette" => "명령\n팔레트",
          "Agent\nControl" => "에이전트\n제어",
          "Action\nJournal" => "작업\n기록",
@@ -1965,10 +2013,18 @@ index 1902ad3..d3e28be 100644
          "Add Chart\nElement" => "차트\n요소 추가",
          "Change\nChart Type" => "차트 종류\n변경",
 diff --git a/crates/ui-egui/src/i18n/pt.rs b/crates/ui-egui/src/i18n/pt.rs
-index fb9236c..9e507b5 100644
+index fb9236c..c96cb57 100644
 --- a/crates/ui-egui/src/i18n/pt.rs
 +++ b/crates/ui-egui/src/i18n/pt.rs
-@@ -228,7 +228,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+@@ -3,6 +3,7 @@
+ 
+ pub(super) fn translate(text: &str) -> Option<&'static str> {
+     Some(match text {
++        "Support" => "Apoiar",
+         "Paste" => "Colar",
+         "Paste Values" => "Colar Valores",
+         "Paste Formulas" => "Colar Fórmulas",
+@@ -228,7 +229,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
          "Command\nPalette" => "Paleta de\nComandos",
          "Agent\nControl" => "Controle\ndo Agente",
          "Action\nJournal" => "Registro\nde Ações",
@@ -1977,7 +2033,7 @@ index fb9236c..9e507b5 100644
          "Share" => "Compartilhar",
          "Add Chart\nElement" => "Adicionar\nElemento de Gráfico",
          "Change\nChart Type" => "Alterar\nTipo de Gráfico",
-@@ -461,7 +461,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+@@ -461,7 +462,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
          "Conditional Formatting Rules Manager" => "Gerenciador de Regras de Formatação Condicional",
          "Search Commands" => "Pesquisar Comandos",
          "Agent Control" => "Controle por Agentes",
@@ -1986,16 +2042,16 @@ index fb9236c..9e507b5 100644
          "Insert Chart" => "Inserir Gráfico",
          "Select Data Source" => "Selecionar Fonte de Dados",
          "Action Journal" => "Registro de Ações",
-@@ -661,7 +661,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+@@ -661,7 +662,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
          "Contributors" => "Colaboradores",
          "Models" => "Modelos",
          "Version {version}" => "Versão {version}",
 -        "Join the ArtCraft Discord" => "Participe do Discord da ArtCraft",
-+        "Support Plervo" => "Participe do Discord da Plervo",
++        "Support Plervo" => "Apoiar o Plervo",
          "This workbook has no scripts or macros." => "Esta pasta de trabalho não tem scripts nem macros.",
          "(unnamed)" => "(sem nome)",
          "— VBA project (preserved, not run)" => "— Projeto VBA (preservado, não executado)",
-@@ -886,7 +886,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+@@ -886,7 +887,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
          "Hide Sheet" => "Ocultar Planilha",
          "Hierarchy & more" => "Hierarquia e mais",
          "Highlighter" => "Marca-texto",
@@ -2005,10 +2061,18 @@ index fb9236c..9e507b5 100644
          "Insert Function" => "Inserir Função",
          "Insert Function (⇧F3)" => "Inserir Função (⇧F3)",
 diff --git a/crates/ui-egui/src/i18n/ru.rs b/crates/ui-egui/src/i18n/ru.rs
-index 765f6bb..48417cc 100644
+index 765f6bb..286cbe5 100644
 --- a/crates/ui-egui/src/i18n/ru.rs
 +++ b/crates/ui-egui/src/i18n/ru.rs
-@@ -227,7 +227,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+@@ -2,6 +2,7 @@
+ 
+ pub(super) fn translate(text: &str) -> Option<&'static str> {
+     Some(match text {
++        "Support" => "Поддержать",
+         "Paste" => "Вставить",
+         "Paste Values" => "Вставить значения",
+         "Paste Formulas" => "Вставить формулы",
+@@ -227,7 +228,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
          "Command\nPalette" => "Палитра\nкоманд",
          "Agent\nControl" => "Управление\nагентом",
          "Action\nJournal" => "Журнал\nдействий",
@@ -2018,10 +2082,18 @@ index 765f6bb..48417cc 100644
          "Add Chart\nElement" => "Добавить элемент\nдиаграммы",
          "Change\nChart Type" => "Изменить тип\nдиаграммы",
 diff --git a/crates/ui-egui/src/i18n/sr.rs b/crates/ui-egui/src/i18n/sr.rs
-index cbf18d4..a3a11ae 100644
+index cbf18d4..f7ac83f 100644
 --- a/crates/ui-egui/src/i18n/sr.rs
 +++ b/crates/ui-egui/src/i18n/sr.rs
-@@ -230,7 +230,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+@@ -2,6 +2,7 @@
+ 
+ pub(super) fn translate(text: &str) -> Option<&'static str> {
+     Some(match text {
++        "Support" => "Подржи",
+         "Paste" => "Nalepi",
+         "Paste Values" => "Nalepi vrednosti",
+         "Paste Formulas" => "Nalepi formule",
+@@ -230,7 +231,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
          "Command\nPalette" => "Paleta\nkomandi",
          "Agent\nControl" => "Kontrola\nagenta",
          "Action\nJournal" => "Dnevnik\nradnji",
@@ -2031,10 +2103,18 @@ index cbf18d4..a3a11ae 100644
          "Add Chart\nElement" => "Dodaj element\ngrafikona",
          "Change\nChart Type" => "Promeni\ntip grafikona",
 diff --git a/crates/ui-egui/src/i18n/zh.rs b/crates/ui-egui/src/i18n/zh.rs
-index 0017592..83469d0 100644
+index 0017592..8c19d32 100644
 --- a/crates/ui-egui/src/i18n/zh.rs
 +++ b/crates/ui-egui/src/i18n/zh.rs
-@@ -227,7 +227,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
+@@ -2,6 +2,7 @@
+ 
+ pub(super) fn translate(text: &str) -> Option<&'static str> {
+     Some(match text {
++        "Support" => "支持",
+         "Paste" => "粘贴",
+         "Paste Values" => "粘贴值",
+         "Paste Formulas" => "粘贴公式",
+@@ -227,7 +228,7 @@ pub(super) fn translate(text: &str) -> Option<&'static str> {
          "Command\nPalette" => "命令\n面板",
          "Agent\nControl" => "智能体\n控制",
          "Action\nJournal" => "操作\n日志",
@@ -2067,7 +2147,7 @@ index 79920b5..866c25f 100644
      ("M", Entry::Tab("Formulas")),
      ("A", Entry::Tab("Data")),
 diff --git a/crates/ui-egui/src/lib.rs b/crates/ui-egui/src/lib.rs
-index f96cdac..33c6299 100644
+index f96cdac..559fd3f 100644
 --- a/crates/ui-egui/src/lib.rs
 +++ b/crates/ui-egui/src/lib.rs
 @@ -1,4 +1,4 @@
@@ -2221,11 +2301,95 @@ index f96cdac..33c6299 100644
              }
              self.after_engine();
          }
+@@ -1259,3 +1259,6 @@ pub fn now_ms() -> f64 {
+ pub fn cell(r: u32, c: u32) -> CellRef {
+     CellRef::new(r, c)
+ }
++
++#[cfg(test)]
++mod plervo_support_tests;
+diff --git a/crates/ui-egui/src/plervo_support_tests.rs b/crates/ui-egui/src/plervo_support_tests.rs
+new file mode 100644
+index 0000000..21e39c0
+--- /dev/null
++++ b/crates/ui-egui/src/plervo_support_tests.rs
+@@ -0,0 +1,61 @@
++//! The support action is visible in the header and opens only after a deliberate click.
++use egui::{Event, Modifiers, PointerButton, Pos2, RawInput, Rect, vec2};
++
++fn support_text(shapes: &[egui::epaint::ClippedShape]) -> Option<Rect> {
++    fn find(shape: &egui::epaint::Shape) -> Option<Rect> {
++        match shape {
++            egui::epaint::Shape::Text(text)
++                if ["Support", "Apoiar", "Apoyar", "Soutenir", "Unterstützen", "支援", "支持", "후원"].contains(&text.galley.job.text.as_str()) =>
++            {
++                Some(Rect::from_min_size(text.pos, text.galley.size()))
++            }
++            egui::epaint::Shape::Vec(shapes) => shapes.iter().find_map(find),
++            _ => None,
++        }
++    }
++    shapes.iter().find_map(|s| find(&s.shape).filter(|r| s.clip_rect.contains_rect(*r)))
++}
++
++#[test]
++fn support_header_is_visible_and_opens_only_the_donation_page() {
++    for width in [1024.0, 1440.0] {
++        for native in [false, true] {
++            let _ = native;
++            let ctx = egui::Context::default();
++            let mut app = crate::SheetApp::new(gridcraft_engine::Session::new(), crate::Services::default());
++            crate::SheetApp::setup_context(&ctx, false);
++            app.ui.language = crate::i18n::Language::En;
++            let mut frame = |events| {
++                ctx.run_ui(RawInput { screen_rect: Some(Rect::from_min_size(Pos2::ZERO, vec2(width, 720.0))), events, ..Default::default() }, |ui| {
++                    crate::ribbon::title_bar(&mut app, ui);
++                })
++            };
++            let mut output = frame(vec![]);
++            for _ in 0..3 {
++                output = frame(vec![]);
++            }
++            assert!(output.platform_output.commands.is_empty(), "drawing the bar must not open a browser");
++            let text = support_text(&output.shapes).expect("support label must be visible");
++            assert!(text.min.x >= 0.0 && text.max.x <= width && text.max.y <= 100.0, "{text:?}");
++            let pos = text.center();
++            frame(vec![
++                Event::PointerMoved(pos),
++                Event::PointerButton { pos, button: PointerButton::Primary, pressed: true, modifiers: Modifiers::NONE },
++            ]);
++            let output = frame(vec![
++                Event::PointerMoved(pos),
++                Event::PointerButton { pos, button: PointerButton::Primary, pressed: false, modifiers: Modifiers::NONE },
++            ]);
++            let urls: Vec<_> = output
++                .platform_output
++                .commands
++                .iter()
++                .filter_map(|command| match command {
++                    egui::OutputCommand::OpenUrl(url) => Some((url.url.as_str(), url.new_tab)),
++                    _ => None,
++                })
++                .collect();
++            assert_eq!(urls, [("https://buymeacoffee.com/alport", true)]);
++        }
++    }
++}
 diff --git a/crates/ui-egui/src/ribbon.rs b/crates/ui-egui/src/ribbon.rs
-index 9c6d89e..2a908d1 100644
+index 9c6d89e..b980e7a 100644
 --- a/crates/ui-egui/src/ribbon.rs
 +++ b/crates/ui-egui/src/ribbon.rs
-@@ -1439,7 +1439,7 @@ fn insert(app: &mut SheetApp, ui: &mut Ui) {
+@@ -124,6 +124,9 @@ pub fn title_bar(app: &mut SheetApp, ui: &mut Ui) {
+             );
+             ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
+                 ui.add_space(8.0);
++                if ui.button(app.ui.language.tr("Support")).on_hover_text("https://buymeacoffee.com/alport").clicked() {
++                    ui.ctx().open_url(egui::OpenUrl::new_tab("https://buymeacoffee.com/alport"));
++                }
+                 let __k = icon_button(ui, Icon::Search, t.text_dim, "Search commands (⌘⇧Space)", vec2(28.0, ch));
+                 control_keytip(app, ui, &__k, "commandSearch");
+                 if __k.clicked() {
+@@ -1439,7 +1442,7 @@ fn insert(app: &mut SheetApp, ui: &mut Ui) {
              // in dialogs.rs) — otherwise the prior cell/range selection is left in place, and
              // Del right after inserting deletes the source data instead of the chart.
              Ok(r) => app.selected_chart = r.get("chart").and_then(serde_json::Value::as_u64).and_then(|id| u32::try_from(id).ok()),
@@ -2234,7 +2398,7 @@ index 9c6d89e..2a908d1 100644
          }
      }
      ui.vertical(|ui| {
-@@ -2248,7 +2248,7 @@ fn automate(app: &mut SheetApp, ui: &mut Ui) {
+@@ -2248,7 +2251,7 @@ fn automate(app: &mut SheetApp, ui: &mut Ui) {
      if __k.clicked() {
          app.open_dialog("commandSearch", json!({}));
      }
@@ -2243,7 +2407,7 @@ index 9c6d89e..2a908d1 100644
      control_keytip(app, ui, &__k, "agents");
      if __k.clicked() {
          app.open_dialog("agents", json!({}));
-@@ -2258,7 +2258,7 @@ fn automate(app: &mut SheetApp, ui: &mut Ui) {
+@@ -2258,7 +2261,7 @@ fn automate(app: &mut SheetApp, ui: &mut Ui) {
      if __k.clicked() {
          app.open_dialog("journal", json!({}));
      }

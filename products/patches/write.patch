@@ -76,7 +76,7 @@ index 7942228..b165d17 100644
 +| `assets/app-icon/wordcraft.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 d1527c1cd456d98e9da3ba2b0cb5fcde2b1d6f2a60c9cc39b2a3f62aa42bc9b2 |
 +| `assets/app-icon/wordcraft.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 a54bb84d9f1d07442f615b529fe4efef7ed2e2215d5bc2c0556aa1322e9be488 |
 diff --git a/Cargo.lock b/Cargo.lock
-index c5a92f4..7de72b5 100644
+index c5a92f4..e61dfbf 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -215,15 +215,6 @@ version = "1.0.104"
@@ -171,7 +171,7 @@ index c5a92f4..7de72b5 100644
  
 +[[package]]
 +name = "plervo-write"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "arboard",
 + "clipboard-win",
@@ -203,7 +203,7 @@ index c5a92f4..7de72b5 100644
 +
 +[[package]]
 +name = "plervo-write-cli"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "serde_json",
 + "wordcraft-doc",
@@ -353,12 +353,12 @@ index c5a92f4..7de72b5 100644
  [[package]]
  name = "wordcraft-control-key"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  
  [[package]]
  name = "wordcraft-doc"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "proptest",
   "serde",
@@ -367,7 +367,7 @@ index c5a92f4..7de72b5 100644
  [[package]]
  name = "wordcraft-docbin"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "cfb",
   "image",
@@ -376,7 +376,7 @@ index c5a92f4..7de72b5 100644
  [[package]]
  name = "wordcraft-docx"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "aes",
   "base64",
@@ -385,7 +385,7 @@ index c5a92f4..7de72b5 100644
  [[package]]
  name = "wordcraft-engine"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "image",
   "js-sys",
@@ -394,7 +394,7 @@ index c5a92f4..7de72b5 100644
  [[package]]
  name = "wordcraft-fonts"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "harfrust 0.13.3",
   "kurbo",
@@ -403,7 +403,7 @@ index c5a92f4..7de72b5 100644
  [[package]]
  name = "wordcraft-formats"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "image",
   "log",
@@ -412,7 +412,7 @@ index c5a92f4..7de72b5 100644
  [[package]]
  name = "wordcraft-geom"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "serde",
  ]
@@ -420,7 +420,7 @@ index c5a92f4..7de72b5 100644
  [[package]]
  name = "wordcraft-layout"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "image",
   "js-sys",
@@ -429,7 +429,7 @@ index c5a92f4..7de72b5 100644
  [[package]]
  name = "wordcraft-mcp"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "log",
   "serde_json",
@@ -438,7 +438,7 @@ index c5a92f4..7de72b5 100644
  [[package]]
  name = "wordcraft-metafile"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "kurbo",
   "thiserror 2.0.21",
@@ -447,7 +447,7 @@ index c5a92f4..7de72b5 100644
  [[package]]
  name = "wordcraft-pdf"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "hayro-cmap",
   "hayro-interpret",
@@ -456,7 +456,7 @@ index c5a92f4..7de72b5 100644
  [[package]]
  name = "wordcraft-proof"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "log",
   "miniz_oxide 0.8.9",
@@ -465,7 +465,7 @@ index c5a92f4..7de72b5 100644
  [[package]]
  name = "wordcraft-render"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "image",
   "log",
@@ -474,7 +474,7 @@ index c5a92f4..7de72b5 100644
  [[package]]
  name = "wordcraft-ui-egui"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "craft-ui",
   "egui",
@@ -483,7 +483,7 @@ index c5a92f4..7de72b5 100644
  [[package]]
  name = "wordcraft-web"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "eframe",
   "egui",
@@ -492,7 +492,7 @@ index c5a92f4..7de72b5 100644
  [[package]]
  name = "wordcraft-zotero"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "log",
   "proptest",
@@ -501,7 +501,7 @@ index c5a92f4..7de72b5 100644
  [[package]]
  name = "xtask"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "serde_json",
  ]
@@ -526,7 +526,7 @@ index c5a92f4..7de72b5 100644
  ]
  
 diff --git a/Cargo.toml b/Cargo.toml
-index ab12104..37a1d57 100644
+index ab12104..0bc5146 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -534,7 +534,7 @@ index ab12104..37a1d57 100644
  
  [workspace.package]
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.90"
@@ -2105,10 +2105,20 @@ index 49860fe..ce73164 100644
          let mut h = egui_kittest::Harness::builder().with_size(egui::vec2(1440.0, 900.0)).build_ui_state(
              |ui, app: &mut WordApp| {
 diff --git a/crates/ui-egui/src/chrome.rs b/crates/ui-egui/src/chrome.rs
-index 7e7483a..a93acfd 100644
+index 7e7483a..f2d7f23 100644
 --- a/crates/ui-egui/src/chrome.rs
 +++ b/crates/ui-egui/src/chrome.rs
-@@ -273,8 +273,8 @@ pub fn title_bar(app: &mut WordApp, ui: &mut Ui) {
+@@ -264,7 +264,8 @@ pub fn title_bar(app: &mut WordApp, ui: &mut Ui) {
+                     resp.on_hover_text(format!("{} — set your name in File › Options", app.session.author));
+                     ui.add_space(8.0);
+                     if app.ui.show_discord {
+-                        let (r, resp) = ui.allocate_exact_size(vec2(84.0, 22.0), Sense::click());
++                        let support_width = ui.painter().layout_no_wrap(tl!("Support").into(), medium(11.5), t.on_accent).size().x + 36.0;
++                        let (r, resp) = ui.allocate_exact_size(vec2(support_width, 22.0), Sense::click());
+                         ui.painter().rect_filled(r, 11.0, if resp.hovered() { t.accent_text } else { t.accent });
+                         icons::paint(
+                             ui.painter(),
+@@ -273,8 +274,8 @@ pub fn title_bar(app: &mut WordApp, ui: &mut Ui) {
                              t.on_accent,
                              t.on_accent,
                          );
@@ -2119,7 +2129,7 @@ index 7e7483a..a93acfd 100644
                              let _ = app.run("ui.discord", json!({}));
                          }
                          ui.add_space(8.0);
-@@ -317,7 +317,7 @@ pub fn title_bar(app: &mut WordApp, ui: &mut Ui) {
+@@ -317,7 +318,7 @@ pub fn title_bar(app: &mut WordApp, ui: &mut Ui) {
              // Centred title.
              let title = if !app.has_document() {
                  // No document open (#1129): the app's name alone.
@@ -2238,7 +2248,7 @@ index de25080..cf9cf46 100644
              || plain == "Figure 1" // the caption dialog's sample: the label goes into the document as is
      }
 diff --git a/crates/ui-egui/src/i18n/bg.tsv b/crates/ui-egui/src/i18n/bg.tsv
-index 013fdc1..8de1fde 100644
+index 013fdc1..41d9eda 100644
 --- a/crates/ui-egui/src/i18n/bg.tsv
 +++ b/crates/ui-egui/src/i18n/bg.tsv
 @@ -11,7 +11,7 @@
@@ -2387,8 +2397,13 @@ index 013fdc1..8de1fde 100644
  	Typing	Въвеждане
  	Level 4	Ниво 4
  	Level 5	Ниво 5
+@@ -2474,3 +2470,4 @@
+ 	Leave out the date and time of comments and tracked changes when saving	Без дата и час на коментарите и проследените промени при запазване
+ 	The document you are editing keeps the names and dates; only the saved file leaves them out.	Документът, който редактирате, запазва имената и датите; само записаният файл ги пропуска.
+ 	Privacy Settings	Текущи настройки за поверителност
++	Support	Подкрепа
 diff --git a/crates/ui-egui/src/i18n/cs.tsv b/crates/ui-egui/src/i18n/cs.tsv
-index a7b8f04..6affc5e 100644
+index a7b8f04..1ab2e4a 100644
 --- a/crates/ui-egui/src/i18n/cs.tsv
 +++ b/crates/ui-egui/src/i18n/cs.tsv
 @@ -1,6 +1,6 @@
@@ -2531,8 +2546,13 @@ index a7b8f04..6affc5e 100644
  	Numerals:	Číslice:
  	Numerals	Číslice
  	Hindi	Hindské
+@@ -2090,3 +2086,4 @@
+ 	Leave out the date and time of comments and tracked changes when saving	Při ukládání vynechat datum a čas komentářů a sledovaných změn
+ 	The document you are editing keeps the names and dates; only the saved file leaves them out.	Upravovaný dokument si jména a data ponechá; vynechá je jen uložený soubor.
+ 	Privacy Settings	Aktuální nastavení soukromí
++	Support	Podpořit
 diff --git a/crates/ui-egui/src/i18n/de.tsv b/crates/ui-egui/src/i18n/de.tsv
-index 78c03ca..9e3f2aa 100644
+index 78c03ca..1941e9e 100644
 --- a/crates/ui-egui/src/i18n/de.tsv
 +++ b/crates/ui-egui/src/i18n/de.tsv
 @@ -1,6 +1,6 @@
@@ -2669,8 +2689,13 @@ index 78c03ca..9e3f2aa 100644
  	Numerals:	Ziffern:
  	Numerals	Ziffern
  	Hindi	Hindi
+@@ -2084,3 +2080,4 @@
+ 	Leave out the date and time of comments and tracked changes when saving	Beim Speichern Datum und Uhrzeit von Kommentaren und nachverfolgten Änderungen weglassen
+ 	The document you are editing keeps the names and dates; only the saved file leaves them out.	Das bearbeitete Dokument behält Namen und Daten; nur die gespeicherte Datei lässt sie weg.
+ 	Privacy Settings	Aktuelle Datenschutzeinstellungen
++	Support	Unterstützen
 diff --git a/crates/ui-egui/src/i18n/es.tsv b/crates/ui-egui/src/i18n/es.tsv
-index d9dbabb..5883487 100644
+index d9dbabb..aaaaf0e 100644
 --- a/crates/ui-egui/src/i18n/es.tsv
 +++ b/crates/ui-egui/src/i18n/es.tsv
 @@ -1,6 +1,6 @@
@@ -2845,8 +2870,13 @@ index d9dbabb..5883487 100644
  	Privacy Options	Opciones de privacidad
  	Trust Center	Centro de confianza
  	Privacy for this document	Privacidad de este documento
+@@ -2451,3 +2447,4 @@ preview	Title	Título
+ 	Leave out the date and time of comments and tracked changes when saving	Omitir la fecha y la hora de los comentarios y los cambios controlados al guardar
+ 	The document you are editing keeps the names and dates; only the saved file leaves them out.	El documento que editas conserva los nombres y las fechas; solo el archivo guardado los omite.
+ 	Privacy Settings	Configuración de privacidad actual
++	Support	Apoyar
 diff --git a/crates/ui-egui/src/i18n/et.tsv b/crates/ui-egui/src/i18n/et.tsv
-index 94de44c..09d2f98 100644
+index 94de44c..8b06fd7 100644
 --- a/crates/ui-egui/src/i18n/et.tsv
 +++ b/crates/ui-egui/src/i18n/et.tsv
 @@ -7,13 +7,13 @@
@@ -2981,8 +3011,13 @@ index 94de44c..09d2f98 100644
  	Privacy Options	Privaatsussuvandid
  	Trust Center	Usalduskeskus
  	Privacy for this document	Selle dokumendi privaatsus
+@@ -2119,3 +2115,4 @@
+ 	Leave out the date and time of comments and tracked changes when saving	Jäta salvestamisel välja kommentaaride ja jälitatud muudatuste kuupäev ja kellaaeg
+ 	The document you are editing keeps the names and dates; only the saved file leaves them out.	Redigeeritav dokument säilitab nimed ja kuupäevad; need jäetakse välja ainult salvestatud failist.
+ 	Privacy Settings	Praegused privaatsussätted
++	Support	Toeta
 diff --git a/crates/ui-egui/src/i18n/fr.tsv b/crates/ui-egui/src/i18n/fr.tsv
-index c459e24..5650e9c 100644
+index c459e24..7969edf 100644
 --- a/crates/ui-egui/src/i18n/fr.tsv
 +++ b/crates/ui-egui/src/i18n/fr.tsv
 @@ -12,9 +12,9 @@
@@ -3112,8 +3147,13 @@ index c459e24..5650e9c 100644
  	Correct TWo INitial CApitals	Corriger DEux MAjuscules EN début de mot
  	Correct accidental usage of cAPS LOCK key	Corriger l’utilisation accidentelle de la touche vERR. mAJ
  	Region:	Région :
+@@ -2093,3 +2089,4 @@
+ 	Leave out the date and time of comments and tracked changes when saving	Omettre la date et l’heure des commentaires et des modifications suivies à l’enregistrement
+ 	The document you are editing keeps the names and dates; only the saved file leaves them out.	Le document en cours de modification garde les noms et les dates ; seul le fichier enregistré les omet.
+ 	Privacy Settings	Paramètres de confidentialité actuels
++	Support	Soutenir
 diff --git a/crates/ui-egui/src/i18n/hu.tsv b/crates/ui-egui/src/i18n/hu.tsv
-index 03baf13..03f07bc 100644
+index 03baf13..34305dd 100644
 --- a/crates/ui-egui/src/i18n/hu.tsv
 +++ b/crates/ui-egui/src/i18n/hu.tsv
 @@ -1,6 +1,6 @@
@@ -3261,8 +3301,13 @@ index 03baf13..03f07bc 100644
  	Correct TWo INitial CApitals	KÉt KEzdő NAgybetű javítása
  	Correct accidental usage of cAPS LOCK key	A cAPS LOCK billentyű véletlen használatának javítása
  	Region:	Régió:
+@@ -2483,3 +2479,4 @@
+ 	Leave out the date and time of comments and tracked changes when saving	Mentéskor a megjegyzések és a követett módosítások dátumának és idejének elhagyása
+ 	The document you are editing keeps the names and dates; only the saved file leaves them out.	A szerkesztett dokumentum megtartja a neveket és a dátumokat; csak a mentett fájlból maradnak ki.
+ 	Privacy Settings	Jelenlegi adatvédelmi beállítások
++	Support	Támogatás
 diff --git a/crates/ui-egui/src/i18n/it.tsv b/crates/ui-egui/src/i18n/it.tsv
-index 70ae803..362138d 100644
+index 70ae803..6ebfe52 100644
 --- a/crates/ui-egui/src/i18n/it.tsv
 +++ b/crates/ui-egui/src/i18n/it.tsv
 @@ -1,6 +1,6 @@
@@ -3409,8 +3454,13 @@ index 70ae803..362138d 100644
  	Numerals:	Cifre:
  	Numerals	Cifre
  	Hindi	Hindi
+@@ -2469,3 +2465,4 @@ preview	Title	Esempio
+ 	Leave out the date and time of comments and tracked changes when saving	Ometti data e ora di commenti e revisioni al salvataggio
+ 	The document you are editing keeps the names and dates; only the saved file leaves them out.	Il documento che stai modificando conserva nomi e date; solo il file salvato li omette.
+ 	Privacy Settings	Impostazioni di privacy attuali
++	Support	Sostieni
 diff --git a/crates/ui-egui/src/i18n/ja.tsv b/crates/ui-egui/src/i18n/ja.tsv
-index 0a82ebf..e731437 100644
+index 0a82ebf..b34f809 100644
 --- a/crates/ui-egui/src/i18n/ja.tsv
 +++ b/crates/ui-egui/src/i18n/ja.tsv
 @@ -3,9 +3,9 @@
@@ -3560,6 +3610,11 @@ index 0a82ebf..e731437 100644
  	Privacy Options	プライバシー オプション
  	Trust Center	セキュリティ センター
  	Privacy for this document	このドキュメントのプライバシー
+@@ -2085,3 +2081,4 @@
+ 	Leave out the date and time of comments and tracked changes when saving	保存時にコメントと変更履歴の日時を含めない
+ 	The document you are editing keeps the names and dates; only the saved file leaves them out.	編集中のドキュメントには名前と日時が残ります。保存したファイルにだけ含まれません。
+ 	Privacy Settings	現在のプライバシー設定
++	Support	支援
 diff --git a/crates/ui-egui/src/i18n/mod.rs b/crates/ui-egui/src/i18n/mod.rs
 index 328a5c6..a08e80b 100644
 --- a/crates/ui-egui/src/i18n/mod.rs
@@ -3592,7 +3647,7 @@ index 328a5c6..a08e80b 100644
  pub fn first_supported<'a>(tags: impl IntoIterator<Item = &'a str>) -> Option<Lang> {
      tags.into_iter().find_map(lang_from_tag)
 diff --git a/crates/ui-egui/src/i18n/pl.tsv b/crates/ui-egui/src/i18n/pl.tsv
-index fa46d79..65a8bac 100644
+index fa46d79..df01824 100644
 --- a/crates/ui-egui/src/i18n/pl.tsv
 +++ b/crates/ui-egui/src/i18n/pl.tsv
 @@ -1,6 +1,6 @@
@@ -3740,8 +3795,13 @@ index fa46d79..65a8bac 100644
  	Numerals:	Cyfry:
  	Numerals	Cyfry
  	Hindi	Hindi
+@@ -2478,3 +2474,4 @@ preview	Title	Tytuł
+ 	Leave out the date and time of comments and tracked changes when saving	Pomiń datę i godzinę komentarzy i śledzonych zmian przy zapisywaniu
+ 	The document you are editing keeps the names and dates; only the saved file leaves them out.	Edytowany dokument zachowuje nazwiska i daty; pomija je tylko zapisany plik.
+ 	Privacy Settings	Bieżące ustawienia prywatności
++	Support	Wesprzyj
 diff --git a/crates/ui-egui/src/i18n/pt-br.tsv b/crates/ui-egui/src/i18n/pt-br.tsv
-index 83f870b..5e9aadd 100644
+index 83f870b..1d4f2e2 100644
 --- a/crates/ui-egui/src/i18n/pt-br.tsv
 +++ b/crates/ui-egui/src/i18n/pt-br.tsv
 @@ -1,6 +1,6 @@
@@ -3775,7 +3835,7 @@ index 83f870b..5e9aadd 100644
  	Comments	Comentários
  	Comments Pane	Painel de comentários
 -	Community\nDiscord	Comunidade\nDiscord
-+	Support Plervo	Apoiar a Plervo
++	Support Plervo	Apoiar o Plervo
  	Compact	Compacto
  	Compare	Comparar
  	Compress Pictures	Compactar imagens
@@ -3903,8 +3963,13 @@ index 83f870b..5e9aadd 100644
  	Privacy Options	Opções de privacidade
  	Trust Center	Central de confiabilidade
  	Privacy for this document	Privacidade deste documento
+@@ -2097,3 +2093,4 @@
+ 	Leave out the date and time of comments and tracked changes when saving	Omitir a data e a hora dos comentários e das alterações controladas ao salvar
+ 	The document you are editing keeps the names and dates; only the saved file leaves them out.	O documento que você está editando mantém os nomes e as datas; só o arquivo salvo os omite.
+ 	Privacy Settings	Configurações de privacidade atuais
++	Support	Apoiar
 diff --git a/crates/ui-egui/src/i18n/ru.tsv b/crates/ui-egui/src/i18n/ru.tsv
-index 6b20dcb..fed24fe 100644
+index 6b20dcb..c2c7551 100644
 --- a/crates/ui-egui/src/i18n/ru.tsv
 +++ b/crates/ui-egui/src/i18n/ru.tsv
 @@ -10,15 +10,15 @@
@@ -4041,8 +4106,13 @@ index 6b20dcb..fed24fe 100644
  	Typing	Ввод
  	Level 4	Уровень 4
  	Level 5	Уровень 5
+@@ -2484,3 +2480,4 @@ preview	Title	Пример
+ 	Leave out the date and time of comments and tracked changes when saving	Не сохранять дату и время примечаний и отслеживаемых изменений
+ 	The document you are editing keeps the names and dates; only the saved file leaves them out.	Редактируемый документ сохраняет имена и даты; их не будет только в сохранённом файле.
+ 	Privacy Settings	Текущие параметры конфиденциальности
++	Support	Поддержать
 diff --git a/crates/ui-egui/src/i18n/sr-latn.tsv b/crates/ui-egui/src/i18n/sr-latn.tsv
-index 8dd5be1..327361f 100644
+index 8dd5be1..aa5445c 100644
 --- a/crates/ui-egui/src/i18n/sr-latn.tsv
 +++ b/crates/ui-egui/src/i18n/sr-latn.tsv
 @@ -1,6 +1,6 @@
@@ -4201,8 +4271,13 @@ index 8dd5be1..327361f 100644
  	Privacy Options	Opcije privatnosti
  	Trust Center	Centar za bezbednost
  	Privacy for this document	Privatnost ovog dokumenta
+@@ -2095,3 +2091,4 @@
+ 	Leave out the date and time of comments and tracked changes when saving	Izostavi datum i vreme komentara i praćenih izmena pri čuvanju
+ 	The document you are editing keeps the names and dates; only the saved file leaves them out.	Dokument koji uređujete zadržava imena i datume; izostavlja ih samo sačuvana datoteka.
+ 	Privacy Settings	Trenutna podešavanja privatnosti
++	Support	Podrži
 diff --git a/crates/ui-egui/src/i18n/sr.tsv b/crates/ui-egui/src/i18n/sr.tsv
-index 3c35a31..460f98f 100644
+index 3c35a31..9dde392 100644
 --- a/crates/ui-egui/src/i18n/sr.tsv
 +++ b/crates/ui-egui/src/i18n/sr.tsv
 @@ -5,7 +5,7 @@
@@ -4362,6 +4437,11 @@ index 3c35a31..460f98f 100644
  	Privacy Options	Опције приватности
  	Trust Center	Центар за безбедност
  	Privacy for this document	Приватност овог документа
+@@ -2099,3 +2095,4 @@
+ 	Leave out the date and time of comments and tracked changes when saving	Изостави датум и време коментара и праћених измена при чувању
+ 	The document you are editing keeps the names and dates; only the saved file leaves them out.	Документ који уређујете задржава имена и датуме; изоставља их само сачувана датотека.
+ 	Privacy Settings	Тренутна подешавања приватности
++	Support	Подржи
 diff --git a/crates/ui-egui/src/i18n/tests.rs b/crates/ui-egui/src/i18n/tests.rs
 index b35210c..db753db 100644
 --- a/crates/ui-egui/src/i18n/tests.rs
@@ -4403,7 +4483,7 @@ index b35210c..db753db 100644
      ] {
          assert_eq!(tr(bg, source), expected, "{source}");
 diff --git a/crates/ui-egui/src/i18n/tr.tsv b/crates/ui-egui/src/i18n/tr.tsv
-index 32d528e..a4cf087 100644
+index 32d528e..5c1d070 100644
 --- a/crates/ui-egui/src/i18n/tr.tsv
 +++ b/crates/ui-egui/src/i18n/tr.tsv
 @@ -8,16 +8,16 @@
@@ -4541,8 +4621,13 @@ index 32d528e..a4cf087 100644
  	Typing	Yazma
  	Level 4	Düzey 4
  	Level 5	Düzey 5
+@@ -2483,3 +2479,4 @@ preview	Title	Örnek
+ 	Leave out the date and time of comments and tracked changes when saving	Kaydederken açıklamaların ve izlenen değişikliklerin tarih ve saatini dahil etme
+ 	The document you are editing keeps the names and dates; only the saved file leaves them out.	Düzenlediğiniz belge adları ve tarihleri korur; yalnızca kaydedilen dosya bunları içermez.
+ 	Privacy Settings	Geçerli gizlilik ayarları
++	Support	Destekle
 diff --git a/crates/ui-egui/src/i18n/uk.tsv b/crates/ui-egui/src/i18n/uk.tsv
-index aa1ba4d..06536be 100644
+index aa1ba4d..b9e6f83 100644
 --- a/crates/ui-egui/src/i18n/uk.tsv
 +++ b/crates/ui-egui/src/i18n/uk.tsv
 @@ -1,6 +1,6 @@
@@ -4707,8 +4792,13 @@ index aa1ba4d..06536be 100644
  	Privacy Options	Параметри конфіденційності
  	Trust Center	Центр безпеки
  	Privacy for this document	Конфіденційність цього документа
+@@ -2097,3 +2093,4 @@
+ 	Leave out the date and time of comments and tracked changes when saving	Не зберігати дату й час приміток і відстежуваних змін
+ 	The document you are editing keeps the names and dates; only the saved file leaves them out.	Документ, який ви редагуєте, зберігає імена й дати; їх не буде лише у збереженому файлі.
+ 	Privacy Settings	Поточні налаштування конфіденційності
++	Support	Підтримати
 diff --git a/crates/ui-egui/src/i18n/zh-hans.tsv b/crates/ui-egui/src/i18n/zh-hans.tsv
-index 9eab713..2a2edc8 100644
+index 9eab713..6622a56 100644
 --- a/crates/ui-egui/src/i18n/zh-hans.tsv
 +++ b/crates/ui-egui/src/i18n/zh-hans.tsv
 @@ -10,14 +10,14 @@
@@ -4864,8 +4954,13 @@ index 9eab713..2a2edc8 100644
  	Privacy Options	隐私选项
  	Trust Center	信任中心
  	Privacy for this document	此文档的隐私
+@@ -2097,3 +2093,4 @@
+ 	Leave out the date and time of comments and tracked changes when saving	保存时不包含批注和修订的日期与时间
+ 	The document you are editing keeps the names and dates; only the saved file leaves them out.	正在编辑的文档保留姓名和日期；只有保存的文件中不包含它们。
+ 	Privacy Settings	当前隐私设置
++	Support	支持
 diff --git a/crates/ui-egui/src/i18n/zh-hant.tsv b/crates/ui-egui/src/i18n/zh-hant.tsv
-index 0b968cc..d1044d0 100644
+index 0b968cc..77e7481 100644
 --- a/crates/ui-egui/src/i18n/zh-hant.tsv
 +++ b/crates/ui-egui/src/i18n/zh-hant.tsv
 @@ -4,9 +4,9 @@
@@ -5015,6 +5110,11 @@ index 0b968cc..d1044d0 100644
  	Privacy Options	隱私權選項
  	Trust Center	信任中心
  	Privacy for this document	此文件的隱私
+@@ -2086,3 +2082,4 @@
+ 	Leave out the date and time of comments and tracked changes when saving	儲存時不包含註解和追蹤修訂的日期與時間
+ 	The document you are editing keeps the names and dates; only the saved file leaves them out.	正在編輯的文件會保留名稱和日期；只有儲存的檔案不包含它們。
+ 	Privacy Settings	目前的隱私設定
++	Support	支持
 diff --git a/crates/ui-egui/src/icons.rs b/crates/ui-egui/src/icons.rs
 index 87ae0eb..a13741c 100644
 --- a/crates/ui-egui/src/icons.rs

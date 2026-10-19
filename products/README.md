@@ -10,6 +10,11 @@ This directory records reproducible source inputs and candidate-build requiremen
 Passing a compile check does not qualify an app, installer, or platform for release.
 Current findings and remaining gates are recorded in [SECURITY-REVIEW.md](SECURITY-REVIEW.md).
 
+The development catalog targets alpha.5: visible optional Support actions in the
+application headers, localized through each app's existing language catalogs.
+All support actions point to https://buymeacoffee.com/alport and require a click.
+Published alpha.4 packages remain unchanged while the new candidates are qualified.
+
 | Product | Purpose | Public upstream |
 | --- | --- | --- |
 | Plervo Photo | Raster image editing | storytold/photocraft |
@@ -42,7 +47,7 @@ The preparation command refuses dirty checkouts, unknown products, mismatched
 source/patch/icon hashes, traversal, and linked asset destinations. It stages the
 prepared snapshot for upstream asset-inventory gates, without creating a commit. It never
 downloads, installs, signs, or publishes an application. A candidate using the
-`0.1.0-alpha.4` version is not necessarily the qualified public package. The release's
+`0.1.0-alpha.5` version is not necessarily the qualified public package. The release's
 provenance and checksum manifests identify the exact published artifacts.
 
 ## Development validation

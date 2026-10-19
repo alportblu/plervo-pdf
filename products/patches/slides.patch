@@ -53,7 +53,7 @@ index 9ca8e5e..7a9c293 100644
 +| `assets/app-icon/plervo-slides.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 d6b064274b5e14a1e4003c6356202318f7300f75241e6cc0d71b9260d09155d7 |
 +| `assets/app-icon/plervo-slides.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 0b67772ec5dc6840df0e25603e7acafa72fd49e0e93ca0ee2006fc70f3ebbc08 |
 diff --git a/Cargo.lock b/Cargo.lock
-index 4cf2cd8..ab6a10b 100644
+index 4cf2cd8..09ea7cb 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -202,15 +202,6 @@ version = "1.0.104"
@@ -114,7 +114,7 @@ index 4cf2cd8..ab6a10b 100644
  [[package]]
  name = "deckcraft-anim"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "deckcraft-geom",
   "deckcraft-model",
@@ -123,7 +123,7 @@ index 4cf2cd8..ab6a10b 100644
  [[package]]
  name = "deckcraft-av1"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "deckcraft-bitstream",
   "rayon",
@@ -132,7 +132,7 @@ index 4cf2cd8..ab6a10b 100644
  [[package]]
  name = "deckcraft-bitstream"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "proptest",
  ]
@@ -149,7 +149,7 @@ index 4cf2cd8..ab6a10b 100644
  [[package]]
  name = "deckcraft-color"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "serde",
  ]
@@ -157,7 +157,7 @@ index 4cf2cd8..ab6a10b 100644
  [[package]]
  name = "deckcraft-engine"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "deckcraft-color",
   "deckcraft-fonts",
@@ -166,7 +166,7 @@ index 4cf2cd8..ab6a10b 100644
  [[package]]
  name = "deckcraft-fonts"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "epaint_default_fonts",
   "harfrust 0.13.3",
@@ -175,7 +175,7 @@ index 4cf2cd8..ab6a10b 100644
  [[package]]
  name = "deckcraft-format"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "deckcraft-model",
   "serde",
@@ -184,7 +184,7 @@ index 4cf2cd8..ab6a10b 100644
  [[package]]
  name = "deckcraft-geom"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "kurbo",
   "serde",
@@ -193,7 +193,7 @@ index 4cf2cd8..ab6a10b 100644
  [[package]]
  name = "deckcraft-h264"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "deckcraft-bitstream",
   "rayon",
@@ -202,7 +202,7 @@ index 4cf2cd8..ab6a10b 100644
  [[package]]
  name = "deckcraft-hevc"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "deckcraft-bitstream",
   "rayon",
@@ -211,7 +211,7 @@ index 4cf2cd8..ab6a10b 100644
  [[package]]
  name = "deckcraft-isobmff"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "deckcraft-bitstream",
   "thiserror 2.0.21",
@@ -220,12 +220,12 @@ index 4cf2cd8..ab6a10b 100644
  [[package]]
  name = "deckcraft-matroska"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  
  [[package]]
  name = "deckcraft-mcp"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "deckcraft-engine",
   "deckcraft-render",
@@ -237,7 +237,7 @@ index 4cf2cd8..ab6a10b 100644
  [[package]]
  name = "deckcraft-media"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "deckcraft-av1",
   "deckcraft-h264",
@@ -246,7 +246,7 @@ index 4cf2cd8..ab6a10b 100644
  [[package]]
  name = "deckcraft-metafile"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "kurbo",
   "thiserror 2.0.21",
@@ -255,7 +255,7 @@ index 4cf2cd8..ab6a10b 100644
  [[package]]
  name = "deckcraft-model"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "deckcraft-color",
   "deckcraft-geom",
@@ -264,17 +264,17 @@ index 4cf2cd8..ab6a10b 100644
  [[package]]
  name = "deckcraft-ogg"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  
  [[package]]
  name = "deckcraft-opus"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  
  [[package]]
  name = "deckcraft-pdf"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "deckcraft-fonts",
   "deckcraft-model",
@@ -289,7 +289,7 @@ index 4cf2cd8..ab6a10b 100644
  [[package]]
  name = "deckcraft-pptx"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "deckcraft-color",
   "deckcraft-engine",
@@ -307,7 +307,7 @@ index 4cf2cd8..ab6a10b 100644
  [[package]]
  name = "deckcraft-render"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "deckcraft-anim",
   "deckcraft-color",
@@ -316,7 +316,7 @@ index 4cf2cd8..ab6a10b 100644
  [[package]]
  name = "deckcraft-text"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "chrono",
   "deckcraft-color",
@@ -325,7 +325,7 @@ index 4cf2cd8..ab6a10b 100644
  [[package]]
  name = "deckcraft-ui-egui"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "deckcraft-anim",
   "deckcraft-color",
@@ -334,7 +334,7 @@ index 4cf2cd8..ab6a10b 100644
  [[package]]
  name = "deckcraft-vp9"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "deckcraft-bitstream",
   "rayon",
@@ -343,7 +343,7 @@ index 4cf2cd8..ab6a10b 100644
  [[package]]
  name = "deckcraft-web"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "deckcraft-engine",
   "deckcraft-ui-egui",
@@ -398,7 +398,7 @@ index 4cf2cd8..ab6a10b 100644
  
 +[[package]]
 +name = "plervo-slides"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "arboard",
 + "cpal",
@@ -418,7 +418,7 @@ index 4cf2cd8..ab6a10b 100644
 +
 +[[package]]
 +name = "plervo-slides-cli"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "deckcraft-engine",
 + "deckcraft-mcp",
@@ -550,7 +550,7 @@ index 4cf2cd8..ab6a10b 100644
  [[package]]
  name = "xtask"
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "serde_json",
  ]
@@ -575,7 +575,7 @@ index 4cf2cd8..ab6a10b 100644
  ]
  
 diff --git a/Cargo.toml b/Cargo.toml
-index 5bb1f9a..745c14a 100644
+index 5bb1f9a..f0a8a24 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -583,7 +583,7 @@ index 5bb1f9a..745c14a 100644
  
  [workspace.package]
 -version = "0.7.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.90"
@@ -3450,7 +3450,7 @@ index 911a2d1..8248ce3 100644
          }
          checked += 1;
 diff --git a/crates/ui-egui/src/lib.rs b/crates/ui-egui/src/lib.rs
-index ec97e6e..6de52c0 100644
+index ec97e6e..8d791d8 100644
 --- a/crates/ui-egui/src/lib.rs
 +++ b/crates/ui-egui/src/lib.rs
 @@ -1,4 +1,4 @@
@@ -3495,6 +3495,13 @@ index ec97e6e..6de52c0 100644
              return;
          };
          let p = if cmd == "slide.fromOutline" { json!({"text": String::from_utf8_lossy(bytes)}) } else { json!({"name": name, "data": data}) };
+@@ -1409,3 +1409,6 @@ mod tests {
+         assert_eq!(harness.state().textures.canvas_renders, n, "an unchanged slide isn't rendered again");
+     }
+ }
++
++#[cfg(test)]
++mod plervo_support_tests;
 diff --git a/crates/ui-egui/src/menus.rs b/crates/ui-egui/src/menus.rs
 index 25398b4..c2745ee 100644
 --- a/crates/ui-egui/src/menus.rs
@@ -3507,8 +3514,74 @@ index 25398b4..c2745ee 100644
 +        ("Help", vec![("About Plervo Slides", "app.about"), ("Command Palette", "app.palette")]),
      ]
  }
+diff --git a/crates/ui-egui/src/plervo_support_tests.rs b/crates/ui-egui/src/plervo_support_tests.rs
+new file mode 100644
+index 0000000..31f7966
+--- /dev/null
++++ b/crates/ui-egui/src/plervo_support_tests.rs
+@@ -0,0 +1,60 @@
++//! The support action is visible in the header and opens only after a deliberate click.
++use egui::{Event, Modifiers, PointerButton, Pos2, RawInput, Rect, vec2};
++
++fn support_text(shapes: &[egui::epaint::ClippedShape]) -> Option<Rect> {
++    fn find(shape: &egui::epaint::Shape) -> Option<Rect> {
++        match shape {
++            egui::epaint::Shape::Text(text)
++                if ["Support", "Apoiar", "Apoyar", "Soutenir", "Unterstützen", "支援", "支持", "후원"].contains(&text.galley.job.text.as_str()) =>
++            {
++                Some(Rect::from_min_size(text.pos, text.galley.size()))
++            }
++            egui::epaint::Shape::Vec(shapes) => shapes.iter().find_map(find),
++            _ => None,
++        }
++    }
++    shapes.iter().find_map(|s| find(&s.shape).filter(|r| s.clip_rect.contains_rect(*r)))
++}
++
++#[test]
++fn support_header_is_visible_and_opens_only_the_donation_page() {
++    for width in [1024.0, 1440.0] {
++        for native in [false, true] {
++            let _ = native;
++            let ctx = egui::Context::default();
++            let mut app = crate::SlideApp::new(deckcraft_engine::Session::with_new(), crate::Services::default());
++            crate::theme::install_fonts(&ctx);
++            let mut frame = |events| {
++                ctx.run_ui(RawInput { screen_rect: Some(Rect::from_min_size(Pos2::ZERO, vec2(width, 720.0))), events, ..Default::default() }, |ui| {
++                    crate::ribbon::title_bar(&mut app, ui);
++                })
++            };
++            let mut output = frame(vec![]);
++            for _ in 0..3 {
++                output = frame(vec![]);
++            }
++            assert!(output.platform_output.commands.is_empty(), "drawing the bar must not open a browser");
++            let text = support_text(&output.shapes).expect("support label must be visible");
++            assert!(text.min.x >= 0.0 && text.max.x <= width && text.max.y <= 100.0, "{text:?}");
++            let pos = text.center();
++            frame(vec![
++                Event::PointerMoved(pos),
++                Event::PointerButton { pos, button: PointerButton::Primary, pressed: true, modifiers: Modifiers::NONE },
++            ]);
++            let output = frame(vec![
++                Event::PointerMoved(pos),
++                Event::PointerButton { pos, button: PointerButton::Primary, pressed: false, modifiers: Modifiers::NONE },
++            ]);
++            let urls: Vec<_> = output
++                .platform_output
++                .commands
++                .iter()
++                .filter_map(|command| match command {
++                    egui::OutputCommand::OpenUrl(url) => Some((url.url.as_str(), url.new_tab)),
++                    _ => None,
++                })
++                .collect();
++            assert_eq!(urls, [("https://buymeacoffee.com/alport", true)]);
++        }
++    }
++}
 diff --git a/crates/ui-egui/src/ribbon.rs b/crates/ui-egui/src/ribbon.rs
-index 428eff0..fe0f8fd 100644
+index 428eff0..572fc31 100644
 --- a/crates/ui-egui/src/ribbon.rs
 +++ b/crates/ui-egui/src/ribbon.rs
 @@ -63,7 +63,7 @@ pub fn title_bar(app: &mut SlideApp, ui: &mut Ui) {
@@ -3520,6 +3593,16 @@ index 428eff0..fe0f8fd 100644
          ui.painter().text(rect.center(), Align2::CENTER_CENTER, title, theme::font(13.0), t.text);
          // Right side.
          let mut right = ui.new_child(
+@@ -72,6 +72,9 @@ pub fn title_bar(app: &mut SlideApp, ui: &mut Ui) {
+                 .layout(egui::Layout::right_to_left(egui::Align::Center)),
+         );
+         right.spacing_mut().item_spacing.x = 6.0;
++        if right.button("Support").on_hover_text(deckcraft_engine::links::DISCORD).clicked() {
++            right.ctx().open_url(egui::OpenUrl::new_tab(deckcraft_engine::links::DISCORD));
++        }
+         if icon_toggle(&mut right, Icon::Search, "Search commands (⇧⌘P)", true, false).clicked() {
+             app.palette = Some((String::new(), 0));
+         }
 diff --git a/crates/ui-egui/src/show.rs b/crates/ui-egui/src/show.rs
 index 17ec527..e5fd4ac 100644
 --- a/crates/ui-egui/src/show.rs

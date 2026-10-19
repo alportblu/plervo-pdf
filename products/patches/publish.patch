@@ -65,7 +65,7 @@ index 76052b5..4325b42 100644
 +
 +| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | c98853a7427b62041d651836e94ef44855b8aeff377fd7d8d7a7380d1362647b |
 diff --git a/Cargo.lock b/Cargo.lock
-index e77a81b..03e8597 100644
+index e77a81b..712b88a 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -210,15 +210,6 @@ version = "1.0.104"
@@ -165,7 +165,7 @@ index e77a81b..03e8597 100644
  [[package]]
  name = "designcraft-color"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "kurbo",
   "moxcms",
@@ -174,7 +174,7 @@ index e77a81b..03e8597 100644
  [[package]]
  name = "designcraft-compose"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "designcraft-color",
   "designcraft-doc",
@@ -183,7 +183,7 @@ index e77a81b..03e8597 100644
  [[package]]
  name = "designcraft-doc"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "designcraft-color",
   "designcraft-geom",
@@ -192,7 +192,7 @@ index e77a81b..03e8597 100644
  [[package]]
  name = "designcraft-engine"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "caseless",
   "craft-print",
@@ -216,7 +216,7 @@ index e77a81b..03e8597 100644
  [[package]]
  name = "designcraft-epub"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "designcraft-color",
   "designcraft-doc",
@@ -225,7 +225,7 @@ index e77a81b..03e8597 100644
  [[package]]
  name = "designcraft-fonts"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "harfrust 0.13.3",
   "kurbo",
@@ -234,7 +234,7 @@ index e77a81b..03e8597 100644
  [[package]]
  name = "designcraft-format"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "designcraft-doc",
   "serde",
@@ -243,7 +243,7 @@ index e77a81b..03e8597 100644
  [[package]]
  name = "designcraft-geom"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "flo_curves",
   "kurbo",
@@ -252,7 +252,7 @@ index e77a81b..03e8597 100644
  [[package]]
  name = "designcraft-idml"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "designcraft-color",
   "designcraft-compose",
@@ -267,7 +267,7 @@ index e77a81b..03e8597 100644
  [[package]]
  name = "designcraft-images"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "designcraft-color",
   "designcraft-fonts",
@@ -276,7 +276,7 @@ index e77a81b..03e8597 100644
  [[package]]
  name = "designcraft-mcp"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "designcraft-engine",
   "designcraft-geom",
@@ -285,7 +285,7 @@ index e77a81b..03e8597 100644
  [[package]]
  name = "designcraft-pdf"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "designcraft-color",
   "designcraft-compose",
@@ -294,7 +294,7 @@ index e77a81b..03e8597 100644
  [[package]]
  name = "designcraft-render"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "designcraft-color",
   "designcraft-compose",
@@ -303,7 +303,7 @@ index e77a81b..03e8597 100644
  [[package]]
  name = "designcraft-textimport"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "designcraft-doc",
 - "quick-xml 0.38.4",
@@ -314,7 +314,7 @@ index e77a81b..03e8597 100644
  [[package]]
  name = "designcraft-tools"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "designcraft-color",
   "designcraft-compose",
@@ -323,7 +323,7 @@ index e77a81b..03e8597 100644
  [[package]]
  name = "designcraft-ui-egui"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "craft-ui",
   "designcraft-color",
@@ -340,7 +340,7 @@ index e77a81b..03e8597 100644
  [[package]]
  name = "designcraft-web"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "designcraft-engine",
   "designcraft-format",
@@ -466,7 +466,7 @@ index e77a81b..03e8597 100644
  
 +[[package]]
 +name = "plervo-publish"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "arboard",
 + "designcraft-engine",
@@ -484,7 +484,7 @@ index e77a81b..03e8597 100644
 +
 +[[package]]
 +name = "plervo-publish-cli"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "designcraft-color",
 + "designcraft-compose",
@@ -697,7 +697,7 @@ index e77a81b..03e8597 100644
  [[package]]
  name = "xtask"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "serde_json",
  ]
@@ -722,7 +722,7 @@ index e77a81b..03e8597 100644
  ]
  
 diff --git a/Cargo.toml b/Cargo.toml
-index e76609e..7f94459 100644
+index e76609e..6185247 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -1,10 +1,11 @@
@@ -734,7 +734,7 @@ index e76609e..7f94459 100644
  
  [workspace.package]
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.95"
@@ -2573,21 +2573,22 @@ index 4eae2e7..b9c26e2 100644
                          ui.add(egui::Button::new(egui::RichText::new(*name).size(12.0)).corner_radius(10.0)).on_hover_text(format!("{what} — {url}"));
                      if b.clicked() {
 diff --git a/crates/ui-egui/src/chrome.rs b/crates/ui-egui/src/chrome.rs
-index c2f1cb4..0e61044 100644
+index c2f1cb4..d14428a 100644
 --- a/crates/ui-egui/src/chrome.rs
 +++ b/crates/ui-egui/src/chrome.rs
-@@ -124,8 +124,8 @@ pub fn app_bar(app: &mut DesignApp, ui: &mut egui::Ui) {
+@@ -124,8 +124,9 @@ pub fn app_bar(app: &mut DesignApp, ui: &mut egui::Ui) {
                              app.status("Export a PDF, IDML or package to share — no cloud account needed.");
                          }
                          ui.add_space(8.0);
 -                        // Always one click away: the ArtCraft community Discord.
 -                        if crate::about::discord_button(ui, "Discord", vec2(78.0, 22.0)) {
-+                        // Always one click away: the Plervo community Discord.
-+                        if crate::about::discord_button(ui, "Support", vec2(78.0, 22.0)) {
++                        let support = crate::i18n::tr(&app.ui.language, "Support");
++                        let support_width = ui.painter().layout_no_wrap(support.into(), egui::FontId::proportional(12.0), t.text).size().x + 36.0;
++                        if crate::about::discord_button(ui, support, vec2(support_width, 22.0)) {
                              let _ = app.run("help.discord", json!({}));
                          }
                          tools_start = ui.min_rect().min.x;
-@@ -139,8 +139,8 @@ pub fn app_bar(app: &mut DesignApp, ui: &mut egui::Ui) {
+@@ -139,8 +140,8 @@ pub fn app_bar(app: &mut DesignApp, ui: &mut egui::Ui) {
              });
              // Centred title.
              let title = match app.session.active() {
@@ -2598,7 +2599,7 @@ index c2f1cb4..0e61044 100644
              };
              // Centred between the menus and the right-hand controls; left out when it won't fit.
              let galley = crate::rtl::plain(ui.ctx(), &title, egui::FontId::proportional(11.5), t.text);
-@@ -662,7 +662,7 @@ pub fn start_screen(app: &mut DesignApp, ui: &mut egui::Ui) {
+@@ -662,7 +663,7 @@ pub fn start_screen(app: &mut DesignApp, ui: &mut egui::Ui) {
          |ui| {
              ui.label(crate::rtl::widget(
                  ui,
@@ -2607,7 +2608,7 @@ index c2f1cb4..0e61044 100644
              ));
              ui.label(crate::rtl::widget(
                  ui,
-@@ -744,7 +744,7 @@ pub fn start_screen(app: &mut DesignApp, ui: &mut egui::Ui) {
+@@ -744,7 +745,7 @@ pub fn start_screen(app: &mut DesignApp, ui: &mut egui::Ui) {
      let _ = Content::Unassigned;
  }
  
@@ -2616,7 +2617,7 @@ index c2f1cb4..0e61044 100644
  fn community_card(app: &mut DesignApp, ui: &mut egui::Ui) {
      let t = Tokens::get(ui.ctx());
      egui::Frame::NONE.fill(t.panel).corner_radius(10.0).inner_margin(egui::Margin::same(14)).show(ui, |ui| {
-@@ -756,7 +756,7 @@ fn community_card(app: &mut DesignApp, ui: &mut egui::Ui) {
+@@ -756,7 +757,7 @@ fn community_card(app: &mut DesignApp, ui: &mut egui::Ui) {
              ui.vertical(|ui| {
                  ui.label(crate::rtl::widget(
                      ui,
@@ -2625,7 +2626,7 @@ index c2f1cb4..0e61044 100644
                  ));
                  ui.label(crate::rtl::widget(
                      ui,
-@@ -766,7 +766,7 @@ fn community_card(app: &mut DesignApp, ui: &mut egui::Ui) {
+@@ -766,7 +767,7 @@ fn community_card(app: &mut DesignApp, ui: &mut egui::Ui) {
                  ));
                  ui.add_space(4.0);
                  ui.horizontal(|ui| {
@@ -2634,7 +2635,7 @@ index c2f1cb4..0e61044 100644
                          let url = designcraft_engine::links::get(&id[5..]).unwrap_or_default();
                          let l = ui
                              .add(egui::Label::new(egui::RichText::new(text).size(12.0).color(t.accent).underline()).sense(Sense::click()))
-@@ -780,7 +780,7 @@ fn community_card(app: &mut DesignApp, ui: &mut egui::Ui) {
+@@ -780,7 +781,7 @@ fn community_card(app: &mut DesignApp, ui: &mut egui::Ui) {
                  });
              });
              ui.with_layout(egui::Layout::right_to_left(egui::Align::Center), |ui| {
@@ -2644,7 +2645,7 @@ index c2f1cb4..0e61044 100644
                  }
              });
 diff --git a/crates/ui-egui/src/i18n.rs b/crates/ui-egui/src/i18n.rs
-index 6d6503a..06a0e22 100644
+index 6d6503a..265decc 100644
 --- a/crates/ui-egui/src/i18n.rs
 +++ b/crates/ui-egui/src/i18n.rs
 @@ -23,6 +23,36 @@ pub const LANGUAGES: &[(&str, &str)] = &[
@@ -2732,7 +2733,7 @@ index 6d6503a..06a0e22 100644
      ),
      (
          "Detach All Objects from Parent",
-@@ -1048,16 +1090,7 @@ const TABLE: &[(&str, [&str; 5])] = &[
+@@ -1048,16 +1090,8 @@ const TABLE: &[(&str, [&str; 5])] = &[
      ("Insert Variable", ["Insert Variable", "Insert Variable", "Insert Variable", "Insert Variable", "插入变量"]),
      ("Inspect Document", ["Inspect Document", "Inspect Document", "Inspect Document", "Inspect Document", "检查文档"]),
      ("Interface Color Theme", ["Interface Color Theme", "Interface Color Theme", "Interface Color Theme", "Interface Color Theme", "界面颜色主题"]),
@@ -2746,11 +2747,12 @@ index 6d6503a..06a0e22 100644
 -            "加入 ArtCraft Discord…",
 -        ],
 -    ),
++    ("Support", ["Unterstützen", "Soutenir", "Apoyar", "支援", "支持"]),
 +    ("Support Plervo", ["Plervo unterstützen", "Soutenir Plervo", "Apoyar a Plervo", "Plervo を支援", "支持 Plervo"]),
      ("Last Object Below", ["Last Object Below", "Last Object Below", "Last Object Below", "Last Object Below", "下方最后一个对象"]),
      ("Library Contents", ["Library Contents", "Library Contents", "Library Contents", "Library Contents", "库内容"]),
      ("Library Items", ["Library Items", "Library Items", "Library Items", "Library Items", "库项目"]),
-@@ -1541,7 +1574,7 @@ const TABLE: &[(&str, [&str; 5])] = &[
+@@ -1541,7 +1575,7 @@ const TABLE: &[(&str, [&str; 5])] = &[
          ["Cross-Reference Format", "Cross-Reference Format", "Cross-Reference Format", "Cross-Reference Format", "交叉引用格式"],
      ),
      ("Delete Workspace", ["Delete Workspace", "Delete Workspace", "Delete Workspace", "Delete Workspace", "删除工作区"]),
@@ -2759,7 +2761,7 @@ index 6d6503a..06a0e22 100644
      ("Display Performance", ["Display Performance", "Display Performance", "Display Performance", "Display Performance", "显示性能"]),
      ("Document Grid", ["Document Grid", "Document Grid", "Document Grid", "Document Grid", "文档网格"]),
      (
-@@ -1585,19 +1618,13 @@ const TABLE: &[(&str, [&str; 5])] = &[
+@@ -1585,19 +1619,13 @@ const TABLE: &[(&str, [&str; 5])] = &[
      ("Interactive", ["Interactive", "Interactive", "Interactive", "Interactive", "交互式"]),
      ("Invert", ["Invert", "Invert", "Invert", "Invert", "反相"]),
      (
@@ -2782,7 +2784,7 @@ index 6d6503a..06a0e22 100644
      ("Nested Line Styles", ["Nested Line Styles", "Nested Line Styles", "Nested Line Styles", "Nested Line Styles", "嵌套行样式"]),
      ("Nested Styles", ["Nested Styles", "Nested Styles", "Nested Styles", "Nested Styles", "嵌套样式"]),
      (
-@@ -1717,13 +1744,13 @@ const TABLE: &[(&str, [&str; 5])] = &[
+@@ -1717,13 +1745,13 @@ const TABLE: &[(&str, [&str; 5])] = &[
      ),
      ("Page · PPI", ["Page · PPI", "Page · PPI", "Page · PPI", "Page · PPI", "页面 · PPI"]),
      (
@@ -2802,7 +2804,7 @@ index 6d6503a..06a0e22 100644
          ],
      ),
      ("Pasteboard Options", ["Pasteboard Options", "Pasteboard Options", "Pasteboard Options", "Pasteboard Options", "粘贴板选项"]),
-@@ -1882,8 +1909,14 @@ const TABLE: &[(&str, [&str; 5])] = &[
+@@ -1882,8 +1910,14 @@ const TABLE: &[(&str, [&str; 5])] = &[
      ("Utilities", ["Utilities", "Utilities", "Utilities", "Utilities", "实用程序"]),
      ("Variable Font", ["Variable Font", "Variable Font", "Variable Font", "Variable Font", "可变字体"]),
      (
@@ -2819,7 +2821,7 @@ index 6d6503a..06a0e22 100644
      ),
      ("When Scaling", ["When Scaling", "When Scaling", "When Scaling", "When Scaling", "缩放时"]),
      ("[Basic] (working) ▾", ["[Basic] (working) ▾", "[Basic] (working) ▾", "[Basic] (working) ▾", "[Basic] (working) ▾", "[基本] (工作区) ▾"]),
-@@ -1901,13 +1934,13 @@ const TABLE: &[(&str, [&str; 5])] = &[
+@@ -1901,13 +1935,13 @@ const TABLE: &[(&str, [&str; 5])] = &[
          ],
      ),
      (
@@ -2839,7 +2841,7 @@ index 6d6503a..06a0e22 100644
          ],
      ),
      (
-@@ -2653,7 +2686,6 @@ const TABLE: &[(&str, [&str; 5])] = &[
+@@ -2653,7 +2687,6 @@ const TABLE: &[(&str, [&str; 5])] = &[
      ("H&J Violations", ["H&J Violations", "H&J Violations", "H&J Violations", "H&J Violations", "断字与对齐违规"]),
      ("Include Bleed", ["Include Bleed", "Include Bleed", "Include Bleed", "Include Bleed", "包含出血"]),
      ("Include Stroke Weight", ["Include Stroke Weight", "Include Stroke Weight", "Include Stroke Weight", "Include Stroke Weight", "包含描边粗细"]),
@@ -2847,7 +2849,7 @@ index 6d6503a..06a0e22 100644
      ("Keep Violations", ["Keep Violations", "Keep Violations", "Keep Violations", "Keep Violations", "保持选项违规"]),
      (
          "Overprint [Black] Swatch at 100%",
-@@ -3099,3 +3131,21 @@ mod tests {
+@@ -3099,3 +3132,21 @@ mod tests {
          assert_eq!(tr("ja", "PDF/X-4"), "PDF/X-4");
      }
  }
@@ -2870,10 +2872,10 @@ index 6d6503a..06a0e22 100644
 +    }
 +}
 diff --git a/crates/ui-egui/src/i18n/ar.rs b/crates/ui-egui/src/i18n/ar.rs
-index 7695119..a76eb68 100644
+index 7695119..c637275 100644
 --- a/crates/ui-egui/src/i18n/ar.rs
 +++ b/crates/ui-egui/src/i18n/ar.rs
-@@ -150,21 +150,21 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -150,21 +150,22 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Hyperlinks", "ارتباطات تشعبية"),
      ("Bookmarks", "إشارات مرجعية"),
      ("Show All Menu Items", "إظهار كل عناصر القائمة"),
@@ -2893,15 +2895,16 @@ index 7695119..a76eb68 100644
 +    ("Join the Plervo community", "انضم إلى مجتمع Plervo"),
      ("Get help, share your layouts and shape what we build next.", "احصل على المساعدة وشارك تصميماتك وساهم في تطوير التطبيق."),
 -    ("Join our Discord", "انضم إلى Discord"),
++    ("Support", "ادعم"),
 +    ("Support Plervo", "ادعم Plervo"),
      ("Community", "المجتمع"),
      ("Join the community", "انضم إلى المجتمع"),
 -    ("discord.gg/artcraft — help, feedback and show-and-tell", "discord.gg/artcraft — مساعدة وآراء وعرض الأعمال"),
-+    ("buymeacoffee.com/alport — help, feedback and show-and-tell", "buymeacoffee.com/alport — مساعدة وآراء وعرض الأعمال"),
++    ("buymeacoffee.com/alport — optional donations", "buymeacoffee.com/alport — مساعدة وآراء وعرض الأعمال"),
      ("  OK  ", "  موافق  "),
      ("Float panel", "تعويم اللوحة"),
      ("Dock panel", "إرساء اللوحة"),
-@@ -909,7 +909,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -909,7 +910,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Merge into Active Layer", "دمج في الطبقة النشطة"),
      ("Misspelled word → Correction (one per line):", "كلمة خاطئة ← تصحيح (واحد في كل سطر):"),
      ("Mobile", "جوال"),
@@ -2910,7 +2913,7 @@ index 7695119..a76eb68 100644
      ("Move Selection Here", "نقل التحديد إلى هنا"),
      ("Move to Color Group", "نقل إلى مجموعة ألوان"),
      ("Move to Group", "نقل إلى مجموعة"),
-@@ -948,7 +948,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -948,7 +949,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Page Numbering", "ترقيم الصفحات"),
      ("Page · PPI", "صفحة · PPI"),
      ("Pages:", "الصفحات:"),
@@ -2919,7 +2922,7 @@ index 7695119..a76eb68 100644
      ("Pasteboard Options", "خيارات مساحة اللصق"),
      ("Path", "مسار"),
      ("Place the insertion point in a table, or create one.", "ضع نقطة الإدراج داخل جدول أو أنشئ جدولًا."),
-@@ -1138,8 +1138,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -1138,8 +1139,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Apply Cell Style", "تطبيق نمط الخلية"),
      ("Apply Condition", "تطبيق شرط"),
      ("Apply Parent to Pages…", "تطبيق الصفحة الأصلية على الصفحات…"),
@@ -2930,7 +2933,7 @@ index 7695119..a76eb68 100644
      ("Attributes", "السمات"),
      ("Bevel and Emboss", "القطع المشطوف والنقش البارز"),
      ("Buttons", "أزرار"),
-@@ -1185,8 +1185,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -1185,8 +1186,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Delete Item", "حذف عنصر"),
      ("Delete Text Variable", "حذف متغير نصي"),
      ("Delete Workspace…", "حذف مساحة العمل…"),
@@ -2941,7 +2944,7 @@ index 7695119..a76eb68 100644
      ("Detach All Objects from Parent", "فصل جميع الكائنات عن الصفحة الأصلية"),
      ("Directional Feather", "الحواف المنعمة الاتجاهية"),
      ("Distribute", "توزيع"),
-@@ -1241,7 +1241,6 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -1241,7 +1242,6 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Insert Variable", "إدراج متغير"),
      ("Inspect Document", "فحص المستند"),
      ("Interface Color Theme", "نسق ألوان الواجهة"),
@@ -2949,7 +2952,7 @@ index 7695119..a76eb68 100644
      ("Last Object Below", "آخر كائن أسفل"),
      ("Library Contents", "محتويات المكتبة"),
      ("Library Items", "عناصر المكتبة"),
-@@ -1478,7 +1477,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -1478,7 +1478,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ),
      ("Convert Cell Type", "تحويل نوع الخلية"),
      ("Copy Link(s", "نسخ الروابط"),
@@ -2959,7 +2962,7 @@ index 7695119..a76eb68 100644
      ("Export EPUB (Reflowable", "تصدير EPUB (قابل لإعادة التدفق"),
      ("Hyperlinks & Cross-References", "الارتباطات التشعبية والمراجع المتقاطعة"),
 diff --git a/crates/ui-egui/src/i18n/it.rs b/crates/ui-egui/src/i18n/it.rs
-index 747511a..f211e23 100644
+index 747511a..23770cb 100644
 --- a/crates/ui-egui/src/i18n/it.rs
 +++ b/crates/ui-egui/src/i18n/it.rs
 @@ -400,8 +400,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
@@ -2995,16 +2998,17 @@ index 747511a..f211e23 100644
      ("Detach All Objects from Parent", "Scollega tutti gli oggetti dalla pagina mastro"),
      ("Directional Feather", "Bordi sfocati direzionali"),
      ("Distribute", "Distribuisci"),
-@@ -560,7 +560,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -560,7 +560,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Insert Variable", "Inserisci variabile"),
      ("Inspect Document", "Ispeziona documento"),
      ("Interface Color Theme", "Tema colore dell'interfaccia"),
 -    ("Join the ArtCraft Discord…", "Unisciti al Discord di ArtCraft…"),
++    ("Support", "Sostieni"),
 +    ("Support Plervo", "Sostieni Plervo"),
      ("Last Object Below", "Ultimo oggetto sotto"),
      ("Library Contents", "Contenuto libreria"),
      ("Library Items", "Elementi libreria"),
-@@ -846,7 +846,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -846,7 +847,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Crop Amount", "Valore di ritaglio"),
      ("Cross-Reference Format", "Formato riferimento incrociato"),
      ("Delete Workspace", "Elimina area di lavoro"),
@@ -3013,7 +3017,7 @@ index 747511a..f211e23 100644
      ("Display Performance", "Prestazioni di visualizzazione"),
      ("Document Grid", "Griglia documento"),
      ("Document Recovery Data", "Dati di recupero documento"),
-@@ -865,11 +865,11 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -865,11 +866,11 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Hyphens and Dashes", "Trattini e lineette"),
      ("Interactive", "Interattivo"),
      ("Invert", "Inverti"),
@@ -3027,7 +3031,7 @@ index 747511a..f211e23 100644
      ("Nested Line Styles", "Stili di riga nidificati"),
      ("Nested Styles", "Stili nidificati"),
      ("No articles: exports follow page order.", "Nessun articolo: le esportazioni seguono l'ordine delle pagine."),
-@@ -904,7 +904,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -904,7 +905,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
          "Impaginazione per la stampa e lo schermo — veloce, aperta e automatizzabile con script.",
      ),
      ("Page · PPI", "Pagina · PPI"),
@@ -3036,7 +3040,7 @@ index 747511a..f211e23 100644
      ("Pasteboard Options", "Opzioni tavolo di montaggio"),
      ("Paths", "Tracciati"),
      ("Place the insertion point in a table, or create one.", "Posiziona il punto di inserimento in una tabella o creane una."),
-@@ -949,14 +949,14 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -949,14 +950,14 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("User Dictionary (this document)", "Dizionario utente (questo documento)"),
      ("Utilities", "Utilità"),
      ("Variable Font", "Font variabile"),
@@ -3049,11 +3053,11 @@ index 747511a..f211e23 100644
      ("[None]", "[Nessuno]"),
      ("[None] — choose a colour on the ramp.", "[Nessuno] — scegli un colore sulla barra dei colori."),
 -    ("discord.gg/artcraft — help, feedback and show-and-tell", "discord.gg/artcraft — aiuto, feedback e condivisione dei lavori"),
-+    ("buymeacoffee.com/alport — help, feedback and show-and-tell", "buymeacoffee.com/alport — aiuto, feedback e condivisione dei lavori"),
++    ("buymeacoffee.com/alport — optional donations", "buymeacoffee.com/alport — aiuto, feedback e condivisione dei lavori"),
      ("⌥-click clears overrides", "⌥-clic cancella le modifiche locali"),
      ("⚠ out of date", "⚠ non aggiornato"),
      ("General", "Generale"),
-@@ -1358,7 +1358,6 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -1358,7 +1359,6 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("H&J Violations", "Violazioni di sillabazione e giustificazione"),
      ("Include Bleed", "Includi pagina al vivo"),
      ("Include Stroke Weight", "Includi spessore traccia"),
@@ -3062,7 +3066,7 @@ index 747511a..f211e23 100644
      ("Overprint [Black] Swatch at 100%", "Sovrastampa campione [Nero] al 100%"),
      ("Printer's Marks", "Segni di stampa"),
 diff --git a/crates/ui-egui/src/i18n/ja.rs b/crates/ui-egui/src/i18n/ja.rs
-index 263d422..8ed8ea7 100644
+index 263d422..3ce0767 100644
 --- a/crates/ui-egui/src/i18n/ja.rs
 +++ b/crates/ui-egui/src/i18n/ja.rs
 @@ -402,8 +402,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
@@ -3098,16 +3102,17 @@ index 263d422..8ed8ea7 100644
      ("Detach All Objects from Parent", "すべてのオブジェクトを親ページから分離"),
      ("Directional Feather", "方向別ぼかし"),
      ("Distribute", "均等に配置"),
-@@ -559,7 +559,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -559,7 +559,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Insert Variable", "変数を挿入"),
      ("Inspect Document", "ドキュメントを調査"),
      ("Interface Color Theme", "インターフェイスのカラーテーマ"),
 -    ("Join the ArtCraft Discord…", "ArtCraft の Discord に参加…"),
++    ("Support", "支援"),
 +    ("Support Plervo", "Plervo を支援"),
      ("Last Object Below", "最背面のオブジェクト"),
      ("Library Contents", "ライブラリの内容"),
      ("Library Items", "ライブラリの項目"),
-@@ -845,7 +845,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -845,7 +846,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Crop Amount", "トリミング量"),
      ("Cross-Reference Format", "相互参照の書式"),
      ("Delete Workspace", "ワークスペースを削除"),
@@ -3116,7 +3121,7 @@ index 263d422..8ed8ea7 100644
      ("Display Performance", "表示品質"),
      ("Document Grid", "ドキュメントグリッド"),
      ("Document Recovery Data", "ドキュメント復旧データ"),
-@@ -861,11 +861,11 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -861,11 +862,11 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Hyphens and Dashes", "ハイフンとダッシュ"),
      ("Interactive", "インタラクティブ"),
      ("Invert", "反転"),
@@ -3130,7 +3135,7 @@ index 263d422..8ed8ea7 100644
      ("Nested Line Styles", "入れ子行スタイル"),
      ("Nested Styles", "入れ子スタイル"),
      ("No articles: exports follow page order.", "アーティクルがありません。ページ順に書き出します。"),
-@@ -900,7 +900,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -900,7 +901,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
          "印刷・画面向けの高速なページレイアウトツールです。オープンで、スクリプトにも対応します。",
      ),
      ("Page · PPI", "ページ・PPI"),
@@ -3139,7 +3144,7 @@ index 263d422..8ed8ea7 100644
      ("Pasteboard Options", "ペーストボードのオプション"),
      ("Paths", "パス"),
      ("Place the insertion point in a table, or create one.", "表内に挿入位置を置くか、表を作成してください。"),
-@@ -945,14 +945,14 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -945,14 +946,14 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("User Dictionary (this document)", "ユーザー辞書 (このドキュメント)"),
      ("Utilities", "ユーティリティ"),
      ("Variable Font", "バリアブルフォント"),
@@ -3152,11 +3157,11 @@ index 263d422..8ed8ea7 100644
      ("[None]", "[なし]"),
      ("[None] — choose a colour on the ramp.", "[なし] — カラーバーでカラーを選択してください。"),
 -    ("discord.gg/artcraft — help, feedback and show-and-tell", "discord.gg/artcraft — サポート・ご意見・作品紹介"),
-+    ("buymeacoffee.com/alport — help, feedback and show-and-tell", "buymeacoffee.com/alport — サポート・ご意見・作品紹介"),
++    ("buymeacoffee.com/alport — optional donations", "buymeacoffee.com/alport — サポート・ご意見・作品紹介"),
      ("⌥-click clears overrides", "⌥ を押しながらクリックするとオーバーライドを消去します"),
      ("⚠ out of date", "⚠ 要更新"),
      ("General", "一般"),
-@@ -1351,7 +1351,6 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -1351,7 +1352,6 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("H&J Violations", "H&J の制約違反"),
      ("Include Bleed", "裁ち落としを含める"),
      ("Include Stroke Weight", "線の太さを含める"),
@@ -3164,7 +3169,7 @@ index 263d422..8ed8ea7 100644
      ("Keep Violations", "段落保持の制約違反"),
      ("Overprint [Black] Swatch at 100%", "100% の「黒」スウォッチをオーバープリント"),
      ("Printer's Marks", "プリント用マーク"),
-@@ -1476,16 +1475,16 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -1476,16 +1476,16 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      // few field labels.
      ("Anchored Object Options", "アンカー付きオブジェクトのオプション"),
      ("Apply Parent to Pages", "ページに親ページを適用"),
@@ -3185,7 +3190,7 @@ index 263d422..8ed8ea7 100644
      ("Document Endnote Options", "ドキュメントの文末脚注オプション"),
      ("Document Footnote Options", "ドキュメントの脚注オプション"),
      ("Export EPUB", "EPUB を書き出し"),
-@@ -1506,7 +1505,6 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -1506,7 +1506,6 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Insert Cross-Reference", "相互参照を挿入"),
      ("Insert Math Expression", "数式を挿入"),
      ("Insert Pages", "ページを挿入"),
@@ -3194,10 +3199,10 @@ index 263d422..8ed8ea7 100644
      ("Load Swatches", "スウォッチを読み込み"),
      ("Margins and Columns", "マージン・段組"),
 diff --git a/crates/ui-egui/src/i18n/pt_br.rs b/crates/ui-egui/src/i18n/pt_br.rs
-index 3f955f6..c97e2a0 100644
+index 3f955f6..dcdf0e0 100644
 --- a/crates/ui-egui/src/i18n/pt_br.rs
 +++ b/crates/ui-egui/src/i18n/pt_br.rs
-@@ -150,24 +150,24 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -150,24 +150,25 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Hyperlinks", "Hiperlinks"),
      ("Bookmarks", "Indicadores"),
      ("Show All Menu Items", "Mostrar todos os itens de menu"),
@@ -3220,15 +3225,16 @@ index 3f955f6..c97e2a0 100644
          "Obtenha ajuda, compartilhe seus layouts e ajude a moldar o que construímos em seguida.",
      ),
 -    ("Join our Discord", "Junte-se ao nosso Discord"),
++    ("Support", "Apoiar"),
 +    ("Support Plervo", "Apoie o Plervo"),
      ("Community", "Comunidade"),
      ("Join the community", "Junte-se à comunidade"),
 -    ("discord.gg/artcraft — help, feedback and show-and-tell", "discord.gg/artcraft — ajuda, feedback e demonstrações"),
-+    ("buymeacoffee.com/alport — help, feedback and show-and-tell", "buymeacoffee.com/alport — ajuda, feedback e demonstrações"),
++    ("buymeacoffee.com/alport — optional donations", "buymeacoffee.com/alport — ajuda, feedback e demonstrações"),
      ("  OK  ", "  OK  "),
      ("Float panel", "Painel flutuante"),
      ("Dock panel", "Painel encaixado"),
-@@ -903,7 +903,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -903,7 +904,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Merge into Active Layer", "Mesclar na camada ativa"),
      ("Misspelled word → Correction (one per line):", "Palavra incorreta → Correção (uma por linha):"),
      ("Mobile", "Dispositivo móvel"),
@@ -3237,7 +3243,7 @@ index 3f955f6..c97e2a0 100644
      ("Move Selection Here", "Mover a seleção para cá"),
      ("Move to Color Group", "Mover para grupo de cores"),
      ("Move to Group", "Mover para grupo"),
-@@ -948,7 +948,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -948,7 +949,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Page Numbering", "Numeração de página"),
      ("Page · PPI", "Página · PPI"),
      ("Pages:", "Páginas:"),
@@ -3247,7 +3253,7 @@ index 3f955f6..c97e2a0 100644
      ("Path", "Caminho"),
      ("Place the insertion point in a table, or create one.", "Coloque o ponto de inserção em uma tabela ou crie uma."),
 diff --git a/crates/ui-egui/src/i18n/uk.rs b/crates/ui-egui/src/i18n/uk.rs
-index efccfc1..506d15a 100644
+index efccfc1..55f5026 100644
 --- a/crates/ui-egui/src/i18n/uk.rs
 +++ b/crates/ui-egui/src/i18n/uk.rs
 @@ -1,5 +1,5 @@
@@ -3290,16 +3296,17 @@ index efccfc1..506d15a 100644
      ("Detach All Objects from Parent", "Від’єднати всі об’єкти від шаблону"),
      ("Directional Feather", "Спрямоване розтушовування"),
      ("Distribute", "Розподілити"),
-@@ -563,7 +563,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -563,7 +563,8 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Insert Variable", "Вставити змінну"),
      ("Inspect Document", "Перевірити документ"),
      ("Interface Color Theme", "Колірна тема інтерфейсу"),
 -    ("Join the ArtCraft Discord…", "Приєднатися до Discord ArtCraft…"),
++    ("Support", "Підтримати"),
 +    ("Support Plervo", "Підтримати Plervo"),
      ("Last Object Below", "Останній об’єкт нижче"),
      ("Library Contents", "Вміст бібліотеки"),
      ("Library Items", "Елементи бібліотеки"),
-@@ -849,7 +849,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -849,7 +850,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Crop Amount", "Величина обрізання"),
      ("Cross-Reference Format", "Формат перехресного посилання"),
      ("Delete Workspace", "Видалити робоче середовище"),
@@ -3308,7 +3315,7 @@ index efccfc1..506d15a 100644
      ("Display Performance", "Якість відображення"),
      ("Document Grid", "Сітка документа"),
      ("Document Recovery Data", "Дані відновлення документа"),
-@@ -865,11 +865,11 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -865,11 +866,11 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Hyphens and Dashes", "Дефіси та тире"),
      ("Interactive", "Інтерактивність"),
      ("Invert", "Інвертувати"),
@@ -3322,7 +3329,7 @@ index efccfc1..506d15a 100644
      ("Nested Line Styles", "Вкладені стилі рядків"),
      ("Nested Styles", "Вкладені стилі"),
      ("No articles: exports follow page order.", "Немає статей: експорт дотримується порядку сторінок."),
-@@ -901,7 +901,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -901,7 +902,7 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("Page Numbering", "Нумерація сторінок"),
      ("Page layout for print and screen — fast, open and scriptable.", "Верстка для друку й екрана — швидка, відкрита, зі сценаріями."),
      ("Page · PPI", "Сторінка · PPI"),
@@ -3331,7 +3338,7 @@ index efccfc1..506d15a 100644
      ("Pasteboard Options", "Параметри монтажного столу"),
      ("Paths", "Контури"),
      ("Place the insertion point in a table, or create one.", "Установіть курсор у таблиці або створіть її."),
-@@ -946,14 +946,14 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -946,14 +947,14 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("User Dictionary (this document)", "Словник користувача (цей документ)"),
      ("Utilities", "Допоміжні інструменти"),
      ("Variable Font", "Варіативний шрифт"),
@@ -3344,11 +3351,11 @@ index efccfc1..506d15a 100644
      ("[None]", "[Немає]"),
      ("[None] — choose a colour on the ramp.", "[Немає] — виберіть колір на шкалі."),
 -    ("discord.gg/artcraft — help, feedback and show-and-tell", "discord.gg/artcraft — допомога, відгуки та обмін роботами"),
-+    ("buymeacoffee.com/alport — help, feedback and show-and-tell", "buymeacoffee.com/alport — допомога, відгуки та обмін роботами"),
++    ("buymeacoffee.com/alport — optional donations", "buymeacoffee.com/alport — допомога, відгуки та обмін роботами"),
      ("⌥-click clears overrides", "⌥-клацання скидає перевизначення"),
      ("⚠ out of date", "⚠ застаріле"),
      ("General", "Загальні"),
-@@ -1355,7 +1355,6 @@ pub(super) const TABLE: &[(&str, &str)] = &[
+@@ -1355,7 +1356,6 @@ pub(super) const TABLE: &[(&str, &str)] = &[
      ("H&J Violations", "Порушення переносів і вирівнювання"),
      ("Include Bleed", "Включати виліт"),
      ("Include Stroke Weight", "Враховувати товщину обведення"),

@@ -83,7 +83,7 @@ index 2b69cb0..f282af0 100644
 +
 +| `packaging/macos/dmg/background.svg` | @XusBadia | Original work: FilmCraft macOS DMG window background, derived from the FilmCraft app icon (`assets/app-icon/filmcraft.svg`); rendered to `background.tiff` by `packaging/macos/dmg/generate.py` | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) |
 diff --git a/Cargo.lock b/Cargo.lock
-index e50797e..f6a2f43 100644
+index e50797e..4229690 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -704,8 +704,6 @@ dependencies = [
@@ -135,7 +135,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-aac"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
@@ -144,7 +144,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-ac3"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-testkit",
   "thiserror 2.0.21",
@@ -153,7 +153,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-apv"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
@@ -162,7 +162,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-audio-dsp"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-testkit",
  ]
@@ -170,7 +170,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-automation"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "base64 0.22.1",
   "filmcraft-engine",
@@ -179,7 +179,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-av1"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
@@ -188,7 +188,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-avi"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-testkit",
  ]
@@ -196,7 +196,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-bitstream"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "proptest",
  ]
@@ -204,7 +204,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-captions"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-color",
   "filmcraft-project",
@@ -235,12 +235,12 @@ index e50797e..f6a2f43 100644
 - "serde_json",
 - "tokio",
 -]
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  
  [[package]]
  name = "filmcraft-codecs"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-aac",
   "filmcraft-ac3",
@@ -249,7 +249,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-color"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "proptest",
   "serde",
@@ -258,7 +258,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-dng"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-dng",
   "rayon",
@@ -267,7 +267,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-dnx"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
@@ -276,7 +276,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-edit"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-geom",
   "filmcraft-media",
@@ -285,7 +285,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-engine"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-audio-dsp",
   "filmcraft-captions",
@@ -294,7 +294,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-export"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-aac",
   "filmcraft-apv",
@@ -303,7 +303,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-flac"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
@@ -312,7 +312,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-format"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-media",
   "filmcraft-project",
@@ -321,7 +321,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-frame"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-color",
   "filmcraft-time",
@@ -330,7 +330,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-geom"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "proptest",
   "serde",
@@ -339,7 +339,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-golden"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-color",
   "filmcraft-frame",
@@ -348,7 +348,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-gpu"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-color",
   "filmcraft-export",
@@ -357,7 +357,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-h264"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
@@ -366,7 +366,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-h264enc"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
@@ -375,7 +375,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-hevc"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
@@ -384,7 +384,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-interchange"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-cfb",
   "filmcraft-color",
@@ -393,7 +393,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-isobmff"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
@@ -402,7 +402,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-matroska"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-testkit",
   "serde_json",
@@ -411,7 +411,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-media"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-color",
   "filmcraft-dng",
@@ -420,7 +420,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-mpa"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
@@ -429,7 +429,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-mpeg2v"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-testkit",
   "rayon",
@@ -438,7 +438,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-mpegts"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-testkit",
   "thiserror 2.0.21",
@@ -447,7 +447,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-mxf"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-testkit",
  ]
@@ -455,7 +455,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-ogg"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-testkit",
  ]
@@ -463,7 +463,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-opus"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-testkit",
  ]
@@ -471,7 +471,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-platform"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-codecs",
@@ -480,7 +480,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-project"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-color",
   "filmcraft-geom",
@@ -489,7 +489,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-prores"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
@@ -498,7 +498,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-render"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-audio-dsp",
   "filmcraft-captions",
@@ -507,7 +507,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-scopes"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-color",
   "serde",
@@ -516,7 +516,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-speech"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "candle-core",
   "candle-nn",
@@ -525,7 +525,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-testkit"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "png",
  ]
@@ -533,7 +533,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-text"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-color",
   "harfrust",
@@ -542,7 +542,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-time"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "proptest",
   "serde",
@@ -551,7 +551,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-tts"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "candle-core",
   "candle-nn",
@@ -560,7 +560,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-tts-text"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "serde",
   "thiserror 2.0.21",
@@ -569,7 +569,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-ui-egui"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "cpu-time",
   "craft-ui",
@@ -578,7 +578,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-vp8"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "thiserror 2.0.21",
  ]
@@ -586,7 +586,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-vp9"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-bitstream",
   "rayon",
@@ -595,7 +595,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "filmcraft-web"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "eframe",
   "egui",
@@ -624,7 +624,7 @@ index e50797e..f6a2f43 100644
  
 +[[package]]
 +name = "plervo-video"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "arboard",
 + "chrono",
@@ -657,7 +657,7 @@ index e50797e..f6a2f43 100644
 +
 +[[package]]
 +name = "plervo-video-cli"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "filmcraft-automation",
 + "filmcraft-codecs",
@@ -747,7 +747,7 @@ index e50797e..f6a2f43 100644
  [[package]]
  name = "xtask"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "filmcraft-testkit",
   "serde_json",
@@ -769,7 +769,7 @@ index e50797e..f6a2f43 100644
  ]
  
 diff --git a/Cargo.toml b/Cargo.toml
-index 2530bb3..1450add 100644
+index 2530bb3..0fb71f3 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -777,7 +777,7 @@ index 2530bb3..1450add 100644
  
  [workspace.package]
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.95"
@@ -4461,7 +4461,7 @@ index 26b3060..b422099 100644
  use craft_ui::docking::{Action, DropTarget, Placement, Zone, resolve_drop};
  use egui::{Color32, Rect, Sense, Stroke, StrokeKind, pos2, vec2};
 diff --git a/crates/ui-egui/src/header.rs b/crates/ui-egui/src/header.rs
-index 5b8f23c..d1625b5 100644
+index 5b8f23c..c6c5256 100644
 --- a/crates/ui-egui/src/header.rs
 +++ b/crates/ui-egui/src/header.rs
 @@ -122,12 +122,12 @@ pub fn show(app: &mut FilmcraftApp, ui: &mut egui::Ui, rect: Rect) {
@@ -4469,7 +4469,7 @@ index 5b8f23c..d1625b5 100644
      // Community: a labelled Discord button, always one click away.
      {
 -        let label = "Discord";
-+        let label = "Support";
++        let label = tl!("Support");
          let g = p.layout_no_wrap(label.to_string(), Tokens::ui(12.0), Color32::WHITE);
          let w = g.size().x + 34.0;
          let r = Rect::from_min_size(pos2(wr.min.x - w - 14.0, rect.center().y - 12.0), vec2(w, 24.0));
@@ -4481,7 +4481,7 @@ index 5b8f23c..d1625b5 100644
          icons::paint(ui.painter(), Rect::from_center_size(pos2(r.min.x + 14.0, r.center().y), vec2(14.0, 14.0)), Icon::Chat, Color32::WHITE);
          ui.painter().galley(pos2(r.min.x + 25.0, r.center().y - g.size().y / 2.0), g, Color32::WHITE);
 diff --git a/crates/ui-egui/src/i18n/de.tsv b/crates/ui-egui/src/i18n/de.tsv
-index bbd4374..f348134 100644
+index bbd4374..52998f5 100644
 --- a/crates/ui-egui/src/i18n/de.tsv
 +++ b/crates/ui-egui/src/i18n/de.tsv
 @@ -4,7 +4,7 @@
@@ -4560,8 +4560,14 @@ index bbd4374..f348134 100644
  	Selection…	Auswahl…
  	Send Backward	Schrittweise nach hinten
  	Send to Back	In den Hintergrund
+@@ -390,4 +390,4 @@
+ 	Zoom Out	Verkleinern
+ 	Zoom to Sequence	Auf Sequenz zoomen
+ 	Project Notes	Projektnotizen
+-
++	Support	Unterstützen
 diff --git a/crates/ui-egui/src/i18n/es.tsv b/crates/ui-egui/src/i18n/es.tsv
-index 0af8835..166f093 100644
+index 0af8835..7703972 100644
 --- a/crates/ui-egui/src/i18n/es.tsv
 +++ b/crates/ui-egui/src/i18n/es.tsv
 @@ -11,10 +11,10 @@
@@ -4771,7 +4777,7 @@ index 0af8835..166f093 100644
  	Loop marked range	Bucle del intervalo marcado
  	Play Source	Reproducir origen
  	Source Play/Stop	Reproducir/Detener origen
-@@ -3607,6 +3604,6 @@
+@@ -3607,6 +3604,7 @@
  	Opens in your web browser: {url}	Se abre en el navegador web: {url}
  	Saves this session's log and shows it in your file manager.	Guarda el registro de esta sesión y lo muestra en el explorador de archivos.
  	Shows a report on this computer.	Muestra un informe sobre este equipo.
@@ -4779,8 +4785,9 @@ index 0af8835..166f093 100644
 +	Shows the version, community links and credits in a Plervo Video window.	Muestra la versión, los enlaces de la comunidad y los créditos en una ventana de Plervo Video.
  	Couldn't open your web browser	No se pudo abrir el navegador web
  	Open this address in your browser yourself:	Abre esta dirección tú mismo en el navegador:
++	Support	Apoyar
 diff --git a/crates/ui-egui/src/i18n/fr.tsv b/crates/ui-egui/src/i18n/fr.tsv
-index 1075b0c..2263568 100644
+index 1075b0c..5e8f58b 100644
 --- a/crates/ui-egui/src/i18n/fr.tsv
 +++ b/crates/ui-egui/src/i18n/fr.tsv
 @@ -4,7 +4,7 @@
@@ -4988,8 +4995,13 @@ index 1075b0c..2263568 100644
  	Loop marked range	Boucler la plage marquée
  	Play Source	Lire la source
  	Source Play/Stop	Lire/arrêter la source
+@@ -3577,3 +3574,4 @@
+ 	Export the labels to a preset file…	Exporter les étiquettes dans un fichier de paramètre prédéfini…
+ 	Show the presets folder	Afficher le dossier des paramètres prédéfinis
+ 	Delete this preset	Supprimer ce paramètre prédéfini
++	Support	Soutenir
 diff --git a/crates/ui-egui/src/i18n/id.tsv b/crates/ui-egui/src/i18n/id.tsv
-index 508a6e9..7958b6c 100644
+index 508a6e9..ced9b15 100644
 --- a/crates/ui-egui/src/i18n/id.tsv
 +++ b/crates/ui-egui/src/i18n/id.tsv
 @@ -5,7 +5,7 @@
@@ -5197,8 +5209,13 @@ index 508a6e9..7958b6c 100644
  	Loop marked range	Ulangi rentang yang ditandai
  	Play Source	Putar Sumber
  	Source Play/Stop	Putar/Berhenti Sumber
+@@ -3575,3 +3572,4 @@
+ 	Appearance Settings…	Pengaturan Tampilan…
+ 	Add to favorites	Tambahkan ke favorit
+ 	Remove from favorites	Hapus dari favorit
++	Support	Dukung
 diff --git a/crates/ui-egui/src/i18n/it.tsv b/crates/ui-egui/src/i18n/it.tsv
-index 22d47cc..c7b4319 100644
+index 22d47cc..365dce4 100644
 --- a/crates/ui-egui/src/i18n/it.tsv
 +++ b/crates/ui-egui/src/i18n/it.tsv
 @@ -9,12 +9,12 @@
@@ -5404,7 +5421,7 @@ index 22d47cc..c7b4319 100644
  	Loop marked range	Ripeti in loop l'intervallo contrassegnato
  	Play Source	Riproduci sorgente
  	Source Play/Stop	Riproduci/interrompi sorgente
-@@ -3598,6 +3595,6 @@
+@@ -3598,6 +3595,7 @@
  	Opens in your web browser: {url}	Si apre nel browser web: {url}
  	Saves this session's log and shows it in your file manager.	Salva il registro di questa sessione e lo mostra nel gestore file.
  	Shows a report on this computer.	Mostra un rapporto su questo computer.
@@ -5412,8 +5429,9 @@ index 22d47cc..c7b4319 100644
 +	Shows the version, community links and credits in a Plervo Video window.	Mostra la versione, i link della community e i riconoscimenti in una finestra di Plervo Video.
  	Couldn't open your web browser	Impossibile aprire il browser web
  	Open this address in your browser yourself:	Apri tu questo indirizzo nel browser:
++	Support	Sostieni
 diff --git a/crates/ui-egui/src/i18n/ja.tsv b/crates/ui-egui/src/i18n/ja.tsv
-index b6a7fb8..3f6cacc 100644
+index b6a7fb8..e99938b 100644
 --- a/crates/ui-egui/src/i18n/ja.tsv
 +++ b/crates/ui-egui/src/i18n/ja.tsv
 @@ -4,7 +4,7 @@
@@ -5621,7 +5639,7 @@ index b6a7fb8..3f6cacc 100644
  	Loop marked range	マークした範囲をループ
  	Play Source	ソースを再生
  	Source Play/Stop	ソースの再生/停止
-@@ -3606,6 +3603,6 @@
+@@ -3606,6 +3603,7 @@
  	Opens in your web browser: {url}	ウェブブラウザーで開きます：{url}
  	Saves this session's log and shows it in your file manager.	このセッションのログを保存し、ファイルマネージャーで表示します。
  	Shows a report on this computer.	このコンピューターのレポートを表示します。
@@ -5629,8 +5647,9 @@ index b6a7fb8..3f6cacc 100644
 +	Shows the version, community links and credits in a Plervo Video window.	バージョン、コミュニティへのリンク、クレジットを Plervo Video のウィンドウに表示します。
  	Couldn't open your web browser	ウェブブラウザーを開けませんでした
  	Open this address in your browser yourself:	このアドレスをご自身でブラウザーで開いてください：
++	Support	支援
 diff --git a/crates/ui-egui/src/i18n/ko.tsv b/crates/ui-egui/src/i18n/ko.tsv
-index 20341b9..5f68ed1 100644
+index 20341b9..53f9ad2 100644
 --- a/crates/ui-egui/src/i18n/ko.tsv
 +++ b/crates/ui-egui/src/i18n/ko.tsv
 @@ -4,7 +4,7 @@
@@ -5783,7 +5802,7 @@ index 20341b9..5f68ed1 100644
  	The project had not been saved yet.	프로젝트가 아직 저장되지 않았습니다.
  	The selected clips have different audio types. Assign one type to edit them together.	선택한 클립의 오디오 유형이 다릅니다. 함께 편집하려면 한 유형을 지정하세요.
  	The sequence has no caption track.	시퀀스에 자막 트랙이 없습니다.
-@@ -3593,6 +3590,6 @@
+@@ -3593,6 +3590,7 @@
  	Opens in your web browser: {url}	웹 브라우저에서 엽니다: {url}
  	Saves this session's log and shows it in your file manager.	이 세션의 로그를 저장하고 파일 관리자에서 보여 줍니다.
  	Shows a report on this computer.	이 컴퓨터에 대한 보고서를 보여 줍니다.
@@ -5791,6 +5810,7 @@ index 20341b9..5f68ed1 100644
 +	Shows the version, community links and credits in a Plervo Video window.	Plervo Video 창에 버전, 커뮤니티 링크, 제작진을 보여 줍니다.
  	Couldn't open your web browser	웹 브라우저를 열 수 없습니다
  	Open this address in your browser yourself:	이 주소를 브라우저에서 직접 여세요:
++	Support	후원
 diff --git a/crates/ui-egui/src/i18n/mod.rs b/crates/ui-egui/src/i18n/mod.rs
 index 30bdcd5..47565b6 100644
 --- a/crates/ui-egui/src/i18n/mod.rs
@@ -5830,7 +5850,7 @@ index 30bdcd5..47565b6 100644
                  } else {
                      assert_eq!(stack.last().map(String::as_str), Some(JAPANESE_FONT), "{family:?}: {stack:?}");
 diff --git a/crates/ui-egui/src/i18n/pt-br.tsv b/crates/ui-egui/src/i18n/pt-br.tsv
-index aeb0e06..7a205aa 100644
+index aeb0e06..197175a 100644
 --- a/crates/ui-egui/src/i18n/pt-br.tsv
 +++ b/crates/ui-egui/src/i18n/pt-br.tsv
 @@ -4,7 +4,7 @@
@@ -5878,7 +5898,7 @@ index aeb0e06..7a205aa 100644
  	Install Motion Graphics Template…	Instalar modelo de gráficos de movimento…
  	Interpret Footage…	Interpretar clipes…
 -	Join the ArtCraft Discord…	Entre no Discord do ArtCraft…
-+	Support Plervo	Apoiar a Plervo
++	Support Plervo	Apoiar o Plervo
  	Keyboard Shortcuts…	Atalhos de teclado…
  	Label	Rótulo
  	Labels…	Rótulos…
@@ -6038,8 +6058,13 @@ index aeb0e06..7a205aa 100644
  	Loop marked range	Loop do intervalo marcado
  	Play Source	Reproduzir origem
  	Source Play/Stop	Reproduzir/parar origem
+@@ -3578,3 +3575,4 @@
+ 
+ # The native macOS application menu (Settings…).
+ 	Settings	Preferências
++	Support	Apoiar
 diff --git a/crates/ui-egui/src/i18n/ru.tsv b/crates/ui-egui/src/i18n/ru.tsv
-index 08bf8c0..022fe53 100644
+index 08bf8c0..8f25b68 100644
 --- a/crates/ui-egui/src/i18n/ru.tsv
 +++ b/crates/ui-egui/src/i18n/ru.tsv
 @@ -1,10 +1,10 @@
@@ -6095,8 +6120,14 @@ index 08bf8c0..022fe53 100644
  	Selection…	Выделение…
  	Send Backward	Переместить назад
  	Send to Back	Переместить на задний план
+@@ -359,4 +359,4 @@
+ 	Zoom to Sequence	Масштабировать по размеру эпизода
+ 	Next Appearance Mode	Следующий режим оформления
+ 	Project Notes	Заметки проекта
+-
++	Support	Поддержать
 diff --git a/crates/ui-egui/src/i18n/uk.tsv b/crates/ui-egui/src/i18n/uk.tsv
-index 9903301..2535ff3 100644
+index 9903301..0fc86d8 100644
 --- a/crates/ui-egui/src/i18n/uk.tsv
 +++ b/crates/ui-egui/src/i18n/uk.tsv
 @@ -1,10 +1,10 @@
@@ -6152,8 +6183,14 @@ index 9903301..2535ff3 100644
  	Selection…	Виділення…
  	Send Backward	Перемістити назад
  	Send to Back	На задній план
+@@ -359,4 +359,4 @@
+ 	Zoom Out	Зменшити
+ 	Zoom to Sequence	Умістити секвенцію
+ 	Project Notes	Нотатки проєкту
+-
++	Support	Підтримати
 diff --git a/crates/ui-egui/src/i18n/zh-cn.tsv b/crates/ui-egui/src/i18n/zh-cn.tsv
-index 066279e..9f19016 100644
+index 066279e..5151bc9 100644
 --- a/crates/ui-egui/src/i18n/zh-cn.tsv
 +++ b/crates/ui-egui/src/i18n/zh-cn.tsv
 @@ -8,8 +8,8 @@
@@ -6354,7 +6391,7 @@ index 066279e..9f19016 100644
  	Loop marked range	循环标记范围
  	Play Source	播放源
  	Source Play/Stop	源播放/停止
-@@ -3582,6 +3579,6 @@
+@@ -3582,6 +3579,7 @@
  	Opens in your web browser: {url}	在网页浏览器中打开：{url}
  	Saves this session's log and shows it in your file manager.	保存本次会话的日志并在文件管理器中显示。
  	Shows a report on this computer.	显示本机的报告。
@@ -6362,6 +6399,7 @@ index 066279e..9f19016 100644
 +	Shows the version, community links and credits in a Plervo Video window.	在 Plervo Video 窗口中显示版本、社区链接和致谢。
  	Couldn't open your web browser	无法打开网页浏览器
  	Open this address in your browser yourself:	请自行在浏览器中打开此地址：
++	Support	支持
 diff --git a/crates/ui-egui/src/icons.rs b/crates/ui-egui/src/icons.rs
 index 230a84a..dae7551 100644
 --- a/crates/ui-egui/src/icons.rs

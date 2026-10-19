@@ -1,5 +1,5 @@
 diff --git a/Cargo.lock b/Cargo.lock
-index 5f44519..ae6cb9f 100644
+index 5f44519..8d359a3 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -812,8 +812,6 @@ dependencies = [
@@ -51,7 +51,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-catalog"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "crc32fast",
   "lightcraft-develop",
@@ -78,7 +78,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-codecs"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "avif-serialize",
   "bytemuck",
@@ -87,7 +87,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-color"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "lightcraft-geom",
   "proptest",
@@ -96,7 +96,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-denoise"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "faer-core",
   "lightcraft-denoise-core",
@@ -105,7 +105,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-denoise-core"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "lightcraft-raster",
   "miniz_oxide 0.8.9",
@@ -114,7 +114,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-develop"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "lightcraft-color",
   "lightcraft-geom",
@@ -123,7 +123,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-engine"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "ab_glyph",
   "harfrust",
@@ -132,7 +132,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-faces"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "matrixmultiply",
   "ndarray",
@@ -141,7 +141,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-fetch"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "log",
   "rustls",
@@ -150,7 +150,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-geocode"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "miniz_oxide 0.8.9",
   "serde",
@@ -159,7 +159,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-geom"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "proptest",
   "serde",
@@ -168,7 +168,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-gpu"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "bytemuck",
   "lightcraft-color",
@@ -177,7 +177,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-heif"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "heic-rs",
   "rayon",
@@ -186,7 +186,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-inpaint"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "rayon",
  ]
@@ -194,7 +194,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-lensdb"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "lightcraft-develop",
   "lightcraft-geom",
@@ -205,7 +205,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-mcp"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "lightcraft-codecs",
   "lightcraft-engine",
@@ -214,7 +214,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-merge"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "lightcraft-codecs",
   "lightcraft-color",
@@ -223,7 +223,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-meta"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "lightcraft-geom",
   "lightcraft-tiff",
@@ -237,7 +237,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-pipeline"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "image",
   "lightcraft-color",
@@ -246,7 +246,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-preview"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "jpeg-encoder",
   "lightcraft-raster",
@@ -255,7 +255,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-raster"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "libc",
   "lightcraft-color",
@@ -264,7 +264,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-raw"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "jpeg-encoder",
   "jxl-oxide",
@@ -273,7 +273,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-scenes"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "image",
   "lightcraft-color",
@@ -282,7 +282,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-segment"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "candle-core",
   "candle-nn",
@@ -291,12 +291,12 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-sysmem"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  
  [[package]]
  name = "lightcraft-tiff"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "proptest",
   "serde",
@@ -305,7 +305,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-ui-egui"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "craft-ui",
   "egui",
@@ -321,7 +321,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "lightcraft-web"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "crc32fast",
   "eframe",
@@ -359,7 +359,7 @@ index 5f44519..ae6cb9f 100644
  
 +[[package]]
 +name = "plervo-develop"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "eframe",
 + "egui",
@@ -383,7 +383,7 @@ index 5f44519..ae6cb9f 100644
 +
 +[[package]]
 +name = "plervo-develop-cli"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "dhat",
 + "lightcraft-codecs",
@@ -531,7 +531,7 @@ index 5f44519..ae6cb9f 100644
  [[package]]
  name = "xtask"
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "brotli",
   "flate2",
@@ -553,7 +553,7 @@ index 5f44519..ae6cb9f 100644
  ]
  
 diff --git a/Cargo.toml b/Cargo.toml
-index 2b89df3..c250271 100644
+index 2b89df3..3d2ea5c 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -3,7 +3,7 @@ resolver = "3"
@@ -561,7 +561,7 @@ index 2b89df3..c250271 100644
  
  [workspace.package]
 -version = "0.8.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.90"
@@ -3191,10 +3191,13 @@ index dff2ddb..94e1adc 100644
    "Running on the processor: {}.": "Running on the processor: {}.",
    "{} · {}. Kept in the library's “denoise” folder; the oldest ones that no photo uses go first when the limit is reached.": "{} · {}. Kept in the library's “denoise” folder; the oldest ones that no photo uses go first when the limit is reached.",
 diff --git a/crates/ui-egui/locales/de.json b/crates/ui-egui/locales/de.json
-index 25c411c..6a2da3f 100644
+index 25c411c..06a98d3 100644
 --- a/crates/ui-egui/locales/de.json
 +++ b/crates/ui-egui/locales/de.json
-@@ -3,7 +3,7 @@
+@@ -1,9 +1,10 @@
+ {
++  "Support": "Unterstützen",
+   "  (library default)": "  (Bibliotheksstandard)",
    " (inverted)": " (umgekehrt)",
    " · best of its burst": " · bestes Foto der Serie",
    " · in a burst": " · Teil einer Serie",
@@ -3203,7 +3206,7 @@ index 25c411c..6a2da3f 100644
    "#106): a DNG is checked against the raw data, written to a temp file, synced and read back before it gets its": "(Issue #106). Ein DNG wird mit den RAW-Daten verglichen, temporär geschrieben, synchronisiert und zurückgelesen, bevor es seinen",
    "% of all commits": "% aller Commits",
    "(`gpuReason`, `gpuFallback`), Help ▸ System Info and Settings ▸ Performance say why the GPU isn't": "mit `gpuReason` und `gpuFallback`, Hilfe → Systeminformationen und Einstellungen → Leistung erklären, warum die GPU",
-@@ -23,14 +23,14 @@
+@@ -23,14 +24,14 @@
    "A blank template keeps the original names.": "Eine leere Vorlage behält die Originalnamen bei.",
    "A change that can't be saved to disk (full or unplugged drive) is no longer silent: the command reports": "Kann eine Änderung wegen eines vollen oder getrennten Laufwerks nicht gespeichert werden, bleibt das nicht mehr unbemerkt: Der Befehl meldet",
    "A filter is hiding this view's photos: change it, or clear it (View → Clear Filters)": "Ein Filter blendet die Fotos dieser Ansicht aus: Ändere ihn oder lösche ihn (Ansicht → Filter löschen)",
@@ -3220,7 +3223,7 @@ index 25c411c..6a2da3f 100644
    "Active": "Aktiv",
    "Activity": "Aktivität",
    "Actual size": "Originalgröße",
-@@ -436,7 +436,7 @@
+@@ -436,7 +437,7 @@
    "Duplicate and Invert Mask": "Maske duplizieren und umkehren",
    "Each / starts a folder level; tags are filled in per photo (a level with missing metadata is \"unknown\").": "Jeder / beginnt eine Ordnerebene; Platzhalter werden pro Foto ausgefüllt (eine Ebene mit fehlenden Metadaten heißt „unknown“).",
    "Edge": "Rand",
@@ -3229,7 +3232,7 @@ index 25c411c..6a2da3f 100644
    "Edit": "Bearbeiten",
    "Edit (E)": "Bearbeiten (E)",
    "Edit Capture Time": "Aufnahmezeit bearbeiten",
-@@ -644,7 +644,7 @@
+@@ -644,7 +645,7 @@
    "Height": "Höhe",
    "Height (px)": "Höhe (px)",
    "Help": "Hilfe",
@@ -3238,7 +3241,7 @@ index 25c411c..6a2da3f 100644
    "Hide Mask": "Maske ausblenden",
    "Hide Others": "Andere ausblenden",
    "Hides this shortcut only; the folder and its photos stay as they are": "Blendet nur diese Verknüpfung aus; der Ordner und seine Fotos bleiben unverändert",
-@@ -702,7 +702,7 @@
+@@ -702,7 +703,7 @@
    "In library": "In Bibliothek",
    "In memory — nothing is saved": "Im Arbeitsspeicher — nichts wird gespeichert",
    "In use": "In Verwendung",
@@ -3247,7 +3250,7 @@ index 25c411c..6a2da3f 100644
    "Include selected photos": "Ausgewählte Fotos einschließen",
    "Include subfolders": "Unterordner einbeziehen",
    "Increase Brush Feather": "Weiche Pinselkante vergrößern",
-@@ -769,19 +769,19 @@
+@@ -769,19 +770,19 @@
    "Library saved": "Bibliothek gespeichert",
    "Licence:": "Lizenz:",
    "Light": "Licht",
@@ -3280,7 +3283,7 @@ index 25c411c..6a2da3f 100644
    "Lightroom Classic Catalog": "Lightroom Classic-Katalog",
    "Lightroom import cancelled": "Lightroom-Import abgebrochen",
    "Lightroom inspection cancelled": "Lightroom-Prüfung abgebrochen",
-@@ -848,7 +848,7 @@
+@@ -848,7 +849,7 @@
    "Merged": "Zusammengefügt",
    "Merged PRs": "Zusammengeführte PRs",
    "Merging…": "Wird zusammengefügt…",
@@ -3289,7 +3292,7 @@ index 25c411c..6a2da3f 100644
    "Metadata": "Metadaten",
    "Metadata Preset": "Metadatenvorgabe",
    "Metadata Presets": "Metadatenvorgaben",
-@@ -975,7 +975,7 @@
+@@ -975,7 +976,7 @@
    "OK": "OK",
    "Object": "Objekt",
    "Object Mask": "Objektmaske",
@@ -3298,7 +3301,7 @@ index 25c411c..6a2da3f 100644
    "October 2026": "Oktober 2026",
    "Off": "Aus",
    "Offset X": "Versatz X",
-@@ -1114,7 +1114,7 @@
+@@ -1114,7 +1115,7 @@
    "Quiet Green": "Ruhiges Grün",
    "Quit": "Beenden",
    "Quit Anyway": "Trotzdem beenden",
@@ -3307,7 +3310,7 @@ index 25c411c..6a2da3f 100644
    "Quit with unsaved changes?": "Mit ungespeicherten Änderungen beenden?",
    "RAW decoding": "RAW-Decodierung",
    "Radial": "Radial",
-@@ -1218,7 +1218,7 @@
+@@ -1218,7 +1219,7 @@
    "Rename Mask": "Maske umbenennen",
    "Rename Photos": "Fotos umbenennen",
    "Rename Photos never overwrites another photo when only the letter case changes (issue #95): on case-sensitive": "Beim Umbenennen von Fotos wird kein anderes Foto überschrieben, wenn sich nur die Groß-/Kleinschreibung ändert (Issue #95). Auf Laufwerken,",
@@ -3316,7 +3319,7 @@ index 25c411c..6a2da3f 100644
    "Rename Photos…": "Fotos umbenennen…",
    "Rename Preset": "Vorgabe umbenennen",
    "Rename Preview": "Umbenennungsvorschau",
-@@ -1297,7 +1297,7 @@
+@@ -1297,7 +1298,7 @@
    "Save as…": "Speichern unter…",
    "Save preset": "Vorgabe speichern",
    "Saving Lightroom import index…": "Lightroom-Importindex wird gespeichert …",
@@ -3325,7 +3328,7 @@ index 25c411c..6a2da3f 100644
    "Scale": "Skalierung",
    "Scan failed": "Durchsuchen fehlgeschlagen",
    "Scanning": "Wird durchsucht",
-@@ -1504,7 +1504,7 @@
+@@ -1504,7 +1505,7 @@
    "That includes the photos in the folders inside it.": "Das schließt die Fotos in den enthaltenen Unterordnern ein.",
    "That key can't be used as a shortcut": "Diese Taste kann nicht als Tastenkürzel verwendet werden",
    "The SAM 3 model is installed: Object and Describe masks are ready.": "Das SAM-3-Modell ist installiert: Objekt- und Beschreibungsmaske sind verfügbar.",
@@ -3334,7 +3337,7 @@ index 25c411c..6a2da3f 100644
    "The control port (`--control`) closes a connection as soon as it receives anything that isn't a JSON request": "Der Steuerport (`--control`) schließt eine Verbindung, sobald er etwas anderes als eine JSON-Anfrage erhält",
    "The download didn't work:": "Der Download ist fehlgeschlagen:",
    "The number at the end of the original name (IMG_0042 → 0042)": "Nummer am Ende des Originalnamens (IMG_0042 → 0042)",
-@@ -1640,7 +1640,7 @@
+@@ -1640,7 +1641,7 @@
    "a full drive) no longer counts as built and Build Smart Previews replaces it.": "oder vollen Laufwerk gilt nicht mehr als fertig und wird beim Erstellen der Smart-Vorschauen ersetzt.",
    "a literal %": "ein wörtliches %",
    "a removed photo": "einem entfernten Foto",
@@ -3343,7 +3346,7 @@ index 25c411c..6a2da3f 100644
    "again. Change the period (or turn it off) in Settings → Performance.": "wieder. Der Zeitraum lässt sich unter Einstellungen → Leistung ändern oder deaktivieren.",
    "against the library's originals no longer scans the whole library when nothing is at that path.": "gegen Originale durchsucht nicht mehr die gesamte Bibliothek, wenn an diesem Pfad nichts liegt.",
    "all": "alle",
-@@ -1648,7 +1648,7 @@
+@@ -1648,7 +1649,7 @@
    "and": "und",
    "and checks the file before using it. Masks keep their selection, so they render and export without the model.": "Vor Verwendung werden die Dateien geprüft. Masken behalten ihre Auswahl und lassen sich ohne das Modell rendern und exportieren.",
    "and every imported photo as one zip, and File ▸ Restore Library from Backup… brings it back (the current library": "und alle importierten Fotos als ZIP herunter. Datei → Bibliothek aus Sicherung wiederherstellen… stellt sie wieder her; die aktuelle Bibliothek",
@@ -3352,7 +3355,7 @@ index 25c411c..6a2da3f 100644
    "any": "mindestens eine",
    "are empty": "sind leer",
    "aren't empty": "sind nicht leer",
-@@ -1679,12 +1679,12 @@
+@@ -1679,12 +1680,12 @@
    "false": "nein",
    "fields in and keeps the rest — e.g. that application's develop settings and edit history — byte for byte. A": "Felder zusammen und behält den Rest bytegenau, etwa die Entwicklungseinstellungen und den Verlauf der anderen Anwendung. Eine",
    "file (Sony stores them only in scrambled maker-note data on these bodies), the few columns of padding at the right": "Sony speichert diese Angaben dort nur in verschleierten Herstellerdaten. Die wenigen zusätzlichen Spalten am rechten",
@@ -3367,7 +3370,7 @@ index 25c411c..6a2da3f 100644
    "hour 00–23": "Stunde 00–23",
    "hours": "Stunden",
    "how to restore it or delete it permanently and import it afresh. (For a fresh start on a photo, Reset Edits,": "wie es wiederhergestellt oder endgültig gelöscht und neu importiert werden kann. Für einen Neubeginn am Foto setzt „Bearbeitungen zurücksetzen“",
-@@ -1707,7 +1707,7 @@
+@@ -1707,7 +1708,7 @@
    "is kept). A failed save (storage full) now shows the unsaved warning and is retried, a photo that can't be stored": "bleibt erhalten. Ein fehlgeschlagenes Speichern bei vollem Speicher zeigt eine Warnung und wird wiederholt. Nicht speicherbare Fotos",
    "is refused and nothing is overwritten.": "wird das Rückgängigmachen abgelehnt und nichts überschrieben.",
    "is unknown": "ist unbekannt",
@@ -3376,7 +3379,7 @@ index 25c411c..6a2da3f 100644
    "is ≤": "ist ≤",
    "is ≥": "ist ≥",
    "isn't": "ist nicht",
-@@ -1787,9 +1787,9 @@
+@@ -1787,9 +1788,9 @@
    "were missing, without touching anything already set.": "ohne bereits vorhandene Angaben anzutasten.",
    "when the browser may evict the library. Hosting: the sample cache headers no longer mark the (unhashed) files": "wann der Browser die Bibliothek aus dem Speicher entfernen könnte. Hosting: Die Beispiel-Cache-Header markieren Dateien ohne Inhalts-Hash",
    "whether originals are there is checked on a worker thread (grid thumbnails, the Info panel, the photo menu, Missing": "Die Verfügbarkeit von Originalen wird in einem Hintergrundthread geprüft: Rasterminiaturen, Infobereich, Fotomenü und fehlende Fotos.",
@@ -3389,7 +3392,7 @@ index 25c411c..6a2da3f 100644
    "year, 2 digits": "Jahr, 2 Stellen",
    "year, 4 digits": "Jahr, 4 Stellen",
    "years": "Jahre",
-@@ -1843,12 +1843,12 @@
+@@ -1843,12 +1844,12 @@
    "Install from file…": "Install from file…",
    "Install your own ONNX model with denoise-model.json beside it. This build offers no model downloads.": "Install your own ONNX model with denoise-model.json beside it. This build offers no model downloads.",
    "Its denoised picture is not made yet, and pictures are not made on their own (Settings, AI Denoise).": "Its denoised picture is not made yet, and pictures are not made on their own (Settings, AI Denoise).",
@@ -3404,7 +3407,7 @@ index 25c411c..6a2da3f 100644
    "Only photos whose AI Denoise amount is above 0 are made. Exports always make theirs if it is missing.": "Only photos whose AI Denoise amount is above 0 are made. Exports always make theirs if it is missing.",
    "Open page": "Open page",
    "Open the model's page": "Open the model's page",
-@@ -1860,7 +1860,7 @@
+@@ -1860,7 +1861,7 @@
    "Tested and works on this computer": "Tested and works on this computer",
    "The denoise model is installed and in use: the AI Denoise Amount slider under Detail now works": "The denoise model is installed and in use: the AI Denoise Amount slider under Detail now works",
    "The graphics card is set up when the next photo is made.": "The graphics card is set up when the next photo is made.",
@@ -3413,7 +3416,7 @@ index 25c411c..6a2da3f 100644
    "The processor does the work.": "The processor does the work.",
    "There is no model file to install": "There is no model file to install",
    "This build cannot run denoise models.": "This build cannot run denoise models.",
-@@ -2064,7 +2064,7 @@
+@@ -2064,7 +2065,7 @@
    "Finding faces": "Gesichter werden gesucht",
    "Synchronizing folder": "Ordner wird synchronisiert",
    "Looking for changes": "Änderungen werden gesucht",
@@ -3422,7 +3425,7 @@ index 25c411c..6a2da3f 100644
    "The import reads the catalog without changing it and adds its photos, edits, keywords and collections to the library open now.": "Der Import liest den Katalog, ohne ihn zu ändern, und fügt seine Fotos, Bearbeitungen, Stichwörter und Sammlungen der jetzt geöffneten Bibliothek hinzu.",
    "Albums hold library photos: Add to My Photos first": "Alben enthalten Bibliotheksfotos: zuerst zu „Meine Fotos“ hinzufügen",
    "Add to My Photos First": "Zuerst zu „Meine Fotos“ hinzufügen",
-@@ -2114,9 +2114,9 @@
+@@ -2114,9 +2115,9 @@
    "Add to Apple Photos": "Zu Apple Fotos hinzufügen",
    "Adding to Apple Photos…": "Wird zu Apple Fotos hinzugefügt…",
    "not added to Apple Photos (cancelled)": "nicht zu Apple Fotos hinzugefügt (abgebrochen)",
@@ -3478,10 +3481,16 @@ index 452fc66..81b9f1f 100644
    "Running on the processor: {}.": "Se ejecuta en el procesador: {}.",
    "{} · {}. Kept in the library's “denoise” folder; the oldest ones that no photo uses go first when the limit is reached.": "{} · {}. Se guardan en la carpeta «denoise» de la biblioteca; al llegar al límite se eliminan primero las más antiguas que no usa ninguna foto.",
 diff --git a/crates/ui-egui/locales/es.json b/crates/ui-egui/locales/es.json
-index ba3e1e3..142e284 100644
+index ba3e1e3..6b5e8e6 100644
 --- a/crates/ui-egui/locales/es.json
 +++ b/crates/ui-egui/locales/es.json
-@@ -15,7 +15,7 @@
+@@ -1,4 +1,5 @@
+ {
++  "Support": "Apoyar",
+   "  (library default)": "  (predeterminado de la biblioteca)",
+   " (inverted)": " (invertida)",
+   " · best of its burst": " · la mejor de su ráfaga",
+@@ -15,7 +16,7 @@
    "A one-time download of about": "Una única descarga de aproximadamente",
    "AI Mask Model Status": "Estado del modelo de máscaras con IA",
    "About": "Acerca de",
@@ -3490,7 +3499,7 @@ index ba3e1e3..142e284 100644
    "Active": "Activa",
    "Activity": "Actividad",
    "Actual size": "Tamaño real",
-@@ -627,7 +627,7 @@
+@@ -627,7 +628,7 @@
    "Height": "Alto",
    "Height (px)": "Alto (px)",
    "Help": "Ayuda",
@@ -3499,7 +3508,7 @@ index ba3e1e3..142e284 100644
    "Hide Mask": "Ocultar máscara",
    "Hide Others": "Ocultar otras",
    "Hides this shortcut only; the folder and its photos stay as they are": "Solo oculta este acceso directo; la carpeta y sus fotos quedan como están",
-@@ -681,7 +681,7 @@
+@@ -681,7 +682,7 @@
    "In library": "En la biblioteca",
    "In memory — nothing is saved": "En memoria: no se guarda nada",
    "In use": "En uso",
@@ -3508,7 +3517,7 @@ index ba3e1e3..142e284 100644
    "Include subfolders": "Incluir subcarpetas",
    "Increase Brush Feather": "Aumentar desvanecimiento del pincel",
    "Increase Brush Size": "Aumentar tamaño del pincel",
-@@ -748,17 +748,17 @@
+@@ -748,17 +749,17 @@
    "Library saved": "Biblioteca guardada",
    "Licence:": "Licencia:",
    "Light": "Luz",
@@ -3537,7 +3546,7 @@ index ba3e1e3..142e284 100644
    "Lightroom Classic Catalog": "Catálogo de Lightroom Classic",
    "Lightroom import cancelled": "Importación de Lightroom cancelada",
    "Lightroom inspection cancelled": "Inspección de Lightroom cancelada",
-@@ -823,7 +823,7 @@
+@@ -823,7 +824,7 @@
    "Merged": "Combinadas",
    "Merged PRs": "PR fusionadas",
    "Merging…": "Combinando…",
@@ -3546,7 +3555,7 @@ index ba3e1e3..142e284 100644
    "Metadata": "Metadatos",
    "Metadata Preset": "Ajuste preestablecido de metadatos",
    "Metadata Presets": "Ajustes preestablecidos de metadatos",
-@@ -950,7 +950,7 @@
+@@ -950,7 +951,7 @@
    "OK": "Aceptar",
    "Object": "Objeto",
    "Object Mask": "Máscara de objeto",
@@ -3555,7 +3564,7 @@ index ba3e1e3..142e284 100644
    "October 2026": "Octubre de 2026",
    "Off": "Desactivado",
    "Offset X": "Desplazamiento X",
-@@ -1084,7 +1084,7 @@
+@@ -1084,7 +1085,7 @@
    "Quiet Green": "Verde sereno",
    "Quit": "Salir",
    "Quit Anyway": "Salir de todos modos",
@@ -3564,7 +3573,7 @@ index ba3e1e3..142e284 100644
    "Quit with unsaved changes?": "¿Salir con cambios sin guardar?",
    "RAW decoding": "Decodificación RAW",
    "Radial": "Radial",
-@@ -1715,12 +1715,12 @@
+@@ -1715,12 +1716,12 @@
    "Install from file…": "Instalar desde archivo…",
    "Install your own ONNX model with denoise-model.json beside it. This build offers no model downloads.": "Instalar un modelo ONNX propio con denoise-model.json junto a él. Esta versión no ofrece descargas de modelos.",
    "Its denoised picture is not made yet, and pictures are not made on their own (Settings, AI Denoise).": "Su imagen sin ruido aún no se ha generado, y las imágenes no se generan por sí solas (Ajustes, Reducción de ruido con IA).",
@@ -3579,7 +3588,7 @@ index ba3e1e3..142e284 100644
    "Only photos whose AI Denoise amount is above 0 are made. Exports always make theirs if it is missing.": "Solo se generan las imágenes sin ruido de las fotos cuya cantidad de reducción de ruido con IA es mayor que 0. Las exportaciones siempre generan la suya si falta.",
    "Open page": "Abrir página",
    "Open the model's page": "Abrir la página del modelo",
-@@ -1732,7 +1732,7 @@
+@@ -1732,7 +1733,7 @@
    "Tested and works on this computer": "Probado y funciona en este equipo",
    "The denoise model is installed and in use: the AI Denoise Amount slider under Detail now works": "El modelo de reducción de ruido está instalado y en uso: el regulador Cantidad de reducción de ruido con IA, en Detalle, ya funciona",
    "The graphics card is set up when the next photo is made.": "La tarjeta gráfica se configura al generar la siguiente foto.",
@@ -3588,7 +3597,7 @@ index ba3e1e3..142e284 100644
    "The processor does the work.": "El procesador hace el trabajo.",
    "There is no model file to install": "No hay ningún archivo de modelo que instalar",
    "This build cannot run denoise models.": "Esta versión no puede ejecutar modelos de reducción de ruido.",
-@@ -1944,7 +1944,7 @@
+@@ -1944,7 +1945,7 @@
    "Finding faces": "Buscando caras",
    "Synchronizing folder": "Sincronizando carpeta",
    "Looking for changes": "Buscando cambios",
@@ -3597,7 +3606,7 @@ index ba3e1e3..142e284 100644
    "The import reads the catalog without changing it and adds its photos, edits, keywords and collections to the library open now.": "La importación lee el catálogo sin modificarlo y añade sus fotos, ediciones, palabras clave y colecciones a la biblioteca abierta ahora.",
    "Albums hold library photos: Add to My Photos first": "Los álbumes contienen fotos de la biblioteca: añadirlas primero a Mis fotos",
    "Add to My Photos First": "Añadir primero a Mis fotos",
-@@ -1991,9 +1991,9 @@
+@@ -1991,9 +1992,9 @@
    "Add to Apple Photos": "Añadir a Fotos de Apple",
    "Adding to Apple Photos…": "Añadiendo a Fotos de Apple…",
    "not added to Apple Photos (cancelled)": "no se añadieron a Fotos de Apple (cancelado)",
@@ -3653,10 +3662,16 @@ index d85e837..4edb324 100644
    "Running on the processor: {}.": "Exécution sur le processeur : {}.",
    "{} · {}. Kept in the library's “denoise” folder; the oldest ones that no photo uses go first when the limit is reached.": "{} · {}. Conservé dans le dossier « denoise » de la bibliothèque ; lorsque la limite est atteinte, les fichiers les plus anciens inutilisés par les photos sont supprimés en premier.",
 diff --git a/crates/ui-egui/locales/fr.json b/crates/ui-egui/locales/fr.json
-index b0becb1..7d21fc5 100644
+index b0becb1..a6e604b 100644
 --- a/crates/ui-egui/locales/fr.json
 +++ b/crates/ui-egui/locales/fr.json
-@@ -15,7 +15,7 @@
+@@ -1,4 +1,5 @@
+ {
++  "Support": "Soutenir",
+   "  (library default)": "  (valeur par défaut de la bibliothèque)",
+   " (inverted)": " (inversée)",
+   " · best of its burst": " · la meilleure de sa rafale",
+@@ -15,7 +16,7 @@
    "A one-time download of about": "Un téléchargement unique d'environ",
    "AI Mask Model Status": "État du modèle de masques IA",
    "About": "À propos",
@@ -3665,7 +3680,7 @@ index b0becb1..7d21fc5 100644
    "Active": "Active",
    "Activity": "Activité",
    "Actual size": "Taille réelle",
-@@ -608,7 +608,7 @@
+@@ -608,7 +609,7 @@
    "Height": "Hauteur",
    "Height (px)": "Hauteur (px)",
    "Help": "Aide",
@@ -3674,7 +3689,7 @@ index b0becb1..7d21fc5 100644
    "Hide Mask": "Masquer le masque",
    "Hide Others": "Masquer les autres",
    "Hides this shortcut only; the folder and its photos stay as they are": "Masque uniquement ce raccourci ; le dossier et ses photos restent intacts",
-@@ -662,7 +662,7 @@
+@@ -662,7 +663,7 @@
    "In library": "Dans la bibliothèque",
    "In memory — nothing is saved": "En mémoire : rien n'est enregistré",
    "In use": "Utilisé",
@@ -3683,7 +3698,7 @@ index b0becb1..7d21fc5 100644
    "Include subfolders": "Inclure les sous-dossiers",
    "Increase Brush Feather": "Augmenter le contour progressif du pinceau",
    "Increase Brush Size": "Augmenter la taille du pinceau",
-@@ -728,17 +728,17 @@
+@@ -728,17 +729,17 @@
    "Library saved": "Bibliothèque enregistrée",
    "Licence:": "Licence :",
    "Light": "Lumière",
@@ -3712,7 +3727,7 @@ index b0becb1..7d21fc5 100644
    "Lightroom Classic Catalog": "Catalogue Lightroom Classic",
    "Lightroom import cancelled": "Importation Lightroom annulée",
    "Lightroom inspection cancelled": "Inspection Lightroom annulée",
-@@ -803,7 +803,7 @@
+@@ -803,7 +804,7 @@
    "Merged": "Fusionnées",
    "Merged PRs": "PR fusionnées",
    "Merging…": "Fusion en cours…",
@@ -3721,7 +3736,7 @@ index b0becb1..7d21fc5 100644
    "Metadata": "Métadonnées",
    "Metadata Preset": "Préréglage de métadonnées",
    "Metadata Presets": "Préréglages de métadonnées",
-@@ -927,7 +927,7 @@
+@@ -927,7 +928,7 @@
    "OK": "OK",
    "Object": "Objet",
    "Object Mask": "Masque d'objet",
@@ -3730,7 +3745,7 @@ index b0becb1..7d21fc5 100644
    "October 2026": "octobre 2026",
    "Off": "Désactivé",
    "Offset X": "Décalage X",
-@@ -1060,7 +1060,7 @@
+@@ -1060,7 +1061,7 @@
    "Quiet Green": "Vert calme",
    "Quit": "Quitter",
    "Quit Anyway": "Quitter quand même",
@@ -3739,7 +3754,7 @@ index b0becb1..7d21fc5 100644
    "Quit with unsaved changes?": "Quitter avec des modifications non enregistrées ?",
    "RAW decoding": "Décodage RAW",
    "Radial": "Radial",
-@@ -1675,12 +1675,12 @@
+@@ -1675,12 +1676,12 @@
    "Install from file…": "Installer à partir d'un fichier…",
    "Install your own ONNX model with denoise-model.json beside it. This build offers no model downloads.": "Installez votre propre modèle ONNX avec denoise-model.json à côté. Cette version ne propose aucun téléchargement de modèle.",
    "Its denoised picture is not made yet, and pictures are not made on their own (Settings, AI Denoise).": "Son image débruitée n'est pas encore générée, et les images ne sont pas générées automatiquement (Réglages, Débruitage IA).",
@@ -3754,7 +3769,7 @@ index b0becb1..7d21fc5 100644
    "Only photos whose AI Denoise amount is above 0 are made. Exports always make theirs if it is missing.": "Seules les photos dont la quantité de débruitage IA est supérieure à 0 sont générées. Les exportations génèrent toujours la leur si elle manque.",
    "Open page": "Ouvrir la page",
    "Open the model's page": "Ouvrir la page du modèle",
-@@ -1692,7 +1692,7 @@
+@@ -1692,7 +1693,7 @@
    "Tested and works on this computer": "Testé et fonctionnel sur cet ordinateur",
    "The denoise model is installed and in use: the AI Denoise Amount slider under Detail now works": "Le modèle de débruitage est installé et utilisé : le curseur Quantité de débruitage IA sous Détail fonctionne désormais",
    "The graphics card is set up when the next photo is made.": "La carte graphique est configurée lors de la génération de la prochaine photo.",
@@ -3763,7 +3778,7 @@ index b0becb1..7d21fc5 100644
    "The processor does the work.": "Le processeur effectue le travail.",
    "There is no model file to install": "Il n'y a aucun fichier de modèle à installer",
    "This build cannot run denoise models.": "Cette version ne peut pas exécuter de modèles de débruitage.",
-@@ -1893,7 +1893,7 @@
+@@ -1893,7 +1894,7 @@
    "Reset Panel Layout": "Reset Panel Layout",
    "Resize panel window": "Resize panel window",
    "Resize panels": "Resize panels",
@@ -3772,7 +3787,7 @@ index b0becb1..7d21fc5 100644
    "The import reads the catalog without changing it and adds its photos, edits, keywords and collections to the library open now.": "L’importation lit le catalogue sans le modifier et ajoute ses photos, retouches, mots-clés et collections à la bibliothèque ouverte.",
    "Albums hold library photos: Add to My Photos first": "Les albums contiennent des photos de la bibliothèque : ajoutez-les d’abord à Mes photos",
    "Add to My Photos First": "Ajouter d’abord à Mes photos",
-@@ -1953,9 +1953,9 @@
+@@ -1953,9 +1954,9 @@
    "Add to Apple Photos": "Ajouter à Apple Photos",
    "Adding to Apple Photos…": "Ajout à Apple Photos…",
    "not added to Apple Photos (cancelled)": "non ajouté à Apple Photos (annulé)",
@@ -3835,10 +3850,16 @@ index 211e47e..b1711fc 100644
    "Running on the processor: {}.": "Running on the processor: {}.",
    "{} · {}. Kept in the library's “denoise” folder; the oldest ones that no photo uses go first when the limit is reached.": "{} · {}. Kept in the library's “denoise” folder; the oldest ones that no photo uses go first when the limit is reached.",
 diff --git a/crates/ui-egui/locales/ja.json b/crates/ui-egui/locales/ja.json
-index 7a282e6..941673a 100644
+index 7a282e6..69b7667 100644
 --- a/crates/ui-egui/locales/ja.json
 +++ b/crates/ui-egui/locales/ja.json
-@@ -16,8 +16,8 @@
+@@ -1,4 +1,5 @@
+ {
++  "Support": "支援",
+   "  (library default)": "  （ライブラリの既定）",
+   " (inverted)": " （反転）",
+   " · best of its burst": " · 連写内のベスト",
+@@ -16,8 +17,8 @@
    "A filter is hiding this view's photos: change it, or clear it (View → Clear Filters)": "フィルターで写真が非表示になっています。条件を変更するか、「表示 → フィルターを解除」を選んでください",
    "A one-time download of about": "1回限りのダウンロード：約",
    "AI Mask Model Status": "AIマスクモデルの状態",
@@ -3849,7 +3870,7 @@ index 7a282e6..941673a 100644
    "Active": "アクティブ",
    "Activity": "処理状況",
    "Add": "追加",
-@@ -551,7 +551,7 @@
+@@ -551,7 +552,7 @@
    "Library State": "ライブラリの状態",
    "Library saved": "ライブラリを保存しました",
    "Licence:": "ライセンス：",
@@ -3858,7 +3879,7 @@ index 7a282e6..941673a 100644
    "Lightroom Classic Catalog": "Lightroom Classic カタログ",
    "Lightroom import cancelled": "Lightroom の読み込みをキャンセルしました",
    "Lightroom inspection cancelled": "Lightroom の確認をキャンセルしました",
-@@ -580,7 +580,7 @@
+@@ -580,7 +581,7 @@
    "Memory budget": "メモリ割り当て",
    "Merged": "合成済み",
    "Merged PRs": "マージしたPR",
@@ -3867,7 +3888,7 @@ index 7a282e6..941673a 100644
    "Missing metadata ({camera}, {title}…) leaves an empty gap; a name that comes out empty keeps the original name.": "メタデータがない場合（{camera}、{title}…）はその部分が空になり、結果が空の名前は元の名前のままです",
    "Misty Morning": "霧の朝",
    "Model": "モデル",
-@@ -620,7 +620,7 @@
+@@ -620,7 +621,7 @@
    "Not Now": "後で",
    "Nudge Develop Value": "現像の値を微調整",
    "Object Mask": "オブジェクトマスク",
@@ -3876,7 +3897,7 @@ index 7a282e6..941673a 100644
    "October 2026": "2026年10月",
    "Only": "次のみ：",
    "Optimize Library": "ライブラリを最適化",
-@@ -779,7 +779,7 @@
+@@ -779,7 +780,7 @@
    "Height": "高さ",
    "Height (px)": "高さ（px）",
    "Help": "ヘルプ",
@@ -3885,7 +3906,7 @@ index 7a282e6..941673a 100644
    "Hide Mask": "マスクを隠す",
    "Hide Others": "ほかを隠す",
    "Hides this shortcut only; the folder and its photos stay as they are": "この表示だけを隠します。フォルダと写真はそのまま残ります",
-@@ -814,7 +814,7 @@
+@@ -814,7 +815,7 @@
    "In library": "ライブラリ内",
    "In memory — nothing is saved": "メモリ上のみ（保存されません）",
    "In use": "使用中",
@@ -3894,7 +3915,7 @@ index 7a282e6..941673a 100644
    "Include subfolders": "サブフォルダを含める",
    "Info": "情報",
    "Info (I)": "情報（I）",
-@@ -850,14 +850,14 @@
+@@ -850,14 +851,14 @@
    "Library": "ライブラリ",
    "Library Originals": "ライブラリの元画像フォルダ",
    "Light": "明るさ",
@@ -3917,7 +3938,7 @@ index 7a282e6..941673a 100644
    "Lights": "明部",
    "Limit file size (KB, 0 = off)": "ファイルサイズ上限（KB、0で無効）",
    "Linear Gradient": "線形グラデーション",
-@@ -1062,7 +1062,7 @@
+@@ -1062,7 +1063,7 @@
    "Quality": "品質",
    "Quick Collection": "クイックコレクション",
    "Quick Develop": "クイック現像",
@@ -3926,7 +3947,7 @@ index 7a282e6..941673a 100644
    "Radial Gradient": "円形グラデーション",
    "Radius": "半径",
    "Range": "範囲",
-@@ -1594,8 +1594,8 @@
+@@ -1594,8 +1595,8 @@
    "Horizontal text": "横書き",
    "Vertical text": "縦書き",
    "Your library couldn't be opened": "ライブラリを開けませんでした",
@@ -3937,7 +3958,7 @@ index 7a282e6..941673a 100644
    "Try Again": "再試行",
    "Choose Another Library…": "別のライブラリを選択…",
    "Continue Without Saving": "保存せずに続行",
-@@ -1687,12 +1687,12 @@
+@@ -1687,12 +1688,12 @@
    "Install from file…": "Install from file…",
    "Install your own ONNX model with denoise-model.json beside it. This build offers no model downloads.": "Install your own ONNX model with denoise-model.json beside it. This build offers no model downloads.",
    "Its denoised picture is not made yet, and pictures are not made on their own (Settings, AI Denoise).": "Its denoised picture is not made yet, and pictures are not made on their own (Settings, AI Denoise).",
@@ -3952,7 +3973,7 @@ index 7a282e6..941673a 100644
    "Only photos whose AI Denoise amount is above 0 are made. Exports always make theirs if it is missing.": "Only photos whose AI Denoise amount is above 0 are made. Exports always make theirs if it is missing.",
    "Open page": "Open page",
    "Open the model's page": "Open the model's page",
-@@ -1704,7 +1704,7 @@
+@@ -1704,7 +1705,7 @@
    "Tested and works on this computer": "Tested and works on this computer",
    "The denoise model is installed and in use: the AI Denoise Amount slider under Detail now works": "The denoise model is installed and in use: the AI Denoise Amount slider under Detail now works",
    "The graphics card is set up when the next photo is made.": "The graphics card is set up when the next photo is made.",
@@ -3961,7 +3982,7 @@ index 7a282e6..941673a 100644
    "The processor does the work.": "The processor does the work.",
    "There is no model file to install": "There is no model file to install",
    "This build cannot run denoise models.": "This build cannot run denoise models.",
-@@ -1910,7 +1910,7 @@
+@@ -1910,7 +1911,7 @@
    "Finding faces": "顔を検索中",
    "Synchronizing folder": "フォルダを同期中",
    "Looking for changes": "変更を確認中",
@@ -3970,7 +3991,7 @@ index 7a282e6..941673a 100644
    "The import reads the catalog without changing it and adds its photos, edits, keywords and collections to the library open now.": "読み込みはカタログを変更せずに読み取り、写真・編集・キーワード・コレクションを現在開いているライブラリに追加します。",
    "Albums hold library photos: Add to My Photos first": "アルバムに入れられるのはライブラリの写真です：先にマイフォトに追加してください",
    "Add to My Photos First": "先にマイフォトに追加",
-@@ -1957,9 +1957,9 @@
+@@ -1957,9 +1958,9 @@
    "Add to Apple Photos": "Appleの写真に追加",
    "Adding to Apple Photos…": "Appleの写真に追加中…",
    "not added to Apple Photos (cancelled)": "Appleの写真には追加されませんでした（キャンセル）",
@@ -4033,10 +4054,16 @@ index e81969e..bfe7baa 100644
    "Running on the processor: {}.": "Executando no processador: {}.",
    "{} · {}. Kept in the library's “denoise” folder; the oldest ones that no photo uses go first when the limit is reached.": "{} · {}. Mantidas na pasta “denoise” da biblioteca; as mais antigas que nenhuma foto usa são removidas primeiro quando o limite é atingido.",
 diff --git a/crates/ui-egui/locales/pt-br.json b/crates/ui-egui/locales/pt-br.json
-index f8e4753..ffa3a8c 100644
+index f8e4753..7bde0d6 100644
 --- a/crates/ui-egui/locales/pt-br.json
 +++ b/crates/ui-egui/locales/pt-br.json
-@@ -17,7 +17,7 @@
+@@ -1,4 +1,5 @@
+ {
++  "Support": "Apoiar",
+   "  (library default)": "  (padrão da biblioteca)",
+   " (inverted)": " (invertida)",
+   " · best of its burst": " · melhor da sequência",
+@@ -17,7 +18,7 @@
    "A one-time download of about": "Um download único de cerca de",
    "AI Mask Model Status": "Status do modelo de máscaras de IA",
    "About": "Sobre",
@@ -4045,7 +4072,7 @@ index f8e4753..ffa3a8c 100644
    "Active": "Ativa",
    "Activity": "Atividade",
    "Actual size": "Tamanho real",
-@@ -617,7 +617,7 @@
+@@ -617,7 +618,7 @@
    "Height": "Altura",
    "Height (px)": "Altura (px)",
    "Help": "Ajuda",
@@ -4054,7 +4081,7 @@ index f8e4753..ffa3a8c 100644
    "Hide Mask": "Ocultar máscara",
    "Hide Others": "Ocultar outras",
    "Hides this shortcut only; the folder and its photos stay as they are": "Oculta apenas este atalho; a pasta e suas fotos permanecem como estão",
-@@ -671,7 +671,7 @@
+@@ -671,7 +672,7 @@
    "In library": "Na biblioteca",
    "In memory — nothing is saved": "Na memória — nada é salvo",
    "In use": "Em uso",
@@ -4063,7 +4090,7 @@ index f8e4753..ffa3a8c 100644
    "Include subfolders": "Incluir subpastas",
    "Increase Brush Feather": "Aumentar esfumado do pincel",
    "Increase Brush Size": "Aumentar tamanho do pincel",
-@@ -739,17 +739,17 @@
+@@ -739,17 +740,17 @@
    "Library saved": "Biblioteca salva",
    "Licence:": "Licença:",
    "Light": "Luz",
@@ -4092,7 +4119,7 @@ index f8e4753..ffa3a8c 100644
    "Lightroom Classic Catalog": "Catálogo do Lightroom Classic",
    "Lightroom import cancelled": "Importação do Lightroom cancelada",
    "Lightroom inspection cancelled": "Inspeção do Lightroom cancelada",
-@@ -814,7 +814,7 @@
+@@ -814,7 +815,7 @@
    "Merged": "Mescladas",
    "Merged PRs": "PRs mesclados",
    "Merging…": "Mesclando…",
@@ -4101,7 +4128,7 @@ index f8e4753..ffa3a8c 100644
    "Metadata": "Metadados",
    "Metadata Preset": "Predefinição de metadados",
    "Metadata Presets": "Predefinições de metadados",
-@@ -939,7 +939,7 @@
+@@ -939,7 +940,7 @@
    "OK": "OK",
    "Object": "Objeto",
    "Object Mask": "Máscara de objeto",
@@ -4110,7 +4137,7 @@ index f8e4753..ffa3a8c 100644
    "October 2026": "Outubro de 2026",
    "Off": "Desativado",
    "Offset X": "Deslocamento X",
-@@ -1078,7 +1078,7 @@
+@@ -1078,7 +1079,7 @@
    "Quiet Green": "Verde tranquilo",
    "Quit": "Sair",
    "Quit Anyway": "Sair mesmo assim",
@@ -4119,7 +4146,7 @@ index f8e4753..ffa3a8c 100644
    "Quit with unsaved changes?": "Sair com alterações não salvas?",
    "RAW decoding": "Decodificação RAW",
    "Radial": "Radial",
-@@ -1687,12 +1687,12 @@
+@@ -1687,12 +1688,12 @@
    "Install from file…": "Instalar de arquivo…",
    "Install your own ONNX model with denoise-model.json beside it. This build offers no model downloads.": "Instale seu próprio modelo ONNX com o denoise-model.json ao lado dele. Esta versão não oferece downloads de modelos.",
    "Its denoised picture is not made yet, and pictures are not made on their own (Settings, AI Denoise).": "A imagem com ruído reduzido ainda não foi gerada, e as imagens não são geradas automaticamente (Configurações, Redução de ruído com IA).",
@@ -4134,7 +4161,7 @@ index f8e4753..ffa3a8c 100644
    "Only photos whose AI Denoise amount is above 0 are made. Exports always make theirs if it is missing.": "Somente fotos com quantidade de redução de ruído com IA acima de 0 são geradas. Ao exportar, a imagem é sempre gerada se estiver faltando.",
    "Open page": "Abrir página",
    "Open the model's page": "Abrir a página do modelo",
-@@ -1704,7 +1704,7 @@
+@@ -1704,7 +1705,7 @@
    "Tested and works on this computer": "Testado e funcionando neste computador",
    "The denoise model is installed and in use: the AI Denoise Amount slider under Detail now works": "O modelo de redução de ruído está instalado e em uso: o controle Quantidade da redução de ruído com IA em Detalhe agora funciona",
    "The graphics card is set up when the next photo is made.": "A placa de vídeo é configurada quando a próxima foto for gerada.",
@@ -4143,7 +4170,7 @@ index f8e4753..ffa3a8c 100644
    "The processor does the work.": "O processador faz o trabalho.",
    "There is no model file to install": "Não há arquivo de modelo para instalar",
    "This build cannot run denoise models.": "Esta versão não consegue executar modelos de redução de ruído.",
-@@ -1908,7 +1908,7 @@
+@@ -1908,7 +1909,7 @@
    "Finding faces": "Procurando rostos",
    "Synchronizing folder": "Sincronizando pasta",
    "Looking for changes": "Procurando alterações",
@@ -4152,7 +4179,7 @@ index f8e4753..ffa3a8c 100644
    "The import reads the catalog without changing it and adds its photos, edits, keywords and collections to the library open now.": "A importação lê o catálogo sem alterá-lo e adiciona as fotos, edições, palavras-chave e coleções dele à biblioteca aberta agora.",
    "Albums hold library photos: Add to My Photos first": "Álbuns contêm fotos da biblioteca: adicione-as às Minhas fotos primeiro",
    "Add to My Photos First": "Adicionar às Minhas fotos primeiro",
-@@ -1955,7 +1955,7 @@
+@@ -1955,7 +1956,7 @@
    "Add to Apple Photos": "Adicionar ao Fotos da Apple",
    "Adding to Apple Photos…": "Adicionando ao Fotos da Apple…",
    "not added to Apple Photos (cancelled)": "não adicionadas ao Fotos da Apple (cancelado)",
@@ -4161,7 +4188,7 @@ index f8e4753..ffa3a8c 100644
    "Adding to Apple Photos": "Adicionando ao Fotos da Apple",
    "Sort Albums A–Z": "Ordenar álbuns de A a Z",
    "Go back to listing them by name": "Voltar a listá-los por nome",
-@@ -1996,7 +1996,7 @@
+@@ -1996,7 +1997,7 @@
    "Face detector": "Detector de rostos",
    "Detect Faces (Photo menu) needs it: a small one-time download.": "Detectar rostos (menu Foto) precisa dele: um pequeno download único.",
    "Recognition models": "Modelos de reconhecimento",
@@ -4208,10 +4235,14 @@ index 38e28e3..2f9e3cb 100644
    "Running on the processor: {}.": "Running on the processor: {}.",
    "{} · {}. Kept in the library's “denoise” folder; the oldest ones that no photo uses go first when the limit is reached.": "{} · {}. Kept in the library's “denoise” folder; the oldest ones that no photo uses go first when the limit is reached.",
 diff --git a/crates/ui-egui/locales/ru.json b/crates/ui-egui/locales/ru.json
-index c840218..7e9bf82 100644
+index c840218..e33b6a2 100644
 --- a/crates/ui-egui/locales/ru.json
 +++ b/crates/ui-egui/locales/ru.json
-@@ -4,7 +4,7 @@
+@@ -1,10 +1,11 @@
+ {
++  "Support": "Поддержать",
+   "+ Group": "+ Группа",
+   "+ Rule": "+ Условие",
    "0: nothing is rejected.": "0: ничего не отклоняется.",
    "A filter is hiding this view's photos: change it, or clear it (View → Clear Filters)": "Фильтр скрывает фото в этом представлении: измените его или сбросьте (Вид → Сбросить фильтры)",
    "A one-time download of about": "Однократная загрузка около",
@@ -4220,7 +4251,7 @@ index c840218..7e9bf82 100644
    "Activity": "Активность",
    "Actual size": "Реальный размер",
    "Add": "Добавить",
-@@ -507,7 +507,7 @@
+@@ -507,7 +508,7 @@
    "Height": "Высота",
    "Height (px)": "Высота (px)",
    "Help": "Справка",
@@ -4229,7 +4260,7 @@ index c840218..7e9bf82 100644
    "Hide Mask": "Скрыть маску",
    "Hide Others": "Скрыть остальные",
    "Hides this shortcut only; the folder and its photos stay as they are": "Скрывает только этот ярлык; папка и её фото остаются как есть",
-@@ -555,7 +555,7 @@
+@@ -555,7 +556,7 @@
    "In library": "В библиотеке",
    "In memory — nothing is saved": "В памяти — ничего не сохраняется",
    "In use": "Используется",
@@ -4238,7 +4269,7 @@ index c840218..7e9bf82 100644
    "Include subfolders": "Включая вложенные папки",
    "Increase Brush Feather": "Увеличить растушёвку кисти",
    "Increase Brush Size": "Увеличить размер кисти",
-@@ -609,17 +609,17 @@
+@@ -609,17 +610,17 @@
    "Library State": "Состояние библиотеки",
    "Licence:": "Лицензия:",
    "Light": "Светлый",
@@ -4267,7 +4298,7 @@ index c840218..7e9bf82 100644
    "Lightroom Classic Catalog": "Каталог Lightroom Classic",
    "Lightroom import cancelled": "Импорт Lightroom отменён",
    "Lightroom inspection cancelled": "Проверка Lightroom отменена",
-@@ -672,7 +672,7 @@
+@@ -672,7 +673,7 @@
    "Merge Keywords": "Объединить ключевые слова",
    "Merge into…": "Объединить с…",
    "Merging…": "Слияние…",
@@ -4276,7 +4307,7 @@ index c840218..7e9bf82 100644
    "Metadata": "Метаданные",
    "Metadata Preset": "Пресет метаданных",
    "Metadata Presets": "Пресеты метаданных",
-@@ -896,7 +896,7 @@
+@@ -896,7 +897,7 @@
    "Quick Develop": "Быстрая коррекция",
    "Quiet Green": "Тихий зелёный",
    "Quit": "Выход",
@@ -4285,7 +4316,7 @@ index c840218..7e9bf82 100644
    "Radial Gradient": "Радиальный градиент",
    "Radius": "Радиус",
    "Random": "Случайно",
-@@ -1359,13 +1359,13 @@
+@@ -1359,13 +1360,13 @@
    "Install from file…": "Установить из файла…",
    "Install your own ONNX model with denoise-model.json beside it. This build offers no model downloads.": "Установите собственную модель ONNX, положив рядом denoise-model.json. В этой сборке загрузка моделей недоступна.",
    "Its denoised picture is not made yet, and pictures are not made on their own (Settings, AI Denoise).": "Его изображение с подавленным шумом ещё не создано, а изображения сами не создаются (Настройки, ИИ-шумоподавление).",
@@ -4301,7 +4332,7 @@ index c840218..7e9bf82 100644
    "Only photos whose AI Denoise amount is above 0 are made. Exports always make theirs if it is missing.": "Создаются только изображения для фото, у которых значение ИИ-шумоподавления больше 0. Экспорт всегда создаёт нужное изображение, если его нет.",
    "Open page": "Открыть страницу",
    "Open the model's page": "Открыть страницу модели",
-@@ -1377,7 +1377,7 @@
+@@ -1377,7 +1378,7 @@
    "Tested and works on this computer": "Проверено и работает на этом компьютере",
    "The denoise model is installed and in use: the AI Denoise Amount slider under Detail now works": "Модель шумоподавления установлена и используется: ползунок «Количество ИИ-шумоподавления» в разделе «Детализация» теперь работает",
    "The graphics card is set up when the next photo is made.": "Видеокарта настраивается при создании следующего фото.",
@@ -4310,7 +4341,7 @@ index c840218..7e9bf82 100644
    "The processor does the work.": "Работу выполняет процессор.",
    "There is no model file to install": "Нет файла модели для установки",
    "This build cannot run denoise models.": "Эта сборка не может запускать модели шумоподавления.",
-@@ -1622,7 +1622,7 @@
+@@ -1622,7 +1623,7 @@
    "Quit Anyway": "Всё равно выйти",
    "Synchronizing folder": "Синхронизация папки",
    "Looking for changes": "Поиск изменений",
@@ -4319,7 +4350,7 @@ index c840218..7e9bf82 100644
    "The import reads the catalog without changing it and adds its photos, edits, keywords and collections to the library open now.": "Импорт читает каталог, не изменяя его, и добавляет его фото, правки, ключевые слова и коллекции в открытую сейчас библиотеку.",
    "Albums hold library photos: Add to My Photos first": "В альбомах только фото из библиотеки: сначала добавьте их в «Мои фото»",
    "Add to My Photos First": "Сначала добавить в «Мои фото»",
-@@ -1672,7 +1672,7 @@
+@@ -1672,7 +1673,7 @@
    " (inverted)": " (инвертировано)",
    " · best of its burst": " · лучшее в серии",
    " · in a burst": " · в серии",
@@ -4328,7 +4359,7 @@ index c840218..7e9bf82 100644
    "#106): a DNG is checked against the raw data, written to a temp file, synced and read back before it gets its": "#106): DNG проверяется по данным RAW, записывается во временный файл, синхронизируется и перечитывается, прежде чем получит",
    "% of all commits": "% всех коммитов",
    "(`gpuReason`, `gpuFallback`), Help ▸ System Info and Settings ▸ Performance say why the GPU isn't": "(`gpuReason`, `gpuFallback`), Справка → Сведения о системе и Настройки → Производительность объясняют, почему GPU не",
-@@ -1690,7 +1690,7 @@
+@@ -1690,7 +1691,7 @@
    "=  exactly": "=  точно",
    "A blank template keeps the original names.": "Пустой шаблон сохраняет исходные имена.",
    "A change that can't be saved to disk (full or unplugged drive) is no longer silent: the command reports": "Изменение, которое не удаётся сохранить на диск (диск заполнен или отключён), больше не остаётся незамеченным: команда сообщает",
@@ -4337,7 +4368,7 @@ index c840218..7e9bf82 100644
    "A save that fails part-way (a full disk, a network share that drops) no longer looks like a damaged catalog": "Неудачное частичное сохранение (диск заполнен, обрыв сетевого соединения) больше не выглядит как повреждённый каталог",
    "A sleeping NAS, a dropped network share or a USB drive spinning up no longer freezes the window (issue #104):": "Засыпающий NAS, оборванное сетевое соединение или раскручивающийся USB-диск больше не замораживают окно (проблема #104):",
    "AI Mask Model Status": "Состояние модели ИИ-масок",
-@@ -1771,7 +1771,7 @@
+@@ -1771,7 +1772,7 @@
    "Drag Crop Handle": "Перетащить маркер кадрирования",
    "Duplicate Component": "Дублировать компонент",
    "Edge": "Край",
@@ -4346,7 +4377,7 @@ index c840218..7e9bf82 100644
    "Edit Label Names": "Изменить названия меток",
    "Edit Mask": "Изменить маску",
    "Edit in External Editor (⇧⌘E): a 16-bit TIFF copy, stacked, refreshed when you come back.": "Править во внешнем редакторе (⇧⌘E): 16-битная TIFF-копия, в стопке, обновляется при возвращении.",
-@@ -1846,8 +1846,8 @@
+@@ -1846,8 +1847,8 @@
    "Lens Blur": "Размытие объектива",
    "Library Folders": "Папки библиотеки",
    "Library saved": "Библиотека сохранена",
@@ -4357,7 +4388,7 @@ index c840218..7e9bf82 100644
    "Line delta": "Разница строк",
    "Linear": "Линейный",
    "Lines +/−": "Строки +/−",
-@@ -1883,7 +1883,7 @@
+@@ -1883,7 +1884,7 @@
    "No named people yet": "Людей с именами пока нет",
    "Not Now": "Не сейчас",
    "Object Mask": "Маска объекта",
@@ -4366,7 +4397,7 @@ index c840218..7e9bf82 100644
    "October 2026": "Октябрь 2026",
    "Only": "Только",
    "Original extension without the dot": "Исходное расширение без точки",
-@@ -1943,7 +1943,7 @@
+@@ -1943,7 +1944,7 @@
    "Rotate Crop": "Поворачивать кадрирование",
    "Rules": "Условия",
    "Save as Set…": "Сохранить как набор…",
@@ -4375,7 +4406,7 @@ index c840218..7e9bf82 100644
    "Scan failed": "Сбой сканирования",
    "Search": "Поиск",
    "Selecting…": "Выделение…",
-@@ -1983,7 +1983,7 @@
+@@ -1983,7 +1984,7 @@
    "Table": "Таблица",
    "Test Face Model": "Проверить модель лиц",
    "That includes the photos in the folders inside it.": "Сюда входят и фото во вложенных папках.",
@@ -4384,7 +4415,7 @@ index c840218..7e9bf82 100644
    "The control port (`--control`) closes a connection as soon as it receives anything that isn't a JSON request": "Порт управления (`--control`) закрывает соединение, как только получает что-либо, кроме JSON-запроса",
    "The number at the end of the original name (IMG_0042 → 0042)": "Число в конце исходного имени (IMG_0042 → 0042)",
    "The original extension is always added; {ext} only puts it inside the name as well.": "Исходное расширение добавляется всегда; {ext} лишь вставляет его ещё и внутрь имени.",
-@@ -2012,14 +2012,14 @@
+@@ -2012,14 +2013,14 @@
    "a full drive) no longer counts as built and Build Smart Previews replaces it.": "полный диск) больше не считается созданным, и «Создать смарт-просмотры» заменяет его.",
    "a literal %": "буквальный символ %",
    "a removed photo": "удалённое фото",
@@ -4401,7 +4432,7 @@ index c840218..7e9bf82 100644
    "any": "любое",
    "as `<name>.corrupt-<time>` and you're told; one that can't be read (e.g. locked by another program) is left alone": "как `<name>.corrupt-<time>`, и вы об этом узнаете; файл, который не удаётся прочитать (например, заблокирован другой программой), остаётся нетронутым",
    "asked to. `LIGHTCRAFT_GPU_BACKEND=dx12 | vulkan | metal | off` (or wgpu's `WGPU_BACKEND`, which GPU rendering": "если вы не попросите. `LIGHTCRAFT_GPU_BACKEND=dx12 | vulkan | metal | off` (или `WGPU_BACKEND` от wgpu, который рендеринг на GPU",
-@@ -2044,12 +2044,12 @@
+@@ -2044,12 +2045,12 @@
    "false": "ложь",
    "fields in and keeps the rest — e.g. that application's develop settings and edit history — byte for byte. A": "поля и сохраняет остальное — например, настройки коррекции и историю правок того приложения — байт в байт. Если",
    "file (Sony stores them only in scrambled maker-note data on these bodies), the few columns of padding at the right": "файла (Sony хранит их на этих моделях только в зашифрованных данных maker note), несколько столбцов заполнения справа",
@@ -4416,7 +4447,7 @@ index c840218..7e9bf82 100644
    "hour 00–23": "час 00–23",
    "hours": "часов",
    "how to restore it or delete it permanently and import it afresh. (For a fresh start on a photo, Reset Edits,": "как восстановить его или удалить навсегда и импортировать заново. (Чтобы начать с чистого листа для фото, «Сбросить правки»,",
-@@ -2063,7 +2063,7 @@
+@@ -2063,7 +2064,7 @@
    "incomplete is redone on the CPU — the file is the same image either way. Work is sent to the GPU": "неполный, переделывается на CPU — в обоих случаях файл содержит одно и то же изображение. Работа отправляется на GPU",
    "is kept). A failed save (storage full) now shows the unsaved warning and is retried, a photo that can't be stored": "сохраняется). Неудачное сохранение (хранилище заполнено) теперь показывает предупреждение о несохранённом и повторяется, фото, которое не удаётся сохранить,",
    "is refused and nothing is overwritten.": "отклоняется, и ничего не перезаписывается.",
@@ -4425,7 +4456,7 @@ index c840218..7e9bf82 100644
    "isn't added, a second tab shows a message instead of overwriting the first, `?reset` asks first, and the page says": "не добавляется, вторая вкладка показывает сообщение вместо перезаписи первой, `?reset` сначала спрашивает, а страница сообщает,",
    "it away from the other (issue #92). Find Missing Photos also finds renamed files by their content, prefers a content match": "его от другого (проблема #92). «Найти отсутствующие фото» также находит переименованные файлы по содержимому, отдаёт предпочтение совпадению по содержимому",
    "its photos and XMP sidecars, and the photos point at it again. If something now occupies the old place, the undo": "своими фото и XMP-файлами, и фото снова указывают на неё. Если старое место теперь занято, отмена",
-@@ -2132,8 +2132,8 @@
+@@ -2132,8 +2133,8 @@
    "when the browser may evict the library. Hosting: the sample cache headers no longer mark the (unhashed) files": "когда браузер может вытеснить библиотеку. Хостинг: примеры заголовков кэша больше не помечают (нехэшированные) файлы",
    "whether originals are there is checked on a worker thread (grid thumbnails, the Info panel, the photo menu, Missing": "наличие оригиналов проверяется в рабочем потоке (миниатюры сетки, панель «Информация», меню «Фото», «Отсутствующие",
    "with a counterpart here come along, the rest is listed.": "с соответствием здесь переносятся, остальные перечисляются.",
@@ -4436,7 +4467,7 @@ index c840218..7e9bf82 100644
    "year, 2 digits": "год, 2 цифры",
    "year, 4 digits": "год, 4 цифры",
    "years": "лет",
-@@ -2147,9 +2147,9 @@
+@@ -2147,9 +2148,9 @@
    "Add to Apple Photos": "Добавить в Apple Фото",
    "Adding to Apple Photos…": "Добавление в Apple Фото…",
    "not added to Apple Photos (cancelled)": "не добавлено в Apple Фото (отменено)",
@@ -4492,10 +4523,16 @@ index 5563642..7821fb0 100644
    "Running on the processor: {}.": "Працює на процесорі: {}.",
    "{} · {}. Kept in the library's “denoise” folder; the oldest ones that no photo uses go first when the limit is reached.": "{} · {}. Зберігається в теці «denoise» бібліотеки; після досягнення ліміту першими видаляються найстаріші зображення, які не використовуються жодним фото.",
 diff --git a/crates/ui-egui/locales/uk.json b/crates/ui-egui/locales/uk.json
-index 85a8380..b90993a 100644
+index 85a8380..5b86649 100644
 --- a/crates/ui-egui/locales/uk.json
 +++ b/crates/ui-egui/locales/uk.json
-@@ -356,7 +356,7 @@
+@@ -1,4 +1,5 @@
+ {
++  "Support": "Підтримати",
+   "% of all commits": "% усіх комітів",
+   "About": "Про програму",
+   "Add": "Додати",
+@@ -356,7 +357,7 @@
    "A filter is hiding this view's photos: change it, or clear it (View → Clear Filters)": "Фільтр приховує фото в цьому поданні: змініть або скиньте його (Вигляд → Скинути фільтри)",
    "A one-time download of about": "Одноразове завантаження приблизно",
    "AI Mask Model Status": "Стан моделі масок ШІ",
@@ -4504,7 +4541,7 @@ index 85a8380..b90993a 100644
    "Active": "Активне",
    "Activity": "Дії",
    "Add Catchlight": "Додати відблиск в оці",
-@@ -783,7 +783,7 @@
+@@ -783,7 +784,7 @@
    "Library State": "Стан бібліотеки",
    "Library saved": "Бібліотеку збережено",
    "Licence:": "Ліцензія:",
@@ -4513,7 +4550,7 @@ index 85a8380..b90993a 100644
    "Lightroom Classic Catalog": "Каталог Lightroom Classic",
    "Lightroom import cancelled": "Імпорт Lightroom скасовано",
    "Lightroom inspection cancelled": "Перевірку Lightroom скасовано",
-@@ -804,7 +804,7 @@
+@@ -804,7 +805,7 @@
    "Memory Usage": "Використання пам’яті",
    "Memory budget": "Ліміт пам’яті",
    "Merged": "Об’єднано",
@@ -4522,7 +4559,7 @@ index 85a8380..b90993a 100644
    "Missing metadata ({camera}, {title}…) leaves an empty gap; a name that comes out empty keeps the original name.": "Відсутні метадані ({camera}, {title}…) залишають порожнє місце; порожня отримана назва зберігає початкову.",
    "Misty Morning": "Туманний ранок",
    "Mono Red Filter": "Монохромний червоний фільтр",
-@@ -835,7 +835,7 @@
+@@ -835,7 +836,7 @@
    "Not Now": "Не зараз",
    "Nudge Develop Value": "Змінити значення обробки на крок",
    "Object Mask": "Маска об’єкта",
@@ -4531,7 +4568,7 @@ index 85a8380..b90993a 100644
    "October 2026": "Жовтень 2026",
    "Only": "Лише",
    "Optimize Library": "Оптимізувати бібліотеку",
-@@ -965,7 +965,7 @@
+@@ -965,7 +966,7 @@
    "HDR…": "HDR…",
    "Heal the small, soft dark spots sensor dust leaves on smooth areas": "Усунути дрібні м’які темні плями, які пил на сенсорі залишає на однорідних ділянках",
    "Height (px)": "Висота (пікселів)",
@@ -4540,7 +4577,7 @@ index 85a8380..b90993a 100644
    "Hide Mask": "Приховати маску",
    "Hides this shortcut only; the folder and its photos stay as they are": "Приховує лише це скорочення; тека та її фото залишаються незмінними",
    "Highlights Hue": "Тон світлих ділянок",
-@@ -990,7 +990,7 @@
+@@ -990,7 +991,7 @@
    "In library": "У бібліотеці",
    "In memory — nothing is saved": "У пам’яті — нічого не збережено",
    "In use": "Використовується",
@@ -4549,7 +4586,7 @@ index 85a8380..b90993a 100644
    "Include subfolders": "Включати вкладені теки",
    "Info (I)": "Інформація (I)",
    "Info overlay": "Накладання інформації",
-@@ -1010,14 +1010,14 @@
+@@ -1010,14 +1011,14 @@
    "Lateral Chromatic Aberration": "Поперечна хроматична аберація",
    "Leave them": "Залишити їх",
    "Library Originals": "Оригінали бібліотеки",
@@ -4572,7 +4609,7 @@ index 85a8380..b90993a 100644
    "Limit file size (KB, 0 = off)": "Обмежити розмір файлу (КБ, 0 = вимкнено)",
    "List this folder in Local from now on": "Відтепер показувати цю теку в локальних",
    "Local": "Локальні",
-@@ -1170,7 +1170,7 @@
+@@ -1170,7 +1171,7 @@
    "Put the locations you removed from Local back (no files change)": "Повернути вилучені з локальних розташування (файли не змінюються)",
    "Quick Collection": "Швидка колекція",
    "Quick Develop": "Швидка обробка",
@@ -4581,7 +4618,7 @@ index 85a8380..b90993a 100644
    "Rating": "Оцінка",
    "Ratings & flags": "Оцінки й прапорці",
    "Raw default": "Типові налаштування RAW",
-@@ -1589,8 +1589,8 @@
+@@ -1589,8 +1590,8 @@
    "Horizontal text": "Горизонтальний текст",
    "Vertical text": "Вертикальний текст",
    "Your library couldn't be opened": "Не вдалося відкрити вашу бібліотеку",
@@ -4592,7 +4629,7 @@ index 85a8380..b90993a 100644
    "Try Again": "Спробувати знову",
    "Choose Another Library…": "Вибрати іншу бібліотеку…",
    "Continue Without Saving": "Продовжити без збереження",
-@@ -1678,12 +1678,12 @@
+@@ -1678,12 +1679,12 @@
    "Install from file…": "Установити з файлу…",
    "Install your own ONNX model with denoise-model.json beside it. This build offers no model downloads.": "Установіть власну модель ONNX із denoise-model.json поруч. Ця збірка не пропонує завантаження моделей.",
    "Its denoised picture is not made yet, and pictures are not made on their own (Settings, AI Denoise).": "Зображення з усуненим шумом ще не створено, а автоматичне створення вимкнено (Налаштування, ШІ: усунення шуму).",
@@ -4607,7 +4644,7 @@ index 85a8380..b90993a 100644
    "Only photos whose AI Denoise amount is above 0 are made. Exports always make theirs if it is missing.": "Обробляються лише фото зі значенням усунення шуму ШІ понад 0. Експорт завжди створює потрібне зображення, якщо його немає.",
    "Open page": "Відкрити сторінку",
    "Open the model's page": "Відкрити сторінку моделі",
-@@ -1694,7 +1694,7 @@
+@@ -1694,7 +1695,7 @@
    "Tested and works on this computer": "Перевірено й працює на цьому комп’ютері",
    "The denoise model is installed and in use: the AI Denoise Amount slider under Detail now works": "Модель усунення шуму встановлено й використовується: повзунок інтенсивності усунення шуму ШІ в деталях тепер працює",
    "The graphics card is set up when the next photo is made.": "Відеокарта налаштовується під час обробки наступного фото.",
@@ -4616,7 +4653,7 @@ index 85a8380..b90993a 100644
    "The processor does the work.": "Роботу виконує процесор.",
    "There is no model file to install": "Немає файлу моделі для встановлення",
    "This build cannot run denoise models.": "Ця збірка не може запускати моделі усунення шуму.",
-@@ -1743,7 +1743,7 @@
+@@ -1743,7 +1744,7 @@
    "Pending photo action cancelled because its library or photo changed": "Відкладену дію фото скасовано, оскільки змінилася бібліотека або фото",
    "ONNX model": "Модель ONNX",
    "commercial use subject to GPL conditions": "комерційне використання за умов GPL",
@@ -4625,7 +4662,7 @@ index 85a8380..b90993a 100644
    "#106): a DNG is checked against the raw data, written to a temp file, synced and read back before it gets its": "#106): DNG перевіряється за даними RAW, записується до тимчасового файлу, синхронізується й перечитується, перш ніж отримати",
    "(`gpuReason`, `gpuFallback`), Help ▸ System Info and Settings ▸ Performance say why the GPU isn't": "(`gpuReason`, `gpuFallback`), Довідка → Інформація про систему й Налаштування → Продуктивність пояснюють, чому ГП не",
    "(e.g. D750, D780, D850, D7500, Z 50) no longer render nearly black or with crushed shadows: their black level was": "(наприклад, D750, D780, D850, D7500, Z 50) більше не відтворюються майже чорними або зі знищеними тінями: їхній рівень чорного",
-@@ -1754,7 +1754,7 @@
+@@ -1754,7 +1755,7 @@
    "4 MiB and connections at 16.": "4 МіБ, а кількість з’єднань — 16.",
    "630 drivers): on Windows the window and GPU rendering use DirectX 12 only and never load the Vulkan driver unless": "630): у Windows вікно й рендеринг на ГП використовують лише DirectX 12 і не завантажують драйвер Vulkan, доки ви",
    "A change that can't be saved to disk (full or unplugged drive) is no longer silent: the command reports": "Зміна, яку не можна зберегти на диск (заповнений або від’єднаний), більше не залишається непомітною: команда повідомляє",
@@ -4634,7 +4671,7 @@ index 85a8380..b90993a 100644
    "A save that fails part-way (a full disk, a network share that drops) no longer looks like a damaged catalog": "Невдале часткове збереження (повний диск, розрив мережевого підключення) більше не виглядає як пошкоджений каталог",
    "A sleeping NAS, a dropped network share or a USB drive spinning up no longer freezes the window (issue #104):": "Сплячий NAS, розірване мережеве підключення або USB-диск, що розкручується, більше не заморожують вікно (проблема #104):",
    "AI masks with SAM 3 (Object and Describe in the Masking panel): click an object to select it (⌥-click leaves a": "Маски ШІ із SAM 3 («Об’єкт» і «Описати» на панелі маскування): клацніть об’єкт, щоб виділити його (⌥-клацання виключає",
-@@ -1769,7 +1769,7 @@
+@@ -1769,7 +1770,7 @@
    "Compressed Nikon NEFs (lossless and lossy compressed, 12- and 14-bit — e.g. D3200, D5100, D7000, D750, D850, Z 50)": "Стиснені Nikon NEF (без втрат і з втратами, 12- і 14-бітні — наприклад, D3200, D5100, D7000, D750, D850, Z 50)",
    "Convert to DNG, Copy as DNG, Photo Merge and smart previews no longer write straight to the final file (issue": "Перетворення на DNG, копіювання як DNG, об’єднання фото й смарт-перегляди більше не пишуть прямо до кінцевого файлу (проблема",
    "Copyright status, rights usage terms and copyright info URL in Info, metadata presets and exports.": "Статус авторського права, умови використання прав і URL інформації про авторське право в інформації, наборах метаданих і експорті.",
@@ -4643,7 +4680,7 @@ index 85a8380..b90993a 100644
    "Edit in External Editor (⇧⌘E): a 16-bit TIFF copy, stacked, refreshed when you come back.": "Редагування в зовнішньому редакторі (⇧⌘E): 16-бітна копія TIFF у стосі, оновлена після повернення.",
    "Export file names use the Rename Photos tokens ({title}, {seq:2}, {date:%Y-%m-%d}…), plus new {num}, {folder}, {lens}, {iso}, {rating}, {creator}.": "Назви експортованих файлів використовують теги перейменування фото ({title}, {seq:2}, {date:%Y-%m-%d}…), а також нові {num}, {folder}, {lens}, {iso}, {rating}, {creator}.",
    "Exported files are written to a temp file and then renamed into place, so a full disk or an unplugged drive": "Експортовані файли пишуться до тимчасового файлу, а потім перейменовуються на місце, тому заповнений або від’єднаний диск",
-@@ -1782,8 +1782,8 @@
+@@ -1782,8 +1783,8 @@
    "Import ▸ Move: photos go into the destination (with the same folders and renaming as Copy, e.g.": "Імпорт → Перемістити: фото переходять до призначення (із тими самими теками й перейменуванням, що й копіювання, наприклад",
    "Import: copy to any folder, by day / by month / one folder, rename on import, metadata preset, Copy as DNG.": "Імпорт: копіювання до будь-якої теки, за днем / місяцем / до однієї теки, перейменування під час імпорту, набір метаданих, копіювання як DNG.",
    "JPEG with the same name (`IMG_0001.CR3` + `IMG_0001.JPG`) no longer share one sidecar: the raw keeps `IMG_0001.xmp`,": "JPEG із тією самою назвою (`IMG_0001.CR3` + `IMG_0001.JPG`) більше не мають спільного супровідного файлу: RAW зберігає `IMG_0001.xmp`,",
@@ -4654,7 +4691,7 @@ index 85a8380..b90993a 100644
    "Lossy DNG files and Smart Previews open as raw photos.": "DNG із втратами й смарт-перегляди відкриваються як фото RAW.",
    "Luminar looks: `.lmp` files and `.mplumpack` collections import as presets (grouped by collection); the sliders": "Стилі Luminar: файли `.lmp` і колекції `.mplumpack` імпортуються як набори налаштувань (згруповані за колекцією); повзунки",
    "Nikon NEFs start from a colour and tone look fitted to the camera's own JPEG, as Sony ARWs do, instead of a muted,": "Nikon NEF починають із кольору й тону, підігнаних до власного JPEG камери, як і Sony ARW, замість приглушеного",
-@@ -1796,7 +1796,7 @@
+@@ -1796,7 +1797,7 @@
    "Rename Folder… and Move Folder To… (Local) can be undone and redone (issue #97): the folder moves back on disk with": "Перейменування теки… й переміщення теки до… (Локальні) можна скасувати й повторити (проблема #97): тека повертається на диску разом із",
    "Rename Photos never overwrites another photo when only the letter case changes (issue #95): on case-sensitive": "Перейменування фото ніколи не перезаписує інше фото, коли змінюється лише регістр літер (проблема #95): на томах із чутливістю",
    "Rename Photos reports files it could not move back after a failure (issue #105), e.g. when a network share drops": "Перейменування фото повідомляє про файли, які не вдалося повернути після помилки (проблема #105), наприклад, розриву мережевого підключення",
@@ -4663,7 +4700,7 @@ index 85a8380..b90993a 100644
    "Settings files are never quietly reset (issue #103): a damaged `prefs.json`, `presets.json` or `view.json` is kept": "Файли налаштувань ніколи не скидаються непомітно (проблема #103): пошкоджені `prefs.json`, `presets.json` або `view.json` зберігаються",
    "Slideshow, second window, All Metadata, System Info.": "Показ слайдів, друге вікно, усі метадані, інформація про систему.",
    "Smaller, faster catalogs: photos you only looked at in Local (never added, rated or edited) are forgotten once": "Менші й швидші каталоги: фото, які ви лише переглядали в локальних (ніколи не додавали, не оцінювали й не редагували), забуваються, коли",
-@@ -1804,7 +1804,7 @@
+@@ -1804,7 +1805,7 @@
    "Sony ARWs from before about 2017 (RX100, RX100 II–V, RX10, NEX, SLT, ILCE-6000, A7 / A7 II / A7R II and their": "Sony ARW приблизно до 2017 року (RX100, RX100 II–V, RX10, NEX, SLT, ILCE-6000, A7 / A7 II / A7R II та споріднені",
    "Sony ILCE-7M4 downsized lossless ARWs now decode subsampled YCbCr tiles into linear RGB,": "Sony ILCE-7M4 ARW зменшеного розміру без втрат тепер декодують ділянки YCbCr зі зменшеною дискретизацією в лінійний RGB,",
    "TZ/ZS series, Leica D-Lux, V-Lux and C-Lux, and the GH6, GH7, G9 II, S5 II and S9 generation. They start from a": "серії TZ/ZS, Leica D-Lux, V-Lux і C-Lux та покоління GH6, GH7, G9 II, S5 II і S9. Вони починають із",
@@ -4672,7 +4709,7 @@ index 85a8380..b90993a 100644
    "The control port (`--control`) closes a connection as soon as it receives anything that isn't a JSON request": "Порт керування (`--control`) закриває з’єднання, щойно отримує щось, що не є запитом JSON",
    "The thumbnail cache only ever counts and deletes its own files (issue #98): a library opened on a folder that": "Кеш мініатюр завжди рахує й видаляє лише власні файли (проблема #98): бібліотека, відкрита в теці, яка",
    "Watched-folder auto import; Convert to DNG; Duplicate; Build Standard / 1:1 / Smart Previews.": "Автоімпорт із відстежуваної теки; перетворення на DNG; дублювання; створення стандартних переглядів / 1:1 / смарт-переглядів.",
-@@ -1812,13 +1812,13 @@
+@@ -1812,13 +1813,13 @@
    "`Photos/2026/20260114/20260114_001.jpg`) together with their XMP sidecars; each original leaves the card only after its": "`Photos/2026/20260114/20260114_001.jpg`) разом із супровідними XMP; кожен оригінал залишає карту лише після",
    "`img_1-1.JPG`; on case-insensitive volumes the case change still goes through.": "`img_1-1.JPG`; на томах без чутливості до регістру зміна регістру виконується.",
    "a full drive) no longer counts as built and Build Smart Previews replaces it.": "повний диск) більше не вважається створеним, а створення смарт-переглядів замінює його.",
@@ -4688,7 +4725,7 @@ index 85a8380..b90993a 100644
    "as `<name>.corrupt-<time>` and you're told; one that can't be read (e.g. locked by another program) is left alone": "як `<name>.corrupt-<time>`, про що повідомляється; файл, який не можна прочитати (наприклад, заблокований іншою програмою), залишається незмінним",
    "asked to. `LIGHTCRAFT_GPU_BACKEND=dx12 | vulkan | metal | off` (or wgpu's `WGPU_BACKEND`, which GPU rendering": "цього не попросите. `LIGHTCRAFT_GPU_BACKEND=dx12 | vulkan | metal | off` (або `WGPU_BACKEND` wgpu, який рендеринг на ГП",
    "bundles of any of these — whole folders at once, grouped by pack. Masks inside presets come along.": "пакети будь-яких із них — цілі теки одночасно, згруповані за пакетом. Маски всередині наборів також переносяться.",
-@@ -1835,11 +1835,11 @@
+@@ -1835,11 +1836,11 @@
    "export. The catalog, XMP sidecars, settings, DNGs, merges, smart previews and the copies an import makes are still": "експорт. Каталог, супровідні XMP, налаштування, DNG, об’єднання, смарт-перегляди й копії під час імпорту й далі",
    "fields in and keeps the rest — e.g. that application's develop settings and edit history — byte for byte. A": "поля й зберігає решту — наприклад, налаштування обробки й історію редагування того застосунку — байт у байт. Супровідний",
    "file (Sony stores them only in scrambled maker-note data on these bodies), the few columns of padding at the right": "файлу (Sony зберігає їх лише в зашифрованих даних приміток виробника на цих моделях), кілька стовпців заповнення справа",
@@ -4702,7 +4739,7 @@ index 85a8380..b90993a 100644
    "how to restore it or delete it permanently and import it afresh. (For a fresh start on a photo, Reset Edits,": "як відновити його або видалити назавжди й імпортувати заново. (Для нового початку на фото «Скинути зміни»,",
    "ignored before) chooses the graphics backend; `off` renders on the CPU. The GPU now starts after the window": "раніше ігнорувався) вибирає графічний механізм; `off` відтворює на ЦП. ГП тепер запускається після появи вікна",
    "immutable, and HOSTING.md describes the actual build.": "незмінними, а HOSTING.md описує фактичну збірку.",
-@@ -1849,7 +1849,7 @@
+@@ -1849,7 +1850,7 @@
    "incomplete is redone on the CPU — the file is the same image either way. Work is sent to the GPU": "неповний, повторюється на ЦП — файл містить те саме зображення в обох випадках. Робота надсилається на ГП",
    "is kept). A failed save (storage full) now shows the unsaved warning and is retried, a photo that can't be stored": "зберігається). Невдале збереження (повне сховище) тепер показує попередження й повторюється; фото, яке неможливо зберегти,",
    "is refused and nothing is overwritten.": "відхиляється, і нічого не перезаписується.",
@@ -4711,7 +4748,7 @@ index 85a8380..b90993a 100644
    "isn't added, a second tab shows a message instead of overwriting the first, `?reset` asks first, and the page says": "не додається, друга вкладка показує повідомлення замість перезаписування першої, `?reset` спочатку запитує, а сторінка повідомляє,",
    "it away from the other (issue #92). Find Missing Photos also finds renamed files by their content, prefers a content match": "його від іншого (проблема #92). Пошук відсутніх фото також знаходить перейменовані файли за вмістом, надає перевагу збігу вмісту",
    "its photos and XMP sidecars, and the photos point at it again. If something now occupies the old place, the undo": "своїми фото й супровідними XMP, а фото знову посилаються на неї. Якщо старе місце тепер зайняте, скасування",
-@@ -1895,8 +1895,8 @@
+@@ -1895,8 +1896,8 @@
    "when the browser may evict the library. Hosting: the sample cache headers no longer mark the (unhashed) files": "коли браузер може вилучити бібліотеку. Хостинг: приклади заголовків кешу більше не позначають файли (без хешу)",
    "whether originals are there is checked on a worker thread (grid thumbnails, the Info panel, the photo menu, Missing": "наявність оригіналів перевіряється в робочому потоці (мініатюри сітки, панель інформації, меню «Фото», відсутні",
    "with a counterpart here come along, the rest is listed.": "з відповідником тут переносяться, решта перелічується.",
@@ -4722,7 +4759,7 @@ index 85a8380..b90993a 100644
    "⌘-drag to straighten, ⇧G Guided Upright, a grid while transforming.": "⌘-перетягування для випрямлення, ⇧G для керованого випрямлення, сітка під час трансформування.",
    "Sort Albums A–Z": "Сортувати альбоми А–Я",
    "Go back to listing them by name": "Повернутися до списку за назвою",
-@@ -2087,7 +2087,7 @@
+@@ -2087,7 +2088,7 @@
    "Reset Panel Layout": "Reset Panel Layout",
    "Resize panel window": "Resize panel window",
    "Resize panels": "Resize panels",
@@ -4731,7 +4768,7 @@ index 85a8380..b90993a 100644
    "The import reads the catalog without changing it and adds its photos, edits, keywords and collections to the library open now.": "Імпорт читає каталог, не змінюючи його, і додає його фото, редагування, ключові слова та колекції до відкритої зараз бібліотеки.",
    "Albums hold library photos: Add to My Photos first": "В альбомах лише фото з бібліотеки: спершу додайте їх до моїх фото",
    "Add to My Photos First": "Спершу додати до моїх фото",
-@@ -2147,9 +2147,9 @@
+@@ -2147,9 +2148,9 @@
    "Add to Apple Photos": "Додати до Apple Фото",
    "Adding to Apple Photos…": "Додавання до Apple Фото…",
    "not added to Apple Photos (cancelled)": "не додано до Apple Фото (скасовано)",
@@ -4794,10 +4831,16 @@ index 782f8d7..204e290 100644
    "Running on the processor: {}.": "Running on the processor: {}.",
    "{} · {}. Kept in the library's “denoise” folder; the oldest ones that no photo uses go first when the limit is reached.": "{} · {}. Kept in the library's “denoise” folder; the oldest ones that no photo uses go first when the limit is reached.",
 diff --git a/crates/ui-egui/locales/zh-hans.json b/crates/ui-egui/locales/zh-hans.json
-index ad379f1..50df22a 100644
+index ad379f1..3352810 100644
 --- a/crates/ui-egui/locales/zh-hans.json
 +++ b/crates/ui-egui/locales/zh-hans.json
-@@ -17,7 +17,7 @@
+@@ -1,4 +1,5 @@
+ {
++  "Support": "支持",
+   "  (library default)": "  （图库默认值）",
+   " (inverted)": " （已反相）",
+   " · best of its burst": " · 连拍中的最佳照片",
+@@ -17,7 +18,7 @@
    "A one-time download of about": "一次性下载，大小约",
    "AI Mask Model Status": "AI 蒙版模型状态",
    "About": "关于",
@@ -4806,7 +4849,7 @@ index ad379f1..50df22a 100644
    "Active": "当前照片",
    "Activity": "活动",
    "Actual size": "实际大小",
-@@ -543,7 +543,7 @@
+@@ -543,7 +544,7 @@
    "Lens Blur": "镜头模糊",
    "Library saved": "图库已保存",
    "Licence:": "许可证：",
@@ -4815,7 +4858,7 @@ index ad379f1..50df22a 100644
    "Lightroom Classic Catalog": "Lightroom Classic 目录",
    "Lightroom import cancelled": "已取消 Lightroom 导入",
    "Lightroom inspection cancelled": "已取消 Lightroom 检查",
-@@ -560,7 +560,7 @@
+@@ -560,7 +561,7 @@
    "Memory budget": "内存预算",
    "Merged": "已合并",
    "Merged PRs": "已合并的 PR",
@@ -4824,7 +4867,7 @@ index ad379f1..50df22a 100644
    "Missing metadata ({camera}, {title}…) leaves an empty gap; a name that comes out empty keeps the original name.": "缺少的元数据（{camera}、{title}…）会留空；如果生成的名称为空，则保留原始名称。",
    "Model": "型号",
    "Models": "模型",
-@@ -581,7 +581,7 @@
+@@ -581,7 +582,7 @@
    "No named people yet": "还没有已命名的人物",
    "Not Now": "以后再说",
    "Object Mask": "对象蒙版",
@@ -4833,7 +4876,7 @@ index ad379f1..50df22a 100644
    "October 2026": "2026年10月",
    "Only": "仅限",
    "Original extension without the dot": "不含点的原始扩展名",
-@@ -744,7 +744,7 @@
+@@ -744,7 +745,7 @@
    "Height": "高度",
    "Height (px)": "高度（px）",
    "Help": "帮助",
@@ -4842,7 +4885,7 @@ index ad379f1..50df22a 100644
    "Hide Mask": "隐藏蒙版",
    "Hide Others": "隐藏其他",
    "Hides this shortcut only; the folder and its photos stay as they are": "仅隐藏此快捷方式；文件夹及其中的照片保持不变",
-@@ -784,7 +784,7 @@
+@@ -784,7 +785,7 @@
    "In library": "在图库中",
    "In memory — nothing is saved": "仅存于内存 — 不会保存任何内容",
    "In use": "使用中",
@@ -4851,7 +4894,7 @@ index ad379f1..50df22a 100644
    "Include subfolders": "包含子文件夹",
    "Increase Brush Feather": "增大画笔羽化",
    "Increase Brush Size": "增大画笔尺寸",
-@@ -835,16 +835,16 @@
+@@ -835,16 +836,16 @@
    "Library Preferences": "图库偏好设置",
    "Library State": "图库状态",
    "Light": "亮度",
@@ -4878,7 +4921,7 @@ index ad379f1..50df22a 100644
    "Lights": "高光",
    "Limit file size (KB, 0 = off)": "限制文件大小（KB，0 = 关闭）",
    "Linear Gradient": "线性渐变",
-@@ -1108,7 +1108,7 @@
+@@ -1108,7 +1109,7 @@
    "Quick Develop": "快速编辑",
    "Quiet Green": "静谧绿",
    "Quit": "退出",
@@ -4887,7 +4930,7 @@ index ad379f1..50df22a 100644
    "Radial Gradient": "径向渐变",
    "Radius": "半径",
    "Range": "范围",
-@@ -1687,12 +1687,12 @@
+@@ -1687,12 +1688,12 @@
    "Install from file…": "从文件安装…",
    "Install your own ONNX model with denoise-model.json beside it. This build offers no model downloads.": "请自行安装 ONNX 模型，并在其旁边放置 denoise-model.json。此版本不提供模型下载。",
    "Its denoised picture is not made yet, and pictures are not made on their own (Settings, AI Denoise).": "该照片的降噪结果尚未生成，而且不会自动生成（设置、AI 降噪）。",
@@ -4902,7 +4945,7 @@ index ad379f1..50df22a 100644
    "Only photos whose AI Denoise amount is above 0 are made. Exports always make theirs if it is missing.": "只对 AI 降噪数量大于 0 的照片生成结果。导出时若缺少结果则会先生成。",
    "Open page": "打开页面",
    "Open the model's page": "打开该模型的页面",
-@@ -1704,7 +1704,7 @@
+@@ -1704,7 +1705,7 @@
    "Tested and works on this computer": "已在本机测试通过并可正常使用",
    "The denoise model is installed and in use: the AI Denoise Amount slider under Detail now works": "降噪模型已安装并正在使用：细节面板中的 AI 降噪数量滑块现已可用",
    "The graphics card is set up when the next photo is made.": "将在生成下一张照片时初始化显卡。",
@@ -4911,7 +4954,7 @@ index ad379f1..50df22a 100644
    "The processor does the work.": "由处理器完成运算。",
    "There is no model file to install": "没有可安装的模型文件",
    "This build cannot run denoise models.": "此版本无法运行降噪模型。",
-@@ -1908,7 +1908,7 @@
+@@ -1908,7 +1909,7 @@
    "Finding faces": "正在查找人脸",
    "Synchronizing folder": "正在同步文件夹",
    "Looking for changes": "正在查找更改",
@@ -4920,7 +4963,7 @@ index ad379f1..50df22a 100644
    "The import reads the catalog without changing it and adds its photos, edits, keywords and collections to the library open now.": "导入只读取目录、不做任何更改，并将其中的照片、编辑、关键字和收藏夹添加到当前打开的图库。",
    "Albums hold library photos: Add to My Photos first": "相册只能收录图库中的照片：请先添加到我的照片",
    "Add to My Photos First": "先添加到我的照片",
-@@ -1993,9 +1993,9 @@
+@@ -1993,9 +1994,9 @@
    "Add to Apple Photos": "添加到 Apple 照片",
    "Adding to Apple Photos…": "正在添加到 Apple 照片…",
    "not added to Apple Photos (cancelled)": "未添加到 Apple 照片（已取消）",
@@ -4983,10 +5026,16 @@ index 56db559..06ecb3f 100644
    "Running on the processor: {}.": "Running on the processor: {}.",
    "{} · {}. Kept in the library's “denoise” folder; the oldest ones that no photo uses go first when the limit is reached.": "{} · {}. Kept in the library's “denoise” folder; the oldest ones that no photo uses go first when the limit is reached.",
 diff --git a/crates/ui-egui/locales/zh-hant.json b/crates/ui-egui/locales/zh-hant.json
-index 647d153..ab6cc7f 100644
+index 647d153..de8bf01 100644
 --- a/crates/ui-egui/locales/zh-hant.json
 +++ b/crates/ui-egui/locales/zh-hant.json
-@@ -17,7 +17,7 @@
+@@ -1,4 +1,5 @@
+ {
++  "Support": "支持",
+   "  (library default)": "  （照片庫預設值）",
+   " (inverted)": " （已反轉）",
+   " · best of its burst": " · 連拍中的最佳照片",
+@@ -17,7 +18,7 @@
    "A one-time download of about": "一次性下載，大小約",
    "AI Mask Model Status": "AI 遮色片模型狀態",
    "About": "關於",
@@ -4995,7 +5044,7 @@ index 647d153..ab6cc7f 100644
    "Active": "目前照片",
    "Activity": "處理狀態",
    "Actual size": "實際大小",
-@@ -543,7 +543,7 @@
+@@ -543,7 +544,7 @@
    "Lens Blur": "鏡頭模糊",
    "Library saved": "照片庫已儲存",
    "Licence:": "授權：",
@@ -5004,7 +5053,7 @@ index 647d153..ab6cc7f 100644
    "Lightroom Classic Catalog": "Lightroom Classic 目錄",
    "Lightroom import cancelled": "已取消 Lightroom 匯入",
    "Lightroom inspection cancelled": "已取消 Lightroom 檢查",
-@@ -560,7 +560,7 @@
+@@ -560,7 +561,7 @@
    "Memory budget": "記憶體預算",
    "Merged": "已合併",
    "Merged PRs": "已合併的 PR",
@@ -5013,7 +5062,7 @@ index 647d153..ab6cc7f 100644
    "Missing metadata ({camera}, {title}…) leaves an empty gap; a name that comes out empty keeps the original name.": "缺少的中繼資料（{camera}、{title}…）會留空；產生的名稱若為空白，則保留原始名稱。",
    "Model": "型號",
    "Models": "模型",
-@@ -581,7 +581,7 @@
+@@ -581,7 +582,7 @@
    "No named people yet": "尚無已命名的人物",
    "Not Now": "以後再說",
    "Object Mask": "物件遮色片",
@@ -5022,7 +5071,7 @@ index 647d153..ab6cc7f 100644
    "October 2026": "2026年10月",
    "Only": "僅限",
    "Original extension without the dot": "不含點的原始副檔名",
-@@ -744,7 +744,7 @@
+@@ -744,7 +745,7 @@
    "Height": "高度",
    "Height (px)": "高度（像素）",
    "Help": "說明",
@@ -5031,7 +5080,7 @@ index 647d153..ab6cc7f 100644
    "Hide Mask": "隱藏遮色片",
    "Hide Others": "隱藏其他應用程式",
    "Hides this shortcut only; the folder and its photos stay as they are": "只隱藏此捷徑，資料夾及照片維持原狀",
-@@ -784,7 +784,7 @@
+@@ -784,7 +785,7 @@
    "In library": "在照片庫中",
    "In memory — nothing is saved": "僅存於記憶體，尚未儲存",
    "In use": "使用中",
@@ -5040,7 +5089,7 @@ index 647d153..ab6cc7f 100644
    "Include subfolders": "包含子資料夾",
    "Increase Brush Feather": "增加筆刷羽化",
    "Increase Brush Size": "放大筆刷尺寸",
-@@ -835,16 +835,16 @@
+@@ -835,16 +836,16 @@
    "Library Preferences": "照片庫偏好設定",
    "Library State": "照片庫狀態",
    "Light": "光線",
@@ -5067,7 +5116,7 @@ index 647d153..ab6cc7f 100644
    "Lights": "亮調",
    "Limit file size (KB, 0 = off)": "檔案大小上限（KB，0 = 不限制）",
    "Linear Gradient": "線性漸層",
-@@ -1108,7 +1108,7 @@
+@@ -1108,7 +1109,7 @@
    "Quick Develop": "快速顯像",
    "Quiet Green": "靜謐綠色",
    "Quit": "結束",
@@ -5076,7 +5125,7 @@ index 647d153..ab6cc7f 100644
    "Radial Gradient": "放射狀漸層",
    "Radius": "半徑",
    "Range": "範圍",
-@@ -1687,12 +1687,12 @@
+@@ -1687,12 +1688,12 @@
    "Install from file…": "Install from file…",
    "Install your own ONNX model with denoise-model.json beside it. This build offers no model downloads.": "Install your own ONNX model with denoise-model.json beside it. This build offers no model downloads.",
    "Its denoised picture is not made yet, and pictures are not made on their own (Settings, AI Denoise).": "Its denoised picture is not made yet, and pictures are not made on their own (Settings, AI Denoise).",
@@ -5091,7 +5140,7 @@ index 647d153..ab6cc7f 100644
    "Only photos whose AI Denoise amount is above 0 are made. Exports always make theirs if it is missing.": "Only photos whose AI Denoise amount is above 0 are made. Exports always make theirs if it is missing.",
    "Open page": "Open page",
    "Open the model's page": "Open the model's page",
-@@ -1704,7 +1704,7 @@
+@@ -1704,7 +1705,7 @@
    "Tested and works on this computer": "Tested and works on this computer",
    "The denoise model is installed and in use: the AI Denoise Amount slider under Detail now works": "The denoise model is installed and in use: the AI Denoise Amount slider under Detail now works",
    "The graphics card is set up when the next photo is made.": "The graphics card is set up when the next photo is made.",
@@ -5100,7 +5149,7 @@ index 647d153..ab6cc7f 100644
    "The processor does the work.": "The processor does the work.",
    "There is no model file to install": "There is no model file to install",
    "This build cannot run denoise models.": "This build cannot run denoise models.",
-@@ -1908,7 +1908,7 @@
+@@ -1908,7 +1909,7 @@
    "Finding faces": "正在尋找臉孔",
    "Synchronizing folder": "正在同步資料夾",
    "Looking for changes": "正在尋找變更",
@@ -5109,7 +5158,7 @@ index 647d153..ab6cc7f 100644
    "The import reads the catalog without changing it and adds its photos, edits, keywords and collections to the library open now.": "匯入只讀取目錄、不做任何變更，並將其中的照片、編輯、關鍵字和收藏夾加入目前開啟的照片庫。",
    "Albums hold library photos: Add to My Photos first": "相簿只能收錄圖庫中的照片：請先加入我的照片",
    "Add to My Photos First": "先加入我的照片",
-@@ -1955,9 +1955,9 @@
+@@ -1955,9 +1956,9 @@
    "Add to Apple Photos": "加入 Apple 照片",
    "Adding to Apple Photos…": "正在加入 Apple 照片…",
    "not added to Apple Photos (cancelled)": "未加入 Apple 照片（已取消）",
@@ -5320,7 +5369,7 @@ index b82194b..8caafb3 100644
      Chat,
      /// Face boxes on/off: four corner brackets round a small face.
 diff --git a/crates/ui-egui/src/lib.rs b/crates/ui-egui/src/lib.rs
-index 37fb86d..fca549d 100644
+index 37fb86d..52fc70e 100644
 --- a/crates/ui-egui/src/lib.rs
 +++ b/crates/ui-egui/src/lib.rs
 @@ -1,4 +1,4 @@
@@ -5362,6 +5411,13 @@ index 37fb86d..fca549d 100644
          }
      }
  
+@@ -1947,3 +1947,6 @@ mod tests_model_setup;
+ 
+ #[cfg(test)]
+ mod tests_docking_acceptance;
++
++#[cfg(test)]
++mod plervo_support_tests;
 diff --git a/crates/ui-egui/src/lightroom_import.rs b/crates/ui-egui/src/lightroom_import.rs
 index 195e63e..7c1364f 100644
 --- a/crates/ui-egui/src/lightroom_import.rs
@@ -5826,10 +5882,33 @@ index b95b55b..e499b57 100644
  /// the bottom bar.
  fn theme_preview(ui: &mut egui::Ui, kind: crate::theme::ThemeKind, width: f32) {
 diff --git a/crates/ui-egui/src/panels/topbar.rs b/crates/ui-egui/src/panels/topbar.rs
-index 03810ac..91c0dea 100644
+index 03810ac..884f0f8 100644
 --- a/crates/ui-egui/src/panels/topbar.rs
 +++ b/crates/ui-egui/src/panels/topbar.rs
-@@ -153,7 +153,7 @@ pub fn show(app: &mut LightcraftApp, ui: &mut egui::Ui) {
+@@ -53,8 +53,9 @@ pub fn show(app: &mut LightcraftApp, ui: &mut egui::Ui) {
+             if app.integrated_titlebar {
+                 window_handle(app, ui, full, left as f32, 12.0);
+             }
+-            // room for the filter icon and the six icons on the right
+-            let mut sw = 640.0f32.min(full.width() - 540.0).max(200.0);
++            let support_width = ui.painter().layout_no_wrap(crate::i18n::tr("Support").into(), t.font(12.0), t.text).size().x + 24.0;
++            // Reserve the labelled support button beside the other header actions.
++            let mut sw = 640.0f32.min(full.width() - 540.0 - (support_width - 28.0)).max(200.0);
+             if !app.native_menu {
+                 // leave room for the in-window menus left of the (centred) search field
+                 let menus_right = full.left() + 140.0 + crate::menubar::bar_width(ui) + 24.0;
+@@ -149,11 +150,17 @@ pub fn show(app: &mut LightcraftApp, ui: &mut egui::Ui) {
+                 let _ = app.run("view.filterBar", json!({}));
+             }
+             // right icons
+-            let mut x = full.right() - 18.0;
++            let support = Rect::from_min_size(pos2(full.right() - support_width - 4.0, full.center().y - 13.0), vec2(support_width, 26.0));
++            let response = ui.put(support, egui::Button::new(crate::i18n::tr("Support"))).on_hover_text(crate::links::DISCORD);
++            register(ui.ctx(), "icon:discord", response.rect);
++            if response.clicked() {
++                let _ = app.run("app.discord", json!({}));
++            }
++            let mut x = support.left() - 26.0;
              // saving is failing: the cloud icon turns into a warning until a save succeeds
              let unsaved = app.session.unsaved().map(|(n, e)| {
                  crate::i18n::tr_format!(
@@ -5838,12 +5917,11 @@ index 03810ac..91c0dea 100644
                      if n == 1 { "" } else { "s" },
                      if n == 1 { "it" } else { "them" },
                      e = e,
-@@ -162,7 +162,7 @@ pub fn show(app: &mut LightcraftApp, ui: &mut egui::Ui) {
+@@ -162,7 +169,6 @@ pub fn show(app: &mut LightcraftApp, ui: &mut egui::Ui) {
              });
              let cloud_tip = unsaved.as_deref().unwrap_or("Local library — no cloud account needed");
              for (id, icon, tip, cmd) in [
 -                ("discord", Icon::Chat, "Join the ArtCraft community on Discord", "app.discord"),
-+                ("discord", Icon::Chat, "Support Plervo", "app.discord"),
                  ("cloud", Icon::Cloud, cloud_tip, ""),
                  ("help", Icon::Help, "Keyboard shortcuts", "app.shortcuts"),
                  ("share", Icon::Share, "Export", "dialog.export"),
@@ -5859,6 +5937,76 @@ index 1032a5c..8fe8bb1 100644
  //! command came from stayed drawn, and the control channel went quiet until the dialog closed.
  //!
  //! A host that can run a dialog elsewhere installs a [`Picker`] in `Services`: it starts the
+diff --git a/crates/ui-egui/src/plervo_support_tests.rs b/crates/ui-egui/src/plervo_support_tests.rs
+new file mode 100644
+index 0000000..b2de142
+--- /dev/null
++++ b/crates/ui-egui/src/plervo_support_tests.rs
+@@ -0,0 +1,64 @@
++//! The support action is visible in the header and opens only after a deliberate click.
++use egui::{Event, Modifiers, PointerButton, Pos2, RawInput, Rect, vec2};
++
++fn support_text(shapes: &[egui::epaint::ClippedShape]) -> Option<Rect> {
++    fn find(shape: &egui::epaint::Shape) -> Option<Rect> {
++        match shape {
++            egui::epaint::Shape::Text(text)
++                if ["Support", "Apoiar", "Apoyar", "Soutenir", "Unterstützen", "支援", "支持", "후원"].contains(&text.galley.job.text.as_str()) =>
++            {
++                Some(Rect::from_min_size(text.pos, text.galley.size()))
++            }
++            egui::epaint::Shape::Vec(shapes) => shapes.iter().find_map(find),
++            _ => None,
++        }
++    }
++    shapes.iter().find_map(|s| find(&s.shape).filter(|r| s.clip_rect.contains_rect(*r)))
++}
++
++#[test]
++fn support_header_is_visible_and_opens_only_the_donation_page() {
++    for width in [1024.0, 1440.0] {
++        for native in [false, true] {
++            let _ = native;
++            let ctx = egui::Context::default();
++            let opened = std::rc::Rc::new(std::cell::RefCell::new(Vec::new()));
++            let captured = opened.clone();
++            let services = crate::Services {
++                open_url: Some(Box::new(move |url| {
++                    captured.borrow_mut().push(url.to_owned());
++                    Ok(())
++                })),
++                ..Default::default()
++            };
++            let mut app = crate::LightcraftApp::new(lightcraft_engine::Session::new(), services);
++            app.native_menu = native;
++            crate::i18n::set_language(crate::i18n::Locale::En);
++            crate::theme::install_fonts(&ctx);
++            let mut frame = |events| {
++                ctx.run_ui(RawInput { screen_rect: Some(Rect::from_min_size(Pos2::ZERO, vec2(width, 720.0))), events, ..Default::default() }, |ui| {
++                    crate::panels::topbar::show(&mut app, ui);
++                })
++            };
++            let mut output = frame(vec![]);
++            for _ in 0..3 {
++                output = frame(vec![]);
++            }
++            assert!(output.platform_output.commands.is_empty(), "drawing the bar must not open a browser");
++            let text = support_text(&output.shapes).expect("support label must be visible");
++            assert!(text.min.x >= 0.0 && text.max.x <= width && text.max.y <= 100.0, "{text:?}");
++            assert!(opened.borrow().is_empty());
++            let pos = text.center();
++            frame(vec![
++                Event::PointerMoved(pos),
++                Event::PointerButton { pos, button: PointerButton::Primary, pressed: true, modifiers: Modifiers::NONE },
++            ]);
++            let output = frame(vec![
++                Event::PointerMoved(pos),
++                Event::PointerButton { pos, button: PointerButton::Primary, pressed: false, modifiers: Modifiers::NONE },
++            ]);
++            assert!(output.platform_output.commands.is_empty());
++            assert_eq!(*opened.borrow(), ["https://buymeacoffee.com/alport"]);
++        }
++    }
++}
 diff --git a/crates/ui-egui/src/state.rs b/crates/ui-egui/src/state.rs
 index cc583e7..e9172ff 100644
 --- a/crates/ui-egui/src/state.rs

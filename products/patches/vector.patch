@@ -75,7 +75,7 @@ index 81b0bd6..f4c4fe2 100644
 +
 +| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | 2a40ee6e580a985695afdd9a78d8125a7da4428358f22fe0b366a760a1d5069e |
 diff --git a/Cargo.lock b/Cargo.lock
-index eca4758..13cdd37 100644
+index eca4758..4a4471e 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -2232,7 +2232,6 @@ dependencies = [
@@ -92,7 +92,7 @@ index eca4758..13cdd37 100644
  
 +[[package]]
 +name = "plervo-vector"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "arboard",
 + "block2 0.6.2",
@@ -127,7 +127,7 @@ index eca4758..13cdd37 100644
 +
 +[[package]]
 +name = "plervo-vector-cli"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
 +dependencies = [
 + "log",
 + "objc2-core-foundation",
@@ -252,7 +252,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-affinity"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "crc32fast",
   "flate2",
@@ -261,7 +261,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-brush"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "kurbo 0.13.1",
   "serde",
@@ -270,7 +270,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-cad"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "image",
   "kurbo 0.13.1",
@@ -303,7 +303,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-color"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "kurbo 0.13.1",
   "moxcms",
@@ -312,7 +312,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-doc"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "image",
   "jpeg-encoder",
@@ -321,7 +321,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-effects"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "image",
   "kurbo 0.13.1",
@@ -330,7 +330,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-engine"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "crc32fast",
   "flate2",
@@ -339,7 +339,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-eps"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "flate2",
   "image",
@@ -348,7 +348,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-format"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "flate2",
   "proptest",
@@ -357,7 +357,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-geom"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "kurbo 0.13.1",
   "proptest",
@@ -366,7 +366,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-mcp"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "image",
   "log",
@@ -375,7 +375,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-metafile"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "image",
   "kurbo 0.13.1",
@@ -384,7 +384,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-pathops"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "kurbo 0.13.1",
   "linesweeper",
@@ -393,7 +393,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-pdf"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "aes",
   "craft-pdf",
@@ -407,7 +407,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-plugins"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "serde",
   "serde_json",
@@ -416,7 +416,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-render"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "flate2",
   "gif",
@@ -425,7 +425,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-scriptcheck"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "proptest",
  ]
@@ -433,7 +433,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-svg"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "flate2",
   "image",
@@ -442,7 +442,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-testkit"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "image",
   "kurbo 0.13.1",
@@ -451,7 +451,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-text"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "harfrust 0.13.3",
   "icu_segmenter",
@@ -460,7 +460,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-three-d"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "vectorcraft-geom",
   "vectorcraft-pathops",
@@ -469,7 +469,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-tools"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "image",
   "kurbo 0.13.1",
@@ -478,7 +478,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-trace"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "image",
   "kurbo 0.13.1",
@@ -487,7 +487,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-ui-egui"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "craft-ui",
   "egui",
@@ -496,7 +496,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "vectorcraft-web"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "eframe",
   "egui",
@@ -505,7 +505,7 @@ index eca4758..13cdd37 100644
  [[package]]
  name = "xtask"
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  dependencies = [
   "serde_json",
  ]
@@ -522,7 +522,7 @@ index eca4758..13cdd37 100644
   "proc-macro2",
   "quote",
 diff --git a/Cargo.toml b/Cargo.toml
-index 1c10d55..a85ba07 100644
+index 1c10d55..f8ce90f 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -530,7 +530,7 @@ index 1c10d55..a85ba07 100644
  
  [workspace.package]
 -version = "0.12.0"
-+version = "0.1.0-alpha.4"
++version = "0.1.0-alpha.5"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.95"
@@ -2830,7 +2830,7 @@ index c1eb9cb..0d5f53f 100644
                                  !title.visual_bounding_rect().intersects(text.visual_bounding_rect()),
                                  "{width}: title overlaps {:?}",
 diff --git a/crates/ui-egui/src/community.rs b/crates/ui-egui/src/community.rs
-index 7ed5eb9..cd6d75e 100644
+index 7ed5eb9..1d83708 100644
 --- a/crates/ui-egui/src/community.rs
 +++ b/crates/ui-egui/src/community.rs
 @@ -1,6 +1,6 @@
@@ -2846,7 +2846,7 @@ index 7ed5eb9..cd6d75e 100644
  fn discord_layout(ui: &Ui, large: bool) -> (std::sync::Arc<egui::Galley>, f32, f32) {
      let (h, font, label) =
 -        if large { (36.0, theme::semibold(14.0), tl!("Join our Discord")) } else { (24.0, egui::FontId::proportional(12.0), "Discord") };
-+        if large { (36.0, theme::semibold(14.0), tl!("Support Plervo")) } else { (24.0, egui::FontId::proportional(12.0), "Support") };
++        if large { (36.0, theme::semibold(14.0), tl!("Support Plervo")) } else { (24.0, egui::FontId::proportional(12.0), tl!("Support")) };
      let galley = ui.painter().layout_no_wrap(label.to_string(), font, Color32::PLACEHOLDER);
      let w = galley.size().x + h * 0.55 + h * 0.9;
      (galley, h, w)
@@ -3224,7 +3224,7 @@ index 5a84ca7..212325d 100644
      let (rect, _) = ui.allocate_exact_size(vec2(30.0, 22.0), egui::Sense::hover());
      let Some(style) = WarpStyle::from_id(suffix) else { return };
 diff --git a/crates/ui-egui/src/i18n/bg.tsv b/crates/ui-egui/src/i18n/bg.tsv
-index 9acbb54..96a0520 100644
+index 9acbb54..f5ed2f7 100644
 --- a/crates/ui-egui/src/i18n/bg.tsv
 +++ b/crates/ui-egui/src/i18n/bg.tsv
 @@ -2,7 +2,7 @@
@@ -3575,8 +3575,13 @@ index 9acbb54..96a0520 100644
  	Web	Уеб
  	[1P-High View]	[Висок изглед (1P)]
  	[1P-Low View]	[Нисък изглед (1P)]
+@@ -4981,3 +4978,4 @@ theme	Appearance	Външен вид
+ 	Movie Clip	Филмов клип
+ @msg	name is empty	името е празно
+ @msg	no symbol named `{n}`	няма символ с име `{n}`
++	Support	Подкрепа
 diff --git a/crates/ui-egui/src/i18n/cs.tsv b/crates/ui-egui/src/i18n/cs.tsv
-index b289026..8563a5a 100644
+index b289026..7182d31 100644
 --- a/crates/ui-egui/src/i18n/cs.tsv
 +++ b/crates/ui-egui/src/i18n/cs.tsv
 @@ -1,7 +1,7 @@
@@ -3919,8 +3924,13 @@ index b289026..8563a5a 100644
  @msg	the document is too large to save compressed ({0}): save it with Use Compression off	dokument je příliš velký pro komprimované uložení ({0}): uložte ho s vypnutou volbou Použít kompresi
  @msg	the file stopped being read (please report this bug)	čtení souboru se přerušilo (nahlaste prosím tuto chybu)
  	Concentric Dividers:	Soustředné dělicí čáry:
+@@ -4999,3 +4996,4 @@ mark-style	Japanese	Japonské
+ 	Movie Clip	Filmový klip
+ @msg	name is empty	název je prázdný
+ @msg	no symbol named `{n}`	žádný symbol s názvem `{n}`
++	Support	Podpořit
 diff --git a/crates/ui-egui/src/i18n/de.tsv b/crates/ui-egui/src/i18n/de.tsv
-index 0dd9438..5c0d2f0 100644
+index 0dd9438..f476a1c 100644
 --- a/crates/ui-egui/src/i18n/de.tsv
 +++ b/crates/ui-egui/src/i18n/de.tsv
 @@ -1,7 +1,7 @@
@@ -4202,8 +4212,13 @@ index 0dd9438..5c0d2f0 100644
  @msg	the document is too large to save compressed ({0}): save it with Use Compression off	das Dokument ist zu groß, um komprimiert gespeichert zu werden ({0}): speichern Sie es mit deaktivierter Option „Komprimierung verwenden“
  @msg	the file stopped being read (please report this bug)	das Lesen der Datei wurde abgebrochen (bitte melden Sie diesen Fehler)
  	Concentric Dividers:	Konzentrische Trennlinien:
+@@ -4536,3 +4533,4 @@ theme	Appearance	Erscheinungsbild
+ 	Movie Clip	Movieclip
+ @msg	name is empty	Name ist leer
+ @msg	no symbol named `{n}`	kein Symbol namens `{n}`
++	Support	Unterstützen
 diff --git a/crates/ui-egui/src/i18n/el.tsv b/crates/ui-egui/src/i18n/el.tsv
-index 56703ae..c120241 100644
+index 56703ae..7ef1fff 100644
 --- a/crates/ui-egui/src/i18n/el.tsv
 +++ b/crates/ui-egui/src/i18n/el.tsv
 @@ -1,6 +1,6 @@
@@ -4552,8 +4567,13 @@ index 56703ae..c120241 100644
  	of	από
  	x Height	Ύψος x
  	▾ Default Actions	▾ Προεπιλεγμένες ενέργειες
+@@ -4951,3 +4948,4 @@ effect	Points	Σημεία
+ 	Movie Clip	Κλιπ ταινίας
+ @msg	name is empty	το όνομα είναι κενό
+ @msg	no symbol named `{n}`	κανένα σύμβολο με όνομα `{n}`
++	Support	Υποστήριξη
 diff --git a/crates/ui-egui/src/i18n/es.tsv b/crates/ui-egui/src/i18n/es.tsv
-index 4c6b07c..356522a 100644
+index 4c6b07c..a57b3a5 100644
 --- a/crates/ui-egui/src/i18n/es.tsv
 +++ b/crates/ui-egui/src/i18n/es.tsv
 @@ -1,7 +1,7 @@
@@ -4875,8 +4895,13 @@ index 4c6b07c..356522a 100644
  	Vertical Area Type	Texto de área vertical
  	Vertical Type	Texto vertical
  	Vertical Type on a Path	Texto vertical en trazado
+@@ -4941,3 +4938,4 @@ mark-style	Japanese	Japonesas
+ 	Movie Clip	Clip de película
+ @msg	name is empty	el nombre está vacío
+ @msg	no symbol named `{n}`	no hay ningún símbolo llamado `{n}`
++	Support	Apoyar
 diff --git a/crates/ui-egui/src/i18n/fi.tsv b/crates/ui-egui/src/i18n/fi.tsv
-index f2750d8..154c3e0 100644
+index f2750d8..f043ad7 100644
 --- a/crates/ui-egui/src/i18n/fi.tsv
 +++ b/crates/ui-egui/src/i18n/fi.tsv
 @@ -2,7 +2,7 @@
@@ -5219,8 +5244,13 @@ index f2750d8..154c3e0 100644
  @msg	the document is too large to save compressed ({0}): save it with Use Compression off	asiakirja on liian suuri pakattuna tallennettavaksi ({0}): tallenna se Käytä pakkausta -asetus pois päältä
  @msg	the file stopped being read (please report this bug)	tiedoston lukeminen keskeytyi (ilmoita tästä virheestä)
  	Concentric Dividers:	Samankeskiset jakajat:
+@@ -4963,3 +4960,4 @@ mark-style	Japanese	Japanilainen
+ 	Movie Clip	Elokuvaleike
+ @msg	name is empty	nimi on tyhjä
+ @msg	no symbol named `{n}`	symbolia nimeltä `{n}` ei ole
++	Support	Tue
 diff --git a/crates/ui-egui/src/i18n/fr.tsv b/crates/ui-egui/src/i18n/fr.tsv
-index 03146f1..9f747ed 100644
+index 03146f1..0bc7e0c 100644
 --- a/crates/ui-egui/src/i18n/fr.tsv
 +++ b/crates/ui-egui/src/i18n/fr.tsv
 @@ -1,7 +1,7 @@
@@ -5562,8 +5592,13 @@ index 03146f1..9f747ed 100644
  gradient-kind	Radial	Radial
  mark-style	Japanese	Japonais
  theme	Appearance	Apparence
+@@ -4998,3 +4995,4 @@ theme	Appearance	Apparence
+ 	Movie Clip	Clip
+ @msg	name is empty	le nom est vide
+ @msg	no symbol named `{n}`	aucun symbole nommé `{n}`
++	Support	Soutenir
 diff --git a/crates/ui-egui/src/i18n/hu.tsv b/crates/ui-egui/src/i18n/hu.tsv
-index 461070d..76b434c 100644
+index 461070d..f3560e7 100644
 --- a/crates/ui-egui/src/i18n/hu.tsv
 +++ b/crates/ui-egui/src/i18n/hu.tsv
 @@ -2,7 +2,7 @@
@@ -5875,8 +5910,13 @@ index 461070d..76b434c 100644
  @msg	the document is too large to save compressed ({0}): save it with Use Compression off	a dokumentum túl nagy a tömörített mentéshez ({0}): mentsd a Tömörítés használata beállítás kikapcsolásával
  @msg	the file stopped being read (please report this bug)	a fájl beolvasása megszakadt (kérjük, jelentsd ezt a hibát)
  	Concentric Dividers:	Koncentrikus osztók:
+@@ -4966,3 +4963,4 @@ imageTrace	Outline	Körvonal
+ 	Movie Clip	Mozgóklip
+ @msg	name is empty	a név üres
+ @msg	no symbol named `{n}`	nincs `{n}` nevű szimbólum
++	Support	Támogatás
 diff --git a/crates/ui-egui/src/i18n/it.tsv b/crates/ui-egui/src/i18n/it.tsv
-index 21cfcf1..6ed3ee2 100644
+index 21cfcf1..c7753d2 100644
 --- a/crates/ui-egui/src/i18n/it.tsv
 +++ b/crates/ui-egui/src/i18n/it.tsv
 @@ -1,7 +1,7 @@
@@ -6158,8 +6198,13 @@ index 21cfcf1..6ed3ee2 100644
  @msg	the document is too large to save compressed ({0}): save it with Use Compression off	il documento è troppo grande per essere salvato compresso ({0}): salvalo con Usa compressione disattivato
  @msg	the file stopped being read (please report this bug)	la lettura del file si è interrotta (segnala questo errore)
  	Concentric Dividers:	Divisori concentrici:
+@@ -4576,3 +4573,4 @@ lighting	Light	Luce
+ 	Movie Clip	Clip filmato
+ @msg	name is empty	il nome è vuoto
+ @msg	no symbol named `{n}`	nessun simbolo denominato `{n}`
++	Support	Sostieni
 diff --git a/crates/ui-egui/src/i18n/ja.tsv b/crates/ui-egui/src/i18n/ja.tsv
-index 525c112..4417b3c 100644
+index 525c112..12a84bf 100644
 --- a/crates/ui-egui/src/i18n/ja.tsv
 +++ b/crates/ui-egui/src/i18n/ja.tsv
 @@ -2,7 +2,7 @@
@@ -6466,8 +6511,13 @@ index 525c112..4417b3c 100644
  @msg	the document is too large to save compressed ({0}): save it with Use Compression off	ドキュメントが大きすぎて圧縮保存できません ({0}): 「圧縮を使用」をオフにして保存してください
  @msg	the file stopped being read (please report this bug)	ファイルの読み込みが中断されました (このバグを報告してください)
  	Concentric Dividers:	同心円の分割線:
+@@ -4617,3 +4614,4 @@ lighting	Light	ライト
+ 	Movie Clip	ムービークリップ
+ @msg	name is empty	名前が空です
+ @msg	no symbol named `{n}`	`{n}` という名前のシンボルはありません
++	Support	支援
 diff --git a/crates/ui-egui/src/i18n/ko.tsv b/crates/ui-egui/src/i18n/ko.tsv
-index 6443cfc..76b598b 100644
+index 6443cfc..45292a3 100644
 --- a/crates/ui-egui/src/i18n/ko.tsv
 +++ b/crates/ui-egui/src/i18n/ko.tsv
 @@ -1,7 +1,7 @@
@@ -6769,8 +6819,13 @@ index 6443cfc..76b598b 100644
  @msg	the document is too large to save compressed ({0}): save it with Use Compression off	문서가 너무 커서 압축 저장할 수 없습니다({0}): 압축 사용을 끄고 저장하세요
  @msg	the file stopped being read (please report this bug)	파일 읽기가 중단되었습니다(이 버그를 신고해 주세요)
  	Concentric Dividers:	동심원 구분선:
+@@ -4540,3 +4537,4 @@ lighting	Light	광원
+ 	Movie Clip	무비 클립
+ @msg	name is empty	이름이 비어 있습니다
+ @msg	no symbol named `{n}`	이름이 `{n}`인 심볼이 없습니다
++	Support	후원
 diff --git a/crates/ui-egui/src/i18n/pl.tsv b/crates/ui-egui/src/i18n/pl.tsv
-index ae9765d..3e626ee 100644
+index ae9765d..be1c299 100644
 --- a/crates/ui-egui/src/i18n/pl.tsv
 +++ b/crates/ui-egui/src/i18n/pl.tsv
 @@ -1,7 +1,7 @@
@@ -7049,8 +7104,13 @@ index ae9765d..3e626ee 100644
  @msg	the document is too large to save compressed ({0}): save it with Use Compression off	dokument jest zbyt duży, aby zapisać go skompresowanego ({0}): zapisz go z wyłączoną opcją Używaj kompresji
  @msg	the file stopped being read (please report this bug)	odczyt pliku został przerwany (zgłoś ten błąd)
  	Concentric Dividers:	Podziały koncentryczne:
+@@ -4844,3 +4841,4 @@ mark-style	Japanese	Japońskie
+ 	Movie Clip	Klip filmowy
+ @msg	name is empty	nazwa jest pusta
+ @msg	no symbol named `{n}`	brak symbolu o nazwie `{n}`
++	Support	Wesprzyj
 diff --git a/crates/ui-egui/src/i18n/pt-br.tsv b/crates/ui-egui/src/i18n/pt-br.tsv
-index 63e725e..92dba94 100644
+index 63e725e..6cb6954 100644
 --- a/crates/ui-egui/src/i18n/pt-br.tsv
 +++ b/crates/ui-egui/src/i18n/pt-br.tsv
 @@ -14,7 +14,7 @@
@@ -7105,7 +7165,7 @@ index 63e725e..92dba94 100644
  	Italian	Italiano
  	Join	Unir
 -	Join Our Discord	Junte-se ao nosso Discord
-+	Support Plervo	Apoiar a Plervo
++	Support Plervo	Apoiar o Plervo
  	Join Tool	Ferramenta Unir
 -	Join our Discord	Junte-se ao nosso Discord
 -	Join the ArtCraft community on Discord (discord.gg/artcraft)	Junte-se à comunidade do ArtCraft no Discord (discord.gg/artcraft)
@@ -7371,8 +7431,13 @@ index 63e725e..92dba94 100644
  	Vertical Area Type	Texto de Área Vertical
  	Vertical Type	Texto Vertical
  	Vertical Type on a Path	Texto Vertical em um Caminho
+@@ -4916,3 +4913,4 @@ mark-style	Japanese	Japonesas
+ # Symbol Options › Export Type
+ @msg	name is empty	o nome está vazio
+ @msg	no symbol named `{n}`	nenhum símbolo chamado `{n}`
++	Support	Apoiar
 diff --git a/crates/ui-egui/src/i18n/ru.tsv b/crates/ui-egui/src/i18n/ru.tsv
-index ee7c6e5..4e3bfea 100644
+index ee7c6e5..2f85aea 100644
 --- a/crates/ui-egui/src/i18n/ru.tsv
 +++ b/crates/ui-egui/src/i18n/ru.tsv
 @@ -1,7 +1,7 @@
@@ -7654,8 +7719,13 @@ index ee7c6e5..4e3bfea 100644
  @msg	the document is too large to save compressed ({0}): save it with Use Compression off	документ слишком велик для сохранения со сжатием ({0}): сохраните его с выключенным параметром «Использовать сжатие»
  @msg	the file stopped being read (please report this bug)	чтение файла прервалось (пожалуйста, сообщите об этой ошибке)
  	Concentric Dividers:	Концентрические разделители:
+@@ -4572,3 +4569,4 @@ lighting	Light	Свет
+ 	Movie Clip	Видеоклип
+ @msg	name is empty	имя пустое
+ @msg	no symbol named `{n}`	нет символа с именем `{n}`
++	Support	Поддержать
 diff --git a/crates/ui-egui/src/i18n/sv.tsv b/crates/ui-egui/src/i18n/sv.tsv
-index fb6ef9f..b1259bf 100644
+index fb6ef9f..3958a21 100644
 --- a/crates/ui-egui/src/i18n/sv.tsv
 +++ b/crates/ui-egui/src/i18n/sv.tsv
 @@ -5,7 +5,7 @@
@@ -7997,6 +8067,11 @@ index fb6ef9f..b1259bf 100644
  gradient-kind	Radial	Radiell
  mark-style	Japanese	Japanska
  theme	Appearance	Utseende
+@@ -4955,3 +4952,4 @@ theme	Appearance	Utseende
+ 	Movie Clip	Filmklipp
+ @msg	name is empty	namnet är tomt
+ @msg	no symbol named `{n}`	ingen symbol med namnet `{n}`
++	Support	Stöd
 diff --git a/crates/ui-egui/src/i18n/tests.rs b/crates/ui-egui/src/i18n/tests.rs
 index 3592276..28dda72 100644
 --- a/crates/ui-egui/src/i18n/tests.rs
@@ -8035,7 +8110,7 @@ index 3592276..28dda72 100644
      }
      assert_eq!(tr_ctx(cs(), "diagnostics", "render"), "vykreslení");
 diff --git a/crates/ui-egui/src/i18n/uk.tsv b/crates/ui-egui/src/i18n/uk.tsv
-index d80b765..62df78c 100644
+index d80b765..6b55f3d 100644
 --- a/crates/ui-egui/src/i18n/uk.tsv
 +++ b/crates/ui-egui/src/i18n/uk.tsv
 @@ -1,7 +1,7 @@
@@ -8317,8 +8392,13 @@ index d80b765..62df78c 100644
  @msg	the document is too large to save compressed ({0}): save it with Use Compression off	документ завеликий для збереження зі стиском ({0}): збережіть його з вимкненим параметром «Використовувати стиск»
  @msg	the file stopped being read (please report this bug)	читання файлу перервалося (будь ласка, повідомте про цю помилку)
  	Concentric Dividers:	Концентричні розділювачі:
+@@ -4556,3 +4553,4 @@ lighting	Light	Світло
+ 	Movie Clip	Кліп
+ @msg	name is empty	ім’я порожнє
+ @msg	no symbol named `{n}`	немає символу з назвою `{n}`
++	Support	Підтримати
 diff --git a/crates/ui-egui/src/i18n/vi.tsv b/crates/ui-egui/src/i18n/vi.tsv
-index 68faa3b..81b7aa4 100644
+index 68faa3b..21ff319 100644
 --- a/crates/ui-egui/src/i18n/vi.tsv
 +++ b/crates/ui-egui/src/i18n/vi.tsv
 @@ -2,7 +2,7 @@
@@ -8587,8 +8667,13 @@ index 68faa3b..81b7aa4 100644
  @msg	version {0} files can't be compressed: only version {COMPRESSED_SINCE} and later open compressed files	tệp phiên bản {0} không thể nén: chỉ phiên bản {COMPRESSED_SINCE} trở lên mới mở tệp nén
  @msg	width and height are at least 1 pixel	chiều rộng và chiều cao phải ít nhất 1 pixel
  @msg	workspace name can't be empty	tên không gian làm việc không được để trống
+@@ -4556,3 +4553,4 @@ theme	Appearance	Giao diện
+ 	Movie Clip	Clip phim
+ @msg	name is empty	tên trống
+ @msg	no symbol named `{n}`	không có biểu tượng nào tên `{n}`
++	Support	Ủng hộ
 diff --git a/crates/ui-egui/src/i18n/zh-hans.tsv b/crates/ui-egui/src/i18n/zh-hans.tsv
-index bc23a1f..65b9bdf 100644
+index bc23a1f..7aabbc2 100644
 --- a/crates/ui-egui/src/i18n/zh-hans.tsv
 +++ b/crates/ui-egui/src/i18n/zh-hans.tsv
 @@ -48,7 +48,7 @@
@@ -8811,8 +8896,13 @@ index bc23a1f..65b9bdf 100644
  	A file dialog is open: choose there first	文件对话框已打开：请先在其中选择
  	The document was closed while its file dialog was open	文件对话框打开期间，文档已关闭
  	The dialog was closed before its file dialog answered	文件对话框给出结果之前，对话框已关闭
+@@ -4106,3 +4103,4 @@ lighting	Light	光源
+ 	Movie Clip	影片剪辑
+ @msg	name is empty	名称为空
+ @msg	no symbol named `{n}`	没有名为 `{n}` 的符号
++	Support	支持
 diff --git a/crates/ui-egui/src/i18n/zh-hant.tsv b/crates/ui-egui/src/i18n/zh-hant.tsv
-index f215ef7..39bf545 100644
+index f215ef7..0bf9644 100644
 --- a/crates/ui-egui/src/i18n/zh-hant.tsv
 +++ b/crates/ui-egui/src/i18n/zh-hant.tsv
 @@ -12,7 +12,7 @@
@@ -8988,6 +9078,11 @@ index f215ef7..39bf545 100644
  	A file dialog is open: choose there first	檔案對話方塊已開啟：請先在其中選擇
  	The document was closed while its file dialog was open	檔案對話方塊開啟期間，文件已關閉
  	The dialog was closed before its file dialog answered	檔案對話方塊回應之前，對話方塊已關閉
+@@ -3894,3 +3891,4 @@ lighting	Light	光源
+ 	Movie Clip	影片片段
+ @msg	name is empty	名稱為空
+ @msg	no symbol named `{n}`	沒有名為 `{n}` 的符號
++	Support	支持
 diff --git a/crates/ui-egui/src/icon_data.rs b/crates/ui-egui/src/icon_data.rs
 index ac6274e..51454e1 100644
 --- a/crates/ui-egui/src/icon_data.rs
