@@ -2310,10 +2310,10 @@ index f96cdac..559fd3f 100644
 +mod plervo_support_tests;
 diff --git a/crates/ui-egui/src/plervo_support_tests.rs b/crates/ui-egui/src/plervo_support_tests.rs
 new file mode 100644
-index 0000000..21e39c0
+index 0000000..1e0a03e
 --- /dev/null
 +++ b/crates/ui-egui/src/plervo_support_tests.rs
-@@ -0,0 +1,61 @@
+@@ -0,0 +1,66 @@
 +//! The support action is visible in the header and opens only after a deliberate click.
 +use egui::{Event, Modifiers, PointerButton, Pos2, RawInput, Rect, vec2};
 +
@@ -2342,9 +2342,14 @@ index 0000000..21e39c0
 +            crate::SheetApp::setup_context(&ctx, false);
 +            app.ui.language = crate::i18n::Language::En;
 +            let mut frame = |events| {
-+                ctx.run_ui(RawInput { screen_rect: Some(Rect::from_min_size(Pos2::ZERO, vec2(width, 720.0))), events, ..Default::default() }, |ui| {
-+                    crate::ribbon::title_bar(&mut app, ui);
-+                })
++                let mut output = ctx.run_ui(
++                    RawInput { screen_rect: Some(Rect::from_min_size(Pos2::ZERO, vec2(width, 720.0))), events, ..Default::default() },
++                    |ui| {
++                        crate::ribbon::title_bar(&mut app, ui);
++                    },
++                );
++                output.textures_delta.clear();
++                output
 +            };
 +            let mut output = frame(vec![]);
 +            for _ in 0..3 {

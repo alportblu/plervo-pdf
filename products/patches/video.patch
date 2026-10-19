@@ -5812,7 +5812,7 @@ index 20341b9..53f9ad2 100644
  	Open this address in your browser yourself:	이 주소를 브라우저에서 직접 여세요:
 +	Support	후원
 diff --git a/crates/ui-egui/src/i18n/mod.rs b/crates/ui-egui/src/i18n/mod.rs
-index 30bdcd5..47565b6 100644
+index 30bdcd5..6795b5a 100644
 --- a/crates/ui-egui/src/i18n/mod.rs
 +++ b/crates/ui-egui/src/i18n/mod.rs
 @@ -12,7 +12,7 @@
@@ -5824,8 +5824,64 @@ index 30bdcd5..47565b6 100644
  //! `theme::install` already puts them in every font family, see [`craft_japanese_font`]), otherwise
  //! a font already installed on the system ([`system_japanese_font`]); with neither, switching to
  //! Japanese is refused with a message.
-@@ -1122,7 +1122,7 @@ mod tests {
-             assert!(Language::De.has(en), "untranslated German menu: {en}");
+@@ -475,7 +475,7 @@ mod tests {
+     }
+ 
+     /// The core menus every other catalog must cover: the entries of the menus-only Ukrainian
+-    /// catalog, which `ukrainian_entries_cover_the_original_menu_catalog` keeps to menu labels (and
++    /// catalog, which `ukrainian_entries_cover_menus_and_support_header` keeps to menu/support labels (and
+     /// the native macOS Settings menu). Brazilian Portuguese played this role while it was
+     /// menus-only.
+     fn core_menu_labels() -> Vec<String> {
+@@ -1090,39 +1090,43 @@ mod tests {
+     }
+ 
+     #[test]
+-    fn ukrainian_entries_cover_the_original_menu_catalog() {
++    fn ukrainian_entries_cover_menus_and_support_header() {
+         let app = crate::FilmcraftApp::new(filmcraft_engine::Session::default());
+         let items = crate::menus::menu_items(&app);
+-        let known = |text: &str| crate::menus::MENUS.contains(&text) || items.iter().any(|it| it.label == text || it.path.iter().any(|p| p == text));
++        let known = |text: &str| {
++            text == "Support" || crate::menus::MENUS.contains(&text) || items.iter().any(|it| it.label == text || it.path.iter().any(|p| p == text))
++        };
+         let (entries, _) = catalog::parse_entries(include_str!("uk.tsv"));
+         for (_, en, _) in entries {
+-            assert!(known(&en) || en == "Settings", "not a menu label: {en}");
++            assert!(known(&en) || en == "Settings", "not a menu or support-header label: {en}");
+         }
+-        for en in crate::menus::MENUS.into_iter().chain(["Audio", "Settings"]) {
+-            assert_ne!(Language::Uk.tr(en), en, "untranslated Ukrainian menu: {en}");
++        for en in crate::menus::MENUS.into_iter().chain(["Audio", "Settings", "Support"]) {
++            assert_ne!(Language::Uk.tr(en), en, "untranslated Ukrainian label: {en}");
+         }
+     }
+ 
+     /// German covers at least the core menus (`core_menu_labels`, the top-level menus and the native
+-    /// macOS app menu); every entry must still be a menu label.
++    /// macOS app menu) and the support header; every entry must name an existing control.
+     #[test]
+-    fn german_entries_cover_the_original_menu_catalog() {
++    fn german_entries_cover_menus_and_support_header() {
+         let app = crate::FilmcraftApp::new(filmcraft_engine::Session::default());
+         let items = crate::menus::menu_items(&app);
+-        let known = |text: &str| crate::menus::MENUS.contains(&text) || items.iter().any(|it| it.label == text || it.path.iter().any(|p| p == text));
++        let known = |text: &str| {
++            text == "Support" || crate::menus::MENUS.contains(&text) || items.iter().any(|it| it.label == text || it.path.iter().any(|p| p == text))
++        };
+         let (entries, _) = catalog::parse_entries(include_str!("de.tsv"));
+         for (_, en, _) in entries {
+-            assert!(known(&en) || crate::menus::NATIVE_APP_MENU.contains(&en.as_str()), "not a menu label: {en}");
++            assert!(known(&en) || crate::menus::NATIVE_APP_MENU.contains(&en.as_str()), "not a menu or support-header label: {en}");
+         }
+         for en in core_menu_labels() {
+             assert!(Language::De.has(&en), "missing German menu label: {en}");
+         }
+         // "Clip" and "Audio" are the same word in German, so check for an entry, not a change
+-        for en in crate::menus::MENUS.into_iter().chain(["Audio"]).chain(crate::menus::NATIVE_APP_MENU) {
+-            assert!(Language::De.has(en), "untranslated German menu: {en}");
++        for en in crate::menus::MENUS.into_iter().chain(["Audio"]).chain(crate::menus::NATIVE_APP_MENU).chain(["Support"]) {
++            assert!(Language::De.has(en), "untranslated German label: {en}");
          }
          assert_eq!(Language::De.tr("Settings"), "Voreinstellungen");
 -        assert_eq!(Language::De.tr("Quit FilmCraft"), "FilmCraft beenden");
@@ -5833,7 +5889,34 @@ index 30bdcd5..47565b6 100644
      }
  
      /// French covers the whole interface (the Spanish catalog's entries and the native macOS
-@@ -1355,12 +1355,12 @@ mod tests {
+@@ -1181,19 +1185,21 @@ mod tests {
+     }
+ 
+     #[test]
+-    fn russian_entries_cover_the_original_menu_catalog() {
++    fn russian_entries_cover_menus_and_support_header() {
+         let app = crate::FilmcraftApp::new(filmcraft_engine::Session::default());
+         let items = crate::menus::menu_items(&app);
+-        let known = |text: &str| crate::menus::MENUS.contains(&text) || items.iter().any(|it| it.label == text || it.path.iter().any(|p| p == text));
++        let known = |text: &str| {
++            text == "Support" || crate::menus::MENUS.contains(&text) || items.iter().any(|it| it.label == text || it.path.iter().any(|p| p == text))
++        };
+         let (entries, _) = catalog::parse_entries(include_str!("ru.tsv"));
+         for (_, en, _) in entries {
+-            assert!(known(&en) || en == "Settings", "not a menu label: {en}");
++            assert!(known(&en) || en == "Settings", "not a menu or support-header label: {en}");
+         }
+         for en in core_menu_labels() {
+             assert!(Language::Ru.has(&en), "missing Russian menu label: {en}");
+         }
+-        for en in crate::menus::MENUS.into_iter().chain(["Audio", "Settings"]) {
+-            assert_ne!(Language::Ru.tr(en), en, "untranslated Russian menu: {en}");
++        for en in crate::menus::MENUS.into_iter().chain(["Audio", "Settings", "Support"]) {
++            assert_ne!(Language::Ru.tr(en), en, "untranslated Russian label: {en}");
+         }
+     }
+ 
+@@ -1355,12 +1361,12 @@ mod tests {
          let mut output = ctx.run_ui(egui::RawInput::default(), |_| {});
          output.textures_delta.clear();
          ctx.fonts_mut(|fonts| {

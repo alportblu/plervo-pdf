@@ -3640,10 +3640,10 @@ index 852b065..3b39d5e 100644
  //! or nothing; `"reset": true` restores the defaults first). Upper-case names are the engine's
 diff --git a/crates/ui-egui/src/plervo_support_tests.rs b/crates/ui-egui/src/plervo_support_tests.rs
 new file mode 100644
-index 0000000..80b2269
+index 0000000..4a1c645
 --- /dev/null
 +++ b/crates/ui-egui/src/plervo_support_tests.rs
-@@ -0,0 +1,61 @@
+@@ -0,0 +1,66 @@
 +//! The support action is visible in the header and opens only after a deliberate click.
 +use egui::{Event, Modifiers, PointerButton, Pos2, RawInput, Rect, vec2};
 +
@@ -3672,9 +3672,14 @@ index 0000000..80b2269
 +            crate::theme::install_fonts(&ctx, "en");
 +            app.integrated_titlebar = native;
 +            let mut frame = |events| {
-+                ctx.run_ui(RawInput { screen_rect: Some(Rect::from_min_size(Pos2::ZERO, vec2(width, 720.0))), events, ..Default::default() }, |ui| {
-+                    crate::i18n::with_language("en", || crate::chrome::title_and_toolbar(&mut app, ui));
-+                })
++                let mut output = ctx.run_ui(
++                    RawInput { screen_rect: Some(Rect::from_min_size(Pos2::ZERO, vec2(width, 720.0))), events, ..Default::default() },
++                    |ui| {
++                        crate::i18n::with_language("en", || crate::chrome::title_and_toolbar(&mut app, ui));
++                    },
++                );
++                output.textures_delta.clear();
++                output
 +            };
 +            let mut output = frame(vec![]);
 +            for _ in 0..3 {
