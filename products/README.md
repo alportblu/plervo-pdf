@@ -1,8 +1,9 @@
 # Plervo applications
 
 These twelve independent forks join Plervo PDF in the **13-app Plervo Suite**.
-All thirteen apps are available for Mac Apple Silicon and Linux x86_64 in
-[alpha.4](https://github.com/alportblu/plervo-pdf/releases/tag/v0.1.0-alpha.4).
+All thirteen apps have published packages for Mac Apple Silicon and Linux x86_64.
+The [release notes](https://github.com/alportblu/plervo-pdf/releases) identify the
+qualified version of each app; the Suite selects releases independently per app.
 Windows candidates remain internal while publisher signing and final signed-package
 acceptance are pending. Start with [Plervo Suite](https://plervo.com) to install apps.
 
@@ -13,7 +14,8 @@ Current findings and remaining gates are recorded in [SECURITY-REVIEW.md](SECURI
 The development catalog targets alpha.5: visible optional Support actions in the
 application headers, localized through each app's existing language catalogs.
 All support actions point to https://buymeacoffee.com/alport and require a click.
-Published alpha.4 packages remain unchanged while the new candidates are qualified.
+Earlier alpha.4 packages remain unchanged. New packages are published separately
+after native qualification, signing where required, and installation checks.
 
 | Product | Purpose | Public upstream |
 | --- | --- | --- |

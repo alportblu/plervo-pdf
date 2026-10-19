@@ -4,7 +4,7 @@
 
 Start with **Plervo Suite**, then choose the apps you need from its catalog. The Suite installs, opens, updates and removes each app. Plervo is maintained by **AlporT**, with optional community support.
 
-[Download Plervo Suite](https://plervo.com) · [Release notes](https://github.com/alportblu/plervo-pdf/releases/tag/v0.1.0-alpha.4) · [Support on Buy Me a Coffee](https://buymeacoffee.com/alport)
+[Download Plervo Suite](https://plervo.com) · [Release notes](https://github.com/alportblu/plervo-pdf/releases) · [Support on Buy Me a Coffee](https://buymeacoffee.com/alport)
 
 ## The apps
 
@@ -28,7 +28,7 @@ This repository contains the Suite, PDF, and the pinned source catalog and overl
 
 ## Downloads and platform support
 
-**Current release: 0.1.0-alpha.4 — experimental, not stable.**
+**Public downloads are experimental alpha releases, not stable software.** The Suite selects the latest qualified release separately for each app; app and Suite version numbers can differ.
 
 | Platform | Availability |
 | --- | --- |
@@ -42,7 +42,7 @@ This repository contains the Suite, PDF, and the pinned source catalog and overl
 
 Linux app packages were exercised on Ubuntu 24.04, Debian 13 and Fedora 44; the Suite also passed Ubuntu 26.04 acceptance. Linux Mint 22 shares the Ubuntu 24.04 base but has not been tested separately. macOS Intel, Linux ARM and native Wayland sessions are not qualified.
 
-The alpha has known limits. Final Mac GUI acceptance, installation on a clean Mac and broader hardware coverage remain pending. The Suite manages app updates; updates to the Suite itself are installed manually. Check the [release notes](https://github.com/alportblu/plervo-pdf/releases/tag/v0.1.0-alpha.4) for package-specific validation and limitations.
+The alpha has known limits. Final Mac GUI acceptance, installation on a clean Mac and broader hardware coverage remain pending. The Suite manages app updates; updates to the Suite itself are installed manually. Check the [release notes](https://github.com/alportblu/plervo-pdf/releases) for package-specific validation and limitations.
 
 ## Languages
 
