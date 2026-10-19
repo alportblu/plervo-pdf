@@ -1113,7 +1113,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.gridcraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "e7b6bb244d8d9d2df5eca9bb0bc3e04d9ab2da9516d11903978e511e4823b8da"
+    "patch_sha256": "f54f00319aa4239431a42346c7611991f24ba58963c484c2e470f2fa803dd7df"
   },
   {
     "app": "cadcraft",
@@ -1496,6 +1496,6 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.figcraft.png"
     ],
     "fonts_commit": "43913056ce82a3fdad0ef69f6b88d1dc922a8104",
-    "patch_sha256": "cbae9bcb3d14aa1bb73ef8fd42ffd9a7c8d743de4ff2c9824ff6649a615571c6"
+    "patch_sha256": "db9c18571847d0431a1da1e135551ad633a743a32a30569eda9ea009314694ce"
   }
 ]

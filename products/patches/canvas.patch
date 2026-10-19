@@ -4212,12 +4212,21 @@ index 66750ca..d0e1561 100644
  
 diff --git a/crates/ui-egui/src/plervo_support_tests.rs b/crates/ui-egui/src/plervo_support_tests.rs
 new file mode 100644
-index 0000000..ffa6500
+index 0000000..e069091
 --- /dev/null
 +++ b/crates/ui-egui/src/plervo_support_tests.rs
-@@ -0,0 +1,65 @@
+@@ -0,0 +1,68 @@
 +//! The support action is visible in the header and opens only after a deliberate click.
 +use egui::{Event, Modifiers, PointerButton, Pos2, RawInput, Rect, vec2};
++use std::{cell::RefCell, rc::Rc};
++
++struct RecordingServices(Rc<RefCell<Vec<String>>>);
++
++impl crate::Services for RecordingServices {
++    fn open_url(&mut self, url: &str) {
++        self.0.borrow_mut().push(url.to_owned());
++    }
++}
 +
 +fn support_text(shapes: &[egui::epaint::ClippedShape]) -> Option<Rect> {
 +    fn find(shape: &egui::epaint::Shape) -> Option<Rect> {
@@ -4240,7 +4249,8 @@ index 0000000..ffa6500
 +        for native in [false, true] {
 +            let _ = native;
 +            let ctx = egui::Context::default();
-+            let mut app = crate::FigApp::new(figcraft_engine::Session::new(), Box::new(crate::NoServices));
++            let urls = Rc::new(RefCell::new(Vec::new()));
++            let mut app = crate::FigApp::new(figcraft_engine::Session::new(), Box::new(RecordingServices(urls.clone())));
 +
 +            let mut frame = |events| {
 +                let mut output = ctx.run_ui(
@@ -4257,6 +4267,7 @@ index 0000000..ffa6500
 +                output = frame(vec![]);
 +            }
 +            assert!(output.platform_output.commands.is_empty(), "drawing the bar must not open a browser");
++            assert!(urls.borrow().is_empty(), "drawing the bar must not call the host's browser service");
 +            let text = support_text(&output.shapes).expect("support label must be visible");
 +            assert!(text.min.x >= 0.0 && text.max.x <= width && text.max.y <= 100.0, "{text:?}");
 +            let pos = text.center();
@@ -4268,16 +4279,8 @@ index 0000000..ffa6500
 +                Event::PointerMoved(pos),
 +                Event::PointerButton { pos, button: PointerButton::Primary, pressed: false, modifiers: Modifiers::NONE },
 +            ]);
-+            let urls: Vec<_> = output
-+                .platform_output
-+                .commands
-+                .iter()
-+                .filter_map(|command| match command {
-+                    egui::OutputCommand::OpenUrl(url) => Some((url.url.as_str(), url.new_tab)),
-+                    _ => None,
-+                })
-+                .collect();
-+            assert_eq!(urls, [("https://buymeacoffee.com/alport", true)]);
++            assert_eq!(*urls.borrow(), ["https://buymeacoffee.com/alport"]);
++            assert!(output.platform_output.commands.is_empty(), "the host opens the link exactly once");
 +        }
 +    }
 +}
@@ -4334,7 +4337,7 @@ index 3a4e7b1..bb51d86 100644
              }
          }
 diff --git a/crates/ui-egui/src/tabs.rs b/crates/ui-egui/src/tabs.rs
-index 27ff085..eaa62b3 100644
+index 27ff085..96279fb 100644
 --- a/crates/ui-egui/src/tabs.rs
 +++ b/crates/ui-egui/src/tabs.rs
 @@ -45,6 +45,12 @@ pub fn tab_bar(app: &mut FigApp, ui: &mut Ui) {
@@ -4344,7 +4347,7 @@ index 27ff085..eaa62b3 100644
 +        let support_width = ui.painter().layout_no_wrap(tr("Support").into(), regular(12.0), t.text).size().x + 24.0;
 +        let support = Rect::from_min_size(pos2(x + 6.0, rect.center().y - 13.0), vec2(support_width, 26.0));
 +        if ui.put(support, egui::Button::new(tr("Support"))).on_hover_text("https://buymeacoffee.com/alport").clicked() {
-+            ui.ctx().open_url(egui::OpenUrl::new_tab("https://buymeacoffee.com/alport"));
++            app.services.open_url("https://buymeacoffee.com/alport");
 +        }
 +        x += support_width + 12.0;
          ui.painter().line_segment([pos2(x, rect.min.y), pos2(x, rect.max.y)], Stroke::new(1.0, t.border));
