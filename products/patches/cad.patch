@@ -2371,7 +2371,7 @@ index c7ea384..804e0d0 100644
              ui.collapsing("Details", |ui| {
                  ui.label(RichText::new(&n.fault.message).color(t.text_dim).monospace());
 diff --git a/crates/ui-egui/src/chrome.rs b/crates/ui-egui/src/chrome.rs
-index 3e0860e..2f8b48c 100644
+index 3e0860e..9bc1406 100644
 --- a/crates/ui-egui/src/chrome.rs
 +++ b/crates/ui-egui/src/chrome.rs
 @@ -70,8 +70,8 @@ pub fn title_and_toolbar(app: &mut CadApp, ui: &mut egui::Ui) {
@@ -2385,20 +2385,38 @@ index 3e0860e..2f8b48c 100644
              };
              // Centred on the traffic lights' centre line (the row's middle): with the system font
              // the capitals' middle is the text box's middle, so no optical nudge.
-@@ -91,6 +91,12 @@ pub fn title_and_toolbar(app: &mut CadApp, ui: &mut egui::Ui) {
+@@ -91,6 +91,14 @@ pub fn title_and_toolbar(app: &mut CadApp, ui: &mut egui::Ui) {
          }
          if tb_h > 0.0 {
              let row = Rect::from_min_size(pos2(r.left(), r.top() + title_h), vec2(r.width(), tb_h));
 +            let support_width = ui.painter().layout_no_wrap(crate::tl!("Support").into(), egui::FontId::proportional(12.0), t.text).size().x + 24.0;
 +            let support = Rect::from_min_size(pos2(row.right() - support_width - 12.0, row.center().y - 13.0), vec2(support_width, 26.0));
-+            if ui.put(support, egui::Button::new(crate::tl!("Support"))).on_hover_text("https://buymeacoffee.com/alport").clicked() {
-+                ui.ctx().open_url(egui::OpenUrl::new_tab("https://buymeacoffee.com/alport"));
-+            }
++            let support_button = |ui: &mut egui::Ui| {
++                if ui.put(support, egui::Button::new(crate::tl!("Support"))).on_hover_text("https://buymeacoffee.com/alport").clicked() {
++                    ui.ctx().open_url(egui::OpenUrl::new_tab("https://buymeacoffee.com/alport"));
++                }
++            };
 +            let row = Rect::from_min_max(row.min, pos2(support.left() - 8.0, row.max.y));
              let mut x = r.left() + if app.integrated_titlebar { 120.0 } else { 12.0 };
              let size = 26.0;
              let mut clicked = None;
-@@ -523,7 +529,13 @@ pub fn start_page(app: &mut CadApp, ui: &mut egui::Ui) {
+@@ -113,6 +121,7 @@ pub fn title_and_toolbar(app: &mut CadApp, ui: &mut egui::Ui) {
+                         });
+                     });
+                 });
++                support_button(ui);
+                 if let Some(command) = clicked {
+                     app.start(command);
+                 }
+@@ -167,6 +176,7 @@ pub fn title_and_toolbar(app: &mut CadApp, ui: &mut egui::Ui) {
+                 });
+                 response.on_hover_text(crate::tl!("More toolbar commands"));
+             }
++            support_button(ui);
+             if let Some(c) = clicked {
+                 app.start(c);
+             }
+@@ -523,7 +533,13 @@ pub fn start_page(app: &mut CadApp, ui: &mut egui::Ui) {
      let left = Rect::from_min_size(r.min, vec2(300.0, r.height()));
      p.rect_filled(left, 0.0, t.chrome_dark);
      p.rect_filled(Rect::from_min_max(pos2(left.right(), r.top()), r.max), 0.0, t.chrome);
@@ -3770,6 +3788,38 @@ index bac55d0..05c7064 100644
 +    );
      assert_eq!(app.session.docs.len(), 1);
  }
+diff --git a/crates/ui-egui/tests/workspace_focus.rs b/crates/ui-egui/tests/workspace_focus.rs
+index e83ee0d..7bcc96a 100644
+--- a/crates/ui-egui/tests/workspace_focus.rs
++++ b/crates/ui-egui/tests/workspace_focus.rs
+@@ -51,6 +51,27 @@ fn toolbar_tab_and_shift_tab_skip_title_drag_and_activate_once() {
+     assert_eq!(h.state().session.docs.len(), before + 1);
+ }
+ 
++#[test]
++fn support_is_reachable_by_keyboard_and_opens_only_the_donation_page() {
++    let mut h = harness();
++    tab_to(&mut h, "Support");
++    assert!(h.output().platform_output.commands.is_empty());
++    let mut urls = Vec::new();
++    for pressed in [true, false] {
++        if pressed {
++            h.key_down(Key::Enter);
++        } else {
++            h.key_up(Key::Enter);
++        }
++        h.step();
++        urls.extend(h.output().platform_output.commands.iter().filter_map(|command| match command {
++            egui::OutputCommand::OpenUrl(url) => Some(url.url.clone()),
++            _ => None,
++        }));
++    }
++    assert_eq!(urls, ["https://buymeacoffee.com/alport"]);
++}
++
+ #[test]
+ fn toolset_tabs_traverse_and_activate_without_drafting_commands() {
+     let mut h = harness();
 diff --git a/docs/control-protocol.md b/docs/control-protocol.md
 index e07d758..856233b 100644
 --- a/docs/control-protocol.md

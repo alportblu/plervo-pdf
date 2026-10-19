@@ -1232,7 +1232,7 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.cadcraft.png"
     ],
     "fonts_commit": "3d9ab3a132ed0eff457e424226a435a901da30d3",
-    "patch_sha256": "7faa16086290d9eb0916a1431b9400cf34dd374b5db4a93d772ec275e852546a"
+    "patch_sha256": "7710c87cb8a9688efcb32b22cac073d772cbea2a8c74781cde11485f0a475ebd"
   },
   {
     "app": "soundcraft",
