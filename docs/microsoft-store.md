@@ -14,7 +14,7 @@ Microsoft's [new developer registration](https://learn.microsoft.com/en-us/windo
 - The `microsoft-store` Cargo feature routes **Help → Check for updates** to Microsoft Store. A saved preference cannot switch it back to GitHub distribution.
 - The package includes the app, CLI, verified OCR models and license notices. The CLI's MCP server and app's authenticated loopback control require explicit invocation.
 - Registered `plervo-pdf.exe` and `plervo-pdf-cli.exe` execution aliases start the installed apps from a terminal without accessing protected WindowsApps payload paths directly.
-- Each executable has its own application entry because the SDK permits only one execution-alias extension per application. The CLI entry is hidden from the Start menu.
+- Each executable has its own application entry because the SDK permits only one execution-alias extension per application. The CLI entry is hidden from the Start menu and declares console/multiple-instance activation, as required by the SDK.
 - Store package version `1.0.5.0` maps to the application's experimental `0.1.0-alpha.5` source. The major number is required by the Store; it is not a stable-quality claim. Store package revisions end in zero.
 
 ## Build and acceptance
@@ -28,7 +28,9 @@ packaging/windows/package-store.ps1 `
   -PublisherDisplayName $env:STORE_PUBLISHER_DISPLAY_NAME
 ```
 
-The script always builds the Store feature, validates the manifest through the SDK and writes a SHA-256 inventory beside the MSIX. The real-identity package is an upload candidate until Microsoft certifies it; the JSON metadata deliberately does not claim certification.
+Normal packaging builds the Store feature, validates the manifest through the SDK and writes a SHA-256 inventory beside the MSIX. The real-identity package is an upload candidate until Microsoft certifies it; the JSON metadata deliberately does not claim certification.
+
+Before compilation, CI invokes `-ValidationOnly -ManifestOnly` to check the same manifest and assets with the Windows SDK. This uses inert, empty executable placeholders only to satisfy file references. The temporary probe is never installed, uploaded or treated as an app test, and is removed even on failure. The real package still undergoes SDK validation and the full native lifecycle below.
 
 The workflow first builds a separate **validation-only** identity in Microsoft's [unsigned testing namespace](https://learn.microsoft.com/en-us/windows/msix/package/unsigned-package). Only the disposable Windows runner installs this package with `-AllowUnsigned`. No root certificate is installed and no SmartScreen or developer-mode policy is changed. Do not distribute this test package or these installation instructions to customers.
 

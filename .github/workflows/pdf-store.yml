@@ -50,6 +50,9 @@ jobs:
       PDFCRAFT_REQUIRE_WINRES: '1'
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Validate manifest with the Windows SDK before compilation
+        shell: pwsh
+        run: packaging/windows/package-store.ps1 -IdentityName Plervo.PDF.StoreValidation -Publisher 'CN=Plervo Store Validation' -PublisherDisplayName Plervo -ValidationOnly -ManifestOnly
       - name: Pinned release fonts
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
