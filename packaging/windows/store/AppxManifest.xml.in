@@ -47,7 +47,7 @@
       <uap:VisualElements DisplayName="Plervo PDF CLI" Description="Plervo PDF command-line tools"
                           Square150x150Logo="Assets\Square150x150Logo.png"
                           Square44x44Logo="Assets\Square44x44Logo.png" BackgroundColor="transparent"
-                          AppListEntry="none" />
+                          AppListEntry="default" />
       <Extensions>
         <uap5:Extension Category="windows.appExecutionAlias">
           <uap5:AppExecutionAlias uap10:Subsystem="console">
