@@ -40,6 +40,12 @@ done
 mkdir -p "$DIR/hicolor/scalable/apps"
 cp "$SVG" "$DIR/hicolor/scalable/apps/$ID.svg"
 
+# Microsoft Store/MSIX requires these exact unscaled dimensions.
+mkdir -p "$DIR/store"
+render "$SVG" 44 "$DIR/store/Square44x44Logo.png"
+render "$SVG" 150 "$DIR/store/Square150x150Logo.png"
+render "$SVG" 50 "$DIR/store/StoreLogo.png"
+
 # Windows .ico: PNG-compressed entries, 16-256 px. The document icon has its own resource
 # in pdfcraft.exe; the app icon remains the first/default icon.
 for name in pdfcraft pdfcraft-document; do
