@@ -1,0 +1,7 @@
+{
+  "video": {
+    "file": "video-dependencies.patch",
+    "sha256": "20d4a079f6ea40d06b4ef985b34521e052ba5b2652798fcb4e7c0c64d1d31f6f",
+    "reason": "RUSTSEC-2026-0382 and RUSTSEC-2026-0383 certificate distrust updates; Cargo also resolves tempfile 3.27.0 to its allowed getrandom 0.3.4 dependency without changing either package."
+  }
+}

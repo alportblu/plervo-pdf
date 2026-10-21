@@ -507,3 +507,8 @@ Newest first: the date, what moved, and the new overall estimate.
 - **2026-10-12 (M8):** Redaction cleans indirect and form structure references, preserving surviving form tags.
 
 - **2026-10-15 (Plervo Linux alpha.3):** Suite DEB/RPM packaging, per-user PDF installer with checksum/architecture/path checks and atomic replacement, non-UTF-8 process regression, isolated native acceptance matrix. Publication gated on passing checks.
+
+## Microsoft Store Video and CAD (2026-10-21)
+
+- Prepare pinned-source MSIX candidates with upstream license preservation, current TLS dependency fixes, native installation/GUI/upgrade/removal checks and exact tested-payload comparison.
+- Store identities are reserved; certification and public downloads remain pending.
