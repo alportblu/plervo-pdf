@@ -1,6 +1,6 @@
 # Plervo security notes
 
-Updated October 18, 2026. Plervo Suite and all 13 apps are available as an **experimental alpha** for Mac Apple Silicon and Linux x86_64. Windows public distribution awaits SignPath approval, signing integration and final signed-package validation. Exact package evidence and limitations are recorded in the [release notes](https://github.com/alportblu/plervo-pdf/releases/tag/v0.1.0-alpha.4).
+Updated October 20, 2026. Plervo Suite and all 13 apps are available as **experimental alpha** releases for Mac Apple Silicon and Linux x86_64. SignPath Foundation declined the project; standalone PDF is now being prepared for Microsoft Store distribution. Certification and publication are pending. Exact package evidence and limitations are recorded in the [release notes](https://github.com/alportblu/plervo-pdf/releases).
 
 Report suspected vulnerabilities through [GitHub's private security reporting channel](https://github.com/alportblu/plervo-pdf/security). Do not include personal documents, credentials or private keys in public issues.
 
@@ -21,6 +21,17 @@ The PDF fork starts from PdfCraft v0.8.0, commit `9931329b9fae0b05373b4dc3ac7c58
 - Project workflows use read-only default permissions and actions pinned by commit SHA. Candidate builds do not publish releases.
 
 Other apps have separate dependency and automation reviews in [products/SECURITY-REVIEW.md](products/SECURITY-REVIEW.md). A PDF-specific mitigation is not evidence that every app uses the same implementation.
+
+## October 20 certificate-validation updates
+
+The Store preparation CI rejected the previous lockfile for `RUSTSEC-2026-0382`
+and `RUSTSEC-2026-0383`, concerning distrusted emSign certificate intermediates.
+The root lockfile now uses `rustls-webpki` 0.103.16 and `webpki-root-certs` 1.0.10,
+the upstream fixed versions. See the [webpki correction](https://github.com/rustls/webpki/pull/546)
+and [root-certificate correction](https://github.com/rustls/webpki-roots/pull/133).
+No advisory exception was added. The Store candidate must be rebuilt from this
+lockfile and pass the dependency gate. Previously published binaries and the
+separate product source trees do not inherit a lockfile change retroactively.
 
 ## RSA: remaining advisory and preserved mitigation
 
