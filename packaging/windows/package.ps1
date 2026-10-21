@@ -89,7 +89,8 @@ New-Item -ItemType Directory -Force -Path $Stage | Out-Null
 Copy-Item (Join-Path $Bin 'plervo-pdf.exe'), (Join-Path $Bin 'plervo-pdf-cli.exe') $Stage
 # The document icon embeds Lucide artwork: carry its ISC notice and the project licences
 # beside the binaries in both distributions.
-foreach ($f in 'LICENSE-MIT', 'LICENSE-APACHE', 'NOTICE') {
+Invoke-Native 'Third-party distribution notices' { cargo xtask licenses }
+foreach ($f in 'LICENSE-MIT', 'LICENSE-APACHE', 'NOTICE', 'THIRD_PARTY_NOTICES.txt') {
   Copy-Item (Join-Path $Root $f) $Stage
 }
 Copy-Item (Join-Path $Root 'assets\app-icon\LICENSE-document.txt') $Stage
@@ -138,7 +139,7 @@ $Portable = Join-Path $TargetDir "windows-package\plervo-pdf-$Version-windows-$A
 Remove-Item -Recurse -Force $Portable -ErrorAction SilentlyContinue
 New-Item -ItemType Directory -Force -Path $Portable | Out-Null
 Copy-Item (Join-Path $Stage '*.exe') $Portable
-foreach ($f in 'NOTICE', 'LICENSE-document.txt', 'LICENSE-lucide.txt', 'ATTRIBUTION.md') {
+foreach ($f in 'NOTICE', 'LICENSE-document.txt', 'LICENSE-lucide.txt', 'ATTRIBUTION.md', 'THIRD_PARTY_NOTICES.txt') {
   Copy-Item (Join-Path $Stage $f) $Portable
 }
 Copy-Item (Join-Path $Stage 'OFL-*.txt') $Portable

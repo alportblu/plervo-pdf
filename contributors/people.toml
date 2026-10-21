@@ -129,3 +129,8 @@ sync_github_name = false
 
 [people.webdevtodayjason]
 display_name = "Jason Brashear"
+
+[people.alportblu]
+display_name = "AlporT"
+sync_github_name = false
+consent_source = "Owner requested AlporT as the public Plervo attribution in Telegram."

@@ -94,6 +94,10 @@ jobs:
         if: runner.os == 'Linux'
         run: cargo xtask assets
 
+      - name: Packaged third-party notices match dependencies
+        if: runner.os == 'Linux'
+        run: cargo xtask licenses
+
       - name: CLI without the MCP server still builds
         if: runner.os == 'Linux'
         run: cargo check -p plervo-pdf-cli --no-default-features

@@ -2,6 +2,11 @@ name: Plervo internal candidates
 
 on:
   workflow_dispatch:
+    inputs:
+      release_build:
+        description: 'Build unlabelled release candidates; publication still requires qualification and signing'
+        type: boolean
+        default: false
   pull_request:
     paths:
       - '.github/workflows/candidates.yml'
@@ -29,6 +34,10 @@ jobs:
       CRAFT_FONTS_REQUIRED: '1'
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Use release version for an explicitly requested release build
+        if: github.event_name == 'workflow_dispatch' && inputs.release_build
+        shell: bash
+        run: printf 'PDFCRAFT_BUILD_LABEL=\n' >> "$GITHUB_ENV"
       - name: Check out release fonts
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:

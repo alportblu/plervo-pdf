@@ -1774,6 +1774,25 @@ fn redaction_is_refused_when_the_page_still_shows_text_under_a_mark() {
 }
 
 #[test]
+fn redaction_refuses_recoverable_vectors_without_changing_the_document() {
+    let mut s = Session::new().with_clock(|| 1_700_000_000);
+    let source = one_line_page("", "50 100 8 50 re 80 140 30 8 re 220 40 20 20 re f");
+    let id = s.open("vector.pdf", None, Arc::new(source), None).unwrap();
+    let shape =
+        Shape::Redact { quads: vec![pdfcraft_annot::rect_quad([40.0, 90.0, 165.0, 160.0])], overlay: String::new(), look: Default::default() };
+    s.apply(
+        id,
+        Edit::AddAnnotation(NewAnnotation { page: 0, style: Style::default_for(&shape), shape, contents: String::new(), author: "Tester".into() }),
+    )
+    .unwrap();
+    let before = s.save_bytes(id).unwrap();
+    assert!(s.apply(id, Edit::ApplyRedactions { pages: None }).is_err(), "clipping is not secure redaction");
+    assert_eq!(s.get(id).unwrap().redaction_marks(), 1);
+    assert_eq!(s.get(id).unwrap().can_undo(), Some("Add redaction mark"));
+    assert_eq!(s.save_bytes(id).unwrap(), before, "a refused operation must leave the file unchanged");
+}
+
+#[test]
 fn redaction_marks_apply_for_good_and_undo() {
     let (mut s, id) = session_with(2);
     // "Page 1" at 24 pt from x 20: the "1" starts near x 82.7 (Helvetica widths).
