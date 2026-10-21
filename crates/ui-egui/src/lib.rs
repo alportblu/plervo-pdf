@@ -538,6 +538,8 @@ pub struct PdfCraftApp {
     pub dialog: Option<Dialog>,
     /// How to ask for the latest release (the desktop app sets it; see `updates`).
     pub update_source: Option<updates::UpdateSource>,
+    /// Set by the Store build, never by a saved preference or a document.
+    pub updates_managed_by_store: bool,
     pub(crate) updates: updates::Updates,
     /// Lists the Print dialog's printers in the background (the desktop app sets it; see
     /// [`PrinterSource`]).
@@ -897,6 +899,7 @@ impl PdfCraftApp {
             fill_text_size: fill_sign::TEXT_SIZE,
             dialog: None,
             update_source: None,
+            updates_managed_by_store: false,
             updates: updates::Updates::default(),
             printer_source: None,
             print_tasks: print_ui::PrintTasks::default(),

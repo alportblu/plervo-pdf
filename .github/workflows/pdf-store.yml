@@ -1,0 +1,113 @@
+name: Plervo PDF Microsoft Store
+
+on:
+  workflow_dispatch:
+    inputs:
+      identity_name:
+        description: 'Package/Identity/Name from Partner Center (blank builds only the test package)'
+        required: false
+        type: string
+      publisher:
+        description: 'Package/Identity/Publisher from Partner Center'
+        required: false
+        type: string
+      publisher_display_name:
+        description: 'Package/Properties/PublisherDisplayName from Partner Center'
+        required: false
+        type: string
+  pull_request:
+    paths:
+      - '.github/workflows/pdf-store.yml'
+      - 'Cargo.lock'
+      - 'packaging/windows/store/**'
+      - 'packaging/windows/*store*.ps1'
+      - 'assets/app-icon/store/**'
+      - 'apps/pdfcraft/**'
+      - 'crates/ui-egui/src/lib.rs'
+      - 'crates/ui-egui/src/updates.rs'
+      - 'crates/ui-egui/tests/ui_group/updates.rs'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pdf-store-${{ github.ref }}-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  msix:
+    runs-on: windows-2025
+    timeout-minutes: 120
+    env:
+      CARGO_BUILD_JOBS: 2
+      CARGO_INCREMENTAL: 0
+      CARGO_PROFILE_DEV_DEBUG: line-tables-only
+      CARGO_PROFILE_TEST_DEBUG: line-tables-only
+      CRAFT_FONTS_DIR: ${{ github.workspace }}/craft-fonts
+      CRAFT_FONTS_REQUIRED: '1'
+      CARGO_BUILD_TARGET: x86_64-pc-windows-msvc
+      CARGO_TARGET_X86_64_PC_WINDOWS_MSVC_RUSTFLAGS: '-C target-feature=+crt-static'
+      PDFCRAFT_REQUIRE_WINRES: '1'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Validate manifest with the Windows SDK before compilation
+        shell: pwsh
+        run: packaging/windows/package-store.ps1 -IdentityName Plervo.PDF.StoreValidation -Publisher 'CN=Plervo Store Validation' -PublisherDisplayName Plervo -ValidationOnly -ManifestOnly
+      - name: Pinned release fonts
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: storytold/craft-fonts
+          ref: 3d9ab3a132ed0eff457e424226a435a901da30d3
+          path: craft-fonts
+      - uses: dtolnay/rust-toolchain@686976e191b89faba57d3206551f0f330d8cb249
+        with:
+          toolchain: '1.95.0'
+          components: clippy
+      - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6
+        with:
+          cache-on-failure: true
+      # Plervo CI runs the full UI regression suite on Windows/macOS/Linux for this PR.
+      - name: Lint Store feature
+        shell: pwsh
+        run: |
+          cargo clippy --locked -p plervo-pdf --all-targets --features microsoft-store -- -D warnings
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Build unsigned test-namespace MSIX
+        shell: pwsh
+        run: packaging/windows/package-store.ps1 -IdentityName Plervo.PDF.StoreValidation -Publisher 'CN=Plervo Store Validation' -PublisherDisplayName Plervo -ValidationOnly
+      - name: Native install, GUI, upgrade and removal
+        shell: powershell
+        run: |
+          $Package = @(Get-ChildItem dist/store/*-validation-only.msix)
+          if ($Package.Count -ne 1) { throw 'Expected one validation package.' }
+          packaging/windows/test-store-install.ps1 -Path $Package[0].FullName
+      - name: Build Partner Center upload with the actual reserved identity
+        if: github.event_name == 'workflow_dispatch' && inputs.identity_name != ''
+        shell: pwsh
+        env:
+          STORE_IDENTITY_NAME: ${{ inputs.identity_name }}
+          STORE_PUBLISHER: ${{ inputs.publisher }}
+          STORE_PUBLISHER_DISPLAY_NAME: ${{ inputs.publisher_display_name }}
+        run: |
+          packaging/windows/package-store.ps1 -IdentityName $env:STORE_IDENTITY_NAME -Publisher $env:STORE_PUBLISHER -PublisherDisplayName $env:STORE_PUBLISHER_DISPLAY_NAME
+          $TestMetadata = Get-Content -Raw (Get-ChildItem dist/store/*-validation-only.msix.json).FullName | ConvertFrom-Json
+          $UploadMetadata = Get-Content -Raw (Get-ChildItem dist/store/*.msix.json | Where-Object Name -NotLike '*-validation-only*').FullName | ConvertFrom-Json
+          $TestFiles = @($TestMetadata.files | Where-Object path -ne 'AppxManifest.xml' | ForEach-Object { "$($_.path):$($_.sha256)" })
+          $UploadFiles = @($UploadMetadata.files | Where-Object path -ne 'AppxManifest.xml' | ForEach-Object { "$($_.path):$($_.sha256)" })
+          if (Compare-Object $TestFiles $UploadFiles) { throw 'Upload payload differs from the native-tested payload.' }
+      - name: Preserve native evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: plervo-pdf-store-validation-${{ github.sha }}
+          path: dist/validation/store/
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Preserve packages (not public downloads)
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: plervo-pdf-store-packages-${{ github.sha }}
+          path: dist/store/
+          if-no-files-found: warn
+          retention-days: 30

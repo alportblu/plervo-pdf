@@ -97,3 +97,21 @@ fn nothing_is_asked_until_the_user_checks() {
     assert_eq!(calls.load(std::sync::atomic::Ordering::SeqCst), 1);
     h.get_by_label_contains("Plervo PDF 99.0.0 is available");
 }
+
+#[test]
+fn store_build_updates_stay_in_the_store() {
+    let calls = Arc::new(std::sync::atomic::AtomicUsize::new(0));
+    let counted = calls.clone();
+    let mut app = PdfCraftApp::new();
+    app.updates_managed_by_store = true;
+    app.update_source = Some(Arc::new(move || {
+        counted.fetch_add(1, std::sync::atomic::Ordering::SeqCst);
+        Err("Store builds must not contact GitHub for updates".into())
+    }));
+    // A restored profile must never change the distribution channel.
+    app.restore(r#"{"updates_managed_by_store": false}"#);
+    assert!(app.last_opened_url.is_none(), "no Store window opens at startup");
+    app.execute("help.check_updates");
+    assert_eq!(app.last_opened_url.as_deref(), Some("ms-windows-store://downloadsandupdates"));
+    assert_eq!(calls.load(std::sync::atomic::Ordering::SeqCst), 0);
+}

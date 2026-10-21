@@ -1,3 +1,13 @@
+## Microsoft Store preparation — 2026-10-20
+
+| Delivery | Verified state | Remaining |
+| --- | --- | --- |
+| Standalone PDF Store edition | Store-managed update routing regression passed and failed when reverted; MSIX workflow and EN/PT/ES listing drafts prepared | Native Windows acceptance, actual Partner Center identity, account verification, certification and public Store installation |
+
+SignPath Foundation declined the project; the owner selected the free Microsoft Store
+route with PDF first. This does not publish the Suite or other Windows apps. See
+[Store preparation](microsoft-store.md). Historical distribution checkpoints follow.
+
 ## Plervo distribution — 2026-10-18
 
 | Delivery | Verified state | Remaining |

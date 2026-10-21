@@ -34,7 +34,7 @@ This repository contains the Suite, PDF, and the pinned source catalog and overl
 | --- | --- |
 | macOS, Apple Silicon | Suite and all 13 apps. Signed by Maintech Solutions LLC and notarized by Apple. |
 | Linux, x86_64 | Suite and all 13 apps. DEB/RPM installers; glibc 2.39 or newer. |
-| Windows | Internal candidates have passed native checks. Public downloads await SignPath approval, signing integration and validation of the final signed packages. |
+| Windows | PDF is being prepared for the Microsoft Store as a standalone app. Store certification and publication are pending. Suite and other Windows apps remain internal candidates without a public signing route. |
 
 1. Download the Suite for your computer from [plervo.com](https://plervo.com).
 2. Install and open **Plervo Suite**.
@@ -77,6 +77,8 @@ cargo xtask assets
 Internal PDF crates retain their `pdfcraft-*` names to support upstream tracking and future fixes. Plervo has separate public branding, executables and settings. It does not automatically migrate or modify PdfCraft/PrintCraft data.
 
 Candidate workflows produce internal artifacts; they do not publish releases automatically. Native acceptance and macOS/Windows publisher signing are required before public distribution.
+
+The [Microsoft Store build](docs/microsoft-store.md) uses MSIX and Store-managed updates. It does not require the Suite or a separately purchased Windows certificate. An internal test package is not a certified public download.
 
 ## License and credits
 

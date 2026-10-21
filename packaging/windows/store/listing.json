@@ -1,0 +1,49 @@
+{
+  "display_name": "Plervo PDF",
+  "category": "Productivity",
+  "price": "Free",
+  "website": "https://plervo.com/",
+  "support_url": "https://github.com/alportblu/plervo-pdf/issues",
+  "privacy_url": "https://github.com/alportblu/plervo-pdf/blob/main/docs/microsoft-store-privacy.md",
+  "run_full_trust_justification": "Plervo PDF is a native Rust desktop PDF editor. Its desktop process needs runFullTrust to open user-selected files, save edited documents, render its native window and use standard desktop dialogs and printing. It does not request elevation or install a service or startup task. Automation and MCP are opt-in. App updates are managed by Microsoft Store.",
+  "certification_notes": "Experimental preview. No account, subscription or credentials are needed to use local PDF features. Open a synthetic PDF using File > Open; annotate, organize pages and save a copy. Help > Check for updates opens Microsoft Store. Support opens an optional Buy Me a Coffee page and unlocks no features. The executable's alpha version differs from MSIX 1.0.5.0 because Store versions require a nonzero major. OCR currently targets English and unaccented Latin text. No test certificate or system-security changes are required for the Store-distributed package.",
+  "locales": {
+    "en-US": {
+      "short_description": "Read, annotate and organize PDFs with a free, open-source desktop app.",
+      "description": "A focused workspace for your PDFs. Plervo PDF brings reading, annotation, page organization and document tools to your desktop.\n\nOpen local files, add annotations, rearrange pages and save your work. PDF processing and bundled OCR run on your computer. No Plervo account or subscription is required.\n\nThe interface follows your system language on a new profile, with a manual language selector in Preferences. English, Portuguese and Spanish are available alongside other community translations. Updates for this edition are delivered through Microsoft Store.\n\nThis is an experimental preview. Keep backups of important files. Complex PDFs can have compatibility limitations; OCR currently targets English and unaccented Latin text. Translation and script coverage vary.\n\nPlervo PDF is open source and builds on PdfCraft, with original credits and licenses preserved. Optional support helps development and does not unlock features. Microsoft is not the fundraiser or payment provider.",
+      "features": [
+        "Read local PDFs",
+        "Annotate documents",
+        "Organize PDF pages",
+        "Process PDFs and bundled OCR locally",
+        "Follow the system language or choose a language",
+        "Free and open source; optional support"
+      ]
+    },
+    "pt-BR": {
+      "short_description": "Leia, anote e organize PDFs com um aplicativo gratuito e de código aberto.",
+      "description": "Um espaço de trabalho para seus PDFs. O Plervo PDF reúne leitura, anotações, organização de páginas e ferramentas de documentos.\n\nAbra arquivos locais, adicione anotações, reorganize páginas e salve seu trabalho. O processamento de PDFs e o OCR incluído funcionam no seu computador. Não é necessário ter conta Plervo nem assinatura.\n\nEm um perfil novo, a interface acompanha o idioma do sistema. Você também pode escolher o idioma nas Preferências. Esta edição recebe atualizações pela Microsoft Store.\n\nEsta é uma versão experimental. Mantenha cópias de segurança dos arquivos importantes. PDFs complexos podem apresentar limitações de compatibilidade; o OCR atual é voltado a inglês e texto latino sem acentos. A cobertura das traduções e dos sistemas de escrita varia.\n\nO Plervo PDF é de código aberto e se baseia no PdfCraft, preservando créditos e licenças. O apoio ao desenvolvimento é opcional e não desbloqueia funções. A Microsoft não é responsável pela arrecadação nem pelo processamento dos pagamentos.",
+      "features": [
+        "Leia PDFs locais",
+        "Adicione anotações",
+        "Organize páginas de PDFs",
+        "Processe PDFs e OCR no computador",
+        "Use o idioma do sistema ou escolha outro",
+        "Gratuito e de código aberto; apoio opcional"
+      ]
+    },
+    "es-ES": {
+      "short_description": "Lee, anota y organiza PDF con una aplicación gratuita y de código abierto.",
+      "description": "Un espacio de trabajo para tus PDF. Plervo PDF reúne lectura, anotaciones, organización de páginas y herramientas de documentos.\n\nAbre archivos locales, añade anotaciones, reorganiza páginas y guarda tu trabajo. El procesamiento de PDF y el OCR incluido se ejecutan en tu ordenador. No necesitas una cuenta de Plervo ni una suscripción.\n\nEn un perfil nuevo, la interfaz sigue el idioma del sistema. También puedes elegirlo en Preferencias. Esta edición recibe actualizaciones a través de Microsoft Store.\n\nEsta es una versión experimental. Conserva copias de seguridad de los archivos importantes. Los PDF complejos pueden tener limitaciones de compatibilidad; el OCR actual está orientado al inglés y al texto latino sin acentos. La cobertura de traducciones y sistemas de escritura varía.\n\nPlervo PDF es de código abierto y se basa en PdfCraft, conservando los créditos y las licencias. El apoyo al desarrollo es opcional y no desbloquea funciones. Microsoft no es responsable de la recaudación ni del procesamiento de los pagos.",
+      "features": [
+        "Lee PDF locales",
+        "Añade anotaciones",
+        "Organiza páginas de PDF",
+        "Procesa PDF y OCR en tu ordenador",
+        "Sigue el idioma del sistema o elige otro",
+        "Gratis y de código abierto; apoyo opcional"
+      ]
+    }
+  },
+  "external_payment_disclosure": "Optional support opens Buy Me a Coffee in the browser after installation. There is no payment SDK or financial-data collection in the app, and contributions unlock no goods or features. Microsoft is not the fundraiser or payment provider. Declare this external support link in Partner Center."
+}

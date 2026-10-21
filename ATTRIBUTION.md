@@ -4,7 +4,7 @@
 
 Every asset PdfCraft includes, bundles or uses to build its published material, with its author, source and licence. The policy is in [AGENTS.md](AGENTS.md) §1. The machine-readable list, with SHA-256 hashes, is [ATTRIBUTION.toml](ATTRIBUTION.toml). Licence texts are kept beside the assets and summarised in [NOTICE](NOTICE).
 
-## In this repository (488)
+## In this repository (491)
 
 | Asset | Title | Author | Licence | Source | Used for |
 |---|---|---|---|---|---|
@@ -496,6 +496,9 @@ Every asset PdfCraft includes, bundles or uses to build its published material, 
 | `assets/products/write/macos-128.png` | Plervo write application icon (macos-128.png) | Plervo contributors | MIT OR Apache-2.0 | Contributor-original vector family created for Plervo, 2026-10-16; raster outputs derived with resvg | Plervo product identity and native application packaging |
 | `assets/products/write/macos-256.png` | Plervo write application icon (macos-256.png) | Plervo contributors | MIT OR Apache-2.0 | Contributor-original vector family created for Plervo, 2026-10-16; raster outputs derived with resvg | Plervo product identity and native application packaging |
 | `assets/products/write/macos-512.png` | Plervo write application icon (macos-512.png) | Plervo contributors | MIT OR Apache-2.0 | Contributor-original vector family created for Plervo, 2026-10-16; raster outputs derived with resvg | Plervo product identity and native application packaging |
+| `assets/app-icon/store/Square44x44Logo.png` | Plervo PDF Microsoft Store icon (44 px) | Plervo contributors | MIT OR Apache-2.0 | Contributor-original assets/app-icon/pdfcraft.svg; rendered with packaging/icons.sh | Microsoft Store MSIX package visual identity |
+| `assets/app-icon/store/Square150x150Logo.png` | Plervo PDF Microsoft Store icon (150 px) | Plervo contributors | MIT OR Apache-2.0 | Contributor-original assets/app-icon/pdfcraft.svg; rendered with packaging/icons.sh | Microsoft Store MSIX package visual identity |
+| `assets/app-icon/store/StoreLogo.png` | Plervo PDF Microsoft Store icon (50 px) | Plervo contributors | MIT OR Apache-2.0 | Contributor-original assets/app-icon/pdfcraft.svg; rendered with packaging/icons.sh | Microsoft Store MSIX package visual identity |
 
 ## Compiled in through dependencies (6)
 

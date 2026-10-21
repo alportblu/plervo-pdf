@@ -1,4 +1,10 @@
-Plervo update — 2026-10-18: alpha.4 is public for Mac Apple Silicon and Linux x86_64,
+Plervo update — 2026-10-20: prepare standalone PDF for the free Microsoft Store
+route after SignPath Foundation declined the project. Store-only update routing has
+a regression observed failing without the change. MSIX packaging, native lifecycle
+acceptance and localized listing materials are added; account verification, native
+CI and Store certification/publication remain pending. See [Store preparation](docs/microsoft-store.md).
+
+Historical release checkpoint — 2026-10-18: alpha.4 is public for Mac Apple Silicon and Linux x86_64,
 with the Suite and all 13 apps. The release notes identify exact packages and platform
 limits. Public app download, installation and reinstallation passed through the Suite;
 Linux also passed removal and synthetic user-data preservation. Windows Suite and app
