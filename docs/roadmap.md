@@ -1,3 +1,7 @@
+Plervo Suite update — 2026-10-21: installed-app library regression and lifecycle
+checks pass locally; native release qualification remains required. Windows Video
+and CAD Store preparation is in progress.
+
 ## Microsoft Store preparation — 2026-10-20
 
 | Delivery | Verified state | Remaining |

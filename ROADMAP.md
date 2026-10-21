@@ -1,3 +1,8 @@
+Plervo update — 2026-10-21: fix My apps to enumerate installed products offline,
+refresh detection and keep app management independent. PDF is live in Microsoft
+Store; Video and CAD preparation and native qualification are in progress. Upstream
+MIT/Apache notices were checked against pinned sources; see docs/upstream-credits.md.
+
 Plervo update — 2026-10-20: prepare standalone PDF for the free Microsoft Store
 route after SignPath Foundation declined the project. Store-only update routing has
 a regression observed failing without the change. MSIX packaging, native lifecycle

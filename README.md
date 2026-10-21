@@ -34,11 +34,16 @@ This repository contains the Suite, PDF, and the pinned source catalog and overl
 | --- | --- |
 | macOS, Apple Silicon | Suite and all 13 apps. Signed by Maintech Solutions LLC and notarized by Apple. |
 | Linux, x86_64 | Suite and all 13 apps. DEB/RPM installers; glibc 2.39 or newer. |
-| Windows | PDF is being prepared for the Microsoft Store as a standalone app. Store certification and publication are pending. Suite and other Windows apps remain internal candidates without a public signing route. |
+| Windows | [Plervo PDF is available in Microsoft Store](https://apps.microsoft.com/detail/9PBWKBZRBJNR). Video and CAD are being prepared for Store review. Suite and other Windows apps remain internal candidates. |
 
 1. Download the Suite for your computer from [plervo.com](https://plervo.com).
 2. Install and open **Plervo Suite**.
 3. Select an app in the catalog and choose **Install**.
+
+The Suite's **My apps** page lists every detected Plervo installation, including when
+offline. Open an app directly or choose **Manage** for its updates and removal.
+**All apps** also includes apps that are not installed. Use **Refresh apps** after
+installing or removing an app outside the Suite.
 
 Linux app packages were exercised on Ubuntu 24.04, Debian 13 and Fedora 44; the Suite also passed Ubuntu 26.04 acceptance. Linux Mint 22 shares the Ubuntu 24.04 base but has not been tested separately. macOS Intel, Linux ARM and native Wayland sessions are not qualified.
 
@@ -85,5 +90,9 @@ The [Microsoft Store build](docs/microsoft-store.md) uses MSIX and Store-managed
 Plervo Suite adapts installation components from [ArtCraft Launcher 0.4.1](docs/suite-provenance.md). Plervo PDF is based on [PdfCraft 0.8.0](https://github.com/storytold/pdfcraft/tree/v0.8.0). The other apps' upstream sources are listed in the [product catalog](products/README.md). Original authors' credits and license notices are preserved.
 
 MIT OR Apache-2.0, as described in [LICENSE-MIT](LICENSE-MIT), [LICENSE-APACHE](LICENSE-APACHE) and [NOTICE](NOTICE). Third-party assets are documented in [ATTRIBUTION.md](ATTRIBUTION.md).
+
+See the [upstream credits and licensing record](docs/upstream-credits.md) for the
+original projects and pinned versions. The choice of MIT or Apache-2.0 applies to
+the project code; dependencies, fonts and other assets retain their own licenses.
 
 Plervo is independent and is not affiliated with Adobe or the ArtCraft team. This distribution includes no Adobe or ArtCraft brand artwork.
