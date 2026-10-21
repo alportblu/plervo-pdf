@@ -31,7 +31,7 @@ permissions:
   contents: read
 
 concurrency:
-  group: pdf-store-${{ github.ref }}
+  group: pdf-store-${{ github.ref }}-${{ github.sha }}
   cancel-in-progress: false
 
 jobs:
@@ -41,6 +41,8 @@ jobs:
     env:
       CARGO_BUILD_JOBS: 2
       CARGO_INCREMENTAL: 0
+      CARGO_PROFILE_DEV_DEBUG: line-tables-only
+      CARGO_PROFILE_TEST_DEBUG: line-tables-only
       CRAFT_FONTS_DIR: ${{ github.workspace }}/craft-fonts
       CRAFT_FONTS_REQUIRED: '1'
       CARGO_BUILD_TARGET: x86_64-pc-windows-msvc
@@ -59,11 +61,10 @@ jobs:
           toolchain: '1.95.0'
           components: clippy
       - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6
-      - name: Store distribution regression
+      # Plervo CI runs the full UI regression suite on Windows/macOS/Linux for this PR.
+      - name: Lint Store feature
         shell: pwsh
         run: |
-          cargo test --locked -p pdfcraft-ui-egui --test ui_group updates:: -- --test-threads=1
-          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
           cargo clippy --locked -p plervo-pdf --all-targets --features microsoft-store -- -D warnings
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Build unsigned test-namespace MSIX
