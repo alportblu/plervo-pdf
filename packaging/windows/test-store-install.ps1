@@ -46,7 +46,11 @@ try {
     if ($Actual -cne $File.sha256) { throw "Installed file differs: $($File.path)" }
   }
   if (Test-Path (Join-Path $Install 'portable.txt')) { throw 'MSIX must not write data beside its executable.' }
-  $Cli = Join-Path $Install 'plervo-pdf-cli.exe'
+  # Activate through registered aliases; WindowsApps payload paths are protected.
+  $AliasRoot = Join-Path $env:LOCALAPPDATA 'Microsoft\WindowsApps'
+  $Cli = Join-Path $AliasRoot 'plervo-pdf-cli.exe'
+  $Executable = Join-Path $AliasRoot 'plervo-pdf.exe'
+  if (-not (Test-Path $Cli) -or -not (Test-Path $Executable)) { throw 'MSIX execution aliases were not registered.' }
   Invoke-Cli @('--version') | Set-Content (Join-Path $Evidence 'cli-version.txt')
   $Ocr = Invoke-Cli @('run', 'ocr_status') | ConvertFrom-Json
   if (-not $Ocr.available) { throw 'Packaged OCR models were not found.' }
@@ -61,7 +65,6 @@ try {
   $Info = Invoke-Cli @('info', $Document) | ConvertFrom-Json
   if ($Info.pages -ne 1) { throw 'Packaged CLI did not save a readable PDF.' }
   $DocumentHash = (Get-FileHash $Document -Algorithm SHA256).Hash
-  $Executable = Join-Path $Install 'plervo-pdf.exe'
   $App = Start-Process -FilePath $Executable -ArgumentList @('--new-window', '--control', "`"$Control`"", '--language', 'en', "`"$Document`"") -PassThru
   $Deadline = (Get-Date).AddSeconds(90)
   while (-not (Test-Path -LiteralPath $Control)) {
@@ -114,7 +117,6 @@ try {
   $Installed = Get-AppxPackage -Name $Metadata.identity_name
   if ($Installed.Version.ToString() -ne $Xml.Package.Identity.Version) { throw 'MSIX update was not applied.' }
   if ((Get-Content -LiteralPath $Preference) -cne 'preserve preferences across Store updates') { throw 'MSIX update removed app data.' }
-  $Cli = Join-Path $Installed.InstallLocation 'plervo-pdf-cli.exe'
   [void] (Invoke-Cli @('info', $Document))
 } finally {
   if ($App -and -not $App.HasExited) { $App.Kill(); $App.WaitForExit() }
@@ -123,6 +125,7 @@ try {
   Remove-Item -LiteralPath $Control -Force -ErrorAction SilentlyContinue
 }
 if (Get-AppxPackage -Name $Metadata.identity_name) { throw 'MSIX uninstall did not remove registration.' }
+if ((Test-Path $Cli) -or (Test-Path $Executable)) { throw 'MSIX uninstall left its execution aliases behind.' }
 if ((Get-FileHash $Document -Algorithm SHA256).Hash -cne $DocumentHash) { throw 'Installation lifecycle changed the user document.' }
 if ((Get-ItemProperty -LiteralPath $ChoicePath -ErrorAction SilentlyContinue).ProgId -cne $BeforeChoice) { throw 'MSIX changed the default PDF handler.' }
 @{

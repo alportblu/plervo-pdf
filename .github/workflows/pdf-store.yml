@@ -61,6 +61,8 @@ jobs:
           toolchain: '1.95.0'
           components: clippy
       - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6
+        with:
+          cache-on-failure: true
       # Plervo CI runs the full UI regression suite on Windows/macOS/Linux for this PR.
       - name: Lint Store feature
         shell: pwsh
@@ -99,9 +101,10 @@ jobs:
           if-no-files-found: ignore
           retention-days: 30
       - name: Preserve packages (not public downloads)
+        if: always()
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: plervo-pdf-store-packages-${{ github.sha }}
           path: dist/store/
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 30

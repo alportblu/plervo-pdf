@@ -13,6 +13,7 @@ Microsoft's [new developer registration](https://learn.microsoft.com/en-us/windo
 - A fresh profile follows the OS language. Existing interface catalogs and manual language preferences are preserved.
 - The `microsoft-store` Cargo feature routes **Help → Check for updates** to Microsoft Store. A saved preference cannot switch it back to GitHub distribution.
 - The package includes the app, CLI, verified OCR models and license notices. The CLI's MCP server and app's authenticated loopback control require explicit invocation.
+- Registered `plervo-pdf.exe` and `plervo-pdf-cli.exe` execution aliases start the installed apps from a terminal without accessing protected WindowsApps payload paths directly.
 - Store package version `1.0.5.0` maps to the application's experimental `0.1.0-alpha.5` source. The major number is required by the Store; it is not a stable-quality claim. Store package revisions end in zero.
 
 ## Build and acceptance
