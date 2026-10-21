@@ -181,6 +181,9 @@
       <Component Id="PdfcraftNotice">
         <File Id="PdfcraftNoticeFile" Source="$(var.BinDir)\NOTICE" KeyPath="yes" />
       </Component>
+      <Component Id="PlervoThirdPartyNotices">
+        <File Source="$(var.BinDir)\THIRD_PARTY_NOTICES.txt" KeyPath="yes" />
+      </Component>
       <Files Include="$(var.BinDir)\OFL-*.txt" />
       <Component Id="PlervoLucideLicense">
         <File Source="$(var.BinDir)\LICENSE-lucide.txt" KeyPath="yes" />

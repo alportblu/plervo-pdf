@@ -3,7 +3,7 @@ param(
   [Parameter(Mandatory)] [ValidatePattern('^[A-Za-z0-9][A-Za-z0-9.-]{2,49}$')] [string] $IdentityName,
   [Parameter(Mandatory)] [ValidateLength(3, 8192)] [string] $Publisher,
   [Parameter(Mandatory)] [ValidateLength(1, 256)] [string] $PublisherDisplayName,
-  [string] $Version = '1.0.5.0',
+  [string] $Version = '1.0.6.0',
   [switch] $ValidationOnly,
   [switch] $ManifestOnly
 )
@@ -78,12 +78,13 @@ try {
     return
   }
   New-Item -ItemType Directory -Force -Path $Dist | Out-Null
+  Invoke-Native 'Third-party distribution notices' { cargo xtask licenses }
   Invoke-Native 'Store binaries' {
     cargo build --release --locked -p plervo-pdf -p plervo-pdf-cli --features plervo-pdf/microsoft-store --target $Target
   }
   $Bin = Join-Path $TargetDir "$Target\release"
   Copy-Item (Join-Path $Bin 'plervo-pdf.exe'), (Join-Path $Bin 'plervo-pdf-cli.exe') $Stage
-  foreach ($Name in 'LICENSE-MIT', 'LICENSE-APACHE', 'NOTICE', 'ATTRIBUTION.md') {
+  foreach ($Name in 'LICENSE-MIT', 'LICENSE-APACHE', 'NOTICE', 'ATTRIBUTION.md', 'THIRD_PARTY_NOTICES.txt') {
     Copy-Item (Join-Path $Root $Name) $Stage
   }
   Copy-Item (Join-Path $Root 'assets\app-icon\LICENSE-document.txt') $Stage

@@ -36,7 +36,9 @@ New-Item -ItemType Directory -Path (Join-Path $Stage 'docs') -Force | Out-Null
 New-Item -ItemType Directory -Path $Dist -Force | Out-Null
 try {
   Copy-Item -LiteralPath $Binary -Destination (Join-Path $Stage 'plervo-suite.exe')
-  foreach ($file in 'README.md', 'LICENSE-MIT', 'LICENSE-APACHE', 'NOTICE', 'ATTRIBUTION.md') {
+  cargo xtask licenses
+  if ($LASTEXITCODE -ne 0) { throw 'Third-party distribution notices are stale or missing' }
+  foreach ($file in 'README.md', 'LICENSE-MIT', 'LICENSE-APACHE', 'NOTICE', 'ATTRIBUTION.md', 'THIRD_PARTY_NOTICES.txt') {
     Copy-Item -LiteralPath (Join-Path $Root $file) -Destination (Join-Path $Stage 'docs')
   }
   Copy-Item (Join-Path $Root 'assets/fonts/OFL-*.txt') (Join-Path $Stage 'docs')

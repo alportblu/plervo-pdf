@@ -21,8 +21,9 @@ clear_marks(&mut doc, None)?;                        // remove marks without app
   (8/16-bit and 1/2/4-bit images, image masks; Flate/LZW/RL/A85/AHx). Codecs PdfCraft can't
   re-encode (DCT, JPX, JBIG2, CCITT) are removed whole (fail-closed); inline images under an
   area are removed;
-- **vectors**: covered paths are removed; partly covered paths and shadings are clipped so
-  nothing paints inside the areas;
+- **vectors**: completely covered paths are removed. Partly covered paths, clipping geometry
+  under a mark, interrupted paths and shadings are refused: a visual clip would leave their
+  original data recoverable. This includes nested form XObjects;
 - **form XObjects**: rewritten recursively into new objects (pages sharing the original keep it);
 - **annotations** whose rectangle overlaps (with their pop-ups), and **form fields** with a
   widget under a mark;
@@ -31,7 +32,8 @@ clear_marks(&mut doc, None)?;                        // remove marks without app
 
 A verification pass re-reads each redacted page and fails the operation if any glyph or inline
 image is still under an area. Content that can't be decoded makes the operation fail rather than
-leave it unredacted.
+leave it unredacted. Any error leaves every page and pending mark unchanged. A refused
+operation has not redacted the document; it must not be shared as though it had.
 
 Structure cleanup resolves named MCIDs and indirect content references. Form content
 references are updated to the cleaned copy; unchanged sibling descriptions remain.

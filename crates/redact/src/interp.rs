@@ -9,8 +9,8 @@
 //! - images: fully covered → the `Do` is removed; partly covered → the covered pixels are
 //!   cleared in a copy of the image (or the image is removed when its codec can't be re-encoded);
 //!   inline images under a region are removed;
-//! - vectors: fully covered paths are removed; partly covered ones are clipped so nothing shows
-//!   inside the regions; shadings are clipped the same way;
+//! - vectors: fully covered painted paths are removed; partial paths, clipping geometry and
+//!   shadings fail closed because hiding them would leave recoverable source data;
 //! - form XObjects under a region are rewritten recursively into new objects (copy-on-write, so
 //!   other pages using the original are untouched).
 //!
@@ -71,6 +71,8 @@ pub(crate) struct Output {
     /// Apply mode met vertical-writing text (which it cannot remove) while a redaction region was
     /// in force: the operation must fail closed rather than leave that text under the mark.
     pub vertical: bool,
+    /// Vector content that cannot be removed without retaining geometry or changing the clip.
+    pub unsafe_vectors: bool,
     pub tag_changes: Vec<(ObjRef, ObjRef, HashSet<i64>, HashSet<i64>)>,
 }
 
@@ -318,29 +320,6 @@ pub(crate) fn unlink_doomed(doc: &mut Document, doomed: &[ObjRef]) -> Result<(),
     Ok(())
 }
 
-/// The clip that hides everything inside each region: one even-odd clip per region (a big
-/// rectangle with the region cut out), in the current user space. Returns `None` when the CTM
-/// can't be inverted (nothing is painted then anyway).
-fn clip_out(rects: &[[f64; 4]], ctm: &Matrix, around: [f64; 4]) -> Option<Vec<Op>> {
-    let inv = ctm.invert()?;
-    let mut ops = Vec::new();
-    let big = [around[0] - 10.0, around[1] - 10.0, around[2] + 10.0, around[3] + 10.0];
-    for r in rects.iter().filter(|r| overlaps(**r, around, 0.0)) {
-        let outer = [(big[0], big[1]), (big[2], big[1]), (big[2], big[3]), (big[0], big[3])];
-        let inner = [(r[0], r[1]), (r[0], r[3]), (r[2], r[3]), (r[2], r[1])];
-        for poly in [outer, inner] {
-            for (k, (x, y)) in poly.iter().enumerate() {
-                let (u, v) = inv.apply(*x, *y);
-                ops.push(Op::new(if k == 0 { "m" } else { "l" }, vec![num(u), num(v)]));
-            }
-            ops.push(Op::new("h", vec![]));
-        }
-        ops.push(Op::new("W*", vec![]));
-        ops.push(Op::new("n", vec![]));
-    }
-    Some(ops)
-}
-
 /// One glyph of a shown string.
 struct Glyph {
     bytes: std::ops::Range<usize>,
@@ -431,49 +410,26 @@ pub(crate) fn process(doc: &mut Document, scope: &mut Scope<'_>, streams: &[Vec<
                 let body = std::mem::take(&mut path);
                 let bbox = path_box.take();
                 let clips = std::mem::replace(&mut clip, false);
-                let hit = scope.mode == Mode::Apply && o != b"n" && bbox.is_some_and(|b| scope.hits(b));
+                let hit = scope.mode == Mode::Apply && bbox.is_some_and(|b| scope.hits(b));
                 if !hit {
                     ops.extend(body);
                     ops.push(op);
                     continue;
                 }
-                let b = bbox.unwrap_or_default();
-                changed = true;
-                if scope.covered(b) {
-                    scope.report.paths_removed += 1;
-                    if clips {
-                        // Keep the clipping, drop the painting.
-                        ops.extend(body);
-                        ops.push(Op::new("n", vec![]));
-                    }
-                } else if clips {
-                    // A clip-and-paint path can't be wrapped in q/Q without losing its clip:
-                    // paint it clipped, then set its clip with a no-op path.
-                    scope.report.paths_clipped += 1;
-                    if let Some(c) = clip_out(scope.rects, &gs.ctm, b) {
-                        let plain: Vec<Op> = body.iter().filter(|p| !p.is("W") && !p.is("W*")).cloned().collect();
-                        ops.push(Op::new("q", vec![]));
-                        ops.extend(c);
-                        ops.extend(plain);
-                        ops.push(op);
-                        ops.push(Op::new("Q", vec![]));
-                    }
+                if clips || !bbox.is_some_and(|b| scope.covered(b)) {
+                    // A clip hides the original coordinates; it does not redact them.
+                    out.unsafe_vectors = true;
                     ops.extend(body);
-                    ops.push(Op::new("n", vec![]));
+                    ops.push(op);
                 } else {
-                    scope.report.paths_clipped += 1;
-                    if let Some(c) = clip_out(scope.rects, &gs.ctm, b) {
-                        ops.push(Op::new("q", vec![]));
-                        ops.extend(c);
-                        ops.extend(body);
-                        ops.push(op);
-                        ops.push(Op::new("Q", vec![]));
-                    }
+                    changed = true;
+                    scope.report.paths_removed += 1;
                 }
                 continue;
             }
             if !path.is_empty() {
-                // A path not ended by a painting operator: pass it through.
+                // An interrupted path cannot safely be removed piecemeal.
+                out.unsafe_vectors |= scope.mode == Mode::Apply && path_box.is_some_and(|b| scope.hits(b));
                 ops.append(&mut path);
                 path_box = None;
                 clip = false;
@@ -596,15 +552,8 @@ pub(crate) fn process(doc: &mut Document, scope: &mut Scope<'_>, streams: &[Vec<
                     }
                 }
                 b"sh" if scope.mode == Mode::Apply => {
-                    // A shading fills the current clip: clip the regions out.
-                    if let Some(c) = clip_out(scope.rects, &gs.ctm, [-1e6, -1e6, 1e6, 1e6]) {
-                        changed = true;
-                        ops.push(Op::new("q", vec![]));
-                        ops.extend(c);
-                        ops.push(op);
-                        ops.push(Op::new("Q", vec![]));
-                        continue;
-                    }
+                    // The shading's extent is not tracked, and its resource would remain.
+                    out.unsafe_vectors |= !scope.rects.is_empty();
                 }
                 b"Do" => {
                     if let Some(new) = xobject(doc, scope, &op, &gs, resources, &mut xobjects, &mut out) {
@@ -620,6 +569,7 @@ pub(crate) fn process(doc: &mut Document, scope: &mut Scope<'_>, streams: &[Vec<
             ops.push(op);
         }
         if !path.is_empty() {
+            out.unsafe_vectors |= scope.mode == Mode::Apply && path_box.is_some_and(|b| scope.hits(b));
             ops.append(&mut path);
         }
         out.streams.push(changed.then(|| serialize_ops(&ops)));
@@ -797,6 +747,7 @@ fn xobject(
             scope.fonts = saved_fonts;
             out.residue += inner.residue;
             out.vertical |= inner.vertical;
+            out.unsafe_vectors |= inner.unsafe_vectors;
             out.doomed.extend_from_slice(&inner.doomed);
             out.tag_changes.extend(inner.tag_changes);
             if scope.mode == Mode::Verify {

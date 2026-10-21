@@ -1,3 +1,11 @@
+## PDF security update — 2026-10-21
+
+| Delivery | Verified state | Remaining |
+| --- | --- | --- |
+| PDF alpha.7 / Store 1.0.6.0 | Vector-redaction fail-closed regressions and existing redaction/engine tests pass; original dependency notices staged | Final native package qualification, Apple signing/notarization, Store submission and publication |
+
+See [security correction details](pdf-security-update-2026-10-21.md). Historical checkpoints follow.
+
 ## Microsoft Store preparation — 2026-10-20
 
 | Delivery | Verified state | Remaining |
