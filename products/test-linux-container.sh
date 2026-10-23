@@ -14,6 +14,9 @@ mkdir -p /evidence
 if command -v apt-get >/dev/null; then
   packages=(/packages/"$name"-*.deb)
   [ "${#packages[@]}" = 1 ] && [ -f "${packages[0]}" ]
+  # Minimal images exclude documentation; retain this package's notices for verification.
+  printf 'path-include=/usr/share/doc/%s\npath-include=/usr/share/doc/%s/*\n' "$name" "$name" \
+    > /etc/dpkg/dpkg.cfg.d/zz-plervo-acceptance
   apt-get update -qq
   apt-get install -y --no-install-recommends "${packages[0]}"
   apt-get install -y --reinstall --no-install-recommends "${packages[0]}"
