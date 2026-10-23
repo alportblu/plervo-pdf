@@ -10,6 +10,9 @@ publish = false
 [lints]
 workspace = true
 
+[features]
+microsoft-store = ["dep:windows"]
+
 [dependencies]
 plervo-suite-core = { workspace = true }
 serde = { workspace = true }
@@ -31,3 +34,4 @@ plist = "1"
 
 [target.'cfg(target_os = "windows")'.dependencies]
 winreg = "0.55"
+windows = { version = "0.62.2", optional = true, features = ["ApplicationModel_Core", "Management_Deployment", "System"] }

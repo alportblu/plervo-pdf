@@ -10,6 +10,9 @@ publish = false
 [lints]
 workspace = true
 
+[features]
+microsoft-store = ["plervo-suite-native/microsoft-store"]
+
 [dependencies]
 plervo-suite-core.workspace = true
 plervo-suite-native.workspace = true
