@@ -9,8 +9,10 @@ It is not a claim that every package below is already available.
 Suite checks the official GitHub release catalog at startup and every six hours while
 running on supported macOS/Linux systems. Settings can switch the check to manual.
 The request discloses ordinary connection metadata, such as the IP address and application
-user agent, to GitHub. It does not send documents, document names, installed-app lists or
-credentials. There is no background service when Suite is closed.
+user agent, to GitHub. It does not send documents, document names or installed-app lists.
+No account or credential is required by default. If an operator explicitly configures the
+existing optional `PLERVO_SUITE_GITHUB_TOKEN` environment variable, that token is sent only
+to GitHub's API for authenticated requests. There is no background service when Suite is closed.
 
 Each app has its own release selection and installed-version comparison. My Apps lists
 all detected installations, keeps them usable offline, and marks newer available versions.
