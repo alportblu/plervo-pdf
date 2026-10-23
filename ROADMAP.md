@@ -1,3 +1,9 @@
+Security maintenance — 2026-10-23: update the locked `ctutils` dependency from 0.4.2
+to 0.4.4 for [RUSTSEC-2026-0385](https://rustsec.org/advisories/RUSTSEC-2026-0385.html).
+The original MIT/Apache license texts are unchanged; the reviewed distribution
+inventory now identifies the patched version. This source update does not replace
+previously published installers; new package qualification and distribution remain pending.
+
 Plervo update — 2026-10-20: prepare standalone PDF for the free Microsoft Store
 route after SignPath Foundation declined the project. Store-only update routing has
 a regression observed failing without the change. MSIX packaging, native lifecycle

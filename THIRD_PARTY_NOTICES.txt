@@ -456,7 +456,7 @@ crypto-primes@0.7.2 | Apache-2.0 OR MIT
 Authors: See upstream source notices
 Source: https://github.com/entropyxyz/crypto-primes
 
-ctutils@0.4.2 | Apache-2.0 OR MIT
+ctutils@0.4.4 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: https://github.com/RustCrypto/utils
 
@@ -4729,11 +4729,11 @@ DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: as-raw-xcb-connection@1.0.1, cmov@0.5.4, ctutils@0.4.2, encoding_rs@0.8.42, flagset@0.4.7, flatbuffers@24.12.23, gl_generator@0.14.0, khronos_api@3.1.0, kurbo@0.11.3, kurbo@0.13.1, multiversion_no_op@1.0.0, nohash-hasher@0.2.0, polycool@0.4.0, raw-window-metal@1.1.0, siphasher@1.0.4, spirv@0.4.0+sdk-1.4.341.0, static_assertions@1.1.0, tinyvec@1.13.3, ureq-proto@0.6.4, utf16_iter@1.0.5, utf8_iter@1.0.4, write16@1.0.0, x11rb-protocol@0.13.2, x11rb@0.13.2, zeroize@1.9.0, zeroize_derive@1.5.0
+Applies to: as-raw-xcb-connection@1.0.1, cmov@0.5.4, ctutils@0.4.4, encoding_rs@0.8.42, flagset@0.4.7, flatbuffers@24.12.23, gl_generator@0.14.0, khronos_api@3.1.0, kurbo@0.11.3, kurbo@0.13.1, multiversion_no_op@1.0.0, nohash-hasher@0.2.0, polycool@0.4.0, raw-window-metal@1.1.0, siphasher@1.0.4, spirv@0.4.0+sdk-1.4.341.0, static_assertions@1.1.0, tinyvec@1.13.3, ureq-proto@0.6.4, utf16_iter@1.0.5, utf8_iter@1.0.4, write16@1.0.0, x11rb-protocol@0.13.2, x11rb@0.13.2, zeroize@1.9.0, zeroize_derive@1.5.0
 License: (Apache-2.0 OR MIT) AND BSD-3-Clause; Apache-2.0; Apache-2.0 OR MIT; MIT OR Apache-2.0; Zlib OR Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/as-raw-xcb-connection/1.0.1/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/cmov/0.5.4/download#LICENSE-APACHE
-Source: https://crates.io/api/v1/crates/ctutils/0.4.2/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/ctutils/0.4.4/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/encoding_rs/0.8.42/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/flagset/0.4.7/download#LICENSE
 Source: https://crates.io/api/v1/crates/kurbo/0.11.3/download#LICENSE-APACHE
@@ -9137,9 +9137,9 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 
 ==============================================================================
-Applies to: ctutils@0.4.2
+Applies to: ctutils@0.4.4
 License: Apache-2.0 OR MIT; MIT
-Source: https://crates.io/api/v1/crates/ctutils/0.4.2/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/ctutils/0.4.4/download#LICENSE-MIT
 SHA-256 of original text: 91585c36e4fb9ab4ca0d3dfac5d66d3c0c62cc51f640a0e1196542daf2267eae
 
 Copyright (c) 2025-2026 The RustCrypto Project Developers
