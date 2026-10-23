@@ -517,3 +517,5 @@ Newest first: the date, what moved, and the new overall estimate.
 - **2026-10-12 (M8):** Redaction cleans indirect and form structure references, preserving surviving form tags.
 
 - **2026-10-15 (Plervo Linux alpha.3):** Suite DEB/RPM packaging, per-user PDF installer with checksum/architecture/path checks and atomic replacement, non-UTF-8 process regression, isolated native acceptance matrix. Publication gated on passing checks.
+
+- 2026-10-23: Prepared the Windows Microsoft Store edition of Plervo Suite with Store-only acquisition, local signed-package inventory and native MSIX acceptance. Certification remains a separate gate.

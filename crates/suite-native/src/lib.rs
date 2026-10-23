@@ -13,6 +13,8 @@ pub mod paths;
 pub mod process;
 pub mod proxy;
 pub mod queue;
+#[cfg(feature = "microsoft-store")]
+pub mod store;
 #[cfg(test)]
 mod test_catalog;
 pub mod updates;
