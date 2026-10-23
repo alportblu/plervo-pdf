@@ -12,6 +12,11 @@ on:
         description: Re-run the untouched Slides baseline for source comparison
         type: boolean
         default: false
+      platform:
+        description: Native platform to qualify, or all
+        type: choice
+        default: all
+        options: [all, ubuntu-24.04, macos-15, windows-2025]
   pull_request:
     paths:
       - 'products/**'
@@ -60,7 +65,7 @@ jobs:
       max-parallel: 18
       matrix:
         app: ${{ fromJSON(needs.catalog.outputs.matrix).include }}
-        os: [ubuntu-24.04, macos-15, windows-2025]
+        os: ${{ fromJSON(inputs.platform && inputs.platform != 'all' && format('["{0}"]', inputs.platform) || '["ubuntu-24.04","macos-15","windows-2025"]') }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 150
     env:

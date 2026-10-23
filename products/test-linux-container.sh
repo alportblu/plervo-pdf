@@ -25,6 +25,8 @@ else
   [ "${#packages[@]}" = 1 ] && [ -f "${packages[0]}" ]
   dnf install -y "${packages[0]}"
   dnf reinstall -y "${packages[0]}"
+  # Fedora minimal images omit the comparator used by the notice check below.
+  dnf install -y diffutils
 fi
 "$app" --version > /evidence/app-version.txt
 "$cli" --version > /evidence/cli-version.txt
