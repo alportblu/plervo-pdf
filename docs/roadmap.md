@@ -1,3 +1,9 @@
+## Dependency security update — 2026-10-23
+
+| Delivery | Source change | Remaining |
+| --- | --- | --- |
+| PDF/Suite workspace | Lock `ctutils` to patched 0.4.4 for [RUSTSEC-2026-0385](https://rustsec.org/advisories/RUSTSEC-2026-0385.html); refresh the reviewed notice inventory while preserving the original license texts | New package qualification and distribution; previously published installers are unchanged |
+
 ## PDF security update — 2026-10-21
 
 | Delivery | Verified state | Remaining |

@@ -1,9 +1,9 @@
 {
   "generator": "cargo-about 0.9.2 plus reviewed original upstream notices",
-  "reviewed": "2026-10-21",
+  "reviewed": "2026-10-23",
   "inputs": {
     "ATTRIBUTION.toml": "2fd0c43d2c91154d965e98756fb18beebf5bb2cda30cfa4759ae3034921c71dd",
-    "Cargo.lock": "736535cbade3c464ced82df2dc890d48d6b4abededa55c419839cb7905e2fba1",
+    "Cargo.lock": "864d887655e349bf29e0436edde6d1be3dd88e74603409f238006df32e85dc61",
     "Cargo.toml": "d399aaa3dc368a9bf49ca1489f39590c48ebf454619bebef5d2879d3179504a5",
     "apps/pdfcraft-cli/Cargo.toml": "3d1e7b9482e09b117ca255fbb57952a4b708154ddc6730918167d771472c78e2",
     "apps/pdfcraft-web/Cargo.toml": "fc0e3c1398f687670df8dd48d609f16edceec7b8fffa82cc8ccb862d8af72900",
@@ -52,7 +52,7 @@
     "vendor/winit/Cargo.toml": "2aeb741d47b763ee198ca915c330a6bf0b1fc094dd69357e80278b7852289c61",
     "xtask/Cargo.toml": "4927a79db3efb8c426a3c46427f76218228d07cabbe6779e0eb8e83c3003d12e"
   },
-  "notices_lf_sha256": "619e37a2f4ce910bccbe448429b3ae4c321946b5a6858a51e6ffd72e02e687e3",
+  "notices_lf_sha256": "11aa1356a9b2e5bf330df5f27c45713185f05ec681204dca613909d26ca54982",
   "package_count": 634,
   "packages": [
     {
@@ -729,7 +729,7 @@
     },
     {
       "name": "ctutils",
-      "version": "0.4.2",
+      "version": "0.4.4",
       "license": "Apache-2.0 OR MIT",
       "source": "registry+https://github.com/rust-lang/crates.io-index"
     },
@@ -4828,7 +4828,7 @@
       "sources": [
         "https://crates.io/api/v1/crates/as-raw-xcb-connection/1.0.1/download#LICENSE-APACHE",
         "https://crates.io/api/v1/crates/cmov/0.5.4/download#LICENSE-APACHE",
-        "https://crates.io/api/v1/crates/ctutils/0.4.2/download#LICENSE-APACHE",
+        "https://crates.io/api/v1/crates/ctutils/0.4.4/download#LICENSE-APACHE",
         "https://crates.io/api/v1/crates/encoding_rs/0.8.42/download#LICENSE-APACHE",
         "https://crates.io/api/v1/crates/flagset/0.4.7/download#LICENSE",
         "https://crates.io/api/v1/crates/kurbo/0.11.3/download#LICENSE-APACHE",
@@ -4856,7 +4856,7 @@
       "packages": [
         "as-raw-xcb-connection@1.0.1",
         "cmov@0.5.4",
-        "ctutils@0.4.2",
+        "ctutils@0.4.4",
         "encoding_rs@0.8.42",
         "flagset@0.4.7",
         "flatbuffers@24.12.23",
@@ -6021,10 +6021,10 @@
     {
       "sha256": "91585c36e4fb9ab4ca0d3dfac5d66d3c0c62cc51f640a0e1196542daf2267eae",
       "sources": [
-        "https://crates.io/api/v1/crates/ctutils/0.4.2/download#LICENSE-MIT"
+        "https://crates.io/api/v1/crates/ctutils/0.4.4/download#LICENSE-MIT"
       ],
       "packages": [
-        "ctutils@0.4.2"
+        "ctutils@0.4.4"
       ],
       "licenses": [
         "Apache-2.0 OR MIT",
