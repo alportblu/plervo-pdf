@@ -41,6 +41,7 @@ jobs:
           toolchain: '1.95.0'
       - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6
       - run: 'cargo test --locked -p xtask products::'
+      - run: python3 -m unittest discover -s products/licenses -p 'test_*.py'
       - id: catalog
         env:
           PRODUCT_FILTER: ${{ inputs.product || 'all' }}
@@ -333,6 +334,7 @@ jobs:
           hdiutil detach "$mount"
           trap - EXIT
           codesign --verify --deep --strict "$bundle"
+          cmp THIRD_PARTY_NOTICES.txt "$bundle/Contents/Resources/Licenses/THIRD_PARTY_NOTICES.txt"
           [ "$(plutil -extract CFBundleIdentifier raw -o - "$bundle/Contents/Info.plist")" = "com.plervo.$PRODUCT" ]
           (cd "$GITHUB_WORKSPACE" && cargo build --locked -p plervo-suite-native --example product_acceptance)
           PLERVO_ACCEPTANCE=1 "$GITHUB_WORKSPACE/target/debug/examples/product_acceptance" "$PRODUCT" "$bundle" \
@@ -341,6 +343,7 @@ jobs:
           ditto -x -k "${archives[0]}" "$work/cli"
           cli=("$work"/cli/*/plervo-"$PRODUCT"-cli)
           [ "${#cli[@]}" = 1 ] && [ -x "${cli[0]}" ]
+          cmp THIRD_PARTY_NOTICES.txt "$(dirname "${cli[0]}")/THIRD_PARTY_NOTICES.txt"
           "${cli[0]}" --help > dist/validation/standalone-cli-help.txt
           printf '%s\n' 'DMG mount/copy, bundle identity and ad-hoc signature, bundled app version and extracted standalone CLI passed. Developer ID and notarization remain required.' > dist/validation/macos-package.txt
       - name: Windows internal package (unsigned)
@@ -380,6 +383,9 @@ jobs:
             $installed = $true
             $desktop = Join-Path $install "plervo-$env:PRODUCT.exe"
             $cli = Join-Path $install "plervo-$env:PRODUCT-cli.exe"
+            $expectedNotices = (Get-FileHash THIRD_PARTY_NOTICES.txt -Algorithm SHA256).Hash
+            $installedNotices = (Get-FileHash (Join-Path $install 'Licenses/THIRD_PARTY_NOTICES.txt') -Algorithm SHA256).Hash
+            if ($installedNotices -ne $expectedNotices) { throw 'Installed third-party notices differ from the reviewed source' }
             # A Windows GUI executable need not update PowerShell's LASTEXITCODE.
             # Wait for this exact process and preserve its output and exit status.
             $versionLog = Join-Path $evidence.FullName 'installed-app-version.txt'

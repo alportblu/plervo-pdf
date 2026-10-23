@@ -24,6 +24,10 @@ fn verify(bytes: &[u8], expected: &str, name: &str) -> anyhow::Result<()> {
 pub fn run(args: &[String]) -> anyhow::Result<()> {
     ensure!(args.is_empty(), "usage: cargo xtask licenses");
     let root = crate::gates::root();
+    verify_at(&root)
+}
+
+pub(crate) fn verify_at(root: &std::path::Path) -> anyhow::Result<()> {
     let manifest: Manifest = serde_json::from_slice(&std::fs::read(root.join("packaging/licenses/manifest.json"))?)?;
     ensure!(manifest.inputs.contains_key("Cargo.lock"), "the notice inventory must pin Cargo.lock");
     for (name, hash) in &manifest.inputs {

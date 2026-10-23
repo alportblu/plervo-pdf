@@ -76,7 +76,7 @@ index 7942228..b165d17 100644
 +| `assets/app-icon/wordcraft.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 d1527c1cd456d98e9da3ba2b0cb5fcde2b1d6f2a60c9cc39b2a3f62aa42bc9b2 |
 +| `assets/app-icon/wordcraft.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 a54bb84d9f1d07442f615b529fe4efef7ed2e2215d5bc2c0556aa1322e9be488 |
 diff --git a/Cargo.lock b/Cargo.lock
-index c5a92f4..e61dfbf 100644
+index c5a92f4..07aa75a 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -215,15 +215,6 @@ version = "1.0.104"
@@ -111,6 +111,18 @@ index c5a92f4..e61dfbf 100644
  [[package]]
  name = "cpubits"
  version = "0.1.1"
+@@ -919,9 +901,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "ctutils"
+-version = "0.4.3"
++version = "0.4.4"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "03bb0e1cc970d482d121d9a1744999169b69a07470b3d644a7894e53fcaf4574"
++checksum = "12218662ccac37d9714f2191252553d67585b97df8c839cbe49e0bde278dc865"
+ dependencies = [
+  "cmov",
+ ]
 @@ -932,17 +914,6 @@ version = "1.2.0"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "f27ae1dd37df86211c42e150270f82743308803d90a6f6e6651cd730d5e1732f"
@@ -171,7 +183,7 @@ index c5a92f4..e61dfbf 100644
  
 +[[package]]
 +name = "plervo-write"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
 +dependencies = [
 + "arboard",
 + "clipboard-win",
@@ -203,7 +215,7 @@ index c5a92f4..e61dfbf 100644
 +
 +[[package]]
 +name = "plervo-write-cli"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
 +dependencies = [
 + "serde_json",
 + "wordcraft-doc",
@@ -353,12 +365,12 @@ index c5a92f4..e61dfbf 100644
  [[package]]
  name = "wordcraft-control-key"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  
  [[package]]
  name = "wordcraft-doc"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "proptest",
   "serde",
@@ -367,7 +379,7 @@ index c5a92f4..e61dfbf 100644
  [[package]]
  name = "wordcraft-docbin"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "cfb",
   "image",
@@ -376,7 +388,7 @@ index c5a92f4..e61dfbf 100644
  [[package]]
  name = "wordcraft-docx"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "aes",
   "base64",
@@ -385,7 +397,7 @@ index c5a92f4..e61dfbf 100644
  [[package]]
  name = "wordcraft-engine"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "image",
   "js-sys",
@@ -394,7 +406,7 @@ index c5a92f4..e61dfbf 100644
  [[package]]
  name = "wordcraft-fonts"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "harfrust 0.13.3",
   "kurbo",
@@ -403,7 +415,7 @@ index c5a92f4..e61dfbf 100644
  [[package]]
  name = "wordcraft-formats"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "image",
   "log",
@@ -412,7 +424,7 @@ index c5a92f4..e61dfbf 100644
  [[package]]
  name = "wordcraft-geom"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "serde",
  ]
@@ -420,7 +432,7 @@ index c5a92f4..e61dfbf 100644
  [[package]]
  name = "wordcraft-layout"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "image",
   "js-sys",
@@ -429,7 +441,7 @@ index c5a92f4..e61dfbf 100644
  [[package]]
  name = "wordcraft-mcp"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "log",
   "serde_json",
@@ -438,7 +450,7 @@ index c5a92f4..e61dfbf 100644
  [[package]]
  name = "wordcraft-metafile"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "kurbo",
   "thiserror 2.0.21",
@@ -447,7 +459,7 @@ index c5a92f4..e61dfbf 100644
  [[package]]
  name = "wordcraft-pdf"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "hayro-cmap",
   "hayro-interpret",
@@ -456,7 +468,7 @@ index c5a92f4..e61dfbf 100644
  [[package]]
  name = "wordcraft-proof"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "log",
   "miniz_oxide 0.8.9",
@@ -465,7 +477,7 @@ index c5a92f4..e61dfbf 100644
  [[package]]
  name = "wordcraft-render"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "image",
   "log",
@@ -474,7 +486,7 @@ index c5a92f4..e61dfbf 100644
  [[package]]
  name = "wordcraft-ui-egui"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "craft-ui",
   "egui",
@@ -483,7 +495,7 @@ index c5a92f4..e61dfbf 100644
  [[package]]
  name = "wordcraft-web"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "eframe",
   "egui",
@@ -492,7 +504,7 @@ index c5a92f4..e61dfbf 100644
  [[package]]
  name = "wordcraft-zotero"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "log",
   "proptest",
@@ -501,7 +513,7 @@ index c5a92f4..e61dfbf 100644
  [[package]]
  name = "xtask"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "serde_json",
  ]
@@ -526,7 +538,7 @@ index c5a92f4..e61dfbf 100644
  ]
  
 diff --git a/Cargo.toml b/Cargo.toml
-index ab12104..0bc5146 100644
+index ab12104..6247d10 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -534,7 +546,7 @@ index ab12104..0bc5146 100644
  
  [workspace.package]
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.90"
@@ -5541,15 +5553,16 @@ index c4be6ae..f5ef396 100644
  
  Enter at the end of a paragraph containing exactly `=rand()` or `=lorem()` replaces
 diff --git a/packaging/env.sh b/packaging/env.sh
-index 2614fc0..1ff1eba 100644
+index 2614fc0..ee69323 100644
 --- a/packaging/env.sh
 +++ b/packaging/env.sh
-@@ -47,10 +47,17 @@ warn() {
+@@ -47,10 +47,18 @@ warn() {
  # Copy licence and readme files that exist into a package directory.
  copy_docs() {
    local dest="$1" f
 -  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT; do
-+  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md; do
++  python3 "$ROOT/packaging/licenses/verify.py" "$ROOT" || return 1
++  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md THIRD_PARTY_NOTICES.txt; do
      if [ -f "$ROOT/$f" ]; then cp "$ROOT/$f" "$dest/"; fi
    done
    copy_font_licences "$dest"
@@ -5620,214 +5633,102 @@ index 368f7c5..b2782ce 100755
 +  echo "warning: iconutil not found (macOS only); plervo-write.icns not regenerated" >&2
  fi
  echo "icons written to $DIR"
-diff --git a/packaging/linux/ai.storyteller.wordcraft.desktop b/packaging/linux/ai.storyteller.wordcraft.desktop
-deleted file mode 100644
-index e725883..0000000
+diff --git a/packaging/linux/ai.storyteller.wordcraft.desktop b/packaging/linux/com.plervo.write.desktop
+similarity index 84%
+rename from packaging/linux/ai.storyteller.wordcraft.desktop
+rename to packaging/linux/com.plervo.write.desktop
+index e725883..eb10b39 100644
 --- a/packaging/linux/ai.storyteller.wordcraft.desktop
-+++ /dev/null
-@@ -1,14 +0,0 @@
--[Desktop Entry]
--Type=Application
++++ b/packaging/linux/com.plervo.write.desktop
+@@ -1,14 +1,14 @@
+ [Desktop Entry]
+ Type=Application
 -Name=WordCraft
--GenericName=Word Processor
--Comment=Write and design documents; open and save Word files
++Name=Plervo Write
+ GenericName=Word Processor
+ Comment=Write and design documents; open and save Word files
 -Exec=wordcraft %F
 -TryExec=wordcraft
 -Icon=ai.storyteller.wordcraft
--Terminal=false
--StartupNotify=true
++Exec=plervo-write %F
++TryExec=plervo-write
++Icon=com.plervo.write
+ Terminal=false
+ StartupNotify=true
 -StartupWMClass=ai.storyteller.wordcraft
--Categories=Office;WordProcessor;
--Keywords=word;processor;document;docx;writer;text;letter;report;
--MimeType=application/vnd.openxmlformats-officedocument.wordprocessingml.document;application/vnd.ms-word.document.macroEnabled.12;application/vnd.openxmlformats-officedocument.wordprocessingml.template;application/vnd.ms-word.template.macroEnabled.12;application/msword;application/msword-template;application/vnd.oasis.opendocument.text;application/rtf;text/rtf;text/markdown;text/x-tex;text/html;text/plain;
-diff --git a/packaging/linux/ai.storyteller.wordcraft.metainfo.xml.in b/packaging/linux/ai.storyteller.wordcraft.metainfo.xml.in
-deleted file mode 100644
-index be11038..0000000
++StartupWMClass=com.plervo.write
+ Categories=Office;WordProcessor;
+ Keywords=word;processor;document;docx;writer;text;letter;report;
+ MimeType=application/vnd.openxmlformats-officedocument.wordprocessingml.document;application/vnd.ms-word.document.macroEnabled.12;application/vnd.openxmlformats-officedocument.wordprocessingml.template;application/vnd.ms-word.template.macroEnabled.12;application/msword;application/msword-template;application/vnd.oasis.opendocument.text;application/rtf;text/rtf;text/markdown;text/x-tex;text/html;text/plain;
+diff --git a/packaging/linux/ai.storyteller.wordcraft.metainfo.xml.in b/packaging/linux/com.plervo.write.metainfo.xml.in
+similarity index 69%
+rename from packaging/linux/ai.storyteller.wordcraft.metainfo.xml.in
+rename to packaging/linux/com.plervo.write.metainfo.xml.in
+index be11038..0cf6389 100644
 --- a/packaging/linux/ai.storyteller.wordcraft.metainfo.xml.in
-+++ /dev/null
-@@ -1,69 +0,0 @@
--<?xml version="1.0" encoding="UTF-8"?>
--<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
--     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
--<component type="desktop-application">
++++ b/packaging/linux/com.plervo.write.metainfo.xml.in
+@@ -2,26 +2,26 @@
+ <!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
+      manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
+ <component type="desktop-application">
 -  <id>ai.storyteller.wordcraft</id>
--  <metadata_license>CC0-1.0</metadata_license>
--  <project_license>MIT OR Apache-2.0</project_license>
++  <id>com.plervo.write</id>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_license>MIT OR Apache-2.0</project_license>
 -  <name>WordCraft</name>
--  <summary>Write and design documents; open and save Word files</summary>
--  <developer id="ai.storyteller">
++  <name>Plervo Write</name>
+   <summary>Write and design documents; open and save Word files</summary>
+   <developer id="ai.storyteller">
 -    <name>Learning Machines LLC</name>
--  </developer>
--  <description>
--    <p>
++    <name>Maintech Solutions LLC</name>
+   </developer>
+   <description>
+     <p>
 -      WordCraft is a fast, open-source word processor with a familiar ribbon: styles, tables, track changes, references, mail merge, and .docx, PDF, ODT, RTF, HTML and Markdown files. It can be driven by AI agents over MCP.
--    </p>
--  </description>
++      Plervo Write is a fast, open-source word processor with a familiar ribbon: styles, tables, track changes, references, mail merge, and .docx, PDF, ODT, RTF, HTML and Markdown files. It can be driven by AI agents over MCP.
+     </p>
+   </description>
 -  <launchable type="desktop-id">ai.storyteller.wordcraft.desktop</launchable>
 -  <icon type="stock">ai.storyteller.wordcraft</icon>
--  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
++  <launchable type="desktop-id">com.plervo.write.desktop</launchable>
++  <icon type="stock">com.plervo.write</icon>
+   <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
 -  <url type="homepage">https://getartcraft.com/apps/wordcraft</url>
 -  <url type="bugtracker">https://github.com/storytold/wordcraft/issues</url>
 -  <url type="help">https://github.com/storytold/wordcraft</url>
 -  <url type="contact">https://discord.gg/artcraft</url>
--  <categories>
--    <category>Office</category>
--    <category>WordProcessor</category>
--  </categories>
--  <keywords>
--    <keyword>word processor</keyword>
--    <keyword>docx</keyword>
--    <keyword>document</keyword>
--    <keyword>writer</keyword>
--  </keywords>
--  <screenshots>
--    <screenshot type="default">
--      <caption>The Open Studio Handbook sample with the Navigation pane</caption>
--      <image>https://raw.githubusercontent.com/storytold/wordcraft/main/docs/images/hero.png</image>
--    </screenshot>
--  </screenshots>
--  <branding>
--    <color type="primary" scheme_preference="light">#b9c7f5</color>
--    <color type="primary" scheme_preference="dark">#2b47b5</color>
--  </branding>
--  <requires>
--    <display_length compare="ge">760</display_length>
--  </requires>
--  <supports>
--    <control>keyboard</control>
--    <control>pointing</control>
--    <control>tablet</control>
--  </supports>
--  <!-- Document types WordCraft opens (#295), as in the desktop entry's MimeType=. -->
--  <provides>
--    <binary>wordcraft</binary>
--    <mediatype>application/vnd.openxmlformats-officedocument.wordprocessingml.document</mediatype>
--    <mediatype>application/vnd.ms-word.document.macroEnabled.12</mediatype>
--    <mediatype>application/vnd.openxmlformats-officedocument.wordprocessingml.template</mediatype>
--    <mediatype>application/vnd.ms-word.template.macroEnabled.12</mediatype>
--    <mediatype>application/msword</mediatype>
--    <mediatype>application/msword-template</mediatype>
--    <mediatype>application/vnd.oasis.opendocument.text</mediatype>
--    <mediatype>application/rtf</mediatype>
--  </provides>
--  <content_rating type="oars-1.1"/>
--  <releases>
--    <release version="@VERSION@" date="@DATE@"/>
--  </releases>
--</component>
-diff --git a/packaging/linux/ai.storyteller.wordcraft.mime.xml b/packaging/linux/ai.storyteller.wordcraft.mime.xml
-deleted file mode 100644
-index be4dcc2..0000000
---- a/packaging/linux/ai.storyteller.wordcraft.mime.xml
-+++ /dev/null
-@@ -1,3 +0,0 @@
--<?xml version="1.0" encoding="UTF-8"?>
--<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
--</mime-info>
-diff --git a/packaging/linux/com.plervo.write.desktop b/packaging/linux/com.plervo.write.desktop
-new file mode 100644
-index 0000000..eb10b39
---- /dev/null
-+++ b/packaging/linux/com.plervo.write.desktop
-@@ -0,0 +1,14 @@
-+[Desktop Entry]
-+Type=Application
-+Name=Plervo Write
-+GenericName=Word Processor
-+Comment=Write and design documents; open and save Word files
-+Exec=plervo-write %F
-+TryExec=plervo-write
-+Icon=com.plervo.write
-+Terminal=false
-+StartupNotify=true
-+StartupWMClass=com.plervo.write
-+Categories=Office;WordProcessor;
-+Keywords=word;processor;document;docx;writer;text;letter;report;
-+MimeType=application/vnd.openxmlformats-officedocument.wordprocessingml.document;application/vnd.ms-word.document.macroEnabled.12;application/vnd.openxmlformats-officedocument.wordprocessingml.template;application/vnd.ms-word.template.macroEnabled.12;application/msword;application/msword-template;application/vnd.oasis.opendocument.text;application/rtf;text/rtf;text/markdown;text/x-tex;text/html;text/plain;
-diff --git a/packaging/linux/com.plervo.write.metainfo.xml.in b/packaging/linux/com.plervo.write.metainfo.xml.in
-new file mode 100644
-index 0000000..0cf6389
---- /dev/null
-+++ b/packaging/linux/com.plervo.write.metainfo.xml.in
-@@ -0,0 +1,69 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
-+     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
-+<component type="desktop-application">
-+  <id>com.plervo.write</id>
-+  <metadata_license>CC0-1.0</metadata_license>
-+  <project_license>MIT OR Apache-2.0</project_license>
-+  <name>Plervo Write</name>
-+  <summary>Write and design documents; open and save Word files</summary>
-+  <developer id="ai.storyteller">
-+    <name>Maintech Solutions LLC</name>
-+  </developer>
-+  <description>
-+    <p>
-+      Plervo Write is a fast, open-source word processor with a familiar ribbon: styles, tables, track changes, references, mail merge, and .docx, PDF, ODT, RTF, HTML and Markdown files. It can be driven by AI agents over MCP.
-+    </p>
-+  </description>
-+  <launchable type="desktop-id">com.plervo.write.desktop</launchable>
-+  <icon type="stock">com.plervo.write</icon>
-+  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
 +  <url type="homepage">https://plervo.com/</url>
 +  <url type="bugtracker">https://github.com/alportblu/plervo-pdf/issues</url>
 +  <url type="help">https://github.com/alportblu/plervo-pdf</url>
 +  <url type="contact">https://buymeacoffee.com/alport</url>
-+  <categories>
-+    <category>Office</category>
-+    <category>WordProcessor</category>
-+  </categories>
-+  <keywords>
-+    <keyword>word processor</keyword>
-+    <keyword>docx</keyword>
-+    <keyword>document</keyword>
-+    <keyword>writer</keyword>
-+  </keywords>
-+  <screenshots>
-+    <screenshot type="default">
-+      <caption>The Open Studio Handbook sample with the Navigation pane</caption>
+   <categories>
+     <category>Office</category>
+     <category>WordProcessor</category>
+@@ -35,7 +35,7 @@
+   <screenshots>
+     <screenshot type="default">
+       <caption>The Open Studio Handbook sample with the Navigation pane</caption>
+-      <image>https://raw.githubusercontent.com/storytold/wordcraft/main/docs/images/hero.png</image>
 +      <image>https://raw.githubusercontent.com/alportblu/plervo-pdf/main/docs/images/hero.png</image>
-+    </screenshot>
-+  </screenshots>
-+  <branding>
-+    <color type="primary" scheme_preference="light">#b9c7f5</color>
-+    <color type="primary" scheme_preference="dark">#2b47b5</color>
-+  </branding>
-+  <requires>
-+    <display_length compare="ge">760</display_length>
-+  </requires>
-+  <supports>
-+    <control>keyboard</control>
-+    <control>pointing</control>
-+    <control>tablet</control>
-+  </supports>
+     </screenshot>
+   </screenshots>
+   <branding>
+@@ -50,9 +50,9 @@
+     <control>pointing</control>
+     <control>tablet</control>
+   </supports>
+-  <!-- Document types WordCraft opens (#295), as in the desktop entry's MimeType=. -->
 +  <!-- Document types Plervo Write opens (#295), as in the desktop entry's MimeType=. -->
-+  <provides>
+   <provides>
+-    <binary>wordcraft</binary>
 +    <binary>plervo-write</binary>
-+    <mediatype>application/vnd.openxmlformats-officedocument.wordprocessingml.document</mediatype>
-+    <mediatype>application/vnd.ms-word.document.macroEnabled.12</mediatype>
-+    <mediatype>application/vnd.openxmlformats-officedocument.wordprocessingml.template</mediatype>
-+    <mediatype>application/vnd.ms-word.template.macroEnabled.12</mediatype>
-+    <mediatype>application/msword</mediatype>
-+    <mediatype>application/msword-template</mediatype>
-+    <mediatype>application/vnd.oasis.opendocument.text</mediatype>
-+    <mediatype>application/rtf</mediatype>
-+  </provides>
-+  <content_rating type="oars-1.1"/>
-+  <releases>
-+    <release version="@VERSION@" date="@DATE@"/>
-+  </releases>
-+</component>
-diff --git a/packaging/linux/com.plervo.write.mime.xml b/packaging/linux/com.plervo.write.mime.xml
-new file mode 100644
-index 0000000..be4dcc2
---- /dev/null
-+++ b/packaging/linux/com.plervo.write.mime.xml
-@@ -0,0 +1,3 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-+</mime-info>
+     <mediatype>application/vnd.openxmlformats-officedocument.wordprocessingml.document</mediatype>
+     <mediatype>application/vnd.ms-word.document.macroEnabled.12</mediatype>
+     <mediatype>application/vnd.openxmlformats-officedocument.wordprocessingml.template</mediatype>
+diff --git a/packaging/linux/ai.storyteller.wordcraft.mime.xml b/packaging/linux/com.plervo.write.mime.xml
+similarity index 100%
+rename from packaging/linux/ai.storyteller.wordcraft.mime.xml
+rename to packaging/linux/com.plervo.write.mime.xml
 diff --git a/packaging/linux/flatpak-bundle.sh b/packaging/linux/flatpak-bundle.sh
 index 43917d9..504dc03 100755
 --- a/packaging/linux/flatpak-bundle.sh
@@ -5894,264 +5795,144 @@ index 43917d9..504dc03 100755
    flatpak run --command=sh "$APP_ID" -c 'ls /app/share/applications /app/share/metainfo /app/share/mime/packages /app/share/icons/hicolor/scalable/apps'
  fi
  echo "==> done"
-diff --git a/packaging/linux/flatpak/ai.storyteller.wordcraft.bundle.yml b/packaging/linux/flatpak/ai.storyteller.wordcraft.bundle.yml
-deleted file mode 100644
-index b76e112..0000000
+diff --git a/packaging/linux/flatpak/ai.storyteller.wordcraft.bundle.yml b/packaging/linux/flatpak/com.plervo.write.bundle.yml
+similarity index 65%
+rename from packaging/linux/flatpak/ai.storyteller.wordcraft.bundle.yml
+rename to packaging/linux/flatpak/com.plervo.write.bundle.yml
+index b76e112..b5227d4 100644
 --- a/packaging/linux/flatpak/ai.storyteller.wordcraft.bundle.yml
-+++ /dev/null
-@@ -1,50 +0,0 @@
--# Flatpak manifest for the single-file bundle attached to every GitHub release
++++ b/packaging/linux/flatpak/com.plervo.write.bundle.yml
+@@ -1,7 +1,7 @@
+ # Flatpak manifest for the single-file bundle attached to every GitHub release
 -# (wordcraft-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
--#
++# (plervo-write-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
+ #
 -# It repackages the release's own Linux tarball (wordcraft-<version>-linux-<arch>.tar.gz,
--# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
--# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
--# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
--# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
--# Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
--# GPU driver comes from its org.freedesktop.Platform.GL extension.
--#
++# It repackages the release's own Linux tarball (plervo-write-<version>-linux-<arch>.tar.gz,
+ # built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
+ # network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
+ # and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
+@@ -9,13 +9,13 @@
+ # Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
+ # GPU driver comes from its org.freedesktop.Platform.GL extension.
+ #
 -# ai.storyteller.wordcraft.yml (same directory) is the from-source manifest for Flathub. Keep
--# runtime, runtime-version, sdk and finish-args identical in both (packaging-lint checks this).
++# com.plervo.write.yml (same directory) is the from-source manifest for Flathub. Keep
+ # runtime, runtime-version, sdk and finish-args identical in both (packaging-lint checks this).
 -id: ai.storyteller.wordcraft
--runtime: org.freedesktop.Platform
--runtime-version: '25.08'
--sdk: org.freedesktop.Sdk
++id: com.plervo.write
+ runtime: org.freedesktop.Platform
+ runtime-version: '25.08'
+ sdk: org.freedesktop.Sdk
 -command: wordcraft
--finish-args:
--  # Display: Wayland first; X11 only when no Wayland compositor is running.
--  - --socket=wayland
--  - --socket=fallback-x11
--  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
--  - --share=ipc
--  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
--  - --device=dri
--  # Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
--  # drag-and-drop through the document portal, so picked files work anywhere without broad
--  # filesystem access. Documents and Pictures are granted so files passed by path (the command
--  # line, Open Recent, "Save" next to the original) work in the usual places.
--  - --filesystem=xdg-documents
--  - --filesystem=xdg-pictures
--  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
++command: plervo-write
+ finish-args:
+   # Display: Wayland first; X11 only when no Wayland compositor is running.
+   - --socket=wayland
+@@ -31,20 +31,20 @@ finish-args:
+   - --filesystem=xdg-documents
+   - --filesystem=xdg-pictures
+   # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
 -  # the sandbox; `flatpak override --user --share=network ai.storyteller.wordcraft` exposes it to
--  # host agents) and home/host filesystem access.
--modules:
++  # the sandbox; `flatpak override --user --share=network com.plervo.write` exposes it to
+   # host agents) and home/host filesystem access.
+ modules:
 -  - name: wordcraft
--    buildsystem: simple
--    build-commands:
++  - name: plervo-write
+     buildsystem: simple
+     build-commands:
 -      - install -Dm755 bin/wordcraft /app/bin/wordcraft
 -      - install -Dm755 bin/wordcraft-cli /app/bin/wordcraft-cli
 -      - install -Dm644 share/applications/ai.storyteller.wordcraft.desktop /app/share/applications/ai.storyteller.wordcraft.desktop
 -      - install -Dm644 share/mime/packages/ai.storyteller.wordcraft.xml /app/share/mime/packages/ai.storyteller.wordcraft.xml
--      # Already has the release's version and date substituted by package.sh.
++      - install -Dm755 bin/plervo-write /app/bin/plervo-write
++      - install -Dm755 bin/plervo-write-cli /app/bin/plervo-write-cli
++      - install -Dm644 share/applications/com.plervo.write.desktop /app/share/applications/com.plervo.write.desktop
++      - install -Dm644 share/mime/packages/com.plervo.write.xml /app/share/mime/packages/com.plervo.write.xml
+       # Already has the release's version and date substituted by package.sh.
 -      - install -Dm644 share/metainfo/ai.storyteller.wordcraft.metainfo.xml /app/share/metainfo/ai.storyteller.wordcraft.metainfo.xml
--      # Docs include the licences of the embedded craft-fonts (OFL-*.txt).
++      - install -Dm644 share/metainfo/com.plervo.write.metainfo.xml /app/share/metainfo/com.plervo.write.metainfo.xml
+       # Docs include the licences of the embedded craft-fonts (OFL-*.txt).
 -      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/wordcraft /app/share/doc/
--    sources:
--      - type: dir
--        path: stage
-diff --git a/packaging/linux/flatpak/ai.storyteller.wordcraft.yml b/packaging/linux/flatpak/ai.storyteller.wordcraft.yml
-deleted file mode 100644
-index 67ee2ae..0000000
++      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/plervo-write /app/share/doc/
+     sources:
+       - type: dir
+         path: stage
+diff --git a/packaging/linux/flatpak/ai.storyteller.wordcraft.yml b/packaging/linux/flatpak/com.plervo.write.yml
+similarity index 68%
+rename from packaging/linux/flatpak/ai.storyteller.wordcraft.yml
+rename to packaging/linux/flatpak/com.plervo.write.yml
+index 67ee2ae..d9b340b 100644
 --- a/packaging/linux/flatpak/ai.storyteller.wordcraft.yml
-+++ /dev/null
-@@ -1,67 +0,0 @@
++++ b/packaging/linux/flatpak/com.plervo.write.yml
+@@ -1,22 +1,22 @@
 -# Flatpak manifest for WordCraft, ready for a Flathub submission.
--#
--# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
--#
--#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
--#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
++# Flatpak manifest for Plervo Write, ready for a Flathub submission.
+ #
+ # Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
+ #
+ #   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
+ #   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
 -#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.wordcraft.yml
 -#   flatpak run ai.storyteller.wordcraft
--#
--# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
++#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/com.plervo.write.yml
++#   flatpak run com.plervo.write
+ #
+ # For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
 -# The release's .flatpak bundles come from ai.storyteller.wordcraft.bundle.yml instead (see there);
--# keep runtime, runtime-version, sdk and finish-args identical in both (packaging-lint checks this).
++# The release's .flatpak bundles come from com.plervo.write.bundle.yml instead (see there);
+ # keep runtime, runtime-version, sdk and finish-args identical in both (packaging-lint checks this).
 -id: ai.storyteller.wordcraft
--runtime: org.freedesktop.Platform
--runtime-version: '25.08'
--sdk: org.freedesktop.Sdk
--sdk-extensions:
--  - org.freedesktop.Sdk.Extension.rust-stable
++id: com.plervo.write
+ runtime: org.freedesktop.Platform
+ runtime-version: '25.08'
+ sdk: org.freedesktop.Sdk
+ sdk-extensions:
+   - org.freedesktop.Sdk.Extension.rust-stable
 -command: wordcraft
--finish-args:
--  # Display: Wayland first; X11 only when no Wayland compositor is running.
--  - --socket=wayland
--  - --socket=fallback-x11
--  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
--  - --share=ipc
--  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
--  - --device=dri
--  # Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
--  # drag-and-drop through the document portal, so picked files work anywhere without broad
--  # filesystem access. Documents and Pictures are granted so files passed by path (the command
--  # line, Open Recent, "Save" next to the original) work in the usual places.
--  - --filesystem=xdg-documents
--  - --filesystem=xdg-pictures
--  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
++command: plervo-write
+ finish-args:
+   # Display: Wayland first; X11 only when no Wayland compositor is running.
+   - --socket=wayland
+@@ -32,29 +32,29 @@ finish-args:
+   - --filesystem=xdg-documents
+   - --filesystem=xdg-pictures
+   # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
 -  # the sandbox; `flatpak override --user --share=network ai.storyteller.wordcraft` exposes it to
--  # host agents) and home/host filesystem access.
--build-options:
--  append-path: /usr/lib/sdk/rust-stable/bin
--modules:
++  # the sandbox; `flatpak override --user --share=network com.plervo.write` exposes it to
+   # host agents) and home/host filesystem access.
+ build-options:
+   append-path: /usr/lib/sdk/rust-stable/bin
+ modules:
 -  - name: wordcraft
--    buildsystem: simple
--    build-options:
--      env:
++  - name: plervo-write
+     buildsystem: simple
+     build-options:
+       env:
 -        CARGO_HOME: /run/build/wordcraft/cargo
--        CARGO_NET_OFFLINE: 'true'
--    build-commands:
++        CARGO_HOME: /run/build/plervo-write/cargo
+         CARGO_NET_OFFLINE: 'true'
+     build-commands:
 -      - cargo --offline build --release --locked -p wordcraft -p wordcraft-cli
 -      - install -Dm755 target/release/wordcraft /app/bin/wordcraft
 -      - install -Dm755 target/release/wordcraft-cli /app/bin/wordcraft-cli
 -      - install -Dm644 packaging/linux/ai.storyteller.wordcraft.desktop /app/share/applications/ai.storyteller.wordcraft.desktop
 -      - install -Dm644 packaging/linux/ai.storyteller.wordcraft.mime.xml /app/share/mime/packages/ai.storyteller.wordcraft.xml
--      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
--      - >-
--        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
--        install -d /app/share/metainfo;
--        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
--        packaging/linux/ai.storyteller.wordcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.wordcraft.metainfo.xml
--    sources:
--      - type: dir
--        path: ../../..
--        skip:
--          - target
--          - dist
--          - corpus
--          - build-flatpak
--          - .flatpak-builder
--      - cargo-sources.json
-diff --git a/packaging/linux/flatpak/com.plervo.write.bundle.yml b/packaging/linux/flatpak/com.plervo.write.bundle.yml
-new file mode 100644
-index 0000000..b5227d4
---- /dev/null
-+++ b/packaging/linux/flatpak/com.plervo.write.bundle.yml
-@@ -0,0 +1,50 @@
-+# Flatpak manifest for the single-file bundle attached to every GitHub release
-+# (plervo-write-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
-+#
-+# It repackages the release's own Linux tarball (plervo-write-<version>-linux-<arch>.tar.gz,
-+# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
-+# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
-+# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
-+# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
-+# Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
-+# GPU driver comes from its org.freedesktop.Platform.GL extension.
-+#
-+# com.plervo.write.yml (same directory) is the from-source manifest for Flathub. Keep
-+# runtime, runtime-version, sdk and finish-args identical in both (packaging-lint checks this).
-+id: com.plervo.write
-+runtime: org.freedesktop.Platform
-+runtime-version: '25.08'
-+sdk: org.freedesktop.Sdk
-+command: plervo-write
-+finish-args:
-+  # Display: Wayland first; X11 only when no Wayland compositor is running.
-+  - --socket=wayland
-+  - --socket=fallback-x11
-+  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
-+  - --share=ipc
-+  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
-+  - --device=dri
-+  # Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
-+  # drag-and-drop through the document portal, so picked files work anywhere without broad
-+  # filesystem access. Documents and Pictures are granted so files passed by path (the command
-+  # line, Open Recent, "Save" next to the original) work in the usual places.
-+  - --filesystem=xdg-documents
-+  - --filesystem=xdg-pictures
-+  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
-+  # the sandbox; `flatpak override --user --share=network com.plervo.write` exposes it to
-+  # host agents) and home/host filesystem access.
-+modules:
-+  - name: plervo-write
-+    buildsystem: simple
-+    build-commands:
-+      - install -Dm755 bin/plervo-write /app/bin/plervo-write
-+      - install -Dm755 bin/plervo-write-cli /app/bin/plervo-write-cli
-+      - install -Dm644 share/applications/com.plervo.write.desktop /app/share/applications/com.plervo.write.desktop
-+      - install -Dm644 share/mime/packages/com.plervo.write.xml /app/share/mime/packages/com.plervo.write.xml
-+      # Already has the release's version and date substituted by package.sh.
-+      - install -Dm644 share/metainfo/com.plervo.write.metainfo.xml /app/share/metainfo/com.plervo.write.metainfo.xml
-+      # Docs include the licences of the embedded craft-fonts (OFL-*.txt).
-+      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/plervo-write /app/share/doc/
-+    sources:
-+      - type: dir
-+        path: stage
-diff --git a/packaging/linux/flatpak/com.plervo.write.yml b/packaging/linux/flatpak/com.plervo.write.yml
-new file mode 100644
-index 0000000..d9b340b
---- /dev/null
-+++ b/packaging/linux/flatpak/com.plervo.write.yml
-@@ -0,0 +1,67 @@
-+# Flatpak manifest for Plervo Write, ready for a Flathub submission.
-+#
-+# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
-+#
-+#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
-+#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
-+#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/com.plervo.write.yml
-+#   flatpak run com.plervo.write
-+#
-+# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
-+# The release's .flatpak bundles come from com.plervo.write.bundle.yml instead (see there);
-+# keep runtime, runtime-version, sdk and finish-args identical in both (packaging-lint checks this).
-+id: com.plervo.write
-+runtime: org.freedesktop.Platform
-+runtime-version: '25.08'
-+sdk: org.freedesktop.Sdk
-+sdk-extensions:
-+  - org.freedesktop.Sdk.Extension.rust-stable
-+command: plervo-write
-+finish-args:
-+  # Display: Wayland first; X11 only when no Wayland compositor is running.
-+  - --socket=wayland
-+  - --socket=fallback-x11
-+  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
-+  - --share=ipc
-+  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
-+  - --device=dri
-+  # Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
-+  # drag-and-drop through the document portal, so picked files work anywhere without broad
-+  # filesystem access. Documents and Pictures are granted so files passed by path (the command
-+  # line, Open Recent, "Save" next to the original) work in the usual places.
-+  - --filesystem=xdg-documents
-+  - --filesystem=xdg-pictures
-+  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
-+  # the sandbox; `flatpak override --user --share=network com.plervo.write` exposes it to
-+  # host agents) and home/host filesystem access.
-+build-options:
-+  append-path: /usr/lib/sdk/rust-stable/bin
-+modules:
-+  - name: plervo-write
-+    buildsystem: simple
-+    build-options:
-+      env:
-+        CARGO_HOME: /run/build/plervo-write/cargo
-+        CARGO_NET_OFFLINE: 'true'
-+    build-commands:
 +      - cargo --offline build --release --locked -p plervo-write -p plervo-write-cli
 +      - install -Dm755 target/release/plervo-write /app/bin/plervo-write
 +      - install -Dm755 target/release/plervo-write-cli /app/bin/plervo-write-cli
 +      - install -Dm644 packaging/linux/com.plervo.write.desktop /app/share/applications/com.plervo.write.desktop
 +      - install -Dm644 packaging/linux/com.plervo.write.mime.xml /app/share/mime/packages/com.plervo.write.xml
-+      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
-+      - >-
-+        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
-+        install -d /app/share/metainfo;
-+        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+       - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
+       - >-
+         version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
+         install -d /app/share/metainfo;
+         sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+-        packaging/linux/ai.storyteller.wordcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.wordcraft.metainfo.xml
 +        packaging/linux/com.plervo.write.metainfo.xml.in > /app/share/metainfo/com.plervo.write.metainfo.xml
-+    sources:
-+      - type: dir
-+        path: ../../..
-+        skip:
-+          - target
-+          - dist
-+          - corpus
-+          - build-flatpak
-+          - .flatpak-builder
-+      - cargo-sources.json
+     sources:
+       - type: dir
+         path: ../../..
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
 index bf75ccc..cbe0d7d 100644
 --- a/packaging/linux/nfpm.yaml
@@ -6834,7 +6615,7 @@ index 730c075..2ad5e1e 100755
  rm -rf "$WORK"
  mkdir -p "$WORK/$NAME"
 diff --git a/packaging/windows/package.ps1 b/packaging/windows/package.ps1
-index c791ffb..b695774 100644
+index c791ffb..d0af7fc 100644
 --- a/packaging/windows/package.ps1
 +++ b/packaging/windows/package.ps1
 @@ -1,18 +1,18 @@
@@ -6887,7 +6668,7 @@ index c791ffb..b695774 100644
    $h = Get-PeHeader (Join-Path $Bin $check[0])
    if ($h.Machine -ne $Machine) { throw "$($check[0]) is for machine 0x$('{0:X}' -f $h.Machine), expected 0x$('{0:X}' -f $Machine) ($Arch)" }
    if ($h.Subsystem -ne $check[1]) { throw "$($check[0]) has PE subsystem $($h.Subsystem), expected $($check[1])" }
-@@ -89,9 +89,26 @@ foreach ($check in @(@('wordcraft.exe', 2), @('wordcraft-cli.exe', 3))) {
+@@ -89,9 +89,28 @@ foreach ($check in @(@('wordcraft.exe', 2), @('wordcraft-cli.exe', 3))) {
  $Stage = Join-Path $TargetDir "windows-package\$Arch"
  Remove-Item -Recurse -Force $Stage -ErrorAction SilentlyContinue
  New-Item -ItemType Directory -Force -Path $Stage | Out-Null
@@ -6898,9 +6679,11 @@ index c791ffb..b695774 100644
 +& (Join-Path $PSScriptRoot 'sign.ps1') (Join-Path $Stage 'plervo-write.exe') (Join-Path $Stage 'plervo-write-cli.exe')
 +
 +# Carry source and embedded-asset notices in MSI and portable distributions.
++& python (Join-Path $Root 'packaging/licenses/verify.py') $Root
++if ($LASTEXITCODE -ne 0) { throw "Third-party notice review is stale or missing" }
 +$Legal = Join-Path $Stage 'Licenses'
 +New-Item -ItemType Directory -Force -Path $Legal | Out-Null
-+foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md') {
++foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md', 'THIRD_PARTY_NOTICES.txt') {
 +  $p = Join-Path $Root $f
 +  if (Test-Path $p) { Copy-Item $p $Legal }
 +}
@@ -6916,7 +6699,7 @@ index c791ffb..b695774 100644
  
  # ---- MSI ---------------------------------------------------------------------------------------
  # The installer's welcome page shows the license: build its RTF from LICENSE-MIT and LICENSE-APACHE
-@@ -108,8 +125,8 @@ function ConvertTo-RtfText([string] $Text) {
+@@ -108,8 +127,8 @@ function ConvertTo-RtfText([string] $Text) {
    return $sb.ToString()
  }
  $paragraphs = [System.Collections.Generic.List[string]]::new()
@@ -6927,7 +6710,7 @@ index c791ffb..b695774 100644
  foreach ($file in 'LICENSE-MIT', 'LICENSE-APACHE') {
    $title = $true  # each file opens with its license's name: show it bold
    foreach ($para in ((Get-Content -Raw (Join-Path $Root $file)) -split '\r?\n\s*\r?\n')) {
-@@ -124,11 +141,11 @@ $rtf = '{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fswiss\fcharset0 Tahoma;}}\vi
+@@ -124,11 +143,11 @@ $rtf = '{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\fswiss\fcharset0 Tahoma;}}\vi
    ($paragraphs -join "\par`r`n") + "\par`r`n}`r`n"
  [System.IO.File]::WriteAllText($LicenseRtf, $rtf, [System.Text.Encoding]::ASCII)
  
@@ -6942,7 +6725,7 @@ index c791ffb..b695774 100644
      -d "LicenseRtf=$LicenseRtf" `
      -o $Msi
  }
-@@ -137,10 +154,11 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
+@@ -137,10 +156,11 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
  & (Join-Path $PSScriptRoot 'sign.ps1') $Msi
  
  # ---- portable zip ------------------------------------------------------------------------------
@@ -6955,7 +6738,7 @@ index c791ffb..b695774 100644
  foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE') {
    $p = Join-Path $Root $f
    if (Test-Path $p) { Copy-Item $p $Portable }
-@@ -151,7 +169,7 @@ if ($env:CRAFT_FONTS_DIR) {
+@@ -151,7 +171,7 @@ if ($env:CRAFT_FONTS_DIR) {
      Copy-Item $ofl.FullName (Join-Path $Portable "OFL-$($ofl.Directory.Name).txt")
    }
  }
@@ -6964,7 +6747,7 @@ index c791ffb..b695774 100644
  Remove-Item -Force $Zip -ErrorAction SilentlyContinue
  Compress-Archive -Path $Portable -DestinationPath $Zip
  
-@@ -159,8 +177,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
+@@ -159,8 +179,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
  # here; .github/workflows/windows-arm64.yml installs and runs it on ARM64 instead.
  $HostArch = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString().ToLowerInvariant()
  if ($Arch -ne 'arm64' -or $HostArch -eq 'arm64') {

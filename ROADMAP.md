@@ -491,6 +491,8 @@ Newest first: the date, what moved, and the new overall estimate.
 - M13: common command, batch, inspection and bounded preview tools share the existing confined automation path. MCP tools carry complete hints and reject unknown top-level keys as invalid parameters.
 - **2026-10-10 (UI docking):** Tools and Inspector can be regrouped, split beside the PDF, or floated inside the app window. Existing toggles reopen panels at their saved locations; UI commands arrange/reset panels, and preferences retain their layout. Read/full-screen modes preserve the focused document view. No milestone percentage change.
 
+- **2026-10-23 (Plervo alpha.8 candidate):** Suite startup/periodic update notices with explicit downloads, offline installed-app grid and distinct Mac architectures. PDF/Write cryptographic dependency update; HTTPS verification/root updates in four product forks. Twelve product installers now verify and ship reviewed dependency notices. Native publication qualification is tracked in the release notes; parity scores are unchanged.
+
 ## Revision history
 
 | Date | Change | Summary |

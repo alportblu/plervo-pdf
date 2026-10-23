@@ -27,6 +27,7 @@ fi
 "$cli" --version > /evidence/cli-version.txt
 "$cli" --help > /evidence/cli-help.txt
 test -f "/usr/share/applications/com.plervo.$PRODUCT.desktop"
+cmp "/usr/share/doc/$name/THIRD_PARTY_NOTICES.txt" "/test/licenses/$PRODUCT/THIRD_PARTY_NOTICES.txt"
 test -s /evidence/app-version.txt
 test -s /evidence/cli-help.txt
 # Resolve the product's runtime dependencies before adding display-only test tools.

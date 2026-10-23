@@ -83,7 +83,7 @@ index 2b69cb0..f282af0 100644
 +
 +| `packaging/macos/dmg/background.svg` | @XusBadia | Original work: FilmCraft macOS DMG window background, derived from the FilmCraft app icon (`assets/app-icon/filmcraft.svg`); rendered to `background.tiff` by `packaging/macos/dmg/generate.py` | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) |
 diff --git a/Cargo.lock b/Cargo.lock
-index e50797e..4229690 100644
+index e50797e..9fecf5e 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -704,8 +704,6 @@ dependencies = [
@@ -135,7 +135,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-aac"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
@@ -144,7 +144,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-ac3"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-testkit",
   "thiserror 2.0.21",
@@ -153,7 +153,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-apv"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
@@ -162,7 +162,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-audio-dsp"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-testkit",
  ]
@@ -170,7 +170,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-automation"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "base64 0.22.1",
   "filmcraft-engine",
@@ -179,7 +179,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-av1"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
@@ -188,7 +188,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-avi"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-testkit",
  ]
@@ -196,7 +196,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-bitstream"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "proptest",
  ]
@@ -204,7 +204,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-captions"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-color",
   "filmcraft-project",
@@ -235,12 +235,12 @@ index e50797e..4229690 100644
 - "serde_json",
 - "tokio",
 -]
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  
  [[package]]
  name = "filmcraft-codecs"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-aac",
   "filmcraft-ac3",
@@ -249,7 +249,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-color"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "proptest",
   "serde",
@@ -258,7 +258,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-dng"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-dng",
   "rayon",
@@ -267,7 +267,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-dnx"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
@@ -276,7 +276,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-edit"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-geom",
   "filmcraft-media",
@@ -285,7 +285,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-engine"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-audio-dsp",
   "filmcraft-captions",
@@ -294,7 +294,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-export"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-aac",
   "filmcraft-apv",
@@ -303,7 +303,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-flac"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
@@ -312,7 +312,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-format"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-media",
   "filmcraft-project",
@@ -321,7 +321,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-frame"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-color",
   "filmcraft-time",
@@ -330,7 +330,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-geom"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "proptest",
   "serde",
@@ -339,7 +339,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-golden"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-color",
   "filmcraft-frame",
@@ -348,7 +348,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-gpu"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-color",
   "filmcraft-export",
@@ -357,7 +357,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-h264"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
@@ -366,7 +366,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-h264enc"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
@@ -375,7 +375,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-hevc"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
@@ -384,7 +384,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-interchange"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-cfb",
   "filmcraft-color",
@@ -393,7 +393,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-isobmff"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
@@ -402,7 +402,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-matroska"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-testkit",
   "serde_json",
@@ -411,7 +411,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-media"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-color",
   "filmcraft-dng",
@@ -420,7 +420,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-mpa"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
@@ -429,7 +429,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-mpeg2v"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-testkit",
   "rayon",
@@ -438,7 +438,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-mpegts"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-testkit",
   "thiserror 2.0.21",
@@ -447,7 +447,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-mxf"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-testkit",
  ]
@@ -455,7 +455,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-ogg"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-testkit",
  ]
@@ -463,7 +463,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-opus"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-testkit",
  ]
@@ -471,7 +471,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-platform"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-codecs",
@@ -480,7 +480,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-project"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-color",
   "filmcraft-geom",
@@ -489,7 +489,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-prores"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
@@ -498,7 +498,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-render"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-audio-dsp",
   "filmcraft-captions",
@@ -507,7 +507,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-scopes"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-color",
   "serde",
@@ -516,7 +516,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-speech"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "candle-core",
   "candle-nn",
@@ -525,7 +525,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-testkit"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "png",
  ]
@@ -533,7 +533,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-text"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-color",
   "harfrust",
@@ -542,7 +542,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-time"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "proptest",
   "serde",
@@ -551,7 +551,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-tts"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "candle-core",
   "candle-nn",
@@ -560,7 +560,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-tts-text"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "serde",
   "thiserror 2.0.21",
@@ -569,7 +569,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-ui-egui"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "cpu-time",
   "craft-ui",
@@ -578,7 +578,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-vp8"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "thiserror 2.0.21",
  ]
@@ -586,7 +586,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-vp9"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-bitstream",
   "rayon",
@@ -595,7 +595,7 @@ index e50797e..4229690 100644
  [[package]]
  name = "filmcraft-web"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "eframe",
   "egui",
@@ -624,7 +624,7 @@ index e50797e..4229690 100644
  
 +[[package]]
 +name = "plervo-video"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
 +dependencies = [
 + "arboard",
 + "chrono",
@@ -657,7 +657,7 @@ index e50797e..4229690 100644
 +
 +[[package]]
 +name = "plervo-video-cli"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
 +dependencies = [
 + "filmcraft-automation",
 + "filmcraft-codecs",
@@ -716,7 +716,7 @@ index e50797e..4229690 100644
  dependencies = [
   "aead",
   "aes-gcm",
-@@ -5250,24 +5258,13 @@ dependencies = [
+@@ -5250,7 +5258,7 @@ dependencies = [
   "rsa",
   "rustls",
   "rustls-pki-types",
@@ -725,11 +725,10 @@ index e50797e..4229690 100644
   "sec1",
   "sha2",
   "signature",
-  "x25519-dalek",
- ]
+@@ -5259,20 +5267,9 @@ dependencies = [
  
--[[package]]
--name = "rustls-webpki"
+ [[package]]
+ name = "rustls-webpki"
 -version = "0.102.8"
 -source = "registry+https://github.com/rust-lang/crates.io-index"
 -checksum = "64ca1bc8749bd4cf37b5ce386cc146580777b4e8572c7b97baf22c83f444bee9"
@@ -739,15 +738,43 @@ index e50797e..4229690 100644
 - "untrusted",
 -]
 -
+-[[package]]
+-name = "rustls-webpki"
+-version = "0.103.15"
++version = "0.103.16"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "f3c3cf1d8b1e7d4927e2d154c3fcb02979afb9939629c62cd9048d4f07b60ac2"
++checksum = "4443b1b6d39d7c663139942cc4558262562d2c84123bb6282ef177009ca8b281"
+ dependencies = [
+  "ring",
+  "rustls-pki-types",
+@@ -5979,7 +5976,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd"
+ dependencies = [
+  "fastrand",
+- "getrandom 0.4.3",
++ "getrandom 0.3.4",
+  "once_cell",
+  "rustix 1.1.5",
+  "windows-sys 0.61.2",
+@@ -6638,9 +6635,9 @@ dependencies = [
+ 
  [[package]]
- name = "rustls-webpki"
- version = "0.103.15"
+ name = "webpki-root-certs"
+-version = "1.0.9"
++version = "1.0.10"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "b96554aa2acc8ccdb7e1c9a58a7a68dd5d13bccc69cd124cb09406db612a1c9b"
++checksum = "58ec80e73fd8baf57bf0d9615554c75348bda990d6d5bbeab964dd068319fecb"
+ dependencies = [
+  "rustls-pki-types",
+ ]
 @@ -7396,7 +7393,7 @@ checksum = "e450f9b2ed1dff33c94c12589a87338689467b9c4f5d8a5710bd09a847d2c8a7"
  
  [[package]]
  name = "xtask"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-testkit",
   "serde_json",
@@ -769,7 +796,7 @@ index e50797e..4229690 100644
  ]
  
 diff --git a/Cargo.toml b/Cargo.toml
-index 2530bb3..0fb71f3 100644
+index 2530bb3..ae783f1 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -777,7 +804,7 @@ index 2530bb3..0fb71f3 100644
  
  [workspace.package]
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.95"
@@ -7210,15 +7237,16 @@ index 58c2837..201aee2 100644
  runs each AppImage with `--version`.
  
 diff --git a/packaging/env.sh b/packaging/env.sh
-index d227a71..e8785db 100644
+index d227a71..673caeb 100644
 --- a/packaging/env.sh
 +++ b/packaging/env.sh
-@@ -48,10 +48,24 @@ warn() {
+@@ -48,10 +48,25 @@ warn() {
  # craft-fonts fonts the build embedded (only when built with CRAFT_FONTS_DIR).
  copy_docs() {
    local dest="$1" f
 -  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT; do
-+  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md; do
++  python3 "$ROOT/packaging/licenses/verify.py" "$ROOT" || return 1
++  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md THIRD_PARTY_NOTICES.txt; do
      if [ -f "$ROOT/$f" ]; then cp "$ROOT/$f" "$dest/"; fi
    done
    copy_font_licences "$dest"
@@ -7425,93 +7453,6 @@ index 3d9d851..0000000
 -Categories=AudioVideo;Video;AudioVideoEditing;
 -MimeType=application/x-filmcraft;video/mp4;video/x-m4v;video/quicktime;video/x-matroska;video/webm;video/vnd.avi;video/x-msvideo;application/mxf;video/mp2t;video/mpeg;video/3gpp;
 -Keywords=video;editor;film;timeline;color;grading;nle;
-diff --git a/packaging/linux/ai.storyteller.filmcraft.metainfo.xml.in b/packaging/linux/ai.storyteller.filmcraft.metainfo.xml.in
-deleted file mode 100644
-index 9fd005c..0000000
---- a/packaging/linux/ai.storyteller.filmcraft.metainfo.xml.in
-+++ /dev/null
-@@ -1,63 +0,0 @@
--<?xml version="1.0" encoding="UTF-8"?>
--<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
--     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
--<component type="desktop-application">
--  <id>ai.storyteller.filmcraft</id>
--  <metadata_license>CC0-1.0</metadata_license>
--  <project_license>MIT OR Apache-2.0</project_license>
--  <name>FilmCraft</name>
--  <summary>Edit video, color and sound</summary>
--  <developer id="ai.storyteller">
--    <name>Learning Machines LLC</name>
--  </developer>
--  <description>
--    <p>
--      FilmCraft is a video editor. Edit video, color and sound
--    </p>
--  </description>
--  <launchable type="desktop-id">ai.storyteller.filmcraft.desktop</launchable>
--  <icon type="stock">ai.storyteller.filmcraft</icon>
--  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
--  <url type="homepage">https://getartcraft.com/apps/filmcraft</url>
--  <url type="bugtracker">https://github.com/storytold/filmcraft/issues</url>
--  <url type="help">https://github.com/storytold/filmcraft</url>
--  <url type="contact">https://discord.gg/artcraft</url>
--  <categories>
--    <category>AudioVideo</category>
--    <category>Video</category>
--    <category>AudioVideoEditing</category>
--  </categories>
--  <keywords>
--    <keyword>video</keyword>
--    <keyword>video editor</keyword>
--    <keyword>timeline</keyword>
--    <keyword>color grading</keyword>
--    <keyword>nle</keyword>
--  </keywords>
--  <screenshots>
--    <screenshot type="default">
--      <caption>Color workspace: a documentary cut with Lumetri Color, scopes, captions and loudness meters</caption>
--      <image>https://raw.githubusercontent.com/storytold/filmcraft/main/docs/images/filmcraft-hero.png</image>
--    </screenshot>
--  </screenshots>
--  <branding>
--    <color type="primary" scheme_preference="light">#9fd0ff</color>
--    <color type="primary" scheme_preference="dark">#1f64ba</color>
--  </branding>
--  <requires>
--    <display_length compare="ge">760</display_length>
--  </requires>
--  <supports>
--    <control>keyboard</control>
--    <control>pointing</control>
--    <control>tablet</control>
--  </supports>
--  <provides>
--    <binary>filmcraft</binary>
--    <mediatype>application/x-filmcraft</mediatype>
--  </provides>
--  <content_rating type="oars-1.1"/>
--  <releases>
--    <release version="@VERSION@" date="@DATE@"/>
--  </releases>
--</component>
-diff --git a/packaging/linux/ai.storyteller.filmcraft.mime.xml b/packaging/linux/ai.storyteller.filmcraft.mime.xml
-deleted file mode 100644
-index 6fe0feb..0000000
---- a/packaging/linux/ai.storyteller.filmcraft.mime.xml
-+++ /dev/null
-@@ -1,12 +0,0 @@
--<?xml version="1.0" encoding="UTF-8"?>
--<!-- shared-mime-info definitions for types the system database doesn't have.
--     Installed to /usr/share/mime/packages/ (update-mime-database runs on install).
--     The type name matches the macOS UTI's public.mime-type in packaging/macos/Info.plist.in. -->
--<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
--  <mime-type type="application/x-filmcraft">
--    <comment>FilmCraft project</comment>
--    <sub-class-of type="application/json"/>
--    <icon name="ai.storyteller.filmcraft"/>
--    <glob pattern="*.fcproj"/>
--  </mime-type>
--</mime-info>
 diff --git a/packaging/linux/com.plervo.video.desktop b/packaging/linux/com.plervo.video.desktop
 new file mode 100644
 index 0000000..0b044f5
@@ -7532,93 +7473,91 @@ index 0000000..0b044f5
 +Categories=AudioVideo;Video;AudioVideoEditing;
 +MimeType=application/x-plervo-video;video/mp4;video/x-m4v;video/quicktime;video/x-matroska;video/webm;video/vnd.avi;video/x-msvideo;application/mxf;video/mp2t;video/mpeg;video/3gpp;
 +Keywords=video;editor;film;timeline;color;grading;nle;
-diff --git a/packaging/linux/com.plervo.video.metainfo.xml.in b/packaging/linux/com.plervo.video.metainfo.xml.in
-new file mode 100644
-index 0000000..ba71ddf
---- /dev/null
+diff --git a/packaging/linux/ai.storyteller.filmcraft.metainfo.xml.in b/packaging/linux/com.plervo.video.metainfo.xml.in
+similarity index 68%
+rename from packaging/linux/ai.storyteller.filmcraft.metainfo.xml.in
+rename to packaging/linux/com.plervo.video.metainfo.xml.in
+index 9fd005c..ba71ddf 100644
+--- a/packaging/linux/ai.storyteller.filmcraft.metainfo.xml.in
 +++ b/packaging/linux/com.plervo.video.metainfo.xml.in
-@@ -0,0 +1,63 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
-+     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
-+<component type="desktop-application">
+@@ -2,26 +2,26 @@
+ <!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
+      manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
+ <component type="desktop-application">
+-  <id>ai.storyteller.filmcraft</id>
 +  <id>com.plervo.video</id>
-+  <metadata_license>CC0-1.0</metadata_license>
-+  <project_license>MIT OR Apache-2.0</project_license>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_license>MIT OR Apache-2.0</project_license>
+-  <name>FilmCraft</name>
 +  <name>Plervo Video</name>
-+  <summary>Edit video, color and sound</summary>
-+  <developer id="ai.storyteller">
+   <summary>Edit video, color and sound</summary>
+   <developer id="ai.storyteller">
+-    <name>Learning Machines LLC</name>
 +    <name>Maintech Solutions LLC</name>
-+  </developer>
-+  <description>
-+    <p>
+   </developer>
+   <description>
+     <p>
+-      FilmCraft is a video editor. Edit video, color and sound
 +      Plervo Video is a video editor. Edit video, color and sound
-+    </p>
-+  </description>
+     </p>
+   </description>
+-  <launchable type="desktop-id">ai.storyteller.filmcraft.desktop</launchable>
+-  <icon type="stock">ai.storyteller.filmcraft</icon>
 +  <launchable type="desktop-id">com.plervo.video.desktop</launchable>
 +  <icon type="stock">com.plervo.video</icon>
-+  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
+   <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
+-  <url type="homepage">https://getartcraft.com/apps/filmcraft</url>
+-  <url type="bugtracker">https://github.com/storytold/filmcraft/issues</url>
+-  <url type="help">https://github.com/storytold/filmcraft</url>
+-  <url type="contact">https://discord.gg/artcraft</url>
 +  <url type="homepage">https://plervo.com/</url>
 +  <url type="bugtracker">https://github.com/alportblu/plervo-pdf/issues</url>
 +  <url type="help">https://github.com/alportblu/plervo-pdf</url>
 +  <url type="contact">https://buymeacoffee.com/alport</url>
-+  <categories>
-+    <category>AudioVideo</category>
-+    <category>Video</category>
-+    <category>AudioVideoEditing</category>
-+  </categories>
-+  <keywords>
-+    <keyword>video</keyword>
-+    <keyword>video editor</keyword>
-+    <keyword>timeline</keyword>
-+    <keyword>color grading</keyword>
-+    <keyword>nle</keyword>
-+  </keywords>
-+  <screenshots>
-+    <screenshot type="default">
-+      <caption>Color workspace: a documentary cut with Lumetri Color, scopes, captions and loudness meters</caption>
+   <categories>
+     <category>AudioVideo</category>
+     <category>Video</category>
+@@ -37,7 +37,7 @@
+   <screenshots>
+     <screenshot type="default">
+       <caption>Color workspace: a documentary cut with Lumetri Color, scopes, captions and loudness meters</caption>
+-      <image>https://raw.githubusercontent.com/storytold/filmcraft/main/docs/images/filmcraft-hero.png</image>
 +      <image>https://raw.githubusercontent.com/alportblu/plervo-pdf/main/docs/images/plervo-video-hero.png</image>
-+    </screenshot>
-+  </screenshots>
-+  <branding>
-+    <color type="primary" scheme_preference="light">#9fd0ff</color>
-+    <color type="primary" scheme_preference="dark">#1f64ba</color>
-+  </branding>
-+  <requires>
-+    <display_length compare="ge">760</display_length>
-+  </requires>
-+  <supports>
-+    <control>keyboard</control>
-+    <control>pointing</control>
-+    <control>tablet</control>
-+  </supports>
-+  <provides>
+     </screenshot>
+   </screenshots>
+   <branding>
+@@ -53,8 +53,8 @@
+     <control>tablet</control>
+   </supports>
+   <provides>
+-    <binary>filmcraft</binary>
+-    <mediatype>application/x-filmcraft</mediatype>
 +    <binary>plervo-video</binary>
 +    <mediatype>application/x-plervo-video</mediatype>
-+  </provides>
-+  <content_rating type="oars-1.1"/>
-+  <releases>
-+    <release version="@VERSION@" date="@DATE@"/>
-+  </releases>
-+</component>
-diff --git a/packaging/linux/com.plervo.video.mime.xml b/packaging/linux/com.plervo.video.mime.xml
-new file mode 100644
-index 0000000..78ad046
---- /dev/null
+   </provides>
+   <content_rating type="oars-1.1"/>
+   <releases>
+diff --git a/packaging/linux/ai.storyteller.filmcraft.mime.xml b/packaging/linux/com.plervo.video.mime.xml
+similarity index 78%
+rename from packaging/linux/ai.storyteller.filmcraft.mime.xml
+rename to packaging/linux/com.plervo.video.mime.xml
+index 6fe0feb..78ad046 100644
+--- a/packaging/linux/ai.storyteller.filmcraft.mime.xml
 +++ b/packaging/linux/com.plervo.video.mime.xml
-@@ -0,0 +1,12 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<!-- shared-mime-info definitions for types the system database doesn't have.
-+     Installed to /usr/share/mime/packages/ (update-mime-database runs on install).
-+     The type name matches the macOS UTI's public.mime-type in packaging/macos/Info.plist.in. -->
-+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+@@ -3,10 +3,10 @@
+      Installed to /usr/share/mime/packages/ (update-mime-database runs on install).
+      The type name matches the macOS UTI's public.mime-type in packaging/macos/Info.plist.in. -->
+ <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+-  <mime-type type="application/x-filmcraft">
+-    <comment>FilmCraft project</comment>
 +  <mime-type type="application/x-plervo-video">
 +    <comment>Plervo Video project</comment>
-+    <sub-class-of type="application/json"/>
+     <sub-class-of type="application/json"/>
+-    <icon name="ai.storyteller.filmcraft"/>
 +    <icon name="com.plervo.video"/>
-+    <glob pattern="*.fcproj"/>
-+  </mime-type>
-+</mime-info>
+     <glob pattern="*.fcproj"/>
+   </mime-type>
+ </mime-info>
 diff --git a/packaging/linux/flatpak-bundle.sh b/packaging/linux/flatpak-bundle.sh
 index 15d96c1..606c748 100755
 --- a/packaging/linux/flatpak-bundle.sh
@@ -7685,304 +7624,168 @@ index 15d96c1..606c748 100755
    flatpak run --command=sh "$APP_ID" -c 'ls /app/share/applications /app/share/metainfo /app/share/mime/packages /app/share/icons/hicolor/scalable/apps'
  fi
  echo "==> done"
-diff --git a/packaging/linux/flatpak/ai.storyteller.filmcraft.bundle.yml b/packaging/linux/flatpak/ai.storyteller.filmcraft.bundle.yml
-deleted file mode 100644
-index db9006b..0000000
+diff --git a/packaging/linux/flatpak/ai.storyteller.filmcraft.bundle.yml b/packaging/linux/flatpak/com.plervo.video.bundle.yml
+similarity index 70%
+rename from packaging/linux/flatpak/ai.storyteller.filmcraft.bundle.yml
+rename to packaging/linux/flatpak/com.plervo.video.bundle.yml
+index db9006b..84b8a44 100644
 --- a/packaging/linux/flatpak/ai.storyteller.filmcraft.bundle.yml
-+++ /dev/null
-@@ -1,59 +0,0 @@
--# Flatpak manifest for the single-file bundle attached to every GitHub release
++++ b/packaging/linux/flatpak/com.plervo.video.bundle.yml
+@@ -1,7 +1,7 @@
+ # Flatpak manifest for the single-file bundle attached to every GitHub release
 -# (filmcraft-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
--#
++# (plervo-video-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
+ #
 -# It repackages the release's own Linux tarball (filmcraft-<version>-linux-<arch>.tar.gz,
--# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
--# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
--# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
--# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
--# Wayland, xkbcommon, ALSA and Vulkan at runtime; the freedesktop runtime has all of them (its
--# ALSA routes through PulseAudio/PipeWire), and the GPU driver comes from its
--# org.freedesktop.Platform.GL extension.
--#
++# It repackages the release's own Linux tarball (plervo-video-<version>-linux-<arch>.tar.gz,
+ # built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
+ # network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
+ # and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
+@@ -10,13 +10,13 @@
+ # ALSA routes through PulseAudio/PipeWire), and the GPU driver comes from its
+ # org.freedesktop.Platform.GL extension.
+ #
 -# ai.storyteller.filmcraft.yml (same directory) is the from-source manifest for Flathub. Keep
--# runtime-version and finish-args identical in both (packaging-lint checks this).
++# com.plervo.video.yml (same directory) is the from-source manifest for Flathub. Keep
+ # runtime-version and finish-args identical in both (packaging-lint checks this).
 -id: ai.storyteller.filmcraft
--runtime: org.freedesktop.Platform
--runtime-version: '25.08'
--sdk: org.freedesktop.Sdk
++id: com.plervo.video
+ runtime: org.freedesktop.Platform
+ runtime-version: '25.08'
+ sdk: org.freedesktop.Sdk
 -command: filmcraft
--finish-args:
--  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
--  - --share=ipc
--  # Display: Wayland first; X11 only when no Wayland compositor is running.
--  - --socket=wayland
--  - --socket=fallback-x11
--  # Audio playback and the mixer's meters (cpal over ALSA, which the runtime routes to the
--  # host's PulseAudio or PipeWire server).
--  - --socket=pulseaudio
--  # GPU access for the wgpu compositor, scopes and effects (Vulkan, or GL as a fallback).
--  - --device=dri
--  # A project refers to its media by absolute path (docs/project-files.md), and the document
--  # portal only exposes the file it was handed, not the media beside it: a project opened from
++command: plervo-video
+ finish-args:
+   # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
+   - --share=ipc
+@@ -30,7 +30,7 @@ finish-args:
+   - --device=dri
+   # A project refers to its media by absolute path (docs/project-files.md), and the document
+   # portal only exposes the file it was handed, not the media beside it: a project opened from
 -  # ~/Videos found none of its clips (#107). So, as other video editors do, FilmCraft reads and
--  # writes the home directory (media, projects, exports, autosave next to the project) and the
--  # usual mount points of external drives, where footage often lives. Open/Save dialogs still go
--  # through the file-chooser portal; nothing outside these locations is granted.
--  - --filesystem=home
--  - --filesystem=/media
--  - --filesystem=/run/media
--  - --filesystem=/mnt
--  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
++  # ~/Videos found none of its clips (#107). So, as other video editors do, Plervo Video reads and
+   # writes the home directory (media, projects, exports, autosave next to the project) and the
+   # usual mount points of external drives, where footage often lives. Open/Save dialogs still go
+   # through the file-chooser portal; nothing outside these locations is granted.
+@@ -39,21 +39,21 @@ finish-args:
+   - --filesystem=/run/media
+   - --filesystem=/mnt
+   # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
 -  # the sandbox; `flatpak override --user --share=network ai.storyteller.filmcraft` exposes it
--  # to host agents) and host-wide filesystem access.
--modules:
++  # the sandbox; `flatpak override --user --share=network com.plervo.video` exposes it
+   # to host agents) and host-wide filesystem access.
+ modules:
 -  - name: filmcraft
--    buildsystem: simple
--    build-commands:
++  - name: plervo-video
+     buildsystem: simple
+     build-commands:
 -      - install -Dm755 bin/filmcraft /app/bin/filmcraft
 -      - install -Dm755 bin/filmcraft-cli /app/bin/filmcraft-cli
 -      - install -Dm644 share/applications/ai.storyteller.filmcraft.desktop /app/share/applications/ai.storyteller.filmcraft.desktop
--      # The same MIME file the deb/rpm install: it defines the .fcproj project type (the
--      # runtime's shared-mime-info already knows the video and audio formats).
--      - install -Dm644 share/mime/packages/ai.storyteller.filmcraft.xml /app/share/mime/packages/ai.storyteller.filmcraft.xml
--      # Already has the release's version and date substituted by package.sh.
--      - install -Dm644 share/metainfo/ai.storyteller.filmcraft.metainfo.xml /app/share/metainfo/ai.storyteller.filmcraft.metainfo.xml
--      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/filmcraft /app/share/doc/
--    sources:
--      - type: dir
--        path: stage
-diff --git a/packaging/linux/flatpak/ai.storyteller.filmcraft.yml b/packaging/linux/flatpak/ai.storyteller.filmcraft.yml
-deleted file mode 100644
-index ef8addc..0000000
---- a/packaging/linux/flatpak/ai.storyteller.filmcraft.yml
-+++ /dev/null
-@@ -1,78 +0,0 @@
--# Flatpak manifest for FilmCraft, ready for a Flathub submission.
--#
--# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
--#
--#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
--#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
--#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.filmcraft.yml
--#   flatpak run ai.storyteller.filmcraft
--#
--# The command-line tool and its MCP server run in the same sandbox, without opening a window:
--#
--#   flatpak run --command=filmcraft-cli ai.storyteller.filmcraft --version
--#   flatpak run --command=filmcraft-cli ai.storyteller.filmcraft mcp
--#
--# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
--id: ai.storyteller.filmcraft
--runtime: org.freedesktop.Platform
--runtime-version: '25.08'
--sdk: org.freedesktop.Sdk
--sdk-extensions:
--  - org.freedesktop.Sdk.Extension.rust-stable
--command: filmcraft
--finish-args:
--  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
--  - --share=ipc
--  # Display: Wayland first; X11 only when no Wayland compositor is running.
--  - --socket=wayland
--  - --socket=fallback-x11
--  # Audio playback and the mixer's meters (cpal over ALSA, which the runtime routes to the
--  # host's PulseAudio or PipeWire server).
--  - --socket=pulseaudio
--  # GPU access for the wgpu compositor, scopes and effects (Vulkan, or GL as a fallback).
--  - --device=dri
--  # A project refers to its media by absolute path (docs/project-files.md), and the document
--  # portal only exposes the file it was handed, not the media beside it: a project opened from
--  # ~/Videos found none of its clips (#107). So, as other video editors do, FilmCraft reads and
--  # writes the home directory (media, projects, exports, autosave next to the project) and the
--  # usual mount points of external drives, where footage often lives. Open/Save dialogs still go
--  # through the file-chooser portal; nothing outside these locations is granted.
--  - --filesystem=home
--  - --filesystem=/media
--  - --filesystem=/run/media
--  - --filesystem=/mnt
--  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
--  # the sandbox; `flatpak override --user --share=network ai.storyteller.filmcraft` exposes it
--  # to host agents) and host-wide filesystem access.
--build-options:
--  append-path: /usr/lib/sdk/rust-stable/bin
--modules:
--  - name: filmcraft
--    buildsystem: simple
--    build-options:
--      env:
--        CARGO_HOME: /run/build/filmcraft/cargo
--        CARGO_NET_OFFLINE: 'true'
--    build-commands:
--      - cargo --offline build --release --locked -p filmcraft -p filmcraft-cli
--      - install -Dm755 target/release/filmcraft /app/bin/filmcraft
--      # The headless CLI and its stdio MCP server, as in the release bundle (#346).
--      - install -Dm755 target/release/filmcraft-cli /app/bin/filmcraft-cli
--      - install -Dm644 packaging/linux/ai.storyteller.filmcraft.desktop /app/share/applications/ai.storyteller.filmcraft.desktop
--      - install -Dm644 packaging/linux/ai.storyteller.filmcraft.mime.xml /app/share/mime/packages/ai.storyteller.filmcraft.xml
--      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
--      - >-
--        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
--        install -d /app/share/metainfo;
--        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
--        packaging/linux/ai.storyteller.filmcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.filmcraft.metainfo.xml
--    sources:
--      - type: dir
--        path: ../../..
--        skip:
--          - target
--          - dist
--          - corpus
--          - build-flatpak
--          - .flatpak-builder
--      - cargo-sources.json
-diff --git a/packaging/linux/flatpak/com.plervo.video.bundle.yml b/packaging/linux/flatpak/com.plervo.video.bundle.yml
-new file mode 100644
-index 0000000..84b8a44
---- /dev/null
-+++ b/packaging/linux/flatpak/com.plervo.video.bundle.yml
-@@ -0,0 +1,59 @@
-+# Flatpak manifest for the single-file bundle attached to every GitHub release
-+# (plervo-video-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
-+#
-+# It repackages the release's own Linux tarball (plervo-video-<version>-linux-<arch>.tar.gz,
-+# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
-+# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
-+# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
-+# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
-+# Wayland, xkbcommon, ALSA and Vulkan at runtime; the freedesktop runtime has all of them (its
-+# ALSA routes through PulseAudio/PipeWire), and the GPU driver comes from its
-+# org.freedesktop.Platform.GL extension.
-+#
-+# com.plervo.video.yml (same directory) is the from-source manifest for Flathub. Keep
-+# runtime-version and finish-args identical in both (packaging-lint checks this).
-+id: com.plervo.video
-+runtime: org.freedesktop.Platform
-+runtime-version: '25.08'
-+sdk: org.freedesktop.Sdk
-+command: plervo-video
-+finish-args:
-+  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
-+  - --share=ipc
-+  # Display: Wayland first; X11 only when no Wayland compositor is running.
-+  - --socket=wayland
-+  - --socket=fallback-x11
-+  # Audio playback and the mixer's meters (cpal over ALSA, which the runtime routes to the
-+  # host's PulseAudio or PipeWire server).
-+  - --socket=pulseaudio
-+  # GPU access for the wgpu compositor, scopes and effects (Vulkan, or GL as a fallback).
-+  - --device=dri
-+  # A project refers to its media by absolute path (docs/project-files.md), and the document
-+  # portal only exposes the file it was handed, not the media beside it: a project opened from
-+  # ~/Videos found none of its clips (#107). So, as other video editors do, Plervo Video reads and
-+  # writes the home directory (media, projects, exports, autosave next to the project) and the
-+  # usual mount points of external drives, where footage often lives. Open/Save dialogs still go
-+  # through the file-chooser portal; nothing outside these locations is granted.
-+  - --filesystem=home
-+  - --filesystem=/media
-+  - --filesystem=/run/media
-+  - --filesystem=/mnt
-+  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
-+  # the sandbox; `flatpak override --user --share=network com.plervo.video` exposes it
-+  # to host agents) and host-wide filesystem access.
-+modules:
-+  - name: plervo-video
-+    buildsystem: simple
-+    build-commands:
 +      - install -Dm755 bin/plervo-video /app/bin/plervo-video
 +      - install -Dm755 bin/plervo-video-cli /app/bin/plervo-video-cli
 +      - install -Dm644 share/applications/com.plervo.video.desktop /app/share/applications/com.plervo.video.desktop
-+      # The same MIME file the deb/rpm install: it defines the .fcproj project type (the
-+      # runtime's shared-mime-info already knows the video and audio formats).
+       # The same MIME file the deb/rpm install: it defines the .fcproj project type (the
+       # runtime's shared-mime-info already knows the video and audio formats).
+-      - install -Dm644 share/mime/packages/ai.storyteller.filmcraft.xml /app/share/mime/packages/ai.storyteller.filmcraft.xml
 +      - install -Dm644 share/mime/packages/com.plervo.video.xml /app/share/mime/packages/com.plervo.video.xml
-+      # Already has the release's version and date substituted by package.sh.
+       # Already has the release's version and date substituted by package.sh.
+-      - install -Dm644 share/metainfo/ai.storyteller.filmcraft.metainfo.xml /app/share/metainfo/ai.storyteller.filmcraft.metainfo.xml
+-      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/filmcraft /app/share/doc/
 +      - install -Dm644 share/metainfo/com.plervo.video.metainfo.xml /app/share/metainfo/com.plervo.video.metainfo.xml
 +      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/plervo-video /app/share/doc/
-+    sources:
-+      - type: dir
-+        path: stage
-diff --git a/packaging/linux/flatpak/com.plervo.video.yml b/packaging/linux/flatpak/com.plervo.video.yml
-new file mode 100644
-index 0000000..7c44f58
---- /dev/null
+     sources:
+       - type: dir
+         path: stage
+diff --git a/packaging/linux/flatpak/ai.storyteller.filmcraft.yml b/packaging/linux/flatpak/com.plervo.video.yml
+similarity index 70%
+rename from packaging/linux/flatpak/ai.storyteller.filmcraft.yml
+rename to packaging/linux/flatpak/com.plervo.video.yml
+index ef8addc..7c44f58 100644
+--- a/packaging/linux/flatpak/ai.storyteller.filmcraft.yml
 +++ b/packaging/linux/flatpak/com.plervo.video.yml
-@@ -0,0 +1,78 @@
+@@ -1,25 +1,25 @@
+-# Flatpak manifest for FilmCraft, ready for a Flathub submission.
 +# Flatpak manifest for Plervo Video, ready for a Flathub submission.
-+#
-+# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
-+#
-+#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
-+#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
+ #
+ # Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
+ #
+ #   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
+ #   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
+-#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.filmcraft.yml
+-#   flatpak run ai.storyteller.filmcraft
 +#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/com.plervo.video.yml
 +#   flatpak run com.plervo.video
-+#
-+# The command-line tool and its MCP server run in the same sandbox, without opening a window:
-+#
+ #
+ # The command-line tool and its MCP server run in the same sandbox, without opening a window:
+ #
+-#   flatpak run --command=filmcraft-cli ai.storyteller.filmcraft --version
+-#   flatpak run --command=filmcraft-cli ai.storyteller.filmcraft mcp
 +#   flatpak run --command=plervo-video-cli com.plervo.video --version
 +#   flatpak run --command=plervo-video-cli com.plervo.video mcp
-+#
-+# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
+ #
+ # For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
+-id: ai.storyteller.filmcraft
 +id: com.plervo.video
-+runtime: org.freedesktop.Platform
-+runtime-version: '25.08'
-+sdk: org.freedesktop.Sdk
-+sdk-extensions:
-+  - org.freedesktop.Sdk.Extension.rust-stable
+ runtime: org.freedesktop.Platform
+ runtime-version: '25.08'
+ sdk: org.freedesktop.Sdk
+ sdk-extensions:
+   - org.freedesktop.Sdk.Extension.rust-stable
+-command: filmcraft
 +command: plervo-video
-+finish-args:
-+  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
-+  - --share=ipc
-+  # Display: Wayland first; X11 only when no Wayland compositor is running.
-+  - --socket=wayland
-+  - --socket=fallback-x11
-+  # Audio playback and the mixer's meters (cpal over ALSA, which the runtime routes to the
-+  # host's PulseAudio or PipeWire server).
-+  - --socket=pulseaudio
-+  # GPU access for the wgpu compositor, scopes and effects (Vulkan, or GL as a fallback).
-+  - --device=dri
-+  # A project refers to its media by absolute path (docs/project-files.md), and the document
-+  # portal only exposes the file it was handed, not the media beside it: a project opened from
+ finish-args:
+   # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
+   - --share=ipc
+@@ -33,7 +33,7 @@ finish-args:
+   - --device=dri
+   # A project refers to its media by absolute path (docs/project-files.md), and the document
+   # portal only exposes the file it was handed, not the media beside it: a project opened from
+-  # ~/Videos found none of its clips (#107). So, as other video editors do, FilmCraft reads and
 +  # ~/Videos found none of its clips (#107). So, as other video editors do, Plervo Video reads and
-+  # writes the home directory (media, projects, exports, autosave next to the project) and the
-+  # usual mount points of external drives, where footage often lives. Open/Save dialogs still go
-+  # through the file-chooser portal; nothing outside these locations is granted.
-+  - --filesystem=home
-+  - --filesystem=/media
-+  - --filesystem=/run/media
-+  - --filesystem=/mnt
-+  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
+   # writes the home directory (media, projects, exports, autosave next to the project) and the
+   # usual mount points of external drives, where footage often lives. Open/Save dialogs still go
+   # through the file-chooser portal; nothing outside these locations is granted.
+@@ -42,30 +42,30 @@ finish-args:
+   - --filesystem=/run/media
+   - --filesystem=/mnt
+   # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
+-  # the sandbox; `flatpak override --user --share=network ai.storyteller.filmcraft` exposes it
 +  # the sandbox; `flatpak override --user --share=network com.plervo.video` exposes it
-+  # to host agents) and host-wide filesystem access.
-+build-options:
-+  append-path: /usr/lib/sdk/rust-stable/bin
-+modules:
+   # to host agents) and host-wide filesystem access.
+ build-options:
+   append-path: /usr/lib/sdk/rust-stable/bin
+ modules:
+-  - name: filmcraft
 +  - name: plervo-video
-+    buildsystem: simple
-+    build-options:
-+      env:
+     buildsystem: simple
+     build-options:
+       env:
+-        CARGO_HOME: /run/build/filmcraft/cargo
 +        CARGO_HOME: /run/build/plervo-video/cargo
-+        CARGO_NET_OFFLINE: 'true'
-+    build-commands:
+         CARGO_NET_OFFLINE: 'true'
+     build-commands:
+-      - cargo --offline build --release --locked -p filmcraft -p filmcraft-cli
+-      - install -Dm755 target/release/filmcraft /app/bin/filmcraft
 +      - cargo --offline build --release --locked -p plervo-video -p plervo-video-cli
 +      - install -Dm755 target/release/plervo-video /app/bin/plervo-video
-+      # The headless CLI and its stdio MCP server, as in the release bundle (#346).
+       # The headless CLI and its stdio MCP server, as in the release bundle (#346).
+-      - install -Dm755 target/release/filmcraft-cli /app/bin/filmcraft-cli
+-      - install -Dm644 packaging/linux/ai.storyteller.filmcraft.desktop /app/share/applications/ai.storyteller.filmcraft.desktop
+-      - install -Dm644 packaging/linux/ai.storyteller.filmcraft.mime.xml /app/share/mime/packages/ai.storyteller.filmcraft.xml
 +      - install -Dm755 target/release/plervo-video-cli /app/bin/plervo-video-cli
 +      - install -Dm644 packaging/linux/com.plervo.video.desktop /app/share/applications/com.plervo.video.desktop
 +      - install -Dm644 packaging/linux/com.plervo.video.mime.xml /app/share/mime/packages/com.plervo.video.xml
-+      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
-+      - >-
-+        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
-+        install -d /app/share/metainfo;
-+        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+       - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
+       - >-
+         version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
+         install -d /app/share/metainfo;
+         sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+-        packaging/linux/ai.storyteller.filmcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.filmcraft.metainfo.xml
 +        packaging/linux/com.plervo.video.metainfo.xml.in > /app/share/metainfo/com.plervo.video.metainfo.xml
-+    sources:
-+      - type: dir
-+        path: ../../..
-+        skip:
-+          - target
-+          - dist
-+          - corpus
-+          - build-flatpak
-+          - .flatpak-builder
-+      - cargo-sources.json
+     sources:
+       - type: dir
+         path: ../../..
 diff --git a/packaging/linux/install.sh b/packaging/linux/install.sh
 index 033fe9b..16c6557 100755
 --- a/packaging/linux/install.sh
@@ -8966,7 +8769,7 @@ index 91eb71d..0000000
 -  </Fragment>
 -</Wix>
 diff --git a/packaging/windows/package.ps1 b/packaging/windows/package.ps1
-index faa4b86..605c07a 100644
+index faa4b86..8d95e6d 100644
 --- a/packaging/windows/package.ps1
 +++ b/packaging/windows/package.ps1
 @@ -1,11 +1,11 @@
@@ -9011,7 +8814,7 @@ index faa4b86..605c07a 100644
    $h = Get-PeHeader (Join-Path $Bin $check[0])
    if ($h.Machine -ne $Machine) { throw "$($check[0]) is for machine 0x$('{0:X}' -f $h.Machine), expected 0x$('{0:X}' -f $Machine) ($Arch)" }
    if ($h.Subsystem -ne $check[1]) { throw "$($check[0]) has PE subsystem $($h.Subsystem), expected $($check[1])" }
-@@ -86,15 +86,39 @@ foreach ($check in @(@('filmcraft.exe', 2), @('filmcraft-cli.exe', 3))) {
+@@ -86,15 +86,41 @@ foreach ($check in @(@('filmcraft.exe', 2), @('filmcraft-cli.exe', 3))) {
  $Stage = Join-Path $TargetDir "windows-package\$Arch"
  Remove-Item -Recurse -Force $Stage -ErrorAction SilentlyContinue
  New-Item -ItemType Directory -Force -Path $Stage | Out-Null
@@ -9022,9 +8825,11 @@ index faa4b86..605c07a 100644
 +& (Join-Path $PSScriptRoot 'sign.ps1') (Join-Path $Stage 'plervo-video.exe') (Join-Path $Stage 'plervo-video-cli.exe')
 +
 +# Carry source and embedded-asset notices in MSI and portable distributions.
++& python (Join-Path $Root 'packaging/licenses/verify.py') $Root
++if ($LASTEXITCODE -ne 0) { throw "Third-party notice review is stale or missing" }
 +$Legal = Join-Path $Stage 'Licenses'
 +New-Item -ItemType Directory -Force -Path $Legal | Out-Null
-+foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md') {
++foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md', 'THIRD_PARTY_NOTICES.txt') {
 +  $p = Join-Path $Root $f
 +  if (Test-Path $p) { Copy-Item $p $Legal }
 +}
@@ -9056,7 +8861,7 @@ index faa4b86..605c07a 100644
      -o $Msi
  }
  # wix writes its debug symbols (.wixpdb) next to the MSI; keep them out of the release assets.
-@@ -102,14 +126,15 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
+@@ -102,14 +128,15 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
  & (Join-Path $PSScriptRoot 'sign.ps1') $Msi
  
  # ---- portable zip ------------------------------------------------------------------------------
@@ -9076,7 +8881,7 @@ index faa4b86..605c07a 100644
  )
  foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE') {
    $p = Join-Path $Root $f
-@@ -121,7 +146,7 @@ if ($env:CRAFT_FONTS_DIR) {
+@@ -121,7 +148,7 @@ if ($env:CRAFT_FONTS_DIR) {
      Copy-Item $lic.FullName (Join-Path $Portable "OFL-$($lic.Directory.Name).txt")
    }
  }
@@ -9085,7 +8890,7 @@ index faa4b86..605c07a 100644
  Remove-Item -Force $Zip -ErrorAction SilentlyContinue
  Compress-Archive -Path $Portable -DestinationPath $Zip
  
-@@ -129,8 +154,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
+@@ -129,8 +156,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
  # here; .github/workflows/windows-arm64.yml installs and runs it on ARM64 instead.
  $HostArch = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString().ToLowerInvariant()
  if ($Arch -ne 'arm64' -or $HostArch -eq 'arm64') {

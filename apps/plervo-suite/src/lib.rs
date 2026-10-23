@@ -6,27 +6,33 @@ use egui::{Color32, RichText, Vec2};
 use locale::Language;
 use plervo_suite_core::{
     Installed, Release,
-    catalog::{CraftApp, PDF},
+    catalog::{CraftApp, PDF, SUITE},
     protocol::JobPhase,
 };
-use plervo_suite_native::{http::Stop, manager, paths::Paths};
+use plervo_suite_native::{http::Stop, manager, paths::Paths, updates};
 use std::{
+    collections::BTreeMap,
     fs::File,
     sync::{Arc, mpsc},
+    time::{Duration, Instant},
 };
 
 const INK: Color32 = Color32::from_rgb(25, 39, 33);
 const PAPER: Color32 = Color32::from_rgb(247, 248, 244);
 const LIME: Color32 = Color32::from_rgb(202, 232, 98);
 const MUTED: Color32 = Color32::from_rgb(89, 102, 94);
+const UPDATE_INTERVAL: Duration = Duration::from_secs(6 * 60 * 60);
 #[derive(Clone, Copy)]
 enum Action {
+    Scan,
     Refresh,
     Install,
     Open,
     Remove,
 }
 enum Event {
+    Updates(Result<updates::Updates, String>),
+    Scanned(BTreeMap<String, Installed>),
     Refreshed(Result<Release, String>, Option<Installed>),
     Progress(JobPhase),
     Finished(Result<(), String>, Option<Installed>),
@@ -50,10 +56,18 @@ pub struct SuiteApp {
     system_language: Language,
     settings: bool,
     catalog: bool,
+    detail: bool,
     selected: &'static family::Product,
     icons: std::collections::BTreeMap<&'static str, egui::TextureHandle>,
     release: Option<Release>,
     installed: Option<Installed>,
+    installed_apps: BTreeMap<String, Installed>,
+    updates: updates::Updates,
+    automatic_updates: bool,
+    checking_updates: bool,
+    next_update_check: Instant,
+    update_error: Option<String>,
+    checked_updates: bool,
     paths: Option<Paths>,
     _lock: Option<File>,
     tx: mpsc::Sender<Event>,
@@ -73,10 +87,18 @@ impl Default for SuiteApp {
             system_language: Language::Auto.resolve(),
             settings: false,
             catalog: false,
+            detail: false,
             selected: &family::PRODUCTS[0],
             icons: Default::default(),
             release: None,
             installed: None,
+            installed_apps: BTreeMap::new(),
+            updates: Default::default(),
+            automatic_updates: true,
+            checking_updates: false,
+            next_update_check: Instant::now(),
+            update_error: None,
+            checked_updates: false,
             paths: None,
             _lock: None,
             tx,
@@ -97,11 +119,14 @@ impl SuiteApp {
         if let Some(saved) = cc.storage.and_then(|s| s.get_string("language")) {
             app.language = serde_json::from_str(&saved).unwrap_or_default();
         }
+        if let Some(saved) = cc.storage.and_then(|s| s.get_string("automatic_updates")) {
+            app.automatic_updates = saved != "false";
+        }
         match Paths::new().and_then(|paths| acquire(&paths).map(|lock| (paths, lock))) {
             Ok((paths, lock)) => {
                 app.paths = Some(paths);
                 app._lock = Some(lock);
-                app.start(Action::Refresh, &cc.egui_ctx);
+                app.start(Action::Scan, &cc.egui_ctx);
             }
             Err(e) => app.error = Some(e),
         }
@@ -131,6 +156,59 @@ impl SuiteApp {
     fn lang(&self) -> Language {
         if self.language == Language::Auto { self.system_language } else { self.language }
     }
+    fn check_updates(&mut self, ctx: &egui::Context) {
+        if self.checking_updates || manager::supported_platform().is_none() {
+            return;
+        }
+        self.checking_updates = true;
+        self.update_error = None;
+        self.next_update_check = Instant::now() + UPDATE_INTERVAL;
+        let tx = self.tx.clone();
+        let context = ctx.clone();
+        let result = std::thread::Builder::new().name("plervo-update-check".into()).spawn(move || {
+            let result = std::panic::catch_unwind(updates::check).unwrap_or_else(|_| Err("Update check ended unexpectedly.".into()));
+            let _ = tx.send(Event::Updates(result));
+            context.request_repaint();
+        });
+        if let Err(error) = result {
+            self.checking_updates = false;
+            self.update_error = Some(error.to_string());
+        }
+    }
+    fn update_notice(&mut self, ui: &mut egui::Ui) {
+        let l = self.lang();
+        let t = |en, pt, es| l.text(en, pt, es);
+        if let Some(update) = &self.updates.suite {
+            egui::Frame::new().fill(LIME).inner_margin(14).corner_radius(8).show(ui, |ui| {
+                ui.label(
+                    RichText::new(format!(
+                        "Plervo Suite {} · {}",
+                        update.version,
+                        t("Update available", "Atualização disponível", "Actualización disponible")
+                    ))
+                    .strong(),
+                );
+                ui.label(t(
+                    "Install the downloaded package, then reopen Suite.",
+                    "Instale o pacote baixado e reabra a Suite.",
+                    "Instala el paquete descargado y vuelve a abrir Suite.",
+                ));
+                for asset in &update.downloads {
+                    if ui
+                        .add_enabled(
+                            !self.busy,
+                            egui::Button::new(t("Download Suite update", "Baixar atualização da Suite", "Descargar actualización de Suite")),
+                        )
+                        .on_hover_text(&asset.url)
+                        .clicked()
+                    {
+                        ui.ctx().open_url(egui::OpenUrl::new_tab(&asset.url));
+                    }
+                }
+            });
+            ui.add_space(12.0);
+        }
+    }
     fn icon(&mut self, ui: &mut egui::Ui, id: &'static str, bytes: &'static [u8], size: f32) {
         if let std::collections::btree_map::Entry::Vacant(entry) = self.icons.entry(id)
             && let Ok(icon) = eframe::icon_data::from_png_bytes(bytes)
@@ -144,16 +222,46 @@ impl SuiteApp {
             ui.label(id);
         }
     }
-    fn catalog(&mut self, ui: &mut egui::Ui) {
+    fn catalog(&mut self, ui: &mut egui::Ui, installed_only: bool) {
         let l = self.lang();
         let t = |en, pt, es| l.text(en, pt, es);
-        ui.heading(RichText::new(t("Your tools, together.", "Suas ferramentas, juntas.", "Tus herramientas, juntas.")).size(30.0));
-        ui.label(t(
-            "Choose an app to see its available downloads and updates.",
-            "Escolha um app para ver os downloads e as atualizações disponíveis.",
-            "Elige un app para ver las descargas y actualizaciones disponibles.",
-        ));
+        ui.heading(
+            RichText::new(if installed_only {
+                t("Your installed apps.", "Seus apps instalados.", "Tus apps instaladas.")
+            } else {
+                t("Your tools, together.", "Suas ferramentas, juntas.", "Tus herramientas, juntas.")
+            })
+            .size(30.0),
+        );
+        ui.label(if installed_only {
+            t("Open an app or manage its updates.", "Abra um app ou gerencie suas atualizações.", "Abre una app o gestiona sus actualizaciones.")
+        } else {
+            t(
+                "Choose an app to see its available downloads and updates.",
+                "Escolha um app para ver os downloads e as atualizações disponíveis.",
+                "Elige un app para ver las descargas y actualizaciones disponibles.",
+            )
+        });
+        if installed_only {
+            if ui.add_enabled(!self.busy, egui::Button::new(t("Refresh apps", "Atualizar lista", "Actualizar lista"))).clicked() {
+                self.start(Action::Scan, ui.ctx());
+            }
+            if self.busy {
+                ui.spinner();
+            }
+            if let Some(error) = &self.error {
+                ui.label(error);
+            }
+        }
         ui.add_space(20.0);
+        let products: Vec<_> =
+            family::PRODUCTS.iter().filter(|p| !installed_only || self.installed_apps.contains_key(&format!("plervo-{}", p.id))).collect();
+        if products.is_empty() && !self.busy {
+            ui.label(t("No apps installed yet.", "Nenhum app instalado ainda.", "Todavía no hay apps instaladas."));
+            if ui.button(t("Browse all apps", "Ver todos os apps", "Ver todas las apps")).clicked() {
+                self.catalog = true;
+            }
+        }
         let count = if ui.available_width() >= 690.0 {
             3
         } else if ui.available_width() >= 440.0 {
@@ -161,8 +269,8 @@ impl SuiteApp {
         } else {
             1
         };
-        egui::ScrollArea::vertical().show(ui, |ui| {
-            for row in family::PRODUCTS.chunks(count) {
+        egui::ScrollArea::vertical().id_salt(if installed_only { "installed-apps" } else { "all-apps" }).show(ui, |ui| {
+            for row in products.chunks(count) {
                 ui.columns(count, |columns| {
                     for (product, column) in row.iter().zip(columns) {
                         egui::Frame::new().fill(Color32::WHITE).corner_radius(12).inner_margin(16).show(column, |ui| {
@@ -171,6 +279,31 @@ impl SuiteApp {
                             self.icon(ui, product.id, product.icon, 48.0);
                             ui.label(RichText::new(product.name).size(19.0).strong());
                             ui.label(RichText::new(t(product.description[0], product.description[1], product.description[2])).color(MUTED));
+                            if let Some(installed) = self.installed_apps.get(&format!("plervo-{}", product.id)) {
+                                if let Some(version) = &installed.version {
+                                    ui.label(RichText::new(version.to_string()).small().color(MUTED));
+                                    if self
+                                        .updates
+                                        .apps
+                                        .get(&format!("plervo-{}", product.id))
+                                        .and_then(|r| r.version.as_ref())
+                                        .is_some_and(|latest| latest > version)
+                                    {
+                                        ui.label(RichText::new(t("Update available", "Atualização disponível", "Actualización disponible")).strong());
+                                    }
+                                }
+                                if installed_only
+                                    && ui
+                                        .add_enabled(
+                                            !self.busy && self.paths.is_some(),
+                                            egui::Button::new(format!("{} {}", t("Open", "Abrir", "Abrir"), product.name)).fill(LIME),
+                                        )
+                                        .clicked()
+                                {
+                                    self.selected = product;
+                                    self.start(Action::Open, ui.ctx());
+                                }
+                            }
                             let label = format!("{} {}", t("Manage", "Gerenciar", "Gestionar"), product.name);
                             if ui.add_enabled(!self.busy, egui::Button::new(label)).clicked() {
                                 self.select(product, ui.ctx());
@@ -188,8 +321,9 @@ impl SuiteApp {
         }
         self.selected = product;
         self.catalog = false;
+        self.detail = true;
         self.release = None;
-        self.installed = None;
+        self.installed = self.installed_apps.get(&format!("plervo-{}", product.id)).cloned();
         self.error = None;
         self.success = false;
         self.confirm_remove = false;
@@ -222,7 +356,10 @@ impl SuiteApp {
                 context.request_repaint();
             };
             let outcome = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
-                if matches!(action, Action::Refresh) {
+                if matches!(action, Action::Scan) {
+                    let installed = SUITE.iter().filter_map(|app| manager::detected_for(app).map(|i| (app.id.to_owned(), i))).collect();
+                    let _ = tx.send(Event::Scanned(installed));
+                } else if matches!(action, Action::Refresh) {
                     let _ = tx.send(Event::Refreshed(manager::latest_for(app), manager::detected_for(app)));
                 } else {
                     let result = match action {
@@ -232,7 +369,7 @@ impl SuiteApp {
                         },
                         Action::Open => manager::open_app(app, &paths),
                         Action::Remove => manager::uninstall_app(app, &paths, &stop, &mut progress),
-                        Action::Refresh => Ok(()),
+                        Action::Scan | Action::Refresh => Ok(()),
                     };
                     let _ = tx.send(Event::Finished(result, manager::detected_for(app)));
                 }
@@ -247,11 +384,39 @@ impl SuiteApp {
             self.error = Some(e.to_string());
         }
     }
+    fn remember_selected(&mut self, installed: &Option<Installed>) {
+        let id = format!("plervo-{}", self.selected.id);
+        if let Some(installed) = installed {
+            self.installed_apps.insert(id, installed.clone());
+        } else {
+            self.installed_apps.remove(&id);
+        }
+    }
     fn poll(&mut self) {
         while let Ok(event) = self.rx.try_recv() {
             match event {
+                Event::Updates(result) => {
+                    self.checking_updates = false;
+                    match result {
+                        Ok(updates) => {
+                            if let Some(release) = updates.apps.get(&format!("plervo-{}", self.selected.id)) {
+                                self.release = Some(release.clone());
+                            }
+                            self.updates = updates;
+                            self.checked_updates = true;
+                            self.update_error = None;
+                        }
+                        Err(error) => self.update_error = Some(error),
+                    }
+                }
+                Event::Scanned(installed) => {
+                    self.busy = false;
+                    self.installed_apps = installed;
+                    self.installed = self.installed_apps.get(&format!("plervo-{}", self.selected.id)).cloned();
+                }
                 Event::Refreshed(result, installed) => {
                     self.busy = false;
+                    self.remember_selected(&installed);
                     self.installed = installed;
                     match result {
                         Ok(r) => self.release = Some(r),
@@ -262,6 +427,9 @@ impl SuiteApp {
                 Event::Finished(result, installed) => {
                     self.busy = false;
                     self.progress = None;
+                    if result.is_ok() || installed.is_some() {
+                        self.remember_selected(&installed);
+                    }
                     self.installed = installed;
                     self.success = result.is_ok();
                     self.error = result.err();
@@ -273,6 +441,12 @@ impl SuiteApp {
         let ctx = &root.ctx().clone();
         root.set_style(ctx.style_of(egui::Theme::Light));
         self.poll();
+        if self.paths.is_some() && self.automatic_updates && manager::supported_platform().is_some() {
+            if !self.checking_updates && Instant::now() >= self.next_update_check {
+                self.check_updates(ctx);
+            }
+            ctx.request_repaint_after(self.next_update_check.saturating_duration_since(Instant::now()).max(Duration::from_secs(1)));
+        }
         let l = self.lang();
         let t = |en, pt, es| l.text(en, pt, es);
         if self.busy && ctx.input(|i| i.viewport().close_requested()) {
@@ -294,6 +468,9 @@ impl SuiteApp {
             {
                 self.settings = false;
                 self.catalog = false;
+                self.detail = false;
+                self.confirm_remove = false;
+                self.start(Action::Scan, ctx);
             }
             ui.add_space(8.0);
             if ui
@@ -332,7 +509,9 @@ impl SuiteApp {
                 });
             });
             ui.add_space(8.0);
+            self.update_notice(ui);
             if self.settings {
+                egui::ScrollArea::vertical().id_salt("settings").show(ui, |ui| {
                 ui.heading(RichText::new(t("Make it yours.", "Do seu jeito.", "A tu manera.")).size(34.0));
                 ui.add_space(25.0);
                 ui.label(t("Interface language", "Idioma da interface", "Idioma de la interfaz"));
@@ -362,19 +541,44 @@ impl SuiteApp {
                     ))
                     .color(MUTED),
                 );
-                ui.add_space(36.0);
+                ui.add_space(20.0);
+                egui::ComboBox::from_label(t("Update checks", "Verificação de atualizações", "Búsqueda de actualizaciones"))
+                    .selected_text(if self.automatic_updates { t("Automatic", "Automática", "Automática") } else { t("Manual", "Manual", "Manual") })
+                    .show_ui(ui, |ui| {
+                        ui.selectable_value(&mut self.automatic_updates, true, t("Automatic", "Automática", "Automática"));
+                        ui.selectable_value(&mut self.automatic_updates, false, t("Manual", "Manual", "Manual"));
+                    });
+                ui.label(RichText::new(t("Checks GitHub when Suite opens and every six hours while open. Downloads start only when you choose them.", "Consulta o GitHub ao abrir a Suite e a cada seis horas enquanto estiver aberta. Os downloads começam só quando você escolhe.", "Consulta GitHub al abrir Suite y cada seis horas mientras está abierta. Las descargas empiezan solo cuando las eliges.")).small().color(MUTED));
+                if ui.add_enabled(!self.checking_updates && manager::supported_platform().is_some(), egui::Button::new(t("Check for updates", "Verificar atualizações", "Buscar actualizaciones"))).clicked() {
+                    self.check_updates(ctx);
+                }
+                if self.checking_updates {
+                    ui.spinner();
+                } else if let Some(error) = &self.update_error {
+                    ui.label(t("Could not check for updates. Your apps are still available.", "Não foi possível verificar atualizações. Seus apps continuam disponíveis.", "No se pudieron buscar actualizaciones. Tus apps siguen disponibles."));
+                    ui.label(RichText::new(error).small());
+                } else if self.checked_updates {
+                    ui.label(t("Update check completed.", "Verificação de atualizações concluída.", "Búsqueda de actualizaciones completada."));
+                }
+                ui.add_space(20.0);
                 ui.separator();
                 ui.add_space(12.0);
                 ui.label("Plervo Suite");
                 ui.label(t("Published by Maintech Solutions LLC", "Publicado por Maintech Solutions LLC", "Publicado por Maintech Solutions LLC"));
                 ui.hyperlink_to(t("Source & licenses ↗", "Código e licenças ↗", "Código y licencias ↗"), "https://github.com/alportblu/plervo-pdf");
                 ui.label(RichText::new("Installation engine adapted from ArtCraft Launcher · MIT / Apache-2.0").small().color(MUTED));
+                });
                 return;
             }
             if self.catalog {
-                self.catalog(ui);
+                self.catalog(ui, false);
                 return;
             }
+            if !self.detail {
+                self.catalog(ui, true);
+                return;
+            }
+            egui::ScrollArea::vertical().id_salt("app-details").show(ui, |ui| {
             ui.label(RichText::new(t("YOUR WORKSPACE", "SEU ESPAÇO DE TRABALHO", "TU ESPACIO DE TRABAJO")).size(11.0).color(MUTED));
             ui.add_space(7.0);
             ui.heading(RichText::new(t("Good tools. All yours.", "Boas ferramentas. Suas.", "Buenas herramientas. Tuyas.")).size(34.0));
@@ -489,6 +693,7 @@ impl SuiteApp {
                 if ui.add_enabled(!self.busy, egui::Button::new(t("Check for updates", "Verificar atualizações", "Buscar actualizaciones"))).clicked()
                 {
                     self.start(Action::Refresh, ctx);
+                    self.check_updates(ctx);
                 }
                 ui.label(
                     RichText::new(t(
@@ -500,7 +705,7 @@ impl SuiteApp {
                     .color(MUTED),
                 );
             });
-            ui.with_layout(egui::Layout::bottom_up(egui::Align::LEFT), |ui| {
+            ui.add_space(16.0);
                 ui.label(
                     RichText::new(t(
                         "Early access · Keep backups of important documents.",
@@ -543,12 +748,17 @@ impl eframe::App for SuiteApp {
         if let Ok(s) = serde_json::to_string(&self.language) {
             storage.set_string("language", s);
         }
+        storage.set_string("automatic_updates", self.automatic_updates.to_string());
     }
 }
 
 /// Explicit commands only: no listener, background service, login item or agent registration.
 pub fn headless(args: &[String]) -> Result<(), String> {
     let cmd = args.first().map(String::as_str).unwrap_or_default();
+    if cmd == "--check-updates" && args.len() == 1 {
+        println!("{}", serde_json::to_string_pretty(&updates::check()?).map_err(|e| e.to_string())?);
+        return Ok(());
+    }
     let legacy = matches!(cmd, "--install-pdf" | "--open-pdf" | "--uninstall-pdf");
     let product = args.get(1).map(String::as_str);
     let valid = match cmd {
@@ -557,7 +767,7 @@ pub fn headless(args: &[String]) -> Result<(), String> {
         _ => legacy && args.len() == 1,
     };
     if !valid {
-        return Err("Usage: plervo-suite [--version | --check [PRODUCT] | --status [PRODUCT] | --install PRODUCT | --open PRODUCT | --uninstall PRODUCT]. PRODUCT: pdf, photo, vector, video, develop, motion, publish, write, slides, sheets, cad, audio, canvas. Legacy PDF commands remain supported.".into());
+        return Err("Usage: plervo-suite [--version | --check-updates | --check [PRODUCT] | --status [PRODUCT] | --install PRODUCT | --open PRODUCT | --uninstall PRODUCT]. PRODUCT: pdf, photo, vector, video, develop, motion, publish, write, slides, sheets, cad, audio, canvas. Legacy PDF commands remain supported.".into());
     }
     let app = match product {
         Some(id) => CraftApp::by_id(&format!("plervo-{id}")).ok_or("Unknown Plervo product")?,
@@ -596,10 +806,139 @@ mod tests {
         Harness::builder().with_size(egui::vec2(1000.0, 700.0)).build_ui_state(|ui, app| app.show(ui), app)
     }
     #[test]
+    fn suite_update_is_visible_in_each_language_and_download_requires_a_click() {
+        let url = "https://github.com/alportblu/plervo-pdf/releases/download/v0.2.0/plervo-suite-0.2.0-macos-aarch64.dmg";
+        for (language, label) in [
+            (Language::En, "Download Suite update"),
+            (Language::Pt, "Baixar atualização da Suite"),
+            (Language::Es, "Descargar actualización de Suite"),
+        ] {
+            let mut app = SuiteApp { language, ..Default::default() };
+            app.updates.suite = Some(updates::SuiteUpdate {
+                version: plervo_suite_core::version::parse("0.2.0").unwrap(),
+                downloads: vec![plervo_suite_core::Asset { url: url.into(), ..Default::default() }],
+            });
+            let mut h = Harness::builder().with_size(egui::vec2(760.0, 580.0)).build_ui_state(|ui, app: &mut SuiteApp| app.show(ui), app);
+            h.run_steps(2);
+            assert!(h.output().platform_output.commands.is_empty());
+            if language == Language::En
+                && let Some(path) = std::env::var_os("PLERVO_UPDATE_PREVIEW")
+            {
+                SuiteApp::style(&h.ctx);
+                h.run();
+                h.render().unwrap().save(path).unwrap();
+            }
+            h.get_by_label(label).click();
+            let mut opened = Vec::new();
+            for _ in 0..3 {
+                h.run_steps(1);
+                for command in &h.output().platform_output.commands {
+                    if let egui::OutputCommand::OpenUrl(url) = command {
+                        opened.push(url.url.clone());
+                    }
+                }
+            }
+            assert_eq!(opened, [url]);
+        }
+    }
+    #[test]
+    fn failed_update_checks_keep_installed_apps_and_last_known_update() {
+        let mut app = SuiteApp::default();
+        let installed = Installed {
+            version: plervo_suite_core::version::parse("0.1.0-alpha.5"),
+            source: plervo_suite_core::status::InstallSource::Launcher,
+            location: "/synthetic/pdf".into(),
+            package: None,
+        };
+        app.installed_apps.insert("plervo-pdf".into(), installed);
+        app.updates.suite = Some(updates::SuiteUpdate { version: plervo_suite_core::version::parse("0.2.0").unwrap(), downloads: vec![] });
+        app.checking_updates = true;
+        app.tx.send(Event::Updates(Err("Offline".into()))).unwrap();
+        app.poll();
+        assert!(!app.checking_updates);
+        assert!(app.installed_apps.contains_key("plervo-pdf"));
+        assert!(app.updates.suite.is_some());
+        assert_eq!(app.update_error.as_deref(), Some("Offline"));
+    }
+    #[test]
+    fn my_apps_keeps_all_detected_apps_when_offline() {
+        let mut h = harness();
+        for id in ["pdf", "photo"] {
+            h.state_mut().selected = family::PRODUCTS.iter().find(|p| p.id == id).unwrap();
+            let installed = Installed {
+                version: plervo_suite_core::version::parse("0.1.0-alpha.5"),
+                source: plervo_suite_core::status::InstallSource::Launcher,
+                location: format!("/synthetic/plervo-{id}"),
+                package: None,
+            };
+            h.state().tx.send(Event::Refreshed(Err("Offline".into()), Some(installed))).unwrap();
+            h.state_mut().poll();
+        }
+        h.run();
+        h.get_by_label("My apps").click();
+        h.run();
+        h.get_by_label("Plervo PDF");
+        h.get_by_label("Plervo Photo");
+        assert!(h.query_by_label("Plervo Video").is_none());
+        if let Some(path) = std::env::var_os("PLERVO_LIBRARY_PREVIEW") {
+            SuiteApp::style(&h.ctx);
+            h.run();
+            h.render().unwrap().save(path).unwrap();
+        }
+        h.get_by_label("Manage Plervo PDF").click();
+        h.run();
+        assert_eq!(h.state().selected.id, "pdf");
+        h.get_by_label("Open Plervo PDF");
+    }
+    #[test]
+    fn library_scan_and_removal_keep_each_apps_state_separate() {
+        let mut app = SuiteApp::default();
+        let installed = || Installed {
+            version: plervo_suite_core::version::parse("0.1.0-alpha.5"),
+            source: plervo_suite_core::status::InstallSource::Launcher,
+            location: "/synthetic/app".into(),
+            package: None,
+        };
+        let inventory = SUITE.iter().map(|p| (p.id.to_owned(), installed())).collect();
+        app.tx.send(Event::Scanned(inventory)).unwrap();
+        app.poll();
+        assert_eq!(app.installed_apps.len(), 13);
+        app.tx.send(Event::Finished(Err("busy".into()), None)).unwrap();
+        app.poll();
+        assert_eq!(app.installed_apps.len(), 13);
+        app.tx.send(Event::Finished(Ok(()), None)).unwrap();
+        app.poll();
+        assert!(!app.installed_apps.contains_key("plervo-pdf"));
+        assert!(app.installed_apps.contains_key("plervo-cad"));
+        app.tx.send(Event::Finished(Ok(()), Some(installed()))).unwrap();
+        app.poll();
+        assert_eq!(app.installed_apps.len(), 13);
+        app.tx.send(Event::Scanned(BTreeMap::new())).unwrap();
+        app.poll();
+        assert!(app.installed_apps.is_empty());
+        assert!(app.installed.is_none());
+    }
+    #[test]
+    fn empty_library_offers_the_full_catalog_in_every_language() {
+        for (language, empty, browse, manage) in [
+            (Language::En, "No apps installed yet.", "Browse all apps", "Manage Plervo PDF"),
+            (Language::Pt, "Nenhum app instalado ainda.", "Ver todos os apps", "Gerenciar Plervo PDF"),
+            (Language::Es, "Todavía no hay apps instaladas.", "Ver todas las apps", "Gestionar Plervo PDF"),
+        ] {
+            let app = SuiteApp { language, ..Default::default() };
+            let mut h = Harness::builder().with_size(egui::vec2(760.0, 580.0)).build_ui_state(|ui, app: &mut SuiteApp| app.show(ui), app);
+            h.run();
+            h.get_by_label(empty);
+            h.get_by_label(browse).click();
+            h.run();
+            h.get_by_label(manage);
+        }
+    }
+    #[test]
     fn support_is_visible_on_every_page_and_opens_only_after_click() {
         for (language, label) in [(Language::En, "Support"), (Language::Pt, "Apoiar"), (Language::Es, "Apoyar")] {
-            for (settings, catalog) in [(false, false), (true, false), (false, true)] {
-                let app = SuiteApp { language, settings, catalog, ..Default::default() };
+            for (settings, catalog, detail) in [(false, false, false), (false, false, true), (true, false, false), (false, true, false)] {
+                let app = SuiteApp { language, settings, catalog, detail, ..Default::default() };
                 let mut h = Harness::builder().with_size(egui::vec2(760.0, 580.0)).build_ui_state(|ui, app: &mut SuiteApp| app.show(ui), app);
                 h.run_steps(2);
                 assert!(h.output().platform_output.commands.is_empty());
@@ -624,13 +963,13 @@ mod tests {
         let mut h = harness();
         h.get_by_label("Settings").click();
         h.run();
-        h.get_by_role(egui::accesskit::Role::ComboBox).click();
+        h.get_by_label("Language").click();
         h.run();
         h.get_by_label("Português").click();
         h.run();
         assert_eq!(h.state().language, Language::Pt);
         h.get_by_label("Meus apps");
-        h.get_by_role(egui::accesskit::Role::ComboBox).click();
+        h.get_by_label("Idioma").click();
         h.run();
         h.get_by_label("Español").click();
         h.run();
