@@ -37,8 +37,7 @@ fn main() {
             .with_app_id("com.plervo.suite")
             .with_title("Plervo Suite")
             .with_icon(eframe::icon_data::from_png_bytes(include_bytes!("../../../assets/products/suite/icon-256.png")).unwrap_or_default())
-            // Store desktop screenshots require at least 1366x768 physical pixels.
-            .with_inner_size(if probe_path.is_some() { [1440.0, 900.0] } else { [1000.0, 700.0] })
+            .with_inner_size([1000.0, 700.0])
             .with_min_inner_size([760.0, 580.0]),
         renderer,
         ..Default::default()

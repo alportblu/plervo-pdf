@@ -62,6 +62,25 @@ jobs:
           $Upgrade = @(Get-ChildItem dist/suite-store/*-1.0.1.0-*-validation-only.msix)
           if ($Upgrade.Count -ne 1) { throw 'Expected one upgrade test package.' }
           packaging/windows/test-suite-store.ps1 -Path $Package[0].FullName -UpgradePath $Upgrade[0].FullName
+      - name: Render actual Store UI at listing resolution
+        shell: pwsh
+        run: |
+          # Render the same StoreApp at 2x. The runner's 1024x768 monitor limits
+          # native window captures; do not upscale images or invent app inventory.
+          New-Item -ItemType Directory -Path dist/validation/suite-store/listing | Out-Null
+          Add-Type -AssemblyName System.Drawing
+          foreach ($Capture in @(@('en','apps'), @('en','catalog'), @('pt','settings'), @('es','catalog'))) {
+            $env:PLERVO_SUITE_PROBE_LANGUAGE = $Capture[0]
+            $env:PLERVO_SUITE_PROBE_VIEW = $Capture[1]
+            $Png = "dist/validation/suite-store/listing/$($Capture[0])-$($Capture[1]).png"
+            cargo run --locked -p plervo-suite --example shot --features microsoft-store -- $Png
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+            $Image = [Drawing.Image]::FromFile((Join-Path $PWD $Png))
+            try {
+              if ($Image.Width -lt 1366 -or $Image.Height -lt 768) { throw "Store listing image is too small: $Png" }
+            } finally { $Image.Dispose() }
+          }
+          Remove-Item Env:PLERVO_SUITE_PROBE_LANGUAGE, Env:PLERVO_SUITE_PROBE_VIEW
       - name: Package the reserved Partner Center identity
         shell: pwsh
         run: |

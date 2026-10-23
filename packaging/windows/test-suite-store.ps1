@@ -73,11 +73,6 @@ try {
     $Png = Join-Path $Evidence "$Name.png"
     [void] (Invoke-Suite @('--native-smoke-test', $Png) $Name)
     if (-not (Test-Path $Png) -or (Get-Item $Png).Length -lt 1000) { throw "Missing native screenshot: $Name" }
-    Add-Type -AssemblyName System.Drawing
-    $Image = [Drawing.Image]::FromFile($Png)
-    try {
-      if ($Image.Width -lt 1366 -or $Image.Height -lt 768) { throw "Store screenshot is too small: $Name ($($Image.Width)x$($Image.Height))" }
-    } finally { $Image.Dispose() }
   }
   $Settings = Join-Path $env:LOCALAPPDATA "Packages\$($Installed.PackageFamilyName)\LocalState\preserve-setting.txt"
   New-Item -ItemType Directory -Force -Path (Split-Path $Settings) | Out-Null
