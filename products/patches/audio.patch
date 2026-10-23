@@ -55,7 +55,7 @@ index 084f424..8cf23d4 100644
 +
 +| `assets/app-icon/README.md` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | bc72ba46054b6e875abc4424dbddb9f2e5999cd8f27052a3c0ededc04802a827 |
 diff --git a/Cargo.lock b/Cargo.lock
-index b8eb765..320b467 100644
+index b8eb765..073fbd6 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -2858,6 +2858,35 @@ version = "0.2.3"
@@ -64,7 +64,7 @@ index b8eb765..320b467 100644
  
 +[[package]]
 +name = "plervo-audio"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
 +dependencies = [
 + "eframe",
 + "egui",
@@ -82,7 +82,7 @@ index b8eb765..320b467 100644
 +
 +[[package]]
 +name = "plervo-audio-cli"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
 +dependencies = [
 + "serde_json",
 + "soundcraft-audio-io",
@@ -119,7 +119,7 @@ index b8eb765..320b467 100644
  [[package]]
  name = "soundcraft-au-host"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "log",
   "serde",
@@ -128,7 +128,7 @@ index b8eb765..320b467 100644
  [[package]]
  name = "soundcraft-audio-io"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "log",
   "proptest",
@@ -137,7 +137,7 @@ index b8eb765..320b467 100644
  [[package]]
  name = "soundcraft-automation"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "log",
   "serde_json",
@@ -146,7 +146,7 @@ index b8eb765..320b467 100644
  [[package]]
  name = "soundcraft-clap-host"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "clap-sys",
   "libloading",
@@ -168,7 +168,7 @@ index b8eb765..320b467 100644
  [[package]]
  name = "soundcraft-dsp"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "log",
   "proptest",
@@ -177,7 +177,7 @@ index b8eb765..320b467 100644
  [[package]]
  name = "soundcraft-engine"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "log",
   "proptest",
@@ -186,7 +186,7 @@ index b8eb765..320b467 100644
  [[package]]
  name = "soundcraft-midi"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "proptest",
   "serde",
@@ -195,7 +195,7 @@ index b8eb765..320b467 100644
  [[package]]
  name = "soundcraft-mix"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "log",
   "rayon",
@@ -204,7 +204,7 @@ index b8eb765..320b467 100644
  [[package]]
  name = "soundcraft-model"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "proptest",
   "serde",
@@ -213,7 +213,7 @@ index b8eb765..320b467 100644
  [[package]]
  name = "soundcraft-playback"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "cpal",
   "log",
@@ -222,7 +222,7 @@ index b8eb765..320b467 100644
  [[package]]
  name = "soundcraft-time"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "proptest",
   "serde",
@@ -231,7 +231,7 @@ index b8eb765..320b467 100644
  [[package]]
  name = "soundcraft-ui-egui"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "craft-ui",
   "egui",
@@ -240,7 +240,7 @@ index b8eb765..320b467 100644
  [[package]]
  name = "soundcraft-video"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "image",
   "proptest",
@@ -249,7 +249,7 @@ index b8eb765..320b467 100644
  [[package]]
  name = "soundcraft-vst3-host"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "libloading",
   "log",
@@ -258,7 +258,7 @@ index b8eb765..320b467 100644
  [[package]]
  name = "soundcraft-web"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "eframe",
   "egui",
@@ -267,7 +267,7 @@ index b8eb765..320b467 100644
  [[package]]
  name = "xtask"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "serde_json",
  ]
@@ -284,7 +284,7 @@ index b8eb765..320b467 100644
   "crc32fast",
   "indexmap",
 diff --git a/Cargo.toml b/Cargo.toml
-index 362e6a9..23da0f4 100644
+index 362e6a9..1a0eb46 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -292,7 +292,7 @@ index 362e6a9..23da0f4 100644
  
  [workspace.package]
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.90"
@@ -2506,15 +2506,16 @@ index 9280d92..df9dbd9 100644
  | ARA 2 (pitch/time editors in the timeline) | ✅ | ❌ | Menu leaves Track/Clip/Window ▸ ARA still missing |
  | Crash isolation | in-process (DSP on HDX) | in-process | Out-of-process hosting would beat Pro Tools |
 diff --git a/packaging/env.sh b/packaging/env.sh
-index cb4bcdb..d2d0078 100644
+index cb4bcdb..88c798d 100644
 --- a/packaging/env.sh
 +++ b/packaging/env.sh
-@@ -47,9 +47,16 @@ warn() {
+@@ -47,9 +47,17 @@ warn() {
  # Copy licence and readme files that exist into a package directory.
  copy_docs() {
    local dest="$1" f
 -  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE NOTICE ATTRIBUTION.md COPYRIGHT; do
-+  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md; do
++  python3 "$ROOT/packaging/licenses/verify.py" "$ROOT" || return 1
++  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md THIRD_PARTY_NOTICES.txt; do
      if [ -f "$ROOT/$f" ]; then cp "$ROOT/$f" "$dest/"; fi
    done
 +  # Embedded resources retain their original licence notices.
@@ -2669,93 +2670,6 @@ index 4a9165e..0000000
 -Categories=AudioVideo;Audio;Midi;Mixer;Sequencer;Recorder;
 -MimeType=application/x-soundcraft-session;audio/x-wav;audio/wav;audio/vnd.wave;audio/x-aiff;audio/aiff;audio/flac;audio/x-flac;audio/mpeg;audio/midi;audio/x-midi;
 -Keywords=daw;audio;mixer;recording;multitrack;midi;editor;music;
-diff --git a/packaging/linux/ai.storyteller.soundcraft.metainfo.xml.in b/packaging/linux/ai.storyteller.soundcraft.metainfo.xml.in
-deleted file mode 100644
-index 9a4fdb5..0000000
---- a/packaging/linux/ai.storyteller.soundcraft.metainfo.xml.in
-+++ /dev/null
-@@ -1,63 +0,0 @@
--<?xml version="1.0" encoding="UTF-8"?>
--<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
--     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
--<component type="desktop-application">
--  <id>ai.storyteller.soundcraft</id>
--  <metadata_license>CC0-1.0</metadata_license>
--  <project_license>MIT OR Apache-2.0</project_license>
--  <name>SoundCraft</name>
--  <summary>Record, edit and mix audio and MIDI</summary>
--  <developer id="ai.storyteller">
--    <name>Learning Machines LLC</name>
--  </developer>
--  <description>
--    <p>
--      SoundCraft is an open-source, native digital audio workstation. Record, edit and mix
--      multitrack audio and MIDI in Edit and Mix windows that work the way studio engineers expect.
--    </p>
--    <ul>
--      <li>Non-destructive clip editing with fades, playlists, grids and markers</li>
--      <li>A mixer with inserts, sends, buses, automation and metering</li>
--      <li>Built-in EQ, dynamics, reverb, delay, modulation and instruments</li>
--      <li>Imports WAV, AIFF, FLAC, MP3 and MIDI; bounces to disk</li>
--      <li>A headless command line and an MCP server for scripting and agents</li>
--    </ul>
--  </description>
--  <launchable type="desktop-id">ai.storyteller.soundcraft.desktop</launchable>
--  <icon type="stock">ai.storyteller.soundcraft</icon>
--  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
--  <url type="homepage">https://getartcraft.com/apps/soundcraft</url>
--  <url type="bugtracker">https://github.com/storytold/soundcraft/issues</url>
--  <url type="help">https://github.com/storytold/soundcraft</url>
--  <url type="contact">https://discord.gg/artcraft</url>
--  <categories>
--    <category>AudioVideo</category>
--    <category>Audio</category>
--  </categories>
--  <keywords>
--    <keyword>daw</keyword>
--    <keyword>audio</keyword>
--    <keyword>mixer</keyword>
--    <keyword>recording</keyword>
--    <keyword>midi</keyword>
--  </keywords>
--  <branding>
--    <color type="primary" scheme_preference="light">#8fd9e6</color>
--    <color type="primary" scheme_preference="dark">#0b7385</color>
--  </branding>
--  <requires>
--    <display_length compare="ge">760</display_length>
--  </requires>
--  <supports>
--    <control>keyboard</control>
--    <control>pointing</control>
--  </supports>
--  <provides>
--    <binary>soundcraft</binary>
--    <mediatype>application/x-soundcraft-session</mediatype>
--  </provides>
--  <content_rating type="oars-1.1"/>
--  <releases>
--    <release version="@VERSION@" date="@DATE@"/>
--  </releases>
--</component>
-diff --git a/packaging/linux/ai.storyteller.soundcraft.mime.xml b/packaging/linux/ai.storyteller.soundcraft.mime.xml
-deleted file mode 100644
-index 901cd3e..0000000
---- a/packaging/linux/ai.storyteller.soundcraft.mime.xml
-+++ /dev/null
-@@ -1,12 +0,0 @@
--<?xml version="1.0" encoding="UTF-8"?>
--<!-- shared-mime-info definition for SoundCraft's session format. Audio and MIDI types come from
--     the system database. Installed to /usr/share/mime/packages/ (update-mime-database runs on
--     install). -->
--<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
--  <mime-type type="application/x-soundcraft-session">
--    <comment>SoundCraft session</comment>
--    <sub-class-of type="application/json"/>
--    <icon name="ai.storyteller.soundcraft"/>
--    <glob pattern="*.scraft"/>
--  </mime-type>
--</mime-info>
 diff --git a/packaging/linux/com.plervo.audio.desktop b/packaging/linux/com.plervo.audio.desktop
 new file mode 100644
 index 0000000..8a5ed09
@@ -2776,93 +2690,90 @@ index 0000000..8a5ed09
 +Categories=AudioVideo;Audio;Midi;Mixer;Sequencer;Recorder;
 +MimeType=application/x-plervo-audio-session;audio/x-wav;audio/wav;audio/vnd.wave;audio/x-aiff;audio/aiff;audio/flac;audio/x-flac;audio/mpeg;audio/midi;audio/x-midi;
 +Keywords=daw;audio;mixer;recording;multitrack;midi;editor;music;
-diff --git a/packaging/linux/com.plervo.audio.metainfo.xml.in b/packaging/linux/com.plervo.audio.metainfo.xml.in
-new file mode 100644
-index 0000000..fbdeb58
---- /dev/null
+diff --git a/packaging/linux/ai.storyteller.soundcraft.metainfo.xml.in b/packaging/linux/com.plervo.audio.metainfo.xml.in
+similarity index 73%
+rename from packaging/linux/ai.storyteller.soundcraft.metainfo.xml.in
+rename to packaging/linux/com.plervo.audio.metainfo.xml.in
+index 9a4fdb5..fbdeb58 100644
+--- a/packaging/linux/ai.storyteller.soundcraft.metainfo.xml.in
 +++ b/packaging/linux/com.plervo.audio.metainfo.xml.in
-@@ -0,0 +1,63 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
-+     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
-+<component type="desktop-application">
+@@ -2,17 +2,17 @@
+ <!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
+      manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
+ <component type="desktop-application">
+-  <id>ai.storyteller.soundcraft</id>
 +  <id>com.plervo.audio</id>
-+  <metadata_license>CC0-1.0</metadata_license>
-+  <project_license>MIT OR Apache-2.0</project_license>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_license>MIT OR Apache-2.0</project_license>
+-  <name>SoundCraft</name>
 +  <name>Plervo Audio</name>
-+  <summary>Record, edit and mix audio and MIDI</summary>
-+  <developer id="ai.storyteller">
+   <summary>Record, edit and mix audio and MIDI</summary>
+   <developer id="ai.storyteller">
+-    <name>Learning Machines LLC</name>
 +    <name>Maintech Solutions LLC</name>
-+  </developer>
-+  <description>
-+    <p>
+   </developer>
+   <description>
+     <p>
+-      SoundCraft is an open-source, native digital audio workstation. Record, edit and mix
 +      Plervo Audio is an open-source, native digital audio workstation. Record, edit and mix
-+      multitrack audio and MIDI in Edit and Mix windows that work the way studio engineers expect.
-+    </p>
-+    <ul>
-+      <li>Non-destructive clip editing with fades, playlists, grids and markers</li>
-+      <li>A mixer with inserts, sends, buses, automation and metering</li>
-+      <li>Built-in EQ, dynamics, reverb, delay, modulation and instruments</li>
-+      <li>Imports WAV, AIFF, FLAC, MP3 and MIDI; bounces to disk</li>
-+      <li>A headless command line and an MCP server for scripting and agents</li>
-+    </ul>
-+  </description>
+       multitrack audio and MIDI in Edit and Mix windows that work the way studio engineers expect.
+     </p>
+     <ul>
+@@ -23,13 +23,13 @@
+       <li>A headless command line and an MCP server for scripting and agents</li>
+     </ul>
+   </description>
+-  <launchable type="desktop-id">ai.storyteller.soundcraft.desktop</launchable>
+-  <icon type="stock">ai.storyteller.soundcraft</icon>
 +  <launchable type="desktop-id">com.plervo.audio.desktop</launchable>
 +  <icon type="stock">com.plervo.audio</icon>
-+  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
+   <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
+-  <url type="homepage">https://getartcraft.com/apps/soundcraft</url>
+-  <url type="bugtracker">https://github.com/storytold/soundcraft/issues</url>
+-  <url type="help">https://github.com/storytold/soundcraft</url>
+-  <url type="contact">https://discord.gg/artcraft</url>
 +  <url type="homepage">https://plervo.com/</url>
 +  <url type="bugtracker">https://github.com/alportblu/plervo-pdf/issues</url>
 +  <url type="help">https://github.com/alportblu/plervo-pdf</url>
 +  <url type="contact">https://buymeacoffee.com/alport</url>
-+  <categories>
-+    <category>AudioVideo</category>
-+    <category>Audio</category>
-+  </categories>
-+  <keywords>
-+    <keyword>daw</keyword>
-+    <keyword>audio</keyword>
-+    <keyword>mixer</keyword>
-+    <keyword>recording</keyword>
-+    <keyword>midi</keyword>
-+  </keywords>
-+  <branding>
-+    <color type="primary" scheme_preference="light">#8fd9e6</color>
-+    <color type="primary" scheme_preference="dark">#0b7385</color>
-+  </branding>
-+  <requires>
-+    <display_length compare="ge">760</display_length>
-+  </requires>
-+  <supports>
-+    <control>keyboard</control>
-+    <control>pointing</control>
-+  </supports>
-+  <provides>
+   <categories>
+     <category>AudioVideo</category>
+     <category>Audio</category>
+@@ -53,8 +53,8 @@
+     <control>pointing</control>
+   </supports>
+   <provides>
+-    <binary>soundcraft</binary>
+-    <mediatype>application/x-soundcraft-session</mediatype>
 +    <binary>plervo-audio</binary>
 +    <mediatype>application/x-plervo-audio-session</mediatype>
-+  </provides>
-+  <content_rating type="oars-1.1"/>
-+  <releases>
-+    <release version="@VERSION@" date="@DATE@"/>
-+  </releases>
-+</component>
-diff --git a/packaging/linux/com.plervo.audio.mime.xml b/packaging/linux/com.plervo.audio.mime.xml
-new file mode 100644
-index 0000000..64a672c
---- /dev/null
+   </provides>
+   <content_rating type="oars-1.1"/>
+   <releases>
+diff --git a/packaging/linux/ai.storyteller.soundcraft.mime.xml b/packaging/linux/com.plervo.audio.mime.xml
+similarity index 58%
+rename from packaging/linux/ai.storyteller.soundcraft.mime.xml
+rename to packaging/linux/com.plervo.audio.mime.xml
+index 901cd3e..64a672c 100644
+--- a/packaging/linux/ai.storyteller.soundcraft.mime.xml
 +++ b/packaging/linux/com.plervo.audio.mime.xml
-@@ -0,0 +1,12 @@
-+<?xml version="1.0" encoding="UTF-8"?>
+@@ -1,12 +1,12 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<!-- shared-mime-info definition for SoundCraft's session format. Audio and MIDI types come from
 +<!-- shared-mime-info definition for Plervo Audio's session format. Audio and MIDI types come from
-+     the system database. Installed to /usr/share/mime/packages/ (update-mime-database runs on
-+     install). -->
-+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+      the system database. Installed to /usr/share/mime/packages/ (update-mime-database runs on
+      install). -->
+ <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+-  <mime-type type="application/x-soundcraft-session">
+-    <comment>SoundCraft session</comment>
 +  <mime-type type="application/x-plervo-audio-session">
 +    <comment>Plervo Audio session</comment>
-+    <sub-class-of type="application/json"/>
+     <sub-class-of type="application/json"/>
+-    <icon name="ai.storyteller.soundcraft"/>
 +    <icon name="com.plervo.audio"/>
-+    <glob pattern="*.scraft"/>
-+  </mime-type>
-+</mime-info>
+     <glob pattern="*.scraft"/>
+   </mime-type>
+ </mime-info>
 diff --git a/packaging/linux/flatpak-bundle.sh b/packaging/linux/flatpak-bundle.sh
 index 1b40026..27365e2 100755
 --- a/packaging/linux/flatpak-bundle.sh
@@ -2929,366 +2840,157 @@ index 1b40026..27365e2 100755
    flatpak run --command=sh "$APP_ID" -c 'ls /app/share/applications /app/share/metainfo /app/share/mime/packages /app/share/icons/hicolor/scalable/apps'
  fi
  echo "==> done"
-diff --git a/packaging/linux/flatpak/ai.storyteller.soundcraft.bundle.yml b/packaging/linux/flatpak/ai.storyteller.soundcraft.bundle.yml
-deleted file mode 100644
-index ff502f0..0000000
+diff --git a/packaging/linux/flatpak/ai.storyteller.soundcraft.bundle.yml b/packaging/linux/flatpak/com.plervo.audio.bundle.yml
+similarity index 75%
+rename from packaging/linux/flatpak/ai.storyteller.soundcraft.bundle.yml
+rename to packaging/linux/flatpak/com.plervo.audio.bundle.yml
+index ff502f0..e5499bc 100644
 --- a/packaging/linux/flatpak/ai.storyteller.soundcraft.bundle.yml
-+++ /dev/null
-@@ -1,73 +0,0 @@
--# Flatpak manifest for the single-file bundle attached to every GitHub release
++++ b/packaging/linux/flatpak/com.plervo.audio.bundle.yml
+@@ -1,7 +1,7 @@
+ # Flatpak manifest for the single-file bundle attached to every GitHub release
 -# (soundcraft-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
--#
++# (plervo-audio-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
+ #
 -# It repackages the release's own Linux tarball (soundcraft-<version>-linux-<arch>.tar.gz,
--# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
--# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
--# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
--# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
--# Wayland, xkbcommon, Vulkan and libasound at runtime; the freedesktop runtime has all of them
--# (plus alsa-lib's PulseAudio plugin), and the GPU driver comes from its
--# org.freedesktop.Platform.GL extension.
--#
++# It repackages the release's own Linux tarball (plervo-audio-<version>-linux-<arch>.tar.gz,
+ # built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
+ # network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
+ # and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
+@@ -10,13 +10,13 @@
+ # (plus alsa-lib's PulseAudio plugin), and the GPU driver comes from its
+ # org.freedesktop.Platform.GL extension.
+ #
 -# ai.storyteller.soundcraft.yml (same directory) is the from-source manifest for Flathub. Keep
--# runtime-version, finish-args and add-extensions identical in both (packaging-lint checks this).
++# com.plervo.audio.yml (same directory) is the from-source manifest for Flathub. Keep
+ # runtime-version, finish-args and add-extensions identical in both (packaging-lint checks this).
 -id: ai.storyteller.soundcraft
--runtime: org.freedesktop.Platform
--runtime-version: '25.08'
--sdk: org.freedesktop.Sdk
++id: com.plervo.audio
+ runtime: org.freedesktop.Platform
+ runtime-version: '25.08'
+ sdk: org.freedesktop.Sdk
 -command: soundcraft
--finish-args:
--  # Display: Wayland first; X11 only when no Wayland compositor is running.
--  - --socket=wayland
--  - --socket=fallback-x11
--  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
--  - --share=ipc
--  # GPU access for the wgpu UI (Vulkan, or GL as a fallback).
--  - --device=dri
--  # Playback and recording. cpal talks to ALSA; the runtime's alsa-lib routes ALSA through its
--  # PulseAudio plugin to this socket, which PipeWire's pulse server provides on modern desktops
--  # (and PulseAudio itself on older ones). Deliberately not granted: --device=all (raw /dev/snd
--  # for direct ALSA hardware access, which would bypass the sound server) and JACK, which
++command: plervo-audio
+ finish-args:
+   # Display: Wayland first; X11 only when no Wayland compositor is running.
+   - --socket=wayland
+@@ -29,7 +29,7 @@ finish-args:
+   # PulseAudio plugin to this socket, which PipeWire's pulse server provides on modern desktops
+   # (and PulseAudio itself on older ones). Deliberately not granted: --device=all (raw /dev/snd
+   # for direct ALSA hardware access, which would bypass the sound server) and JACK, which
 -  # SoundCraft doesn't use (cpal's jack feature is off; there is no live MIDI I/O either).
--  - --socket=pulseaudio
--  # Open/Save dialogs use the file-chooser portal (rfd) and drag-and-drop the document portal,
--  # so broad filesystem access isn't needed. Music is granted for sessions and their
--  # "Audio Files" folders opened by path from the command line.
--  - --filesystem=xdg-music
--  # VST3 and CLAP plugin hosts. The per-user plugin folders the hosts scan, read-only.
--  # System folders (/usr/lib/vst3, /usr/lib/clap) aren't reachable from the sandbox, and plugins
--  # there are linked against the host's libraries rather than the runtime's; sandboxed plugins
--  # come from Flatpak extensions instead (add-extensions below), found through these paths.
--  - --filesystem=~/.vst3:ro
--  - --filesystem=~/.clap:ro
--  - --env=VST3_PATH=/app/extensions/Plugins/vst3
--  - --env=CLAP_PATH=/app/extensions/Plugins/clap
--# Flathub's shared audio-plugin extension point (org.freedesktop.LinuxAudio.Plugins.*, the one
--# Ardour, Bitwig and friends use). Optional: nothing is downloaded unless the user installs a
--# plugin extension; merge-dirs lets every installed one appear under .../Plugins/{vst3,clap}.
--add-extensions:
--  org.freedesktop.LinuxAudio.Plugins:
--    directory: extensions/Plugins
--    version: '25.08'
--    add-ld-path: lib
--    merge-dirs: vst3;clap
--    subdirectories: true
--    no-autodownload: true
--modules:
++  # Plervo Audio doesn't use (cpal's jack feature is off; there is no live MIDI I/O either).
+   - --socket=pulseaudio
+   # Open/Save dialogs use the file-chooser portal (rfd) and drag-and-drop the document portal,
+   # so broad filesystem access isn't needed. Music is granted for sessions and their
+@@ -55,17 +55,17 @@ add-extensions:
+     subdirectories: true
+     no-autodownload: true
+ modules:
 -  - name: soundcraft
--    buildsystem: simple
--    build-commands:
++  - name: plervo-audio
+     buildsystem: simple
+     build-commands:
 -      - install -Dm755 bin/soundcraft /app/bin/soundcraft
 -      - install -Dm755 bin/soundcraft-cli /app/bin/soundcraft-cli
 -      - install -Dm644 share/applications/ai.storyteller.soundcraft.desktop /app/share/applications/ai.storyteller.soundcraft.desktop
--      # Session files; the runtime's shared-mime-info already knows WAV, AIFF, FLAC, MP3 and MIDI.
++      - install -Dm755 bin/plervo-audio /app/bin/plervo-audio
++      - install -Dm755 bin/plervo-audio-cli /app/bin/plervo-audio-cli
++      - install -Dm644 share/applications/com.plervo.audio.desktop /app/share/applications/com.plervo.audio.desktop
+       # Session files; the runtime's shared-mime-info already knows WAV, AIFF, FLAC, MP3 and MIDI.
 -      - install -Dm644 share/mime/packages/ai.storyteller.soundcraft.xml /app/share/mime/packages/ai.storyteller.soundcraft.xml
--      # Already has the release's version and date substituted by package.sh.
++      - install -Dm644 share/mime/packages/com.plervo.audio.xml /app/share/mime/packages/com.plervo.audio.xml
+       # Already has the release's version and date substituted by package.sh.
 -      - install -Dm644 share/metainfo/ai.storyteller.soundcraft.metainfo.xml /app/share/metainfo/ai.storyteller.soundcraft.metainfo.xml
 -      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/soundcraft /app/share/doc/
--      # Mount point for the plugin extensions (add-extensions).
--      - install -d /app/extensions/Plugins
--    sources:
--      - type: dir
--        path: stage
-diff --git a/packaging/linux/flatpak/ai.storyteller.soundcraft.yml b/packaging/linux/flatpak/ai.storyteller.soundcraft.yml
-deleted file mode 100644
-index bec9ffb..0000000
++      - install -Dm644 share/metainfo/com.plervo.audio.metainfo.xml /app/share/metainfo/com.plervo.audio.metainfo.xml
++      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/plervo-audio /app/share/doc/
+       # Mount point for the plugin extensions (add-extensions).
+       - install -d /app/extensions/Plugins
+     sources:
+diff --git a/packaging/linux/flatpak/ai.storyteller.soundcraft.yml b/packaging/linux/flatpak/com.plervo.audio.yml
+similarity index 78%
+rename from packaging/linux/flatpak/ai.storyteller.soundcraft.yml
+rename to packaging/linux/flatpak/com.plervo.audio.yml
+index bec9ffb..1db5143 100644
 --- a/packaging/linux/flatpak/ai.storyteller.soundcraft.yml
-+++ /dev/null
-@@ -1,95 +0,0 @@
++++ b/packaging/linux/flatpak/com.plervo.audio.yml
+@@ -1,27 +1,27 @@
 -# Flatpak manifest for SoundCraft, ready for a Flathub submission.
--#
--# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
--#
--#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
--#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
++# Flatpak manifest for Plervo Audio, ready for a Flathub submission.
+ #
+ # Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
+ #
+ #   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
+ #   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
 -#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.soundcraft.yml
 -#   flatpak run ai.storyteller.soundcraft
--#
--# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
++#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/com.plervo.audio.yml
++#   flatpak run com.plervo.audio
+ #
+ # For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
 -# ai.storyteller.soundcraft.bundle.yml repackages the release tarball into the .flatpak attached
--# to each GitHub release; keep runtime-version, finish-args and add-extensions identical in both
--# (packaging-lint checks this).
--#
--# Audio: cpal talks to ALSA. alsa-lib (headers in the Sdk, the library in the Platform) and its
--# PulseAudio plugin ship with the freedesktop runtime, which routes ALSA through the PulseAudio
--# socket (PipeWire's pulse server on modern desktops), so no extra module is needed.
++# com.plervo.audio.bundle.yml repackages the release tarball into the .flatpak attached
+ # to each GitHub release; keep runtime-version, finish-args and add-extensions identical in both
+ # (packaging-lint checks this).
+ #
+ # Audio: cpal talks to ALSA. alsa-lib (headers in the Sdk, the library in the Platform) and its
+ # PulseAudio plugin ship with the freedesktop runtime, which routes ALSA through the PulseAudio
+ # socket (PipeWire's pulse server on modern desktops), so no extra module is needed.
 -id: ai.storyteller.soundcraft
--runtime: org.freedesktop.Platform
--runtime-version: '25.08'
--sdk: org.freedesktop.Sdk
--sdk-extensions:
--  - org.freedesktop.Sdk.Extension.rust-stable
++id: com.plervo.audio
+ runtime: org.freedesktop.Platform
+ runtime-version: '25.08'
+ sdk: org.freedesktop.Sdk
+ sdk-extensions:
+   - org.freedesktop.Sdk.Extension.rust-stable
 -command: soundcraft
--finish-args:
--  # Display: Wayland first; X11 only when no Wayland compositor is running.
--  - --socket=wayland
--  - --socket=fallback-x11
--  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
--  - --share=ipc
--  # GPU access for the wgpu UI (Vulkan, or GL as a fallback).
--  - --device=dri
--  # Playback and recording. cpal talks to ALSA; the runtime's alsa-lib routes ALSA through its
--  # PulseAudio plugin to this socket, which PipeWire's pulse server provides on modern desktops
--  # (and PulseAudio itself on older ones). Deliberately not granted: --device=all (raw /dev/snd
--  # for direct ALSA hardware access, which would bypass the sound server) and JACK, which
++command: plervo-audio
+ finish-args:
+   # Display: Wayland first; X11 only when no Wayland compositor is running.
+   - --socket=wayland
+@@ -34,7 +34,7 @@ finish-args:
+   # PulseAudio plugin to this socket, which PipeWire's pulse server provides on modern desktops
+   # (and PulseAudio itself on older ones). Deliberately not granted: --device=all (raw /dev/snd
+   # for direct ALSA hardware access, which would bypass the sound server) and JACK, which
 -  # SoundCraft doesn't use (cpal's jack feature is off; there is no live MIDI I/O either).
--  - --socket=pulseaudio
--  # Open/Save dialogs use the file-chooser portal (rfd) and drag-and-drop the document portal,
--  # so broad filesystem access isn't needed. Music is granted for sessions and their
--  # "Audio Files" folders opened by path from the command line.
--  - --filesystem=xdg-music
--  # VST3 and CLAP plugin hosts. The per-user plugin folders the hosts scan, read-only.
--  # System folders (/usr/lib/vst3, /usr/lib/clap) aren't reachable from the sandbox, and plugins
--  # there are linked against the host's libraries rather than the runtime's; sandboxed plugins
--  # come from Flatpak extensions instead (add-extensions below), found through these paths.
--  - --filesystem=~/.vst3:ro
--  - --filesystem=~/.clap:ro
--  - --env=VST3_PATH=/app/extensions/Plugins/vst3
--  - --env=CLAP_PATH=/app/extensions/Plugins/clap
--# Flathub's shared audio-plugin extension point (org.freedesktop.LinuxAudio.Plugins.*, the one
--# Ardour, Bitwig and friends use). Optional: nothing is downloaded unless the user installs a
--# plugin extension; merge-dirs lets every installed one appear under .../Plugins/{vst3,clap}.
--add-extensions:
--  org.freedesktop.LinuxAudio.Plugins:
--    directory: extensions/Plugins
--    version: '25.08'
--    add-ld-path: lib
--    merge-dirs: vst3;clap
--    subdirectories: true
--    no-autodownload: true
--build-options:
--  append-path: /usr/lib/sdk/rust-stable/bin
--modules:
++  # Plervo Audio doesn't use (cpal's jack feature is off; there is no live MIDI I/O either).
+   - --socket=pulseaudio
+   # Open/Save dialogs use the file-chooser portal (rfd) and drag-and-drop the document portal,
+   # so broad filesystem access isn't needed. Music is granted for sessions and their
+@@ -62,24 +62,24 @@ add-extensions:
+ build-options:
+   append-path: /usr/lib/sdk/rust-stable/bin
+ modules:
 -  - name: soundcraft
--    buildsystem: simple
--    build-options:
--      env:
++  - name: plervo-audio
+     buildsystem: simple
+     build-options:
+       env:
 -        CARGO_HOME: /run/build/soundcraft/cargo
--        CARGO_NET_OFFLINE: 'true'
--    build-commands:
++        CARGO_HOME: /run/build/plervo-audio/cargo
+         CARGO_NET_OFFLINE: 'true'
+     build-commands:
 -      - cargo --offline build --release --locked -p soundcraft -p soundcraft-cli
 -      - install -Dm755 target/release/soundcraft /app/bin/soundcraft
 -      - install -Dm755 target/release/soundcraft-cli /app/bin/soundcraft-cli
 -      - install -Dm644 packaging/linux/ai.storyteller.soundcraft.desktop /app/share/applications/ai.storyteller.soundcraft.desktop
 -      - install -Dm644 packaging/linux/ai.storyteller.soundcraft.mime.xml /app/share/mime/packages/ai.storyteller.soundcraft.xml
--      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
--      - >-
--        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
--        install -d /app/share/metainfo;
--        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
--        packaging/linux/ai.storyteller.soundcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.soundcraft.metainfo.xml
--      # Mount point for the plugin extensions (add-extensions).
--      - install -d /app/extensions/Plugins
--    sources:
--      - type: dir
--        path: ../../..
--        skip:
--          - target
--          - dist
--          - corpus
--          - plan
--          - build-flatpak
--          - .flatpak-builder
--      - cargo-sources.json
-diff --git a/packaging/linux/flatpak/com.plervo.audio.bundle.yml b/packaging/linux/flatpak/com.plervo.audio.bundle.yml
-new file mode 100644
-index 0000000..e5499bc
---- /dev/null
-+++ b/packaging/linux/flatpak/com.plervo.audio.bundle.yml
-@@ -0,0 +1,73 @@
-+# Flatpak manifest for the single-file bundle attached to every GitHub release
-+# (plervo-audio-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
-+#
-+# It repackages the release's own Linux tarball (plervo-audio-<version>-linux-<arch>.tar.gz,
-+# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
-+# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
-+# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
-+# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
-+# Wayland, xkbcommon, Vulkan and libasound at runtime; the freedesktop runtime has all of them
-+# (plus alsa-lib's PulseAudio plugin), and the GPU driver comes from its
-+# org.freedesktop.Platform.GL extension.
-+#
-+# com.plervo.audio.yml (same directory) is the from-source manifest for Flathub. Keep
-+# runtime-version, finish-args and add-extensions identical in both (packaging-lint checks this).
-+id: com.plervo.audio
-+runtime: org.freedesktop.Platform
-+runtime-version: '25.08'
-+sdk: org.freedesktop.Sdk
-+command: plervo-audio
-+finish-args:
-+  # Display: Wayland first; X11 only when no Wayland compositor is running.
-+  - --socket=wayland
-+  - --socket=fallback-x11
-+  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
-+  - --share=ipc
-+  # GPU access for the wgpu UI (Vulkan, or GL as a fallback).
-+  - --device=dri
-+  # Playback and recording. cpal talks to ALSA; the runtime's alsa-lib routes ALSA through its
-+  # PulseAudio plugin to this socket, which PipeWire's pulse server provides on modern desktops
-+  # (and PulseAudio itself on older ones). Deliberately not granted: --device=all (raw /dev/snd
-+  # for direct ALSA hardware access, which would bypass the sound server) and JACK, which
-+  # Plervo Audio doesn't use (cpal's jack feature is off; there is no live MIDI I/O either).
-+  - --socket=pulseaudio
-+  # Open/Save dialogs use the file-chooser portal (rfd) and drag-and-drop the document portal,
-+  # so broad filesystem access isn't needed. Music is granted for sessions and their
-+  # "Audio Files" folders opened by path from the command line.
-+  - --filesystem=xdg-music
-+  # VST3 and CLAP plugin hosts. The per-user plugin folders the hosts scan, read-only.
-+  # System folders (/usr/lib/vst3, /usr/lib/clap) aren't reachable from the sandbox, and plugins
-+  # there are linked against the host's libraries rather than the runtime's; sandboxed plugins
-+  # come from Flatpak extensions instead (add-extensions below), found through these paths.
-+  - --filesystem=~/.vst3:ro
-+  - --filesystem=~/.clap:ro
-+  - --env=VST3_PATH=/app/extensions/Plugins/vst3
-+  - --env=CLAP_PATH=/app/extensions/Plugins/clap
-+# Flathub's shared audio-plugin extension point (org.freedesktop.LinuxAudio.Plugins.*, the one
-+# Ardour, Bitwig and friends use). Optional: nothing is downloaded unless the user installs a
-+# plugin extension; merge-dirs lets every installed one appear under .../Plugins/{vst3,clap}.
-+add-extensions:
-+  org.freedesktop.LinuxAudio.Plugins:
-+    directory: extensions/Plugins
-+    version: '25.08'
-+    add-ld-path: lib
-+    merge-dirs: vst3;clap
-+    subdirectories: true
-+    no-autodownload: true
-+modules:
-+  - name: plervo-audio
-+    buildsystem: simple
-+    build-commands:
-+      - install -Dm755 bin/plervo-audio /app/bin/plervo-audio
-+      - install -Dm755 bin/plervo-audio-cli /app/bin/plervo-audio-cli
-+      - install -Dm644 share/applications/com.plervo.audio.desktop /app/share/applications/com.plervo.audio.desktop
-+      # Session files; the runtime's shared-mime-info already knows WAV, AIFF, FLAC, MP3 and MIDI.
-+      - install -Dm644 share/mime/packages/com.plervo.audio.xml /app/share/mime/packages/com.plervo.audio.xml
-+      # Already has the release's version and date substituted by package.sh.
-+      - install -Dm644 share/metainfo/com.plervo.audio.metainfo.xml /app/share/metainfo/com.plervo.audio.metainfo.xml
-+      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/plervo-audio /app/share/doc/
-+      # Mount point for the plugin extensions (add-extensions).
-+      - install -d /app/extensions/Plugins
-+    sources:
-+      - type: dir
-+        path: stage
-diff --git a/packaging/linux/flatpak/com.plervo.audio.yml b/packaging/linux/flatpak/com.plervo.audio.yml
-new file mode 100644
-index 0000000..1db5143
---- /dev/null
-+++ b/packaging/linux/flatpak/com.plervo.audio.yml
-@@ -0,0 +1,95 @@
-+# Flatpak manifest for Plervo Audio, ready for a Flathub submission.
-+#
-+# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
-+#
-+#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
-+#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
-+#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/com.plervo.audio.yml
-+#   flatpak run com.plervo.audio
-+#
-+# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
-+# com.plervo.audio.bundle.yml repackages the release tarball into the .flatpak attached
-+# to each GitHub release; keep runtime-version, finish-args and add-extensions identical in both
-+# (packaging-lint checks this).
-+#
-+# Audio: cpal talks to ALSA. alsa-lib (headers in the Sdk, the library in the Platform) and its
-+# PulseAudio plugin ship with the freedesktop runtime, which routes ALSA through the PulseAudio
-+# socket (PipeWire's pulse server on modern desktops), so no extra module is needed.
-+id: com.plervo.audio
-+runtime: org.freedesktop.Platform
-+runtime-version: '25.08'
-+sdk: org.freedesktop.Sdk
-+sdk-extensions:
-+  - org.freedesktop.Sdk.Extension.rust-stable
-+command: plervo-audio
-+finish-args:
-+  # Display: Wayland first; X11 only when no Wayland compositor is running.
-+  - --socket=wayland
-+  - --socket=fallback-x11
-+  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
-+  - --share=ipc
-+  # GPU access for the wgpu UI (Vulkan, or GL as a fallback).
-+  - --device=dri
-+  # Playback and recording. cpal talks to ALSA; the runtime's alsa-lib routes ALSA through its
-+  # PulseAudio plugin to this socket, which PipeWire's pulse server provides on modern desktops
-+  # (and PulseAudio itself on older ones). Deliberately not granted: --device=all (raw /dev/snd
-+  # for direct ALSA hardware access, which would bypass the sound server) and JACK, which
-+  # Plervo Audio doesn't use (cpal's jack feature is off; there is no live MIDI I/O either).
-+  - --socket=pulseaudio
-+  # Open/Save dialogs use the file-chooser portal (rfd) and drag-and-drop the document portal,
-+  # so broad filesystem access isn't needed. Music is granted for sessions and their
-+  # "Audio Files" folders opened by path from the command line.
-+  - --filesystem=xdg-music
-+  # VST3 and CLAP plugin hosts. The per-user plugin folders the hosts scan, read-only.
-+  # System folders (/usr/lib/vst3, /usr/lib/clap) aren't reachable from the sandbox, and plugins
-+  # there are linked against the host's libraries rather than the runtime's; sandboxed plugins
-+  # come from Flatpak extensions instead (add-extensions below), found through these paths.
-+  - --filesystem=~/.vst3:ro
-+  - --filesystem=~/.clap:ro
-+  - --env=VST3_PATH=/app/extensions/Plugins/vst3
-+  - --env=CLAP_PATH=/app/extensions/Plugins/clap
-+# Flathub's shared audio-plugin extension point (org.freedesktop.LinuxAudio.Plugins.*, the one
-+# Ardour, Bitwig and friends use). Optional: nothing is downloaded unless the user installs a
-+# plugin extension; merge-dirs lets every installed one appear under .../Plugins/{vst3,clap}.
-+add-extensions:
-+  org.freedesktop.LinuxAudio.Plugins:
-+    directory: extensions/Plugins
-+    version: '25.08'
-+    add-ld-path: lib
-+    merge-dirs: vst3;clap
-+    subdirectories: true
-+    no-autodownload: true
-+build-options:
-+  append-path: /usr/lib/sdk/rust-stable/bin
-+modules:
-+  - name: plervo-audio
-+    buildsystem: simple
-+    build-options:
-+      env:
-+        CARGO_HOME: /run/build/plervo-audio/cargo
-+        CARGO_NET_OFFLINE: 'true'
-+    build-commands:
 +      - cargo --offline build --release --locked -p plervo-audio -p plervo-audio-cli
 +      - install -Dm755 target/release/plervo-audio /app/bin/plervo-audio
 +      - install -Dm755 target/release/plervo-audio-cli /app/bin/plervo-audio-cli
 +      - install -Dm644 packaging/linux/com.plervo.audio.desktop /app/share/applications/com.plervo.audio.desktop
 +      - install -Dm644 packaging/linux/com.plervo.audio.mime.xml /app/share/mime/packages/com.plervo.audio.xml
-+      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
-+      - >-
-+        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
-+        install -d /app/share/metainfo;
-+        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+       - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
+       - >-
+         version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
+         install -d /app/share/metainfo;
+         sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+-        packaging/linux/ai.storyteller.soundcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.soundcraft.metainfo.xml
 +        packaging/linux/com.plervo.audio.metainfo.xml.in > /app/share/metainfo/com.plervo.audio.metainfo.xml
-+      # Mount point for the plugin extensions (add-extensions).
-+      - install -d /app/extensions/Plugins
-+    sources:
-+      - type: dir
-+        path: ../../..
-+        skip:
-+          - target
-+          - dist
-+          - corpus
-+          - plan
-+          - build-flatpak
-+          - .flatpak-builder
-+      - cargo-sources.json
+       # Mount point for the plugin extensions (add-extensions).
+       - install -d /app/extensions/Plugins
+     sources:
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
 index c9f2eb7..cb079fd 100644
 --- a/packaging/linux/nfpm.yaml
@@ -4108,7 +3810,7 @@ index a35fa9e..dc0b8e4 100755
  rm -rf "$WORK"
  mkdir -p "$WORK/$NAME"
 diff --git a/packaging/windows/package.ps1 b/packaging/windows/package.ps1
-index b46ba33..75ec5eb 100644
+index b46ba33..1a64e09 100644
 --- a/packaging/windows/package.ps1
 +++ b/packaging/windows/package.ps1
 @@ -1,11 +1,11 @@
@@ -4153,7 +3855,7 @@ index b46ba33..75ec5eb 100644
    $h = Get-PeHeader (Join-Path $Bin $check[0])
    if ($h.Machine -ne $Machine) { throw "$($check[0]) is for machine 0x$('{0:X}' -f $h.Machine), expected 0x$('{0:X}' -f $Machine) ($Arch)" }
    if ($h.Subsystem -ne $check[1]) { throw "$($check[0]) has PE subsystem $($h.Subsystem), expected $($check[1])" }
-@@ -86,15 +86,32 @@ foreach ($check in @(@('soundcraft.exe', 2), @('soundcraft-cli.exe', 3))) {
+@@ -86,15 +86,34 @@ foreach ($check in @(@('soundcraft.exe', 2), @('soundcraft-cli.exe', 3))) {
  $Stage = Join-Path $TargetDir "windows-package\$Arch"
  Remove-Item -Recurse -Force $Stage -ErrorAction SilentlyContinue
  New-Item -ItemType Directory -Force -Path $Stage | Out-Null
@@ -4164,9 +3866,11 @@ index b46ba33..75ec5eb 100644
 +& (Join-Path $PSScriptRoot 'sign.ps1') (Join-Path $Stage 'plervo-audio.exe') (Join-Path $Stage 'plervo-audio-cli.exe')
 +
 +# Carry source and embedded-asset notices in MSI and portable distributions.
++& python (Join-Path $Root 'packaging/licenses/verify.py') $Root
++if ($LASTEXITCODE -ne 0) { throw "Third-party notice review is stale or missing" }
 +$Legal = Join-Path $Stage 'Licenses'
 +New-Item -ItemType Directory -Force -Path $Legal | Out-Null
-+foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md') {
++foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md', 'THIRD_PARTY_NOTICES.txt') {
 +  $p = Join-Path $Root $f
 +  if (Test-Path $p) { Copy-Item $p $Legal }
 +}
@@ -4191,7 +3895,7 @@ index b46ba33..75ec5eb 100644
      -o $Msi
  }
  # wix writes its debug symbols (.wixpdb) next to the MSI; keep them out of the release assets.
-@@ -102,15 +119,16 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
+@@ -102,15 +121,16 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
  & (Join-Path $PSScriptRoot 'sign.ps1') $Msi
  
  # ---- portable zip ------------------------------------------------------------------------------
@@ -4210,7 +3914,7 @@ index b46ba33..75ec5eb 100644
  Remove-Item -Force $Zip -ErrorAction SilentlyContinue
  Compress-Archive -Path $Portable -DestinationPath $Zip
  
-@@ -118,8 +136,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
+@@ -118,8 +138,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
  # here; .github/workflows/windows-arm64.yml installs and runs it on ARM64 instead.
  $HostArch = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString().ToLowerInvariant()
  if ($Arch -ne 'arm64' -or $HostArch -eq 'arm64') {

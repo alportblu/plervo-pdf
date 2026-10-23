@@ -3,7 +3,7 @@ param(
   [Parameter(Mandatory)] [ValidatePattern('^[A-Za-z0-9][A-Za-z0-9.-]{2,49}$')] [string] $IdentityName,
   [Parameter(Mandatory)] [ValidateLength(3, 8192)] [string] $Publisher,
   [Parameter(Mandatory)] [ValidateLength(1, 256)] [string] $PublisherDisplayName,
-  [string] $Version = '1.0.6.0',
+  [string] $Version = '1.0.7.0',
   [switch] $ValidationOnly,
   [switch] $ManifestOnly
 )

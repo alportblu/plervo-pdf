@@ -22,3 +22,21 @@ Approval for the owner's SignPath Foundation application has not been confirmed.
 After approval, the project owner supplies the SignPath organization ID, project slug, signing-policy slug and artifact-configuration slug through the provider/GitHub settings. The API token belongs in a scoped GitHub Actions secret, never chat, source or logs. Follow the [official GitHub integration](https://docs.signpath.io/trusted-build-systems/github) and the [official action inputs](https://github.com/SignPath/github-action-submit-signing-request/blob/main/action.yml); pin the reviewed action commit when the actual integration is configured.
 
 The artifact configuration must cover the executable inside the MSI/portable archive as well as the installer itself. Verify the resulting Authenticode chain, timestamp and approved publisher identity, then rerun acceptance on the exact signed files. Pin the approved publisher in the Suite's Windows installer path before enabling Windows downloads. A successful unsigned candidate or a valid unrelated publisher signature is not sufficient. No certificate is added to a consumer trust store and SmartScreen is not disabled.
+# Microsoft Store distribution option
+
+PDF is available at https://apps.microsoft.com/detail/9PBWKBZRBJNR. Its Store edition
+uses Microsoft's install/update channel. The Mac/Linux Suite remains a separate
+download and package manager.
+
+A future Suite Store edition should present the publisher's Store-listed products and
+open each product's Store acquisition flow. The current
+[Microsoft Store policies](https://learn.microsoft.com/windows/apps/publish/store-policies)
+(10.1.5, version 7.20) require those products to be listed and acquired through the Store.
+An unrestricted external installer catalog is not the same Store submission. The separate
+storefront exception in 10.1.6 requires at least twenty distinct products, which this
+thirteen-app catalog does not meet. Do not publish unsigned external Windows installers
+or describe them as Microsoft-approved just because the Suite is listed.
+
+Suite submission therefore depends on qualified Store packages and product identities
+for the apps it offers. PDF's existing listing can be linked directly on the website now;
+Suite and the other apps must not be represented by PDF's Store identity.

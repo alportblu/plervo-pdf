@@ -1,5 +1,5 @@
 diff --git a/Cargo.lock b/Cargo.lock
-index 5f44519..8d359a3 100644
+index 5f44519..265697e 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -812,8 +812,6 @@ dependencies = [
@@ -16,7 +16,7 @@ index 5f44519..8d359a3 100644
  dependencies = [
   "libc",
 - "windows-sys 0.61.2",
-+ "windows-sys 0.52.0",
++ "windows-sys 0.59.0",
  ]
  
  [[package]]
@@ -51,7 +51,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-catalog"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "crc32fast",
   "lightcraft-develop",
@@ -78,7 +78,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-codecs"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "avif-serialize",
   "bytemuck",
@@ -87,7 +87,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-color"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "lightcraft-geom",
   "proptest",
@@ -96,7 +96,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-denoise"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "faer-core",
   "lightcraft-denoise-core",
@@ -105,7 +105,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-denoise-core"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "lightcraft-raster",
   "miniz_oxide 0.8.9",
@@ -114,7 +114,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-develop"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "lightcraft-color",
   "lightcraft-geom",
@@ -123,7 +123,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-engine"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "ab_glyph",
   "harfrust",
@@ -132,7 +132,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-faces"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "matrixmultiply",
   "ndarray",
@@ -141,7 +141,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-fetch"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "log",
   "rustls",
@@ -150,7 +150,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-geocode"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "miniz_oxide 0.8.9",
   "serde",
@@ -159,7 +159,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-geom"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "proptest",
   "serde",
@@ -168,7 +168,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-gpu"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "bytemuck",
   "lightcraft-color",
@@ -177,7 +177,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-heif"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "heic-rs",
   "rayon",
@@ -186,7 +186,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-inpaint"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "rayon",
  ]
@@ -194,7 +194,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-lensdb"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "lightcraft-develop",
   "lightcraft-geom",
@@ -205,7 +205,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-mcp"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "lightcraft-codecs",
   "lightcraft-engine",
@@ -214,7 +214,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-merge"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "lightcraft-codecs",
   "lightcraft-color",
@@ -223,7 +223,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-meta"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "lightcraft-geom",
   "lightcraft-tiff",
@@ -237,7 +237,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-pipeline"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "image",
   "lightcraft-color",
@@ -246,7 +246,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-preview"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "jpeg-encoder",
   "lightcraft-raster",
@@ -255,7 +255,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-raster"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "libc",
   "lightcraft-color",
@@ -264,7 +264,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-raw"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "jpeg-encoder",
   "jxl-oxide",
@@ -273,7 +273,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-scenes"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "image",
   "lightcraft-color",
@@ -282,7 +282,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-segment"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "candle-core",
   "candle-nn",
@@ -291,12 +291,12 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-sysmem"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  
  [[package]]
  name = "lightcraft-tiff"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "proptest",
   "serde",
@@ -305,7 +305,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-ui-egui"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "craft-ui",
   "egui",
@@ -321,7 +321,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "lightcraft-web"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "crc32fast",
   "eframe",
@@ -359,7 +359,7 @@ index 5f44519..8d359a3 100644
  
 +[[package]]
 +name = "plervo-develop"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
 +dependencies = [
 + "eframe",
 + "egui",
@@ -383,7 +383,7 @@ index 5f44519..8d359a3 100644
 +
 +[[package]]
 +name = "plervo-develop-cli"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
 +dependencies = [
 + "dhat",
 + "lightcraft-codecs",
@@ -421,7 +421,7 @@ index 5f44519..8d359a3 100644
   "libc",
   "linux-raw-sys 0.12.1",
 - "windows-sys 0.61.2",
-+ "windows-sys 0.52.0",
++ "windows-sys 0.59.0",
  ]
  
  [[package]]
@@ -448,7 +448,7 @@ index 5f44519..8d359a3 100644
  dependencies = [
   "aead",
   "aes-gcm",
-@@ -5269,24 +5269,13 @@ dependencies = [
+@@ -5269,7 +5269,7 @@ dependencies = [
   "rsa",
   "rustls",
   "rustls-pki-types",
@@ -457,13 +457,13 @@ index 5f44519..8d359a3 100644
   "sec1",
   "sha2",
   "signature",
-  "x25519-dalek",
- ]
+@@ -5278,20 +5278,9 @@ dependencies = [
  
--[[package]]
--name = "rustls-webpki"
+ [[package]]
+ name = "rustls-webpki"
 -version = "0.102.8"
--source = "registry+https://github.com/rust-lang/crates.io-index"
++version = "0.103.16"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
 -checksum = "64ca1bc8749bd4cf37b5ce386cc146580777b4e8572c7b97baf22c83f444bee9"
 -dependencies = [
 - "ring",
@@ -471,9 +471,15 @@ index 5f44519..8d359a3 100644
 - "untrusted",
 -]
 -
- [[package]]
- name = "rustls-webpki"
- version = "0.103.15"
+-[[package]]
+-name = "rustls-webpki"
+-version = "0.103.15"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "f3c3cf1d8b1e7d4927e2d154c3fcb02979afb9939629c62cd9048d4f07b60ac2"
++checksum = "4443b1b6d39d7c663139942cc4558262562d2c84123bb6282ef177009ca8b281"
+ dependencies = [
+  "ring",
+  "rustls-pki-types",
 @@ -5717,6 +5706,15 @@ dependencies = [
   "syn 3.0.6",
  ]
@@ -490,12 +496,16 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "sysctl"
  version = "0.5.5"
-@@ -5755,7 +5753,7 @@ dependencies = [
-  "getrandom 0.4.3",
+@@ -5752,10 +5750,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd"
+ dependencies = [
+  "fastrand",
+- "getrandom 0.4.3",
++ "getrandom 0.3.4",
   "once_cell",
   "rustix 1.1.5",
 - "windows-sys 0.61.2",
-+ "windows-sys 0.52.0",
++ "windows-sys 0.59.0",
  ]
  
  [[package]]
@@ -517,12 +527,24 @@ index 5f44519..8d359a3 100644
   "quote",
  ]
  
+@@ -6340,9 +6338,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "webpki-roots"
+-version = "1.0.9"
++version = "1.0.10"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "7dcd9d09a39985f5344844e66b0c530a33843579125f23e21e9f0f220850f22a"
++checksum = "1c1c8e20c8a38fc7d65abfe74eb7280e4aa667e8eec8bc84996d2874810748d9"
+ dependencies = [
+  "rustls-pki-types",
+ ]
 @@ -6542,7 +6540,7 @@ version = "0.1.11"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "c2a7b1c03c876122aa43f3020e6c3c3ee5c05081c9a00739faf7503aeba10d22"
  dependencies = [
 - "windows-sys 0.61.2",
-+ "windows-sys 0.52.0",
++ "windows-sys 0.59.0",
  ]
  
  [[package]]
@@ -531,7 +553,7 @@ index 5f44519..8d359a3 100644
  [[package]]
  name = "xtask"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "brotli",
   "flate2",
@@ -553,7 +575,7 @@ index 5f44519..8d359a3 100644
  ]
  
 diff --git a/Cargo.toml b/Cargo.toml
-index 2b89df3..3d2ea5c 100644
+index 2b89df3..6b13394 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -3,7 +3,7 @@ resolver = "3"
@@ -561,7 +583,7 @@ index 2b89df3..3d2ea5c 100644
  
  [workspace.package]
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.90"
@@ -6199,15 +6221,16 @@ index 5ecf41b..aca3a29 100644
  
  `lightcraft --control 7980` (or `LIGHTCRAFT_CONTROL_PORT=7980`) starts a JSON-lines server on
 diff --git a/packaging/env.sh b/packaging/env.sh
-index 11221a5..b2ea3e1 100644
+index 11221a5..219511e 100644
 --- a/packaging/env.sh
 +++ b/packaging/env.sh
-@@ -48,10 +48,24 @@ warn() {
+@@ -48,10 +48,25 @@ warn() {
  # when building with CRAFT_FONTS_DIR).
  copy_docs() {
    local dest="$1" f
 -  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE; do
-+  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md; do
++  python3 "$ROOT/packaging/licenses/verify.py" "$ROOT" || return 1
++  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md THIRD_PARTY_NOTICES.txt; do
      if [ -f "$ROOT/$f" ]; then cp "$ROOT/$f" "$dest/"; fi
    done
    copy_font_licences "$dest"
@@ -6388,194 +6411,96 @@ index cf7895e..899289d 100755
 +  echo "warning: iconutil not found (macOS only); plervo-develop.icns not regenerated" >&2
  fi
  echo "icons written to $DIR"
-diff --git a/packaging/linux/ai.storyteller.lightcraft.desktop b/packaging/linux/ai.storyteller.lightcraft.desktop
-deleted file mode 100644
-index f827c58..0000000
+diff --git a/packaging/linux/ai.storyteller.lightcraft.desktop b/packaging/linux/com.plervo.develop.desktop
+similarity index 82%
+rename from packaging/linux/ai.storyteller.lightcraft.desktop
+rename to packaging/linux/com.plervo.develop.desktop
+index f827c58..b257e8a 100644
 --- a/packaging/linux/ai.storyteller.lightcraft.desktop
-+++ /dev/null
-@@ -1,12 +0,0 @@
--[Desktop Entry]
--Type=Application
++++ b/packaging/linux/com.plervo.develop.desktop
+@@ -1,12 +1,12 @@
+ [Desktop Entry]
+ Type=Application
 -Name=LightCraft
--GenericName=Photo Library and Raw Developer
--Comment=Organise photos and develop raw files, non-destructively
++Name=Plervo Develop
+ GenericName=Photo Library and Raw Developer
+ Comment=Organise photos and develop raw files, non-destructively
 -Exec=lightcraft %F
 -Icon=ai.storyteller.lightcraft
--Terminal=false
--Categories=Graphics;2DGraphics;RasterGraphics;Photography;
--Keywords=photo;raw;camera;library;develop;
++Exec=plervo-develop %F
++Icon=com.plervo.develop
+ Terminal=false
+ Categories=Graphics;2DGraphics;RasterGraphics;Photography;
+ Keywords=photo;raw;camera;library;develop;
 -StartupWMClass=ai.storyteller.lightcraft
--MimeType=image/jpeg;image/png;image/tiff;image/webp;image/x-adobe-dng;image/x-sony-arw;image/x-canon-cr2;image/x-canon-cr3;image/x-nikon-nef;image/x-fuji-raf;image/x-olympus-orf;image/x-panasonic-rw2;image/x-panasonic-rw;image/x-pentax-pef;
-diff --git a/packaging/linux/ai.storyteller.lightcraft.metainfo.xml.in b/packaging/linux/ai.storyteller.lightcraft.metainfo.xml.in
-deleted file mode 100644
-index 8964e76..0000000
++StartupWMClass=com.plervo.develop
+ MimeType=image/jpeg;image/png;image/tiff;image/webp;image/x-adobe-dng;image/x-sony-arw;image/x-canon-cr2;image/x-canon-cr3;image/x-nikon-nef;image/x-fuji-raf;image/x-olympus-orf;image/x-panasonic-rw2;image/x-panasonic-rw;image/x-pentax-pef;
+diff --git a/packaging/linux/ai.storyteller.lightcraft.metainfo.xml.in b/packaging/linux/com.plervo.develop.metainfo.xml.in
+similarity index 68%
+rename from packaging/linux/ai.storyteller.lightcraft.metainfo.xml.in
+rename to packaging/linux/com.plervo.develop.metainfo.xml.in
+index 8964e76..56a0809 100644
 --- a/packaging/linux/ai.storyteller.lightcraft.metainfo.xml.in
-+++ /dev/null
-@@ -1,61 +0,0 @@
--<?xml version="1.0" encoding="UTF-8"?>
--<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
--     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
--<component type="desktop-application">
++++ b/packaging/linux/com.plervo.develop.metainfo.xml.in
+@@ -2,26 +2,26 @@
+ <!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
+      manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
+ <component type="desktop-application">
 -  <id>ai.storyteller.lightcraft</id>
--  <metadata_license>CC0-1.0</metadata_license>
--  <project_license>MIT OR Apache-2.0</project_license>
++  <id>com.plervo.develop</id>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_license>MIT OR Apache-2.0</project_license>
 -  <name>LightCraft</name>
--  <summary>Organise photos and develop raw files, non-destructively</summary>
--  <developer id="ai.storyteller">
++  <name>Plervo Develop</name>
+   <summary>Organise photos and develop raw files, non-destructively</summary>
+   <developer id="ai.storyteller">
 -    <name>Learning Machines LLC</name>
--  </developer>
--  <description>
--    <p>
++    <name>Maintech Solutions LLC</name>
+   </developer>
+   <description>
+     <p>
 -      LightCraft is a photo library and raw developer. Organise photos and develop raw files, non-destructively
--    </p>
--  </description>
++      Plervo Develop is a photo library and raw developer. Organise photos and develop raw files, non-destructively
+     </p>
+   </description>
 -  <launchable type="desktop-id">ai.storyteller.lightcraft.desktop</launchable>
 -  <icon type="stock">ai.storyteller.lightcraft</icon>
--  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
++  <launchable type="desktop-id">com.plervo.develop.desktop</launchable>
++  <icon type="stock">com.plervo.develop</icon>
+   <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
 -  <url type="homepage">https://getartcraft.com/apps/lightcraft</url>
 -  <url type="bugtracker">https://github.com/storytold/lightcraft/issues</url>
 -  <url type="help">https://github.com/storytold/lightcraft</url>
 -  <url type="contact">https://discord.gg/artcraft</url>
--  <categories>
--    <category>Graphics</category>
--    <category>RasterGraphics</category>
--    <category>Photography</category>
--  </categories>
--  <keywords>
--    <keyword>photo</keyword>
--    <keyword>image editor</keyword>
--    <keyword>psd</keyword>
--    <keyword>layers</keyword>
--  </keywords>
--  <screenshots>
--    <screenshot type="default">
--      <caption>Editing The Great Wave off Kanagawa with type layers and adjustment layers</caption>
--      <image>https://raw.githubusercontent.com/storytold/lightcraft/main/docs/images/lightcraft-demo.jpg</image>
--    </screenshot>
--  </screenshots>
--  <branding>
--    <color type="primary" scheme_preference="light">#9fd0ff</color>
--    <color type="primary" scheme_preference="dark">#1f64ba</color>
--  </branding>
--  <requires>
--    <display_length compare="ge">760</display_length>
--  </requires>
--  <supports>
--    <control>keyboard</control>
--    <control>pointing</control>
--    <control>tablet</control>
--  </supports>
--  <provides>
--    <binary>lightcraft</binary>
--  </provides>
--  <content_rating type="oars-1.1"/>
--  <releases>
--    <release version="@VERSION@" date="@DATE@"/>
--  </releases>
--</component>
-diff --git a/packaging/linux/ai.storyteller.lightcraft.mime.xml b/packaging/linux/ai.storyteller.lightcraft.mime.xml
-deleted file mode 100644
-index be4dcc2..0000000
---- a/packaging/linux/ai.storyteller.lightcraft.mime.xml
-+++ /dev/null
-@@ -1,3 +0,0 @@
--<?xml version="1.0" encoding="UTF-8"?>
--<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
--</mime-info>
-diff --git a/packaging/linux/com.plervo.develop.desktop b/packaging/linux/com.plervo.develop.desktop
-new file mode 100644
-index 0000000..b257e8a
---- /dev/null
-+++ b/packaging/linux/com.plervo.develop.desktop
-@@ -0,0 +1,12 @@
-+[Desktop Entry]
-+Type=Application
-+Name=Plervo Develop
-+GenericName=Photo Library and Raw Developer
-+Comment=Organise photos and develop raw files, non-destructively
-+Exec=plervo-develop %F
-+Icon=com.plervo.develop
-+Terminal=false
-+Categories=Graphics;2DGraphics;RasterGraphics;Photography;
-+Keywords=photo;raw;camera;library;develop;
-+StartupWMClass=com.plervo.develop
-+MimeType=image/jpeg;image/png;image/tiff;image/webp;image/x-adobe-dng;image/x-sony-arw;image/x-canon-cr2;image/x-canon-cr3;image/x-nikon-nef;image/x-fuji-raf;image/x-olympus-orf;image/x-panasonic-rw2;image/x-panasonic-rw;image/x-pentax-pef;
-diff --git a/packaging/linux/com.plervo.develop.metainfo.xml.in b/packaging/linux/com.plervo.develop.metainfo.xml.in
-new file mode 100644
-index 0000000..56a0809
---- /dev/null
-+++ b/packaging/linux/com.plervo.develop.metainfo.xml.in
-@@ -0,0 +1,61 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
-+     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
-+<component type="desktop-application">
-+  <id>com.plervo.develop</id>
-+  <metadata_license>CC0-1.0</metadata_license>
-+  <project_license>MIT OR Apache-2.0</project_license>
-+  <name>Plervo Develop</name>
-+  <summary>Organise photos and develop raw files, non-destructively</summary>
-+  <developer id="ai.storyteller">
-+    <name>Maintech Solutions LLC</name>
-+  </developer>
-+  <description>
-+    <p>
-+      Plervo Develop is a photo library and raw developer. Organise photos and develop raw files, non-destructively
-+    </p>
-+  </description>
-+  <launchable type="desktop-id">com.plervo.develop.desktop</launchable>
-+  <icon type="stock">com.plervo.develop</icon>
-+  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
 +  <url type="homepage">https://plervo.com/</url>
 +  <url type="bugtracker">https://github.com/alportblu/plervo-pdf/issues</url>
 +  <url type="help">https://github.com/alportblu/plervo-pdf</url>
 +  <url type="contact">https://buymeacoffee.com/alport</url>
-+  <categories>
-+    <category>Graphics</category>
-+    <category>RasterGraphics</category>
-+    <category>Photography</category>
-+  </categories>
-+  <keywords>
-+    <keyword>photo</keyword>
-+    <keyword>image editor</keyword>
-+    <keyword>psd</keyword>
-+    <keyword>layers</keyword>
-+  </keywords>
-+  <screenshots>
-+    <screenshot type="default">
-+      <caption>Editing The Great Wave off Kanagawa with type layers and adjustment layers</caption>
+   <categories>
+     <category>Graphics</category>
+     <category>RasterGraphics</category>
+@@ -36,7 +36,7 @@
+   <screenshots>
+     <screenshot type="default">
+       <caption>Editing The Great Wave off Kanagawa with type layers and adjustment layers</caption>
+-      <image>https://raw.githubusercontent.com/storytold/lightcraft/main/docs/images/lightcraft-demo.jpg</image>
 +      <image>https://raw.githubusercontent.com/alportblu/plervo-pdf/main/docs/images/plervo-develop-demo.jpg</image>
-+    </screenshot>
-+  </screenshots>
-+  <branding>
-+    <color type="primary" scheme_preference="light">#9fd0ff</color>
-+    <color type="primary" scheme_preference="dark">#1f64ba</color>
-+  </branding>
-+  <requires>
-+    <display_length compare="ge">760</display_length>
-+  </requires>
-+  <supports>
-+    <control>keyboard</control>
-+    <control>pointing</control>
-+    <control>tablet</control>
-+  </supports>
-+  <provides>
+     </screenshot>
+   </screenshots>
+   <branding>
+@@ -52,7 +52,7 @@
+     <control>tablet</control>
+   </supports>
+   <provides>
+-    <binary>lightcraft</binary>
 +    <binary>plervo-develop</binary>
-+  </provides>
-+  <content_rating type="oars-1.1"/>
-+  <releases>
-+    <release version="@VERSION@" date="@DATE@"/>
-+  </releases>
-+</component>
-diff --git a/packaging/linux/com.plervo.develop.mime.xml b/packaging/linux/com.plervo.develop.mime.xml
-new file mode 100644
-index 0000000..be4dcc2
---- /dev/null
-+++ b/packaging/linux/com.plervo.develop.mime.xml
-@@ -0,0 +1,3 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-+</mime-info>
+   </provides>
+   <content_rating type="oars-1.1"/>
+   <releases>
+diff --git a/packaging/linux/ai.storyteller.lightcraft.mime.xml b/packaging/linux/com.plervo.develop.mime.xml
+similarity index 100%
+rename from packaging/linux/ai.storyteller.lightcraft.mime.xml
+rename to packaging/linux/com.plervo.develop.mime.xml
 diff --git a/packaging/linux/flatpak-bundle.sh b/packaging/linux/flatpak-bundle.sh
 index 6ad39eb..59ed699 100755
 --- a/packaging/linux/flatpak-bundle.sh
@@ -6642,268 +6567,162 @@ index 6ad39eb..59ed699 100755
    flatpak run --command=sh "$APP_ID" -c 'ls /app/share/applications /app/share/metainfo /app/share/mime/packages /app/share/icons/hicolor/scalable/apps'
  fi
  echo "==> done"
-diff --git a/packaging/linux/flatpak/ai.storyteller.lightcraft.bundle.yml b/packaging/linux/flatpak/ai.storyteller.lightcraft.bundle.yml
-deleted file mode 100644
-index 752e1ed..0000000
+diff --git a/packaging/linux/flatpak/ai.storyteller.lightcraft.bundle.yml b/packaging/linux/flatpak/com.plervo.develop.bundle.yml
+similarity index 63%
+rename from packaging/linux/flatpak/ai.storyteller.lightcraft.bundle.yml
+rename to packaging/linux/flatpak/com.plervo.develop.bundle.yml
+index 752e1ed..9048b7d 100644
 --- a/packaging/linux/flatpak/ai.storyteller.lightcraft.bundle.yml
-+++ /dev/null
-@@ -1,50 +0,0 @@
--# Flatpak manifest for the single-file bundle attached to every GitHub release
++++ b/packaging/linux/flatpak/com.plervo.develop.bundle.yml
+@@ -1,7 +1,7 @@
+ # Flatpak manifest for the single-file bundle attached to every GitHub release
 -# (lightcraft-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
--#
++# (plervo-develop-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
+ #
 -# It repackages the release's own Linux tarball (lightcraft-<version>-linux-<arch>.tar.gz,
--# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
--# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
--# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
--# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
--# Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
--# GPU driver comes from its org.freedesktop.Platform.GL extension.
--#
++# It repackages the release's own Linux tarball (plervo-develop-<version>-linux-<arch>.tar.gz,
+ # built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
+ # network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
+ # and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
+@@ -9,13 +9,13 @@
+ # Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
+ # GPU driver comes from its org.freedesktop.Platform.GL extension.
+ #
 -# ai.storyteller.lightcraft.yml (same directory) is the from-source manifest for Flathub. Keep
--# runtime-version and finish-args identical in both (packaging-lint checks this).
++# com.plervo.develop.yml (same directory) is the from-source manifest for Flathub. Keep
+ # runtime-version and finish-args identical in both (packaging-lint checks this).
 -id: ai.storyteller.lightcraft
--runtime: org.freedesktop.Platform
--runtime-version: '25.08'
--sdk: org.freedesktop.Sdk
++id: com.plervo.develop
+ runtime: org.freedesktop.Platform
+ runtime-version: '25.08'
+ sdk: org.freedesktop.Sdk
 -command: lightcraft
--finish-args:
--  # Display: Wayland first; X11 only when no Wayland compositor is running.
--  - --socket=wayland
--  - --socket=fallback-x11
--  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
--  - --share=ipc
--  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
--  - --device=dri
++command: plervo-develop
+ finish-args:
+   # Display: Wayland first; X11 only when no Wayland compositor is running.
+   - --socket=wayland
+@@ -24,7 +24,7 @@ finish-args:
+   - --share=ipc
+   # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
+   - --device=dri
 -  # The library lives in ~/Pictures/LightCraft Library by default, and imports usually come from
--  # Pictures. Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
--  # drag-and-drop through the document portal, so picked folders elsewhere work without broad
--  # filesystem access.
--  - --filesystem=xdg-pictures
--  # Deliberately not granted: home/host filesystem access, and network. The network is only for
--  # the optional SAM 3 model download (AI Object/Describe masks, docs/ai-masks.md); without it
--  # that download fails with an error and everything else works. Users who want it run
++  # The library lives in ~/Pictures/Plervo Develop Library by default, and imports usually come from
+   # Pictures. Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
+   # drag-and-drop through the document portal, so picked folders elsewhere work without broad
+   # filesystem access.
+@@ -32,19 +32,19 @@ finish-args:
+   # Deliberately not granted: home/host filesystem access, and network. The network is only for
+   # the optional SAM 3 model download (AI Object/Describe masks, docs/ai-masks.md); without it
+   # that download fails with an error and everything else works. Users who want it run
 -  # `flatpak override --user --share=network ai.storyteller.lightcraft`.
--modules:
++  # `flatpak override --user --share=network com.plervo.develop`.
+ modules:
 -  - name: lightcraft
--    buildsystem: simple
--    build-commands:
++  - name: plervo-develop
+     buildsystem: simple
+     build-commands:
 -      - install -Dm755 bin/lightcraft /app/bin/lightcraft
 -      - install -Dm755 bin/lightcraft-cli /app/bin/lightcraft-cli
 -      - install -Dm644 share/applications/ai.storyteller.lightcraft.desktop /app/share/applications/ai.storyteller.lightcraft.desktop
--      # The same MIME definitions the deb/rpm install.
++      - install -Dm755 bin/plervo-develop /app/bin/plervo-develop
++      - install -Dm755 bin/plervo-develop-cli /app/bin/plervo-develop-cli
++      - install -Dm644 share/applications/com.plervo.develop.desktop /app/share/applications/com.plervo.develop.desktop
+       # The same MIME definitions the deb/rpm install.
 -      - install -Dm644 share/mime/packages/ai.storyteller.lightcraft.xml /app/share/mime/packages/ai.storyteller.lightcraft.xml
--      # Already has the release's version and date substituted by package.sh.
++      - install -Dm644 share/mime/packages/com.plervo.develop.xml /app/share/mime/packages/com.plervo.develop.xml
+       # Already has the release's version and date substituted by package.sh.
 -      - install -Dm644 share/metainfo/ai.storyteller.lightcraft.metainfo.xml /app/share/metainfo/ai.storyteller.lightcraft.metainfo.xml
 -      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/lightcraft /app/share/doc/
--    sources:
--      - type: dir
--        path: stage
-diff --git a/packaging/linux/flatpak/ai.storyteller.lightcraft.yml b/packaging/linux/flatpak/ai.storyteller.lightcraft.yml
-deleted file mode 100644
-index e9dbd24..0000000
++      - install -Dm644 share/metainfo/com.plervo.develop.metainfo.xml /app/share/metainfo/com.plervo.develop.metainfo.xml
++      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/plervo-develop /app/share/doc/
+     sources:
+       - type: dir
+         path: stage
+diff --git a/packaging/linux/flatpak/ai.storyteller.lightcraft.yml b/packaging/linux/flatpak/com.plervo.develop.yml
+similarity index 66%
+rename from packaging/linux/flatpak/ai.storyteller.lightcraft.yml
+rename to packaging/linux/flatpak/com.plervo.develop.yml
+index e9dbd24..1c99325 100644
 --- a/packaging/linux/flatpak/ai.storyteller.lightcraft.yml
-+++ /dev/null
-@@ -1,69 +0,0 @@
++++ b/packaging/linux/flatpak/com.plervo.develop.yml
+@@ -1,24 +1,24 @@
 -# Flatpak manifest for LightCraft, ready for a Flathub submission.
--#
--# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
--#
--#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
--#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
++# Flatpak manifest for Plervo Develop, ready for a Flathub submission.
+ #
+ # Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
+ #
+ #   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
+ #   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
 -#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.lightcraft.yml
 -#   flatpak run ai.storyteller.lightcraft
--#
--# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
--#
++#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/com.plervo.develop.yml
++#   flatpak run com.plervo.develop
+ #
+ # For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
+ #
 -# ai.storyteller.lightcraft.bundle.yml (same directory) builds the .flatpak attached to every
--# release from the prebuilt binaries. Keep runtime-version and finish-args identical in both
--# (packaging-lint checks this).
++# com.plervo.develop.bundle.yml (same directory) builds the .flatpak attached to every
+ # release from the prebuilt binaries. Keep runtime-version and finish-args identical in both
+ # (packaging-lint checks this).
 -id: ai.storyteller.lightcraft
--runtime: org.freedesktop.Platform
--runtime-version: '25.08'
--sdk: org.freedesktop.Sdk
--sdk-extensions:
--  - org.freedesktop.Sdk.Extension.rust-stable
++id: com.plervo.develop
+ runtime: org.freedesktop.Platform
+ runtime-version: '25.08'
+ sdk: org.freedesktop.Sdk
+ sdk-extensions:
+   - org.freedesktop.Sdk.Extension.rust-stable
 -command: lightcraft
--finish-args:
--  # Display: Wayland first; X11 only when no Wayland compositor is running.
--  - --socket=wayland
--  - --socket=fallback-x11
--  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
--  - --share=ipc
--  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
--  - --device=dri
++command: plervo-develop
+ finish-args:
+   # Display: Wayland first; X11 only when no Wayland compositor is running.
+   - --socket=wayland
+@@ -27,7 +27,7 @@ finish-args:
+   - --share=ipc
+   # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
+   - --device=dri
 -  # The library lives in ~/Pictures/LightCraft Library by default, and imports usually come from
--  # Pictures. Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
--  # drag-and-drop through the document portal, so picked folders elsewhere work without broad
--  # filesystem access.
--  - --filesystem=xdg-pictures
--  # Deliberately not granted: home/host filesystem access, and network. The network is only for
--  # the optional SAM 3 model download (AI Object/Describe masks, docs/ai-masks.md); without it
--  # that download fails with an error and everything else works. Users who want it run
++  # The library lives in ~/Pictures/Plervo Develop Library by default, and imports usually come from
+   # Pictures. Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
+   # drag-and-drop through the document portal, so picked folders elsewhere work without broad
+   # filesystem access.
+@@ -35,28 +35,28 @@ finish-args:
+   # Deliberately not granted: home/host filesystem access, and network. The network is only for
+   # the optional SAM 3 model download (AI Object/Describe masks, docs/ai-masks.md); without it
+   # that download fails with an error and everything else works. Users who want it run
 -  # `flatpak override --user --share=network ai.storyteller.lightcraft`.
--build-options:
--  append-path: /usr/lib/sdk/rust-stable/bin
--modules:
++  # `flatpak override --user --share=network com.plervo.develop`.
+ build-options:
+   append-path: /usr/lib/sdk/rust-stable/bin
+ modules:
 -  - name: lightcraft
--    buildsystem: simple
--    build-options:
--      env:
++  - name: plervo-develop
+     buildsystem: simple
+     build-options:
+       env:
 -        CARGO_HOME: /run/build/lightcraft/cargo
--        CARGO_NET_OFFLINE: 'true'
--    build-commands:
++        CARGO_HOME: /run/build/plervo-develop/cargo
+         CARGO_NET_OFFLINE: 'true'
+     build-commands:
 -      - cargo --offline build --release --locked -p lightcraft -p lightcraft-cli
 -      - install -Dm755 target/release/lightcraft /app/bin/lightcraft
 -      - install -Dm755 target/release/lightcraft-cli /app/bin/lightcraft-cli
 -      - install -Dm644 packaging/linux/ai.storyteller.lightcraft.desktop /app/share/applications/ai.storyteller.lightcraft.desktop
 -      - install -Dm644 packaging/linux/ai.storyteller.lightcraft.mime.xml /app/share/mime/packages/ai.storyteller.lightcraft.xml
--      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
--      - >-
--        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
--        install -d /app/share/metainfo;
--        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
--        packaging/linux/ai.storyteller.lightcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.lightcraft.metainfo.xml
--    sources:
--      - type: dir
--        path: ../../..
--        skip:
--          - target
--          - dist
--          - corpus
--          - build-flatpak
--          - .flatpak-builder
--      - cargo-sources.json
-diff --git a/packaging/linux/flatpak/com.plervo.develop.bundle.yml b/packaging/linux/flatpak/com.plervo.develop.bundle.yml
-new file mode 100644
-index 0000000..9048b7d
---- /dev/null
-+++ b/packaging/linux/flatpak/com.plervo.develop.bundle.yml
-@@ -0,0 +1,50 @@
-+# Flatpak manifest for the single-file bundle attached to every GitHub release
-+# (plervo-develop-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
-+#
-+# It repackages the release's own Linux tarball (plervo-develop-<version>-linux-<arch>.tar.gz,
-+# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
-+# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
-+# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
-+# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
-+# Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
-+# GPU driver comes from its org.freedesktop.Platform.GL extension.
-+#
-+# com.plervo.develop.yml (same directory) is the from-source manifest for Flathub. Keep
-+# runtime-version and finish-args identical in both (packaging-lint checks this).
-+id: com.plervo.develop
-+runtime: org.freedesktop.Platform
-+runtime-version: '25.08'
-+sdk: org.freedesktop.Sdk
-+command: plervo-develop
-+finish-args:
-+  # Display: Wayland first; X11 only when no Wayland compositor is running.
-+  - --socket=wayland
-+  - --socket=fallback-x11
-+  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
-+  - --share=ipc
-+  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
-+  - --device=dri
-+  # The library lives in ~/Pictures/Plervo Develop Library by default, and imports usually come from
-+  # Pictures. Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
-+  # drag-and-drop through the document portal, so picked folders elsewhere work without broad
-+  # filesystem access.
-+  - --filesystem=xdg-pictures
-+  # Deliberately not granted: home/host filesystem access, and network. The network is only for
-+  # the optional SAM 3 model download (AI Object/Describe masks, docs/ai-masks.md); without it
-+  # that download fails with an error and everything else works. Users who want it run
-+  # `flatpak override --user --share=network com.plervo.develop`.
-+modules:
-+  - name: plervo-develop
-+    buildsystem: simple
-+    build-commands:
-+      - install -Dm755 bin/plervo-develop /app/bin/plervo-develop
-+      - install -Dm755 bin/plervo-develop-cli /app/bin/plervo-develop-cli
-+      - install -Dm644 share/applications/com.plervo.develop.desktop /app/share/applications/com.plervo.develop.desktop
-+      # The same MIME definitions the deb/rpm install.
-+      - install -Dm644 share/mime/packages/com.plervo.develop.xml /app/share/mime/packages/com.plervo.develop.xml
-+      # Already has the release's version and date substituted by package.sh.
-+      - install -Dm644 share/metainfo/com.plervo.develop.metainfo.xml /app/share/metainfo/com.plervo.develop.metainfo.xml
-+      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/plervo-develop /app/share/doc/
-+    sources:
-+      - type: dir
-+        path: stage
-diff --git a/packaging/linux/flatpak/com.plervo.develop.yml b/packaging/linux/flatpak/com.plervo.develop.yml
-new file mode 100644
-index 0000000..1c99325
---- /dev/null
-+++ b/packaging/linux/flatpak/com.plervo.develop.yml
-@@ -0,0 +1,69 @@
-+# Flatpak manifest for Plervo Develop, ready for a Flathub submission.
-+#
-+# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
-+#
-+#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
-+#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
-+#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/com.plervo.develop.yml
-+#   flatpak run com.plervo.develop
-+#
-+# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
-+#
-+# com.plervo.develop.bundle.yml (same directory) builds the .flatpak attached to every
-+# release from the prebuilt binaries. Keep runtime-version and finish-args identical in both
-+# (packaging-lint checks this).
-+id: com.plervo.develop
-+runtime: org.freedesktop.Platform
-+runtime-version: '25.08'
-+sdk: org.freedesktop.Sdk
-+sdk-extensions:
-+  - org.freedesktop.Sdk.Extension.rust-stable
-+command: plervo-develop
-+finish-args:
-+  # Display: Wayland first; X11 only when no Wayland compositor is running.
-+  - --socket=wayland
-+  - --socket=fallback-x11
-+  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
-+  - --share=ipc
-+  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
-+  - --device=dri
-+  # The library lives in ~/Pictures/Plervo Develop Library by default, and imports usually come from
-+  # Pictures. Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
-+  # drag-and-drop through the document portal, so picked folders elsewhere work without broad
-+  # filesystem access.
-+  - --filesystem=xdg-pictures
-+  # Deliberately not granted: home/host filesystem access, and network. The network is only for
-+  # the optional SAM 3 model download (AI Object/Describe masks, docs/ai-masks.md); without it
-+  # that download fails with an error and everything else works. Users who want it run
-+  # `flatpak override --user --share=network com.plervo.develop`.
-+build-options:
-+  append-path: /usr/lib/sdk/rust-stable/bin
-+modules:
-+  - name: plervo-develop
-+    buildsystem: simple
-+    build-options:
-+      env:
-+        CARGO_HOME: /run/build/plervo-develop/cargo
-+        CARGO_NET_OFFLINE: 'true'
-+    build-commands:
 +      - cargo --offline build --release --locked -p plervo-develop -p plervo-develop-cli
 +      - install -Dm755 target/release/plervo-develop /app/bin/plervo-develop
 +      - install -Dm755 target/release/plervo-develop-cli /app/bin/plervo-develop-cli
 +      - install -Dm644 packaging/linux/com.plervo.develop.desktop /app/share/applications/com.plervo.develop.desktop
 +      - install -Dm644 packaging/linux/com.plervo.develop.mime.xml /app/share/mime/packages/com.plervo.develop.xml
-+      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
-+      - >-
-+        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
-+        install -d /app/share/metainfo;
-+        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+       - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
+       - >-
+         version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
+         install -d /app/share/metainfo;
+         sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+-        packaging/linux/ai.storyteller.lightcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.lightcraft.metainfo.xml
 +        packaging/linux/com.plervo.develop.metainfo.xml.in > /app/share/metainfo/com.plervo.develop.metainfo.xml
-+    sources:
-+      - type: dir
-+        path: ../../..
-+        skip:
-+          - target
-+          - dist
-+          - corpus
-+          - build-flatpak
-+          - .flatpak-builder
-+      - cargo-sources.json
+     sources:
+       - type: dir
+         path: ../../..
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
 index e7103f7..c18d275 100644
 --- a/packaging/linux/nfpm.yaml
@@ -7610,225 +7429,8 @@ index 64b6d21..b58e28b 100755
  WORK="$CARGO_TARGET_DIR/web-package"
  rm -rf "$WORK"
  mkdir -p "$WORK/$NAME"
-diff --git a/packaging/windows/lightcraft.wxs b/packaging/windows/lightcraft.wxs
-deleted file mode 100644
-index 38fe8f3..0000000
---- a/packaging/windows/lightcraft.wxs
-+++ /dev/null
-@@ -1,211 +0,0 @@
--<?xml version="1.0" encoding="utf-8"?>
--<!--
--  LightCraft MSI (WiX Toolset v5: `dotnet tool install -g wix`, plus the UI and Util extensions:
--  `wix extension add -g WixToolset.UI.wixext/5.0.2 WixToolset.Util.wixext/5.0.2`). Built by package.ps1:
--
--    wix build lightcraft.wxs -arch x64 -ext WixToolset.UI.wixext/5.0.2 -ext WixToolset.Util.wixext/5.0.2
--      -d Version=1.2.3 -d BinDir=... -d IconPath=... -d UiDialogBmp=... -d UiBannerBmp=... -o out.msi
--
--  Per-machine install into Program Files (or the folder chosen in the installer, or
--  `INSTALLFOLDER=...` on the msiexec command line; upgrades keep it), a Start Menu shortcut, `.pcraft` owned by LightCraft,
--  and LightCraft offered under "Open with" for PSD/PSB and the image formats it reads (without
--  taking over the user's default app for them).
---->
--<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
--  <Package
--      Name="LightCraft"
--      Manufacturer="Learning Machines LLC"
--      Version="$(var.Version)"
--      UpgradeCode="229BB552-5EFD-479A-BA86-8CB6D926390C"
--      Scope="perMachine"
--      Compressed="yes"
--      Language="1033">
--    <SummaryInformation Description="LightCraft photo library and raw developer" Manufacturer="Learning Machines LLC" />
--    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
--         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
--    <MajorUpgrade AllowSameVersionUpgrades="yes"
--        DowngradeErrorMessage="A newer version of LightCraft is already installed." />
--    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
--
--    <Icon Id="LightcraftIcon.ico" SourceFile="$(var.IconPath)" />
--    <Property Id="ARPPRODUCTICON" Value="LightcraftIcon.ico" />
--    <Property Id="ARPURLINFOABOUT" Value="https://getartcraft.com/apps/lightcraft" />
--    <Property Id="ARPURLUPDATEINFO" Value="https://getartcraft.com/apps/lightcraft" />
--    <Property Id="ARPHELPLINK" Value="https://discord.gg/artcraft" />
--
--    <StandardDirectory Id="ProgramFiles6432Folder">
--      <Directory Id="INSTALLFOLDER" Name="LightCraft" />
--    </StandardDirectory>
--    <!-- The folder of the installed version (written by LightcraftApp), so an upgrade installs
--         where the user chose instead of moving back to Program Files (issue #399). Searched into
--         its own property: AppSearch would otherwise overwrite INSTALLFOLDER=... given to msiexec. -->
--    <Property Id="PREVIOUSINSTALLFOLDER">
--      <RegistrySearch Id="PreviousInstallFolder" Root="HKLM" Key="Software\LightCraft" Name="InstallFolder" Type="raw" />
--    </Property>
--    <SetProperty Id="INSTALLFOLDER" Value="[PREVIOUSINSTALLFOLDER]" After="AppSearch" Sequence="both"
--        Condition="PREVIOUSINSTALLFOLDER AND NOT INSTALLFOLDER" />
--    <!-- Older MSIs (including 0.5.0) only recorded the executable in App Paths. Type="file"
--         without a FileSearch returns its containing directory. Keep the searches separate so
--         the newer InstallFolder value and an explicit INSTALLFOLDER always take precedence. -->
--    <Property Id="LEGACYINSTALLFOLDER">
--      <RegistrySearch Id="LegacyInstallFolder" Root="HKLM"
--          Key="Software\Microsoft\Windows\CurrentVersion\App Paths\lightcraft.exe" Type="file" />
--    </Property>
--    <!-- That directory search doesn't check the executable exists, and when its unquoted path is
--         gone it falls back to the text before the first space: a deleted
--         "C:\Program Files\LightCraft\lightcraft.exe" yields "C:\". Only use the folder when this
--         search, which does require lightcraft.exe, finds it too. -->
--    <Property Id="LEGACYINSTALLEXE">
--      <RegistrySearch Id="LegacyInstallExe" Root="HKLM"
--          Key="Software\Microsoft\Windows\CurrentVersion\App Paths\lightcraft.exe" Type="file">
--        <FileSearch Id="LegacyInstallExeFile" Name="lightcraft.exe" />
--      </RegistrySearch>
--    </Property>
--    <SetProperty Id="INSTALLFOLDER" Action="SetInstallFolderFromAppPaths" Value="[LEGACYINSTALLFOLDER]"
--        After="SetINSTALLFOLDER" Sequence="both"
--        Condition="LEGACYINSTALLFOLDER AND LEGACYINSTALLEXE AND NOT PREVIOUSINSTALLFOLDER AND NOT INSTALLFOLDER" />
--    <StandardDirectory Id="ProgramMenuFolder" />
--
--    <Feature Id="Main" Title="LightCraft" Level="1">
--      <ComponentGroupRef Id="LightcraftFiles" />
--    </Feature>
--
--    <UIRef Id="LightcraftUI" />
--  </Package>
--
--  <!--
--    Interactive install UI: Welcome -> Destination Folder -> Ready to install -> progress ->
--    "Completed" (Finish), with a "Launch LightCraft" checkbox (checked by default). Destination
--    Folder (issue #399) shows Program Files\LightCraft, or the installed version's folder on an
--    upgrade; Change... browses, and a folder that can't be used (InvalidDirDlg) is refused before
--    anything is installed. Failure and cancellation end on WiX's standard FatalError / UserExit
--    dialogs instead of the completion page. Maintenance (running the MSI again, Repair/Remove from
--    Apps) uses the standard maintenance dialogs; every successful run — install, repair or
--    remove — then ends on the shared completion page, so a successful uninstall is confirmed
--    with a visible final dialog (issue #892; the page itself is issue #790's fix).
--
--    This is WixUI_InstallDir without its licence-acceptance page: LightCraft is MIT OR Apache-2.0,
--    which ask nothing of people who just install and run it, so a click-through EULA would only
--    add a step. Silent (/qn) and basic-UI (/passive, /qb) installs never show these dialogs, so
--    they are unaffected, and nothing is launched.
--
--    The dialogs, strings and error/cancel pages come from WixToolset.UI.wixext; the side and
--    banner bitmaps are plain panels generated by package.ps1 (no third-party artwork).
--  -->
--  <Fragment>
--    <WixVariable Id="WixUIDialogBmp" Value="$(var.UiDialogBmp)" />
--    <WixVariable Id="WixUIBannerBmp" Value="$(var.UiBannerBmp)" />
--
--    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT"
--        Value="LightCraft has been installed. You can start it at any time from the Start menu." />
--    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch LightCraft" />
--    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
--
--    <!-- "Launch LightCraft" on Finish. WixUnelevatedShellExec (Util extension) asks the desktop
--         shell (Explorer) to start the program, so it runs as the signed-in user at normal
--         integrity even when the installer UI itself is elevated (e.g. msiexec started from an
--         admin prompt); it never runs from the elevated/SYSTEM server side. It is a UI-only control
--         event, so silent and passive installs never run it. Return="ignore": a failed launch must
--         not turn a successful install into an error. -->
--    <Property Id="WixUnelevatedShellExecTarget" Value="[#LightcraftExe]" />
--    <CustomAction Id="LaunchLightcraft" BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)"
--        DllEntry="WixUnelevatedShellExec" Execute="immediate" Impersonate="yes" Return="ignore" />
--
--    <UI Id="LightcraftUI">
--      <TextStyle Id="WixUI_Font_Normal" FaceName="Tahoma" Size="8" />
--      <TextStyle Id="WixUI_Font_Bigger" FaceName="Tahoma" Size="12" />
--      <TextStyle Id="WixUI_Font_Title" FaceName="Tahoma" Size="9" Bold="yes" />
--      <Property Id="DefaultUIFont" Value="WixUI_Font_Normal" />
--
--      <DialogRef Id="ErrorDlg" />
--      <DialogRef Id="FatalError" />
--      <DialogRef Id="FilesInUse" />
--      <DialogRef Id="MsiRMFilesInUse" />
--      <DialogRef Id="PrepareDlg" />
--      <DialogRef Id="ProgressDlg" />
--      <DialogRef Id="ResumeDlg" />
--      <DialogRef Id="UserExit" />
--      <DialogRef Id="WelcomeDlg" />
--      <DialogRef Id="InstallDirDlg" />
--      <DialogRef Id="BrowseDlg" />
--      <DialogRef Id="InvalidDirDlg" />
--      <DialogRef Id="DiskCostDlg" />
--      <!-- Referenced by the Publish events below but never pulled in on its own: without this
--           ref the MSI ships without a completion page, so a successful install or remove ends
--           silently (issues #790, #892). The UI extension's fragment shows it on exit=success,
--           which covers Remove from Apps & features too. -->
--      <DialogRef Id="ExitDialog" />
--      <DialogRef Id="VerifyReadyDlg" />
--      <DialogRef Id="MaintenanceWelcomeDlg" />
--      <DialogRef Id="MaintenanceTypeDlg" />
--
--      <!-- The folder InstallDirDlg edits. -->
--      <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
--
--      <!-- First install / upgrade: Welcome -> Destination Folder -> Ready to install. A patch skips
--           the folder (it can't move an installed product). -->
--      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Condition="NOT Installed" />
--      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg" Condition="Installed AND PATCH" />
--
--      <!-- Destination Folder, as in WixUI_InstallDir: Next sets the folder, validates it (WiX's
--           WixUIValidatePath) and refuses one that can't be used; Change... opens the folder browser,
--           whose OK validates too. -->
--      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" />
--      <Publish Dialog="InstallDirDlg" Control="Next" Event="SetTargetPath" Value="[WIXUI_INSTALLDIR]" Order="1" />
--      <Publish Dialog="InstallDirDlg" Control="Next" Event="DoAction" Value="WixUIValidatePath_$(sys.BUILDARCHSHORT)" Order="2"
--          Condition="NOT WIXUI_DONTVALIDATEPATH" />
--      <Publish Dialog="InstallDirDlg" Control="Next" Event="SpawnDialog" Value="InvalidDirDlg" Order="3"
--          Condition="NOT WIXUI_DONTVALIDATEPATH AND WIXUI_INSTALLDIR_VALID&lt;&gt;&quot;1&quot;" />
--      <Publish Dialog="InstallDirDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg" Order="4"
--          Condition="WIXUI_DONTVALIDATEPATH OR WIXUI_INSTALLDIR_VALID=&quot;1&quot;" />
--      <Publish Dialog="InstallDirDlg" Control="ChangeFolder" Property="_BrowseProperty" Value="[WIXUI_INSTALLDIR]" Order="1" />
--      <Publish Dialog="InstallDirDlg" Control="ChangeFolder" Event="SpawnDialog" Value="BrowseDlg" Order="2" />
--      <Publish Dialog="BrowseDlg" Control="OK" Event="DoAction" Value="WixUIValidatePath_$(sys.BUILDARCHSHORT)" Order="3"
--          Condition="NOT WIXUI_DONTVALIDATEPATH" />
--      <Publish Dialog="BrowseDlg" Control="OK" Event="SpawnDialog" Value="InvalidDirDlg" Order="4"
--          Condition="NOT WIXUI_DONTVALIDATEPATH AND WIXUI_INSTALLDIR_VALID&lt;&gt;&quot;1&quot;" />
--
--      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="InstallDirDlg" Order="1"
--          Condition="NOT Installed" />
--      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="3"
--          Condition="Installed AND PATCH" />
--
--      <!-- Maintenance: Welcome -> Repair / Remove -> Ready. -->
--      <Publish Dialog="MaintenanceWelcomeDlg" Control="Next" Event="NewDialog" Value="MaintenanceTypeDlg" />
--      <Publish Dialog="MaintenanceTypeDlg" Control="RepairButton" Event="NewDialog" Value="VerifyReadyDlg" />
--      <Publish Dialog="MaintenanceTypeDlg" Control="RemoveButton" Event="NewDialog" Value="VerifyReadyDlg" />
--      <Publish Dialog="MaintenanceTypeDlg" Control="Back" Event="NewDialog" Value="MaintenanceWelcomeDlg" />
--      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg" Order="2"
--          Condition="Installed AND NOT PATCH" />
--
--      <!-- Completion page: optionally launch, then close. -->
--      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchLightcraft" Order="1"
--          Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 AND NOT Installed" />
--      <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999" />
--
--      <!-- One feature, nothing to change: no "Change" in Apps & features. -->
--      <Property Id="ARPNOMODIFY" Value="1" />
--    </UI>
--
--    <UIRef Id="WixUI_Common" />
--  </Fragment>
--
--  <Fragment>
--    <ComponentGroup Id="LightcraftFiles" Directory="INSTALLFOLDER">
--      <Component Id="LightcraftApp" Guid="8A1D3A39-F7C1-47B1-97AE-40C80BF82F4A">
--        <File Id="LightcraftExe" Source="$(var.BinDir)\lightcraft.exe" KeyPath="yes">
--          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="LightCraft"
--              Description="LightCraft photo library and raw developer" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
--              Icon="LightcraftIcon.ico" IconIndex="0" />
--        </File>
--
--        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\lightcraft.exe" Value="[#LightcraftExe]" Type="string" />
--        <RegistryValue Root="HKLM" Key="Software\LightCraft" Name="InstallFolder" Value="[INSTALLFOLDER]" Type="string" />
--      </Component>
--
--      <Component Id="LightcraftCli">
--        <File Id="LightcraftCliExe" Source="$(var.BinDir)\lightcraft-cli.exe" KeyPath="yes" />
--      </Component>
--    </ComponentGroup>
--  </Fragment>
--</Wix>
 diff --git a/packaging/windows/package.ps1 b/packaging/windows/package.ps1
-index e2cd2a8..5c657ba 100644
+index e2cd2a8..36e73ef 100644
 --- a/packaging/windows/package.ps1
 +++ b/packaging/windows/package.ps1
 @@ -1,11 +1,11 @@
@@ -7882,7 +7484,7 @@ index e2cd2a8..5c657ba 100644
    $h = Get-PeHeader (Join-Path $Bin $check[0])
    if ($h.Machine -ne $Machine) { throw "$($check[0]) is for machine 0x$('{0:X}' -f $h.Machine), expected 0x$('{0:X}' -f $Machine) ($Arch)" }
    if ($h.Subsystem -ne $check[1]) { throw "$($check[0]) has PE subsystem $($h.Subsystem), expected $($check[1])" }
-@@ -111,9 +111,26 @@ foreach ($check in @(@('lightcraft.exe', 2), @('lightcraft-cli.exe', 3))) {
+@@ -111,9 +111,28 @@ foreach ($check in @(@('lightcraft.exe', 2), @('lightcraft-cli.exe', 3))) {
  $Stage = Join-Path $TargetDir "windows-package\$Arch"
  Remove-Item -Recurse -Force $Stage -ErrorAction SilentlyContinue
  New-Item -ItemType Directory -Force -Path $Stage | Out-Null
@@ -7893,9 +7495,11 @@ index e2cd2a8..5c657ba 100644
 +& (Join-Path $PSScriptRoot 'sign.ps1') (Join-Path $Stage 'plervo-develop.exe') (Join-Path $Stage 'plervo-develop-cli.exe')
 +
 +# Carry source and embedded-asset notices in MSI and portable distributions.
++& python (Join-Path $Root 'packaging/licenses/verify.py') $Root
++if ($LASTEXITCODE -ne 0) { throw "Third-party notice review is stale or missing" }
 +$Legal = Join-Path $Stage 'Licenses'
 +New-Item -ItemType Directory -Force -Path $Legal | Out-Null
-+foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md') {
++foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md', 'THIRD_PARTY_NOTICES.txt') {
 +  $p = Join-Path $Root $f
 +  if (Test-Path $p) { Copy-Item $p $Legal }
 +}
@@ -7911,7 +7515,7 @@ index e2cd2a8..5c657ba 100644
  
  # ---- MSI ---------------------------------------------------------------------------------------
  # Extensions must match the WiX tool version (5.0.2, see release.yml). Re-adding is harmless.
-@@ -131,10 +148,17 @@ $UiBannerBmp = Join-Path $Stage 'ui-banner.bmp'
+@@ -131,10 +150,17 @@ $UiBannerBmp = Join-Path $Stage 'ui-banner.bmp'
  New-PanelBitmap $UiDialogBmp 493 312 164 ([byte[]](0x4E, 0x7B, 0xFB)) ([byte[]](0xFF, 0xFF, 0xFF))
  New-PanelBitmap $UiBannerBmp 493 58 0 ([byte[]](0xFF, 0xFF, 0xFF)) ([byte[]](0xFF, 0xFF, 0xFF))
  
@@ -7932,7 +7536,7 @@ index e2cd2a8..5c657ba 100644
      -d "UiDialogBmp=$UiDialogBmp" -d "UiBannerBmp=$UiBannerBmp" `
      -o $Msi
  }
-@@ -143,10 +167,11 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
+@@ -143,10 +169,11 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
  & (Join-Path $PSScriptRoot 'sign.ps1') $Msi
  
  # ---- portable zip ------------------------------------------------------------------------------
@@ -7945,7 +7549,7 @@ index e2cd2a8..5c657ba 100644
  foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'NOTICE') {
    $p = Join-Path $Root $f
    if (Test-Path $p) { Copy-Item $p $Portable }
-@@ -157,7 +182,7 @@ if ($env:CRAFT_FONTS_DIR) {
+@@ -157,7 +184,7 @@ if ($env:CRAFT_FONTS_DIR) {
      Copy-Item $_.FullName (Join-Path $Portable "OFL-$($_.Directory.Name).txt")
    }
  }
@@ -7954,7 +7558,7 @@ index e2cd2a8..5c657ba 100644
  Remove-Item -Force $Zip -ErrorAction SilentlyContinue
  Compress-Archive -Path $Portable -DestinationPath $Zip
  
-@@ -165,8 +190,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
+@@ -165,8 +192,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
  # here; .github/workflows/windows-arm64.yml installs and runs it on ARM64 instead.
  $HostArch = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString().ToLowerInvariant()
  if ($Arch -ne 'arm64' -or $HostArch -eq 'arm64') {
@@ -7965,227 +7569,174 @@ index e2cd2a8..5c657ba 100644
 +  Write-Output "skipping plervo-develop-cli --version: an $Arch build doesn't run on this $HostArch machine"
  }
  Get-Item $Msi, $Zip | Format-Table Name, Length
-diff --git a/packaging/windows/plervo-develop.wxs b/packaging/windows/plervo-develop.wxs
-new file mode 100644
-index 0000000..52c68c8
---- /dev/null
+diff --git a/packaging/windows/lightcraft.wxs b/packaging/windows/plervo-develop.wxs
+similarity index 78%
+rename from packaging/windows/lightcraft.wxs
+rename to packaging/windows/plervo-develop.wxs
+index 38fe8f3..52c68c8 100644
+--- a/packaging/windows/lightcraft.wxs
 +++ b/packaging/windows/plervo-develop.wxs
-@@ -0,0 +1,215 @@
-+<?xml version="1.0" encoding="utf-8"?>
-+<!--
+@@ -1,46 +1,45 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <!--
+-  LightCraft MSI (WiX Toolset v5: `dotnet tool install -g wix`, plus the UI and Util extensions:
 +  Plervo Develop MSI (WiX Toolset v5: `dotnet tool install -g wix`, plus the UI and Util extensions:
-+  `wix extension add -g WixToolset.UI.wixext/5.0.2 WixToolset.Util.wixext/5.0.2`). Built by package.ps1:
-+
+   `wix extension add -g WixToolset.UI.wixext/5.0.2 WixToolset.Util.wixext/5.0.2`). Built by package.ps1:
+ 
+-    wix build lightcraft.wxs -arch x64 -ext WixToolset.UI.wixext/5.0.2 -ext WixToolset.Util.wixext/5.0.2
 +    wix build plervo-develop.wxs -arch x64 -ext WixToolset.UI.wixext/5.0.2 -ext WixToolset.Util.wixext/5.0.2
-+      -d Version=1.2.3 -d BinDir=... -d IconPath=... -d UiDialogBmp=... -d UiBannerBmp=... -o out.msi
-+
-+  Per-machine install into Program Files (or the folder chosen in the installer, or
+       -d Version=1.2.3 -d BinDir=... -d IconPath=... -d UiDialogBmp=... -d UiBannerBmp=... -o out.msi
+ 
+   Per-machine install into Program Files (or the folder chosen in the installer, or
+-  `INSTALLFOLDER=...` on the msiexec command line; upgrades keep it), a Start Menu shortcut, `.pcraft` owned by LightCraft,
+-  and LightCraft offered under "Open with" for PSD/PSB and the image formats it reads (without
+-  taking over the user's default app for them).
 +  `INSTALLFOLDER=...` on the msiexec command line; upgrades keep it), plus a Start Menu shortcut.
 +  This installer does not claim a native document format or change image-file defaults.
-+-->
-+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
-+  <Package
+ -->
+ <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+   <Package
+-      Name="LightCraft"
+-      Manufacturer="Learning Machines LLC"
 +      Name="Plervo Develop"
 +      Manufacturer="Maintech Solutions LLC"
-+      Version="$(var.Version)"
+       Version="$(var.Version)"
+-      UpgradeCode="229BB552-5EFD-479A-BA86-8CB6D926390C"
 +      UpgradeCode="239494FA-3C4E-5882-B4D8-A9EE70FEB27F"
-+      Scope="perMachine"
-+      Compressed="yes"
-+      Language="1033">
+       Scope="perMachine"
+       Compressed="yes"
+       Language="1033">
+-    <SummaryInformation Description="LightCraft photo library and raw developer" Manufacturer="Learning Machines LLC" />
 +    <SummaryInformation Description="Plervo Develop photo library and raw developer" Manufacturer="Maintech Solutions LLC" />
-+    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
-+         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
-+    <MajorUpgrade AllowSameVersionUpgrades="yes"
+     <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
+          (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
+     <MajorUpgrade AllowSameVersionUpgrades="yes"
+-        DowngradeErrorMessage="A newer version of LightCraft is already installed." />
 +        DowngradeErrorMessage="A newer version of Plervo Develop is already installed." />
-+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
-+
-+    <Icon Id="LightcraftIcon.ico" SourceFile="$(var.IconPath)" />
-+    <Property Id="ARPPRODUCTICON" Value="LightcraftIcon.ico" />
+     <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+ 
+     <Icon Id="LightcraftIcon.ico" SourceFile="$(var.IconPath)" />
+     <Property Id="ARPPRODUCTICON" Value="LightcraftIcon.ico" />
+-    <Property Id="ARPURLINFOABOUT" Value="https://getartcraft.com/apps/lightcraft" />
+-    <Property Id="ARPURLUPDATEINFO" Value="https://getartcraft.com/apps/lightcraft" />
+-    <Property Id="ARPHELPLINK" Value="https://discord.gg/artcraft" />
 +    <Property Id="ARPURLINFOABOUT" Value="https://plervo.com/" />
 +    <Property Id="ARPURLUPDATEINFO" Value="https://plervo.com/" />
 +    <Property Id="ARPHELPLINK" Value="https://buymeacoffee.com/alport" />
-+
-+    <StandardDirectory Id="ProgramFiles6432Folder">
+ 
+     <StandardDirectory Id="ProgramFiles6432Folder">
+-      <Directory Id="INSTALLFOLDER" Name="LightCraft" />
 +      <Directory Id="INSTALLFOLDER" Name="Plervo Develop" />
-+    </StandardDirectory>
-+    <!-- The folder of the installed version (written by LightcraftApp), so an upgrade installs
-+         where the user chose instead of moving back to Program Files (issue #399). Searched into
-+         its own property: AppSearch would otherwise overwrite INSTALLFOLDER=... given to msiexec. -->
-+    <Property Id="PREVIOUSINSTALLFOLDER">
+     </StandardDirectory>
+     <!-- The folder of the installed version (written by LightcraftApp), so an upgrade installs
+          where the user chose instead of moving back to Program Files (issue #399). Searched into
+          its own property: AppSearch would otherwise overwrite INSTALLFOLDER=... given to msiexec. -->
+     <Property Id="PREVIOUSINSTALLFOLDER">
+-      <RegistrySearch Id="PreviousInstallFolder" Root="HKLM" Key="Software\LightCraft" Name="InstallFolder" Type="raw" />
 +      <RegistrySearch Id="PreviousInstallFolder" Root="HKLM" Key="Software\Plervo Develop" Name="InstallFolder" Type="raw" />
-+    </Property>
-+    <SetProperty Id="INSTALLFOLDER" Value="[PREVIOUSINSTALLFOLDER]" After="AppSearch" Sequence="both"
-+        Condition="PREVIOUSINSTALLFOLDER AND NOT INSTALLFOLDER" />
-+    <!-- Older MSIs (including 0.5.0) only recorded the executable in App Paths. Type="file"
-+         without a FileSearch returns its containing directory. Keep the searches separate so
-+         the newer InstallFolder value and an explicit INSTALLFOLDER always take precedence. -->
-+    <Property Id="LEGACYINSTALLFOLDER">
-+      <RegistrySearch Id="LegacyInstallFolder" Root="HKLM"
+     </Property>
+     <SetProperty Id="INSTALLFOLDER" Value="[PREVIOUSINSTALLFOLDER]" After="AppSearch" Sequence="both"
+         Condition="PREVIOUSINSTALLFOLDER AND NOT INSTALLFOLDER" />
+@@ -49,16 +48,16 @@
+          the newer InstallFolder value and an explicit INSTALLFOLDER always take precedence. -->
+     <Property Id="LEGACYINSTALLFOLDER">
+       <RegistrySearch Id="LegacyInstallFolder" Root="HKLM"
+-          Key="Software\Microsoft\Windows\CurrentVersion\App Paths\lightcraft.exe" Type="file" />
 +          Key="Software\Microsoft\Windows\CurrentVersion\App Paths\plervo-develop.exe" Type="file" />
-+    </Property>
-+    <!-- That directory search doesn't check the executable exists, and when its unquoted path is
-+         gone it falls back to the text before the first space: a deleted
+     </Property>
+     <!-- That directory search doesn't check the executable exists, and when its unquoted path is
+          gone it falls back to the text before the first space: a deleted
+-         "C:\Program Files\LightCraft\lightcraft.exe" yields "C:\". Only use the folder when this
+-         search, which does require lightcraft.exe, finds it too. -->
 +         "C:\Program Files\Plervo Develop\plervo-develop.exe" yields "C:\". Only use the folder when this
 +         search, which does require plervo-develop.exe, finds it too. -->
-+    <Property Id="LEGACYINSTALLEXE">
-+      <RegistrySearch Id="LegacyInstallExe" Root="HKLM"
+     <Property Id="LEGACYINSTALLEXE">
+       <RegistrySearch Id="LegacyInstallExe" Root="HKLM"
+-          Key="Software\Microsoft\Windows\CurrentVersion\App Paths\lightcraft.exe" Type="file">
+-        <FileSearch Id="LegacyInstallExeFile" Name="lightcraft.exe" />
 +          Key="Software\Microsoft\Windows\CurrentVersion\App Paths\plervo-develop.exe" Type="file">
 +        <FileSearch Id="LegacyInstallExeFile" Name="plervo-develop.exe" />
-+      </RegistrySearch>
-+    </Property>
-+    <SetProperty Id="INSTALLFOLDER" Action="SetInstallFolderFromAppPaths" Value="[LEGACYINSTALLFOLDER]"
-+        After="SetINSTALLFOLDER" Sequence="both"
-+        Condition="LEGACYINSTALLFOLDER AND LEGACYINSTALLEXE AND NOT PREVIOUSINSTALLFOLDER AND NOT INSTALLFOLDER" />
-+    <StandardDirectory Id="ProgramMenuFolder" />
-+
+       </RegistrySearch>
+     </Property>
+     <SetProperty Id="INSTALLFOLDER" Action="SetInstallFolderFromAppPaths" Value="[LEGACYINSTALLFOLDER]"
+@@ -66,17 +65,18 @@
+         Condition="LEGACYINSTALLFOLDER AND LEGACYINSTALLEXE AND NOT PREVIOUSINSTALLFOLDER AND NOT INSTALLFOLDER" />
+     <StandardDirectory Id="ProgramMenuFolder" />
+ 
+-    <Feature Id="Main" Title="LightCraft" Level="1">
 +    <Feature Id="Main" Title="Plervo Develop" Level="1">
-+      <ComponentGroupRef Id="LightcraftFiles" />
-+    </Feature>
-+
-+    <UIRef Id="LightcraftUI" />
+       <ComponentGroupRef Id="LightcraftFiles" />
+     </Feature>
+ 
+     <UIRef Id="LightcraftUI" />
 +    <Feature Id="PlervoLicenseFeature" Title="Licenses" Level="1"><ComponentGroupRef Id="PlervoLegalFiles" /></Feature>
-+  </Package>
-+
-+  <!--
-+    Interactive install UI: Welcome -> Destination Folder -> Ready to install -> progress ->
+   </Package>
+ 
+   <!--
+     Interactive install UI: Welcome -> Destination Folder -> Ready to install -> progress ->
+-    "Completed" (Finish), with a "Launch LightCraft" checkbox (checked by default). Destination
+-    Folder (issue #399) shows Program Files\LightCraft, or the installed version's folder on an
 +    "Completed" (Finish), with a "Launch Plervo Develop" checkbox (checked by default). Destination
 +    Folder (issue #399) shows Program Files\Plervo Develop, or the installed version's folder on an
-+    upgrade; Change... browses, and a folder that can't be used (InvalidDirDlg) is refused before
-+    anything is installed. Failure and cancellation end on WiX's standard FatalError / UserExit
-+    dialogs instead of the completion page. Maintenance (running the MSI again, Repair/Remove from
-+    Apps) uses the standard maintenance dialogs; every successful run — install, repair or
-+    remove — then ends on the shared completion page, so a successful uninstall is confirmed
-+    with a visible final dialog (issue #892; the page itself is issue #790's fix).
-+
+     upgrade; Change... browses, and a folder that can't be used (InvalidDirDlg) is refused before
+     anything is installed. Failure and cancellation end on WiX's standard FatalError / UserExit
+     dialogs instead of the completion page. Maintenance (running the MSI again, Repair/Remove from
+@@ -84,7 +84,7 @@
+     remove — then ends on the shared completion page, so a successful uninstall is confirmed
+     with a visible final dialog (issue #892; the page itself is issue #790's fix).
+ 
+-    This is WixUI_InstallDir without its licence-acceptance page: LightCraft is MIT OR Apache-2.0,
 +    This is WixUI_InstallDir without its licence-acceptance page: Plervo Develop is MIT OR Apache-2.0,
-+    which ask nothing of people who just install and run it, so a click-through EULA would only
-+    add a step. Silent (/qn) and basic-UI (/passive, /qb) installs never show these dialogs, so
-+    they are unaffected, and nothing is launched.
-+
-+    The dialogs, strings and error/cancel pages come from WixToolset.UI.wixext; the side and
-+    banner bitmaps are plain panels generated by package.ps1 (no third-party artwork).
-+  -->
-+  <Fragment>
-+    <WixVariable Id="WixUIDialogBmp" Value="$(var.UiDialogBmp)" />
-+    <WixVariable Id="WixUIBannerBmp" Value="$(var.UiBannerBmp)" />
-+
-+    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT"
+     which ask nothing of people who just install and run it, so a click-through EULA would only
+     add a step. Silent (/qn) and basic-UI (/passive, /qb) installs never show these dialogs, so
+     they are unaffected, and nothing is launched.
+@@ -97,11 +97,11 @@
+     <WixVariable Id="WixUIBannerBmp" Value="$(var.UiBannerBmp)" />
+ 
+     <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT"
+-        Value="LightCraft has been installed. You can start it at any time from the Start menu." />
+-    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch LightCraft" />
 +        Value="Plervo Develop has been installed. You can start it at any time from the Start menu." />
 +    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch Plervo Develop" />
-+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
-+
+     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
+ 
+-    <!-- "Launch LightCraft" on Finish. WixUnelevatedShellExec (Util extension) asks the desktop
 +    <!-- "Launch Plervo Develop" on Finish. WixUnelevatedShellExec (Util extension) asks the desktop
-+         shell (Explorer) to start the program, so it runs as the signed-in user at normal
-+         integrity even when the installer UI itself is elevated (e.g. msiexec started from an
-+         admin prompt); it never runs from the elevated/SYSTEM server side. It is a UI-only control
-+         event, so silent and passive installs never run it. Return="ignore": a failed launch must
-+         not turn a successful install into an error. -->
-+    <Property Id="WixUnelevatedShellExecTarget" Value="[#LightcraftExe]" />
-+    <CustomAction Id="LaunchLightcraft" BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)"
-+        DllEntry="WixUnelevatedShellExec" Execute="immediate" Impersonate="yes" Return="ignore" />
-+
-+    <UI Id="LightcraftUI">
-+      <TextStyle Id="WixUI_Font_Normal" FaceName="Tahoma" Size="8" />
-+      <TextStyle Id="WixUI_Font_Bigger" FaceName="Tahoma" Size="12" />
-+      <TextStyle Id="WixUI_Font_Title" FaceName="Tahoma" Size="9" Bold="yes" />
-+      <Property Id="DefaultUIFont" Value="WixUI_Font_Normal" />
-+
-+      <DialogRef Id="ErrorDlg" />
-+      <DialogRef Id="FatalError" />
-+      <DialogRef Id="FilesInUse" />
-+      <DialogRef Id="MsiRMFilesInUse" />
-+      <DialogRef Id="PrepareDlg" />
-+      <DialogRef Id="ProgressDlg" />
-+      <DialogRef Id="ResumeDlg" />
-+      <DialogRef Id="UserExit" />
-+      <DialogRef Id="WelcomeDlg" />
-+      <DialogRef Id="InstallDirDlg" />
-+      <DialogRef Id="BrowseDlg" />
-+      <DialogRef Id="InvalidDirDlg" />
-+      <DialogRef Id="DiskCostDlg" />
-+      <!-- Referenced by the Publish events below but never pulled in on its own: without this
-+           ref the MSI ships without a completion page, so a successful install or remove ends
-+           silently (issues #790, #892). The UI extension's fragment shows it on exit=success,
-+           which covers Remove from Apps & features too. -->
-+      <DialogRef Id="ExitDialog" />
-+      <DialogRef Id="VerifyReadyDlg" />
-+      <DialogRef Id="MaintenanceWelcomeDlg" />
-+      <DialogRef Id="MaintenanceTypeDlg" />
-+
-+      <!-- The folder InstallDirDlg edits. -->
-+      <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
-+
-+      <!-- First install / upgrade: Welcome -> Destination Folder -> Ready to install. A patch skips
-+           the folder (it can't move an installed product). -->
-+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Condition="NOT Installed" />
-+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg" Condition="Installed AND PATCH" />
-+
-+      <!-- Destination Folder, as in WixUI_InstallDir: Next sets the folder, validates it (WiX's
-+           WixUIValidatePath) and refuses one that can't be used; Change... opens the folder browser,
-+           whose OK validates too. -->
-+      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" />
-+      <Publish Dialog="InstallDirDlg" Control="Next" Event="SetTargetPath" Value="[WIXUI_INSTALLDIR]" Order="1" />
-+      <Publish Dialog="InstallDirDlg" Control="Next" Event="DoAction" Value="WixUIValidatePath_$(sys.BUILDARCHSHORT)" Order="2"
-+          Condition="NOT WIXUI_DONTVALIDATEPATH" />
-+      <Publish Dialog="InstallDirDlg" Control="Next" Event="SpawnDialog" Value="InvalidDirDlg" Order="3"
-+          Condition="NOT WIXUI_DONTVALIDATEPATH AND WIXUI_INSTALLDIR_VALID&lt;&gt;&quot;1&quot;" />
-+      <Publish Dialog="InstallDirDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg" Order="4"
-+          Condition="WIXUI_DONTVALIDATEPATH OR WIXUI_INSTALLDIR_VALID=&quot;1&quot;" />
-+      <Publish Dialog="InstallDirDlg" Control="ChangeFolder" Property="_BrowseProperty" Value="[WIXUI_INSTALLDIR]" Order="1" />
-+      <Publish Dialog="InstallDirDlg" Control="ChangeFolder" Event="SpawnDialog" Value="BrowseDlg" Order="2" />
-+      <Publish Dialog="BrowseDlg" Control="OK" Event="DoAction" Value="WixUIValidatePath_$(sys.BUILDARCHSHORT)" Order="3"
-+          Condition="NOT WIXUI_DONTVALIDATEPATH" />
-+      <Publish Dialog="BrowseDlg" Control="OK" Event="SpawnDialog" Value="InvalidDirDlg" Order="4"
-+          Condition="NOT WIXUI_DONTVALIDATEPATH AND WIXUI_INSTALLDIR_VALID&lt;&gt;&quot;1&quot;" />
-+
-+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="InstallDirDlg" Order="1"
-+          Condition="NOT Installed" />
-+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="3"
-+          Condition="Installed AND PATCH" />
-+
-+      <!-- Maintenance: Welcome -> Repair / Remove -> Ready. -->
-+      <Publish Dialog="MaintenanceWelcomeDlg" Control="Next" Event="NewDialog" Value="MaintenanceTypeDlg" />
-+      <Publish Dialog="MaintenanceTypeDlg" Control="RepairButton" Event="NewDialog" Value="VerifyReadyDlg" />
-+      <Publish Dialog="MaintenanceTypeDlg" Control="RemoveButton" Event="NewDialog" Value="VerifyReadyDlg" />
-+      <Publish Dialog="MaintenanceTypeDlg" Control="Back" Event="NewDialog" Value="MaintenanceWelcomeDlg" />
-+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg" Order="2"
-+          Condition="Installed AND NOT PATCH" />
-+
-+      <!-- Completion page: optionally launch, then close. -->
-+      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchLightcraft" Order="1"
-+          Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 AND NOT Installed" />
-+      <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999" />
-+
-+      <!-- One feature, nothing to change: no "Change" in Apps & features. -->
-+      <Property Id="ARPNOMODIFY" Value="1" />
-+    </UI>
-+
-+    <UIRef Id="WixUI_Common" />
-+  </Fragment>
-+
-+  <Fragment>
-+    <ComponentGroup Id="LightcraftFiles" Directory="INSTALLFOLDER">
+          shell (Explorer) to start the program, so it runs as the signed-in user at normal
+          integrity even when the installer UI itself is elevated (e.g. msiexec started from an
+          admin prompt); it never runs from the elevated/SYSTEM server side. It is a UI-only control
+@@ -192,20 +192,24 @@
+ 
+   <Fragment>
+     <ComponentGroup Id="LightcraftFiles" Directory="INSTALLFOLDER">
+-      <Component Id="LightcraftApp" Guid="8A1D3A39-F7C1-47B1-97AE-40C80BF82F4A">
+-        <File Id="LightcraftExe" Source="$(var.BinDir)\lightcraft.exe" KeyPath="yes">
+-          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="LightCraft"
+-              Description="LightCraft photo library and raw developer" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
 +      <Component Id="LightcraftApp" Guid="DC705CE2-BC56-5B55-9A6B-16FB0B04CDA2">
 +        <File Id="LightcraftExe" Source="$(var.BinDir)\plervo-develop.exe" KeyPath="yes">
 +          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="Plervo Develop"
 +              Description="Plervo Develop photo library and raw developer" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
-+              Icon="LightcraftIcon.ico" IconIndex="0" />
-+        </File>
-+
+               Icon="LightcraftIcon.ico" IconIndex="0" />
+         </File>
+ 
+-        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\lightcraft.exe" Value="[#LightcraftExe]" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\LightCraft" Name="InstallFolder" Value="[INSTALLFOLDER]" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\plervo-develop.exe" Value="[#LightcraftExe]" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Plervo Develop" Name="InstallFolder" Value="[INSTALLFOLDER]" Type="string" />
-+      </Component>
-+
-+      <Component Id="LightcraftCli">
+       </Component>
+ 
+       <Component Id="LightcraftCli">
+-        <File Id="LightcraftCliExe" Source="$(var.BinDir)\lightcraft-cli.exe" KeyPath="yes" />
 +        <File Id="LightcraftCliExe" Source="$(var.BinDir)\plervo-develop-cli.exe" KeyPath="yes" />
-+      </Component>
-+    </ComponentGroup>
-+  </Fragment>
+       </Component>
+     </ComponentGroup>
+   </Fragment>
 +  <Fragment>
 +    <DirectoryRef Id="INSTALLFOLDER"><Directory Id="PlervoLegalDir" Name="Licenses" /></DirectoryRef>
 +    <ComponentGroup Id="PlervoLegalFiles" Directory="PlervoLegalDir"><Files Include="$(var.BinDir)\Licenses\*" /></ComponentGroup>
 +  </Fragment>
-+</Wix>
+ </Wix>
 diff --git a/packaging/windows/sign.ps1 b/packaging/windows/sign.ps1
 index 3139b70..9d4a4c5 100644
 --- a/packaging/windows/sign.ps1

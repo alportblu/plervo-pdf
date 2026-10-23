@@ -22,6 +22,8 @@ struct Product {
     windows_upgrade_code: String,
     fonts_commit: String,
     patch_sha256: String,
+    notices_sha256: String,
+    notice_manifest_sha256: String,
     icons: Vec<Icon>,
     remove: Vec<String>,
 }
@@ -55,7 +57,8 @@ fn validate(product: &Product) -> Result<()> {
     ensure!(hex(&product.commit, 40) && hex(&product.fonts_commit, 40) && hex(&product.patch_sha256, 64), "invalid source or patch pin");
     ensure!(product.tag.starts_with('v') && !product.tag.contains(['/', '\\', ' ', '\n']), "invalid upstream tag");
     ensure!(product.name.starts_with("Plervo ") && !product.name.contains(['\n', '\r']), "invalid product name");
-    ensure!(product.release_version == "0.1.0-alpha.5" && product.status == "preparing", "unqualified products must stay internal");
+    ensure!(product.release_version == "0.1.0-alpha.8" && product.status == "preparing", "unqualified products must stay internal");
+    ensure!(hex(&product.notices_sha256, 64) && hex(&product.notice_manifest_sha256, 64), "invalid notice inventory pins");
     ensure!(
         product.windows_upgrade_code.len() == 36 && product.windows_upgrade_code.bytes().all(|b| b.is_ascii_hexdigit() || b == b'-'),
         "invalid Windows identity"
@@ -136,6 +139,10 @@ pub fn run(args: &[String]) -> Result<()> {
         ensure!(names.insert(&product.product) && upgrade_codes.insert(&product.windows_upgrade_code), "duplicate product identity");
         let patch = fs::read(root.join(format!("products/patches/{}.patch", product.product)))?;
         ensure!(crate::assets::sha256_hex(&patch) == product.patch_sha256, "patch checksum differs for {}", product.product);
+        for (file, expected) in [("THIRD_PARTY_NOTICES.txt", &product.notices_sha256), ("manifest.json", &product.notice_manifest_sha256)] {
+            let source = root.join("products/licenses").join(&product.product).join(file);
+            ensure!(crate::assets::sha256_hex(&fs::read(source)?) == *expected, "notice checksum differs for {}: {file}", product.product);
+        }
         for icon in &product.icons {
             ensure!(crate::assets::sha256_hex(&fs::read(root.join(&icon.from))?) == icon.sha256, "icon checksum differs: {}", icon.from);
         }
@@ -190,6 +197,17 @@ pub fn run(args: &[String]) -> Result<()> {
                 fs::create_dir_all(destination.parent().context("icon has no parent")?)?;
                 fs::copy(root.join(&icon.from), destination)?;
             }
+            for (from, to) in [
+                (format!("{}/THIRD_PARTY_NOTICES.txt", product.product), "THIRD_PARTY_NOTICES.txt"),
+                (format!("{}/manifest.json", product.product), "packaging/licenses/manifest.json"),
+                ("verify.py".to_owned(), "packaging/licenses/verify.py"),
+            ] {
+                checked_file(&checkout, to)?;
+                let destination = checkout.join(to);
+                fs::create_dir_all(destination.parent().context("notice has no parent")?)?;
+                fs::copy(root.join("products/licenses").join(from), destination)?;
+            }
+            crate::licenses::verify_at(&checkout)?;
             checked_file(&checkout, "PLERVO-BUILD.json")?;
             fs::write(
                 checkout.join("PLERVO-BUILD.json"),
@@ -197,6 +215,8 @@ pub fn run(args: &[String]) -> Result<()> {
                     "product":product.name, "version":product.release_version, "upstream":product.source_repository,
                     "upstream_commit":product.commit, "patch_sha256":product.patch_sha256,
                     "fonts_commit":product.fonts_commit,
+                    "notices_sha256":product.notices_sha256,
+                    "notice_manifest_sha256":product.notice_manifest_sha256,
                     "icons":product.icons.iter().map(|icon| serde_json::json!({"path":icon.to,"sha256":icon.sha256})).collect::<Vec<_>>(),
                     "qualification":"internal candidate; not approved for distribution"
                 }))?,

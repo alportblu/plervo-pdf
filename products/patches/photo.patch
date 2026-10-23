@@ -49,7 +49,7 @@ index 227aee8..ab0fff3 100644
 +
 +| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | efa30dd6b6cc09a5b65932243098832aabc84cf06909f1c5cd207b19c60d07df |
 diff --git a/Cargo.lock b/Cargo.lock
-index 54085cf..bd936ec 100644
+index 54085cf..53278ab 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -849,7 +849,7 @@ dependencies = [
@@ -256,7 +256,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-affinity"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "crc32fast",
   "flate2",
@@ -265,7 +265,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-algo"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "photocraft-color",
   "photocraft-geom",
@@ -274,7 +274,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-automation"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "base64 0.22.1",
   "cap-std",
@@ -299,7 +299,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-cms"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "moxcms",
   "rayon",
@@ -308,7 +308,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-codecs"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "exr",
   "flate2",
@@ -325,7 +325,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-color"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "photocraft-cms",
   "serde",
@@ -334,7 +334,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-compose"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "criterion",
   "photocraft-color",
@@ -343,7 +343,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-doc"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "photocraft-color",
   "photocraft-geom",
@@ -352,7 +352,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-engine"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "blake3",
   "craft-print",
@@ -370,7 +370,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-format"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "blake3",
   "crc32fast",
@@ -379,7 +379,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-geom"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "serde",
  ]
@@ -387,7 +387,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-gpu"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "half",
   "log",
@@ -396,7 +396,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-heif"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "heic-rs",
  ]
@@ -404,7 +404,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-io"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "blake3",
   "crc32fast",
@@ -423,7 +423,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-ops"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "photocraft-doc",
  ]
@@ -431,7 +431,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-paint"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "photocraft-color",
   "photocraft-geom",
@@ -440,7 +440,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-plugins"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "photocraft-color",
   "photocraft-geom",
@@ -449,7 +449,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-psd"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "flate2",
   "photocraft-psd",
@@ -458,7 +458,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-raster"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "photocraft-color",
   "photocraft-geom",
@@ -467,7 +467,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-raw"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "flate2",
   "image",
@@ -485,7 +485,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-tablet"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "block2 0.6.2",
   "objc2 0.6.4",
@@ -494,7 +494,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-testkit"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "memory-stats",
   "photocraft-color",
@@ -503,7 +503,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-text"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "flate2",
   "parley",
@@ -512,7 +512,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-ui-egui"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "base64 0.22.1",
   "craft-print",
@@ -521,7 +521,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-vector"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "photocraft-color",
   "photocraft-doc",
@@ -530,7 +530,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "photocraft-web"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "eframe",
   "egui",
@@ -540,7 +540,7 @@ index 54085cf..bd936ec 100644
  
 +[[package]]
 +name = "plervo-photo"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
 +dependencies = [
 + "arboard",
 + "async-io",
@@ -584,7 +584,7 @@ index 54085cf..bd936ec 100644
 +
 +[[package]]
 +name = "plervo-photo-cli"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
 +dependencies = [
 + "photocraft-automation",
 + "photocraft-codecs",
@@ -690,6 +690,18 @@ index 54085cf..bd936ec 100644
  ]
  
  [[package]]
+@@ -6054,9 +6064,9 @@ checksum = "eec689c0bc40ff2458a5977b6619cb718087084a18e02a131c599b62d05e1a5f"
+ 
+ [[package]]
+ name = "rustls-webpki"
+-version = "0.103.15"
++version = "0.103.16"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "f3c3cf1d8b1e7d4927e2d154c3fcb02979afb9939629c62cd9048d4f07b60ac2"
++checksum = "4443b1b6d39d7c663139942cc4558262562d2c84123bb6282ef177009ca8b281"
+ dependencies = [
+  "aws-lc-rs",
+  "ring",
 @@ -6082,29 +6092,11 @@ dependencies = [
   "wait-timeout",
  ]
@@ -748,12 +760,8 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "syn"
  version = "1.0.109"
-@@ -6908,10 +6910,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
- checksum = "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd"
- dependencies = [
-  "fastrand",
-- "getrandom 0.3.4",
-+ "getrandom 0.4.3",
+@@ -6911,7 +6913,7 @@ dependencies = [
+  "getrandom 0.3.4",
   "once_cell",
   "rustix 1.1.5",
 - "windows-sys 0.59.0",
@@ -916,6 +924,18 @@ index 54085cf..bd936ec 100644
   "unicode-bidi",
   "unicode-script",
   "unicode-vo",
+@@ -7863,9 +7886,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "webpki-root-certs"
+-version = "1.0.9"
++version = "1.0.10"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "b96554aa2acc8ccdb7e1c9a58a7a68dd5d13bccc69cd124cb09406db612a1c9b"
++checksum = "58ec80e73fd8baf57bf0d9615554c75348bda990d6d5bbeab964dd068319fecb"
+ dependencies = [
+  "rustls-pki-types",
+ ]
 @@ -8071,7 +8094,7 @@ version = "0.1.11"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "c2a7b1c03c876122aa43f3020e6c3c3ee5c05081c9a00739faf7503aeba10d22"
@@ -930,7 +950,7 @@ index 54085cf..bd936ec 100644
  [[package]]
  name = "xtask"
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "serde",
   "serde_json",
@@ -993,7 +1013,7 @@ index 54085cf..bd936ec 100644
  
  [[package]]
 diff --git a/Cargo.toml b/Cargo.toml
-index 663d268..4218118 100644
+index 663d268..3fde089 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -1001,7 +1021,7 @@ index 663d268..4218118 100644
  
  [workspace.package]
 -version = "0.9.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.95"
@@ -7848,15 +7868,16 @@ index dae5013..80270d7 100644
  workspace = true
  
 diff --git a/packaging/env.sh b/packaging/env.sh
-index 0007227..d13f275 100644
+index 0007227..ceee761 100644
 --- a/packaging/env.sh
 +++ b/packaging/env.sh
-@@ -47,10 +47,17 @@ warn() {
+@@ -47,10 +47,18 @@ warn() {
  # Copy licence and readme files that exist into a package directory.
  copy_docs() {
    local dest="$1" f
 -  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT; do
-+  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md; do
++  python3 "$ROOT/packaging/licenses/verify.py" "$ROOT" || return 1
++  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md THIRD_PARTY_NOTICES.txt; do
      if [ -f "$ROOT/$f" ]; then cp "$ROOT/$f" "$dest/"; fi
    done
    copy_font_licences "$dest"
@@ -8086,128 +8107,6 @@ index bee0496..0000000
 -# AppRun registers the desktop entry and icons itself (#593); tell external
 -# AppImage integrators (AppImageLauncher, appimaged) not to add a duplicate (#3623).
 -X-AppImage-Integrate=false
-diff --git a/packaging/linux/ai.storyteller.photocraft.metainfo.xml.in b/packaging/linux/ai.storyteller.photocraft.metainfo.xml.in
-deleted file mode 100644
-index 932ff44..0000000
---- a/packaging/linux/ai.storyteller.photocraft.metainfo.xml.in
-+++ /dev/null
-@@ -1,75 +0,0 @@
--<?xml version="1.0" encoding="UTF-8"?>
--<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
--     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
--<component type="desktop-application">
--  <id>ai.storyteller.photocraft</id>
--  <metadata_license>CC0-1.0</metadata_license>
--  <project_license>MIT OR Apache-2.0</project_license>
--  <name>PhotoCraft</name>
--  <summary>Edit photos and layered PSD documents</summary>
--  <developer id="ai.storyteller">
--    <name>Learning Machines LLC</name>
--  </developer>
--  <description>
--    <p>
--      PhotoCraft is an open-source, native image editor with the familiar menus,
--      shortcuts, panels and tools professionals expect: layers, masks, adjustment
--      layers, layer styles, type and brushes.
--    </p>
--    <ul>
--      <li>Open, edit and save layered PSD and PSB files</li>
--      <li>8-bit, 16-bit and 32-bit float documents in RGB, grayscale, CMYK and Lab</li>
--      <li>A GPU compositor with multithreaded filters</li>
--      <li>Every action is a command, scriptable from a CLI, a JSON control channel and an MCP server</li>
--    </ul>
--  </description>
--  <launchable type="desktop-id">ai.storyteller.photocraft.desktop</launchable>
--  <icon type="stock">ai.storyteller.photocraft</icon>
--  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
--  <url type="homepage">https://getartcraft.com/apps/photocraft</url>
--  <url type="bugtracker">https://github.com/storytold/photocraft/issues</url>
--  <url type="help">https://github.com/storytold/photocraft</url>
--  <url type="contact">https://discord.gg/artcraft</url>
--  <categories>
--    <category>Graphics</category>
--    <category>RasterGraphics</category>
--    <category>Photography</category>
--  </categories>
--  <keywords>
--    <keyword>photo</keyword>
--    <keyword>image editor</keyword>
--    <keyword>psd</keyword>
--    <keyword>layers</keyword>
--  </keywords>
--  <screenshots>
--    <screenshot type="default">
--      <caption>Editing The Great Wave off Kanagawa with type layers and adjustment layers</caption>
--      <image>https://raw.githubusercontent.com/storytold/photocraft/main/docs/images/photocraft-demo.jpg</image>
--    </screenshot>
--  </screenshots>
--  <branding>
--    <color type="primary" scheme_preference="light">#9fd0ff</color>
--    <color type="primary" scheme_preference="dark">#1f64ba</color>
--  </branding>
--  <requires>
--    <display_length compare="ge">760</display_length>
--  </requires>
--  <supports>
--    <control>keyboard</control>
--    <control>pointing</control>
--    <control>tablet</control>
--  </supports>
--  <provides>
--    <binary>photocraft</binary>
--    <mediatype>application/x-photocraft</mediatype>
--    <mediatype>image/x-paintnet</mediatype>
--    <mediatype>image/openraster</mediatype>
--    <mediatype>application/x-krita</mediatype>
--    <mediatype>image/vnd.adobe.photoshop</mediatype>
--    <mediatype>image/x-psb</mediatype>
--  </provides>
--  <content_rating type="oars-1.1"/>
--  <releases>
--    <release version="@VERSION@" date="@DATE@"/>
--  </releases>
--</component>
-diff --git a/packaging/linux/ai.storyteller.photocraft.mime.xml b/packaging/linux/ai.storyteller.photocraft.mime.xml
-deleted file mode 100644
-index d7c935a..0000000
---- a/packaging/linux/ai.storyteller.photocraft.mime.xml
-+++ /dev/null
-@@ -1,35 +0,0 @@
--<?xml version="1.0" encoding="UTF-8"?>
--<!-- shared-mime-info definitions for types the system database may not have.
--     Installed to /usr/share/mime/packages/ (update-mime-database runs on install). -->
--<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
--  <mime-type type="application/x-photocraft">
--    <comment>PhotoCraft document</comment>
--    <icon name="ai.storyteller.photocraft"/>
--    <glob pattern="*.pcraft"/>
--  </mime-type>
--  <mime-type type="image/x-psb">
--    <comment>Large PSD document</comment>
--    <sub-class-of type="image/vnd.adobe.photoshop"/>
--    <generic-icon name="image-x-generic"/>
--    <magic priority="60">
--      <match type="string" value="8BPS\x00\x02" offset="0"/>
--    </magic>
--    <glob pattern="*.psb"/>
--  </mime-type>
--  <mime-type type="image/qoi">
--    <comment>QOI image</comment>
--    <generic-icon name="image-x-generic"/>
--    <magic priority="50">
--      <match type="string" value="qoif" offset="0"/>
--    </magic>
--    <glob pattern="*.qoi"/>
--  </mime-type>
--  <mime-type type="image/x-paintnet">
--    <comment>Paint.NET document</comment>
--    <generic-icon name="image-x-generic"/>
--    <magic priority="50">
--      <match type="string" value="PDN3" offset="0"/>
--    </magic>
--    <glob pattern="*.pdn"/>
--  </mime-type>
--</mime-info>
 diff --git a/packaging/linux/apprun-test.sh b/packaging/linux/apprun-test.sh
 index 475fb5e..6bad223 100755
 --- a/packaging/linux/apprun-test.sh
@@ -8275,128 +8174,95 @@ index 0000000..0dd1a20
 +# AppRun registers the desktop entry and icons itself (#593); tell external
 +# AppImage integrators (AppImageLauncher, appimaged) not to add a duplicate (#3623).
 +X-AppImage-Integrate=false
-diff --git a/packaging/linux/com.plervo.photo.metainfo.xml.in b/packaging/linux/com.plervo.photo.metainfo.xml.in
-new file mode 100644
-index 0000000..e1b7480
---- /dev/null
+diff --git a/packaging/linux/ai.storyteller.photocraft.metainfo.xml.in b/packaging/linux/com.plervo.photo.metainfo.xml.in
+similarity index 75%
+rename from packaging/linux/ai.storyteller.photocraft.metainfo.xml.in
+rename to packaging/linux/com.plervo.photo.metainfo.xml.in
+index 932ff44..e1b7480 100644
+--- a/packaging/linux/ai.storyteller.photocraft.metainfo.xml.in
 +++ b/packaging/linux/com.plervo.photo.metainfo.xml.in
-@@ -0,0 +1,75 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
-+     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
-+<component type="desktop-application">
+@@ -2,17 +2,17 @@
+ <!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
+      manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
+ <component type="desktop-application">
+-  <id>ai.storyteller.photocraft</id>
 +  <id>com.plervo.photo</id>
-+  <metadata_license>CC0-1.0</metadata_license>
-+  <project_license>MIT OR Apache-2.0</project_license>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_license>MIT OR Apache-2.0</project_license>
+-  <name>PhotoCraft</name>
 +  <name>Plervo Photo</name>
-+  <summary>Edit photos and layered PSD documents</summary>
-+  <developer id="ai.storyteller">
+   <summary>Edit photos and layered PSD documents</summary>
+   <developer id="ai.storyteller">
+-    <name>Learning Machines LLC</name>
 +    <name>Maintech Solutions LLC</name>
-+  </developer>
-+  <description>
-+    <p>
+   </developer>
+   <description>
+     <p>
+-      PhotoCraft is an open-source, native image editor with the familiar menus,
 +      Plervo Photo is an open-source, native image editor with the familiar menus,
-+      shortcuts, panels and tools professionals expect: layers, masks, adjustment
-+      layers, layer styles, type and brushes.
-+    </p>
-+    <ul>
-+      <li>Open, edit and save layered PSD and PSB files</li>
-+      <li>8-bit, 16-bit and 32-bit float documents in RGB, grayscale, CMYK and Lab</li>
-+      <li>A GPU compositor with multithreaded filters</li>
-+      <li>Every action is a command, scriptable from a CLI, a JSON control channel and an MCP server</li>
-+    </ul>
-+  </description>
+       shortcuts, panels and tools professionals expect: layers, masks, adjustment
+       layers, layer styles, type and brushes.
+     </p>
+@@ -23,13 +23,13 @@
+       <li>Every action is a command, scriptable from a CLI, a JSON control channel and an MCP server</li>
+     </ul>
+   </description>
+-  <launchable type="desktop-id">ai.storyteller.photocraft.desktop</launchable>
+-  <icon type="stock">ai.storyteller.photocraft</icon>
 +  <launchable type="desktop-id">com.plervo.photo.desktop</launchable>
 +  <icon type="stock">com.plervo.photo</icon>
-+  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
+   <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
+-  <url type="homepage">https://getartcraft.com/apps/photocraft</url>
+-  <url type="bugtracker">https://github.com/storytold/photocraft/issues</url>
+-  <url type="help">https://github.com/storytold/photocraft</url>
+-  <url type="contact">https://discord.gg/artcraft</url>
 +  <url type="homepage">https://plervo.com/</url>
 +  <url type="bugtracker">https://github.com/alportblu/plervo-pdf/issues</url>
 +  <url type="help">https://github.com/alportblu/plervo-pdf</url>
 +  <url type="contact">https://buymeacoffee.com/alport</url>
-+  <categories>
-+    <category>Graphics</category>
-+    <category>RasterGraphics</category>
-+    <category>Photography</category>
-+  </categories>
-+  <keywords>
-+    <keyword>photo</keyword>
-+    <keyword>image editor</keyword>
-+    <keyword>psd</keyword>
-+    <keyword>layers</keyword>
-+  </keywords>
-+  <screenshots>
-+    <screenshot type="default">
-+      <caption>Editing The Great Wave off Kanagawa with type layers and adjustment layers</caption>
+   <categories>
+     <category>Graphics</category>
+     <category>RasterGraphics</category>
+@@ -44,7 +44,7 @@
+   <screenshots>
+     <screenshot type="default">
+       <caption>Editing The Great Wave off Kanagawa with type layers and adjustment layers</caption>
+-      <image>https://raw.githubusercontent.com/storytold/photocraft/main/docs/images/photocraft-demo.jpg</image>
 +      <image>https://raw.githubusercontent.com/alportblu/plervo-pdf/main/docs/images/plervo-photo-demo.jpg</image>
-+    </screenshot>
-+  </screenshots>
-+  <branding>
-+    <color type="primary" scheme_preference="light">#9fd0ff</color>
-+    <color type="primary" scheme_preference="dark">#1f64ba</color>
-+  </branding>
-+  <requires>
-+    <display_length compare="ge">760</display_length>
-+  </requires>
-+  <supports>
-+    <control>keyboard</control>
-+    <control>pointing</control>
-+    <control>tablet</control>
-+  </supports>
-+  <provides>
+     </screenshot>
+   </screenshots>
+   <branding>
+@@ -60,8 +60,8 @@
+     <control>tablet</control>
+   </supports>
+   <provides>
+-    <binary>photocraft</binary>
+-    <mediatype>application/x-photocraft</mediatype>
 +    <binary>plervo-photo</binary>
 +    <mediatype>application/x-plervo-photo</mediatype>
-+    <mediatype>image/x-paintnet</mediatype>
-+    <mediatype>image/openraster</mediatype>
-+    <mediatype>application/x-krita</mediatype>
-+    <mediatype>image/vnd.adobe.photoshop</mediatype>
-+    <mediatype>image/x-psb</mediatype>
-+  </provides>
-+  <content_rating type="oars-1.1"/>
-+  <releases>
-+    <release version="@VERSION@" date="@DATE@"/>
-+  </releases>
-+</component>
-diff --git a/packaging/linux/com.plervo.photo.mime.xml b/packaging/linux/com.plervo.photo.mime.xml
-new file mode 100644
-index 0000000..aceae7f
---- /dev/null
+     <mediatype>image/x-paintnet</mediatype>
+     <mediatype>image/openraster</mediatype>
+     <mediatype>application/x-krita</mediatype>
+diff --git a/packaging/linux/ai.storyteller.photocraft.mime.xml b/packaging/linux/com.plervo.photo.mime.xml
+similarity index 89%
+rename from packaging/linux/ai.storyteller.photocraft.mime.xml
+rename to packaging/linux/com.plervo.photo.mime.xml
+index d7c935a..aceae7f 100644
+--- a/packaging/linux/ai.storyteller.photocraft.mime.xml
 +++ b/packaging/linux/com.plervo.photo.mime.xml
-@@ -0,0 +1,35 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<!-- shared-mime-info definitions for types the system database may not have.
-+     Installed to /usr/share/mime/packages/ (update-mime-database runs on install). -->
-+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+@@ -2,9 +2,9 @@
+ <!-- shared-mime-info definitions for types the system database may not have.
+      Installed to /usr/share/mime/packages/ (update-mime-database runs on install). -->
+ <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+-  <mime-type type="application/x-photocraft">
+-    <comment>PhotoCraft document</comment>
+-    <icon name="ai.storyteller.photocraft"/>
 +  <mime-type type="application/x-plervo-photo">
 +    <comment>Plervo Photo document</comment>
 +    <icon name="com.plervo.photo"/>
-+    <glob pattern="*.pcraft"/>
-+  </mime-type>
-+  <mime-type type="image/x-psb">
-+    <comment>Large PSD document</comment>
-+    <sub-class-of type="image/vnd.adobe.photoshop"/>
-+    <generic-icon name="image-x-generic"/>
-+    <magic priority="60">
-+      <match type="string" value="8BPS\x00\x02" offset="0"/>
-+    </magic>
-+    <glob pattern="*.psb"/>
-+  </mime-type>
-+  <mime-type type="image/qoi">
-+    <comment>QOI image</comment>
-+    <generic-icon name="image-x-generic"/>
-+    <magic priority="50">
-+      <match type="string" value="qoif" offset="0"/>
-+    </magic>
-+    <glob pattern="*.qoi"/>
-+  </mime-type>
-+  <mime-type type="image/x-paintnet">
-+    <comment>Paint.NET document</comment>
-+    <generic-icon name="image-x-generic"/>
-+    <magic priority="50">
-+      <match type="string" value="PDN3" offset="0"/>
-+    </magic>
-+    <glob pattern="*.pdn"/>
-+  </mime-type>
-+</mime-info>
+     <glob pattern="*.pcraft"/>
+   </mime-type>
+   <mime-type type="image/x-psb">
 diff --git a/packaging/linux/flatpak-bundle.sh b/packaging/linux/flatpak-bundle.sh
 index 5978665..a420fb2 100755
 --- a/packaging/linux/flatpak-bundle.sh
@@ -8463,262 +8329,142 @@ index 5978665..a420fb2 100755
    flatpak run --command=sh "$APP_ID" -c 'ls /app/share/applications /app/share/metainfo /app/share/mime/packages /app/share/icons/hicolor/scalable/apps'
  fi
  echo "==> done"
-diff --git a/packaging/linux/flatpak/ai.storyteller.photocraft.bundle.yml b/packaging/linux/flatpak/ai.storyteller.photocraft.bundle.yml
-deleted file mode 100644
-index 0b771ae..0000000
+diff --git a/packaging/linux/flatpak/ai.storyteller.photocraft.bundle.yml b/packaging/linux/flatpak/com.plervo.photo.bundle.yml
+similarity index 65%
+rename from packaging/linux/flatpak/ai.storyteller.photocraft.bundle.yml
+rename to packaging/linux/flatpak/com.plervo.photo.bundle.yml
+index 0b771ae..fc5eaa4 100644
 --- a/packaging/linux/flatpak/ai.storyteller.photocraft.bundle.yml
-+++ /dev/null
-@@ -1,50 +0,0 @@
--# Flatpak manifest for the single-file bundle attached to every GitHub release
++++ b/packaging/linux/flatpak/com.plervo.photo.bundle.yml
+@@ -1,7 +1,7 @@
+ # Flatpak manifest for the single-file bundle attached to every GitHub release
 -# (photocraft-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
--#
++# (plervo-photo-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
+ #
 -# It repackages the release's own Linux tarball (photocraft-<version>-linux-<arch>.tar.gz,
--# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
--# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
--# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
--# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
--# Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
--# GPU driver comes from its org.freedesktop.Platform.GL extension.
--#
++# It repackages the release's own Linux tarball (plervo-photo-<version>-linux-<arch>.tar.gz,
+ # built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
+ # network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
+ # and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
+@@ -9,13 +9,13 @@
+ # Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
+ # GPU driver comes from its org.freedesktop.Platform.GL extension.
+ #
 -# ai.storyteller.photocraft.yml (same directory) is the from-source manifest for Flathub. Keep
--# runtime-version and finish-args identical in both (packaging-lint checks this).
++# com.plervo.photo.yml (same directory) is the from-source manifest for Flathub. Keep
+ # runtime-version and finish-args identical in both (packaging-lint checks this).
 -id: ai.storyteller.photocraft
--runtime: org.freedesktop.Platform
--runtime-version: '26.08'
--sdk: org.freedesktop.Sdk
++id: com.plervo.photo
+ runtime: org.freedesktop.Platform
+ runtime-version: '26.08'
+ sdk: org.freedesktop.Sdk
 -command: photocraft
--finish-args:
--  # Display: Wayland first; X11 only when no Wayland compositor is running.
--  - --socket=wayland
--  - --socket=fallback-x11
--  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
--  - --share=ipc
--  # GPU access for the wgpu compositor (Vulkan, or GL as a fallback).
--  - --device=dri
--  # Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
--  # drag-and-drop through the document portal, so picked files work anywhere without broad
--  # filesystem access. Pictures and Documents are granted so files passed by path (the command
--  # line, Open Recent, "Save" next to the original) work in the usual places.
--  - --filesystem=xdg-pictures
--  - --filesystem=xdg-documents
--  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
++command: plervo-photo
+ finish-args:
+   # Display: Wayland first; X11 only when no Wayland compositor is running.
+   - --socket=wayland
+@@ -31,20 +31,20 @@ finish-args:
+   - --filesystem=xdg-pictures
+   - --filesystem=xdg-documents
+   # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
 -  # the sandbox; `flatpak override --user --share=network ai.storyteller.photocraft` exposes it to
--  # host agents) and home/host filesystem access.
--modules:
++  # the sandbox; `flatpak override --user --share=network com.plervo.photo` exposes it to
+   # host agents) and home/host filesystem access.
+ modules:
 -  - name: photocraft
--    buildsystem: simple
--    build-commands:
++  - name: plervo-photo
+     buildsystem: simple
+     build-commands:
 -      - install -Dm755 bin/photocraft /app/bin/photocraft
 -      - install -Dm755 bin/photocraft-cli /app/bin/photocraft-cli
 -      - install -Dm644 share/applications/ai.storyteller.photocraft.desktop /app/share/applications/ai.storyteller.photocraft.desktop
--      # .pcraft, .psb and .qoi; the runtime's shared-mime-info already knows PSD and the rest.
++      - install -Dm755 bin/plervo-photo /app/bin/plervo-photo
++      - install -Dm755 bin/plervo-photo-cli /app/bin/plervo-photo-cli
++      - install -Dm644 share/applications/com.plervo.photo.desktop /app/share/applications/com.plervo.photo.desktop
+       # .pcraft, .psb and .qoi; the runtime's shared-mime-info already knows PSD and the rest.
 -      - install -Dm644 share/mime/packages/ai.storyteller.photocraft.xml /app/share/mime/packages/ai.storyteller.photocraft.xml
--      # Already has the release's version and date substituted by package.sh.
++      - install -Dm644 share/mime/packages/com.plervo.photo.xml /app/share/mime/packages/com.plervo.photo.xml
+       # Already has the release's version and date substituted by package.sh.
 -      - install -Dm644 share/metainfo/ai.storyteller.photocraft.metainfo.xml /app/share/metainfo/ai.storyteller.photocraft.metainfo.xml
 -      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/photocraft /app/share/doc/
--    sources:
--      - type: dir
--        path: stage
-diff --git a/packaging/linux/flatpak/ai.storyteller.photocraft.yml b/packaging/linux/flatpak/ai.storyteller.photocraft.yml
-deleted file mode 100644
-index ee6bbfa..0000000
++      - install -Dm644 share/metainfo/com.plervo.photo.metainfo.xml /app/share/metainfo/com.plervo.photo.metainfo.xml
++      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/plervo-photo /app/share/doc/
+     sources:
+       - type: dir
+         path: stage
+diff --git a/packaging/linux/flatpak/ai.storyteller.photocraft.yml b/packaging/linux/flatpak/com.plervo.photo.yml
+similarity index 69%
+rename from packaging/linux/flatpak/ai.storyteller.photocraft.yml
+rename to packaging/linux/flatpak/com.plervo.photo.yml
+index ee6bbfa..471d3b1 100644
 --- a/packaging/linux/flatpak/ai.storyteller.photocraft.yml
-+++ /dev/null
-@@ -1,66 +0,0 @@
++++ b/packaging/linux/flatpak/com.plervo.photo.yml
+@@ -1,22 +1,22 @@
 -# Flatpak manifest for PhotoCraft, ready for a Flathub submission.
--#
--# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
--#
--#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
--#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
++# Flatpak manifest for Plervo Photo, ready for a Flathub submission.
+ #
+ # Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
+ #
+ #   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
+ #   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
 -#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.photocraft.yml
 -#   flatpak run ai.storyteller.photocraft
--#
--# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
++#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/com.plervo.photo.yml
++#   flatpak run com.plervo.photo
+ #
+ # For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
 -# The single-file .flatpak attached to each release comes from ai.storyteller.photocraft.bundle.yml,
--# which repackages the prebuilt release binaries. Keep runtime-version and finish-args identical.
++# The single-file .flatpak attached to each release comes from com.plervo.photo.bundle.yml,
+ # which repackages the prebuilt release binaries. Keep runtime-version and finish-args identical.
 -id: ai.storyteller.photocraft
--runtime: org.freedesktop.Platform
--runtime-version: '26.08'
--sdk: org.freedesktop.Sdk
--sdk-extensions:
--  - org.freedesktop.Sdk.Extension.rust-stable
++id: com.plervo.photo
+ runtime: org.freedesktop.Platform
+ runtime-version: '26.08'
+ sdk: org.freedesktop.Sdk
+ sdk-extensions:
+   - org.freedesktop.Sdk.Extension.rust-stable
 -command: photocraft
--finish-args:
--  # Display: Wayland first; X11 only when no Wayland compositor is running.
--  - --socket=wayland
--  - --socket=fallback-x11
--  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
--  - --share=ipc
--  # GPU access for the wgpu compositor (Vulkan, or GL as a fallback).
--  - --device=dri
--  # Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
--  # drag-and-drop through the document portal, so picked files work anywhere without broad
--  # filesystem access. Pictures and Documents are granted so files passed by path (the command
--  # line, Open Recent, "Save" next to the original) work in the usual places.
--  - --filesystem=xdg-pictures
--  - --filesystem=xdg-documents
--  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
++command: plervo-photo
+ finish-args:
+   # Display: Wayland first; X11 only when no Wayland compositor is running.
+   - --socket=wayland
+@@ -32,28 +32,28 @@ finish-args:
+   - --filesystem=xdg-pictures
+   - --filesystem=xdg-documents
+   # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
 -  # the sandbox; `flatpak override --user --share=network ai.storyteller.photocraft` exposes it to
--  # host agents) and home/host filesystem access.
--build-options:
--  append-path: /usr/lib/sdk/rust-stable/bin
--modules:
++  # the sandbox; `flatpak override --user --share=network com.plervo.photo` exposes it to
+   # host agents) and home/host filesystem access.
+ build-options:
+   append-path: /usr/lib/sdk/rust-stable/bin
+ modules:
 -  - name: photocraft
--    buildsystem: simple
--    build-options:
--      env:
++  - name: plervo-photo
+     buildsystem: simple
+     build-options:
+       env:
 -        CARGO_HOME: /run/build/photocraft/cargo
--        CARGO_NET_OFFLINE: 'true'
--    build-commands:
++        CARGO_HOME: /run/build/plervo-photo/cargo
+         CARGO_NET_OFFLINE: 'true'
+     build-commands:
 -      - cargo --offline build --release --locked -p photocraft --features heif
 -      - install -Dm755 target/release/photocraft /app/bin/photocraft
 -      - install -Dm644 packaging/linux/ai.storyteller.photocraft.desktop /app/share/applications/ai.storyteller.photocraft.desktop
 -      - install -Dm644 packaging/linux/ai.storyteller.photocraft.mime.xml /app/share/mime/packages/ai.storyteller.photocraft.xml
--      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
--      - >-
--        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
--        install -d /app/share/metainfo;
--        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
--        packaging/linux/ai.storyteller.photocraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.photocraft.metainfo.xml
--    sources:
--      - type: dir
--        path: ../../..
--        skip:
--          - target
--          - dist
--          - corpus
--          - build-flatpak
--          - .flatpak-builder
--      - cargo-sources.json
-diff --git a/packaging/linux/flatpak/com.plervo.photo.bundle.yml b/packaging/linux/flatpak/com.plervo.photo.bundle.yml
-new file mode 100644
-index 0000000..fc5eaa4
---- /dev/null
-+++ b/packaging/linux/flatpak/com.plervo.photo.bundle.yml
-@@ -0,0 +1,50 @@
-+# Flatpak manifest for the single-file bundle attached to every GitHub release
-+# (plervo-photo-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
-+#
-+# It repackages the release's own Linux tarball (plervo-photo-<version>-linux-<arch>.tar.gz,
-+# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
-+# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
-+# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
-+# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
-+# Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
-+# GPU driver comes from its org.freedesktop.Platform.GL extension.
-+#
-+# com.plervo.photo.yml (same directory) is the from-source manifest for Flathub. Keep
-+# runtime-version and finish-args identical in both (packaging-lint checks this).
-+id: com.plervo.photo
-+runtime: org.freedesktop.Platform
-+runtime-version: '26.08'
-+sdk: org.freedesktop.Sdk
-+command: plervo-photo
-+finish-args:
-+  # Display: Wayland first; X11 only when no Wayland compositor is running.
-+  - --socket=wayland
-+  - --socket=fallback-x11
-+  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
-+  - --share=ipc
-+  # GPU access for the wgpu compositor (Vulkan, or GL as a fallback).
-+  - --device=dri
-+  # Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
-+  # drag-and-drop through the document portal, so picked files work anywhere without broad
-+  # filesystem access. Pictures and Documents are granted so files passed by path (the command
-+  # line, Open Recent, "Save" next to the original) work in the usual places.
-+  - --filesystem=xdg-pictures
-+  - --filesystem=xdg-documents
-+  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
-+  # the sandbox; `flatpak override --user --share=network com.plervo.photo` exposes it to
-+  # host agents) and home/host filesystem access.
-+modules:
-+  - name: plervo-photo
-+    buildsystem: simple
-+    build-commands:
-+      - install -Dm755 bin/plervo-photo /app/bin/plervo-photo
-+      - install -Dm755 bin/plervo-photo-cli /app/bin/plervo-photo-cli
-+      - install -Dm644 share/applications/com.plervo.photo.desktop /app/share/applications/com.plervo.photo.desktop
-+      # .pcraft, .psb and .qoi; the runtime's shared-mime-info already knows PSD and the rest.
-+      - install -Dm644 share/mime/packages/com.plervo.photo.xml /app/share/mime/packages/com.plervo.photo.xml
-+      # Already has the release's version and date substituted by package.sh.
-+      - install -Dm644 share/metainfo/com.plervo.photo.metainfo.xml /app/share/metainfo/com.plervo.photo.metainfo.xml
-+      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/plervo-photo /app/share/doc/
-+    sources:
-+      - type: dir
-+        path: stage
-diff --git a/packaging/linux/flatpak/com.plervo.photo.yml b/packaging/linux/flatpak/com.plervo.photo.yml
-new file mode 100644
-index 0000000..471d3b1
---- /dev/null
-+++ b/packaging/linux/flatpak/com.plervo.photo.yml
-@@ -0,0 +1,66 @@
-+# Flatpak manifest for Plervo Photo, ready for a Flathub submission.
-+#
-+# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
-+#
-+#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
-+#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
-+#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/com.plervo.photo.yml
-+#   flatpak run com.plervo.photo
-+#
-+# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
-+# The single-file .flatpak attached to each release comes from com.plervo.photo.bundle.yml,
-+# which repackages the prebuilt release binaries. Keep runtime-version and finish-args identical.
-+id: com.plervo.photo
-+runtime: org.freedesktop.Platform
-+runtime-version: '26.08'
-+sdk: org.freedesktop.Sdk
-+sdk-extensions:
-+  - org.freedesktop.Sdk.Extension.rust-stable
-+command: plervo-photo
-+finish-args:
-+  # Display: Wayland first; X11 only when no Wayland compositor is running.
-+  - --socket=wayland
-+  - --socket=fallback-x11
-+  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
-+  - --share=ipc
-+  # GPU access for the wgpu compositor (Vulkan, or GL as a fallback).
-+  - --device=dri
-+  # Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
-+  # drag-and-drop through the document portal, so picked files work anywhere without broad
-+  # filesystem access. Pictures and Documents are granted so files passed by path (the command
-+  # line, Open Recent, "Save" next to the original) work in the usual places.
-+  - --filesystem=xdg-pictures
-+  - --filesystem=xdg-documents
-+  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
-+  # the sandbox; `flatpak override --user --share=network com.plervo.photo` exposes it to
-+  # host agents) and home/host filesystem access.
-+build-options:
-+  append-path: /usr/lib/sdk/rust-stable/bin
-+modules:
-+  - name: plervo-photo
-+    buildsystem: simple
-+    build-options:
-+      env:
-+        CARGO_HOME: /run/build/plervo-photo/cargo
-+        CARGO_NET_OFFLINE: 'true'
-+    build-commands:
 +      - cargo --offline build --release --locked -p plervo-photo --features heif
 +      - install -Dm755 target/release/plervo-photo /app/bin/plervo-photo
 +      - install -Dm644 packaging/linux/com.plervo.photo.desktop /app/share/applications/com.plervo.photo.desktop
 +      - install -Dm644 packaging/linux/com.plervo.photo.mime.xml /app/share/mime/packages/com.plervo.photo.xml
-+      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
-+      - >-
-+        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
-+        install -d /app/share/metainfo;
-+        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+       - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
+       - >-
+         version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
+         install -d /app/share/metainfo;
+         sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+-        packaging/linux/ai.storyteller.photocraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.photocraft.metainfo.xml
 +        packaging/linux/com.plervo.photo.metainfo.xml.in > /app/share/metainfo/com.plervo.photo.metainfo.xml
-+    sources:
-+      - type: dir
-+        path: ../../..
-+        skip:
-+          - target
-+          - dist
-+          - corpus
-+          - build-flatpak
-+          - .flatpak-builder
-+      - cargo-sources.json
+     sources:
+       - type: dir
+         path: ../../..
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
 index bed6e1e..99862f4 100644
 --- a/packaging/linux/nfpm.yaml
@@ -9631,7 +9377,7 @@ index 66b06a2..3ea100b 100644
  $ErrorActionPreference = 'Stop'
  [xml] $Wxs = Get-Content -LiteralPath $WxsPath -Raw
 diff --git a/packaging/windows/package.ps1 b/packaging/windows/package.ps1
-index 53bf286..fdfe253 100644
+index 53bf286..dca28fe 100644
 --- a/packaging/windows/package.ps1
 +++ b/packaging/windows/package.ps1
 @@ -1,11 +1,11 @@
@@ -9676,7 +9422,7 @@ index 53bf286..fdfe253 100644
    $h = Get-PeHeader (Join-Path $Bin $check[0])
    if ($h.Machine -ne $Machine) { throw "$($check[0]) is for machine 0x$('{0:X}' -f $h.Machine), expected 0x$('{0:X}' -f $Machine) ($Arch)" }
    if ($h.Subsystem -ne $check[1]) { throw "$($check[0]) has PE subsystem $($h.Subsystem), expected $($check[1])" }
-@@ -87,12 +87,29 @@ foreach ($check in @(@('photocraft.exe', 2), @('photocraft-cli.exe', 3))) {
+@@ -87,12 +87,31 @@ foreach ($check in @(@('photocraft.exe', 2), @('photocraft-cli.exe', 3))) {
  $Stage = Join-Path $TargetDir "windows-package\$Arch"
  Remove-Item -Recurse -Force $Stage -ErrorAction SilentlyContinue
  New-Item -ItemType Directory -Force -Path $Stage | Out-Null
@@ -9687,9 +9433,11 @@ index 53bf286..fdfe253 100644
 +& (Join-Path $PSScriptRoot 'sign.ps1') (Join-Path $Stage 'plervo-photo.exe') (Join-Path $Stage 'plervo-photo-cli.exe')
 +
 +# Carry source and embedded-asset notices in MSI and portable distributions.
++& python (Join-Path $Root 'packaging/licenses/verify.py') $Root
++if ($LASTEXITCODE -ne 0) { throw "Third-party notice review is stale or missing" }
 +$Legal = Join-Path $Stage 'Licenses'
 +New-Item -ItemType Directory -Force -Path $Legal | Out-Null
-+foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md') {
++foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md', 'THIRD_PARTY_NOTICES.txt') {
 +  $p = Join-Path $Root $f
 +  if (Test-Path $p) { Copy-Item $p $Legal }
 +}
@@ -9709,7 +9457,7 @@ index 53bf286..fdfe253 100644
  # WiX's stock bitmaps: a 493x58 banner across the top of the inner pages (the page title is drawn
  # over its left side, so that stays white) and a 493x312 backdrop for the Welcome and Finish pages
  # (their text sits on the right; the left 164 px are ours). Both must be 24-bit BMPs.
-@@ -127,15 +144,15 @@ function New-InstallerArt([string] $IconPng, [string] $BannerOut, [string] $Dial
+@@ -127,15 +146,15 @@ function New-InstallerArt([string] $IconPng, [string] $BannerOut, [string] $Dial
  }
  $Banner = Join-Path $Stage 'installer-banner.bmp'
  $Dialog = Join-Path $Stage 'installer-dialog.bmp'
@@ -9730,7 +9478,7 @@ index 53bf286..fdfe253 100644
      -d "BannerBmp=$Banner" -d "DialogBmp=$Dialog" `
      -o $Msi
  }
-@@ -147,10 +164,11 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
+@@ -147,10 +166,11 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
  & (Join-Path $PSScriptRoot 'sign.ps1') $Msi
  
  # ---- portable zip ------------------------------------------------------------------------------
@@ -9743,7 +9491,7 @@ index 53bf286..fdfe253 100644
  foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE') {
    $p = Join-Path $Root $f
    if (Test-Path $p) { Copy-Item $p $Portable }
-@@ -163,10 +181,10 @@ if ($env:CRAFT_FONTS_DIR) {
+@@ -163,10 +183,10 @@ if ($env:CRAFT_FONTS_DIR) {
      if (Test-Path $lic) { Copy-Item $lic (Join-Path $Portable "OFL-$($_.Name).txt") }
    }
  }
@@ -9757,7 +9505,7 @@ index 53bf286..fdfe253 100644
  Remove-Item -Force $Zip -ErrorAction SilentlyContinue
  Compress-Archive -Path $Portable -DestinationPath $Zip
  
-@@ -174,8 +192,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
+@@ -174,8 +194,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
  # here; .github/workflows/windows-arm64.yml installs and runs it on ARM64 instead.
  $HostArch = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString().ToLowerInvariant()
  if ($Arch -ne 'arm64' -or $HostArch -eq 'arm64') {
@@ -9768,126 +9516,146 @@ index 53bf286..fdfe253 100644
 +  Write-Output "skipping plervo-photo-cli --version: an $Arch build doesn't run on this $HostArch machine"
  }
  Get-Item $Msi, $Zip | Format-Table Name, Length
-diff --git a/packaging/windows/photocraft.en-us.wxl b/packaging/windows/photocraft.en-us.wxl
-deleted file mode 100644
-index faa2835..0000000
+diff --git a/packaging/windows/photocraft.en-us.wxl b/packaging/windows/plervo-photo.en-us.wxl
+similarity index 96%
+rename from packaging/windows/photocraft.en-us.wxl
+rename to packaging/windows/plervo-photo.en-us.wxl
+index faa2835..c0ff7c9 100644
 --- a/packaging/windows/photocraft.en-us.wxl
-+++ /dev/null
-@@ -1,11 +0,0 @@
--<?xml version="1.0" encoding="utf-8"?>
--<!--
--  Overrides for the setup wizard's WixUI strings, so its pages name the version being installed
++++ b/packaging/windows/plervo-photo.en-us.wxl
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <!--
+   Overrides for the setup wizard's WixUI strings, so its pages name the version being installed
 -  ([PhotocraftVersion] is the full version, pre-release tag included, set in photocraft.wxs).
---->
--<WixLocalization Culture="en-US" xmlns="http://wixtoolset.org/schemas/v4/wxl">
--  <String Id="WelcomeDlgTitle" Value="{\WixUI_Font_Bigger}Welcome to the [ProductName] [PhotocraftVersion] Setup Wizard" />
--  <String Id="WelcomeDlgDescription" Value="The Setup Wizard will install [ProductName] version [PhotocraftVersion] on your computer. Click Next to continue or Cancel to exit the Setup Wizard." />
--  <String Id="VerifyReadyDlgInstallTitle" Value="{\WixUI_Font_Title}Ready to install [ProductName] [PhotocraftVersion]" />
--  <String Id="ExitDialogTitle" Value="{\WixUI_Font_Bigger}Completed the [ProductName] [PhotocraftVersion] Setup Wizard" />
--</WixLocalization>
-diff --git a/packaging/windows/photocraft.wxs b/packaging/windows/photocraft.wxs
-deleted file mode 100644
-index 8be9ff8..0000000
++  ([PhotocraftVersion] is the full version, pre-release tag included, set in plervo-photo.wxs).
+ -->
+ <WixLocalization Culture="en-US" xmlns="http://wixtoolset.org/schemas/v4/wxl">
+   <String Id="WelcomeDlgTitle" Value="{\WixUI_Font_Bigger}Welcome to the [ProductName] [PhotocraftVersion] Setup Wizard" />
+diff --git a/packaging/windows/photocraft.wxs b/packaging/windows/plervo-photo.wxs
+similarity index 50%
+rename from packaging/windows/photocraft.wxs
+rename to packaging/windows/plervo-photo.wxs
+index 8be9ff8..0849199 100644
 --- a/packaging/windows/photocraft.wxs
-+++ /dev/null
-@@ -1,156 +0,0 @@
--<?xml version="1.0" encoding="utf-8"?>
--<!--
++++ b/packaging/windows/plervo-photo.wxs
+@@ -1,55 +1,55 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <!--
 -  PhotoCraft MSI (WiX Toolset v5: `dotnet tool install -g wix`, plus the UI and Util extensions:
--  `wix extension add -g WixToolset.UI.wixext/5.0.2 WixToolset.Util.wixext/5.0.2`). Built by package.ps1:
--
++  Plervo Photo MSI (WiX Toolset v5: `dotnet tool install -g wix`, plus the UI and Util extensions:
+   `wix extension add -g WixToolset.UI.wixext/5.0.2 WixToolset.Util.wixext/5.0.2`). Built by package.ps1:
+ 
 -    wix build photocraft.wxs -arch x64 -ext WixToolset.UI.wixext -ext WixToolset.Util.wixext
 -      -culture en-US -loc photocraft.en-us.wxl -d Version=1.2.3 -d DisplayVersion=1.2.3-rc.1
--      -d BinDir=... -d IconPath=... -d BannerBmp=... -d DialogBmp=... -o out.msi
--
--  Per-machine install with a setup wizard that names the version: Welcome, install folder
++    wix build plervo-photo.wxs -arch x64 -ext WixToolset.UI.wixext -ext WixToolset.Util.wixext
++      -culture en-US -loc plervo-photo.en-us.wxl -d Version=1.2.3 -d DisplayVersion=1.2.3-rc.1
+       -d BinDir=... -d IconPath=... -d BannerBmp=... -d DialogBmp=... -o out.msi
+ 
+   Per-machine install with a setup wizard that names the version: Welcome, install folder
 -  (Program Files\PhotoCraft by default, remembered for upgrades), Ready, a progress page, and a
 -  Finish page with a ticked "Launch PhotoCraft" box. Installs a Start Menu shortcut, makes
 -  PhotoCraft the owner of `.pcraft`, and offers it under "Open with" for PSD/PSB and the image
 -  formats it reads (without taking over the user's default app for them), plus photocraft-cli.
--  `msiexec /qn` still installs silently.
---->
--<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
--     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
--  <Package
++  (Program Files\Plervo Photo by default, remembered for upgrades), Ready, a progress page, and a
++  Finish page with a ticked "Launch Plervo Photo" box. Installs a Start Menu shortcut, makes
++  Plervo Photo the owner of `.pcraft`, and offers it under "Open with" for PSD/PSB and the image
++  formats it reads (without taking over the user's default app for them), plus plervo-photo-cli.
+   `msiexec /qn` still installs silently.
+ -->
+ <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+      xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+   <Package
 -      Name="PhotoCraft"
 -      Manufacturer="Learning Machines LLC"
--      Version="$(var.Version)"
++      Name="Plervo Photo"
++      Manufacturer="Maintech Solutions LLC"
+       Version="$(var.Version)"
 -      UpgradeCode="D9660F32-2D0A-4ABE-B73D-17BE25F1542C"
--      Scope="perMachine"
--      Compressed="yes"
--      Language="1033">
++      UpgradeCode="2CB8F228-1AEE-55FC-AE4F-A896FE091593"
+       Scope="perMachine"
+       Compressed="yes"
+       Language="1033">
 -    <SummaryInformation Description="PhotoCraft image editor" Manufacturer="Learning Machines LLC" />
--    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
--         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
--    <MajorUpgrade AllowSameVersionUpgrades="yes"
++    <SummaryInformation Description="Plervo Photo image editor" Manufacturer="Maintech Solutions LLC" />
+     <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
+          (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
+     <MajorUpgrade AllowSameVersionUpgrades="yes"
 -        DowngradeErrorMessage="A newer version of PhotoCraft is already installed." />
--    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
--
--    <!-- MSI caches this icon using its Id as the filename. Advertised shortcuts to an
--         .exe need an .exe icon identifier (ICE50), even when the source is an ICO. -->
--    <Icon Id="PhotocraftIcon.exe" SourceFile="$(var.IconPath)" />
--    <Property Id="ARPPRODUCTICON" Value="PhotocraftIcon.exe" />
++        DowngradeErrorMessage="A newer version of Plervo Photo is already installed." />
+     <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+ 
+     <!-- MSI caches this icon using its Id as the filename. Advertised shortcuts to an
+          .exe need an .exe icon identifier (ICE50), even when the source is an ICO. -->
+     <Icon Id="PhotocraftIcon.exe" SourceFile="$(var.IconPath)" />
+     <Property Id="ARPPRODUCTICON" Value="PhotocraftIcon.exe" />
 -    <Property Id="ARPURLINFOABOUT" Value="https://getartcraft.com/apps/photocraft" />
 -    <Property Id="ARPURLUPDATEINFO" Value="https://getartcraft.com/apps/photocraft" />
 -    <Property Id="ARPHELPLINK" Value="https://discord.gg/artcraft" />
--
--    <StandardDirectory Id="ProgramFiles6432Folder">
++    <Property Id="ARPURLINFOABOUT" Value="https://plervo.com/" />
++    <Property Id="ARPURLUPDATEINFO" Value="https://plervo.com/" />
++    <Property Id="ARPHELPLINK" Value="https://buymeacoffee.com/alport" />
+ 
+     <StandardDirectory Id="ProgramFiles6432Folder">
 -      <Directory Id="INSTALLFOLDER" Name="PhotoCraft" />
--    </StandardDirectory>
--    <StandardDirectory Id="ProgramMenuFolder" />
--
--    <!-- An upgrade installs where the user put the previous version (written by PhotocraftApp). -->
--    <Property Id="INSTALLFOLDER">
++      <Directory Id="INSTALLFOLDER" Name="Plervo Photo" />
+     </StandardDirectory>
+     <StandardDirectory Id="ProgramMenuFolder" />
+ 
+     <!-- An upgrade installs where the user put the previous version (written by PhotocraftApp). -->
+     <Property Id="INSTALLFOLDER">
 -      <RegistrySearch Id="PreviousInstallFolder" Root="HKLM" Key="Software\PhotoCraft" Name="InstallDir" Type="raw" />
--    </Property>
--
++      <RegistrySearch Id="PreviousInstallFolder" Root="HKLM" Key="Software\Plervo Photo" Name="InstallDir" Type="raw" />
+     </Property>
+ 
 -    <Feature Id="Main" Title="PhotoCraft" Level="1">
--      <ComponentGroupRef Id="PhotocraftFiles" />
--    </Feature>
--
--    <!-- The setup wizard: WixUI_InstallDir without its licence page (the code is MIT OR
--         Apache-2.0; there is nothing to accept). A later NewDialog on the same button wins. -->
--    <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
--    <UI>
--      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2" Condition="NOT Installed" />
--      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" />
--      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchPhotocraft"
--          Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 AND NOT Installed" />
--    </UI>
--    <!-- Our own art, generated by package.ps1 from the app icon (not WiX's stock bitmaps). -->
--    <WixVariable Id="WixUIBannerBmp" Value="$(var.BannerBmp)" />
--    <WixVariable Id="WixUIDialogBmp" Value="$(var.DialogBmp)" />
--
--    <!-- The full version (Version is numeric, so it drops a pre-release tag), shown on the wizard's
++    <Feature Id="Main" Title="Plervo Photo" Level="1">
+       <ComponentGroupRef Id="PhotocraftFiles" />
+     </Feature>
+ 
+@@ -67,90 +67,95 @@
+     <WixVariable Id="WixUIDialogBmp" Value="$(var.DialogBmp)" />
+ 
+     <!-- The full version (Version is numeric, so it drops a pre-release tag), shown on the wizard's
 -         pages through photocraft.en-us.wxl. -->
--    <Property Id="PhotocraftVersion" Value="$(var.DisplayVersion)" />
--
--    <!-- Finish page: say where to find the app, and offer to start it (ticked by default). -->
++         pages through plervo-photo.en-us.wxl. -->
+     <Property Id="PhotocraftVersion" Value="$(var.DisplayVersion)" />
+ 
+     <!-- Finish page: say where to find the app, and offer to start it (ticked by default). -->
 -    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="PhotoCraft $(var.DisplayVersion) is installed. You can start it any time from the Start menu." />
 -    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch PhotoCraft" />
--    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
--    <Property Id="WixShellExecTarget" Value="[#PhotocraftExe]" />
--    <!-- Runs in the wizard's own (unelevated) process, so the app starts as the user, not as admin. -->
--    <CustomAction Id="LaunchPhotocraft" BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" DllEntry="WixShellExec" Impersonate="yes" Return="ignore" />
--  </Package>
--
--  <Fragment>
--    <ComponentGroup Id="PhotocraftFiles" Directory="INSTALLFOLDER">
++    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="Plervo Photo $(var.DisplayVersion) is installed. You can start it any time from the Start menu." />
++    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch Plervo Photo" />
+     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
+     <Property Id="WixShellExecTarget" Value="[#PhotocraftExe]" />
+     <!-- Runs in the wizard's own (unelevated) process, so the app starts as the user, not as admin. -->
+     <CustomAction Id="LaunchPhotocraft" BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" DllEntry="WixShellExec" Impersonate="yes" Return="ignore" />
++    <Feature Id="PlervoLicenseFeature" Title="Licenses" Level="1"><ComponentGroupRef Id="PlervoLegalFiles" /></Feature>
+   </Package>
+ 
+   <Fragment>
+     <ComponentGroup Id="PhotocraftFiles" Directory="INSTALLFOLDER">
 -      <Component Id="PhotocraftApp" Guid="A6DE41B7-A80F-4C59-A17E-BB68065BF67E">
 -        <File Id="PhotocraftExe" Source="$(var.BinDir)\photocraft.exe" KeyPath="yes">
 -          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="PhotoCraft"
 -              Description="PhotoCraft image editor" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
--              Icon="PhotocraftIcon.exe" IconIndex="0" />
--        </File>
--
++      <Component Id="PhotocraftApp" Guid="AEE63DE7-35EE-5DAB-9734-8865901AFCA0">
++        <File Id="PhotocraftExe" Source="$(var.BinDir)\plervo-photo.exe" KeyPath="yes">
++          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="Plervo Photo"
++              Description="Plervo Photo image editor" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
+               Icon="PhotocraftIcon.exe" IconIndex="0" />
+         </File>
+ 
 -        <!-- .pcraft: PhotoCraft's own format; PhotoCraft is its default app. -->
 -        <ProgId Id="Photocraft.Document" Description="PhotoCraft Document" Icon="PhotocraftExe" IconIndex="0">
 -          <Extension Id="pcraft" ContentType="application/x-photocraft">
--            <Verb Id="open" Command="Open" TargetFile="PhotocraftExe" Argument="&quot;%1&quot;" />
--          </Extension>
--        </ProgId>
--        <!-- PSD/PSB and images: offered under "Open with", never forced as the default. -->
++        <!-- .pcraft: Plervo Photo's own format; Plervo Photo is its default app. -->
++        <ProgId Id="PlervoPhoto.Document" Description="Plervo Photo Document" Icon="PhotocraftExe" IconIndex="0">
++          <Extension Id="pcraft" ContentType="application/x-plervo-photo">
+             <Verb Id="open" Command="Open" TargetFile="PhotocraftExe" Argument="&quot;%1&quot;" />
+           </Extension>
+         </ProgId>
+         <!-- PSD/PSB and images: offered under "Open with", never forced as the default. -->
 -        <ProgId Id="Photocraft.PhotoshopDocument" Description="PSD Document" Icon="PhotocraftExe" IconIndex="0" />
 -        <RegistryValue Root="HKLM" Key="Software\Classes\Photocraft.PhotoshopDocument\shell\open\command" Value="&quot;[#PhotocraftExe]&quot; &quot;%1&quot;" Type="string" />
 -        <ProgId Id="Photocraft.Image" Description="Image" Icon="PhotocraftExe" IconIndex="0" />
@@ -9912,7 +9680,31 @@ index 8be9ff8..0000000
 -        <RegistryValue Root="HKLM" Key="Software\Classes\.avif\OpenWithProgids" Name="Photocraft.Image" Value="" Type="string" />
 -        <RegistryValue Root="HKLM" Key="Software\Classes\.qoi\OpenWithProgids" Name="Photocraft.Image" Value="" Type="string" />
 -        <RegistryValue Root="HKLM" Key="Software\Classes\.ico\OpenWithProgids" Name="Photocraft.Image" Value="" Type="string" />
--
++        <ProgId Id="PlervoPhoto.PhotoshopDocument" Description="PSD Document" Icon="PhotocraftExe" IconIndex="0" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\PlervoPhoto.PhotoshopDocument\shell\open\command" Value="&quot;[#PhotocraftExe]&quot; &quot;%1&quot;" Type="string" />
++        <ProgId Id="PlervoPhoto.Image" Description="Image" Icon="PhotocraftExe" IconIndex="0" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\PlervoPhoto.Image\shell\open\command" Value="&quot;[#PhotocraftExe]&quot; &quot;%1&quot;" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.psd\OpenWithProgids" Name="PlervoPhoto.PhotoshopDocument" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.psb\OpenWithProgids" Name="PlervoPhoto.PhotoshopDocument" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.pdn\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.ora\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.kra\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.krz\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.png\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.jpg\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.jpeg\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.tif\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.tiff\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.webp\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.gif\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.bmp\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.tga\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.exr\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.hdr\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.avif\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.qoi\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
++        <RegistryValue Root="HKLM" Key="Software\Classes\.ico\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
+ 
 -        <!-- "Open with" app list and the Run dialog (Win+R "photocraft"). -->
 -        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe" Name="FriendlyAppName" Value="PhotoCraft" Type="string" />
 -        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\shell\open\command" Value="&quot;[#PhotocraftExe]&quot; &quot;%1&quot;" Type="string" />
@@ -9939,160 +9731,6 @@ index 8be9ff8..0000000
 -        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\photocraft.exe\SupportedTypes" Name=".ico" Value="" Type="string" />
 -        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\photocraft.exe" Value="[#PhotocraftExe]" Type="string" />
 -        <RegistryValue Root="HKLM" Key="Software\PhotoCraft" Name="InstallDir" Value="[INSTALLFOLDER]" Type="string" />
--      </Component>
--
--      <Component Id="PhotocraftCli">
--        <File Id="PhotocraftCliExe" Source="$(var.BinDir)\photocraft-cli.exe" KeyPath="yes" />
--      </Component>
--    </ComponentGroup>
--  </Fragment>
--</Wix>
-diff --git a/packaging/windows/plervo-photo.en-us.wxl b/packaging/windows/plervo-photo.en-us.wxl
-new file mode 100644
-index 0000000..c0ff7c9
---- /dev/null
-+++ b/packaging/windows/plervo-photo.en-us.wxl
-@@ -0,0 +1,11 @@
-+<?xml version="1.0" encoding="utf-8"?>
-+<!--
-+  Overrides for the setup wizard's WixUI strings, so its pages name the version being installed
-+  ([PhotocraftVersion] is the full version, pre-release tag included, set in plervo-photo.wxs).
-+-->
-+<WixLocalization Culture="en-US" xmlns="http://wixtoolset.org/schemas/v4/wxl">
-+  <String Id="WelcomeDlgTitle" Value="{\WixUI_Font_Bigger}Welcome to the [ProductName] [PhotocraftVersion] Setup Wizard" />
-+  <String Id="WelcomeDlgDescription" Value="The Setup Wizard will install [ProductName] version [PhotocraftVersion] on your computer. Click Next to continue or Cancel to exit the Setup Wizard." />
-+  <String Id="VerifyReadyDlgInstallTitle" Value="{\WixUI_Font_Title}Ready to install [ProductName] [PhotocraftVersion]" />
-+  <String Id="ExitDialogTitle" Value="{\WixUI_Font_Bigger}Completed the [ProductName] [PhotocraftVersion] Setup Wizard" />
-+</WixLocalization>
-diff --git a/packaging/windows/plervo-photo.wxs b/packaging/windows/plervo-photo.wxs
-new file mode 100644
-index 0000000..0849199
---- /dev/null
-+++ b/packaging/windows/plervo-photo.wxs
-@@ -0,0 +1,161 @@
-+<?xml version="1.0" encoding="utf-8"?>
-+<!--
-+  Plervo Photo MSI (WiX Toolset v5: `dotnet tool install -g wix`, plus the UI and Util extensions:
-+  `wix extension add -g WixToolset.UI.wixext/5.0.2 WixToolset.Util.wixext/5.0.2`). Built by package.ps1:
-+
-+    wix build plervo-photo.wxs -arch x64 -ext WixToolset.UI.wixext -ext WixToolset.Util.wixext
-+      -culture en-US -loc plervo-photo.en-us.wxl -d Version=1.2.3 -d DisplayVersion=1.2.3-rc.1
-+      -d BinDir=... -d IconPath=... -d BannerBmp=... -d DialogBmp=... -o out.msi
-+
-+  Per-machine install with a setup wizard that names the version: Welcome, install folder
-+  (Program Files\Plervo Photo by default, remembered for upgrades), Ready, a progress page, and a
-+  Finish page with a ticked "Launch Plervo Photo" box. Installs a Start Menu shortcut, makes
-+  Plervo Photo the owner of `.pcraft`, and offers it under "Open with" for PSD/PSB and the image
-+  formats it reads (without taking over the user's default app for them), plus plervo-photo-cli.
-+  `msiexec /qn` still installs silently.
-+-->
-+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
-+     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
-+  <Package
-+      Name="Plervo Photo"
-+      Manufacturer="Maintech Solutions LLC"
-+      Version="$(var.Version)"
-+      UpgradeCode="2CB8F228-1AEE-55FC-AE4F-A896FE091593"
-+      Scope="perMachine"
-+      Compressed="yes"
-+      Language="1033">
-+    <SummaryInformation Description="Plervo Photo image editor" Manufacturer="Maintech Solutions LLC" />
-+    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
-+         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
-+    <MajorUpgrade AllowSameVersionUpgrades="yes"
-+        DowngradeErrorMessage="A newer version of Plervo Photo is already installed." />
-+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
-+
-+    <!-- MSI caches this icon using its Id as the filename. Advertised shortcuts to an
-+         .exe need an .exe icon identifier (ICE50), even when the source is an ICO. -->
-+    <Icon Id="PhotocraftIcon.exe" SourceFile="$(var.IconPath)" />
-+    <Property Id="ARPPRODUCTICON" Value="PhotocraftIcon.exe" />
-+    <Property Id="ARPURLINFOABOUT" Value="https://plervo.com/" />
-+    <Property Id="ARPURLUPDATEINFO" Value="https://plervo.com/" />
-+    <Property Id="ARPHELPLINK" Value="https://buymeacoffee.com/alport" />
-+
-+    <StandardDirectory Id="ProgramFiles6432Folder">
-+      <Directory Id="INSTALLFOLDER" Name="Plervo Photo" />
-+    </StandardDirectory>
-+    <StandardDirectory Id="ProgramMenuFolder" />
-+
-+    <!-- An upgrade installs where the user put the previous version (written by PhotocraftApp). -->
-+    <Property Id="INSTALLFOLDER">
-+      <RegistrySearch Id="PreviousInstallFolder" Root="HKLM" Key="Software\Plervo Photo" Name="InstallDir" Type="raw" />
-+    </Property>
-+
-+    <Feature Id="Main" Title="Plervo Photo" Level="1">
-+      <ComponentGroupRef Id="PhotocraftFiles" />
-+    </Feature>
-+
-+    <!-- The setup wizard: WixUI_InstallDir without its licence page (the code is MIT OR
-+         Apache-2.0; there is nothing to accept). A later NewDialog on the same button wins. -->
-+    <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
-+    <UI>
-+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2" Condition="NOT Installed" />
-+      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" />
-+      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchPhotocraft"
-+          Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 AND NOT Installed" />
-+    </UI>
-+    <!-- Our own art, generated by package.ps1 from the app icon (not WiX's stock bitmaps). -->
-+    <WixVariable Id="WixUIBannerBmp" Value="$(var.BannerBmp)" />
-+    <WixVariable Id="WixUIDialogBmp" Value="$(var.DialogBmp)" />
-+
-+    <!-- The full version (Version is numeric, so it drops a pre-release tag), shown on the wizard's
-+         pages through plervo-photo.en-us.wxl. -->
-+    <Property Id="PhotocraftVersion" Value="$(var.DisplayVersion)" />
-+
-+    <!-- Finish page: say where to find the app, and offer to start it (ticked by default). -->
-+    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="Plervo Photo $(var.DisplayVersion) is installed. You can start it any time from the Start menu." />
-+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch Plervo Photo" />
-+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
-+    <Property Id="WixShellExecTarget" Value="[#PhotocraftExe]" />
-+    <!-- Runs in the wizard's own (unelevated) process, so the app starts as the user, not as admin. -->
-+    <CustomAction Id="LaunchPhotocraft" BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" DllEntry="WixShellExec" Impersonate="yes" Return="ignore" />
-+    <Feature Id="PlervoLicenseFeature" Title="Licenses" Level="1"><ComponentGroupRef Id="PlervoLegalFiles" /></Feature>
-+  </Package>
-+
-+  <Fragment>
-+    <ComponentGroup Id="PhotocraftFiles" Directory="INSTALLFOLDER">
-+      <Component Id="PhotocraftApp" Guid="AEE63DE7-35EE-5DAB-9734-8865901AFCA0">
-+        <File Id="PhotocraftExe" Source="$(var.BinDir)\plervo-photo.exe" KeyPath="yes">
-+          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="Plervo Photo"
-+              Description="Plervo Photo image editor" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
-+              Icon="PhotocraftIcon.exe" IconIndex="0" />
-+        </File>
-+
-+        <!-- .pcraft: Plervo Photo's own format; Plervo Photo is its default app. -->
-+        <ProgId Id="PlervoPhoto.Document" Description="Plervo Photo Document" Icon="PhotocraftExe" IconIndex="0">
-+          <Extension Id="pcraft" ContentType="application/x-plervo-photo">
-+            <Verb Id="open" Command="Open" TargetFile="PhotocraftExe" Argument="&quot;%1&quot;" />
-+          </Extension>
-+        </ProgId>
-+        <!-- PSD/PSB and images: offered under "Open with", never forced as the default. -->
-+        <ProgId Id="PlervoPhoto.PhotoshopDocument" Description="PSD Document" Icon="PhotocraftExe" IconIndex="0" />
-+        <RegistryValue Root="HKLM" Key="Software\Classes\PlervoPhoto.PhotoshopDocument\shell\open\command" Value="&quot;[#PhotocraftExe]&quot; &quot;%1&quot;" Type="string" />
-+        <ProgId Id="PlervoPhoto.Image" Description="Image" Icon="PhotocraftExe" IconIndex="0" />
-+        <RegistryValue Root="HKLM" Key="Software\Classes\PlervoPhoto.Image\shell\open\command" Value="&quot;[#PhotocraftExe]&quot; &quot;%1&quot;" Type="string" />
-+        <RegistryValue Root="HKLM" Key="Software\Classes\.psd\OpenWithProgids" Name="PlervoPhoto.PhotoshopDocument" Value="" Type="string" />
-+        <RegistryValue Root="HKLM" Key="Software\Classes\.psb\OpenWithProgids" Name="PlervoPhoto.PhotoshopDocument" Value="" Type="string" />
-+        <RegistryValue Root="HKLM" Key="Software\Classes\.pdn\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
-+        <RegistryValue Root="HKLM" Key="Software\Classes\.ora\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
-+        <RegistryValue Root="HKLM" Key="Software\Classes\.kra\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
-+        <RegistryValue Root="HKLM" Key="Software\Classes\.krz\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
-+        <RegistryValue Root="HKLM" Key="Software\Classes\.png\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
-+        <RegistryValue Root="HKLM" Key="Software\Classes\.jpg\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
-+        <RegistryValue Root="HKLM" Key="Software\Classes\.jpeg\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
-+        <RegistryValue Root="HKLM" Key="Software\Classes\.tif\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
-+        <RegistryValue Root="HKLM" Key="Software\Classes\.tiff\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
-+        <RegistryValue Root="HKLM" Key="Software\Classes\.webp\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
-+        <RegistryValue Root="HKLM" Key="Software\Classes\.gif\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
-+        <RegistryValue Root="HKLM" Key="Software\Classes\.bmp\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
-+        <RegistryValue Root="HKLM" Key="Software\Classes\.tga\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
-+        <RegistryValue Root="HKLM" Key="Software\Classes\.exr\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
-+        <RegistryValue Root="HKLM" Key="Software\Classes\.hdr\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
-+        <RegistryValue Root="HKLM" Key="Software\Classes\.avif\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
-+        <RegistryValue Root="HKLM" Key="Software\Classes\.qoi\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
-+        <RegistryValue Root="HKLM" Key="Software\Classes\.ico\OpenWithProgids" Name="PlervoPhoto.Image" Value="" Type="string" />
-+
 +        <!-- "Open with" app list and the Run dialog (Win+R "plervo-photo"). -->
 +        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\plervo-photo.exe" Name="FriendlyAppName" Value="Plervo Photo" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\plervo-photo.exe\shell\open\command" Value="&quot;[#PhotocraftExe]&quot; &quot;%1&quot;" Type="string" />
@@ -10119,18 +9757,19 @@ index 0000000..0849199
 +        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\plervo-photo.exe\SupportedTypes" Name=".ico" Value="" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\plervo-photo.exe" Value="[#PhotocraftExe]" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Plervo Photo" Name="InstallDir" Value="[INSTALLFOLDER]" Type="string" />
-+      </Component>
-+
-+      <Component Id="PhotocraftCli">
+       </Component>
+ 
+       <Component Id="PhotocraftCli">
+-        <File Id="PhotocraftCliExe" Source="$(var.BinDir)\photocraft-cli.exe" KeyPath="yes" />
 +        <File Id="PhotocraftCliExe" Source="$(var.BinDir)\plervo-photo-cli.exe" KeyPath="yes" />
-+      </Component>
-+    </ComponentGroup>
-+  </Fragment>
+       </Component>
+     </ComponentGroup>
+   </Fragment>
 +  <Fragment>
 +    <DirectoryRef Id="INSTALLFOLDER"><Directory Id="PlervoLegalDir" Name="Licenses" /></DirectoryRef>
 +    <ComponentGroup Id="PlervoLegalFiles" Directory="PlervoLegalDir"><Files Include="$(var.BinDir)\Licenses\*" /></ComponentGroup>
 +  </Fragment>
-+</Wix>
+ </Wix>
 diff --git a/packaging/windows/portable.txt b/packaging/windows/portable.txt
 index 9372e88..ac40f6a 100644
 --- a/packaging/windows/portable.txt

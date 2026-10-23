@@ -77,7 +77,7 @@ index be99cdc..88d8120 100644
 +
 +| `packaging/macos/dmg/background.svg` | @XusBadia | Original work: macOS DMG Finder window background, derived from the EffectCraft app icon (`assets/app-icon/effectcraft.svg`); rendered to a TIFF by `packaging/macos/package.sh` at package time | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) |
 diff --git a/Cargo.lock b/Cargo.lock
-index ce8fe12..4f4afbb 100644
+index ce8fe12..337cb5d 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -1141,34 +1141,9 @@ dependencies = [
@@ -112,7 +112,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-automation"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "effectcraft-engine",
   "effectcraft-host",
@@ -121,7 +121,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-av1enc"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-av1",
  ]
@@ -145,7 +145,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-color"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "proptest",
   "serde",
@@ -154,7 +154,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-effects"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "effectcraft-color",
   "effectcraft-geom",
@@ -163,7 +163,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-engine"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "effectcraft-color",
   "effectcraft-effects",
@@ -172,7 +172,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-export"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "effectcraft-av1enc",
   "effectcraft-color",
@@ -181,7 +181,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-expr"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "boa_engine",
   "effectcraft-color",
@@ -190,7 +190,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-geom"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "proptest",
   "serde",
@@ -199,7 +199,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-gpu"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "bytemuck",
   "effectcraft-color",
@@ -208,7 +208,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-hevcenc"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-hevc",
  ]
@@ -216,7 +216,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-host"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "effectcraft-engine",
   "effectcraft-export",
@@ -225,7 +225,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-interchange"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "effectcraft-color",
   "effectcraft-keyframe",
@@ -234,7 +234,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-keyframe"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "effectcraft-color",
   "effectcraft-geom",
@@ -243,7 +243,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-lottie"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "effectcraft-color",
   "effectcraft-effects",
@@ -252,7 +252,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-media"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "effectcraft-model",
   "effectcraft-pdf",
@@ -261,7 +261,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-model"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "effectcraft-geom",
   "image",
@@ -270,7 +270,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-opusenc"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "filmcraft-opus",
  ]
@@ -278,7 +278,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-path"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "effectcraft-geom",
   "effectcraft-keyframe",
@@ -287,7 +287,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-pdf"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "effectcraft-raster",
   "effectcraft-svg",
@@ -296,7 +296,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-plugin"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "effectcraft-effects",
   "effectcraft-keyframe",
@@ -305,7 +305,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-project"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "effectcraft-color",
   "effectcraft-geom",
@@ -314,7 +314,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-psd"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "miniz_oxide 0.8.9",
  ]
@@ -322,7 +322,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-raster"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "effectcraft-color",
   "effectcraft-geom",
@@ -331,7 +331,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-render"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "effectcraft-color",
   "effectcraft-effects",
@@ -340,7 +340,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-script"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "boa_engine",
   "effectcraft-engine",
@@ -349,7 +349,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-segment"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "miniz_oxide 0.8.9",
   "ndarray",
@@ -358,7 +358,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-svg"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "effectcraft-geom",
   "effectcraft-path",
@@ -367,7 +367,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-text"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "effectcraft-keyframe",
   "harfrust",
@@ -376,7 +376,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-time"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "proptest",
   "serde",
@@ -385,7 +385,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-track"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "effectcraft-raster",
   "effectcraft-segment",
@@ -394,7 +394,7 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-ui-egui"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "craft-ui",
   "effectcraft-color",
@@ -403,12 +403,12 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "effectcraft-vp9enc"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  
  [[package]]
  name = "effectcraft-web"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "effectcraft-engine",
   "effectcraft-export",
@@ -418,7 +418,7 @@ index ce8fe12..4f4afbb 100644
  
 +[[package]]
 +name = "plervo-motion"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
 +dependencies = [
 + "cpal",
 + "effectcraft-engine",
@@ -443,7 +443,7 @@ index ce8fe12..4f4afbb 100644
 +
 +[[package]]
 +name = "plervo-motion-cli"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
 +dependencies = [
 + "cpu-time",
 + "effectcraft-automation",
@@ -465,12 +465,12 @@ index ce8fe12..4f4afbb 100644
  [[package]]
  name = "xtask"
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "serde_json",
  ]
 diff --git a/Cargo.toml b/Cargo.toml
-index 9f4e9d1..24e8fa6 100644
+index 9f4e9d1..bc5c18e 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -478,7 +478,7 @@ index 9f4e9d1..24e8fa6 100644
  
  [workspace.package]
 -version = "0.10.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.95"
@@ -5375,15 +5375,16 @@ index 5f7a3b5..bcf0472 100644
  
  The desktop app exposes a control channel for agents, tests and the MCP bridge:
 diff --git a/packaging/env.sh b/packaging/env.sh
-index 6a1bfa2..ad071b1 100644
+index 6a1bfa2..a3826cb 100644
 --- a/packaging/env.sh
 +++ b/packaging/env.sh
-@@ -47,9 +47,16 @@ warn() {
+@@ -47,9 +47,17 @@ warn() {
  # Copy licence and readme files that exist into a package directory.
  copy_docs() {
    local dest="$1" f
 -  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT; do
-+  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md; do
++  python3 "$ROOT/packaging/licenses/verify.py" "$ROOT" || return 1
++  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md THIRD_PARTY_NOTICES.txt; do
      if [ -f "$ROOT/$f" ]; then cp "$ROOT/$f" "$dest/"; fi
    done
 +  # Embedded resources retain their original licence notices.
@@ -5566,200 +5567,100 @@ index afeb13f..8dbd545 100755
 +  echo "warning: iconutil not found (macOS only); plervo-motion.icns not regenerated" >&2
  fi
  echo "icons written to $DIR"
-diff --git a/packaging/linux/ai.storyteller.effectcraft.desktop b/packaging/linux/ai.storyteller.effectcraft.desktop
-deleted file mode 100644
-index f7cf2dc..0000000
+diff --git a/packaging/linux/ai.storyteller.effectcraft.desktop b/packaging/linux/com.plervo.motion.desktop
+similarity index 67%
+rename from packaging/linux/ai.storyteller.effectcraft.desktop
+rename to packaging/linux/com.plervo.motion.desktop
+index f7cf2dc..efb8c5c 100644
 --- a/packaging/linux/ai.storyteller.effectcraft.desktop
-+++ /dev/null
-@@ -1,13 +0,0 @@
--[Desktop Entry]
--Type=Application
++++ b/packaging/linux/com.plervo.motion.desktop
+@@ -1,13 +1,13 @@
+ [Desktop Entry]
+ Type=Application
 -Name=EffectCraft
--GenericName=Motion Graphics Editor
--Comment=Motion graphics and visual effects compositor
++Name=Plervo Motion
+ GenericName=Motion Graphics Editor
+ Comment=Motion graphics and visual effects compositor
 -Exec=effectcraft %F
 -TryExec=effectcraft
 -Icon=ai.storyteller.effectcraft
--Terminal=false
--StartupNotify=true
++Exec=plervo-motion %F
++TryExec=plervo-motion
++Icon=com.plervo.motion
+ Terminal=false
+ StartupNotify=true
 -StartupWMClass=ai.storyteller.effectcraft
--Categories=AudioVideo;Video;Graphics;2DGraphics;
--Keywords=motion;graphics;animation;compositor;effects;keyframe;vfx;
-diff --git a/packaging/linux/ai.storyteller.effectcraft.metainfo.xml.in b/packaging/linux/ai.storyteller.effectcraft.metainfo.xml.in
-deleted file mode 100644
-index d8377c4..0000000
++StartupWMClass=com.plervo.motion
+ Categories=AudioVideo;Video;Graphics;2DGraphics;
+ Keywords=motion;graphics;animation;compositor;effects;keyframe;vfx;
+diff --git a/packaging/linux/ai.storyteller.effectcraft.metainfo.xml.in b/packaging/linux/com.plervo.motion.metainfo.xml.in
+similarity index 70%
+rename from packaging/linux/ai.storyteller.effectcraft.metainfo.xml.in
+rename to packaging/linux/com.plervo.motion.metainfo.xml.in
+index d8377c4..84b1032 100644
 --- a/packaging/linux/ai.storyteller.effectcraft.metainfo.xml.in
-+++ /dev/null
-@@ -1,63 +0,0 @@
--<?xml version="1.0" encoding="UTF-8"?>
--<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
--     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
--<component type="desktop-application">
++++ b/packaging/linux/com.plervo.motion.metainfo.xml.in
+@@ -2,28 +2,28 @@
+ <!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
+      manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
+ <component type="desktop-application">
 -  <id>ai.storyteller.effectcraft</id>
--  <metadata_license>CC0-1.0</metadata_license>
--  <project_license>MIT OR Apache-2.0</project_license>
++  <id>com.plervo.motion</id>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_license>MIT OR Apache-2.0</project_license>
 -  <name>EffectCraft</name>
--  <summary>Motion graphics and visual effects compositor</summary>
--  <developer id="ai.storyteller">
++  <name>Plervo Motion</name>
+   <summary>Motion graphics and visual effects compositor</summary>
+   <developer id="ai.storyteller">
 -    <name>Learning Machines LLC</name>
--  </developer>
--  <description>
--    <p>
++    <name>Maintech Solutions LLC</name>
+   </developer>
+   <description>
+     <p>
 -      EffectCraft is an open-source motion graphics and visual effects compositor: layers with
--      keyframes and a graph editor, masks and shapes, text animators, expressions, 3D cameras and
--      lights, over 300 effects and a render queue, with GPU compositing.
--    </p>
--  </description>
++      Plervo Motion is an open-source motion graphics and visual effects compositor: layers with
+       keyframes and a graph editor, masks and shapes, text animators, expressions, 3D cameras and
+       lights, over 300 effects and a render queue, with GPU compositing.
+     </p>
+   </description>
 -  <launchable type="desktop-id">ai.storyteller.effectcraft.desktop</launchable>
 -  <icon type="stock">ai.storyteller.effectcraft</icon>
--  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
++  <launchable type="desktop-id">com.plervo.motion.desktop</launchable>
++  <icon type="stock">com.plervo.motion</icon>
+   <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
 -  <url type="homepage">https://getartcraft.com/apps/effectcraft</url>
 -  <url type="bugtracker">https://github.com/storytold/effectcraft/issues</url>
 -  <url type="help">https://github.com/storytold/effectcraft</url>
 -  <url type="contact">https://discord.gg/artcraft</url>
--  <categories>
--    <category>Graphics</category>
--    <category>RasterGraphics</category>
--    <category>Photography</category>
--  </categories>
--  <keywords>
--    <keyword>photo</keyword>
--    <keyword>image editor</keyword>
--    <keyword>psd</keyword>
--    <keyword>layers</keyword>
--  </keywords>
--  <screenshots>
--    <screenshot type="default">
--      <caption>Editing The Great Wave off Kanagawa with type layers and adjustment layers</caption>
--      <image>https://raw.githubusercontent.com/storytold/effectcraft/main/docs/images/effectcraft-demo.jpg</image>
--    </screenshot>
--  </screenshots>
--  <branding>
--    <color type="primary" scheme_preference="light">#9fd0ff</color>
--    <color type="primary" scheme_preference="dark">#1f64ba</color>
--  </branding>
--  <requires>
--    <display_length compare="ge">760</display_length>
--  </requires>
--  <supports>
--    <control>keyboard</control>
--    <control>pointing</control>
--    <control>tablet</control>
--  </supports>
--  <provides>
--    <binary>effectcraft</binary>
--  </provides>
--  <content_rating type="oars-1.1"/>
--  <releases>
--    <release version="@VERSION@" date="@DATE@"/>
--  </releases>
--</component>
-diff --git a/packaging/linux/ai.storyteller.effectcraft.mime.xml b/packaging/linux/ai.storyteller.effectcraft.mime.xml
-deleted file mode 100644
-index be4dcc2..0000000
---- a/packaging/linux/ai.storyteller.effectcraft.mime.xml
-+++ /dev/null
-@@ -1,3 +0,0 @@
--<?xml version="1.0" encoding="UTF-8"?>
--<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
--</mime-info>
-diff --git a/packaging/linux/com.plervo.motion.desktop b/packaging/linux/com.plervo.motion.desktop
-new file mode 100644
-index 0000000..efb8c5c
---- /dev/null
-+++ b/packaging/linux/com.plervo.motion.desktop
-@@ -0,0 +1,13 @@
-+[Desktop Entry]
-+Type=Application
-+Name=Plervo Motion
-+GenericName=Motion Graphics Editor
-+Comment=Motion graphics and visual effects compositor
-+Exec=plervo-motion %F
-+TryExec=plervo-motion
-+Icon=com.plervo.motion
-+Terminal=false
-+StartupNotify=true
-+StartupWMClass=com.plervo.motion
-+Categories=AudioVideo;Video;Graphics;2DGraphics;
-+Keywords=motion;graphics;animation;compositor;effects;keyframe;vfx;
-diff --git a/packaging/linux/com.plervo.motion.metainfo.xml.in b/packaging/linux/com.plervo.motion.metainfo.xml.in
-new file mode 100644
-index 0000000..84b1032
---- /dev/null
-+++ b/packaging/linux/com.plervo.motion.metainfo.xml.in
-@@ -0,0 +1,63 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
-+     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
-+<component type="desktop-application">
-+  <id>com.plervo.motion</id>
-+  <metadata_license>CC0-1.0</metadata_license>
-+  <project_license>MIT OR Apache-2.0</project_license>
-+  <name>Plervo Motion</name>
-+  <summary>Motion graphics and visual effects compositor</summary>
-+  <developer id="ai.storyteller">
-+    <name>Maintech Solutions LLC</name>
-+  </developer>
-+  <description>
-+    <p>
-+      Plervo Motion is an open-source motion graphics and visual effects compositor: layers with
-+      keyframes and a graph editor, masks and shapes, text animators, expressions, 3D cameras and
-+      lights, over 300 effects and a render queue, with GPU compositing.
-+    </p>
-+  </description>
-+  <launchable type="desktop-id">com.plervo.motion.desktop</launchable>
-+  <icon type="stock">com.plervo.motion</icon>
-+  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
 +  <url type="homepage">https://plervo.com/</url>
 +  <url type="bugtracker">https://github.com/alportblu/plervo-pdf/issues</url>
 +  <url type="help">https://github.com/alportblu/plervo-pdf</url>
 +  <url type="contact">https://buymeacoffee.com/alport</url>
-+  <categories>
-+    <category>Graphics</category>
-+    <category>RasterGraphics</category>
-+    <category>Photography</category>
-+  </categories>
-+  <keywords>
-+    <keyword>photo</keyword>
-+    <keyword>image editor</keyword>
-+    <keyword>psd</keyword>
-+    <keyword>layers</keyword>
-+  </keywords>
-+  <screenshots>
-+    <screenshot type="default">
-+      <caption>Editing The Great Wave off Kanagawa with type layers and adjustment layers</caption>
+   <categories>
+     <category>Graphics</category>
+     <category>RasterGraphics</category>
+@@ -38,7 +38,7 @@
+   <screenshots>
+     <screenshot type="default">
+       <caption>Editing The Great Wave off Kanagawa with type layers and adjustment layers</caption>
+-      <image>https://raw.githubusercontent.com/storytold/effectcraft/main/docs/images/effectcraft-demo.jpg</image>
 +      <image>https://raw.githubusercontent.com/alportblu/plervo-pdf/main/docs/images/plervo-motion-demo.jpg</image>
-+    </screenshot>
-+  </screenshots>
-+  <branding>
-+    <color type="primary" scheme_preference="light">#9fd0ff</color>
-+    <color type="primary" scheme_preference="dark">#1f64ba</color>
-+  </branding>
-+  <requires>
-+    <display_length compare="ge">760</display_length>
-+  </requires>
-+  <supports>
-+    <control>keyboard</control>
-+    <control>pointing</control>
-+    <control>tablet</control>
-+  </supports>
-+  <provides>
+     </screenshot>
+   </screenshots>
+   <branding>
+@@ -54,7 +54,7 @@
+     <control>tablet</control>
+   </supports>
+   <provides>
+-    <binary>effectcraft</binary>
 +    <binary>plervo-motion</binary>
-+  </provides>
-+  <content_rating type="oars-1.1"/>
-+  <releases>
-+    <release version="@VERSION@" date="@DATE@"/>
-+  </releases>
-+</component>
-diff --git a/packaging/linux/com.plervo.motion.mime.xml b/packaging/linux/com.plervo.motion.mime.xml
-new file mode 100644
-index 0000000..be4dcc2
---- /dev/null
-+++ b/packaging/linux/com.plervo.motion.mime.xml
-@@ -0,0 +1,3 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-+</mime-info>
+   </provides>
+   <content_rating type="oars-1.1"/>
+   <releases>
+diff --git a/packaging/linux/ai.storyteller.effectcraft.mime.xml b/packaging/linux/com.plervo.motion.mime.xml
+similarity index 100%
+rename from packaging/linux/ai.storyteller.effectcraft.mime.xml
+rename to packaging/linux/com.plervo.motion.mime.xml
 diff --git a/packaging/linux/flatpak-bundle.sh b/packaging/linux/flatpak-bundle.sh
 index d5dcdfc..22f4313 100755
 --- a/packaging/linux/flatpak-bundle.sh
@@ -5826,294 +5727,135 @@ index d5dcdfc..22f4313 100755
    flatpak run --command=sh "$APP_ID" -c 'ls /app/share/applications /app/share/metainfo /app/share/mime/packages /app/share/icons/hicolor/scalable/apps'
  fi
  echo "==> done"
-diff --git a/packaging/linux/flatpak/ai.storyteller.effectcraft.bundle.yml b/packaging/linux/flatpak/ai.storyteller.effectcraft.bundle.yml
-deleted file mode 100644
-index f1074cd..0000000
+diff --git a/packaging/linux/flatpak/ai.storyteller.effectcraft.bundle.yml b/packaging/linux/flatpak/com.plervo.motion.bundle.yml
+similarity index 70%
+rename from packaging/linux/flatpak/ai.storyteller.effectcraft.bundle.yml
+rename to packaging/linux/flatpak/com.plervo.motion.bundle.yml
+index f1074cd..00965af 100644
 --- a/packaging/linux/flatpak/ai.storyteller.effectcraft.bundle.yml
-+++ /dev/null
-@@ -1,56 +0,0 @@
--# Flatpak manifest for the single-file bundle attached to every GitHub release
++++ b/packaging/linux/flatpak/com.plervo.motion.bundle.yml
+@@ -1,7 +1,7 @@
+ # Flatpak manifest for the single-file bundle attached to every GitHub release
 -# (effectcraft-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
--#
++# (plervo-motion-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
+ #
 -# It repackages the release's own Linux tarball (effectcraft-<version>-linux-<arch>.tar.gz,
--# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
--# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
--# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
--# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
--# Wayland, xkbcommon, ALSA and Vulkan at runtime; the freedesktop runtime has all of them, and
--# the GPU driver comes from its org.freedesktop.Platform.GL extension.
--#
++# It repackages the release's own Linux tarball (plervo-motion-<version>-linux-<arch>.tar.gz,
+ # built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
+ # network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
+ # and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
+@@ -9,13 +9,13 @@
+ # Wayland, xkbcommon, ALSA and Vulkan at runtime; the freedesktop runtime has all of them, and
+ # the GPU driver comes from its org.freedesktop.Platform.GL extension.
+ #
 -# ai.storyteller.effectcraft.yml (same directory) is the from-source manifest for Flathub. Keep
--# runtime-version and finish-args identical in both (packaging-lint checks this).
++# com.plervo.motion.yml (same directory) is the from-source manifest for Flathub. Keep
+ # runtime-version and finish-args identical in both (packaging-lint checks this).
 -id: ai.storyteller.effectcraft
--runtime: org.freedesktop.Platform
--runtime-version: '25.08'
--sdk: org.freedesktop.Sdk
++id: com.plervo.motion
+ runtime: org.freedesktop.Platform
+ runtime-version: '25.08'
+ sdk: org.freedesktop.Sdk
 -command: effectcraft
--finish-args:
--  # Display: Wayland first; X11 only when no Wayland compositor is running.
--  - --socket=wayland
--  - --socket=fallback-x11
--  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
--  - --share=ipc
--  # GPU access for the wgpu compositor and renderer (Vulkan, or GL as a fallback).
--  - --device=dri
--  # Audio preview and playback (cpal through ALSA, which the runtime routes to PulseAudio or
--  # PipeWire's Pulse server).
--  - --socket=pulseaudio
--  # The optional trained models (Settings ▸ Roto Brush, Settings ▸ Face Tracking) download only
--  # when the user asks, over HTTPS with curl. It also lets host agents reach the optional
--  # --control server (127.0.0.1). No telemetry: nothing else uses the network.
--  - --share=network
--  # Open/Save and import dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
--  # drag-and-drop through the document portal, so picked files work anywhere without broad
--  # filesystem access. Pictures, Videos and Documents are granted so files passed by path (the
--  # command line, Open Recent, footage a project links to, Render Queue output) work in the
--  # usual places.
--  - --filesystem=xdg-pictures
--  - --filesystem=xdg-videos
--  - --filesystem=xdg-documents
--  # Deliberately not granted: home/host filesystem access.
--modules:
++command: plervo-motion
+ finish-args:
+   # Display: Wayland first; X11 only when no Wayland compositor is running.
+   - --socket=wayland
+@@ -41,16 +41,16 @@ finish-args:
+   - --filesystem=xdg-documents
+   # Deliberately not granted: home/host filesystem access.
+ modules:
 -  - name: effectcraft
--    buildsystem: simple
--    build-commands:
++  - name: plervo-motion
+     buildsystem: simple
+     build-commands:
 -      - install -Dm755 bin/effectcraft /app/bin/effectcraft
 -      - install -Dm755 bin/effectcraft-cli /app/bin/effectcraft-cli
 -      - install -Dm644 share/applications/ai.storyteller.effectcraft.desktop /app/share/applications/ai.storyteller.effectcraft.desktop
 -      - install -Dm644 share/mime/packages/ai.storyteller.effectcraft.xml /app/share/mime/packages/ai.storyteller.effectcraft.xml
--      # Already has the release's version and date substituted by package.sh.
++      - install -Dm755 bin/plervo-motion /app/bin/plervo-motion
++      - install -Dm755 bin/plervo-motion-cli /app/bin/plervo-motion-cli
++      - install -Dm644 share/applications/com.plervo.motion.desktop /app/share/applications/com.plervo.motion.desktop
++      - install -Dm644 share/mime/packages/com.plervo.motion.xml /app/share/mime/packages/com.plervo.motion.xml
+       # Already has the release's version and date substituted by package.sh.
 -      - install -Dm644 share/metainfo/ai.storyteller.effectcraft.metainfo.xml /app/share/metainfo/ai.storyteller.effectcraft.metainfo.xml
 -      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/effectcraft /app/share/doc/
--    sources:
--      - type: dir
--        path: stage
-diff --git a/packaging/linux/flatpak/ai.storyteller.effectcraft.yml b/packaging/linux/flatpak/ai.storyteller.effectcraft.yml
-deleted file mode 100644
-index be9f898..0000000
++      - install -Dm644 share/metainfo/com.plervo.motion.metainfo.xml /app/share/metainfo/com.plervo.motion.metainfo.xml
++      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/plervo-motion /app/share/doc/
+     sources:
+       - type: dir
+         path: stage
+diff --git a/packaging/linux/flatpak/ai.storyteller.effectcraft.yml b/packaging/linux/flatpak/com.plervo.motion.yml
+similarity index 73%
+rename from packaging/linux/flatpak/ai.storyteller.effectcraft.yml
+rename to packaging/linux/flatpak/com.plervo.motion.yml
+index be9f898..95f7462 100644
 --- a/packaging/linux/flatpak/ai.storyteller.effectcraft.yml
-+++ /dev/null
-@@ -1,76 +0,0 @@
++++ b/packaging/linux/flatpak/com.plervo.motion.yml
+@@ -1,24 +1,24 @@
 -# Flatpak manifest for EffectCraft, ready for a Flathub submission.
--#
--# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
--#
--#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
--#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
++# Flatpak manifest for Plervo Motion, ready for a Flathub submission.
+ #
+ # Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
+ #
+ #   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
+ #   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
 -#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.effectcraft.yml
 -#   flatpak run ai.storyteller.effectcraft
--#
--# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
--#
++#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/com.plervo.motion.yml
++#   flatpak run com.plervo.motion
+ #
+ # For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
+ #
 -# ai.storyteller.effectcraft.bundle.yml (same directory) builds the .flatpak attached to each
--# release from the release's Linux tarball. Keep runtime-version and finish-args identical in both
--# (packaging-lint checks this).
++# com.plervo.motion.bundle.yml (same directory) builds the .flatpak attached to each
+ # release from the release's Linux tarball. Keep runtime-version and finish-args identical in both
+ # (packaging-lint checks this).
 -id: ai.storyteller.effectcraft
--runtime: org.freedesktop.Platform
--runtime-version: '25.08'
--sdk: org.freedesktop.Sdk
--sdk-extensions:
--  - org.freedesktop.Sdk.Extension.rust-stable
++id: com.plervo.motion
+ runtime: org.freedesktop.Platform
+ runtime-version: '25.08'
+ sdk: org.freedesktop.Sdk
+ sdk-extensions:
+   - org.freedesktop.Sdk.Extension.rust-stable
 -command: effectcraft
--finish-args:
--  # Display: Wayland first; X11 only when no Wayland compositor is running.
--  - --socket=wayland
--  - --socket=fallback-x11
--  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
--  - --share=ipc
--  # GPU access for the wgpu compositor and renderer (Vulkan, or GL as a fallback).
--  - --device=dri
--  # Audio preview and playback (cpal through ALSA, which the runtime routes to PulseAudio or
--  # PipeWire's Pulse server).
--  - --socket=pulseaudio
--  # The optional trained models (Settings ▸ Roto Brush, Settings ▸ Face Tracking) download only
--  # when the user asks, over HTTPS with curl. It also lets host agents reach the optional
--  # --control server (127.0.0.1). No telemetry: nothing else uses the network.
--  - --share=network
--  # Open/Save and import dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
--  # drag-and-drop through the document portal, so picked files work anywhere without broad
--  # filesystem access. Pictures, Videos and Documents are granted so files passed by path (the
--  # command line, Open Recent, footage a project links to, Render Queue output) work in the
--  # usual places.
--  - --filesystem=xdg-pictures
--  - --filesystem=xdg-videos
--  - --filesystem=xdg-documents
--  # Deliberately not granted: home/host filesystem access.
--build-options:
--  append-path: /usr/lib/sdk/rust-stable/bin
--modules:
++command: plervo-motion
+ finish-args:
+   # Display: Wayland first; X11 only when no Wayland compositor is running.
+   - --socket=wayland
+@@ -46,24 +46,24 @@ finish-args:
+ build-options:
+   append-path: /usr/lib/sdk/rust-stable/bin
+ modules:
 -  - name: effectcraft
--    buildsystem: simple
--    build-options:
--      env:
++  - name: plervo-motion
+     buildsystem: simple
+     build-options:
+       env:
 -        CARGO_HOME: /run/build/effectcraft/cargo
--        CARGO_NET_OFFLINE: 'true'
--    build-commands:
++        CARGO_HOME: /run/build/plervo-motion/cargo
+         CARGO_NET_OFFLINE: 'true'
+     build-commands:
 -      - cargo --offline build --release --locked -p effectcraft -p effectcraft-cli
 -      - install -Dm755 target/release/effectcraft /app/bin/effectcraft
 -      - install -Dm755 target/release/effectcraft-cli /app/bin/effectcraft-cli
 -      - install -Dm644 packaging/linux/ai.storyteller.effectcraft.desktop /app/share/applications/ai.storyteller.effectcraft.desktop
 -      - install -Dm644 packaging/linux/ai.storyteller.effectcraft.mime.xml /app/share/mime/packages/ai.storyteller.effectcraft.xml
--      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
--      - >-
--        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
--        install -d /app/share/metainfo;
--        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
--        packaging/linux/ai.storyteller.effectcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.effectcraft.metainfo.xml
--    sources:
--      - type: dir
--        path: ../../..
--        skip:
--          - target
--          - dist
--          - corpus
--          - build-flatpak
--          - .flatpak-builder
--      - cargo-sources.json
-diff --git a/packaging/linux/flatpak/com.plervo.motion.bundle.yml b/packaging/linux/flatpak/com.plervo.motion.bundle.yml
-new file mode 100644
-index 0000000..00965af
---- /dev/null
-+++ b/packaging/linux/flatpak/com.plervo.motion.bundle.yml
-@@ -0,0 +1,56 @@
-+# Flatpak manifest for the single-file bundle attached to every GitHub release
-+# (plervo-motion-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
-+#
-+# It repackages the release's own Linux tarball (plervo-motion-<version>-linux-<arch>.tar.gz,
-+# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
-+# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
-+# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
-+# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
-+# Wayland, xkbcommon, ALSA and Vulkan at runtime; the freedesktop runtime has all of them, and
-+# the GPU driver comes from its org.freedesktop.Platform.GL extension.
-+#
-+# com.plervo.motion.yml (same directory) is the from-source manifest for Flathub. Keep
-+# runtime-version and finish-args identical in both (packaging-lint checks this).
-+id: com.plervo.motion
-+runtime: org.freedesktop.Platform
-+runtime-version: '25.08'
-+sdk: org.freedesktop.Sdk
-+command: plervo-motion
-+finish-args:
-+  # Display: Wayland first; X11 only when no Wayland compositor is running.
-+  - --socket=wayland
-+  - --socket=fallback-x11
-+  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
-+  - --share=ipc
-+  # GPU access for the wgpu compositor and renderer (Vulkan, or GL as a fallback).
-+  - --device=dri
-+  # Audio preview and playback (cpal through ALSA, which the runtime routes to PulseAudio or
-+  # PipeWire's Pulse server).
-+  - --socket=pulseaudio
-+  # The optional trained models (Settings ▸ Roto Brush, Settings ▸ Face Tracking) download only
-+  # when the user asks, over HTTPS with curl. It also lets host agents reach the optional
-+  # --control server (127.0.0.1). No telemetry: nothing else uses the network.
-+  - --share=network
-+  # Open/Save and import dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
-+  # drag-and-drop through the document portal, so picked files work anywhere without broad
-+  # filesystem access. Pictures, Videos and Documents are granted so files passed by path (the
-+  # command line, Open Recent, footage a project links to, Render Queue output) work in the
-+  # usual places.
-+  - --filesystem=xdg-pictures
-+  - --filesystem=xdg-videos
-+  - --filesystem=xdg-documents
-+  # Deliberately not granted: home/host filesystem access.
-+modules:
-+  - name: plervo-motion
-+    buildsystem: simple
-+    build-commands:
-+      - install -Dm755 bin/plervo-motion /app/bin/plervo-motion
-+      - install -Dm755 bin/plervo-motion-cli /app/bin/plervo-motion-cli
-+      - install -Dm644 share/applications/com.plervo.motion.desktop /app/share/applications/com.plervo.motion.desktop
-+      - install -Dm644 share/mime/packages/com.plervo.motion.xml /app/share/mime/packages/com.plervo.motion.xml
-+      # Already has the release's version and date substituted by package.sh.
-+      - install -Dm644 share/metainfo/com.plervo.motion.metainfo.xml /app/share/metainfo/com.plervo.motion.metainfo.xml
-+      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/plervo-motion /app/share/doc/
-+    sources:
-+      - type: dir
-+        path: stage
-diff --git a/packaging/linux/flatpak/com.plervo.motion.yml b/packaging/linux/flatpak/com.plervo.motion.yml
-new file mode 100644
-index 0000000..95f7462
---- /dev/null
-+++ b/packaging/linux/flatpak/com.plervo.motion.yml
-@@ -0,0 +1,76 @@
-+# Flatpak manifest for Plervo Motion, ready for a Flathub submission.
-+#
-+# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
-+#
-+#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
-+#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
-+#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/com.plervo.motion.yml
-+#   flatpak run com.plervo.motion
-+#
-+# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
-+#
-+# com.plervo.motion.bundle.yml (same directory) builds the .flatpak attached to each
-+# release from the release's Linux tarball. Keep runtime-version and finish-args identical in both
-+# (packaging-lint checks this).
-+id: com.plervo.motion
-+runtime: org.freedesktop.Platform
-+runtime-version: '25.08'
-+sdk: org.freedesktop.Sdk
-+sdk-extensions:
-+  - org.freedesktop.Sdk.Extension.rust-stable
-+command: plervo-motion
-+finish-args:
-+  # Display: Wayland first; X11 only when no Wayland compositor is running.
-+  - --socket=wayland
-+  - --socket=fallback-x11
-+  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
-+  - --share=ipc
-+  # GPU access for the wgpu compositor and renderer (Vulkan, or GL as a fallback).
-+  - --device=dri
-+  # Audio preview and playback (cpal through ALSA, which the runtime routes to PulseAudio or
-+  # PipeWire's Pulse server).
-+  - --socket=pulseaudio
-+  # The optional trained models (Settings ▸ Roto Brush, Settings ▸ Face Tracking) download only
-+  # when the user asks, over HTTPS with curl. It also lets host agents reach the optional
-+  # --control server (127.0.0.1). No telemetry: nothing else uses the network.
-+  - --share=network
-+  # Open/Save and import dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
-+  # drag-and-drop through the document portal, so picked files work anywhere without broad
-+  # filesystem access. Pictures, Videos and Documents are granted so files passed by path (the
-+  # command line, Open Recent, footage a project links to, Render Queue output) work in the
-+  # usual places.
-+  - --filesystem=xdg-pictures
-+  - --filesystem=xdg-videos
-+  - --filesystem=xdg-documents
-+  # Deliberately not granted: home/host filesystem access.
-+build-options:
-+  append-path: /usr/lib/sdk/rust-stable/bin
-+modules:
-+  - name: plervo-motion
-+    buildsystem: simple
-+    build-options:
-+      env:
-+        CARGO_HOME: /run/build/plervo-motion/cargo
-+        CARGO_NET_OFFLINE: 'true'
-+    build-commands:
 +      - cargo --offline build --release --locked -p plervo-motion -p plervo-motion-cli
 +      - install -Dm755 target/release/plervo-motion /app/bin/plervo-motion
 +      - install -Dm755 target/release/plervo-motion-cli /app/bin/plervo-motion-cli
 +      - install -Dm644 packaging/linux/com.plervo.motion.desktop /app/share/applications/com.plervo.motion.desktop
 +      - install -Dm644 packaging/linux/com.plervo.motion.mime.xml /app/share/mime/packages/com.plervo.motion.xml
-+      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
-+      - >-
-+        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
-+        install -d /app/share/metainfo;
-+        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+       - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
+       - >-
+         version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
+         install -d /app/share/metainfo;
+         sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+-        packaging/linux/ai.storyteller.effectcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.effectcraft.metainfo.xml
 +        packaging/linux/com.plervo.motion.metainfo.xml.in > /app/share/metainfo/com.plervo.motion.metainfo.xml
-+    sources:
-+      - type: dir
-+        path: ../../..
-+        skip:
-+          - target
-+          - dist
-+          - corpus
-+          - build-flatpak
-+          - .flatpak-builder
-+      - cargo-sources.json
+     sources:
+       - type: dir
+         path: ../../..
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
 index 76d4145..afa4851 100644
 --- a/packaging/linux/nfpm.yaml
@@ -6889,113 +6631,6 @@ index 89d767e..61f1b85 100755
  WORK="$CARGO_TARGET_DIR/web-package"
  rm -rf "$WORK"
  mkdir -p "$WORK/$NAME"
-diff --git a/packaging/windows/effectcraft.wxs b/packaging/windows/effectcraft.wxs
-deleted file mode 100644
-index 00b0c5d..0000000
---- a/packaging/windows/effectcraft.wxs
-+++ /dev/null
-@@ -1,101 +0,0 @@
--<?xml version="1.0" encoding="utf-8"?>
--<!--
--  EffectCraft MSI (WiX Toolset v5: `dotnet tool install -g wix`). Built by package.ps1:
--
--    wix build effectcraft.wxs installer-ui.wxs -arch x64 -d Version=1.2.3 -d BinDir=... -d IconPath=... -o out.msi
--
--  Per-machine install into Program Files (or a folder the user picks), a Start Menu shortcut and,
--  unless DESKTOPSHORTCUT=0 (the wizard's "Create a desktop shortcut" box), a desktop shortcut.
---->
--<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
--  <Package
--      Name="EffectCraft"
--      Manufacturer="Learning Machines LLC"
--      Version="$(var.Version)"
--      UpgradeCode="AACA8593-C6ED-40A8-BA6C-CB325D8529F9"
--      Scope="perMachine"
--      Compressed="yes"
--      Language="1033">
--    <SummaryInformation Description="EffectCraft motion graphics and visual effects" Manufacturer="Learning Machines LLC" />
--    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
--         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
--    <MajorUpgrade AllowSameVersionUpgrades="yes"
--        DowngradeErrorMessage="A newer version of EffectCraft is already installed." />
--    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
--    <!-- The setup wizard (installer-ui.wxs): pick the folder on a fresh install. -->
--    <UIRef Id="EffectcraftUI" />
--
--    <Icon Id="EffectcraftIcon.ico" SourceFile="$(var.IconPath)" />
--    <Property Id="ARPPRODUCTICON" Value="EffectcraftIcon.ico" />
--    <Property Id="ARPURLINFOABOUT" Value="https://getartcraft.com/apps/effectcraft" />
--    <Property Id="ARPURLUPDATEINFO" Value="https://getartcraft.com/apps/effectcraft" />
--    <Property Id="ARPHELPLINK" Value="https://discord.gg/artcraft" />
--
--    <!-- An upgrade, repair or silent reinstall goes where the installed copy already is: the App Paths
--         "Path" value written below, or for releases before this installer change (no Path value; they
--         could be put elsewhere with INSTALLFOLDER=...) the folder of the effectcraft.exe that App Paths names. A
--         "file" search with no FileSearch inside yields that file's folder. A folder passed on the
--         command line (INSTALLFOLDER=...) wins. -->
--    <Property Id="INSTALLFOLDER" Secure="yes" />
--    <Property Id="PREVIOUSINSTALLFOLDER" Secure="yes">
--      <RegistrySearch Id="PreviousInstallFolder" Root="HKLM" Type="directory"
--          Key="Software\Microsoft\Windows\CurrentVersion\App Paths\effectcraft.exe" Name="Path" />
--    </Property>
--    <Property Id="PREVIOUSEXEFOLDER" Secure="yes">
--      <RegistrySearch Id="PreviousExeFolder" Root="HKLM" Type="file"
--          Key="Software\Microsoft\Windows\CurrentVersion\App Paths\effectcraft.exe" />
--    </Property>
--    <SetProperty Id="INSTALLFOLDER" Value="[PREVIOUSINSTALLFOLDER]" After="AppSearch" Sequence="both"
--        Condition="PREVIOUSINSTALLFOLDER AND NOT INSTALLFOLDER" />
--    <SetProperty Id="INSTALLFOLDER" Action="SetINSTALLFOLDERFromExe" Value="[PREVIOUSEXEFOLDER]"
--        After="SetINSTALLFOLDER" Sequence="both" Condition="PREVIOUSEXEFOLDER AND NOT INSTALLFOLDER" />
--
--    <!-- The desktop shortcut: on by default for a fresh install (a box in the wizard, or
--         DESKTOPSHORTCUT=0 silently); an upgrade keeps what the installed copy chose, and adds none
--         to an install from before this option. -->
--    <Property Id="DESKTOPSHORTCUT" Value="1" Secure="yes" />
--    <Property Id="PREVIOUSDESKTOPSHORTCUT" Secure="yes">
--      <RegistrySearch Id="PreviousDesktopShortcut" Root="HKLM" Type="raw" Key="Software\EffectCraft" Name="DesktopShortcut" />
--    </Property>
--    <SetProperty Id="DESKTOPSHORTCUT" Value="[PREVIOUSDESKTOPSHORTCUT]" After="SetINSTALLFOLDERFromExe" Sequence="both"
--        Condition="WIX_UPGRADE_DETECTED" />
--
--    <StandardDirectory Id="ProgramFiles6432Folder">
--      <Directory Id="INSTALLFOLDER" Name="EffectCraft" />
--    </StandardDirectory>
--    <StandardDirectory Id="ProgramMenuFolder" />
--    <StandardDirectory Id="DesktopFolder" />
--
--    <Feature Id="Main" Title="EffectCraft" Level="1">
--      <ComponentGroupRef Id="EffectcraftFiles" />
--    </Feature>
--  </Package>
--
--  <Fragment>
--    <ComponentGroup Id="EffectcraftFiles" Directory="INSTALLFOLDER">
--      <Component Id="EffectcraftApp" Guid="BA719860-95FE-4154-B265-47006B8E9083">
--        <File Id="EffectcraftExe" Source="$(var.BinDir)\effectcraft.exe" KeyPath="yes">
--          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="EffectCraft"
--              Description="EffectCraft motion graphics and visual effects" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
--              Icon="EffectcraftIcon.ico" IconIndex="0" />
--        </File>
--
--        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\effectcraft.exe" Value="[#EffectcraftExe]" Type="string" />
--        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\effectcraft.exe" Name="Path" Value="[INSTALLFOLDER]" Type="string" />
--        <!-- The desktop shortcut choice, for the next upgrade (empty: none). -->
--        <RegistryValue Root="HKLM" Key="Software\EffectCraft" Name="DesktopShortcut" Value="[DESKTOPSHORTCUT]" Type="string" />
--      </Component>
--
--      <Component Id="EffectcraftCli">
--        <File Id="EffectcraftCliExe" Source="$(var.BinDir)\effectcraft-cli.exe" KeyPath="yes" />
--      </Component>
--
--      <!-- A component under the user's profile folders needs an HKCU key path (ICE38, ICE43). -->
--      <Component Id="DesktopShortcut" Directory="DesktopFolder" Condition="DESKTOPSHORTCUT = &quot;1&quot;">
--        <Shortcut Id="DesktopShortcut" Name="EffectCraft" Description="EffectCraft motion graphics and visual effects"
--            Target="[#EffectcraftExe]" WorkingDirectory="INSTALLFOLDER" Icon="EffectcraftIcon.ico" IconIndex="0" />
--        <RegistryValue Root="HKCU" Key="Software\EffectCraft" Name="DesktopShortcut" Value="1" Type="string" KeyPath="yes" />
--      </Component>
--    </ComponentGroup>
--  </Fragment>
--</Wix>
 diff --git a/packaging/windows/installer-ui.wxs b/packaging/windows/installer-ui.wxs
 index 16ab58d..4454754 100644
 --- a/packaging/windows/installer-ui.wxs
@@ -7029,7 +6664,7 @@ index 16ab58d..4454754 100644
          <Control Id="Finish" Type="PushButton" X="304" Y="243" Width="56" Height="17" Default="yes" Cancel="yes" Text="&amp;Finish">
            <Publish Event="EndDialog" Value="Exit" />
 diff --git a/packaging/windows/package.ps1 b/packaging/windows/package.ps1
-index 7654fe1..bc4f708 100644
+index 7654fe1..61d11b7 100644
 --- a/packaging/windows/package.ps1
 +++ b/packaging/windows/package.ps1
 @@ -1,11 +1,11 @@
@@ -7074,7 +6709,7 @@ index 7654fe1..bc4f708 100644
    $h = Get-PeHeader (Join-Path $Bin $check[0])
    if ($h.Machine -ne $Machine) { throw "$($check[0]) is for machine 0x$('{0:X}' -f $h.Machine), expected 0x$('{0:X}' -f $Machine) ($Arch)" }
    if ($h.Subsystem -ne $check[1]) { throw "$($check[0]) has PE subsystem $($h.Subsystem), expected $($check[1])" }
-@@ -86,15 +86,32 @@ foreach ($check in @(@('effectcraft.exe', 2), @('effectcraft-cli.exe', 3))) {
+@@ -86,15 +86,34 @@ foreach ($check in @(@('effectcraft.exe', 2), @('effectcraft-cli.exe', 3))) {
  $Stage = Join-Path $TargetDir "windows-package\$Arch"
  Remove-Item -Recurse -Force $Stage -ErrorAction SilentlyContinue
  New-Item -ItemType Directory -Force -Path $Stage | Out-Null
@@ -7085,9 +6720,11 @@ index 7654fe1..bc4f708 100644
 +& (Join-Path $PSScriptRoot 'sign.ps1') (Join-Path $Stage 'plervo-motion.exe') (Join-Path $Stage 'plervo-motion-cli.exe')
 +
 +# Carry source and embedded-asset notices in MSI and portable distributions.
++& python (Join-Path $Root 'packaging/licenses/verify.py') $Root
++if ($LASTEXITCODE -ne 0) { throw "Third-party notice review is stale or missing" }
 +$Legal = Join-Path $Stage 'Licenses'
 +New-Item -ItemType Directory -Force -Path $Legal | Out-Null
-+foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md') {
++foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md', 'THIRD_PARTY_NOTICES.txt') {
 +  $p = Join-Path $Root $f
 +  if (Test-Path $p) { Copy-Item $p $Legal }
 +}
@@ -7112,7 +6749,7 @@ index 7654fe1..bc4f708 100644
      -o $Msi
  }
  # wix writes its debug symbols (.wixpdb) next to the MSI; keep them out of the release assets.
-@@ -102,18 +119,19 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
+@@ -102,18 +121,19 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
  & (Join-Path $PSScriptRoot 'sign.ps1') $Msi
  
  # ---- portable zip ------------------------------------------------------------------------------
@@ -7136,7 +6773,7 @@ index 7654fe1..bc4f708 100644
  Remove-Item -Force $Zip -ErrorAction SilentlyContinue
  Compress-Archive -Path $Portable -DestinationPath $Zip
  
-@@ -121,8 +139,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
+@@ -121,8 +141,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
  # here; .github/workflows/windows-arm64.yml installs and runs it on ARM64 instead.
  $HostArch = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString().ToLowerInvariant()
  if ($Arch -ne 'arm64' -or $HostArch -eq 'arm64') {
@@ -7147,118 +6784,142 @@ index 7654fe1..bc4f708 100644
 +  Write-Output "skipping plervo-motion-cli --version: an $Arch build doesn't run on this $HostArch machine"
  }
  Get-Item $Msi, $Zip | Format-Table Name, Length
-diff --git a/packaging/windows/plervo-motion.wxs b/packaging/windows/plervo-motion.wxs
-new file mode 100644
-index 0000000..c6df262
---- /dev/null
+diff --git a/packaging/windows/effectcraft.wxs b/packaging/windows/plervo-motion.wxs
+similarity index 61%
+rename from packaging/windows/effectcraft.wxs
+rename to packaging/windows/plervo-motion.wxs
+index 00b0c5d..c6df262 100644
+--- a/packaging/windows/effectcraft.wxs
 +++ b/packaging/windows/plervo-motion.wxs
-@@ -0,0 +1,106 @@
-+<?xml version="1.0" encoding="utf-8"?>
-+<!--
+@@ -1,49 +1,49 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <!--
+-  EffectCraft MSI (WiX Toolset v5: `dotnet tool install -g wix`). Built by package.ps1:
 +  Plervo Motion MSI (WiX Toolset v5: `dotnet tool install -g wix`). Built by package.ps1:
-+
+ 
+-    wix build effectcraft.wxs installer-ui.wxs -arch x64 -d Version=1.2.3 -d BinDir=... -d IconPath=... -o out.msi
 +    wix build plervo-motion.wxs installer-ui.wxs -arch x64 -d Version=1.2.3 -d BinDir=... -d IconPath=... -o out.msi
-+
-+  Per-machine install into Program Files (or a folder the user picks), a Start Menu shortcut and,
-+  unless DESKTOPSHORTCUT=0 (the wizard's "Create a desktop shortcut" box), a desktop shortcut.
-+-->
-+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
-+  <Package
+ 
+   Per-machine install into Program Files (or a folder the user picks), a Start Menu shortcut and,
+   unless DESKTOPSHORTCUT=0 (the wizard's "Create a desktop shortcut" box), a desktop shortcut.
+ -->
+ <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+   <Package
+-      Name="EffectCraft"
+-      Manufacturer="Learning Machines LLC"
 +      Name="Plervo Motion"
 +      Manufacturer="Maintech Solutions LLC"
-+      Version="$(var.Version)"
+       Version="$(var.Version)"
+-      UpgradeCode="AACA8593-C6ED-40A8-BA6C-CB325D8529F9"
 +      UpgradeCode="42123901-2034-53E0-954A-732EA0A8BA53"
-+      Scope="perMachine"
-+      Compressed="yes"
-+      Language="1033">
+       Scope="perMachine"
+       Compressed="yes"
+       Language="1033">
+-    <SummaryInformation Description="EffectCraft motion graphics and visual effects" Manufacturer="Learning Machines LLC" />
 +    <SummaryInformation Description="Plervo Motion motion graphics and visual effects" Manufacturer="Maintech Solutions LLC" />
-+    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
-+         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
-+    <MajorUpgrade AllowSameVersionUpgrades="yes"
+     <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
+          (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
+     <MajorUpgrade AllowSameVersionUpgrades="yes"
+-        DowngradeErrorMessage="A newer version of EffectCraft is already installed." />
 +        DowngradeErrorMessage="A newer version of Plervo Motion is already installed." />
-+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
-+    <!-- The setup wizard (installer-ui.wxs): pick the folder on a fresh install. -->
-+    <UIRef Id="EffectcraftUI" />
-+
-+    <Icon Id="EffectcraftIcon.ico" SourceFile="$(var.IconPath)" />
-+    <Property Id="ARPPRODUCTICON" Value="EffectcraftIcon.ico" />
+     <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+     <!-- The setup wizard (installer-ui.wxs): pick the folder on a fresh install. -->
+     <UIRef Id="EffectcraftUI" />
+ 
+     <Icon Id="EffectcraftIcon.ico" SourceFile="$(var.IconPath)" />
+     <Property Id="ARPPRODUCTICON" Value="EffectcraftIcon.ico" />
+-    <Property Id="ARPURLINFOABOUT" Value="https://getartcraft.com/apps/effectcraft" />
+-    <Property Id="ARPURLUPDATEINFO" Value="https://getartcraft.com/apps/effectcraft" />
+-    <Property Id="ARPHELPLINK" Value="https://discord.gg/artcraft" />
 +    <Property Id="ARPURLINFOABOUT" Value="https://plervo.com/" />
 +    <Property Id="ARPURLUPDATEINFO" Value="https://plervo.com/" />
 +    <Property Id="ARPHELPLINK" Value="https://buymeacoffee.com/alport" />
-+
-+    <!-- An upgrade, repair or silent reinstall goes where the installed copy already is: the App Paths
-+         "Path" value written below, or for releases before this installer change (no Path value; they
+ 
+     <!-- An upgrade, repair or silent reinstall goes where the installed copy already is: the App Paths
+          "Path" value written below, or for releases before this installer change (no Path value; they
+-         could be put elsewhere with INSTALLFOLDER=...) the folder of the effectcraft.exe that App Paths names. A
 +         could be put elsewhere with INSTALLFOLDER=...) the folder of the plervo-motion.exe that App Paths names. A
-+         "file" search with no FileSearch inside yields that file's folder. A folder passed on the
-+         command line (INSTALLFOLDER=...) wins. -->
-+    <Property Id="INSTALLFOLDER" Secure="yes" />
-+    <Property Id="PREVIOUSINSTALLFOLDER" Secure="yes">
-+      <RegistrySearch Id="PreviousInstallFolder" Root="HKLM" Type="directory"
+          "file" search with no FileSearch inside yields that file's folder. A folder passed on the
+          command line (INSTALLFOLDER=...) wins. -->
+     <Property Id="INSTALLFOLDER" Secure="yes" />
+     <Property Id="PREVIOUSINSTALLFOLDER" Secure="yes">
+       <RegistrySearch Id="PreviousInstallFolder" Root="HKLM" Type="directory"
+-          Key="Software\Microsoft\Windows\CurrentVersion\App Paths\effectcraft.exe" Name="Path" />
 +          Key="Software\Microsoft\Windows\CurrentVersion\App Paths\plervo-motion.exe" Name="Path" />
-+    </Property>
-+    <Property Id="PREVIOUSEXEFOLDER" Secure="yes">
-+      <RegistrySearch Id="PreviousExeFolder" Root="HKLM" Type="file"
+     </Property>
+     <Property Id="PREVIOUSEXEFOLDER" Secure="yes">
+       <RegistrySearch Id="PreviousExeFolder" Root="HKLM" Type="file"
+-          Key="Software\Microsoft\Windows\CurrentVersion\App Paths\effectcraft.exe" />
 +          Key="Software\Microsoft\Windows\CurrentVersion\App Paths\plervo-motion.exe" />
-+    </Property>
-+    <SetProperty Id="INSTALLFOLDER" Value="[PREVIOUSINSTALLFOLDER]" After="AppSearch" Sequence="both"
-+        Condition="PREVIOUSINSTALLFOLDER AND NOT INSTALLFOLDER" />
-+    <SetProperty Id="INSTALLFOLDER" Action="SetINSTALLFOLDERFromExe" Value="[PREVIOUSEXEFOLDER]"
-+        After="SetINSTALLFOLDER" Sequence="both" Condition="PREVIOUSEXEFOLDER AND NOT INSTALLFOLDER" />
-+
-+    <!-- The desktop shortcut: on by default for a fresh install (a box in the wizard, or
-+         DESKTOPSHORTCUT=0 silently); an upgrade keeps what the installed copy chose, and adds none
-+         to an install from before this option. -->
-+    <Property Id="DESKTOPSHORTCUT" Value="1" Secure="yes" />
-+    <Property Id="PREVIOUSDESKTOPSHORTCUT" Secure="yes">
+     </Property>
+     <SetProperty Id="INSTALLFOLDER" Value="[PREVIOUSINSTALLFOLDER]" After="AppSearch" Sequence="both"
+         Condition="PREVIOUSINSTALLFOLDER AND NOT INSTALLFOLDER" />
+@@ -55,47 +55,52 @@
+          to an install from before this option. -->
+     <Property Id="DESKTOPSHORTCUT" Value="1" Secure="yes" />
+     <Property Id="PREVIOUSDESKTOPSHORTCUT" Secure="yes">
+-      <RegistrySearch Id="PreviousDesktopShortcut" Root="HKLM" Type="raw" Key="Software\EffectCraft" Name="DesktopShortcut" />
 +      <RegistrySearch Id="PreviousDesktopShortcut" Root="HKLM" Type="raw" Key="Software\Plervo Motion" Name="DesktopShortcut" />
-+    </Property>
-+    <SetProperty Id="DESKTOPSHORTCUT" Value="[PREVIOUSDESKTOPSHORTCUT]" After="SetINSTALLFOLDERFromExe" Sequence="both"
-+        Condition="WIX_UPGRADE_DETECTED" />
-+
-+    <StandardDirectory Id="ProgramFiles6432Folder">
+     </Property>
+     <SetProperty Id="DESKTOPSHORTCUT" Value="[PREVIOUSDESKTOPSHORTCUT]" After="SetINSTALLFOLDERFromExe" Sequence="both"
+         Condition="WIX_UPGRADE_DETECTED" />
+ 
+     <StandardDirectory Id="ProgramFiles6432Folder">
+-      <Directory Id="INSTALLFOLDER" Name="EffectCraft" />
 +      <Directory Id="INSTALLFOLDER" Name="Plervo Motion" />
-+    </StandardDirectory>
-+    <StandardDirectory Id="ProgramMenuFolder" />
-+    <StandardDirectory Id="DesktopFolder" />
-+
+     </StandardDirectory>
+     <StandardDirectory Id="ProgramMenuFolder" />
+     <StandardDirectory Id="DesktopFolder" />
+ 
+-    <Feature Id="Main" Title="EffectCraft" Level="1">
 +    <Feature Id="Main" Title="Plervo Motion" Level="1">
-+      <ComponentGroupRef Id="EffectcraftFiles" />
-+    </Feature>
+       <ComponentGroupRef Id="EffectcraftFiles" />
+     </Feature>
 +    <Feature Id="PlervoLicenseFeature" Title="Licenses" Level="1"><ComponentGroupRef Id="PlervoLegalFiles" /></Feature>
-+  </Package>
-+
-+  <Fragment>
-+    <ComponentGroup Id="EffectcraftFiles" Directory="INSTALLFOLDER">
+   </Package>
+ 
+   <Fragment>
+     <ComponentGroup Id="EffectcraftFiles" Directory="INSTALLFOLDER">
+-      <Component Id="EffectcraftApp" Guid="BA719860-95FE-4154-B265-47006B8E9083">
+-        <File Id="EffectcraftExe" Source="$(var.BinDir)\effectcraft.exe" KeyPath="yes">
+-          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="EffectCraft"
+-              Description="EffectCraft motion graphics and visual effects" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
 +      <Component Id="EffectcraftApp" Guid="C36550B6-BD45-5F3E-BFEA-97E4109CE381">
 +        <File Id="EffectcraftExe" Source="$(var.BinDir)\plervo-motion.exe" KeyPath="yes">
 +          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="Plervo Motion"
 +              Description="Plervo Motion motion graphics and visual effects" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
-+              Icon="EffectcraftIcon.ico" IconIndex="0" />
-+        </File>
-+
+               Icon="EffectcraftIcon.ico" IconIndex="0" />
+         </File>
+ 
+-        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\effectcraft.exe" Value="[#EffectcraftExe]" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\effectcraft.exe" Name="Path" Value="[INSTALLFOLDER]" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\plervo-motion.exe" Value="[#EffectcraftExe]" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\plervo-motion.exe" Name="Path" Value="[INSTALLFOLDER]" Type="string" />
-+        <!-- The desktop shortcut choice, for the next upgrade (empty: none). -->
+         <!-- The desktop shortcut choice, for the next upgrade (empty: none). -->
+-        <RegistryValue Root="HKLM" Key="Software\EffectCraft" Name="DesktopShortcut" Value="[DESKTOPSHORTCUT]" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Plervo Motion" Name="DesktopShortcut" Value="[DESKTOPSHORTCUT]" Type="string" />
-+      </Component>
-+
-+      <Component Id="EffectcraftCli">
+       </Component>
+ 
+       <Component Id="EffectcraftCli">
+-        <File Id="EffectcraftCliExe" Source="$(var.BinDir)\effectcraft-cli.exe" KeyPath="yes" />
 +        <File Id="EffectcraftCliExe" Source="$(var.BinDir)\plervo-motion-cli.exe" KeyPath="yes" />
-+      </Component>
-+
-+      <!-- A component under the user's profile folders needs an HKCU key path (ICE38, ICE43). -->
-+      <Component Id="DesktopShortcut" Directory="DesktopFolder" Condition="DESKTOPSHORTCUT = &quot;1&quot;">
+       </Component>
+ 
+       <!-- A component under the user's profile folders needs an HKCU key path (ICE38, ICE43). -->
+       <Component Id="DesktopShortcut" Directory="DesktopFolder" Condition="DESKTOPSHORTCUT = &quot;1&quot;">
+-        <Shortcut Id="DesktopShortcut" Name="EffectCraft" Description="EffectCraft motion graphics and visual effects"
 +        <Shortcut Id="DesktopShortcut" Name="Plervo Motion" Description="Plervo Motion motion graphics and visual effects"
-+            Target="[#EffectcraftExe]" WorkingDirectory="INSTALLFOLDER" Icon="EffectcraftIcon.ico" IconIndex="0" />
+             Target="[#EffectcraftExe]" WorkingDirectory="INSTALLFOLDER" Icon="EffectcraftIcon.ico" IconIndex="0" />
+-        <RegistryValue Root="HKCU" Key="Software\EffectCraft" Name="DesktopShortcut" Value="1" Type="string" KeyPath="yes" />
 +        <RegistryValue Root="HKCU" Key="Software\Plervo Motion" Name="DesktopShortcut" Value="1" Type="string" KeyPath="yes" />
-+      </Component>
-+    </ComponentGroup>
-+  </Fragment>
+       </Component>
+     </ComponentGroup>
+   </Fragment>
 +  <Fragment>
 +    <DirectoryRef Id="INSTALLFOLDER"><Directory Id="PlervoLegalDir" Name="Licenses" /></DirectoryRef>
 +    <ComponentGroup Id="PlervoLegalFiles" Directory="PlervoLegalDir"><Files Include="$(var.BinDir)\Licenses\*" /></ComponentGroup>
 +  </Fragment>
-+</Wix>
+ </Wix>
 diff --git a/packaging/windows/portable.txt b/packaging/windows/portable.txt
 index e36056d..c0d4269 100644
 --- a/packaging/windows/portable.txt

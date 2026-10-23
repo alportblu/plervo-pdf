@@ -3,8 +3,8 @@
   "reviewed": "2026-10-23",
   "inputs": {
     "ATTRIBUTION.toml": "2fd0c43d2c91154d965e98756fb18beebf5bb2cda30cfa4759ae3034921c71dd",
-    "Cargo.lock": "864d887655e349bf29e0436edde6d1be3dd88e74603409f238006df32e85dc61",
-    "Cargo.toml": "d399aaa3dc368a9bf49ca1489f39590c48ebf454619bebef5d2879d3179504a5",
+    "Cargo.lock": "5125fc3998b23c727faf82dbca4d833d28e07fe7755dd7ff7c67b9502f6feff7",
+    "Cargo.toml": "f1f22a03b26e956e77c87978353dbfb654726c0a034da017be6b34fa2826c335",
     "apps/pdfcraft-cli/Cargo.toml": "3d1e7b9482e09b117ca255fbb57952a4b708154ddc6730918167d771472c78e2",
     "apps/pdfcraft-web/Cargo.toml": "fc0e3c1398f687670df8dd48d609f16edceec7b8fffa82cc8ccb862d8af72900",
     "apps/pdfcraft/Cargo.toml": "9aa4a6da2f0bc6046b8ebbb65bfaf9a7b6ad6d60b3a095e4e6e334d4d2657b3f",

@@ -1,5 +1,22 @@
 # Product security review
 
+## October 23 source candidates
+
+The alpha.8 source candidates update ctutils in Write and the affected HTTPS
+verification/root packages in Photo, Video, Develop and Canvas. All twelve products
+also gain frozen, original third-party notice bundles, mandatory packaging checks,
+and installed-package notice comparisons. Exact changes, update behavior and the PHP
+exposure check are recorded in [the alpha.8 source review](../docs/suite-update-2026-10-23.md).
+These are source findings, not a claim of completed binary qualification or publication.
+The historical RSA exceptions below remain narrowly scoped and are not a patch to RSA.
+
+The public [release notes](https://github.com/alportblu/plervo-pdf/releases) are authoritative
+for currently downloadable packages. Plervo PDF is available in Microsoft Store;
+the SignPath Foundation application was not approved, and other Windows app packages
+remain internal until an appropriate distribution/signing route is qualified.
+
+## Historical release checkpoint
+
 Release status updated October 18, 2026: all twelve applications below, plus PDF, are
 published for Mac Apple Silicon and Linux x86_64 in
 [alpha.4](https://github.com/alportblu/plervo-pdf/releases/tag/v0.1.0-alpha.4).

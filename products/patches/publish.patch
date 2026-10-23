@@ -65,7 +65,7 @@ index 76052b5..4325b42 100644
 +
 +| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | c98853a7427b62041d651836e94ef44855b8aeff377fd7d8d7a7380d1362647b |
 diff --git a/Cargo.lock b/Cargo.lock
-index e77a81b..712b88a 100644
+index e77a81b..924cee9 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -210,15 +210,6 @@ version = "1.0.104"
@@ -165,7 +165,7 @@ index e77a81b..712b88a 100644
  [[package]]
  name = "designcraft-color"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "kurbo",
   "moxcms",
@@ -174,7 +174,7 @@ index e77a81b..712b88a 100644
  [[package]]
  name = "designcraft-compose"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "designcraft-color",
   "designcraft-doc",
@@ -183,7 +183,7 @@ index e77a81b..712b88a 100644
  [[package]]
  name = "designcraft-doc"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "designcraft-color",
   "designcraft-geom",
@@ -192,7 +192,7 @@ index e77a81b..712b88a 100644
  [[package]]
  name = "designcraft-engine"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "caseless",
   "craft-print",
@@ -216,7 +216,7 @@ index e77a81b..712b88a 100644
  [[package]]
  name = "designcraft-epub"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "designcraft-color",
   "designcraft-doc",
@@ -225,7 +225,7 @@ index e77a81b..712b88a 100644
  [[package]]
  name = "designcraft-fonts"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "harfrust 0.13.3",
   "kurbo",
@@ -234,7 +234,7 @@ index e77a81b..712b88a 100644
  [[package]]
  name = "designcraft-format"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "designcraft-doc",
   "serde",
@@ -243,7 +243,7 @@ index e77a81b..712b88a 100644
  [[package]]
  name = "designcraft-geom"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "flo_curves",
   "kurbo",
@@ -252,7 +252,7 @@ index e77a81b..712b88a 100644
  [[package]]
  name = "designcraft-idml"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "designcraft-color",
   "designcraft-compose",
@@ -267,7 +267,7 @@ index e77a81b..712b88a 100644
  [[package]]
  name = "designcraft-images"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "designcraft-color",
   "designcraft-fonts",
@@ -276,7 +276,7 @@ index e77a81b..712b88a 100644
  [[package]]
  name = "designcraft-mcp"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "designcraft-engine",
   "designcraft-geom",
@@ -285,7 +285,7 @@ index e77a81b..712b88a 100644
  [[package]]
  name = "designcraft-pdf"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "designcraft-color",
   "designcraft-compose",
@@ -294,7 +294,7 @@ index e77a81b..712b88a 100644
  [[package]]
  name = "designcraft-render"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "designcraft-color",
   "designcraft-compose",
@@ -303,7 +303,7 @@ index e77a81b..712b88a 100644
  [[package]]
  name = "designcraft-textimport"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "designcraft-doc",
 - "quick-xml 0.38.4",
@@ -314,7 +314,7 @@ index e77a81b..712b88a 100644
  [[package]]
  name = "designcraft-tools"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "designcraft-color",
   "designcraft-compose",
@@ -323,7 +323,7 @@ index e77a81b..712b88a 100644
  [[package]]
  name = "designcraft-ui-egui"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "craft-ui",
   "designcraft-color",
@@ -340,7 +340,7 @@ index e77a81b..712b88a 100644
  [[package]]
  name = "designcraft-web"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "designcraft-engine",
   "designcraft-format",
@@ -466,7 +466,7 @@ index e77a81b..712b88a 100644
  
 +[[package]]
 +name = "plervo-publish"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
 +dependencies = [
 + "arboard",
 + "designcraft-engine",
@@ -484,7 +484,7 @@ index e77a81b..712b88a 100644
 +
 +[[package]]
 +name = "plervo-publish-cli"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
 +dependencies = [
 + "designcraft-color",
 + "designcraft-compose",
@@ -697,7 +697,7 @@ index e77a81b..712b88a 100644
  [[package]]
  name = "xtask"
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "serde_json",
  ]
@@ -722,7 +722,7 @@ index e77a81b..712b88a 100644
  ]
  
 diff --git a/Cargo.toml b/Cargo.toml
-index e76609e..6185247 100644
+index e76609e..578ddf0 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -1,10 +1,11 @@
@@ -734,7 +734,7 @@ index e76609e..6185247 100644
  
  [workspace.package]
 -version = "0.8.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.95"
@@ -3497,15 +3497,16 @@ index 4399872..e9a10f2 100644
  
  Start the app with `--control <port>` (or `DESIGNCRAFT_CONTROL_PORT`). The server listens on
 diff --git a/packaging/env.sh b/packaging/env.sh
-index 0eb5802..b658816 100644
+index 0eb5802..043a8eb 100644
 --- a/packaging/env.sh
 +++ b/packaging/env.sh
-@@ -47,10 +47,24 @@ warn() {
+@@ -47,10 +47,25 @@ warn() {
  # Copy licence and readme files that exist into a package directory.
  copy_docs() {
    local dest="$1" f
 -  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT; do
-+  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md; do
++  python3 "$ROOT/packaging/licenses/verify.py" "$ROOT" || return 1
++  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md THIRD_PARTY_NOTICES.txt; do
      if [ -f "$ROOT/$f" ]; then cp "$ROOT/$f" "$dest/"; fi
    done
    copy_font_licences "$dest"
@@ -3690,196 +3691,98 @@ index 6e06fb9..cebe247 100755
 +  echo "warning: iconutil not found (macOS only); plervo-publish.icns not regenerated" >&2
  fi
  echo "icons written to $DIR"
-diff --git a/packaging/linux/ai.storyteller.designcraft.desktop b/packaging/linux/ai.storyteller.designcraft.desktop
-deleted file mode 100644
-index cdf1461..0000000
+diff --git a/packaging/linux/ai.storyteller.designcraft.desktop b/packaging/linux/com.plervo.publish.desktop
+similarity index 66%
+rename from packaging/linux/ai.storyteller.designcraft.desktop
+rename to packaging/linux/com.plervo.publish.desktop
+index cdf1461..b5b92c5 100644
 --- a/packaging/linux/ai.storyteller.designcraft.desktop
-+++ /dev/null
-@@ -1,13 +0,0 @@
--[Desktop Entry]
--Type=Application
++++ b/packaging/linux/com.plervo.publish.desktop
+@@ -1,13 +1,13 @@
+ [Desktop Entry]
+ Type=Application
 -Name=DesignCraft
--GenericName=Page Layout
--Comment=Lay out magazines, books and print documents
++Name=Plervo Publish
+ GenericName=Page Layout
+ Comment=Lay out magazines, books and print documents
 -Exec=designcraft %F
 -TryExec=designcraft
 -Icon=ai.storyteller.designcraft
--Terminal=false
--StartupNotify=true
++Exec=plervo-publish %F
++TryExec=plervo-publish
++Icon=com.plervo.publish
+ Terminal=false
+ StartupNotify=true
 -StartupWMClass=ai.storyteller.designcraft
--Categories=Graphics;Publishing;
--Keywords=layout;page;desktop publishing;dtp;magazine;book;indesign;idml;typesetting;
-diff --git a/packaging/linux/ai.storyteller.designcraft.metainfo.xml.in b/packaging/linux/ai.storyteller.designcraft.metainfo.xml.in
-deleted file mode 100644
-index ea548de..0000000
++StartupWMClass=com.plervo.publish
+ Categories=Graphics;Publishing;
+ Keywords=layout;page;desktop publishing;dtp;magazine;book;indesign;idml;typesetting;
+diff --git a/packaging/linux/ai.storyteller.designcraft.metainfo.xml.in b/packaging/linux/com.plervo.publish.metainfo.xml.in
+similarity index 68%
+rename from packaging/linux/ai.storyteller.designcraft.metainfo.xml.in
+rename to packaging/linux/com.plervo.publish.metainfo.xml.in
+index ea548de..714b805 100644
 --- a/packaging/linux/ai.storyteller.designcraft.metainfo.xml.in
-+++ /dev/null
-@@ -1,61 +0,0 @@
--<?xml version="1.0" encoding="UTF-8"?>
--<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
--     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
--<component type="desktop-application">
++++ b/packaging/linux/com.plervo.publish.metainfo.xml.in
+@@ -2,26 +2,26 @@
+ <!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
+      manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
+ <component type="desktop-application">
 -  <id>ai.storyteller.designcraft</id>
--  <metadata_license>CC0-1.0</metadata_license>
--  <project_license>MIT OR Apache-2.0</project_license>
++  <id>com.plervo.publish</id>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_license>MIT OR Apache-2.0</project_license>
 -  <name>DesignCraft</name>
--  <summary>Lay out magazines, books and print documents</summary>
--  <developer id="ai.storyteller">
++  <name>Plervo Publish</name>
+   <summary>Lay out magazines, books and print documents</summary>
+   <developer id="ai.storyteller">
 -    <name>Learning Machines LLC</name>
--  </developer>
--  <description>
--    <p>
++    <name>Maintech Solutions LLC</name>
+   </developer>
+   <description>
+     <p>
 -      DesignCraft is a page layout. Lay out magazines, books and print documents
--    </p>
--  </description>
++      Plervo Publish is a page layout. Lay out magazines, books and print documents
+     </p>
+   </description>
 -  <launchable type="desktop-id">ai.storyteller.designcraft.desktop</launchable>
 -  <icon type="stock">ai.storyteller.designcraft</icon>
--  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
++  <launchable type="desktop-id">com.plervo.publish.desktop</launchable>
++  <icon type="stock">com.plervo.publish</icon>
+   <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
 -  <url type="homepage">https://getartcraft.com/apps/designcraft</url>
 -  <url type="bugtracker">https://github.com/storytold/designcraft/issues</url>
 -  <url type="help">https://github.com/storytold/designcraft</url>
 -  <url type="contact">https://discord.gg/artcraft</url>
--  <categories>
--    <category>Graphics</category>
--    <category>RasterGraphics</category>
--    <category>Photography</category>
--  </categories>
--  <keywords>
--    <keyword>photo</keyword>
--    <keyword>image editor</keyword>
--    <keyword>psd</keyword>
--    <keyword>layers</keyword>
--  </keywords>
--  <screenshots>
--    <screenshot type="default">
--      <caption>Editing The Great Wave off Kanagawa with type layers and adjustment layers</caption>
--      <image>https://raw.githubusercontent.com/storytold/designcraft/main/docs/images/designcraft-demo.jpg</image>
--    </screenshot>
--  </screenshots>
--  <branding>
--    <color type="primary" scheme_preference="light">#9fd0ff</color>
--    <color type="primary" scheme_preference="dark">#1f64ba</color>
--  </branding>
--  <requires>
--    <display_length compare="ge">760</display_length>
--  </requires>
--  <supports>
--    <control>keyboard</control>
--    <control>pointing</control>
--    <control>tablet</control>
--  </supports>
--  <provides>
--    <binary>designcraft</binary>
--  </provides>
--  <content_rating type="oars-1.1"/>
--  <releases>
--    <release version="@VERSION@" date="@DATE@"/>
--  </releases>
--</component>
-diff --git a/packaging/linux/ai.storyteller.designcraft.mime.xml b/packaging/linux/ai.storyteller.designcraft.mime.xml
-deleted file mode 100644
-index be4dcc2..0000000
---- a/packaging/linux/ai.storyteller.designcraft.mime.xml
-+++ /dev/null
-@@ -1,3 +0,0 @@
--<?xml version="1.0" encoding="UTF-8"?>
--<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
--</mime-info>
-diff --git a/packaging/linux/com.plervo.publish.desktop b/packaging/linux/com.plervo.publish.desktop
-new file mode 100644
-index 0000000..b5b92c5
---- /dev/null
-+++ b/packaging/linux/com.plervo.publish.desktop
-@@ -0,0 +1,13 @@
-+[Desktop Entry]
-+Type=Application
-+Name=Plervo Publish
-+GenericName=Page Layout
-+Comment=Lay out magazines, books and print documents
-+Exec=plervo-publish %F
-+TryExec=plervo-publish
-+Icon=com.plervo.publish
-+Terminal=false
-+StartupNotify=true
-+StartupWMClass=com.plervo.publish
-+Categories=Graphics;Publishing;
-+Keywords=layout;page;desktop publishing;dtp;magazine;book;indesign;idml;typesetting;
-diff --git a/packaging/linux/com.plervo.publish.metainfo.xml.in b/packaging/linux/com.plervo.publish.metainfo.xml.in
-new file mode 100644
-index 0000000..714b805
---- /dev/null
-+++ b/packaging/linux/com.plervo.publish.metainfo.xml.in
-@@ -0,0 +1,61 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
-+     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
-+<component type="desktop-application">
-+  <id>com.plervo.publish</id>
-+  <metadata_license>CC0-1.0</metadata_license>
-+  <project_license>MIT OR Apache-2.0</project_license>
-+  <name>Plervo Publish</name>
-+  <summary>Lay out magazines, books and print documents</summary>
-+  <developer id="ai.storyteller">
-+    <name>Maintech Solutions LLC</name>
-+  </developer>
-+  <description>
-+    <p>
-+      Plervo Publish is a page layout. Lay out magazines, books and print documents
-+    </p>
-+  </description>
-+  <launchable type="desktop-id">com.plervo.publish.desktop</launchable>
-+  <icon type="stock">com.plervo.publish</icon>
-+  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
 +  <url type="homepage">https://plervo.com/</url>
 +  <url type="bugtracker">https://github.com/alportblu/plervo-pdf/issues</url>
 +  <url type="help">https://github.com/alportblu/plervo-pdf</url>
 +  <url type="contact">https://buymeacoffee.com/alport</url>
-+  <categories>
-+    <category>Graphics</category>
-+    <category>RasterGraphics</category>
-+    <category>Photography</category>
-+  </categories>
-+  <keywords>
-+    <keyword>photo</keyword>
-+    <keyword>image editor</keyword>
-+    <keyword>psd</keyword>
-+    <keyword>layers</keyword>
-+  </keywords>
-+  <screenshots>
-+    <screenshot type="default">
-+      <caption>Editing The Great Wave off Kanagawa with type layers and adjustment layers</caption>
+   <categories>
+     <category>Graphics</category>
+     <category>RasterGraphics</category>
+@@ -36,7 +36,7 @@
+   <screenshots>
+     <screenshot type="default">
+       <caption>Editing The Great Wave off Kanagawa with type layers and adjustment layers</caption>
+-      <image>https://raw.githubusercontent.com/storytold/designcraft/main/docs/images/designcraft-demo.jpg</image>
 +      <image>https://raw.githubusercontent.com/alportblu/plervo-pdf/main/docs/images/plervo-publish-demo.jpg</image>
-+    </screenshot>
-+  </screenshots>
-+  <branding>
-+    <color type="primary" scheme_preference="light">#9fd0ff</color>
-+    <color type="primary" scheme_preference="dark">#1f64ba</color>
-+  </branding>
-+  <requires>
-+    <display_length compare="ge">760</display_length>
-+  </requires>
-+  <supports>
-+    <control>keyboard</control>
-+    <control>pointing</control>
-+    <control>tablet</control>
-+  </supports>
-+  <provides>
+     </screenshot>
+   </screenshots>
+   <branding>
+@@ -52,7 +52,7 @@
+     <control>tablet</control>
+   </supports>
+   <provides>
+-    <binary>designcraft</binary>
 +    <binary>plervo-publish</binary>
-+  </provides>
-+  <content_rating type="oars-1.1"/>
-+  <releases>
-+    <release version="@VERSION@" date="@DATE@"/>
-+  </releases>
-+</component>
-diff --git a/packaging/linux/com.plervo.publish.mime.xml b/packaging/linux/com.plervo.publish.mime.xml
-new file mode 100644
-index 0000000..be4dcc2
---- /dev/null
-+++ b/packaging/linux/com.plervo.publish.mime.xml
-@@ -0,0 +1,3 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-+</mime-info>
+   </provides>
+   <content_rating type="oars-1.1"/>
+   <releases>
+diff --git a/packaging/linux/ai.storyteller.designcraft.mime.xml b/packaging/linux/com.plervo.publish.mime.xml
+similarity index 100%
+rename from packaging/linux/ai.storyteller.designcraft.mime.xml
+rename to packaging/linux/com.plervo.publish.mime.xml
 diff --git a/packaging/linux/flatpak-bundle.sh b/packaging/linux/flatpak-bundle.sh
 index c45a55a..c916b9b 100755
 --- a/packaging/linux/flatpak-bundle.sh
@@ -3946,260 +3849,141 @@ index c45a55a..c916b9b 100755
    flatpak run --command=sh "$APP_ID" -c 'ls /app/share/applications /app/share/metainfo /app/share/mime/packages /app/share/icons/hicolor/scalable/apps'
  fi
  echo "==> done"
-diff --git a/packaging/linux/flatpak/ai.storyteller.designcraft.bundle.yml b/packaging/linux/flatpak/ai.storyteller.designcraft.bundle.yml
-deleted file mode 100644
-index 2cfbe6a..0000000
+diff --git a/packaging/linux/flatpak/ai.storyteller.designcraft.bundle.yml b/packaging/linux/flatpak/com.plervo.publish.bundle.yml
+similarity index 64%
+rename from packaging/linux/flatpak/ai.storyteller.designcraft.bundle.yml
+rename to packaging/linux/flatpak/com.plervo.publish.bundle.yml
+index 2cfbe6a..28ed733 100644
 --- a/packaging/linux/flatpak/ai.storyteller.designcraft.bundle.yml
-+++ /dev/null
-@@ -1,49 +0,0 @@
--# Flatpak manifest for the single-file bundle attached to every GitHub release
++++ b/packaging/linux/flatpak/com.plervo.publish.bundle.yml
+@@ -1,7 +1,7 @@
+ # Flatpak manifest for the single-file bundle attached to every GitHub release
 -# (designcraft-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
--#
++# (plervo-publish-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
+ #
 -# It repackages the release's own Linux tarball (designcraft-<version>-linux-<arch>.tar.gz,
--# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
--# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
--# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
--# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
--# Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
--# GPU driver comes from its org.freedesktop.Platform.GL extension.
--#
++# It repackages the release's own Linux tarball (plervo-publish-<version>-linux-<arch>.tar.gz,
+ # built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
+ # network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
+ # and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
+@@ -9,13 +9,13 @@
+ # Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
+ # GPU driver comes from its org.freedesktop.Platform.GL extension.
+ #
 -# ai.storyteller.designcraft.yml (same directory) is the from-source manifest for Flathub. Keep
--# runtime-version and finish-args identical in both (packaging-lint checks this).
++# com.plervo.publish.yml (same directory) is the from-source manifest for Flathub. Keep
+ # runtime-version and finish-args identical in both (packaging-lint checks this).
 -id: ai.storyteller.designcraft
--runtime: org.freedesktop.Platform
--runtime-version: '25.08'
--sdk: org.freedesktop.Sdk
++id: com.plervo.publish
+ runtime: org.freedesktop.Platform
+ runtime-version: '25.08'
+ sdk: org.freedesktop.Sdk
 -command: designcraft
--finish-args:
--  # Display: Wayland first; X11 only when no Wayland compositor is running.
--  - --socket=wayland
--  - --socket=fallback-x11
--  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
--  - --share=ipc
--  # GPU access for egui's renderer (Vulkan, or GL as a fallback).
--  - --device=dri
--  # Open/Save, Place and Export go through the file-chooser portal (rfd's xdg-portal backend)
--  # and drag-and-drop through the document portal, so picked files work anywhere without broad
--  # filesystem access. Documents and Pictures are granted so files passed by path (the command
--  # line, Open Recent, linked images placed in a layout) work in the usual places.
--  - --filesystem=xdg-documents
--  - --filesystem=xdg-pictures
--  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
++command: plervo-publish
+ finish-args:
+   # Display: Wayland first; X11 only when no Wayland compositor is running.
+   - --socket=wayland
+@@ -31,19 +31,19 @@ finish-args:
+   - --filesystem=xdg-documents
+   - --filesystem=xdg-pictures
+   # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
 -  # the sandbox; `flatpak override --user --share=network ai.storyteller.designcraft` exposes it
--  # to host agents) and home/host filesystem access.
--modules:
++  # the sandbox; `flatpak override --user --share=network com.plervo.publish` exposes it
+   # to host agents) and home/host filesystem access.
+ modules:
 -  - name: designcraft
--    buildsystem: simple
--    build-commands:
++  - name: plervo-publish
+     buildsystem: simple
+     build-commands:
 -      - install -Dm755 bin/designcraft /app/bin/designcraft
 -      - install -Dm755 bin/designcraft-cli /app/bin/designcraft-cli
 -      - install -Dm644 share/applications/ai.storyteller.designcraft.desktop /app/share/applications/ai.storyteller.designcraft.desktop
 -      - install -Dm644 share/mime/packages/ai.storyteller.designcraft.xml /app/share/mime/packages/ai.storyteller.designcraft.xml
--      # Already has the release's version and date substituted by package.sh.
--      - install -Dm644 share/metainfo/ai.storyteller.designcraft.metainfo.xml /app/share/metainfo/ai.storyteller.designcraft.metainfo.xml
--      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/designcraft /app/share/doc/
--    sources:
--      - type: dir
--        path: stage
-diff --git a/packaging/linux/flatpak/ai.storyteller.designcraft.yml b/packaging/linux/flatpak/ai.storyteller.designcraft.yml
-deleted file mode 100644
-index aabee2e..0000000
---- a/packaging/linux/flatpak/ai.storyteller.designcraft.yml
-+++ /dev/null
-@@ -1,66 +0,0 @@
--# Flatpak manifest for DesignCraft, ready for a Flathub submission.
--#
--# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
--#
--#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
--#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
--#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.designcraft.yml
--#   flatpak run ai.storyteller.designcraft
--#
--# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
--# The single-file .flatpak attached to each release comes from ai.storyteller.designcraft.bundle.yml,
--# which repackages the prebuilt release binaries. Keep runtime-version and finish-args identical.
--id: ai.storyteller.designcraft
--runtime: org.freedesktop.Platform
--runtime-version: '25.08'
--sdk: org.freedesktop.Sdk
--sdk-extensions:
--  - org.freedesktop.Sdk.Extension.rust-stable
--command: designcraft
--finish-args:
--  # Display: Wayland first; X11 only when no Wayland compositor is running.
--  - --socket=wayland
--  - --socket=fallback-x11
--  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
--  - --share=ipc
--  # GPU access for egui's renderer (Vulkan, or GL as a fallback).
--  - --device=dri
--  # Open/Save, Place and Export go through the file-chooser portal (rfd's xdg-portal backend)
--  # and drag-and-drop through the document portal, so picked files work anywhere without broad
--  # filesystem access. Documents and Pictures are granted so files passed by path (the command
--  # line, Open Recent, linked images placed in a layout) work in the usual places.
--  - --filesystem=xdg-documents
--  - --filesystem=xdg-pictures
--  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
--  # the sandbox; `flatpak override --user --share=network ai.storyteller.designcraft` exposes it
--  # to host agents) and home/host filesystem access.
--build-options:
--  append-path: /usr/lib/sdk/rust-stable/bin
--modules:
--  - name: designcraft
--    buildsystem: simple
--    build-options:
--      env:
--        CARGO_HOME: /run/build/designcraft/cargo
--        CARGO_NET_OFFLINE: 'true'
--    build-commands:
--      - cargo --offline build --release --locked -p designcraft
--      - install -Dm755 target/release/designcraft /app/bin/designcraft
--      - install -Dm644 packaging/linux/ai.storyteller.designcraft.desktop /app/share/applications/ai.storyteller.designcraft.desktop
--      - install -Dm644 packaging/linux/ai.storyteller.designcraft.mime.xml /app/share/mime/packages/ai.storyteller.designcraft.xml
--      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
--      - >-
--        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
--        install -d /app/share/metainfo;
--        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
--        packaging/linux/ai.storyteller.designcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.designcraft.metainfo.xml
--    sources:
--      - type: dir
--        path: ../../..
--        skip:
--          - target
--          - dist
--          - corpus
--          - build-flatpak
--          - .flatpak-builder
--      - cargo-sources.json
-diff --git a/packaging/linux/flatpak/com.plervo.publish.bundle.yml b/packaging/linux/flatpak/com.plervo.publish.bundle.yml
-new file mode 100644
-index 0000000..28ed733
---- /dev/null
-+++ b/packaging/linux/flatpak/com.plervo.publish.bundle.yml
-@@ -0,0 +1,49 @@
-+# Flatpak manifest for the single-file bundle attached to every GitHub release
-+# (plervo-publish-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
-+#
-+# It repackages the release's own Linux tarball (plervo-publish-<version>-linux-<arch>.tar.gz,
-+# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
-+# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
-+# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
-+# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
-+# Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
-+# GPU driver comes from its org.freedesktop.Platform.GL extension.
-+#
-+# com.plervo.publish.yml (same directory) is the from-source manifest for Flathub. Keep
-+# runtime-version and finish-args identical in both (packaging-lint checks this).
-+id: com.plervo.publish
-+runtime: org.freedesktop.Platform
-+runtime-version: '25.08'
-+sdk: org.freedesktop.Sdk
-+command: plervo-publish
-+finish-args:
-+  # Display: Wayland first; X11 only when no Wayland compositor is running.
-+  - --socket=wayland
-+  - --socket=fallback-x11
-+  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
-+  - --share=ipc
-+  # GPU access for egui's renderer (Vulkan, or GL as a fallback).
-+  - --device=dri
-+  # Open/Save, Place and Export go through the file-chooser portal (rfd's xdg-portal backend)
-+  # and drag-and-drop through the document portal, so picked files work anywhere without broad
-+  # filesystem access. Documents and Pictures are granted so files passed by path (the command
-+  # line, Open Recent, linked images placed in a layout) work in the usual places.
-+  - --filesystem=xdg-documents
-+  - --filesystem=xdg-pictures
-+  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
-+  # the sandbox; `flatpak override --user --share=network com.plervo.publish` exposes it
-+  # to host agents) and home/host filesystem access.
-+modules:
-+  - name: plervo-publish
-+    buildsystem: simple
-+    build-commands:
 +      - install -Dm755 bin/plervo-publish /app/bin/plervo-publish
 +      - install -Dm755 bin/plervo-publish-cli /app/bin/plervo-publish-cli
 +      - install -Dm644 share/applications/com.plervo.publish.desktop /app/share/applications/com.plervo.publish.desktop
 +      - install -Dm644 share/mime/packages/com.plervo.publish.xml /app/share/mime/packages/com.plervo.publish.xml
-+      # Already has the release's version and date substituted by package.sh.
+       # Already has the release's version and date substituted by package.sh.
+-      - install -Dm644 share/metainfo/ai.storyteller.designcraft.metainfo.xml /app/share/metainfo/ai.storyteller.designcraft.metainfo.xml
+-      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/designcraft /app/share/doc/
 +      - install -Dm644 share/metainfo/com.plervo.publish.metainfo.xml /app/share/metainfo/com.plervo.publish.metainfo.xml
 +      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/plervo-publish /app/share/doc/
-+    sources:
-+      - type: dir
-+        path: stage
-diff --git a/packaging/linux/flatpak/com.plervo.publish.yml b/packaging/linux/flatpak/com.plervo.publish.yml
-new file mode 100644
-index 0000000..64a30ab
---- /dev/null
+     sources:
+       - type: dir
+         path: stage
+diff --git a/packaging/linux/flatpak/ai.storyteller.designcraft.yml b/packaging/linux/flatpak/com.plervo.publish.yml
+similarity index 69%
+rename from packaging/linux/flatpak/ai.storyteller.designcraft.yml
+rename to packaging/linux/flatpak/com.plervo.publish.yml
+index aabee2e..64a30ab 100644
+--- a/packaging/linux/flatpak/ai.storyteller.designcraft.yml
 +++ b/packaging/linux/flatpak/com.plervo.publish.yml
-@@ -0,0 +1,66 @@
+@@ -1,22 +1,22 @@
+-# Flatpak manifest for DesignCraft, ready for a Flathub submission.
 +# Flatpak manifest for Plervo Publish, ready for a Flathub submission.
-+#
-+# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
-+#
-+#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
-+#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
+ #
+ # Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
+ #
+ #   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
+ #   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
+-#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.designcraft.yml
+-#   flatpak run ai.storyteller.designcraft
 +#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/com.plervo.publish.yml
 +#   flatpak run com.plervo.publish
-+#
-+# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
+ #
+ # For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
+-# The single-file .flatpak attached to each release comes from ai.storyteller.designcraft.bundle.yml,
 +# The single-file .flatpak attached to each release comes from com.plervo.publish.bundle.yml,
-+# which repackages the prebuilt release binaries. Keep runtime-version and finish-args identical.
+ # which repackages the prebuilt release binaries. Keep runtime-version and finish-args identical.
+-id: ai.storyteller.designcraft
 +id: com.plervo.publish
-+runtime: org.freedesktop.Platform
-+runtime-version: '25.08'
-+sdk: org.freedesktop.Sdk
-+sdk-extensions:
-+  - org.freedesktop.Sdk.Extension.rust-stable
+ runtime: org.freedesktop.Platform
+ runtime-version: '25.08'
+ sdk: org.freedesktop.Sdk
+ sdk-extensions:
+   - org.freedesktop.Sdk.Extension.rust-stable
+-command: designcraft
 +command: plervo-publish
-+finish-args:
-+  # Display: Wayland first; X11 only when no Wayland compositor is running.
-+  - --socket=wayland
-+  - --socket=fallback-x11
-+  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
-+  - --share=ipc
-+  # GPU access for egui's renderer (Vulkan, or GL as a fallback).
-+  - --device=dri
-+  # Open/Save, Place and Export go through the file-chooser portal (rfd's xdg-portal backend)
-+  # and drag-and-drop through the document portal, so picked files work anywhere without broad
-+  # filesystem access. Documents and Pictures are granted so files passed by path (the command
-+  # line, Open Recent, linked images placed in a layout) work in the usual places.
-+  - --filesystem=xdg-documents
-+  - --filesystem=xdg-pictures
-+  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
+ finish-args:
+   # Display: Wayland first; X11 only when no Wayland compositor is running.
+   - --socket=wayland
+@@ -32,28 +32,28 @@ finish-args:
+   - --filesystem=xdg-documents
+   - --filesystem=xdg-pictures
+   # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
+-  # the sandbox; `flatpak override --user --share=network ai.storyteller.designcraft` exposes it
 +  # the sandbox; `flatpak override --user --share=network com.plervo.publish` exposes it
-+  # to host agents) and home/host filesystem access.
-+build-options:
-+  append-path: /usr/lib/sdk/rust-stable/bin
-+modules:
+   # to host agents) and home/host filesystem access.
+ build-options:
+   append-path: /usr/lib/sdk/rust-stable/bin
+ modules:
+-  - name: designcraft
 +  - name: plervo-publish
-+    buildsystem: simple
-+    build-options:
-+      env:
+     buildsystem: simple
+     build-options:
+       env:
+-        CARGO_HOME: /run/build/designcraft/cargo
 +        CARGO_HOME: /run/build/plervo-publish/cargo
-+        CARGO_NET_OFFLINE: 'true'
-+    build-commands:
+         CARGO_NET_OFFLINE: 'true'
+     build-commands:
+-      - cargo --offline build --release --locked -p designcraft
+-      - install -Dm755 target/release/designcraft /app/bin/designcraft
+-      - install -Dm644 packaging/linux/ai.storyteller.designcraft.desktop /app/share/applications/ai.storyteller.designcraft.desktop
+-      - install -Dm644 packaging/linux/ai.storyteller.designcraft.mime.xml /app/share/mime/packages/ai.storyteller.designcraft.xml
 +      - cargo --offline build --release --locked -p plervo-publish
 +      - install -Dm755 target/release/plervo-publish /app/bin/plervo-publish
 +      - install -Dm644 packaging/linux/com.plervo.publish.desktop /app/share/applications/com.plervo.publish.desktop
 +      - install -Dm644 packaging/linux/com.plervo.publish.mime.xml /app/share/mime/packages/com.plervo.publish.xml
-+      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
-+      - >-
-+        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
-+        install -d /app/share/metainfo;
-+        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+       - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
+       - >-
+         version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
+         install -d /app/share/metainfo;
+         sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+-        packaging/linux/ai.storyteller.designcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.designcraft.metainfo.xml
 +        packaging/linux/com.plervo.publish.metainfo.xml.in > /app/share/metainfo/com.plervo.publish.metainfo.xml
-+    sources:
-+      - type: dir
-+        path: ../../..
-+        skip:
-+          - target
-+          - dist
-+          - corpus
-+          - build-flatpak
-+          - .flatpak-builder
-+      - cargo-sources.json
+     sources:
+       - type: dir
+         path: ../../..
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
 index e2ce72b..aa34e80 100644
 --- a/packaging/linux/nfpm.yaml
@@ -4960,7 +4744,7 @@ index 8e2de81..0000000
 -  </Fragment>
 -</Wix>
 diff --git a/packaging/windows/package.ps1 b/packaging/windows/package.ps1
-index 7ca2ec1..74a4c68 100644
+index 7ca2ec1..2ca284d 100644
 --- a/packaging/windows/package.ps1
 +++ b/packaging/windows/package.ps1
 @@ -1,11 +1,11 @@
@@ -5005,7 +4789,7 @@ index 7ca2ec1..74a4c68 100644
    $h = Get-PeHeader (Join-Path $Bin $check[0])
    if ($h.Machine -ne $Machine) { throw "$($check[0]) is for machine 0x$('{0:X}' -f $h.Machine), expected 0x$('{0:X}' -f $Machine) ($Arch)" }
    if ($h.Subsystem -ne $check[1]) { throw "$($check[0]) has PE subsystem $($h.Subsystem), expected $($check[1])" }
-@@ -86,15 +86,39 @@ foreach ($check in @(@('designcraft.exe', 2), @('designcraft-cli.exe', 3))) {
+@@ -86,15 +86,41 @@ foreach ($check in @(@('designcraft.exe', 2), @('designcraft-cli.exe', 3))) {
  $Stage = Join-Path $TargetDir "windows-package\$Arch"
  Remove-Item -Recurse -Force $Stage -ErrorAction SilentlyContinue
  New-Item -ItemType Directory -Force -Path $Stage | Out-Null
@@ -5016,9 +4800,11 @@ index 7ca2ec1..74a4c68 100644
 +& (Join-Path $PSScriptRoot 'sign.ps1') (Join-Path $Stage 'plervo-publish.exe') (Join-Path $Stage 'plervo-publish-cli.exe')
 +
 +# Carry source and embedded-asset notices in MSI and portable distributions.
++& python (Join-Path $Root 'packaging/licenses/verify.py') $Root
++if ($LASTEXITCODE -ne 0) { throw "Third-party notice review is stale or missing" }
 +$Legal = Join-Path $Stage 'Licenses'
 +New-Item -ItemType Directory -Force -Path $Legal | Out-Null
-+foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md') {
++foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md', 'THIRD_PARTY_NOTICES.txt') {
 +  $p = Join-Path $Root $f
 +  if (Test-Path $p) { Copy-Item $p $Legal }
 +}
@@ -5050,7 +4836,7 @@ index 7ca2ec1..74a4c68 100644
      -o $Msi
  }
  # wix writes its debug symbols (.wixpdb) next to the MSI; keep them out of the release assets.
-@@ -102,10 +126,11 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
+@@ -102,10 +128,11 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
  & (Join-Path $PSScriptRoot 'sign.ps1') $Msi
  
  # ---- portable zip ------------------------------------------------------------------------------
@@ -5063,7 +4849,7 @@ index 7ca2ec1..74a4c68 100644
  foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE') {
    $p = Join-Path $Root $f
    if (Test-Path $p) { Copy-Item $p $Portable }
-@@ -116,7 +141,7 @@ if ($env:CRAFT_FONTS_DIR) {
+@@ -116,7 +143,7 @@ if ($env:CRAFT_FONTS_DIR) {
      Copy-Item $ofl.FullName (Join-Path $Portable "OFL-$($ofl.Directory.Name).txt")
    }
  }
@@ -5072,7 +4858,7 @@ index 7ca2ec1..74a4c68 100644
  Remove-Item -Force $Zip -ErrorAction SilentlyContinue
  Compress-Archive -Path $Portable -DestinationPath $Zip
  
-@@ -124,8 +149,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
+@@ -124,8 +151,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
  # here; .github/workflows/windows-arm64.yml installs and runs it on ARM64 instead.
  $HostArch = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString().ToLowerInvariant()
  if ($Arch -ne 'arm64' -or $HostArch -eq 'arm64') {
