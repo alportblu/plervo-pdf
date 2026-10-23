@@ -1,0 +1,213 @@
+name: Plervo Video and CAD Microsoft Store
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/apps-store.yml'
+      - 'packaging/windows/product-store/**'
+      - 'products/sources.json'
+      - 'products/patches/video.patch'
+      - 'products/patches/cad.patch'
+      - 'products/deny.toml'
+      - 'products/accept_cli.py'
+      - 'assets/products/video/**'
+      - 'assets/products/cad/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: apps-store-${{ github.ref }}-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  catalog:
+    runs-on: ubuntu-24.04
+    outputs:
+      matrix: ${{ steps.catalog.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - id: catalog
+        run: |
+          python3 - <<'PY'
+          import json, os, pathlib
+          catalog = json.loads(pathlib.Path('products/sources.json').read_text())
+          rows = [p for p in catalog if p['product'] in ('video', 'cad')]
+          assert len(rows) == 2
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as out:
+              out.write('matrix=' + json.dumps({'include': rows}, separators=(',', ':')) + '\n')
+          PY
+
+  source-review:
+    needs: catalog
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.catalog.outputs.matrix) }}
+    env:
+      CARGO_BUILD_JOBS: 2
+      CARGO_INCREMENTAL: 0
+      PRODUCT: ${{ matrix.product }}
+      CRAFT_FONTS_DIR: ${{ github.workspace }}/craft-fonts
+      CRAFT_FONTS_REQUIRED: '1'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: ${{ matrix.source_repository }}
+          ref: ${{ matrix.commit }}
+          path: source
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: storytold/craft-fonts
+          ref: ${{ matrix.fonts_commit }}
+          path: craft-fonts
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@686976e191b89faba57d3206551f0f330d8cb249
+        with:
+          toolchain: '1.95.0'
+          components: rustfmt
+      - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6
+        with:
+          key: store-review-${{ matrix.product }}
+          workspaces: |
+            . -> target
+            source -> target
+      - name: Reproduce source and preserve upstream licenses
+        run: |
+          cargo xtask products --prepare "$PRODUCT" "$GITHUB_WORKSPACE/source"
+          python3 packaging/windows/product-store/prepare.py "$PRODUCT" source
+          cargo xtask products --audit-policy "$PRODUCT" > deny-active.toml
+      - name: Dependency licenses and all-feature advisories
+        uses: EmbarkStudios/cargo-deny-action@3c6349835b2b7b196a839186cb8b78e02f7b5f25
+        with:
+          manifest-path: source/Cargo.toml
+          command: check
+          arguments: --all-features --locked --config deny-active.toml
+      - name: Source formatting, boundaries and asset attribution
+        working-directory: source
+        run: |
+          cargo fmt --all -- --check
+          cargo xtask layers
+          cargo xtask assets
+
+  msix:
+    needs: [catalog, source-review]
+    runs-on: windows-2025
+    timeout-minutes: 150
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.catalog.outputs.matrix) }}
+    env:
+      CARGO_BUILD_JOBS: 2
+      CARGO_INCREMENTAL: 0
+      CARGO_PROFILE_DEV_DEBUG: line-tables-only
+      CARGO_PROFILE_TEST_DEBUG: line-tables-only
+      CRAFT_FONTS_DIR: ${{ github.workspace }}/craft-fonts
+      CRAFT_FONTS_REQUIRED: '1'
+      PRODUCT: ${{ matrix.product }}
+      PRODUCT_VERSION: ${{ matrix.release_version }}
+      CARGO_BUILD_TARGET: x86_64-pc-windows-msvc
+      CARGO_TARGET_X86_64_PC_WINDOWS_MSVC_RUSTFLAGS: '-C target-feature=+crt-static'
+    steps:
+      - name: Preserve pinned source bytes on the disposable runner
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: SDK manifest preflight before compilation
+        shell: pwsh
+        run: |
+          Get-ChildItem packaging/windows/product-store/*.ps1 | ForEach-Object {
+            $Tokens = $null; $Errors = $null
+            [void] [Management.Automation.Language.Parser]::ParseFile($_.FullName, [ref] $Tokens, [ref] $Errors)
+            if ($Errors.Count) { throw ($Errors | Out-String) }
+          }
+          packaging/windows/product-store/package.ps1 -Product $env:PRODUCT -ValidationOnly -ManifestOnly
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: ${{ matrix.source_repository }}
+          ref: ${{ matrix.commit }}
+          path: source
+          persist-credentials: false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          repository: storytold/craft-fonts
+          ref: ${{ matrix.fonts_commit }}
+          path: craft-fonts
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@686976e191b89faba57d3206551f0f330d8cb249
+        with:
+          toolchain: '1.95.0'
+          components: clippy
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.14'
+      - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6
+        with:
+          key: store-native-${{ matrix.product }}
+          cache-on-failure: true
+          workspaces: |
+            . -> target
+            source -> target
+      - name: Reproduce the reviewed source
+        shell: bash
+        run: |
+          cargo xtask products --prepare "$PRODUCT" "$GITHUB_WORKSPACE/source"
+          python packaging/windows/product-store/prepare.py "$PRODUCT" source
+      - name: Lint and test the complete Windows workspace
+        working-directory: source
+        shell: bash
+        run: |
+          cargo clippy --locked --workspace --all-targets -- -D warnings
+          cargo test --locked --workspace --no-fail-fast
+      - name: Build the MSIX validation package
+        shell: pwsh
+        run: packaging/windows/product-store/package.ps1 -Product $env:PRODUCT -ValidationOnly
+      - name: Independent output readers and release CLI acceptance
+        shell: bash
+        run: |
+          python -m pip install --require-hashes --only-binary=:all: -r products/acceptance-requirements.txt
+          python products/accept_cli.py --product "$PRODUCT" \
+            --binary "source/target/x86_64-pc-windows-msvc/release/plervo-$PRODUCT-cli.exe" \
+            --output "dist/validation/$PRODUCT/release-cli" --expected-version "$PRODUCT_VERSION" \
+            --source "Store release payload $GITHUB_SHA"
+      - name: Installed files, GUI, upgrade, removal and defaults
+        shell: powershell
+        timeout-minutes: 15
+        run: packaging/windows/product-store/test-install.ps1 -Product $env:PRODUCT
+      - name: Build the reserved Store identity and compare every payload file
+        shell: pwsh
+        run: |
+          packaging/windows/product-store/package.ps1 -Product $env:PRODUCT
+          $Folder = "dist/store/$env:PRODUCT"
+          $Test = Get-Content -Raw (Get-ChildItem "$Folder/*-validation-only.msix.json").FullName | ConvertFrom-Json
+          $Upload = Get-Content -Raw (Get-ChildItem "$Folder/*.msix.json" | Where-Object Name -NotLike '*-validation-only*').FullName | ConvertFrom-Json
+          $TestFiles = @($Test.files | Where-Object path -ne 'AppxManifest.xml' | ForEach-Object { "$($_.path):$($_.sha256)" })
+          $UploadFiles = @($Upload.files | Where-Object path -ne 'AppxManifest.xml' | ForEach-Object { "$($_.path):$($_.sha256)" })
+          if (Compare-Object $TestFiles $UploadFiles) { throw 'Actual Store payload differs from the native-tested package.' }
+      - name: Preserve native evidence and exact source
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: plervo-${{ matrix.product }}-store-evidence-${{ github.sha }}
+          path: |
+            dist/validation/${{ matrix.product }}/
+            source/PLERVO-STORE-BUILD.json
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Preserve internal packages; never publish a test namespace
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: plervo-${{ matrix.product }}-store-packages-${{ github.sha }}
+          path: dist/store/${{ matrix.product }}/
+          if-no-files-found: warn
+          retention-days: 30
