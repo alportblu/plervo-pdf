@@ -1,8 +1,8 @@
 # Validation-only readers. Nothing in this environment is bundled with an app.
 # CPython 3.14: macOS arm64, Linux x86_64 and Windows x86_64 wheels.
 # Versions and SHA-256 values obtained from each project's PyPI release metadata.
-pypdf==6.21.0 \
-    --hash=sha256:3aec619699dacb1b73f57e87d9adaa4424814517b2cc028de20adba5a37af4c4
+pypdf==6.21.1 \
+    --hash=sha256:553e2d42f5bb3bb2a785a7d3de8ef90bb7df74b5413eff5a7b4388007ea9254b
 pillow==13.0.0 \
     --hash=sha256:d9b0a2bee3f3e03e9f29057aedb807dbf1e1d96ee1b9d0f422d9db6c8583271d \
     --hash=sha256:e91c2b1cbeae768c98752e67e717e283d68dae45717b41f2d91eaee648e37b7d \
