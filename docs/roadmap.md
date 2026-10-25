@@ -1,3 +1,11 @@
+## Acceptance-tool dependency maintenance — 2026-10-25
+
+| Delivery | Source change | Remaining |
+| --- | --- | --- |
+| Independent native acceptance environment | Hash-pin `pypdf` 6.21.2 for the four reported decoder/denial-of-service advisories; local malformed-input checks and five existing product PDF exports pass | Native candidate CI; separate product dependency/test failures do not become resolved by this tooling update |
+
+Python acceptance dependencies are not bundled in the applications.
+
 ## Cryptographic dependency maintenance — 2026-10-25
 
 | Delivery | Source change | Remaining |
