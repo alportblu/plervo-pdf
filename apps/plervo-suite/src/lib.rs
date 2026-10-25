@@ -2,6 +2,8 @@
 #![deny(clippy::unwrap_used, clippy::expect_used, clippy::panic, clippy::unimplemented, clippy::todo, clippy::unreachable)]
 mod family;
 mod locale;
+#[cfg(feature = "microsoft-store")]
+mod store_app;
 use egui::{Color32, RichText, Vec2};
 use locale::Language;
 use plervo_suite_core::{
@@ -16,6 +18,8 @@ use std::{
     sync::{Arc, mpsc},
     time::{Duration, Instant},
 };
+#[cfg(feature = "microsoft-store")]
+pub use store_app::{StoreApp, headless as store_headless};
 
 const INK: Color32 = Color32::from_rgb(25, 39, 33);
 const PAPER: Color32 = Color32::from_rgb(247, 248, 244);
