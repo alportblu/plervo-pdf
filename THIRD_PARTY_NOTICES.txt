@@ -440,7 +440,7 @@ crossbeam-utils@0.8.23 | MIT OR Apache-2.0
 Authors: See upstream source notices
 Source: https://github.com/crossbeam-rs/crossbeam
 
-crypto-bigint@0.7.5 | Apache-2.0 OR MIT
+crypto-bigint@0.7.9 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: https://github.com/RustCrypto/crypto-bigint
 
@@ -456,7 +456,7 @@ crypto-primes@0.7.2 | Apache-2.0 OR MIT
 Authors: See upstream source notices
 Source: https://github.com/entropyxyz/crypto-primes
 
-ctutils@0.4.4 | Apache-2.0 OR MIT
+ctutils@0.4.5 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: https://github.com/RustCrypto/utils
 
@@ -3474,7 +3474,7 @@ DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: aes@0.9.3, base16ct@1.0.0, base64ct@1.8.3, block-buffer@0.10.4, block-buffer@0.12.1, block-padding@0.4.2, bp256@0.14.0, bp384@0.14.0, cbc@0.2.1, chacha20@0.10.2, cipher@0.5.2, cmpv2@0.2.0, const-oid@0.10.2, const-oid@0.9.6, cpubits@0.1.1, cpufeatures@0.2.17, cpufeatures@0.3.1, crmf@0.2.0, crypto-bigint@0.7.5, crypto-common@0.1.7, crypto-common@0.2.2, der@0.7.10, der@0.8.2, der_derive@0.7.3, digest@0.10.7, digest@0.11.3, ecb@0.2.1, elliptic-curve@0.14.1, hmac@0.13.0, hybrid-array@0.4.15, inout@0.2.2, keccak@0.2.2, md-5@0.11.0, p256@0.14.0, p384@0.14.0, p521@0.14.0, pbkdf2@0.13.0, pem-rfc7468@0.7.0, primefield@0.14.0, primeorder@0.14.0, ripemd@0.2.0, sec1@0.8.1, sha1@0.10.7, sha1@0.11.0, sha2@0.10.9, sha2@0.11.0, sha3@0.12.0, signature@2.2.0, signature@3.0.0, spki@0.7.3, spki@0.8.0, sponge-cursor@0.1.0, tls_codec@0.4.2, tls_codec_derive@0.4.2, wnaf@0.14.1, x509-cert@0.2.5, x509-tsp@0.1.0
+Applies to: aes@0.9.3, base16ct@1.0.0, base64ct@1.8.3, block-buffer@0.10.4, block-buffer@0.12.1, block-padding@0.4.2, bp256@0.14.0, bp384@0.14.0, cbc@0.2.1, chacha20@0.10.2, cipher@0.5.2, cmpv2@0.2.0, const-oid@0.10.2, const-oid@0.9.6, cpubits@0.1.1, cpufeatures@0.2.17, cpufeatures@0.3.1, crmf@0.2.0, crypto-bigint@0.7.9, crypto-common@0.1.7, crypto-common@0.2.2, der@0.7.10, der@0.8.2, der_derive@0.7.3, digest@0.10.7, digest@0.11.3, ecb@0.2.1, elliptic-curve@0.14.1, hmac@0.13.0, hybrid-array@0.4.15, inout@0.2.2, keccak@0.2.2, md-5@0.11.0, p256@0.14.0, p384@0.14.0, p521@0.14.0, pbkdf2@0.13.0, pem-rfc7468@0.7.0, primefield@0.14.0, primeorder@0.14.0, ripemd@0.2.0, sec1@0.8.1, sha1@0.10.7, sha1@0.11.0, sha2@0.10.9, sha2@0.11.0, sha3@0.12.0, signature@2.2.0, signature@3.0.0, spki@0.7.3, spki@0.8.0, sponge-cursor@0.1.0, tls_codec@0.4.2, tls_codec_derive@0.4.2, wnaf@0.14.1, x509-cert@0.2.5, x509-tsp@0.1.0
 License: Apache-2.0 OR MIT; MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/aes/0.9.3/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/base16ct/1.0.0/download#LICENSE-APACHE
@@ -3494,7 +3494,7 @@ Source: https://crates.io/api/v1/crates/cpubits/0.1.1/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/cpufeatures/0.2.17/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/cpufeatures/0.3.1/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/crmf/0.2.0/download#LICENSE-APACHE
-Source: https://crates.io/api/v1/crates/crypto-bigint/0.7.5/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/crypto-bigint/0.7.9/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/crypto-common/0.1.7/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/crypto-common/0.2.2/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/der/0.7.10/download#LICENSE-APACHE
@@ -4729,11 +4729,11 @@ DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: as-raw-xcb-connection@1.0.1, cmov@0.5.4, ctutils@0.4.4, encoding_rs@0.8.42, flagset@0.4.7, flatbuffers@24.12.23, gl_generator@0.14.0, khronos_api@3.1.0, kurbo@0.11.3, kurbo@0.13.1, multiversion_no_op@1.0.0, nohash-hasher@0.2.0, polycool@0.4.0, raw-window-metal@1.1.0, siphasher@1.0.4, spirv@0.4.0+sdk-1.4.341.0, static_assertions@1.1.0, tinyvec@1.13.3, ureq-proto@0.6.4, utf16_iter@1.0.5, utf8_iter@1.0.4, write16@1.0.0, x11rb-protocol@0.13.2, x11rb@0.13.2, zeroize@1.9.0, zeroize_derive@1.5.0
+Applies to: as-raw-xcb-connection@1.0.1, cmov@0.5.4, ctutils@0.4.5, encoding_rs@0.8.42, flagset@0.4.7, flatbuffers@24.12.23, gl_generator@0.14.0, khronos_api@3.1.0, kurbo@0.11.3, kurbo@0.13.1, multiversion_no_op@1.0.0, nohash-hasher@0.2.0, polycool@0.4.0, raw-window-metal@1.1.0, siphasher@1.0.4, spirv@0.4.0+sdk-1.4.341.0, static_assertions@1.1.0, tinyvec@1.13.3, ureq-proto@0.6.4, utf16_iter@1.0.5, utf8_iter@1.0.4, write16@1.0.0, x11rb-protocol@0.13.2, x11rb@0.13.2, zeroize@1.9.0, zeroize_derive@1.5.0
 License: (Apache-2.0 OR MIT) AND BSD-3-Clause; Apache-2.0; Apache-2.0 OR MIT; MIT OR Apache-2.0; Zlib OR Apache-2.0 OR MIT
 Source: https://crates.io/api/v1/crates/as-raw-xcb-connection/1.0.1/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/cmov/0.5.4/download#LICENSE-APACHE
-Source: https://crates.io/api/v1/crates/ctutils/0.4.4/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/ctutils/0.4.5/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/encoding_rs/0.8.42/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/flagset/0.4.7/download#LICENSE
 Source: https://crates.io/api/v1/crates/kurbo/0.11.3/download#LICENSE-APACHE
@@ -9020,9 +9020,9 @@ DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: crypto-bigint@0.7.5, ripemd@0.2.0, sec1@0.8.1, spki@0.8.0
+Applies to: crypto-bigint@0.7.9, ripemd@0.2.0, sec1@0.8.1, spki@0.8.0
 License: Apache-2.0 OR MIT; MIT; MIT OR Apache-2.0
-Source: https://crates.io/api/v1/crates/crypto-bigint/0.7.5/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/crypto-bigint/0.7.9/download#LICENSE-MIT
 Source: https://crates.io/api/v1/crates/ripemd/0.2.0/download#LICENSE-MIT
 Source: https://crates.io/api/v1/crates/sec1/0.8.1/download#LICENSE-MIT
 Source: https://crates.io/api/v1/crates/spki/0.8.0/download#LICENSE-MIT
@@ -9137,9 +9137,9 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 
 ==============================================================================
-Applies to: ctutils@0.4.4
+Applies to: ctutils@0.4.5
 License: Apache-2.0 OR MIT; MIT
-Source: https://crates.io/api/v1/crates/ctutils/0.4.4/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/ctutils/0.4.5/download#LICENSE-MIT
 SHA-256 of original text: 91585c36e4fb9ab4ca0d3dfac5d66d3c0c62cc51f640a0e1196542daf2267eae
 
 Copyright (c) 2025-2026 The RustCrypto Project Developers
