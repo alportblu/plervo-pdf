@@ -1,3 +1,10 @@
+Security maintenance — 2026-10-25: update `crypto-bigint` from 0.7.5 to 0.7.9
+and its resolved `ctutils` dependency from 0.4.4 to 0.4.5 after RUSTSEC-2026-0387
+failed the nightly audit. Original license texts are preserved; no advisory is
+ignored. [Scope and delivery limits](docs/dependency-security-2026-10-25.md).
+Native CI also exposed a timestamp-sensitive size-comparison test; its fixture
+now uses a fixed clock, preserving the assertions and application behavior.
+
 Security maintenance — 2026-10-23: update the locked `ctutils` dependency from 0.4.2
 to 0.4.4 for [RUSTSEC-2026-0385](https://rustsec.org/advisories/RUSTSEC-2026-0385.html).
 The original MIT/Apache license texts are unchanged; the reviewed distribution

@@ -1,9 +1,9 @@
 {
   "generator": "cargo-about 0.9.2 plus reviewed original upstream notices",
-  "reviewed": "2026-10-23",
+  "reviewed": "2026-10-25",
   "inputs": {
     "ATTRIBUTION.toml": "2fd0c43d2c91154d965e98756fb18beebf5bb2cda30cfa4759ae3034921c71dd",
-    "Cargo.lock": "5dcd19e44a2632bfafa8242781a9310a8180481d80a91d76c7c3873dc3cd06b0",
+    "Cargo.lock": "3024a7282659f5dfc365acccec43d04d85d7838957dc186dcedc87f11078bfca",
     "Cargo.toml": "f1f22a03b26e956e77c87978353dbfb654726c0a034da017be6b34fa2826c335",
     "apps/pdfcraft-cli/Cargo.toml": "3d1e7b9482e09b117ca255fbb57952a4b708154ddc6730918167d771472c78e2",
     "apps/pdfcraft-web/Cargo.toml": "fc0e3c1398f687670df8dd48d609f16edceec7b8fffa82cc8ccb862d8af72900",
@@ -37,7 +37,7 @@
     "crates/print/Cargo.toml": "b7525a42e48cbc4fa0ffd8a598be3d04c929755ed5579eab6d4d43e8da84d05f",
     "crates/redact/Cargo.toml": "6661d057970bb1d8d7b4f61506541a87b3052b11c0350d6d0ea70752e3be2478",
     "crates/render/Cargo.toml": "78c39bc98d825a5e201a7ef79aa86e7eae813ae6a2b17aee078593f66e7665fa",
-    "crates/sign/Cargo.toml": "299f3ec259ad32c4fe9ceea47ac413beacdaa9971dd6db39a90a64b1a3adc50e",
+    "crates/sign/Cargo.toml": "63ac926547526af93edd794fd7f6b69422eb748cc64b0181714b3564e23dbce7",
     "crates/suite-core/Cargo.toml": "80f4cfd00b74269bd62648cb5e296638efa5d7cef55ca629886773fbf4572251",
     "crates/suite-native/Cargo.toml": "16ddd851e3c230827dc0c2fb7461ad34f6a9a93c88fec2ccae3ec34747a134bd",
     "crates/ui-egui/Cargo.toml": "448379f6b35cc37a3fd8f0d3eff3d4a23350902986527f706a03efcf8959b4a7",
@@ -52,7 +52,7 @@
     "vendor/winit/Cargo.toml": "2aeb741d47b763ee198ca915c330a6bf0b1fc094dd69357e80278b7852289c61",
     "xtask/Cargo.toml": "4927a79db3efb8c426a3c46427f76218228d07cabbe6779e0eb8e83c3003d12e"
   },
-  "notices_lf_sha256": "11aa1356a9b2e5bf330df5f27c45713185f05ec681204dca613909d26ca54982",
+  "notices_lf_sha256": "e11b8f211f022b192aa323fde5f0632a806093f5aa11d82f762a1809af0250af",
   "package_count": 634,
   "packages": [
     {
@@ -705,7 +705,7 @@
     },
     {
       "name": "crypto-bigint",
-      "version": "0.7.5",
+      "version": "0.7.9",
       "license": "Apache-2.0 OR MIT",
       "source": "registry+https://github.com/rust-lang/crates.io-index"
     },
@@ -729,7 +729,7 @@
     },
     {
       "name": "ctutils",
-      "version": "0.4.4",
+      "version": "0.4.5",
       "license": "Apache-2.0 OR MIT",
       "source": "registry+https://github.com/rust-lang/crates.io-index"
     },
@@ -4227,7 +4227,7 @@
         "https://crates.io/api/v1/crates/cpufeatures/0.2.17/download#LICENSE-APACHE",
         "https://crates.io/api/v1/crates/cpufeatures/0.3.1/download#LICENSE-APACHE",
         "https://crates.io/api/v1/crates/crmf/0.2.0/download#LICENSE-APACHE",
-        "https://crates.io/api/v1/crates/crypto-bigint/0.7.5/download#LICENSE-APACHE",
+        "https://crates.io/api/v1/crates/crypto-bigint/0.7.9/download#LICENSE-APACHE",
         "https://crates.io/api/v1/crates/crypto-common/0.1.7/download#LICENSE-APACHE",
         "https://crates.io/api/v1/crates/crypto-common/0.2.2/download#LICENSE-APACHE",
         "https://crates.io/api/v1/crates/der/0.7.10/download#LICENSE-APACHE",
@@ -4286,7 +4286,7 @@
         "cpufeatures@0.2.17",
         "cpufeatures@0.3.1",
         "crmf@0.2.0",
-        "crypto-bigint@0.7.5",
+        "crypto-bigint@0.7.9",
         "crypto-common@0.1.7",
         "crypto-common@0.2.2",
         "der@0.7.10",
@@ -4828,7 +4828,7 @@
       "sources": [
         "https://crates.io/api/v1/crates/as-raw-xcb-connection/1.0.1/download#LICENSE-APACHE",
         "https://crates.io/api/v1/crates/cmov/0.5.4/download#LICENSE-APACHE",
-        "https://crates.io/api/v1/crates/ctutils/0.4.4/download#LICENSE-APACHE",
+        "https://crates.io/api/v1/crates/ctutils/0.4.5/download#LICENSE-APACHE",
         "https://crates.io/api/v1/crates/encoding_rs/0.8.42/download#LICENSE-APACHE",
         "https://crates.io/api/v1/crates/flagset/0.4.7/download#LICENSE",
         "https://crates.io/api/v1/crates/kurbo/0.11.3/download#LICENSE-APACHE",
@@ -4856,7 +4856,7 @@
       "packages": [
         "as-raw-xcb-connection@1.0.1",
         "cmov@0.5.4",
-        "ctutils@0.4.4",
+        "ctutils@0.4.5",
         "encoding_rs@0.8.42",
         "flagset@0.4.7",
         "flatbuffers@24.12.23",
@@ -5962,13 +5962,13 @@
     {
       "sha256": "57a4d75c1d095bb94754a478f3cd15e60ac66a5c5627d844be01a918eea5fe88",
       "sources": [
-        "https://crates.io/api/v1/crates/crypto-bigint/0.7.5/download#LICENSE-MIT",
+        "https://crates.io/api/v1/crates/crypto-bigint/0.7.9/download#LICENSE-MIT",
         "https://crates.io/api/v1/crates/ripemd/0.2.0/download#LICENSE-MIT",
         "https://crates.io/api/v1/crates/sec1/0.8.1/download#LICENSE-MIT",
         "https://crates.io/api/v1/crates/spki/0.8.0/download#LICENSE-MIT"
       ],
       "packages": [
-        "crypto-bigint@0.7.5",
+        "crypto-bigint@0.7.9",
         "ripemd@0.2.0",
         "sec1@0.8.1",
         "spki@0.8.0"
@@ -6021,10 +6021,10 @@
     {
       "sha256": "91585c36e4fb9ab4ca0d3dfac5d66d3c0c62cc51f640a0e1196542daf2267eae",
       "sources": [
-        "https://crates.io/api/v1/crates/ctutils/0.4.4/download#LICENSE-MIT"
+        "https://crates.io/api/v1/crates/ctutils/0.4.5/download#LICENSE-MIT"
       ],
       "packages": [
-        "ctutils@0.4.4"
+        "ctutils@0.4.5"
       ],
       "licenses": [
         "Apache-2.0 OR MIT",

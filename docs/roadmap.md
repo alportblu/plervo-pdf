@@ -1,3 +1,11 @@
+## Cryptographic dependency maintenance — 2026-10-25
+
+| Delivery | Source change | Remaining |
+| --- | --- | --- |
+| PDF workspace | `crypto-bigint` 0.7.9 and `ctutils` 0.4.5; reviewed original license notices preserved; no new advisory exceptions | New installer qualification and distribution; separate Video/Develop dependency review |
+
+See [advisory scope and delivery limits](dependency-security-2026-10-25.md).
+
 ## Dependency security update — 2026-10-23
 
 | Delivery | Source change | Remaining |
