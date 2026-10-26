@@ -1,11 +1,11 @@
 {
   "generator": "cargo-about 0.9.2 with reviewed original upstream notices",
-  "reviewed": "2026-10-23",
+  "reviewed": "2026-10-26",
   "product": "Plervo Photo",
   "version": "0.1.0-alpha.8",
   "inputs": {
     "ATTRIBUTION.md": "d47af9f13bf4bda080ddaf3770d33db426332483e96c75226c86735742be3eb4",
-    "Cargo.lock": "5e683b5e07f15f4c3111bf8f0d194d1fba6224bf8bbe9ba4f909ed34a8faa6a8",
+    "Cargo.lock": "5dcef985b1e21866c912c280e1f7bfa933584baa4a466ff255e3afb04e54fc1d",
     "Cargo.toml": "ca3758f3c8dd4e715f7664a054c83aabbc9eefe366dcd0395f304d525a1f1ae6",
     "NOTICE": "85dc51e11f500fb294edbd07795a08c264f116a058291a6ae3de5b524c7824f8",
     "apps/photocraft-cli/Cargo.toml": "cfdf1c9429e5407719216a0ed7ea80b76d627ccc16b343db6a1142d7578bd647",
@@ -43,7 +43,7 @@
     "crates/vector/Cargo.toml": "f5c020bef5f4503e178015d20cb0786e958c1829025347b1c4b0ce3d8ae6c741",
     "xtask/Cargo.toml": "b72e23d6888ab1ffadd0d8b16e1672edff670fecd0e2f9e489af9f54cadbc521"
   },
-  "notices_lf_sha256": "ab46a6d8af231402aaf6b2b0022e36557c237ffa43587096c391d96f0cec6fc1",
+  "notices_lf_sha256": "bc8adc2e822aee38f1774ad036321343ce7e24cec7e42c9eea86bd503d22202b",
   "package_count": 667,
   "packages": [
     {
@@ -3222,7 +3222,7 @@
     },
     {
       "name": "tokio",
-      "version": "1.53.1",
+      "version": "1.53.3",
       "license": "MIT",
       "source": "registry+https://github.com/rust-lang/crates.io-index"
     },
@@ -9615,11 +9615,12 @@
       "sha256": "253cd04c6714889df2d32f3f64d669179a1c95c76ac43c40882c52eb06bc3552",
       "sources": [
         "https://crates.io/api/v1/crates/tokio-util/0.7.19/download#LICENSE",
-        "https://crates.io/api/v1/crates/tokio/1.53.1/download#LICENSE"
+        "https://crates.io/api/v1/crates/tokio/1.53.1/download#LICENSE",
+        "https://crates.io/api/v1/crates/tokio/1.53.3/download#LICENSE"
       ],
       "packages": [
         "tokio-util@0.7.19",
-        "tokio@1.53.1"
+        "tokio@1.53.3"
       ],
       "licenses": [
         "MIT"
