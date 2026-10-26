@@ -52,6 +52,13 @@ a temporary macOS Keychain test). Scoped Clippy
 also passes. Full required CI remains a merge gate. These checks do not measure
 side-channel resistance on every CPU.
 
+The first native CI rerun exposed an independent clock-sensitive UI test: a
+one-second `/ModDate` change could shrink its already-compact fixture by one byte.
+A controlled check reproduced this in seven of sixty adjacent-second transitions;
+all fixed-clock comparisons kept the original size. The existing Reduce File Size
+test now uses the engine's injected clock. Its assertions and production behavior
+are unchanged.
+
 No published release asset is replaced, and no Store or macOS update is claimed
 by this source change. New installers must be built, qualified and distributed
 before installed copies receive the correction. There is no claim of zero
