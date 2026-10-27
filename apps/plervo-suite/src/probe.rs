@@ -3,7 +3,7 @@ use std::path::PathBuf;
 use std::time::{Duration, Instant};
 
 pub struct Probe {
-    app: plervo_suite::SuiteApp,
+    app: crate::App,
     output: PathBuf,
     start: Instant,
     requested: bool,
@@ -11,7 +11,14 @@ pub struct Probe {
 }
 impl Probe {
     pub fn new(cc: &eframe::CreationContext<'_>, output: PathBuf, success: std::sync::Arc<std::sync::atomic::AtomicBool>) -> Self {
-        Self { app: plervo_suite::SuiteApp::new(cc), output, start: Instant::now(), requested: false, success }
+        #[allow(unused_mut)]
+        let mut app = crate::App::new(cc);
+        #[cfg(feature = "microsoft-store")]
+        app.set_probe_view(
+            &std::env::var("PLERVO_SUITE_PROBE_LANGUAGE").unwrap_or_else(|_| "en".into()),
+            &std::env::var("PLERVO_SUITE_PROBE_VIEW").unwrap_or_default(),
+        );
+        Self { app, output, start: Instant::now(), requested: false, success }
     }
 }
 impl eframe::App for Probe {

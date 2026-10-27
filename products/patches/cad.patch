@@ -73,7 +73,7 @@ index 4257a3a..5b7eade 100644
 +| `assets/app-icon/plervo-cad.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 4e4da3fc37c7f2856ad8ecb9bb339b901fab280c9f71ab7c4979d867c3fdcb6b |
 +| `assets/app-icon/plervo-cad.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 e0a88bd8bf36b8fad310476610a5460a112c07261585433e4a40c4a55a8b93f2 |
 diff --git a/Cargo.lock b/Cargo.lock
-index c054dcf..4c3a406 100644
+index c054dcf..6b1e2ea 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -545,49 +545,16 @@ version = "1.12.1"
@@ -116,7 +116,7 @@ index c054dcf..4c3a406 100644
  [[package]]
  name = "cadcraft-color"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "serde",
  ]
@@ -124,7 +124,7 @@ index c054dcf..4c3a406 100644
  [[package]]
  name = "cadcraft-constraints"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "cadcraft-doc",
   "cadcraft-geom",
@@ -133,7 +133,7 @@ index c054dcf..4c3a406 100644
  [[package]]
  name = "cadcraft-doc"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "cadcraft-color",
   "cadcraft-geom",
@@ -142,7 +142,7 @@ index c054dcf..4c3a406 100644
  [[package]]
  name = "cadcraft-dwg"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "acadrust",
  ]
@@ -150,7 +150,7 @@ index c054dcf..4c3a406 100644
  [[package]]
  name = "cadcraft-dxf"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "encoding_rs",
   "log",
@@ -159,7 +159,7 @@ index c054dcf..4c3a406 100644
  [[package]]
  name = "cadcraft-engine"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "cadcraft-color",
   "cadcraft-constraints",
@@ -168,7 +168,7 @@ index c054dcf..4c3a406 100644
  [[package]]
  name = "cadcraft-fonts"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "cadcraft-geom",
   "harfrust",
@@ -177,7 +177,7 @@ index c054dcf..4c3a406 100644
  [[package]]
  name = "cadcraft-geom"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "serde",
  ]
@@ -185,7 +185,7 @@ index c054dcf..4c3a406 100644
  [[package]]
  name = "cadcraft-io"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "cadcraft-color",
   "cadcraft-doc",
@@ -194,7 +194,7 @@ index c054dcf..4c3a406 100644
  [[package]]
  name = "cadcraft-mcp"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "cadcraft-engine",
   "cadcraft-io",
@@ -203,7 +203,7 @@ index c054dcf..4c3a406 100644
  [[package]]
  name = "cadcraft-render"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "cadcraft-color",
   "cadcraft-doc",
@@ -212,7 +212,7 @@ index c054dcf..4c3a406 100644
  [[package]]
  name = "cadcraft-ui-egui"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "cadcraft-color",
   "cadcraft-doc",
@@ -221,7 +221,7 @@ index c054dcf..4c3a406 100644
  [[package]]
  name = "cadcraft-web"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "cadcraft-engine",
   "cadcraft-io",
@@ -231,7 +231,7 @@ index c054dcf..4c3a406 100644
  
 +[[package]]
 +name = "plervo-cad"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
 +dependencies = [
 + "cadcraft-engine",
 + "cadcraft-io",
@@ -253,7 +253,7 @@ index c054dcf..4c3a406 100644
 +
 +[[package]]
 +name = "plervo-cad-cli"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
 +dependencies = [
 + "cadcraft-engine",
 + "cadcraft-io",
@@ -270,12 +270,12 @@ index c054dcf..4c3a406 100644
  [[package]]
  name = "xtask"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "serde_json",
  ]
 diff --git a/Cargo.toml b/Cargo.toml
-index 9632245..32a633b 100644
+index 9632245..9ab9e69 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -283,7 +283,7 @@ index 9632245..32a633b 100644
  
  [workspace.package]
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.90"
@@ -3835,15 +3835,16 @@ index e07d758..856233b 100644
  
  Start the desktop app with `--control PORT` (or `CADCRAFT_CONTROL_PORT=PORT`). It listens on
 diff --git a/packaging/env.sh b/packaging/env.sh
-index e703348..f5ae80d 100644
+index e703348..0bb542b 100644
 --- a/packaging/env.sh
 +++ b/packaging/env.sh
-@@ -47,10 +47,17 @@ warn() {
+@@ -47,10 +47,18 @@ warn() {
  # Copy licence and readme files that exist into a package directory.
  copy_docs() {
    local dest="$1" f
 -  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT; do
-+  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md; do
++  python3 "$ROOT/packaging/licenses/verify.py" "$ROOT" || return 1
++  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md THIRD_PARTY_NOTICES.txt; do
      if [ -f "$ROOT/$f" ]; then cp "$ROOT/$f" "$dest/"; fi
    done
    copy_font_licences "$dest"
@@ -3911,218 +3912,101 @@ index 3cb8ea7..764a3d2 100755
 +resize "$DIR/plervo-cad-macos-512.png" 512 "$SET/icon_512x512.png"
 +iconutil -c icns -o "$DIR/plervo-cad.icns" "$SET"
  echo "icons written to $DIR"
-diff --git a/packaging/linux/ai.storyteller.cadcraft.desktop b/packaging/linux/ai.storyteller.cadcraft.desktop
-deleted file mode 100644
-index c4e0bab..0000000
+diff --git a/packaging/linux/ai.storyteller.cadcraft.desktop b/packaging/linux/com.plervo.cad.desktop
+similarity index 75%
+rename from packaging/linux/ai.storyteller.cadcraft.desktop
+rename to packaging/linux/com.plervo.cad.desktop
+index c4e0bab..f4439e3 100644
 --- a/packaging/linux/ai.storyteller.cadcraft.desktop
-+++ /dev/null
-@@ -1,14 +0,0 @@
--[Desktop Entry]
--Type=Application
++++ b/packaging/linux/com.plervo.cad.desktop
+@@ -1,14 +1,14 @@
+ [Desktop Entry]
+ Type=Application
 -Name=CADCraft
--GenericName=Computer-Aided Design
--Comment=Draft, dimension and plot 2D drawings; open DXF and DWG files
++Name=Plervo CAD
+ GenericName=Computer-Aided Design
+ Comment=Draft, dimension and plot 2D drawings; open DXF and DWG files
 -Exec=cadcraft %F
 -TryExec=cadcraft
 -Icon=ai.storyteller.cadcraft
--Terminal=false
--StartupNotify=true
++Exec=plervo-cad %F
++TryExec=plervo-cad
++Icon=com.plervo.cad
+ Terminal=false
+ StartupNotify=true
 -StartupWMClass=ai.storyteller.cadcraft
--Categories=Graphics;Engineering;VectorGraphics;
--MimeType=image/vnd.dxf;image/vnd.dwg;application/x-dxf;application/acad;
--Keywords=cad;drafting;dxf;dwg;drawing;engineering;architecture;mechanical;
-diff --git a/packaging/linux/ai.storyteller.cadcraft.metainfo.xml.in b/packaging/linux/ai.storyteller.cadcraft.metainfo.xml.in
-deleted file mode 100644
-index f878398..0000000
++StartupWMClass=com.plervo.cad
+ Categories=Graphics;Engineering;VectorGraphics;
+ MimeType=image/vnd.dxf;image/vnd.dwg;application/x-dxf;application/acad;
+ Keywords=cad;drafting;dxf;dwg;drawing;engineering;architecture;mechanical;
+diff --git a/packaging/linux/ai.storyteller.cadcraft.metainfo.xml.in b/packaging/linux/com.plervo.cad.metainfo.xml.in
+similarity index 70%
+rename from packaging/linux/ai.storyteller.cadcraft.metainfo.xml.in
+rename to packaging/linux/com.plervo.cad.metainfo.xml.in
+index f878398..7763acd 100644
 --- a/packaging/linux/ai.storyteller.cadcraft.metainfo.xml.in
-+++ /dev/null
-@@ -1,62 +0,0 @@
--<?xml version="1.0" encoding="UTF-8"?>
--<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
--     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
--<component type="desktop-application">
++++ b/packaging/linux/com.plervo.cad.metainfo.xml.in
+@@ -2,28 +2,28 @@
+ <!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
+      manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
+ <component type="desktop-application">
 -  <id>ai.storyteller.cadcraft</id>
--  <metadata_license>CC0-1.0</metadata_license>
--  <project_license>MIT OR Apache-2.0</project_license>
++  <id>com.plervo.cad</id>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_license>MIT OR Apache-2.0</project_license>
 -  <name>CADCraft</name>
--  <summary>Draft, dimension and plot 2D drawings</summary>
--  <developer id="ai.storyteller">
++  <name>Plervo CAD</name>
+   <summary>Draft, dimension and plot 2D drawings</summary>
+   <developer id="ai.storyteller">
 -    <name>Learning Machines LLC</name>
--  </developer>
--  <description>
--    <p>
++    <name>Maintech Solutions LLC</name>
+   </developer>
+   <description>
+     <p>
 -      CADCraft is an open-source computer-aided design and drafting application with a familiar
--      command line, object snaps, layers, dimensions, hatches and blocks. It opens and saves DXF
--      and DWG drawings, exports SVG and PNG, and can be driven by AI agents over MCP.
--    </p>
--  </description>
++      Plervo CAD is an open-source computer-aided design and drafting application with a familiar
+       command line, object snaps, layers, dimensions, hatches and blocks. It opens and saves DXF
+       and DWG drawings, exports SVG and PNG, and can be driven by AI agents over MCP.
+     </p>
+   </description>
 -  <launchable type="desktop-id">ai.storyteller.cadcraft.desktop</launchable>
 -  <icon type="stock">ai.storyteller.cadcraft</icon>
--  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
++  <launchable type="desktop-id">com.plervo.cad.desktop</launchable>
++  <icon type="stock">com.plervo.cad</icon>
+   <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
 -  <url type="homepage">https://getartcraft.com/apps/cadcraft</url>
 -  <url type="bugtracker">https://github.com/storytold/cadcraft/issues</url>
 -  <url type="help">https://github.com/storytold/cadcraft</url>
 -  <url type="contact">https://discord.gg/artcraft</url>
--  <categories>
--    <category>Graphics</category>
--    <category>Engineering</category>
--  </categories>
--  <keywords>
--    <keyword>CAD</keyword>
--    <keyword>drafting</keyword>
--    <keyword>DXF</keyword>
--    <keyword>DWG</keyword>
--  </keywords>
--  <screenshots>
--    <screenshot type="default">
--      <caption>A mechanical part drawing with dimensions, hatching and layers</caption>
--      <image>https://raw.githubusercontent.com/storytold/cadcraft/main/docs/images/ui-bracket.png</image>
--    </screenshot>
--  </screenshots>
--  <branding>
--    <color type="primary" scheme_preference="light">#9ee3f2</color>
--    <color type="primary" scheme_preference="dark">#0b6f88</color>
--  </branding>
--  <requires>
--    <display_length compare="ge">760</display_length>
--  </requires>
--  <supports>
--    <control>keyboard</control>
--    <control>pointing</control>
--    <control>tablet</control>
--  </supports>
--  <provides>
--    <binary>cadcraft</binary>
--  </provides>
--  <content_rating type="oars-1.1"/>
--  <releases>
--    <release version="@VERSION@" date="@DATE@"/>
--  </releases>
--</component>
-diff --git a/packaging/linux/ai.storyteller.cadcraft.mime.xml b/packaging/linux/ai.storyteller.cadcraft.mime.xml
-deleted file mode 100644
-index 98452d7..0000000
---- a/packaging/linux/ai.storyteller.cadcraft.mime.xml
-+++ /dev/null
-@@ -1,12 +0,0 @@
--<?xml version="1.0" encoding="UTF-8"?>
--<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
--  <mime-type type="image/vnd.dxf">
--    <comment>DXF drawing</comment>
--    <glob pattern="*.dxf"/>
--  </mime-type>
--  <mime-type type="image/vnd.dwg">
--    <comment>DWG drawing</comment>
--    <magic priority="50"><match type="string" value="AC10" offset="0"/></magic>
--    <glob pattern="*.dwg"/>
--  </mime-type>
--</mime-info>
-diff --git a/packaging/linux/com.plervo.cad.desktop b/packaging/linux/com.plervo.cad.desktop
-new file mode 100644
-index 0000000..f4439e3
---- /dev/null
-+++ b/packaging/linux/com.plervo.cad.desktop
-@@ -0,0 +1,14 @@
-+[Desktop Entry]
-+Type=Application
-+Name=Plervo CAD
-+GenericName=Computer-Aided Design
-+Comment=Draft, dimension and plot 2D drawings; open DXF and DWG files
-+Exec=plervo-cad %F
-+TryExec=plervo-cad
-+Icon=com.plervo.cad
-+Terminal=false
-+StartupNotify=true
-+StartupWMClass=com.plervo.cad
-+Categories=Graphics;Engineering;VectorGraphics;
-+MimeType=image/vnd.dxf;image/vnd.dwg;application/x-dxf;application/acad;
-+Keywords=cad;drafting;dxf;dwg;drawing;engineering;architecture;mechanical;
-diff --git a/packaging/linux/com.plervo.cad.metainfo.xml.in b/packaging/linux/com.plervo.cad.metainfo.xml.in
-new file mode 100644
-index 0000000..7763acd
---- /dev/null
-+++ b/packaging/linux/com.plervo.cad.metainfo.xml.in
-@@ -0,0 +1,62 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
-+     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
-+<component type="desktop-application">
-+  <id>com.plervo.cad</id>
-+  <metadata_license>CC0-1.0</metadata_license>
-+  <project_license>MIT OR Apache-2.0</project_license>
-+  <name>Plervo CAD</name>
-+  <summary>Draft, dimension and plot 2D drawings</summary>
-+  <developer id="ai.storyteller">
-+    <name>Maintech Solutions LLC</name>
-+  </developer>
-+  <description>
-+    <p>
-+      Plervo CAD is an open-source computer-aided design and drafting application with a familiar
-+      command line, object snaps, layers, dimensions, hatches and blocks. It opens and saves DXF
-+      and DWG drawings, exports SVG and PNG, and can be driven by AI agents over MCP.
-+    </p>
-+  </description>
-+  <launchable type="desktop-id">com.plervo.cad.desktop</launchable>
-+  <icon type="stock">com.plervo.cad</icon>
-+  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
 +  <url type="homepage">https://plervo.com/</url>
 +  <url type="bugtracker">https://github.com/alportblu/plervo-pdf/issues</url>
 +  <url type="help">https://github.com/alportblu/plervo-pdf</url>
 +  <url type="contact">https://buymeacoffee.com/alport</url>
-+  <categories>
-+    <category>Graphics</category>
-+    <category>Engineering</category>
-+  </categories>
-+  <keywords>
-+    <keyword>CAD</keyword>
-+    <keyword>drafting</keyword>
-+    <keyword>DXF</keyword>
-+    <keyword>DWG</keyword>
-+  </keywords>
-+  <screenshots>
-+    <screenshot type="default">
-+      <caption>A mechanical part drawing with dimensions, hatching and layers</caption>
+   <categories>
+     <category>Graphics</category>
+     <category>Engineering</category>
+@@ -37,7 +37,7 @@
+   <screenshots>
+     <screenshot type="default">
+       <caption>A mechanical part drawing with dimensions, hatching and layers</caption>
+-      <image>https://raw.githubusercontent.com/storytold/cadcraft/main/docs/images/ui-bracket.png</image>
 +      <image>https://raw.githubusercontent.com/alportblu/plervo-pdf/main/docs/images/ui-bracket.png</image>
-+    </screenshot>
-+  </screenshots>
-+  <branding>
-+    <color type="primary" scheme_preference="light">#9ee3f2</color>
-+    <color type="primary" scheme_preference="dark">#0b6f88</color>
-+  </branding>
-+  <requires>
-+    <display_length compare="ge">760</display_length>
-+  </requires>
-+  <supports>
-+    <control>keyboard</control>
-+    <control>pointing</control>
-+    <control>tablet</control>
-+  </supports>
-+  <provides>
+     </screenshot>
+   </screenshots>
+   <branding>
+@@ -53,7 +53,7 @@
+     <control>tablet</control>
+   </supports>
+   <provides>
+-    <binary>cadcraft</binary>
 +    <binary>plervo-cad</binary>
-+  </provides>
-+  <content_rating type="oars-1.1"/>
-+  <releases>
-+    <release version="@VERSION@" date="@DATE@"/>
-+  </releases>
-+</component>
-diff --git a/packaging/linux/com.plervo.cad.mime.xml b/packaging/linux/com.plervo.cad.mime.xml
-new file mode 100644
-index 0000000..98452d7
---- /dev/null
-+++ b/packaging/linux/com.plervo.cad.mime.xml
-@@ -0,0 +1,12 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-+  <mime-type type="image/vnd.dxf">
-+    <comment>DXF drawing</comment>
-+    <glob pattern="*.dxf"/>
-+  </mime-type>
-+  <mime-type type="image/vnd.dwg">
-+    <comment>DWG drawing</comment>
-+    <magic priority="50"><match type="string" value="AC10" offset="0"/></magic>
-+    <glob pattern="*.dwg"/>
-+  </mime-type>
-+</mime-info>
+   </provides>
+   <content_rating type="oars-1.1"/>
+   <releases>
+diff --git a/packaging/linux/ai.storyteller.cadcraft.mime.xml b/packaging/linux/com.plervo.cad.mime.xml
+similarity index 100%
+rename from packaging/linux/ai.storyteller.cadcraft.mime.xml
+rename to packaging/linux/com.plervo.cad.mime.xml
 diff --git a/packaging/linux/flatpak-bundle.sh b/packaging/linux/flatpak-bundle.sh
 index 9baccf9..0ae6383 100755
 --- a/packaging/linux/flatpak-bundle.sh
@@ -4189,264 +4073,144 @@ index 9baccf9..0ae6383 100755
    flatpak run --command=sh "$APP_ID" -c 'ls /app/share/applications /app/share/metainfo /app/share/mime/packages /app/share/icons/hicolor/256x256/apps'
  fi
  echo "==> done"
-diff --git a/packaging/linux/flatpak/ai.storyteller.cadcraft.bundle.yml b/packaging/linux/flatpak/ai.storyteller.cadcraft.bundle.yml
-deleted file mode 100644
-index b6a64d8..0000000
+diff --git a/packaging/linux/flatpak/ai.storyteller.cadcraft.bundle.yml b/packaging/linux/flatpak/com.plervo.cad.bundle.yml
+similarity index 65%
+rename from packaging/linux/flatpak/ai.storyteller.cadcraft.bundle.yml
+rename to packaging/linux/flatpak/com.plervo.cad.bundle.yml
+index b6a64d8..9db5b99 100644
 --- a/packaging/linux/flatpak/ai.storyteller.cadcraft.bundle.yml
-+++ /dev/null
-@@ -1,50 +0,0 @@
--# Flatpak manifest for the single-file bundle attached to every GitHub release
++++ b/packaging/linux/flatpak/com.plervo.cad.bundle.yml
+@@ -1,7 +1,7 @@
+ # Flatpak manifest for the single-file bundle attached to every GitHub release
 -# (cadcraft-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
--#
++# (plervo-cad-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
+ #
 -# It repackages the release's own Linux tarball (cadcraft-<version>-linux-<arch>.tar.gz, built
--# on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no network and
--# no vendored crate sources during the build, a few seconds instead of many minutes, and
--# byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball into
--# `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11, Wayland,
--# xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the GPU driver
--# comes from its org.freedesktop.Platform.GL extension.
--#
++# It repackages the release's own Linux tarball (plervo-cad-<version>-linux-<arch>.tar.gz, built
+ # on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no network and
+ # no vendored crate sources during the build, a few seconds instead of many minutes, and
+ # byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball into
+@@ -9,13 +9,13 @@
+ # xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the GPU driver
+ # comes from its org.freedesktop.Platform.GL extension.
+ #
 -# ai.storyteller.cadcraft.yml (same directory) is the from-source manifest for Flathub. Keep
--# runtime, runtime-version, sdk and finish-args identical in both (packaging-lint checks this).
++# com.plervo.cad.yml (same directory) is the from-source manifest for Flathub. Keep
+ # runtime, runtime-version, sdk and finish-args identical in both (packaging-lint checks this).
 -id: ai.storyteller.cadcraft
--runtime: org.freedesktop.Platform
--runtime-version: '26.08'
--sdk: org.freedesktop.Sdk
++id: com.plervo.cad
+ runtime: org.freedesktop.Platform
+ runtime-version: '26.08'
+ sdk: org.freedesktop.Sdk
 -command: cadcraft
--finish-args:
--  # Display: Wayland first; X11 only when no Wayland compositor is running.
--  - --socket=wayland
--  - --socket=fallback-x11
--  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
--  - --share=ipc
--  # GPU access for the wgpu canvas (Vulkan, or GL as a fallback).
--  - --device=dri
--  # Open/Save dialogs go through the file-chooser portal (rfd) and drag-and-drop through the
--  # document portal, so picked files work anywhere without broad filesystem access. Documents
--  # and Pictures are granted so drawings passed by path (the command line, Open Recent, xrefs
--  # and images next to a DXF) work in the usual places.
--  - --filesystem=xdg-documents
--  - --filesystem=xdg-pictures
--  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
++command: plervo-cad
+ finish-args:
+   # Display: Wayland first; X11 only when no Wayland compositor is running.
+   - --socket=wayland
+@@ -31,20 +31,20 @@ finish-args:
+   - --filesystem=xdg-documents
+   - --filesystem=xdg-pictures
+   # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
 -  # the sandbox; `flatpak override --user --share=network ai.storyteller.cadcraft` exposes it to
--  # host agents) and home/host filesystem access.
--modules:
++  # the sandbox; `flatpak override --user --share=network com.plervo.cad` exposes it to
+   # host agents) and home/host filesystem access.
+ modules:
 -  - name: cadcraft
--    buildsystem: simple
--    build-commands:
++  - name: plervo-cad
+     buildsystem: simple
+     build-commands:
 -      - install -Dm755 bin/cadcraft /app/bin/cadcraft
 -      - install -Dm755 bin/cadcraft-cli /app/bin/cadcraft-cli
 -      - install -Dm644 share/applications/ai.storyteller.cadcraft.desktop /app/share/applications/ai.storyteller.cadcraft.desktop
--      # .dxf and .dwg.
++      - install -Dm755 bin/plervo-cad /app/bin/plervo-cad
++      - install -Dm755 bin/plervo-cad-cli /app/bin/plervo-cad-cli
++      - install -Dm644 share/applications/com.plervo.cad.desktop /app/share/applications/com.plervo.cad.desktop
+       # .dxf and .dwg.
 -      - install -Dm644 share/mime/packages/ai.storyteller.cadcraft.xml /app/share/mime/packages/ai.storyteller.cadcraft.xml
--      # Already has the release's version and date substituted by package.sh.
++      - install -Dm644 share/mime/packages/com.plervo.cad.xml /app/share/mime/packages/com.plervo.cad.xml
+       # Already has the release's version and date substituted by package.sh.
 -      - install -Dm644 share/metainfo/ai.storyteller.cadcraft.metainfo.xml /app/share/metainfo/ai.storyteller.cadcraft.metainfo.xml
 -      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/cadcraft /app/share/doc/
--    sources:
--      - type: dir
--        path: stage
-diff --git a/packaging/linux/flatpak/ai.storyteller.cadcraft.yml b/packaging/linux/flatpak/ai.storyteller.cadcraft.yml
-deleted file mode 100644
-index e70d800..0000000
++      - install -Dm644 share/metainfo/com.plervo.cad.metainfo.xml /app/share/metainfo/com.plervo.cad.metainfo.xml
++      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/plervo-cad /app/share/doc/
+     sources:
+       - type: dir
+         path: stage
+diff --git a/packaging/linux/flatpak/ai.storyteller.cadcraft.yml b/packaging/linux/flatpak/com.plervo.cad.yml
+similarity index 68%
+rename from packaging/linux/flatpak/ai.storyteller.cadcraft.yml
+rename to packaging/linux/flatpak/com.plervo.cad.yml
+index e70d800..d802e9d 100644
 --- a/packaging/linux/flatpak/ai.storyteller.cadcraft.yml
-+++ /dev/null
-@@ -1,67 +0,0 @@
++++ b/packaging/linux/flatpak/com.plervo.cad.yml
+@@ -1,22 +1,22 @@
 -# Flatpak manifest for CADCraft, ready for a Flathub submission.
--#
--# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
--#
--#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
--#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
++# Flatpak manifest for Plervo CAD, ready for a Flathub submission.
+ #
+ # Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
+ #
+ #   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
+ #   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
 -#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.cadcraft.yml
 -#   flatpak run ai.storyteller.cadcraft
--#
--# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
++#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/com.plervo.cad.yml
++#   flatpak run com.plervo.cad
+ #
+ # For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
 -# The single-file .flatpak attached to each release comes from ai.storyteller.cadcraft.bundle.yml,
--# which repackages the prebuilt release binaries. Keep runtime-version and finish-args identical.
++# The single-file .flatpak attached to each release comes from com.plervo.cad.bundle.yml,
+ # which repackages the prebuilt release binaries. Keep runtime-version and finish-args identical.
 -id: ai.storyteller.cadcraft
--runtime: org.freedesktop.Platform
--runtime-version: '26.08'
--sdk: org.freedesktop.Sdk
--sdk-extensions:
--  - org.freedesktop.Sdk.Extension.rust-stable
++id: com.plervo.cad
+ runtime: org.freedesktop.Platform
+ runtime-version: '26.08'
+ sdk: org.freedesktop.Sdk
+ sdk-extensions:
+   - org.freedesktop.Sdk.Extension.rust-stable
 -command: cadcraft
--finish-args:
--  # Display: Wayland first; X11 only when no Wayland compositor is running.
--  - --socket=wayland
--  - --socket=fallback-x11
--  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
--  - --share=ipc
--  # GPU access for the wgpu canvas (Vulkan, or GL as a fallback).
--  - --device=dri
--  # Open/Save dialogs go through the file-chooser portal (rfd) and drag-and-drop through the
--  # document portal, so picked files work anywhere without broad filesystem access. Documents
--  # and Pictures are granted so drawings passed by path (the command line, Open Recent, xrefs
--  # and images next to a DXF) work in the usual places.
--  - --filesystem=xdg-documents
--  - --filesystem=xdg-pictures
--  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
++command: plervo-cad
+ finish-args:
+   # Display: Wayland first; X11 only when no Wayland compositor is running.
+   - --socket=wayland
+@@ -32,29 +32,29 @@ finish-args:
+   - --filesystem=xdg-documents
+   - --filesystem=xdg-pictures
+   # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
 -  # the sandbox; `flatpak override --user --share=network ai.storyteller.cadcraft` exposes it to
--  # host agents) and home/host filesystem access.
--build-options:
--  append-path: /usr/lib/sdk/rust-stable/bin
--modules:
++  # the sandbox; `flatpak override --user --share=network com.plervo.cad` exposes it to
+   # host agents) and home/host filesystem access.
+ build-options:
+   append-path: /usr/lib/sdk/rust-stable/bin
+ modules:
 -  - name: cadcraft
--    buildsystem: simple
--    build-options:
--      env:
++  - name: plervo-cad
+     buildsystem: simple
+     build-options:
+       env:
 -        CARGO_HOME: /run/build/cadcraft/cargo
--        CARGO_NET_OFFLINE: 'true'
--    build-commands:
++        CARGO_HOME: /run/build/plervo-cad/cargo
+         CARGO_NET_OFFLINE: 'true'
+     build-commands:
 -      - cargo --offline build --release --locked -p cadcraft -p cadcraft-cli
 -      - install -Dm755 target/release/cadcraft /app/bin/cadcraft
 -      - install -Dm755 target/release/cadcraft-cli /app/bin/cadcraft-cli
 -      - install -Dm644 packaging/linux/ai.storyteller.cadcraft.desktop /app/share/applications/ai.storyteller.cadcraft.desktop
 -      - install -Dm644 packaging/linux/ai.storyteller.cadcraft.mime.xml /app/share/mime/packages/ai.storyteller.cadcraft.xml
--      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
--      - >-
--        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
--        install -d /app/share/metainfo;
--        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
--        packaging/linux/ai.storyteller.cadcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.cadcraft.metainfo.xml
--    sources:
--      - type: dir
--        path: ../../..
--        skip:
--          - target
--          - dist
--          - corpus
--          - build-flatpak
--          - .flatpak-builder
--      - cargo-sources.json
-diff --git a/packaging/linux/flatpak/com.plervo.cad.bundle.yml b/packaging/linux/flatpak/com.plervo.cad.bundle.yml
-new file mode 100644
-index 0000000..9db5b99
---- /dev/null
-+++ b/packaging/linux/flatpak/com.plervo.cad.bundle.yml
-@@ -0,0 +1,50 @@
-+# Flatpak manifest for the single-file bundle attached to every GitHub release
-+# (plervo-cad-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
-+#
-+# It repackages the release's own Linux tarball (plervo-cad-<version>-linux-<arch>.tar.gz, built
-+# on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no network and
-+# no vendored crate sources during the build, a few seconds instead of many minutes, and
-+# byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball into
-+# `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11, Wayland,
-+# xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the GPU driver
-+# comes from its org.freedesktop.Platform.GL extension.
-+#
-+# com.plervo.cad.yml (same directory) is the from-source manifest for Flathub. Keep
-+# runtime, runtime-version, sdk and finish-args identical in both (packaging-lint checks this).
-+id: com.plervo.cad
-+runtime: org.freedesktop.Platform
-+runtime-version: '26.08'
-+sdk: org.freedesktop.Sdk
-+command: plervo-cad
-+finish-args:
-+  # Display: Wayland first; X11 only when no Wayland compositor is running.
-+  - --socket=wayland
-+  - --socket=fallback-x11
-+  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
-+  - --share=ipc
-+  # GPU access for the wgpu canvas (Vulkan, or GL as a fallback).
-+  - --device=dri
-+  # Open/Save dialogs go through the file-chooser portal (rfd) and drag-and-drop through the
-+  # document portal, so picked files work anywhere without broad filesystem access. Documents
-+  # and Pictures are granted so drawings passed by path (the command line, Open Recent, xrefs
-+  # and images next to a DXF) work in the usual places.
-+  - --filesystem=xdg-documents
-+  - --filesystem=xdg-pictures
-+  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
-+  # the sandbox; `flatpak override --user --share=network com.plervo.cad` exposes it to
-+  # host agents) and home/host filesystem access.
-+modules:
-+  - name: plervo-cad
-+    buildsystem: simple
-+    build-commands:
-+      - install -Dm755 bin/plervo-cad /app/bin/plervo-cad
-+      - install -Dm755 bin/plervo-cad-cli /app/bin/plervo-cad-cli
-+      - install -Dm644 share/applications/com.plervo.cad.desktop /app/share/applications/com.plervo.cad.desktop
-+      # .dxf and .dwg.
-+      - install -Dm644 share/mime/packages/com.plervo.cad.xml /app/share/mime/packages/com.plervo.cad.xml
-+      # Already has the release's version and date substituted by package.sh.
-+      - install -Dm644 share/metainfo/com.plervo.cad.metainfo.xml /app/share/metainfo/com.plervo.cad.metainfo.xml
-+      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/plervo-cad /app/share/doc/
-+    sources:
-+      - type: dir
-+        path: stage
-diff --git a/packaging/linux/flatpak/com.plervo.cad.yml b/packaging/linux/flatpak/com.plervo.cad.yml
-new file mode 100644
-index 0000000..d802e9d
---- /dev/null
-+++ b/packaging/linux/flatpak/com.plervo.cad.yml
-@@ -0,0 +1,67 @@
-+# Flatpak manifest for Plervo CAD, ready for a Flathub submission.
-+#
-+# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
-+#
-+#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
-+#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
-+#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/com.plervo.cad.yml
-+#   flatpak run com.plervo.cad
-+#
-+# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
-+# The single-file .flatpak attached to each release comes from com.plervo.cad.bundle.yml,
-+# which repackages the prebuilt release binaries. Keep runtime-version and finish-args identical.
-+id: com.plervo.cad
-+runtime: org.freedesktop.Platform
-+runtime-version: '26.08'
-+sdk: org.freedesktop.Sdk
-+sdk-extensions:
-+  - org.freedesktop.Sdk.Extension.rust-stable
-+command: plervo-cad
-+finish-args:
-+  # Display: Wayland first; X11 only when no Wayland compositor is running.
-+  - --socket=wayland
-+  - --socket=fallback-x11
-+  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
-+  - --share=ipc
-+  # GPU access for the wgpu canvas (Vulkan, or GL as a fallback).
-+  - --device=dri
-+  # Open/Save dialogs go through the file-chooser portal (rfd) and drag-and-drop through the
-+  # document portal, so picked files work anywhere without broad filesystem access. Documents
-+  # and Pictures are granted so drawings passed by path (the command line, Open Recent, xrefs
-+  # and images next to a DXF) work in the usual places.
-+  - --filesystem=xdg-documents
-+  - --filesystem=xdg-pictures
-+  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
-+  # the sandbox; `flatpak override --user --share=network com.plervo.cad` exposes it to
-+  # host agents) and home/host filesystem access.
-+build-options:
-+  append-path: /usr/lib/sdk/rust-stable/bin
-+modules:
-+  - name: plervo-cad
-+    buildsystem: simple
-+    build-options:
-+      env:
-+        CARGO_HOME: /run/build/plervo-cad/cargo
-+        CARGO_NET_OFFLINE: 'true'
-+    build-commands:
 +      - cargo --offline build --release --locked -p plervo-cad -p plervo-cad-cli
 +      - install -Dm755 target/release/plervo-cad /app/bin/plervo-cad
 +      - install -Dm755 target/release/plervo-cad-cli /app/bin/plervo-cad-cli
 +      - install -Dm644 packaging/linux/com.plervo.cad.desktop /app/share/applications/com.plervo.cad.desktop
 +      - install -Dm644 packaging/linux/com.plervo.cad.mime.xml /app/share/mime/packages/com.plervo.cad.xml
-+      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
-+      - >-
-+        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
-+        install -d /app/share/metainfo;
-+        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+       - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
+       - >-
+         version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
+         install -d /app/share/metainfo;
+         sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+-        packaging/linux/ai.storyteller.cadcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.cadcraft.metainfo.xml
 +        packaging/linux/com.plervo.cad.metainfo.xml.in > /app/share/metainfo/com.plervo.cad.metainfo.xml
-+    sources:
-+      - type: dir
-+        path: ../../..
-+        skip:
-+          - target
-+          - dist
-+          - corpus
-+          - build-flatpak
-+          - .flatpak-builder
-+      - cargo-sources.json
+     sources:
+       - type: dir
+         path: ../../..
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
 index 80225bf..98d7031 100644
 --- a/packaging/linux/nfpm.yaml
@@ -5167,181 +4931,8 @@ index 7caa88e..62012b8 100755
  WORK="$CARGO_TARGET_DIR/web-package"
  rm -rf "$WORK"
  mkdir -p "$WORK/$NAME"
-diff --git a/packaging/windows/cadcraft.wxs b/packaging/windows/cadcraft.wxs
-deleted file mode 100644
-index 50f82f6..0000000
---- a/packaging/windows/cadcraft.wxs
-+++ /dev/null
-@@ -1,167 +0,0 @@
--<?xml version="1.0" encoding="utf-8"?>
--<!--
--  CADCraft MSI (WiX Toolset v5: `dotnet tool install -g wix`, plus the WixUI extension:
--  `wix extension add -g WixToolset.UI.wixext/5.0.2`). Built by package.ps1:
--
--    wix build cadcraft.wxs -arch x64 -ext WixToolset.UI.wixext -d Version=1.2.3 -d BinDir=... -d IconPath=... -o out.msi
--
--  Per-machine install into Program Files, a Start Menu shortcut, an optional desktop shortcut, and
--  CADCraft offered under "Open with" for .dxf and .dwg drawings (without taking over the user's
--  default app).
--
--  Desktop shortcut: the setup wizard asks (unchecked by default). Silent installs leave it out
--  unless asked: `msiexec /i cadcraft.msi /qn DESKTOPSHORTCUT=1`. Upgrades keep the previous choice
--  unless DESKTOPSHORTCUT=1 or DESKTOPSHORTCUT=0 is given.
---->
--<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
--  <Package
--      Name="CADCraft"
--      Manufacturer="Learning Machines LLC"
--      Version="$(var.Version)"
--      UpgradeCode="119D7D76-0167-4A9E-8F37-09DA0235F68E"
--      Scope="perMachine"
--      Compressed="yes"
--      Language="1033">
--    <SummaryInformation Description="CADCraft computer-aided design" Manufacturer="Learning Machines LLC" />
--    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
--         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
--    <MajorUpgrade AllowSameVersionUpgrades="yes"
--        DowngradeErrorMessage="A newer version of CADCraft is already installed." />
--    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
--
--    <Icon Id="CadcraftIcon.ico" SourceFile="$(var.IconPath)" />
--    <Property Id="ARPPRODUCTICON" Value="CadcraftIcon.ico" />
--    <Property Id="ARPURLINFOABOUT" Value="https://getartcraft.com/apps/cadcraft" />
--    <Property Id="ARPURLUPDATEINFO" Value="https://getartcraft.com/apps/cadcraft" />
--    <Property Id="ARPHELPLINK" Value="https://discord.gg/artcraft" />
--
--    <StandardDirectory Id="ProgramFiles6432Folder">
--      <Directory Id="INSTALLFOLDER" Name="CADCraft" />
--    </StandardDirectory>
--    <StandardDirectory Id="ProgramMenuFolder" />
--    <!-- Per-machine (ALLUSERS=1), so this is the all-users (Public) desktop, like the Start Menu above. -->
--    <StandardDirectory Id="DesktopFolder" />
--
--    <!-- "Create a desktop shortcut": the wizard's checkbox sets it to 1 (cleared = unset), and
--         silent installs pass DESKTOPSHORTCUT=1. Secure, so the elevated install sees the UI choice. -->
--    <Property Id="DESKTOPSHORTCUT" Secure="yes" />
--    <!-- The previous install's choice (the shortcut component's HKCU key path, so the installing
--         user's), so upgrades keep the desktop shortcut without asking again. -->
--    <Property Id="PREVIOUSDESKTOPSHORTCUT">
--      <RegistrySearch Id="PreviousDesktopShortcut" Root="HKCU" Key="Software\Learning Machines LLC\CADCraft"
--          Name="DesktopShortcut" Type="raw" />
--    </Property>
--    <!-- Only when DESKTOPSHORTCUT wasn't given; "first" runs it once (in the UI sequence when there
--         is one), so unticking the box isn't undone by the execute sequence. -->
--    <SetProperty Id="DESKTOPSHORTCUT" Value="1" After="AppSearch" Sequence="first"
--        Condition="NOT DESKTOPSHORTCUT AND PREVIOUSDESKTOPSHORTCUT = &quot;1&quot;" />
--
--    <UIRef Id="CadcraftUI" />
--
--    <Feature Id="Main" Title="CADCraft" Level="1">
--      <ComponentGroupRef Id="CadcraftFiles" />
--    </Feature>
--  </Package>
--
--  <Fragment>
--    <ComponentGroup Id="CadcraftFiles" Directory="INSTALLFOLDER">
--      <Component Id="CadcraftApp" Guid="2AC18056-48DE-4079-AB79-4FDEF4FBB075">
--        <File Id="CadcraftExe" Source="$(var.BinDir)\cadcraft.exe" KeyPath="yes">
--          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="CADCraft"
--              Description="CADCraft computer-aided design" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
--              Icon="CadcraftIcon.ico" IconIndex="0" />
--        </File>
--
--        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\cadcraft.exe" Value="[#CadcraftExe]" Type="string" />
--        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\cadcraft.exe\shell\open\command" Value="&quot;[#CadcraftExe]&quot; &quot;%1&quot;" Type="string" />
--        <RegistryValue Root="HKLM" Key="Software\Classes\.dxf\OpenWithProgids" Name="CADCraft.Drawing" Value="" Type="string" />
--        <RegistryValue Root="HKLM" Key="Software\Classes\.dwg\OpenWithProgids" Name="CADCraft.Drawing" Value="" Type="string" />
--        <RegistryValue Root="HKLM" Key="Software\Classes\CADCraft.Drawing\shell\open\command" Value="&quot;[#CadcraftExe]&quot; &quot;%1&quot;" Type="string" />
--      </Component>
--
--      <Component Id="CadcraftCli">
--        <File Id="CadcraftCliExe" Source="$(var.BinDir)\cadcraft-cli.exe" KeyPath="yes" />
--      </Component>
--
--      <!-- Optional desktop shortcut, removed on uninstall. A non-advertised shortcut needs a registry
--           key path, and one in a profile folder (DesktopFolder, even though ALLUSERS=1 makes it the
--           Public desktop) must be under HKCU (ICE38, ICE43, ICE57). -->
--      <Component Id="DesktopShortcut" Directory="DesktopFolder" Guid="76029CD7-EBDB-420F-AC34-FF0E82A99E32"
--          Condition="DESKTOPSHORTCUT = &quot;1&quot;">
--        <Shortcut Id="DesktopShortcut" Name="CADCraft" Description="CADCraft computer-aided design"
--            Target="[INSTALLFOLDER]cadcraft.exe" WorkingDirectory="INSTALLFOLDER" Icon="CadcraftIcon.ico" IconIndex="0" />
--        <RegistryValue Root="HKCU" Key="Software\Learning Machines LLC\CADCraft" Name="DesktopShortcut"
--            Value="1" Type="string" KeyPath="yes" />
--      </Component>
--    </ComponentGroup>
--  </Fragment>
--
--  <!--
--    Setup wizard: WixUI_InstallDir's flow (WiX v5, ext/UI/wixlib/WixUI_InstallDir.wxs) without the
--    licence and folder pages, plus a Shortcuts page:
--      install:     Welcome > Shortcuts > Ready to install > Progress > Finish
--      maintenance: Maintenance welcome > Repair/Remove > Ready > Progress > Finish
--  -->
--  <Fragment>
--    <UI Id="CadcraftUI">
--      <TextStyle Id="WixUI_Font_Normal" FaceName="Tahoma" Size="8" />
--      <TextStyle Id="WixUI_Font_Bigger" FaceName="Tahoma" Size="12" />
--      <TextStyle Id="WixUI_Font_Title" FaceName="Tahoma" Size="9" Bold="yes" />
--      <Property Id="DefaultUIFont" Value="WixUI_Font_Normal" />
--
--      <DialogRef Id="DiskCostDlg" />
--      <DialogRef Id="ErrorDlg" />
--      <DialogRef Id="FatalError" />
--      <DialogRef Id="FilesInUse" />
--      <DialogRef Id="MsiRMFilesInUse" />
--      <DialogRef Id="PrepareDlg" />
--      <DialogRef Id="ProgressDlg" />
--      <DialogRef Id="ResumeDlg" />
--      <DialogRef Id="UserExit" />
--
--      <Dialog Id="ShortcutsDlg" Width="370" Height="270" Title="!(loc.InstallDirDlg_Title)">
--        <Control Id="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Text="!(loc.WixUINext)" />
--        <Control Id="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Text="!(loc.WixUIBack)" />
--        <Control Id="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Cancel="yes" Text="!(loc.WixUICancel)">
--          <Publish Event="SpawnDialog" Value="CancelDlg" />
--        </Control>
--
--        <Control Id="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Transparent="yes" NoPrefix="yes"
--            Text="Choose where to start [ProductName] from." />
--        <Control Id="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Transparent="yes" NoPrefix="yes"
--            Text="{\WixUI_Font_Title}Shortcuts" />
--        <Control Id="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" TabSkip="no" Text="!(loc.InstallDirDlgBannerBitmap)" />
--        <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
--        <Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" />
--
--        <Control Id="StartMenuText" Type="Text" X="20" Y="60" Width="330" Height="15" NoPrefix="yes"
--            Text="[ProductName] will be added to the Start menu." />
--        <Control Id="DesktopShortcutCheckBox" Type="CheckBox" X="20" Y="85" Width="330" Height="17"
--            Property="DESKTOPSHORTCUT" CheckBoxValue="1" Text="Create a &amp;desktop shortcut" />
--      </Dialog>
--
--      <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999" />
--
--      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="ShortcutsDlg" Condition="NOT Installed" />
--      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg" Condition="Installed AND PATCH" />
--
--      <Publish Dialog="ShortcutsDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" />
--      <Publish Dialog="ShortcutsDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg" />
--
--      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="ShortcutsDlg" Order="1" Condition="NOT Installed" />
--      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg" Order="2" Condition="Installed AND NOT PATCH" />
--      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" Condition="Installed AND PATCH" />
--
--      <Publish Dialog="MaintenanceWelcomeDlg" Control="Next" Event="NewDialog" Value="MaintenanceTypeDlg" />
--
--      <Publish Dialog="MaintenanceTypeDlg" Control="RepairButton" Event="NewDialog" Value="VerifyReadyDlg" />
--      <Publish Dialog="MaintenanceTypeDlg" Control="RemoveButton" Event="NewDialog" Value="VerifyReadyDlg" />
--      <Publish Dialog="MaintenanceTypeDlg" Control="Back" Event="NewDialog" Value="MaintenanceWelcomeDlg" />
--
--      <!-- No "Change" in Apps & features: there is a single feature. -->
--      <Property Id="ARPNOMODIFY" Value="1" />
--    </UI>
--
--    <UIRef Id="WixUI_Common" />
--  </Fragment>
--</Wix>
 diff --git a/packaging/windows/package.ps1 b/packaging/windows/package.ps1
-index a6b8cf2..990a665 100644
+index a6b8cf2..917b533 100644
 --- a/packaging/windows/package.ps1
 +++ b/packaging/windows/package.ps1
 @@ -1,11 +1,11 @@
@@ -5386,7 +4977,7 @@ index a6b8cf2..990a665 100644
    $h = Get-PeHeader (Join-Path $Bin $check[0])
    if ($h.Machine -ne $Machine) { throw "$($check[0]) is for machine 0x$('{0:X}' -f $h.Machine), expected 0x$('{0:X}' -f $Machine) ($Arch)" }
    if ($h.Subsystem -ne $check[1]) { throw "$($check[0]) has PE subsystem $($h.Subsystem), expected $($check[1])" }
-@@ -88,15 +88,32 @@ foreach ($check in @(@('cadcraft.exe', 2), @('cadcraft-cli.exe', 3))) {
+@@ -88,15 +88,34 @@ foreach ($check in @(@('cadcraft.exe', 2), @('cadcraft-cli.exe', 3))) {
  $Stage = Join-Path $TargetDir "windows-package\$Arch"
  Remove-Item -Recurse -Force $Stage -ErrorAction SilentlyContinue
  New-Item -ItemType Directory -Force -Path $Stage | Out-Null
@@ -5397,9 +4988,11 @@ index a6b8cf2..990a665 100644
 +& (Join-Path $PSScriptRoot 'sign.ps1') (Join-Path $Stage 'plervo-cad.exe') (Join-Path $Stage 'plervo-cad-cli.exe')
 +
 +# Carry source and embedded-asset notices in MSI and portable distributions.
++& python (Join-Path $Root 'packaging/licenses/verify.py') $Root
++if ($LASTEXITCODE -ne 0) { throw "Third-party notice review is stale or missing" }
 +$Legal = Join-Path $Stage 'Licenses'
 +New-Item -ItemType Directory -Force -Path $Legal | Out-Null
-+foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md') {
++foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md', 'THIRD_PARTY_NOTICES.txt') {
 +  $p = Join-Path $Root $f
 +  if (Test-Path $p) { Copy-Item $p $Legal }
 +}
@@ -5424,7 +5017,7 @@ index a6b8cf2..990a665 100644
      -o $Msi
  }
  # wix writes its debug symbols (.wixpdb) next to the MSI; keep them out of the release assets.
-@@ -104,10 +121,11 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
+@@ -104,10 +123,11 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
  & (Join-Path $PSScriptRoot 'sign.ps1') $Msi
  
  # ---- portable zip ------------------------------------------------------------------------------
@@ -5437,7 +5030,7 @@ index a6b8cf2..990a665 100644
  foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE') {
    $p = Join-Path $Root $f
    if (Test-Path $p) { Copy-Item $p $Portable }
-@@ -118,7 +136,7 @@ if ($env:CRAFT_FONTS_DIR) {
+@@ -118,7 +138,7 @@ if ($env:CRAFT_FONTS_DIR) {
      Copy-Item $ofl.FullName (Join-Path $Portable "OFL-$($ofl.Directory.Name).txt")
    }
  }
@@ -5446,7 +5039,7 @@ index a6b8cf2..990a665 100644
  Remove-Item -Force $Zip -ErrorAction SilentlyContinue
  Compress-Archive -Path $Portable -DestinationPath $Zip
  
-@@ -126,8 +144,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
+@@ -126,8 +146,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
  # here; .github/workflows/windows-arm64.yml installs and runs it on ARM64 instead.
  $HostArch = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString().ToLowerInvariant()
  if ($Arch -ne 'arm64' -or $HostArch -eq 'arm64') {
@@ -5457,184 +5050,143 @@ index a6b8cf2..990a665 100644
 +  Write-Output "skipping plervo-cad-cli --version: an $Arch build doesn't run on this $HostArch machine"
  }
  Get-Item $Msi, $Zip | Format-Table Name, Length
-diff --git a/packaging/windows/plervo-cad.wxs b/packaging/windows/plervo-cad.wxs
-new file mode 100644
-index 0000000..930e772
---- /dev/null
+diff --git a/packaging/windows/cadcraft.wxs b/packaging/windows/plervo-cad.wxs
+similarity index 73%
+rename from packaging/windows/cadcraft.wxs
+rename to packaging/windows/plervo-cad.wxs
+index 50f82f6..930e772 100644
+--- a/packaging/windows/cadcraft.wxs
 +++ b/packaging/windows/plervo-cad.wxs
-@@ -0,0 +1,172 @@
-+<?xml version="1.0" encoding="utf-8"?>
-+<!--
+@@ -1,42 +1,42 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <!--
+-  CADCraft MSI (WiX Toolset v5: `dotnet tool install -g wix`, plus the WixUI extension:
 +  Plervo CAD MSI (WiX Toolset v5: `dotnet tool install -g wix`, plus the WixUI extension:
-+  `wix extension add -g WixToolset.UI.wixext/5.0.2`). Built by package.ps1:
-+
+   `wix extension add -g WixToolset.UI.wixext/5.0.2`). Built by package.ps1:
+ 
+-    wix build cadcraft.wxs -arch x64 -ext WixToolset.UI.wixext -d Version=1.2.3 -d BinDir=... -d IconPath=... -o out.msi
 +    wix build plervo-cad.wxs -arch x64 -ext WixToolset.UI.wixext -d Version=1.2.3 -d BinDir=... -d IconPath=... -o out.msi
-+
-+  Per-machine install into Program Files, a Start Menu shortcut, an optional desktop shortcut, and
+ 
+   Per-machine install into Program Files, a Start Menu shortcut, an optional desktop shortcut, and
+-  CADCraft offered under "Open with" for .dxf and .dwg drawings (without taking over the user's
 +  Plervo CAD offered under "Open with" for .dxf and .dwg drawings (without taking over the user's
-+  default app).
-+
-+  Desktop shortcut: the setup wizard asks (unchecked by default). Silent installs leave it out
+   default app).
+ 
+   Desktop shortcut: the setup wizard asks (unchecked by default). Silent installs leave it out
+-  unless asked: `msiexec /i cadcraft.msi /qn DESKTOPSHORTCUT=1`. Upgrades keep the previous choice
 +  unless asked: `msiexec /i plervo-cad.msi /qn DESKTOPSHORTCUT=1`. Upgrades keep the previous choice
-+  unless DESKTOPSHORTCUT=1 or DESKTOPSHORTCUT=0 is given.
-+-->
-+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
-+  <Package
+   unless DESKTOPSHORTCUT=1 or DESKTOPSHORTCUT=0 is given.
+ -->
+ <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs">
+   <Package
+-      Name="CADCraft"
+-      Manufacturer="Learning Machines LLC"
 +      Name="Plervo CAD"
 +      Manufacturer="Maintech Solutions LLC"
-+      Version="$(var.Version)"
+       Version="$(var.Version)"
+-      UpgradeCode="119D7D76-0167-4A9E-8F37-09DA0235F68E"
 +      UpgradeCode="FEB394DD-66FC-5B23-8F72-4C5708917D40"
-+      Scope="perMachine"
-+      Compressed="yes"
-+      Language="1033">
+       Scope="perMachine"
+       Compressed="yes"
+       Language="1033">
+-    <SummaryInformation Description="CADCraft computer-aided design" Manufacturer="Learning Machines LLC" />
 +    <SummaryInformation Description="Plervo CAD computer-aided design" Manufacturer="Maintech Solutions LLC" />
-+    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
-+         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
-+    <MajorUpgrade AllowSameVersionUpgrades="yes"
+     <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
+          (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
+     <MajorUpgrade AllowSameVersionUpgrades="yes"
+-        DowngradeErrorMessage="A newer version of CADCraft is already installed." />
 +        DowngradeErrorMessage="A newer version of Plervo CAD is already installed." />
-+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
-+
-+    <Icon Id="CadcraftIcon.ico" SourceFile="$(var.IconPath)" />
-+    <Property Id="ARPPRODUCTICON" Value="CadcraftIcon.ico" />
+     <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+ 
+     <Icon Id="CadcraftIcon.ico" SourceFile="$(var.IconPath)" />
+     <Property Id="ARPPRODUCTICON" Value="CadcraftIcon.ico" />
+-    <Property Id="ARPURLINFOABOUT" Value="https://getartcraft.com/apps/cadcraft" />
+-    <Property Id="ARPURLUPDATEINFO" Value="https://getartcraft.com/apps/cadcraft" />
+-    <Property Id="ARPHELPLINK" Value="https://discord.gg/artcraft" />
 +    <Property Id="ARPURLINFOABOUT" Value="https://plervo.com/" />
 +    <Property Id="ARPURLUPDATEINFO" Value="https://plervo.com/" />
 +    <Property Id="ARPHELPLINK" Value="https://buymeacoffee.com/alport" />
-+
-+    <StandardDirectory Id="ProgramFiles6432Folder">
+ 
+     <StandardDirectory Id="ProgramFiles6432Folder">
+-      <Directory Id="INSTALLFOLDER" Name="CADCraft" />
 +      <Directory Id="INSTALLFOLDER" Name="Plervo CAD" />
-+    </StandardDirectory>
-+    <StandardDirectory Id="ProgramMenuFolder" />
-+    <!-- Per-machine (ALLUSERS=1), so this is the all-users (Public) desktop, like the Start Menu above. -->
-+    <StandardDirectory Id="DesktopFolder" />
-+
-+    <!-- "Create a desktop shortcut": the wizard's checkbox sets it to 1 (cleared = unset), and
-+         silent installs pass DESKTOPSHORTCUT=1. Secure, so the elevated install sees the UI choice. -->
-+    <Property Id="DESKTOPSHORTCUT" Secure="yes" />
-+    <!-- The previous install's choice (the shortcut component's HKCU key path, so the installing
-+         user's), so upgrades keep the desktop shortcut without asking again. -->
-+    <Property Id="PREVIOUSDESKTOPSHORTCUT">
+     </StandardDirectory>
+     <StandardDirectory Id="ProgramMenuFolder" />
+     <!-- Per-machine (ALLUSERS=1), so this is the all-users (Public) desktop, like the Start Menu above. -->
+@@ -48,7 +48,7 @@
+     <!-- The previous install's choice (the shortcut component's HKCU key path, so the installing
+          user's), so upgrades keep the desktop shortcut without asking again. -->
+     <Property Id="PREVIOUSDESKTOPSHORTCUT">
+-      <RegistrySearch Id="PreviousDesktopShortcut" Root="HKCU" Key="Software\Learning Machines LLC\CADCraft"
 +      <RegistrySearch Id="PreviousDesktopShortcut" Root="HKCU" Key="Software\Maintech Solutions LLC\Plervo CAD"
-+          Name="DesktopShortcut" Type="raw" />
-+    </Property>
-+    <!-- Only when DESKTOPSHORTCUT wasn't given; "first" runs it once (in the UI sequence when there
-+         is one), so unticking the box isn't undone by the execute sequence. -->
-+    <SetProperty Id="DESKTOPSHORTCUT" Value="1" After="AppSearch" Sequence="first"
-+        Condition="NOT DESKTOPSHORTCUT AND PREVIOUSDESKTOPSHORTCUT = &quot;1&quot;" />
-+
-+    <UIRef Id="CadcraftUI" />
-+
+           Name="DesktopShortcut" Type="raw" />
+     </Property>
+     <!-- Only when DESKTOPSHORTCUT wasn't given; "first" runs it once (in the UI sequence when there
+@@ -58,39 +58,40 @@
+ 
+     <UIRef Id="CadcraftUI" />
+ 
+-    <Feature Id="Main" Title="CADCraft" Level="1">
 +    <Feature Id="Main" Title="Plervo CAD" Level="1">
-+      <ComponentGroupRef Id="CadcraftFiles" />
-+    </Feature>
+       <ComponentGroupRef Id="CadcraftFiles" />
+     </Feature>
 +    <Feature Id="PlervoLicenseFeature" Title="Licenses" Level="1"><ComponentGroupRef Id="PlervoLegalFiles" /></Feature>
-+  </Package>
-+
-+  <Fragment>
-+    <ComponentGroup Id="CadcraftFiles" Directory="INSTALLFOLDER">
+   </Package>
+ 
+   <Fragment>
+     <ComponentGroup Id="CadcraftFiles" Directory="INSTALLFOLDER">
+-      <Component Id="CadcraftApp" Guid="2AC18056-48DE-4079-AB79-4FDEF4FBB075">
+-        <File Id="CadcraftExe" Source="$(var.BinDir)\cadcraft.exe" KeyPath="yes">
+-          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="CADCraft"
+-              Description="CADCraft computer-aided design" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
 +      <Component Id="CadcraftApp" Guid="8EA9C6E9-CE96-5B89-8A21-504E439E9DEB">
 +        <File Id="CadcraftExe" Source="$(var.BinDir)\plervo-cad.exe" KeyPath="yes">
 +          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="Plervo CAD"
 +              Description="Plervo CAD computer-aided design" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
-+              Icon="CadcraftIcon.ico" IconIndex="0" />
-+        </File>
-+
+               Icon="CadcraftIcon.ico" IconIndex="0" />
+         </File>
+ 
+-        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\cadcraft.exe" Value="[#CadcraftExe]" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\cadcraft.exe\shell\open\command" Value="&quot;[#CadcraftExe]&quot; &quot;%1&quot;" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.dxf\OpenWithProgids" Name="CADCraft.Drawing" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.dwg\OpenWithProgids" Name="CADCraft.Drawing" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\CADCraft.Drawing\shell\open\command" Value="&quot;[#CadcraftExe]&quot; &quot;%1&quot;" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\plervo-cad.exe" Value="[#CadcraftExe]" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\plervo-cad.exe\shell\open\command" Value="&quot;[#CadcraftExe]&quot; &quot;%1&quot;" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Classes\.dxf\OpenWithProgids" Name="PlervoCAD.Drawing" Value="" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Classes\.dwg\OpenWithProgids" Name="PlervoCAD.Drawing" Value="" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Classes\PlervoCAD.Drawing\shell\open\command" Value="&quot;[#CadcraftExe]&quot; &quot;%1&quot;" Type="string" />
-+      </Component>
-+
-+      <Component Id="CadcraftCli">
+       </Component>
+ 
+       <Component Id="CadcraftCli">
+-        <File Id="CadcraftCliExe" Source="$(var.BinDir)\cadcraft-cli.exe" KeyPath="yes" />
 +        <File Id="CadcraftCliExe" Source="$(var.BinDir)\plervo-cad-cli.exe" KeyPath="yes" />
-+      </Component>
-+
-+      <!-- Optional desktop shortcut, removed on uninstall. A non-advertised shortcut needs a registry
-+           key path, and one in a profile folder (DesktopFolder, even though ALLUSERS=1 makes it the
-+           Public desktop) must be under HKCU (ICE38, ICE43, ICE57). -->
+       </Component>
+ 
+       <!-- Optional desktop shortcut, removed on uninstall. A non-advertised shortcut needs a registry
+            key path, and one in a profile folder (DesktopFolder, even though ALLUSERS=1 makes it the
+            Public desktop) must be under HKCU (ICE38, ICE43, ICE57). -->
+-      <Component Id="DesktopShortcut" Directory="DesktopFolder" Guid="76029CD7-EBDB-420F-AC34-FF0E82A99E32"
 +      <Component Id="DesktopShortcut" Directory="DesktopFolder" Guid="C9B37FE1-459E-5E42-A43D-13561DFD7CC1"
-+          Condition="DESKTOPSHORTCUT = &quot;1&quot;">
+           Condition="DESKTOPSHORTCUT = &quot;1&quot;">
+-        <Shortcut Id="DesktopShortcut" Name="CADCraft" Description="CADCraft computer-aided design"
+-            Target="[INSTALLFOLDER]cadcraft.exe" WorkingDirectory="INSTALLFOLDER" Icon="CadcraftIcon.ico" IconIndex="0" />
+-        <RegistryValue Root="HKCU" Key="Software\Learning Machines LLC\CADCraft" Name="DesktopShortcut"
 +        <Shortcut Id="DesktopShortcut" Name="Plervo CAD" Description="Plervo CAD computer-aided design"
 +            Target="[INSTALLFOLDER]plervo-cad.exe" WorkingDirectory="INSTALLFOLDER" Icon="CadcraftIcon.ico" IconIndex="0" />
 +        <RegistryValue Root="HKCU" Key="Software\Maintech Solutions LLC\Plervo CAD" Name="DesktopShortcut"
-+            Value="1" Type="string" KeyPath="yes" />
-+      </Component>
-+    </ComponentGroup>
-+  </Fragment>
-+
-+  <!--
-+    Setup wizard: WixUI_InstallDir's flow (WiX v5, ext/UI/wixlib/WixUI_InstallDir.wxs) without the
-+    licence and folder pages, plus a Shortcuts page:
-+      install:     Welcome > Shortcuts > Ready to install > Progress > Finish
-+      maintenance: Maintenance welcome > Repair/Remove > Ready > Progress > Finish
-+  -->
-+  <Fragment>
-+    <UI Id="CadcraftUI">
-+      <TextStyle Id="WixUI_Font_Normal" FaceName="Tahoma" Size="8" />
-+      <TextStyle Id="WixUI_Font_Bigger" FaceName="Tahoma" Size="12" />
-+      <TextStyle Id="WixUI_Font_Title" FaceName="Tahoma" Size="9" Bold="yes" />
-+      <Property Id="DefaultUIFont" Value="WixUI_Font_Normal" />
-+
-+      <DialogRef Id="DiskCostDlg" />
-+      <DialogRef Id="ErrorDlg" />
-+      <DialogRef Id="FatalError" />
-+      <DialogRef Id="FilesInUse" />
-+      <DialogRef Id="MsiRMFilesInUse" />
-+      <DialogRef Id="PrepareDlg" />
-+      <DialogRef Id="ProgressDlg" />
-+      <DialogRef Id="ResumeDlg" />
-+      <DialogRef Id="UserExit" />
-+
-+      <Dialog Id="ShortcutsDlg" Width="370" Height="270" Title="!(loc.InstallDirDlg_Title)">
-+        <Control Id="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Text="!(loc.WixUINext)" />
-+        <Control Id="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Text="!(loc.WixUIBack)" />
-+        <Control Id="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Cancel="yes" Text="!(loc.WixUICancel)">
-+          <Publish Event="SpawnDialog" Value="CancelDlg" />
-+        </Control>
-+
-+        <Control Id="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Transparent="yes" NoPrefix="yes"
-+            Text="Choose where to start [ProductName] from." />
-+        <Control Id="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Transparent="yes" NoPrefix="yes"
-+            Text="{\WixUI_Font_Title}Shortcuts" />
-+        <Control Id="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" TabSkip="no" Text="!(loc.InstallDirDlgBannerBitmap)" />
-+        <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
-+        <Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" />
-+
-+        <Control Id="StartMenuText" Type="Text" X="20" Y="60" Width="330" Height="15" NoPrefix="yes"
-+            Text="[ProductName] will be added to the Start menu." />
-+        <Control Id="DesktopShortcutCheckBox" Type="CheckBox" X="20" Y="85" Width="330" Height="17"
-+            Property="DESKTOPSHORTCUT" CheckBoxValue="1" Text="Create a &amp;desktop shortcut" />
-+      </Dialog>
-+
-+      <Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999" />
-+
-+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="ShortcutsDlg" Condition="NOT Installed" />
-+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg" Condition="Installed AND PATCH" />
-+
-+      <Publish Dialog="ShortcutsDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" />
-+      <Publish Dialog="ShortcutsDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg" />
-+
-+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="ShortcutsDlg" Order="1" Condition="NOT Installed" />
-+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="MaintenanceTypeDlg" Order="2" Condition="Installed AND NOT PATCH" />
-+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" Condition="Installed AND PATCH" />
-+
-+      <Publish Dialog="MaintenanceWelcomeDlg" Control="Next" Event="NewDialog" Value="MaintenanceTypeDlg" />
-+
-+      <Publish Dialog="MaintenanceTypeDlg" Control="RepairButton" Event="NewDialog" Value="VerifyReadyDlg" />
-+      <Publish Dialog="MaintenanceTypeDlg" Control="RemoveButton" Event="NewDialog" Value="VerifyReadyDlg" />
-+      <Publish Dialog="MaintenanceTypeDlg" Control="Back" Event="NewDialog" Value="MaintenanceWelcomeDlg" />
-+
-+      <!-- No "Change" in Apps & features: there is a single feature. -->
-+      <Property Id="ARPNOMODIFY" Value="1" />
-+    </UI>
-+
-+    <UIRef Id="WixUI_Common" />
-+  </Fragment>
+             Value="1" Type="string" KeyPath="yes" />
+       </Component>
+     </ComponentGroup>
+@@ -164,4 +165,8 @@
+ 
+     <UIRef Id="WixUI_Common" />
+   </Fragment>
 +  <Fragment>
 +    <DirectoryRef Id="INSTALLFOLDER"><Directory Id="PlervoLegalDir" Name="Licenses" /></DirectoryRef>
 +    <ComponentGroup Id="PlervoLegalFiles" Directory="PlervoLegalDir"><Files Include="$(var.BinDir)\Licenses\*" /></ComponentGroup>
 +  </Fragment>
-+</Wix>
+ </Wix>
 diff --git a/packaging/windows/sign.ps1 b/packaging/windows/sign.ps1
 index b4eb154..de40277 100644
 --- a/packaging/windows/sign.ps1

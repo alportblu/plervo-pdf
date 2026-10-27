@@ -1,0 +1,108 @@
+name: Plervo Suite Microsoft Store
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/suite-store.yml'
+      - 'Cargo.lock'
+      - 'apps/plervo-suite/**'
+      - 'crates/suite-*/**'
+      - 'packaging/windows/*suite*store*.ps1'
+      - 'packaging/windows/suite-store/**'
+      - 'assets/products/suite/**'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: suite-store-${{ github.ref }}-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  msix:
+    runs-on: windows-2025
+    timeout-minutes: 90
+    env:
+      CARGO_BUILD_JOBS: 2
+      CARGO_INCREMENTAL: 0
+      CARGO_PROFILE_DEV_DEBUG: line-tables-only
+      CARGO_PROFILE_TEST_DEBUG: line-tables-only
+      CARGO_BUILD_TARGET: x86_64-pc-windows-msvc
+      CARGO_TARGET_X86_64_PC_WINDOWS_MSVC_RUSTFLAGS: '-C target-feature=+crt-static'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Validate Suite manifest with the Windows SDK
+        shell: pwsh
+        run: packaging/windows/package-suite-store.ps1 -IdentityName Plervo.Suite.StoreValidation -Publisher 'CN=Plervo Store Validation' -PublisherDisplayName Plervo -ValidationOnly -ManifestOnly
+      - uses: dtolnay/rust-toolchain@686976e191b89faba57d3206551f0f330d8cb249
+        with:
+          toolchain: '1.95.0'
+          components: clippy
+      - uses: Swatinem/rust-cache@6323deb102c322ba6fcbdcafc7e3dddab59af2b6
+        with:
+          cache-on-failure: true
+      - name: Store action and UI regression checks
+        shell: pwsh
+        run: |
+          cargo clippy --locked -p plervo-suite -p plervo-suite-native --all-targets --features plervo-suite/microsoft-store -- -D warnings
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          cargo test --locked -p plervo-suite -p plervo-suite-native --features plervo-suite/microsoft-store --lib
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Build test-namespace MSIX
+        shell: pwsh
+        run: |
+          packaging/windows/package-suite-store.ps1 -IdentityName Plervo.Suite.StoreValidation -Publisher 'CN=Plervo Store Validation' -PublisherDisplayName Plervo -ValidationOnly
+          packaging/windows/package-suite-store.ps1 -IdentityName Plervo.Suite.StoreValidation -Publisher 'CN=Plervo Store Validation' -PublisherDisplayName Plervo -ValidationOnly -Version 1.0.1.0
+      - name: Native package installation, UI, reinstallation and removal
+        shell: powershell
+        run: |
+          $Package = @(Get-ChildItem dist/suite-store/*-1.0.0.0-*-validation-only.msix)
+          if ($Package.Count -ne 1) { throw 'Expected one test package.' }
+          $Upgrade = @(Get-ChildItem dist/suite-store/*-1.0.1.0-*-validation-only.msix)
+          if ($Upgrade.Count -ne 1) { throw 'Expected one upgrade test package.' }
+          packaging/windows/test-suite-store.ps1 -Path $Package[0].FullName -UpgradePath $Upgrade[0].FullName
+      - name: Render actual Store UI at listing resolution
+        shell: pwsh
+        run: |
+          # Render the same StoreApp at 2x. The runner's 1024x768 monitor limits
+          # native window captures; do not upscale images or invent app inventory.
+          New-Item -ItemType Directory -Path dist/validation/suite-store/listing | Out-Null
+          Add-Type -AssemblyName System.Drawing
+          foreach ($Capture in @(@('en','apps'), @('en','catalog'), @('pt','settings'), @('es','catalog'))) {
+            $env:PLERVO_SUITE_PROBE_LANGUAGE = $Capture[0]
+            $env:PLERVO_SUITE_PROBE_VIEW = $Capture[1]
+            $Png = "dist/validation/suite-store/listing/$($Capture[0])-$($Capture[1]).png"
+            cargo run --locked -p plervo-suite --example shot --features microsoft-store -- $Png
+            if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+            $Image = [Drawing.Image]::FromFile((Join-Path $PWD $Png))
+            try {
+              if ($Image.Width -lt 1366 -or $Image.Height -lt 768) { throw "Store listing image is too small: $Png" }
+            } finally { $Image.Dispose() }
+          }
+          Remove-Item Env:PLERVO_SUITE_PROBE_LANGUAGE, Env:PLERVO_SUITE_PROBE_VIEW
+      - name: Package the reserved Partner Center identity
+        shell: pwsh
+        run: |
+          packaging/windows/package-suite-store.ps1 -IdentityName RicardoBonetti.PlervoSuite -Publisher 'CN=B95B2115-019C-4863-ABF3-046177D1E135' -PublisherDisplayName 'Ricardo Bonetti'
+          $Test = Get-Content -Raw (Get-ChildItem dist/suite-store/*-1.0.0.0-*-validation-only.msix.json).FullName | ConvertFrom-Json
+          $Upload = Get-Content -Raw (Get-ChildItem dist/suite-store/*.msix.json | Where-Object Name -NotLike '*-validation-only*').FullName | ConvertFrom-Json
+          $TestFiles = @($Test.files | Where-Object path -ne 'AppxManifest.xml' | ForEach-Object { "$($_.path):$($_.sha256)" })
+          $UploadFiles = @($Upload.files | Where-Object path -ne 'AppxManifest.xml' | ForEach-Object { "$($_.path):$($_.sha256)" })
+          if (Compare-Object $TestFiles $UploadFiles) { throw 'Upload payload differs from native-tested payload.' }
+      - name: Preserve native acceptance evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: plervo-suite-store-validation-${{ github.sha }}
+          path: dist/validation/suite-store/
+          if-no-files-found: ignore
+          retention-days: 30
+      - name: Preserve packages for review, no automatic publication
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
+        with:
+          name: plervo-suite-store-packages-${{ github.sha }}
+          path: dist/suite-store/
+          if-no-files-found: warn
+          retention-days: 30

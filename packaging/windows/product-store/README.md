@@ -2,9 +2,17 @@
 
 These MSIX packages reuse the pinned public source and Plervo overlays in
 `products/sources.json`. `prepare.py` applies the additional Store overlay and
-records the source, patch, lockfile, font and original license hashes. Video's
-TLS certificate dependencies are updated for RUSTSEC-2026-0382/0383. No new
-advisory exception is introduced. CAD uses the existing reviewed source unchanged.
+records the source, patch, lockfile, font and original license hashes. The current
+base already includes Video's TLS certificate, crypto-bigint and Tokio fixes;
+`overlays.json` is empty to avoid reapplying the obsolete alpha.5 lockfile patch.
+No new advisory exception is introduced. CAD uses the reviewed source unchanged.
+
+October 27, 2026: candidates use the alpha.8 base plus merged security fixes and
+Store package version `1.0.8.0`. The full product matrix passed 37 jobs on PR #18.
+That does not qualify MSIX: the separate Store lifecycle must pass on this revision.
+The installed CAD fixture now uses its existing script-file interface, avoiding
+Windows PowerShell's loss of embedded JSON quotes. GUI capture retains the process
+handle before exit and still requires a recorded zero exit code after normal close.
 
 The Store identities in `apps.json` were read from the personal publisher's
 Partner Center account on 2026-10-21. Reserving an identity is not certification
@@ -12,6 +20,9 @@ or public availability. The apps are independent of Adobe, Autodesk and ArtCraft
 Their source licenses remain **MIT OR Apache-2.0**, with separate notices for
 fonts and other dependencies. Original MIT/Apache texts must remain byte-identical
 to the pinned upstream, and the packages carry NOTICE and asset/vendor notices.
+They also include the complete reviewed `THIRD_PARTY_NOTICES.txt` and its dependency
+inventory. Preparation verifies that inventory against the source; packaging checks
+both copied files against the catalog hashes and native installation rechecks them.
 
 Run `.github/workflows/apps-store.yml` to qualify both apps. It checks source
 formatting, boundaries, asset attribution, dependency policies, full Windows

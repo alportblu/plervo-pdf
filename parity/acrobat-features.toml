@@ -5657,7 +5657,7 @@ status = "shipped"
 commands = ["redact.apply"]
 tools = ["redact_apply"]
 evidence = ["crates/ui-egui/tests/ui_group/redact.rs::marking_applying_and_clearing", "crates/engine/src/tests.rs::redaction_marks_apply_for_good_and_undo", "crates/automation/tests/automation.rs::redacting_through_tools", "crates/engine/src/tests.rs::redaction_is_refused_when_the_page_still_shows_text_under_a_mark", "crates/redact/src/tests.rs::redacted_xobjects_do_not_survive_through_inherited_or_shared_resources"]
-notes = "confirmation; one undo step; next save is a full rewrite. Refused, with nothing changed, when the page still shows text under a mark afterwards: text whose font is set through an ExtGState or taken by a form from its caller, some predefined CMaps and rotated Type 3 fonts are not removed yet, so those documents cannot be redacted. Removed images and forms are unlinked from page-tree resources (own, inherited or shared), not yet from a form's own resources, annotation appearances or patterns"
+notes = "confirmation; one undo step; next save is a full rewrite. Partial vectors, clipping geometry under a mark, interrupted paths and shadings are refused atomically; see protect.redact-vectors. Refused, with nothing changed, when the page still shows text under a mark afterwards: text whose font is set through an ExtGState or taken by a form from its caller, some predefined CMaps and rotated Type 3 fonts are not removed yet, so those documents cannot be redacted. Removed images and forms are unlinked from page-tree resources (own, inherited or shared), not yet from a form's own resources, annotation appearances or patterns"
 
 [[feature]]
 id = "protect.redact-glyph-removal"
@@ -5685,15 +5685,15 @@ notes = "covered pixels cleared in a copy; DCT/JPX/JBIG2/CCITT images removed wh
 
 [[feature]]
 id = "protect.redact-vectors"
-title = "Remove or cut redacted vector paths"
+title = "Remove fully covered vector paths; refuse unsafe partial redaction"
 area = "G"
 tier = "P0"
 milestone = "M8"
 status = "shipped"
 commands = ["redact.apply"]
 tools = ["redact_apply"]
-evidence = ["crates/redact/src/tests.rs::vectors_are_removed_or_clipped_and_inline_images_go"]
-notes = "covered paths removed, others clipped; shadings clipped"
+evidence = ["crates/redact/src/tests.rs::covered_vectors_and_inline_images_are_removed", "crates/redact/src/tests.rs::redaction_refuses_vector_geometry_that_would_only_be_hidden", "crates/redact/src/tests.rs::redaction_refuses_recoverable_geometry_inside_a_form", "crates/redact/src/tests.rs::redaction_refuses_split_vector_paths_and_preserves_all_pages", "crates/engine/src/tests.rs::redaction_refuses_recoverable_vectors_without_changing_the_document"]
+notes = "Completely covered painted paths are removed. Partial paths, clipping geometry under a mark, interrupted paths and shadings are refused, including in nested forms: hiding geometry does not remove its recoverable data. Failure preserves every page and pending mark. Cutting paths and securely rewriting shadings are not implemented."
 
 [[feature]]
 id = "protect.redact-annots-fields"

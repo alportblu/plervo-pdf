@@ -52,6 +52,44 @@ try {
   $Executable = Join-Path $AliasRoot 'plervo-pdf.exe'
   if (-not (Test-Path $Cli) -or -not (Test-Path $Executable)) { throw 'MSIX execution aliases were not registered.' }
   Invoke-Cli @('--version') | Set-Content (Join-Path $Evidence 'cli-version.txt')
+  $Notices = Get-Content -Raw -LiteralPath (Join-Path $Install 'THIRD_PARTY_NOTICES.txt')
+  foreach ($Notice in '2016 Junfeng Liu', '2011 Google Inc.', '2020 Yevhenii Reizner', 'UBUNTU FONT LICENCE', 'Bitstream') {
+    if (-not $Notices.Contains($Notice)) { throw "Missing installed third-party notice: $Notice" }
+  }
+  # A compound painted path holds synthetic digits under a mark and a shape outside it.
+  # Clipping this path used to retain the secret while reporting a successful redaction.
+  $VectorBody = "0 g 50 100 8 50 re 75 142 32 8 re 99 125 8 25 re 75 121 32 8 re 75 100 8 25 re 75 100 32 8 re 220 40 20 20 re f`n"
+  $Objects = @(
+    '<< /Type /Catalog /Pages 2 0 R >>',
+    '<< /Type /Pages /Kids [3 0 R] /Count 1 >>',
+    '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 300 200] /Resources << >> /Contents 4 0 R /Annots [5 0 R] >>',
+    "<< /Length $($VectorBody.Length) >>`nstream`n${VectorBody}endstream",
+    '<< /Type /Annot /Subtype /Redact /Rect [40 90 165 160] /IC [0 0 0] /P 3 0 R >>'
+  )
+  $Pdf = [Text.StringBuilder]::new("%PDF-1.7`n")
+  $Offsets = @()
+  for ($i = 0; $i -lt $Objects.Count; $i++) {
+    $Offsets += $Pdf.Length
+    [void] $Pdf.Append("$($i + 1) 0 obj`n$($Objects[$i])`nendobj`n")
+  }
+  $Xref = $Pdf.Length
+  [void] $Pdf.Append("xref`n0 6`n0000000000 65535 f `n")
+  foreach ($Offset in $Offsets) { [void] $Pdf.Append(('{0:D10} 00000 n ' -f $Offset) + "`n") }
+  [void] $Pdf.Append("trailer`n<< /Size 6 /Root 1 0 R >>`nstartxref`n$Xref`n%%EOF`n")
+  $Vector = Join-Path $Work 'vector.pdf'
+  [IO.File]::WriteAllText($Vector, $Pdf.ToString(), [Text.Encoding]::ASCII)
+  $VectorHash = (Get-FileHash $Vector -Algorithm SHA256).Hash
+  $VectorScript = Join-Path $Work 'vector.json'
+  [IO.File]::WriteAllText($VectorScript, '[{"tool":"doc_open","args":{"path":"vector.pdf"}},{"tool":"redact_apply","args":{"doc":1}},{"tool":"doc_save","args":{"doc":1,"path":"unsafe-output.pdf"}}]', [Text.UTF8Encoding]::new($false))
+  $VectorError = Join-Path $Evidence 'vector-redaction-error.txt'
+  $Probe = Start-Process -FilePath $Cli -ArgumentList @('run', '--root', "`"$Work`"", '--script', "`"$VectorScript`"") -Wait -PassThru -NoNewWindow -RedirectStandardError $VectorError -RedirectStandardOutput (Join-Path $Evidence 'vector-redaction-output.txt')
+  if ($Probe.ExitCode -eq 0 -or (Get-Content -Raw $VectorError) -notmatch 'cannot permanently remove') { throw 'Installed CLI accepted recoverable vector redaction or failed for the wrong reason.' }
+  if ((Test-Path (Join-Path $Work 'unsafe-output.pdf')) -or (Get-FileHash $Vector -Algorithm SHA256).Hash -cne $VectorHash) { throw 'Refused redaction changed a file.' }
+  $TextScript = Join-Path $Work 'text-redaction.json'
+  [IO.File]::WriteAllText($TextScript, '[{"tool":"doc_create","args":{"from":"text","text":"Public SECRET42 remains"}},{"tool":"redact_mark","args":{"doc":1,"find":"SECRET42"}},{"tool":"redact_apply","args":{"doc":1}},{"tool":"doc_save","args":{"doc":1,"path":"safe-output.pdf"}}]', [Text.UTF8Encoding]::new($false))
+  [void] (Invoke-Cli @('run', '--root', $Work, '--script', $TextScript))
+  $RedactedText = (Invoke-Cli @('text', (Join-Path $Work 'safe-output.pdf'))) -join "`n"
+  if ($RedactedText.Contains('SECRET42') -or -not $RedactedText.Contains('Public') -or -not $RedactedText.Contains('remains')) { throw 'Installed CLI failed ordinary text redaction.' }
   $Ocr = Invoke-Cli @('run', 'ocr_status') | ConvertFrom-Json
   if (-not $Ocr.available) { throw 'Packaged OCR models were not found.' }
   $Steps = Join-Path $Work 'create.json'

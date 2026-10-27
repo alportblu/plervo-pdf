@@ -3,6 +3,11 @@
 
 mod probe;
 
+#[cfg(feature = "microsoft-store")]
+use plervo_suite::{StoreApp as App, store_headless as headless};
+#[cfg(not(feature = "microsoft-store"))]
+use plervo_suite::{SuiteApp as App, headless};
+
 fn main() {
     let args: Vec<String> = std::env::args().skip(1).collect();
     if args.first().is_some_and(|s| s == "--version") {
@@ -16,7 +21,7 @@ fn main() {
         std::process::exit(1);
     }
     if !args.is_empty() && probe_path.is_none() {
-        if let Err(error) = plervo_suite::headless(&args) {
+        if let Err(error) = headless(&args) {
             eprintln!("{error}");
             std::process::exit(1);
         }
@@ -43,9 +48,7 @@ fn main() {
     if let Err(error) = eframe::run_native(
         "Plervo Suite",
         options,
-        Box::new(move |cc| {
-            if let Some(path) = capture { Ok(Box::new(probe::Probe::new(cc, path, recorded))) } else { Ok(Box::new(plervo_suite::SuiteApp::new(cc))) }
-        }),
+        Box::new(move |cc| if let Some(path) = capture { Ok(Box::new(probe::Probe::new(cc, path, recorded))) } else { Ok(Box::new(App::new(cc))) }),
     ) {
         eprintln!("{error}");
         std::process::exit(1);

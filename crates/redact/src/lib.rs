@@ -1,9 +1,11 @@
 //! Redaction (architecture §11.2, execution plan M8.5–M8.7). Layer L4.
 //!
 //! Content is marked for redaction with Redact annotations (§12.5.6.23); `pdfcraft-annot`
-//! creates them. [`apply`] then removes everything under the marks, for good:
+//! creates them. [`apply`] removes supported content under the marks and refuses known
+//! unsupported cases:
 //! - text glyphs (the rest of each line keeps its position), inline images, and paths that the
-//!   marks cover; images and vectors partly under a mark lose the covered part;
+//!   marks cover; images partly under a mark lose the covered pixels. Unsupported vector
+//!   geometry is refused rather than hidden behind a recoverable clip;
 //! - content inside form XObjects (rewritten as new objects, so pages sharing them keep theirs);
 //! - comments, links and form fields whose rectangle overlaps a mark;
 //! - the marks themselves, replaced by boxes in their fill colour (with their overlay text)
@@ -46,6 +48,10 @@ pub enum RedactError {
         "page {0} has vertical-writing text while a redaction mark is pending, and Plervo PDF cannot tell whether that text lies under the mark yet, so nothing was changed"
     )]
     VerticalText(usize),
+    #[error(
+        "page {0} contains vector or shading content that Plervo PDF cannot permanently remove under these marks. Redaction was not applied and nothing was changed; do not share the document as redacted"
+    )]
+    UnsafeVectors(usize),
     #[error(transparent)]
     Edit(#[from] pdfcraft_edit::EditError),
     #[error(transparent)]
@@ -109,6 +115,7 @@ pub struct Report {
     pub images_removed: usize,
     pub images_cleared: usize,
     pub paths_removed: usize,
+    /// Always zero: clipping preserves recoverable geometry and is no longer accepted.
     pub paths_clipped: usize,
     pub forms_rewritten: usize,
     pub forms_removed: usize,
@@ -368,8 +375,15 @@ fn localize_resources(doc: &mut Document, selected: &[usize]) -> Result<(), pdfc
 }
 
 /// Apply every redaction mark (or only those on `pages`, 0-based). Irreversible for the saved
-/// file; callers keep the previous document for undo.
+/// file; callers keep the previous document for undo. Errors leave `doc` unchanged.
 pub fn apply(doc: &mut Document, pages: Option<&[usize]>) -> Result<Report, RedactError> {
+    let mut working = doc.clone();
+    let report = apply_inner(&mut working, pages)?;
+    *doc = working;
+    Ok(report)
+}
+
+fn apply_inner(doc: &mut Document, pages: Option<&[usize]>) -> Result<Report, RedactError> {
     let all_marks = marks(doc);
     let chosen: Vec<&Mark> = all_marks.iter().filter(|m| pages.is_none_or(|p| p.contains(&m.page))).collect();
     if chosen.is_empty() {
@@ -414,6 +428,9 @@ pub fn apply(doc: &mut Document, pages: Option<&[usize]>) -> Result<Report, Reda
         // removal is a future enhancement.
         if out.vertical {
             return Err(RedactError::VerticalText(pi + 1));
+        }
+        if out.unsafe_vectors {
+            return Err(RedactError::UnsafeVectors(pi + 1));
         }
         doomed_xobjects.extend_from_slice(&out.doomed);
         let mut new_list = list.clone();

@@ -53,7 +53,7 @@ index 9ca8e5e..7a9c293 100644
 +| `assets/app-icon/plervo-slides.ico` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 d6b064274b5e14a1e4003c6356202318f7300f75241e6cc0d71b9260d09155d7 |
 +| `assets/app-icon/plervo-slides.svg` | Plervo contributors | Original vector family, 2026-10-16 | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) | Native app identity; SHA-256 0b67772ec5dc6840df0e25603e7acafa72fd49e0e93ca0ee2006fc70f3ebbc08 |
 diff --git a/Cargo.lock b/Cargo.lock
-index 4cf2cd8..09ea7cb 100644
+index 4cf2cd8..6f3a71e 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -202,15 +202,6 @@ version = "1.0.104"
@@ -114,7 +114,7 @@ index 4cf2cd8..09ea7cb 100644
  [[package]]
  name = "deckcraft-anim"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "deckcraft-geom",
   "deckcraft-model",
@@ -123,7 +123,7 @@ index 4cf2cd8..09ea7cb 100644
  [[package]]
  name = "deckcraft-av1"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "deckcraft-bitstream",
   "rayon",
@@ -132,7 +132,7 @@ index 4cf2cd8..09ea7cb 100644
  [[package]]
  name = "deckcraft-bitstream"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "proptest",
  ]
@@ -149,7 +149,7 @@ index 4cf2cd8..09ea7cb 100644
  [[package]]
  name = "deckcraft-color"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "serde",
  ]
@@ -157,7 +157,7 @@ index 4cf2cd8..09ea7cb 100644
  [[package]]
  name = "deckcraft-engine"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "deckcraft-color",
   "deckcraft-fonts",
@@ -166,7 +166,7 @@ index 4cf2cd8..09ea7cb 100644
  [[package]]
  name = "deckcraft-fonts"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "epaint_default_fonts",
   "harfrust 0.13.3",
@@ -175,7 +175,7 @@ index 4cf2cd8..09ea7cb 100644
  [[package]]
  name = "deckcraft-format"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "deckcraft-model",
   "serde",
@@ -184,7 +184,7 @@ index 4cf2cd8..09ea7cb 100644
  [[package]]
  name = "deckcraft-geom"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "kurbo",
   "serde",
@@ -193,7 +193,7 @@ index 4cf2cd8..09ea7cb 100644
  [[package]]
  name = "deckcraft-h264"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "deckcraft-bitstream",
   "rayon",
@@ -202,7 +202,7 @@ index 4cf2cd8..09ea7cb 100644
  [[package]]
  name = "deckcraft-hevc"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "deckcraft-bitstream",
   "rayon",
@@ -211,7 +211,7 @@ index 4cf2cd8..09ea7cb 100644
  [[package]]
  name = "deckcraft-isobmff"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "deckcraft-bitstream",
   "thiserror 2.0.21",
@@ -220,12 +220,12 @@ index 4cf2cd8..09ea7cb 100644
  [[package]]
  name = "deckcraft-matroska"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  
  [[package]]
  name = "deckcraft-mcp"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "deckcraft-engine",
   "deckcraft-render",
@@ -237,7 +237,7 @@ index 4cf2cd8..09ea7cb 100644
  [[package]]
  name = "deckcraft-media"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "deckcraft-av1",
   "deckcraft-h264",
@@ -246,7 +246,7 @@ index 4cf2cd8..09ea7cb 100644
  [[package]]
  name = "deckcraft-metafile"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "kurbo",
   "thiserror 2.0.21",
@@ -255,7 +255,7 @@ index 4cf2cd8..09ea7cb 100644
  [[package]]
  name = "deckcraft-model"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "deckcraft-color",
   "deckcraft-geom",
@@ -264,17 +264,17 @@ index 4cf2cd8..09ea7cb 100644
  [[package]]
  name = "deckcraft-ogg"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  
  [[package]]
  name = "deckcraft-opus"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  
  [[package]]
  name = "deckcraft-pdf"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "deckcraft-fonts",
   "deckcraft-model",
@@ -289,7 +289,7 @@ index 4cf2cd8..09ea7cb 100644
  [[package]]
  name = "deckcraft-pptx"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "deckcraft-color",
   "deckcraft-engine",
@@ -307,7 +307,7 @@ index 4cf2cd8..09ea7cb 100644
  [[package]]
  name = "deckcraft-render"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "deckcraft-anim",
   "deckcraft-color",
@@ -316,7 +316,7 @@ index 4cf2cd8..09ea7cb 100644
  [[package]]
  name = "deckcraft-text"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "chrono",
   "deckcraft-color",
@@ -325,7 +325,7 @@ index 4cf2cd8..09ea7cb 100644
  [[package]]
  name = "deckcraft-ui-egui"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "deckcraft-anim",
   "deckcraft-color",
@@ -334,7 +334,7 @@ index 4cf2cd8..09ea7cb 100644
  [[package]]
  name = "deckcraft-vp9"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "deckcraft-bitstream",
   "rayon",
@@ -343,7 +343,7 @@ index 4cf2cd8..09ea7cb 100644
  [[package]]
  name = "deckcraft-web"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "deckcraft-engine",
   "deckcraft-ui-egui",
@@ -398,7 +398,7 @@ index 4cf2cd8..09ea7cb 100644
  
 +[[package]]
 +name = "plervo-slides"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
 +dependencies = [
 + "arboard",
 + "cpal",
@@ -418,7 +418,7 @@ index 4cf2cd8..09ea7cb 100644
 +
 +[[package]]
 +name = "plervo-slides-cli"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
 +dependencies = [
 + "deckcraft-engine",
 + "deckcraft-mcp",
@@ -550,7 +550,7 @@ index 4cf2cd8..09ea7cb 100644
  [[package]]
  name = "xtask"
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "serde_json",
  ]
@@ -575,7 +575,7 @@ index 4cf2cd8..09ea7cb 100644
  ]
  
 diff --git a/Cargo.toml b/Cargo.toml
-index 5bb1f9a..f0a8a24 100644
+index 5bb1f9a..259ced8 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -583,7 +583,7 @@ index 5bb1f9a..f0a8a24 100644
  
  [workspace.package]
 -version = "0.7.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.90"
@@ -3754,15 +3754,16 @@ index f7e24c7..e9351b1 100644
  headless engine (no window); with `--connect PORT` it drives a running DeckCraft started with
  `--control PORT`, so an agent and a person can work on the same deck. `--sample` opens the sample
 diff --git a/packaging/common.sh b/packaging/common.sh
-index bcb3695..2157f9f 100644
+index bcb3695..d5d924b 100644
 --- a/packaging/common.sh
 +++ b/packaging/common.sh
-@@ -48,10 +48,17 @@ warn() {
+@@ -48,10 +48,18 @@ warn() {
  # Copy licence and readme files that exist into a package directory.
  copy_docs() {
    local dest="$1" f
 -  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT; do
-+  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md; do
++  python3 "$ROOT/packaging/licenses/verify.py" "$ROOT" || return 1
++  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md THIRD_PARTY_NOTICES.txt; do
      if [ -f "$ROOT/$f" ]; then cp "$ROOT/$f" "$dest/"; fi
    done
    copy_font_licences "$dest"
@@ -3913,86 +3914,6 @@ index 4f6471e..0000000
 -Categories=Office;Presentation;
 -MimeType=application/x-deckcraft;application/vnd.openxmlformats-officedocument.presentationml.presentation;application/vnd.openxmlformats-officedocument.presentationml.template;application/vnd.openxmlformats-officedocument.presentationml.slideshow;
 -Keywords=presentation;slides;slide show;deck;pptx;keynote;powerpoint;
-diff --git a/packaging/linux/ai.storyteller.deckcraft.metainfo.xml.in b/packaging/linux/ai.storyteller.deckcraft.metainfo.xml.in
-deleted file mode 100644
-index 4e6f0ae..0000000
---- a/packaging/linux/ai.storyteller.deckcraft.metainfo.xml.in
-+++ /dev/null
-@@ -1,59 +0,0 @@
--<?xml version="1.0" encoding="UTF-8"?>
--<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
--     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
--<component type="desktop-application">
--  <id>ai.storyteller.deckcraft</id>
--  <metadata_license>CC0-1.0</metadata_license>
--  <project_license>MIT OR Apache-2.0</project_license>
--  <name>DeckCraft</name>
--  <summary>Create and present slide decks</summary>
--  <developer id="ai.storyteller">
--    <name>Learning Machines LLC</name>
--  </developer>
--  <description>
--    <p>
--      DeckCraft builds presentations and slide shows: themes, layouts, shapes, pictures,
--      tables, charts, transitions and animations. It opens and saves PowerPoint (.pptx) files
--      and presents them full screen with a presenter view.
--    </p>
--    <p>
--      Every action is also a command that the command line and AI agents (through MCP) can drive.
--    </p>
--  </description>
--  <launchable type="desktop-id">ai.storyteller.deckcraft.desktop</launchable>
--  <icon type="stock">ai.storyteller.deckcraft</icon>
--  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
--  <url type="homepage">https://getartcraft.com/apps/deckcraft</url>
--  <url type="bugtracker">https://github.com/storytold/deckcraft/issues</url>
--  <url type="help">https://github.com/storytold/deckcraft</url>
--  <url type="contact">https://discord.gg/artcraft</url>
--  <categories>
--    <category>Office</category>
--    <category>Presentation</category>
--  </categories>
--  <keywords>
--    <keyword>presentation</keyword>
--    <keyword>slides</keyword>
--    <keyword>slide show</keyword>
--    <keyword>pptx</keyword>
--  </keywords>
--  <branding>
--    <color type="primary" scheme_preference="light">#ffc9a8</color>
--    <color type="primary" scheme_preference="dark">#b8471f</color>
--  </branding>
--  <requires>
--    <display_length compare="ge">760</display_length>
--  </requires>
--  <supports>
--    <control>keyboard</control>
--    <control>pointing</control>
--  </supports>
--  <provides>
--    <binary>deckcraft</binary>
--    <mediatype>application/x-deckcraft</mediatype>
--  </provides>
--  <content_rating type="oars-1.1"/>
--  <releases>
--    <release version="@VERSION@" date="@DATE@"/>
--  </releases>
--</component>
-diff --git a/packaging/linux/ai.storyteller.deckcraft.mime.xml b/packaging/linux/ai.storyteller.deckcraft.mime.xml
-deleted file mode 100644
-index 64e2c01..0000000
---- a/packaging/linux/ai.storyteller.deckcraft.mime.xml
-+++ /dev/null
-@@ -1,9 +0,0 @@
--<?xml version="1.0" encoding="UTF-8"?>
--<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
--  <mime-type type="application/x-deckcraft">
--    <comment>DeckCraft presentation</comment>
--    <sub-class-of type="application/zip"/>
--    <glob pattern="*.deckcraft"/>
--    <icon name="ai.storyteller.deckcraft"/>
--  </mime-type>
--</mime-info>
 diff --git a/packaging/linux/com.plervo.slides.desktop b/packaging/linux/com.plervo.slides.desktop
 new file mode 100644
 index 0000000..e67dcf2
@@ -4013,86 +3934,86 @@ index 0000000..e67dcf2
 +Categories=Office;Presentation;
 +MimeType=application/x-plervo-slides;application/vnd.openxmlformats-officedocument.presentationml.presentation;application/vnd.openxmlformats-officedocument.presentationml.template;application/vnd.openxmlformats-officedocument.presentationml.slideshow;
 +Keywords=presentation;slides;slide show;deck;pptx;keynote;powerpoint;
-diff --git a/packaging/linux/com.plervo.slides.metainfo.xml.in b/packaging/linux/com.plervo.slides.metainfo.xml.in
-new file mode 100644
-index 0000000..9795fe4
---- /dev/null
+diff --git a/packaging/linux/ai.storyteller.deckcraft.metainfo.xml.in b/packaging/linux/com.plervo.slides.metainfo.xml.in
+similarity index 70%
+rename from packaging/linux/ai.storyteller.deckcraft.metainfo.xml.in
+rename to packaging/linux/com.plervo.slides.metainfo.xml.in
+index 4e6f0ae..9795fe4 100644
+--- a/packaging/linux/ai.storyteller.deckcraft.metainfo.xml.in
 +++ b/packaging/linux/com.plervo.slides.metainfo.xml.in
-@@ -0,0 +1,59 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
-+     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
-+<component type="desktop-application">
+@@ -2,17 +2,17 @@
+ <!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
+      manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
+ <component type="desktop-application">
+-  <id>ai.storyteller.deckcraft</id>
 +  <id>com.plervo.slides</id>
-+  <metadata_license>CC0-1.0</metadata_license>
-+  <project_license>MIT OR Apache-2.0</project_license>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_license>MIT OR Apache-2.0</project_license>
+-  <name>DeckCraft</name>
 +  <name>Plervo Slides</name>
-+  <summary>Create and present slide decks</summary>
-+  <developer id="ai.storyteller">
+   <summary>Create and present slide decks</summary>
+   <developer id="ai.storyteller">
+-    <name>Learning Machines LLC</name>
 +    <name>Maintech Solutions LLC</name>
-+  </developer>
-+  <description>
-+    <p>
+   </developer>
+   <description>
+     <p>
+-      DeckCraft builds presentations and slide shows: themes, layouts, shapes, pictures,
 +      Plervo Slides builds presentations and slide shows: themes, layouts, shapes, pictures,
-+      tables, charts, transitions and animations. It opens and saves PowerPoint (.pptx) files
-+      and presents them full screen with a presenter view.
-+    </p>
-+    <p>
-+      Every action is also a command that the command line and AI agents (through MCP) can drive.
-+    </p>
-+  </description>
+       tables, charts, transitions and animations. It opens and saves PowerPoint (.pptx) files
+       and presents them full screen with a presenter view.
+     </p>
+@@ -20,13 +20,13 @@
+       Every action is also a command that the command line and AI agents (through MCP) can drive.
+     </p>
+   </description>
+-  <launchable type="desktop-id">ai.storyteller.deckcraft.desktop</launchable>
+-  <icon type="stock">ai.storyteller.deckcraft</icon>
 +  <launchable type="desktop-id">com.plervo.slides.desktop</launchable>
 +  <icon type="stock">com.plervo.slides</icon>
-+  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
+   <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
+-  <url type="homepage">https://getartcraft.com/apps/deckcraft</url>
+-  <url type="bugtracker">https://github.com/storytold/deckcraft/issues</url>
+-  <url type="help">https://github.com/storytold/deckcraft</url>
+-  <url type="contact">https://discord.gg/artcraft</url>
 +  <url type="homepage">https://plervo.com/</url>
 +  <url type="bugtracker">https://github.com/alportblu/plervo-pdf/issues</url>
 +  <url type="help">https://github.com/alportblu/plervo-pdf</url>
 +  <url type="contact">https://buymeacoffee.com/alport</url>
-+  <categories>
-+    <category>Office</category>
-+    <category>Presentation</category>
-+  </categories>
-+  <keywords>
-+    <keyword>presentation</keyword>
-+    <keyword>slides</keyword>
-+    <keyword>slide show</keyword>
-+    <keyword>pptx</keyword>
-+  </keywords>
-+  <branding>
-+    <color type="primary" scheme_preference="light">#ffc9a8</color>
-+    <color type="primary" scheme_preference="dark">#b8471f</color>
-+  </branding>
-+  <requires>
-+    <display_length compare="ge">760</display_length>
-+  </requires>
-+  <supports>
-+    <control>keyboard</control>
-+    <control>pointing</control>
-+  </supports>
-+  <provides>
+   <categories>
+     <category>Office</category>
+     <category>Presentation</category>
+@@ -49,8 +49,8 @@
+     <control>pointing</control>
+   </supports>
+   <provides>
+-    <binary>deckcraft</binary>
+-    <mediatype>application/x-deckcraft</mediatype>
 +    <binary>plervo-slides</binary>
 +    <mediatype>application/x-plervo-slides</mediatype>
-+  </provides>
-+  <content_rating type="oars-1.1"/>
-+  <releases>
-+    <release version="@VERSION@" date="@DATE@"/>
-+  </releases>
-+</component>
-diff --git a/packaging/linux/com.plervo.slides.mime.xml b/packaging/linux/com.plervo.slides.mime.xml
-new file mode 100644
-index 0000000..71584d6
---- /dev/null
+   </provides>
+   <content_rating type="oars-1.1"/>
+   <releases>
+diff --git a/packaging/linux/ai.storyteller.deckcraft.mime.xml b/packaging/linux/com.plervo.slides.mime.xml
+similarity index 61%
+rename from packaging/linux/ai.storyteller.deckcraft.mime.xml
+rename to packaging/linux/com.plervo.slides.mime.xml
+index 64e2c01..71584d6 100644
+--- a/packaging/linux/ai.storyteller.deckcraft.mime.xml
 +++ b/packaging/linux/com.plervo.slides.mime.xml
-@@ -0,0 +1,9 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+@@ -1,9 +1,9 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+-  <mime-type type="application/x-deckcraft">
+-    <comment>DeckCraft presentation</comment>
 +  <mime-type type="application/x-plervo-slides">
 +    <comment>Plervo Slides presentation</comment>
-+    <sub-class-of type="application/zip"/>
-+    <glob pattern="*.deckcraft"/>
+     <sub-class-of type="application/zip"/>
+     <glob pattern="*.deckcraft"/>
+-    <icon name="ai.storyteller.deckcraft"/>
 +    <icon name="com.plervo.slides"/>
-+  </mime-type>
-+</mime-info>
+   </mime-type>
+ </mime-info>
 diff --git a/packaging/linux/flatpak-bundle.sh b/packaging/linux/flatpak-bundle.sh
 index 3097755..355263b 100755
 --- a/packaging/linux/flatpak-bundle.sh
@@ -4159,266 +4080,143 @@ index 3097755..355263b 100755
    flatpak run --command=sh "$APP_ID" -c 'ls /app/share/applications /app/share/metainfo /app/share/mime/packages /app/share/icons/hicolor/256x256/apps'
  fi
  echo "==> done"
-diff --git a/packaging/linux/flatpak/ai.storyteller.deckcraft.bundle.yml b/packaging/linux/flatpak/ai.storyteller.deckcraft.bundle.yml
-deleted file mode 100644
-index 6245147..0000000
+diff --git a/packaging/linux/flatpak/ai.storyteller.deckcraft.bundle.yml b/packaging/linux/flatpak/com.plervo.slides.bundle.yml
+similarity index 63%
+rename from packaging/linux/flatpak/ai.storyteller.deckcraft.bundle.yml
+rename to packaging/linux/flatpak/com.plervo.slides.bundle.yml
+index 6245147..333b8b3 100644
 --- a/packaging/linux/flatpak/ai.storyteller.deckcraft.bundle.yml
-+++ /dev/null
-@@ -1,51 +0,0 @@
--# Flatpak manifest for the single-file bundle attached to every GitHub release
++++ b/packaging/linux/flatpak/com.plervo.slides.bundle.yml
+@@ -1,7 +1,7 @@
+ # Flatpak manifest for the single-file bundle attached to every GitHub release
 -# (deckcraft-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
--#
++# (plervo-slides-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
+ #
 -# It repackages the release's own Linux tarball (deckcraft-<version>-linux-<arch>.tar.gz, built
--# on Ubuntu 22.04 by package.sh with the craft-fonts embedded) instead of compiling Rust inside
--# flatpak-builder: no network and no vendored crate sources during the build, a few seconds
--# instead of 20+ minutes, and byte-for-byte the same binaries as the AppImage/deb/rpm. The script
--# unpacks the tarball into `stage/` next to a copy of this file. The binaries need glibc >= 2.35
--# and load X11, Wayland, xkbcommon, Vulkan and ALSA at runtime; the freedesktop runtime has all
--# of them, and the GPU driver comes from its org.freedesktop.Platform.GL extension.
--#
++# It repackages the release's own Linux tarball (plervo-slides-<version>-linux-<arch>.tar.gz, built
+ # on Ubuntu 22.04 by package.sh with the craft-fonts embedded) instead of compiling Rust inside
+ # flatpak-builder: no network and no vendored crate sources during the build, a few seconds
+ # instead of 20+ minutes, and byte-for-byte the same binaries as the AppImage/deb/rpm. The script
+@@ -9,13 +9,13 @@
+ # and load X11, Wayland, xkbcommon, Vulkan and ALSA at runtime; the freedesktop runtime has all
+ # of them, and the GPU driver comes from its org.freedesktop.Platform.GL extension.
+ #
 -# ai.storyteller.deckcraft.yml (same directory) is the from-source manifest for Flathub. Keep
--# runtime-version and finish-args identical in both (packaging-lint checks this).
++# com.plervo.slides.yml (same directory) is the from-source manifest for Flathub. Keep
+ # runtime-version and finish-args identical in both (packaging-lint checks this).
 -id: ai.storyteller.deckcraft
--runtime: org.freedesktop.Platform
--runtime-version: '25.08'
--sdk: org.freedesktop.Sdk
++id: com.plervo.slides
+ runtime: org.freedesktop.Platform
+ runtime-version: '25.08'
+ sdk: org.freedesktop.Sdk
 -command: deckcraft
--finish-args:
--  # Display: Wayland first; X11 only when no Wayland compositor is running.
--  - --socket=wayland
--  - --socket=fallback-x11
--  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
--  - --share=ipc
--  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
--  - --device=dri
--  # Sound for audio and video in slide shows (cpal over ALSA, routed to PulseAudio/PipeWire by
--  # the runtime's ALSA plugin).
--  - --socket=pulseaudio
--  # Open/Save dialogs go through the file-chooser portal (rfd) and drag-and-drop through the
--  # document portal, so picked files work anywhere without broad filesystem access. Documents is
--  # granted so decks passed by path (the command line, Open Recent) work in the usual place.
--  - --filesystem=xdg-documents
--  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
++command: plervo-slides
+ finish-args:
+   # Display: Wayland first; X11 only when no Wayland compositor is running.
+   - --socket=wayland
+@@ -32,20 +32,20 @@ finish-args:
+   # granted so decks passed by path (the command line, Open Recent) work in the usual place.
+   - --filesystem=xdg-documents
+   # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
 -  # the sandbox; `flatpak override --user --share=network ai.storyteller.deckcraft` exposes it to
--  # host agents) and home/host filesystem access.
--modules:
++  # the sandbox; `flatpak override --user --share=network com.plervo.slides` exposes it to
+   # host agents) and home/host filesystem access.
+ modules:
 -  - name: deckcraft
--    buildsystem: simple
--    build-commands:
++  - name: plervo-slides
+     buildsystem: simple
+     build-commands:
 -      - install -Dm755 bin/deckcraft /app/bin/deckcraft
 -      - install -Dm755 bin/deckcraft-cli /app/bin/deckcraft-cli
 -      - install -Dm644 share/applications/ai.storyteller.deckcraft.desktop /app/share/applications/ai.storyteller.deckcraft.desktop
 -      # .deckcraft; the runtime's shared-mime-info already knows the PowerPoint types.
 -      - install -Dm644 share/mime/packages/ai.storyteller.deckcraft.xml /app/share/mime/packages/ai.storyteller.deckcraft.xml
--      # Already has the release's version and date substituted by package.sh.
--      - install -Dm644 share/metainfo/ai.storyteller.deckcraft.metainfo.xml /app/share/metainfo/ai.storyteller.deckcraft.metainfo.xml
--      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/deckcraft /app/share/doc/
--    sources:
--      - type: dir
--        path: stage
-diff --git a/packaging/linux/flatpak/ai.storyteller.deckcraft.yml b/packaging/linux/flatpak/ai.storyteller.deckcraft.yml
-deleted file mode 100644
-index 85abe9a..0000000
---- a/packaging/linux/flatpak/ai.storyteller.deckcraft.yml
-+++ /dev/null
-@@ -1,67 +0,0 @@
--# Flatpak manifest for DeckCraft, ready for a Flathub submission.
--#
--# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
--#
--#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
--#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
--#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.deckcraft.yml
--#   flatpak run ai.storyteller.deckcraft
--#
--# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
--# The release's .flatpak bundles are built from ai.storyteller.deckcraft.bundle.yml instead (it
--# repackages the Linux tarball); keep runtime-version and finish-args identical in both.
--id: ai.storyteller.deckcraft
--runtime: org.freedesktop.Platform
--runtime-version: '25.08'
--sdk: org.freedesktop.Sdk
--sdk-extensions:
--  - org.freedesktop.Sdk.Extension.rust-stable
--command: deckcraft
--finish-args:
--  # Display: Wayland first; X11 only when no Wayland compositor is running.
--  - --socket=wayland
--  - --socket=fallback-x11
--  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
--  - --share=ipc
--  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
--  - --device=dri
--  # Sound for audio and video in slide shows (cpal over ALSA, routed to PulseAudio/PipeWire by
--  # the runtime's ALSA plugin).
--  - --socket=pulseaudio
--  # Open/Save dialogs go through the file-chooser portal (rfd) and drag-and-drop through the
--  # document portal, so picked files work anywhere without broad filesystem access. Documents is
--  # granted so decks passed by path (the command line, Open Recent) work in the usual place.
--  - --filesystem=xdg-documents
--  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
--  # the sandbox; `flatpak override --user --share=network ai.storyteller.deckcraft` exposes it to
--  # host agents) and home/host filesystem access.
--build-options:
--  append-path: /usr/lib/sdk/rust-stable/bin
--modules:
--  - name: deckcraft
--    buildsystem: simple
--    build-options:
--      env:
--        CARGO_HOME: /run/build/deckcraft/cargo
--        CARGO_NET_OFFLINE: 'true'
--    build-commands:
--      - cargo --offline build --release --locked -p deckcraft
--      - install -Dm755 target/release/deckcraft /app/bin/deckcraft
--      - install -Dm644 packaging/linux/ai.storyteller.deckcraft.desktop /app/share/applications/ai.storyteller.deckcraft.desktop
--      - install -Dm644 packaging/linux/ai.storyteller.deckcraft.mime.xml /app/share/mime/packages/ai.storyteller.deckcraft.xml
--      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
--      - >-
--        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
--        install -d /app/share/metainfo;
--        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
--        packaging/linux/ai.storyteller.deckcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.deckcraft.metainfo.xml
--    sources:
--      - type: dir
--        path: ../../..
--        skip:
--          - target
--          - dist
--          - corpus
--          - build-flatpak
--          - .flatpak-builder
--      - cargo-sources.json
-diff --git a/packaging/linux/flatpak/com.plervo.slides.bundle.yml b/packaging/linux/flatpak/com.plervo.slides.bundle.yml
-new file mode 100644
-index 0000000..333b8b3
---- /dev/null
-+++ b/packaging/linux/flatpak/com.plervo.slides.bundle.yml
-@@ -0,0 +1,51 @@
-+# Flatpak manifest for the single-file bundle attached to every GitHub release
-+# (plervo-slides-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
-+#
-+# It repackages the release's own Linux tarball (plervo-slides-<version>-linux-<arch>.tar.gz, built
-+# on Ubuntu 22.04 by package.sh with the craft-fonts embedded) instead of compiling Rust inside
-+# flatpak-builder: no network and no vendored crate sources during the build, a few seconds
-+# instead of 20+ minutes, and byte-for-byte the same binaries as the AppImage/deb/rpm. The script
-+# unpacks the tarball into `stage/` next to a copy of this file. The binaries need glibc >= 2.35
-+# and load X11, Wayland, xkbcommon, Vulkan and ALSA at runtime; the freedesktop runtime has all
-+# of them, and the GPU driver comes from its org.freedesktop.Platform.GL extension.
-+#
-+# com.plervo.slides.yml (same directory) is the from-source manifest for Flathub. Keep
-+# runtime-version and finish-args identical in both (packaging-lint checks this).
-+id: com.plervo.slides
-+runtime: org.freedesktop.Platform
-+runtime-version: '25.08'
-+sdk: org.freedesktop.Sdk
-+command: plervo-slides
-+finish-args:
-+  # Display: Wayland first; X11 only when no Wayland compositor is running.
-+  - --socket=wayland
-+  - --socket=fallback-x11
-+  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
-+  - --share=ipc
-+  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
-+  - --device=dri
-+  # Sound for audio and video in slide shows (cpal over ALSA, routed to PulseAudio/PipeWire by
-+  # the runtime's ALSA plugin).
-+  - --socket=pulseaudio
-+  # Open/Save dialogs go through the file-chooser portal (rfd) and drag-and-drop through the
-+  # document portal, so picked files work anywhere without broad filesystem access. Documents is
-+  # granted so decks passed by path (the command line, Open Recent) work in the usual place.
-+  - --filesystem=xdg-documents
-+  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
-+  # the sandbox; `flatpak override --user --share=network com.plervo.slides` exposes it to
-+  # host agents) and home/host filesystem access.
-+modules:
-+  - name: plervo-slides
-+    buildsystem: simple
-+    build-commands:
 +      - install -Dm755 bin/plervo-slides /app/bin/plervo-slides
 +      - install -Dm755 bin/plervo-slides-cli /app/bin/plervo-slides-cli
 +      - install -Dm644 share/applications/com.plervo.slides.desktop /app/share/applications/com.plervo.slides.desktop
 +      # .plervo-slides; the runtime's shared-mime-info already knows the PowerPoint types.
 +      - install -Dm644 share/mime/packages/com.plervo.slides.xml /app/share/mime/packages/com.plervo.slides.xml
-+      # Already has the release's version and date substituted by package.sh.
+       # Already has the release's version and date substituted by package.sh.
+-      - install -Dm644 share/metainfo/ai.storyteller.deckcraft.metainfo.xml /app/share/metainfo/ai.storyteller.deckcraft.metainfo.xml
+-      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/deckcraft /app/share/doc/
 +      - install -Dm644 share/metainfo/com.plervo.slides.metainfo.xml /app/share/metainfo/com.plervo.slides.metainfo.xml
 +      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/plervo-slides /app/share/doc/
-+    sources:
-+      - type: dir
-+        path: stage
-diff --git a/packaging/linux/flatpak/com.plervo.slides.yml b/packaging/linux/flatpak/com.plervo.slides.yml
-new file mode 100644
-index 0000000..d0a7653
---- /dev/null
+     sources:
+       - type: dir
+         path: stage
+diff --git a/packaging/linux/flatpak/ai.storyteller.deckcraft.yml b/packaging/linux/flatpak/com.plervo.slides.yml
+similarity index 70%
+rename from packaging/linux/flatpak/ai.storyteller.deckcraft.yml
+rename to packaging/linux/flatpak/com.plervo.slides.yml
+index 85abe9a..d0a7653 100644
+--- a/packaging/linux/flatpak/ai.storyteller.deckcraft.yml
 +++ b/packaging/linux/flatpak/com.plervo.slides.yml
-@@ -0,0 +1,67 @@
+@@ -1,22 +1,22 @@
+-# Flatpak manifest for DeckCraft, ready for a Flathub submission.
 +# Flatpak manifest for Plervo Slides, ready for a Flathub submission.
-+#
-+# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
-+#
-+#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
-+#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
+ #
+ # Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
+ #
+ #   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
+ #   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
+-#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.deckcraft.yml
+-#   flatpak run ai.storyteller.deckcraft
 +#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/com.plervo.slides.yml
 +#   flatpak run com.plervo.slides
-+#
-+# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
+ #
+ # For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
+-# The release's .flatpak bundles are built from ai.storyteller.deckcraft.bundle.yml instead (it
 +# The release's .flatpak bundles are built from com.plervo.slides.bundle.yml instead (it
-+# repackages the Linux tarball); keep runtime-version and finish-args identical in both.
+ # repackages the Linux tarball); keep runtime-version and finish-args identical in both.
+-id: ai.storyteller.deckcraft
 +id: com.plervo.slides
-+runtime: org.freedesktop.Platform
-+runtime-version: '25.08'
-+sdk: org.freedesktop.Sdk
-+sdk-extensions:
-+  - org.freedesktop.Sdk.Extension.rust-stable
+ runtime: org.freedesktop.Platform
+ runtime-version: '25.08'
+ sdk: org.freedesktop.Sdk
+ sdk-extensions:
+   - org.freedesktop.Sdk.Extension.rust-stable
+-command: deckcraft
 +command: plervo-slides
-+finish-args:
-+  # Display: Wayland first; X11 only when no Wayland compositor is running.
-+  - --socket=wayland
-+  - --socket=fallback-x11
-+  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
-+  - --share=ipc
-+  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
-+  - --device=dri
-+  # Sound for audio and video in slide shows (cpal over ALSA, routed to PulseAudio/PipeWire by
-+  # the runtime's ALSA plugin).
-+  - --socket=pulseaudio
-+  # Open/Save dialogs go through the file-chooser portal (rfd) and drag-and-drop through the
-+  # document portal, so picked files work anywhere without broad filesystem access. Documents is
-+  # granted so decks passed by path (the command line, Open Recent) work in the usual place.
-+  - --filesystem=xdg-documents
-+  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
+ finish-args:
+   # Display: Wayland first; X11 only when no Wayland compositor is running.
+   - --socket=wayland
+@@ -33,28 +33,28 @@ finish-args:
+   # granted so decks passed by path (the command line, Open Recent) work in the usual place.
+   - --filesystem=xdg-documents
+   # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
+-  # the sandbox; `flatpak override --user --share=network ai.storyteller.deckcraft` exposes it to
 +  # the sandbox; `flatpak override --user --share=network com.plervo.slides` exposes it to
-+  # host agents) and home/host filesystem access.
-+build-options:
-+  append-path: /usr/lib/sdk/rust-stable/bin
-+modules:
+   # host agents) and home/host filesystem access.
+ build-options:
+   append-path: /usr/lib/sdk/rust-stable/bin
+ modules:
+-  - name: deckcraft
 +  - name: plervo-slides
-+    buildsystem: simple
-+    build-options:
-+      env:
+     buildsystem: simple
+     build-options:
+       env:
+-        CARGO_HOME: /run/build/deckcraft/cargo
 +        CARGO_HOME: /run/build/plervo-slides/cargo
-+        CARGO_NET_OFFLINE: 'true'
-+    build-commands:
+         CARGO_NET_OFFLINE: 'true'
+     build-commands:
+-      - cargo --offline build --release --locked -p deckcraft
+-      - install -Dm755 target/release/deckcraft /app/bin/deckcraft
+-      - install -Dm644 packaging/linux/ai.storyteller.deckcraft.desktop /app/share/applications/ai.storyteller.deckcraft.desktop
+-      - install -Dm644 packaging/linux/ai.storyteller.deckcraft.mime.xml /app/share/mime/packages/ai.storyteller.deckcraft.xml
 +      - cargo --offline build --release --locked -p plervo-slides
 +      - install -Dm755 target/release/plervo-slides /app/bin/plervo-slides
 +      - install -Dm644 packaging/linux/com.plervo.slides.desktop /app/share/applications/com.plervo.slides.desktop
 +      - install -Dm644 packaging/linux/com.plervo.slides.mime.xml /app/share/mime/packages/com.plervo.slides.xml
-+      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
-+      - >-
-+        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
-+        install -d /app/share/metainfo;
-+        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+       - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
+       - >-
+         version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
+         install -d /app/share/metainfo;
+         sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+-        packaging/linux/ai.storyteller.deckcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.deckcraft.metainfo.xml
 +        packaging/linux/com.plervo.slides.metainfo.xml.in > /app/share/metainfo/com.plervo.slides.metainfo.xml
-+    sources:
-+      - type: dir
-+        path: ../../..
-+        skip:
-+          - target
-+          - dist
-+          - corpus
-+          - build-flatpak
-+          - .flatpak-builder
-+      - cargo-sources.json
+     sources:
+       - type: dir
+         path: ../../..
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
 index 0d41fc7..1ac6dde 100644
 --- a/packaging/linux/nfpm.yaml
@@ -5228,7 +5026,7 @@ index 43d256f..0000000
 -  </Fragment>
 -</Wix>
 diff --git a/packaging/windows/package.ps1 b/packaging/windows/package.ps1
-index f15f00e..dbd79b2 100644
+index f15f00e..23b9dde 100644
 --- a/packaging/windows/package.ps1
 +++ b/packaging/windows/package.ps1
 @@ -1,11 +1,11 @@
@@ -5273,7 +5071,7 @@ index f15f00e..dbd79b2 100644
    $h = Get-PeHeader (Join-Path $Bin $check[0])
    if ($h.Machine -ne $Machine) { throw "$($check[0]) is for machine 0x$('{0:X}' -f $h.Machine), expected 0x$('{0:X}' -f $Machine) ($Arch)" }
    if ($h.Subsystem -ne $check[1]) { throw "$($check[0]) has PE subsystem $($h.Subsystem), expected $($check[1])" }
-@@ -86,15 +86,32 @@ foreach ($check in @(@('deckcraft.exe', 2), @('deckcraft-cli.exe', 3))) {
+@@ -86,15 +86,34 @@ foreach ($check in @(@('deckcraft.exe', 2), @('deckcraft-cli.exe', 3))) {
  $Stage = Join-Path $TargetDir "windows-package\$Arch"
  Remove-Item -Recurse -Force $Stage -ErrorAction SilentlyContinue
  New-Item -ItemType Directory -Force -Path $Stage | Out-Null
@@ -5284,9 +5082,11 @@ index f15f00e..dbd79b2 100644
 +& (Join-Path $PSScriptRoot 'sign.ps1') (Join-Path $Stage 'plervo-slides.exe') (Join-Path $Stage 'plervo-slides-cli.exe')
 +
 +# Carry source and embedded-asset notices in MSI and portable distributions.
++& python (Join-Path $Root 'packaging/licenses/verify.py') $Root
++if ($LASTEXITCODE -ne 0) { throw "Third-party notice review is stale or missing" }
 +$Legal = Join-Path $Stage 'Licenses'
 +New-Item -ItemType Directory -Force -Path $Legal | Out-Null
-+foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md') {
++foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md', 'THIRD_PARTY_NOTICES.txt') {
 +  $p = Join-Path $Root $f
 +  if (Test-Path $p) { Copy-Item $p $Legal }
 +}
@@ -5311,7 +5111,7 @@ index f15f00e..dbd79b2 100644
      -o $Msi
  }
  # wix writes its debug symbols (.wixpdb) next to the MSI; keep them out of the release assets.
-@@ -102,10 +119,11 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
+@@ -102,10 +121,11 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
  & (Join-Path $PSScriptRoot 'sign.ps1') $Msi
  
  # ---- portable zip ------------------------------------------------------------------------------
@@ -5324,7 +5124,7 @@ index f15f00e..dbd79b2 100644
  foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE') {
    $p = Join-Path $Root $f
    if (Test-Path $p) { Copy-Item $p $Portable }
-@@ -116,7 +134,7 @@ if ($env:CRAFT_FONTS_DIR) {
+@@ -116,7 +136,7 @@ if ($env:CRAFT_FONTS_DIR) {
      Copy-Item $ofl.FullName (Join-Path $Portable "OFL-$($ofl.Directory.Name).txt")
    }
  }
@@ -5333,7 +5133,7 @@ index f15f00e..dbd79b2 100644
  Remove-Item -Force $Zip -ErrorAction SilentlyContinue
  Compress-Archive -Path $Portable -DestinationPath $Zip
  
-@@ -124,8 +142,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
+@@ -124,8 +144,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
  # here.
  $HostArch = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString().ToLowerInvariant()
  if ($Arch -ne 'arm64' -or $HostArch -eq 'arm64') {

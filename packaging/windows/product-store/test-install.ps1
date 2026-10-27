@@ -47,7 +47,10 @@ try {
     [void] (Invoke-Cli @('--data-dir', $Data, '--project', $Document, 'render', '--seconds', '1', '--scale', '0.25', '--out', $Render))
   } else {
     $env:PLERVO_CAD_CONFIG_DIR = Join-Path $Work 'cad-config'
-    [void] (Invoke-Cli @('run', '--metric', '--cmd', 'line {"points":[[0,0],[30,20],[45,0]]}', '--save', $Document, '--export', $Render))
+    # Windows PowerShell strips embedded JSON quotes in native command arguments.
+    $Script = Join-Path $Work 'drawing.scr'
+    [IO.File]::WriteAllText($Script, "LINE`n0,0`n30,20`n45,0`n`n", [Text.UTF8Encoding]::new($false))
+    [void] (Invoke-Cli @('run', '--metric', '--script-file', $Script, '--save', $Document, '--export', $Render))
     $Info = Invoke-Cli @('info', $Document) | ConvertFrom-Json
     if ($Info.entityCount -ne 2) { throw 'Installed CAD did not save two line entities.' }
   }

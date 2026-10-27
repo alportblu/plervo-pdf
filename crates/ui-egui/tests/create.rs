@@ -75,6 +75,8 @@ fn reduce(name: &'static str, bytes: Vec<u8>, out: &std::path::Path) -> egui_kit
     let mut h = egui_kittest::Harness::builder().with_size(egui::vec2(1200.0, 800.0)).build_eframe(move |_cc| {
         let mut app = PdfCraftApp::new();
         app.set_option("language", "en").unwrap();
+        // A changing /ModDate can save a byte by itself; compare sizes with a fixed clock.
+        app.session = std::mem::take(&mut app.session).with_clock(|| 1_700_000_000);
         app.open_bytes(name, None, bytes).unwrap();
         app.save_override = Some(out2.to_string_lossy().into_owned());
         app

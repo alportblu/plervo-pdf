@@ -47,6 +47,8 @@ $App = $null
 $Result = [ordered] @{ passed = $false; normal_close = $false; scope = 'Installed GUI launch, response, app-only capture, no TCP listener and normal close. Screenshots require visual review.' }
 try {
   $App = Start-Process -FilePath $Executable -ArgumentList $Arguments -PassThru -RedirectStandardOutput (Join-Path $Folder 'gui-stdout.txt') -RedirectStandardError (Join-Path $Folder 'gui-stderr.txt')
+    # Retain the process handle while it is alive so Windows preserves its exit code.
+    [void] $App.Handle
     $Deadline = [DateTime]::UtcNow.AddSeconds(90)
     $Selected = $null
     $Ready = $false
@@ -115,7 +117,8 @@ try {
       }
       throw 'Application did not close normally'
     }
-    if ($App.ExitCode -ne 0) { throw "Application closed with error: $($App.ExitCode)" }
+    $Result.exit_code = $App.ExitCode
+    if ($null -eq $Result.exit_code -or $Result.exit_code -ne 0) { throw "Application closed with error: $($Result.exit_code)" }
     $Result.normal_close = $true
   $Result.passed = $true
 } catch {
@@ -123,5 +126,6 @@ try {
   throw
 } finally {
   if ($App -and -not $App.HasExited) { $App.Kill(); [void] $App.WaitForExit(10000) }
+  if ($App) { $App.Dispose() }
   $Result | ConvertTo-Json -Depth 5 | Set-Content -LiteralPath (Join-Path $Folder 'gui-result.json') -Encoding utf8
 }

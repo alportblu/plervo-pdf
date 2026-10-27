@@ -1,3 +1,55 @@
+## Microsoft Store delivery — 2026-10-27
+
+| Delivery | Verified state | Remaining |
+| --- | --- | --- |
+| Product security maintenance | PR #18 merged after 37 product candidate jobs and all five required root checks passed on ff25c352 | New public installers still require versioned packaging and distribution |
+| Suite and PDF | Public Microsoft Store listings confirmed | Publish the new PDF security build; expand the Suite Store catalog only as additional apps become available |
+| Video and CAD | Reserved Store identities; MSIX preparation refreshed from current main, package version 1.0.8.0; obsolete Video dependency overlay removed | Exact Windows MSIX installation, output, GUI, update and uninstall qualification; visual review, malware scan, listing completion and submission |
+| Remaining ten apps | General native candidate matrix passed | Store identities, per-app packaging and acceptance, localized listings and Microsoft certification |
+
+The installed CAD test uses the existing script-file interface to avoid lost JSON
+quotes in Windows PowerShell. GUI capture preserves the process handle and still
+fails on an absent or nonzero exit code. No acceptance gate has been disabled.
+
+## Product dependency maintenance — 2026-10-26
+
+| Delivery | Source change | Remaining |
+| --- | --- | --- |
+| Photo, Video, Develop candidates | Tokio 1.53.3 in Photo/Video; pinned upstream RustCrypto TLS source with crypto-bigint 0.7.9 in Develop/Video; original notice bundles and source hashes refreshed; local audits and 32 download/speech tests pass | Full native matrix, Fedora installation repeat, then separately versioned and qualified public packages |
+
+See [the product security review](../products/SECURITY-REVIEW.md). These changes do
+not replace existing public downloads or prove every possible vulnerability absent.
+
+## Acceptance-tool dependency maintenance — 2026-10-25
+
+| Delivery | Source change | Remaining |
+| --- | --- | --- |
+| Independent native acceptance environment | Hash-pin `pypdf` 6.21.2 for the four reported decoder/denial-of-service advisories; local malformed-input checks and five existing product PDF exports pass | Native candidate CI; separate product dependency/test failures do not become resolved by this tooling update |
+
+Python acceptance dependencies are not bundled in the applications.
+
+## Cryptographic dependency maintenance — 2026-10-25
+
+| Delivery | Source change | Remaining |
+| --- | --- | --- |
+| PDF workspace | `crypto-bigint` 0.7.9 and `ctutils` 0.4.5; reviewed original license notices preserved; no new advisory exceptions | New installer qualification and distribution; separate Video/Develop dependency review |
+
+See [advisory scope and delivery limits](dependency-security-2026-10-25.md).
+
+## Dependency security update — 2026-10-23
+
+| Delivery | Source change | Remaining |
+| --- | --- | --- |
+| PDF/Suite workspace | Lock `ctutils` to patched 0.4.4 for [RUSTSEC-2026-0385](https://rustsec.org/advisories/RUSTSEC-2026-0385.html); refresh the reviewed notice inventory while preserving the original license texts | New package qualification and distribution; previously published installers are unchanged |
+
+## PDF security update — 2026-10-21
+
+| Delivery | Verified state | Remaining |
+| --- | --- | --- |
+| PDF alpha.7 / Store 1.0.6.0 | Vector-redaction fail-closed regressions and existing redaction/engine tests pass; original dependency notices staged | Final native package qualification, Apple signing/notarization, Store submission and publication |
+
+See [security correction details](pdf-security-update-2026-10-21.md). Historical checkpoints follow.
+
 ## Microsoft Store preparation — 2026-10-20
 
 | Delivery | Verified state | Remaining |

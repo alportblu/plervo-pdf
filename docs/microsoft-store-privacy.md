@@ -1,6 +1,6 @@
 # Privacy — Plervo PDF Microsoft Store edition
 
-Updated October 20, 2026. This notice describes the standalone Plervo PDF Store edition. Publication and Microsoft certification are pending.
+Updated October 23, 2026. This notice describes the standalone Plervo PDF edition available in Microsoft Store.
 
 PDF reading, editing and bundled OCR are processed on your computer. Opening a local PDF does not upload it to Plervo. The app does not require a Plervo account or contain advertising or analytics SDKs.
 

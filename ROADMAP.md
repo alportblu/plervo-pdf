@@ -1,3 +1,35 @@
+Store delivery follow-up — 2026-10-27: all 37 product candidate jobs and five
+required root checks passed; security PR #18 is merged. Suite and PDF have live
+Microsoft Store listings. Video/CAD MSIX preparation now uses the current base,
+package version 1.0.8.0 and repaired Windows acceptance arguments/process handles.
+Their separate native MSIX qualification, listing completion and certification
+remain pending; no new installer has been publicly released in this change.
+
+Product dependency maintenance — 2026-10-26: update Photo/Video to Tokio 1.53.3;
+refresh Develop/Video's pinned upstream TLS provider and require crypto-bigint
+0.7.9. All three local dependency audits and 32 fetch/speech tests pass; original
+notices retained. Native candidates still require qualification. Vector's prior
+Fedora mirror timeout is separate. [Review](products/SECURITY-REVIEW.md).
+
+Acceptance-tool maintenance — 2026-10-25: pin validation-only `pypdf` to 6.21.2
+with its verified PyPI wheel hash for the image-decoder and malformed-PDF
+denial-of-service advisories. Local decoder, repeated-reference, malformed-xref
+and existing export checks pass. Native candidate CI remains required; no app
+includes this Python dependency and no public installer changes here.
+
+Security maintenance — 2026-10-25: update `crypto-bigint` from 0.7.5 to 0.7.9
+and its resolved `ctutils` dependency from 0.4.4 to 0.4.5 after RUSTSEC-2026-0387
+failed the nightly audit. Original license texts are preserved; no advisory is
+ignored. [Scope and delivery limits](docs/dependency-security-2026-10-25.md).
+Native CI also exposed a timestamp-sensitive size-comparison test; its fixture
+now uses a fixed clock, preserving the assertions and application behavior.
+
+Security maintenance — 2026-10-23: update the locked `ctutils` dependency from 0.4.2
+to 0.4.4 for [RUSTSEC-2026-0385](https://rustsec.org/advisories/RUSTSEC-2026-0385.html).
+The original MIT/Apache license texts are unchanged; the reviewed distribution
+inventory now identifies the patched version. This source update does not replace
+previously published installers; new package qualification and distribution remain pending.
+
 Plervo update — 2026-10-20: prepare standalone PDF for the free Microsoft Store
 route after SignPath Foundation declined the project. Store-only update routing has
 a regression observed failing without the change. MSIX packaging, native lifecycle
@@ -199,6 +231,8 @@ Ranked; detail and the full milestone table in [docs/roadmap.md](docs/roadmap.md
 - **2026-10-15 (Plervo, M14 Suite helper reliability):** Linux testing exposed a failed version probe. A deterministic Linux test reproduced `ExecutableFileBusy` while a writer remains open; the process runner now retries only that pre-execution refusal within the original deadline. The regression failed before the fix and passed afterwards, with a second test confirming refusal of a permanently busy executable. Native Mac PDF alpha.2 opened with Auto language and English controls on an English system, using a synthetic document.
 - **2026-10-14 (Plervo, M14 Windows refusal timing):** Windows CI reproduced a test reading the GoToR non-file refusal before its worker completed. Added the existing bounded state wait, preserving the error-message and no-new-tab assertions. Production sources are unchanged. Final signed Mac PDFs also passed independent Poppler/pypdf readback and OpenSSL signature/tamper checks; font coverage identifies Telugu/Chinese gaps without system fallback.
 - **2026-10-14 (Plervo, M14 bundled licences):** Native cb4c8fe4 edit/re-entry/save/reopen passed. Windows packaging copied optional craft-fonts licences only after building the MSI. Moved the existing copy into the shared staging directory and added compiled-MSI file-table checks for each optional family. Portable output continues using the staged OFL files. Windows execution remains required; no new assets.
+- **2026-10-21 (Plervo, PDF security correction):** Reproduced recoverable vector redaction and changed unsupported vector/shading cases to refuse atomically. Red/green regressions and 286 scoped tests passed (three existing diagnostics ignored). Added frozen original third-party notices and a dependency-change packaging gate. Exact native packages, Apple notarization, Store submission and publication are release gates; see [review](docs/pdf-security-update-2026-10-21.md).
+
 - **2026-10-14 (Plervo, M14 live editor acceptance):** End-to-end testing found that clearing stale stream metadata alone left the engine's cached added-item list unchanged. Generic text/image rewrites now refresh that list. The tools-level regression failed before the fix and checks line/paragraph edits, undo/redo and save/reopen. All 437 engine/automation tests passed (three existing ignored), with scoped clippy, formatting, layer/asset and WASM checks; fresh binaries and native interaction remain to validate.
 - **2026-10-14 (Plervo, M14 MSI validation):** The real c8b89cdc MSI was blocked by inspection queries using `Plervo PDF.CreatePdf` / `Plervo PDF.Edit` instead of the declared registry identifiers without spaces. Corrected the two query names, retaining all registry, scope, shortcut, UI and model assertions. The compiled-MSI check must pass on Windows CI; there is no public Windows installer yet.
 - **2026-10-14 (Plervo, practical acceptance):** Exercised the signed Mac UI and engine feature groups with synthetic PDFs, including editing/save/reopen, forms, annotations, encryption, redaction, signatures, exports, OCR and bounded JavaScript. Text rewrites now discard stale Plervo added-item editor metadata only for changed streams, preserving untouched streams and unknown dictionary entries. The regression failed before the fix; 704 scoped tests, clippy, formatting, layers/assets and WASM passed afterward (seven existing ignored tests). Mac/Linux standalone CLI archives now carry OCR models; the rebuilt Mac archive completed OCR/save/reopen. Disposable-runner MSI install/repair/removal and DEB install/removal checks were added, pending CI. Prior 3cb65eda CI passed on Mac (3,051), Windows (3,052) and Linux (3,064). Chinese glyph coverage and broader OCR languages remain gaps; no public release.
@@ -483,6 +517,8 @@ Newest first: the date, what moved, and the new overall estimate.
 - M13: common command, batch, inspection and bounded preview tools share the existing confined automation path. MCP tools carry complete hints and reject unknown top-level keys as invalid parameters.
 - **2026-10-10 (UI docking):** Tools and Inspector can be regrouped, split beside the PDF, or floated inside the app window. Existing toggles reopen panels at their saved locations; UI commands arrange/reset panels, and preferences retain their layout. Read/full-screen modes preserve the focused document view. No milestone percentage change.
 
+- **2026-10-23 (Plervo alpha.8 candidate):** Suite startup/periodic update notices with explicit downloads, offline installed-app grid and distinct Mac architectures. PDF/Write cryptographic dependency update; HTTPS verification/root updates in four product forks. Twelve product installers now verify and ship reviewed dependency notices. Native publication qualification is tracked in the release notes; parity scores are unchanged.
+
 ## Revision history
 
 | Date | Change | Summary |
@@ -512,3 +548,5 @@ Newest first: the date, what moved, and the new overall estimate.
 
 - Prepare pinned-source MSIX candidates with upstream license preservation, current TLS dependency fixes, native installation/GUI/upgrade/removal checks and exact tested-payload comparison.
 - Store identities are reserved; certification and public downloads remain pending.
+
+- 2026-10-23: Prepared the Windows Microsoft Store edition of Plervo Suite with Store-only acquisition, local signed-package inventory and native MSIX acceptance. Certification remains a separate gate.

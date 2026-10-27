@@ -100,6 +100,12 @@ try {
   }
   $Legal = New-Item -ItemType Directory -Path (Join-Path $Stage 'Licenses')
   foreach ($Name in 'LICENSE-MIT', 'LICENSE-APACHE', 'NOTICE', 'ATTRIBUTION.md') { Copy-Item (Join-Path $SourceRoot $Name) $Legal.FullName }
+  Copy-Item (Join-Path $SourceRoot 'THIRD_PARTY_NOTICES.txt') $Legal.FullName
+  Copy-Item (Join-Path $SourceRoot 'packaging\licenses\manifest.json') (Join-Path $Legal.FullName 'DEPENDENCY-LICENSES.json')
+  if ((Get-FileHash (Join-Path $Legal.FullName 'THIRD_PARTY_NOTICES.txt')).Hash.ToLowerInvariant() -cne $Definition.notices_sha256 -or
+      (Get-FileHash (Join-Path $Legal.FullName 'DEPENDENCY-LICENSES.json')).Hash.ToLowerInvariant() -cne $Definition.notice_manifest_sha256) {
+    throw 'Bundled dependency notices differ from the reviewed catalog.'
+  }
   foreach ($Folder in 'assets', 'vendor') {
     $Path = Join-Path $SourceRoot $Folder
     if (Test-Path $Path) {

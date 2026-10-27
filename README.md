@@ -34,7 +34,7 @@ This repository contains the Suite, PDF, and the pinned source catalog and overl
 | --- | --- |
 | macOS, Apple Silicon | Suite and all 13 apps. Signed by Maintech Solutions LLC and notarized by Apple. |
 | Linux, x86_64 | Suite and all 13 apps. DEB/RPM installers; glibc 2.39 or newer. |
-| Windows | PDF is being prepared for the Microsoft Store as a standalone app. Store certification and publication are pending. Suite and other Windows apps remain internal candidates without a public signing route. |
+| Windows | [Plervo PDF is available in Microsoft Store](https://apps.microsoft.com/detail/9PBWKBZRBJNR). Suite and other Windows apps remain internal candidates; they are not public signed downloads. |
 
 1. Download the Suite for your computer from [plervo.com](https://plervo.com).
 2. Install and open **Plervo Suite**.
@@ -42,7 +42,7 @@ This repository contains the Suite, PDF, and the pinned source catalog and overl
 
 Linux app packages were exercised on Ubuntu 24.04, Debian 13 and Fedora 44; the Suite also passed Ubuntu 26.04 acceptance. Linux Mint 22 shares the Ubuntu 24.04 base but has not been tested separately. macOS Intel, Linux ARM and native Wayland sessions are not qualified.
 
-The alpha has known limits. Final Mac GUI acceptance, installation on a clean Mac and broader hardware coverage remain pending. The Suite manages app updates; updates to the Suite itself are installed manually. Check the [release notes](https://github.com/alportblu/plervo-pdf/releases) for package-specific validation and limitations.
+The alpha has known limits. Final Mac GUI acceptance, installation on a clean Mac and broader hardware coverage remain pending. Starting with Suite alpha.8, an automatic check at startup and every six hours while open shows available Suite and app updates. The Suite update button downloads the appropriate Mac DMG or Linux DEB/RPM; install that package and reopen Suite. Checks can be switched to manual in Settings. Existing alpha.5 users need to install this newer Suite once before they receive these notices. Check the [release notes](https://github.com/alportblu/plervo-pdf/releases) for available packages and their validation and limitations.
 
 ## Languages
 

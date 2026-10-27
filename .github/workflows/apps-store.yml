@@ -84,6 +84,7 @@ jobs:
         run: |
           cargo xtask products --prepare "$PRODUCT" "$GITHUB_WORKSPACE/source"
           python3 packaging/windows/product-store/prepare.py "$PRODUCT" source
+          python3 products/licenses/verify.py source
           cargo xtask products --audit-policy "$PRODUCT" > deny-active.toml
       - name: Dependency licenses and all-feature advisories
         uses: EmbarkStudios/cargo-deny-action@3c6349835b2b7b196a839186cb8b78e02f7b5f25
@@ -162,6 +163,7 @@ jobs:
         run: |
           cargo xtask products --prepare "$PRODUCT" "$GITHUB_WORKSPACE/source"
           python packaging/windows/product-store/prepare.py "$PRODUCT" source
+          python products/licenses/verify.py source
       - name: Lint and test the complete Windows workspace
         working-directory: source
         shell: bash

@@ -15,10 +15,53 @@ packaging/windows/test-suite-install.ps1 -Path <internal-msi>
 
 Output stays in `dist/windows-suite-internal/` and includes source commit, binary/package hashes and an explicit `public_qualification: false`. The workflow has read-only repository permissions, uses no signing secrets and never uploads a release. The existing Windows download gate remains closed.
 
-## SignPath completion
+## Windows distribution
 
-Approval for the owner's SignPath Foundation application has not been confirmed. Use the existing application; do not submit another or switch to a paid provider.
+SignPath Foundation declined the initial application. No paid signing service is configured.
+The external Windows MSI remains an internal candidate; it must not be advertised as
+Store-signed or installed by the Store edition.
 
-After approval, the project owner supplies the SignPath organization ID, project slug, signing-policy slug and artifact-configuration slug through the provider/GitHub settings. The API token belongs in a scoped GitHub Actions secret, never chat, source or logs. Follow the [official GitHub integration](https://docs.signpath.io/trusted-build-systems/github) and the [official action inputs](https://github.com/SignPath/github-action-submit-signing-request/blob/main/action.yml); pin the reviewed action commit when the actual integration is configured.
+# Microsoft Store distribution option
 
-The artifact configuration must cover the executable inside the MSI/portable archive as well as the installer itself. Verify the resulting Authenticode chain, timestamp and approved publisher identity, then rerun acceptance on the exact signed files. Pin the approved publisher in the Suite's Windows installer path before enabling Windows downloads. A successful unsigned candidate or a valid unrelated publisher signature is not sufficient. No certificate is added to a consumer trust store and SmartScreen is not disabled.
+PDF is available at https://apps.microsoft.com/detail/9PBWKBZRBJNR. Its Store edition
+uses Microsoft's install/update channel. The Mac/Linux Suite remains a separate
+download and package manager.
+
+The Suite Store edition is built with `--features microsoft-store` and packaged by
+`packaging/windows/package-suite-store.ps1`. Its own reserved identity is
+`RicardoBonetti.PlervoSuite`, Store ID `9P5P5QD5GDK1`; a reservation is not approval.
+The independent MSIX workflow exercises the package before any manual submission.
+
+This edition lists and opens the current user's Store-signed Plervo packages using
+Windows package APIs. It requires an exact known product identity, the publisher from
+Partner Center, a Store signature and healthy registration. It does not execute paths
+from the registry or an external download feed. Only a published product gets an
+acquisition link. Initially that is Plervo PDF; the Video/CAD identities are reserved,
+not published. Unpublished catalog entries are omitted unless already installed from
+the Store. `My apps` displays every matching installed product.
+
+Acquisition opens the product's Microsoft Store page with the user's explicit action;
+the Store handles consent, download and updates. The updates button opens the Store's
+updates page, and removal opens Windows Settings. No GitHub polling, package downloading,
+sideloading, certificate installation, service or startup entry is enabled by this
+edition. Language follows Windows with English/Portuguese/Spanish overrides. Support
+opens the optional Buy Me a Coffee page in the user's browser; it unlocks no features.
+
+The [Microsoft Store policies](https://learn.microsoft.com/windows/apps/publish/store-policies)
+(10.1.5, version 7.20) require apps acquired through this flow to be listed and acquired
+through the Store. This is a publisher app manager, not an external storefront under
+10.1.6. Microsoft still decides whether this initial edition provides sufficient value.
+Do not claim acceptance until the Partner Center submission has passed certification.
+
+The native gate checks the test-namespace MSIX, exact payload hashes, registration,
+EN/PT/ES rendering, local inventory, invalid/unpublished actions, reinstallation and
+removal, preservation of synthetic documents/preferences and the PDF default handler.
+The upload payload must match the tested payload except for the manifest identity.
+Unsigned test packages are installed only on disposable runners using Microsoft's
+package-scoped test namespace. A Windows Server runner does not prove consumer Store
+acquisition or launch of a Store-delivered PDF; those limitations remain explicit in
+its evidence and certification notes.
+
+Headless commands: `--status`, `--store-link pdf`, `--install pdf`, `--open pdf`,
+`--check-updates`, `--manage`. The Store binary does not dispatch the external-edition
+installation/removal commands. Mac/Linux builds and existing releases are unchanged.

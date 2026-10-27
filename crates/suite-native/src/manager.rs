@@ -35,11 +35,13 @@ pub fn latest() -> Result<Release, String> {
 
 pub fn latest_for(app: &CraftApp) -> Result<Release, String> {
     known_app(app)?;
+    select_release_for_app(&release_catalog()?, app, supported_platform().ok_or("Downloads are not released on this platform yet.")?)
+}
+
+pub(crate) fn release_catalog() -> Result<String, String> {
     let http = Http::new()?;
-    match http.get_api("https://api.github.com/repos/alportblu/plervo-pdf/releases?per_page=20", None)? {
-        Fetched::Body { text, .. } => {
-            select_release_for_app(&text, app, supported_platform().ok_or("Downloads are not released on this platform yet.")?)
-        }
+    match http.get_api("https://api.github.com/repos/alportblu/plervo-pdf/releases?per_page=100", None)? {
+        Fetched::Body { text, .. } => Ok(text),
         Fetched::RateLimited { .. } => Err("GitHub's request limit was reached. Please try again later.".into()),
         _ => Err("No published release is available yet.".into()),
     }
@@ -167,8 +169,10 @@ fn validate_download(release: &Release, asset: &plervo_suite_core::Asset) -> Res
     validate_download_for(&PDF, release, asset)
 }
 
-fn validate_download_for(app: &CraftApp, release: &Release, asset: &plervo_suite_core::Asset) -> Result<(), String> {
-    known_app(app)?;
+pub(crate) fn validate_download_for(app: &CraftApp, release: &Release, asset: &plervo_suite_core::Asset) -> Result<(), String> {
+    if app != &plervo_suite_core::catalog::LAUNCHER {
+        known_app(app)?;
+    }
     let expected = format!("https://github.com/{}/releases/download/{}/{}", app.repo, release.tag, asset.name);
     let named_version =
         plervo_suite_core::platform::parse_asset_name(&asset.name, &[app.id]).and_then(|name| plervo_suite_core::version::parse(&name.version));

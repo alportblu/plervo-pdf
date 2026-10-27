@@ -271,15 +271,57 @@ fn images_are_removed_or_have_their_pixels_cleared() {
 }
 
 #[test]
-fn vectors_are_removed_or_clipped_and_inline_images_go() {
-    let src = b"0 g 10 10 20 20 re f 0 0 300 300 re f q 10 0 0 10 50 50 cm BI /W 1 /H 1 /CS /G /BPC 8 ID \x80 EI Q 1 0 0 RG 150 150 m 160 160 l S";
+fn redaction_refuses_vector_geometry_that_would_only_be_hidden() {
+    // One compound path encodes a secret inside the mark and a second shape outside it.
+    // Clipping out the mark preserves the secret's coordinates in the saved PDF.
+    let cases: &[&[u8]] = &[b"50 100 8 50 re 80 140 30 8 re 220 40 20 20 re f", b"50 100 8 50 re W f", b"50 100 8 50 re W n", b"/Shade sh"];
+    let mut accepted = Vec::new();
+    for src in cases {
+        let mut doc = one_page(src, "", vec![]);
+        mark(&mut doc, 0, &[[40.0, 90.0, 165.0, 160.0]], "");
+        if apply(&mut doc, None).is_ok() {
+            accepted.push(String::from_utf8_lossy(src));
+        }
+    }
+    assert!(accepted.is_empty(), "recoverable geometry must not be reported as redacted: {accepted:?}");
+}
+
+#[test]
+fn redaction_refuses_recoverable_geometry_inside_a_form() {
+    let form = stream("/Type /XObject /Subtype /Form /BBox [0 0 300 300]", b"50 100 8 50 re 220 40 20 20 re f");
+    let mut doc = one_page(b"/Fm Do", "/XObject << /Fm 7 0 R >>", vec![form]);
+    mark(&mut doc, 0, &[[40.0, 90.0, 165.0, 160.0]], "");
+    assert!(apply(&mut doc, None).is_err(), "a nested form must fail closed too");
+}
+
+#[test]
+fn redaction_refuses_split_vector_paths_and_preserves_all_pages() {
+    let mut doc = pdf(vec![
+        b"<< /Type /Catalog /Pages 2 0 R >>".to_vec(),
+        b"<< /Type /Pages /Kids [3 0 R 5 0 R] /Count 2 /MediaBox [0 0 300 300] /Resources << >> >>".to_vec(),
+        b"<< /Type /Page /Parent 2 0 R /Contents 4 0 R >>".to_vec(),
+        stream("", b"50 100 8 50 re f"),
+        b"<< /Type /Page /Parent 2 0 R /Contents [6 0 R 7 0 R] >>".to_vec(),
+        stream("", b"50 100 8 50 re 220 40 20 20 re"),
+        stream("", b"f"),
+    ]);
+    for page in 0..2 {
+        mark(&mut doc, page, &[[40.0, 90.0, 165.0, 160.0]], "");
+    }
+    let before = write_incremental(&doc, &SaveOptions::default()).unwrap();
+    assert!(apply(&mut doc, None).is_err(), "paths may span content streams");
+    assert_eq!(write_incremental(&doc, &SaveOptions::default()).unwrap(), before, "even earlier pages must remain unchanged");
+}
+
+#[test]
+fn covered_vectors_and_inline_images_are_removed() {
+    let src = b"0 g 10 10 20 20 re f q 10 0 0 10 50 50 cm BI /W 1 /H 1 /CS /G /BPC 8 ID \x80 EI Q 1 0 0 RG 150 150 m 160 160 l S";
     let mut doc = one_page(src, "", vec![]);
     mark(&mut doc, 0, &[[5.0, 5.0, 35.0, 35.0], [45.0, 45.0, 65.0, 65.0]], "");
     let r = apply(&mut doc, None).unwrap();
-    assert_eq!((r.paths_removed, r.paths_clipped, r.images_removed), (1, 1, 1), "{r:?}");
+    assert_eq!((r.paths_removed, r.paths_clipped, r.images_removed), (1, 0, 1), "{r:?}");
     let c = content(&doc, 0);
     assert!(!c.contains("10 10 20 20 re"), "{c}");
-    assert!(c.contains("W*\nn\n0 0 300 300 re\nf\nQ"), "the page-size rect is clipped: {c}");
     assert!(!c.contains("BI"), "{c}");
     assert!(c.contains("150 150 m"), "the line elsewhere stays");
 }

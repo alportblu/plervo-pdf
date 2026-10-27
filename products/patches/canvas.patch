@@ -55,7 +55,7 @@ index 1f72aeb..1b6d446 100644
 +
 +| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | 1a19be67a88404ccfe381bf5611409914a7b63e6ef1a5695f9726beec98e6972 |
 diff --git a/Cargo.lock b/Cargo.lock
-index 5e9c6f6..9ff3983 100644
+index 5e9c6f6..7baa319 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -233,15 +233,6 @@ dependencies = [
@@ -152,7 +152,7 @@ index 5e9c6f6..9ff3983 100644
  [[package]]
  name = "figcraft-collab"
 -version = "0.6.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "base64 0.22.1",
   "figcraft-color",
@@ -161,7 +161,7 @@ index 5e9c6f6..9ff3983 100644
  [[package]]
  name = "figcraft-collab-net"
 -version = "0.6.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "base64 0.22.1",
   "figcraft-collab",
@@ -170,7 +170,7 @@ index 5e9c6f6..9ff3983 100644
  [[package]]
  name = "figcraft-color"
 -version = "0.6.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "kurbo",
   "serde",
@@ -179,7 +179,7 @@ index 5e9c6f6..9ff3983 100644
  [[package]]
  name = "figcraft-doc"
 -version = "0.6.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "figcraft-color",
   "figcraft-geom",
@@ -188,7 +188,7 @@ index 5e9c6f6..9ff3983 100644
  [[package]]
  name = "figcraft-engine"
 -version = "0.6.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "base64 0.22.1",
   "figcraft-collab",
@@ -197,7 +197,7 @@ index 5e9c6f6..9ff3983 100644
  [[package]]
  name = "figcraft-format"
 -version = "0.6.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "figcraft-doc",
   "figcraft-pathops",
@@ -206,7 +206,7 @@ index 5e9c6f6..9ff3983 100644
  [[package]]
  name = "figcraft-geom"
 -version = "0.6.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "kurbo",
   "serde",
@@ -215,7 +215,7 @@ index 5e9c6f6..9ff3983 100644
  [[package]]
  name = "figcraft-layout"
 -version = "0.6.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "figcraft-doc",
   "figcraft-geom",
@@ -224,7 +224,7 @@ index 5e9c6f6..9ff3983 100644
  [[package]]
  name = "figcraft-mcp"
 -version = "0.6.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "base64 0.22.1",
   "figcraft-collab-net",
@@ -233,7 +233,7 @@ index 5e9c6f6..9ff3983 100644
  [[package]]
  name = "figcraft-pathops"
 -version = "0.6.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "figcraft-doc",
   "figcraft-geom",
@@ -242,7 +242,7 @@ index 5e9c6f6..9ff3983 100644
  [[package]]
  name = "figcraft-pdf"
 -version = "0.6.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "figcraft-color",
   "figcraft-doc",
@@ -251,7 +251,7 @@ index 5e9c6f6..9ff3983 100644
  [[package]]
  name = "figcraft-plugin"
 -version = "0.6.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "figcraft-color",
   "serde",
@@ -260,7 +260,7 @@ index 5e9c6f6..9ff3983 100644
  [[package]]
  name = "figcraft-render"
 -version = "0.6.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "crc32fast",
   "figcraft-color",
@@ -269,7 +269,7 @@ index 5e9c6f6..9ff3983 100644
  [[package]]
  name = "figcraft-server"
 -version = "0.6.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "crc32fast",
   "ctrlc",
@@ -278,7 +278,7 @@ index 5e9c6f6..9ff3983 100644
  [[package]]
  name = "figcraft-svg"
 -version = "0.6.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "base64 0.22.1",
   "figcraft-color",
@@ -287,7 +287,7 @@ index 5e9c6f6..9ff3983 100644
  [[package]]
  name = "figcraft-text"
 -version = "0.6.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "figcraft-doc",
   "figcraft-geom",
@@ -296,7 +296,7 @@ index 5e9c6f6..9ff3983 100644
  [[package]]
  name = "figcraft-ui-egui"
 -version = "0.6.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "base64 0.22.1",
   "egui",
@@ -305,7 +305,7 @@ index 5e9c6f6..9ff3983 100644
  [[package]]
  name = "figcraft-web"
 -version = "0.6.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "eframe",
   "egui",
@@ -323,7 +323,7 @@ index 5e9c6f6..9ff3983 100644
  
 +[[package]]
 +name = "plervo-canvas"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
 +dependencies = [
 + "arboard",
 + "eframe",
@@ -346,7 +346,7 @@ index 5e9c6f6..9ff3983 100644
 +
 +[[package]]
 +name = "plervo-canvas-cli"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
 +dependencies = [
 + "figcraft-doc",
 + "figcraft-engine",
@@ -373,6 +373,18 @@ index 5e9c6f6..9ff3983 100644
  dependencies = [
   "log",
   "once_cell",
+@@ -3879,9 +3849,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "rustls-webpki"
+-version = "0.103.15"
++version = "0.103.16"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "f3c3cf1d8b1e7d4927e2d154c3fcb02979afb9939629c62cd9048d4f07b60ac2"
++checksum = "4443b1b6d39d7c663139942cc4558262562d2c84123bb6282ef177009ca8b281"
+ dependencies = [
+  "ring",
+  "rustls-pki-types",
 @@ -3906,24 +3876,6 @@ dependencies = [
   "wait-timeout",
  ]
@@ -398,6 +410,15 @@ index 5e9c6f6..9ff3983 100644
  [[package]]
  name = "ruzstd"
  version = "0.9.1"
+@@ -4356,7 +4308,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd"
+ dependencies = [
+  "fastrand",
+- "getrandom 0.4.3",
++ "getrandom 0.3.4",
+  "once_cell",
+  "rustix 1.1.5",
+  "windows-sys 0.61.2",
 @@ -4559,15 +4511,6 @@ dependencies = [
   "once_cell",
  ]
@@ -459,12 +480,24 @@ index 5e9c6f6..9ff3983 100644
  [[package]]
  name = "unicode-script"
  version = "0.5.8"
+@@ -5134,9 +5065,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "webpki-roots"
+-version = "1.0.9"
++version = "1.0.10"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "7dcd9d09a39985f5344844e66b0c530a33843579125f23e21e9f0f220850f22a"
++checksum = "1c1c8e20c8a38fc7d65abfe74eb7280e4aa667e8eec8bc84996d2874810748d9"
+ dependencies = [
+  "rustls-pki-types",
+ ]
 @@ -5807,7 +5738,7 @@ checksum = "9440ea3e5aeabb0ac63af70daf835274065238cdd0cec83418f417eae38bacee"
  
  [[package]]
  name = "xtask"
 -version = "0.6.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "figcraft-engine",
   "serde_json",
@@ -492,7 +525,7 @@ index 5e9c6f6..9ff3983 100644
  ]
  
 diff --git a/Cargo.toml b/Cargo.toml
-index 8f125ac..54112b3 100644
+index 8f125ac..982310f 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -6,7 +6,7 @@ exclude = ["plugins"]
@@ -500,7 +533,7 @@ index 8f125ac..54112b3 100644
  
  [workspace.package]
 -version = "0.6.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.95"
@@ -4440,7 +4473,7 @@ index 9fc9937..13593c9 100644
  
  The desktop app can be driven by other programs (tests, scripts, `figcraft-cli mcp --attach`,
 diff --git a/packaging/env.sh b/packaging/env.sh
-index b68406a..520618d 100644
+index b68406a..44269e9 100644
 --- a/packaging/env.sh
 +++ b/packaging/env.sh
 @@ -9,9 +9,9 @@
@@ -4477,12 +4510,13 @@ index b68406a..520618d 100644
  }
  
  # Emit a GitHub Actions warning (plain stderr outside Actions).
-@@ -80,10 +80,17 @@ warn() {
+@@ -80,10 +80,18 @@ warn() {
  # Copy licence and readme files that exist into a package directory.
  copy_docs() {
    local dest="$1" f
 -  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE NOTICE COPYRIGHT; do
-+  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md; do
++  python3 "$ROOT/packaging/licenses/verify.py" "$ROOT" || return 1
++  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md THIRD_PARTY_NOTICES.txt; do
      if [ -f "$ROOT/$f" ]; then cp "$ROOT/$f" "$dest/"; fi
    done
    copy_font_licences "$dest"
@@ -4613,115 +4647,6 @@ index f329289..02aa42d 100755
  integrate
 -exec "$APPDIR/usr/bin/figcraft" "$@"
 +exec "$APPDIR/usr/bin/plervo-canvas" "$@"
-diff --git a/packaging/linux/ai.storyteller.figcraft.desktop b/packaging/linux/ai.storyteller.figcraft.desktop
-deleted file mode 100644
-index 767dd6e..0000000
---- a/packaging/linux/ai.storyteller.figcraft.desktop
-+++ /dev/null
-@@ -1,14 +0,0 @@
--[Desktop Entry]
--Type=Application
--Name=FigCraft
--GenericName=Interface Design Tool
--Comment=Design and prototype user interfaces
--Exec=figcraft %U
--TryExec=figcraft
--Icon=ai.storyteller.figcraft
--Terminal=false
--StartupNotify=true
--StartupWMClass=figcraft
--Categories=Graphics;2DGraphics;VectorGraphics;X-Design;
--Keywords=design;interface;ui;ux;prototype;wireframe;mockup;vector;layout;components;
--MimeType=application/x-figcraft;image/svg+xml;image/png;image/jpeg;x-scheme-handler/figcraft;
-diff --git a/packaging/linux/ai.storyteller.figcraft.metainfo.xml.in b/packaging/linux/ai.storyteller.figcraft.metainfo.xml.in
-deleted file mode 100644
-index 2dc341a..0000000
---- a/packaging/linux/ai.storyteller.figcraft.metainfo.xml.in
-+++ /dev/null
-@@ -1,66 +0,0 @@
--<?xml version="1.0" encoding="UTF-8"?>
--<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
--     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
--<component type="desktop-application">
--  <id>ai.storyteller.figcraft</id>
--  <metadata_license>CC0-1.0</metadata_license>
--  <project_license>MIT OR Apache-2.0</project_license>
--  <name>FigCraft</name>
--  <summary>Design and prototype user interfaces</summary>
--  <developer id="ai.storyteller">
--    <name>Learning Machines LLC</name>
--  </developer>
--  <description>
--    <p>
--      FigCraft is an open-source, native interface design and prototyping tool. Lay out screens
--      on an infinite canvas with frames, auto layout and constraints, build reusable components
--      and variants, and link screens into clickable prototypes.
--    </p>
--    <ul>
--      <li>Frames, vector shapes, text and images on an infinite canvas</li>
--      <li>Auto layout and constraints for responsive designs</li>
--      <li>Components, variants, shared styles and variables</li>
--      <li>Prototyping with interactions and transitions, and a presentation mode</li>
--      <li>Inspect panel with measurements and code snippets; SVG and PNG export</li>
--      <li>Every action is a command, scriptable from a CLI, a JSON control channel and an MCP server</li>
--    </ul>
--  </description>
--  <launchable type="desktop-id">ai.storyteller.figcraft.desktop</launchable>
--  <icon type="stock">ai.storyteller.figcraft</icon>
--  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
--  <url type="homepage">https://getartcraft.com/apps/figcraft</url>
--  <url type="bugtracker">https://github.com/storytold/figcraft/issues</url>
--  <url type="help">https://github.com/storytold/figcraft</url>
--  <url type="contact">https://discord.gg/artcraft</url>
--  <categories>
--    <!-- Freedesktop registered categories only ("Design" isn't one; the .desktop file says X-Design). -->
--    <category>Graphics</category>
--    <category>2DGraphics</category>
--    <category>VectorGraphics</category>
--  </categories>
--  <keywords>
--    <keyword>interface design</keyword>
--    <keyword>prototyping</keyword>
--    <keyword>ui</keyword>
--    <keyword>wireframe</keyword>
--  </keywords>
--  <branding>
--    <color type="primary" scheme_preference="light">#9fd3ff</color>
--    <color type="primary" scheme_preference="dark">#0b5fa5</color>
--  </branding>
--  <requires>
--    <display_length compare="ge">760</display_length>
--  </requires>
--  <supports>
--    <control>keyboard</control>
--    <control>pointing</control>
--  </supports>
--  <provides>
--    <binary>figcraft</binary>
--    <mediatype>application/x-figcraft</mediatype>
--  </provides>
--  <content_rating type="oars-1.1"/>
--  <releases>
--    <release version="@VERSION@" date="@DATE@"/>
--  </releases>
--</component>
-diff --git a/packaging/linux/ai.storyteller.figcraft.mime.xml b/packaging/linux/ai.storyteller.figcraft.mime.xml
-deleted file mode 100644
-index 7c18c9a..0000000
---- a/packaging/linux/ai.storyteller.figcraft.mime.xml
-+++ /dev/null
-@@ -1,11 +0,0 @@
--<?xml version="1.0" encoding="UTF-8"?>
--<!-- shared-mime-info definition for FigCraft's own document type (SVG, PNG and JPEG are already in
--     the system database). Installed to /usr/share/mime/packages/ (update-mime-database runs on
--     install). -->
--<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
--  <mime-type type="application/x-figcraft">
--    <comment>FigCraft document</comment>
--    <icon name="ai.storyteller.figcraft"/>
--    <glob pattern="*.figcraft"/>
--  </mime-type>
--</mime-info>
 diff --git a/packaging/linux/apprun-test.sh b/packaging/linux/apprun-test.sh
 index c6d98da..ae1f7ec 100755
 --- a/packaging/linux/apprun-test.sh
@@ -4789,115 +4714,117 @@ index c6d98da..ae1f7ec 100755
 +[ "$out" = "stub: file.plervo-canvas cli" ] || fail "later cli argument hijacked the launch: $out"
  
  echo "AppRun desktop integration ok"
-diff --git a/packaging/linux/com.plervo.canvas.desktop b/packaging/linux/com.plervo.canvas.desktop
-new file mode 100644
-index 0000000..cdc4591
---- /dev/null
+diff --git a/packaging/linux/ai.storyteller.figcraft.desktop b/packaging/linux/com.plervo.canvas.desktop
+similarity index 56%
+rename from packaging/linux/ai.storyteller.figcraft.desktop
+rename to packaging/linux/com.plervo.canvas.desktop
+index 767dd6e..cdc4591 100644
+--- a/packaging/linux/ai.storyteller.figcraft.desktop
 +++ b/packaging/linux/com.plervo.canvas.desktop
-@@ -0,0 +1,14 @@
-+[Desktop Entry]
-+Type=Application
+@@ -1,14 +1,14 @@
+ [Desktop Entry]
+ Type=Application
+-Name=FigCraft
 +Name=Plervo Canvas
-+GenericName=Interface Design Tool
-+Comment=Design and prototype user interfaces
+ GenericName=Interface Design Tool
+ Comment=Design and prototype user interfaces
+-Exec=figcraft %U
+-TryExec=figcraft
+-Icon=ai.storyteller.figcraft
 +Exec=plervo-canvas %U
 +TryExec=plervo-canvas
 +Icon=com.plervo.canvas
-+Terminal=false
-+StartupNotify=true
+ Terminal=false
+ StartupNotify=true
+-StartupWMClass=figcraft
 +StartupWMClass=plervo-canvas
-+Categories=Graphics;2DGraphics;VectorGraphics;X-Design;
-+Keywords=design;interface;ui;ux;prototype;wireframe;mockup;vector;layout;components;
+ Categories=Graphics;2DGraphics;VectorGraphics;X-Design;
+ Keywords=design;interface;ui;ux;prototype;wireframe;mockup;vector;layout;components;
+-MimeType=application/x-figcraft;image/svg+xml;image/png;image/jpeg;x-scheme-handler/figcraft;
 +MimeType=application/x-plervo-canvas;image/svg+xml;image/png;image/jpeg;x-scheme-handler/plervo-canvas;
-diff --git a/packaging/linux/com.plervo.canvas.metainfo.xml.in b/packaging/linux/com.plervo.canvas.metainfo.xml.in
-new file mode 100644
-index 0000000..2224348
---- /dev/null
+diff --git a/packaging/linux/ai.storyteller.figcraft.metainfo.xml.in b/packaging/linux/com.plervo.canvas.metainfo.xml.in
+similarity index 76%
+rename from packaging/linux/ai.storyteller.figcraft.metainfo.xml.in
+rename to packaging/linux/com.plervo.canvas.metainfo.xml.in
+index 2dc341a..2224348 100644
+--- a/packaging/linux/ai.storyteller.figcraft.metainfo.xml.in
 +++ b/packaging/linux/com.plervo.canvas.metainfo.xml.in
-@@ -0,0 +1,66 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
-+     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
-+<component type="desktop-application">
+@@ -2,17 +2,17 @@
+ <!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
+      manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
+ <component type="desktop-application">
+-  <id>ai.storyteller.figcraft</id>
 +  <id>com.plervo.canvas</id>
-+  <metadata_license>CC0-1.0</metadata_license>
-+  <project_license>MIT OR Apache-2.0</project_license>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_license>MIT OR Apache-2.0</project_license>
+-  <name>FigCraft</name>
 +  <name>Plervo Canvas</name>
-+  <summary>Design and prototype user interfaces</summary>
-+  <developer id="ai.storyteller">
+   <summary>Design and prototype user interfaces</summary>
+   <developer id="ai.storyteller">
+-    <name>Learning Machines LLC</name>
 +    <name>Maintech Solutions LLC</name>
-+  </developer>
-+  <description>
-+    <p>
+   </developer>
+   <description>
+     <p>
+-      FigCraft is an open-source, native interface design and prototyping tool. Lay out screens
 +      Plervo Canvas is an open-source, native interface design and prototyping tool. Lay out screens
-+      on an infinite canvas with frames, auto layout and constraints, build reusable components
-+      and variants, and link screens into clickable prototypes.
-+    </p>
-+    <ul>
-+      <li>Frames, vector shapes, text and images on an infinite canvas</li>
-+      <li>Auto layout and constraints for responsive designs</li>
-+      <li>Components, variants, shared styles and variables</li>
-+      <li>Prototyping with interactions and transitions, and a presentation mode</li>
-+      <li>Inspect panel with measurements and code snippets; SVG and PNG export</li>
-+      <li>Every action is a command, scriptable from a CLI, a JSON control channel and an MCP server</li>
-+    </ul>
-+  </description>
+       on an infinite canvas with frames, auto layout and constraints, build reusable components
+       and variants, and link screens into clickable prototypes.
+     </p>
+@@ -25,13 +25,13 @@
+       <li>Every action is a command, scriptable from a CLI, a JSON control channel and an MCP server</li>
+     </ul>
+   </description>
+-  <launchable type="desktop-id">ai.storyteller.figcraft.desktop</launchable>
+-  <icon type="stock">ai.storyteller.figcraft</icon>
 +  <launchable type="desktop-id">com.plervo.canvas.desktop</launchable>
 +  <icon type="stock">com.plervo.canvas</icon>
-+  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
+   <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
+-  <url type="homepage">https://getartcraft.com/apps/figcraft</url>
+-  <url type="bugtracker">https://github.com/storytold/figcraft/issues</url>
+-  <url type="help">https://github.com/storytold/figcraft</url>
+-  <url type="contact">https://discord.gg/artcraft</url>
 +  <url type="homepage">https://plervo.com/</url>
 +  <url type="bugtracker">https://github.com/alportblu/plervo-pdf/issues</url>
 +  <url type="help">https://github.com/alportblu/plervo-pdf</url>
 +  <url type="contact">https://buymeacoffee.com/alport</url>
-+  <categories>
-+    <!-- Freedesktop registered categories only ("Design" isn't one; the .desktop file says X-Design). -->
-+    <category>Graphics</category>
-+    <category>2DGraphics</category>
-+    <category>VectorGraphics</category>
-+  </categories>
-+  <keywords>
-+    <keyword>interface design</keyword>
-+    <keyword>prototyping</keyword>
-+    <keyword>ui</keyword>
-+    <keyword>wireframe</keyword>
-+  </keywords>
-+  <branding>
-+    <color type="primary" scheme_preference="light">#9fd3ff</color>
-+    <color type="primary" scheme_preference="dark">#0b5fa5</color>
-+  </branding>
-+  <requires>
-+    <display_length compare="ge">760</display_length>
-+  </requires>
-+  <supports>
-+    <control>keyboard</control>
-+    <control>pointing</control>
-+  </supports>
-+  <provides>
+   <categories>
+     <!-- Freedesktop registered categories only ("Design" isn't one; the .desktop file says X-Design). -->
+     <category>Graphics</category>
+@@ -56,8 +56,8 @@
+     <control>pointing</control>
+   </supports>
+   <provides>
+-    <binary>figcraft</binary>
+-    <mediatype>application/x-figcraft</mediatype>
 +    <binary>plervo-canvas</binary>
 +    <mediatype>application/x-plervo-canvas</mediatype>
-+  </provides>
-+  <content_rating type="oars-1.1"/>
-+  <releases>
-+    <release version="@VERSION@" date="@DATE@"/>
-+  </releases>
-+</component>
-diff --git a/packaging/linux/com.plervo.canvas.mime.xml b/packaging/linux/com.plervo.canvas.mime.xml
-new file mode 100644
-index 0000000..badc3e5
---- /dev/null
+   </provides>
+   <content_rating type="oars-1.1"/>
+   <releases>
+diff --git a/packaging/linux/ai.storyteller.figcraft.mime.xml b/packaging/linux/com.plervo.canvas.mime.xml
+similarity index 54%
+rename from packaging/linux/ai.storyteller.figcraft.mime.xml
+rename to packaging/linux/com.plervo.canvas.mime.xml
+index 7c18c9a..badc3e5 100644
+--- a/packaging/linux/ai.storyteller.figcraft.mime.xml
 +++ b/packaging/linux/com.plervo.canvas.mime.xml
-@@ -0,0 +1,11 @@
-+<?xml version="1.0" encoding="UTF-8"?>
+@@ -1,11 +1,11 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+-<!-- shared-mime-info definition for FigCraft's own document type (SVG, PNG and JPEG are already in
 +<!-- shared-mime-info definition for Plervo Canvas's own document type (SVG, PNG and JPEG are already in
-+     the system database). Installed to /usr/share/mime/packages/ (update-mime-database runs on
-+     install). -->
-+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+      the system database). Installed to /usr/share/mime/packages/ (update-mime-database runs on
+      install). -->
+ <mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+-  <mime-type type="application/x-figcraft">
+-    <comment>FigCraft document</comment>
+-    <icon name="ai.storyteller.figcraft"/>
 +  <mime-type type="application/x-plervo-canvas">
 +    <comment>Plervo Canvas document</comment>
 +    <icon name="com.plervo.canvas"/>
-+    <glob pattern="*.figcraft"/>
-+  </mime-type>
-+</mime-info>
+     <glob pattern="*.figcraft"/>
+   </mime-type>
+ </mime-info>
 diff --git a/packaging/linux/flatpak-bundle.sh b/packaging/linux/flatpak-bundle.sh
 index 127c3af..1bbf6d7 100755
 --- a/packaging/linux/flatpak-bundle.sh
@@ -4965,278 +4892,152 @@ index 127c3af..1bbf6d7 100755
    flatpak run --command="$smoke" "$APP_ID" --version
    flatpak run --command=sh "$APP_ID" -c 'ls /app/share/applications /app/share/metainfo /app/share/mime/packages /app/share/icons/hicolor/256x256/apps'
  fi
-diff --git a/packaging/linux/flatpak/ai.storyteller.figcraft.bundle.yml b/packaging/linux/flatpak/ai.storyteller.figcraft.bundle.yml
-deleted file mode 100644
-index 4b0bd0f..0000000
+diff --git a/packaging/linux/flatpak/ai.storyteller.figcraft.bundle.yml b/packaging/linux/flatpak/com.plervo.canvas.bundle.yml
+similarity index 61%
+rename from packaging/linux/flatpak/ai.storyteller.figcraft.bundle.yml
+rename to packaging/linux/flatpak/com.plervo.canvas.bundle.yml
+index 4b0bd0f..f3023ba 100644
 --- a/packaging/linux/flatpak/ai.storyteller.figcraft.bundle.yml
-+++ /dev/null
-@@ -1,51 +0,0 @@
--# Flatpak manifest for the single-file bundle attached to every GitHub release
++++ b/packaging/linux/flatpak/com.plervo.canvas.bundle.yml
+@@ -1,7 +1,7 @@
+ # Flatpak manifest for the single-file bundle attached to every GitHub release
 -# (figcraft-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
--#
++# (plervo-canvas-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
+ #
 -# It repackages the release's own Linux tarball (figcraft-<version>-linux-<arch>.tar.gz,
--# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
--# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
--# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
--# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
--# Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
--# GPU driver comes from its org.freedesktop.Platform.GL extension.
--#
++# It repackages the release's own Linux tarball (plervo-canvas-<version>-linux-<arch>.tar.gz,
+ # built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
+ # network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
+ # and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
+@@ -9,13 +9,13 @@
+ # Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
+ # GPU driver comes from its org.freedesktop.Platform.GL extension.
+ #
 -# ai.storyteller.figcraft.yml (same directory) is the from-source manifest for Flathub. Keep
--# runtime-version and finish-args identical in both (packaging-lint checks this).
++# com.plervo.canvas.yml (same directory) is the from-source manifest for Flathub. Keep
+ # runtime-version and finish-args identical in both (packaging-lint checks this).
 -id: ai.storyteller.figcraft
--runtime: org.freedesktop.Platform
--runtime-version: '26.08'
--sdk: org.freedesktop.Sdk
++id: com.plervo.canvas
+ runtime: org.freedesktop.Platform
+ runtime-version: '26.08'
+ sdk: org.freedesktop.Sdk
 -command: figcraft
--finish-args:
--  # Display: Wayland first; X11 only when no Wayland compositor is running.
--  - --socket=wayland
--  - --socket=fallback-x11
--  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
--  - --share=ipc
--  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
--  - --device=dri
--  # Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
--  # drag-and-drop through the document portal, so picked files work anywhere without broad
--  # filesystem access. Pictures and Documents are granted so files passed by path (the command
--  # line, Open Recent, "Save" next to the original) work in the usual places.
--  - --filesystem=xdg-pictures
--  - --filesystem=xdg-documents
--  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
++command: plervo-canvas
+ finish-args:
+   # Display: Wayland first; X11 only when no Wayland compositor is running.
+   - --socket=wayland
+@@ -31,21 +31,21 @@ finish-args:
+   - --filesystem=xdg-pictures
+   - --filesystem=xdg-documents
+   # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
 -  # the sandbox; `flatpak override --user --share=network ai.storyteller.figcraft` exposes it to
--  # host agents) and home/host filesystem access.
--modules:
++  # the sandbox; `flatpak override --user --share=network com.plervo.canvas` exposes it to
+   # host agents) and home/host filesystem access.
+ modules:
 -  - name: figcraft
--    buildsystem: simple
--    build-commands:
++  - name: plervo-canvas
+     buildsystem: simple
+     build-commands:
 -      - install -Dm755 bin/figcraft /app/bin/figcraft
 -      # The headless CLI, in tarballs built with apps/figcraft-cli.
 -      - if [ -x bin/figcraft-cli ]; then install -Dm755 bin/figcraft-cli /app/bin/figcraft-cli; fi
 -      - install -Dm644 share/applications/ai.storyteller.figcraft.desktop /app/share/applications/ai.storyteller.figcraft.desktop
 -      # .figcraft; the runtime's shared-mime-info already knows SVG, PNG and JPEG.
 -      - install -Dm644 share/mime/packages/ai.storyteller.figcraft.xml /app/share/mime/packages/ai.storyteller.figcraft.xml
--      # Already has the release's version and date substituted by package.sh.
--      - install -Dm644 share/metainfo/ai.storyteller.figcraft.metainfo.xml /app/share/metainfo/ai.storyteller.figcraft.metainfo.xml
--      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/figcraft /app/share/doc/
--    sources:
--      - type: dir
--        path: stage
-diff --git a/packaging/linux/flatpak/ai.storyteller.figcraft.yml b/packaging/linux/flatpak/ai.storyteller.figcraft.yml
-deleted file mode 100644
-index 03cb5fb..0000000
---- a/packaging/linux/flatpak/ai.storyteller.figcraft.yml
-+++ /dev/null
-@@ -1,73 +0,0 @@
--# Flatpak manifest for FigCraft, ready for a Flathub submission.
--#
--# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
--#
--#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
--#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
--#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.figcraft.yml
--#   flatpak run ai.storyteller.figcraft
--#
--# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
--# The single-file .flatpak attached to each release comes from ai.storyteller.figcraft.bundle.yml,
--# which repackages the prebuilt release binaries. Keep runtime-version and finish-args identical.
--#
--# Official release binaries embed craft-fonts (storytold/craft-fonts, OFL fonts); this from-source
--# build doesn't (add it as a git source and set CRAFT_FONTS_DIR to include it), so it uses the
--# runtime's system fonts.
--id: ai.storyteller.figcraft
--runtime: org.freedesktop.Platform
--runtime-version: '26.08'
--sdk: org.freedesktop.Sdk
--sdk-extensions:
--  - org.freedesktop.Sdk.Extension.rust-stable
--command: figcraft
--finish-args:
--  # Display: Wayland first; X11 only when no Wayland compositor is running.
--  - --socket=wayland
--  - --socket=fallback-x11
--  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
--  - --share=ipc
--  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
--  - --device=dri
--  # Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
--  # drag-and-drop through the document portal, so picked files work anywhere without broad
--  # filesystem access. Pictures and Documents are granted so files passed by path (the command
--  # line, Open Recent, "Save" next to the original) work in the usual places.
--  - --filesystem=xdg-pictures
--  - --filesystem=xdg-documents
--  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
--  # the sandbox; `flatpak override --user --share=network ai.storyteller.figcraft` exposes it to
--  # host agents) and home/host filesystem access.
--build-options:
--  append-path: /usr/lib/sdk/rust-stable/bin
--modules:
--  - name: figcraft
--    buildsystem: simple
--    build-options:
--      env:
--        CARGO_HOME: /run/build/figcraft/cargo
--        CARGO_NET_OFFLINE: 'true'
--        # .cargo/config.toml points CRAFT_FONTS_DIR at ../craft-fonts for local builds; there is
--        # none here, so build without it (a warning, not an error).
--        CRAFT_FONTS_DIR: /nonexistent
--    build-commands:
--      - cargo --offline build --release --locked -p figcraft
--      - install -Dm755 target/release/figcraft /app/bin/figcraft
--      - install -Dm644 packaging/linux/ai.storyteller.figcraft.desktop /app/share/applications/ai.storyteller.figcraft.desktop
--      - install -Dm644 packaging/linux/ai.storyteller.figcraft.mime.xml /app/share/mime/packages/ai.storyteller.figcraft.xml
--      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
--      - >-
--        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
--        install -d /app/share/metainfo;
--        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
--        packaging/linux/ai.storyteller.figcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.figcraft.metainfo.xml
--    sources:
--      - type: dir
--        path: ../../..
--        skip:
--          - target
--          - dist
--          - corpus
--          - build-flatpak
--          - .flatpak-builder
--      - cargo-sources.json
-diff --git a/packaging/linux/flatpak/com.plervo.canvas.bundle.yml b/packaging/linux/flatpak/com.plervo.canvas.bundle.yml
-new file mode 100644
-index 0000000..f3023ba
---- /dev/null
-+++ b/packaging/linux/flatpak/com.plervo.canvas.bundle.yml
-@@ -0,0 +1,51 @@
-+# Flatpak manifest for the single-file bundle attached to every GitHub release
-+# (plervo-canvas-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
-+#
-+# It repackages the release's own Linux tarball (plervo-canvas-<version>-linux-<arch>.tar.gz,
-+# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
-+# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
-+# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
-+# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
-+# Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
-+# GPU driver comes from its org.freedesktop.Platform.GL extension.
-+#
-+# com.plervo.canvas.yml (same directory) is the from-source manifest for Flathub. Keep
-+# runtime-version and finish-args identical in both (packaging-lint checks this).
-+id: com.plervo.canvas
-+runtime: org.freedesktop.Platform
-+runtime-version: '26.08'
-+sdk: org.freedesktop.Sdk
-+command: plervo-canvas
-+finish-args:
-+  # Display: Wayland first; X11 only when no Wayland compositor is running.
-+  - --socket=wayland
-+  - --socket=fallback-x11
-+  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
-+  - --share=ipc
-+  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
-+  - --device=dri
-+  # Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
-+  # drag-and-drop through the document portal, so picked files work anywhere without broad
-+  # filesystem access. Pictures and Documents are granted so files passed by path (the command
-+  # line, Open Recent, "Save" next to the original) work in the usual places.
-+  - --filesystem=xdg-pictures
-+  - --filesystem=xdg-documents
-+  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
-+  # the sandbox; `flatpak override --user --share=network com.plervo.canvas` exposes it to
-+  # host agents) and home/host filesystem access.
-+modules:
-+  - name: plervo-canvas
-+    buildsystem: simple
-+    build-commands:
 +      - install -Dm755 bin/plervo-canvas /app/bin/plervo-canvas
 +      # The headless CLI, in tarballs built with apps/plervo-canvas-cli.
 +      - if [ -x bin/plervo-canvas-cli ]; then install -Dm755 bin/plervo-canvas-cli /app/bin/plervo-canvas-cli; fi
 +      - install -Dm644 share/applications/com.plervo.canvas.desktop /app/share/applications/com.plervo.canvas.desktop
 +      # .plervo-canvas; the runtime's shared-mime-info already knows SVG, PNG and JPEG.
 +      - install -Dm644 share/mime/packages/com.plervo.canvas.xml /app/share/mime/packages/com.plervo.canvas.xml
-+      # Already has the release's version and date substituted by package.sh.
+       # Already has the release's version and date substituted by package.sh.
+-      - install -Dm644 share/metainfo/ai.storyteller.figcraft.metainfo.xml /app/share/metainfo/ai.storyteller.figcraft.metainfo.xml
+-      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/figcraft /app/share/doc/
 +      - install -Dm644 share/metainfo/com.plervo.canvas.metainfo.xml /app/share/metainfo/com.plervo.canvas.metainfo.xml
 +      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/plervo-canvas /app/share/doc/
-+    sources:
-+      - type: dir
-+        path: stage
-diff --git a/packaging/linux/flatpak/com.plervo.canvas.yml b/packaging/linux/flatpak/com.plervo.canvas.yml
-new file mode 100644
-index 0000000..d5ae186
---- /dev/null
+     sources:
+       - type: dir
+         path: stage
+diff --git a/packaging/linux/flatpak/ai.storyteller.figcraft.yml b/packaging/linux/flatpak/com.plervo.canvas.yml
+similarity index 73%
+rename from packaging/linux/flatpak/ai.storyteller.figcraft.yml
+rename to packaging/linux/flatpak/com.plervo.canvas.yml
+index 03cb5fb..d5ae186 100644
+--- a/packaging/linux/flatpak/ai.storyteller.figcraft.yml
 +++ b/packaging/linux/flatpak/com.plervo.canvas.yml
-@@ -0,0 +1,73 @@
+@@ -1,26 +1,26 @@
+-# Flatpak manifest for FigCraft, ready for a Flathub submission.
 +# Flatpak manifest for Plervo Canvas, ready for a Flathub submission.
-+#
-+# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
-+#
-+#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
-+#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
+ #
+ # Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
+ #
+ #   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
+ #   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
+-#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.figcraft.yml
+-#   flatpak run ai.storyteller.figcraft
 +#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/com.plervo.canvas.yml
 +#   flatpak run com.plervo.canvas
-+#
-+# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
+ #
+ # For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
+-# The single-file .flatpak attached to each release comes from ai.storyteller.figcraft.bundle.yml,
 +# The single-file .flatpak attached to each release comes from com.plervo.canvas.bundle.yml,
-+# which repackages the prebuilt release binaries. Keep runtime-version and finish-args identical.
-+#
-+# Official release binaries embed craft-fonts (storytold/craft-fonts, OFL fonts); this from-source
-+# build doesn't (add it as a git source and set CRAFT_FONTS_DIR to include it), so it uses the
-+# runtime's system fonts.
+ # which repackages the prebuilt release binaries. Keep runtime-version and finish-args identical.
+ #
+ # Official release binaries embed craft-fonts (storytold/craft-fonts, OFL fonts); this from-source
+ # build doesn't (add it as a git source and set CRAFT_FONTS_DIR to include it), so it uses the
+ # runtime's system fonts.
+-id: ai.storyteller.figcraft
 +id: com.plervo.canvas
-+runtime: org.freedesktop.Platform
-+runtime-version: '26.08'
-+sdk: org.freedesktop.Sdk
-+sdk-extensions:
-+  - org.freedesktop.Sdk.Extension.rust-stable
+ runtime: org.freedesktop.Platform
+ runtime-version: '26.08'
+ sdk: org.freedesktop.Sdk
+ sdk-extensions:
+   - org.freedesktop.Sdk.Extension.rust-stable
+-command: figcraft
 +command: plervo-canvas
-+finish-args:
-+  # Display: Wayland first; X11 only when no Wayland compositor is running.
-+  - --socket=wayland
-+  - --socket=fallback-x11
-+  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
-+  - --share=ipc
-+  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
-+  - --device=dri
-+  # Open/Save dialogs go through the file-chooser portal (rfd's xdg-portal backend) and
-+  # drag-and-drop through the document portal, so picked files work anywhere without broad
-+  # filesystem access. Pictures and Documents are granted so files passed by path (the command
-+  # line, Open Recent, "Save" next to the original) work in the usual places.
-+  - --filesystem=xdg-pictures
-+  - --filesystem=xdg-documents
-+  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
+ finish-args:
+   # Display: Wayland first; X11 only when no Wayland compositor is running.
+   - --socket=wayland
+@@ -36,31 +36,31 @@ finish-args:
+   - --filesystem=xdg-pictures
+   - --filesystem=xdg-documents
+   # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
+-  # the sandbox; `flatpak override --user --share=network ai.storyteller.figcraft` exposes it to
 +  # the sandbox; `flatpak override --user --share=network com.plervo.canvas` exposes it to
-+  # host agents) and home/host filesystem access.
-+build-options:
-+  append-path: /usr/lib/sdk/rust-stable/bin
-+modules:
+   # host agents) and home/host filesystem access.
+ build-options:
+   append-path: /usr/lib/sdk/rust-stable/bin
+ modules:
+-  - name: figcraft
 +  - name: plervo-canvas
-+    buildsystem: simple
-+    build-options:
-+      env:
+     buildsystem: simple
+     build-options:
+       env:
+-        CARGO_HOME: /run/build/figcraft/cargo
 +        CARGO_HOME: /run/build/plervo-canvas/cargo
-+        CARGO_NET_OFFLINE: 'true'
-+        # .cargo/config.toml points CRAFT_FONTS_DIR at ../craft-fonts for local builds; there is
-+        # none here, so build without it (a warning, not an error).
-+        CRAFT_FONTS_DIR: /nonexistent
-+    build-commands:
+         CARGO_NET_OFFLINE: 'true'
+         # .cargo/config.toml points CRAFT_FONTS_DIR at ../craft-fonts for local builds; there is
+         # none here, so build without it (a warning, not an error).
+         CRAFT_FONTS_DIR: /nonexistent
+     build-commands:
+-      - cargo --offline build --release --locked -p figcraft
+-      - install -Dm755 target/release/figcraft /app/bin/figcraft
+-      - install -Dm644 packaging/linux/ai.storyteller.figcraft.desktop /app/share/applications/ai.storyteller.figcraft.desktop
+-      - install -Dm644 packaging/linux/ai.storyteller.figcraft.mime.xml /app/share/mime/packages/ai.storyteller.figcraft.xml
 +      - cargo --offline build --release --locked -p plervo-canvas
 +      - install -Dm755 target/release/plervo-canvas /app/bin/plervo-canvas
 +      - install -Dm644 packaging/linux/com.plervo.canvas.desktop /app/share/applications/com.plervo.canvas.desktop
 +      - install -Dm644 packaging/linux/com.plervo.canvas.mime.xml /app/share/mime/packages/com.plervo.canvas.xml
-+      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
-+      - >-
-+        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
-+        install -d /app/share/metainfo;
-+        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+       - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
+       - >-
+         version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
+         install -d /app/share/metainfo;
+         sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+-        packaging/linux/ai.storyteller.figcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.figcraft.metainfo.xml
 +        packaging/linux/com.plervo.canvas.metainfo.xml.in > /app/share/metainfo/com.plervo.canvas.metainfo.xml
-+    sources:
-+      - type: dir
-+        path: ../../..
-+        skip:
-+          - target
-+          - dist
-+          - corpus
-+          - build-flatpak
-+          - .flatpak-builder
-+      - cargo-sources.json
+     sources:
+       - type: dir
+         path: ../../..
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
 index 69667a2..3c77c71 100644
 --- a/packaging/linux/nfpm.yaml
@@ -5975,76 +5776,6 @@ index ff2a15d..0000000
 -
 -[Install]
 -WantedBy=timers.target
-diff --git a/packaging/server/figcraft-server.service b/packaging/server/figcraft-server.service
-deleted file mode 100644
-index 34dbc57..0000000
---- a/packaging/server/figcraft-server.service
-+++ /dev/null
-@@ -1,64 +0,0 @@
--# systemd unit for figcraft-server; setup in docs/server.md ("Deploy on a Linux server").
--# Install: sudo cp figcraft-server.service /etc/systemd/system/ && sudo systemctl daemon-reload
--#          sudo systemctl enable --now figcraft-server
--# Logs:    journalctl -u figcraft-server
--
--[Unit]
--Description=FigCraft collaboration server
--Documentation=https://github.com/storytold/figcraft/blob/main/docs/server.md
--Wants=network-online.target
--After=network-online.target
--
--[Service]
--Type=simple
--User=figcraft
--Group=figcraft
--ExecStart=/usr/local/bin/figcraft-server --config /etc/figcraft-server/server.toml
--# SIGTERM (systemctl stop/restart) stops it gracefully: open files are saved and compacted, and
--# apps are told the server is restarting (they reconnect when it is back).
--KillSignal=SIGTERM
--TimeoutStopSec=30
--Restart=on-failure
--RestartSec=2
--# max_connections (512 by default) plus the files kept open.
--LimitNOFILE=4096
--UMask=0077
--# Under memory pressure this service slows down, then it alone is stopped (and restarted), not the
--# rest of the machine.
--MemoryHigh=60%
--MemoryMax=75%
--# It talks only to the proxy on this machine (listen = "127.0.0.1:47900"). Listening on a network
--# address without a proxy in front needs these two lines removed.
--IPAddressAllow=localhost
--IPAddressDeny=any
--
--# Hardening: the only writable place is the data directory.
--NoNewPrivileges=yes
--ProtectSystem=strict
--ReadWritePaths=/var/lib/figcraft-server
--ProtectHome=yes
--PrivateTmp=yes
--PrivateDevices=yes
--ProtectKernelTunables=yes
--ProtectKernelModules=yes
--ProtectKernelLogs=yes
--ProtectControlGroups=yes
--ProtectClock=yes
--ProtectHostname=yes
--ProtectProc=invisible
--ProcSubset=pid
--CapabilityBoundingSet=
--AmbientCapabilities=
--RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
--RestrictNamespaces=yes
--RestrictRealtime=yes
--RestrictSUIDSGID=yes
--LockPersonality=yes
--MemoryDenyWriteExecute=yes
--RemoveIPC=yes
--SystemCallArchitectures=native
--SystemCallFilter=@system-service
--SystemCallErrorNumber=EPERM
--
--[Install]
--WantedBy=multi-user.target
 diff --git a/packaging/server/install-test.sh b/packaging/server/install-test.sh
 index 303d08d..afbecd4 100755
 --- a/packaging/server/install-test.sh
@@ -6457,76 +6188,51 @@ index 0000000..9d0d27c
 +
 +[Install]
 +WantedBy=timers.target
-diff --git a/packaging/server/plervo-canvas-server.service b/packaging/server/plervo-canvas-server.service
-new file mode 100644
-index 0000000..37ce97a
---- /dev/null
+diff --git a/packaging/server/figcraft-server.service b/packaging/server/plervo-canvas-server.service
+similarity index 70%
+rename from packaging/server/figcraft-server.service
+rename to packaging/server/plervo-canvas-server.service
+index 34dbc57..37ce97a 100644
+--- a/packaging/server/figcraft-server.service
 +++ b/packaging/server/plervo-canvas-server.service
-@@ -0,0 +1,64 @@
+@@ -1,19 +1,19 @@
+-# systemd unit for figcraft-server; setup in docs/server.md ("Deploy on a Linux server").
+-# Install: sudo cp figcraft-server.service /etc/systemd/system/ && sudo systemctl daemon-reload
+-#          sudo systemctl enable --now figcraft-server
+-# Logs:    journalctl -u figcraft-server
 +# systemd unit for plervo-canvas-server; setup in docs/server.md ("Deploy on a Linux server").
 +# Install: sudo cp plervo-canvas-server.service /etc/systemd/system/ && sudo systemctl daemon-reload
 +#          sudo systemctl enable --now plervo-canvas-server
 +# Logs:    journalctl -u plervo-canvas-server
-+
-+[Unit]
+ 
+ [Unit]
+-Description=FigCraft collaboration server
+-Documentation=https://github.com/storytold/figcraft/blob/main/docs/server.md
 +Description=Plervo Canvas collaboration server
 +Documentation=https://github.com/alportblu/plervo-pdf/blob/main/docs/server.md
-+Wants=network-online.target
-+After=network-online.target
-+
-+[Service]
-+Type=simple
+ Wants=network-online.target
+ After=network-online.target
+ 
+ [Service]
+ Type=simple
+-User=figcraft
+-Group=figcraft
+-ExecStart=/usr/local/bin/figcraft-server --config /etc/figcraft-server/server.toml
 +User=plervo-canvas
 +Group=plervo-canvas
 +ExecStart=/usr/local/bin/plervo-canvas-server --config /etc/plervo-canvas-server/server.toml
-+# SIGTERM (systemctl stop/restart) stops it gracefully: open files are saved and compacted, and
-+# apps are told the server is restarting (they reconnect when it is back).
-+KillSignal=SIGTERM
-+TimeoutStopSec=30
-+Restart=on-failure
-+RestartSec=2
-+# max_connections (512 by default) plus the files kept open.
-+LimitNOFILE=4096
-+UMask=0077
-+# Under memory pressure this service slows down, then it alone is stopped (and restarted), not the
-+# rest of the machine.
-+MemoryHigh=60%
-+MemoryMax=75%
-+# It talks only to the proxy on this machine (listen = "127.0.0.1:47900"). Listening on a network
-+# address without a proxy in front needs these two lines removed.
-+IPAddressAllow=localhost
-+IPAddressDeny=any
-+
-+# Hardening: the only writable place is the data directory.
-+NoNewPrivileges=yes
-+ProtectSystem=strict
+ # SIGTERM (systemctl stop/restart) stops it gracefully: open files are saved and compacted, and
+ # apps are told the server is restarting (they reconnect when it is back).
+ KillSignal=SIGTERM
+@@ -35,7 +35,7 @@ IPAddressDeny=any
+ # Hardening: the only writable place is the data directory.
+ NoNewPrivileges=yes
+ ProtectSystem=strict
+-ReadWritePaths=/var/lib/figcraft-server
 +ReadWritePaths=/var/lib/plervo-canvas-server
-+ProtectHome=yes
-+PrivateTmp=yes
-+PrivateDevices=yes
-+ProtectKernelTunables=yes
-+ProtectKernelModules=yes
-+ProtectKernelLogs=yes
-+ProtectControlGroups=yes
-+ProtectClock=yes
-+ProtectHostname=yes
-+ProtectProc=invisible
-+ProcSubset=pid
-+CapabilityBoundingSet=
-+AmbientCapabilities=
-+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
-+RestrictNamespaces=yes
-+RestrictRealtime=yes
-+RestrictSUIDSGID=yes
-+LockPersonality=yes
-+MemoryDenyWriteExecute=yes
-+RemoveIPC=yes
-+SystemCallArchitectures=native
-+SystemCallFilter=@system-service
-+SystemCallErrorNumber=EPERM
-+
-+[Install]
-+WantedBy=multi-user.target
+ ProtectHome=yes
+ PrivateTmp=yes
+ PrivateDevices=yes
 diff --git a/packaging/web/README.md b/packaging/web/README.md
 index e17be23..e43755d 100644
 --- a/packaging/web/README.md
@@ -6679,157 +6385,8 @@ index fcc6d2f..09ffe0c 100644
  )
  $ErrorActionPreference = 'Stop'
  [xml] $Wxs = Get-Content -LiteralPath $WxsPath -Raw
-diff --git a/packaging/windows/figcraft.en-us.wxl b/packaging/windows/figcraft.en-us.wxl
-deleted file mode 100644
-index cc323d6..0000000
---- a/packaging/windows/figcraft.en-us.wxl
-+++ /dev/null
-@@ -1,11 +0,0 @@
--<?xml version="1.0" encoding="utf-8"?>
--<!--
--  Overrides for the setup wizard's WixUI strings, so its pages name the version being installed
--  ([FigcraftVersion] is the full version, pre-release tag included, set in figcraft.wxs).
---->
--<WixLocalization Culture="en-US" xmlns="http://wixtoolset.org/schemas/v4/wxl">
--  <String Id="WelcomeDlgTitle" Value="{\WixUI_Font_Bigger}Welcome to the [ProductName] [FigcraftVersion] Setup Wizard" />
--  <String Id="WelcomeDlgDescription" Value="The Setup Wizard will install [ProductName] version [FigcraftVersion] on your computer. Click Next to continue or Cancel to exit the Setup Wizard." />
--  <String Id="VerifyReadyDlgInstallTitle" Value="{\WixUI_Font_Title}Ready to install [ProductName] [FigcraftVersion]" />
--  <String Id="ExitDialogTitle" Value="{\WixUI_Font_Bigger}Completed the [ProductName] [FigcraftVersion] Setup Wizard" />
--</WixLocalization>
-diff --git a/packaging/windows/figcraft.wxs b/packaging/windows/figcraft.wxs
-deleted file mode 100644
-index a0e40b2..0000000
---- a/packaging/windows/figcraft.wxs
-+++ /dev/null
-@@ -1,126 +0,0 @@
--<?xml version="1.0" encoding="utf-8"?>
--<!--
--  FigCraft MSI (WiX Toolset v5: `dotnet tool install -g wix`, plus the UI and Util extensions:
--  `wix extension add -g WixToolset.UI.wixext/5.0.2 WixToolset.Util.wixext/5.0.2`). Built by package.ps1:
--
--    wix build figcraft.wxs -arch x64 -ext WixToolset.UI.wixext -ext WixToolset.Util.wixext
--      -culture en-US -loc figcraft.en-us.wxl -d Version=1.2.3 -d DisplayVersion=1.2.3-rc.1
--      -d BinDir=... -d IconPath=... -d BannerBmp=... -d DialogBmp=... -d HasCli=1 -o out.msi
--
--  Per-machine install with a setup wizard that names the version: Welcome, install folder
--  (Program Files\FigCraft by default, remembered for upgrades), Ready, a progress page, and a
--  Finish page with a ticked "Launch FigCraft" box. Installs a Start Menu shortcut, makes
--  FigCraft the owner of `.figcraft`, and offers it under "Open with" for SVG, PNG and JPEG
--  (without taking over the user's default app for them), plus figcraft-cli when HasCli=1.
--  `msiexec /qn` still installs silently.
--
--  UpgradeCode is fixed for FigCraft forever (generated once; never reuse another app's).
---->
--<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
--     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
--  <Package
--      Name="FigCraft"
--      Manufacturer="Learning Machines LLC"
--      Version="$(var.Version)"
--      UpgradeCode="7F8B9827-D065-41B7-A514-2A454B21F484"
--      Scope="perMachine"
--      Compressed="yes"
--      Language="1033">
--    <SummaryInformation Description="FigCraft interface design and prototyping tool" Manufacturer="Learning Machines LLC" />
--    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
--         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
--    <MajorUpgrade AllowSameVersionUpgrades="yes"
--        DowngradeErrorMessage="A newer version of FigCraft is already installed." />
--    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
--
--    <!-- MSI caches this icon using its Id as the filename. Advertised shortcuts to an
--         .exe need an .exe icon identifier (ICE50), even when the source is an ICO. -->
--    <Icon Id="FigcraftIcon.exe" SourceFile="$(var.IconPath)" />
--    <Property Id="ARPPRODUCTICON" Value="FigcraftIcon.exe" />
--    <Property Id="ARPURLINFOABOUT" Value="https://getartcraft.com/apps/figcraft" />
--    <Property Id="ARPURLUPDATEINFO" Value="https://getartcraft.com/apps/figcraft" />
--    <Property Id="ARPHELPLINK" Value="https://discord.gg/artcraft" />
--
--    <StandardDirectory Id="ProgramFiles6432Folder">
--      <Directory Id="INSTALLFOLDER" Name="FigCraft" />
--    </StandardDirectory>
--    <StandardDirectory Id="ProgramMenuFolder" />
--
--    <!-- An upgrade installs where the user put the previous version (written by FigcraftApp). -->
--    <Property Id="INSTALLFOLDER">
--      <RegistrySearch Id="PreviousInstallFolder" Root="HKLM" Key="Software\FigCraft" Name="InstallDir" Type="raw" />
--    </Property>
--
--    <Feature Id="Main" Title="FigCraft" Level="1">
--      <ComponentGroupRef Id="FigcraftFiles" />
--    </Feature>
--
--    <!-- The setup wizard: WixUI_InstallDir without its licence page (the code is MIT OR
--         Apache-2.0; there is nothing to accept). A later NewDialog on the same button wins. -->
--    <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
--    <UI>
--      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2" Condition="NOT Installed" />
--      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" />
--      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchFigcraft"
--          Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 AND NOT Installed" />
--    </UI>
--    <!-- Our own art, generated by package.ps1 from the app icon (not WiX's stock bitmaps). -->
--    <WixVariable Id="WixUIBannerBmp" Value="$(var.BannerBmp)" />
--    <WixVariable Id="WixUIDialogBmp" Value="$(var.DialogBmp)" />
--
--    <!-- The full version (Version is numeric, so it drops a pre-release tag), shown on the wizard's
--         pages through figcraft.en-us.wxl. -->
--    <Property Id="FigcraftVersion" Value="$(var.DisplayVersion)" />
--
--    <!-- Finish page: say where to find the app, and offer to start it (ticked by default). -->
--    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="FigCraft $(var.DisplayVersion) is installed. You can start it any time from the Start menu." />
--    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch FigCraft" />
--    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
--    <Property Id="WixShellExecTarget" Value="[#FigcraftExe]" />
--    <!-- Runs in the wizard's own (unelevated) process, so the app starts as the user, not as admin. -->
--    <CustomAction Id="LaunchFigcraft" BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" DllEntry="WixShellExec" Impersonate="yes" Return="ignore" />
--  </Package>
--
--  <Fragment>
--    <ComponentGroup Id="FigcraftFiles" Directory="INSTALLFOLDER">
--      <Component Id="FigcraftApp" Guid="238228C3-4C1D-4B33-8C5D-C31B65BC2DA4">
--        <File Id="FigcraftExe" Source="$(var.BinDir)\figcraft.exe" KeyPath="yes">
--          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="FigCraft"
--              Description="FigCraft interface design and prototyping" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
--              Icon="FigcraftIcon.exe" IconIndex="0" />
--        </File>
--
--        <!-- .figcraft: FigCraft's own format; FigCraft is its default app. -->
--        <ProgId Id="Figcraft.Document" Description="FigCraft Document" Icon="FigcraftExe" IconIndex="0">
--          <Extension Id="figcraft" ContentType="application/x-figcraft">
--            <Verb Id="open" Command="Open" TargetFile="FigcraftExe" Argument="&quot;%1&quot;" />
--          </Extension>
--        </ProgId>
--        <!-- SVG and images: offered under "Open with", never forced as the default. -->
--        <ProgId Id="Figcraft.Image" Description="Image" Icon="FigcraftExe" IconIndex="0" />
--        <RegistryValue Root="HKLM" Key="Software\Classes\Figcraft.Image\shell\open\command" Value="&quot;[#FigcraftExe]&quot; &quot;%1&quot;" Type="string" />
--        <RegistryValue Root="HKLM" Key="Software\Classes\.svg\OpenWithProgids" Name="Figcraft.Image" Value="" Type="string" />
--        <RegistryValue Root="HKLM" Key="Software\Classes\.png\OpenWithProgids" Name="Figcraft.Image" Value="" Type="string" />
--        <RegistryValue Root="HKLM" Key="Software\Classes\.jpg\OpenWithProgids" Name="Figcraft.Image" Value="" Type="string" />
--        <RegistryValue Root="HKLM" Key="Software\Classes\.jpeg\OpenWithProgids" Name="Figcraft.Image" Value="" Type="string" />
--
--        <!-- "Open with" app list and the Run dialog (Win+R "figcraft"). -->
--        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\figcraft.exe" Name="FriendlyAppName" Value="FigCraft" Type="string" />
--        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\figcraft.exe\shell\open\command" Value="&quot;[#FigcraftExe]&quot; &quot;%1&quot;" Type="string" />
--        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\figcraft.exe\SupportedTypes" Name=".figcraft" Value="" Type="string" />
--        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\figcraft.exe\SupportedTypes" Name=".svg" Value="" Type="string" />
--        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\figcraft.exe\SupportedTypes" Name=".png" Value="" Type="string" />
--        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\figcraft.exe\SupportedTypes" Name=".jpg" Value="" Type="string" />
--        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\figcraft.exe\SupportedTypes" Name=".jpeg" Value="" Type="string" />
--        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\figcraft.exe" Value="[#FigcraftExe]" Type="string" />
--        <RegistryValue Root="HKLM" Key="Software\FigCraft" Name="InstallDir" Value="[INSTALLFOLDER]" Type="string" />
--      </Component>
--
--<?if $(var.HasCli) = 1 ?>
--      <Component Id="FigcraftCli">
--        <File Id="FigcraftCliExe" Source="$(var.BinDir)\figcraft-cli.exe" KeyPath="yes" />
--      </Component>
--<?endif?>
--    </ComponentGroup>
--  </Fragment>
--</Wix>
 diff --git a/packaging/windows/package.ps1 b/packaging/windows/package.ps1
-index eaa46ba..bb5fc07 100644
+index eaa46ba..b9aadc7 100644
 --- a/packaging/windows/package.ps1
 +++ b/packaging/windows/package.ps1
 @@ -1,13 +1,13 @@
@@ -6871,14 +6428,16 @@ index eaa46ba..bb5fc07 100644
  foreach ($check in $checks) {
    $h = Get-PeHeader (Join-Path $Bin $check[0])
    if ($h.Machine -ne $Machine) { throw "$($check[0]) is for machine 0x$('{0:X}' -f $h.Machine), expected 0x$('{0:X}' -f $Machine) ($Arch)" }
-@@ -98,8 +98,25 @@ foreach ($exe in $Exes) { Copy-Item (Join-Path $Bin $exe) $Stage }
+@@ -98,8 +98,27 @@ foreach ($exe in $Exes) { Copy-Item (Join-Path $Bin $exe) $Stage }
  
  & (Join-Path $PSScriptRoot 'sign.ps1') @($Exes | ForEach-Object { Join-Path $Stage $_ })
  
 +# Carry source and embedded-asset notices in MSI and portable distributions.
++& python (Join-Path $Root 'packaging/licenses/verify.py') $Root
++if ($LASTEXITCODE -ne 0) { throw "Third-party notice review is stale or missing" }
 +$Legal = Join-Path $Stage 'Licenses'
 +New-Item -ItemType Directory -Force -Path $Legal | Out-Null
-+foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md') {
++foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md', 'THIRD_PARTY_NOTICES.txt') {
 +  $p = Join-Path $Root $f
 +  if (Test-Path $p) { Copy-Item $p $Legal }
 +}
@@ -6898,7 +6457,7 @@ index eaa46ba..bb5fc07 100644
  # WiX's stock bitmaps: a 493x58 banner across the top of the inner pages (the page title is drawn
  # over its left side, so that stays white) and a 493x312 backdrop for the Welcome and Finish pages
  # (their text sits on the right; the left 164 px are ours). Both must be 24-bit BMPs.
-@@ -134,15 +151,15 @@ function New-InstallerArt([string] $IconPng, [string] $BannerOut, [string] $Dial
+@@ -134,15 +153,15 @@ function New-InstallerArt([string] $IconPng, [string] $BannerOut, [string] $Dial
  }
  $Banner = Join-Path $Stage 'installer-banner.bmp'
  $Dialog = Join-Path $Stage 'installer-dialog.bmp'
@@ -6919,7 +6478,7 @@ index eaa46ba..bb5fc07 100644
      -d "BannerBmp=$Banner" -d "DialogBmp=$Dialog" -d "HasCli=$([int]$HasCli)" `
      -o $Msi
  }
-@@ -154,10 +171,11 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
+@@ -154,10 +173,11 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
  & (Join-Path $PSScriptRoot 'sign.ps1') $Msi
  
  # ---- portable zip ------------------------------------------------------------------------------
@@ -6932,7 +6491,7 @@ index eaa46ba..bb5fc07 100644
  foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'NOTICE') {
    $p = Join-Path $Root $f
    if (Test-Path $p) { Copy-Item $p $Portable }
-@@ -170,17 +188,17 @@ if ($env:CRAFT_FONTS_DIR) {
+@@ -170,17 +190,17 @@ if ($env:CRAFT_FONTS_DIR) {
      if (Test-Path $lic) { Copy-Item $lic (Join-Path $Portable "OFL-$($_.Name).txt") }
    }
  }
@@ -6954,136 +6513,172 @@ index eaa46ba..bb5fc07 100644
    Invoke-Native "$Smoke --version" { & (Join-Path $Stage $Smoke) --version | Out-Host }
  } else {
    Write-Output "skipping $Smoke --version: an $Arch build doesn't run on this $HostArch machine"
-diff --git a/packaging/windows/plervo-canvas.en-us.wxl b/packaging/windows/plervo-canvas.en-us.wxl
-new file mode 100644
-index 0000000..9a6b3ec
---- /dev/null
+diff --git a/packaging/windows/figcraft.en-us.wxl b/packaging/windows/plervo-canvas.en-us.wxl
+similarity index 96%
+rename from packaging/windows/figcraft.en-us.wxl
+rename to packaging/windows/plervo-canvas.en-us.wxl
+index cc323d6..9a6b3ec 100644
+--- a/packaging/windows/figcraft.en-us.wxl
 +++ b/packaging/windows/plervo-canvas.en-us.wxl
-@@ -0,0 +1,11 @@
-+<?xml version="1.0" encoding="utf-8"?>
-+<!--
-+  Overrides for the setup wizard's WixUI strings, so its pages name the version being installed
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <!--
+   Overrides for the setup wizard's WixUI strings, so its pages name the version being installed
+-  ([FigcraftVersion] is the full version, pre-release tag included, set in figcraft.wxs).
 +  ([FigcraftVersion] is the full version, pre-release tag included, set in plervo-canvas.wxs).
-+-->
-+<WixLocalization Culture="en-US" xmlns="http://wixtoolset.org/schemas/v4/wxl">
-+  <String Id="WelcomeDlgTitle" Value="{\WixUI_Font_Bigger}Welcome to the [ProductName] [FigcraftVersion] Setup Wizard" />
-+  <String Id="WelcomeDlgDescription" Value="The Setup Wizard will install [ProductName] version [FigcraftVersion] on your computer. Click Next to continue or Cancel to exit the Setup Wizard." />
-+  <String Id="VerifyReadyDlgInstallTitle" Value="{\WixUI_Font_Title}Ready to install [ProductName] [FigcraftVersion]" />
-+  <String Id="ExitDialogTitle" Value="{\WixUI_Font_Bigger}Completed the [ProductName] [FigcraftVersion] Setup Wizard" />
-+</WixLocalization>
-diff --git a/packaging/windows/plervo-canvas.wxs b/packaging/windows/plervo-canvas.wxs
-new file mode 100644
-index 0000000..8566cd2
---- /dev/null
+ -->
+ <WixLocalization Culture="en-US" xmlns="http://wixtoolset.org/schemas/v4/wxl">
+   <String Id="WelcomeDlgTitle" Value="{\WixUI_Font_Bigger}Welcome to the [ProductName] [FigcraftVersion] Setup Wizard" />
+diff --git a/packaging/windows/figcraft.wxs b/packaging/windows/plervo-canvas.wxs
+similarity index 52%
+rename from packaging/windows/figcraft.wxs
+rename to packaging/windows/plervo-canvas.wxs
+index a0e40b2..8566cd2 100644
+--- a/packaging/windows/figcraft.wxs
 +++ b/packaging/windows/plervo-canvas.wxs
-@@ -0,0 +1,131 @@
-+<?xml version="1.0" encoding="utf-8"?>
-+<!--
+@@ -1,57 +1,57 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <!--
+-  FigCraft MSI (WiX Toolset v5: `dotnet tool install -g wix`, plus the UI and Util extensions:
 +  Plervo Canvas MSI (WiX Toolset v5: `dotnet tool install -g wix`, plus the UI and Util extensions:
-+  `wix extension add -g WixToolset.UI.wixext/5.0.2 WixToolset.Util.wixext/5.0.2`). Built by package.ps1:
-+
+   `wix extension add -g WixToolset.UI.wixext/5.0.2 WixToolset.Util.wixext/5.0.2`). Built by package.ps1:
+ 
+-    wix build figcraft.wxs -arch x64 -ext WixToolset.UI.wixext -ext WixToolset.Util.wixext
+-      -culture en-US -loc figcraft.en-us.wxl -d Version=1.2.3 -d DisplayVersion=1.2.3-rc.1
 +    wix build plervo-canvas.wxs -arch x64 -ext WixToolset.UI.wixext -ext WixToolset.Util.wixext
 +      -culture en-US -loc plervo-canvas.en-us.wxl -d Version=1.2.3 -d DisplayVersion=1.2.3-rc.1
-+      -d BinDir=... -d IconPath=... -d BannerBmp=... -d DialogBmp=... -d HasCli=1 -o out.msi
-+
-+  Per-machine install with a setup wizard that names the version: Welcome, install folder
+       -d BinDir=... -d IconPath=... -d BannerBmp=... -d DialogBmp=... -d HasCli=1 -o out.msi
+ 
+   Per-machine install with a setup wizard that names the version: Welcome, install folder
+-  (Program Files\FigCraft by default, remembered for upgrades), Ready, a progress page, and a
+-  Finish page with a ticked "Launch FigCraft" box. Installs a Start Menu shortcut, makes
+-  FigCraft the owner of `.figcraft`, and offers it under "Open with" for SVG, PNG and JPEG
+-  (without taking over the user's default app for them), plus figcraft-cli when HasCli=1.
 +  (Program Files\Plervo Canvas by default, remembered for upgrades), Ready, a progress page, and a
 +  Finish page with a ticked "Launch Plervo Canvas" box. Installs a Start Menu shortcut, makes
 +  Plervo Canvas the owner of `.plervo-canvas`, and offers it under "Open with" for SVG, PNG and JPEG
 +  (without taking over the user's default app for them), plus plervo-canvas-cli when HasCli=1.
-+  `msiexec /qn` still installs silently.
-+
+   `msiexec /qn` still installs silently.
+ 
+-  UpgradeCode is fixed for FigCraft forever (generated once; never reuse another app's).
 +  UpgradeCode is fixed for Plervo Canvas forever (generated once; never reuse another app's).
-+-->
-+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
-+     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
-+  <Package
+ -->
+ <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+      xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+   <Package
+-      Name="FigCraft"
+-      Manufacturer="Learning Machines LLC"
 +      Name="Plervo Canvas"
 +      Manufacturer="Maintech Solutions LLC"
-+      Version="$(var.Version)"
+       Version="$(var.Version)"
+-      UpgradeCode="7F8B9827-D065-41B7-A514-2A454B21F484"
 +      UpgradeCode="10B07941-A89D-5B5B-B651-B9B8970A85DC"
-+      Scope="perMachine"
-+      Compressed="yes"
-+      Language="1033">
+       Scope="perMachine"
+       Compressed="yes"
+       Language="1033">
+-    <SummaryInformation Description="FigCraft interface design and prototyping tool" Manufacturer="Learning Machines LLC" />
 +    <SummaryInformation Description="Plervo Canvas interface design and prototyping tool" Manufacturer="Maintech Solutions LLC" />
-+    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
-+         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
-+    <MajorUpgrade AllowSameVersionUpgrades="yes"
+     <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
+          (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
+     <MajorUpgrade AllowSameVersionUpgrades="yes"
+-        DowngradeErrorMessage="A newer version of FigCraft is already installed." />
 +        DowngradeErrorMessage="A newer version of Plervo Canvas is already installed." />
-+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
-+
-+    <!-- MSI caches this icon using its Id as the filename. Advertised shortcuts to an
-+         .exe need an .exe icon identifier (ICE50), even when the source is an ICO. -->
-+    <Icon Id="FigcraftIcon.exe" SourceFile="$(var.IconPath)" />
-+    <Property Id="ARPPRODUCTICON" Value="FigcraftIcon.exe" />
+     <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+ 
+     <!-- MSI caches this icon using its Id as the filename. Advertised shortcuts to an
+          .exe need an .exe icon identifier (ICE50), even when the source is an ICO. -->
+     <Icon Id="FigcraftIcon.exe" SourceFile="$(var.IconPath)" />
+     <Property Id="ARPPRODUCTICON" Value="FigcraftIcon.exe" />
+-    <Property Id="ARPURLINFOABOUT" Value="https://getartcraft.com/apps/figcraft" />
+-    <Property Id="ARPURLUPDATEINFO" Value="https://getartcraft.com/apps/figcraft" />
+-    <Property Id="ARPHELPLINK" Value="https://discord.gg/artcraft" />
 +    <Property Id="ARPURLINFOABOUT" Value="https://plervo.com/" />
 +    <Property Id="ARPURLUPDATEINFO" Value="https://plervo.com/" />
 +    <Property Id="ARPHELPLINK" Value="https://buymeacoffee.com/alport" />
-+
-+    <StandardDirectory Id="ProgramFiles6432Folder">
+ 
+     <StandardDirectory Id="ProgramFiles6432Folder">
+-      <Directory Id="INSTALLFOLDER" Name="FigCraft" />
 +      <Directory Id="INSTALLFOLDER" Name="Plervo Canvas" />
-+    </StandardDirectory>
-+    <StandardDirectory Id="ProgramMenuFolder" />
-+
-+    <!-- An upgrade installs where the user put the previous version (written by FigcraftApp). -->
-+    <Property Id="INSTALLFOLDER">
+     </StandardDirectory>
+     <StandardDirectory Id="ProgramMenuFolder" />
+ 
+     <!-- An upgrade installs where the user put the previous version (written by FigcraftApp). -->
+     <Property Id="INSTALLFOLDER">
+-      <RegistrySearch Id="PreviousInstallFolder" Root="HKLM" Key="Software\FigCraft" Name="InstallDir" Type="raw" />
 +      <RegistrySearch Id="PreviousInstallFolder" Root="HKLM" Key="Software\Plervo Canvas" Name="InstallDir" Type="raw" />
-+    </Property>
-+
+     </Property>
+ 
+-    <Feature Id="Main" Title="FigCraft" Level="1">
 +    <Feature Id="Main" Title="Plervo Canvas" Level="1">
-+      <ComponentGroupRef Id="FigcraftFiles" />
-+    </Feature>
-+
-+    <!-- The setup wizard: WixUI_InstallDir without its licence page (the code is MIT OR
-+         Apache-2.0; there is nothing to accept). A later NewDialog on the same button wins. -->
-+    <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
-+    <UI>
-+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2" Condition="NOT Installed" />
-+      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" />
-+      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchFigcraft"
-+          Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 AND NOT Installed" />
-+    </UI>
-+    <!-- Our own art, generated by package.ps1 from the app icon (not WiX's stock bitmaps). -->
-+    <WixVariable Id="WixUIBannerBmp" Value="$(var.BannerBmp)" />
-+    <WixVariable Id="WixUIDialogBmp" Value="$(var.DialogBmp)" />
-+
-+    <!-- The full version (Version is numeric, so it drops a pre-release tag), shown on the wizard's
+       <ComponentGroupRef Id="FigcraftFiles" />
+     </Feature>
+ 
+@@ -69,58 +69,63 @@
+     <WixVariable Id="WixUIDialogBmp" Value="$(var.DialogBmp)" />
+ 
+     <!-- The full version (Version is numeric, so it drops a pre-release tag), shown on the wizard's
+-         pages through figcraft.en-us.wxl. -->
 +         pages through plervo-canvas.en-us.wxl. -->
-+    <Property Id="FigcraftVersion" Value="$(var.DisplayVersion)" />
-+
-+    <!-- Finish page: say where to find the app, and offer to start it (ticked by default). -->
+     <Property Id="FigcraftVersion" Value="$(var.DisplayVersion)" />
+ 
+     <!-- Finish page: say where to find the app, and offer to start it (ticked by default). -->
+-    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="FigCraft $(var.DisplayVersion) is installed. You can start it any time from the Start menu." />
+-    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch FigCraft" />
 +    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="Plervo Canvas $(var.DisplayVersion) is installed. You can start it any time from the Start menu." />
 +    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch Plervo Canvas" />
-+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
-+    <Property Id="WixShellExecTarget" Value="[#FigcraftExe]" />
-+    <!-- Runs in the wizard's own (unelevated) process, so the app starts as the user, not as admin. -->
-+    <CustomAction Id="LaunchFigcraft" BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" DllEntry="WixShellExec" Impersonate="yes" Return="ignore" />
+     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
+     <Property Id="WixShellExecTarget" Value="[#FigcraftExe]" />
+     <!-- Runs in the wizard's own (unelevated) process, so the app starts as the user, not as admin. -->
+     <CustomAction Id="LaunchFigcraft" BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" DllEntry="WixShellExec" Impersonate="yes" Return="ignore" />
 +    <Feature Id="PlervoLicenseFeature" Title="Licenses" Level="1"><ComponentGroupRef Id="PlervoLegalFiles" /></Feature>
-+  </Package>
-+
-+  <Fragment>
-+    <ComponentGroup Id="FigcraftFiles" Directory="INSTALLFOLDER">
+   </Package>
+ 
+   <Fragment>
+     <ComponentGroup Id="FigcraftFiles" Directory="INSTALLFOLDER">
+-      <Component Id="FigcraftApp" Guid="238228C3-4C1D-4B33-8C5D-C31B65BC2DA4">
+-        <File Id="FigcraftExe" Source="$(var.BinDir)\figcraft.exe" KeyPath="yes">
+-          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="FigCraft"
+-              Description="FigCraft interface design and prototyping" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
 +      <Component Id="FigcraftApp" Guid="6DD8CC3B-101F-5B9D-B8A3-657762828941">
 +        <File Id="FigcraftExe" Source="$(var.BinDir)\plervo-canvas.exe" KeyPath="yes">
 +          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="Plervo Canvas"
 +              Description="Plervo Canvas interface design and prototyping" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
-+              Icon="FigcraftIcon.exe" IconIndex="0" />
-+        </File>
-+
+               Icon="FigcraftIcon.exe" IconIndex="0" />
+         </File>
+ 
+-        <!-- .figcraft: FigCraft's own format; FigCraft is its default app. -->
+-        <ProgId Id="Figcraft.Document" Description="FigCraft Document" Icon="FigcraftExe" IconIndex="0">
+-          <Extension Id="figcraft" ContentType="application/x-figcraft">
 +        <!-- .plervo-canvas: Plervo Canvas's own format; Plervo Canvas is its default app. -->
 +        <ProgId Id="PlervoCanvas.Document" Description="Plervo Canvas Document" Icon="FigcraftExe" IconIndex="0">
 +          <Extension Id="figcraft" ContentType="application/x-plervo-canvas">
-+            <Verb Id="open" Command="Open" TargetFile="FigcraftExe" Argument="&quot;%1&quot;" />
-+          </Extension>
-+        </ProgId>
-+        <!-- SVG and images: offered under "Open with", never forced as the default. -->
+             <Verb Id="open" Command="Open" TargetFile="FigcraftExe" Argument="&quot;%1&quot;" />
+           </Extension>
+         </ProgId>
+         <!-- SVG and images: offered under "Open with", never forced as the default. -->
+-        <ProgId Id="Figcraft.Image" Description="Image" Icon="FigcraftExe" IconIndex="0" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Figcraft.Image\shell\open\command" Value="&quot;[#FigcraftExe]&quot; &quot;%1&quot;" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.svg\OpenWithProgids" Name="Figcraft.Image" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.png\OpenWithProgids" Name="Figcraft.Image" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.jpg\OpenWithProgids" Name="Figcraft.Image" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\.jpeg\OpenWithProgids" Name="Figcraft.Image" Value="" Type="string" />
 +        <ProgId Id="PlervoCanvas.Image" Description="Image" Icon="FigcraftExe" IconIndex="0" />
 +        <RegistryValue Root="HKLM" Key="Software\Classes\PlervoCanvas.Image\shell\open\command" Value="&quot;[#FigcraftExe]&quot; &quot;%1&quot;" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Classes\.svg\OpenWithProgids" Name="PlervoCanvas.Image" Value="" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Classes\.png\OpenWithProgids" Name="PlervoCanvas.Image" Value="" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Classes\.jpg\OpenWithProgids" Name="PlervoCanvas.Image" Value="" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Classes\.jpeg\OpenWithProgids" Name="PlervoCanvas.Image" Value="" Type="string" />
-+
+ 
+-        <!-- "Open with" app list and the Run dialog (Win+R "figcraft"). -->
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\figcraft.exe" Name="FriendlyAppName" Value="FigCraft" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\figcraft.exe\shell\open\command" Value="&quot;[#FigcraftExe]&quot; &quot;%1&quot;" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\figcraft.exe\SupportedTypes" Name=".figcraft" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\figcraft.exe\SupportedTypes" Name=".svg" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\figcraft.exe\SupportedTypes" Name=".png" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\figcraft.exe\SupportedTypes" Name=".jpg" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\figcraft.exe\SupportedTypes" Name=".jpeg" Value="" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\figcraft.exe" Value="[#FigcraftExe]" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\FigCraft" Name="InstallDir" Value="[INSTALLFOLDER]" Type="string" />
 +        <!-- "Open with" app list and the Run dialog (Win+R "plervo-canvas"). -->
 +        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\plervo-canvas.exe" Name="FriendlyAppName" Value="Plervo Canvas" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\plervo-canvas.exe\shell\open\command" Value="&quot;[#FigcraftExe]&quot; &quot;%1&quot;" Type="string" />
@@ -7094,20 +6689,21 @@ index 0000000..8566cd2
 +        <RegistryValue Root="HKLM" Key="Software\Classes\Applications\plervo-canvas.exe\SupportedTypes" Name=".jpeg" Value="" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\plervo-canvas.exe" Value="[#FigcraftExe]" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Plervo Canvas" Name="InstallDir" Value="[INSTALLFOLDER]" Type="string" />
-+      </Component>
-+
-+<?if $(var.HasCli) = 1 ?>
-+      <Component Id="FigcraftCli">
+       </Component>
+ 
+ <?if $(var.HasCli) = 1 ?>
+       <Component Id="FigcraftCli">
+-        <File Id="FigcraftCliExe" Source="$(var.BinDir)\figcraft-cli.exe" KeyPath="yes" />
 +        <File Id="FigcraftCliExe" Source="$(var.BinDir)\plervo-canvas-cli.exe" KeyPath="yes" />
-+      </Component>
-+<?endif?>
-+    </ComponentGroup>
-+  </Fragment>
+       </Component>
+ <?endif?>
+     </ComponentGroup>
+   </Fragment>
 +  <Fragment>
 +    <DirectoryRef Id="INSTALLFOLDER"><Directory Id="PlervoLegalDir" Name="Licenses" /></DirectoryRef>
 +    <ComponentGroup Id="PlervoLegalFiles" Directory="PlervoLegalDir"><Files Include="$(var.BinDir)\Licenses\*" /></ComponentGroup>
 +  </Fragment>
-+</Wix>
+ </Wix>
 diff --git a/packaging/windows/sign.ps1 b/packaging/windows/sign.ps1
 index 3d94747..dcb756f 100644
 --- a/packaging/windows/sign.ps1

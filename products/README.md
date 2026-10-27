@@ -11,7 +11,8 @@ This directory records reproducible source inputs and candidate-build requiremen
 Passing a compile check does not qualify an app, installer, or platform for release.
 Current findings and remaining gates are recorded in [SECURITY-REVIEW.md](SECURITY-REVIEW.md).
 
-The development catalog targets alpha.5: visible optional Support actions in the
+The development catalog targets alpha.8: dependency security updates and complete
+distribution notice inventories, retaining optional Support actions in the
 application headers, localized through each app's existing language catalogs.
 All support actions point to https://buymeacoffee.com/alport and require a click.
 Earlier alpha.4 packages remain unchanged. New packages are published separately
@@ -102,6 +103,14 @@ candidates disable the unauthenticated UI control transport by default. Their de
 `local-control` feature must not be enabled in a public build; headless CLI/MCP still works.
 
 ## Release requirements
+
+Each product has a frozen dependency and notice inventory in `licenses/PRODUCT`.
+`xtask products --prepare` verifies its pins and copies the reviewed notices into the
+prepared source. Native packagers require Python 3 and reject stale notices before
+copying them into the Mac application and CLI, Linux packages, and Windows MSI/ZIP.
+Native CI compares the installed notice text with the reviewed source. Dependency
+and source-manifest changes require a fresh notice review; do not update these hashes
+without checking the original copyright texts and component source links.
 
 - Preserve upstream notices and asset licences; review all new dependency advisories.
 - Verify native operations with synthetic documents, damaged-input handling, and

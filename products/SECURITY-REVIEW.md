@@ -1,5 +1,66 @@
 # Product security review
 
+## October 26 dependency candidates
+
+The October 25 native matrix
+([40230486004](https://github.com/alportblu/plervo-pdf/actions/runs/40230486004))
+completed with 33 successful jobs and four failures. Develop and Video failed
+the dependency gate on [RUSTSEC-2026-0387](https://rustsec.org/advisories/RUSTSEC-2026-0387.html);
+Photo and Video also failed on [RUSTSEC-2026-0386](https://rustsec.org/advisories/RUSTSEC-2026-0386.html).
+The dependency audit runs in the Linux jobs and covers the complete dependency
+graph. Successful Windows/macOS jobs do not override these findings.
+Vector's separate failure was a Fedora OpenH264 repository download timeout during
+container installation, after its dependency audit and application tests passed.
+
+The new candidates make the following changes:
+
+- Photo and Video lock Tokio to **1.53.3**, the patched release in the existing
+  minor series. Unrelated Windows dependency selections remain unchanged.
+- Develop and Video replace the old vendored RustCrypto TLS provider with the
+  unmodified library source and tests at upstream commit
+  [`70f76c039e587192688af18a80d5d6435dedaf22`](https://github.com/RustCrypto/rustls-rustcrypto/tree/70f76c039e587192688af18a80d5d6435dedaf22).
+  This supports the maintained RustCrypto API family. The manifest adds a
+  **crypto-bigint 0.7.9** minimum; the lock resolves **ctutils 0.4.6**.
+  The dependency migration updates the provider's curve, signature, and symmetric
+  encryption libraries together. Plervo does not implement or patch their algorithms.
+- TLS client private keys remain disabled. This is separate from ephemeral key
+  exchange, which does use secrets and therefore required the arithmetic update.
+  New compatibility checks exercise X25519, P-256 and P-384 exchanges in both
+  directions and reject malformed shares. They do not prove constant-time behavior
+  on every compiler or CPU.
+- Original upstream license and copyright texts are preserved. The three frozen
+  notice inventories, source-overlay checksums and packaging input hashes are refreshed.
+  No new advisory exception or relaxed check is introduced.
+
+Local dependency/license audits pass for all three candidates. Develop's 18 fetch
+tests and Video's 14 speech/download tests pass, as do their strict scoped Clippy,
+formatting, source-layer and asset checks. Full native candidate qualification is
+still required, including the repeated Fedora installation test. Earlier Motion and
+Canvas Windows test failures passed in the October 25 matrix without source changes;
+their intermittent failures remain recorded and are not claimed as repaired here.
+Validation-only pypdf is separately hash-pinned to 6.21.2 and is not bundled in apps.
+
+These are source candidates, not replacement public installers. Existing alpha.8
+assets remain unchanged. A new version must be qualified, signed/notarized where
+required and published before installed applications receive these changes.
+
+## October 23 source candidates
+
+The alpha.8 source candidates update ctutils in Write and the affected HTTPS
+verification/root packages in Photo, Video, Develop and Canvas. All twelve products
+also gain frozen, original third-party notice bundles, mandatory packaging checks,
+and installed-package notice comparisons. Exact changes, update behavior and the PHP
+exposure check are recorded in [the alpha.8 source review](../docs/suite-update-2026-10-23.md).
+These are source findings, not a claim of completed binary qualification or publication.
+The historical RSA exceptions below remain narrowly scoped and are not a patch to RSA.
+
+The public [release notes](https://github.com/alportblu/plervo-pdf/releases) are authoritative
+for currently downloadable packages. Plervo PDF is available in Microsoft Store;
+the SignPath Foundation application was not approved, and other Windows app packages
+remain internal until an appropriate distribution/signing route is qualified.
+
+## Historical release checkpoint
+
 Release status updated October 18, 2026: all twelve applications below, plus PDF, are
 published for Mac Apple Silicon and Linux x86_64 in
 [alpha.4](https://github.com/alportblu/plervo-pdf/releases/tag/v0.1.0-alpha.4).

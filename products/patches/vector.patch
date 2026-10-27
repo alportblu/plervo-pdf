@@ -75,7 +75,7 @@ index 81b0bd6..f4c4fe2 100644
 +
 +| `assets/app-icon/LICENSE.txt` | Plervo icon documentation | Plervo contributors | Original work | MIT OR Apache-2.0 | `LICENSE-MIT` | 2a40ee6e580a985695afdd9a78d8125a7da4428358f22fe0b366a760a1d5069e |
 diff --git a/Cargo.lock b/Cargo.lock
-index eca4758..4a4471e 100644
+index eca4758..721d961 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -2232,7 +2232,6 @@ dependencies = [
@@ -92,7 +92,7 @@ index eca4758..4a4471e 100644
  
 +[[package]]
 +name = "plervo-vector"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
 +dependencies = [
 + "arboard",
 + "block2 0.6.2",
@@ -127,7 +127,7 @@ index eca4758..4a4471e 100644
 +
 +[[package]]
 +name = "plervo-vector-cli"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
 +dependencies = [
 + "log",
 + "objc2-core-foundation",
@@ -252,7 +252,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-affinity"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "crc32fast",
   "flate2",
@@ -261,7 +261,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-brush"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "kurbo 0.13.1",
   "serde",
@@ -270,7 +270,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-cad"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "image",
   "kurbo 0.13.1",
@@ -303,7 +303,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-color"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "kurbo 0.13.1",
   "moxcms",
@@ -312,7 +312,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-doc"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "image",
   "jpeg-encoder",
@@ -321,7 +321,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-effects"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "image",
   "kurbo 0.13.1",
@@ -330,7 +330,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-engine"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "crc32fast",
   "flate2",
@@ -339,7 +339,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-eps"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "flate2",
   "image",
@@ -348,7 +348,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-format"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "flate2",
   "proptest",
@@ -357,7 +357,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-geom"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "kurbo 0.13.1",
   "proptest",
@@ -366,7 +366,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-mcp"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "image",
   "log",
@@ -375,7 +375,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-metafile"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "image",
   "kurbo 0.13.1",
@@ -384,7 +384,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-pathops"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "kurbo 0.13.1",
   "linesweeper",
@@ -393,7 +393,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-pdf"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "aes",
   "craft-pdf",
@@ -407,7 +407,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-plugins"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "serde",
   "serde_json",
@@ -416,7 +416,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-render"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "flate2",
   "gif",
@@ -425,7 +425,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-scriptcheck"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "proptest",
  ]
@@ -433,7 +433,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-svg"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "flate2",
   "image",
@@ -442,7 +442,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-testkit"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "image",
   "kurbo 0.13.1",
@@ -451,7 +451,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-text"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "harfrust 0.13.3",
   "icu_segmenter",
@@ -460,7 +460,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-three-d"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "vectorcraft-geom",
   "vectorcraft-pathops",
@@ -469,7 +469,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-tools"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "image",
   "kurbo 0.13.1",
@@ -478,7 +478,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-trace"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "image",
   "kurbo 0.13.1",
@@ -487,7 +487,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-ui-egui"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "craft-ui",
   "egui",
@@ -496,7 +496,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "vectorcraft-web"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "eframe",
   "egui",
@@ -505,7 +505,7 @@ index eca4758..4a4471e 100644
  [[package]]
  name = "xtask"
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  dependencies = [
   "serde_json",
  ]
@@ -522,7 +522,7 @@ index eca4758..4a4471e 100644
   "proc-macro2",
   "quote",
 diff --git a/Cargo.toml b/Cargo.toml
-index 1c10d55..f8ce90f 100644
+index 1c10d55..836e54e 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -530,7 +530,7 @@ index 1c10d55..f8ce90f 100644
  
  [workspace.package]
 -version = "0.12.0"
-+version = "0.1.0-alpha.5"
++version = "0.1.0-alpha.8"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.95"
@@ -9590,19 +9590,20 @@ index 1d5d3b3..bc401dc 100755
 +print("Plervo Vector package identity ok")
  PYEOF
 diff --git a/packaging/env.sh b/packaging/env.sh
-index 9d84cd9..45add89 100644
+index 9d84cd9..04353fc 100644
 --- a/packaging/env.sh
 +++ b/packaging/env.sh
-@@ -47,7 +47,7 @@ warn() {
+@@ -47,7 +47,8 @@ warn() {
  # Copy licence and readme files that exist into a package directory.
  copy_docs() {
    local dest="$1" f
 -  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ASSETS.md; do
-+  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md; do
++  python3 "$ROOT/packaging/licenses/verify.py" "$ROOT" || return 1
++  for f in README.md LICENSE LICENSE-MIT LICENSE-APACHE COPYRIGHT NOTICE ATTRIBUTION.md ASSETS.md THIRD_PARTY_NOTICES.txt; do
      if [ -f "$ROOT/$f" ]; then cp "$ROOT/$f" "$dest/"; fi
    done
    if [ -d "$ROOT/licenses" ]; then
-@@ -55,6 +55,13 @@ copy_docs() {
+@@ -55,6 +56,13 @@ copy_docs() {
      cp -R "$ROOT/licenses/." "$dest/licenses/"
    fi
    copy_font_licences "$dest"
@@ -9760,206 +9761,101 @@ index 5c8620b..a0a837c 100755
 +  echo "warning: iconutil not found (macOS only); plervo-vector.icns not regenerated" >&2
  fi
  echo "icons written to $DIR"
-diff --git a/packaging/linux/ai.storyteller.vectorcraft.desktop b/packaging/linux/ai.storyteller.vectorcraft.desktop
-deleted file mode 100644
-index af34553..0000000
+diff --git a/packaging/linux/ai.storyteller.vectorcraft.desktop b/packaging/linux/com.plervo.vector.desktop
+similarity index 69%
+rename from packaging/linux/ai.storyteller.vectorcraft.desktop
+rename to packaging/linux/com.plervo.vector.desktop
+index af34553..5729e8b 100644
 --- a/packaging/linux/ai.storyteller.vectorcraft.desktop
-+++ /dev/null
-@@ -1,14 +0,0 @@
--[Desktop Entry]
--Type=Application
++++ b/packaging/linux/com.plervo.vector.desktop
+@@ -1,14 +1,14 @@
+ [Desktop Entry]
+ Type=Application
 -Name=VectorCraft
--GenericName=Vector Graphics Editor
--Comment=Draw and edit vector illustrations, SVG and PDF
++Name=Plervo Vector
+ GenericName=Vector Graphics Editor
+ Comment=Draw and edit vector illustrations, SVG and PDF
 -Exec=vectorcraft %F
 -TryExec=vectorcraft
 -Icon=ai.storyteller.vectorcraft
--Terminal=false
--StartupNotify=true
++Exec=plervo-vector %F
++TryExec=plervo-vector
++Icon=com.plervo.vector
+ Terminal=false
+ StartupNotify=true
 -StartupWMClass=ai.storyteller.vectorcraft
--Categories=Graphics;2DGraphics;VectorGraphics;
--Keywords=vector;illustration;svg;pdf;drawing;bezier;
--MimeType=image/svg+xml;application/pdf;
-diff --git a/packaging/linux/ai.storyteller.vectorcraft.metainfo.xml.in b/packaging/linux/ai.storyteller.vectorcraft.metainfo.xml.in
-deleted file mode 100644
-index a19681a..0000000
++StartupWMClass=com.plervo.vector
+ Categories=Graphics;2DGraphics;VectorGraphics;
+ Keywords=vector;illustration;svg;pdf;drawing;bezier;
+ MimeType=image/svg+xml;application/pdf;
+diff --git a/packaging/linux/ai.storyteller.vectorcraft.metainfo.xml.in b/packaging/linux/com.plervo.vector.metainfo.xml.in
+similarity index 70%
+rename from packaging/linux/ai.storyteller.vectorcraft.metainfo.xml.in
+rename to packaging/linux/com.plervo.vector.metainfo.xml.in
+index a19681a..b4555ab 100644
 --- a/packaging/linux/ai.storyteller.vectorcraft.metainfo.xml.in
-+++ /dev/null
-@@ -1,65 +0,0 @@
--<?xml version="1.0" encoding="UTF-8"?>
--<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
--     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
--<component type="desktop-application">
++++ b/packaging/linux/com.plervo.vector.metainfo.xml.in
+@@ -2,28 +2,28 @@
+ <!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
+      manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
+ <component type="desktop-application">
 -  <id>ai.storyteller.vectorcraft</id>
--  <metadata_license>CC0-1.0</metadata_license>
--  <project_license>MIT OR Apache-2.0</project_license>
++  <id>com.plervo.vector</id>
+   <metadata_license>CC0-1.0</metadata_license>
+   <project_license>MIT OR Apache-2.0</project_license>
 -  <name>VectorCraft</name>
--  <summary>Draw and edit vector illustrations, SVG and PDF</summary>
--  <developer id="ai.storyteller">
++  <name>Plervo Vector</name>
+   <summary>Draw and edit vector illustrations, SVG and PDF</summary>
+   <developer id="ai.storyteller">
 -    <name>Learning Machines LLC</name>
--  </developer>
--  <description>
--    <p>
++    <name>Maintech Solutions LLC</name>
+   </developer>
+   <description>
+     <p>
 -      VectorCraft is an open-source vector illustration app. Draw with pen, shape and brush tools,
--      style art with fills, strokes, gradients and live effects, lay out artboards and type, and
--      open and save SVG and PDF.
--    </p>
--  </description>
++      Plervo Vector is an open-source vector illustration app. Draw with pen, shape and brush tools,
+       style art with fills, strokes, gradients and live effects, lay out artboards and type, and
+       open and save SVG and PDF.
+     </p>
+   </description>
 -  <launchable type="desktop-id">ai.storyteller.vectorcraft.desktop</launchable>
 -  <icon type="stock">ai.storyteller.vectorcraft</icon>
--  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
++  <launchable type="desktop-id">com.plervo.vector.desktop</launchable>
++  <icon type="stock">com.plervo.vector</icon>
+   <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
 -  <url type="homepage">https://getartcraft.com/apps/vectorcraft</url>
 -  <url type="bugtracker">https://github.com/storytold/vectorcraft/issues</url>
 -  <url type="help">https://github.com/storytold/vectorcraft</url>
 -  <url type="contact">https://discord.gg/artcraft</url>
--  <categories>
--    <category>Graphics</category>
--    <category>2DGraphics</category>
--    <category>VectorGraphics</category>
--  </categories>
--  <keywords>
--    <keyword>vector</keyword>
--    <keyword>illustration</keyword>
--    <keyword>svg</keyword>
--    <keyword>pdf</keyword>
--    <keyword>drawing</keyword>
--    <keyword>bezier</keyword>
--  </keywords>
--  <screenshots>
--    <screenshot type="default">
--      <caption>Editing the Neon Drive poster with a live glow effect in the Appearance panel</caption>
--      <image>https://raw.githubusercontent.com/storytold/vectorcraft/main/docs/images/shot-1-neon.png</image>
--    </screenshot>
--  </screenshots>
--  <branding>
--    <color type="primary" scheme_preference="light">#9fd0ff</color>
--    <color type="primary" scheme_preference="dark">#1f64ba</color>
--  </branding>
--  <requires>
--    <display_length compare="ge">760</display_length>
--  </requires>
--  <supports>
--    <control>keyboard</control>
--    <control>pointing</control>
--    <control>tablet</control>
--  </supports>
--  <provides>
--    <binary>vectorcraft</binary>
--  </provides>
--  <content_rating type="oars-1.1"/>
--  <releases>
--    <release version="@VERSION@" date="@DATE@"/>
--  </releases>
--</component>
-diff --git a/packaging/linux/ai.storyteller.vectorcraft.mime.xml b/packaging/linux/ai.storyteller.vectorcraft.mime.xml
-deleted file mode 100644
-index be4dcc2..0000000
---- a/packaging/linux/ai.storyteller.vectorcraft.mime.xml
-+++ /dev/null
-@@ -1,3 +0,0 @@
--<?xml version="1.0" encoding="UTF-8"?>
--<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
--</mime-info>
-diff --git a/packaging/linux/com.plervo.vector.desktop b/packaging/linux/com.plervo.vector.desktop
-new file mode 100644
-index 0000000..5729e8b
---- /dev/null
-+++ b/packaging/linux/com.plervo.vector.desktop
-@@ -0,0 +1,14 @@
-+[Desktop Entry]
-+Type=Application
-+Name=Plervo Vector
-+GenericName=Vector Graphics Editor
-+Comment=Draw and edit vector illustrations, SVG and PDF
-+Exec=plervo-vector %F
-+TryExec=plervo-vector
-+Icon=com.plervo.vector
-+Terminal=false
-+StartupNotify=true
-+StartupWMClass=com.plervo.vector
-+Categories=Graphics;2DGraphics;VectorGraphics;
-+Keywords=vector;illustration;svg;pdf;drawing;bezier;
-+MimeType=image/svg+xml;application/pdf;
-diff --git a/packaging/linux/com.plervo.vector.metainfo.xml.in b/packaging/linux/com.plervo.vector.metainfo.xml.in
-new file mode 100644
-index 0000000..b4555ab
---- /dev/null
-+++ b/packaging/linux/com.plervo.vector.metainfo.xml.in
-@@ -0,0 +1,65 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<!-- AppStream metadata (software centres, Flathub). Template: package.sh and the Flatpak
-+     manifest substitute @VERSION@ and @DATE@ from Cargo.toml and the build date. -->
-+<component type="desktop-application">
-+  <id>com.plervo.vector</id>
-+  <metadata_license>CC0-1.0</metadata_license>
-+  <project_license>MIT OR Apache-2.0</project_license>
-+  <name>Plervo Vector</name>
-+  <summary>Draw and edit vector illustrations, SVG and PDF</summary>
-+  <developer id="ai.storyteller">
-+    <name>Maintech Solutions LLC</name>
-+  </developer>
-+  <description>
-+    <p>
-+      Plervo Vector is an open-source vector illustration app. Draw with pen, shape and brush tools,
-+      style art with fills, strokes, gradients and live effects, lay out artboards and type, and
-+      open and save SVG and PDF.
-+    </p>
-+  </description>
-+  <launchable type="desktop-id">com.plervo.vector.desktop</launchable>
-+  <icon type="stock">com.plervo.vector</icon>
-+  <!-- Only url types known to appstream 0.15 (Ubuntu 22.04, where CI validates): no vcs-browser. -->
 +  <url type="homepage">https://plervo.com/</url>
 +  <url type="bugtracker">https://github.com/alportblu/plervo-pdf/issues</url>
 +  <url type="help">https://github.com/alportblu/plervo-pdf</url>
 +  <url type="contact">https://buymeacoffee.com/alport</url>
-+  <categories>
-+    <category>Graphics</category>
-+    <category>2DGraphics</category>
-+    <category>VectorGraphics</category>
-+  </categories>
-+  <keywords>
-+    <keyword>vector</keyword>
-+    <keyword>illustration</keyword>
-+    <keyword>svg</keyword>
-+    <keyword>pdf</keyword>
-+    <keyword>drawing</keyword>
-+    <keyword>bezier</keyword>
-+  </keywords>
-+  <screenshots>
-+    <screenshot type="default">
-+      <caption>Editing the Neon Drive poster with a live glow effect in the Appearance panel</caption>
+   <categories>
+     <category>Graphics</category>
+     <category>2DGraphics</category>
+@@ -40,7 +40,7 @@
+   <screenshots>
+     <screenshot type="default">
+       <caption>Editing the Neon Drive poster with a live glow effect in the Appearance panel</caption>
+-      <image>https://raw.githubusercontent.com/storytold/vectorcraft/main/docs/images/shot-1-neon.png</image>
 +      <image>https://raw.githubusercontent.com/alportblu/plervo-pdf/main/docs/images/shot-1-neon.png</image>
-+    </screenshot>
-+  </screenshots>
-+  <branding>
-+    <color type="primary" scheme_preference="light">#9fd0ff</color>
-+    <color type="primary" scheme_preference="dark">#1f64ba</color>
-+  </branding>
-+  <requires>
-+    <display_length compare="ge">760</display_length>
-+  </requires>
-+  <supports>
-+    <control>keyboard</control>
-+    <control>pointing</control>
-+    <control>tablet</control>
-+  </supports>
-+  <provides>
+     </screenshot>
+   </screenshots>
+   <branding>
+@@ -56,7 +56,7 @@
+     <control>tablet</control>
+   </supports>
+   <provides>
+-    <binary>vectorcraft</binary>
 +    <binary>plervo-vector</binary>
-+  </provides>
-+  <content_rating type="oars-1.1"/>
-+  <releases>
-+    <release version="@VERSION@" date="@DATE@"/>
-+  </releases>
-+</component>
-diff --git a/packaging/linux/com.plervo.vector.mime.xml b/packaging/linux/com.plervo.vector.mime.xml
-new file mode 100644
-index 0000000..be4dcc2
---- /dev/null
-+++ b/packaging/linux/com.plervo.vector.mime.xml
-@@ -0,0 +1,3 @@
-+<?xml version="1.0" encoding="UTF-8"?>
-+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
-+</mime-info>
+   </provides>
+   <content_rating type="oars-1.1"/>
+   <releases>
+diff --git a/packaging/linux/ai.storyteller.vectorcraft.mime.xml b/packaging/linux/com.plervo.vector.mime.xml
+similarity index 100%
+rename from packaging/linux/ai.storyteller.vectorcraft.mime.xml
+rename to packaging/linux/com.plervo.vector.mime.xml
 diff --git a/packaging/linux/flatpak-bundle.sh b/packaging/linux/flatpak-bundle.sh
 index bb84419..549798c 100755
 --- a/packaging/linux/flatpak-bundle.sh
@@ -10026,250 +9922,137 @@ index bb84419..549798c 100755
    flatpak run --command=sh "$APP_ID" -c 'ls /app/share/applications /app/share/metainfo /app/share/mime/packages /app/share/icons/hicolor/scalable/apps'
  fi
  echo "==> done"
-diff --git a/packaging/linux/flatpak/ai.storyteller.vectorcraft.bundle.yml b/packaging/linux/flatpak/ai.storyteller.vectorcraft.bundle.yml
-deleted file mode 100644
-index b245e0b..0000000
+diff --git a/packaging/linux/flatpak/ai.storyteller.vectorcraft.bundle.yml b/packaging/linux/flatpak/com.plervo.vector.bundle.yml
+similarity index 66%
+rename from packaging/linux/flatpak/ai.storyteller.vectorcraft.bundle.yml
+rename to packaging/linux/flatpak/com.plervo.vector.bundle.yml
+index b245e0b..a8a746d 100644
 --- a/packaging/linux/flatpak/ai.storyteller.vectorcraft.bundle.yml
-+++ /dev/null
-@@ -1,51 +0,0 @@
--# Flatpak manifest for the single-file bundle attached to every GitHub release
++++ b/packaging/linux/flatpak/com.plervo.vector.bundle.yml
+@@ -1,7 +1,7 @@
+ # Flatpak manifest for the single-file bundle attached to every GitHub release
 -# (vectorcraft-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
--#
++# (plervo-vector-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
+ #
 -# It repackages the release's own Linux tarball (vectorcraft-<version>-linux-<arch>.tar.gz,
--# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
--# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
--# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
--# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
--# Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
--# GPU driver comes from its org.freedesktop.Platform.GL extension.
--#
++# It repackages the release's own Linux tarball (plervo-vector-<version>-linux-<arch>.tar.gz,
+ # built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
+ # network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
+ # and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
+@@ -9,13 +9,13 @@
+ # Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
+ # GPU driver comes from its org.freedesktop.Platform.GL extension.
+ #
 -# ai.storyteller.vectorcraft.yml (same directory) is the from-source manifest for Flathub. Keep
--# runtime, runtime-version, sdk and finish-args identical in both (packaging-lint checks this).
++# com.plervo.vector.yml (same directory) is the from-source manifest for Flathub. Keep
+ # runtime, runtime-version, sdk and finish-args identical in both (packaging-lint checks this).
 -id: ai.storyteller.vectorcraft
--runtime: org.freedesktop.Platform
--runtime-version: '25.08'
--sdk: org.freedesktop.Sdk
++id: com.plervo.vector
+ runtime: org.freedesktop.Platform
+ runtime-version: '25.08'
+ sdk: org.freedesktop.Sdk
 -command: vectorcraft
--finish-args:
--  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
--  - --share=ipc
--  # Display: Wayland first; X11 only when no Wayland compositor is running.
--  - --socket=wayland
--  - --socket=fallback-x11
--  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
--  - --device=dri
--  # Open/Save dialogs use the file-chooser portal (rfd), and drag-and-drop uses the document
--  # portal, so broad filesystem access isn't needed. Pictures is granted for opening files by
--  # path from the command line.
--  - --filesystem=xdg-pictures
--  # Font managers (FontBase and others) activate fonts into ~/.fonts, which Flatpak does not open
--  # to a sandbox: it exposes /usr/share/fonts and ~/.local/share/fonts, and nothing else. Without
--  # this the font list holds none of the activated families, while native apps see them.
--  - --filesystem=~/.fonts:ro
--  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
++command: plervo-vector
+ finish-args:
+   # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
+   - --share=ipc
+@@ -33,19 +33,19 @@ finish-args:
+   # this the font list holds none of the activated families, while native apps see them.
+   - --filesystem=~/.fonts:ro
+   # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
 -  # the sandbox; `flatpak override --user --share=network ai.storyteller.vectorcraft` exposes it
--  # to host agents) and home/host filesystem access beyond the read-only folders above.
--modules:
++  # the sandbox; `flatpak override --user --share=network com.plervo.vector` exposes it
+   # to host agents) and home/host filesystem access beyond the read-only folders above.
+ modules:
 -  - name: vectorcraft
--    buildsystem: simple
--    build-commands:
++  - name: plervo-vector
+     buildsystem: simple
+     build-commands:
 -      - install -Dm755 bin/vectorcraft /app/bin/vectorcraft
 -      - install -Dm755 bin/vectorcraft-cli /app/bin/vectorcraft-cli
 -      - install -Dm644 share/applications/ai.storyteller.vectorcraft.desktop /app/share/applications/ai.storyteller.vectorcraft.desktop
 -      - install -Dm644 share/mime/packages/ai.storyteller.vectorcraft.xml /app/share/mime/packages/ai.storyteller.vectorcraft.xml
--      # Already has the release's version and date substituted by package.sh.
--      - install -Dm644 share/metainfo/ai.storyteller.vectorcraft.metainfo.xml /app/share/metainfo/ai.storyteller.vectorcraft.metainfo.xml
--      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/vectorcraft /app/share/doc/
--    sources:
--      - type: dir
--        path: stage
-diff --git a/packaging/linux/flatpak/ai.storyteller.vectorcraft.yml b/packaging/linux/flatpak/ai.storyteller.vectorcraft.yml
-deleted file mode 100644
-index 8656095..0000000
---- a/packaging/linux/flatpak/ai.storyteller.vectorcraft.yml
-+++ /dev/null
-@@ -1,59 +0,0 @@
--# Flatpak manifest for VectorCraft, ready for a Flathub submission.
--#
--# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
--#
--#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
--#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
--#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.vectorcraft.yml
--#   flatpak run ai.storyteller.vectorcraft
--#
--# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
--# Release bundles (.flatpak on GitHub Releases) use ai.storyteller.vectorcraft.bundle.yml instead.
--id: ai.storyteller.vectorcraft
--runtime: org.freedesktop.Platform
--runtime-version: '25.08'
--sdk: org.freedesktop.Sdk
--sdk-extensions:
--  - org.freedesktop.Sdk.Extension.rust-stable
--command: vectorcraft
--finish-args:
--  # Keep identical to ai.storyteller.vectorcraft.bundle.yml (the release bundle); comments there.
--  - --share=ipc
--  - --socket=wayland
--  - --socket=fallback-x11
--  - --device=dri
--  # Open/Save dialogs use the file-chooser portal (rfd), and drag-and-drop uses the document
--  # portal, so broad filesystem access isn't needed. Pictures is granted for opening files by
--  # path from the command line.
--  - --filesystem=xdg-pictures
--  - --filesystem=~/.fonts:ro
--build-options:
--  append-path: /usr/lib/sdk/rust-stable/bin
--modules:
--  - name: vectorcraft
--    buildsystem: simple
--    build-options:
--      env:
--        CARGO_HOME: /run/build/vectorcraft/cargo
--        CARGO_NET_OFFLINE: 'true'
--    build-commands:
--      - cargo --offline build --release --locked -p vectorcraft
--      - install -Dm755 target/release/vectorcraft /app/bin/vectorcraft
--      - install -Dm644 packaging/linux/ai.storyteller.vectorcraft.desktop /app/share/applications/ai.storyteller.vectorcraft.desktop
--      - install -Dm644 packaging/linux/ai.storyteller.vectorcraft.mime.xml /app/share/mime/packages/ai.storyteller.vectorcraft.xml
--      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
--      - >-
--        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
--        install -d /app/share/metainfo;
--        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
--        packaging/linux/ai.storyteller.vectorcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.vectorcraft.metainfo.xml
--    sources:
--      - type: dir
--        path: ../../..
--        skip:
--          - target
--          - dist
--          - corpus
--          - build-flatpak
--          - .flatpak-builder
--      - cargo-sources.json
-diff --git a/packaging/linux/flatpak/com.plervo.vector.bundle.yml b/packaging/linux/flatpak/com.plervo.vector.bundle.yml
-new file mode 100644
-index 0000000..a8a746d
---- /dev/null
-+++ b/packaging/linux/flatpak/com.plervo.vector.bundle.yml
-@@ -0,0 +1,51 @@
-+# Flatpak manifest for the single-file bundle attached to every GitHub release
-+# (plervo-vector-<version>-linux-<arch>.flatpak). Build it with packaging/linux/flatpak-bundle.sh.
-+#
-+# It repackages the release's own Linux tarball (plervo-vector-<version>-linux-<arch>.tar.gz,
-+# built on Ubuntu 22.04 by package.sh) instead of compiling Rust inside flatpak-builder: no
-+# network and no vendored crate sources during the build, a few seconds instead of 20+ minutes,
-+# and byte-for-byte the same binaries as the AppImage/deb/rpm. The script unpacks the tarball
-+# into `stage/` next to a copy of this file. The binaries need glibc >= 2.35 and load X11,
-+# Wayland, xkbcommon and Vulkan at runtime; the freedesktop runtime has all of them, and the
-+# GPU driver comes from its org.freedesktop.Platform.GL extension.
-+#
-+# com.plervo.vector.yml (same directory) is the from-source manifest for Flathub. Keep
-+# runtime, runtime-version, sdk and finish-args identical in both (packaging-lint checks this).
-+id: com.plervo.vector
-+runtime: org.freedesktop.Platform
-+runtime-version: '25.08'
-+sdk: org.freedesktop.Sdk
-+command: plervo-vector
-+finish-args:
-+  # X11 shared memory (MIT-SHM). Without it the X11 fallback is slow or fails.
-+  - --share=ipc
-+  # Display: Wayland first; X11 only when no Wayland compositor is running.
-+  - --socket=wayland
-+  - --socket=fallback-x11
-+  # GPU access for the wgpu renderer (Vulkan, or GL as a fallback).
-+  - --device=dri
-+  # Open/Save dialogs use the file-chooser portal (rfd), and drag-and-drop uses the document
-+  # portal, so broad filesystem access isn't needed. Pictures is granted for opening files by
-+  # path from the command line.
-+  - --filesystem=xdg-pictures
-+  # Font managers (FontBase and others) activate fonts into ~/.fonts, which Flatpak does not open
-+  # to a sandbox: it exposes /usr/share/fonts and ~/.local/share/fonts, and nothing else. Without
-+  # this the font list holds none of the activated families, while native apps see them.
-+  - --filesystem=~/.fonts:ro
-+  # Deliberately not granted: network (the optional --control server listens on 127.0.0.1 in
-+  # the sandbox; `flatpak override --user --share=network com.plervo.vector` exposes it
-+  # to host agents) and home/host filesystem access beyond the read-only folders above.
-+modules:
-+  - name: plervo-vector
-+    buildsystem: simple
-+    build-commands:
 +      - install -Dm755 bin/plervo-vector /app/bin/plervo-vector
 +      - install -Dm755 bin/plervo-vector-cli /app/bin/plervo-vector-cli
 +      - install -Dm644 share/applications/com.plervo.vector.desktop /app/share/applications/com.plervo.vector.desktop
 +      - install -Dm644 share/mime/packages/com.plervo.vector.xml /app/share/mime/packages/com.plervo.vector.xml
-+      # Already has the release's version and date substituted by package.sh.
+       # Already has the release's version and date substituted by package.sh.
+-      - install -Dm644 share/metainfo/ai.storyteller.vectorcraft.metainfo.xml /app/share/metainfo/ai.storyteller.vectorcraft.metainfo.xml
+-      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/vectorcraft /app/share/doc/
 +      - install -Dm644 share/metainfo/com.plervo.vector.metainfo.xml /app/share/metainfo/com.plervo.vector.metainfo.xml
 +      - mkdir -p /app/share/icons /app/share/doc && cp -R share/icons/hicolor /app/share/icons/ && cp -R share/doc/plervo-vector /app/share/doc/
-+    sources:
-+      - type: dir
-+        path: stage
-diff --git a/packaging/linux/flatpak/com.plervo.vector.yml b/packaging/linux/flatpak/com.plervo.vector.yml
-new file mode 100644
-index 0000000..593f3b4
---- /dev/null
+     sources:
+       - type: dir
+         path: stage
+diff --git a/packaging/linux/flatpak/ai.storyteller.vectorcraft.yml b/packaging/linux/flatpak/com.plervo.vector.yml
+similarity index 62%
+rename from packaging/linux/flatpak/ai.storyteller.vectorcraft.yml
+rename to packaging/linux/flatpak/com.plervo.vector.yml
+index 8656095..593f3b4 100644
+--- a/packaging/linux/flatpak/ai.storyteller.vectorcraft.yml
 +++ b/packaging/linux/flatpak/com.plervo.vector.yml
-@@ -0,0 +1,59 @@
+@@ -1,23 +1,23 @@
+-# Flatpak manifest for VectorCraft, ready for a Flathub submission.
 +# Flatpak manifest for Plervo Vector, ready for a Flathub submission.
-+#
-+# Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
-+#
-+#   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
-+#   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
+ #
+ # Flatpak builds run offline, so the crate sources must be vendored first. From the repo root:
+ #
+ #   curl -fsSLO https://raw.githubusercontent.com/flatpak/flatpak-builder-tools/master/cargo/flatpak-cargo-generator.py
+ #   python3 flatpak-cargo-generator.py Cargo.lock -o packaging/linux/flatpak/cargo-sources.json
+-#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/ai.storyteller.vectorcraft.yml
+-#   flatpak run ai.storyteller.vectorcraft
 +#   flatpak-builder --user --install --force-clean build-flatpak packaging/linux/flatpak/com.plervo.vector.yml
 +#   flatpak run com.plervo.vector
-+#
-+# For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
+ #
+ # For Flathub, replace the `dir` source with a `git` source pinned to a release tag and commit.
+-# Release bundles (.flatpak on GitHub Releases) use ai.storyteller.vectorcraft.bundle.yml instead.
+-id: ai.storyteller.vectorcraft
 +# Release bundles (.flatpak on GitHub Releases) use com.plervo.vector.bundle.yml instead.
 +id: com.plervo.vector
-+runtime: org.freedesktop.Platform
-+runtime-version: '25.08'
-+sdk: org.freedesktop.Sdk
-+sdk-extensions:
-+  - org.freedesktop.Sdk.Extension.rust-stable
+ runtime: org.freedesktop.Platform
+ runtime-version: '25.08'
+ sdk: org.freedesktop.Sdk
+ sdk-extensions:
+   - org.freedesktop.Sdk.Extension.rust-stable
+-command: vectorcraft
 +command: plervo-vector
-+finish-args:
+ finish-args:
+-  # Keep identical to ai.storyteller.vectorcraft.bundle.yml (the release bundle); comments there.
 +  # Keep identical to com.plervo.vector.bundle.yml (the release bundle); comments there.
-+  - --share=ipc
-+  - --socket=wayland
-+  - --socket=fallback-x11
-+  - --device=dri
-+  # Open/Save dialogs use the file-chooser portal (rfd), and drag-and-drop uses the document
-+  # portal, so broad filesystem access isn't needed. Pictures is granted for opening files by
-+  # path from the command line.
-+  - --filesystem=xdg-pictures
-+  - --filesystem=~/.fonts:ro
-+build-options:
-+  append-path: /usr/lib/sdk/rust-stable/bin
-+modules:
+   - --share=ipc
+   - --socket=wayland
+   - --socket=fallback-x11
+@@ -30,23 +30,23 @@ finish-args:
+ build-options:
+   append-path: /usr/lib/sdk/rust-stable/bin
+ modules:
+-  - name: vectorcraft
 +  - name: plervo-vector
-+    buildsystem: simple
-+    build-options:
-+      env:
+     buildsystem: simple
+     build-options:
+       env:
+-        CARGO_HOME: /run/build/vectorcraft/cargo
 +        CARGO_HOME: /run/build/plervo-vector/cargo
-+        CARGO_NET_OFFLINE: 'true'
-+    build-commands:
+         CARGO_NET_OFFLINE: 'true'
+     build-commands:
+-      - cargo --offline build --release --locked -p vectorcraft
+-      - install -Dm755 target/release/vectorcraft /app/bin/vectorcraft
+-      - install -Dm644 packaging/linux/ai.storyteller.vectorcraft.desktop /app/share/applications/ai.storyteller.vectorcraft.desktop
+-      - install -Dm644 packaging/linux/ai.storyteller.vectorcraft.mime.xml /app/share/mime/packages/ai.storyteller.vectorcraft.xml
 +      - cargo --offline build --release --locked -p plervo-vector
 +      - install -Dm755 target/release/plervo-vector /app/bin/plervo-vector
 +      - install -Dm644 packaging/linux/com.plervo.vector.desktop /app/share/applications/com.plervo.vector.desktop
 +      - install -Dm644 packaging/linux/com.plervo.vector.mime.xml /app/share/mime/packages/com.plervo.vector.xml
-+      - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
-+      - >-
-+        version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
-+        install -d /app/share/metainfo;
-+        sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+       - mkdir -p /app/share/icons && cp -R assets/app-icon/hicolor /app/share/icons/
+       - >-
+         version=$(awk '/^\[/{p=($0=="[workspace.package]");next} p&&$1=="version"{gsub(/[" ]/,"",$3);print $3;exit}' Cargo.toml);
+         install -d /app/share/metainfo;
+         sed -e "s/@VERSION@/$version/" -e "s/@DATE@/$(date -u +%Y-%m-%d)/"
+-        packaging/linux/ai.storyteller.vectorcraft.metainfo.xml.in > /app/share/metainfo/ai.storyteller.vectorcraft.metainfo.xml
 +        packaging/linux/com.plervo.vector.metainfo.xml.in > /app/share/metainfo/com.plervo.vector.metainfo.xml
-+    sources:
-+      - type: dir
-+        path: ../../..
-+        skip:
-+          - target
-+          - dist
-+          - corpus
-+          - build-flatpak
-+          - .flatpak-builder
-+      - cargo-sources.json
+     sources:
+       - type: dir
+         path: ../../..
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
 index a0c0481..fc161ae 100644
 --- a/packaging/linux/nfpm.yaml
@@ -10985,7 +10768,7 @@ index ea6ce8a..28e61de 100755
  rm -rf "$WORK"
  mkdir -p "$WORK/$NAME"
 diff --git a/packaging/windows/package.ps1 b/packaging/windows/package.ps1
-index 3e97b12..5e488bc 100644
+index 3e97b12..8920be0 100644
 --- a/packaging/windows/package.ps1
 +++ b/packaging/windows/package.ps1
 @@ -1,11 +1,11 @@
@@ -11042,14 +10825,16 @@ index 3e97b12..5e488bc 100644
  
  # Documentation and dependency licences shared by the MSI and portable ZIP.
  $Docs = Join-Path $Stage 'docs'
-@@ -108,8 +108,25 @@ if (Test-Path (Join-Path $Root 'licenses')) {
+@@ -108,8 +108,27 @@ if (Test-Path (Join-Path $Root 'licenses')) {
    Copy-Item -Recurse (Join-Path $Root 'licenses') $Docs
  }
  
 +# Carry source and embedded-asset notices in MSI and portable distributions.
++& python (Join-Path $Root 'packaging/licenses/verify.py') $Root
++if ($LASTEXITCODE -ne 0) { throw "Third-party notice review is stale or missing" }
 +$Legal = Join-Path $Stage 'Licenses'
 +New-Item -ItemType Directory -Force -Path $Legal | Out-Null
-+foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md') {
++foreach ($f in 'README.md', 'LICENSE', 'LICENSE-MIT', 'LICENSE-APACHE', 'COPYRIGHT', 'NOTICE', 'ATTRIBUTION.md', 'ASSETS.md', 'THIRD_PARTY_NOTICES.txt') {
 +  $p = Join-Path $Root $f
 +  if (Test-Path $p) { Copy-Item $p $Legal }
 +}
@@ -11069,7 +10854,7 @@ index 3e97b12..5e488bc 100644
  # WiX's stock bitmaps: a 493x58 banner across the top of the inner pages (the page title is drawn
  # over its left side, so that stays white) and a 493x312 backdrop for the Welcome and Finish pages
  # (their text sits on the right; the left 164 px are ours). Both must be 24-bit BMPs.
-@@ -144,14 +161,14 @@ function New-InstallerArt([string] $IconPng, [string] $BannerOut, [string] $Dial
+@@ -144,14 +163,14 @@ function New-InstallerArt([string] $IconPng, [string] $BannerOut, [string] $Dial
  }
  $Banner = Join-Path $Stage 'installer-banner.bmp'
  $Dialog = Join-Path $Stage 'installer-dialog.bmp'
@@ -11089,7 +10874,7 @@ index 3e97b12..5e488bc 100644
      -d "DocsDir=$Docs" -d "BannerBmp=$Banner" -d "DialogBmp=$Dialog" `
      -o $Msi
  }
-@@ -160,15 +177,20 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
+@@ -160,15 +179,20 @@ Remove-Item -Force -ErrorAction SilentlyContinue ([IO.Path]::ChangeExtension($Ms
  & (Join-Path $PSScriptRoot 'sign.ps1') $Msi
  
  # ---- portable zip ------------------------------------------------------------------------------
@@ -11114,7 +10899,7 @@ index 3e97b12..5e488bc 100644
  Remove-Item -Force $Zip -ErrorAction SilentlyContinue
  Compress-Archive -Path $Portable -DestinationPath $Zip
  
-@@ -176,8 +198,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
+@@ -176,8 +200,8 @@ Compress-Archive -Path $Portable -DestinationPath $Zip
  # here; .github/workflows/windows-arm64.yml installs and runs it on ARM64 instead.
  $HostArch = [System.Runtime.InteropServices.RuntimeInformation]::OSArchitecture.ToString().ToLowerInvariant()
  if ($Arch -ne 'arm64' -or $HostArch -eq 'arm64') {
@@ -11125,179 +10910,166 @@ index 3e97b12..5e488bc 100644
 +  Write-Output "skipping plervo-vector-cli --version: an $Arch build doesn't run on this $HostArch machine"
  }
  Get-Item $Msi, $Zip | Format-Table Name, Length
-diff --git a/packaging/windows/plervo-vector.en-us.wxl b/packaging/windows/plervo-vector.en-us.wxl
-new file mode 100644
-index 0000000..1890850
---- /dev/null
+diff --git a/packaging/windows/vectorcraft.en-us.wxl b/packaging/windows/plervo-vector.en-us.wxl
+similarity index 97%
+rename from packaging/windows/vectorcraft.en-us.wxl
+rename to packaging/windows/plervo-vector.en-us.wxl
+index 353499d..1890850 100644
+--- a/packaging/windows/vectorcraft.en-us.wxl
 +++ b/packaging/windows/plervo-vector.en-us.wxl
-@@ -0,0 +1,15 @@
-+<?xml version="1.0" encoding="utf-8"?>
-+<!--
-+  Overrides for the setup wizard's WixUI strings, so its pages name the version being installed
+@@ -1,7 +1,7 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <!--
+   Overrides for the setup wizard's WixUI strings, so its pages name the version being installed
+-  ([VectorcraftVersion] is the full version, pre-release tag included, set in vectorcraft.wxs).
 +  ([VectorcraftVersion] is the full version, pre-release tag included, set in plervo-vector.wxs).
-+-->
-+<WixLocalization Culture="en-US" xmlns="http://wixtoolset.org/schemas/v4/wxl">
-+  <String Id="WelcomeDlgTitle" Value="{\WixUI_Font_Bigger}Welcome to the [ProductName] [VectorcraftVersion] Setup Wizard" />
-+  <String Id="WelcomeDlgDescription" Value="The Setup Wizard will install [ProductName] version [VectorcraftVersion] on your computer. Click Next to continue or Cancel to exit the Setup Wizard." />
-+  <String Id="VerifyReadyDlgInstallTitle" Value="{\WixUI_Font_Title}Ready to install [ProductName] [VectorcraftVersion]" />
-+  <String Id="ShortcutsDlgTitle" Value="{\WixUI_Font_Title}Shortcuts" />
-+  <String Id="ShortcutsDlgDescription" Value="Choose where you can start [ProductName] from." />
-+  <String Id="ShortcutsDlgDesktop" Value="Create a &amp;desktop shortcut" />
-+  <String Id="ShortcutsDlgStartMenu" Value="[ProductName] is always added to the Start menu." />
-+  <String Id="ExitDialogTitle" Value="{\WixUI_Font_Bigger}Completed the [ProductName] [VectorcraftVersion] Setup Wizard" />
-+</WixLocalization>
-diff --git a/packaging/windows/plervo-vector.wxs b/packaging/windows/plervo-vector.wxs
-new file mode 100644
-index 0000000..58ef0ed
---- /dev/null
+ -->
+ <WixLocalization Culture="en-US" xmlns="http://wixtoolset.org/schemas/v4/wxl">
+   <String Id="WelcomeDlgTitle" Value="{\WixUI_Font_Bigger}Welcome to the [ProductName] [VectorcraftVersion] Setup Wizard" />
+diff --git a/packaging/windows/vectorcraft.wxs b/packaging/windows/plervo-vector.wxs
+similarity index 70%
+rename from packaging/windows/vectorcraft.wxs
+rename to packaging/windows/plervo-vector.wxs
+index 679d11d..58ef0ed 100644
+--- a/packaging/windows/vectorcraft.wxs
 +++ b/packaging/windows/plervo-vector.wxs
-@@ -0,0 +1,146 @@
-+<?xml version="1.0" encoding="utf-8"?>
-+<!--
+@@ -1,54 +1,54 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <!--
+-  VectorCraft MSI (WiX Toolset v5: `dotnet tool install -g wix`, plus the UI and Util extensions:
 +  Plervo Vector MSI (WiX Toolset v5: `dotnet tool install -g wix`, plus the UI and Util extensions:
-+  `wix extension add -g WixToolset.UI.wixext/5.0.2 WixToolset.Util.wixext/5.0.2`). Built by package.ps1:
-+
+   `wix extension add -g WixToolset.UI.wixext/5.0.2 WixToolset.Util.wixext/5.0.2`). Built by package.ps1:
+ 
+-    wix build vectorcraft.wxs -arch x64 -ext WixToolset.UI.wixext -ext WixToolset.Util.wixext
+-      -culture en-US -loc vectorcraft.en-us.wxl -d Version=1.2.3 -d DisplayVersion=1.2.3-rc.1
 +    wix build plervo-vector.wxs -arch x64 -ext WixToolset.UI.wixext -ext WixToolset.Util.wixext
 +      -culture en-US -loc plervo-vector.en-us.wxl -d Version=1.2.3 -d DisplayVersion=1.2.3-rc.1
-+      -d BinDir=... -d IconPath=... -d BannerBmp=... -d DialogBmp=... -o out.msi
-+
+       -d BinDir=... -d IconPath=... -d BannerBmp=... -d DialogBmp=... -o out.msi
+ 
+-  Per-machine install with a setup wizard that names the version: Welcome, install folder (Program Files\VectorCraft by
 +  Per-machine install with a setup wizard that names the version: Welcome, install folder (Program Files\Plervo Vector by
-+  default, remembered for upgrades), Ready, a progress page, and a Finish page with a ticked
+   default, remembered for upgrades), Ready, a progress page, and a Finish page with a ticked
+-  "Launch VectorCraft" box. Installs a Start Menu shortcut and an App Paths entry (so `vectorcraft`
+-  starts from the Run dialog), plus vectorcraft-cli. A Shortcuts page after the install folder offers
 +  "Launch Plervo Vector" box. Installs a Start Menu shortcut and an App Paths entry (so `plervo-vector`
 +  starts from the Run dialog), plus plervo-vector-cli. A Shortcuts page after the install folder offers
-+  a desktop shortcut (ticked). `msiexec /qn` still installs silently, with the desktop shortcut
-+  unless INSTALLDESKTOPSHORTCUT="" is passed.
-+-->
-+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
-+     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
-+  <Package
+   a desktop shortcut (ticked). `msiexec /qn` still installs silently, with the desktop shortcut
+   unless INSTALLDESKTOPSHORTCUT="" is passed.
+ -->
+ <Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+      xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+   <Package
+-      Name="VectorCraft"
+-      Manufacturer="Learning Machines LLC"
 +      Name="Plervo Vector"
 +      Manufacturer="Maintech Solutions LLC"
-+      Version="$(var.Version)"
+       Version="$(var.Version)"
+-      UpgradeCode="601C6437-08AE-4645-ADCC-27F036C2EA2F"
 +      UpgradeCode="4E77F4BC-EA07-505A-AC52-3B5CF0B63AFB"
-+      Scope="perMachine"
-+      Compressed="yes"
-+      Language="1033">
+       Scope="perMachine"
+       Compressed="yes"
+       Language="1033">
+-    <SummaryInformation Description="VectorCraft vector illustration app" Manufacturer="Learning Machines LLC" />
 +    <SummaryInformation Description="Plervo Vector vector illustration app" Manufacturer="Maintech Solutions LLC" />
-+    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
-+         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
-+    <MajorUpgrade AllowSameVersionUpgrades="yes"
+     <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
+          (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
+     <MajorUpgrade AllowSameVersionUpgrades="yes"
+-        DowngradeErrorMessage="A newer version of VectorCraft is already installed." />
 +        DowngradeErrorMessage="A newer version of Plervo Vector is already installed." />
-+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
-+
-+    <Icon Id="VectorcraftIcon.ico" SourceFile="$(var.IconPath)" />
-+    <Property Id="ARPPRODUCTICON" Value="VectorcraftIcon.ico" />
+     <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+ 
+     <Icon Id="VectorcraftIcon.ico" SourceFile="$(var.IconPath)" />
+     <Property Id="ARPPRODUCTICON" Value="VectorcraftIcon.ico" />
+-    <Property Id="ARPURLINFOABOUT" Value="https://getartcraft.com/apps/vectorcraft" />
+-    <Property Id="ARPURLUPDATEINFO" Value="https://getartcraft.com/apps/vectorcraft" />
+-    <Property Id="ARPHELPLINK" Value="https://discord.gg/artcraft" />
 +    <Property Id="ARPURLINFOABOUT" Value="https://plervo.com/" />
 +    <Property Id="ARPURLUPDATEINFO" Value="https://plervo.com/" />
 +    <Property Id="ARPHELPLINK" Value="https://buymeacoffee.com/alport" />
-+
-+    <StandardDirectory Id="ProgramFiles6432Folder">
+ 
+     <StandardDirectory Id="ProgramFiles6432Folder">
+-      <Directory Id="INSTALLFOLDER" Name="VectorCraft" />
 +      <Directory Id="INSTALLFOLDER" Name="Plervo Vector" />
-+    </StandardDirectory>
-+    <StandardDirectory Id="ProgramMenuFolder" />
-+    <StandardDirectory Id="DesktopFolder" />
-+
-+    <!-- An upgrade installs where the user put the previous version (written by VectorcraftApp). -->
-+    <Property Id="INSTALLFOLDER">
+     </StandardDirectory>
+     <StandardDirectory Id="ProgramMenuFolder" />
+     <StandardDirectory Id="DesktopFolder" />
+ 
+     <!-- An upgrade installs where the user put the previous version (written by VectorcraftApp). -->
+     <Property Id="INSTALLFOLDER">
+-      <RegistrySearch Id="PreviousInstallFolder" Root="HKLM" Key="Software\VectorCraft" Name="InstallDir" Type="raw" />
 +      <RegistrySearch Id="PreviousInstallFolder" Root="HKLM" Key="Software\Plervo Vector" Name="InstallDir" Type="raw" />
-+    </Property>
-+
+     </Property>
+ 
+-    <Feature Id="Main" Title="VectorCraft" Level="1">
 +    <Feature Id="Main" Title="Plervo Vector" Level="1">
-+      <ComponentGroupRef Id="VectorcraftFiles" />
-+      <ComponentGroupRef Id="PdfDocumentation" />
-+      <ComponentRef Id="DesktopShortcut" />
-+    </Feature>
-+
-+    <!-- A desktop shortcut: the Shortcuts page's box (ticked), or INSTALLDESKTOPSHORTCUT="" on the
-+         msiexec command line for none. Secure, so the wizard's choice reaches the install. -->
-+    <Property Id="INSTALLDESKTOPSHORTCUT" Value="1" Secure="yes" />
-+
-+    <!-- The setup wizard: WixUI_InstallDir without its licence page (the code is MIT OR
-+         Apache-2.0; there is nothing to accept). A later NewDialog on the same button wins. -->
-+    <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
-+    <UI>
-+      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2" Condition="NOT Installed" />
-+      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" />
-+      <!-- The Shortcuts page sits between the install folder and Ready (once the folder is valid). -->
-+      <Publish Dialog="InstallDirDlg" Control="Next" Event="NewDialog" Value="ShortcutsDlg" Order="5"
-+          Condition="WIXUI_DONTVALIDATEPATH OR WIXUI_INSTALLDIR_VALID=&quot;1&quot;" />
-+      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="ShortcutsDlg" Order="5" Condition="NOT Installed" />
-+
-+      <Dialog Id="ShortcutsDlg" Width="370" Height="270" Title="!(loc.InstallDirDlg_Title)">
-+        <Control Id="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Text="!(loc.WixUINext)">
-+          <Publish Event="NewDialog" Value="VerifyReadyDlg" />
-+        </Control>
-+        <Control Id="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Text="!(loc.WixUIBack)">
-+          <Publish Event="NewDialog" Value="InstallDirDlg" />
-+        </Control>
-+        <Control Id="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Cancel="yes" Text="!(loc.WixUICancel)">
-+          <Publish Event="SpawnDialog" Value="CancelDlg" />
-+        </Control>
-+        <Control Id="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" TabSkip="no" Text="!(loc.InstallDirDlgBannerBitmap)" />
-+        <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
-+        <Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" />
-+        <Control Id="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Transparent="yes" NoPrefix="yes" Text="!(loc.ShortcutsDlgTitle)" />
-+        <Control Id="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Transparent="yes" NoPrefix="yes" Text="!(loc.ShortcutsDlgDescription)" />
-+        <Control Id="DesktopShortcutCheckBox" Type="CheckBox" X="20" Y="60" Width="330" Height="18"
-+            Property="INSTALLDESKTOPSHORTCUT" CheckBoxValue="1" Text="!(loc.ShortcutsDlgDesktop)" />
-+        <Control Id="StartMenuNote" Type="Text" X="20" Y="84" Width="330" Height="30" NoPrefix="yes" Text="!(loc.ShortcutsDlgStartMenu)" />
-+      </Dialog>
-+      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchVectorcraft"
-+          Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 AND NOT Installed" />
-+    </UI>
-+    <!-- Our own art, generated by package.ps1 from the app icon (not WiX's stock bitmaps). -->
-+    <WixVariable Id="WixUIBannerBmp" Value="$(var.BannerBmp)" />
-+    <WixVariable Id="WixUIDialogBmp" Value="$(var.DialogBmp)" />
-+
-+    <!-- The full version (Version is numeric, so it drops a pre-release tag), shown on the wizard's
+       <ComponentGroupRef Id="VectorcraftFiles" />
+       <ComponentGroupRef Id="PdfDocumentation" />
+       <ComponentRef Id="DesktopShortcut" />
+@@ -96,16 +96,17 @@
+     <WixVariable Id="WixUIDialogBmp" Value="$(var.DialogBmp)" />
+ 
+     <!-- The full version (Version is numeric, so it drops a pre-release tag), shown on the wizard's
+-         pages through vectorcraft.en-us.wxl. -->
 +         pages through plervo-vector.en-us.wxl. -->
-+    <Property Id="VectorcraftVersion" Value="$(var.DisplayVersion)" />
-+
-+    <!-- Finish page: say where to find the app, and offer to start it (ticked by default). -->
+     <Property Id="VectorcraftVersion" Value="$(var.DisplayVersion)" />
+ 
+     <!-- Finish page: say where to find the app, and offer to start it (ticked by default). -->
+-    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="VectorCraft $(var.DisplayVersion) is installed. You can start it any time from the Start menu." />
+-    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch VectorCraft" />
 +    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="Plervo Vector $(var.DisplayVersion) is installed. You can start it any time from the Start menu." />
 +    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch Plervo Vector" />
-+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
-+    <Property Id="WixShellExecTarget" Value="[#VectorcraftExe]" />
-+    <!-- Runs in the wizard's own (unelevated) process, so the app starts as the user, not as admin. -->
-+    <CustomAction Id="LaunchVectorcraft" BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" DllEntry="WixShellExec" Impersonate="yes" Return="ignore" />
+     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
+     <Property Id="WixShellExecTarget" Value="[#VectorcraftExe]" />
+     <!-- Runs in the wizard's own (unelevated) process, so the app starts as the user, not as admin. -->
+     <CustomAction Id="LaunchVectorcraft" BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" DllEntry="WixShellExec" Impersonate="yes" Return="ignore" />
 +    <Feature Id="PlervoLicenseFeature" Title="Licenses" Level="1"><ComponentGroupRef Id="PlervoLegalFiles" /></Feature>
-+  </Package>
-+
-+  <Fragment>
-+    <ComponentGroup Id="PdfDocumentation" Directory="INSTALLFOLDER">
-+      <Files Include="$(var.DocsDir)\**" />
-+    </ComponentGroup>
-+    <ComponentGroup Id="VectorcraftFiles" Directory="INSTALLFOLDER">
+   </Package>
+ 
+   <Fragment>
+@@ -113,29 +114,33 @@
+       <Files Include="$(var.DocsDir)\**" />
+     </ComponentGroup>
+     <ComponentGroup Id="VectorcraftFiles" Directory="INSTALLFOLDER">
+-      <Component Id="VectorcraftApp" Guid="0E8C6C5E-DE4A-4E1D-9DB0-44E8E38C2103">
+-        <File Id="VectorcraftExe" Source="$(var.BinDir)\vectorcraft.exe" KeyPath="yes">
+-          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="VectorCraft"
+-              Description="VectorCraft vector illustration app" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
 +      <Component Id="VectorcraftApp" Guid="5F568E09-BE56-54BD-962D-728C91C5F93F">
 +        <File Id="VectorcraftExe" Source="$(var.BinDir)\plervo-vector.exe" KeyPath="yes">
 +          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="Plervo Vector"
 +              Description="Plervo Vector vector illustration app" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
-+              Icon="VectorcraftIcon.ico" IconIndex="0" />
-+        </File>
-+
+               Icon="VectorcraftIcon.ico" IconIndex="0" />
+         </File>
+ 
+-        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\vectorcraft.exe" Value="[#VectorcraftExe]" Type="string" />
+-        <RegistryValue Root="HKLM" Key="Software\VectorCraft" Name="InstallDir" Value="[INSTALLFOLDER]" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\plervo-vector.exe" Value="[#VectorcraftExe]" Type="string" />
 +        <RegistryValue Root="HKLM" Key="Software\Plervo Vector" Name="InstallDir" Value="[INSTALLFOLDER]" Type="string" />
-+      </Component>
-+
-+      <Component Id="VectorcraftCli">
+       </Component>
+ 
+       <Component Id="VectorcraftCli">
+-        <File Id="VectorcraftCliExe" Source="$(var.BinDir)\vectorcraft-cli.exe" KeyPath="yes" />
 +        <File Id="VectorcraftCliExe" Source="$(var.BinDir)\plervo-vector-cli.exe" KeyPath="yes" />
-+      </Component>
-+    </ComponentGroup>
-+
-+    <!-- Installed only with INSTALLDESKTOPSHORTCUT set (the Shortcuts page's box); removed with the
-+         app. A per-machine install puts it on the common desktop. `wix msi validate` reports ICE38,
-+         ICE43 and ICE57 for it: they take a desktop shortcut for per-user data, which it isn't here. -->
+       </Component>
+     </ComponentGroup>
+ 
+     <!-- Installed only with INSTALLDESKTOPSHORTCUT set (the Shortcuts page's box); removed with the
+          app. A per-machine install puts it on the common desktop. `wix msi validate` reports ICE38,
+          ICE43 and ICE57 for it: they take a desktop shortcut for per-user data, which it isn't here. -->
+-    <Component Id="DesktopShortcut" Directory="DesktopFolder" Guid="498F2D4C-E655-47F6-B406-2D4C449B8D26" Condition="INSTALLDESKTOPSHORTCUT">
+-      <Shortcut Id="DesktopShortcut" Name="VectorCraft" Description="VectorCraft vector illustration app"
 +    <Component Id="DesktopShortcut" Directory="DesktopFolder" Guid="9B34615B-DD91-5B62-A77E-869425710786" Condition="INSTALLDESKTOPSHORTCUT">
 +      <Shortcut Id="DesktopShortcut" Name="Plervo Vector" Description="Plervo Vector vector illustration app"
-+          Target="[#VectorcraftExe]" WorkingDirectory="INSTALLFOLDER" Icon="VectorcraftIcon.ico" IconIndex="0" />
+           Target="[#VectorcraftExe]" WorkingDirectory="INSTALLFOLDER" Icon="VectorcraftIcon.ico" IconIndex="0" />
+-      <RegistryValue Root="HKLM" Key="Software\VectorCraft" Name="DesktopShortcut" Value="1" Type="integer" KeyPath="yes" />
 +      <RegistryValue Root="HKLM" Key="Software\Plervo Vector" Name="DesktopShortcut" Value="1" Type="integer" KeyPath="yes" />
-+    </Component>
-+  </Fragment>
+     </Component>
+   </Fragment>
 +  <Fragment>
 +    <DirectoryRef Id="INSTALLFOLDER"><Directory Id="PlervoLegalDir" Name="Licenses" /></DirectoryRef>
 +    <ComponentGroup Id="PlervoLegalFiles" Directory="PlervoLegalDir"><Files Include="$(var.BinDir)\Licenses\*" /></ComponentGroup>
 +  </Fragment>
-+</Wix>
+ </Wix>
 diff --git a/packaging/windows/portable.txt b/packaging/windows/portable.txt
 index a8af4bc..8598168 100644
 --- a/packaging/windows/portable.txt
@@ -11352,174 +11124,6 @@ index 2cd610f..1dea93e 100644
  New-Item -ItemType Directory -Force -Path $tmp | Out-Null
  
  try {
-diff --git a/packaging/windows/vectorcraft.en-us.wxl b/packaging/windows/vectorcraft.en-us.wxl
-deleted file mode 100644
-index 353499d..0000000
---- a/packaging/windows/vectorcraft.en-us.wxl
-+++ /dev/null
-@@ -1,15 +0,0 @@
--<?xml version="1.0" encoding="utf-8"?>
--<!--
--  Overrides for the setup wizard's WixUI strings, so its pages name the version being installed
--  ([VectorcraftVersion] is the full version, pre-release tag included, set in vectorcraft.wxs).
---->
--<WixLocalization Culture="en-US" xmlns="http://wixtoolset.org/schemas/v4/wxl">
--  <String Id="WelcomeDlgTitle" Value="{\WixUI_Font_Bigger}Welcome to the [ProductName] [VectorcraftVersion] Setup Wizard" />
--  <String Id="WelcomeDlgDescription" Value="The Setup Wizard will install [ProductName] version [VectorcraftVersion] on your computer. Click Next to continue or Cancel to exit the Setup Wizard." />
--  <String Id="VerifyReadyDlgInstallTitle" Value="{\WixUI_Font_Title}Ready to install [ProductName] [VectorcraftVersion]" />
--  <String Id="ShortcutsDlgTitle" Value="{\WixUI_Font_Title}Shortcuts" />
--  <String Id="ShortcutsDlgDescription" Value="Choose where you can start [ProductName] from." />
--  <String Id="ShortcutsDlgDesktop" Value="Create a &amp;desktop shortcut" />
--  <String Id="ShortcutsDlgStartMenu" Value="[ProductName] is always added to the Start menu." />
--  <String Id="ExitDialogTitle" Value="{\WixUI_Font_Bigger}Completed the [ProductName] [VectorcraftVersion] Setup Wizard" />
--</WixLocalization>
-diff --git a/packaging/windows/vectorcraft.wxs b/packaging/windows/vectorcraft.wxs
-deleted file mode 100644
-index 679d11d..0000000
---- a/packaging/windows/vectorcraft.wxs
-+++ /dev/null
-@@ -1,141 +0,0 @@
--<?xml version="1.0" encoding="utf-8"?>
--<!--
--  VectorCraft MSI (WiX Toolset v5: `dotnet tool install -g wix`, plus the UI and Util extensions:
--  `wix extension add -g WixToolset.UI.wixext/5.0.2 WixToolset.Util.wixext/5.0.2`). Built by package.ps1:
--
--    wix build vectorcraft.wxs -arch x64 -ext WixToolset.UI.wixext -ext WixToolset.Util.wixext
--      -culture en-US -loc vectorcraft.en-us.wxl -d Version=1.2.3 -d DisplayVersion=1.2.3-rc.1
--      -d BinDir=... -d IconPath=... -d BannerBmp=... -d DialogBmp=... -o out.msi
--
--  Per-machine install with a setup wizard that names the version: Welcome, install folder (Program Files\VectorCraft by
--  default, remembered for upgrades), Ready, a progress page, and a Finish page with a ticked
--  "Launch VectorCraft" box. Installs a Start Menu shortcut and an App Paths entry (so `vectorcraft`
--  starts from the Run dialog), plus vectorcraft-cli. A Shortcuts page after the install folder offers
--  a desktop shortcut (ticked). `msiexec /qn` still installs silently, with the desktop shortcut
--  unless INSTALLDESKTOPSHORTCUT="" is passed.
---->
--<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
--     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
--  <Package
--      Name="VectorCraft"
--      Manufacturer="Learning Machines LLC"
--      Version="$(var.Version)"
--      UpgradeCode="601C6437-08AE-4645-ADCC-27F036C2EA2F"
--      Scope="perMachine"
--      Compressed="yes"
--      Language="1033">
--    <SummaryInformation Description="VectorCraft vector illustration app" Manufacturer="Learning Machines LLC" />
--    <!-- Same-version upgrades let successive pre-releases of one X.Y.Z replace each other
--         (MSI versions are numeric, so 1.2.3-rc.1 and 1.2.3-rc.2 are both 1.2.3). -->
--    <MajorUpgrade AllowSameVersionUpgrades="yes"
--        DowngradeErrorMessage="A newer version of VectorCraft is already installed." />
--    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
--
--    <Icon Id="VectorcraftIcon.ico" SourceFile="$(var.IconPath)" />
--    <Property Id="ARPPRODUCTICON" Value="VectorcraftIcon.ico" />
--    <Property Id="ARPURLINFOABOUT" Value="https://getartcraft.com/apps/vectorcraft" />
--    <Property Id="ARPURLUPDATEINFO" Value="https://getartcraft.com/apps/vectorcraft" />
--    <Property Id="ARPHELPLINK" Value="https://discord.gg/artcraft" />
--
--    <StandardDirectory Id="ProgramFiles6432Folder">
--      <Directory Id="INSTALLFOLDER" Name="VectorCraft" />
--    </StandardDirectory>
--    <StandardDirectory Id="ProgramMenuFolder" />
--    <StandardDirectory Id="DesktopFolder" />
--
--    <!-- An upgrade installs where the user put the previous version (written by VectorcraftApp). -->
--    <Property Id="INSTALLFOLDER">
--      <RegistrySearch Id="PreviousInstallFolder" Root="HKLM" Key="Software\VectorCraft" Name="InstallDir" Type="raw" />
--    </Property>
--
--    <Feature Id="Main" Title="VectorCraft" Level="1">
--      <ComponentGroupRef Id="VectorcraftFiles" />
--      <ComponentGroupRef Id="PdfDocumentation" />
--      <ComponentRef Id="DesktopShortcut" />
--    </Feature>
--
--    <!-- A desktop shortcut: the Shortcuts page's box (ticked), or INSTALLDESKTOPSHORTCUT="" on the
--         msiexec command line for none. Secure, so the wizard's choice reaches the install. -->
--    <Property Id="INSTALLDESKTOPSHORTCUT" Value="1" Secure="yes" />
--
--    <!-- The setup wizard: WixUI_InstallDir without its licence page (the code is MIT OR
--         Apache-2.0; there is nothing to accept). A later NewDialog on the same button wins. -->
--    <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
--    <UI>
--      <Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg" Order="2" Condition="NOT Installed" />
--      <Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg" Order="2" />
--      <!-- The Shortcuts page sits between the install folder and Ready (once the folder is valid). -->
--      <Publish Dialog="InstallDirDlg" Control="Next" Event="NewDialog" Value="ShortcutsDlg" Order="5"
--          Condition="WIXUI_DONTVALIDATEPATH OR WIXUI_INSTALLDIR_VALID=&quot;1&quot;" />
--      <Publish Dialog="VerifyReadyDlg" Control="Back" Event="NewDialog" Value="ShortcutsDlg" Order="5" Condition="NOT Installed" />
--
--      <Dialog Id="ShortcutsDlg" Width="370" Height="270" Title="!(loc.InstallDirDlg_Title)">
--        <Control Id="Next" Type="PushButton" X="236" Y="243" Width="56" Height="17" Default="yes" Text="!(loc.WixUINext)">
--          <Publish Event="NewDialog" Value="VerifyReadyDlg" />
--        </Control>
--        <Control Id="Back" Type="PushButton" X="180" Y="243" Width="56" Height="17" Text="!(loc.WixUIBack)">
--          <Publish Event="NewDialog" Value="InstallDirDlg" />
--        </Control>
--        <Control Id="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Cancel="yes" Text="!(loc.WixUICancel)">
--          <Publish Event="SpawnDialog" Value="CancelDlg" />
--        </Control>
--        <Control Id="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" TabSkip="no" Text="!(loc.InstallDirDlgBannerBitmap)" />
--        <Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
--        <Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" />
--        <Control Id="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Transparent="yes" NoPrefix="yes" Text="!(loc.ShortcutsDlgTitle)" />
--        <Control Id="Description" Type="Text" X="25" Y="23" Width="280" Height="15" Transparent="yes" NoPrefix="yes" Text="!(loc.ShortcutsDlgDescription)" />
--        <Control Id="DesktopShortcutCheckBox" Type="CheckBox" X="20" Y="60" Width="330" Height="18"
--            Property="INSTALLDESKTOPSHORTCUT" CheckBoxValue="1" Text="!(loc.ShortcutsDlgDesktop)" />
--        <Control Id="StartMenuNote" Type="Text" X="20" Y="84" Width="330" Height="30" NoPrefix="yes" Text="!(loc.ShortcutsDlgStartMenu)" />
--      </Dialog>
--      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchVectorcraft"
--          Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 AND NOT Installed" />
--    </UI>
--    <!-- Our own art, generated by package.ps1 from the app icon (not WiX's stock bitmaps). -->
--    <WixVariable Id="WixUIBannerBmp" Value="$(var.BannerBmp)" />
--    <WixVariable Id="WixUIDialogBmp" Value="$(var.DialogBmp)" />
--
--    <!-- The full version (Version is numeric, so it drops a pre-release tag), shown on the wizard's
--         pages through vectorcraft.en-us.wxl. -->
--    <Property Id="VectorcraftVersion" Value="$(var.DisplayVersion)" />
--
--    <!-- Finish page: say where to find the app, and offer to start it (ticked by default). -->
--    <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="VectorCraft $(var.DisplayVersion) is installed. You can start it any time from the Start menu." />
--    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch VectorCraft" />
--    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
--    <Property Id="WixShellExecTarget" Value="[#VectorcraftExe]" />
--    <!-- Runs in the wizard's own (unelevated) process, so the app starts as the user, not as admin. -->
--    <CustomAction Id="LaunchVectorcraft" BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" DllEntry="WixShellExec" Impersonate="yes" Return="ignore" />
--  </Package>
--
--  <Fragment>
--    <ComponentGroup Id="PdfDocumentation" Directory="INSTALLFOLDER">
--      <Files Include="$(var.DocsDir)\**" />
--    </ComponentGroup>
--    <ComponentGroup Id="VectorcraftFiles" Directory="INSTALLFOLDER">
--      <Component Id="VectorcraftApp" Guid="0E8C6C5E-DE4A-4E1D-9DB0-44E8E38C2103">
--        <File Id="VectorcraftExe" Source="$(var.BinDir)\vectorcraft.exe" KeyPath="yes">
--          <Shortcut Id="StartMenuShortcut" Directory="ProgramMenuFolder" Name="VectorCraft"
--              Description="VectorCraft vector illustration app" WorkingDirectory="INSTALLFOLDER" Advertise="yes"
--              Icon="VectorcraftIcon.ico" IconIndex="0" />
--        </File>
--
--        <RegistryValue Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\App Paths\vectorcraft.exe" Value="[#VectorcraftExe]" Type="string" />
--        <RegistryValue Root="HKLM" Key="Software\VectorCraft" Name="InstallDir" Value="[INSTALLFOLDER]" Type="string" />
--      </Component>
--
--      <Component Id="VectorcraftCli">
--        <File Id="VectorcraftCliExe" Source="$(var.BinDir)\vectorcraft-cli.exe" KeyPath="yes" />
--      </Component>
--    </ComponentGroup>
--
--    <!-- Installed only with INSTALLDESKTOPSHORTCUT set (the Shortcuts page's box); removed with the
--         app. A per-machine install puts it on the common desktop. `wix msi validate` reports ICE38,
--         ICE43 and ICE57 for it: they take a desktop shortcut for per-user data, which it isn't here. -->
--    <Component Id="DesktopShortcut" Directory="DesktopFolder" Guid="498F2D4C-E655-47F6-B406-2D4C449B8D26" Condition="INSTALLDESKTOPSHORTCUT">
--      <Shortcut Id="DesktopShortcut" Name="VectorCraft" Description="VectorCraft vector illustration app"
--          Target="[#VectorcraftExe]" WorkingDirectory="INSTALLFOLDER" Icon="VectorcraftIcon.ico" IconIndex="0" />
--      <RegistryValue Root="HKLM" Key="Software\VectorCraft" Name="DesktopShortcut" Value="1" Type="integer" KeyPath="yes" />
--    </Component>
--  </Fragment>
--</Wix>
 diff --git a/packaging/windows/windows7.ps1 b/packaging/windows/windows7.ps1
 index dbfa715..923a65d 100644
 --- a/packaging/windows/windows7.ps1
