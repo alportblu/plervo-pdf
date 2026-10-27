@@ -1,5 +1,5 @@
 diff --git a/ATTRIBUTION.md b/ATTRIBUTION.md
-index 2b69cb0..f282af0 100644
+index 2b69cb02..f282af03 100644
 --- a/ATTRIBUTION.md
 +++ b/ATTRIBUTION.md
 @@ -32,24 +32,7 @@ iconography, images or other Adobe assets; open licences only; every asset attri
@@ -83,10 +83,87 @@ index 2b69cb0..f282af0 100644
 +
 +| `packaging/macos/dmg/background.svg` | @XusBadia | Original work: FilmCraft macOS DMG window background, derived from the FilmCraft app icon (`assets/app-icon/filmcraft.svg`); rendered to `background.tiff` by `packaging/macos/dmg/generate.py` | MIT OR Apache-2.0 (`LICENSE-MIT`, `LICENSE-APACHE`) |
 diff --git a/Cargo.lock b/Cargo.lock
-index e50797e..9fecf5e 100644
+index e50797ea..513ee4b2 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -704,8 +704,6 @@ dependencies = [
+@@ -123,37 +123,37 @@ checksum = "320119579fcad9c21884f5c4861d16174d0e06250625266f50fe6898340abefa"
+ 
+ [[package]]
+ name = "aead"
+-version = "0.5.2"
++version = "0.6.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d122413f284cf2d62fb1b7db97e02edb8cda96d769b16e443a4f6195e35662b0"
++checksum = "1973cfbc1a2daf9cf550e74e1f088c28e7f7d8c1e1418fb6c9dc5184b7e84c99"
+ dependencies = [
+- "crypto-common",
+- "generic-array",
++ "crypto-common 0.2.2",
++ "inout",
+ ]
+ 
+ [[package]]
+ name = "aes"
+-version = "0.8.4"
++version = "0.9.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "b169f7a6d4742236a0a00c541b845991d0ac43e546831af1249753ab4c3aa3a0"
++checksum = "35f0f96ce78e38c3dc6d8948aa8163d06385be74000f3c7a95bf1eef35d3ea32"
+ dependencies = [
+- "cfg-if",
+  "cipher",
+- "cpufeatures",
++ "cpubits",
++ "cpufeatures 0.3.1",
+ ]
+ 
+ [[package]]
+ name = "aes-gcm"
+-version = "0.10.3"
++version = "0.11.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "831010a0f742e1209b3bcea8fab6a8e149051ba6099432c8cb2cc117dec3ead1"
++checksum = "7f2b8006a0c83f52b62ba44a97b58bf76fe2f70a329e588f67f89691d93d498f"
+ dependencies = [
+  "aead",
+  "aes",
+  "cipher",
+  "ctr",
++ "ctutils",
+  "ghash",
+- "subtle",
+ ]
+ 
+ [[package]]
+@@ -477,9 +477,9 @@ checksum = "f2032f911046de80f0a198e0901378627c33f59ea0ac00e363d481118bd70a53"
+ 
+ [[package]]
+ name = "base16ct"
+-version = "0.2.0"
++version = "1.0.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "4c7f02d4ea65f2c1853089ffd8d2787bdbc63de2f0d29dedbcf8ccdfa0ccd4cf"
++checksum = "fd307490d624467aa6f74b0eabb77633d1f758a7b25f12bceb0b22e08d9726f6"
+ 
+ [[package]]
+ name = "base64"
+@@ -550,6 +550,15 @@ dependencies = [
+  "generic-array",
+ ]
+ 
++[[package]]
++name = "block-buffer"
++version = "0.12.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "d2f6c7dbe95a6ed67ad9f18e57daf93a2f034c524b99fd2b76d18fdfeb6660aa"
++dependencies = [
++ "hybrid-array",
++]
++
+ [[package]]
+ name = "block2"
+ version = "0.5.1"
+@@ -704,8 +713,6 @@ dependencies = [
  [[package]]
  name = "candle-core"
  version = "0.9.2"
@@ -95,7 +172,348 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "byteorder",
   "float8",
-@@ -1672,42 +1670,9 @@ dependencies = [
+@@ -715,7 +722,7 @@ dependencies = [
+  "memmap2",
+  "num-traits",
+  "num_cpus",
+- "rand 0.9.5",
++ "rand",
+  "rand_distr",
+  "rayon",
+  "safetensors",
+@@ -791,26 +798,25 @@ dependencies = [
+ 
+ [[package]]
+ name = "chacha20"
+-version = "0.9.1"
++version = "0.10.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "c3613f74bd2eac03dad61bd53dbe620703d4371614fe0bc3b9f04dd36fe4e818"
++checksum = "65c35e4b699c7e15ccbe7ee35c005e4fc0a278d22238a2857e6ce2dadeda1b06"
+ dependencies = [
+  "cfg-if",
+  "cipher",
+- "cpufeatures",
++ "cpufeatures 0.3.1",
+ ]
+ 
+ [[package]]
+ name = "chacha20poly1305"
+-version = "0.10.1"
++version = "0.11.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "10cd79432192d1c0f4e1a0fef9527696cc039165d729fb41b3f4f4f354c2dc35"
++checksum = "9b89e1c441e926b9c82a8d023f6e1b7ae0adcfaa7d621814e4d60789bac751cb"
+ dependencies = [
+  "aead",
+  "chacha20",
+  "cipher",
+  "poly1305",
+- "zeroize",
+ ]
+ 
+ [[package]]
+@@ -827,13 +833,13 @@ dependencies = [
+ 
+ [[package]]
+ name = "cipher"
+-version = "0.4.4"
++version = "0.5.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "773f3b9af64447d2ce9850330c473515014aa235e6a783b02db81ff39e4a3dad"
++checksum = "e8cf2a2c93cd704877c0858356ed03480ff301ee950b43f1cbe4573b088bfa6c"
+ dependencies = [
+- "crypto-common",
++ "block-buffer 0.12.1",
++ "crypto-common 0.2.2",
+  "inout",
+- "zeroize",
+ ]
+ 
+ [[package]]
+@@ -845,6 +851,12 @@ dependencies = [
+  "error-code",
+ ]
+ 
++[[package]]
++name = "cmov"
++version = "0.5.4"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "0c9ea0ac24bc397ab3c98583a3c9ba74fa56b09a4449bbe172b9b1ddb016027a"
++
+ [[package]]
+ name = "codespan-reporting"
+ version = "0.13.1"
+@@ -892,9 +904,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "const-oid"
+-version = "0.9.6"
++version = "0.10.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "c2459377285ad874054d797f3ccebf984978aa39129f6eafde5cdc8315b612f8"
++checksum = "a6ef517f0926dd24a1582492c791b6a4818a4d94e789a334894aa15b0d12f55c"
+ 
+ [[package]]
+ name = "core-foundation"
+@@ -1002,6 +1014,12 @@ dependencies = [
+  "winapi",
+ ]
+ 
++[[package]]
++name = "cpubits"
++version = "0.1.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "15b85f9c39137c3a891689859392b1bd49812121d0d61c9caf00d46ed5ce06ae"
++
+ [[package]]
+ name = "cpufeatures"
+ version = "0.2.17"
+@@ -1011,6 +1029,15 @@ dependencies = [
+  "libc",
+ ]
+ 
++[[package]]
++name = "cpufeatures"
++version = "0.3.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "5ca28b0ae3115b884660db4118d803791fd6756b6e88f39c0f3f7859060d7566"
++dependencies = [
++ "libc",
++]
++
+ [[package]]
+ name = "craft-ui"
+ version = "0.1.0"
+@@ -1071,12 +1098,16 @@ checksum = "460fbee9c2c2f33933d720630a6a0bac33ba7053db5344fac858d4b8952d77d5"
+ 
+ [[package]]
+ name = "crypto-bigint"
+-version = "0.5.5"
++version = "0.7.9"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "0dc92fb57ca44df6db8059111ab3af99a63d5d0f8375d9972e319a379c6bab76"
++checksum = "d811ea23fdfbcce2e2d5132344d471abdb8f901ac496a0893a3df92e70525e52"
+ dependencies = [
+- "generic-array",
+- "rand_core 0.6.4",
++ "cpubits",
++ "ctutils",
++ "hybrid-array",
++ "num-traits",
++ "rand_core 0.10.1",
++ "serdect",
+  "subtle",
+  "zeroize",
+ ]
+@@ -1091,15 +1122,45 @@ dependencies = [
+  "typenum",
+ ]
+ 
++[[package]]
++name = "crypto-common"
++version = "0.2.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "ce6e4c961d6cd6c9a86db418387425e8bdeaf05b3c8bc1411e6dca4c252f1453"
++dependencies = [
++ "hybrid-array",
++ "rand_core 0.10.1",
++]
++
++[[package]]
++name = "crypto-primes"
++version = "0.7.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "3633a51a39c69ebbaa4feaa694bd83d241e4093901c84a0963b19d9bb3f0cf8f"
++dependencies = [
++ "crypto-bigint",
++ "rand_core 0.10.1",
++]
++
+ [[package]]
+ name = "ctr"
+-version = "0.9.2"
++version = "0.10.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "0369ee1ad671834580515889b80f2ea915f23b8be8d0daa4bbaf2ac5c7590835"
++checksum = "baaca1c4b237092596f64d571e9db6ce4109c4ef9742e27590f1709594461f21"
+ dependencies = [
+  "cipher",
+ ]
+ 
++[[package]]
++name = "ctutils"
++version = "0.4.6"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "fe3e9d21d39e6f39ff46e03d5b621424f88ee23d8a1672c6bfc9ccc7f2da4f6a"
++dependencies = [
++ "cmov",
++ "subtle",
++]
++
+ [[package]]
+ name = "cursor-icon"
+ version = "1.2.0"
+@@ -1108,14 +1169,14 @@ checksum = "f27ae1dd37df86211c42e150270f82743308803d90a6f6e6651cd730d5e1732f"
+ 
+ [[package]]
+ name = "curve25519-dalek"
+-version = "4.1.3"
++version = "5.0.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "97fb8b7c4503de7d6ae7b42ab72a5a59857b4c937ec27a3d4539dba95b5ab2be"
++checksum = "b5eed333089e2e1c1ac8c6c0398e5e2497b4c9926ca6d0365ed1e099afa5bc23"
+ dependencies = [
+  "cfg-if",
+- "cpufeatures",
++ "cpufeatures 0.3.1",
+  "curve25519-dalek-derive",
+- "digest",
++ "digest 0.11.3",
+  "fiat-crypto",
+  "rustc_version",
+  "subtle",
+@@ -1175,9 +1236,9 @@ checksum = "0c87e182de0887fd5361989c677c4e8f5000cd9491d6d563161a8f3a5519fc7f"
+ 
+ [[package]]
+ name = "der"
+-version = "0.7.10"
++version = "0.8.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "e7c1832837b905bbfb5101e07cc24c8deddf52f93225eee6ead5f4d63d53ddcb"
++checksum = "6a996a108feb8b427a6e12fcf6af4aa83409b79d72c15337d7741368131ee004"
+ dependencies = [
+  "const-oid",
+  "pem-rfc7468",
+@@ -1190,10 +1251,20 @@ version = "0.10.7"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "9ed9a281f7bc9b7576e61468ba615a66a5c8cfdff42420a70aa82701a3b1e292"
+ dependencies = [
+- "block-buffer",
++ "block-buffer 0.10.4",
++ "crypto-common 0.1.7",
++]
++
++[[package]]
++name = "digest"
++version = "0.11.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "f1dd6dbb5841937940781866fa1281a1ff7bd3bf827091440879f9994983d5c2"
++dependencies = [
++ "block-buffer 0.12.1",
+  "const-oid",
+- "crypto-common",
+- "subtle",
++ "crypto-common 0.2.2",
++ "ctutils",
+ ]
+ 
+ [[package]]
+@@ -1268,16 +1339,17 @@ checksum = "e1d926b4d407d372f141f93bb444696142c29d32962ccbd3531117cf3aa0bfa9"
+ 
+ [[package]]
+ name = "ecdsa"
+-version = "0.16.9"
++version = "0.17.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "ee27f32b5c5292967d2d4a9d7f1e0b0aed2c15daded5a60300e4abb9d8020bca"
++checksum = "c0681a4fc24c767085329728d8dfba959af91228aa4610cca4f8ce317ba46ae0"
+ dependencies = [
+  "der",
+- "digest",
++ "digest 0.11.3",
+  "elliptic-curve",
+  "rfc6979",
+  "signature",
+  "spki",
++ "zeroize",
+ ]
+ 
+ [[package]]
+@@ -1292,9 +1364,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "ed25519"
+-version = "2.2.3"
++version = "3.0.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "115531babc129696a58c64a4fef0a8bf9e9698629fb97e9e40767d235cfbcd53"
++checksum = "29fcf32e6c73d1079f83ab4d782de2d81620346a5f38c6237a86a22f8368980a"
+ dependencies = [
+  "pkcs8",
+  "signature",
+@@ -1302,14 +1374,15 @@ dependencies = [
+ 
+ [[package]]
+ name = "ed25519-dalek"
+-version = "2.2.0"
++version = "3.0.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "70e796c081cee67dc755e1a36a0a172b897fab85fc3f6bc48307991f64e4eca9"
++checksum = "6ebaa1a2bf1290ab3bfe5a7b771d050ebffab2711c19a81691c683a5144a25de"
+ dependencies = [
+  "curve25519-dalek",
+  "ed25519",
+  "serde",
+- "sha2",
++ "sha2 0.11.1",
++ "signature",
+  "subtle",
+  "zeroize",
+ ]
+@@ -1450,20 +1523,21 @@ checksum = "252afb9ae5eaa683babdc6a068b3f5726eb19e05070c731f9b2a23a7c3e8ed34"
+ 
+ [[package]]
+ name = "elliptic-curve"
+-version = "0.13.8"
++version = "0.14.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "b5e6043086bf7973472e0c7dff2142ea0b680d30e18d9cc40f267efbf222bd47"
++checksum = "900f37e7e18d74a2347389af6cd69e3a30d5cc9e697f40004865679aa75e9c7c"
+ dependencies = [
+  "base16ct",
+  "crypto-bigint",
+- "digest",
++ "crypto-common 0.2.2",
++ "digest 0.11.3",
+  "ff",
+- "generic-array",
+  "group",
+  "hkdf",
++ "hybrid-array",
+  "pem-rfc7468",
+  "pkcs8",
+- "rand_core 0.6.4",
++ "rand_core 0.10.1",
+  "sec1",
+  "subtle",
+  "zeroize",
+@@ -1648,19 +1722,19 @@ checksum = "b97b65636e5b9ef369943878ac74335ba1c55c1cb6adbf1e2c293c624248d693"
+ 
+ [[package]]
+ name = "ff"
+-version = "0.13.1"
++version = "0.14.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "c0b50bfb653653f9ca9095b427bed08ab8d75a137839d9ad64eb11810d5b6393"
++checksum = "a1f686ab92a9fb0eaf188f6c6c87b89490baa6fdb0db4544ba4dc47f7942489f"
+ dependencies = [
+- "rand_core 0.6.4",
++ "rand_core 0.10.1",
+  "subtle",
+ ]
+ 
+ [[package]]
+ name = "fiat-crypto"
+-version = "0.2.9"
++version = "0.3.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "28dea519a9695b9977216879a3ebfddf92f1c08c05d984f8996aecd6ecdc811d"
++checksum = "64cd1e32ddd350061ae6edb1b082d7c54915b5c672c389143b9a63403a109f24"
+ 
+ [[package]]
+ name = "field-offset"
+@@ -1672,42 +1746,9 @@ dependencies = [
   "rustc_version",
  ]
  
@@ -139,7 +557,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
-@@ -1717,7 +1682,7 @@ dependencies = [
+@@ -1717,7 +1758,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-ac3"
@@ -148,7 +566,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-testkit",
   "thiserror 2.0.21",
-@@ -1725,7 +1690,7 @@ dependencies = [
+@@ -1725,7 +1766,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-apv"
@@ -157,7 +575,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
-@@ -1735,14 +1700,14 @@ dependencies = [
+@@ -1735,14 +1776,14 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-audio-dsp"
@@ -174,7 +592,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "base64 0.22.1",
   "filmcraft-engine",
-@@ -1758,7 +1723,7 @@ dependencies = [
+@@ -1758,7 +1799,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-av1"
@@ -183,7 +601,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
-@@ -1769,21 +1734,21 @@ dependencies = [
+@@ -1769,21 +1810,21 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-avi"
@@ -208,7 +626,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-color",
   "filmcraft-project",
-@@ -1796,33 +1761,11 @@ dependencies = [
+@@ -1796,33 +1837,11 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-cfb"
@@ -244,7 +662,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-aac",
   "filmcraft-ac3",
-@@ -1860,7 +1803,7 @@ dependencies = [
+@@ -1860,7 +1879,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-color"
@@ -253,7 +671,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "proptest",
   "serde",
-@@ -1868,7 +1811,7 @@ dependencies = [
+@@ -1868,7 +1887,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-dng"
@@ -262,7 +680,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-dng",
   "rayon",
-@@ -1877,7 +1820,7 @@ dependencies = [
+@@ -1877,7 +1896,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-dnx"
@@ -271,7 +689,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
-@@ -1887,7 +1830,7 @@ dependencies = [
+@@ -1887,7 +1906,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-edit"
@@ -280,7 +698,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-geom",
   "filmcraft-media",
-@@ -1900,7 +1843,7 @@ dependencies = [
+@@ -1900,7 +1919,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-engine"
@@ -289,7 +707,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-audio-dsp",
   "filmcraft-captions",
-@@ -1934,7 +1877,7 @@ dependencies = [
+@@ -1934,7 +1953,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-export"
@@ -298,7 +716,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-aac",
   "filmcraft-apv",
-@@ -1965,7 +1908,7 @@ dependencies = [
+@@ -1965,7 +1984,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-flac"
@@ -307,7 +725,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
-@@ -1974,7 +1917,7 @@ dependencies = [
+@@ -1974,7 +1993,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-format"
@@ -316,7 +734,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-media",
   "filmcraft-project",
-@@ -1987,7 +1930,7 @@ dependencies = [
+@@ -1987,7 +2006,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-frame"
@@ -325,7 +743,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-color",
   "filmcraft-time",
-@@ -1997,7 +1940,7 @@ dependencies = [
+@@ -1997,7 +2016,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-geom"
@@ -334,7 +752,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "proptest",
   "serde",
-@@ -2005,7 +1948,7 @@ dependencies = [
+@@ -2005,7 +2024,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-golden"
@@ -343,7 +761,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-color",
   "filmcraft-frame",
-@@ -2022,7 +1965,7 @@ dependencies = [
+@@ -2022,7 +2041,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-gpu"
@@ -352,7 +770,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-color",
   "filmcraft-export",
-@@ -2041,7 +1984,7 @@ dependencies = [
+@@ -2041,7 +2060,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-h264"
@@ -361,7 +779,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
-@@ -2051,7 +1994,7 @@ dependencies = [
+@@ -2051,7 +2070,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-h264enc"
@@ -370,7 +788,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
-@@ -2061,7 +2004,7 @@ dependencies = [
+@@ -2061,7 +2080,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-hevc"
@@ -379,7 +797,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
-@@ -2071,7 +2014,7 @@ dependencies = [
+@@ -2071,7 +2090,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-interchange"
@@ -388,7 +806,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-cfb",
   "filmcraft-color",
-@@ -2088,7 +2031,7 @@ dependencies = [
+@@ -2088,7 +2107,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-isobmff"
@@ -397,7 +815,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
-@@ -2099,7 +2042,7 @@ dependencies = [
+@@ -2099,7 +2118,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-matroska"
@@ -406,7 +824,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-testkit",
   "serde_json",
-@@ -2107,7 +2050,7 @@ dependencies = [
+@@ -2107,7 +2126,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-media"
@@ -415,7 +833,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-color",
   "filmcraft-dng",
-@@ -2123,7 +2066,7 @@ dependencies = [
+@@ -2123,7 +2142,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-mpa"
@@ -424,7 +842,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
-@@ -2132,7 +2075,7 @@ dependencies = [
+@@ -2132,7 +2151,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-mpeg2v"
@@ -433,7 +851,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-testkit",
   "rayon",
-@@ -2141,7 +2084,7 @@ dependencies = [
+@@ -2141,7 +2160,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-mpegts"
@@ -442,7 +860,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-testkit",
   "thiserror 2.0.21",
-@@ -2149,28 +2092,28 @@ dependencies = [
+@@ -2149,28 +2168,28 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-mxf"
@@ -475,7 +893,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-codecs",
-@@ -2196,7 +2139,7 @@ dependencies = [
+@@ -2196,7 +2215,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-project"
@@ -484,7 +902,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-color",
   "filmcraft-geom",
-@@ -2210,7 +2153,7 @@ dependencies = [
+@@ -2210,7 +2229,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-prores"
@@ -493,7 +911,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-bitstream",
   "filmcraft-testkit",
-@@ -2220,7 +2163,7 @@ dependencies = [
+@@ -2220,7 +2239,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-render"
@@ -502,7 +920,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-audio-dsp",
   "filmcraft-captions",
-@@ -2240,7 +2183,7 @@ dependencies = [
+@@ -2240,7 +2259,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-scopes"
@@ -511,7 +929,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-color",
   "serde",
-@@ -2249,7 +2192,7 @@ dependencies = [
+@@ -2249,7 +2268,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-speech"
@@ -520,7 +938,15 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "candle-core",
   "candle-nn",
-@@ -2267,14 +2210,14 @@ dependencies = [
+@@ -2260,21 +2279,21 @@ dependencies = [
+  "rustls-rustcrypto",
+  "serde",
+  "serde_json",
+- "sha2",
++ "sha2 0.10.9",
+  "thiserror 2.0.21",
+  "ureq",
+ ]
  
  [[package]]
  name = "filmcraft-testkit"
@@ -537,7 +963,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-color",
   "harfrust",
-@@ -2286,7 +2229,7 @@ dependencies = [
+@@ -2286,7 +2305,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-time"
@@ -546,7 +972,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "proptest",
   "serde",
-@@ -2294,7 +2237,7 @@ dependencies = [
+@@ -2294,7 +2313,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-tts"
@@ -555,7 +981,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "candle-core",
   "candle-nn",
-@@ -2308,7 +2251,7 @@ dependencies = [
+@@ -2308,7 +2327,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-tts-text"
@@ -564,7 +990,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "serde",
   "thiserror 2.0.21",
-@@ -2316,7 +2259,7 @@ dependencies = [
+@@ -2316,7 +2335,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-ui-egui"
@@ -573,7 +999,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "cpu-time",
   "craft-ui",
-@@ -2355,14 +2298,14 @@ dependencies = [
+@@ -2355,14 +2374,14 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-vp8"
@@ -590,7 +1016,7 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-bitstream",
   "rayon",
-@@ -2371,7 +2314,7 @@ dependencies = [
+@@ -2371,7 +2390,7 @@ dependencies = [
  
  [[package]]
  name = "filmcraft-web"
@@ -599,14 +1025,146 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "eframe",
   "egui",
-@@ -3727,6 +3670,18 @@ dependencies = [
-  "jni-sys 0.3.1",
+@@ -2418,7 +2437,7 @@ checksum = "719a903cc23e4a89e87962c2a80fdb45cdaad0983a89bd150bb57b4c8571a7d5"
+ dependencies = [
+  "half",
+  "num-traits",
+- "rand 0.9.5",
++ "rand",
+  "rand_distr",
  ]
  
+@@ -2756,7 +2775,6 @@ checksum = "85649ca51fd72272d7821adaf274ad91c288277713d9c18820d8499a7ff69e9a"
+ dependencies = [
+  "typenum",
+  "version_check",
+- "zeroize",
+ ]
+ 
+ [[package]]
+@@ -2801,15 +2819,15 @@ dependencies = [
+  "cfg-if",
+  "libc",
+  "r-efi 6.0.0",
++ "rand_core 0.10.1",
+ ]
+ 
+ [[package]]
+ name = "ghash"
+-version = "0.5.1"
++version = "0.6.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "f0d8a4362ccb29cb0b265253fb0a2728f592895ee6854fd9bc13f2ffda266ff1"
++checksum = "2eecf2d5dc9b66b732b97707a0210906b1d30523eb773193ab777c0c84b3e8d5"
+ dependencies = [
+- "opaque-debug",
+  "polyval",
+ ]
+ 
+@@ -3040,12 +3058,12 @@ dependencies = [
+ 
+ [[package]]
+ name = "group"
+-version = "0.13.0"
++version = "0.14.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "f0f9ef7462f7c099f518d754361858f86d8a07af53ba9af0fe635bbccb151a63"
++checksum = "7fd1a1c7a5206c5b7a3f5a0d7ccd3ff85d0c8f5133d62a02680255b0004af5f4"
+ dependencies = [
+  "ff",
+- "rand_core 0.6.4",
++ "rand_core 0.10.1",
+  "subtle",
+ ]
+ 
+@@ -3120,7 +3138,7 @@ dependencies = [
+  "cfg-if",
+  "crunchy",
+  "num-traits",
+- "rand 0.9.5",
++ "rand",
+  "rand_distr",
+  "zerocopy",
+ ]
+@@ -3185,20 +3203,20 @@ checksum = "7f24254aa9a54b5c858eaee2f5bccdb46aaf0e486a595ed5fd8f86ba55232a70"
+ 
+ [[package]]
+ name = "hkdf"
+-version = "0.12.4"
++version = "0.13.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "7b5f8eb2ad728638ea2c7d47a21db23b7b58a72ed6a38256b8a1849f15fbbdf7"
++checksum = "4aaa26c720c68b866f2c96ef5c1264b3e6f473fe5d4ce61cd44bbe913e553018"
+ dependencies = [
+  "hmac",
+ ]
+ 
+ [[package]]
+ name = "hmac"
+-version = "0.12.1"
++version = "0.13.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "6c49c37c09c17a53d937dfbb742eb3a961d65a994e6bcdcf37e7399d0cc8ab5e"
++checksum = "6303bc9732ae41b04cb554b844a762b4115a61bfaa81e3e83050991eeb56863f"
+ dependencies = [
+- "digest",
++ "digest 0.11.3",
+ ]
+ 
+ [[package]]
+@@ -3217,6 +3235,17 @@ version = "1.10.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "6dbf3de79e51f3d586ab4cb9d5c3e2c14aa28ed23d180cf89b4df0454a69cc87"
+ 
 +[[package]]
++name = "hybrid-array"
++version = "0.4.15"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "27f864f10dfb56725ce5ce5472bc52252c8f93a4ab86327122cebf62c5f59a17"
++dependencies = [
++ "subtle",
++ "typenum",
++ "zeroize",
++]
++
+ [[package]]
+ name = "iana-time-zone"
+ version = "0.1.65"
+@@ -3290,11 +3319,11 @@ dependencies = [
+ 
+ [[package]]
+ name = "inout"
+-version = "0.1.4"
++version = "0.2.5"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "879f10e63c20629ecabbb64a8010319738c66a5cd0c29b02d63d272b03751d01"
++checksum = "3b5cf4372d022092674a83b8febf5865f7a573cc0c5baec5e49c879b6a20978f"
+ dependencies = [
+- "generic-array",
++ "hybrid-array",
+ ]
+ 
+ [[package]]
+@@ -3480,9 +3509,6 @@ name = "lazy_static"
+ version = "1.5.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "bbd2bcb4c963f2ddae06a2efc7e9f3591312473c50c6685e1f298068316e66fe"
+-dependencies = [
+- "spin",
+-]
+ 
+ [[package]]
+ name = "libc"
+@@ -3728,26 +3754,22 @@ dependencies = [
+ ]
+ 
+ [[package]]
+-name = "nohash-hasher"
+-version = "0.2.0"
 +name = "nix"
 +version = "0.31.3"
-+source = "registry+https://github.com/rust-lang/crates.io-index"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "2bf50223579dc7cdcfb3bfcacf7069ff68243f8c363f62ffa99cf000a6b9c451"
 +checksum = "cf20d2fde8ff38632c426f1165ed7436270b44f199fc55284c38276f9db47c3d"
 +dependencies = [
 + "bitflags 2.13.2",
@@ -614,11 +1172,154 @@ index e50797e..9fecf5e 100644
 + "cfg_aliases",
 + "libc",
 +]
-+
+ 
  [[package]]
- name = "nohash-hasher"
- version = "0.2.0"
-@@ -4528,6 +4483,61 @@ version = "0.2.3"
+-name = "num-bigint-dig"
+-version = "0.8.6"
++name = "nohash-hasher"
++version = "0.2.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "e661dda6640fad38e827a6d4a310ff4763082116fe217f279885c97f511bb0b7"
+-dependencies = [
+- "lazy_static",
+- "libm",
+- "num-integer",
+- "num-iter",
+- "num-traits",
+- "rand 0.8.8",
+- "smallvec",
+- "zeroize",
+-]
++checksum = "2bf50223579dc7cdcfb3bfcacf7069ff68243f8c363f62ffa99cf000a6b9c451"
+ 
+ [[package]]
+ name = "num-complex"
+@@ -3770,25 +3792,6 @@ dependencies = [
+  "syn 2.0.119",
+ ]
+ 
+-[[package]]
+-name = "num-integer"
+-version = "0.1.47"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "7ce2d95d4b3734dc35aa2f45e1aa22cd416814592a4f9d9205e11affd5b8e10b"
+-dependencies = [
+- "num-traits",
+-]
+-
+-[[package]]
+-name = "num-iter"
+-version = "0.1.46"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "c92800bd69a1eac91786bcfe9da64a897eb72911b8dc3095decbd07429e8048b"
+-dependencies = [
+- "num-integer",
+- "num-traits",
+-]
+-
+ [[package]]
+ name = "num-traits"
+ version = "0.2.19"
+@@ -4235,12 +4238,6 @@ version = "1.21.4"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "9f7c3e4beb33f85d45ae3e3a1792185706c8e16d043238c593331cc7cd313b50"
+ 
+-[[package]]
+-name = "opaque-debug"
+-version = "0.3.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "c08d65885ee38876c4f86fa503fb49d7b507c2b62552df7c70b2fce627e06381"
+-
+ [[package]]
+ name = "open"
+ version = "5.4.4"
+@@ -4288,26 +4285,29 @@ dependencies = [
+ 
+ [[package]]
+ name = "p256"
+-version = "0.13.2"
++version = "0.14.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "c9863ad85fa8f4460f9c48cb909d38a0d689dba1f6f6988a5e3e0d31071bcd4b"
++checksum = "d2c9239b2dbc807adbbe147e8cf72ea7450c3a0aabe62cb8e75ff4ec22e1f72a"
+ dependencies = [
+  "ecdsa",
+  "elliptic-curve",
++ "primefield",
+  "primeorder",
+- "sha2",
++ "sha2 0.11.1",
+ ]
+ 
+ [[package]]
+ name = "p384"
+-version = "0.13.1"
++version = "0.14.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "fe42f1670a52a47d448f14b6a5c61dd78fce51856e68edaa38f7ae3a46b8d6b6"
++checksum = "d17b851e6b3e378ab4ecb07fa2ed23f4d15f075735f8fec9fa1e7bdce5f8301f"
+ dependencies = [
+  "ecdsa",
+  "elliptic-curve",
++ "fiat-crypto",
++ "primefield",
+  "primeorder",
+- "sha2",
++ "sha2 0.11.1",
+ ]
+ 
+ [[package]]
+@@ -4378,9 +4378,9 @@ checksum = "2ee67f1008b1ba2321834326597b8e186293b049a023cdef258527550b9935b4"
+ 
+ [[package]]
+ name = "pem-rfc7468"
+-version = "0.7.0"
++version = "1.0.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "88b39c9bfcfc231068454382784bb460aae594343fb030d46e9f50a645418412"
++checksum = "a6305423e0e7738146434843d1694d621cce767262b2a86910beab705e4493d9"
+ dependencies = [
+  "base64ct",
+ ]
+@@ -4486,20 +4486,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "pkcs1"
+-version = "0.7.5"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "c8ffb9f10fa047879315e6625af03c164b16962a5368d724ed16323b68ace47f"
+-dependencies = [
+- "der",
+- "pkcs8",
+- "spki",
+-]
+-
+-[[package]]
+-name = "pkcs5"
+-version = "0.7.1"
++version = "0.8.0-rc.5"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "e847e2c91a18bfa887dd028ec33f2fe6f25db77db3619024764914affe8b69a6"
++checksum = "f485dbafe293ea6ccaa7d82bc591651a796eb8a9aec3df040b057b706073dbc3"
+ dependencies = [
+  "der",
+  "spki",
+@@ -4507,12 +4496,11 @@ dependencies = [
+ 
+ [[package]]
+ name = "pkcs8"
+-version = "0.10.2"
++version = "0.11.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "f950b2377845cebe5cf8b5165cb3cc1a5e0fa5cfa3e1f7f55707d8fd82e0a7b7"
++checksum = "451913da69c775a56034ea8d9003d27ee8948e12443eae7c038ba100a4f21cb7"
+ dependencies = [
+  "der",
+- "pkcs5",
+  "spki",
+ ]
+ 
+@@ -4528,6 +4516,61 @@ version = "0.2.3"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "b4596b6d070b27117e987119b4dac604f3c58cfb0b191112e24771b2faeac1a6"
  
@@ -680,7 +1381,204 @@ index e50797e..9fecf5e 100644
  [[package]]
  name = "png"
  version = "0.18.1"
-@@ -5167,14 +5177,14 @@ dependencies = [
+@@ -4569,12 +4612,11 @@ checksum = "bc6355899e1c9462875b6757c79f3caa011a1fdae12bbb1a2e72dd1f234f8336"
+ 
+ [[package]]
+ name = "poly1305"
+-version = "0.8.0"
++version = "0.9.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "8159bd90725d2df49889a078b54f4f79e87f1f8a8444194cdca81d38f5393abf"
++checksum = "6e2d0073b297041425c7c3df6eb4792d598a15323fe63346852b092eca02904c"
+ dependencies = [
+- "cpufeatures",
+- "opaque-debug",
++ "cpufeatures 0.3.1",
+  "universal-hash",
+ ]
+ 
+@@ -4589,13 +4631,12 @@ dependencies = [
+ 
+ [[package]]
+ name = "polyval"
+-version = "0.6.2"
++version = "0.7.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "9d1fe60d06143b2430aa532c94cfe9e29783047f06c0d7fd359a9a51b729fa25"
++checksum = "f0fa31d631f2b2cb2a544d0aa321ce847a94764d701ca2becc411138b93d49cd"
+ dependencies = [
+- "cfg-if",
+- "cpufeatures",
+- "opaque-debug",
++ "cpubits",
++ "cpufeatures 0.3.1",
+  "universal-hash",
+ ]
+ 
+@@ -4629,13 +4670,29 @@ version = "0.3.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "e8cf8e6a8aa66ce33f63993ffc4ea4271eb5b0530a9002db8455ea6050c77bfa"
+ 
++[[package]]
++name = "primefield"
++version = "0.14.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "c555a6e4eb7d4e158fcb028c835c3b8642206ddc279b5c6b202ef9a8bdb592f4"
++dependencies = [
++ "crypto-bigint",
++ "crypto-common 0.2.2",
++ "ff",
++ "rand_core 0.10.1",
++ "subtle",
++ "zeroize",
++]
++
+ [[package]]
+ name = "primeorder"
+-version = "0.13.6"
++version = "0.14.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "353e1ca18966c16d9deb1c69278edbc5f194139612772bd9537af60ac231e1e6"
++checksum = "5c9f42978c78a00e3d68f69fc03e57a234debae69da4020a4fb588fcdcd07b06"
+ dependencies = [
+  "elliptic-curve",
++ "primefield",
++ "wnaf",
+ ]
+ 
+ [[package]]
+@@ -4716,8 +4773,8 @@ dependencies = [
+  "bit-vec 0.8.0",
+  "bitflags 2.13.2",
+  "num-traits",
+- "rand 0.9.5",
+- "rand_chacha 0.9.0",
++ "rand",
++ "rand_chacha",
+  "rand_xorshift",
+  "regex-syntax",
+  "rusty-fork",
+@@ -4796,36 +4853,16 @@ version = "6.0.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "f8dcc9c7d52a811697d2151c701e0d08956f92b0e24136cf4cf27b57a6a0d9bf"
+ 
+-[[package]]
+-name = "rand"
+-version = "0.8.8"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "e058c7de0b26af77780c769414d6257830bb240f3c38477dbc2c16e5f54d6d4c"
+-dependencies = [
+- "rand_chacha 0.3.1",
+- "rand_core 0.6.4",
+-]
+-
+ [[package]]
+ name = "rand"
+ version = "0.9.5"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "b9ef1d0d795eb7d84685bca4f72f3649f064e6641543d3a8c415898726a57b41"
+ dependencies = [
+- "rand_chacha 0.9.0",
++ "rand_chacha",
+  "rand_core 0.9.5",
+ ]
+ 
+-[[package]]
+-name = "rand_chacha"
+-version = "0.3.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "e6c10a63a0fa32252be49d21e7709d4d4baf8d231c2dbce1eaa8141b9b127d88"
+-dependencies = [
+- "ppv-lite86",
+- "rand_core 0.6.4",
+-]
+-
+ [[package]]
+ name = "rand_chacha"
+ version = "0.9.0"
+@@ -4838,21 +4875,18 @@ dependencies = [
+ 
+ [[package]]
+ name = "rand_core"
+-version = "0.6.4"
++version = "0.9.5"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "ec0be4795e2f6a28069bec0b5ff3e2ac9bafc99e6a9a7dc3547996c5c816922c"
++checksum = "76afc826de14238e6e8c374ddcc1fa19e374fd8dd986b0d2af0d02377261d83c"
+ dependencies = [
+- "getrandom 0.2.17",
++ "getrandom 0.3.4",
+ ]
+ 
+ [[package]]
+ name = "rand_core"
+-version = "0.9.5"
++version = "0.10.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "76afc826de14238e6e8c374ddcc1fa19e374fd8dd986b0d2af0d02377261d83c"
+-dependencies = [
+- "getrandom 0.3.4",
+-]
++checksum = "63b8176103e19a2643978565ca18b50549f6101881c443590420e4dc998a3c69"
+ 
+ [[package]]
+ name = "rand_distr"
+@@ -4861,7 +4895,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "6a8615d50dcf34fa31f7ab52692afec947c4dd0ab803cc87cb3b0b4570ff7463"
+ dependencies = [
+  "num-traits",
+- "rand 0.9.5",
++ "rand",
+ ]
+ 
+ [[package]]
+@@ -5004,12 +5038,12 @@ checksum = "19b30a45b0cd0bcca8037f3d0dc3421eaf95327a17cad11964fb8179b4fc4832"
+ 
+ [[package]]
+ name = "rfc6979"
+-version = "0.4.0"
++version = "0.6.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "f8dd2a808d456c4a54e300a23e9f5a67e122c3024119acbfd73e3bf664491cb2"
++checksum = "b4a459cddafb3fe76b31fd8f1108007566c40301feb64dc7b54656eb7388172b"
+ dependencies = [
++ "crypto-bigint",
+  "hmac",
+- "subtle",
+ ]
+ 
+ [[package]]
+@@ -5099,22 +5133,20 @@ dependencies = [
+ 
+ [[package]]
+ name = "rsa"
+-version = "0.9.10"
++version = "0.10.0-rc.19"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "b8573f03f5883dcaebdfcf4725caa1ecb9c15b2ef50c43a07b816e06799bb12d"
++checksum = "33405e321e16ef941ca66e254f6904c3aafd3c7ff001fb88bf11c73eb75c2b85"
+ dependencies = [
+  "const-oid",
+- "digest",
+- "num-bigint-dig",
+- "num-integer",
+- "num-traits",
++ "crypto-bigint",
++ "crypto-primes",
++ "digest 0.11.3",
+  "pkcs1",
+  "pkcs8",
+- "rand_core 0.6.4",
+- "sha2",
++ "rand_core 0.10.1",
++ "sha2 0.11.1",
+  "signature",
+  "spki",
+- "subtle",
+  "zeroize",
+ ]
+ 
+@@ -5167,14 +5199,14 @@ dependencies = [
  
  [[package]]
  name = "rustls"
@@ -698,7 +1596,7 @@ index e50797e..9fecf5e 100644
   "subtle",
   "zeroize",
  ]
-@@ -5214,7 +5224,7 @@ dependencies = [
+@@ -5214,7 +5246,7 @@ dependencies = [
   "rustls",
   "rustls-native-certs",
   "rustls-platform-verifier-android",
@@ -707,7 +1605,7 @@ index e50797e..9fecf5e 100644
   "security-framework",
   "security-framework-sys",
   "webpki-root-certs",
-@@ -5230,8 +5240,6 @@ checksum = "eec689c0bc40ff2458a5977b6619cb718087084a18e02a131c599b62d05e1a5f"
+@@ -5230,49 +5262,36 @@ checksum = "eec689c0bc40ff2458a5977b6619cb718087084a18e02a131c599b62d05e1a5f"
  [[package]]
  name = "rustls-rustcrypto"
  version = "0.0.2-alpha"
@@ -716,16 +1614,32 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "aead",
   "aes-gcm",
-@@ -5250,7 +5258,7 @@ dependencies = [
+  "chacha20poly1305",
+- "crypto-common",
++ "crypto-bigint",
++ "crypto-common 0.2.2",
+  "der",
+- "digest",
++ "digest 0.11.3",
+  "ecdsa",
+  "ed25519-dalek",
++ "getrandom 0.4.3",
+  "hmac",
+  "p256",
+  "p384",
+  "paste",
+  "pkcs8",
+- "rand_core 0.6.4",
   "rsa",
   "rustls",
   "rustls-pki-types",
 - "rustls-webpki 0.102.8",
-+ "rustls-webpki",
   "sec1",
-  "sha2",
+- "sha2",
++ "sha2 0.11.1",
   "signature",
-@@ -5259,20 +5267,9 @@ dependencies = [
+  "x25519-dalek",
+ ]
  
  [[package]]
  name = "rustls-webpki"
@@ -748,7 +1662,107 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "ring",
   "rustls-pki-types",
-@@ -5979,7 +5976,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+@@ -5366,14 +5385,14 @@ checksum = "94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49"
+ 
+ [[package]]
+ name = "sec1"
+-version = "0.7.3"
++version = "0.8.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d3e97a565f76233a6003f9f5c54be1d9c5bdfa3eccfb189469f11ec4901c47dc"
++checksum = "d56d437c2f19203ce5f7122e507831de96f3d2d4d3be5af44a0b0a09d8a80e4d"
+ dependencies = [
+  "base16ct",
++ "ctutils",
+  "der",
+- "generic-array",
+- "pkcs8",
++ "hybrid-array",
+  "subtle",
+  "zeroize",
+ ]
+@@ -5502,6 +5521,16 @@ dependencies = [
+  "serde_core",
+ ]
+ 
++[[package]]
++name = "serdect"
++version = "0.4.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "66cf8fedced2fcf12406bcb34223dffb92eaf34908ede12fed414c82b7f00b3e"
++dependencies = [
++ "base16ct",
++ "serde",
++]
++
+ [[package]]
+ name = "sha2"
+ version = "0.10.9"
+@@ -5509,8 +5538,19 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "a7507d819769d01a365ab707794a4084392c824f54a7a6a7862f8c3d0892b283"
+ dependencies = [
+  "cfg-if",
+- "cpufeatures",
+- "digest",
++ "cpufeatures 0.2.17",
++ "digest 0.10.7",
++]
++
++[[package]]
++name = "sha2"
++version = "0.11.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "47d7069beb7d6ac7b9acd1039986e73443f24234f41074da099d6f994ac9ad19"
++dependencies = [
++ "cfg-if",
++ "cpufeatures 0.3.1",
++ "digest 0.11.3",
+ ]
+ 
+ [[package]]
+@@ -5531,12 +5571,12 @@ dependencies = [
+ 
+ [[package]]
+ name = "signature"
+-version = "2.2.0"
++version = "3.0.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "77549399552de45a898a580c1b41d445bf730df867cc44e6c0233bbc4b8329de"
++checksum = "28d567dcbaf0049cb8ac2608a76cd95ff9e4412e1899d389ee400918ca7537f5"
+ dependencies = [
+- "digest",
+- "rand_core 0.6.4",
++ "digest 0.11.3",
++ "rand_core 0.10.1",
+ ]
+ 
+ [[package]]
+@@ -5680,12 +5720,6 @@ dependencies = [
+  "windows-sys 0.61.2",
+ ]
+ 
+-[[package]]
+-name = "spin"
+-version = "0.9.9"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "3763264f6b73151db08c50ff20d7d8a0b8796e021cdea7ceedad07b80155fa0e"
+-
+ [[package]]
+ name = "spirv"
+ version = "0.4.0+sdk-1.4.341.0"
+@@ -5697,9 +5731,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "spki"
+-version = "0.7.3"
++version = "0.8.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d91ed6c858b01f942cd56b37a94b3e0a1798290327d1236e4d9cf4eaca44d29d"
++checksum = "7ef958a98b9d5da290cfc78946e9f3e61e1e62a18db0d92cac0b83cc161491a9"
+ dependencies = [
+  "base64ct",
+  "der",
+@@ -5979,7 +6013,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd"
  dependencies = [
   "fastrand",
@@ -757,7 +1771,36 @@ index e50797e..9fecf5e 100644
   "once_cell",
   "rustix 1.1.5",
   "windows-sys 0.61.2",
-@@ -6638,9 +6635,9 @@ dependencies = [
+@@ -6050,9 +6084,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "tokio"
+-version = "1.53.1"
++version = "1.53.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "202caea871b69668250d242070849eb495be178ed697a3e98aebce5bc81a0bed"
++checksum = "ce3335fa71841cda333a58d7615b03901380ecf09d59b3296d21f8bbac0dde4e"
+ dependencies = [
+  "bytes",
+  "libc",
+@@ -6292,12 +6326,12 @@ checksum = "b4ac048d71ede7ee76d585517add45da530660ef4390e49b098733c6e897f254"
+ 
+ [[package]]
+ name = "universal-hash"
+-version = "0.5.1"
++version = "0.6.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "fc1de2c688dc15305988b563c3854064043356019f97a4b46276fe734c4f07ea"
++checksum = "f4987bdc12753382e0bec4a65c50738ffaabc998b9cdd1f952fb5f39b0048a96"
+ dependencies = [
+- "crypto-common",
+- "subtle",
++ "crypto-common 0.2.2",
++ "ctutils",
+ ]
+ 
+ [[package]]
+@@ -6638,9 +6672,9 @@ dependencies = [
  
  [[package]]
  name = "webpki-root-certs"
@@ -769,7 +1812,42 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "rustls-pki-types",
  ]
-@@ -7396,7 +7393,7 @@ checksum = "e450f9b2ed1dff33c94c12589a87338689467b9c4f5d8a5710bd09a847d2c8a7"
+@@ -7320,6 +7354,18 @@ version = "0.57.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "1ebf944e87a7c253233ad6766e082e3cd714b5d03812acc24c318f549614536e"
+ 
++[[package]]
++name = "wnaf"
++version = "0.14.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "795ca18b3fdb5e62bf982199278341ddcf7ebf7d32e25e212ad05d496e95f6fa"
++dependencies = [
++ "ff",
++ "group",
++ "hybrid-array",
++ "primefield",
++]
++
+ [[package]]
+ name = "x11-dl"
+ version = "2.21.0"
+@@ -7354,12 +7400,12 @@ checksum = "ea6fc2961e4ef194dcbfe56bb845534d0dc8098940c7e5c012a258bfec6701bd"
+ 
+ [[package]]
+ name = "x25519-dalek"
+-version = "2.0.1"
++version = "3.0.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "c7e468321c81fb07fa7f4c636c3972b9100f0346e5b6a9f2bd0603a52f7ed277"
++checksum = "e7e8131a03190127fb2263afc72b322ecadae46b6ff8c6f399ff5d02f5559af6"
+ dependencies = [
+  "curve25519-dalek",
+- "rand_core 0.6.4",
++ "rand_core 0.10.1",
+  "zeroize",
+ ]
+ 
+@@ -7396,7 +7442,7 @@ checksum = "e450f9b2ed1dff33c94c12589a87338689467b9c4f5d8a5710bd09a847d2c8a7"
  
  [[package]]
  name = "xtask"
@@ -778,7 +1856,24 @@ index e50797e..9fecf5e 100644
  dependencies = [
   "filmcraft-testkit",
   "serde_json",
-@@ -7594,13 +7591,14 @@ dependencies = [
+@@ -7577,30 +7623,17 @@ name = "zeroize"
+ version = "1.9.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "e13c156562582aa81c60cb29407084cdb54c4164760106ab78e6c5b0858cf64e"
+-dependencies = [
+- "zeroize_derive",
+-]
+-
+-[[package]]
+-name = "zeroize_derive"
+-version = "1.5.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "3c50655cbb0fe3fc43170059e702f1ce5e19b84cec58dc87b037a09935c2f328"
+-dependencies = [
+- "proc-macro2",
+- "quote",
+- "syn 2.0.119",
+-]
  
  [[package]]
  name = "zip"
@@ -796,7 +1891,7 @@ index e50797e..9fecf5e 100644
  ]
  
 diff --git a/Cargo.toml b/Cargo.toml
-index 2530bb3..ae783f1 100644
+index 2530bb35..ae783f1a 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -4,7 +4,7 @@ members = ["crates/*", "apps/*", "xtask"]
@@ -817,7 +1912,7 @@ index 2530bb3..ae783f1 100644
 +candle-core = { path = "vendor/candle-core" }
 +rustls-rustcrypto = { path = "vendor/rustls-rustcrypto" }
 diff --git a/NOTICE b/NOTICE
-index 221a0ac..819745e 100644
+index 221a0acc..819745e0 100644
 --- a/NOTICE
 +++ b/NOTICE
 @@ -19,3 +19,478 @@ Builds made with craft-fonts (CRAFT_FONTS_DIR; all official releases) also embed
@@ -1300,7 +2395,7 @@ index 221a0ac..819745e 100644
 +vendor/candle-core and copied into distributed package licence folders.
 +The ZIP dependency requirement is updated to 9.0.4; NPZ/PTH name decoding now propagates ZIP 9 errors. See vendor/candle-core/PLERVO-PATCH.md.
 diff --git a/README.md b/README.md
-index daff93b..247d84c 100644
+index daff93b3..247d84c2 100644
 --- a/README.md
 +++ b/README.md
 @@ -1,476 +1,10 @@
@@ -1787,7 +2882,7 @@ index daff93b..247d84c 100644
 -[![Star History Chart](https://api.star-history.com/svg?repos=storytold/filmcraft&type=Date&legend=top-left)](https://www.star-history.com/?repos=storytold%2Ffilmcraft&type=date&legend=top-left)
 +Website: https://plervo.com/ · Optional support: https://buymeacoffee.com/alport
 diff --git a/apps/filmcraft-cli/Cargo.toml b/apps/filmcraft-cli/Cargo.toml
-index 218b7f7..967a2e5 100644
+index 218b7f7d..967a2e52 100644
 --- a/apps/filmcraft-cli/Cargo.toml
 +++ b/apps/filmcraft-cli/Cargo.toml
 @@ -1,15 +1,17 @@
@@ -1811,7 +2906,7 @@ index 218b7f7..967a2e5 100644
  
  [features]
 diff --git a/apps/filmcraft-cli/src/main.rs b/apps/filmcraft-cli/src/main.rs
-index d49652b..4a57f96 100644
+index d49652b3..4a57f96b 100644
 --- a/apps/filmcraft-cli/src/main.rs
 +++ b/apps/filmcraft-cli/src/main.rs
 @@ -1,10 +1,10 @@
@@ -1928,7 +3023,7 @@ index d49652b..4a57f96 100644
              std::fs::write(dir.join("real.mov"), b"x").unwrap();
              let link = dir.join("link.mov");
 diff --git a/apps/filmcraft-cli/src/probe.rs b/apps/filmcraft-cli/src/probe.rs
-index c5f97ba..dc52c72 100644
+index c5f97ba1..dc52c723 100644
 --- a/apps/filmcraft-cli/src/probe.rs
 +++ b/apps/filmcraft-cli/src/probe.rs
 @@ -1,4 +1,4 @@
@@ -1938,7 +3033,7 @@ index c5f97ba..dc52c72 100644
  //! pattern, tracks, index, timecode), Ogg (logical streams, pre-skip, granules), Broadcast WAV
  //! (time reference) and image sequences (frames, missing numbers).
 diff --git a/apps/filmcraft-cli/tests/cli.rs b/apps/filmcraft-cli/tests/cli.rs
-index 5d9e375..1826042 100644
+index 5d9e3753..1826042d 100644
 --- a/apps/filmcraft-cli/tests/cli.rs
 +++ b/apps/filmcraft-cli/tests/cli.rs
 @@ -6,7 +6,7 @@ use std::process::{Command, Output, Stdio};
@@ -2003,7 +3098,7 @@ index 5d9e375..1826042 100644
      child.stdin.take().unwrap().write_all(script).unwrap();
      child.wait_with_output().unwrap()
 diff --git a/apps/filmcraft-cli/tests/workflows.rs b/apps/filmcraft-cli/tests/workflows.rs
-index b0f7a57..d914d05 100644
+index b0f7a57a..d914d056 100644
 --- a/apps/filmcraft-cli/tests/workflows.rs
 +++ b/apps/filmcraft-cli/tests/workflows.rs
 @@ -1,5 +1,5 @@
@@ -2069,7 +3164,7 @@ index b0f7a57..d914d05 100644
      v["video"][0]["items"][0]["endFrame"].as_u64()
  }
 diff --git a/apps/filmcraft-web/src/api.rs b/apps/filmcraft-web/src/api.rs
-index 6ef5247..af7571a 100644
+index 6ef52477..af7571ad 100644
 --- a/apps/filmcraft-web/src/api.rs
 +++ b/apps/filmcraft-web/src/api.rs
 @@ -78,7 +78,7 @@ pub fn request(method: &str, params: Value) -> js_sys::Promise {
@@ -2082,7 +3177,7 @@ index 6ef5247..af7571a 100644
      });
      crate::repaint();
 diff --git a/apps/filmcraft-web/src/lib.rs b/apps/filmcraft-web/src/lib.rs
-index 21512cc..6469cff 100644
+index 21512ccc..6469cff5 100644
 --- a/apps/filmcraft-web/src/lib.rs
 +++ b/apps/filmcraft-web/src/lib.rs
 @@ -1,4 +1,4 @@
@@ -2101,7 +3196,7 @@ index 21512cc..6469cff 100644
      pub app: FilmcraftApp,
      pub audio: Option<audio::Handle>,
 diff --git a/apps/filmcraft-web/src/webcodecs.rs b/apps/filmcraft-web/src/webcodecs.rs
-index 48fa7a1..7ca605e 100644
+index 48fa7a1c..7ca605e3 100644
 --- a/apps/filmcraft-web/src/webcodecs.rs
 +++ b/apps/filmcraft-web/src/webcodecs.rs
 @@ -606,7 +606,7 @@ impl MediaSource for WcSource {
@@ -2114,7 +3209,7 @@ index 48fa7a1..7ca605e 100644
                  c.failed = true;
                  drop(c);
 diff --git a/apps/filmcraft/Cargo.toml b/apps/filmcraft/Cargo.toml
-index 3ae35e6..3ac5aa9 100644
+index 3ae35e6c..3ac5aa9f 100644
 --- a/apps/filmcraft/Cargo.toml
 +++ b/apps/filmcraft/Cargo.toml
 @@ -1,16 +1,22 @@
@@ -2143,7 +3238,7 @@ index 3ae35e6..3ac5aa9 100644
  # Speech-to-text (Text panel ▸ Transcribe) with Whisper on the CPU, and model downloads.
  whisper = ["filmcraft-engine/whisper", "filmcraft-engine/speech-download"]
 diff --git a/apps/filmcraft/build.rs b/apps/filmcraft/build.rs
-index 08d6465..2df868a 100644
+index 08d64658..2df868a7 100644
 --- a/apps/filmcraft/build.rs
 +++ b/apps/filmcraft/build.rs
 @@ -20,11 +20,11 @@ mod windows {
@@ -2163,7 +3258,7 @@ index 08d6465..2df868a 100644
              if std::env::var_os("FILMCRAFT_REQUIRE_WINRES").is_some() {
                  panic!("embedding Windows resources failed: {e}");
 diff --git a/apps/filmcraft/src/app_nap.rs b/apps/filmcraft/src/app_nap.rs
-index 5aaa5f1..bf3a72a 100644
+index 5aaa5f17..bf3a72a6 100644
 --- a/apps/filmcraft/src/app_nap.rs
 +++ b/apps/filmcraft/src/app_nap.rs
 @@ -16,7 +16,7 @@ pub fn disable() -> bool {
@@ -2176,7 +3271,7 @@ index 5aaa5f1..bf3a72a 100644
          // The activity lasts while the token is alive: keep it for the life of the process.
          std::mem::forget(token);
 diff --git a/apps/filmcraft/src/args.rs b/apps/filmcraft/src/args.rs
-index c64e350..f87de2e 100644
+index c64e3509..f87de2e3 100644
 --- a/apps/filmcraft/src/args.rs
 +++ b/apps/filmcraft/src/args.rs
 @@ -1,11 +1,11 @@
@@ -2222,7 +3317,7 @@ index c64e350..f87de2e 100644
      fn help_and_version_do_not_start_the_app() {
          assert_eq!(parse_args(&["--help"]), Ok(Cli::Help));
 diff --git a/apps/filmcraft/src/audio.rs b/apps/filmcraft/src/audio.rs
-index cb56e05..89cafdc 100644
+index cb56e059..89cafdcb 100644
 --- a/apps/filmcraft/src/audio.rs
 +++ b/apps/filmcraft/src/audio.rs
 @@ -187,7 +187,7 @@ impl CpalOut {
@@ -2262,7 +3357,7 @@ index cb56e05..89cafdc 100644
  }
  
 diff --git a/apps/filmcraft/src/audio_in.rs b/apps/filmcraft/src/audio_in.rs
-index 9c10863..39397d2 100644
+index 9c108632..39397d20 100644
 --- a/apps/filmcraft/src/audio_in.rs
 +++ b/apps/filmcraft/src/audio_in.rs
 @@ -51,7 +51,7 @@ fn lock<T>(m: &Mutex<T>) -> std::sync::MutexGuard<'_, T> {
@@ -2275,7 +3370,7 @@ index 9c10863..39397d2 100644
      }
  }
 diff --git a/apps/filmcraft/src/control_server.rs b/apps/filmcraft/src/control_server.rs
-index d3b40f3..423a94c 100644
+index d3b40f32..423a94c6 100644
 --- a/apps/filmcraft/src/control_server.rs
 +++ b/apps/filmcraft/src/control_server.rs
 @@ -24,14 +24,18 @@ pub const MAX_CONNECTIONS: usize = 16;
@@ -2327,7 +3422,7 @@ index d3b40f3..423a94c 100644
 +    }
 +}
 diff --git a/apps/filmcraft/src/dev_icon.rs b/apps/filmcraft/src/dev_icon.rs
-index 8c98767..86f186b 100644
+index 8c987679..86f186bc 100644
 --- a/apps/filmcraft/src/dev_icon.rs
 +++ b/apps/filmcraft/src/dev_icon.rs
 @@ -3,7 +3,7 @@
@@ -2411,7 +3506,7 @@ index 8c98767..86f186b 100644
          assert!(!desktop_file_exec_is_ours(&body, "/b/filmcraft"));
          assert!(!desktop_file_exec_is_ours("Exec=filmcraft %F\n", "/a/filmcraft"));
 diff --git a/apps/filmcraft/src/logging.rs b/apps/filmcraft/src/logging.rs
-index 3d7c713..1caaf82 100644
+index 3d7c713f..1caaf823 100644
 --- a/apps/filmcraft/src/logging.rs
 +++ b/apps/filmcraft/src/logging.rs
 @@ -3,12 +3,12 @@
@@ -2448,7 +3543,7 @@ index 3d7c713..1caaf82 100644
          assert!(logger.enabled(&log::Metadata::builder().level(log::Level::Info).target("filmcraft_engine::autosave").build()));
          assert!(!logger.enabled(&log::Metadata::builder().level(log::Level::Info).target("naga").build()));
 diff --git a/apps/filmcraft/src/main.rs b/apps/filmcraft/src/main.rs
-index f850b16..c2574a0 100644
+index f850b163..c2574a04 100644
 --- a/apps/filmcraft/src/main.rs
 +++ b/apps/filmcraft/src/main.rs
 @@ -1,4 +1,4 @@
@@ -2602,7 +3697,7 @@ index f850b16..c2574a0 100644
      let dialog = prepare_dialog(dialog);
      let (tx, rx) = std::sync::mpsc::channel();
 diff --git a/apps/filmcraft/src/native_menu.rs b/apps/filmcraft/src/native_menu.rs
-index f08fe0b..200d307 100644
+index f08fe0b8..200d307a 100644
 --- a/apps/filmcraft/src/native_menu.rs
 +++ b/apps/filmcraft/src/native_menu.rs
 @@ -28,9 +28,9 @@ pub fn install(app: &FilmcraftApp, ctx: egui::Context) -> (Receiver<String>, Men
@@ -2629,7 +3724,7 @@ index f08fe0b..200d307 100644
          if let Some(it) = items.iter().find(|i| i.id == id) {
              // recorded as built (enabled, no shortcut), so the first update applies the real state
 diff --git a/apps/filmcraft/src/window_raise.rs b/apps/filmcraft/src/window_raise.rs
-index 9f72fa1..810e208 100644
+index 9f72fa10..810e2089 100644
 --- a/apps/filmcraft/src/window_raise.rs
 +++ b/apps/filmcraft/src/window_raise.rs
 @@ -3,7 +3,7 @@
@@ -2642,7 +3737,7 @@ index 9f72fa1..810e208 100644
  
  /// Order the app's windows to the front without activating the app (macOS). Returns whether it
 diff --git a/assets/app-icon/LICENSE.txt b/assets/app-icon/LICENSE.txt
-index 090de10..7c0478c 100644
+index 090de10c..7c0478c2 100644
 --- a/assets/app-icon/LICENSE.txt
 +++ b/assets/app-icon/LICENSE.txt
 @@ -1,13 +1,6 @@
@@ -2664,7 +3759,7 @@ index 090de10..7c0478c 100644
 +Source vectors and platform variants: https://github.com/alportblu/plervo-pdf/tree/feat/app-family/assets/products/video
 +These icons replace the upstream product artwork. Engine code and other assets retain their original notices.
 diff --git a/assets/app-icon/README.md b/assets/app-icon/README.md
-index 07a557c..7c0478c 100644
+index 07a557ca..7c0478c2 100644
 --- a/assets/app-icon/README.md
 +++ b/assets/app-icon/README.md
 @@ -1,60 +1,6 @@
@@ -2733,7 +3828,7 @@ index 07a557c..7c0478c 100644
 +Source vectors and platform variants: https://github.com/alportblu/plervo-pdf/tree/feat/app-family/assets/products/video
 +These icons replace the upstream product artwork. Engine code and other assets retain their original notices.
 diff --git a/assets/app-icon/filmcraft-1024.png.attribution b/assets/app-icon/filmcraft-1024.png.attribution
-index 37bf685..8432a8b 100644
+index 37bf6859..8432a8b1 100644
 --- a/assets/app-icon/filmcraft-1024.png.attribution
 +++ b/assets/app-icon/filmcraft-1024.png.attribution
 @@ -1,8 +1,8 @@
@@ -2754,7 +3849,7 @@ index 37bf685..8432a8b 100644
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
 diff --git a/assets/app-icon/filmcraft-macos-512.png.attribution b/assets/app-icon/filmcraft-macos-512.png.attribution
-index c065901..0c9961a 100644
+index c0659012..0c9961ab 100644
 --- a/assets/app-icon/filmcraft-macos-512.png.attribution
 +++ b/assets/app-icon/filmcraft-macos-512.png.attribution
 @@ -1,8 +1,8 @@
@@ -2775,7 +3870,7 @@ index c065901..0c9961a 100644
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
 diff --git a/assets/app-icon/filmcraft-small.svg.attribution b/assets/app-icon/filmcraft-small.svg.attribution
-index e0a19af..e227490 100644
+index e0a19af4..e2274901 100644
 --- a/assets/app-icon/filmcraft-small.svg.attribution
 +++ b/assets/app-icon/filmcraft-small.svg.attribution
 @@ -1,8 +1,8 @@
@@ -2796,7 +3891,7 @@ index e0a19af..e227490 100644
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
 diff --git a/assets/app-icon/filmcraft.icns.attribution b/assets/app-icon/filmcraft.icns.attribution
-index 4866908..83ef387 100644
+index 4866908c..83ef387e 100644
 --- a/assets/app-icon/filmcraft.icns.attribution
 +++ b/assets/app-icon/filmcraft.icns.attribution
 @@ -1,8 +1,8 @@
@@ -2817,7 +3912,7 @@ index 4866908..83ef387 100644
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
 diff --git a/assets/app-icon/filmcraft.ico.attribution b/assets/app-icon/filmcraft.ico.attribution
-index 373b601..5a84fb9 100644
+index 373b6018..5a84fb94 100644
 --- a/assets/app-icon/filmcraft.ico.attribution
 +++ b/assets/app-icon/filmcraft.ico.attribution
 @@ -1,8 +1,8 @@
@@ -2838,7 +3933,7 @@ index 373b601..5a84fb9 100644
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
 diff --git a/assets/app-icon/filmcraft.svg.attribution b/assets/app-icon/filmcraft.svg.attribution
-index 4526be4..4f6e8ed 100644
+index 4526be49..4f6e8edb 100644
 --- a/assets/app-icon/filmcraft.svg.attribution
 +++ b/assets/app-icon/filmcraft.svg.attribution
 @@ -1,8 +1,8 @@
@@ -2860,7 +3955,7 @@ index 4526be4..4f6e8ed 100644
 +notes: original vector artwork and its raster/native derivatives
 diff --git a/assets/app-icon/hicolor/128x128/apps/ai.storyteller.filmcraft.png.attribution b/assets/app-icon/hicolor/128x128/apps/ai.storyteller.filmcraft.png.attribution
 deleted file mode 100644
-index 7cabd61..0000000
+index 7cabd61e..00000000
 --- a/assets/app-icon/hicolor/128x128/apps/ai.storyteller.filmcraft.png.attribution
 +++ /dev/null
 @@ -1,8 +0,0 @@
@@ -2874,7 +3969,7 @@ index 7cabd61..0000000
 -notes:        Rendered from filmcraft.svg with resvg by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/128x128/apps/com.plervo.video.png.attribution b/assets/app-icon/hicolor/128x128/apps/com.plervo.video.png.attribution
 new file mode 100644
-index 0000000..d7060cf
+index 00000000..d7060cf7
 --- /dev/null
 +++ b/assets/app-icon/hicolor/128x128/apps/com.plervo.video.png.attribution
 @@ -0,0 +1,8 @@
@@ -2888,7 +3983,7 @@ index 0000000..d7060cf
 +notes: original vector artwork and its raster/native derivatives
 diff --git a/assets/app-icon/hicolor/16x16/apps/ai.storyteller.filmcraft.png.attribution b/assets/app-icon/hicolor/16x16/apps/ai.storyteller.filmcraft.png.attribution
 deleted file mode 100644
-index 299ad46..0000000
+index 299ad46a..00000000
 --- a/assets/app-icon/hicolor/16x16/apps/ai.storyteller.filmcraft.png.attribution
 +++ /dev/null
 @@ -1,8 +0,0 @@
@@ -2902,7 +3997,7 @@ index 299ad46..0000000
 -notes:        Rendered from filmcraft.svg with resvg by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/16x16/apps/com.plervo.video.png.attribution b/assets/app-icon/hicolor/16x16/apps/com.plervo.video.png.attribution
 new file mode 100644
-index 0000000..d7060cf
+index 00000000..d7060cf7
 --- /dev/null
 +++ b/assets/app-icon/hicolor/16x16/apps/com.plervo.video.png.attribution
 @@ -0,0 +1,8 @@
@@ -2916,7 +4011,7 @@ index 0000000..d7060cf
 +notes: original vector artwork and its raster/native derivatives
 diff --git a/assets/app-icon/hicolor/24x24/apps/ai.storyteller.filmcraft.png.attribution b/assets/app-icon/hicolor/24x24/apps/ai.storyteller.filmcraft.png.attribution
 deleted file mode 100644
-index db438d3..0000000
+index db438d36..00000000
 --- a/assets/app-icon/hicolor/24x24/apps/ai.storyteller.filmcraft.png.attribution
 +++ /dev/null
 @@ -1,8 +0,0 @@
@@ -2930,7 +4025,7 @@ index db438d3..0000000
 -notes:        Rendered from filmcraft.svg with resvg by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/24x24/apps/com.plervo.video.png.attribution b/assets/app-icon/hicolor/24x24/apps/com.plervo.video.png.attribution
 new file mode 100644
-index 0000000..d7060cf
+index 00000000..d7060cf7
 --- /dev/null
 +++ b/assets/app-icon/hicolor/24x24/apps/com.plervo.video.png.attribution
 @@ -0,0 +1,8 @@
@@ -2944,7 +4039,7 @@ index 0000000..d7060cf
 +notes: original vector artwork and its raster/native derivatives
 diff --git a/assets/app-icon/hicolor/256x256/apps/ai.storyteller.filmcraft.png.attribution b/assets/app-icon/hicolor/256x256/apps/ai.storyteller.filmcraft.png.attribution
 deleted file mode 100644
-index da46033..0000000
+index da460332..00000000
 --- a/assets/app-icon/hicolor/256x256/apps/ai.storyteller.filmcraft.png.attribution
 +++ /dev/null
 @@ -1,8 +0,0 @@
@@ -2958,7 +4053,7 @@ index da46033..0000000
 -notes:        Rendered from filmcraft.svg with resvg by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/256x256/apps/com.plervo.video.png.attribution b/assets/app-icon/hicolor/256x256/apps/com.plervo.video.png.attribution
 new file mode 100644
-index 0000000..d7060cf
+index 00000000..d7060cf7
 --- /dev/null
 +++ b/assets/app-icon/hicolor/256x256/apps/com.plervo.video.png.attribution
 @@ -0,0 +1,8 @@
@@ -2972,7 +4067,7 @@ index 0000000..d7060cf
 +notes: original vector artwork and its raster/native derivatives
 diff --git a/assets/app-icon/hicolor/32x32/apps/ai.storyteller.filmcraft.png.attribution b/assets/app-icon/hicolor/32x32/apps/ai.storyteller.filmcraft.png.attribution
 deleted file mode 100644
-index 50fd7f3..0000000
+index 50fd7f31..00000000
 --- a/assets/app-icon/hicolor/32x32/apps/ai.storyteller.filmcraft.png.attribution
 +++ /dev/null
 @@ -1,8 +0,0 @@
@@ -2986,7 +4081,7 @@ index 50fd7f3..0000000
 -notes:        Rendered from filmcraft.svg with resvg by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/32x32/apps/com.plervo.video.png.attribution b/assets/app-icon/hicolor/32x32/apps/com.plervo.video.png.attribution
 new file mode 100644
-index 0000000..d7060cf
+index 00000000..d7060cf7
 --- /dev/null
 +++ b/assets/app-icon/hicolor/32x32/apps/com.plervo.video.png.attribution
 @@ -0,0 +1,8 @@
@@ -3000,7 +4095,7 @@ index 0000000..d7060cf
 +notes: original vector artwork and its raster/native derivatives
 diff --git a/assets/app-icon/hicolor/48x48/apps/ai.storyteller.filmcraft.png.attribution b/assets/app-icon/hicolor/48x48/apps/ai.storyteller.filmcraft.png.attribution
 deleted file mode 100644
-index 6737b42..0000000
+index 6737b424..00000000
 --- a/assets/app-icon/hicolor/48x48/apps/ai.storyteller.filmcraft.png.attribution
 +++ /dev/null
 @@ -1,8 +0,0 @@
@@ -3014,7 +4109,7 @@ index 6737b42..0000000
 -notes:        Rendered from filmcraft.svg with resvg by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/48x48/apps/com.plervo.video.png.attribution b/assets/app-icon/hicolor/48x48/apps/com.plervo.video.png.attribution
 new file mode 100644
-index 0000000..d7060cf
+index 00000000..d7060cf7
 --- /dev/null
 +++ b/assets/app-icon/hicolor/48x48/apps/com.plervo.video.png.attribution
 @@ -0,0 +1,8 @@
@@ -3028,7 +4123,7 @@ index 0000000..d7060cf
 +notes: original vector artwork and its raster/native derivatives
 diff --git a/assets/app-icon/hicolor/512x512/apps/ai.storyteller.filmcraft.png.attribution b/assets/app-icon/hicolor/512x512/apps/ai.storyteller.filmcraft.png.attribution
 deleted file mode 100644
-index c32251b..0000000
+index c32251bc..00000000
 --- a/assets/app-icon/hicolor/512x512/apps/ai.storyteller.filmcraft.png.attribution
 +++ /dev/null
 @@ -1,8 +0,0 @@
@@ -3042,7 +4137,7 @@ index c32251b..0000000
 -notes:        Rendered from filmcraft.svg with resvg by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/512x512/apps/com.plervo.video.png.attribution b/assets/app-icon/hicolor/512x512/apps/com.plervo.video.png.attribution
 new file mode 100644
-index 0000000..d7060cf
+index 00000000..d7060cf7
 --- /dev/null
 +++ b/assets/app-icon/hicolor/512x512/apps/com.plervo.video.png.attribution
 @@ -0,0 +1,8 @@
@@ -3056,7 +4151,7 @@ index 0000000..d7060cf
 +notes: original vector artwork and its raster/native derivatives
 diff --git a/assets/app-icon/hicolor/64x64/apps/ai.storyteller.filmcraft.png.attribution b/assets/app-icon/hicolor/64x64/apps/ai.storyteller.filmcraft.png.attribution
 deleted file mode 100644
-index e10d394..0000000
+index e10d3948..00000000
 --- a/assets/app-icon/hicolor/64x64/apps/ai.storyteller.filmcraft.png.attribution
 +++ /dev/null
 @@ -1,8 +0,0 @@
@@ -3070,7 +4165,7 @@ index e10d394..0000000
 -notes:        Rendered from filmcraft.svg with resvg by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/64x64/apps/com.plervo.video.png.attribution b/assets/app-icon/hicolor/64x64/apps/com.plervo.video.png.attribution
 new file mode 100644
-index 0000000..d7060cf
+index 00000000..d7060cf7
 --- /dev/null
 +++ b/assets/app-icon/hicolor/64x64/apps/com.plervo.video.png.attribution
 @@ -0,0 +1,8 @@
@@ -3084,7 +4179,7 @@ index 0000000..d7060cf
 +notes: original vector artwork and its raster/native derivatives
 diff --git a/assets/app-icon/hicolor/scalable/apps/ai.storyteller.filmcraft.svg.attribution b/assets/app-icon/hicolor/scalable/apps/ai.storyteller.filmcraft.svg.attribution
 deleted file mode 100644
-index 6d62c1f..0000000
+index 6d62c1f4..00000000
 --- a/assets/app-icon/hicolor/scalable/apps/ai.storyteller.filmcraft.svg.attribution
 +++ /dev/null
 @@ -1,8 +0,0 @@
@@ -3098,7 +4193,7 @@ index 6d62c1f..0000000
 -notes:        Copy of filmcraft-small.svg, made by packaging/icons.sh.
 diff --git a/assets/app-icon/hicolor/scalable/apps/com.plervo.video.svg.attribution b/assets/app-icon/hicolor/scalable/apps/com.plervo.video.svg.attribution
 new file mode 100644
-index 0000000..42b0276
+index 00000000..42b0276d
 --- /dev/null
 +++ b/assets/app-icon/hicolor/scalable/apps/com.plervo.video.svg.attribution
 @@ -0,0 +1,8 @@
@@ -3112,7 +4207,7 @@ index 0000000..42b0276
 +notes: original vector artwork and its raster/native derivatives
 diff --git a/assets/app-icon/plervo-video.icns.attribution b/assets/app-icon/plervo-video.icns.attribution
 new file mode 100644
-index 0000000..7134cb8
+index 00000000..7134cb8c
 --- /dev/null
 +++ b/assets/app-icon/plervo-video.icns.attribution
 @@ -0,0 +1,8 @@
@@ -3126,7 +4221,7 @@ index 0000000..7134cb8
 +notes: original vector artwork and its raster/native derivatives
 diff --git a/assets/app-icon/plervo-video.ico.attribution b/assets/app-icon/plervo-video.ico.attribution
 new file mode 100644
-index 0000000..587036f
+index 00000000..587036f7
 --- /dev/null
 +++ b/assets/app-icon/plervo-video.ico.attribution
 @@ -0,0 +1,8 @@
@@ -3140,7 +4235,7 @@ index 0000000..587036f
 +notes: original vector artwork and its raster/native derivatives
 diff --git a/assets/app-icon/plervo-video.svg.attribution b/assets/app-icon/plervo-video.svg.attribution
 new file mode 100644
-index 0000000..d367f00
+index 00000000..d367f005
 --- /dev/null
 +++ b/assets/app-icon/plervo-video.svg.attribution
 @@ -0,0 +1,8 @@
@@ -3153,7 +4248,7 @@ index 0000000..d367f00
 +added: 2026-10-16 by Plervo contributors
 +notes: original vector artwork and its raster/native derivatives
 diff --git a/crates/aac/Cargo.toml b/crates/aac/Cargo.toml
-index 1bc2642..f207b3d 100644
+index 1bc26426..f207b3dc 100644
 --- a/crates/aac/Cargo.toml
 +++ b/crates/aac/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -3166,7 +4261,7 @@ index 1bc2642..f207b3d 100644
  workspace = true
  
 diff --git a/crates/ac3/Cargo.toml b/crates/ac3/Cargo.toml
-index e7e0149..235fd28 100644
+index e7e0149b..235fd281 100644
 --- a/crates/ac3/Cargo.toml
 +++ b/crates/ac3/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -3179,7 +4274,7 @@ index e7e0149..235fd28 100644
  workspace = true
  
 diff --git a/crates/apv/Cargo.toml b/crates/apv/Cargo.toml
-index edbfaf8..9ae320b 100644
+index edbfaf82..9ae320bb 100644
 --- a/crates/apv/Cargo.toml
 +++ b/crates/apv/Cargo.toml
 @@ -5,6 +5,8 @@ version.workspace = true
@@ -3192,7 +4287,7 @@ index edbfaf8..9ae320b 100644
  default = ["threads"]
  threads = ["dep:rayon"]
 diff --git a/crates/audio-dsp/Cargo.toml b/crates/audio-dsp/Cargo.toml
-index aef31db..fae6e0b 100644
+index aef31dba..fae6e0b5 100644
 --- a/crates/audio-dsp/Cargo.toml
 +++ b/crates/audio-dsp/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -3205,7 +4300,7 @@ index aef31db..fae6e0b 100644
  workspace = true
  
 diff --git a/crates/automation/Cargo.toml b/crates/automation/Cargo.toml
-index 14b090e..282965a 100644
+index 14b090e7..282965af 100644
 --- a/crates/automation/Cargo.toml
 +++ b/crates/automation/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -3218,7 +4313,7 @@ index 14b090e..282965a 100644
  workspace = true
  
 diff --git a/crates/av1/Cargo.toml b/crates/av1/Cargo.toml
-index b83b0f9..c1796a6 100644
+index b83b0f98..c1796a6c 100644
 --- a/crates/av1/Cargo.toml
 +++ b/crates/av1/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -3231,7 +4326,7 @@ index b83b0f9..c1796a6 100644
  workspace = true
  
 diff --git a/crates/avi/Cargo.toml b/crates/avi/Cargo.toml
-index 519c098..31d49a7 100644
+index 519c098d..31d49a72 100644
 --- a/crates/avi/Cargo.toml
 +++ b/crates/avi/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -3244,7 +4339,7 @@ index 519c098..31d49a7 100644
  workspace = true
  
 diff --git a/crates/bitstream/Cargo.toml b/crates/bitstream/Cargo.toml
-index 8510e34..7219955 100644
+index 8510e348..7219955f 100644
 --- a/crates/bitstream/Cargo.toml
 +++ b/crates/bitstream/Cargo.toml
 @@ -5,6 +5,8 @@ edition.workspace = true
@@ -3257,7 +4352,7 @@ index 8510e34..7219955 100644
  workspace = true
  
 diff --git a/crates/captions/Cargo.toml b/crates/captions/Cargo.toml
-index ea74838..ca3067d 100644
+index ea748380..ca3067d8 100644
 --- a/crates/captions/Cargo.toml
 +++ b/crates/captions/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -3270,7 +4365,7 @@ index ea74838..ca3067d 100644
  workspace = true
  
 diff --git a/crates/cfb/Cargo.toml b/crates/cfb/Cargo.toml
-index 9b5185c..7e3da37 100644
+index 9b5185ca..7e3da377 100644
 --- a/crates/cfb/Cargo.toml
 +++ b/crates/cfb/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -3283,7 +4378,7 @@ index 9b5185c..7e3da37 100644
  workspace = true
  
 diff --git a/crates/codecs/Cargo.toml b/crates/codecs/Cargo.toml
-index 90b79e2..8078db5 100644
+index 90b79e2e..8078db51 100644
 --- a/crates/codecs/Cargo.toml
 +++ b/crates/codecs/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -3296,7 +4391,7 @@ index 90b79e2..8078db5 100644
  workspace = true
  
 diff --git a/crates/color/Cargo.toml b/crates/color/Cargo.toml
-index fc9dc55..33fa4c4 100644
+index fc9dc552..33fa4c41 100644
 --- a/crates/color/Cargo.toml
 +++ b/crates/color/Cargo.toml
 @@ -5,6 +5,8 @@ edition.workspace = true
@@ -3309,7 +4404,7 @@ index fc9dc55..33fa4c4 100644
  workspace = true
  
 diff --git a/crates/dng/Cargo.toml b/crates/dng/Cargo.toml
-index 1fce493..b6bd5e9 100644
+index 1fce4930..b6bd5e92 100644
 --- a/crates/dng/Cargo.toml
 +++ b/crates/dng/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -3322,7 +4417,7 @@ index 1fce493..b6bd5e9 100644
  default = ["threads"]
  threads = ["dep:rayon"]
 diff --git a/crates/dnx/Cargo.toml b/crates/dnx/Cargo.toml
-index 9b5d34d..ec09520 100644
+index 9b5d34db..ec095203 100644
 --- a/crates/dnx/Cargo.toml
 +++ b/crates/dnx/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -3335,7 +4430,7 @@ index 9b5d34d..ec09520 100644
  workspace = true
  
 diff --git a/crates/edit/Cargo.toml b/crates/edit/Cargo.toml
-index bcf3547..e37ab6a 100644
+index bcf35476..e37ab6a4 100644
 --- a/crates/edit/Cargo.toml
 +++ b/crates/edit/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -3348,7 +4443,7 @@ index bcf3547..e37ab6a 100644
  workspace = true
  
 diff --git a/crates/engine/Cargo.toml b/crates/engine/Cargo.toml
-index 16283a3..d018bfc 100644
+index 16283a37..d018bfc6 100644
 --- a/crates/engine/Cargo.toml
 +++ b/crates/engine/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -3361,7 +4456,7 @@ index 16283a3..d018bfc 100644
  workspace = true
  
 diff --git a/crates/engine/src/autosave.rs b/crates/engine/src/autosave.rs
-index 8af0fef..f23e0c3 100644
+index 8af0fef1..f23e0c3d 100644
 --- a/crates/engine/src/autosave.rs
 +++ b/crates/engine/src/autosave.rs
 @@ -487,25 +487,25 @@ pub fn portable_data_dir(exe_dir: &Path) -> Option<PathBuf> {
@@ -3397,7 +4492,7 @@ index 8af0fef..f23e0c3 100644
  
  pub fn unix_now() -> i64 {
 diff --git a/crates/engine/src/commands.rs b/crates/engine/src/commands.rs
-index c99e5c6..f97fb42 100644
+index c99e5c64..f97fb42b 100644
 --- a/crates/engine/src/commands.rs
 +++ b/crates/engine/src/commands.rs
 @@ -1646,7 +1646,10 @@ fn build() -> Vec<CommandSpec> {
@@ -3490,7 +4585,7 @@ index c99e5c6..f97fb42 100644
          cmd!(
              "timeline.move",
 diff --git a/crates/engine/src/demo.rs b/crates/engine/src/demo.rs
-index c60fc0f..bbdaad7 100644
+index c60fc0f5..bbdaad7e 100644
 --- a/crates/engine/src/demo.rs
 +++ b/crates/engine/src/demo.rs
 @@ -42,14 +42,14 @@ pub fn add_generator(p: &mut Project, pool: &MediaPool, src: GeneratorSource, na
@@ -3511,7 +4606,7 @@ index c60fc0f..bbdaad7 100644
      let audio_bin = p.add_bin("Audio", None);
      let gfx = p.add_bin("Graphics", None);
 diff --git a/crates/engine/src/project_tools.rs b/crates/engine/src/project_tools.rs
-index bcda383..4c5bdf9 100644
+index bcda3835..4c5bdf99 100644
 --- a/crates/engine/src/project_tools.rs
 +++ b/crates/engine/src/project_tools.rs
 @@ -8,7 +8,7 @@
@@ -3533,7 +4628,7 @@ index bcda383..4c5bdf9 100644
              None,
              r#"{"path":str,"items":[id]?}"#,
 diff --git a/crates/engine/src/project_tools_tests.rs b/crates/engine/src/project_tools_tests.rs
-index 90b1148..31f11c4 100644
+index 90b1148e..31f11c42 100644
 --- a/crates/engine/src/project_tools_tests.rs
 +++ b/crates/engine/src/project_tools_tests.rs
 @@ -78,7 +78,7 @@ fn file_edit_clip_menu_order_and_shortcuts_match_premiere() {
@@ -3546,7 +4641,7 @@ index 90b1148..31f11c4 100644
          ("edit.find", "Find…", Some("Cmd+F")),
          ("edit.editOriginal", "Edit Original", Some("Cmd+E")),
 diff --git a/crates/engine/src/settings.rs b/crates/engine/src/settings.rs
-index 79ecd60..a812dad 100644
+index 79ecd605..a812dadd 100644
 --- a/crates/engine/src/settings.rs
 +++ b/crates/engine/src/settings.rs
 @@ -1121,7 +1121,7 @@ static CATEGORIES: &[Category] = &[
@@ -3586,7 +4681,7 @@ index 79ecd60..a812dad 100644
      },
      Category {
 diff --git a/crates/engine/src/tests.rs b/crates/engine/src/tests.rs
-index fe3e351..6dc14f3 100644
+index fe3e3513..6dc14f3f 100644
 --- a/crates/engine/src/tests.rs
 +++ b/crates/engine/src/tests.rs
 @@ -139,6 +139,43 @@ fn trim_linked_and_ripple_delete() {
@@ -3634,7 +4729,7 @@ index fe3e351..6dc14f3 100644
  fn slide_moves_linked_audio_with_the_video() {
      let mut s = demo();
 diff --git a/crates/engine/src/voiceover.rs b/crates/engine/src/voiceover.rs
-index fa3dd42..e718b12 100644
+index fa3dd42a..e718b12f 100644
 --- a/crates/engine/src/voiceover.rs
 +++ b/crates/engine/src/voiceover.rs
 @@ -402,7 +402,7 @@ pub(crate) fn media_dir(s: &Session, p: &Value, fallback: &str) -> String {
@@ -3647,7 +4742,7 @@ index fa3dd42..e718b12 100644
  }
  
 diff --git a/crates/export/Cargo.toml b/crates/export/Cargo.toml
-index 3732c7f..e691d13 100644
+index 3732c7fb..e691d131 100644
 --- a/crates/export/Cargo.toml
 +++ b/crates/export/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -3660,7 +4755,7 @@ index 3732c7f..e691d13 100644
  workspace = true
  
 diff --git a/crates/flac/Cargo.toml b/crates/flac/Cargo.toml
-index 8d6d050..8d18b9b 100644
+index 8d6d0509..8d18b9b9 100644
 --- a/crates/flac/Cargo.toml
 +++ b/crates/flac/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -3673,7 +4768,7 @@ index 8d6d050..8d18b9b 100644
  workspace = true
  
 diff --git a/crates/format/Cargo.toml b/crates/format/Cargo.toml
-index f2c1e98..bf852ac 100644
+index f2c1e982..bf852acb 100644
 --- a/crates/format/Cargo.toml
 +++ b/crates/format/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -3686,7 +4781,7 @@ index f2c1e98..bf852ac 100644
  workspace = true
  
 diff --git a/crates/frame/Cargo.toml b/crates/frame/Cargo.toml
-index ed3431d..f63a324 100644
+index ed3431d4..f63a324d 100644
 --- a/crates/frame/Cargo.toml
 +++ b/crates/frame/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -3699,7 +4794,7 @@ index ed3431d..f63a324 100644
  workspace = true
  
 diff --git a/crates/geom/Cargo.toml b/crates/geom/Cargo.toml
-index cf55f4c..9be67b6 100644
+index cf55f4ca..9be67b6a 100644
 --- a/crates/geom/Cargo.toml
 +++ b/crates/geom/Cargo.toml
 @@ -5,6 +5,8 @@ edition.workspace = true
@@ -3712,7 +4807,7 @@ index cf55f4c..9be67b6 100644
  workspace = true
  
 diff --git a/crates/gpu/Cargo.toml b/crates/gpu/Cargo.toml
-index 3f6137f..dffef73 100644
+index 3f6137f5..dffef737 100644
 --- a/crates/gpu/Cargo.toml
 +++ b/crates/gpu/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -3725,7 +4820,7 @@ index 3f6137f..dffef73 100644
  workspace = true
  
 diff --git a/crates/gpu/src/fx_tests.rs b/crates/gpu/src/fx_tests.rs
-index f896a42..84d38a1 100644
+index f896a421..84d38a15 100644
 --- a/crates/gpu/src/fx_tests.rs
 +++ b/crates/gpu/src/fx_tests.rs
 @@ -23,6 +23,25 @@ use filmcraft_time::Tick;
@@ -3882,7 +4977,7 @@ index f896a42..84d38a1 100644
 +    assert!(stage.is_none());
 +}
 diff --git a/crates/gpu/src/lib.rs b/crates/gpu/src/lib.rs
-index 4f15697..82809c6 100644
+index 4f15697d..82809c63 100644
 --- a/crates/gpu/src/lib.rs
 +++ b/crates/gpu/src/lib.rs
 @@ -275,6 +275,18 @@ fn prepare_layers(layers: &[PlanLayer]) -> PreparedPlan {
@@ -3954,7 +5049,7 @@ index 4f15697..82809c6 100644
              .flatten();
          Self {
 diff --git a/crates/h264/Cargo.toml b/crates/h264/Cargo.toml
-index f2a1eb8..dc95e03 100644
+index f2a1eb8f..dc95e03c 100644
 --- a/crates/h264/Cargo.toml
 +++ b/crates/h264/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -3967,7 +5062,7 @@ index f2a1eb8..dc95e03 100644
  workspace = true
  
 diff --git a/crates/h264enc/Cargo.toml b/crates/h264enc/Cargo.toml
-index 8385ba9..c4cbe2a 100644
+index 8385ba91..c4cbe2a9 100644
 --- a/crates/h264enc/Cargo.toml
 +++ b/crates/h264enc/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -3980,7 +5075,7 @@ index 8385ba9..c4cbe2a 100644
  workspace = true
  
 diff --git a/crates/hevc/Cargo.toml b/crates/hevc/Cargo.toml
-index b401435..a062a4a 100644
+index b401435c..a062a4a6 100644
 --- a/crates/hevc/Cargo.toml
 +++ b/crates/hevc/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -3993,7 +5088,7 @@ index b401435..a062a4a 100644
  workspace = true
  
 diff --git a/crates/interchange/Cargo.toml b/crates/interchange/Cargo.toml
-index 3eecc49..c353a1a 100644
+index 3eecc494..c353a1af 100644
 --- a/crates/interchange/Cargo.toml
 +++ b/crates/interchange/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -4006,7 +5101,7 @@ index 3eecc49..c353a1a 100644
  workspace = true
  
 diff --git a/crates/isobmff/Cargo.toml b/crates/isobmff/Cargo.toml
-index c9b848f..40c7840 100644
+index c9b848fa..40c78409 100644
 --- a/crates/isobmff/Cargo.toml
 +++ b/crates/isobmff/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -4019,7 +5114,7 @@ index c9b848f..40c7840 100644
  workspace = true
  
 diff --git a/crates/matroska/Cargo.toml b/crates/matroska/Cargo.toml
-index 9f64162..d33a750 100644
+index 9f64162f..d33a750f 100644
 --- a/crates/matroska/Cargo.toml
 +++ b/crates/matroska/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -4032,7 +5127,7 @@ index 9f64162..d33a750 100644
  workspace = true
  
 diff --git a/crates/media/Cargo.toml b/crates/media/Cargo.toml
-index 3259e50..8608f5d 100644
+index 3259e502..8608f5d9 100644
 --- a/crates/media/Cargo.toml
 +++ b/crates/media/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -4045,7 +5140,7 @@ index 3259e50..8608f5d 100644
  workspace = true
  
 diff --git a/crates/mpa/Cargo.toml b/crates/mpa/Cargo.toml
-index 8abf08c..207d0ee 100644
+index 8abf08c2..207d0eed 100644
 --- a/crates/mpa/Cargo.toml
 +++ b/crates/mpa/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -4058,7 +5153,7 @@ index 8abf08c..207d0ee 100644
  workspace = true
  
 diff --git a/crates/mpeg2v/Cargo.toml b/crates/mpeg2v/Cargo.toml
-index ca418fe..d426073 100644
+index ca418fea..d4260731 100644
 --- a/crates/mpeg2v/Cargo.toml
 +++ b/crates/mpeg2v/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -4071,7 +5166,7 @@ index ca418fe..d426073 100644
  workspace = true
  
 diff --git a/crates/mpegts/Cargo.toml b/crates/mpegts/Cargo.toml
-index 9ec521f..a5d216f 100644
+index 9ec521f4..a5d216f0 100644
 --- a/crates/mpegts/Cargo.toml
 +++ b/crates/mpegts/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -4084,7 +5179,7 @@ index 9ec521f..a5d216f 100644
  workspace = true
  
 diff --git a/crates/mxf/Cargo.toml b/crates/mxf/Cargo.toml
-index 34b6222..d8bf0ce 100644
+index 34b62227..d8bf0cef 100644
 --- a/crates/mxf/Cargo.toml
 +++ b/crates/mxf/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -4097,7 +5192,7 @@ index 34b6222..d8bf0ce 100644
  workspace = true
  
 diff --git a/crates/ogg/Cargo.toml b/crates/ogg/Cargo.toml
-index 5f76b77..617f792 100644
+index 5f76b77e..617f792e 100644
 --- a/crates/ogg/Cargo.toml
 +++ b/crates/ogg/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -4110,7 +5205,7 @@ index 5f76b77..617f792 100644
  workspace = true
  
 diff --git a/crates/opus/Cargo.toml b/crates/opus/Cargo.toml
-index 1ae2c82..6507449 100644
+index 1ae2c825..6507449c 100644
 --- a/crates/opus/Cargo.toml
 +++ b/crates/opus/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -4123,7 +5218,7 @@ index 1ae2c82..6507449 100644
  workspace = true
  
 diff --git a/crates/platform/Cargo.toml b/crates/platform/Cargo.toml
-index 9e07580..967b0ed 100644
+index 9e075806..967b0edf 100644
 --- a/crates/platform/Cargo.toml
 +++ b/crates/platform/Cargo.toml
 @@ -9,6 +9,8 @@ rust-version.workspace = true
@@ -4136,7 +5231,7 @@ index 9e07580..967b0ed 100644
  unsafe_code = "deny"
  
 diff --git a/crates/project/Cargo.toml b/crates/project/Cargo.toml
-index 29f4301..a7dd30b 100644
+index 29f43012..a7dd30be 100644
 --- a/crates/project/Cargo.toml
 +++ b/crates/project/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -4149,7 +5244,7 @@ index 29f4301..a7dd30b 100644
  workspace = true
  
 diff --git a/crates/prores/Cargo.toml b/crates/prores/Cargo.toml
-index 67c2002..56cd563 100644
+index 67c2002d..56cd563c 100644
 --- a/crates/prores/Cargo.toml
 +++ b/crates/prores/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -4162,7 +5257,7 @@ index 67c2002..56cd563 100644
  workspace = true
  
 diff --git a/crates/render/Cargo.toml b/crates/render/Cargo.toml
-index e9d35f4..76f141f 100644
+index e9d35f49..76f141f5 100644
 --- a/crates/render/Cargo.toml
 +++ b/crates/render/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -4175,7 +5270,7 @@ index e9d35f4..76f141f 100644
  workspace = true
  
 diff --git a/crates/scopes/Cargo.toml b/crates/scopes/Cargo.toml
-index 686a979..89dd893 100644
+index 686a9793..89dd893a 100644
 --- a/crates/scopes/Cargo.toml
 +++ b/crates/scopes/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -4188,7 +5283,7 @@ index 686a979..89dd893 100644
  workspace = true
  
 diff --git a/crates/speech/Cargo.toml b/crates/speech/Cargo.toml
-index 67f6d8f..f3ee992 100644
+index 67f6d8fd..f3ee9921 100644
 --- a/crates/speech/Cargo.toml
 +++ b/crates/speech/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -4201,7 +5296,7 @@ index 67f6d8f..f3ee992 100644
  workspace = true
  
 diff --git a/crates/speech/src/models.rs b/crates/speech/src/models.rs
-index 4d25715..332d1ad 100644
+index 4d257159..c192f22a 100644
 --- a/crates/speech/src/models.rs
 +++ b/crates/speech/src/models.rs
 @@ -277,9 +277,28 @@ pub fn download_files(dir: &Path, files: &[ModelFile], progress: DownloadProgres
@@ -4234,10 +5329,28 @@ index 4d25715..332d1ad 100644
      ureq::Agent::config_builder()
          .tls_config(
              ureq::tls::TlsConfig::builder()
-@@ -297,6 +316,19 @@ fn agent() -> ureq::Agent {
+@@ -297,6 +316,37 @@ fn agent() -> ureq::Agent {
  mod tests {
      use super::*;
  
++    #[cfg(feature = "download")]
++    #[test]
++    fn download_tls_key_exchange_groups_round_trip_and_reject_malformed_shares() {
++        let provider = download_provider();
++        let groups: Vec<_> = provider.kx_groups.iter().map(|g| g.name()).collect();
++        assert_eq!(groups, [rustls::NamedGroup::X25519, rustls::NamedGroup::secp256r1, rustls::NamedGroup::secp384r1]);
++        for group in provider.kx_groups {
++            let alice = group.start().unwrap();
++            let bob = group.start().unwrap();
++            let alice_public = alice.pub_key().to_vec();
++            let bob_public = bob.pub_key().to_vec();
++            let alice_secret = alice.complete(&bob_public).unwrap();
++            let bob_secret = bob.complete(&alice_public).unwrap();
++            assert_eq!(alice_secret.secret_bytes(), bob_secret.secret_bytes());
++            assert!(group.start().unwrap().complete(&[0; 1]).is_err());
++        }
++    }
++
 +    #[cfg(feature = "download")]
 +    #[test]
 +    fn download_tls_never_authenticates_with_a_client_private_key() {
@@ -4255,7 +5368,7 @@ index 4d25715..332d1ad 100644
      fn catalogue_is_pinned_and_checksummed() {
          assert!(find(DEFAULT_MODEL).is_some());
 diff --git a/crates/text/Cargo.toml b/crates/text/Cargo.toml
-index 0098962..24e8747 100644
+index 00989623..24e87477 100644
 --- a/crates/text/Cargo.toml
 +++ b/crates/text/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -4268,7 +5381,7 @@ index 0098962..24e8747 100644
  workspace = true
  
 diff --git a/crates/time/Cargo.toml b/crates/time/Cargo.toml
-index 979e4c7..9fd7084 100644
+index 979e4c78..9fd70842 100644
 --- a/crates/time/Cargo.toml
 +++ b/crates/time/Cargo.toml
 @@ -5,6 +5,8 @@ edition.workspace = true
@@ -4281,7 +5394,7 @@ index 979e4c7..9fd7084 100644
  workspace = true
  
 diff --git a/crates/tts-text/Cargo.toml b/crates/tts-text/Cargo.toml
-index 4b59493..a63fd11 100644
+index 4b594930..a63fd11f 100644
 --- a/crates/tts-text/Cargo.toml
 +++ b/crates/tts-text/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -4294,7 +5407,7 @@ index 4b59493..a63fd11 100644
  workspace = true
  
 diff --git a/crates/tts/Cargo.toml b/crates/tts/Cargo.toml
-index 5100d70..c59d11a 100644
+index 5100d70d..c59d11ae 100644
 --- a/crates/tts/Cargo.toml
 +++ b/crates/tts/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -4316,7 +5429,7 @@ index 5100d70..c59d11a 100644
  
  [[example]]
 diff --git a/crates/tts/src/kokoro/weights.rs b/crates/tts/src/kokoro/weights.rs
-index b65e8de..59fc507 100644
+index b65e8de4..59fc507c 100644
 --- a/crates/tts/src/kokoro/weights.rs
 +++ b/crates/tts/src/kokoro/weights.rs
 @@ -135,10 +135,10 @@ pub(crate) fn read_voice(path: &Path) -> Result<Vec<f32>, TtsError> {
@@ -4333,7 +5446,7 @@ index b65e8de..59fc507 100644
          let mut s = String::new();
          z.by_name(&o).map_err(err)?.take(16).read_to_string(&mut s).map_err(err)?;
 diff --git a/crates/ui-egui/Cargo.toml b/crates/ui-egui/Cargo.toml
-index b63880d..b1798b6 100644
+index b63880d4..b1798b60 100644
 --- a/crates/ui-egui/Cargo.toml
 +++ b/crates/ui-egui/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -4346,7 +5459,7 @@ index b63880d..b1798b6 100644
  workspace = true
  
 diff --git a/crates/ui-egui/examples/bench/main.rs b/crates/ui-egui/examples/bench/main.rs
-index 3a9f0e1..71ac01b 100644
+index 3a9f0e10..71ac01b7 100644
 --- a/crates/ui-egui/examples/bench/main.rs
 +++ b/crates/ui-egui/examples/bench/main.rs
 @@ -1,11 +1,11 @@
@@ -4382,7 +5495,7 @@ index 3a9f0e1..71ac01b 100644
          m["summary"].as_str().unwrap_or(""),
          doc["repeat"],
 diff --git a/crates/ui-egui/examples/bench/playback.rs b/crates/ui-egui/examples/bench/playback.rs
-index 94f56d1..6a09e3b 100644
+index 94f56d10..6a09e3bf 100644
 --- a/crates/ui-egui/examples/bench/playback.rs
 +++ b/crates/ui-egui/examples/bench/playback.rs
 @@ -768,7 +768,7 @@ pub fn cli_main() {
@@ -4395,7 +5508,7 @@ index 94f56d1..6a09e3b 100644
          args.workers,
          cores,
 diff --git a/crates/ui-egui/examples/bench_audio.rs b/crates/ui-egui/examples/bench_audio.rs
-index 5bf1fbf..4e884b8 100644
+index 5bf1fbfd..4e884b8f 100644
 --- a/crates/ui-egui/examples/bench_audio.rs
 +++ b/crates/ui-egui/examples/bench_audio.rs
 @@ -3,7 +3,7 @@
@@ -4408,7 +5521,7 @@ index 5bf1fbf..4e884b8 100644
  //! ```
  //!
 diff --git a/crates/ui-egui/examples/menu_tree.rs b/crates/ui-egui/examples/menu_tree.rs
-index 62610ad..3a562ac 100644
+index 62610ad1..3a562ac7 100644
 --- a/crates/ui-egui/examples/menu_tree.rs
 +++ b/crates/ui-egui/examples/menu_tree.rs
 @@ -1,4 +1,4 @@
@@ -4418,7 +5531,7 @@ index 62610ad..3a562ac 100644
  //! coverage against a reference list.
  //!
 diff --git a/crates/ui-egui/src/brand.rs b/crates/ui-egui/src/brand.rs
-index 4c41d08..67a5b1b 100644
+index 4c41d080..67a5b1b7 100644
 --- a/crates/ui-egui/src/brand.rs
 +++ b/crates/ui-egui/src/brand.rs
 @@ -1,22 +1,20 @@
@@ -4452,7 +5565,7 @@ index 4c41d08..67a5b1b 100644
      Some(tex)
  }
 diff --git a/crates/ui-egui/src/crash.rs b/crates/ui-egui/src/crash.rs
-index 33ea434..0e02c6a 100644
+index 33ea434c..0e02c6a5 100644
 --- a/crates/ui-egui/src/crash.rs
 +++ b/crates/ui-egui/src/crash.rs
 @@ -68,7 +68,7 @@ fn write_log(summary: &str) {
@@ -4465,7 +5578,7 @@ index 33ea434..0e02c6a 100644
  }
  
 diff --git a/crates/ui-egui/src/dock_shared.rs b/crates/ui-egui/src/dock_shared.rs
-index 2b64351..b063139 100644
+index 2b64351d..b0631395 100644
 --- a/crates/ui-egui/src/dock_shared.rs
 +++ b/crates/ui-egui/src/dock_shared.rs
 @@ -37,7 +37,7 @@ fn encode_node(node: &DockNode, depth: usize, count: &mut usize) -> Result<Node<
@@ -4478,7 +5591,7 @@ index 2b64351..b063139 100644
              vertical: axis == SplitAxis::Vertical,
              size: match size {
 diff --git a/crates/ui-egui/src/dock_ui.rs b/crates/ui-egui/src/dock_ui.rs
-index 26b3060..b422099 100644
+index 26b30601..b4220997 100644
 --- a/crates/ui-egui/src/dock_ui.rs
 +++ b/crates/ui-egui/src/dock_ui.rs
 @@ -1,4 +1,4 @@
@@ -4488,7 +5601,7 @@ index 26b3060..b422099 100644
  use craft_ui::docking::{Action, DropTarget, Placement, Zone, resolve_drop};
  use egui::{Color32, Rect, Sense, Stroke, StrokeKind, pos2, vec2};
 diff --git a/crates/ui-egui/src/header.rs b/crates/ui-egui/src/header.rs
-index 5b8f23c..c6c5256 100644
+index 5b8f23c8..c6c52567 100644
 --- a/crates/ui-egui/src/header.rs
 +++ b/crates/ui-egui/src/header.rs
 @@ -122,12 +122,12 @@ pub fn show(app: &mut FilmcraftApp, ui: &mut egui::Ui, rect: Rect) {
@@ -4508,7 +5621,7 @@ index 5b8f23c..c6c5256 100644
          icons::paint(ui.painter(), Rect::from_center_size(pos2(r.min.x + 14.0, r.center().y), vec2(14.0, 14.0)), Icon::Chat, Color32::WHITE);
          ui.painter().galley(pos2(r.min.x + 25.0, r.center().y - g.size().y / 2.0), g, Color32::WHITE);
 diff --git a/crates/ui-egui/src/i18n/de.tsv b/crates/ui-egui/src/i18n/de.tsv
-index bbd4374..52998f5 100644
+index bbd43742..52998f5c 100644
 --- a/crates/ui-egui/src/i18n/de.tsv
 +++ b/crates/ui-egui/src/i18n/de.tsv
 @@ -4,7 +4,7 @@
@@ -4594,7 +5707,7 @@ index bbd4374..52998f5 100644
 -
 +	Support	Unterstützen
 diff --git a/crates/ui-egui/src/i18n/es.tsv b/crates/ui-egui/src/i18n/es.tsv
-index 0af8835..7703972 100644
+index 0af8835d..77039725 100644
 --- a/crates/ui-egui/src/i18n/es.tsv
 +++ b/crates/ui-egui/src/i18n/es.tsv
 @@ -11,10 +11,10 @@
@@ -4814,7 +5927,7 @@ index 0af8835..7703972 100644
  	Open this address in your browser yourself:	Abre esta dirección tú mismo en el navegador:
 +	Support	Apoyar
 diff --git a/crates/ui-egui/src/i18n/fr.tsv b/crates/ui-egui/src/i18n/fr.tsv
-index 1075b0c..5e8f58b 100644
+index 1075b0c1..5e8f58b5 100644
 --- a/crates/ui-egui/src/i18n/fr.tsv
 +++ b/crates/ui-egui/src/i18n/fr.tsv
 @@ -4,7 +4,7 @@
@@ -5028,7 +6141,7 @@ index 1075b0c..5e8f58b 100644
  	Delete this preset	Supprimer ce paramètre prédéfini
 +	Support	Soutenir
 diff --git a/crates/ui-egui/src/i18n/id.tsv b/crates/ui-egui/src/i18n/id.tsv
-index 508a6e9..ced9b15 100644
+index 508a6e9d..ced9b158 100644
 --- a/crates/ui-egui/src/i18n/id.tsv
 +++ b/crates/ui-egui/src/i18n/id.tsv
 @@ -5,7 +5,7 @@
@@ -5242,7 +6355,7 @@ index 508a6e9..ced9b15 100644
  	Remove from favorites	Hapus dari favorit
 +	Support	Dukung
 diff --git a/crates/ui-egui/src/i18n/it.tsv b/crates/ui-egui/src/i18n/it.tsv
-index 22d47cc..365dce4 100644
+index 22d47ccb..365dce41 100644
 --- a/crates/ui-egui/src/i18n/it.tsv
 +++ b/crates/ui-egui/src/i18n/it.tsv
 @@ -9,12 +9,12 @@
@@ -5458,7 +6571,7 @@ index 22d47cc..365dce4 100644
  	Open this address in your browser yourself:	Apri tu questo indirizzo nel browser:
 +	Support	Sostieni
 diff --git a/crates/ui-egui/src/i18n/ja.tsv b/crates/ui-egui/src/i18n/ja.tsv
-index b6a7fb8..e99938b 100644
+index b6a7fb8a..e99938bb 100644
 --- a/crates/ui-egui/src/i18n/ja.tsv
 +++ b/crates/ui-egui/src/i18n/ja.tsv
 @@ -4,7 +4,7 @@
@@ -5676,7 +6789,7 @@ index b6a7fb8..e99938b 100644
  	Open this address in your browser yourself:	このアドレスをご自身でブラウザーで開いてください：
 +	Support	支援
 diff --git a/crates/ui-egui/src/i18n/ko.tsv b/crates/ui-egui/src/i18n/ko.tsv
-index 20341b9..53f9ad2 100644
+index 20341b9a..53f9ad22 100644
 --- a/crates/ui-egui/src/i18n/ko.tsv
 +++ b/crates/ui-egui/src/i18n/ko.tsv
 @@ -4,7 +4,7 @@
@@ -5839,7 +6952,7 @@ index 20341b9..53f9ad2 100644
  	Open this address in your browser yourself:	이 주소를 브라우저에서 직접 여세요:
 +	Support	후원
 diff --git a/crates/ui-egui/src/i18n/mod.rs b/crates/ui-egui/src/i18n/mod.rs
-index 30bdcd5..6795b5a 100644
+index 30bdcd5c..6795b5a9 100644
 --- a/crates/ui-egui/src/i18n/mod.rs
 +++ b/crates/ui-egui/src/i18n/mod.rs
 @@ -12,7 +12,7 @@
@@ -5960,7 +7073,7 @@ index 30bdcd5..6795b5a 100644
                  } else {
                      assert_eq!(stack.last().map(String::as_str), Some(JAPANESE_FONT), "{family:?}: {stack:?}");
 diff --git a/crates/ui-egui/src/i18n/pt-br.tsv b/crates/ui-egui/src/i18n/pt-br.tsv
-index aeb0e06..197175a 100644
+index aeb0e069..197175aa 100644
 --- a/crates/ui-egui/src/i18n/pt-br.tsv
 +++ b/crates/ui-egui/src/i18n/pt-br.tsv
 @@ -4,7 +4,7 @@
@@ -6174,7 +7287,7 @@ index aeb0e06..197175a 100644
  	Settings	Preferências
 +	Support	Apoiar
 diff --git a/crates/ui-egui/src/i18n/ru.tsv b/crates/ui-egui/src/i18n/ru.tsv
-index 08bf8c0..8f25b68 100644
+index 08bf8c07..8f25b688 100644
 --- a/crates/ui-egui/src/i18n/ru.tsv
 +++ b/crates/ui-egui/src/i18n/ru.tsv
 @@ -1,10 +1,10 @@
@@ -6237,7 +7350,7 @@ index 08bf8c0..8f25b68 100644
 -
 +	Support	Поддержать
 diff --git a/crates/ui-egui/src/i18n/uk.tsv b/crates/ui-egui/src/i18n/uk.tsv
-index 9903301..0fc86d8 100644
+index 99033017..0fc86d80 100644
 --- a/crates/ui-egui/src/i18n/uk.tsv
 +++ b/crates/ui-egui/src/i18n/uk.tsv
 @@ -1,10 +1,10 @@
@@ -6300,7 +7413,7 @@ index 9903301..0fc86d8 100644
 -
 +	Support	Підтримати
 diff --git a/crates/ui-egui/src/i18n/zh-cn.tsv b/crates/ui-egui/src/i18n/zh-cn.tsv
-index 066279e..5151bc9 100644
+index 066279ee..5151bc97 100644
 --- a/crates/ui-egui/src/i18n/zh-cn.tsv
 +++ b/crates/ui-egui/src/i18n/zh-cn.tsv
 @@ -8,8 +8,8 @@
@@ -6511,7 +7624,7 @@ index 066279e..5151bc9 100644
  	Open this address in your browser yourself:	请自行在浏览器中打开此地址：
 +	Support	支持
 diff --git a/crates/ui-egui/src/icons.rs b/crates/ui-egui/src/icons.rs
-index 230a84a..dae7551 100644
+index 230a84a7..dae75519 100644
 --- a/crates/ui-egui/src/icons.rs
 +++ b/crates/ui-egui/src/icons.rs
 @@ -83,7 +83,7 @@ pub enum Icon {
@@ -6524,7 +7637,7 @@ index 230a84a..dae7551 100644
      Chat,
      /// Website: a globe.
 diff --git a/crates/ui-egui/src/lib.rs b/crates/ui-egui/src/lib.rs
-index cb4a234..87d9343 100644
+index cb4a2344..87d93437 100644
 --- a/crates/ui-egui/src/lib.rs
 +++ b/crates/ui-egui/src/lib.rs
 @@ -1,4 +1,4 @@
@@ -6569,7 +7682,7 @@ index cb4a234..87d9343 100644
              .resizable(false)
              .pivot(egui::Align2::CENTER_CENTER)
 diff --git a/crates/ui-egui/src/links.rs b/crates/ui-egui/src/links.rs
-index 37df98d..b5619f0 100644
+index 37df98da..b5619f08 100644
 --- a/crates/ui-egui/src/links.rs
 +++ b/crates/ui-egui/src/links.rs
 @@ -1,28 +1,27 @@
@@ -6650,7 +7763,7 @@ index 37df98d..b5619f0 100644
          assert_eq!(url_for("help.discord"), Some(DISCORD));
          assert_eq!(url_for("help.nope"), None);
 diff --git a/crates/ui-egui/src/menus.rs b/crates/ui-egui/src/menus.rs
-index 48b4b82..be558f5 100644
+index 48b4b82c..be558f56 100644
 --- a/crates/ui-egui/src/menus.rs
 +++ b/crates/ui-egui/src/menus.rs
 @@ -136,14 +136,14 @@ pub const UI_COMMANDS: &[UiCommand] = &[
@@ -6692,7 +7805,7 @@ index 48b4b82..be558f5 100644
          r = r.on_hover_text(hint);
      }
 diff --git a/crates/ui-egui/src/native_dialogs.rs b/crates/ui-egui/src/native_dialogs.rs
-index a18ae8b..3e6df19 100644
+index a18ae8bf..3e6df192 100644
 --- a/crates/ui-egui/src/native_dialogs.rs
 +++ b/crates/ui-egui/src/native_dialogs.rs
 @@ -35,9 +35,9 @@ pub enum FileDialog {
@@ -6708,7 +7821,7 @@ index a18ae8b..3e6df19 100644
      /// Save a file, suggesting `name`.
      SaveAs { filter: String, exts: Vec<String>, name: String },
 diff --git a/crates/ui-egui/src/panels/dialogs.rs b/crates/ui-egui/src/panels/dialogs.rs
-index 8bc23db..6f5e60f 100644
+index 8bc23dbc..6f5e60f9 100644
 --- a/crates/ui-egui/src/panels/dialogs.rs
 +++ b/crates/ui-egui/src/panels/dialogs.rs
 @@ -33,8 +33,8 @@ pub fn show(app: &mut FilmcraftApp, ctx: &egui::Context) {
@@ -6772,7 +7885,7 @@ index 8bc23db..6f5e60f 100644
      link(ui, "reportIssue", Icon::Code, tl!("Report an issue"), links::ISSUES, false);
      ui.add_space(10.0);
 diff --git a/crates/ui-egui/src/panels/export_mode.rs b/crates/ui-egui/src/panels/export_mode.rs
-index 9dac650..ce574ce 100644
+index 9dac6500..ce574ce4 100644
 --- a/crates/ui-egui/src/panels/export_mode.rs
 +++ b/crates/ui-egui/src/panels/export_mode.rs
 @@ -310,7 +310,7 @@ fn row<R>(ui: &mut egui::Ui, t: &Tokens, label: &str, add: impl FnOnce(&mut egui
@@ -6794,7 +7907,7 @@ index 9dac650..ce574ce 100644
              let labels: Vec<(String, Option<&str>)> = SampleFormat::ALL.iter().zip(sizes).map(|(&f, l)| (l.to_string(), why(f))).collect();
              let cur = SampleFormat::ALL.iter().position(|&f| f == s.audio.sample_format()).and_then(|i| sizes.get(i).copied()).unwrap_or(sizes[0]);
 diff --git a/crates/ui-egui/src/panels/file_dialogs.rs b/crates/ui-egui/src/panels/file_dialogs.rs
-index 26015da..7c17584 100644
+index 26015da3..7c175847 100644
 --- a/crates/ui-egui/src/panels/file_dialogs.rs
 +++ b/crates/ui-egui/src/panels/file_dialogs.rs
 @@ -53,9 +53,9 @@ pub fn show_recovery(app: &mut FilmcraftApp, ctx: &egui::Context) -> bool {
@@ -6819,7 +7932,7 @@ index 26015da..7c17584 100644
  
  /// Draw the dialog if it is one of ours; returns Some(still open).
 diff --git a/crates/ui-egui/src/panels/graphics_templates.rs b/crates/ui-egui/src/panels/graphics_templates.rs
-index 0aafa2e..b23d00a 100644
+index 0aafa2ee..b23d00a1 100644
 --- a/crates/ui-egui/src/panels/graphics_templates.rs
 +++ b/crates/ui-egui/src/panels/graphics_templates.rs
 @@ -2,7 +2,7 @@
@@ -6850,7 +7963,7 @@ index 0aafa2e..b23d00a 100644
                  ui.colored_label(Color32::from_rgb(0xff, 0x80, 0x80), &d.error);
              }
 diff --git a/crates/ui-egui/src/panels/import_mode.rs b/crates/ui-egui/src/panels/import_mode.rs
-index 2af12ca..c136fa7 100644
+index 2af12cad..c136fa73 100644
 --- a/crates/ui-egui/src/panels/import_mode.rs
 +++ b/crates/ui-egui/src/panels/import_mode.rs
 @@ -46,14 +46,14 @@ pub fn show(app: &mut FilmcraftApp, ui: &mut egui::Ui, rect: Rect) {
@@ -6871,7 +7984,7 @@ index 2af12ca..c136fa7 100644
          let r = Rect::from_min_size(pos2(x, rect.min.y + y + 18.0), vec2(g.size().x + 44.0, 34.0));
          let resp = ui.interact(r, egui::Id::new(("imp-link", *id)), Sense::click()).on_hover_text(*url);
 diff --git a/crates/ui-egui/src/panels/keyboard.rs b/crates/ui-egui/src/panels/keyboard.rs
-index bdf7441..a7cb2cb 100644
+index bdf74419..a7cb2cbc 100644
 --- a/crates/ui-egui/src/panels/keyboard.rs
 +++ b/crates/ui-egui/src/panels/keyboard.rs
 @@ -128,12 +128,12 @@ pub const COMMANDS: &[UiCommand] = &[
@@ -6892,7 +8005,7 @@ index bdf7441..a7cb2cb 100644
  const HEIGHT_STEP: f32 = 12.0;
  const MIN_TRACK_H: f32 = 24.0;
 diff --git a/crates/ui-egui/src/panels/menu_dialogs.rs b/crates/ui-egui/src/panels/menu_dialogs.rs
-index 99151da..81dd864 100644
+index 99151da7..81dd8645 100644
 --- a/crates/ui-egui/src/panels/menu_dialogs.rs
 +++ b/crates/ui-egui/src/panels/menu_dialogs.rs
 @@ -133,7 +133,7 @@ pub fn open_path(app: &mut FilmcraftApp, ctx: &egui::Context, path: &str, reveal
@@ -6914,7 +8027,7 @@ index 99151da..81dd864 100644
              let mut p = params.clone();
              if !p.is_object() {
 diff --git a/crates/ui-egui/src/panels/sequence_settings.rs b/crates/ui-egui/src/panels/sequence_settings.rs
-index 0bd2f5d..c830040 100644
+index 0bd2f5de..c830040c 100644
 --- a/crates/ui-egui/src/panels/sequence_settings.rs
 +++ b/crates/ui-egui/src/panels/sequence_settings.rs
 @@ -10,12 +10,12 @@
@@ -6944,7 +8057,7 @@ index 0bd2f5d..c830040 100644
  /// The Timebase list (frames per second as num/den), Premiere's common rates.
  const TIMEBASES: [(i64, i64); 15] = [
 diff --git a/crates/ui-egui/src/panels/settings.rs b/crates/ui-egui/src/panels/settings.rs
-index f72724b..3285065 100644
+index f72724b6..32850658 100644
 --- a/crates/ui-egui/src/panels/settings.rs
 +++ b/crates/ui-egui/src/panels/settings.rs
 @@ -126,7 +126,7 @@ pub fn appearance_context_menu(app: &mut FilmcraftApp, ui: &mut Ui) {
@@ -6975,7 +8088,7 @@ index f72724b..3285065 100644
          app.apply_prefs(&ctx);
          assert_eq!(app.tokens.kind, ThemeKind::Dark);
 diff --git a/crates/ui-egui/src/panels/timeline.rs b/crates/ui-egui/src/panels/timeline.rs
-index edb5646..b146df4 100644
+index edb5646e..b146df4c 100644
 --- a/crates/ui-egui/src/panels/timeline.rs
 +++ b/crates/ui-egui/src/panels/timeline.rs
 @@ -265,7 +265,7 @@ pub fn max_scroll(sequence_seconds: f64, width: f32, pps: f64) -> f64 {
@@ -7001,7 +8114,7 @@ index edb5646..b146df4 100644
                  Drag::Pan { start_scroll, start_v, .. } => {
                      let v = &mut app.ui.timeline;
 diff --git a/crates/ui-egui/src/rtl.rs b/crates/ui-egui/src/rtl.rs
-index 7b71769..7df3fe5 100644
+index 7b71769c..7df3fe50 100644
 --- a/crates/ui-egui/src/rtl.rs
 +++ b/crates/ui-egui/src/rtl.rs
 @@ -328,7 +328,7 @@ mod tests {
@@ -7014,7 +8127,7 @@ index 7b71769..7df3fe5 100644
          assert_eq!(visual("سنة ١٤٤٥"), [["١", "٤", "٤", "٥", " ", "سنة"]]);
      }
 diff --git a/crates/ui-egui/src/state.rs b/crates/ui-egui/src/state.rs
-index f24e5fa..e9a8983 100644
+index f24e5fa3..e9a89831 100644
 --- a/crates/ui-egui/src/state.rs
 +++ b/crates/ui-egui/src/state.rs
 @@ -457,10 +457,10 @@ pub struct UiState {
@@ -7031,7 +8144,7 @@ index f24e5fa..e9a8983 100644
      pub show_status_bar: bool,
      pub dark: bool,
 diff --git a/crates/ui-egui/src/theme.rs b/crates/ui-egui/src/theme.rs
-index 21a5001..2f19ef4 100644
+index 21a50012..2f19ef4a 100644
 --- a/crates/ui-egui/src/theme.rs
 +++ b/crates/ui-egui/src/theme.rs
 @@ -459,7 +459,7 @@ fn add_craft_fonts(fonts: &mut FontDefinitions) {
@@ -7067,7 +8180,7 @@ index 21a5001..2f19ef4 100644
                  assert!(first > 0 && stack[first..].iter().all(|n| n.starts_with("craft:")), "{family:?}: {stack:?}");
                  let first_japanese = stack.iter().find(|n| n.starts_with("craft:BIZ") || n.starts_with("craft:Shippori"));
 diff --git a/crates/ui-egui/tests/chrome_ui.rs b/crates/ui-egui/tests/chrome_ui.rs
-index 0e65f36..de02d95 100644
+index 0e65f36c..de02d953 100644
 --- a/crates/ui-egui/tests/chrome_ui.rs
 +++ b/crates/ui-egui/tests/chrome_ui.rs
 @@ -1,5 +1,5 @@
@@ -7078,7 +8191,7 @@ index 0e65f36..de02d95 100644
  
  use egui_kittest::Harness;
 diff --git a/crates/ui-egui/tests/clipboard_paste_ui.rs b/crates/ui-egui/tests/clipboard_paste_ui.rs
-index c01d2e1..a41bdf0 100644
+index c01d2e16..a41bdf04 100644
 --- a/crates/ui-egui/tests/clipboard_paste_ui.rs
 +++ b/crates/ui-egui/tests/clipboard_paste_ui.rs
 @@ -175,7 +175,7 @@ fn ctrl_v_in_the_project_panel_imports() {
@@ -7091,7 +8204,7 @@ index c01d2e1..a41bdf0 100644
  /// nothing and doesn't read the clipboard.
  #[test]
 diff --git a/crates/ui-egui/tests/graphics_notice_ui.rs b/crates/ui-egui/tests/graphics_notice_ui.rs
-index 272eecb..bd743ef 100644
+index 272eecb3..bd743ef1 100644
 --- a/crates/ui-egui/tests/graphics_notice_ui.rs
 +++ b/crates/ui-egui/tests/graphics_notice_ui.rs
 @@ -117,7 +117,7 @@ fn the_notice_follows_the_interface_language() {
@@ -7104,7 +8217,7 @@ index 272eecb..bd743ef 100644
      filmcraft_ui_egui::i18n::set_current(filmcraft_ui_egui::i18n::Language::En);
  }
 diff --git a/crates/ui-egui/tests/graphics_templates_ui.rs b/crates/ui-egui/tests/graphics_templates_ui.rs
-index 7affec8..b4cc978 100644
+index 7affec89..b4cc978b 100644
 --- a/crates/ui-egui/tests/graphics_templates_ui.rs
 +++ b/crates/ui-egui/tests/graphics_templates_ui.rs
 @@ -204,7 +204,7 @@ fn type_tool_selection_styles_characters() {
@@ -7117,7 +8230,7 @@ index 7affec8..b4cc978 100644
  #[test]
  fn install_refused_shows_the_reason_on_the_status_bar() {
 diff --git a/crates/ui-egui/tests/scripted.rs b/crates/ui-egui/tests/scripted.rs
-index 0bb1dd7..1d56609 100644
+index 0bb1dd74..1d56609f 100644
 --- a/crates/ui-egui/tests/scripted.rs
 +++ b/crates/ui-egui/tests/scripted.rs
 @@ -596,12 +596,15 @@ fn eyedropper_picks_a_key_color_on_a_selected_clip() {
@@ -7141,7 +8254,7 @@ index 0bb1dd7..1d56609 100644
      assert_ne!(color(&mut d), before, "the eyedropper filled Key Color from the Program picture");
  }
 diff --git a/crates/ui-egui/tests/sequence_ui.rs b/crates/ui-egui/tests/sequence_ui.rs
-index 229821d..9718ddb 100644
+index 229821d1..9718ddb1 100644
 --- a/crates/ui-egui/tests/sequence_ui.rs
 +++ b/crates/ui-egui/tests/sequence_ui.rs
 @@ -500,7 +500,7 @@ fn ctrl_x_cuts_clips() {
@@ -7154,7 +8267,7 @@ index 229821d..9718ddb 100644
  /// nothing.
  #[test]
 diff --git a/crates/ui-egui/tests/shared_docking_ui.rs b/crates/ui-egui/tests/shared_docking_ui.rs
-index 3df87b9..7996dfc 100644
+index 3df87b90..7996dfc5 100644
 --- a/crates/ui-egui/tests/shared_docking_ui.rs
 +++ b/crates/ui-egui/tests/shared_docking_ui.rs
 @@ -1,4 +1,4 @@
@@ -7164,7 +8277,7 @@ index 3df87b9..7996dfc 100644
  use craft_ui::docking::{Action, Placement, Zone};
  use egui::{Event, Modifiers, PointerButton, Rect, pos2, vec2};
 diff --git a/crates/vp8/Cargo.toml b/crates/vp8/Cargo.toml
-index 52f2749..0d383a1 100644
+index 52f27490..0d383a1a 100644
 --- a/crates/vp8/Cargo.toml
 +++ b/crates/vp8/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -7177,7 +8290,7 @@ index 52f2749..0d383a1 100644
  workspace = true
  
 diff --git a/crates/vp9/Cargo.toml b/crates/vp9/Cargo.toml
-index 5e9fd06..ea3c31c 100644
+index 5e9fd06e..ea3c31ce 100644
 --- a/crates/vp9/Cargo.toml
 +++ b/crates/vp9/Cargo.toml
 @@ -6,6 +6,8 @@ edition.workspace = true
@@ -7190,7 +8303,7 @@ index 5e9fd06..ea3c31c 100644
  workspace = true
  
 diff --git a/docs/control-protocol.md b/docs/control-protocol.md
-index 80802cf..aeba13d 100644
+index 80802cf2..aeba13d7 100644
 --- a/docs/control-protocol.md
 +++ b/docs/control-protocol.md
 @@ -1,3 +1,9 @@
@@ -7204,7 +8317,7 @@ index 80802cf..aeba13d 100644
  
  ## Desktop control channel
 diff --git a/docs/releasing.md b/docs/releasing.md
-index 58c2837..201aee2 100644
+index 58c28374..201aee2f 100644
 --- a/docs/releasing.md
 +++ b/docs/releasing.md
 @@ -108,19 +108,15 @@ nor the portable zip needs the Visual C++ redistributable.
@@ -7237,7 +8350,7 @@ index 58c2837..201aee2 100644
  runs each AppImage with `--version`.
  
 diff --git a/packaging/env.sh b/packaging/env.sh
-index d227a71..673caeb 100644
+index d227a71a..673caebc 100644
 --- a/packaging/env.sh
 +++ b/packaging/env.sh
 @@ -48,10 +48,25 @@ warn() {
@@ -7268,7 +8381,7 @@ index d227a71..673caeb 100644
  
  # Copy each craft-fonts licence ($CRAFT_FONTS_DIR/fonts/<family>/OFL.txt) to <dest>/OFL-<family>.txt.
 diff --git a/packaging/freebsd/package.sh b/packaging/freebsd/package.sh
-index 36835b5..3fbdc90 100755
+index 36835b5a..3fbdc904 100755
 --- a/packaging/freebsd/package.sh
 +++ b/packaging/freebsd/package.sh
 @@ -1,12 +1,12 @@
@@ -7366,7 +8479,7 @@ index 36835b5..3fbdc90 100755
    echo "==> dry run: tarball contents"
    tar -tzvf "$OUT_DIR/$BASENAME.tar.gz"
 diff --git a/packaging/icons.sh b/packaging/icons.sh
-index dd4014a..f71ca6a 100755
+index dd4014a9..f71ca6a3 100755
 --- a/packaging/icons.sh
 +++ b/packaging/icons.sh
 @@ -1,6 +1,6 @@
@@ -7435,7 +8548,7 @@ index dd4014a..f71ca6a 100755
  echo "icons written to $DIR"
 diff --git a/packaging/linux/ai.storyteller.filmcraft.desktop b/packaging/linux/ai.storyteller.filmcraft.desktop
 deleted file mode 100644
-index 3d9d851..0000000
+index 3d9d8515..00000000
 --- a/packaging/linux/ai.storyteller.filmcraft.desktop
 +++ /dev/null
 @@ -1,14 +0,0 @@
@@ -7455,7 +8568,7 @@ index 3d9d851..0000000
 -Keywords=video;editor;film;timeline;color;grading;nle;
 diff --git a/packaging/linux/com.plervo.video.desktop b/packaging/linux/com.plervo.video.desktop
 new file mode 100644
-index 0000000..0b044f5
+index 00000000..0b044f50
 --- /dev/null
 +++ b/packaging/linux/com.plervo.video.desktop
 @@ -0,0 +1,14 @@
@@ -7477,7 +8590,7 @@ diff --git a/packaging/linux/ai.storyteller.filmcraft.metainfo.xml.in b/packagin
 similarity index 68%
 rename from packaging/linux/ai.storyteller.filmcraft.metainfo.xml.in
 rename to packaging/linux/com.plervo.video.metainfo.xml.in
-index 9fd005c..ba71ddf 100644
+index 9fd005ca..ba71ddf1 100644
 --- a/packaging/linux/ai.storyteller.filmcraft.metainfo.xml.in
 +++ b/packaging/linux/com.plervo.video.metainfo.xml.in
 @@ -2,26 +2,26 @@
@@ -7541,7 +8654,7 @@ diff --git a/packaging/linux/ai.storyteller.filmcraft.mime.xml b/packaging/linux
 similarity index 78%
 rename from packaging/linux/ai.storyteller.filmcraft.mime.xml
 rename to packaging/linux/com.plervo.video.mime.xml
-index 6fe0feb..78ad046 100644
+index 6fe0feb6..78ad0463 100644
 --- a/packaging/linux/ai.storyteller.filmcraft.mime.xml
 +++ b/packaging/linux/com.plervo.video.mime.xml
 @@ -3,10 +3,10 @@
@@ -7559,7 +8672,7 @@ index 6fe0feb..78ad046 100644
    </mime-type>
  </mime-info>
 diff --git a/packaging/linux/flatpak-bundle.sh b/packaging/linux/flatpak-bundle.sh
-index 15d96c1..606c748 100755
+index 15d96c15..606c7489 100755
 --- a/packaging/linux/flatpak-bundle.sh
 +++ b/packaging/linux/flatpak-bundle.sh
 @@ -1,22 +1,22 @@
@@ -7628,7 +8741,7 @@ diff --git a/packaging/linux/flatpak/ai.storyteller.filmcraft.bundle.yml b/packa
 similarity index 70%
 rename from packaging/linux/flatpak/ai.storyteller.filmcraft.bundle.yml
 rename to packaging/linux/flatpak/com.plervo.video.bundle.yml
-index db9006b..84b8a44 100644
+index db9006bf..84b8a448 100644
 --- a/packaging/linux/flatpak/ai.storyteller.filmcraft.bundle.yml
 +++ b/packaging/linux/flatpak/com.plervo.video.bundle.yml
 @@ -1,7 +1,7 @@
@@ -7701,7 +8814,7 @@ diff --git a/packaging/linux/flatpak/ai.storyteller.filmcraft.yml b/packaging/li
 similarity index 70%
 rename from packaging/linux/flatpak/ai.storyteller.filmcraft.yml
 rename to packaging/linux/flatpak/com.plervo.video.yml
-index ef8addc..7c44f58 100644
+index ef8addc7..7c44f589 100644
 --- a/packaging/linux/flatpak/ai.storyteller.filmcraft.yml
 +++ b/packaging/linux/flatpak/com.plervo.video.yml
 @@ -1,25 +1,25 @@
@@ -7787,7 +8900,7 @@ index ef8addc..7c44f58 100644
        - type: dir
          path: ../../..
 diff --git a/packaging/linux/install.sh b/packaging/linux/install.sh
-index 033fe9b..16c6557 100755
+index 033fe9b7..16c65579 100755
 --- a/packaging/linux/install.sh
 +++ b/packaging/linux/install.sh
 @@ -4,7 +4,7 @@ set -euo pipefail
@@ -7838,7 +8951,7 @@ index 033fe9b..16c6557 100755
    *":$prefix/bin:"*) ;;
    *) printf 'For terminal commands, add %s/bin to your PATH.\n' "$prefix" ;;
 diff --git a/packaging/linux/nfpm.yaml b/packaging/linux/nfpm.yaml
-index 657f0bb..0460e5c 100644
+index 657f0bb8..0460e5cd 100644
 --- a/packaging/linux/nfpm.yaml
 +++ b/packaging/linux/nfpm.yaml
 @@ -3,7 +3,7 @@
@@ -7929,7 +9042,7 @@ index 657f0bb..0460e5c 100644
    - src: ${STAGE}/usr/share/
      dst: /usr/share/
 diff --git a/packaging/linux/package.sh b/packaging/linux/package.sh
-index 5001bf7..4b63497 100755
+index 5001bf71..4b634976 100755
 --- a/packaging/linux/package.sh
 +++ b/packaging/linux/package.sh
 @@ -1,11 +1,11 @@
@@ -8054,7 +9167,7 @@ index 5001bf7..4b63497 100755
  echo "==> done"
  ls -lh "$DIST"
 diff --git a/packaging/linux/test_install.py b/packaging/linux/test_install.py
-index ecaf225..d493f07 100644
+index ecaf2252..d493f07e 100644
 --- a/packaging/linux/test_install.py
 +++ b/packaging/linux/test_install.py
 @@ -12,12 +12,12 @@ import unittest
@@ -8156,7 +9269,7 @@ index ecaf225..d493f07 100644
          result = subprocess.run(
 diff --git a/packaging/linux/verify-glibc.sh b/packaging/linux/verify-glibc.sh
 new file mode 100755
-index 0000000..2a99601
+index 00000000..2a99601f
 --- /dev/null
 +++ b/packaging/linux/verify-glibc.sh
 @@ -0,0 +1,36 @@
@@ -8197,7 +9310,7 @@ index 0000000..2a99601
 +  fi
 +done
 diff --git a/packaging/macos/Info.plist.in b/packaging/macos/Info.plist.in
-index 115be36..fee7575 100644
+index 115be364..fee75756 100644
 --- a/packaging/macos/Info.plist.in
 +++ b/packaging/macos/Info.plist.in
 @@ -7,13 +7,13 @@
@@ -8292,7 +9405,7 @@ index 115be36..fee7575 100644
      </dict>
    </array>
 diff --git a/packaging/macos/dmg/README.md b/packaging/macos/dmg/README.md
-index 941880a..fbfc60f 100644
+index 941880a2..fbfc60ff 100644
 --- a/packaging/macos/dmg/README.md
 +++ b/packaging/macos/dmg/README.md
 @@ -7,17 +7,17 @@ Finder scripting on CI, nothing extra installed in the signing job).
@@ -8318,7 +9431,7 @@ index 941880a..fbfc60f 100644
  ## Rules
  
 diff --git a/packaging/macos/dmg/background.svg b/packaging/macos/dmg/background.svg
-index abe0908..9610c7d 100644
+index abe09085..9610c7d7 100644
 --- a/packaging/macos/dmg/background.svg
 +++ b/packaging/macos/dmg/background.svg
 @@ -6,7 +6,7 @@
@@ -8331,7 +9444,7 @@ index abe0908..9610c7d 100644
  <line x1="236.5" y1="0" x2="236.5" y2="400" stroke="#0b0b0c" stroke-width="0.5"/>
  
 diff --git a/packaging/macos/dmg/background.svg.attribution b/packaging/macos/dmg/background.svg.attribution
-index 0b3f939..9a9d5d1 100644
+index 0b3f939a..9a9d5d18 100644
 --- a/packaging/macos/dmg/background.svg.attribution
 +++ b/packaging/macos/dmg/background.svg.attribution
 @@ -1,8 +1,8 @@
@@ -8346,7 +9459,7 @@ index 0b3f939..9a9d5d1 100644
 -notes:        Original work for this repository, derived from the FilmCraft app icon (assets/app-icon/filmcraft.svg, referenced via <image>, not copied). Text is outlined Inter / JetBrains Mono glyph paths. Used for the Finder window of the macOS DMG; packaging/macos/dmg/generate.py renders it to background.tiff. See packaging/macos/dmg/README.md.
 +notes:        Original work for this repository, derived from the Plervo Video app icon (assets/app-icon/plervo-video.svg, referenced via <image>, not copied). Text is outlined Inter / JetBrains Mono glyph paths. Used for the Finder window of the macOS DMG; packaging/macos/dmg/generate.py renders it to background.tiff. See packaging/macos/dmg/README.md.
 diff --git a/packaging/macos/dmg/background.tiff.attribution b/packaging/macos/dmg/background.tiff.attribution
-index 37ed927..1339fee 100644
+index 37ed9279..1339fee5 100644
 --- a/packaging/macos/dmg/background.tiff.attribution
 +++ b/packaging/macos/dmg/background.tiff.attribution
 @@ -1,5 +1,5 @@
@@ -8357,7 +9470,7 @@ index 37ed927..1339fee 100644
  source:       rendered from background.svg by generate.py
  license:      MIT OR Apache-2.0
 diff --git a/packaging/macos/dmg/generate.py b/packaging/macos/dmg/generate.py
-index 1dde563..e438e11 100644
+index 1dde5639..e438e11d 100644
 --- a/packaging/macos/dmg/generate.py
 +++ b/packaging/macos/dmg/generate.py
 @@ -24,12 +24,12 @@ from PIL import Image, ImageCms
@@ -8376,7 +9489,7 @@ index 1dde563..e438e11 100644
  # (each build is a new volume): it finds the background by volume name and path.
  FIXED_DATE = datetime.datetime(2026, 10, 8, tzinfo=datetime.timezone.utc)
 diff --git a/packaging/macos/import-cert.sh b/packaging/macos/import-cert.sh
-index 2a11b53..98b3f9b 100755
+index 2a11b530..98b3f9b4 100755
 --- a/packaging/macos/import-cert.sh
 +++ b/packaging/macos/import-cert.sh
 @@ -18,8 +18,8 @@ if [ -z "${APPLE_CERTIFICATE:-}" ]; then
@@ -8391,7 +9504,7 @@ index 2a11b53..98b3f9b 100755
  
  trap 'rm -f "$CERT"' EXIT
 diff --git a/packaging/macos/package.sh b/packaging/macos/package.sh
-index 85902b9..12faf50 100755
+index 85902b91..12faf505 100755
 --- a/packaging/macos/package.sh
 +++ b/packaging/macos/package.sh
 @@ -1,8 +1,8 @@
@@ -8601,7 +9714,7 @@ index 85902b9..12faf50 100755
  echo "==> done"
  ls -lh "$DMG" "$CLI_ZIP"
 diff --git a/packaging/web/README.md b/packaging/web/README.md
-index e11d92d..f0d68dc 100644
+index e11d92d6..f0d68dc0 100644
 --- a/packaging/web/README.md
 +++ b/packaging/web/README.md
 @@ -1,13 +1,13 @@
@@ -8679,7 +9792,7 @@ index e11d92d..f0d68dc 100644
  
  A browser with neither WebGPU nor WebGL2 gets a message in place of the app.
 diff --git a/packaging/web/package.sh b/packaging/web/package.sh
-index fa208ca..b30a582 100755
+index fa208cad..b30a5824 100755
 --- a/packaging/web/package.sh
 +++ b/packaging/web/package.sh
 @@ -1,10 +1,10 @@
@@ -8706,7 +9819,7 @@ index fa208ca..b30a582 100755
  mkdir -p "$WORK/$NAME"
 diff --git a/packaging/windows/filmcraft.wxs b/packaging/windows/filmcraft.wxs
 deleted file mode 100644
-index 91eb71d..0000000
+index 91eb71de..00000000
 --- a/packaging/windows/filmcraft.wxs
 +++ /dev/null
 @@ -1,58 +0,0 @@
@@ -8769,7 +9882,7 @@ index 91eb71d..0000000
 -  </Fragment>
 -</Wix>
 diff --git a/packaging/windows/package.ps1 b/packaging/windows/package.ps1
-index faa4b86..8d95e6d 100644
+index faa4b863..8d95e6db 100644
 --- a/packaging/windows/package.ps1
 +++ b/packaging/windows/package.ps1
 @@ -1,11 +1,11 @@
@@ -8903,7 +10016,7 @@ index faa4b86..8d95e6d 100644
  Get-Item $Msi, $Zip | Format-Table Name, Length
 diff --git a/packaging/windows/plervo-video.wxs b/packaging/windows/plervo-video.wxs
 new file mode 100644
-index 0000000..9ba92cd
+index 00000000..9ba92cd3
 --- /dev/null
 +++ b/packaging/windows/plervo-video.wxs
 @@ -0,0 +1,63 @@
@@ -8971,7 +10084,7 @@ index 0000000..9ba92cd
 +  </Fragment>
 +</Wix>
 diff --git a/packaging/windows/sign.ps1 b/packaging/windows/sign.ps1
-index 07aa8be..a057ced 100644
+index 07aa8bef..a057cedf 100644
 --- a/packaging/windows/sign.ps1
 +++ b/packaging/windows/sign.ps1
 @@ -15,7 +15,7 @@
@@ -8996,7 +10109,7 @@ index 07aa8be..a057ced 100644
  try {
 diff --git a/vendor/candle-core/Cargo.toml b/vendor/candle-core/Cargo.toml
 new file mode 100644
-index 0000000..6bdc21b
+index 00000000..6bdc21b6
 --- /dev/null
 +++ b/vendor/candle-core/Cargo.toml
 @@ -0,0 +1,175 @@
@@ -9177,7 +10290,7 @@ index 0000000..6bdc21b
 +optional = true
 diff --git a/vendor/candle-core/LICENSE b/vendor/candle-core/LICENSE
 new file mode 100644
-index 0000000..261eeb9
+index 00000000..261eeb9e
 --- /dev/null
 +++ b/vendor/candle-core/LICENSE
 @@ -0,0 +1,201 @@
@@ -9384,7 +10497,7 @@ index 0000000..261eeb9
 +   limitations under the License.
 diff --git a/vendor/candle-core/PLERVO-PATCH.md b/vendor/candle-core/PLERVO-PATCH.md
 new file mode 100644
-index 0000000..6a46b9e
+index 00000000..6a46b9e8
 --- /dev/null
 +++ b/vendor/candle-core/PLERVO-PATCH.md
 @@ -0,0 +1,26 @@
@@ -9416,7 +10529,7 @@ index 0000000..6a46b9e
 +member discovery without filesystem archive extraction.
 diff --git a/vendor/candle-core/README.md b/vendor/candle-core/README.md
 new file mode 100644
-index 0000000..246f5ba
+index 00000000..246f5bae
 --- /dev/null
 +++ b/vendor/candle-core/README.md
 @@ -0,0 +1,2 @@
@@ -9424,7 +10537,7 @@ index 0000000..246f5ba
 +Minimalist ML framework for Rust
 diff --git a/vendor/candle-core/src/accelerate.rs b/vendor/candle-core/src/accelerate.rs
 new file mode 100644
-index 0000000..d371d3b
+index 00000000..d371d3b3
 --- /dev/null
 +++ b/vendor/candle-core/src/accelerate.rs
 @@ -0,0 +1,476 @@
@@ -9906,7 +11019,7 @@ index 0000000..d371d3b
 +binary_op!(vd_min, f64, vDSP_vminD);
 diff --git a/vendor/candle-core/src/backend.rs b/vendor/candle-core/src/backend.rs
 new file mode 100644
-index 0000000..d8ab2b5
+index 00000000..d8ab2b56
 --- /dev/null
 +++ b/vendor/candle-core/src/backend.rs
 @@ -0,0 +1,174 @@
@@ -10086,7 +11199,7 @@ index 0000000..d8ab2b5
 +}
 diff --git a/vendor/candle-core/src/backprop.rs b/vendor/candle-core/src/backprop.rs
 new file mode 100644
-index 0000000..d2310cb
+index 00000000..d2310cbe
 --- /dev/null
 +++ b/vendor/candle-core/src/backprop.rs
 @@ -0,0 +1,784 @@
@@ -10876,7 +11989,7 @@ index 0000000..d2310cb
 +}
 diff --git a/vendor/candle-core/src/conv.rs b/vendor/candle-core/src/conv.rs
 new file mode 100644
-index 0000000..115035e
+index 00000000..115035ef
 --- /dev/null
 +++ b/vendor/candle-core/src/conv.rs
 @@ -0,0 +1,387 @@
@@ -11269,7 +12382,7 @@ index 0000000..115035e
 +}
 diff --git a/vendor/candle-core/src/convert.rs b/vendor/candle-core/src/convert.rs
 new file mode 100644
-index 0000000..38e7a7c
+index 00000000..38e7a7c9
 --- /dev/null
 +++ b/vendor/candle-core/src/convert.rs
 @@ -0,0 +1,166 @@
@@ -11441,7 +12554,7 @@ index 0000000..38e7a7c
 +}
 diff --git a/vendor/candle-core/src/cpu/avx.rs b/vendor/candle-core/src/cpu/avx.rs
 new file mode 100644
-index 0000000..113fc14
+index 00000000..113fc14c
 --- /dev/null
 +++ b/vendor/candle-core/src/cpu/avx.rs
 @@ -0,0 +1,227 @@
@@ -11674,7 +12787,7 @@ index 0000000..113fc14
 +}
 diff --git a/vendor/candle-core/src/cpu/erf.rs b/vendor/candle-core/src/cpu/erf.rs
 new file mode 100644
-index 0000000..4d05728
+index 00000000..4d05728b
 --- /dev/null
 +++ b/vendor/candle-core/src/cpu/erf.rs
 @@ -0,0 +1,325 @@
@@ -12005,7 +13118,7 @@ index 0000000..4d05728
 +}
 diff --git a/vendor/candle-core/src/cpu/kernels.rs b/vendor/candle-core/src/cpu/kernels.rs
 new file mode 100644
-index 0000000..bca76ad
+index 00000000..bca76adc
 --- /dev/null
 +++ b/vendor/candle-core/src/cpu/kernels.rs
 @@ -0,0 +1,232 @@
@@ -12243,7 +13356,7 @@ index 0000000..bca76ad
 +}
 diff --git a/vendor/candle-core/src/cpu/mod.rs b/vendor/candle-core/src/cpu/mod.rs
 new file mode 100644
-index 0000000..c4864b7
+index 00000000..c4864b7a
 --- /dev/null
 +++ b/vendor/candle-core/src/cpu/mod.rs
 @@ -0,0 +1,242 @@
@@ -12491,7 +13604,7 @@ index 0000000..c4864b7
 +}
 diff --git a/vendor/candle-core/src/cpu/neon.rs b/vendor/candle-core/src/cpu/neon.rs
 new file mode 100644
-index 0000000..66b8b45
+index 00000000..66b8b45e
 --- /dev/null
 +++ b/vendor/candle-core/src/cpu/neon.rs
 @@ -0,0 +1,74 @@
@@ -12571,7 +13684,7 @@ index 0000000..66b8b45
 +}
 diff --git a/vendor/candle-core/src/cpu/simd128.rs b/vendor/candle-core/src/cpu/simd128.rs
 new file mode 100644
-index 0000000..64b9458
+index 00000000..64b94588
 --- /dev/null
 +++ b/vendor/candle-core/src/cpu/simd128.rs
 @@ -0,0 +1,64 @@
@@ -12641,7 +13754,7 @@ index 0000000..64b9458
 +}
 diff --git a/vendor/candle-core/src/cpu_backend/conv2d.rs b/vendor/candle-core/src/cpu_backend/conv2d.rs
 new file mode 100644
-index 0000000..70c5ea7
+index 00000000..70c5ea75
 --- /dev/null
 +++ b/vendor/candle-core/src/cpu_backend/conv2d.rs
 @@ -0,0 +1,432 @@
@@ -13079,7 +14192,7 @@ index 0000000..70c5ea7
 +}
 diff --git a/vendor/candle-core/src/cpu_backend/mod.rs b/vendor/candle-core/src/cpu_backend/mod.rs
 new file mode 100644
-index 0000000..afb9302
+index 00000000..afb93024
 --- /dev/null
 +++ b/vendor/candle-core/src/cpu_backend/mod.rs
 @@ -0,0 +1,3284 @@
@@ -16369,7 +17482,7 @@ index 0000000..afb9302
 +}
 diff --git a/vendor/candle-core/src/cpu_backend/utils.rs b/vendor/candle-core/src/cpu_backend/utils.rs
 new file mode 100644
-index 0000000..1f800a9
+index 00000000..1f800a92
 --- /dev/null
 +++ b/vendor/candle-core/src/cpu_backend/utils.rs
 @@ -0,0 +1,409 @@
@@ -16784,7 +17897,7 @@ index 0000000..1f800a9
 +}
 diff --git a/vendor/candle-core/src/cuda_backend/cudnn.rs b/vendor/candle-core/src/cuda_backend/cudnn.rs
 new file mode 100644
-index 0000000..d7d8770
+index 00000000..d7d87705
 --- /dev/null
 +++ b/vendor/candle-core/src/cuda_backend/cudnn.rs
 @@ -0,0 +1,225 @@
@@ -17015,7 +18128,7 @@ index 0000000..d7d8770
 +}
 diff --git a/vendor/candle-core/src/cuda_backend/device.rs b/vendor/candle-core/src/cuda_backend/device.rs
 new file mode 100644
-index 0000000..425fd74
+index 00000000..425fd74f
 --- /dev/null
 +++ b/vendor/candle-core/src/cuda_backend/device.rs
 @@ -0,0 +1,710 @@
@@ -17731,7 +18844,7 @@ index 0000000..425fd74
 +}
 diff --git a/vendor/candle-core/src/cuda_backend/error.rs b/vendor/candle-core/src/cuda_backend/error.rs
 new file mode 100644
-index 0000000..bd6f8ac
+index 00000000..bd6f8ac6
 --- /dev/null
 +++ b/vendor/candle-core/src/cuda_backend/error.rs
 @@ -0,0 +1,62 @@
@@ -17799,7 +18912,7 @@ index 0000000..bd6f8ac
 +}
 diff --git a/vendor/candle-core/src/cuda_backend/mod.rs b/vendor/candle-core/src/cuda_backend/mod.rs
 new file mode 100644
-index 0000000..d2a6fd5
+index 00000000..d2a6fd56
 --- /dev/null
 +++ b/vendor/candle-core/src/cuda_backend/mod.rs
 @@ -0,0 +1,2682 @@
@@ -20487,7 +21600,7 @@ index 0000000..d2a6fd5
 +}
 diff --git a/vendor/candle-core/src/cuda_backend/utils.rs b/vendor/candle-core/src/cuda_backend/utils.rs
 new file mode 100644
-index 0000000..10f8876
+index 00000000..10f8876a
 --- /dev/null
 +++ b/vendor/candle-core/src/cuda_backend/utils.rs
 @@ -0,0 +1,194 @@
@@ -20687,7 +21800,7 @@ index 0000000..10f8876
 +}
 diff --git a/vendor/candle-core/src/custom_op.rs b/vendor/candle-core/src/custom_op.rs
 new file mode 100644
-index 0000000..e76f968
+index 00000000..e76f9680
 --- /dev/null
 +++ b/vendor/candle-core/src/custom_op.rs
 @@ -0,0 +1,489 @@
@@ -21182,7 +22295,7 @@ index 0000000..e76f968
 +}
 diff --git a/vendor/candle-core/src/device.rs b/vendor/candle-core/src/device.rs
 new file mode 100644
-index 0000000..d0167c6
+index 00000000..d0167c61
 --- /dev/null
 +++ b/vendor/candle-core/src/device.rs
 @@ -0,0 +1,502 @@
@@ -21690,7 +22803,7 @@ index 0000000..d0167c6
 +}
 diff --git a/vendor/candle-core/src/display.rs b/vendor/candle-core/src/display.rs
 new file mode 100644
-index 0000000..a9b5394
+index 00000000..a9b53947
 --- /dev/null
 +++ b/vendor/candle-core/src/display.rs
 @@ -0,0 +1,558 @@
@@ -22254,7 +23367,7 @@ index 0000000..a9b5394
 +}
 diff --git a/vendor/candle-core/src/dtype.rs b/vendor/candle-core/src/dtype.rs
 new file mode 100644
-index 0000000..035ca6d
+index 00000000..035ca6d5
 --- /dev/null
 +++ b/vendor/candle-core/src/dtype.rs
 @@ -0,0 +1,294 @@
@@ -22554,7 +23667,7 @@ index 0000000..035ca6d
 +impl FloatDType for f8e4m3 {}
 diff --git a/vendor/candle-core/src/dummy_cuda_backend.rs b/vendor/candle-core/src/dummy_cuda_backend.rs
 new file mode 100644
-index 0000000..2aa4585
+index 00000000..2aa45859
 --- /dev/null
 +++ b/vendor/candle-core/src/dummy_cuda_backend.rs
 @@ -0,0 +1,317 @@
@@ -22877,7 +23990,7 @@ index 0000000..2aa4585
 +pub fn set_gemm_reduced_precision_f32(_b: bool) {}
 diff --git a/vendor/candle-core/src/dummy_dtype.rs b/vendor/candle-core/src/dummy_dtype.rs
 new file mode 100644
-index 0000000..5fdb096
+index 00000000..5fdb0961
 --- /dev/null
 +++ b/vendor/candle-core/src/dummy_dtype.rs
 @@ -0,0 +1,268 @@
@@ -23151,7 +24264,7 @@ index 0000000..5fdb096
 +}
 diff --git a/vendor/candle-core/src/dummy_metal_backend.rs b/vendor/candle-core/src/dummy_metal_backend.rs
 new file mode 100644
-index 0000000..8c23b58
+index 00000000..8c23b580
 --- /dev/null
 +++ b/vendor/candle-core/src/dummy_metal_backend.rs
 @@ -0,0 +1,280 @@
@@ -23437,7 +24550,7 @@ index 0000000..8c23b58
 +}
 diff --git a/vendor/candle-core/src/error.rs b/vendor/candle-core/src/error.rs
 new file mode 100644
-index 0000000..9f10ca2
+index 00000000..9f10ca29
 --- /dev/null
 +++ b/vendor/candle-core/src/error.rs
 @@ -0,0 +1,394 @@
@@ -23837,7 +24950,7 @@ index 0000000..9f10ca2
 +}
 diff --git a/vendor/candle-core/src/indexer.rs b/vendor/candle-core/src/indexer.rs
 new file mode 100644
-index 0000000..d6cd6de
+index 00000000..d6cd6deb
 --- /dev/null
 +++ b/vendor/candle-core/src/indexer.rs
 @@ -0,0 +1,257 @@
@@ -24100,7 +25213,7 @@ index 0000000..d6cd6de
 +index_op_tuple!("see [TensorIndex#method.i]", A, B, C, D, E, F, G);
 diff --git a/vendor/candle-core/src/layout.rs b/vendor/candle-core/src/layout.rs
 new file mode 100644
-index 0000000..91e5048
+index 00000000..91e50481
 --- /dev/null
 +++ b/vendor/candle-core/src/layout.rs
 @@ -0,0 +1,278 @@
@@ -24384,7 +25497,7 @@ index 0000000..91e5048
 +}
 diff --git a/vendor/candle-core/src/lib.rs b/vendor/candle-core/src/lib.rs
 new file mode 100644
-index 0000000..791933d
+index 00000000..791933d2
 --- /dev/null
 +++ b/vendor/candle-core/src/lib.rs
 @@ -0,0 +1,177 @@
@@ -24567,7 +25680,7 @@ index 0000000..791933d
 +}
 diff --git a/vendor/candle-core/src/metal_backend/device.rs b/vendor/candle-core/src/metal_backend/device.rs
 new file mode 100644
-index 0000000..1728c5a
+index 00000000..1728c5a4
 --- /dev/null
 +++ b/vendor/candle-core/src/metal_backend/device.rs
 @@ -0,0 +1,287 @@
@@ -24860,7 +25973,7 @@ index 0000000..1728c5a
 +}
 diff --git a/vendor/candle-core/src/metal_backend/mod.rs b/vendor/candle-core/src/metal_backend/mod.rs
 new file mode 100644
-index 0000000..363ffa9
+index 00000000..363ffa9f
 --- /dev/null
 +++ b/vendor/candle-core/src/metal_backend/mod.rs
 @@ -0,0 +1,2137 @@
@@ -27003,7 +28116,7 @@ index 0000000..363ffa9
 +}
 diff --git a/vendor/candle-core/src/mkl.rs b/vendor/candle-core/src/mkl.rs
 new file mode 100644
-index 0000000..359add7
+index 00000000..359add74
 --- /dev/null
 +++ b/vendor/candle-core/src/mkl.rs
 @@ -0,0 +1,418 @@
@@ -27427,7 +28540,7 @@ index 0000000..359add7
 +binary_op!(vd_min, f64, vdFmin);
 diff --git a/vendor/candle-core/src/npy.rs b/vendor/candle-core/src/npy.rs
 new file mode 100644
-index 0000000..511bcda
+index 00000000..511bcdad
 --- /dev/null
 +++ b/vendor/candle-core/src/npy.rs
 @@ -0,0 +1,495 @@
@@ -27928,7 +29041,7 @@ index 0000000..511bcda
 +}
 diff --git a/vendor/candle-core/src/op.rs b/vendor/candle-core/src/op.rs
 new file mode 100644
-index 0000000..dbfa462
+index 00000000..dbfa462b
 --- /dev/null
 +++ b/vendor/candle-core/src/op.rs
 @@ -0,0 +1,1148 @@
@@ -29082,7 +30195,7 @@ index 0000000..dbfa462
 +}
 diff --git a/vendor/candle-core/src/pickle.rs b/vendor/candle-core/src/pickle.rs
 new file mode 100644
-index 0000000..624b629
+index 00000000..624b629a
 --- /dev/null
 +++ b/vendor/candle-core/src/pickle.rs
 @@ -0,0 +1,841 @@
@@ -29929,7 +31042,7 @@ index 0000000..624b629
 +}
 diff --git a/vendor/candle-core/src/quantized/avx.rs b/vendor/candle-core/src/quantized/avx.rs
 new file mode 100644
-index 0000000..527941e
+index 00000000..527941eb
 --- /dev/null
 +++ b/vendor/candle-core/src/quantized/avx.rs
 @@ -0,0 +1,669 @@
@@ -30604,7 +31717,7 @@ index 0000000..527941e
 +}
 diff --git a/vendor/candle-core/src/quantized/cuda.rs b/vendor/candle-core/src/quantized/cuda.rs
 new file mode 100644
-index 0000000..c47aaf9
+index 00000000..c47aaf9d
 --- /dev/null
 +++ b/vendor/candle-core/src/quantized/cuda.rs
 @@ -0,0 +1,983 @@
@@ -31593,7 +32706,7 @@ index 0000000..c47aaf9
 +}
 diff --git a/vendor/candle-core/src/quantized/dummy_cuda.rs b/vendor/candle-core/src/quantized/dummy_cuda.rs
 new file mode 100644
-index 0000000..04f19f9
+index 00000000..04f19f9f
 --- /dev/null
 +++ b/vendor/candle-core/src/quantized/dummy_cuda.rs
 @@ -0,0 +1,95 @@
@@ -31694,7 +32807,7 @@ index 0000000..04f19f9
 +}
 diff --git a/vendor/candle-core/src/quantized/dummy_metal.rs b/vendor/candle-core/src/quantized/dummy_metal.rs
 new file mode 100644
-index 0000000..6f470e9
+index 00000000..6f470e90
 --- /dev/null
 +++ b/vendor/candle-core/src/quantized/dummy_metal.rs
 @@ -0,0 +1,87 @@
@@ -31787,7 +32900,7 @@ index 0000000..6f470e9
 +}
 diff --git a/vendor/candle-core/src/quantized/ggml_file.rs b/vendor/candle-core/src/quantized/ggml_file.rs
 new file mode 100644
-index 0000000..ea5ec02
+index 00000000..ea5ec025
 --- /dev/null
 +++ b/vendor/candle-core/src/quantized/ggml_file.rs
 @@ -0,0 +1,266 @@
@@ -32059,7 +33172,7 @@ index 0000000..ea5ec02
 +}
 diff --git a/vendor/candle-core/src/quantized/gguf_file.rs b/vendor/candle-core/src/quantized/gguf_file.rs
 new file mode 100644
-index 0000000..197e43c
+index 00000000..197e43cf
 --- /dev/null
 +++ b/vendor/candle-core/src/quantized/gguf_file.rs
 @@ -0,0 +1,539 @@
@@ -32604,7 +33717,7 @@ index 0000000..197e43c
 +}
 diff --git a/vendor/candle-core/src/quantized/imatrix_file.rs b/vendor/candle-core/src/quantized/imatrix_file.rs
 new file mode 100644
-index 0000000..ed228b7
+index 00000000..ed228b74
 --- /dev/null
 +++ b/vendor/candle-core/src/quantized/imatrix_file.rs
 @@ -0,0 +1,85 @@
@@ -32695,7 +33808,7 @@ index 0000000..ed228b7
 +}
 diff --git a/vendor/candle-core/src/quantized/k_quants.rs b/vendor/candle-core/src/quantized/k_quants.rs
 new file mode 100644
-index 0000000..9069b23
+index 00000000..9069b236
 --- /dev/null
 +++ b/vendor/candle-core/src/quantized/k_quants.rs
 @@ -0,0 +1,2505 @@
@@ -35206,7 +36319,7 @@ index 0000000..9069b23
 +);
 diff --git a/vendor/candle-core/src/quantized/metal.rs b/vendor/candle-core/src/quantized/metal.rs
 new file mode 100644
-index 0000000..ad746ef
+index 00000000..ad746ef0
 --- /dev/null
 +++ b/vendor/candle-core/src/quantized/metal.rs
 @@ -0,0 +1,391 @@
@@ -35603,7 +36716,7 @@ index 0000000..ad746ef
 +}
 diff --git a/vendor/candle-core/src/quantized/mod.rs b/vendor/candle-core/src/quantized/mod.rs
 new file mode 100644
-index 0000000..7316d29
+index 00000000..7316d298
 --- /dev/null
 +++ b/vendor/candle-core/src/quantized/mod.rs
 @@ -0,0 +1,881 @@
@@ -36490,7 +37603,7 @@ index 0000000..7316d29
 +}
 diff --git a/vendor/candle-core/src/quantized/neon.rs b/vendor/candle-core/src/quantized/neon.rs
 new file mode 100644
-index 0000000..6319676
+index 00000000..63196769
 --- /dev/null
 +++ b/vendor/candle-core/src/quantized/neon.rs
 @@ -0,0 +1,615 @@
@@ -37111,7 +38224,7 @@ index 0000000..6319676
 +}
 diff --git a/vendor/candle-core/src/quantized/simd128.rs b/vendor/candle-core/src/quantized/simd128.rs
 new file mode 100644
-index 0000000..4c02f99
+index 00000000..4c02f991
 --- /dev/null
 +++ b/vendor/candle-core/src/quantized/simd128.rs
 @@ -0,0 +1,418 @@
@@ -37535,7 +38648,7 @@ index 0000000..4c02f99
 +}
 diff --git a/vendor/candle-core/src/quantized/utils.rs b/vendor/candle-core/src/quantized/utils.rs
 new file mode 100644
-index 0000000..9dd9c09
+index 00000000..9dd9c091
 --- /dev/null
 +++ b/vendor/candle-core/src/quantized/utils.rs
 @@ -0,0 +1,562 @@
@@ -38103,7 +39216,7 @@ index 0000000..9dd9c09
 +}
 diff --git a/vendor/candle-core/src/safetensors.rs b/vendor/candle-core/src/safetensors.rs
 new file mode 100644
-index 0000000..bec233b
+index 00000000..bec233b6
 --- /dev/null
 +++ b/vendor/candle-core/src/safetensors.rs
 @@ -0,0 +1,644 @@
@@ -38753,7 +39866,7 @@ index 0000000..bec233b
 +}
 diff --git a/vendor/candle-core/src/scalar.rs b/vendor/candle-core/src/scalar.rs
 new file mode 100644
-index 0000000..5c512c0
+index 00000000..5c512c03
 --- /dev/null
 +++ b/vendor/candle-core/src/scalar.rs
 @@ -0,0 +1,115 @@
@@ -38874,7 +39987,7 @@ index 0000000..5c512c0
 +}
 diff --git a/vendor/candle-core/src/shape.rs b/vendor/candle-core/src/shape.rs
 new file mode 100644
-index 0000000..b9e7312
+index 00000000..b9e73126
 --- /dev/null
 +++ b/vendor/candle-core/src/shape.rs
 @@ -0,0 +1,634 @@
@@ -39514,7 +40627,7 @@ index 0000000..b9e7312
 +}
 diff --git a/vendor/candle-core/src/sort.rs b/vendor/candle-core/src/sort.rs
 new file mode 100644
-index 0000000..19d7838
+index 00000000..19d78387
 --- /dev/null
 +++ b/vendor/candle-core/src/sort.rs
 @@ -0,0 +1,290 @@
@@ -39810,7 +40923,7 @@ index 0000000..19d7838
 +}
 diff --git a/vendor/candle-core/src/storage.rs b/vendor/candle-core/src/storage.rs
 new file mode 100644
-index 0000000..4646dc8
+index 00000000..4646dc88
 --- /dev/null
 +++ b/vendor/candle-core/src/storage.rs
 @@ -0,0 +1,849 @@
@@ -40665,7 +41778,7 @@ index 0000000..4646dc8
 +}
 diff --git a/vendor/candle-core/src/streaming.rs b/vendor/candle-core/src/streaming.rs
 new file mode 100644
-index 0000000..f4c0a9f
+index 00000000..f4c0a9ff
 --- /dev/null
 +++ b/vendor/candle-core/src/streaming.rs
 @@ -0,0 +1,208 @@
@@ -40879,7 +41992,7 @@ index 0000000..f4c0a9f
 +}
 diff --git a/vendor/candle-core/src/strided_index.rs b/vendor/candle-core/src/strided_index.rs
 new file mode 100644
-index 0000000..a31d406
+index 00000000..a31d406a
 --- /dev/null
 +++ b/vendor/candle-core/src/strided_index.rs
 @@ -0,0 +1,94 @@
@@ -40979,7 +42092,7 @@ index 0000000..a31d406
 +}
 diff --git a/vendor/candle-core/src/tensor.rs b/vendor/candle-core/src/tensor.rs
 new file mode 100644
-index 0000000..52b7f79
+index 00000000..52b7f79b
 --- /dev/null
 +++ b/vendor/candle-core/src/tensor.rs
 @@ -0,0 +1,3116 @@
@@ -44101,7 +45214,7 @@ index 0000000..52b7f79
 +}
 diff --git a/vendor/candle-core/src/tensor_cat.rs b/vendor/candle-core/src/tensor_cat.rs
 new file mode 100644
-index 0000000..520b246
+index 00000000..520b246f
 --- /dev/null
 +++ b/vendor/candle-core/src/tensor_cat.rs
 @@ -0,0 +1,303 @@
@@ -44410,7 +45523,7 @@ index 0000000..520b246
 +}
 diff --git a/vendor/candle-core/src/test_utils.rs b/vendor/candle-core/src/test_utils.rs
 new file mode 100644
-index 0000000..e331399
+index 00000000..e331399f
 --- /dev/null
 +++ b/vendor/candle-core/src/test_utils.rs
 @@ -0,0 +1,71 @@
@@ -44487,7 +45600,7 @@ index 0000000..e331399
 +}
 diff --git a/vendor/candle-core/src/utils.rs b/vendor/candle-core/src/utils.rs
 new file mode 100644
-index 0000000..4a58db8
+index 00000000..4a58db81
 --- /dev/null
 +++ b/vendor/candle-core/src/utils.rs
 @@ -0,0 +1,45 @@
@@ -44538,7 +45651,7 @@ index 0000000..4a58db8
 +}
 diff --git a/vendor/candle-core/src/variable.rs b/vendor/candle-core/src/variable.rs
 new file mode 100644
-index 0000000..1e4880e
+index 00000000..1e4880e5
 --- /dev/null
 +++ b/vendor/candle-core/src/variable.rs
 @@ -0,0 +1,152 @@
@@ -44696,7 +45809,7 @@ index 0000000..1e4880e
 +}
 diff --git a/vendor/rustls-rustcrypto/CHANGELOG.md b/vendor/rustls-rustcrypto/CHANGELOG.md
 new file mode 100644
-index 0000000..1d013ff
+index 00000000..1d013ff9
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/CHANGELOG.md
 @@ -0,0 +1,6 @@
@@ -44708,195 +45821,10 @@ index 0000000..1d013ff
 +and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 diff --git a/vendor/rustls-rustcrypto/Cargo.toml b/vendor/rustls-rustcrypto/Cargo.toml
 new file mode 100644
-index 0000000..e35640d
+index 00000000..131c52ec
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/Cargo.toml
-@@ -0,0 +1,179 @@
-+# THIS FILE IS AUTOMATICALLY GENERATED BY CARGO
-+#
-+# When uploading crates to the registry Cargo will automatically
-+# "normalize" Cargo.toml files for maximal compatibility
-+# with all versions of Cargo and also rewrite `path` dependencies
-+# to registry (e.g., crates.io) dependencies.
-+#
-+# If you are reading this file be aware that the original Cargo.toml
-+# will likely look very different (and much more reasonable).
-+# See Cargo.toml.orig for the original contents.
-+
-+[package]
-+edition = "2021"
-+rust-version = "1.75"
-+name = "rustls-rustcrypto"
-+version = "0.0.2-alpha"
-+authors = ["RustCrypto Developers"]
-+description = """
-+Pure Rust cryptography provider for the Rustls TLS library using algorithm implementations from the
-+RustCrypto organization
-+"""
-+readme = "README.md"
-+keywords = [
-+    "rustls",
-+    "tls",
-+]
-+categories = [
-+    "cryptography",
-+    "no-std",
-+]
-+license = "MIT OR Apache-2.0"
-+repository = "https://github.com/RustCrypto/rustls-rustcrypto"
-+resolver = "1"
-+
-+[dependencies.aead]
-+version = "0.5.2"
-+default-features = false
-+
-+[dependencies.aes-gcm]
-+version = "0.10.3"
-+features = [
-+    "aes",
-+    "alloc",
-+]
-+default-features = false
-+
-+[dependencies.chacha20poly1305]
-+version = "0.10.1"
-+default-features = false
-+
-+[dependencies.crypto-common]
-+version = "0.1.6"
-+default-features = false
-+
-+[dependencies.der]
-+version = "0.7.9"
-+default-features = false
-+
-+[dependencies.digest]
-+version = "0.10.7"
-+default-features = false
-+
-+[dependencies.ecdsa]
-+version = "0.16.8"
-+features = ["alloc"]
-+default-features = false
-+
-+[dependencies.ed25519-dalek]
-+version = "2"
-+features = ["pkcs8"]
-+default-features = false
-+
-+[dependencies.hmac]
-+version = "0.12.1"
-+default-features = false
-+
-+[dependencies.p256]
-+version = "0.13.2"
-+features = [
-+    "pem",
-+    "ecdsa",
-+    "ecdh",
-+]
-+default-features = false
-+
-+[dependencies.p384]
-+version = "0.13.0"
-+features = [
-+    "pem",
-+    "ecdsa",
-+    "ecdh",
-+]
-+default-features = false
-+
-+[dependencies.paste]
-+version = "1.0.14"
-+default-features = false
-+
-+[dependencies.pkcs8]
-+version = "0.10.2"
-+features = [
-+    "pem",
-+    "pkcs5",
-+]
-+default-features = false
-+
-+[dependencies.pki-types]
-+version = "1.0.1"
-+default-features = false
-+package = "rustls-pki-types"
-+
-+[dependencies.rand_core]
-+version = "0.6.4"
-+features = ["getrandom"]
-+default-features = false
-+
-+[dependencies.rsa]
-+version = "0.9.2"
-+features = ["sha2"]
-+default-features = false
-+
-+[dependencies.rustls]
-+version = "0.23.0"
-+default-features = false
-+
-+[dependencies.sec1]
-+version = "0.7.3"
-+features = [
-+    "pkcs8",
-+    "pem",
-+]
-+default-features = false
-+
-+[dependencies.sha2]
-+version = "0.10.7"
-+default-features = false
-+
-+[dependencies.signature]
-+version = "2.1.0"
-+default-features = false
-+
-+[dependencies.webpki]
-+version = "0.103.13"
-+default-features = false
-+package = "rustls-webpki"
-+
-+[dependencies.x25519-dalek]
-+version = "2"
-+default-features = false
-+
-+[dev-dependencies.getrandom]
-+version = "0.2"
-+features = ["custom"]
-+
-+[features]
-+alloc = [
-+    "webpki/alloc",
-+    "pki-types/alloc",
-+    "aead/alloc",
-+    "ed25519-dalek/alloc",
-+]
-+default = [
-+    "std",
-+    "tls12",
-+    "zeroize",
-+]
-+logging = ["rustls/logging"]
-+std = [
-+    "alloc",
-+    "webpki/std",
-+    "pki-types/std",
-+    "rustls/std",
-+    "ed25519-dalek/std",
-+]
-+tls12 = ["rustls/tls12"]
-+zeroize = [
-+    "ed25519-dalek/zeroize",
-+    "x25519-dalek/zeroize",
-+]
-diff --git a/vendor/rustls-rustcrypto/Cargo.toml.orig b/vendor/rustls-rustcrypto/Cargo.toml.orig
-new file mode 100644
-index 0000000..6ff6103
---- /dev/null
-+++ b/vendor/rustls-rustcrypto/Cargo.toml.orig
-@@ -0,0 +1,59 @@
+@@ -0,0 +1,60 @@
 +[package]
 +name = "rustls-rustcrypto"
 +description = """
@@ -44917,31 +45845,27 @@ index 0000000..6ff6103
 +# Ensure all dependencies + feats are mapped to crate features for correct usage
 +# default features often have std breaking no_std and potentially other unwanted
 +[dependencies]
-+aead = { version = "0.5.2", default-features = false }
-+aes-gcm = { version = "0.10.3", default-features = false, features = ["aes", "alloc"] }
-+chacha20poly1305 = { version = "0.10.1", default-features = false }
-+crypto-common = { version = "0.1.6", default-features = false }
-+der = { version = "0.7.9", default-features = false }
-+digest = { version = "0.10.7", default-features = false }
-+ecdsa = { version = "0.16.8", default-features = false, features = ["alloc"] }
-+ed25519-dalek = { version = "2", default-features = false, features = ["pkcs8"] }
-+hmac = { version = "0.12.1", default-features = false }
-+p256 = { version = "0.13.2", default-features = false, features = ["pem", "ecdsa", "ecdh"] }
-+p384 = { version = "0.13.0", default-features = false, features = ["pem", "ecdsa", "ecdh"] }
-+paste = { version = "1.0.14", default-features = false }
-+pkcs8 = { version = "0.10.2", default-features = false, features = ["pem", "pkcs5"] }
-+pki-types = { package = "rustls-pki-types", version = "1.0.1", default-features = false }
-+rand_core = { version = "0.6.4", default-features = false, features = ["getrandom"] }
-+rsa = { version = "0.9.2", default-features = false, features = ["sha2"] }
-+rustls = { version = "0.23.0", default-features = false }
-+sec1 = { version = "0.7.3", default-features = false, features = ["pkcs8", "pem"] }
-+sha2 = { version = "0.10.7", default-features = false }
-+signature = { version = "2.1.0", default-features = false }
-+webpki = { package = "rustls-webpki", version = "0.102.0", default-features = false }
-+x25519-dalek = { version = "2", default-features = false }
-+
-+[dev-dependencies]
-+getrandom = { version = "0.2", features = ["custom"] } # workaround to build on no_std targets
++aead = { version = "0.6", default-features = false }
++aes-gcm = { version = "0.11", default-features = false, features = ["aes", "alloc"] }
++chacha20poly1305 = { version = "0.11", default-features = false }
++crypto-common = { version = "0.2", default-features = false }
++der = { version = "0.8", default-features = false }
++digest = { version = "0.11", default-features = false }
++ecdsa = { version = "0.17", default-features = false, features = ["alloc"] }
++ed25519-dalek = { version = "3", default-features = false, features = ["pkcs8"] }
++getrandom = { version = "0.4", default-features = false, features = ["sys_rng"] }
++hmac = { version = "0.13", default-features = false }
++p256 = { version = "0.14", default-features = false, features = ["pem", "ecdsa", "ecdh"] }
++p384 = { version = "0.14", default-features = false, features = ["pem", "ecdsa", "ecdh"] }
++paste = { version = "1", default-features = false }
++pkcs8 = { version = "0.11", default-features = false }
++pki-types = { package = "rustls-pki-types", version = "1", default-features = false }
++rsa = { version = "0.10.0-rc.18", default-features = false, features = ["sha2", "encoding"] }
++rustls = { version = "0.23", default-features = false }
++sec1 = { version = "0.8", default-features = false }
++sha2 = { version = "0.11", default-features = false }
++signature = { version = "3", default-features = false }
++x25519-dalek = { version = "3", default-features = false }
 +
 +[features]
 +default = ["std", "tls12", "zeroize"]
@@ -44952,13 +45876,79 @@ index 0000000..6ff6103
 +# zeroize is another typical that can be turned off
 +
 +# TODO: go through all of these that what gets exposed re: std error type
-+std = ["alloc", "webpki/std", "pki-types/std", "rustls/std", "ed25519-dalek/std"]
++std = ["alloc", "pki-types/std", "rustls/std"]
 +# TODO: go through all of these to ensure to_vec etc. impls are exposed
-+alloc = ["webpki/alloc", "pki-types/alloc", "aead/alloc", "ed25519-dalek/alloc"]
++alloc = ["pki-types/alloc", "aead/alloc", "ed25519-dalek/alloc"]
++zeroize = ["ed25519-dalek/zeroize", "x25519-dalek/zeroize"]
++
++# Minimum fixed arithmetic used transitively by the TLS curves and RSA.
++[dependencies.crypto-bigint]
++version = "0.7.9"
++default-features = false
+diff --git a/vendor/rustls-rustcrypto/Cargo.toml.orig b/vendor/rustls-rustcrypto/Cargo.toml.orig
+new file mode 100644
+index 00000000..e8e5de03
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/Cargo.toml.orig
+@@ -0,0 +1,55 @@
++[package]
++name = "rustls-rustcrypto"
++description = """
++Pure Rust cryptography provider for the Rustls TLS library using algorithm implementations from the
++RustCrypto organization
++"""
++version = "0.0.2-alpha"
++authors = ["RustCrypto Developers"]
++license = "MIT OR Apache-2.0"
++readme = "README.md"
++repository = "https://github.com/RustCrypto/rustls-rustcrypto"
++categories = ["cryptography", "no-std"]
++keywords = ["rustls", "tls"]
++edition = "2021"
++rust-version = "1.75"
++resolver = "1" # Hack to enable the `custom` feature of `getrandom`
++
++# Ensure all dependencies + feats are mapped to crate features for correct usage
++# default features often have std breaking no_std and potentially other unwanted
++[dependencies]
++aead = { version = "0.6", default-features = false }
++aes-gcm = { version = "0.11", default-features = false, features = ["aes", "alloc"] }
++chacha20poly1305 = { version = "0.11", default-features = false }
++crypto-common = { version = "0.2", default-features = false }
++der = { version = "0.8", default-features = false }
++digest = { version = "0.11", default-features = false }
++ecdsa = { version = "0.17", default-features = false, features = ["alloc"] }
++ed25519-dalek = { version = "3", default-features = false, features = ["pkcs8"] }
++getrandom = { version = "0.4", default-features = false, features = ["sys_rng"] }
++hmac = { version = "0.13", default-features = false }
++p256 = { version = "0.14", default-features = false, features = ["pem", "ecdsa", "ecdh"] }
++p384 = { version = "0.14", default-features = false, features = ["pem", "ecdsa", "ecdh"] }
++paste = { version = "1", default-features = false }
++pkcs8 = { version = "0.11", default-features = false }
++pki-types = { package = "rustls-pki-types", version = "1", default-features = false }
++rsa = { version = "0.10.0-rc.18", default-features = false, features = ["sha2", "encoding"] }
++rustls = { version = "0.23", default-features = false }
++sec1 = { version = "0.8", default-features = false }
++sha2 = { version = "0.11", default-features = false }
++signature = { version = "3", default-features = false }
++x25519-dalek = { version = "3", default-features = false }
++
++[features]
++default = ["std", "tls12", "zeroize"]
++logging = ["rustls/logging"]
++tls12 = ["rustls/tls12"]
++
++# Only enable feature in upstream if there is an overall effect e.g. aead/alloc in-place
++# zeroize is another typical that can be turned off
++
++# TODO: go through all of these that what gets exposed re: std error type
++std = ["alloc", "pki-types/std", "rustls/std"]
++# TODO: go through all of these to ensure to_vec etc. impls are exposed
++alloc = ["pki-types/alloc", "aead/alloc", "ed25519-dalek/alloc"]
 +zeroize = ["ed25519-dalek/zeroize", "x25519-dalek/zeroize"]
 diff --git a/vendor/rustls-rustcrypto/LICENSE-APACHE b/vendor/rustls-rustcrypto/LICENSE-APACHE
 new file mode 100644
-index 0000000..78173fa
+index 00000000..78173fa2
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/LICENSE-APACHE
 @@ -0,0 +1,201 @@
@@ -45165,7 +46155,7 @@ index 0000000..78173fa
 +limitations under the License.
 diff --git a/vendor/rustls-rustcrypto/LICENSE-MIT b/vendor/rustls-rustcrypto/LICENSE-MIT
 new file mode 100644
-index 0000000..966be2b
+index 00000000..966be2bc
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/LICENSE-MIT
 @@ -0,0 +1,19 @@
@@ -45190,20 +46180,26 @@ index 0000000..966be2b
 +SOFTWARE.
 diff --git a/vendor/rustls-rustcrypto/PLERVO-PATCH.md b/vendor/rustls-rustcrypto/PLERVO-PATCH.md
 new file mode 100644
-index 0000000..6b95e7d
+index 00000000..d3ca0079
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/PLERVO-PATCH.md
-@@ -0,0 +1,7 @@
-+# Plervo TLS dependency patch
+@@ -0,0 +1,13 @@
++# Plervo TLS provider source pin
 +
-+Source: RustCrypto/rustls-rustcrypto, crates.io package 0.0.2-alpha. Original MIT/Apache notices are preserved.
++Source: https://github.com/RustCrypto/rustls-rustcrypto/tree/70f76c039e587192688af18a80d5d6435dedaf22
 +
-+The Cargo dependency on rustls-webpki changes from 0.102.0 to 0.103.13 or newer, incorporating the fixes for RUSTSEC-2026-0104, 0098, 0099 and 0049. The three verification modules import the unchanged ASN.1 algorithm identifiers from rustls::pki_types::alg_id, their new upstream location. No cryptographic algorithm implementation is modified. Cargo.lock pins the resulting package checksums.
++Library source and tests are unchanged from this immutable upstream revision.
++MIT/Apache-2.0 notices are retained. The previous crate release used the old
++RustCrypto arithmetic stack affected by RUSTSEC-2026-0387. This snapshot supports
++the maintained RustCrypto APIs; the manifest adds a crypto-bigint 0.7.9 minimum.
++No cryptographic algorithm is implemented or patched by Plervo.
++The application still rejects TLS client private keys. Ephemeral key exchange
++uses secrets, so that restriction alone was not a mitigation for this advisory.
 +
-+The application uses this provider only as an HTTPS client without client authentication. It never loads an RSA private key; the RSA public-key verification dependency still has the general RUSTSEC-2023-0071 advisory, which must remain documented rather than described as patched.
++Original archive SHA-256: 37d98d7410906e203266e29ba8714971f186ce5b97c25b1798688a48ca5637a8
 diff --git a/vendor/rustls-rustcrypto/README.md b/vendor/rustls-rustcrypto/README.md
 new file mode 100644
-index 0000000..f77c0b7
+index 00000000..39739a74
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/README.md
 @@ -0,0 +1,63 @@
@@ -45255,7 +46251,7 @@ index 0000000..f77c0b7
 +
 +[//]: # (badges)
 +
-+[crate-image]: https://buildstats.info/crate/rustls-rustcrypto
++[crate-image]: https://img.shields.io/crates/v/rustls-rustcrypto
 +[crate-link]: https://crates.io/crates/rustls-rustcrypto
 +[docs-image]: https://docs.rs/rustls-rustcrypto/badge.svg
 +[docs-link]: https://docs.rs/rustls-rustcrypto/
@@ -45272,7 +46268,7 @@ index 0000000..f77c0b7
 +[rustls]: https://github.com/rustls/rustls/
 diff --git a/vendor/rustls-rustcrypto/examples-external/client.rs b/vendor/rustls-rustcrypto/examples-external/client.rs
 new file mode 100644
-index 0000000..2493c61
+index 00000000..2493c613
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/examples-external/client.rs
 @@ -0,0 +1,47 @@
@@ -45325,7 +46321,7 @@ index 0000000..2493c61
 +}
 diff --git a/vendor/rustls-rustcrypto/examples-external/server.rs b/vendor/rustls-rustcrypto/examples-external/server.rs
 new file mode 100644
-index 0000000..d31745b
+index 00000000..d31745b0
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/examples-external/server.rs
 @@ -0,0 +1,126 @@
@@ -45457,7 +46453,7 @@ index 0000000..d31745b
 +}
 diff --git a/vendor/rustls-rustcrypto/src/aead.rs b/vendor/rustls-rustcrypto/src/aead.rs
 new file mode 100644
-index 0000000..6ff57b7
+index 00000000..6ff57b73
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/aead.rs
 @@ -0,0 +1,54 @@
@@ -45517,16 +46513,17 @@ index 0000000..6ff57b7
 +}
 diff --git a/vendor/rustls-rustcrypto/src/aead/chacha20.rs b/vendor/rustls-rustcrypto/src/aead/chacha20.rs
 new file mode 100644
-index 0000000..995b79e
+index 00000000..3fce86b5
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/aead/chacha20.rs
-@@ -0,0 +1,197 @@
+@@ -0,0 +1,198 @@
 +#[cfg(feature = "alloc")]
 +use alloc::boxed::Box;
 +
 +use super::{DecryptBufferAdapter, EncryptBufferAdapter};
 +
-+use chacha20poly1305::{AeadInPlace, KeyInit, KeySizeUser};
++use aead::{AeadInOut, KeySizeUser};
++use chacha20poly1305::KeyInit;
 +use rustls::crypto::cipher::{
 +    self, AeadKey, InboundOpaqueMessage, InboundPlainMessage, Iv, MessageDecrypter,
 +    MessageEncrypter, OutboundOpaqueMessage, OutboundPlainMessage, PrefixedPayload,
@@ -45720,16 +46717,16 @@ index 0000000..995b79e
 +const CHACHAPOLY1305_OVERHEAD: usize = 16;
 diff --git a/vendor/rustls-rustcrypto/src/aead/gcm.rs b/vendor/rustls-rustcrypto/src/aead/gcm.rs
 new file mode 100644
-index 0000000..14be62b
+index 00000000..d390575e
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/aead/gcm.rs
-@@ -0,0 +1,235 @@
+@@ -0,0 +1,236 @@
 +#[cfg(feature = "alloc")]
 +use alloc::boxed::Box;
 +
 +use super::{DecryptBufferAdapter, EncryptBufferAdapter};
 +
-+use aead::AeadInPlace;
++use aead::AeadInOut;
 +use crypto_common::{KeyInit, KeySizeUser};
 +use paste::paste;
 +use rustls::crypto::cipher::{
@@ -45892,7 +46889,7 @@ index 0000000..14be62b
 +                    payload.extend_from_chunks(&m.payload);
 +
 +                    self.0
-+                        .encrypt_in_place_detached(&nonce.into(), &aad, &mut payload.as_mut()[$nonce..])
++                        .encrypt_inout_detached(&nonce.into(), &aad, (&mut payload.as_mut()[$nonce..]).into())
 +                        .map(|tag| payload.extend(tag.as_ref() as &[u8]))
 +                        .map_err(|_| rustls::Error::EncryptError)
 +                        .map(|_| OutboundOpaqueMessage::new(m.typ, m.version, payload))
@@ -45931,9 +46928,10 @@ index 0000000..14be62b
 +                        let tag_pos = payload.len() - TagSize::to_usize();
 +                        let (msg, tag) = payload.split_at_mut(tag_pos);
 +
-+                        let tag = aes_gcm::Tag::<TagSize>::from_slice(tag);
++                        let tag = aes_gcm::Tag::<TagSize>::try_from(&*tag)
++                            .map_err(|_| rustls::Error::DecryptError)?;
 +                        self.0
-+                            .decrypt_in_place_detached(&nonce, &aad, msg, tag)
++                            .decrypt_inout_detached(&nonce, &aad, msg.into(), &tag)
 +                            .map_err(|_| rustls::Error::DecryptError)?;
 +                        tag_pos
 +                    };
@@ -45961,7 +46959,7 @@ index 0000000..14be62b
 +impl_gcm_tls12! {Aes256Gcm, aes_gcm::Aes256Gcm, TLS12_GCM_EXPLICIT_NONCE_LEN, TLS12_GCM_OVERHEAD}
 diff --git a/vendor/rustls-rustcrypto/src/hash.rs b/vendor/rustls-rustcrypto/src/hash.rs
 new file mode 100644
-index 0000000..dfa58e1
+index 00000000..dfa58e1c
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/hash.rs
 @@ -0,0 +1,62 @@
@@ -46029,7 +47027,7 @@ index 0000000..dfa58e1
 +// impl_hash! {SHA512, Sha512, hash::HashAlgorithm::SHA512}
 diff --git a/vendor/rustls-rustcrypto/src/hmac.rs b/vendor/rustls-rustcrypto/src/hmac.rs
 new file mode 100644
-index 0000000..8388c27
+index 00000000..2ad3b00b
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/hmac.rs
 @@ -0,0 +1,56 @@
@@ -46037,7 +47035,7 @@ index 0000000..8388c27
 +use alloc::boxed::Box;
 +
 +use crypto_common::OutputSizeUser;
-+use hmac::Mac;
++use hmac::{KeyInit, Mac};
 +use paste::paste;
 +use rustls::crypto;
 +use sha2::{Sha256, Sha384};
@@ -46091,14 +47089,16 @@ index 0000000..8388c27
 +// impl_hmac! {SHA512, Sha512}
 diff --git a/vendor/rustls-rustcrypto/src/kx.rs b/vendor/rustls-rustcrypto/src/kx.rs
 new file mode 100644
-index 0000000..66341f2
+index 00000000..3f8a4ddb
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/kx.rs
-@@ -0,0 +1,108 @@
+@@ -0,0 +1,112 @@
 +#[cfg(feature = "alloc")]
 +use alloc::boxed::Box;
 +
 +use crypto::{SharedSecret, SupportedKxGroup};
++use crypto_common::Generate;
++use getrandom::rand_core::UnwrapErr;
 +use paste::paste;
 +use rustls::crypto;
 +
@@ -46111,7 +47111,8 @@ index 0000000..66341f2
 +    }
 +
 +    fn start(&self) -> Result<Box<dyn crypto::ActiveKeyExchange>, rustls::Error> {
-+        let priv_key = x25519_dalek::EphemeralSecret::random_from_rng(rand_core::OsRng);
++        let mut rng = UnwrapErr(getrandom::SysRng);
++        let priv_key = x25519_dalek::EphemeralSecret::random_from_rng(&mut rng);
 +        let pub_key = (&priv_key).into();
 +        Ok(Box::new(X25519KeyExchange { priv_key, pub_key }))
 +    }
@@ -46157,7 +47158,8 @@ index 0000000..66341f2
 +                }
 +
 +                fn start(&self) -> Result<Box<dyn crypto::ActiveKeyExchange>, rustls::Error> {
-+                    let priv_key = $secret::random(&mut rand_core::OsRng);
++                    let mut rng = UnwrapErr(getrandom::SysRng);
++                    let priv_key = <$secret>::try_generate_from_rng(&mut rng).map_err(|_| rustls::Error::from(rustls::PeerMisbehaved::InvalidKeyShare))?;
 +                    let pub_key: $public_key = (&priv_key).into();
 +                    Ok(Box::new([<$name KeyExchange>] {
 +                        priv_key,
@@ -46205,10 +47207,10 @@ index 0000000..66341f2
 +pub const ALL_KX_GROUPS: &[&dyn SupportedKxGroup] = &[&X25519, &SecP256R1, &SecP384R1];
 diff --git a/vendor/rustls-rustcrypto/src/lib.rs b/vendor/rustls-rustcrypto/src/lib.rs
 new file mode 100644
-index 0000000..1b108b8
+index 00000000..6332bcad
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/lib.rs
-@@ -0,0 +1,271 @@
+@@ -0,0 +1,270 @@
 +#![no_std]
 +#![cfg_attr(docsrs, feature(doc_auto_cfg))]
 +#![doc = include_str!("../README.md")]
@@ -46275,10 +47277,9 @@ index 0000000..1b108b8
 +
 +impl SecureRandom for Provider {
 +    fn fill(&self, bytes: &mut [u8]) -> Result<(), GetRandomFailed> {
-+        use rand_core::RngCore;
-+        rand_core::OsRng
-+            .try_fill_bytes(bytes)
-+            .map_err(|_| GetRandomFailed)
++        use getrandom::rand_core::TryRng;
++        let mut rng = getrandom::SysRng;
++        rng.try_fill_bytes(bytes).map_err(|_| GetRandomFailed)
 +    }
 +}
 +
@@ -46482,10 +47483,10 @@ index 0000000..1b108b8
 +mod verify;
 diff --git a/vendor/rustls-rustcrypto/src/misc.rs b/vendor/rustls-rustcrypto/src/misc.rs
 new file mode 100644
-index 0000000..8e25563
+index 00000000..5f01d990
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/misc.rs
-@@ -0,0 +1,36 @@
+@@ -0,0 +1,40 @@
 +#[macro_export]
 +macro_rules! const_concat_slices {
 +    ($ty:ty, $a:expr, $b:expr $(,)*) => {{
@@ -46494,7 +47495,11 @@ index 0000000..8e25563
 +        const __LEN: usize = A.len() + B.len();
 +        const __CONCATENATED: &[$ty; __LEN] = &{
 +            let mut out: [$ty; __LEN] = if __LEN == 0 {
-+                unsafe { core::mem::transmute([0u8; core::mem::size_of::<$ty>() * __LEN]) }
++                unsafe {
++                    core::mem::transmute::<[u8; core::mem::size_of::<$ty>() * __LEN], [$ty; __LEN]>(
++                        [0u8; core::mem::size_of::<$ty>() * __LEN],
++                    )
++                }
 +            } else if A.len() == 0 {
 +                [B[0]; __LEN]
 +            } else {
@@ -46524,17 +47529,17 @@ index 0000000..8e25563
 +pub(crate) use const_concat_slices;
 diff --git a/vendor/rustls-rustcrypto/src/quic.rs b/vendor/rustls-rustcrypto/src/quic.rs
 new file mode 100644
-index 0000000..f849835
+index 00000000..08dd10d5
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/quic.rs
-@@ -0,0 +1,142 @@
+@@ -0,0 +1,141 @@
 +#![allow(clippy::duplicate_mod)]
 +
 +#[cfg(feature = "alloc")]
 +use alloc::boxed::Box;
 +
-+use aead::AeadCore;
-+use chacha20poly1305::{AeadInPlace, KeyInit, KeySizeUser};
++use aead::{AeadCore, AeadInOut};
++use chacha20poly1305::{KeyInit, KeySizeUser};
 +use crypto_common::typenum::Unsigned;
 +use rustls::crypto::cipher::{self, AeadKey, Iv};
 +use rustls::{quic, Error, Tls13CipherSuite};
@@ -46606,7 +47611,7 @@ index 0000000..f849835
 +
 +        let tag = self
 +            .crypto
-+            .encrypt_in_place_detached(&nonce.into(), aad, payload)
++            .encrypt_inout_detached(&nonce.into(), aad, payload.into())
 +            .map_err(|_| rustls::Error::EncryptError)?;
 +        Ok(quic::Tag::from(tag.as_ref()))
 +    }
@@ -46628,8 +47633,7 @@ index 0000000..f849835
 +        let payload_len = payload_.len();
 +        let nonce = chacha20poly1305::Nonce::from(cipher::Nonce::new(&self.iv, packet_number).0);
 +
-+        self.crypto
-+            .decrypt_in_place(&nonce, aad, &mut payload_)
++        AeadInOut::decrypt_in_place(&self.crypto, &nonce, aad, &mut payload_)
 +            .map_err(|_| rustls::Error::DecryptError)?;
 +
 +        // Unfortunately the lifetime bound on decrypt_in_place sucks
@@ -46672,10 +47676,10 @@ index 0000000..f849835
 +}
 diff --git a/vendor/rustls-rustcrypto/src/sign.rs b/vendor/rustls-rustcrypto/src/sign.rs
 new file mode 100644
-index 0000000..e6109f5
+index 00000000..cf30cc53
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/sign.rs
-@@ -0,0 +1,105 @@
+@@ -0,0 +1,107 @@
 +#[cfg(feature = "alloc")]
 +use alloc::{sync::Arc, vec::Vec};
 +use core::marker::PhantomData;
@@ -46684,6 +47688,7 @@ index 0000000..e6109f5
 +use self::eddsa::Ed25519SigningKey;
 +use self::rsa::RsaSigningKey;
 +
++use getrandom::rand_core::UnwrapErr;
 +use pki_types::PrivateKeyDer;
 +use rustls::sign::{Signer, SigningKey};
 +use rustls::{Error, SignatureScheme};
@@ -46706,8 +47711,9 @@ index 0000000..e6109f5
 +    T: RandomizedSigner<S> + Send + Sync + core::fmt::Debug,
 +{
 +    fn sign(&self, message: &[u8]) -> Result<Vec<u8>, Error> {
++        let mut rng = UnwrapErr(getrandom::SysRng);
 +        self.key
-+            .try_sign_with_rng(&mut rand_core::OsRng, message)
++            .try_sign_with_rng(&mut rng, message)
 +            .map_err(|_| rustls::Error::General("signing failed".into()))
 +            .map(|sig: S| sig.to_vec())
 +    }
@@ -46783,20 +47789,20 @@ index 0000000..e6109f5
 +pub mod rsa;
 diff --git a/vendor/rustls-rustcrypto/src/sign/ecdsa.rs b/vendor/rustls-rustcrypto/src/sign/ecdsa.rs
 new file mode 100644
-index 0000000..3f4a2bc
+index 00000000..347bc259
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/sign/ecdsa.rs
-@@ -0,0 +1,66 @@
+@@ -0,0 +1,71 @@
 +#[cfg(feature = "alloc")]
 +use alloc::{boxed::Box, format, sync::Arc};
 +use core::marker::PhantomData;
 +
++use der::Decode;
 +use paste::paste;
 +use pkcs8::DecodePrivateKey;
 +use pki_types::PrivateKeyDer;
 +use rustls::sign::SigningKey;
 +use rustls::{SignatureAlgorithm, SignatureScheme};
-+use sec1::DecodeEcPrivateKey;
 +
 +macro_rules! impl_ecdsa {
 +    ($name: ident, $scheme: expr, $signing_key: ty, $signature: ty) => {
@@ -46815,10 +47821,15 @@ index 0000000..3f4a2bc
 +                        PrivateKeyDer::Pkcs8(der) => {
 +                            $signing_key::from_pkcs8_der(der.secret_pkcs8_der()).map_err(|e| format!("failed to decrypt private key: {e}"))
 +                        },
-+                        PrivateKeyDer::Sec1(sec1) => {
-+                            $signing_key::from_sec1_der(sec1.secret_sec1_der()).map_err(|e| format!("failed to decrypt private key: {e}"))
-+                        },
 +                        PrivateKeyDer::Pkcs1(_) => Err(format!("ECDSA does not support PKCS#1 key")),
++                        PrivateKeyDer::Sec1(der) => {
++                            sec1::EcPrivateKey::from_der(der.secret_sec1_der())
++                                .map_err(|e| format!("failed to parse SEC1 EC private key: {e}"))
++                                .and_then(|ec_key| {
++                                    $signing_key::from_slice(ec_key.private_key)
++                                        .map_err(|e| format!("failed to create signing key: {e}"))
++                                })
++                        },
 +                        _ => Err("not supported".into()),
 +                    };
 +                    pkey.map(|kp| {
@@ -46855,10 +47866,10 @@ index 0000000..3f4a2bc
 +impl_ecdsa! {P384, SignatureScheme::ECDSA_NISTP384_SHA384, p384::ecdsa::SigningKey, p384::ecdsa::DerSignature}
 diff --git a/vendor/rustls-rustcrypto/src/sign/eddsa.rs b/vendor/rustls-rustcrypto/src/sign/eddsa.rs
 new file mode 100644
-index 0000000..e6f0d1a
+index 00000000..15f4fe8e
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/sign/eddsa.rs
-@@ -0,0 +1,57 @@
+@@ -0,0 +1,53 @@
 +#[cfg(feature = "alloc")]
 +use alloc::{boxed::Box, format, string::ToString, sync::Arc};
 +use core::marker::PhantomData;
@@ -46867,7 +47878,6 @@ index 0000000..e6f0d1a
 +use pki_types::PrivateKeyDer;
 +use rustls::sign::{Signer, SigningKey};
 +use rustls::{SignatureAlgorithm, SignatureScheme};
-+use sec1::DecodeEcPrivateKey;
 +
 +#[derive(Debug)]
 +pub struct Ed25519SigningKey {
@@ -46884,11 +47894,8 @@ index 0000000..e6f0d1a
 +                ed25519_dalek::SigningKey::from_pkcs8_der(der.secret_pkcs8_der())
 +                    .map_err(|e| format!("failed to decrypt private key: {e}"))
 +            }
-+            PrivateKeyDer::Sec1(sec1) => {
-+                ed25519_dalek::SigningKey::from_sec1_der(sec1.secret_sec1_der())
-+                    .map_err(|e| format!("failed to decrypt private key: {e}"))
-+            }
 +            PrivateKeyDer::Pkcs1(_) => Err("ED25519 does not support PKCS#1 key".to_string()),
++            PrivateKeyDer::Sec1(_) => Err("ED25519 does not support SEC1 key".to_string()),
 +            _ => Err("not supported".into()),
 +        };
 +        pkey.map(|kp| Self {
@@ -46918,7 +47925,7 @@ index 0000000..e6f0d1a
 +}
 diff --git a/vendor/rustls-rustcrypto/src/sign/rsa.rs b/vendor/rustls-rustcrypto/src/sign/rsa.rs
 new file mode 100644
-index 0000000..ab27d36
+index 00000000..c816c263
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/sign/rsa.rs
 @@ -0,0 +1,78 @@
@@ -46954,7 +47961,7 @@ index 0000000..ab27d36
 +                .map_err(|e| format!("failed to decrypt private key: {e}")),
 +            PrivateKeyDer::Pkcs1(der) => RsaPrivateKey::from_pkcs1_der(der.secret_pkcs1_der())
 +                .map_err(|e| format!("failed to decrypt private key: {e}")),
-+            PrivateKeyDer::Sec1(_) => Err("RSA does not support SEC-1 key".to_string()),
++            PrivateKeyDer::Sec1(_) => Err("RSA does not support SEC1 key".to_string()),
 +            _ => Err("not supported".into()),
 +        };
 +
@@ -47002,7 +48009,7 @@ index 0000000..ab27d36
 +}
 diff --git a/vendor/rustls-rustcrypto/src/verify.rs b/vendor/rustls-rustcrypto/src/verify.rs
 new file mode 100644
-index 0000000..2043b64
+index 00000000..2043b641
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/verify.rs
 @@ -0,0 +1,46 @@
@@ -47054,16 +48061,15 @@ index 0000000..2043b64
 +pub mod rsa;
 diff --git a/vendor/rustls-rustcrypto/src/verify/ecdsa.rs b/vendor/rustls-rustcrypto/src/verify/ecdsa.rs
 new file mode 100644
-index 0000000..c05923a
+index 00000000..743a6c51
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/verify/ecdsa.rs
-@@ -0,0 +1,54 @@
+@@ -0,0 +1,53 @@
 +use der::Decode;
 +use digest::Digest;
 +use paste::paste;
-+use pki_types::{AlgorithmIdentifier, InvalidSignature, SignatureVerificationAlgorithm};
++use pki_types::{alg_id, AlgorithmIdentifier, InvalidSignature, SignatureVerificationAlgorithm};
 +use signature::hazmat::PrehashVerifier;
-+use rustls::pki_types::alg_id;
 +
 +macro_rules! impl_generic_ecdsa_verifer {
 +    (
@@ -47114,13 +48120,12 @@ index 0000000..c05923a
 +impl_generic_ecdsa_verifer! {ECDSA_P384_SHA384, alg_id::ECDSA_P384, alg_id::ECDSA_SHA384, p384::ecdsa::VerifyingKey, p384::ecdsa::DerSignature, sha2::Sha384}
 diff --git a/vendor/rustls-rustcrypto/src/verify/eddsa.rs b/vendor/rustls-rustcrypto/src/verify/eddsa.rs
 new file mode 100644
-index 0000000..1ef67ca
+index 00000000..61009e13
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/verify/eddsa.rs
-@@ -0,0 +1,33 @@
-+use pki_types::{AlgorithmIdentifier, InvalidSignature, SignatureVerificationAlgorithm};
+@@ -0,0 +1,32 @@
++use pki_types::{alg_id, AlgorithmIdentifier, InvalidSignature, SignatureVerificationAlgorithm};
 +use signature::Verifier;
-+use rustls::pki_types::alg_id;
 +
 +#[derive(Debug)]
 +struct Ed25519Verify;
@@ -47153,17 +48158,16 @@ index 0000000..1ef67ca
 +pub const ED25519: &dyn SignatureVerificationAlgorithm = &Ed25519Verify;
 diff --git a/vendor/rustls-rustcrypto/src/verify/rsa.rs b/vendor/rustls-rustcrypto/src/verify/rsa.rs
 new file mode 100644
-index 0000000..9bb5ee5
+index 00000000..bd79a97d
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/verify/rsa.rs
-@@ -0,0 +1,92 @@
+@@ -0,0 +1,91 @@
 +use paste::paste;
-+use pki_types::{AlgorithmIdentifier, InvalidSignature, SignatureVerificationAlgorithm};
++use pki_types::{alg_id, AlgorithmIdentifier, InvalidSignature, SignatureVerificationAlgorithm};
 +use rsa::pkcs1::DecodeRsaPublicKey;
 +use rsa::{pkcs1v15, pss, RsaPublicKey};
 +use sha2::{Sha256, Sha384, Sha512};
 +use signature::Verifier;
-+use rustls::pki_types::alg_id;
 +
 +macro_rules! impl_generic_rsa_verifer {
 +    (
@@ -47251,7 +48255,7 @@ index 0000000..9bb5ee5
 +);
 diff --git a/vendor/rustls-rustcrypto/tests-external/badssl.rs b/vendor/rustls-rustcrypto/tests-external/badssl.rs
 new file mode 100644
-index 0000000..7da3a4d
+index 00000000..7da3a4db
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/tests-external/badssl.rs
 @@ -0,0 +1,53 @@
@@ -47310,7 +48314,7 @@ index 0000000..7da3a4d
 +mod client;
 diff --git a/vendor/rustls-rustcrypto/tests-external/client.rs b/vendor/rustls-rustcrypto/tests-external/client.rs
 new file mode 100644
-index 0000000..addae02
+index 00000000..addae02a
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/tests-external/client.rs
 @@ -0,0 +1,37 @@
@@ -47353,7 +48357,7 @@ index 0000000..addae02
 +}
 diff --git a/vendor/rustls-rustcrypto/tests-external/generic.rs b/vendor/rustls-rustcrypto/tests-external/generic.rs
 new file mode 100644
-index 0000000..28f23da
+index 00000000..28f23da6
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/tests-external/generic.rs
 @@ -0,0 +1,30 @@
@@ -47389,7 +48393,7 @@ index 0000000..28f23da
 +mod client;
 diff --git a/vendor/rustls-rustcrypto/tests/builder.rs b/vendor/rustls-rustcrypto/tests/builder.rs
 new file mode 100644
-index 0000000..bab5d85
+index 00000000..bab5d855
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/tests/builder.rs
 @@ -0,0 +1,83 @@
@@ -47478,7 +48482,7 @@ index 0000000..bab5d85
 +}
 diff --git a/vendor/rustls-rustcrypto/tests/fake_cert_client_verifier.rs b/vendor/rustls-rustcrypto/tests/fake_cert_client_verifier.rs
 new file mode 100644
-index 0000000..a8dc9cc
+index 00000000..a8dc9cc1
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/tests/fake_cert_client_verifier.rs
 @@ -0,0 +1,71 @@
@@ -47555,7 +48559,7 @@ index 0000000..a8dc9cc
 +}
 diff --git a/vendor/rustls-rustcrypto/tests/fake_cert_server_resolver.rs b/vendor/rustls-rustcrypto/tests/fake_cert_server_resolver.rs
 new file mode 100644
-index 0000000..7028c8b
+index 00000000..7028c8b3
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/tests/fake_cert_server_resolver.rs
 @@ -0,0 +1,15 @@
@@ -47576,7 +48580,7 @@ index 0000000..7028c8b
 +}
 diff --git a/vendor/rustls-rustcrypto/tests/fake_cert_server_verifier.rs b/vendor/rustls-rustcrypto/tests/fake_cert_server_verifier.rs
 new file mode 100644
-index 0000000..2786058
+index 00000000..2786058a
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/tests/fake_cert_server_verifier.rs
 @@ -0,0 +1,59 @@
@@ -47641,7 +48645,7 @@ index 0000000..2786058
 +}
 diff --git a/vendor/rustls-rustcrypto/tests/fake_time.rs b/vendor/rustls-rustcrypto/tests/fake_time.rs
 new file mode 100644
-index 0000000..83dc3fa
+index 00000000..83dc3faf
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/tests/fake_time.rs
 @@ -0,0 +1,11 @@
@@ -47658,7 +48662,7 @@ index 0000000..83dc3fa
 +}
 diff --git a/vendor/rustls-rustcrypto/validation/README.md b/vendor/rustls-rustcrypto/validation/README.md
 new file mode 100644
-index 0000000..4670c20
+index 00000000..4670c207
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/validation/README.md
 @@ -0,0 +1,15 @@
@@ -47678,7 +48682,7 @@ index 0000000..4670c20
 +dependencies which are may or may not be in lock-step with current version of
 +rustls the provider targets in any given time.
 diff --git a/xtask/src/main.rs b/xtask/src/main.rs
-index 819326f..0048afb 100644
+index 819326fc..0048afb9 100644
 --- a/xtask/src/main.rs
 +++ b/xtask/src/main.rs
 @@ -112,7 +112,11 @@ const SAME_LAYER: &[(&str, &str)] = &[

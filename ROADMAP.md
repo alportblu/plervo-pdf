@@ -1,3 +1,15 @@
+Product dependency maintenance — 2026-10-26: update Photo/Video to Tokio 1.53.3;
+refresh Develop/Video's pinned upstream TLS provider and require crypto-bigint
+0.7.9. All three local dependency audits and 32 fetch/speech tests pass; original
+notices retained. Native candidates still require qualification. Vector's prior
+Fedora mirror timeout is separate. [Review](products/SECURITY-REVIEW.md).
+
+Acceptance-tool maintenance — 2026-10-25: pin validation-only `pypdf` to 6.21.2
+with its verified PyPI wheel hash for the image-decoder and malformed-PDF
+denial-of-service advisories. Local decoder, repeated-reference, malformed-xref
+and existing export checks pass. Native candidate CI remains required; no app
+includes this Python dependency and no public installer changes here.
+
 Security maintenance — 2026-10-25: update `crypto-bigint` from 0.7.5 to 0.7.9
 and its resolved `ctutils` dependency from 0.4.4 to 0.4.5 after RUSTSEC-2026-0387
 failed the nightly audit. Original license texts are preserved; no advisory is

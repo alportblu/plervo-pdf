@@ -59,20 +59,20 @@ Authors: Jonas Schievink <jonasschievink@gmail.com>; oyvindln <oyvindln@users.no
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/adler2/2.0.1/download
 
-aead@0.5.2 | MIT OR Apache-2.0
+aead@0.6.1 | MIT OR Apache-2.0
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/aead/0.5.2/download
+Source archive: https://crates.io/api/v1/crates/aead/0.6.1/download
 
-aes-gcm@0.10.3 | Apache-2.0 OR MIT
+aes-gcm@0.11.1 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/aes-gcm/0.10.3/download
+Source archive: https://crates.io/api/v1/crates/aes-gcm/0.11.1/download
 
-aes@0.8.4 | MIT OR Apache-2.0
+aes@0.9.3 | MIT OR Apache-2.0
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/aes/0.8.4/download
+Source archive: https://crates.io/api/v1/crates/aes/0.9.3/download
 
 ahash@0.8.12 | MIT OR Apache-2.0
 Authors: Tom Kaitchuck <Tom.Kaitchuck@gmail.com>
@@ -199,10 +199,10 @@ Authors: Josh Stone <cuviper@gmail.com>
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/autocfg/1.5.1/download
 
-base16ct@0.2.0 | Apache-2.0 OR MIT
+base16ct@1.0.0 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/base16ct/0.2.0/download
+Source archive: https://crates.io/api/v1/crates/base16ct/1.0.0/download
 
 base64@0.22.1 | MIT OR Apache-2.0
 Authors: Marshall Pierce <marshall@mpierce.org>
@@ -243,6 +243,11 @@ block-buffer@0.10.4 | MIT OR Apache-2.0
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/block-buffer/0.10.4/download
+
+block-buffer@0.12.1 | MIT OR Apache-2.0
+Authors: RustCrypto Developers
+Source: registry+https://github.com/rust-lang/crates.io-index
+Source archive: https://crates.io/api/v1/crates/block-buffer/0.12.1/download
 
 block2@0.5.1 | MIT
 Authors: Steven Sheldon; Mads Marquart <mads@marquart.dk>
@@ -343,30 +348,35 @@ Authors: Zicklag <zicklag@katharostech.com>
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/cfg_aliases/0.2.2/download
 
-chacha20@0.9.1 | Apache-2.0 OR MIT
+chacha20@0.10.2 | MIT OR Apache-2.0
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/chacha20/0.9.1/download
+Source archive: https://crates.io/api/v1/crates/chacha20/0.10.2/download
 
-chacha20poly1305@0.10.1 | Apache-2.0 OR MIT
+chacha20poly1305@0.11.0 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/chacha20poly1305/0.10.1/download
+Source archive: https://crates.io/api/v1/crates/chacha20poly1305/0.11.0/download
 
 chrono@0.4.45 | MIT OR Apache-2.0
 Authors: See upstream source notices
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/chrono/0.4.45/download
 
-cipher@0.4.4 | MIT OR Apache-2.0
+cipher@0.5.2 | MIT OR Apache-2.0
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/cipher/0.4.4/download
+Source archive: https://crates.io/api/v1/crates/cipher/0.5.2/download
 
 clipboard-win@5.4.1 | BSL-1.0
 Authors: Douman <douman@gmx.se>
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/clipboard-win/5.4.1/download
+
+cmov@0.5.4 | Apache-2.0 OR MIT
+Authors: RustCrypto Developers
+Source: registry+https://github.com/rust-lang/crates.io-index
+Source archive: https://crates.io/api/v1/crates/cmov/0.5.4/download
 
 codespan-reporting@0.13.1 | Apache-2.0
 Authors: Brendan Zabarauskas <bjzaba@yahoo.com.au>
@@ -388,10 +398,10 @@ Authors: Stjepan Glavina <stjepang@gmail.com>; Taiki Endo <te316e89@gmail.com>; 
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/concurrent-queue/2.5.0/download
 
-const-oid@0.9.6 | Apache-2.0 OR MIT
+const-oid@0.10.2 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/const-oid/0.9.6/download
+Source archive: https://crates.io/api/v1/crates/const-oid/0.10.2/download
 
 core-foundation-sys@0.8.7 | MIT OR Apache-2.0
 Authors: The Servo Project Developers
@@ -438,10 +448,20 @@ Authors: Paul Colomiets <paul@colomiets.name>
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/cpu-time/1.0.0/download
 
+cpubits@0.1.1 | MIT OR Apache-2.0
+Authors: RustCrypto Developers
+Source: registry+https://github.com/rust-lang/crates.io-index
+Source archive: https://crates.io/api/v1/crates/cpubits/0.1.1/download
+
 cpufeatures@0.2.17 | MIT OR Apache-2.0
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/cpufeatures/0.2.17/download
+
+cpufeatures@0.3.1 | MIT OR Apache-2.0
+Authors: RustCrypto Developers
+Source: registry+https://github.com/rust-lang/crates.io-index
+Source archive: https://crates.io/api/v1/crates/cpufeatures/0.3.1/download
 
 craft-ui@0.1.0 | MIT OR Apache-2.0
 Authors: See upstream source notices
@@ -472,20 +492,35 @@ Authors: See upstream source notices
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/crossbeam-utils/0.8.23/download
 
-crypto-bigint@0.5.5 | Apache-2.0 OR MIT
+crypto-bigint@0.7.9 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/crypto-bigint/0.5.5/download
+Source archive: https://crates.io/api/v1/crates/crypto-bigint/0.7.9/download
 
 crypto-common@0.1.7 | MIT OR Apache-2.0
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/crypto-common/0.1.7/download
 
-ctr@0.9.2 | MIT OR Apache-2.0
+crypto-common@0.2.2 | MIT OR Apache-2.0
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/ctr/0.9.2/download
+Source archive: https://crates.io/api/v1/crates/crypto-common/0.2.2/download
+
+crypto-primes@0.7.2 | Apache-2.0 OR MIT
+Authors: See upstream source notices
+Source: registry+https://github.com/rust-lang/crates.io-index
+Source archive: https://crates.io/api/v1/crates/crypto-primes/0.7.2/download
+
+ctr@0.10.1 | MIT OR Apache-2.0
+Authors: RustCrypto Developers
+Source: registry+https://github.com/rust-lang/crates.io-index
+Source archive: https://crates.io/api/v1/crates/ctr/0.10.1/download
+
+ctutils@0.4.6 | Apache-2.0 OR MIT
+Authors: RustCrypto Developers
+Source: registry+https://github.com/rust-lang/crates.io-index
+Source archive: https://crates.io/api/v1/crates/ctutils/0.4.6/download
 
 cursor-icon@1.2.0 | MIT OR Apache-2.0 OR Zlib
 Authors: Kirill Chibisov <contact@kchibisov.com>
@@ -497,10 +532,10 @@ Authors: See upstream source notices
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/curve25519-dalek-derive/0.1.1/download
 
-curve25519-dalek@4.1.3 | BSD-3-Clause
+curve25519-dalek@5.0.0 | BSD-3-Clause
 Authors: Isis Lovecruft <isis@patternsinthevoid.net>; Henry de Valence <hdevalence@hdevalence.ca>
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/curve25519-dalek/4.1.3/download
+Source archive: https://crates.io/api/v1/crates/curve25519-dalek/5.0.0/download
 
 darling@0.24.1 | MIT
 Authors: Ted Driggs <ted.driggs@outlook.com>
@@ -522,15 +557,20 @@ Authors: mitchmindtree <mitchell.nordine@gmail.com>
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/dasp_sample/0.11.0/download
 
-der@0.7.10 | Apache-2.0 OR MIT
+der@0.8.3 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/der/0.7.10/download
+Source archive: https://crates.io/api/v1/crates/der/0.8.3/download
 
 digest@0.10.7 | MIT OR Apache-2.0
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/digest/0.10.7/download
+
+digest@0.11.3 | MIT OR Apache-2.0
+Authors: RustCrypto Developers
+Source: registry+https://github.com/rust-lang/crates.io-index
+Source archive: https://crates.io/api/v1/crates/digest/0.11.3/download
 
 dispatch2@0.3.1 | Zlib OR Apache-2.0 OR MIT
 Authors: Mads Marquart <mads@marquart.dk>; Mary <mary@mary.zone>
@@ -577,25 +617,25 @@ Authors: sarah <>
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/dyn-stack/0.13.2/download
 
-ecdsa@0.16.9 | Apache-2.0 OR MIT
+ecdsa@0.17.0 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/ecdsa/0.16.9/download
+Source archive: https://crates.io/api/v1/crates/ecdsa/0.17.0/download
 
 ecolor@0.36.2 | MIT OR Apache-2.0
 Authors: Emil Ernerfeldt <emil.ernerfeldt@gmail.com>; Andreas Reich <reichandreas@gmx.de>
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/ecolor/0.36.2/download
 
-ed25519-dalek@2.2.0 | BSD-3-Clause
+ed25519-dalek@3.0.0 | BSD-3-Clause
 Authors: isis lovecruft <isis@patternsinthevoid.net>; Tony Arcieri <bascule@gmail.com>; Michael Rosenberg <michael@mrosenberg.pub>
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/ed25519-dalek/2.2.0/download
+Source archive: https://crates.io/api/v1/crates/ed25519-dalek/3.0.0/download
 
-ed25519@2.2.3 | Apache-2.0 OR MIT
+ed25519@3.0.0 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/ed25519/2.2.3/download
+Source archive: https://crates.io/api/v1/crates/ed25519/3.0.0/download
 
 eframe@0.36.2 | MIT OR Apache-2.0
 Authors: Emil Ernerfeldt <emil.ernerfeldt@gmail.com>
@@ -622,10 +662,10 @@ Authors: See upstream source notices
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/either/1.18.0/download
 
-elliptic-curve@0.13.8 | Apache-2.0 OR MIT
+elliptic-curve@0.14.3 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/elliptic-curve/0.13.8/download
+Source archive: https://crates.io/api/v1/crates/elliptic-curve/0.14.3/download
 
 emath@0.36.2 | MIT OR Apache-2.0
 Authors: Emil Ernerfeldt <emil.ernerfeldt@gmail.com>
@@ -722,10 +762,15 @@ Authors: Raph Levien <raph.levien@gmail.com>
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/fearless_simd/0.4.1/download
 
-ff@0.13.1 | MIT OR Apache-2.0
+ff@0.14.0 | MIT/Apache-2.0
 Authors: Sean Bowe <ewillbefull@gmail.com>; Jack Grigg <thestr4d@gmail.com>
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/ff/0.13.1/download
+Source archive: https://crates.io/api/v1/crates/ff/0.14.0/download
+
+fiat-crypto@0.3.0 | MIT OR Apache-2.0 OR BSD-1-Clause
+Authors: Fiat Crypto library authors <jgross@mit.edu>
+Source: registry+https://github.com/rust-lang/crates.io-index
+Source archive: https://crates.io/api/v1/crates/fiat-crypto/0.3.0/download
 
 field-offset@0.3.6 | MIT OR Apache-2.0
 Authors: Diggory Blake <diggsey@googlemail.com>
@@ -902,10 +947,10 @@ Authors: The Rand Project Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/getrandom/0.4.3/download
 
-ghash@0.5.1 | Apache-2.0 OR MIT
+ghash@0.6.0 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/ghash/0.5.1/download
+Source archive: https://crates.io/api/v1/crates/ghash/0.6.0/download
 
 gif@0.14.2 | MIT OR Apache-2.0
 Authors: The image-rs Developers
@@ -962,10 +1007,10 @@ Authors: Traverse Research <opensource@traverseresearch.nl>
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/gpu-allocator/0.28.0/download
 
-group@0.13.0 | MIT OR Apache-2.0
+group@0.14.0 | MIT/Apache-2.0
 Authors: Sean Bowe <ewillbefull@gmail.com>; Jack Grigg <jack@z.cash>
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/group/0.13.0/download
+Source archive: https://crates.io/api/v1/crates/group/0.14.0/download
 
 gtk-sys@0.18.2 | MIT
 Authors: The gtk-rs Project Developers
@@ -1022,15 +1067,15 @@ Authors: KokaKiwi <kokakiwi@kokakiwi.net>
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/hex/0.4.3/download
 
-hkdf@0.12.4 | MIT OR Apache-2.0
+hkdf@0.13.0 | MIT OR Apache-2.0
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/hkdf/0.12.4/download
+Source archive: https://crates.io/api/v1/crates/hkdf/0.13.0/download
 
-hmac@0.12.1 | MIT OR Apache-2.0
+hmac@0.13.0 | MIT OR Apache-2.0
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/hmac/0.12.1/download
+Source archive: https://crates.io/api/v1/crates/hmac/0.13.0/download
 
 http@1.5.0 | MIT OR Apache-2.0
 Authors: Alex Crichton <alex@alexcrichton.com>; Carl Lerche <me@carllerche.com>; Sean McArthur <sean@seanmonstar.com>
@@ -1041,6 +1086,11 @@ httparse@1.10.1 | MIT OR Apache-2.0
 Authors: Sean McArthur <sean@seanmonstar.com>
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/httparse/1.10.1/download
+
+hybrid-array@0.4.15 | MIT OR Apache-2.0
+Authors: RustCrypto Developers
+Source: registry+https://github.com/rust-lang/crates.io-index
+Source archive: https://crates.io/api/v1/crates/hybrid-array/0.4.15/download
 
 iana-time-zone@0.1.65 | MIT OR Apache-2.0
 Authors: Andrew Straw <strawman@astraw.com>; René Kijewski <rene.kijewski@fu-berlin.de>; Ryan Lopopolo <rjl@hyperbo.la>
@@ -1067,10 +1117,10 @@ Authors: See upstream source notices
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/indexmap/2.14.2/download
 
-inout@0.1.4 | MIT OR Apache-2.0
+inout@0.2.5 | MIT OR Apache-2.0
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/inout/0.1.4/download
+Source archive: https://crates.io/api/v1/crates/inout/0.2.5/download
 
 is-docker@0.2.0 | MIT
 Authors: Sean Larkin <TheLarkInn@users.noreply.github.com>
@@ -1232,25 +1282,10 @@ Authors: Parity Technologies <admin@parity.io>
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/nohash-hasher/0.2.0/download
 
-num-bigint-dig@0.8.6 | MIT OR Apache-2.0
-Authors: dignifiedquire <dignifiedquire@gmail.com>; The Rust Project Developers
-Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/num-bigint-dig/0.8.6/download
-
 num-complex@0.4.6 | MIT OR Apache-2.0
 Authors: The Rust Project Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/num-complex/0.4.6/download
-
-num-integer@0.1.47 | MIT OR Apache-2.0
-Authors: The Rust Project Developers
-Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/num-integer/0.1.47/download
-
-num-iter@0.1.46 | MIT OR Apache-2.0
-Authors: The Rust Project Developers
-Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/num-iter/0.1.46/download
 
 num-traits@0.2.19 | MIT OR Apache-2.0
 Authors: The Rust Project Developers
@@ -1357,11 +1392,6 @@ Authors: Aleksey Kladov <aleksey.kladov@gmail.com>
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/once_cell/1.21.4/download
 
-opaque-debug@0.3.1 | MIT OR Apache-2.0
-Authors: RustCrypto Developers
-Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/opaque-debug/0.3.1/download
-
 open@5.4.4 | MIT
 Authors: Sebastian Thiel <byronimo@gmail.com>
 Source: registry+https://github.com/rust-lang/crates.io-index
@@ -1382,15 +1412,15 @@ Authors: Daniel De Graaf <code@danieldg.net>; Zeeshan Ali Khan <zeeshanak@gnome.
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/ordered-stream/0.2.0/download
 
-p256@0.13.2 | Apache-2.0 OR MIT
+p256@0.14.0 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/p256/0.13.2/download
+Source archive: https://crates.io/api/v1/crates/p256/0.14.0/download
 
-p384@0.13.1 | Apache-2.0 OR MIT
+p384@0.14.0 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers; Frank Denis <github@pureftpd.org>
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/p384/0.13.1/download
+Source archive: https://crates.io/api/v1/crates/p384/0.14.0/download
 
 pango-sys@0.18.0 | MIT
 Authors: The gtk-rs Project Developers
@@ -1427,10 +1457,10 @@ Authors: Aditya Kumar <git@adityais.dev>; David Tolnay <dtolnay@gmail.com>
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/pastey/0.2.3/download
 
-pem-rfc7468@0.7.0 | Apache-2.0 OR MIT
+pem-rfc7468@1.0.0 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/pem-rfc7468/0.7.0/download
+Source archive: https://crates.io/api/v1/crates/pem-rfc7468/1.0.0/download
 
 peniko@0.6.1 | Apache-2.0 OR MIT
 Authors: See upstream source notices
@@ -1472,20 +1502,15 @@ Authors: Stjepan Glavina <stjepang@gmail.com>; John Nunley <dev@notgull.net>
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/piper/0.2.5/download
 
-pkcs1@0.7.5 | Apache-2.0 OR MIT
+pkcs1@0.8.0-rc.5 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/pkcs1/0.7.5/download
+Source archive: https://crates.io/api/v1/crates/pkcs1/0.8.0-rc.5/download
 
-pkcs5@0.7.1 | Apache-2.0 OR MIT
+pkcs8@0.11.0 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/pkcs5/0.7.1/download
-
-pkcs8@0.10.2 | Apache-2.0 OR MIT
-Authors: RustCrypto Developers
-Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/pkcs8/0.10.2/download
+Source archive: https://crates.io/api/v1/crates/pkcs8/0.11.0/download
 
 pkg-config@0.3.34 | MIT OR Apache-2.0
 Authors: Alex Crichton <alex@alexcrichton.com>
@@ -1512,20 +1537,20 @@ Authors: Joshua Barretto <joshua@jsbarretto.com>
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/pollster/1.0.1/download
 
-poly1305@0.8.0 | Apache-2.0 OR MIT
+poly1305@0.9.1 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/poly1305/0.8.0/download
+Source archive: https://crates.io/api/v1/crates/poly1305/0.9.1/download
 
 polycool@0.4.0 | MIT OR Apache-2.0
 Authors: See upstream source notices
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/polycool/0.4.0/download
 
-polyval@0.6.2 | Apache-2.0 OR MIT
+polyval@0.7.3 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/polyval/0.6.2/download
+Source archive: https://crates.io/api/v1/crates/polyval/0.7.3/download
 
 ppv-lite86@0.2.21 | MIT OR Apache-2.0
 Authors: The CryptoCorrosion Contributors
@@ -1537,10 +1562,15 @@ Authors: Embark <opensource@embark-studios.com>; Gray Olson <gray@grayolson.com
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/presser/0.3.1/download
 
-primeorder@0.13.6 | Apache-2.0 OR MIT
+primefield@0.14.0 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/primeorder/0.13.6/download
+Source archive: https://crates.io/api/v1/crates/primefield/0.14.0/download
+
+primeorder@0.14.0 | Apache-2.0 OR MIT
+Authors: RustCrypto Developers
+Source: registry+https://github.com/rust-lang/crates.io-index
+Source archive: https://crates.io/api/v1/crates/primeorder/0.14.0/download
 
 proc-macro-crate@1.3.1 | MIT OR Apache-2.0
 Authors: Bastian Köcher <git@kchr.de>
@@ -1607,30 +1637,20 @@ Authors: David Tolnay <dtolnay@gmail.com>
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/quote/1.0.47/download
 
-rand@0.8.8 | MIT OR Apache-2.0
-Authors: The Rand Project Developers; The Rust Project Developers
-Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/rand/0.8.8/download
-
 rand@0.9.5 | MIT OR Apache-2.0
 Authors: The Rand Project Developers; The Rust Project Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/rand/0.9.5/download
-
-rand_chacha@0.3.1 | MIT OR Apache-2.0
-Authors: The Rand Project Developers; The Rust Project Developers; The CryptoCorrosion Contributors
-Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/rand_chacha/0.3.1/download
 
 rand_chacha@0.9.0 | MIT OR Apache-2.0
 Authors: The Rand Project Developers; The Rust Project Developers; The CryptoCorrosion Contributors
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/rand_chacha/0.9.0/download
 
-rand_core@0.6.4 | MIT OR Apache-2.0
-Authors: The Rand Project Developers; The Rust Project Developers
+rand_core@0.10.1 | MIT OR Apache-2.0
+Authors: The Rand Project Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/rand_core/0.6.4/download
+Source archive: https://crates.io/api/v1/crates/rand_core/0.10.1/download
 
 rand_core@0.9.5 | MIT OR Apache-2.0
 Authors: The Rand Project Developers; The Rust Project Developers
@@ -1697,10 +1717,10 @@ Authors: Eyal Kalderon <ebkalderon@gmail.com>
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/renderdoc-sys/1.1.0/download
 
-rfc6979@0.4.0 | Apache-2.0 OR MIT
+rfc6979@0.6.0 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/rfc6979/0.4.0/download
+Source archive: https://crates.io/api/v1/crates/rfc6979/0.6.0/download
 
 rfd@0.17.2 | MIT
 Authors: Poly <marynczak.bartlomiej@gmail.com>
@@ -1722,10 +1742,10 @@ Authors: Yevhenii Reizner <razrfalcon@gmail.com>
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/roxmltree/0.21.1/download
 
-rsa@0.9.10 | MIT OR Apache-2.0
+rsa@0.10.0-rc.19 | MIT OR Apache-2.0
 Authors: RustCrypto Developers; dignifiedquire <dignifiedquire@gmail.com>
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/rsa/0.9.10/download
+Source archive: https://crates.io/api/v1/crates/rsa/0.10.0-rc.19/download
 
 rustc-hash@1.1.0 | Apache-2.0 OR MIT
 Authors: The Rust Project Developers
@@ -1769,7 +1789,7 @@ Source archive: https://crates.io/api/v1/crates/rustls-platform-verifier/0.7.1/d
 
 rustls-rustcrypto@0.0.2-alpha | MIT OR Apache-2.0
 Authors: RustCrypto Developers
-Source: Plervo source overlay https://github.com/alportblu/plervo-pdf/blob/v0.1.0-alpha.8/products/patches/video.patch ; source file vendor/rustls-rustcrypto/Cargo.toml
+Source: https://github.com/RustCrypto/rustls-rustcrypto/blob/70f76c039e587192688af18a80d5d6435dedaf22/Cargo.toml
 
 rustls-webpki@0.103.16 | ISC
 Authors: See upstream source notices
@@ -1821,10 +1841,10 @@ Authors: bluss
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/scopeguard/1.2.0/download
 
-sec1@0.7.3 | Apache-2.0 OR MIT
+sec1@0.8.1 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/sec1/0.7.3/download
+Source archive: https://crates.io/api/v1/crates/sec1/0.8.1/download
 
 security-framework-sys@2.17.0 | MIT OR Apache-2.0
 Authors: Steven Fackler <sfackler@gmail.com>; Kornel <kornel@geekhood.net>
@@ -1891,10 +1911,20 @@ Authors: See upstream source notices
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/serde_spanned/1.1.1/download
 
+serdect@0.4.3 | Apache-2.0 OR MIT
+Authors: RustCrypto Developers
+Source: registry+https://github.com/rust-lang/crates.io-index
+Source archive: https://crates.io/api/v1/crates/serdect/0.4.3/download
+
 sha2@0.10.9 | MIT OR Apache-2.0
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/sha2/0.10.9/download
+
+sha2@0.11.1 | MIT OR Apache-2.0
+Authors: RustCrypto Developers
+Source: registry+https://github.com/rust-lang/crates.io-index
+Source archive: https://crates.io/api/v1/crates/sha2/0.11.1/download
 
 shlex@2.0.1 | MIT OR Apache-2.0
 Authors: comex <comexk@gmail.com>; Fenhl <fenhl@fenhl.net>; Adrian Taylor <adetaylor@chromium.org>; Alex Touchet <alextouchet@outlook.com>; Daniel Parks <dp+git@oxidized.org>; Garrett Berg <googberg@gmail.com>
@@ -1906,10 +1936,10 @@ Authors: Michal 'vorner' Vaner <vorner@vorner.cz>; Masaki Hara <ackie.h.gmai@gma
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/signal-hook-registry/1.4.8/download
 
-signature@2.2.0 | Apache-2.0 OR MIT
+signature@3.0.0 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/signature/2.2.0/download
+Source archive: https://crates.io/api/v1/crates/signature/3.0.0/download
 
 simd-adler32@0.3.10 | MIT
 Authors: Marvin Countryman <me@maar.vin>
@@ -1966,20 +1996,15 @@ Authors: Alex Crichton <alex@alexcrichton.com>; Thomas de Zeeuw <thomasdezeeuw@g
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/socket2/0.6.5/download
 
-spin@0.9.9 | MIT
-Authors: Mathijs van de Nes <git@mathijs.vd-nes.nl>; John Ericson <git@JohnEricson.me>; Joshua Barretto <joshua.s.barretto@gmail.com>
-Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/spin/0.9.9/download
-
 spirv@0.4.0+sdk-1.4.341.0 | Apache-2.0
 Authors: Lei Zhang <antiagainst@gmail.com>
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/spirv/0.4.0+sdk-1.4.341.0/download
 
-spki@0.7.3 | Apache-2.0 OR MIT
+spki@0.8.1 | Apache-2.0 OR MIT
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/spki/0.7.3/download
+Source archive: https://crates.io/api/v1/crates/spki/0.8.1/download
 
 stable_deref_trait@1.2.1 | MIT OR Apache-2.0
 Authors: Robert Grosse <n210241048576@gmail.com>
@@ -2146,10 +2171,10 @@ Authors: Tokio Contributors <team@tokio.rs>
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/tokio-util/0.7.19/download
 
-tokio@1.53.1 | MIT
+tokio@1.53.3 | MIT
 Authors: Tokio Contributors <team@tokio.rs>
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/tokio/1.53.1/download
+Source archive: https://crates.io/api/v1/crates/tokio/1.53.3/download
 
 toml@0.8.2 | MIT OR Apache-2.0
 Authors: Alex Crichton <alex@alexcrichton.com>
@@ -2261,10 +2286,10 @@ Authors: kwantam <kwantam@gmail.com>; Manish Goregaokar <manishsmail@gmail.com>
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/unicode-width/0.2.2/download
 
-universal-hash@0.5.1 | MIT OR Apache-2.0
+universal-hash@0.6.1 | MIT OR Apache-2.0
 Authors: RustCrypto Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/universal-hash/0.5.1/download
+Source archive: https://crates.io/api/v1/crates/universal-hash/0.6.1/download
 
 untrusted@0.9.0 | ISC
 Authors: Brian Smith <brian@briansmith.org>
@@ -2566,6 +2591,11 @@ Authors: Max Resch <resch.max@gmail.com>
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/winresource/0.1.31/download
 
+wnaf@0.14.1 | Apache-2.0 OR MIT
+Authors: RustCrypto Developers
+Source: registry+https://github.com/rust-lang/crates.io-index
+Source archive: https://crates.io/api/v1/crates/wnaf/0.14.1/download
+
 x11-dl@2.21.0 | MIT
 Authors: daggerbot <daggerbot@gmail.com>; Erle Pereira <erle@erlepereira.com>; AltF02 <contact@altf2.dev>
 Source: registry+https://github.com/rust-lang/crates.io-index
@@ -2581,10 +2611,10 @@ Authors: Uli Schlachter <psychon@znc.in>; Eduardo Sánchez Muñoz <eduardosm-dev
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/x11rb/0.13.2/download
 
-x25519-dalek@2.0.1 | BSD-3-Clause
+x25519-dalek@3.0.0 | BSD-3-Clause
 Authors: Isis Lovecruft <isis@patternsinthevoid.net>; DebugSteven <debugsteven@gmail.com>; Henry de Valence <hdevalence@hdevalence.ca>
 Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/x25519-dalek/2.0.1/download
+Source archive: https://crates.io/api/v1/crates/x25519-dalek/3.0.0/download
 
 xcursor@0.3.11 | MIT
 Authors: Samuele Esposito
@@ -2676,11 +2706,6 @@ Authors: The RustCrypto Project Developers
 Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/zeroize/1.9.0/download
 
-zeroize_derive@1.5.0 | Apache-2.0 OR MIT
-Authors: The RustCrypto Project Developers
-Source: registry+https://github.com/rust-lang/crates.io-index
-Source archive: https://crates.io/api/v1/crates/zeroize_derive/1.5.0/download
-
 zip@9.0.4 | MIT
 Authors: Mathijs van de Nes <git@mathijs.vd-nes.nl>; Marli Frost <marli@frost.red>; Ryan Levick <ryan.levick@gmail.com>; Chris Hennick <hennickc@amazon.com>
 Source: registry+https://github.com/rust-lang/crates.io-index
@@ -2717,8 +2742,8 @@ Source: registry+https://github.com/rust-lang/crates.io-index
 Source archive: https://crates.io/api/v1/crates/zvariant_utils/4.2.0/download
 
 ==============================================================================
-Applies to: accesskit@0.24.1, accesskit_atspi_common@0.18.1, accesskit_consumer@0.35.0, accesskit_consumer@0.36.0, accesskit_macos@0.26.3, accesskit_unix@0.21.1, accesskit_windows@0.32.1, accesskit_winit@0.32.2, adler2@2.0.1, allocator-api2@0.2.21, async-channel@2.5.0, async-executor@1.14.0, async-io@2.6.0, async-lock@3.4.2, async-process@2.5.0, async-signal@0.2.14, async-task@4.7.1, async-trait@0.1.92, atomic-waker@1.1.2, blocking@1.7.0, candle-nn@0.9.2, concurrent-queue@2.5.0, curve25519-dalek-derive@0.1.1, dyn-clone@1.0.20, endi@1.1.1, event-listener-strategy@0.5.4, event-listener@5.4.2, fastrand@2.5.0, futures-lite@2.6.1, group@0.13.0, itoa@1.0.18, khronos-egl@6.0.0, linux-raw-sys@0.12.1, linux-raw-sys@0.4.15, once_cell@1.21.4, ordered-stream@0.2.0, parking@2.2.1, paste@1.0.15, pastey@0.2.3, pin-project-lite@0.2.17, piper@0.2.5, polling@3.11.0, proc-macro-crate@1.3.1, proc-macro-crate@2.0.2, proc-macro-crate@3.5.0, proc-macro2@1.0.107, quote@1.0.47, ref-cast-impl@1.0.27, ref-cast@1.0.27, rustc-hash@1.1.0, rustix@0.38.44, rustix@1.1.5, rustversion@1.0.23, semver@1.0.28, seq-macro@0.3.6, serde@1.0.229, serde_core@1.0.229, serde_derive@1.0.229, serde_derive_internals@0.30.0, serde_json@1.0.151, serde_repr@0.1.21, smol_str@0.2.2, syn@1.0.109, syn@2.0.119, syn@3.0.6, system-deps@6.2.2, thiserror-impl@1.0.69, thiserror-impl@2.0.21, thiserror@1.0.69, thiserror@2.0.21, typed-path@0.12.3, unicode-ident@1.0.26, utf8-zero@0.8.1, x11-dl@2.21.0, zbus-lockstep-macros@0.5.2, zbus-lockstep@0.5.2, zmij@1.0.23, zvariant_utils@4.2.0
-License: (MIT OR Apache-2.0) AND Unicode-3.0; 0BSD OR MIT OR Apache-2.0; Apache-2.0; Apache-2.0 OR MIT; Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT; MIT; MIT OR Apache-2.0
+Applies to: accesskit@0.24.1, accesskit_atspi_common@0.18.1, accesskit_consumer@0.35.0, accesskit_consumer@0.36.0, accesskit_macos@0.26.3, accesskit_unix@0.21.1, accesskit_windows@0.32.1, accesskit_winit@0.32.2, adler2@2.0.1, allocator-api2@0.2.21, async-channel@2.5.0, async-executor@1.14.0, async-io@2.6.0, async-lock@3.4.2, async-process@2.5.0, async-signal@0.2.14, async-task@4.7.1, async-trait@0.1.92, atomic-waker@1.1.2, blocking@1.7.0, candle-nn@0.9.2, concurrent-queue@2.5.0, curve25519-dalek-derive@0.1.1, dyn-clone@1.0.20, endi@1.1.1, event-listener-strategy@0.5.4, event-listener@5.4.2, fastrand@2.5.0, futures-lite@2.6.1, group@0.14.0, itoa@1.0.18, khronos-egl@6.0.0, linux-raw-sys@0.12.1, linux-raw-sys@0.4.15, once_cell@1.21.4, ordered-stream@0.2.0, parking@2.2.1, paste@1.0.15, pastey@0.2.3, pin-project-lite@0.2.17, piper@0.2.5, polling@3.11.0, proc-macro-crate@1.3.1, proc-macro-crate@2.0.2, proc-macro-crate@3.5.0, proc-macro2@1.0.107, quote@1.0.47, ref-cast-impl@1.0.27, ref-cast@1.0.27, rustc-hash@1.1.0, rustix@0.38.44, rustix@1.1.5, rustversion@1.0.23, semver@1.0.28, seq-macro@0.3.6, serde@1.0.229, serde_core@1.0.229, serde_derive@1.0.229, serde_derive_internals@0.30.0, serde_json@1.0.151, serde_repr@0.1.21, smol_str@0.2.2, syn@1.0.109, syn@2.0.119, syn@3.0.6, system-deps@6.2.2, thiserror-impl@1.0.69, thiserror-impl@2.0.21, thiserror@1.0.69, thiserror@2.0.21, typed-path@0.12.3, unicode-ident@1.0.26, utf8-zero@0.8.1, x11-dl@2.21.0, zbus-lockstep-macros@0.5.2, zbus-lockstep@0.5.2, zmij@1.0.23, zvariant_utils@4.2.0
+License: (MIT OR Apache-2.0) AND Unicode-3.0; 0BSD OR MIT OR Apache-2.0; Apache-2.0; Apache-2.0 OR MIT; Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT; MIT; MIT OR Apache-2.0; MIT/Apache-2.0
 Source: https://crates.io/api/v1/crates/adler2/2.0.1/download#LICENSE-MIT
 Source: https://crates.io/api/v1/crates/allocator-api2/0.2.21/download#LICENSE-MIT
 Source: https://crates.io/api/v1/crates/async-channel/2.5.0/download#LICENSE-MIT
@@ -2740,6 +2765,7 @@ Source: https://crates.io/api/v1/crates/event-listener/5.4.2/download#LICENSE-MI
 Source: https://crates.io/api/v1/crates/fastrand/2.5.0/download#LICENSE-MIT
 Source: https://crates.io/api/v1/crates/futures-lite/2.6.1/download#LICENSE-MIT
 Source: https://crates.io/api/v1/crates/group/0.13.0/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/group/0.14.0/download#LICENSE-MIT
 Source: https://crates.io/api/v1/crates/itoa/1.0.18/download#LICENSE-MIT
 Source: https://crates.io/api/v1/crates/khronos-egl/6.0.0/download#LICENSE-MIT
 Source: https://crates.io/api/v1/crates/linux-raw-sys/0.12.1/download#LICENSE-MIT
@@ -3268,12 +3294,12 @@ limitations under the License.
 
 
 ==============================================================================
-Applies to: aead@0.5.2
-License: MIT; MIT OR Apache-2.0
-Source: https://crates.io/api/v1/crates/aead/0.5.2/download#LICENSE-MIT
-SHA-256 of original text: 949ab7b3e7140fee216f06fe3a2bd67d68dd511f8ea73c1e01c98cb348e9c8ae
+Applies to: aead@0.6.1
+License: MIT OR Apache-2.0
+Source: https://crates.io/api/v1/crates/aead/0.6.1/download#LICENSE-MIT
+SHA-256 of original text: 33b32a251d445c5c03a634e64c53314c55540fc367fabdd45d9b6c8f260c028c
 
-Copyright (c) 2019 The RustCrypto Project Developers
+Copyright (c) 2019-2026 The RustCrypto Project Developers
 Copyright (c) 2019 MobileCoin, LLC
 
 Permission is hereby granted, free of charge, to any
@@ -3302,9 +3328,9 @@ DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: aead@0.5.2
+Applies to: aead@0.6.1
 License: MIT OR Apache-2.0
-Source: https://crates.io/api/v1/crates/aead/0.5.2/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/aead/0.6.1/download#LICENSE-APACHE
 SHA-256 of original text: b1cf9a3333ca78152b859012cd4a804156e5243e9ca20ad1df7327ba5ea7405c
 
                               Apache License
@@ -3512,43 +3538,78 @@ limitations under the License.
 
 
 ==============================================================================
-Applies to: aes-gcm@0.10.3, aes@0.8.4, base16ct@0.2.0, base64ct@1.8.3, block-buffer@0.10.4, chacha20@0.9.1, chacha20poly1305@0.10.1, cipher@0.4.4, const-oid@0.9.6, cpufeatures@0.2.17, crypto-bigint@0.5.5, crypto-common@0.1.7, ctr@0.9.2, der@0.7.10, digest@0.10.7, elliptic-curve@0.13.8, ghash@0.5.1, hmac@0.12.1, inout@0.1.4, opaque-debug@0.3.1, p256@0.13.2, p384@0.13.1, pem-rfc7468@0.7.0, pkcs1@0.7.5, pkcs5@0.7.1, pkcs8@0.10.2, poly1305@0.8.0, polyval@0.6.2, primeorder@0.13.6, rustls-rustcrypto@0.0.2-alpha, sec1@0.7.3, sha2@0.10.9, signature@2.2.0, spki@0.7.3, universal-hash@0.5.1
+Applies to: aes-gcm@0.11.1, aes@0.9.3, base16ct@1.0.0, base64ct@1.8.3, block-buffer@0.10.4, block-buffer@0.12.1, chacha20@0.10.2, chacha20poly1305@0.11.0, cipher@0.5.2, const-oid@0.10.2, cpubits@0.1.1, cpufeatures@0.2.17, cpufeatures@0.3.1, crypto-bigint@0.7.9, crypto-common@0.1.7, crypto-common@0.2.2, ctr@0.10.1, der@0.8.3, digest@0.10.7, digest@0.11.3, elliptic-curve@0.14.3, ghash@0.6.0, hmac@0.13.0, hybrid-array@0.4.15, inout@0.2.5, p256@0.14.0, p384@0.14.0, pem-rfc7468@1.0.0, pkcs1@0.8.0-rc.5, pkcs8@0.11.0, poly1305@0.9.1, polyval@0.7.3, primefield@0.14.0, primeorder@0.14.0, rustls-rustcrypto@0.0.2-alpha, sec1@0.8.1, sha2@0.10.9, sha2@0.11.1, signature@3.0.0, spki@0.8.1, universal-hash@0.6.1, wnaf@0.14.1
 License: Apache-2.0 OR MIT; MIT OR Apache-2.0
-Source: Plervo source overlay https://github.com/alportblu/plervo-pdf/blob/v0.1.0-alpha.8/products/patches/video.patch ; source file vendor/rustls-rustcrypto/LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/aes-gcm/0.10.3/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/aes-gcm/0.11.1/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/aes/0.8.4/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/aes/0.9.3/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/base16ct/0.2.0/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/base16ct/1.0.0/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/base64ct/1.8.3/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/block-buffer/0.10.4/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/block-buffer/0.12.1/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/chacha20/0.10.2/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/chacha20/0.9.1/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/chacha20poly1305/0.10.1/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/chacha20poly1305/0.11.0/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/cipher/0.4.4/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/cipher/0.5.2/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/const-oid/0.10.2/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/const-oid/0.9.6/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/cpubits/0.1.1/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/cpufeatures/0.2.17/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/cpufeatures/0.3.1/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/crypto-bigint/0.5.5/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/crypto-bigint/0.7.9/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/crypto-common/0.1.7/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/crypto-common/0.2.2/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/ctr/0.10.1/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/ctr/0.9.2/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/der/0.7.10/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/der/0.8.3/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/digest/0.10.7/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/digest/0.11.3/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/elliptic-curve/0.13.8/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/elliptic-curve/0.14.3/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/ghash/0.5.1/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/ghash/0.6.0/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/hmac/0.12.1/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/hmac/0.13.0/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/hybrid-array/0.4.15/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/inout/0.1.4/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/inout/0.2.5/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/opaque-debug/0.3.1/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/p256/0.13.2/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/p256/0.14.0/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/p384/0.13.1/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/p384/0.14.0/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/pem-rfc7468/0.7.0/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/pem-rfc7468/1.0.0/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/pkcs1/0.7.5/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/pkcs1/0.8.0-rc.5/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/pkcs5/0.7.1/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/pkcs8/0.10.2/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/pkcs8/0.11.0/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/poly1305/0.8.0/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/poly1305/0.9.1/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/polyval/0.6.2/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/polyval/0.7.3/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/primefield/0.14.0/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/primeorder/0.13.6/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/primeorder/0.14.0/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/sec1/0.7.3/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/sec1/0.8.1/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/sha2/0.10.9/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/sha2/0.11.1/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/signature/2.2.0/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/signature/3.0.0/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/spki/0.7.3/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/spki/0.8.1/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/universal-hash/0.5.1/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/universal-hash/0.6.1/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/wnaf/0.14.1/download#LICENSE-APACHE
+Source: https://github.com/RustCrypto/rustls-rustcrypto/blob/70f76c039e587192688af18a80d5d6435dedaf22/LICENSE-APACHE
 SHA-256 of original text: a9040321c3712d8fd0b09cf52b17445de04a23a10165049ae187cd39e5c86be5
 
                               Apache License
@@ -3755,13 +3816,16 @@ limitations under the License.
 
 
 ==============================================================================
-Applies to: aes-gcm@0.10.3, chacha20poly1305@0.10.1
-License: Apache-2.0 OR MIT; MIT
-Source: https://crates.io/api/v1/crates/aes-gcm/0.10.3/download#LICENSE-MIT
-Source: https://crates.io/api/v1/crates/chacha20poly1305/0.10.1/download#LICENSE-MIT
-SHA-256 of original text: 3c0dfa33fd2e6976038555b52095699452653b1fcabe113074f14e0848a6b11e
+Applies to: aes-gcm@0.11.1, chacha20@0.10.2, chacha20poly1305@0.11.0, ghash@0.6.0, polyval@0.7.3
+License: Apache-2.0 OR MIT; MIT OR Apache-2.0
+Source: https://crates.io/api/v1/crates/aes-gcm/0.11.1/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/chacha20/0.10.2/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/chacha20poly1305/0.11.0/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/ghash/0.6.0/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/polyval/0.7.3/download#LICENSE-MIT
+SHA-256 of original text: b8c6939380a400f53e11923d50fcc4dd2fa1ba8339fd9d04cda38a0251b6c9b0
 
-Copyright (c) 2019 The RustCrypto Project Developers
+Copyright (c) 2019-2026 The RustCrypto Project Developers
 
 Permission is hereby granted, free of charge, to any
 person obtaining a copy of this software and associated
@@ -3789,11 +3853,12 @@ DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: aes@0.8.4
-License: MIT; MIT OR Apache-2.0
-Source: https://crates.io/api/v1/crates/aes/0.8.4/download#LICENSE-MIT
-SHA-256 of original text: f7e8ab639afef15573680c97f796166835cbeb3865175882fea41c60d106b733
+Applies to: aes@0.9.3
+License: MIT OR Apache-2.0
+Source: https://crates.io/api/v1/crates/aes/0.9.3/download#LICENSE-MIT
+SHA-256 of original text: 25f77efa393854f7c15eaf6a2589a2071db2d7337642742763adb12bdecf0445
 
+Copyright (c) 2018-2024 The RustCrypto Project Developers
 Copyright (c) 2018 Artyom Pavlov
 
 Permission is hereby granted, free of charge, to any
@@ -3855,8 +3920,8 @@ DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: ahash@0.8.12, arrayvec@0.7.8, async-channel@2.5.0, async-executor@1.14.0, async-io@2.6.0, async-lock@3.4.2, async-process@2.5.0, async-signal@0.2.14, async-task@4.7.1, atomic-waker@1.1.2, autocfg@1.5.1, base64@0.22.1, base64@0.23.1, bitflags@1.3.2, bitflags@2.13.2, blocking@1.7.0, cc@1.5.1, cfg-if@1.0.5, concurrent-queue@2.5.0, core-foundation-sys@0.8.7, core-foundation@0.10.1, core-foundation@0.9.4, core-graphics-types@0.1.3, core-graphics@0.23.2, coreaudio-rs@0.13.0, crossbeam-channel@0.5.17, crossbeam-deque@0.8.8, crossbeam-epoch@0.9.21, crossbeam-utils@0.8.23, curve25519-dalek-derive@0.1.1, either@1.18.0, equivalent@1.0.2, errno@0.3.14, euclid@0.22.14, event-listener-strategy@0.5.4, event-listener@5.4.2, fastrand@2.5.0, find-msvc-tools@0.1.14, flate2@1.1.10, futures-lite@2.6.1, gethostname@1.1.0, group@0.13.0, hashbrown@0.16.1, hashbrown@0.17.1, heck@0.4.1, heck@0.5.0, httparse@1.10.1, indexmap@2.14.2, itertools@0.15.0, khronos-egl@6.0.0, lazy_static@1.5.0, linux-raw-sys@0.12.1, linux-raw-sys@0.4.15, lock_api@0.4.14, log@0.4.34, muda@0.21.0, num-bigint-dig@0.8.6, num-complex@0.4.6, num-integer@0.1.47, num-iter@0.1.46, num-traits@0.2.19, num_cpus@1.17.0, once_cell@1.21.4, openssl-probe@0.2.1, ordered-stream@0.2.0, parking@2.2.1, parking_lot@0.12.5, parking_lot_core@0.9.12, percent-encoding@2.3.2, piper@0.2.5, pkg-config@0.3.34, png@0.18.1, polling@3.11.0, pollster@0.4.0, pollster@1.0.1, rayon-core@1.13.0, rayon@1.12.0, renderdoc-sys@1.1.0, roxmltree@0.21.1, rustc-hash@1.1.0, rustc_version@0.4.1, rustix@0.38.44, rustix@1.1.5, rustls-native-certs@0.8.4, rustls@0.23.46, scoped-tls@1.0.1, scopeguard@1.2.0, security-framework-sys@2.17.0, security-framework@3.7.0, signal-hook-registry@1.4.8, smallvec@1.16.2, smol_str@0.2.2, socket2@0.6.5, stable_deref_trait@1.2.1, syn@1.0.109, system-deps@6.2.2, tempfile@3.27.0, toml_datetime@0.6.3, unicode-bidi@0.3.18, unicode-segmentation@1.13.3, unicode-width@0.2.2, uuid@1.26.1, version_check@0.9.5
-License: Apache-2.0; Apache-2.0 OR ISC OR MIT; Apache-2.0 OR MIT; Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT; MIT OR Apache-2.0
+Applies to: ahash@0.8.12, arrayvec@0.7.8, async-channel@2.5.0, async-executor@1.14.0, async-io@2.6.0, async-lock@3.4.2, async-process@2.5.0, async-signal@0.2.14, async-task@4.7.1, atomic-waker@1.1.2, autocfg@1.5.1, base64@0.22.1, base64@0.23.1, bitflags@1.3.2, bitflags@2.13.2, blocking@1.7.0, cc@1.5.1, cfg-if@1.0.5, concurrent-queue@2.5.0, core-foundation-sys@0.8.7, core-foundation@0.10.1, core-foundation@0.9.4, core-graphics-types@0.1.3, core-graphics@0.23.2, coreaudio-rs@0.13.0, crossbeam-channel@0.5.17, crossbeam-deque@0.8.8, crossbeam-epoch@0.9.21, crossbeam-utils@0.8.23, curve25519-dalek-derive@0.1.1, either@1.18.0, equivalent@1.0.2, errno@0.3.14, euclid@0.22.14, event-listener-strategy@0.5.4, event-listener@5.4.2, fastrand@2.5.0, find-msvc-tools@0.1.14, flate2@1.1.10, futures-lite@2.6.1, gethostname@1.1.0, group@0.14.0, hashbrown@0.16.1, hashbrown@0.17.1, heck@0.4.1, heck@0.5.0, httparse@1.10.1, indexmap@2.14.2, itertools@0.15.0, khronos-egl@6.0.0, lazy_static@1.5.0, linux-raw-sys@0.12.1, linux-raw-sys@0.4.15, lock_api@0.4.14, log@0.4.34, muda@0.21.0, num-complex@0.4.6, num-traits@0.2.19, num_cpus@1.17.0, once_cell@1.21.4, openssl-probe@0.2.1, ordered-stream@0.2.0, parking@2.2.1, parking_lot@0.12.5, parking_lot_core@0.9.12, percent-encoding@2.3.2, piper@0.2.5, pkg-config@0.3.34, png@0.18.1, polling@3.11.0, pollster@0.4.0, pollster@1.0.1, rayon-core@1.13.0, rayon@1.12.0, renderdoc-sys@1.1.0, roxmltree@0.21.1, rustc-hash@1.1.0, rustc_version@0.4.1, rustix@0.38.44, rustix@1.1.5, rustls-native-certs@0.8.4, rustls@0.23.46, scoped-tls@1.0.1, scopeguard@1.2.0, security-framework-sys@2.17.0, security-framework@3.7.0, signal-hook-registry@1.4.8, smallvec@1.16.2, smol_str@0.2.2, socket2@0.6.5, stable_deref_trait@1.2.1, syn@1.0.109, system-deps@6.2.2, tempfile@3.27.0, toml_datetime@0.6.3, unicode-bidi@0.3.18, unicode-segmentation@1.13.3, unicode-width@0.2.2, uuid@1.26.1, version_check@0.9.5
+License: Apache-2.0; Apache-2.0 OR ISC OR MIT; Apache-2.0 OR MIT; Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT; MIT OR Apache-2.0; MIT/Apache-2.0
 Source: https://crates.io/api/v1/crates/ahash/0.8.12/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/arrayvec/0.7.8/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/async-channel/2.5.0/download#LICENSE-APACHE
@@ -3899,6 +3964,7 @@ Source: https://crates.io/api/v1/crates/flate2/1.1.10/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/futures-lite/2.6.1/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/gethostname/1.1.0/download#LICENSE
 Source: https://crates.io/api/v1/crates/group/0.13.0/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/group/0.14.0/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/hashbrown/0.16.1/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/hashbrown/0.17.1/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/heck/0.4.1/download#LICENSE-APACHE
@@ -4544,15 +4610,18 @@ DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: as-raw-xcb-connection@1.0.1, encoding_rs@0.8.42, gl_generator@0.14.0, khronos_api@3.1.0, kurbo@0.13.1, multiversion_no_op@1.0.0, nohash-hasher@0.2.0, polycool@0.4.0, raw-window-metal@1.1.0, siphasher@1.0.4, spirv@0.4.0+sdk-1.4.341.0, static_assertions@1.1.0, ureq-proto@0.6.4, x11rb-protocol@0.13.2, x11rb@0.13.2, zeroize@1.9.0, zeroize_derive@1.5.0
+Applies to: as-raw-xcb-connection@1.0.1, cmov@0.5.4, ctutils@0.4.6, encoding_rs@0.8.42, gl_generator@0.14.0, khronos_api@3.1.0, kurbo@0.13.1, multiversion_no_op@1.0.0, nohash-hasher@0.2.0, polycool@0.4.0, raw-window-metal@1.1.0, serdect@0.4.3, siphasher@1.0.4, spirv@0.4.0+sdk-1.4.341.0, static_assertions@1.1.0, ureq-proto@0.6.4, x11rb-protocol@0.13.2, x11rb@0.13.2, zeroize@1.9.0
 License: (Apache-2.0 OR MIT) AND BSD-3-Clause; Apache-2.0; Apache-2.0 OR MIT; MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/as-raw-xcb-connection/1.0.1/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/cmov/0.5.4/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/ctutils/0.4.6/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/encoding_rs/0.8.42/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/kurbo/0.13.1/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/multiversion_no_op/1.0.0/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/nohash-hasher/0.2.0/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/polycool/0.4.0/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/raw-window-metal/1.1.0/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/serdect/0.4.3/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/siphasher/1.0.4/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/static_assertions/1.1.0/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/ureq-proto/0.6.4/download#LICENSE-APACHE.txt
@@ -5105,13 +5174,14 @@ SHA-256 of original text: e4705ddab847449a2cdcb3c88b005ea10330aa249d9148ca2eef9c
 
 
 ==============================================================================
-Applies to: async-recursion@1.1.1, core_detect@1.0.0, gif@0.14.2, glow@0.17.0, keyboard-types@0.8.3, rsa@0.9.10, weezl@0.1.12
+Applies to: async-recursion@1.1.1, core_detect@1.0.0, gif@0.14.2, glow@0.17.0, keyboard-types@0.8.3, rsa@0.10.0-rc.19, weezl@0.1.12
 License: MIT OR Apache-2.0; MIT OR Apache-2.0 OR Zlib
 Source: https://crates.io/api/v1/crates/async-recursion/1.1.1/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/core_detect/1.0.0/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/gif/0.14.2/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/glow/0.17.0/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/keyboard-types/0.8.3/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/rsa/0.10.0-rc.19/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/rsa/0.9.10/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/weezl/0.1.12/download#LICENSE-APACHE
 SHA-256 of original text: 769f80b5bcb42ed0af4e4d2fd74e1ac9bf843cb80c5a29219d1ef3544428a6bb
@@ -5319,10 +5389,11 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ==============================================================================
-Applies to: async-recursion@1.1.1, glow@0.17.0, rsa@0.9.10, rustc-hash@2.1.3
+Applies to: async-recursion@1.1.1, glow@0.17.0, rsa@0.10.0-rc.19, rustc-hash@2.1.3
 License: Apache-2.0 OR MIT; MIT; MIT OR Apache-2.0; MIT OR Apache-2.0 OR Zlib
 Source: https://crates.io/api/v1/crates/async-recursion/1.1.1/download#LICENSE-MIT
 Source: https://crates.io/api/v1/crates/glow/0.17.0/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/rsa/0.10.0-rc.19/download#LICENSE-MIT
 Source: https://crates.io/api/v1/crates/rsa/0.9.10/download#LICENSE-MIT
 Source: https://crates.io/api/v1/crates/rustc-hash/2.1.3/download#LICENSE-MIT
 SHA-256 of original text: 30fefc3a7d6a0041541858293bcbea2dde4caa4c0a5802f996a7f7e8c0085652
@@ -5754,13 +5825,13 @@ DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: base16ct@0.2.0
-License: Apache-2.0 OR MIT; MIT
-Source: https://crates.io/api/v1/crates/base16ct/0.2.0/download#LICENSE-MIT
-SHA-256 of original text: 0aa8963e105e8b6e02f634484145d4e5b0f42d0a6dd05c16f8148f033383adef
+Applies to: base16ct@1.0.0
+License: Apache-2.0 OR MIT
+Source: https://crates.io/api/v1/crates/base16ct/1.0.0/download#LICENSE-MIT
+SHA-256 of original text: 54fb6dfe99a6906f862aa40282f0e8e9d9d0f22d57d99ab8acbaf4c8ceaa70e0
 
 Copyright (c) 2014 Steve "Sc00bz" Thomas (steve at tobtu dot com)
-Copyright (c) 2022 The RustCrypto Project Developers
+Copyright (c) 2022-2025 The RustCrypto Project Developers
 
 Permission is hereby granted, free of charge, to any
 person obtaining a copy of this software and associated
@@ -6159,7 +6230,7 @@ DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: bitflags@1.3.2, bitflags@2.13.2, log@0.4.34, num-bigint-dig@0.8.6, num-complex@0.4.6, num-integer@0.1.47, num-iter@0.1.46, num-traits@0.2.19
+Applies to: bitflags@1.3.2, bitflags@2.13.2, log@0.4.34, num-complex@0.4.6, num-traits@0.2.19
 License: MIT; MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/bitflags/1.3.2/download#LICENSE-MIT
 Source: https://crates.io/api/v1/crates/bitflags/2.13.2/download#LICENSE-MIT
@@ -6205,6 +6276,39 @@ Source: https://crates.io/api/v1/crates/block-buffer/0.10.4/download#LICENSE-MIT
 SHA-256 of original text: d5c22aa3118d240e877ad41c5d9fa232f9c77d757d4aac0c2f943afc0a95e0ef
 
 Copyright (c) 2018-2019 The RustCrypto Project Developers
+
+Permission is hereby granted, free of charge, to any
+person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the
+Software without restriction, including without
+limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice
+shall be included in all copies or substantial portions
+of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
+ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+
+
+==============================================================================
+Applies to: block-buffer@0.12.1
+License: MIT OR Apache-2.0
+Source: https://crates.io/api/v1/crates/block-buffer/0.12.1/download#LICENSE-MIT
+SHA-256 of original text: 98181e7249d0c01737645ec982499ce99a0f07eb8f7d625b8840d799d10dbc01
+
+Copyright (c) 2018-2025 The RustCrypto Project Developers
 
 Permission is hereby granted, free of charge, to any
 person obtaining a copy of this software and associated
@@ -6550,11 +6654,12 @@ THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: candle-core@0.9.2, codespan-reporting@0.13.1, cpal@0.16.0, rustls-platform-verifier@0.7.1, safetensors@0.7.0, self_cell@1.3.0, sys-locale@0.3.2, unicode-linebreak@0.1.5, ureq@3.4.2, zune-core@0.5.3, zune-jpeg@0.5.15
-License: Apache-2.0; Apache-2.0 OR GPL-2.0-only; MIT OR Apache-2.0; MIT OR Apache-2.0 OR Zlib
+Applies to: candle-core@0.9.2, codespan-reporting@0.13.1, cpal@0.16.0, crypto-primes@0.7.2, rustls-platform-verifier@0.7.1, safetensors@0.7.0, self_cell@1.3.0, sys-locale@0.3.2, unicode-linebreak@0.1.5, ureq@3.4.2, zune-core@0.5.3, zune-jpeg@0.5.15
+License: Apache-2.0; Apache-2.0 OR GPL-2.0-only; Apache-2.0 OR MIT; MIT OR Apache-2.0; MIT OR Apache-2.0 OR Zlib
 Source: Plervo source overlay https://github.com/alportblu/plervo-pdf/blob/v0.1.0-alpha.8/products/patches/video.patch ; source file vendor/candle-core/LICENSE
 Source: https://crates.io/api/v1/crates/codespan-reporting/0.13.1/download#LICENSE
 Source: https://crates.io/api/v1/crates/cpal/0.16.0/download#LICENSE
+Source: https://crates.io/api/v1/crates/crypto-primes/0.7.2/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/rustls-platform-verifier/0.7.1/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/safetensors/0.7.0/download#LICENSE
 Source: https://crates.io/api/v1/crates/self_cell/1.3.0/download#LICENSE-APACHE
@@ -6894,39 +6999,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
 ==============================================================================
-Applies to: chacha20@0.9.1
-License: Apache-2.0 OR MIT; MIT
-Source: https://crates.io/api/v1/crates/chacha20/0.9.1/download#LICENSE-MIT
-SHA-256 of original text: b6f6f01b03ee7e93c0ae96d62ed39527e98a120fb951afc9de456a741ef3f204
-
-Copyright (c) 2019-2023 The RustCrypto Project Developers
-
-Permission is hereby granted, free of charge, to any
-person obtaining a copy of this software and associated
-documentation files (the "Software"), to deal in the
-Software without restriction, including without
-limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software
-is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice
-shall be included in all copies or substantial portions
-of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
-ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
-
-
-==============================================================================
 Applies to: chrono@0.4.45
 License: MIT
 Source: https://crates.io/api/v1/crates/chrono/0.4.45/download#LICENSE.txt
@@ -7203,12 +7275,12 @@ limitations under the License.
 
 
 ==============================================================================
-Applies to: cipher@0.4.4
-License: MIT; MIT OR Apache-2.0
-Source: https://crates.io/api/v1/crates/cipher/0.4.4/download#LICENSE-MIT
-SHA-256 of original text: 5c7bd92d1f096f12203dc1b601e3cb17484fa1b023e30b6b8edcc80e416237ec
+Applies to: cipher@0.5.2
+License: MIT OR Apache-2.0
+Source: https://crates.io/api/v1/crates/cipher/0.5.2/download#LICENSE-MIT
+SHA-256 of original text: 950d712c518a02fcb7cff96950aee304a1cc5283361712c980ea21e8d6d669a5
 
-Copyright (c) 2016-2020 RustCrypto Developers
+Copyright (c) 2016-2025 RustCrypto Developers
 
 Permission is hereby granted, free of charge, to any
 person obtaining a copy of this software and associated
@@ -7264,6 +7336,40 @@ FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT
 SHALL THE COPYRIGHT HOLDERS OR ANYONE DISTRIBUTING THE SOFTWARE BE LIABLE
 FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+
+
+==============================================================================
+Applies to: cmov@0.5.4, hybrid-array@0.4.15
+License: Apache-2.0 OR MIT; MIT OR Apache-2.0
+Source: https://crates.io/api/v1/crates/cmov/0.5.4/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/hybrid-array/0.4.15/download#LICENSE-MIT
+SHA-256 of original text: 70c9d40f1f9545c3f133b8a67206e89da850f6468eed072281bb3701514114a9
+
+Copyright (c) 2022-2026 The RustCrypto Project Developers
+
+Permission is hereby granted, free of charge, to any
+person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the
+Software without restriction, including without
+limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice
+shall be included in all copies or substantial portions
+of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
+ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
 DEALINGS IN THE SOFTWARE.
 
 
@@ -7527,12 +7633,15 @@ SOFTWARE.
 
 
 ==============================================================================
-Applies to: const-oid@0.9.6
-License: Apache-2.0 OR MIT; MIT
-Source: https://crates.io/api/v1/crates/const-oid/0.9.6/download#LICENSE-MIT
-SHA-256 of original text: bada9e7ed8dc00d63502053c455d7c8d7575dfb7e8277a2a832531844d900682
+Applies to: const-oid@0.10.2, cpufeatures@0.3.1, der@0.8.3, pkcs8@0.11.0
+License: Apache-2.0 OR MIT; MIT OR Apache-2.0
+Source: https://crates.io/api/v1/crates/const-oid/0.10.2/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/cpufeatures/0.3.1/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/der/0.8.3/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/pkcs8/0.11.0/download#LICENSE-MIT
+SHA-256 of original text: 73b9dc2e79c7308998dd30296e073aefaefb944a68fb89aa412c23c0edcabcaa
 
-Copyright (c) 2020-2022 The RustCrypto Project Developers
+Copyright (c) 2020-2026 The RustCrypto Project Developers
 
 Permission is hereby granted, free of charge, to any
 person obtaining a copy of this software and associated
@@ -7931,6 +8040,39 @@ SHA-256 of original text: c6596eb7be8581c18be736c846fb9173b69eccf6ef94c5135893ec
    See the License for the specific language governing permissions and
    limitations under the License.
 
+
+
+==============================================================================
+Applies to: cpubits@0.1.1
+License: MIT OR Apache-2.0
+Source: https://crates.io/api/v1/crates/cpubits/0.1.1/download#LICENSE-MIT
+SHA-256 of original text: 003736bc98408b53511b9cc8ff5d1af3bf0a8f17d53841cc39d8ab1b96a195b0
+
+Copyright (c) 2023-2026 The RustCrypto Project Developers
+
+Permission is hereby granted, free of charge, to any
+person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the
+Software without restriction, including without
+limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice
+shall be included in all copies or substantial portions
+of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
+ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
@@ -8664,13 +8806,14 @@ DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: crypto-bigint@0.5.5, pem-rfc7468@0.7.0
-License: Apache-2.0 OR MIT; MIT
-Source: https://crates.io/api/v1/crates/crypto-bigint/0.5.5/download#LICENSE-MIT
-Source: https://crates.io/api/v1/crates/pem-rfc7468/0.7.0/download#LICENSE-MIT
-SHA-256 of original text: 90c503b61dee04e1449c323ec34c229dfb68d7adcb96c7e140ee55f70fce2d8e
+Applies to: crypto-bigint@0.7.9, sec1@0.8.1, spki@0.8.1
+License: Apache-2.0 OR MIT
+Source: https://crates.io/api/v1/crates/crypto-bigint/0.7.9/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/sec1/0.8.1/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/spki/0.8.1/download#LICENSE-MIT
+SHA-256 of original text: 57a4d75c1d095bb94754a478f3cd15e60ac66a5c5627d844be01a918eea5fe88
 
-Copyright (c) 2021 The RustCrypto Project Developers
+Copyright (c) 2021-2026 The RustCrypto Project Developers
 
 Permission is hereby granted, free of charge, to any
 person obtaining a copy of this software and associated
@@ -8731,13 +8874,94 @@ DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: ctr@0.9.2
-License: MIT; MIT OR Apache-2.0
-Source: https://crates.io/api/v1/crates/ctr/0.9.2/download#LICENSE-MIT
+Applies to: crypto-common@0.2.2
+License: MIT OR Apache-2.0
+Source: https://crates.io/api/v1/crates/crypto-common/0.2.2/download#LICENSE-MIT
+SHA-256 of original text: d2e7ec5355c96eeade56b09187ceb48a6a30299da3ce7531a66d3d11405ab963
+
+Copyright (c) 2021-2026 RustCrypto Developers
+
+Permission is hereby granted, free of charge, to any
+person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the
+Software without restriction, including without
+limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice
+shall be included in all copies or substantial portions
+of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
+ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+
+
+==============================================================================
+Applies to: crypto-primes@0.7.2
+License: Apache-2.0 OR MIT
+Source: https://crates.io/api/v1/crates/crypto-primes/0.7.2/download#LICENSE-MIT
+SHA-256 of original text: 1e860b66ad4646c4f188d5ee6f0be5192089c1c066cb42a6d25285c250543444
+
+Copyright 2022-* Bogdan Opanchuk
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+==============================================================================
+Applies to: ctr@0.10.1
+License: MIT OR Apache-2.0
+Source: https://crates.io/api/v1/crates/ctr/0.10.1/download#LICENSE-MIT
 SHA-256 of original text: 63af4bea227c94d021e99427f6ca3a4b8efddadcca93ab6130f708cf6138cf68
 
 Copyright (c) 2018-2022 RustCrypto Developers
 Copyright (c) 2018 Artyom Pavlov
+
+Permission is hereby granted, free of charge, to any
+person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the
+Software without restriction, including without
+limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice
+shall be included in all copies or substantial portions
+of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
+ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+
+
+==============================================================================
+Applies to: ctutils@0.4.6
+License: Apache-2.0 OR MIT
+Source: https://crates.io/api/v1/crates/ctutils/0.4.6/download#LICENSE-MIT
+SHA-256 of original text: 91585c36e4fb9ab4ca0d3dfac5d66d3c0c62cc51f640a0e1196542daf2267eae
+
+Copyright (c) 2025-2026 The RustCrypto Project Developers
 
 Permission is hereby granted, free of charge, to any
 person obtaining a copy of this software and associated
@@ -9022,10 +9246,10 @@ SOFTWARE.
 
 
 ==============================================================================
-Applies to: curve25519-dalek@4.1.3
+Applies to: curve25519-dalek@5.0.0
 License: BSD-3-Clause
-Source: https://crates.io/api/v1/crates/curve25519-dalek/4.1.3/download#LICENSE
-SHA-256 of original text: cca0bd3c4fcdba74145ef9d49c62337e2c9fbf9368288f11d0547f1b0273219f
+Source: https://crates.io/api/v1/crates/curve25519-dalek/5.0.0/download#LICENSE
+SHA-256 of original text: 403c53069750101aeb9df7e15f127056ceaf7e4e92d0b919a1f4c084afd5f1d4
 
 Copyright (c) 2016-2021 isis agora lovecruft. All rights reserved.
 Copyright (c) 2016-2021 Henry de Valence. All rights reserved.
@@ -9052,42 +9276,6 @@ PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
 HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
 SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
 TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
-PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
-LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
-NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
-
-========================================================================
-
-Portions of curve25519-dalek were originally derived from Adam Langley's
-Go ed25519 implementation, found at <https://github.com/agl/ed25519/>,
-under the following licence:
-
-========================================================================
-
-Copyright (c) 2012 The Go Authors. All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are
-met:
-
-   * Redistributions of source code must retain the above copyright
-notice, this list of conditions and the following disclaimer.
-   * Redistributions in binary form must reproduce the above
-copyright notice, this list of conditions and the following disclaimer
-in the documentation and/or other materials provided with the
-distribution.
-   * Neither the name of Google Inc. nor the names of its
-contributors may be used to endorse or promote products derived from
-this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS
-IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
-TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A
-PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER
-OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
 PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
 LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
 NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
@@ -9155,13 +9343,14 @@ SOFTWARE.
 
 
 ==============================================================================
-Applies to: der@0.7.10, pkcs8@0.10.2
-License: Apache-2.0 OR MIT; MIT
-Source: https://crates.io/api/v1/crates/der/0.7.10/download#LICENSE-MIT
-Source: https://crates.io/api/v1/crates/pkcs8/0.10.2/download#LICENSE-MIT
-SHA-256 of original text: ad64fcb9589f162720f3cc5010ad76ca6ad3764e11861f9192c489df176bb71d
+Applies to: digest@0.10.7, hmac@0.13.0
+License: MIT; MIT OR Apache-2.0
+Source: https://crates.io/api/v1/crates/digest/0.10.7/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/hmac/0.12.1/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/hmac/0.13.0/download#LICENSE-MIT
+SHA-256 of original text: 9e0dfd2dd4173a530e238cb6adb37aa78c34c6bc7444e0e10c1ab5d8881f63ba
 
-Copyright (c) 2020-2023 The RustCrypto Project Developers
+Copyright (c) 2017 Artyom Pavlov
 
 Permission is hereby granted, free of charge, to any
 person obtaining a copy of this software and associated
@@ -9189,12 +9378,12 @@ DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: digest@0.10.7, hmac@0.12.1
-License: MIT; MIT OR Apache-2.0
-Source: https://crates.io/api/v1/crates/digest/0.10.7/download#LICENSE-MIT
-Source: https://crates.io/api/v1/crates/hmac/0.12.1/download#LICENSE-MIT
-SHA-256 of original text: 9e0dfd2dd4173a530e238cb6adb37aa78c34c6bc7444e0e10c1ab5d8881f63ba
+Applies to: digest@0.11.3
+License: MIT OR Apache-2.0
+Source: https://crates.io/api/v1/crates/digest/0.11.3/download#LICENSE-MIT
+SHA-256 of original text: af59cea35d7f5e2777a713b8d155d65efa2c339eb43f3c14e868c6ac8506edad
 
+Copyright (c) 2017-2025 RustCrypto Developers
 Copyright (c) 2017 Artyom Pavlov
 
 Permission is hereby granted, free of charge, to any
@@ -9742,11 +9931,11 @@ SOFTWARE.
 
 
 ==============================================================================
-Applies to: ecdsa@0.16.9, ed25519@2.2.3, rfc6979@0.4.0
+Applies to: ecdsa@0.17.0, ed25519@3.0.0, rfc6979@0.6.0
 License: Apache-2.0 OR MIT
-Source: https://crates.io/api/v1/crates/ecdsa/0.16.9/download#LICENSE-APACHE
-Source: https://crates.io/api/v1/crates/ed25519/2.2.3/download#LICENSE-APACHE
-Source: https://crates.io/api/v1/crates/rfc6979/0.4.0/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/ecdsa/0.17.0/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/ed25519/3.0.0/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/rfc6979/0.6.0/download#LICENSE-APACHE
 SHA-256 of original text: 78779d420019e6b4630376af8e86b6b335ee8a2f89ede6e0411e0469a326aaa4
 
                               Apache License
@@ -9953,13 +10142,15 @@ limitations under the License.
 
 
 ==============================================================================
-Applies to: ecdsa@0.16.9, rfc6979@0.4.0
-License: Apache-2.0 OR MIT; MIT
-Source: https://crates.io/api/v1/crates/ecdsa/0.16.9/download#LICENSE-MIT
-Source: https://crates.io/api/v1/crates/rfc6979/0.4.0/download#LICENSE-MIT
-SHA-256 of original text: bdebaf9156a298f8fdab56dd26cb5144673de522d80f4c0d88e0039145f147f9
+Applies to: ecdsa@0.17.0, ed25519@3.0.0, rfc6979@0.6.0, signature@3.0.0
+License: Apache-2.0 OR MIT
+Source: https://crates.io/api/v1/crates/ecdsa/0.17.0/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/ed25519/3.0.0/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/rfc6979/0.6.0/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/signature/3.0.0/download#LICENSE-MIT
+SHA-256 of original text: 9aa4f92bfcde293ebeca9e2379fa18d1d61f000977da144c7b74c2986c9b6466
 
-Copyright (c) 2018-2022 RustCrypto Developers
+Copyright (c) 2018-2026 RustCrypto Developers
 
 Permission is hereby granted, free of charge, to any
 person obtaining a copy of this software and associated
@@ -10020,9 +10211,9 @@ DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: ed25519-dalek@2.2.0
+Applies to: ed25519-dalek@3.0.0
 License: BSD-3-Clause
-Source: https://crates.io/api/v1/crates/ed25519-dalek/2.2.0/download#LICENSE
+Source: https://crates.io/api/v1/crates/ed25519-dalek/3.0.0/download#LICENSE
 SHA-256 of original text: 7a313964a6e050794d2ad57f4863c11f6bbe055c0ae6ce2cf3b9fc45150bada3
 
 Copyright (c) 2017-2019 isis agora lovecruft. All rights reserved.
@@ -10056,46 +10247,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 ==============================================================================
-Applies to: ed25519@2.2.3, signature@2.2.0
-License: Apache-2.0 OR MIT; MIT
-Source: https://crates.io/api/v1/crates/ed25519/2.2.3/download#LICENSE-MIT
-Source: https://crates.io/api/v1/crates/signature/2.2.0/download#LICENSE-MIT
-SHA-256 of original text: b3470648aff02beb36d7a53240fc9260ed80ed93bd43bace6b67d7ef7336ee33
+Applies to: elliptic-curve@0.14.3, p256@0.14.0
+License: Apache-2.0 OR MIT
+Source: https://crates.io/api/v1/crates/elliptic-curve/0.14.3/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/p256/0.14.0/download#LICENSE-MIT
+SHA-256 of original text: d8c4ab431f20da8452c9a217084163822e5fd9d134e1343903c929f2859fc8fd
 
-Copyright (c) 2018-2023 RustCrypto Developers
-
-Permission is hereby granted, free of charge, to any
-person obtaining a copy of this software and associated
-documentation files (the "Software"), to deal in the
-Software without restriction, including without
-limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software
-is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice
-shall be included in all copies or substantial portions
-of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
-ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
-
-
-==============================================================================
-Applies to: elliptic-curve@0.13.8
-License: Apache-2.0 OR MIT; MIT
-Source: https://crates.io/api/v1/crates/elliptic-curve/0.13.8/download#LICENSE-MIT
-SHA-256 of original text: d27687b51f2874822c1530976b7e837eac4f308d94bf3dd42047011b7d437b47
-
-Copyright (c) 2020-2022 RustCrypto Developers
+Copyright (c) 2020-2026 RustCrypto Developers
 
 Permission is hereby granted, free of charge, to any
 person obtaining a copy of this software and associated
@@ -10977,9 +11135,9 @@ DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: ff@0.13.1
-License: MIT OR Apache-2.0
-Source: https://crates.io/api/v1/crates/ff/0.13.1/download#LICENSE-APACHE
+Applies to: ff@0.14.0
+License: MIT/Apache-2.0
+Source: https://crates.io/api/v1/crates/ff/0.14.0/download#LICENSE-APACHE
 SHA-256 of original text: 3708458dee7f359ac6c9c5558023ed481be87e5372c43ebd7f2ca7ad23c12026
 
                               Apache License
@@ -11187,9 +11345,9 @@ limitations under the License.
 
 
 ==============================================================================
-Applies to: ff@0.13.1
-License: MIT; MIT OR Apache-2.0
-Source: https://crates.io/api/v1/crates/ff/0.13.1/download#LICENSE-MIT
+Applies to: ff@0.14.0
+License: MIT/Apache-2.0
+Source: https://crates.io/api/v1/crates/ff/0.14.0/download#LICENSE-MIT
 SHA-256 of original text: 8d0c1d1d4b2bebf5b9211f0e883d5a482b7808f3ed31320da14ddee95811f4ef
 
 The MIT License (MIT)
@@ -11213,6 +11371,104 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+
+==============================================================================
+Applies to: fiat-crypto@0.3.0
+License: MIT OR Apache-2.0 OR BSD-1-Clause
+Source: https://crates.io/api/v1/crates/fiat-crypto/0.3.0/download#LICENSE-MIT
+SHA-256 of original text: 0034712d5e97a4f5b900a160a5c19d582b740d8e0638b4e44fd07e7b492dcd13
+
+The MIT License (MIT)
+
+Copyright (c) 2015-2020 the fiat-crypto authors (see the AUTHORS file).
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+==============================================================================
+Applies to: fiat-crypto@0.3.0
+License: MIT OR Apache-2.0 OR BSD-1-Clause
+Source: https://crates.io/api/v1/crates/fiat-crypto/0.3.0/download#LICENSE-BSD-1
+SHA-256 of original text: 0c1240e29b4a2c528bcc3ccc38a98b1dba5e3e6b465da910208935f082e2ced6
+
+The BSD 1-Clause License (BSD-1-Clause)
+
+Copyright (c) 2015-2020 the fiat-crypto authors (see the AUTHORS file)
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+
+    1. Redistributions of source code must retain the above copyright
+       notice, this list of conditions and the following disclaimer.
+
+THIS SOFTWARE IS PROVIDED BY the fiat-crypto authors "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO,
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL Berkeley Software Design,
+Inc. BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+==============================================================================
+Applies to: fiat-crypto@0.3.0
+License: MIT OR Apache-2.0 OR BSD-1-Clause
+Source: https://crates.io/api/v1/crates/fiat-crypto/0.3.0/download#COPYRIGHT
+SHA-256 of original text: 6c935d087a2992d0f092665400a2fa99c98db58d96fbe29368f8f48182bed9aa
+
+SPDX-License-Identifier: MIT OR Apache-2.0 OR BSD-1-Clause
+
+Fiat Cryptography is licensed under the MIT License <LICENSE-MIT> or
+<http://opensource.org/licenses/MIT>, the Apache License, Version 2.0
+<LICENSE-APACHE> or <http://www.apache.org/licenses/LICENSE-2.0>, or
+the BSD 1-Clause License <LICENSE-BSD-1> or
+<https://spdx.org/licenses/BSD-1-Clause.html>, at your option.
+
+
+==============================================================================
+Applies to: fiat-crypto@0.3.0
+License: MIT OR Apache-2.0 OR BSD-1-Clause
+Source: https://crates.io/api/v1/crates/fiat-crypto/0.3.0/download#LICENSE-APACHE
+SHA-256 of original text: 9eacbcb81be660840c714a560a9d65ba07913db98dd4baf969f78dd499fdd60f
+
+The Apache License, Version 2.0 (Apache-2.0)
+
+Copyright 2015-2020 the fiat-crypto authors (see the AUTHORS file)
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 
 
 ==============================================================================
@@ -11860,7 +12116,7 @@ DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: getrandom@0.2.17, getrandom@0.3.4, getrandom@0.4.3, rand_chacha@0.3.1
+Applies to: getrandom@0.2.17, getrandom@0.3.4, getrandom@0.4.3
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/getrandom/0.2.17/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/getrandom/0.3.4/download#LICENSE-APACHE
@@ -12113,39 +12369,6 @@ SHA-256 of original text: 523a42c25d245dde9c015f882cec7f4555aad883382a6cf19b4b7d
 
 Copyright (c) 2018-2026 The rust-random Project Developers
 Copyright (c) 2014 The Rust Project Developers
-
-Permission is hereby granted, free of charge, to any
-person obtaining a copy of this software and associated
-documentation files (the "Software"), to deal in the
-Software without restriction, including without
-limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software
-is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice
-shall be included in all copies or substantial portions
-of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
-ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
-
-
-==============================================================================
-Applies to: ghash@0.5.1
-License: Apache-2.0 OR MIT; MIT
-Source: https://crates.io/api/v1/crates/ghash/0.5.1/download#LICENSE-MIT
-SHA-256 of original text: c0fabcc308b450cb6fe62c9f56fae6abbeb9768eb80d992484c857d744846c2e
-
-Copyright (c) 2019 RustCrypto Developers
 
 Permission is hereby granted, free of charge, to any
 person obtaining a copy of this software and associated
@@ -12687,9 +12910,9 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ==============================================================================
-Applies to: group@0.13.0
-License: MIT OR Apache-2.0
-Source: https://crates.io/api/v1/crates/group/0.13.0/download#COPYRIGHT
+Applies to: group@0.14.0
+License: MIT/Apache-2.0
+Source: https://crates.io/api/v1/crates/group/0.14.0/download#COPYRIGHT
 SHA-256 of original text: 7429802d3e67e3308471b91fbea341e484c4e0a23d0fb230a8636c38184cec79
 
 Copyrights in the "group" library are retained by their contributors. No
@@ -12887,9 +13110,9 @@ SOFTWARE.
 
 
 ==============================================================================
-Applies to: hkdf@0.12.4
+Applies to: hkdf@0.13.0
 License: MIT OR Apache-2.0
-Source: https://crates.io/api/v1/crates/hkdf/0.12.4/download#LICENSE-APACHE
+Source: https://crates.io/api/v1/crates/hkdf/0.13.0/download#LICENSE-APACHE
 SHA-256 of original text: 59013a5c8d3a19c26a457579105915a5d51bb0c09d579f8cdedf12e4203c3018
 
                               Apache License
@@ -13095,9 +13318,9 @@ See the License for the specific language governing permissions and
 limitations under the License.
 
 ==============================================================================
-Applies to: hkdf@0.12.4
-License: MIT; MIT OR Apache-2.0
-Source: https://crates.io/api/v1/crates/hkdf/0.12.4/download#LICENSE-MIT
+Applies to: hkdf@0.13.0
+License: MIT OR Apache-2.0
+Source: https://crates.io/api/v1/crates/hkdf/0.13.0/download#LICENSE-MIT
 SHA-256 of original text: d288f9c9b4590446ec18c22ead8f8b5a12a3d4025b68f62dc9015063eb9cca69
 
 Copyright (c) 2015-2018 Vlad Filippov
@@ -13675,12 +13898,12 @@ DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: inout@0.1.4
-License: MIT; MIT OR Apache-2.0
-Source: https://crates.io/api/v1/crates/inout/0.1.4/download#LICENSE-MIT
-SHA-256 of original text: 304b898acad7f02e03d6d8832d682a3b43ee729ab5d3a069af5a36979083b6b4
+Applies to: inout@0.2.5
+License: MIT OR Apache-2.0
+Source: https://crates.io/api/v1/crates/inout/0.2.5/download#LICENSE-MIT
+SHA-256 of original text: a07fcacc3c60de4dc0fab10ac9d6aaba7379974e28451c99da7f7df09c25b28c
 
-Copyright (c) 2022 The RustCrypto Project Developers
+Copyright (c) 2022-2025 The RustCrypto Project Developers
 Copyright (c) 2022 Artyom Pavlov
 
 Permission is hereby granted, free of charge, to any
@@ -15322,39 +15545,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: opaque-debug@0.3.1
-License: MIT; MIT OR Apache-2.0
-Source: https://crates.io/api/v1/crates/opaque-debug/0.3.1/download#LICENSE-MIT
-SHA-256 of original text: f59f5a78193597e04fd932ee9af86254d14d08be5c9d0e003ab888feccce2161
-
-Copyright (c) 2018-2024 The RustCrypto Project Developers
-
-Permission is hereby granted, free of charge, to any
-person obtaining a copy of this software and associated
-documentation files (the "Software"), to deal in the
-Software without restriction, including without
-limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software
-is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice
-shall be included in all copies or substantial portions
-of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
-ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
-
-
-==============================================================================
 Applies to: open@5.4.4
 License: MIT
 Source: https://crates.io/api/v1/crates/open/5.4.4/download#LICENSE.md
@@ -15421,43 +15611,9 @@ DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: p256@0.13.2, primeorder@0.13.6
-License: Apache-2.0 OR MIT; MIT
-Source: https://crates.io/api/v1/crates/p256/0.13.2/download#LICENSE-MIT
-Source: https://crates.io/api/v1/crates/primeorder/0.13.6/download#LICENSE-MIT
-SHA-256 of original text: 233b95ccbf90dc67e32f3e8995c489f6312d9191ebd141a931c3b684f1e3be6d
-
-Copyright (c) 2020-2023 RustCrypto Developers
-
-Permission is hereby granted, free of charge, to any
-person obtaining a copy of this software and associated
-documentation files (the "Software"), to deal in the
-Software without restriction, including without
-limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software
-is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice
-shall be included in all copies or substantial portions
-of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
-ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
-
-
-==============================================================================
-Applies to: p384@0.13.1
-License: Apache-2.0 OR MIT; MIT
-Source: https://crates.io/api/v1/crates/p384/0.13.1/download#LICENSE-MIT
+Applies to: p384@0.14.0
+License: Apache-2.0 OR MIT
+Source: https://crates.io/api/v1/crates/p384/0.14.0/download#LICENSE-MIT
 SHA-256 of original text: 02168781a5b59970e3da1784d2eb69f432598a3757f283dbffdafd9d483a9113
 
 Copyright (c) 2020-2021 RustCrypto Developers
@@ -15502,6 +15658,40 @@ http://www.apache.org/licenses/LICENSE-2.0> or the MIT license
 <LICENSE-MIT or http://opensource.org/licenses/MIT>, at your
 option. All files in the project carrying such notice may not be
 copied, modified, or distributed except according to those terms.
+
+
+==============================================================================
+Applies to: pem-rfc7468@1.0.0, pkcs1@0.8.0-rc.5
+License: Apache-2.0 OR MIT
+Source: https://crates.io/api/v1/crates/pem-rfc7468/1.0.0/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/pkcs1/0.8.0-rc.5/download#LICENSE-MIT
+SHA-256 of original text: 4148e7b027fba018131f297b4fe27995386ba317018d6855e182fd0e86cd754f
+
+Copyright (c) 2021-2025 The RustCrypto Project Developers
+
+Permission is hereby granted, free of charge, to any
+person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the
+Software without restriction, including without
+limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice
+shall be included in all copies or substantial portions
+of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
+ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
@@ -15779,41 +15969,6 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: pkcs1@0.7.5, pkcs5@0.7.1, spki@0.7.3
-License: Apache-2.0 OR MIT; MIT
-Source: https://crates.io/api/v1/crates/pkcs1/0.7.5/download#LICENSE-MIT
-Source: https://crates.io/api/v1/crates/pkcs5/0.7.1/download#LICENSE-MIT
-Source: https://crates.io/api/v1/crates/spki/0.7.3/download#LICENSE-MIT
-SHA-256 of original text: c995204cc6bad2ed67dd41f7d89bb9f1a9d48e0edd745732b30640d7912089a4
-
-Copyright (c) 2021-2023 The RustCrypto Project Developers
-
-Permission is hereby granted, free of charge, to any
-person obtaining a copy of this software and associated
-documentation files (the "Software"), to deal in the
-Software without restriction, including without
-limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software
-is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice
-shall be included in all copies or substantial portions
-of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
-ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
-
-
-==============================================================================
 Applies to: png@0.18.1
 License: MIT; MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/png/0.18.1/download#LICENSE-MIT
@@ -15881,45 +16036,12 @@ DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: poly1305@0.8.0
-License: Apache-2.0 OR MIT; MIT
-Source: https://crates.io/api/v1/crates/poly1305/0.8.0/download#LICENSE-MIT
-SHA-256 of original text: 6d99fffea918d1f7dfe567029c7bd21d6fcaf310ad28c44e6511a0e1f68c79ea
+Applies to: poly1305@0.9.1
+License: Apache-2.0 OR MIT
+Source: https://crates.io/api/v1/crates/poly1305/0.9.1/download#LICENSE-MIT
+SHA-256 of original text: b67acfaaf787b346e1d3bf7654b4fabfd20360fdeb4351cc5e9d624147824527
 
-Copyright (c) 2015-2019 RustCrypto Developers
-
-Permission is hereby granted, free of charge, to any
-person obtaining a copy of this software and associated
-documentation files (the "Software"), to deal in the
-Software without restriction, including without
-limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software
-is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice
-shall be included in all copies or substantial portions
-of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
-ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
-
-
-==============================================================================
-Applies to: polyval@0.6.2
-License: Apache-2.0 OR MIT; MIT
-Source: https://crates.io/api/v1/crates/polyval/0.6.2/download#LICENSE-MIT
-SHA-256 of original text: a291b6910744d262a9e953c3b5868d74510e20161359f649a11e1791fde84fcd
-
-Copyright (c) 2019-2023 RustCrypto Developers
+Copyright (c) 2015-2026 The RustCrypto Project Developers
 
 Permission is hereby granted, free of charge, to any
 person obtaining a copy of this software and associated
@@ -16162,6 +16284,72 @@ Source: https://crates.io/api/v1/crates/ppv-lite86/0.2.21/download#LICENSE-MIT
 SHA-256 of original text: 4cada0bd02ea3692eee6f16400d86c6508bbd3bafb2b65fed0419f36d4f83e8f
 
 Copyright (c) 2019 The CryptoCorrosion Contributors
+
+Permission is hereby granted, free of charge, to any
+person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the
+Software without restriction, including without
+limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice
+shall be included in all copies or substantial portions
+of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
+ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+
+
+==============================================================================
+Applies to: primefield@0.14.0
+License: Apache-2.0 OR MIT
+Source: https://crates.io/api/v1/crates/primefield/0.14.0/download#LICENSE-MIT
+SHA-256 of original text: 4621bda86773a67b5645bbd25cf1bf8b6820d4fcec3885b23b9ceec612007f63
+
+Copyright (c) 2024-2026 RustCrypto Developers
+
+Permission is hereby granted, free of charge, to any
+person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the
+Software without restriction, including without
+limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice
+shall be included in all copies or substantial portions
+of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
+ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+
+
+==============================================================================
+Applies to: primeorder@0.14.0
+License: Apache-2.0 OR MIT
+Source: https://crates.io/api/v1/crates/primeorder/0.14.0/download#LICENSE-MIT
+SHA-256 of original text: 233b95ccbf90dc67e32f3e8995c489f6312d9191ebd141a931c3b684f1e3be6d
+
+Copyright (c) 2020-2023 RustCrypto Developers
 
 Permission is hereby granted, free of charge, to any
 person obtaining a copy of this software and associated
@@ -16546,72 +16734,7 @@ THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: rand@0.8.8, rand@0.9.5, rand_chacha@0.3.1, rand_chacha@0.9.0, rand_core@0.6.4, rand_core@0.9.5
-License: MIT; MIT OR Apache-2.0
-Source: https://crates.io/api/v1/crates/rand/0.8.8/download#LICENSE-MIT
-Source: https://crates.io/api/v1/crates/rand/0.9.5/download#LICENSE-MIT
-Source: https://crates.io/api/v1/crates/rand_chacha/0.3.1/download#LICENSE-MIT
-Source: https://crates.io/api/v1/crates/rand_chacha/0.9.0/download#LICENSE-MIT
-Source: https://crates.io/api/v1/crates/rand_core/0.6.4/download#LICENSE-MIT
-Source: https://crates.io/api/v1/crates/rand_core/0.9.5/download#LICENSE-MIT
-SHA-256 of original text: 209fbbe0ad52d9235e37badf9cadfe4dbdc87203179c0899e738b39ade42177b
-
-Copyright 2018 Developers of the Rand project
-Copyright (c) 2014 The Rust Project Developers
-
-Permission is hereby granted, free of charge, to any
-person obtaining a copy of this software and associated
-documentation files (the "Software"), to deal in the
-Software without restriction, including without
-limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software
-is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice
-shall be included in all copies or substantial portions
-of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
-ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
-
-
-==============================================================================
-Applies to: rand@0.8.8, rand@0.9.5, rand_chacha@0.3.1, rand_chacha@0.9.0, rand_core@0.6.4, rand_core@0.9.5, rand_distr@0.5.1
-License: MIT OR Apache-2.0
-Source: https://crates.io/api/v1/crates/rand/0.8.8/download#COPYRIGHT
-Source: https://crates.io/api/v1/crates/rand/0.9.5/download#COPYRIGHT
-Source: https://crates.io/api/v1/crates/rand_chacha/0.3.1/download#COPYRIGHT
-Source: https://crates.io/api/v1/crates/rand_chacha/0.9.0/download#COPYRIGHT
-Source: https://crates.io/api/v1/crates/rand_core/0.6.4/download#COPYRIGHT
-Source: https://crates.io/api/v1/crates/rand_core/0.9.5/download#COPYRIGHT
-Source: https://crates.io/api/v1/crates/rand_distr/0.5.1/download#COPYRIGHT
-SHA-256 of original text: 90eb64f0279b0d9432accfa6023ff803bc4965212383697eee27a0f426d5f8d5
-
-Copyrights in the Rand project are retained by their contributors. No
-copyright assignment is required to contribute to the Rand project.
-
-For full authorship information, see the version control history.
-
-Except as otherwise noted (below and/or in individual files), Rand is
-licensed under the Apache License, Version 2.0 <LICENSE-APACHE> or
-<http://www.apache.org/licenses/LICENSE-2.0> or the MIT license
-<LICENSE-MIT> or <http://opensource.org/licenses/MIT>, at your option.
-
-The Rand project includes code from the Rust project
-published under these same licenses.
-
-
-==============================================================================
-Applies to: rand@0.8.8, rand@0.9.5, rand_chacha@0.9.0
+Applies to: rand@0.9.5, rand_chacha@0.9.0
 License: MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/rand/0.8.8/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/rand/0.9.5/download#LICENSE-APACHE
@@ -16797,8 +16920,124 @@ END OF TERMS AND CONDITIONS
 
 
 ==============================================================================
-Applies to: rand_core@0.6.4, rand_core@0.9.5, rand_distr@0.5.1
+Applies to: rand@0.9.5, rand_chacha@0.9.0, rand_core@0.9.5
+License: MIT; MIT OR Apache-2.0
+Source: https://crates.io/api/v1/crates/rand/0.8.8/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/rand/0.9.5/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/rand_chacha/0.3.1/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/rand_chacha/0.9.0/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/rand_core/0.6.4/download#LICENSE-MIT
+Source: https://crates.io/api/v1/crates/rand_core/0.9.5/download#LICENSE-MIT
+SHA-256 of original text: 209fbbe0ad52d9235e37badf9cadfe4dbdc87203179c0899e738b39ade42177b
+
+Copyright 2018 Developers of the Rand project
+Copyright (c) 2014 The Rust Project Developers
+
+Permission is hereby granted, free of charge, to any
+person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the
+Software without restriction, including without
+limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice
+shall be included in all copies or substantial portions
+of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
+ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+
+
+==============================================================================
+Applies to: rand@0.9.5, rand_chacha@0.9.0, rand_core@0.9.5, rand_distr@0.5.1
 License: MIT OR Apache-2.0
+Source: https://crates.io/api/v1/crates/rand/0.8.8/download#COPYRIGHT
+Source: https://crates.io/api/v1/crates/rand/0.9.5/download#COPYRIGHT
+Source: https://crates.io/api/v1/crates/rand_chacha/0.3.1/download#COPYRIGHT
+Source: https://crates.io/api/v1/crates/rand_chacha/0.9.0/download#COPYRIGHT
+Source: https://crates.io/api/v1/crates/rand_core/0.6.4/download#COPYRIGHT
+Source: https://crates.io/api/v1/crates/rand_core/0.9.5/download#COPYRIGHT
+Source: https://crates.io/api/v1/crates/rand_distr/0.5.1/download#COPYRIGHT
+SHA-256 of original text: 90eb64f0279b0d9432accfa6023ff803bc4965212383697eee27a0f426d5f8d5
+
+Copyrights in the Rand project are retained by their contributors. No
+copyright assignment is required to contribute to the Rand project.
+
+For full authorship information, see the version control history.
+
+Except as otherwise noted (below and/or in individual files), Rand is
+licensed under the Apache License, Version 2.0 <LICENSE-APACHE> or
+<http://www.apache.org/licenses/LICENSE-2.0> or the MIT license
+<LICENSE-MIT> or <http://opensource.org/licenses/MIT>, at your option.
+
+The Rand project includes code from the Rust project
+published under these same licenses.
+
+
+==============================================================================
+Applies to: rand_core@0.10.1
+License: MIT OR Apache-2.0
+Source: https://crates.io/api/v1/crates/rand_core/0.10.1/download#LICENSE-MIT
+SHA-256 of original text: 8b6e9feec03e7c9a5facb26855cecd31662bf989b636bcfe79521bdf8ac863f0
+
+Copyright (c) 2018-2026 The Rand Project Developers
+
+Permission is hereby granted, free of charge, to any
+person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the
+Software without restriction, including without
+limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice
+shall be included in all copies or substantial portions
+of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
+ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+
+
+==============================================================================
+Applies to: rand_core@0.10.1
+License: MIT OR Apache-2.0
+Source: https://crates.io/api/v1/crates/rand_core/0.10.1/download#COPYRIGHT
+SHA-256 of original text: 92b81db30f7ab6d693e0af5661a40d273ca1947e891123ed823924192c10cbc7
+
+Copyrights in the Rand project are retained by their contributors. No
+copyright assignment is required to contribute to the Rand project.
+
+For full authorship information, see the version control history.
+
+Except as otherwise noted (below and/or in individual files), Rand is
+licensed under the Apache License, Version 2.0 <LICENSE-APACHE> or
+<http://www.apache.org/licenses/LICENSE-2.0> or the MIT license
+<LICENSE-MIT> or <http://opensource.org/licenses/MIT>, at your option.
+
+
+==============================================================================
+Applies to: rand_core@0.10.1, rand_core@0.9.5, rand_distr@0.5.1
+License: MIT OR Apache-2.0
+Source: https://crates.io/api/v1/crates/rand_core/0.10.1/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/rand_core/0.6.4/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/rand_core/0.9.5/download#LICENSE-APACHE
 Source: https://crates.io/api/v1/crates/rand_distr/0.5.1/download#LICENSE-APACHE
@@ -18072,7 +18311,7 @@ SOFTWARE.
 ==============================================================================
 Applies to: rustls-rustcrypto@0.0.2-alpha
 License: MIT; MIT OR Apache-2.0
-Source: Plervo source overlay https://github.com/alportblu/plervo-pdf/blob/v0.1.0-alpha.8/products/patches/video.patch ; source file vendor/rustls-rustcrypto/LICENSE-MIT
+Source: https://github.com/RustCrypto/rustls-rustcrypto/blob/70f76c039e587192688af18a80d5d6435dedaf22/LICENSE-MIT
 SHA-256 of original text: 1b9cec622a18a7789d0154a3040d7448f79414aed2fc31b95e49b01a234fb998
 
 Copyright (c) 2023 Steve Fan, ctz
@@ -18267,39 +18506,6 @@ Source: https://crates.io/api/v1/crates/scopeguard/1.2.0/download#LICENSE-MIT
 SHA-256 of original text: fb77f0a9c53e473abe5103c8632ef9f0f2874d4fb3f17cb2d8c661aab9cee9d7
 
 Copyright (c) 2016-2019 Ulrik Sverdrup "bluss" and scopeguard developers
-
-Permission is hereby granted, free of charge, to any
-person obtaining a copy of this software and associated
-documentation files (the "Software"), to deal in the
-Software without restriction, including without
-limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software
-is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice
-shall be included in all copies or substantial portions
-of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
-ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
-
-
-==============================================================================
-Applies to: sec1@0.7.3
-License: Apache-2.0 OR MIT; MIT
-Source: https://crates.io/api/v1/crates/sec1/0.7.3/download#LICENSE-MIT
-SHA-256 of original text: 4a883ecc3bb1010faed542bf63d53e530fea5e5e12cf676aed588784298ba929
-
-Copyright (c) 2021-2022 The RustCrypto Project Developers
 
 Permission is hereby granted, free of charge, to any
 person obtaining a copy of this software and associated
@@ -18738,6 +18944,35 @@ SOFTWARE.
 
 
 ==============================================================================
+Applies to: serdect@0.4.3
+License: Apache-2.0 OR MIT
+Source: https://crates.io/api/v1/crates/serdect/0.4.3/download#LICENSE-MIT
+SHA-256 of original text: 2ca9996043628ad4dea1408974e1d92d3932f6acf9db8ffb7faecbfa6d928997
+
+MIT License
+
+Copyright (c) 2022-2025 The RustCrypto Project Developers
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+==============================================================================
 Applies to: sha2@0.10.9
 License: MIT; MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/sha2/0.10.9/download#LICENSE-MIT
@@ -18746,6 +18981,42 @@ SHA-256 of original text: b4eb00df6e2a4d22518fcaa6a2b4646f249b3a3c9814509b22bd20
 Copyright (c) 2006-2009 Graydon Hoare
 Copyright (c) 2009-2013 Mozilla Foundation
 Copyright (c) 2016 Artyom Pavlov
+
+Permission is hereby granted, free of charge, to any
+person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the
+Software without restriction, including without
+limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice
+shall be included in all copies or substantial portions
+of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
+ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+
+
+==============================================================================
+Applies to: sha2@0.11.1
+License: MIT OR Apache-2.0
+Source: https://crates.io/api/v1/crates/sha2/0.11.1/download#LICENSE-MIT
+SHA-256 of original text: 831e0f43ad0bf014c1c4fec5767aae470434c1d66d6e671be2d823e729063e25
+
+Copyright (c) 2016-2026 The RustCrypto Project Developers
+Copyright (c) 2016 Artyom Pavlov
+Copyright (c) 2009-2013 Mozilla Foundation
+Copyright (c) 2006-2009 Graydon Hoare
 
 Permission is hereby granted, free of charge, to any
 person obtaining a copy of this software and associated
@@ -19228,34 +19499,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
-
-==============================================================================
-Applies to: spin@0.9.9
-License: MIT
-Source: https://crates.io/api/v1/crates/spin/0.9.9/download#LICENSE
-SHA-256 of original text: 6ac8711fb340c62ce0a4ecd463342d3fa0e8e70de697c863a2e1c0c53006003c
-
-The MIT License (MIT)
-
-Copyright (c) 2014 Mathijs van de Nes
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 
 ==============================================================================
 Applies to: stable_deref_trait@1.2.1
@@ -19931,10 +20174,11 @@ SOFTWARE.
 
 
 ==============================================================================
-Applies to: tokio-util@0.7.19, tokio@1.53.1
+Applies to: tokio-util@0.7.19, tokio@1.53.3
 License: MIT
 Source: https://crates.io/api/v1/crates/tokio-util/0.7.19/download#LICENSE
 Source: https://crates.io/api/v1/crates/tokio/1.53.1/download#LICENSE
+Source: https://crates.io/api/v1/crates/tokio/1.53.3/download#LICENSE
 SHA-256 of original text: 253cd04c6714889df2d32f3f64d669179a1c95c76ac43c40882c52eb06bc3552
 
 MIT License
@@ -21585,12 +21829,12 @@ according to those terms.
 
 
 ==============================================================================
-Applies to: universal-hash@0.5.1
-License: MIT; MIT OR Apache-2.0
-Source: https://crates.io/api/v1/crates/universal-hash/0.5.1/download#LICENSE-MIT
-SHA-256 of original text: 6b50510a0400c72172355cc5d2ba0f2c5c2eb33149b8f96539dc345fdc484920
+Applies to: universal-hash@0.6.1
+License: MIT OR Apache-2.0
+Source: https://crates.io/api/v1/crates/universal-hash/0.6.1/download#LICENSE-MIT
+SHA-256 of original text: efa52eb70a774b62c50cf50f5e57e2625c29d375d09b91132f4f020e47b9944e
 
-Copyright (c) 2019-2020 RustCrypto Developers
+Copyright (c) 2019-2025 RustCrypto Developers
 
 Permission is hereby granted, free of charge, to any
 person obtaining a copy of this software and associated
@@ -22549,6 +22793,40 @@ DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
+Applies to: wnaf@0.14.1
+License: Apache-2.0 OR MIT
+Source: https://crates.io/api/v1/crates/wnaf/0.14.1/download#LICENSE-MIT
+SHA-256 of original text: c1c9d5ca65122bab96e368709f8cfe9b92b443a3c21306c3260fc98eaac7e5fc
+
+Copyright (c) 2026 RustCrypto Developers
+Copyright (c) 2018-2025 `group` crate developers
+
+Permission is hereby granted, free of charge, to any
+person obtaining a copy of this software and associated
+documentation files (the "Software"), to deal in the
+Software without restriction, including without
+limitation the rights to use, copy, modify, merge,
+publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following
+conditions:
+
+The above copyright notice and this permission notice
+shall be included in all copies or substantial portions
+of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
+ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+
+
+==============================================================================
 Applies to: x11rb-protocol@0.13.2, x11rb@0.13.2
 License: MIT; MIT OR Apache-2.0
 Source: https://crates.io/api/v1/crates/x11rb-protocol/0.13.2/download#LICENSE-MIT
@@ -22583,9 +22861,9 @@ DEALINGS IN THE SOFTWARE.
 
 
 ==============================================================================
-Applies to: x25519-dalek@2.0.1
+Applies to: x25519-dalek@3.0.0
 License: BSD-3-Clause
-Source: https://crates.io/api/v1/crates/x25519-dalek/2.0.1/download#LICENSE
+Source: https://crates.io/api/v1/crates/x25519-dalek/3.0.0/download#LICENSE
 SHA-256 of original text: bebc725b8cb1ba1ed1798cb505cf31bf9bce4cbe942baf358b642666ba8186bd
 
 Copyright (c) 2017-2021 isis agora lovecruft. All rights reserved.
@@ -23376,39 +23654,6 @@ Source: https://crates.io/api/v1/crates/zeroize/1.9.0/download#LICENSE-MIT
 SHA-256 of original text: 8c7516d4b27b1e495be5e38b612298b63de48d05f49cdac94f70f3cd70f8864b
 
 Copyright (c) 2018-2026 The RustCrypto Project Developers
-
-Permission is hereby granted, free of charge, to any
-person obtaining a copy of this software and associated
-documentation files (the "Software"), to deal in the
-Software without restriction, including without
-limitation the rights to use, copy, modify, merge,
-publish, distribute, sublicense, and/or sell copies of
-the Software, and to permit persons to whom the Software
-is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice
-shall be included in all copies or substantial portions
-of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF
-ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
-TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
-PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT
-SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR
-IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
-DEALINGS IN THE SOFTWARE.
-
-
-==============================================================================
-Applies to: zeroize_derive@1.5.0
-License: Apache-2.0 OR MIT; MIT
-Source: https://crates.io/api/v1/crates/zeroize_derive/1.5.0/download#LICENSE-MIT
-SHA-256 of original text: b8c6939380a400f53e11923d50fcc4dd2fa1ba8339fd9d04cda38a0251b6c9b0
-
-Copyright (c) 2019-2026 The RustCrypto Project Developers
 
 Permission is hereby granted, free of charge, to any
 person obtaining a copy of this software and associated

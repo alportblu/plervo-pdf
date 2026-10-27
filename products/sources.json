@@ -117,9 +117,9 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.photocraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "186a59a87c5b53ec5280445ff92bc78f7456d360b4e82a25d1f7a0f72bf1218a",
-    "notices_sha256": "fc2ba05235941db5c76c0acb051c823931fde1df3a327b0beb575a86918feb23",
-    "notice_manifest_sha256": "210aecefa16893e4edecc049b7040498480665ed105c75766dc72b7b3f350670"
+    "patch_sha256": "a13bfd62ad078e5ef4003dfd992f43c595930d7c3442e460ebc4bade27ec174d",
+    "notices_sha256": "7723132d4852efeb3f5cdeb16db6d0985ad595289648e0d9d9efc65d7816639a",
+    "notice_manifest_sha256": "3a3ccd2faf4895cef78892144c00ed1be2121edc3a67d193b218cadf502a195f"
   },
   {
     "app": "vectorcraft",
@@ -379,9 +379,9 @@
       "assets/app-icon/hicolor/16x16/apps/ai.storyteller.filmcraft.png"
     ],
     "fonts_commit": "abb83316d96aa59c1cf64784289e378fe9fa5695",
-    "patch_sha256": "9ea7174a8b5594d3501040989655b95e2c3fbf1afbc222f257e3699496136212",
-    "notices_sha256": "776a4f3fb7bac9644e2ca4fc63c847e487426e84c534f8b87f98912b6eb68db6",
-    "notice_manifest_sha256": "a84e1fc2c3521f2b58bb33b84eb27811bc979b5def8aa272e1be12a4ca16e6e7"
+    "patch_sha256": "64216c5c83d45838ab596a2a6192e084ac50de5c7c82ab14700451b8fef00492",
+    "notices_sha256": "4eb2fe597b841cc73143ed1383e5fb68f1d0e371a7d8d75c1565e95e6655eb59",
+    "notice_manifest_sha256": "f0f2f8f9614f78d77750669b8bcdc7c8847259bfbedce93a0328529811c51334"
   },
   {
     "app": "lightcraft",
@@ -510,9 +510,9 @@
       "packaging/macos/dmg/generate.py"
     ],
     "fonts_commit": "8dcdacd5153e64560d109541a47d806f26f048c0",
-    "patch_sha256": "c8fdc82e620e312f2aab538b36dca9c3d2c8dfa1a0a4059838ee838c8d0f1bee",
-    "notices_sha256": "e8ede1aee6bfab4454f37f1f02d62e50d5ba923e38de0d36d3f67394a09f5e6e",
-    "notice_manifest_sha256": "8998b53fe5ced841f3df1cc6dd0ff184fce237f361ce531c77a001cd7ad37a1e"
+    "patch_sha256": "1304538caf6c78b4b9a9b77c7b95d33545ecb84b306061833138a46504f0db2b",
+    "notices_sha256": "4831006266ce59ffd7674d1a17250477ae0d579c39b927472a1fa612083ad70c",
+    "notice_manifest_sha256": "754ed8b7ca330d2accce25ad815307a13ba4eb05f620ffed6050dd2cde61ffc5"
   },
   {
     "app": "effectcraft",

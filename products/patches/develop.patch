@@ -1,8 +1,85 @@
 diff --git a/Cargo.lock b/Cargo.lock
-index 5f44519..265697e 100644
+index 5f44519..a159faa 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
-@@ -812,8 +812,6 @@ dependencies = [
+@@ -148,37 +148,37 @@ checksum = "320119579fcad9c21884f5c4861d16174d0e06250625266f50fe6898340abefa"
+ 
+ [[package]]
+ name = "aead"
+-version = "0.5.2"
++version = "0.6.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d122413f284cf2d62fb1b7db97e02edb8cda96d769b16e443a4f6195e35662b0"
++checksum = "1973cfbc1a2daf9cf550e74e1f088c28e7f7d8c1e1418fb6c9dc5184b7e84c99"
+ dependencies = [
+- "crypto-common",
+- "generic-array",
++ "crypto-common 0.2.2",
++ "inout",
+ ]
+ 
+ [[package]]
+ name = "aes"
+-version = "0.8.4"
++version = "0.9.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "b169f7a6d4742236a0a00c541b845991d0ac43e546831af1249753ab4c3aa3a0"
++checksum = "35f0f96ce78e38c3dc6d8948aa8163d06385be74000f3c7a95bf1eef35d3ea32"
+ dependencies = [
+- "cfg-if",
+  "cipher",
+- "cpufeatures",
++ "cpubits",
++ "cpufeatures 0.3.1",
+ ]
+ 
+ [[package]]
+ name = "aes-gcm"
+-version = "0.10.3"
++version = "0.11.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "831010a0f742e1209b3bcea8fab6a8e149051ba6099432c8cb2cc117dec3ead1"
++checksum = "7f2b8006a0c83f52b62ba44a97b58bf76fe2f70a329e588f67f89691d93d498f"
+ dependencies = [
+  "aead",
+  "aes",
+  "cipher",
+  "ctr",
++ "ctutils",
+  "ghash",
+- "subtle",
+ ]
+ 
+ [[package]]
+@@ -580,9 +580,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "base16ct"
+-version = "0.2.0"
++version = "1.0.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "4c7f02d4ea65f2c1853089ffd8d2787bdbc63de2f0d29dedbcf8ccdfa0ccd4cf"
++checksum = "fd307490d624467aa6f74b0eabb77633d1f758a7b25f12bceb0b22e08d9726f6"
+ 
+ [[package]]
+ name = "base64ct"
+@@ -656,6 +656,15 @@ dependencies = [
+  "generic-array",
+ ]
+ 
++[[package]]
++name = "block-buffer"
++version = "0.12.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "d2f6c7dbe95a6ed67ad9f18e57daf93a2f034c524b99fd2b76d18fdfeb6660aa"
++dependencies = [
++ "hybrid-array",
++]
++
+ [[package]]
+ name = "block2"
+ version = "0.5.1"
+@@ -812,8 +821,6 @@ dependencies = [
  [[package]]
  name = "candle-core"
  version = "0.9.2"
@@ -11,7 +88,320 @@ index 5f44519..265697e 100644
  dependencies = [
   "byteorder",
   "candle-metal-kernels",
-@@ -1659,7 +1657,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+@@ -827,7 +834,7 @@ dependencies = [
+  "num_cpus",
+  "objc2-foundation 0.3.2",
+  "objc2-metal 0.3.2",
+- "rand 0.9.5",
++ "rand",
+  "rand_distr",
+  "rayon",
+  "safetensors 0.7.0",
+@@ -914,37 +921,36 @@ dependencies = [
+ 
+ [[package]]
+ name = "chacha20"
+-version = "0.9.1"
++version = "0.10.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "c3613f74bd2eac03dad61bd53dbe620703d4371614fe0bc3b9f04dd36fe4e818"
++checksum = "65c35e4b699c7e15ccbe7ee35c005e4fc0a278d22238a2857e6ce2dadeda1b06"
+ dependencies = [
+  "cfg-if",
+  "cipher",
+- "cpufeatures",
++ "cpufeatures 0.3.1",
+ ]
+ 
+ [[package]]
+ name = "chacha20poly1305"
+-version = "0.10.1"
++version = "0.11.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "10cd79432192d1c0f4e1a0fef9527696cc039165d729fb41b3f4f4f354c2dc35"
++checksum = "9b89e1c441e926b9c82a8d023f6e1b7ae0adcfaa7d621814e4d60789bac751cb"
+ dependencies = [
+  "aead",
+  "chacha20",
+  "cipher",
+  "poly1305",
+- "zeroize",
+ ]
+ 
+ [[package]]
+ name = "cipher"
+-version = "0.4.4"
++version = "0.5.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "773f3b9af64447d2ce9850330c473515014aa235e6a783b02db81ff39e4a3dad"
++checksum = "e8cf2a2c93cd704877c0858356ed03480ff301ee950b43f1cbe4573b088bfa6c"
+ dependencies = [
+- "crypto-common",
++ "block-buffer 0.12.1",
++ "crypto-common 0.2.2",
+  "inout",
+- "zeroize",
+ ]
+ 
+ [[package]]
+@@ -956,6 +962,12 @@ dependencies = [
+  "error-code",
+ ]
+ 
++[[package]]
++name = "cmov"
++version = "0.5.4"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "0c9ea0ac24bc397ab3c98583a3c9ba74fa56b09a4449bbe172b9b1ddb016027a"
++
+ [[package]]
+ name = "codespan-reporting"
+ version = "0.13.1"
+@@ -1019,9 +1031,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "const-oid"
+-version = "0.9.6"
++version = "0.10.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "c2459377285ad874054d797f3ccebf984978aa39129f6eafde5cdc8315b612f8"
++checksum = "a6ef517f0926dd24a1582492c791b6a4818a4d94e789a334894aa15b0d12f55c"
+ 
+ [[package]]
+ name = "core-foundation"
+@@ -1063,6 +1075,12 @@ dependencies = [
+  "libc",
+ ]
+ 
++[[package]]
++name = "cpubits"
++version = "0.1.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "15b85f9c39137c3a891689859392b1bd49812121d0d61c9caf00d46ed5ce06ae"
++
+ [[package]]
+ name = "cpufeatures"
+ version = "0.2.17"
+@@ -1072,6 +1090,15 @@ dependencies = [
+  "libc",
+ ]
+ 
++[[package]]
++name = "cpufeatures"
++version = "0.3.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "5ca28b0ae3115b884660db4118d803791fd6756b6e88f39c0f3f7859060d7566"
++dependencies = [
++ "libc",
++]
++
+ [[package]]
+ name = "craft-ui"
+ version = "0.1.0"
+@@ -1132,12 +1159,16 @@ checksum = "460fbee9c2c2f33933d720630a6a0bac33ba7053db5344fac858d4b8952d77d5"
+ 
+ [[package]]
+ name = "crypto-bigint"
+-version = "0.5.5"
++version = "0.7.9"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "0dc92fb57ca44df6db8059111ab3af99a63d5d0f8375d9972e319a379c6bab76"
++checksum = "d811ea23fdfbcce2e2d5132344d471abdb8f901ac496a0893a3df92e70525e52"
+ dependencies = [
+- "generic-array",
+- "rand_core 0.6.4",
++ "cpubits",
++ "ctutils",
++ "hybrid-array",
++ "num-traits",
++ "rand_core 0.10.1",
++ "serdect",
+  "subtle",
+  "zeroize",
+ ]
+@@ -1152,15 +1183,45 @@ dependencies = [
+  "typenum",
+ ]
+ 
++[[package]]
++name = "crypto-common"
++version = "0.2.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "ce6e4c961d6cd6c9a86db418387425e8bdeaf05b3c8bc1411e6dca4c252f1453"
++dependencies = [
++ "hybrid-array",
++ "rand_core 0.10.1",
++]
++
++[[package]]
++name = "crypto-primes"
++version = "0.7.2"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "3633a51a39c69ebbaa4feaa694bd83d241e4093901c84a0963b19d9bb3f0cf8f"
++dependencies = [
++ "crypto-bigint",
++ "rand_core 0.10.1",
++]
++
+ [[package]]
+ name = "ctr"
+-version = "0.9.2"
++version = "0.10.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "0369ee1ad671834580515889b80f2ea915f23b8be8d0daa4bbaf2ac5c7590835"
++checksum = "baaca1c4b237092596f64d571e9db6ce4109c4ef9742e27590f1709594461f21"
+ dependencies = [
+  "cipher",
+ ]
+ 
++[[package]]
++name = "ctutils"
++version = "0.4.6"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "fe3e9d21d39e6f39ff46e03d5b621424f88ee23d8a1672c6bfc9ccc7f2da4f6a"
++dependencies = [
++ "cmov",
++ "subtle",
++]
++
+ [[package]]
+ name = "cursor-icon"
+ version = "1.2.0"
+@@ -1169,14 +1230,14 @@ checksum = "f27ae1dd37df86211c42e150270f82743308803d90a6f6e6651cd730d5e1732f"
+ 
+ [[package]]
+ name = "curve25519-dalek"
+-version = "4.1.3"
++version = "5.0.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "97fb8b7c4503de7d6ae7b42ab72a5a59857b4c937ec27a3d4539dba95b5ab2be"
++checksum = "b5eed333089e2e1c1ac8c6c0398e5e2497b4c9926ca6d0365ed1e099afa5bc23"
+ dependencies = [
+  "cfg-if",
+- "cpufeatures",
++ "cpufeatures 0.3.1",
+  "curve25519-dalek-derive",
+- "digest",
++ "digest 0.11.3",
+  "fiat-crypto",
+  "rustc_version",
+  "subtle",
+@@ -1196,9 +1257,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "der"
+-version = "0.7.10"
++version = "0.8.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "e7c1832837b905bbfb5101e07cc24c8deddf52f93225eee6ead5f4d63d53ddcb"
++checksum = "6a996a108feb8b427a6e12fcf6af4aa83409b79d72c15337d7741368131ee004"
+ dependencies = [
+  "const-oid",
+  "pem-rfc7468",
+@@ -1240,10 +1301,20 @@ version = "0.10.7"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "9ed9a281f7bc9b7576e61468ba615a66a5c8cfdff42420a70aa82701a3b1e292"
+ dependencies = [
+- "block-buffer",
++ "block-buffer 0.10.4",
++ "crypto-common 0.1.7",
++]
++
++[[package]]
++name = "digest"
++version = "0.11.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "f1dd6dbb5841937940781866fa1281a1ff7bd3bf827091440879f9994983d5c2"
++dependencies = [
++ "block-buffer 0.12.1",
+  "const-oid",
+- "crypto-common",
+- "subtle",
++ "crypto-common 0.2.2",
++ "ctutils",
+ ]
+ 
+ [[package]]
+@@ -1322,16 +1393,17 @@ checksum = "e1d926b4d407d372f141f93bb444696142c29d32962ccbd3531117cf3aa0bfa9"
+ 
+ [[package]]
+ name = "ecdsa"
+-version = "0.16.9"
++version = "0.17.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "ee27f32b5c5292967d2d4a9d7f1e0b0aed2c15daded5a60300e4abb9d8020bca"
++checksum = "c0681a4fc24c767085329728d8dfba959af91228aa4610cca4f8ce317ba46ae0"
+ dependencies = [
+  "der",
+- "digest",
++ "digest 0.11.3",
+  "elliptic-curve",
+  "rfc6979",
+  "signature",
+  "spki",
++ "zeroize",
+ ]
+ 
+ [[package]]
+@@ -1346,9 +1418,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "ed25519"
+-version = "2.2.3"
++version = "3.0.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "115531babc129696a58c64a4fef0a8bf9e9698629fb97e9e40767d235cfbcd53"
++checksum = "29fcf32e6c73d1079f83ab4d782de2d81620346a5f38c6237a86a22f8368980a"
+ dependencies = [
+  "pkcs8",
+  "signature",
+@@ -1356,14 +1428,15 @@ dependencies = [
+ 
+ [[package]]
+ name = "ed25519-dalek"
+-version = "2.2.0"
++version = "3.0.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "70e796c081cee67dc755e1a36a0a172b897fab85fc3f6bc48307991f64e4eca9"
++checksum = "6ebaa1a2bf1290ab3bfe5a7b771d050ebffab2711c19a81691c683a5144a25de"
+ dependencies = [
+  "curve25519-dalek",
+  "ed25519",
+  "serde",
+- "sha2",
++ "sha2 0.11.1",
++ "signature",
+  "subtle",
+  "zeroize",
+ ]
+@@ -1508,20 +1581,21 @@ checksum = "252afb9ae5eaa683babdc6a068b3f5726eb19e05070c731f9b2a23a7c3e8ed34"
+ 
+ [[package]]
+ name = "elliptic-curve"
+-version = "0.13.8"
++version = "0.14.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "b5e6043086bf7973472e0c7dff2142ea0b680d30e18d9cc40f267efbf222bd47"
++checksum = "900f37e7e18d74a2347389af6cd69e3a30d5cc9e697f40004865679aa75e9c7c"
+ dependencies = [
+  "base16ct",
+  "crypto-bigint",
+- "digest",
++ "crypto-common 0.2.2",
++ "digest 0.11.3",
+  "ff",
+- "generic-array",
+  "group",
+  "hkdf",
++ "hybrid-array",
+  "pem-rfc7468",
+  "pkcs8",
+- "rand_core 0.6.4",
++ "rand_core 0.10.1",
+  "sec1",
+  "subtle",
+  "zeroize",
+@@ -1659,7 +1733,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "39cab71617ae0d63f51a36d69f866391735b51691dbda63cf6f96d042b63efeb"
  dependencies = [
   "libc",
@@ -20,7 +410,155 @@ index 5f44519..265697e 100644
  ]
  
  [[package]]
-@@ -3071,33 +3069,9 @@ dependencies = [
+@@ -1762,19 +1836,19 @@ checksum = "b97b65636e5b9ef369943878ac74335ba1c55c1cb6adbf1e2c293c624248d693"
+ 
+ [[package]]
+ name = "ff"
+-version = "0.13.1"
++version = "0.14.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "c0b50bfb653653f9ca9095b427bed08ab8d75a137839d9ad64eb11810d5b6393"
++checksum = "a1f686ab92a9fb0eaf188f6c6c87b89490baa6fdb0db4544ba4dc47f7942489f"
+ dependencies = [
+- "rand_core 0.6.4",
++ "rand_core 0.10.1",
+  "subtle",
+ ]
+ 
+ [[package]]
+ name = "fiat-crypto"
+-version = "0.2.9"
++version = "0.3.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "28dea519a9695b9977216879a3ebfddf92f1c08c05d984f8996aecd6ecdc811d"
++checksum = "64cd1e32ddd350061ae6edb1b082d7c54915b5c672c389143b9a63403a109f24"
+ 
+ [[package]]
+ name = "find-msvc-tools"
+@@ -1801,7 +1875,7 @@ checksum = "719a903cc23e4a89e87962c2a80fdb45cdaad0983a89bd150bb57b4c8571a7d5"
+ dependencies = [
+  "half",
+  "num-traits",
+- "rand 0.9.5",
++ "rand",
+  "rand_distr",
+ ]
+ 
+@@ -2270,7 +2344,6 @@ checksum = "85649ca51fd72272d7821adaf274ad91c288277713d9c18820d8499a7ff69e9a"
+ dependencies = [
+  "typenum",
+  "version_check",
+- "zeroize",
+ ]
+ 
+ [[package]]
+@@ -2324,15 +2397,15 @@ dependencies = [
+  "cfg-if",
+  "libc",
+  "r-efi 6.0.0",
++ "rand_core 0.10.1",
+ ]
+ 
+ [[package]]
+ name = "ghash"
+-version = "0.5.1"
++version = "0.6.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "f0d8a4362ccb29cb0b265253fb0a2728f592895ee6854fd9bc13f2ffda266ff1"
++checksum = "2eecf2d5dc9b66b732b97707a0210906b1d30523eb773193ab777c0c84b3e8d5"
+ dependencies = [
+- "opaque-debug",
+  "polyval",
+ ]
+ 
+@@ -2473,12 +2546,12 @@ dependencies = [
+ 
+ [[package]]
+ name = "group"
+-version = "0.13.0"
++version = "0.14.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "f0f9ef7462f7c099f518d754361858f86d8a07af53ba9af0fe635bbccb151a63"
++checksum = "7fd1a1c7a5206c5b7a3f5a0d7ccd3ff85d0c8f5133d62a02680255b0004af5f4"
+ dependencies = [
+  "ff",
+- "rand_core 0.6.4",
++ "rand_core 0.10.1",
+  "subtle",
+ ]
+ 
+@@ -2501,7 +2574,7 @@ dependencies = [
+  "cfg-if",
+  "crunchy",
+  "num-traits",
+- "rand 0.9.5",
++ "rand",
+  "rand_distr",
+  "zerocopy",
+ ]
+@@ -2569,20 +2642,31 @@ checksum = "7f24254aa9a54b5c858eaee2f5bccdb46aaf0e486a595ed5fd8f86ba55232a70"
+ 
+ [[package]]
+ name = "hkdf"
+-version = "0.12.4"
++version = "0.13.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "7b5f8eb2ad728638ea2c7d47a21db23b7b58a72ed6a38256b8a1849f15fbbdf7"
++checksum = "4aaa26c720c68b866f2c96ef5c1264b3e6f473fe5d4ce61cd44bbe913e553018"
+ dependencies = [
+  "hmac",
+ ]
+ 
+ [[package]]
+ name = "hmac"
+-version = "0.12.1"
++version = "0.13.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "6c49c37c09c17a53d937dfbb742eb3a961d65a994e6bcdcf37e7399d0cc8ab5e"
++checksum = "6303bc9732ae41b04cb554b844a762b4115a61bfaa81e3e83050991eeb56863f"
+ dependencies = [
+- "digest",
++ "digest 0.11.3",
++]
++
++[[package]]
++name = "hybrid-array"
++version = "0.4.15"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "27f864f10dfb56725ce5ce5472bc52252c8f93a4ab86327122cebf62c5f59a17"
++dependencies = [
++ "subtle",
++ "typenum",
++ "zeroize",
+ ]
+ 
+ [[package]]
+@@ -2632,11 +2716,11 @@ dependencies = [
+ 
+ [[package]]
+ name = "inout"
+-version = "0.1.4"
++version = "0.2.5"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "879f10e63c20629ecabbb64a8010319738c66a5cd0c29b02d63d272b03751d01"
++checksum = "3b5cf4372d022092674a83b8febf5865f7a573cc0c5baec5e49c879b6a20978f"
+ dependencies = [
+- "generic-array",
++ "hybrid-array",
+ ]
+ 
+ [[package]]
+@@ -3023,9 +3107,6 @@ name = "lazy_static"
+ version = "1.5.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "20870f649af7073d53e38067b2a84312175d56ea15217e1b15bc83506ec50afb"
+-dependencies = [
+- "spin",
+-]
+ 
+ [[package]]
+ name = "libc"
+@@ -3071,33 +3152,9 @@ dependencies = [
   "redox_syscall 0.9.4",
  ]
  
@@ -55,7 +593,7 @@ index 5f44519..265697e 100644
  dependencies = [
   "crc32fast",
   "lightcraft-develop",
-@@ -3112,25 +3086,9 @@ dependencies = [
+@@ -3112,25 +3169,9 @@ dependencies = [
   "web-time",
  ]
  
@@ -82,7 +620,7 @@ index 5f44519..265697e 100644
  dependencies = [
   "avif-serialize",
   "bytemuck",
-@@ -3159,7 +3117,7 @@ dependencies = [
+@@ -3159,7 +3200,7 @@ dependencies = [
  
  [[package]]
  name = "lightcraft-color"
@@ -91,7 +629,7 @@ index 5f44519..265697e 100644
  dependencies = [
   "lightcraft-geom",
   "proptest",
-@@ -3168,7 +3126,7 @@ dependencies = [
+@@ -3168,7 +3209,7 @@ dependencies = [
  
  [[package]]
  name = "lightcraft-denoise"
@@ -100,7 +638,15 @@ index 5f44519..265697e 100644
  dependencies = [
   "faer-core",
   "lightcraft-denoise-core",
-@@ -3185,7 +3143,7 @@ dependencies = [
+@@ -3178,14 +3219,14 @@ dependencies = [
+  "rayon",
+  "serde",
+  "serde_json",
+- "sha2",
++ "sha2 0.10.9",
+  "thiserror 2.0.21",
+  "web-time",
+ ]
  
  [[package]]
  name = "lightcraft-denoise-core"
@@ -109,7 +655,15 @@ index 5f44519..265697e 100644
  dependencies = [
   "lightcraft-raster",
   "miniz_oxide 0.8.9",
-@@ -3200,7 +3158,7 @@ dependencies = [
+@@ -3193,14 +3234,14 @@ dependencies = [
+  "rayon",
+  "serde",
+  "serde_json",
+- "sha2",
++ "sha2 0.10.9",
+  "thiserror 2.0.21",
+  "web-time",
+ ]
  
  [[package]]
  name = "lightcraft-develop"
@@ -118,7 +672,7 @@ index 5f44519..265697e 100644
  dependencies = [
   "lightcraft-color",
   "lightcraft-geom",
-@@ -3212,7 +3170,7 @@ dependencies = [
+@@ -3212,7 +3253,7 @@ dependencies = [
  
  [[package]]
  name = "lightcraft-engine"
@@ -127,7 +681,7 @@ index 5f44519..265697e 100644
  dependencies = [
   "ab_glyph",
   "harfrust",
-@@ -3252,7 +3210,7 @@ dependencies = [
+@@ -3252,32 +3293,32 @@ dependencies = [
  
  [[package]]
  name = "lightcraft-faces"
@@ -136,7 +690,14 @@ index 5f44519..265697e 100644
  dependencies = [
   "matrixmultiply",
   "ndarray",
-@@ -3266,7 +3224,7 @@ dependencies = [
+  "proptest",
+  "serde",
+  "serde_json",
+- "sha2",
++ "sha2 0.10.9",
+  "thiserror 2.0.21",
+  "web-time",
+ ]
  
  [[package]]
  name = "lightcraft-fetch"
@@ -145,7 +706,11 @@ index 5f44519..265697e 100644
  dependencies = [
   "log",
   "rustls",
-@@ -3277,7 +3235,7 @@ dependencies = [
+  "rustls-rustcrypto",
+- "sha2",
++ "sha2 0.10.9",
+  "webpki-roots",
+ ]
  
  [[package]]
  name = "lightcraft-geocode"
@@ -154,7 +719,7 @@ index 5f44519..265697e 100644
  dependencies = [
   "miniz_oxide 0.8.9",
   "serde",
-@@ -3285,7 +3243,7 @@ dependencies = [
+@@ -3285,7 +3326,7 @@ dependencies = [
  
  [[package]]
  name = "lightcraft-geom"
@@ -163,7 +728,7 @@ index 5f44519..265697e 100644
  dependencies = [
   "proptest",
   "serde",
-@@ -3293,7 +3251,7 @@ dependencies = [
+@@ -3293,7 +3334,7 @@ dependencies = [
  
  [[package]]
  name = "lightcraft-gpu"
@@ -172,7 +737,7 @@ index 5f44519..265697e 100644
  dependencies = [
   "bytemuck",
   "lightcraft-color",
-@@ -3311,7 +3269,7 @@ dependencies = [
+@@ -3311,7 +3352,7 @@ dependencies = [
  
  [[package]]
  name = "lightcraft-heif"
@@ -181,7 +746,7 @@ index 5f44519..265697e 100644
  dependencies = [
   "heic-rs",
   "rayon",
-@@ -3319,23 +3277,23 @@ dependencies = [
+@@ -3319,23 +3360,23 @@ dependencies = [
  
  [[package]]
  name = "lightcraft-inpaint"
@@ -209,7 +774,7 @@ index 5f44519..265697e 100644
  dependencies = [
   "lightcraft-codecs",
   "lightcraft-engine",
-@@ -3346,7 +3304,7 @@ dependencies = [
+@@ -3346,7 +3387,7 @@ dependencies = [
  
  [[package]]
  name = "lightcraft-merge"
@@ -218,7 +783,7 @@ index 5f44519..265697e 100644
  dependencies = [
   "lightcraft-codecs",
   "lightcraft-color",
-@@ -3362,19 +3320,19 @@ dependencies = [
+@@ -3362,19 +3403,19 @@ dependencies = [
  
  [[package]]
  name = "lightcraft-meta"
@@ -241,7 +806,7 @@ index 5f44519..265697e 100644
  dependencies = [
   "image",
   "lightcraft-color",
-@@ -3392,7 +3350,7 @@ dependencies = [
+@@ -3392,7 +3433,7 @@ dependencies = [
  
  [[package]]
  name = "lightcraft-preview"
@@ -250,7 +815,7 @@ index 5f44519..265697e 100644
  dependencies = [
   "jpeg-encoder",
   "lightcraft-raster",
-@@ -3404,7 +3362,7 @@ dependencies = [
+@@ -3404,7 +3445,7 @@ dependencies = [
  
  [[package]]
  name = "lightcraft-raster"
@@ -259,7 +824,7 @@ index 5f44519..265697e 100644
  dependencies = [
   "libc",
   "lightcraft-color",
-@@ -3416,7 +3374,7 @@ dependencies = [
+@@ -3416,7 +3457,7 @@ dependencies = [
  
  [[package]]
  name = "lightcraft-raw"
@@ -268,7 +833,16 @@ index 5f44519..265697e 100644
  dependencies = [
   "jpeg-encoder",
   "jxl-oxide",
-@@ -3438,7 +3396,7 @@ dependencies = [
+@@ -3429,7 +3470,7 @@ dependencies = [
+  "proptest",
+  "rayon",
+  "serde",
+- "sha2",
++ "sha2 0.10.9",
+  "thiserror 2.0.21",
+  "zune-core",
+  "zune-jpeg",
+@@ -3438,7 +3479,7 @@ dependencies = [
  
  [[package]]
  name = "lightcraft-scenes"
@@ -277,7 +851,7 @@ index 5f44519..265697e 100644
  dependencies = [
   "image",
   "lightcraft-color",
-@@ -3449,7 +3407,7 @@ dependencies = [
+@@ -3449,7 +3490,7 @@ dependencies = [
  
  [[package]]
  name = "lightcraft-segment"
@@ -286,7 +860,7 @@ index 5f44519..265697e 100644
  dependencies = [
   "candle-core",
   "candle-nn",
-@@ -3462,11 +3420,11 @@ dependencies = [
+@@ -3462,11 +3503,11 @@ dependencies = [
  
  [[package]]
  name = "lightcraft-sysmem"
@@ -300,7 +874,7 @@ index 5f44519..265697e 100644
  dependencies = [
   "proptest",
   "serde",
-@@ -3475,7 +3433,7 @@ dependencies = [
+@@ -3475,7 +3516,7 @@ dependencies = [
  
  [[package]]
  name = "lightcraft-ui-egui"
@@ -309,7 +883,7 @@ index 5f44519..265697e 100644
  dependencies = [
   "craft-ui",
   "egui",
-@@ -3496,13 +3454,14 @@ dependencies = [
+@@ -3496,13 +3537,14 @@ dependencies = [
   "log",
   "serde",
   "serde_json",
@@ -325,7 +899,7 @@ index 5f44519..265697e 100644
  dependencies = [
   "crc32fast",
   "eframe",
-@@ -3706,7 +3665,7 @@ dependencies = [
+@@ -3706,7 +3748,7 @@ dependencies = [
   "once_cell",
   "png",
   "thiserror 2.0.21",
@@ -334,7 +908,7 @@ index 5f44519..265697e 100644
  ]
  
  [[package]]
-@@ -3798,6 +3757,18 @@ version = "1.0.6"
+@@ -3798,6 +3840,18 @@ version = "1.0.6"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "650eef8c711430f1a879fdd01d4745a7deea475becfb90269c06775983bbf086"
  
@@ -353,7 +927,129 @@ index 5f44519..265697e 100644
  [[package]]
  name = "no_std_io2"
  version = "0.9.4"
-@@ -4570,6 +4541,46 @@ version = "0.2.3"
+@@ -3852,22 +3906,6 @@ dependencies = [
+  "num-traits",
+ ]
+ 
+-[[package]]
+-name = "num-bigint-dig"
+-version = "0.8.6"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "e661dda6640fad38e827a6d4a310ff4763082116fe217f279885c97f511bb0b7"
+-dependencies = [
+- "lazy_static",
+- "libm",
+- "num-integer",
+- "num-iter",
+- "num-traits",
+- "rand 0.8.8",
+- "smallvec",
+- "zeroize",
+-]
+-
+ [[package]]
+ name = "num-complex"
+ version = "0.4.6"
+@@ -4299,12 +4337,6 @@ version = "1.21.4"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "9f7c3e4beb33f85d45ae3e3a1792185706c8e16d043238c593331cc7cd313b50"
+ 
+-[[package]]
+-name = "opaque-debug"
+-version = "0.3.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "c08d65885ee38876c4f86fa503fb49d7b507c2b62552df7c70b2fce627e06381"
+-
+ [[package]]
+ name = "open"
+ version = "5.4.4"
+@@ -4355,26 +4387,29 @@ dependencies = [
+ 
+ [[package]]
+ name = "p256"
+-version = "0.13.2"
++version = "0.14.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "c9863ad85fa8f4460f9c48cb909d38a0d689dba1f6f6988a5e3e0d31071bcd4b"
++checksum = "d2c9239b2dbc807adbbe147e8cf72ea7450c3a0aabe62cb8e75ff4ec22e1f72a"
+ dependencies = [
+  "ecdsa",
+  "elliptic-curve",
++ "primefield",
+  "primeorder",
+- "sha2",
++ "sha2 0.11.1",
+ ]
+ 
+ [[package]]
+ name = "p384"
+-version = "0.13.1"
++version = "0.14.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "fe42f1670a52a47d448f14b6a5c61dd78fce51856e68edaa38f7ae3a46b8d6b6"
++checksum = "d17b851e6b3e378ab4ecb07fa2ed23f4d15f075735f8fec9fa1e7bdce5f8301f"
+ dependencies = [
+  "ecdsa",
+  "elliptic-curve",
++ "fiat-crypto",
++ "primefield",
+  "primeorder",
+- "sha2",
++ "sha2 0.11.1",
+ ]
+ 
+ [[package]]
+@@ -4420,9 +4455,9 @@ checksum = "35fb2e5f958ec131621fdd531e9fc186ed768cbe395337403ae56c17a74c68ec"
+ 
+ [[package]]
+ name = "pem-rfc7468"
+-version = "0.7.0"
++version = "1.0.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "88b39c9bfcfc231068454382784bb460aae594343fb030d46e9f50a645418412"
++checksum = "a6305423e0e7738146434843d1694d621cce767262b2a86910beab705e4493d9"
+ dependencies = [
+  "base64ct",
+ ]
+@@ -4528,20 +4563,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "pkcs1"
+-version = "0.7.5"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "c8ffb9f10fa047879315e6625af03c164b16962a5368d724ed16323b68ace47f"
+-dependencies = [
+- "der",
+- "pkcs8",
+- "spki",
+-]
+-
+-[[package]]
+-name = "pkcs5"
+-version = "0.7.1"
++version = "0.8.0-rc.5"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "e847e2c91a18bfa887dd028ec33f2fe6f25db77db3619024764914affe8b69a6"
++checksum = "f485dbafe293ea6ccaa7d82bc591651a796eb8a9aec3df040b057b706073dbc3"
+ dependencies = [
+  "der",
+  "spki",
+@@ -4549,12 +4573,11 @@ dependencies = [
+ 
+ [[package]]
+ name = "pkcs8"
+-version = "0.10.2"
++version = "0.11.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "f950b2377845cebe5cf8b5165cb3cc1a5e0fa5cfa3e1f7f55707d8fd82e0a7b7"
++checksum = "451913da69c775a56034ea8d9003d27ee8948e12443eae7c038ba100a4f21cb7"
+ dependencies = [
+  "der",
+- "pkcs5",
+  "spki",
+ ]
+ 
+@@ -4570,6 +4593,46 @@ version = "0.2.3"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "b4596b6d070b27117e987119b4dac604f3c58cfb0b191112e24771b2faeac1a6"
  
@@ -400,7 +1096,84 @@ index 5f44519..265697e 100644
  [[package]]
  name = "png"
  version = "0.18.1"
-@@ -4803,15 +4814,6 @@ version = "2.0.1"
+@@ -4611,12 +4674,11 @@ checksum = "bc6355899e1c9462875b6757c79f3caa011a1fdae12bbb1a2e72dd1f234f8336"
+ 
+ [[package]]
+ name = "poly1305"
+-version = "0.8.0"
++version = "0.9.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "8159bd90725d2df49889a078b54f4f79e87f1f8a8444194cdca81d38f5393abf"
++checksum = "6e2d0073b297041425c7c3df6eb4792d598a15323fe63346852b092eca02904c"
+ dependencies = [
+- "cpufeatures",
+- "opaque-debug",
++ "cpufeatures 0.3.1",
+  "universal-hash",
+ ]
+ 
+@@ -4631,13 +4693,12 @@ dependencies = [
+ 
+ [[package]]
+ name = "polyval"
+-version = "0.6.2"
++version = "0.7.3"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "9d1fe60d06143b2430aa532c94cfe9e29783047f06c0d7fd359a9a51b729fa25"
++checksum = "f0fa31d631f2b2cb2a544d0aa321ce847a94764d701ca2becc411138b93d49cd"
+ dependencies = [
+- "cfg-if",
+- "cpufeatures",
+- "opaque-debug",
++ "cpubits",
++ "cpufeatures 0.3.1",
+  "universal-hash",
+ ]
+ 
+@@ -4671,13 +4732,29 @@ version = "0.3.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "e8cf8e6a8aa66ce33f63993ffc4ea4271eb5b0530a9002db8455ea6050c77bfa"
+ 
++[[package]]
++name = "primefield"
++version = "0.14.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "c555a6e4eb7d4e158fcb028c835c3b8642206ddc279b5c6b202ef9a8bdb592f4"
++dependencies = [
++ "crypto-bigint",
++ "crypto-common 0.2.2",
++ "ff",
++ "rand_core 0.10.1",
++ "subtle",
++ "zeroize",
++]
++
+ [[package]]
+ name = "primeorder"
+-version = "0.13.6"
++version = "0.14.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "353e1ca18966c16d9deb1c69278edbc5f194139612772bd9537af60ac231e1e6"
++checksum = "5c9f42978c78a00e3d68f69fc03e57a234debae69da4020a4fb588fcdcd07b06"
+ dependencies = [
+  "elliptic-curve",
++ "primefield",
++ "wnaf",
+ ]
+ 
+ [[package]]
+@@ -4727,8 +4804,8 @@ dependencies = [
+  "bit-vec 0.8.0",
+  "bitflags 2.13.2",
+  "num-traits",
+- "rand 0.9.5",
+- "rand_chacha 0.9.0",
++ "rand",
++ "rand_chacha",
+  "rand_xorshift",
+  "regex-syntax",
+  "rusty-fork",
+@@ -4803,15 +4880,6 @@ version = "2.0.1"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "a993555f31e5a609f617c12db6250dedcac1b0a85076912c436e6fc9b2c8e6a3"
  
@@ -416,7 +1189,138 @@ index 5f44519..265697e 100644
  [[package]]
  name = "quick-xml"
  version = "0.41.0"
-@@ -5221,18 +5223,18 @@ dependencies = [
+@@ -4842,36 +4910,16 @@ version = "6.0.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "f8dcc9c7d52a811697d2151c701e0d08956f92b0e24136cf4cf27b57a6a0d9bf"
+ 
+-[[package]]
+-name = "rand"
+-version = "0.8.8"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "e058c7de0b26af77780c769414d6257830bb240f3c38477dbc2c16e5f54d6d4c"
+-dependencies = [
+- "rand_chacha 0.3.1",
+- "rand_core 0.6.4",
+-]
+-
+ [[package]]
+ name = "rand"
+ version = "0.9.5"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "b9ef1d0d795eb7d84685bca4f72f3649f064e6641543d3a8c415898726a57b41"
+ dependencies = [
+- "rand_chacha 0.9.0",
++ "rand_chacha",
+  "rand_core 0.9.5",
+ ]
+ 
+-[[package]]
+-name = "rand_chacha"
+-version = "0.3.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "e6c10a63a0fa32252be49d21e7709d4d4baf8d231c2dbce1eaa8141b9b127d88"
+-dependencies = [
+- "ppv-lite86",
+- "rand_core 0.6.4",
+-]
+-
+ [[package]]
+ name = "rand_chacha"
+ version = "0.9.0"
+@@ -4884,21 +4932,18 @@ dependencies = [
+ 
+ [[package]]
+ name = "rand_core"
+-version = "0.6.4"
++version = "0.9.5"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "ec0be4795e2f6a28069bec0b5ff3e2ac9bafc99e6a9a7dc3547996c5c816922c"
++checksum = "76afc826de14238e6e8c374ddcc1fa19e374fd8dd986b0d2af0d02377261d83c"
+ dependencies = [
+- "getrandom 0.2.17",
++ "getrandom 0.3.4",
+ ]
+ 
+ [[package]]
+ name = "rand_core"
+-version = "0.9.5"
++version = "0.10.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "76afc826de14238e6e8c374ddcc1fa19e374fd8dd986b0d2af0d02377261d83c"
+-dependencies = [
+- "getrandom 0.3.4",
+-]
++checksum = "63b8176103e19a2643978565ca18b50549f6101881c443590420e4dc998a3c69"
+ 
+ [[package]]
+ name = "rand_distr"
+@@ -4907,7 +4952,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "6a8615d50dcf34fa31f7ab52692afec947c4dd0ab803cc87cb3b0b4570ff7463"
+ dependencies = [
+  "num-traits",
+- "rand 0.9.5",
++ "rand",
+ ]
+ 
+ [[package]]
+@@ -4952,8 +4997,8 @@ dependencies = [
+  "num-traits",
+  "paste",
+  "profiling",
+- "rand 0.9.5",
+- "rand_chacha 0.9.0",
++ "rand",
++ "rand_chacha",
+  "simd_helpers",
+  "thiserror 2.0.21",
+  "v_frame",
+@@ -5095,12 +5140,12 @@ checksum = "19b30a45b0cd0bcca8037f3d0dc3421eaf95327a17cad11964fb8179b4fc4832"
+ 
+ [[package]]
+ name = "rfc6979"
+-version = "0.4.0"
++version = "0.6.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "f8dd2a808d456c4a54e300a23e9f5a67e122c3024119acbfd73e3bf664491cb2"
++checksum = "b4a459cddafb3fe76b31fd8f1108007566c40301feb64dc7b54656eb7388172b"
+ dependencies = [
++ "crypto-bigint",
+  "hmac",
+- "subtle",
+ ]
+ 
+ [[package]]
+@@ -5152,22 +5197,20 @@ dependencies = [
+ 
+ [[package]]
+ name = "rsa"
+-version = "0.9.10"
++version = "0.10.0-rc.19"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "b8573f03f5883dcaebdfcf4725caa1ecb9c15b2ef50c43a07b816e06799bb12d"
++checksum = "33405e321e16ef941ca66e254f6904c3aafd3c7ff001fb88bf11c73eb75c2b85"
+ dependencies = [
+  "const-oid",
+- "digest",
+- "num-bigint-dig",
+- "num-integer",
+- "num-traits",
++ "crypto-bigint",
++ "crypto-primes",
++ "digest 0.11.3",
+  "pkcs1",
+  "pkcs8",
+- "rand_core 0.6.4",
+- "sha2",
++ "rand_core 0.10.1",
++ "sha2 0.11.1",
+  "signature",
+  "spki",
+- "subtle",
+  "zeroize",
+ ]
+ 
+@@ -5221,18 +5264,18 @@ dependencies = [
   "errno",
   "libc",
   "linux-raw-sys 0.12.1",
@@ -439,7 +1343,7 @@ index 5f44519..265697e 100644
   "subtle",
   "zeroize",
  ]
-@@ -5249,8 +5251,6 @@ dependencies = [
+@@ -5249,49 +5292,36 @@ dependencies = [
  [[package]]
  name = "rustls-rustcrypto"
  version = "0.0.2-alpha"
@@ -448,16 +1352,32 @@ index 5f44519..265697e 100644
  dependencies = [
   "aead",
   "aes-gcm",
-@@ -5269,7 +5269,7 @@ dependencies = [
+  "chacha20poly1305",
+- "crypto-common",
++ "crypto-bigint",
++ "crypto-common 0.2.2",
+  "der",
+- "digest",
++ "digest 0.11.3",
+  "ecdsa",
+  "ed25519-dalek",
++ "getrandom 0.4.3",
+  "hmac",
+  "p256",
+  "p384",
+  "paste",
+  "pkcs8",
+- "rand_core 0.6.4",
   "rsa",
   "rustls",
   "rustls-pki-types",
 - "rustls-webpki 0.102.8",
-+ "rustls-webpki",
   "sec1",
-  "sha2",
+- "sha2",
++ "sha2 0.11.1",
   "signature",
-@@ -5278,20 +5278,9 @@ dependencies = [
+  "x25519-dalek",
+ ]
  
  [[package]]
  name = "rustls-webpki"
@@ -480,7 +1400,107 @@ index 5f44519..265697e 100644
  dependencies = [
   "ring",
   "rustls-pki-types",
-@@ -5717,6 +5706,15 @@ dependencies = [
+@@ -5360,14 +5390,14 @@ checksum = "94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49"
+ 
+ [[package]]
+ name = "sec1"
+-version = "0.7.3"
++version = "0.8.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d3e97a565f76233a6003f9f5c54be1d9c5bdfa3eccfb189469f11ec4901c47dc"
++checksum = "d56d437c2f19203ce5f7122e507831de96f3d2d4d3be5af44a0b0a09d8a80e4d"
+ dependencies = [
+  "base16ct",
++ "ctutils",
+  "der",
+- "generic-array",
+- "pkcs8",
++ "hybrid-array",
+  "subtle",
+  "zeroize",
+ ]
+@@ -5453,6 +5483,16 @@ dependencies = [
+  "serde_core",
+ ]
+ 
++[[package]]
++name = "serdect"
++version = "0.4.3"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "66cf8fedced2fcf12406bcb34223dffb92eaf34908ede12fed414c82b7f00b3e"
++dependencies = [
++ "base16ct",
++ "serde",
++]
++
+ [[package]]
+ name = "sha2"
+ version = "0.10.9"
+@@ -5460,8 +5500,19 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "a7507d819769d01a365ab707794a4084392c824f54a7a6a7862f8c3d0892b283"
+ dependencies = [
+  "cfg-if",
+- "cpufeatures",
+- "digest",
++ "cpufeatures 0.2.17",
++ "digest 0.10.7",
++]
++
++[[package]]
++name = "sha2"
++version = "0.11.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "47d7069beb7d6ac7b9acd1039986e73443f24234f41074da099d6f994ac9ad19"
++dependencies = [
++ "cfg-if",
++ "cpufeatures 0.3.1",
++ "digest 0.11.3",
+ ]
+ 
+ [[package]]
+@@ -5482,12 +5533,12 @@ dependencies = [
+ 
+ [[package]]
+ name = "signature"
+-version = "2.2.0"
++version = "3.0.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "77549399552de45a898a580c1b41d445bf730df867cc44e6c0233bbc4b8329de"
++checksum = "28d567dcbaf0049cb8ac2608a76cd95ff9e4412e1899d389ee400918ca7537f5"
+ dependencies = [
+- "digest",
+- "rand_core 0.6.4",
++ "digest 0.11.3",
++ "rand_core 0.10.1",
+ ]
+ 
+ [[package]]
+@@ -5630,12 +5681,6 @@ dependencies = [
+  "serde",
+ ]
+ 
+-[[package]]
+-name = "spin"
+-version = "0.9.9"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "3763264f6b73151db08c50ff20d7d8a0b8796e021cdea7ceedad07b80155fa0e"
+-
+ [[package]]
+ name = "spirv"
+ version = "0.4.0+sdk-1.4.341.0"
+@@ -5647,9 +5692,9 @@ dependencies = [
+ 
+ [[package]]
+ name = "spki"
+-version = "0.7.3"
++version = "0.8.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d91ed6c858b01f942cd56b37a94b3e0a1798290327d1236e4d9cf4eaca44d29d"
++checksum = "7ef958a98b9d5da290cfc78946e9f3e61e1e62a18db0d92cac0b83cc161491a9"
+ dependencies = [
+  "base64ct",
+  "der",
+@@ -5717,6 +5762,15 @@ dependencies = [
   "syn 3.0.6",
  ]
  
@@ -496,7 +1516,7 @@ index 5f44519..265697e 100644
  [[package]]
  name = "sysctl"
  version = "0.5.5"
-@@ -5752,10 +5750,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+@@ -5752,10 +5806,10 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "32497e9a4c7b38532efcdebeef879707aa9f794296a4f0244f6f69e9bc8574bd"
  dependencies = [
   "fastrand",
@@ -509,7 +1529,7 @@ index 5f44519..265697e 100644
  ]
  
  [[package]]
-@@ -5954,7 +5952,7 @@ checksum = "f2f6fb2847f6742cd76af783a2a2c49e9375d0a111c7bef6f71cd9e738c72d6e"
+@@ -5954,7 +6008,7 @@ checksum = "f2f6fb2847f6742cd76af783a2a2c49e9375d0a111c7bef6f71cd9e738c72d6e"
  dependencies = [
   "memoffset",
   "tempfile",
@@ -518,7 +1538,24 @@ index 5f44519..265697e 100644
  ]
  
  [[package]]
-@@ -6302,7 +6300,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
+@@ -6024,12 +6078,12 @@ checksum = "b4ac048d71ede7ee76d585517add45da530660ef4390e49b098733c6e897f254"
+ 
+ [[package]]
+ name = "universal-hash"
+-version = "0.5.1"
++version = "0.6.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "fc1de2c688dc15305988b563c3854064043356019f97a4b46276fe734c4f07ea"
++checksum = "f4987bdc12753382e0bec4a65c50738ffaabc998b9cdd1f952fb5f39b0048a96"
+ dependencies = [
+- "crypto-common",
+- "subtle",
++ "crypto-common 0.2.2",
++ "ctutils",
+ ]
+ 
+ [[package]]
+@@ -6302,7 +6356,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "338e30461b3a2b67d70eb30a6d89f8e0c93a833e07d2ae89085cd070c4a00ac0"
  dependencies = [
   "proc-macro2",
@@ -527,7 +1564,7 @@ index 5f44519..265697e 100644
   "quote",
  ]
  
-@@ -6340,9 +6338,9 @@ dependencies = [
+@@ -6340,9 +6394,9 @@ dependencies = [
  
  [[package]]
  name = "webpki-roots"
@@ -539,7 +1576,7 @@ index 5f44519..265697e 100644
  dependencies = [
   "rustls-pki-types",
  ]
-@@ -6542,7 +6540,7 @@ version = "0.1.11"
+@@ -6542,7 +6596,7 @@ version = "0.1.11"
  source = "registry+https://github.com/rust-lang/crates.io-index"
  checksum = "c2a7b1c03c876122aa43f3020e6c3c3ee5c05081c9a00739faf7503aeba10d22"
  dependencies = [
@@ -548,7 +1585,42 @@ index 5f44519..265697e 100644
  ]
  
  [[package]]
-@@ -6972,7 +6970,7 @@ checksum = "e450f9b2ed1dff33c94c12589a87338689467b9c4f5d8a5710bd09a847d2c8a7"
+@@ -6896,6 +6950,18 @@ version = "0.57.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "1ebf944e87a7c253233ad6766e082e3cd714b5d03812acc24c318f549614536e"
+ 
++[[package]]
++name = "wnaf"
++version = "0.14.1"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "795ca18b3fdb5e62bf982199278341ddcf7ebf7d32e25e212ad05d496e95f6fa"
++dependencies = [
++ "ff",
++ "group",
++ "hybrid-array",
++ "primefield",
++]
++
+ [[package]]
+ name = "x11-dl"
+ version = "2.21.0"
+@@ -6930,12 +6996,12 @@ checksum = "ea6fc2961e4ef194dcbfe56bb845534d0dc8098940c7e5c012a258bfec6701bd"
+ 
+ [[package]]
+ name = "x25519-dalek"
+-version = "2.0.1"
++version = "3.0.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "c7e468321c81fb07fa7f4c636c3972b9100f0346e5b6a9f2bd0603a52f7ed277"
++checksum = "e7e8131a03190127fb2263afc72b322ecadae46b6ff8c6f399ff5d02f5559af6"
+ dependencies = [
+  "curve25519-dalek",
+- "rand_core 0.6.4",
++ "rand_core 0.10.1",
+  "zeroize",
+ ]
+ 
+@@ -6972,12 +7038,12 @@ checksum = "e450f9b2ed1dff33c94c12589a87338689467b9c4f5d8a5710bd09a847d2c8a7"
  
  [[package]]
  name = "xtask"
@@ -557,7 +1629,30 @@ index 5f44519..265697e 100644
  dependencies = [
   "brotli",
   "flate2",
-@@ -7202,13 +7200,14 @@ dependencies = [
+  "serde_json",
+- "sha2",
++ "sha2 0.10.9",
+ ]
+ 
+ [[package]]
+@@ -7185,30 +7251,17 @@ name = "zeroize"
+ version = "1.9.1"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "e13084392c5e4bc371903e2935a5eaeed24905a7511356b883835e18a78f6879"
+-dependencies = [
+- "zeroize_derive",
+-]
+-
+-[[package]]
+-name = "zeroize_derive"
+-version = "1.5.0"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "3c50655cbb0fe3fc43170059e702f1ce5e19b84cec58dc87b037a09935c2f328"
+-dependencies = [
+- "proc-macro2",
+- "quote",
+- "syn 2.0.119",
+-]
  
  [[package]]
  name = "zip"
@@ -2826,7 +3921,7 @@ index 2e65583..8252297 100644
  workspace = true
  
 diff --git a/crates/fetch/src/http.rs b/crates/fetch/src/http.rs
-index c2b5bee..0118929 100644
+index c2b5bee..8c758ea 100644
 --- a/crates/fetch/src/http.rs
 +++ b/crates/fetch/src/http.rs
 @@ -172,9 +172,26 @@ fn is_timeout(e: &std::io::Error) -> bool {
@@ -2857,12 +3952,29 @@ index c2b5bee..0118929 100644
          .with_safe_default_protocol_versions()
          .map_err(|e| HttpError::Tls(e.to_string()))?
          .with_root_certificates(roots)
-@@ -553,7 +570,15 @@ mod tests {
+@@ -553,7 +570,32 @@ mod tests {
      }
  
      #[test]
 -    fn the_tls_config_builds_with_the_pure_rust_provider() {
 -        assert!(tls_config().is_ok());
++    fn download_tls_key_exchange_groups_round_trip_and_reject_malformed_shares() {
++        let provider = download_provider();
++        let groups: Vec<_> = provider.kx_groups.iter().map(|g| g.name()).collect();
++        assert_eq!(groups, [rustls::NamedGroup::X25519, rustls::NamedGroup::secp256r1, rustls::NamedGroup::secp384r1]);
++        for group in provider.kx_groups {
++            let alice = group.start().unwrap();
++            let bob = group.start().unwrap();
++            let alice_public = alice.pub_key().to_vec();
++            let bob_public = bob.pub_key().to_vec();
++            let alice_secret = alice.complete(&bob_public).unwrap();
++            let bob_secret = bob.complete(&alice_public).unwrap();
++            assert_eq!(alice_secret.secret_bytes(), bob_secret.secret_bytes());
++            assert!(group.start().unwrap().complete(&[0; 1]).is_err());
++        }
++    }
++
++    #[test]
 +    fn the_tls_config_builds_without_client_private_keys() {
 +        let config = tls_config().unwrap();
 +        assert!(!config.client_auth_cert_resolver.has_certs());
@@ -43549,195 +44661,10 @@ index 0000000..1d013ff
 +and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 diff --git a/vendor/rustls-rustcrypto/Cargo.toml b/vendor/rustls-rustcrypto/Cargo.toml
 new file mode 100644
-index 0000000..e35640d
+index 0000000..131c52e
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/Cargo.toml
-@@ -0,0 +1,179 @@
-+# THIS FILE IS AUTOMATICALLY GENERATED BY CARGO
-+#
-+# When uploading crates to the registry Cargo will automatically
-+# "normalize" Cargo.toml files for maximal compatibility
-+# with all versions of Cargo and also rewrite `path` dependencies
-+# to registry (e.g., crates.io) dependencies.
-+#
-+# If you are reading this file be aware that the original Cargo.toml
-+# will likely look very different (and much more reasonable).
-+# See Cargo.toml.orig for the original contents.
-+
-+[package]
-+edition = "2021"
-+rust-version = "1.75"
-+name = "rustls-rustcrypto"
-+version = "0.0.2-alpha"
-+authors = ["RustCrypto Developers"]
-+description = """
-+Pure Rust cryptography provider for the Rustls TLS library using algorithm implementations from the
-+RustCrypto organization
-+"""
-+readme = "README.md"
-+keywords = [
-+    "rustls",
-+    "tls",
-+]
-+categories = [
-+    "cryptography",
-+    "no-std",
-+]
-+license = "MIT OR Apache-2.0"
-+repository = "https://github.com/RustCrypto/rustls-rustcrypto"
-+resolver = "1"
-+
-+[dependencies.aead]
-+version = "0.5.2"
-+default-features = false
-+
-+[dependencies.aes-gcm]
-+version = "0.10.3"
-+features = [
-+    "aes",
-+    "alloc",
-+]
-+default-features = false
-+
-+[dependencies.chacha20poly1305]
-+version = "0.10.1"
-+default-features = false
-+
-+[dependencies.crypto-common]
-+version = "0.1.6"
-+default-features = false
-+
-+[dependencies.der]
-+version = "0.7.9"
-+default-features = false
-+
-+[dependencies.digest]
-+version = "0.10.7"
-+default-features = false
-+
-+[dependencies.ecdsa]
-+version = "0.16.8"
-+features = ["alloc"]
-+default-features = false
-+
-+[dependencies.ed25519-dalek]
-+version = "2"
-+features = ["pkcs8"]
-+default-features = false
-+
-+[dependencies.hmac]
-+version = "0.12.1"
-+default-features = false
-+
-+[dependencies.p256]
-+version = "0.13.2"
-+features = [
-+    "pem",
-+    "ecdsa",
-+    "ecdh",
-+]
-+default-features = false
-+
-+[dependencies.p384]
-+version = "0.13.0"
-+features = [
-+    "pem",
-+    "ecdsa",
-+    "ecdh",
-+]
-+default-features = false
-+
-+[dependencies.paste]
-+version = "1.0.14"
-+default-features = false
-+
-+[dependencies.pkcs8]
-+version = "0.10.2"
-+features = [
-+    "pem",
-+    "pkcs5",
-+]
-+default-features = false
-+
-+[dependencies.pki-types]
-+version = "1.0.1"
-+default-features = false
-+package = "rustls-pki-types"
-+
-+[dependencies.rand_core]
-+version = "0.6.4"
-+features = ["getrandom"]
-+default-features = false
-+
-+[dependencies.rsa]
-+version = "0.9.2"
-+features = ["sha2"]
-+default-features = false
-+
-+[dependencies.rustls]
-+version = "0.23.0"
-+default-features = false
-+
-+[dependencies.sec1]
-+version = "0.7.3"
-+features = [
-+    "pkcs8",
-+    "pem",
-+]
-+default-features = false
-+
-+[dependencies.sha2]
-+version = "0.10.7"
-+default-features = false
-+
-+[dependencies.signature]
-+version = "2.1.0"
-+default-features = false
-+
-+[dependencies.webpki]
-+version = "0.103.13"
-+default-features = false
-+package = "rustls-webpki"
-+
-+[dependencies.x25519-dalek]
-+version = "2"
-+default-features = false
-+
-+[dev-dependencies.getrandom]
-+version = "0.2"
-+features = ["custom"]
-+
-+[features]
-+alloc = [
-+    "webpki/alloc",
-+    "pki-types/alloc",
-+    "aead/alloc",
-+    "ed25519-dalek/alloc",
-+]
-+default = [
-+    "std",
-+    "tls12",
-+    "zeroize",
-+]
-+logging = ["rustls/logging"]
-+std = [
-+    "alloc",
-+    "webpki/std",
-+    "pki-types/std",
-+    "rustls/std",
-+    "ed25519-dalek/std",
-+]
-+tls12 = ["rustls/tls12"]
-+zeroize = [
-+    "ed25519-dalek/zeroize",
-+    "x25519-dalek/zeroize",
-+]
-diff --git a/vendor/rustls-rustcrypto/Cargo.toml.orig b/vendor/rustls-rustcrypto/Cargo.toml.orig
-new file mode 100644
-index 0000000..6ff6103
---- /dev/null
-+++ b/vendor/rustls-rustcrypto/Cargo.toml.orig
-@@ -0,0 +1,59 @@
+@@ -0,0 +1,60 @@
 +[package]
 +name = "rustls-rustcrypto"
 +description = """
@@ -43758,31 +44685,27 @@ index 0000000..6ff6103
 +# Ensure all dependencies + feats are mapped to crate features for correct usage
 +# default features often have std breaking no_std and potentially other unwanted
 +[dependencies]
-+aead = { version = "0.5.2", default-features = false }
-+aes-gcm = { version = "0.10.3", default-features = false, features = ["aes", "alloc"] }
-+chacha20poly1305 = { version = "0.10.1", default-features = false }
-+crypto-common = { version = "0.1.6", default-features = false }
-+der = { version = "0.7.9", default-features = false }
-+digest = { version = "0.10.7", default-features = false }
-+ecdsa = { version = "0.16.8", default-features = false, features = ["alloc"] }
-+ed25519-dalek = { version = "2", default-features = false, features = ["pkcs8"] }
-+hmac = { version = "0.12.1", default-features = false }
-+p256 = { version = "0.13.2", default-features = false, features = ["pem", "ecdsa", "ecdh"] }
-+p384 = { version = "0.13.0", default-features = false, features = ["pem", "ecdsa", "ecdh"] }
-+paste = { version = "1.0.14", default-features = false }
-+pkcs8 = { version = "0.10.2", default-features = false, features = ["pem", "pkcs5"] }
-+pki-types = { package = "rustls-pki-types", version = "1.0.1", default-features = false }
-+rand_core = { version = "0.6.4", default-features = false, features = ["getrandom"] }
-+rsa = { version = "0.9.2", default-features = false, features = ["sha2"] }
-+rustls = { version = "0.23.0", default-features = false }
-+sec1 = { version = "0.7.3", default-features = false, features = ["pkcs8", "pem"] }
-+sha2 = { version = "0.10.7", default-features = false }
-+signature = { version = "2.1.0", default-features = false }
-+webpki = { package = "rustls-webpki", version = "0.102.0", default-features = false }
-+x25519-dalek = { version = "2", default-features = false }
-+
-+[dev-dependencies]
-+getrandom = { version = "0.2", features = ["custom"] } # workaround to build on no_std targets
++aead = { version = "0.6", default-features = false }
++aes-gcm = { version = "0.11", default-features = false, features = ["aes", "alloc"] }
++chacha20poly1305 = { version = "0.11", default-features = false }
++crypto-common = { version = "0.2", default-features = false }
++der = { version = "0.8", default-features = false }
++digest = { version = "0.11", default-features = false }
++ecdsa = { version = "0.17", default-features = false, features = ["alloc"] }
++ed25519-dalek = { version = "3", default-features = false, features = ["pkcs8"] }
++getrandom = { version = "0.4", default-features = false, features = ["sys_rng"] }
++hmac = { version = "0.13", default-features = false }
++p256 = { version = "0.14", default-features = false, features = ["pem", "ecdsa", "ecdh"] }
++p384 = { version = "0.14", default-features = false, features = ["pem", "ecdsa", "ecdh"] }
++paste = { version = "1", default-features = false }
++pkcs8 = { version = "0.11", default-features = false }
++pki-types = { package = "rustls-pki-types", version = "1", default-features = false }
++rsa = { version = "0.10.0-rc.18", default-features = false, features = ["sha2", "encoding"] }
++rustls = { version = "0.23", default-features = false }
++sec1 = { version = "0.8", default-features = false }
++sha2 = { version = "0.11", default-features = false }
++signature = { version = "3", default-features = false }
++x25519-dalek = { version = "3", default-features = false }
 +
 +[features]
 +default = ["std", "tls12", "zeroize"]
@@ -43793,9 +44716,75 @@ index 0000000..6ff6103
 +# zeroize is another typical that can be turned off
 +
 +# TODO: go through all of these that what gets exposed re: std error type
-+std = ["alloc", "webpki/std", "pki-types/std", "rustls/std", "ed25519-dalek/std"]
++std = ["alloc", "pki-types/std", "rustls/std"]
 +# TODO: go through all of these to ensure to_vec etc. impls are exposed
-+alloc = ["webpki/alloc", "pki-types/alloc", "aead/alloc", "ed25519-dalek/alloc"]
++alloc = ["pki-types/alloc", "aead/alloc", "ed25519-dalek/alloc"]
++zeroize = ["ed25519-dalek/zeroize", "x25519-dalek/zeroize"]
++
++# Minimum fixed arithmetic used transitively by the TLS curves and RSA.
++[dependencies.crypto-bigint]
++version = "0.7.9"
++default-features = false
+diff --git a/vendor/rustls-rustcrypto/Cargo.toml.orig b/vendor/rustls-rustcrypto/Cargo.toml.orig
+new file mode 100644
+index 0000000..e8e5de0
+--- /dev/null
++++ b/vendor/rustls-rustcrypto/Cargo.toml.orig
+@@ -0,0 +1,55 @@
++[package]
++name = "rustls-rustcrypto"
++description = """
++Pure Rust cryptography provider for the Rustls TLS library using algorithm implementations from the
++RustCrypto organization
++"""
++version = "0.0.2-alpha"
++authors = ["RustCrypto Developers"]
++license = "MIT OR Apache-2.0"
++readme = "README.md"
++repository = "https://github.com/RustCrypto/rustls-rustcrypto"
++categories = ["cryptography", "no-std"]
++keywords = ["rustls", "tls"]
++edition = "2021"
++rust-version = "1.75"
++resolver = "1" # Hack to enable the `custom` feature of `getrandom`
++
++# Ensure all dependencies + feats are mapped to crate features for correct usage
++# default features often have std breaking no_std and potentially other unwanted
++[dependencies]
++aead = { version = "0.6", default-features = false }
++aes-gcm = { version = "0.11", default-features = false, features = ["aes", "alloc"] }
++chacha20poly1305 = { version = "0.11", default-features = false }
++crypto-common = { version = "0.2", default-features = false }
++der = { version = "0.8", default-features = false }
++digest = { version = "0.11", default-features = false }
++ecdsa = { version = "0.17", default-features = false, features = ["alloc"] }
++ed25519-dalek = { version = "3", default-features = false, features = ["pkcs8"] }
++getrandom = { version = "0.4", default-features = false, features = ["sys_rng"] }
++hmac = { version = "0.13", default-features = false }
++p256 = { version = "0.14", default-features = false, features = ["pem", "ecdsa", "ecdh"] }
++p384 = { version = "0.14", default-features = false, features = ["pem", "ecdsa", "ecdh"] }
++paste = { version = "1", default-features = false }
++pkcs8 = { version = "0.11", default-features = false }
++pki-types = { package = "rustls-pki-types", version = "1", default-features = false }
++rsa = { version = "0.10.0-rc.18", default-features = false, features = ["sha2", "encoding"] }
++rustls = { version = "0.23", default-features = false }
++sec1 = { version = "0.8", default-features = false }
++sha2 = { version = "0.11", default-features = false }
++signature = { version = "3", default-features = false }
++x25519-dalek = { version = "3", default-features = false }
++
++[features]
++default = ["std", "tls12", "zeroize"]
++logging = ["rustls/logging"]
++tls12 = ["rustls/tls12"]
++
++# Only enable feature in upstream if there is an overall effect e.g. aead/alloc in-place
++# zeroize is another typical that can be turned off
++
++# TODO: go through all of these that what gets exposed re: std error type
++std = ["alloc", "pki-types/std", "rustls/std"]
++# TODO: go through all of these to ensure to_vec etc. impls are exposed
++alloc = ["pki-types/alloc", "aead/alloc", "ed25519-dalek/alloc"]
 +zeroize = ["ed25519-dalek/zeroize", "x25519-dalek/zeroize"]
 diff --git a/vendor/rustls-rustcrypto/LICENSE-APACHE b/vendor/rustls-rustcrypto/LICENSE-APACHE
 new file mode 100644
@@ -44031,20 +45020,26 @@ index 0000000..966be2b
 +SOFTWARE.
 diff --git a/vendor/rustls-rustcrypto/PLERVO-PATCH.md b/vendor/rustls-rustcrypto/PLERVO-PATCH.md
 new file mode 100644
-index 0000000..6b95e7d
+index 0000000..d3ca007
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/PLERVO-PATCH.md
-@@ -0,0 +1,7 @@
-+# Plervo TLS dependency patch
+@@ -0,0 +1,13 @@
++# Plervo TLS provider source pin
 +
-+Source: RustCrypto/rustls-rustcrypto, crates.io package 0.0.2-alpha. Original MIT/Apache notices are preserved.
++Source: https://github.com/RustCrypto/rustls-rustcrypto/tree/70f76c039e587192688af18a80d5d6435dedaf22
 +
-+The Cargo dependency on rustls-webpki changes from 0.102.0 to 0.103.13 or newer, incorporating the fixes for RUSTSEC-2026-0104, 0098, 0099 and 0049. The three verification modules import the unchanged ASN.1 algorithm identifiers from rustls::pki_types::alg_id, their new upstream location. No cryptographic algorithm implementation is modified. Cargo.lock pins the resulting package checksums.
++Library source and tests are unchanged from this immutable upstream revision.
++MIT/Apache-2.0 notices are retained. The previous crate release used the old
++RustCrypto arithmetic stack affected by RUSTSEC-2026-0387. This snapshot supports
++the maintained RustCrypto APIs; the manifest adds a crypto-bigint 0.7.9 minimum.
++No cryptographic algorithm is implemented or patched by Plervo.
++The application still rejects TLS client private keys. Ephemeral key exchange
++uses secrets, so that restriction alone was not a mitigation for this advisory.
 +
-+The application uses this provider only as an HTTPS client without client authentication. It never loads an RSA private key; the RSA public-key verification dependency still has the general RUSTSEC-2023-0071 advisory, which must remain documented rather than described as patched.
++Original archive SHA-256: 37d98d7410906e203266e29ba8714971f186ce5b97c25b1798688a48ca5637a8
 diff --git a/vendor/rustls-rustcrypto/README.md b/vendor/rustls-rustcrypto/README.md
 new file mode 100644
-index 0000000..f77c0b7
+index 0000000..39739a7
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/README.md
 @@ -0,0 +1,63 @@
@@ -44096,7 +45091,7 @@ index 0000000..f77c0b7
 +
 +[//]: # (badges)
 +
-+[crate-image]: https://buildstats.info/crate/rustls-rustcrypto
++[crate-image]: https://img.shields.io/crates/v/rustls-rustcrypto
 +[crate-link]: https://crates.io/crates/rustls-rustcrypto
 +[docs-image]: https://docs.rs/rustls-rustcrypto/badge.svg
 +[docs-link]: https://docs.rs/rustls-rustcrypto/
@@ -44358,16 +45353,17 @@ index 0000000..6ff57b7
 +}
 diff --git a/vendor/rustls-rustcrypto/src/aead/chacha20.rs b/vendor/rustls-rustcrypto/src/aead/chacha20.rs
 new file mode 100644
-index 0000000..995b79e
+index 0000000..3fce86b
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/aead/chacha20.rs
-@@ -0,0 +1,197 @@
+@@ -0,0 +1,198 @@
 +#[cfg(feature = "alloc")]
 +use alloc::boxed::Box;
 +
 +use super::{DecryptBufferAdapter, EncryptBufferAdapter};
 +
-+use chacha20poly1305::{AeadInPlace, KeyInit, KeySizeUser};
++use aead::{AeadInOut, KeySizeUser};
++use chacha20poly1305::KeyInit;
 +use rustls::crypto::cipher::{
 +    self, AeadKey, InboundOpaqueMessage, InboundPlainMessage, Iv, MessageDecrypter,
 +    MessageEncrypter, OutboundOpaqueMessage, OutboundPlainMessage, PrefixedPayload,
@@ -44561,16 +45557,16 @@ index 0000000..995b79e
 +const CHACHAPOLY1305_OVERHEAD: usize = 16;
 diff --git a/vendor/rustls-rustcrypto/src/aead/gcm.rs b/vendor/rustls-rustcrypto/src/aead/gcm.rs
 new file mode 100644
-index 0000000..14be62b
+index 0000000..d390575
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/aead/gcm.rs
-@@ -0,0 +1,235 @@
+@@ -0,0 +1,236 @@
 +#[cfg(feature = "alloc")]
 +use alloc::boxed::Box;
 +
 +use super::{DecryptBufferAdapter, EncryptBufferAdapter};
 +
-+use aead::AeadInPlace;
++use aead::AeadInOut;
 +use crypto_common::{KeyInit, KeySizeUser};
 +use paste::paste;
 +use rustls::crypto::cipher::{
@@ -44733,7 +45729,7 @@ index 0000000..14be62b
 +                    payload.extend_from_chunks(&m.payload);
 +
 +                    self.0
-+                        .encrypt_in_place_detached(&nonce.into(), &aad, &mut payload.as_mut()[$nonce..])
++                        .encrypt_inout_detached(&nonce.into(), &aad, (&mut payload.as_mut()[$nonce..]).into())
 +                        .map(|tag| payload.extend(tag.as_ref() as &[u8]))
 +                        .map_err(|_| rustls::Error::EncryptError)
 +                        .map(|_| OutboundOpaqueMessage::new(m.typ, m.version, payload))
@@ -44772,9 +45768,10 @@ index 0000000..14be62b
 +                        let tag_pos = payload.len() - TagSize::to_usize();
 +                        let (msg, tag) = payload.split_at_mut(tag_pos);
 +
-+                        let tag = aes_gcm::Tag::<TagSize>::from_slice(tag);
++                        let tag = aes_gcm::Tag::<TagSize>::try_from(&*tag)
++                            .map_err(|_| rustls::Error::DecryptError)?;
 +                        self.0
-+                            .decrypt_in_place_detached(&nonce, &aad, msg, tag)
++                            .decrypt_inout_detached(&nonce, &aad, msg.into(), &tag)
 +                            .map_err(|_| rustls::Error::DecryptError)?;
 +                        tag_pos
 +                    };
@@ -44870,7 +45867,7 @@ index 0000000..dfa58e1
 +// impl_hash! {SHA512, Sha512, hash::HashAlgorithm::SHA512}
 diff --git a/vendor/rustls-rustcrypto/src/hmac.rs b/vendor/rustls-rustcrypto/src/hmac.rs
 new file mode 100644
-index 0000000..8388c27
+index 0000000..2ad3b00
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/hmac.rs
 @@ -0,0 +1,56 @@
@@ -44878,7 +45875,7 @@ index 0000000..8388c27
 +use alloc::boxed::Box;
 +
 +use crypto_common::OutputSizeUser;
-+use hmac::Mac;
++use hmac::{KeyInit, Mac};
 +use paste::paste;
 +use rustls::crypto;
 +use sha2::{Sha256, Sha384};
@@ -44932,14 +45929,16 @@ index 0000000..8388c27
 +// impl_hmac! {SHA512, Sha512}
 diff --git a/vendor/rustls-rustcrypto/src/kx.rs b/vendor/rustls-rustcrypto/src/kx.rs
 new file mode 100644
-index 0000000..66341f2
+index 0000000..3f8a4dd
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/kx.rs
-@@ -0,0 +1,108 @@
+@@ -0,0 +1,112 @@
 +#[cfg(feature = "alloc")]
 +use alloc::boxed::Box;
 +
 +use crypto::{SharedSecret, SupportedKxGroup};
++use crypto_common::Generate;
++use getrandom::rand_core::UnwrapErr;
 +use paste::paste;
 +use rustls::crypto;
 +
@@ -44952,7 +45951,8 @@ index 0000000..66341f2
 +    }
 +
 +    fn start(&self) -> Result<Box<dyn crypto::ActiveKeyExchange>, rustls::Error> {
-+        let priv_key = x25519_dalek::EphemeralSecret::random_from_rng(rand_core::OsRng);
++        let mut rng = UnwrapErr(getrandom::SysRng);
++        let priv_key = x25519_dalek::EphemeralSecret::random_from_rng(&mut rng);
 +        let pub_key = (&priv_key).into();
 +        Ok(Box::new(X25519KeyExchange { priv_key, pub_key }))
 +    }
@@ -44998,7 +45998,8 @@ index 0000000..66341f2
 +                }
 +
 +                fn start(&self) -> Result<Box<dyn crypto::ActiveKeyExchange>, rustls::Error> {
-+                    let priv_key = $secret::random(&mut rand_core::OsRng);
++                    let mut rng = UnwrapErr(getrandom::SysRng);
++                    let priv_key = <$secret>::try_generate_from_rng(&mut rng).map_err(|_| rustls::Error::from(rustls::PeerMisbehaved::InvalidKeyShare))?;
 +                    let pub_key: $public_key = (&priv_key).into();
 +                    Ok(Box::new([<$name KeyExchange>] {
 +                        priv_key,
@@ -45046,10 +46047,10 @@ index 0000000..66341f2
 +pub const ALL_KX_GROUPS: &[&dyn SupportedKxGroup] = &[&X25519, &SecP256R1, &SecP384R1];
 diff --git a/vendor/rustls-rustcrypto/src/lib.rs b/vendor/rustls-rustcrypto/src/lib.rs
 new file mode 100644
-index 0000000..1b108b8
+index 0000000..6332bca
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/lib.rs
-@@ -0,0 +1,271 @@
+@@ -0,0 +1,270 @@
 +#![no_std]
 +#![cfg_attr(docsrs, feature(doc_auto_cfg))]
 +#![doc = include_str!("../README.md")]
@@ -45116,10 +46117,9 @@ index 0000000..1b108b8
 +
 +impl SecureRandom for Provider {
 +    fn fill(&self, bytes: &mut [u8]) -> Result<(), GetRandomFailed> {
-+        use rand_core::RngCore;
-+        rand_core::OsRng
-+            .try_fill_bytes(bytes)
-+            .map_err(|_| GetRandomFailed)
++        use getrandom::rand_core::TryRng;
++        let mut rng = getrandom::SysRng;
++        rng.try_fill_bytes(bytes).map_err(|_| GetRandomFailed)
 +    }
 +}
 +
@@ -45323,10 +46323,10 @@ index 0000000..1b108b8
 +mod verify;
 diff --git a/vendor/rustls-rustcrypto/src/misc.rs b/vendor/rustls-rustcrypto/src/misc.rs
 new file mode 100644
-index 0000000..8e25563
+index 0000000..5f01d99
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/misc.rs
-@@ -0,0 +1,36 @@
+@@ -0,0 +1,40 @@
 +#[macro_export]
 +macro_rules! const_concat_slices {
 +    ($ty:ty, $a:expr, $b:expr $(,)*) => {{
@@ -45335,7 +46335,11 @@ index 0000000..8e25563
 +        const __LEN: usize = A.len() + B.len();
 +        const __CONCATENATED: &[$ty; __LEN] = &{
 +            let mut out: [$ty; __LEN] = if __LEN == 0 {
-+                unsafe { core::mem::transmute([0u8; core::mem::size_of::<$ty>() * __LEN]) }
++                unsafe {
++                    core::mem::transmute::<[u8; core::mem::size_of::<$ty>() * __LEN], [$ty; __LEN]>(
++                        [0u8; core::mem::size_of::<$ty>() * __LEN],
++                    )
++                }
 +            } else if A.len() == 0 {
 +                [B[0]; __LEN]
 +            } else {
@@ -45365,17 +46369,17 @@ index 0000000..8e25563
 +pub(crate) use const_concat_slices;
 diff --git a/vendor/rustls-rustcrypto/src/quic.rs b/vendor/rustls-rustcrypto/src/quic.rs
 new file mode 100644
-index 0000000..f849835
+index 0000000..08dd10d
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/quic.rs
-@@ -0,0 +1,142 @@
+@@ -0,0 +1,141 @@
 +#![allow(clippy::duplicate_mod)]
 +
 +#[cfg(feature = "alloc")]
 +use alloc::boxed::Box;
 +
-+use aead::AeadCore;
-+use chacha20poly1305::{AeadInPlace, KeyInit, KeySizeUser};
++use aead::{AeadCore, AeadInOut};
++use chacha20poly1305::{KeyInit, KeySizeUser};
 +use crypto_common::typenum::Unsigned;
 +use rustls::crypto::cipher::{self, AeadKey, Iv};
 +use rustls::{quic, Error, Tls13CipherSuite};
@@ -45447,7 +46451,7 @@ index 0000000..f849835
 +
 +        let tag = self
 +            .crypto
-+            .encrypt_in_place_detached(&nonce.into(), aad, payload)
++            .encrypt_inout_detached(&nonce.into(), aad, payload.into())
 +            .map_err(|_| rustls::Error::EncryptError)?;
 +        Ok(quic::Tag::from(tag.as_ref()))
 +    }
@@ -45469,8 +46473,7 @@ index 0000000..f849835
 +        let payload_len = payload_.len();
 +        let nonce = chacha20poly1305::Nonce::from(cipher::Nonce::new(&self.iv, packet_number).0);
 +
-+        self.crypto
-+            .decrypt_in_place(&nonce, aad, &mut payload_)
++        AeadInOut::decrypt_in_place(&self.crypto, &nonce, aad, &mut payload_)
 +            .map_err(|_| rustls::Error::DecryptError)?;
 +
 +        // Unfortunately the lifetime bound on decrypt_in_place sucks
@@ -45513,10 +46516,10 @@ index 0000000..f849835
 +}
 diff --git a/vendor/rustls-rustcrypto/src/sign.rs b/vendor/rustls-rustcrypto/src/sign.rs
 new file mode 100644
-index 0000000..e6109f5
+index 0000000..cf30cc5
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/sign.rs
-@@ -0,0 +1,105 @@
+@@ -0,0 +1,107 @@
 +#[cfg(feature = "alloc")]
 +use alloc::{sync::Arc, vec::Vec};
 +use core::marker::PhantomData;
@@ -45525,6 +46528,7 @@ index 0000000..e6109f5
 +use self::eddsa::Ed25519SigningKey;
 +use self::rsa::RsaSigningKey;
 +
++use getrandom::rand_core::UnwrapErr;
 +use pki_types::PrivateKeyDer;
 +use rustls::sign::{Signer, SigningKey};
 +use rustls::{Error, SignatureScheme};
@@ -45547,8 +46551,9 @@ index 0000000..e6109f5
 +    T: RandomizedSigner<S> + Send + Sync + core::fmt::Debug,
 +{
 +    fn sign(&self, message: &[u8]) -> Result<Vec<u8>, Error> {
++        let mut rng = UnwrapErr(getrandom::SysRng);
 +        self.key
-+            .try_sign_with_rng(&mut rand_core::OsRng, message)
++            .try_sign_with_rng(&mut rng, message)
 +            .map_err(|_| rustls::Error::General("signing failed".into()))
 +            .map(|sig: S| sig.to_vec())
 +    }
@@ -45624,20 +46629,20 @@ index 0000000..e6109f5
 +pub mod rsa;
 diff --git a/vendor/rustls-rustcrypto/src/sign/ecdsa.rs b/vendor/rustls-rustcrypto/src/sign/ecdsa.rs
 new file mode 100644
-index 0000000..3f4a2bc
+index 0000000..347bc25
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/sign/ecdsa.rs
-@@ -0,0 +1,66 @@
+@@ -0,0 +1,71 @@
 +#[cfg(feature = "alloc")]
 +use alloc::{boxed::Box, format, sync::Arc};
 +use core::marker::PhantomData;
 +
++use der::Decode;
 +use paste::paste;
 +use pkcs8::DecodePrivateKey;
 +use pki_types::PrivateKeyDer;
 +use rustls::sign::SigningKey;
 +use rustls::{SignatureAlgorithm, SignatureScheme};
-+use sec1::DecodeEcPrivateKey;
 +
 +macro_rules! impl_ecdsa {
 +    ($name: ident, $scheme: expr, $signing_key: ty, $signature: ty) => {
@@ -45656,10 +46661,15 @@ index 0000000..3f4a2bc
 +                        PrivateKeyDer::Pkcs8(der) => {
 +                            $signing_key::from_pkcs8_der(der.secret_pkcs8_der()).map_err(|e| format!("failed to decrypt private key: {e}"))
 +                        },
-+                        PrivateKeyDer::Sec1(sec1) => {
-+                            $signing_key::from_sec1_der(sec1.secret_sec1_der()).map_err(|e| format!("failed to decrypt private key: {e}"))
-+                        },
 +                        PrivateKeyDer::Pkcs1(_) => Err(format!("ECDSA does not support PKCS#1 key")),
++                        PrivateKeyDer::Sec1(der) => {
++                            sec1::EcPrivateKey::from_der(der.secret_sec1_der())
++                                .map_err(|e| format!("failed to parse SEC1 EC private key: {e}"))
++                                .and_then(|ec_key| {
++                                    $signing_key::from_slice(ec_key.private_key)
++                                        .map_err(|e| format!("failed to create signing key: {e}"))
++                                })
++                        },
 +                        _ => Err("not supported".into()),
 +                    };
 +                    pkey.map(|kp| {
@@ -45696,10 +46706,10 @@ index 0000000..3f4a2bc
 +impl_ecdsa! {P384, SignatureScheme::ECDSA_NISTP384_SHA384, p384::ecdsa::SigningKey, p384::ecdsa::DerSignature}
 diff --git a/vendor/rustls-rustcrypto/src/sign/eddsa.rs b/vendor/rustls-rustcrypto/src/sign/eddsa.rs
 new file mode 100644
-index 0000000..e6f0d1a
+index 0000000..15f4fe8
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/sign/eddsa.rs
-@@ -0,0 +1,57 @@
+@@ -0,0 +1,53 @@
 +#[cfg(feature = "alloc")]
 +use alloc::{boxed::Box, format, string::ToString, sync::Arc};
 +use core::marker::PhantomData;
@@ -45708,7 +46718,6 @@ index 0000000..e6f0d1a
 +use pki_types::PrivateKeyDer;
 +use rustls::sign::{Signer, SigningKey};
 +use rustls::{SignatureAlgorithm, SignatureScheme};
-+use sec1::DecodeEcPrivateKey;
 +
 +#[derive(Debug)]
 +pub struct Ed25519SigningKey {
@@ -45725,11 +46734,8 @@ index 0000000..e6f0d1a
 +                ed25519_dalek::SigningKey::from_pkcs8_der(der.secret_pkcs8_der())
 +                    .map_err(|e| format!("failed to decrypt private key: {e}"))
 +            }
-+            PrivateKeyDer::Sec1(sec1) => {
-+                ed25519_dalek::SigningKey::from_sec1_der(sec1.secret_sec1_der())
-+                    .map_err(|e| format!("failed to decrypt private key: {e}"))
-+            }
 +            PrivateKeyDer::Pkcs1(_) => Err("ED25519 does not support PKCS#1 key".to_string()),
++            PrivateKeyDer::Sec1(_) => Err("ED25519 does not support SEC1 key".to_string()),
 +            _ => Err("not supported".into()),
 +        };
 +        pkey.map(|kp| Self {
@@ -45759,7 +46765,7 @@ index 0000000..e6f0d1a
 +}
 diff --git a/vendor/rustls-rustcrypto/src/sign/rsa.rs b/vendor/rustls-rustcrypto/src/sign/rsa.rs
 new file mode 100644
-index 0000000..ab27d36
+index 0000000..c816c26
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/sign/rsa.rs
 @@ -0,0 +1,78 @@
@@ -45795,7 +46801,7 @@ index 0000000..ab27d36
 +                .map_err(|e| format!("failed to decrypt private key: {e}")),
 +            PrivateKeyDer::Pkcs1(der) => RsaPrivateKey::from_pkcs1_der(der.secret_pkcs1_der())
 +                .map_err(|e| format!("failed to decrypt private key: {e}")),
-+            PrivateKeyDer::Sec1(_) => Err("RSA does not support SEC-1 key".to_string()),
++            PrivateKeyDer::Sec1(_) => Err("RSA does not support SEC1 key".to_string()),
 +            _ => Err("not supported".into()),
 +        };
 +
@@ -45895,16 +46901,15 @@ index 0000000..2043b64
 +pub mod rsa;
 diff --git a/vendor/rustls-rustcrypto/src/verify/ecdsa.rs b/vendor/rustls-rustcrypto/src/verify/ecdsa.rs
 new file mode 100644
-index 0000000..c05923a
+index 0000000..743a6c5
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/verify/ecdsa.rs
-@@ -0,0 +1,54 @@
+@@ -0,0 +1,53 @@
 +use der::Decode;
 +use digest::Digest;
 +use paste::paste;
-+use pki_types::{AlgorithmIdentifier, InvalidSignature, SignatureVerificationAlgorithm};
++use pki_types::{alg_id, AlgorithmIdentifier, InvalidSignature, SignatureVerificationAlgorithm};
 +use signature::hazmat::PrehashVerifier;
-+use rustls::pki_types::alg_id;
 +
 +macro_rules! impl_generic_ecdsa_verifer {
 +    (
@@ -45955,13 +46960,12 @@ index 0000000..c05923a
 +impl_generic_ecdsa_verifer! {ECDSA_P384_SHA384, alg_id::ECDSA_P384, alg_id::ECDSA_SHA384, p384::ecdsa::VerifyingKey, p384::ecdsa::DerSignature, sha2::Sha384}
 diff --git a/vendor/rustls-rustcrypto/src/verify/eddsa.rs b/vendor/rustls-rustcrypto/src/verify/eddsa.rs
 new file mode 100644
-index 0000000..1ef67ca
+index 0000000..61009e1
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/verify/eddsa.rs
-@@ -0,0 +1,33 @@
-+use pki_types::{AlgorithmIdentifier, InvalidSignature, SignatureVerificationAlgorithm};
+@@ -0,0 +1,32 @@
++use pki_types::{alg_id, AlgorithmIdentifier, InvalidSignature, SignatureVerificationAlgorithm};
 +use signature::Verifier;
-+use rustls::pki_types::alg_id;
 +
 +#[derive(Debug)]
 +struct Ed25519Verify;
@@ -45994,17 +46998,16 @@ index 0000000..1ef67ca
 +pub const ED25519: &dyn SignatureVerificationAlgorithm = &Ed25519Verify;
 diff --git a/vendor/rustls-rustcrypto/src/verify/rsa.rs b/vendor/rustls-rustcrypto/src/verify/rsa.rs
 new file mode 100644
-index 0000000..9bb5ee5
+index 0000000..bd79a97
 --- /dev/null
 +++ b/vendor/rustls-rustcrypto/src/verify/rsa.rs
-@@ -0,0 +1,92 @@
+@@ -0,0 +1,91 @@
 +use paste::paste;
-+use pki_types::{AlgorithmIdentifier, InvalidSignature, SignatureVerificationAlgorithm};
++use pki_types::{alg_id, AlgorithmIdentifier, InvalidSignature, SignatureVerificationAlgorithm};
 +use rsa::pkcs1::DecodeRsaPublicKey;
 +use rsa::{pkcs1v15, pss, RsaPublicKey};
 +use sha2::{Sha256, Sha384, Sha512};
 +use signature::Verifier;
-+use rustls::pki_types::alg_id;
 +
 +macro_rules! impl_generic_rsa_verifer {
 +    (

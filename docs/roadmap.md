@@ -1,3 +1,20 @@
+## Product dependency maintenance — 2026-10-26
+
+| Delivery | Source change | Remaining |
+| --- | --- | --- |
+| Photo, Video, Develop candidates | Tokio 1.53.3 in Photo/Video; pinned upstream RustCrypto TLS source with crypto-bigint 0.7.9 in Develop/Video; original notice bundles and source hashes refreshed; local audits and 32 download/speech tests pass | Full native matrix, Fedora installation repeat, then separately versioned and qualified public packages |
+
+See [the product security review](../products/SECURITY-REVIEW.md). These changes do
+not replace existing public downloads or prove every possible vulnerability absent.
+
+## Acceptance-tool dependency maintenance — 2026-10-25
+
+| Delivery | Source change | Remaining |
+| --- | --- | --- |
+| Independent native acceptance environment | Hash-pin `pypdf` 6.21.2 for the four reported decoder/denial-of-service advisories; local malformed-input checks and five existing product PDF exports pass | Native candidate CI; separate product dependency/test failures do not become resolved by this tooling update |
+
+Python acceptance dependencies are not bundled in the applications.
+
 ## Cryptographic dependency maintenance — 2026-10-25
 
 | Delivery | Source change | Remaining |
