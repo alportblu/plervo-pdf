@@ -6,6 +6,14 @@ Inclusion does not mean that every component is linked into every installer. See
 Original notice texts follow unchanged. Sources and SHA-256 values identify each text.
 For five upstream crates without a separate license file, published author metadata and the declared standard license are retained; no copyright year is invented.
 
+OCR MODEL DISTRIBUTION
+
+The unmodified Ocrs detection/recognition models by Robert Knight retain CC-BY-SA-4.0.
+Original author and model card: https://github.com/robertknight/ocrs-models and https://huggingface.co/robertknight/ocrs.
+After the original S3 endpoint returned HTTP 403, build downloads use an unchanged-file mirror:
+https://github.com/alportblu/plervo-pdf/releases/tag/build-inputs-ocr-2026-10-28
+Original model/license SHA-256 pins, license texts and attribution are preserved; see docs/ocr-model-recovery.md.
+
 PACKAGE INVENTORY
 
 accesskit@0.24.1 | MIT OR Apache-2.0
