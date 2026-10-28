@@ -1,3 +1,12 @@
+## PDF Microsoft Store security delivery — 2026-10-27
+
+| Delivery | Prepared change | Remaining |
+| --- | --- | --- |
+| PDF Store MSIX 1.0.8.0 | Package version advances from public 1.0.7.0 to deliver merged crypto-bigint 0.7.9/ctutils 0.4.5 and reviewed original notices; no new Rust or dependency change | Exact native MSIX acceptance, production identity package, final artifact review and new Microsoft submission |
+
+The existing Store listing remains live; preparing a new package does not update
+installed copies or imply certification of this version.
+
 ## Product dependency maintenance — 2026-10-26
 
 | Delivery | Source change | Remaining |

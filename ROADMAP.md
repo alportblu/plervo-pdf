@@ -1,3 +1,9 @@
+PDF Store security delivery — 2026-10-27: prepare MSIX 1.0.8.0 from the merged
+crypto-bigint/ctutils security fixes, preserving the original dependency notices.
+Public Store version 1.0.7.0 remains unchanged until native qualification and a new
+Microsoft submission complete. This only advances the package version; no Rust
+or dependency source changes in this delivery step.
+
 Product dependency maintenance — 2026-10-26: update Photo/Video to Tokio 1.53.3;
 refresh Develop/Video's pinned upstream TLS provider and require crypto-bigint
 0.7.9. All three local dependency audits and 32 fetch/speech tests pass; original
