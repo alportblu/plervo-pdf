@@ -880,8 +880,8 @@ pub mod macos {
         }
     }
 
-    /// Held while this process asks diskimages-helper for something (an attach here; the tests'
-    /// `hdiutil create` too), since it turns concurrent requests away.
+    /// Held through attach, copy and detach (and the tests' `hdiutil create`), so the next
+    /// installation cannot race the previous image's cleanup.
     pub(crate) static DISK_IMAGES: std::sync::Mutex<()> = std::sync::Mutex::new(());
 
     /// Apple's tools, by full path: a launcher started from Finder or at login gets a minimal
@@ -905,8 +905,8 @@ pub mod macos {
         // once), and wait a little and try again when something outside the launcher holds it.
         // The download's SHA-256 is already checked, so hdiutil's own checksum pass (-noverify)
         // would only add minutes on a large image.
+        let _one_at_a_time = DISK_IMAGES.lock().unwrap_or_else(std::sync::PoisonError::into_inner);
         let attached = {
-            let _one_at_a_time = DISK_IMAGES.lock().unwrap_or_else(std::sync::PoisonError::into_inner);
             let attach = || {
                 process::run(
                     HDIUTIL,
@@ -1817,6 +1817,31 @@ mod tests {
             assert_eq!(result, Err("the app isn't signed by its developer, so it wasn't installed".into()));
             assert_eq!(std::fs::read_to_string(current.join("Contents/MacOS/PhotoCraft")).unwrap(), "0.5.0");
             assert!(!apps.join(".PhotoCraft.app.partial").exists());
+        }
+
+        #[test]
+        fn concurrent_disk_image_installs_reach_signature_checks_and_clean_up() {
+            let dir = tempfile::tempdir().unwrap();
+            let image = dmg(dir.path(), "0.6.0");
+            std::thread::scope(|threads| {
+                for worker in 0..4 {
+                    let image = &image;
+                    let root = dir.path().join(worker.to_string());
+                    threads.spawn(move || {
+                        let apps = root.join("Applications");
+                        let current = bundle(&apps, "0.5.0");
+                        let existing =
+                            Installed { version: None, source: InstallSource::MacApp, location: current.display().to_string(), package: None };
+                        let paths = Paths::under(&root);
+                        let release = Release { tag: "v0.6.0".into(), version: version::parse("0.6.0"), ..Release::default() };
+                        let result = install_dmg(photocraft(), image, Some(&existing), &paths, &Expect::release(&release));
+                        assert_eq!(result, Err("the app isn't signed by its developer, so it wasn't installed".into()));
+                        assert_eq!(std::fs::read_to_string(current.join("Contents/MacOS/PhotoCraft")).unwrap(), "0.5.0");
+                        assert_eq!(std::fs::read_dir(&apps).unwrap().count(), 1, "a staging folder was left behind");
+                        assert_eq!(std::fs::read_dir(&paths.cache).unwrap().count(), 0, "a mounted image was left behind");
+                    });
+                }
+            });
         }
 
         /// A real release passes. Run with `CRAFT_APP=/path/to/PhotoCraft.app cargo test -p
