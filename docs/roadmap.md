@@ -7,6 +7,11 @@
 The existing Store listing remains live; preparing a new package does not update
 installed copies or imply certification of this version.
 
+2026-10-28: the native packaging checks exposed HTTP 403 at the original OCR
+download endpoint. An attributed build-input release preserves the exact model
+and license hashes already shipped in alpha.7; only the download URLs change.
+See [model recovery](ocr-model-recovery.md). Native qualification remains required.
+
 ## Product dependency maintenance — 2026-10-26
 
 | Delivery | Source change | Remaining |
