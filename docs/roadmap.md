@@ -1,3 +1,16 @@
+## Suite macOS installation reliability — 2026-10-28
+
+| Delivery | Prepared change | Remaining |
+| --- | --- | --- |
+| Suite DMG installation | Hold the existing disk-image lock through copy and detach; exercise concurrent unsigned updates, installed-copy preservation and mount cleanup | Native CI and a separately qualified, versioned macOS release |
+
+The [nightly macOS failure](https://github.com/alportblu/plervo-pdf/actions/runs/40666062499)
+occurred before signature verification: `hdiutil attach` returned `Resource temporarily
+unavailable`. The old lock ended after attach, leaving detach outside its protection.
+The change closes that concurrency gap without relaxing any verification or test assertion.
+The intermittent failure did not reproduce in five local baseline repetitions; passing
+local tests alone do not establish that all external disk-image contention is eliminated.
+
 ## PDF Microsoft Store security delivery — 2026-10-27
 
 | Delivery | Prepared change | Remaining |

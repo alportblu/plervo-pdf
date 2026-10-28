@@ -1,3 +1,9 @@
+Suite macOS reliability — 2026-10-28: keep disk-image installation serialized
+through copying and unmounting, closing the gap where one attach could race another
+installation's cleanup. Signature, notarization and version checks remain required;
+concurrent unsigned updates must preserve installed copies and remove temporary mounts.
+This source change does not replace published installers.
+
 PDF Store security delivery — 2026-10-27: prepare MSIX 1.0.8.0 from the merged
 crypto-bigint/ctutils security fixes, preserving the original dependency notices.
 Public Store version 1.0.7.0 remains unchanged until native qualification and a new
