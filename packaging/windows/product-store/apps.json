@@ -1,0 +1,26 @@
+{
+  "video": {
+    "name": "Plervo Video",
+    "identity_name": "RicardoBonetti.PlervoVideo",
+    "application_id": "PlervoVideo",
+    "store_id": "9NRKLM46BCDG",
+    "publisher": "CN=B95B2115-019C-4863-ABF3-046177D1E135",
+    "publisher_display_name": "Ricardo Bonetti",
+    "package_version": "1.0.8.0",
+    "description": "Open-source video editing with local projects, a timeline and export tools.",
+    "extension": ".fcproj",
+    "file_type": "Plervo Video project"
+  },
+  "cad": {
+    "name": "Plervo CAD",
+    "identity_name": "RicardoBonetti.PlervoCAD",
+    "application_id": "PlervoCAD",
+    "store_id": "9P5CZZSKKG1Q",
+    "publisher": "CN=B95B2115-019C-4863-ABF3-046177D1E135",
+    "publisher_display_name": "Ricardo Bonetti",
+    "package_version": "1.0.8.0",
+    "description": "Open-source CAD tools for drawing, measuring and working with local DXF files.",
+    "extension": ".dxf",
+    "file_type": "DXF drawing"
+  }
+}

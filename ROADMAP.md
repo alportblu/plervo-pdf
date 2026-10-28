@@ -6,6 +6,24 @@ HTTP 403; build inputs use an attributed mirror of the exact previously pinned
 files, preserving both model and license hashes. No Rust, dependency or model
 content changes in this delivery step. [Recovery](docs/ocr-model-recovery.md).
 
+Store delivery follow-up — 2026-10-27: all 37 product candidate jobs and five
+required root checks passed; security PR #18 is merged. Suite and PDF have live
+Microsoft Store listings. Video/CAD MSIX preparation now uses the current base,
+package version 1.0.8.0 and repaired Windows acceptance arguments/process handles.
+Their separate native MSIX qualification, listing completion and certification
+remain pending; no new installer has been publicly released in this change.
+
+CAD native MSIX installation, CLI output, EN/PT/ES GUI, update and uninstall
+passed in run 40605645291. Its final comparison detected only reordered JSON
+keys in STORE-ASSETS.json (identical data; binaries and other payloads matched).
+The attribution dictionary now preserves key order across packaging processes;
+the byte-for-byte publication gate remains required on the corrected revision.
+
+2026-10-28: prepare real app UI renders at 1600 x 1000 in EN/PT/ES for Store
+listings; the native runner's smaller monitor captures remain diagnostic evidence.
+The separate rendering helpers are not packaged. Native qualification and visual
+review of the new captures remain required before Microsoft submission.
+
 Product dependency maintenance — 2026-10-26: update Photo/Video to Tokio 1.53.3;
 refresh Develop/Video's pinned upstream TLS provider and require crypto-bigint
 0.7.9. All three local dependency audits and 32 fetch/speech tests pass; original
@@ -544,5 +562,10 @@ Newest first: the date, what moved, and the new overall estimate.
 - **2026-10-12 (M8):** Redaction cleans indirect and form structure references, preserving surviving form tags.
 
 - **2026-10-15 (Plervo Linux alpha.3):** Suite DEB/RPM packaging, per-user PDF installer with checksum/architecture/path checks and atomic replacement, non-UTF-8 process regression, isolated native acceptance matrix. Publication gated on passing checks.
+
+## Microsoft Store Video and CAD (2026-10-21)
+
+- Prepare pinned-source MSIX candidates with upstream license preservation, current TLS dependency fixes, native installation/GUI/upgrade/removal checks and exact tested-payload comparison.
+- Store identities are reserved; certification and public downloads remain pending.
 
 - 2026-10-23: Prepared the Windows Microsoft Store edition of Plervo Suite with Store-only acquisition, local signed-package inventory and native MSIX acceptance. Certification remains a separate gate.

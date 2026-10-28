@@ -12,6 +12,30 @@ download endpoint. An attributed build-input release preserves the exact model
 and license hashes already shipped in alpha.7; only the download URLs change.
 See [model recovery](ocr-model-recovery.md). Native qualification remains required.
 
+## Microsoft Store delivery — 2026-10-27
+
+| Delivery | Verified state | Remaining |
+| --- | --- | --- |
+| Product security maintenance | PR #18 merged after 37 product candidate jobs and all five required root checks passed on ff25c352 | New public installers still require versioned packaging and distribution |
+| Suite and PDF | Public Microsoft Store listings confirmed | Publish the new PDF security build; expand the Suite Store catalog only as additional apps become available |
+| Video and CAD | Reserved Store identities; MSIX preparation refreshed from current main, package version 1.0.8.0; obsolete Video dependency overlay removed | Exact Windows MSIX installation, output, GUI, update and uninstall qualification; visual review, malware scan, listing completion and submission |
+| Remaining ten apps | General native candidate matrix passed | Store identities, per-app packaging and acceptance, localized listings and Microsoft certification |
+
+The installed CAD test uses the existing script-file interface to avoid lost JSON
+quotes in Windows PowerShell. GUI capture preserves the process handle and still
+fails on an absent or nonzero exit code. No acceptance gate has been disabled.
+
+CAD passed these native checks in run 40605645291. The final production/test
+comparison rejected differently ordered keys in the asset-credit JSON; parsed
+content, executable hashes and every other non-manifest file matched. Packaging
+now uses an ordered dictionary, retaining the exact-byte comparison and requiring
+a fresh successful run before publication.
+
+2026-10-28: listing helpers render the real CAD/Video interfaces and original
+samples at 1600 x 1000 in three languages, independently of the native monitor's
+smaller resolution. Native lifecycle checks are retained; listing images still
+require resolution validation and visual review before upload.
+
 ## Product dependency maintenance — 2026-10-26
 
 | Delivery | Source change | Remaining |
