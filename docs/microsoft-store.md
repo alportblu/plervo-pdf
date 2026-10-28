@@ -1,8 +1,12 @@
 # Plervo PDF on the Microsoft Store
 
-Status: preparation, October 20, 2026. No Store listing or certified package is published yet.
+Status: October 27, 2026. [Plervo PDF is published in Microsoft Store](https://apps.microsoft.com/detail/9PBWKBZRBJNR).
+Package 1.0.8.0 is being qualified to deliver the merged cryptographic dependency
+security fixes. Public package 1.0.7.0 remains unchanged until the update is certified.
 
-The standalone PDF app is the first Store target. This does not publish the Suite or the other twelve applications. Existing macOS and Linux distribution stays separate.
+The standalone PDF app was the first Store target. Plervo Suite is also published;
+the other twelve applications require separate packages and submissions. Existing
+macOS and Linux distribution stays separate.
 
 Microsoft's [new developer registration](https://learn.microsoft.com/en-us/windows/apps/publish/partner-center/open-a-developer-account) is free for individuals and companies when started at `https://storedeveloper.microsoft.com/`. The [Store signs MSIX submissions](https://learn.microsoft.com/en-us/windows/apps/package-and-deploy/code-signing-options); EXE/MSI distribution still requires the publisher's own certificate. Account verification and app certification are separate gates. There is no promised approval date.
 
@@ -15,7 +19,7 @@ Microsoft's [new developer registration](https://learn.microsoft.com/en-us/windo
 - The package includes the app, CLI, verified OCR models and license notices. The CLI's MCP server and app's authenticated loopback control require explicit invocation.
 - Registered `plervo-pdf.exe` and `plervo-pdf-cli.exe` execution aliases start the installed apps from a terminal without accessing protected WindowsApps payload paths directly.
 - Each executable has its own application entry because the SDK permits only one execution-alias extension per application. Both entries are visible in Start; the CLI declares console/multiple-instance activation and is intended for terminal use. Hiding the CLI with `AppListEntry="none"` passed local SDK and native validation but was rejected by Partner Center because it requires a separate `HeadlessAppBypass` waiver. This package uses the normal visible entry instead.
-- Store package version `1.0.5.0` maps to the application's experimental `0.1.0-alpha.5` source. The major number is required by the Store; it is not a stable-quality claim. Store package revisions end in zero.
+- Store package version `1.0.8.0` uses the application's experimental `0.1.0-alpha.8` base plus the merged security corrections. The build records its exact Git commit. The major number is required by the Store; it is not a stable-quality claim. Store package revisions end in zero.
 
 ## Build and acceptance
 

@@ -1,3 +1,11 @@
+PDF Store security delivery — 2026-10-27: prepare MSIX 1.0.8.0 from the merged
+crypto-bigint/ctutils security fixes, preserving the original dependency notices.
+Public Store version 1.0.7.0 remains unchanged until native qualification and a new
+Microsoft submission complete. The original OCR download endpoint now returns
+HTTP 403; build inputs use an attributed mirror of the exact previously pinned
+files, preserving both model and license hashes. No Rust, dependency or model
+content changes in this delivery step. [Recovery](docs/ocr-model-recovery.md).
+
 Store delivery follow-up — 2026-10-27: all 37 product candidate jobs and five
 required root checks passed; security PR #18 is merged. Suite and PDF have live
 Microsoft Store listings. Video/CAD MSIX preparation now uses the current base,

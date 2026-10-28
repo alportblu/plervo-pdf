@@ -1,8 +1,8 @@
 {
   "generator": "cargo-about 0.9.2 plus reviewed original upstream notices",
-  "reviewed": "2026-10-25",
+  "reviewed": "2026-10-28",
   "inputs": {
-    "ATTRIBUTION.toml": "2fd0c43d2c91154d965e98756fb18beebf5bb2cda30cfa4759ae3034921c71dd",
+    "ATTRIBUTION.toml": "cf225c610208f480d16c592f7dfc73692b666f879396b181efae9870080cbe7c",
     "Cargo.lock": "3024a7282659f5dfc365acccec43d04d85d7838957dc186dcedc87f11078bfca",
     "Cargo.toml": "f1f22a03b26e956e77c87978353dbfb654726c0a034da017be6b34fa2826c335",
     "apps/pdfcraft-cli/Cargo.toml": "3d1e7b9482e09b117ca255fbb57952a4b708154ddc6730918167d771472c78e2",
@@ -52,7 +52,7 @@
     "vendor/winit/Cargo.toml": "2aeb741d47b763ee198ca915c330a6bf0b1fc094dd69357e80278b7852289c61",
     "xtask/Cargo.toml": "4927a79db3efb8c426a3c46427f76218228d07cabbe6779e0eb8e83c3003d12e"
   },
-  "notices_lf_sha256": "e11b8f211f022b192aa323fde5f0632a806093f5aa11d82f762a1809af0250af",
+  "notices_lf_sha256": "d28132f875b4f44b8b81189ddac3323bbfe1ab42de4ba1f13b69e7c62a1c3657",
   "package_count": 634,
   "packages": [
     {
