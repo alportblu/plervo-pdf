@@ -11,6 +11,11 @@ keys in STORE-ASSETS.json (identical data; binaries and other payloads matched).
 The attribution dictionary now preserves key order across packaging processes;
 the byte-for-byte publication gate remains required on the corrected revision.
 
+2026-10-28: prepare real app UI renders at 1600 x 1000 in EN/PT/ES for Store
+listings; the native runner's smaller monitor captures remain diagnostic evidence.
+The separate rendering helpers are not packaged. Native qualification and visual
+review of the new captures remain required before Microsoft submission.
+
 Product dependency maintenance — 2026-10-26: update Photo/Video to Tokio 1.53.3;
 refresh Develop/Video's pinned upstream TLS provider and require crypto-bigint
 0.7.9. All three local dependency audits and 32 fetch/speech tests pass; original

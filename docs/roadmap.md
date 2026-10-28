@@ -17,6 +17,11 @@ content, executable hashes and every other non-manifest file matched. Packaging
 now uses an ordered dictionary, retaining the exact-byte comparison and requiring
 a fresh successful run before publication.
 
+2026-10-28: listing helpers render the real CAD/Video interfaces and original
+samples at 1600 x 1000 in three languages, independently of the native monitor's
+smaller resolution. Native lifecycle checks are retained; listing images still
+require resolution validation and visual review before upload.
+
 ## Product dependency maintenance — 2026-10-26
 
 | Delivery | Source change | Remaining |

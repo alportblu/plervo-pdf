@@ -164,6 +164,10 @@ jobs:
           cargo xtask products --prepare "$PRODUCT" "$GITHUB_WORKSPACE/source"
           python packaging/windows/product-store/prepare.py "$PRODUCT" source
           python products/licenses/verify.py source
+      - name: Render actual app interfaces at Store listing resolution
+        shell: pwsh
+        timeout-minutes: 30
+        run: packaging/windows/product-store/listing.ps1 -Product $env:PRODUCT
       - name: Lint and test the complete Windows workspace
         working-directory: source
         shell: bash

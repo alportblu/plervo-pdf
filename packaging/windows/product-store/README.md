@@ -18,6 +18,13 @@ found only nondeterministic JSON key order in `STORE-ASSETS.json`. Asset credits
 now use an ordered dictionary so the separate packaging processes emit identical
 bytes. The exact payload comparison remains mandatory; a new run must pass.
 
+October 28: the native runner monitor limits window captures below the Store's
+1366 x 768 minimum. Separate helpers render the actual CadApp/FilmcraftApp at
+1600 x 1000 in EN/PT/ES, using only each app's original synthetic sample. They
+are linted, have a resolution gate, are never packaged, and do not replace the
+installed GUI/lifecycle checks. No screenshot is upscaled or reconstructed.
+Both native and listing images require visual review before submission.
+
 The Store identities in `apps.json` were read from the personal publisher's
 Partner Center account on 2026-10-21. Reserving an identity is not certification
 or public availability. The apps are independent of Adobe, Autodesk and ArtCraft.
