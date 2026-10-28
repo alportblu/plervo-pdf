@@ -11,6 +11,12 @@ The installed CAD test uses the existing script-file interface to avoid lost JSO
 quotes in Windows PowerShell. GUI capture preserves the process handle and still
 fails on an absent or nonzero exit code. No acceptance gate has been disabled.
 
+CAD passed these native checks in run 40605645291. The final production/test
+comparison rejected differently ordered keys in the asset-credit JSON; parsed
+content, executable hashes and every other non-manifest file matched. Packaging
+now uses an ordered dictionary, retaining the exact-byte comparison and requiring
+a fresh successful run before publication.
+
 ## Product dependency maintenance — 2026-10-26
 
 | Delivery | Source change | Remaining |

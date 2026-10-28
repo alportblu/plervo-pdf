@@ -13,6 +13,10 @@ That does not qualify MSIX: the separate Store lifecycle must pass on this revis
 The installed CAD fixture now uses its existing script-file interface, avoiding
 Windows PowerShell's loss of embedded JSON quotes. GUI capture retains the process
 handle before exit and still requires a recorded zero exit code after normal close.
+CAD passed the native lifecycle on run 40605645291; the final payload comparison
+found only nondeterministic JSON key order in `STORE-ASSETS.json`. Asset credits
+now use an ordered dictionary so the separate packaging processes emit identical
+bytes. The exact payload comparison remains mandatory; a new run must pass.
 
 The Store identities in `apps.json` were read from the personal publisher's
 Partner Center account on 2026-10-21. Reserving an identity is not certification

@@ -5,6 +5,12 @@ package version 1.0.8.0 and repaired Windows acceptance arguments/process handle
 Their separate native MSIX qualification, listing completion and certification
 remain pending; no new installer has been publicly released in this change.
 
+CAD native MSIX installation, CLI output, EN/PT/ES GUI, update and uninstall
+passed in run 40605645291. Its final comparison detected only reordered JSON
+keys in STORE-ASSETS.json (identical data; binaries and other payloads matched).
+The attribution dictionary now preserves key order across packaging processes;
+the byte-for-byte publication gate remains required on the corrected revision.
+
 Product dependency maintenance — 2026-10-26: update Photo/Video to Tokio 1.53.3;
 refresh Develop/Video's pinned upstream TLS provider and require crypto-bigint
 0.7.9. All three local dependency audits and 32 fetch/speech tests pass; original

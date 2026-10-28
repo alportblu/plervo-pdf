@@ -43,7 +43,7 @@ try {
         $Graphics.DrawImage($Icon, 0, 0, $Tile[1], $Tile[1])
         $File = Join-Path $Assets.FullName $Tile[0]
         $Bitmap.Save($File, [Drawing.Imaging.ImageFormat]::Png)
-        $AssetCredits += @{ path = "Assets/$($Tile[0])"; sha256 = (Get-FileHash $File).Hash.ToLowerInvariant(); source = "assets/products/$Product/icon-1024.png"; source_sha256 = (Get-FileHash $IconPath).Hash.ToLowerInvariant(); author = 'Plervo contributors'; license = 'MIT OR Apache-2.0'; license_files = @('Licenses/LICENSE-MIT', 'Licenses/LICENSE-APACHE'); modification = 'Resized to the required Microsoft Store tile dimensions.' }
+        $AssetCredits += [ordered] @{ path = "Assets/$($Tile[0])"; sha256 = (Get-FileHash $File).Hash.ToLowerInvariant(); source = "assets/products/$Product/icon-1024.png"; source_sha256 = (Get-FileHash $IconPath).Hash.ToLowerInvariant(); author = 'Plervo contributors'; license = 'MIT OR Apache-2.0'; license_files = @('Licenses/LICENSE-MIT', 'Licenses/LICENSE-APACHE'); modification = 'Resized to the required Microsoft Store tile dimensions.' }
       } finally { $Graphics.Dispose(); $Bitmap.Dispose() }
     }
   } finally { $Icon.Dispose() }
