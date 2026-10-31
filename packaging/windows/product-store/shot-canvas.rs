@@ -13,7 +13,8 @@ struct Capture {
 }
 impl eframe::App for Capture {
     fn logic(&mut self, ctx: &egui::Context, _frame: &mut eframe::Frame) {
-        self.app.logic(ctx);
+        // FigApp::ui initializes fonts and defers drawing for their first frame, as in the app.
+        // Calling FigApp::logic here first bypasses that guard and draws an unbound font family.
         let image = ctx.input(|input| {
             input.events.iter().find_map(|event| if let egui::Event::Screenshot { image, .. } = event { Some(image.clone()) } else { None })
         });

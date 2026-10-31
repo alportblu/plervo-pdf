@@ -52,7 +52,7 @@ def main():
     try:
         if helper:
             subprocess.run(['cargo', 'clippy', '--locked', '-p', crate, '--example', 'plervo_store_shot', '--', '-D', 'warnings'], cwd=source, env=env, check=True, timeout=1200)
-        subprocess.run(['cargo', 'run', '--locked', '-p', crate, *extra], cwd=source, env=env, check=True, timeout=1800)
+        subprocess.run(['cargo', 'run', '--locked', '-p', crate, *extra], cwd=source, env=env, check=True, timeout=2400)
         header = png.read_bytes()[:24]
         if header[:8] != b'\x89PNG\r\n\x1a\n':
             raise ValueError('Renderer did not write a PNG')

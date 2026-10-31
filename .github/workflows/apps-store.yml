@@ -2,6 +2,12 @@ name: Plervo apps Microsoft Store
 
 on:
   workflow_dispatch:
+    inputs:
+      product:
+        description: 'Product ID to qualify, or all for the complete Store catalog'
+        default: all
+        type: string
+        required: true
   pull_request:
     paths:
       - '.github/workflows/apps-store.yml'
@@ -30,6 +36,8 @@ jobs:
         with:
           persist-credentials: false
       - id: catalog
+        env:
+          SELECTED_PRODUCT: ${{ inputs.product || 'all' }}
         run: |
           python3 - <<'PY'
           import json, os, pathlib
@@ -37,6 +45,11 @@ jobs:
           apps = json.loads(pathlib.Path('packaging/windows/product-store/apps.json').read_text())
           rows = [p for p in catalog if p['product'] in apps]
           assert {p['product'] for p in rows} == set(apps) and len(rows) == 12
+          selected = os.environ['SELECTED_PRODUCT']
+          if selected != 'all':
+              assert selected in apps, 'Unknown Store product'
+              rows = [p for p in rows if p['product'] == selected]
+              assert len(rows) == 1
           with open(os.environ['GITHUB_OUTPUT'], 'a') as out:
               out.write('matrix=' + json.dumps({'include': rows}, separators=(',', ':')) + '\n')
           PY
@@ -180,7 +193,8 @@ jobs:
           python products/licenses/verify.py source
       - name: Render actual app interfaces at Store listing resolution
         shell: pwsh
-        timeout-minutes: 30
+        # Includes a cold native compile, and helper lint where needed; actual capture stays bounded.
+        timeout-minutes: 65
         run: packaging/windows/product-store/listing.ps1 -Product $env:PRODUCT
       - name: Lint and test the complete Windows workspace
         working-directory: source
