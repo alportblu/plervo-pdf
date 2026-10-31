@@ -55,7 +55,10 @@ try {
     if ($Info.entityCount -ne 2) { throw 'Installed CAD did not save two line entities.' }
   } else {
     $Acceptance = Join-Path $Evidence 'installed-cli'
-    python (Join-Path $Root 'products/accept_cli.py') --product $Product --binary $Cli --output $Acceptance --expected-version $Metadata.release_version --source $Metadata.source_commit
+    # App execution aliases are reparse points, not readable executable files. The alias was
+    # exercised above; use the hash-verified installed payload for the file-operation audit.
+    $InstalledCli = Join-Path $Installed.InstallLocation "plervo-$Product-cli.exe"
+    python (Join-Path $Root 'products/accept_cli.py') --product $Product --binary $InstalledCli --output $Acceptance --expected-version $Metadata.release_version --source $Metadata.source_commit
     if ($LASTEXITCODE -ne 0) { throw 'Installed CLI functional acceptance failed.' }
     # Keep an original document sentinel through the MSIX update and uninstall.
     [IO.File]::WriteAllText($Document, 'Plervo Store installation must preserve user documents.')
