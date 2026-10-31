@@ -6,13 +6,12 @@ are published; certification of a later update is a separate status.
 | App | Public Store package |
 | --- | --- |
 | [Plervo PDF](https://apps.microsoft.com/detail/9PBWKBZRBJNR) | 1.0.8.0, including the merged cryptographic dependency security fixes |
-| [Plervo Suite](https://apps.microsoft.com/detail/9P5P5QD5GDK1) | 1.0.0.0; update 1.0.1.0 was submitted and is awaiting certification |
+| [Plervo Suite](https://apps.microsoft.com/detail/9P5P5QD5GDK1) | 1.0.1.0, with PDF, CAD and Video in its Store catalog |
 | [Plervo CAD](https://apps.microsoft.com/detail/9P5CZZSKKG1Q) | 1.0.8.0 |
 | [Plervo Video](https://apps.microsoft.com/detail/9NRKLM46BCDG) | 1.0.8.0 |
 
-Suite 1.0.1.0 adds the already published CAD and Video acquisition links. The
-currently public 1.0.0.0 catalog offers PDF; CAD and Video can already be installed
-directly from their Store pages. The other ten applications are being prepared
+Suite 1.0.1.0 is certified and published. Its catalog offers PDF, CAD and Video
+through Microsoft Store; each app can also be installed from its own Store page. The other ten applications are being prepared
 for separate packages and certification. macOS and Linux distribution stays separate.
 
 Microsoft's [new developer registration](https://learn.microsoft.com/en-us/windows/apps/publish/partner-center/open-a-developer-account) is free for individuals and companies when started at `https://storedeveloper.microsoft.com/`. The [Store signs MSIX submissions](https://learn.microsoft.com/en-us/windows/apps/package-and-deploy/code-signing-options); EXE/MSI distribution still requires the publisher's own certificate. Account verification and app certification are separate gates. There is no promised approval date.
