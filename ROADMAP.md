@@ -1,3 +1,8 @@
+Release preparation — 2026-10-30: alpha.9 carries the merged dependency and macOS
+installer corrections. Suite Store 1.0.1.0 adds acquisition links for the now-live
+CAD and Video listings. Original notices and fixed Store URL/signature checks
+are preserved. Native package qualification and publication are still pending.
+
 Suite macOS reliability — 2026-10-28: keep disk-image installation serialized
 through copying and unmounting, closing the gap where one attach could race another
 installation's cleanup. Signature, notarization and version checks remain required;

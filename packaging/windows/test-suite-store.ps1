@@ -60,9 +60,13 @@ try {
   if (-not (Test-Path $Alias)) { throw 'Suite execution alias was not registered.' }
   $Status = (Invoke-Suite @('--status') 'inventory').Trim()
   if ($Status -cne '{}') { throw 'Runner unexpectedly has a trusted Store Plervo app.' }
-  $Link = (Invoke-Suite @('--store-link', 'pdf') 'pdf-store-link').Trim()
-  if ($Link -cne 'ms-windows-store://pdp/?ProductId=9PBWKBZRBJNR') { throw 'Wrong PDF acquisition link.' }
-  [void] (Invoke-Suite @('--install', 'video') 'unpublished-product' 1)
+  $Links = [ordered]@{}
+  foreach ($Entry in @(@('pdf','9PBWKBZRBJNR'), @('cad','9P5CZZSKKG1Q'), @('video','9NRKLM46BCDG'))) {
+    $Link = (Invoke-Suite @('--store-link', $Entry[0]) ($Entry[0] + '-store-link')).Trim()
+    if ($Link -cne ('ms-windows-store://pdp/?ProductId=' + $Entry[1])) { throw "Wrong acquisition link: $($Entry[0])." }
+    $Links[$Entry[0]] = $Link
+  }
+  [void] (Invoke-Suite @('--install', 'photo') 'unpublished-product' 1)
   [void] (Invoke-Suite @('--install', '../pdf') 'invalid-product' 1)
   [void] (Invoke-Suite @('--uninstall', 'pdf') 'external-removal-refused' 1)
   [void] (Invoke-Suite @('--open', 'pdf') 'absent-app-refused' 1)
@@ -98,7 +102,8 @@ if ((Get-FileHash $Document).Hash -cne $DocumentHash) { throw 'User document cha
 if ((Get-ItemProperty $Choice -ErrorAction SilentlyContinue).ProgId -cne $BeforeChoice) { throw 'Default PDF handler changed.' }
 @{ passed = $true; source_commit = $OriginalMetadata.source_commit; package_sha256 = $OriginalMetadata.sha256; tested_identity = $Metadata.identity_name;
   upgrade_sha256 = $UpgradeMetadata.sha256; install = $true; reinstall = $true; upgrade = $true; remove = $true; payload_hashes = $true; local_inventory = $true; native_ui_languages = @('en','pt','es');
-  store_acquisition_link = $Link; consumer_store_acquisition = 'not exercised on Windows Server runner';
+  store_acquisition_link = $Links['pdf']; store_acquisition_links = $Links;
+  unpublished_product_refused = 'photo'; consumer_store_acquisition = 'not exercised on Windows Server runner';
   trusted_store_app_activation = 'no Store-signed Plervo app installed on runner'; documents_preserved = $true;
   settings_preserved_on_reinstall = $true; default_pdf_handler_preserved = $true } |
   ConvertTo-Json -Depth 4 | Set-Content (Join-Path $Evidence 'result.json')
