@@ -22,7 +22,7 @@ impl eframe::App for Capture {
             Some((|| {
                 let [width, height] = image.size;
                 if width < 1366 || height < 768 {
-                    return Err("native render is below Store minimum dimensions".into());
+                    return Err(format!("native render {width}x{height} is below Store minimum dimensions"));
                 }
                 let width = u32::try_from(width).map_err(|e| e.to_string())?;
                 let height = u32::try_from(height).map_err(|e| e.to_string())?;
@@ -55,7 +55,12 @@ fn main() -> Result<(), String> {
     let result = Arc::new(Mutex::new(None));
     let app_result = result.clone();
     let options = eframe::NativeOptions {
-        viewport: egui::ViewportBuilder::default().with_inner_size([1600.0, 1000.0]).with_min_inner_size([1600.0, 1000.0]).with_decorations(false),
+        // eframe otherwise clamps the rendered viewport to the CI monitor's smaller bounds.
+        viewport: egui::ViewportBuilder::default()
+            .with_clamp_size_to_monitor_size(false)
+            .with_inner_size([1600.0, 1000.0])
+            .with_min_inner_size([1600.0, 1000.0])
+            .with_decorations(false),
         ..Default::default()
     };
     eframe::run_native(
