@@ -1,6 +1,11 @@
 <# Actual application UI at Store listing resolution; native lifecycle remains a separate gate. #>
-param([ValidateSet('video', 'cad')][string] $Product, [string] $Source = 'source')
+param([ValidateSet('video', 'cad', 'photo', 'vector', 'develop', 'motion', 'publish', 'write', 'slides', 'sheets', 'audio', 'canvas')][string] $Product, [string] $Source = 'source')
 $ErrorActionPreference = 'Stop'
+if ($Product -notin 'video', 'cad') {
+  python (Join-Path $PSScriptRoot 'listing.py') $Product $Source
+  if ($LASTEXITCODE -ne 0) { throw 'Actual app listing render failed.' }
+  return
+}
 $Root = (Resolve-Path (Join-Path $PSScriptRoot '../../..')).Path
 $Source = (Resolve-Path $Source).Path
 $Crate = if ($Product -eq 'video') { 'filmcraft-ui-egui' } else { 'cadcraft-ui-egui' }

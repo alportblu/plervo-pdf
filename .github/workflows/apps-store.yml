@@ -1,4 +1,4 @@
-name: Plervo Video and CAD Microsoft Store
+name: Plervo apps Microsoft Store
 
 on:
   workflow_dispatch:
@@ -7,12 +7,11 @@ on:
       - '.github/workflows/apps-store.yml'
       - 'packaging/windows/product-store/**'
       - 'products/sources.json'
-      - 'products/patches/video.patch'
-      - 'products/patches/cad.patch'
+      - 'products/patches/**'
+      - 'products/licenses/**'
       - 'products/deny.toml'
       - 'products/accept_cli.py'
-      - 'assets/products/video/**'
-      - 'assets/products/cad/**'
+      - 'assets/products/**'
 
 permissions:
   contents: read
@@ -35,8 +34,9 @@ jobs:
           python3 - <<'PY'
           import json, os, pathlib
           catalog = json.loads(pathlib.Path('products/sources.json').read_text())
-          rows = [p for p in catalog if p['product'] in ('video', 'cad')]
-          assert len(rows) == 2
+          apps = json.loads(pathlib.Path('packaging/windows/product-store/apps.json').read_text())
+          rows = [p for p in catalog if p['product'] in apps]
+          assert {p['product'] for p in rows} == set(apps) and len(rows) == 12
           with open(os.environ['GITHUB_OUTPUT'], 'a') as out:
               out.write('matrix=' + json.dumps({'include': rows}, separators=(',', ':')) + '\n')
           PY
@@ -181,6 +181,9 @@ jobs:
         shell: bash
         run: |
           python -m pip install --require-hashes --only-binary=:all: -r products/acceptance-requirements.txt
+          for shot in dist/validation/"$PRODUCT"/listing/*.png; do
+            python packaging/windows/product-store/verify-render.py "$shot"
+          done
           python products/accept_cli.py --product "$PRODUCT" \
             --binary "source/target/x86_64-pc-windows-msvc/release/plervo-$PRODUCT-cli.exe" \
             --output "dist/validation/$PRODUCT/release-cli" --expected-version "$PRODUCT_VERSION" \

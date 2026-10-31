@@ -1,3 +1,7 @@
+Store app-family preparation — 2026-10-30: extend the proven MSIX lifecycle to
+the ten reserved apps, preserving notices, identities and default-only features.
+Final native qualification, screenshot review and submission remain pending.
+
 Suite macOS reliability — 2026-10-28: keep disk-image installation serialized
 through copying and unmounting, closing the gap where one attach could race another
 installation's cleanup. Signature, notarization and version checks remain required;
