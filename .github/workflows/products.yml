@@ -246,7 +246,8 @@ jobs:
           bin=source/target/release
           ext=
           if [ "$RUNNER_OS" = Windows ]; then bin=source/target/x86_64-pc-windows-msvc/release; ext=.exe; fi
-          version="$(python -c 'import pathlib,tomllib; print(tomllib.loads(pathlib.Path("Cargo.toml").read_text())["workspace"]["package"]["version"])')"
+          # Each app keeps its own release version; Suite may already be newer.
+          version="$(python -c 'import pathlib,tomllib; print(tomllib.loads(pathlib.Path("source/Cargo.toml").read_text())["workspace"]["package"]["version"])')"
           python products/accept_cli.py --product "$PRODUCT" --binary "$bin/plervo-$PRODUCT-cli$ext" \
             --output source/dist/validation/cli-release --expected-version "$version" \
             --source "native release candidate $GITHUB_SHA"
