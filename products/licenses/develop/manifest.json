@@ -2,10 +2,10 @@
   "generator": "cargo-about 0.9.2 with reviewed original upstream notices",
   "reviewed": "2026-10-26",
   "product": "Plervo Develop",
-  "version": "0.1.0-alpha.8",
+  "version": "0.1.0-alpha.9",
   "inputs": {
-    "Cargo.lock": "68c2f4dc91d4acb227c5c8a84dcffef00869f0ee8b0d80fc388a99fa2525b1c4",
-    "Cargo.toml": "a7ce98dc0551f9e5f6019a6f002d4e2efb1d665315bfd13e2b0ea6e9fdb341bd",
+    "Cargo.lock": "7e3428bbcd398cbccec1b9154f96a3e296146186e33b03316856b1527ff90f9e",
+    "Cargo.toml": "feedf767844862f02ac896476c637baaed44107fbe616cb94fc6a0a6a9d11841",
     "NOTICE": "0afb5df640e29bdd7a961e8f8c1e31dbd4e59b73325486a7b0fca24c31c05d49",
     "apps/lightcraft-cli/Cargo.toml": "5cf56bf0dddd2fa6b3548e883735b5158e5e1a75a2dd0f942772b172522cb734",
     "apps/lightcraft-web/Cargo.toml": "9c47ed78bc310e3c2c4954a757abfb40868ca2f119efa3ec2bcdfe7c179ccbc4",

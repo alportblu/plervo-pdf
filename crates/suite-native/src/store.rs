@@ -14,8 +14,8 @@ pub struct Product {
 }
 pub const PRODUCTS: &[Product] = &[
     Product { id: "pdf", identity: "RicardoBonetti.PlervoPDF", application: "PlervoPDF", store_id: Some("9PBWKBZRBJNR") },
-    Product { id: "video", identity: "RicardoBonetti.PlervoVideo", application: "PlervoVideo", store_id: None },
-    Product { id: "cad", identity: "RicardoBonetti.PlervoCAD", application: "PlervoCAD", store_id: None },
+    Product { id: "video", identity: "RicardoBonetti.PlervoVideo", application: "PlervoVideo", store_id: Some("9NRKLM46BCDG") },
+    Product { id: "cad", identity: "RicardoBonetti.PlervoCAD", application: "PlervoCAD", store_id: Some("9P5CZZSKKG1Q") },
 ];
 
 pub fn product(id: &str) -> Result<&'static Product, String> {
@@ -139,7 +139,9 @@ mod tests {
     #[test]
     fn only_live_products_have_acquisition_links() {
         assert_eq!(acquisition_uri("pdf").unwrap(), "ms-windows-store://pdp/?ProductId=9PBWKBZRBJNR");
-        for id in ["video", "cad", "photo", "../pdf", "pdf&ProductId=other", ""] {
+        assert_eq!(acquisition_uri("video").unwrap(), "ms-windows-store://pdp/?ProductId=9NRKLM46BCDG");
+        assert_eq!(acquisition_uri("cad").unwrap(), "ms-windows-store://pdp/?ProductId=9P5CZZSKKG1Q");
+        for id in ["photo", "../pdf", "pdf&ProductId=other", ""] {
             assert!(acquisition_uri(id).is_err());
         }
     }

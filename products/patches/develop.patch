@@ -1,5 +1,5 @@
 diff --git a/Cargo.lock b/Cargo.lock
-index 5f44519..a159faa 100644
+index 5f44519..d7ab2bf 100644
 --- a/Cargo.lock
 +++ b/Cargo.lock
 @@ -148,37 +148,37 @@ checksum = "320119579fcad9c21884f5c4861d16174d0e06250625266f50fe6898340abefa"
@@ -589,7 +589,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-catalog"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "crc32fast",
   "lightcraft-develop",
@@ -616,7 +616,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-codecs"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "avif-serialize",
   "bytemuck",
@@ -625,7 +625,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-color"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "lightcraft-geom",
   "proptest",
@@ -634,7 +634,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-denoise"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "faer-core",
   "lightcraft-denoise-core",
@@ -651,7 +651,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-denoise-core"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "lightcraft-raster",
   "miniz_oxide 0.8.9",
@@ -668,7 +668,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-develop"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "lightcraft-color",
   "lightcraft-geom",
@@ -677,7 +677,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-engine"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "ab_glyph",
   "harfrust",
@@ -686,7 +686,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-faces"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "matrixmultiply",
   "ndarray",
@@ -702,7 +702,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-fetch"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "log",
   "rustls",
@@ -715,7 +715,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-geocode"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "miniz_oxide 0.8.9",
   "serde",
@@ -724,7 +724,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-geom"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "proptest",
   "serde",
@@ -733,7 +733,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-gpu"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "bytemuck",
   "lightcraft-color",
@@ -742,7 +742,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-heif"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "heic-rs",
   "rayon",
@@ -751,7 +751,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-inpaint"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "rayon",
  ]
@@ -759,7 +759,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-lensdb"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "lightcraft-develop",
   "lightcraft-geom",
@@ -770,7 +770,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-mcp"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "lightcraft-codecs",
   "lightcraft-engine",
@@ -779,7 +779,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-merge"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "lightcraft-codecs",
   "lightcraft-color",
@@ -788,7 +788,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-meta"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "lightcraft-geom",
   "lightcraft-tiff",
@@ -802,7 +802,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-pipeline"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "image",
   "lightcraft-color",
@@ -811,7 +811,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-preview"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "jpeg-encoder",
   "lightcraft-raster",
@@ -820,7 +820,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-raster"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "libc",
   "lightcraft-color",
@@ -829,7 +829,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-raw"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "jpeg-encoder",
   "jxl-oxide",
@@ -847,7 +847,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-scenes"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "image",
   "lightcraft-color",
@@ -856,7 +856,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-segment"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "candle-core",
   "candle-nn",
@@ -865,12 +865,12 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-sysmem"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  
  [[package]]
  name = "lightcraft-tiff"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "proptest",
   "serde",
@@ -879,7 +879,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-ui-egui"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "craft-ui",
   "egui",
@@ -895,7 +895,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "lightcraft-web"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "crc32fast",
   "eframe",
@@ -1055,7 +1055,7 @@ index 5f44519..a159faa 100644
  
 +[[package]]
 +name = "plervo-develop"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
 +dependencies = [
 + "eframe",
 + "egui",
@@ -1079,7 +1079,7 @@ index 5f44519..a159faa 100644
 +
 +[[package]]
 +name = "plervo-develop-cli"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
 +dependencies = [
 + "dhat",
 + "lightcraft-codecs",
@@ -1625,7 +1625,7 @@ index 5f44519..a159faa 100644
  [[package]]
  name = "xtask"
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  dependencies = [
   "brotli",
   "flate2",
@@ -1670,7 +1670,7 @@ index 5f44519..a159faa 100644
  ]
  
 diff --git a/Cargo.toml b/Cargo.toml
-index 2b89df3..6b13394 100644
+index 2b89df3..f648c57 100644
 --- a/Cargo.toml
 +++ b/Cargo.toml
 @@ -3,7 +3,7 @@ resolver = "3"
@@ -1678,7 +1678,7 @@ index 2b89df3..6b13394 100644
  
  [workspace.package]
 -version = "0.8.0"
-+version = "0.1.0-alpha.8"
++version = "0.1.0-alpha.9"
  edition = "2024"
  license = "MIT OR Apache-2.0"
  rust-version = "1.90"
