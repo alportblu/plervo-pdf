@@ -60,7 +60,7 @@ def prepare(product, source):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("product", choices=("video", "cad"))
+    parser.add_argument("product", choices=tuple(json.loads((Path(__file__).parent / "apps.json").read_text())))
     parser.add_argument("source", type=Path)
     args = parser.parse_args()
     prepare(args.product, args.source)

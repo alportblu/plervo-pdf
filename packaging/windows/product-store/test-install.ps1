@@ -1,5 +1,5 @@
 <# Install only our unsigned test namespace on a disposable Windows CI runner. #>
-param([Parameter(Mandatory)] [ValidateSet('video', 'cad')] [string] $Product)
+param([Parameter(Mandatory)] [ValidateSet('video', 'cad', 'photo', 'vector', 'develop', 'motion', 'publish', 'write', 'slides', 'sheets', 'audio', 'canvas')] [string] $Product)
 $ErrorActionPreference = 'Stop'
 if ($env:GITHUB_ACTIONS -ne 'true' -or $env:RUNNER_OS -ne 'Windows') { throw 'Disposable Windows GitHub runner required.' }
 $Root = (Resolve-Path (Join-Path $PSScriptRoot '..\..\..')).Path
@@ -45,7 +45,7 @@ try {
     $Data = Join-Path $Work 'video-data'
     [void] (Invoke-Cli @('--data-dir', $Data, '--demo', 'exec', 'file.saveAs', "path=$Document"))
     [void] (Invoke-Cli @('--data-dir', $Data, '--project', $Document, 'render', '--seconds', '1', '--scale', '0.25', '--out', $Render))
-  } else {
+  } elseif ($Product -eq 'cad') {
     $env:PLERVO_CAD_CONFIG_DIR = Join-Path $Work 'cad-config'
     # Windows PowerShell strips embedded JSON quotes in native command arguments.
     $Script = Join-Path $Work 'drawing.scr'
@@ -53,23 +53,40 @@ try {
     [void] (Invoke-Cli @('run', '--metric', '--script-file', $Script, '--save', $Document, '--export', $Render))
     $Info = Invoke-Cli @('info', $Document) | ConvertFrom-Json
     if ($Info.entityCount -ne 2) { throw 'Installed CAD did not save two line entities.' }
+  } else {
+    $Acceptance = Join-Path $Evidence 'installed-cli'
+    # App execution aliases are reparse points, not readable executable files. The alias was
+    # exercised above; use the hash-verified installed payload for the file-operation audit.
+    $InstalledCli = Join-Path $Installed.InstallLocation "plervo-$Product-cli.exe"
+    python (Join-Path $Root 'products/accept_cli.py') --product $Product --binary $InstalledCli --output $Acceptance --expected-version $Metadata.release_version --source $Metadata.source_commit
+    if ($LASTEXITCODE -ne 0) { throw 'Installed CLI functional acceptance failed.' }
+    # Keep an original document sentinel through the MSIX update and uninstall.
+    [IO.File]::WriteAllText($Document, 'Plervo Store installation must preserve user documents.')
   }
-  python (Join-Path $PSScriptRoot 'verify-render.py') $Render
-  if ($LASTEXITCODE -ne 0) { throw 'Installed app output is invalid.' }
+  if ($Product -in 'video', 'cad') {
+    python (Join-Path $PSScriptRoot 'verify-render.py') $Render
+    if ($LASTEXITCODE -ne 0) { throw 'Installed app output is invalid.' }
+  }
   $DocumentHash = (Get-FileHash $Document).Hash
-  foreach ($Language in 'en', 'pt-br', 'es') {
+  $Languages = if ($Product -in 'video', 'cad') { @('en', 'pt-br', 'es') } else { @('en') }
+  foreach ($Language in $Languages) {
     if ($Product -eq 'video') {
       $Data = Join-Path $Work "video-$Language"
       New-Item -ItemType Directory -Path $Data | Out-Null
       $Preferences = @{ version = 2; general = @{ interfaceLanguage = $Language } } | ConvertTo-Json -Depth 4
       [IO.File]::WriteAllText((Join-Path $Data 'preferences.json'), $Preferences, [Text.UTF8Encoding]::new($false))
       $Arguments = @('--data-dir', "`"$Data`"", '--no-recover', "`"$Document`"")
-    } else {
+    } elseif ($Product -eq 'cad') {
       $env:CADCRAFT_LOCALE = $Language
       $env:PLERVO_CAD_CONFIG_DIR = Join-Path $Work "cad-$Language"
       $Arguments = @("`"$Document`"")
+    } else {
+      [Environment]::SetEnvironmentVariable("PLERVO_$($Product.ToUpperInvariant())_CONFIG_DIR", (Join-Path $Work "settings-$Product"))
+      $Arguments = @()
     }
-    & (Join-Path $PSScriptRoot 'capture.ps1') -Executable $Executable -Arguments $Arguments -Folder (Join-Path $Evidence $Language) -ExpectedTitle $Config.name
+    # Sheets replaces its initial app title with the blank workbook's title.
+    $ExpectedTitle = if ($Product -eq 'sheets') { 'Book1' } else { $Config.name }
+    & (Join-Path $PSScriptRoot 'capture.ps1') -Executable $Executable -Arguments $Arguments -Folder (Join-Path $Evidence $Language) -ExpectedTitle $ExpectedTitle
   }
   # A real higher-version MSIX update must preserve per-user data and the document.
   $AppData = Join-Path $env:LOCALAPPDATA "Packages\$($Installed.PackageFamilyName)\LocalState"
@@ -102,5 +119,5 @@ if (Get-AppxPackage -Name $Metadata.identity_name) { throw 'Package remained aft
 if ((Test-Path $Cli) -or (Test-Path $Executable)) { throw 'Aliases remained after uninstall.' }
 if (-not $DocumentHash -or (Get-FileHash $Document).Hash -cne $DocumentHash) { throw 'User document was changed by the lifecycle.' }
 if ((Get-ItemProperty -LiteralPath $ChoicePath -ErrorAction SilentlyContinue).ProgId -cne $BeforeChoice) { throw 'Default file handler changed.' }
-@{ status = 'passed'; product = $Product; package_sha256 = $Metadata.sha256; source_commit = $Metadata.source_commit; checks = @('installed payload hashes and source notices', 'installed CLI save and render', 'native GUI EN/PT/ES with normal exit', 'no default TCP listener', 'MSIX upgrade preserves app data', 'uninstall preserves document and default handler'); limitations = 'Screenshots require visual review; not all features/hardware or Store delivery are tested.' } |
+@{ status = 'passed'; product = $Product; package_sha256 = $Metadata.sha256; source_commit = $Metadata.source_commit; gui_languages = $Languages; checks = @('installed payload hashes and source notices', 'installed CLI save and render', 'native GUI with normal exit', 'no default TCP listener', 'MSIX upgrade preserves app data', 'uninstall preserves document and default handler'); limitations = 'Screenshots require visual review; not all features/hardware or Store delivery are tested.' } |
   ConvertTo-Json -Depth 5 | Set-Content (Join-Path $Evidence 'result.json') -Encoding utf8

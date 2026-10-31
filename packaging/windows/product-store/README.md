@@ -1,4 +1,4 @@
-# Video and CAD in Microsoft Store
+# Plervo applications in Microsoft Store
 
 These MSIX packages reuse the pinned public source and Plervo overlays in
 `products/sources.json`. `prepare.py` applies the additional Store overlay and
@@ -66,3 +66,20 @@ Store tiles are resized from the existing attributed Plervo product icon.
 authorship, license and transformation. Native screenshots contain the app's own
 client area and original synthetic documents; OS title bars and desktop artwork
 are excluded. Listing publication must preserve the corresponding attribution.
+
+October 30: extend the same qualification pipeline to the ten already reserved
+Photo, Vector, Develop, Motion, Publish, Write, Slides, Sheets, Audio and Canvas
+identities. This is preparation, not certification or publication. Every app must
+pass SDK validation, source/license/advisory checks, full native lint/tests, CLI
+operations before and after MSIX installation, GUI startup and normal close,
+absence of default TCP listeners, upgrade, uninstall and payload equivalence.
+
+The ten new apps initially use English screenshots with honest localized captions;
+only Video/CAD's native lifecycle explicitly exercises all three GUI languages.
+Audio and Slides declare only their implemented English interface language. Other
+listings must describe actual language support, not infer it from listing languages.
+The existing headless examples render the real UI; Vector/Slides get small temporary
+helpers. Canvas captures its native renderer on the disposable Windows runner, with
+a minimum size gate, without adding dependencies or changing production features.
+Helpers are removed after use and are never bundled. No screenshot is upscaled.
+Supplemental upstream attribution files and license directories are preserved.
