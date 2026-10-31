@@ -341,13 +341,14 @@ mod tests {
     #[test]
     fn all_installed_store_apps_appear_and_unsupported_actions_are_absent() {
         let mut app = StoreApp { system_language: Language::En, ..Default::default() };
-        for id in ["pdf", "video", "cad"] {
-            app.installed.insert(id.into(), "1.0.7.0".into());
+        for product in &family::PRODUCTS {
+            app.installed.insert(product.id.into(), "1.0.8.0".into());
         }
-        let mut h = Harness::builder().with_size(Vec2::new(1000.0, 700.0)).build_ui_state(|ui, app| app.show(ui), app);
+        let mut h = Harness::builder().with_size(Vec2::new(1000.0, 2200.0)).build_ui_state(|ui, app| app.show(ui), app);
         h.run_steps(2);
-        for label in ["Open Plervo PDF", "Open Plervo Video", "Open Plervo CAD"] {
-            assert!(h.query_by_label(label).is_some(), "{label}");
+        for product in &family::PRODUCTS {
+            let label = format!("Open {}", product.name);
+            assert!(h.query_by_label(&label).is_some(), "{label}");
         }
         assert!(h.query_by_label("Install Plervo Photo").is_none());
         assert!(h.query_by_label("Download Suite update").is_none());
