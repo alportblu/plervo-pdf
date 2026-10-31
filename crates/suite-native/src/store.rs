@@ -16,6 +16,16 @@ pub const PRODUCTS: &[Product] = &[
     Product { id: "pdf", identity: "RicardoBonetti.PlervoPDF", application: "PlervoPDF", store_id: Some("9PBWKBZRBJNR") },
     Product { id: "video", identity: "RicardoBonetti.PlervoVideo", application: "PlervoVideo", store_id: Some("9NRKLM46BCDG") },
     Product { id: "cad", identity: "RicardoBonetti.PlervoCAD", application: "PlervoCAD", store_id: Some("9P5CZZSKKG1Q") },
+    Product { id: "photo", identity: "RicardoBonetti.PlervoPhoto", application: "PlervoPhoto", store_id: Some("9P5LZ60KSD8N") },
+    Product { id: "vector", identity: "RicardoBonetti.PlervoVector", application: "PlervoVector", store_id: Some("9NMWZRJZHDDH") },
+    Product { id: "develop", identity: "RicardoBonetti.PlervoDevelop", application: "PlervoDevelop", store_id: Some("9PLTQ9RL45R3") },
+    Product { id: "motion", identity: "RicardoBonetti.PlervoMotion", application: "PlervoMotion", store_id: Some("9NSG0HNRW1TF") },
+    Product { id: "publish", identity: "RicardoBonetti.PlervoPublish", application: "PlervoPublish", store_id: Some("9N9D719Z3CLR") },
+    Product { id: "write", identity: "RicardoBonetti.PlervoWrite", application: "PlervoWrite", store_id: Some("9P3MPXHK0MWQ") },
+    Product { id: "slides", identity: "RicardoBonetti.PlervoSlides", application: "PlervoSlides", store_id: Some("9PJP84C61W48") },
+    Product { id: "sheets", identity: "RicardoBonetti.PlervoSheets", application: "PlervoSheets", store_id: Some("9NKPX3S5VQ4F") },
+    Product { id: "audio", identity: "RicardoBonetti.PlervoAudio", application: "PlervoAudio", store_id: Some("9PJ7F61RGP11") },
+    Product { id: "canvas", identity: "RicardoBonetti.PlervoCanvas", application: "PlervoCanvas", store_id: Some("9N51C6Q611QS") },
 ];
 
 pub fn product(id: &str) -> Result<&'static Product, String> {
@@ -141,7 +151,9 @@ mod tests {
         assert_eq!(acquisition_uri("pdf").unwrap(), "ms-windows-store://pdp/?ProductId=9PBWKBZRBJNR");
         assert_eq!(acquisition_uri("video").unwrap(), "ms-windows-store://pdp/?ProductId=9NRKLM46BCDG");
         assert_eq!(acquisition_uri("cad").unwrap(), "ms-windows-store://pdp/?ProductId=9P5CZZSKKG1Q");
-        for id in ["photo", "../pdf", "pdf&ProductId=other", ""] {
+        assert_eq!(acquisition_uri("photo").unwrap(), "ms-windows-store://pdp/?ProductId=9P5LZ60KSD8N");
+        assert_eq!(acquisition_uri("canvas").unwrap(), "ms-windows-store://pdp/?ProductId=9N51C6Q611QS");
+        for id in ["unknown", "../pdf", "pdf&ProductId=other", ""] {
             assert!(acquisition_uri(id).is_err());
         }
     }
