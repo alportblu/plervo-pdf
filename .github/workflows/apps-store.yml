@@ -92,12 +92,26 @@ jobs:
           manifest-path: source/Cargo.toml
           command: check
           arguments: --all-features --locked --config deny-active.toml
-      - name: Source formatting, boundaries and asset attribution
+      - name: Source formatting and boundaries
         working-directory: source
         run: |
           cargo fmt --all -- --check
           cargo xtask layers
-          cargo xtask assets
+      - name: Upstream asset attribution
+        if: matrix.product != 'photo'
+        working-directory: source
+        run: cargo xtask assets
+      - name: Photo asset attribution and notice inventory
+        if: matrix.product == 'photo'
+        run: |
+          # Photo uses ATTRIBUTION.md, not an `xtask assets` command.
+          # Its reviewed attribution is pinned by the distribution notice inventory.
+          python3 - <<'PY'
+          import json, pathlib
+          manifest = json.loads(pathlib.Path('source/packaging/licenses/manifest.json').read_text())
+          assert 'ATTRIBUTION.md' in manifest['inputs'], 'Photo attribution must be pinned'
+          PY
+          python3 products/licenses/verify.py source
 
   msix:
     needs: [catalog, source-review]
