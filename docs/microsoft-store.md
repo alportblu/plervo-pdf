@@ -1,12 +1,19 @@
 # Plervo PDF on the Microsoft Store
 
-Status: October 27, 2026. [Plervo PDF is published in Microsoft Store](https://apps.microsoft.com/detail/9PBWKBZRBJNR).
-Package 1.0.8.0 is being qualified to deliver the merged cryptographic dependency
-security fixes. Public package 1.0.7.0 remains unchanged until the update is certified.
+Status verified in Partner Center: October 31, 2026. These Windows x64 packages
+are published; certification of a later update is a separate status.
 
-The standalone PDF app was the first Store target. Plervo Suite is also published;
-the other twelve applications require separate packages and submissions. Existing
-macOS and Linux distribution stays separate.
+| App | Public Store package |
+| --- | --- |
+| [Plervo PDF](https://apps.microsoft.com/detail/9PBWKBZRBJNR) | 1.0.8.0, including the merged cryptographic dependency security fixes |
+| [Plervo Suite](https://apps.microsoft.com/detail/9P5P5QD5GDK1) | 1.0.0.0; update 1.0.1.0 was submitted and is awaiting certification |
+| [Plervo CAD](https://apps.microsoft.com/detail/9P5CZZSKKG1Q) | 1.0.8.0 |
+| [Plervo Video](https://apps.microsoft.com/detail/9NRKLM46BCDG) | 1.0.8.0 |
+
+Suite 1.0.1.0 adds the already published CAD and Video acquisition links. The
+currently public 1.0.0.0 catalog offers PDF; CAD and Video can already be installed
+directly from their Store pages. The other ten applications are being prepared
+for separate packages and certification. macOS and Linux distribution stays separate.
 
 Microsoft's [new developer registration](https://learn.microsoft.com/en-us/windows/apps/publish/partner-center/open-a-developer-account) is free for individuals and companies when started at `https://storedeveloper.microsoft.com/`. The [Store signs MSIX submissions](https://learn.microsoft.com/en-us/windows/apps/package-and-deploy/code-signing-options); EXE/MSI distribution still requires the publisher's own certificate. Account verification and app certification are separate gates. There is no promised approval date.
 
