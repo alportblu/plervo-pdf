@@ -84,7 +84,9 @@ try {
       [Environment]::SetEnvironmentVariable("PLERVO_$($Product.ToUpperInvariant())_CONFIG_DIR", (Join-Path $Work "settings-$Product"))
       $Arguments = @()
     }
-    & (Join-Path $PSScriptRoot 'capture.ps1') -Executable $Executable -Arguments $Arguments -Folder (Join-Path $Evidence $Language) -ExpectedTitle $Config.name
+    # Sheets replaces its initial app title with the blank workbook's title.
+    $ExpectedTitle = if ($Product -eq 'sheets') { 'Book1' } else { $Config.name }
+    & (Join-Path $PSScriptRoot 'capture.ps1') -Executable $Executable -Arguments $Arguments -Folder (Join-Path $Evidence $Language) -ExpectedTitle $ExpectedTitle
   }
   # A real higher-version MSIX update must preserve per-user data and the document.
   $AppData = Join-Path $env:LOCALAPPDATA "Packages\$($Installed.PackageFamilyName)\LocalState"
