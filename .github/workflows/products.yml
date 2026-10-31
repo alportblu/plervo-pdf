@@ -296,7 +296,8 @@ jobs:
           cargo build --locked -p plervo-suite-native --example product_acceptance
           packages=(source/dist/release/plervo-"$PRODUCT"-*-linux-x86_64.tar.gz)
           [ "${#packages[@]}" = 1 ] && [ -f "${packages[0]}" ]
-          PLERVO_ACCEPTANCE=1 timeout 90 target/debug/examples/product_acceptance "$PRODUCT" "${packages[0]}" \
+          version="$(python -c 'import pathlib,tomllib; print(tomllib.loads(pathlib.Path("source/Cargo.toml").read_text())["workspace"]["package"]["version"])')"
+          PLERVO_ACCEPTANCE=1 timeout 90 target/debug/examples/product_acceptance "$PRODUCT" "${packages[0]}" "$version" \
             2>&1 | tee source/dist/validation/suite-install.txt
       - name: Clean Ubuntu, Debian and Fedora package acceptance
         if: runner.os == 'Linux'
@@ -343,7 +344,8 @@ jobs:
           cmp THIRD_PARTY_NOTICES.txt "$bundle/Contents/Resources/Licenses/THIRD_PARTY_NOTICES.txt"
           [ "$(plutil -extract CFBundleIdentifier raw -o - "$bundle/Contents/Info.plist")" = "com.plervo.$PRODUCT" ]
           (cd "$GITHUB_WORKSPACE" && cargo build --locked -p plervo-suite-native --example product_acceptance)
-          PLERVO_ACCEPTANCE=1 "$GITHUB_WORKSPACE/target/debug/examples/product_acceptance" "$PRODUCT" "$bundle" \
+          version="$(python3 -c 'import pathlib,tomllib; print(tomllib.loads(pathlib.Path("Cargo.toml").read_text())["workspace"]["package"]["version"])')"
+          PLERVO_ACCEPTANCE=1 "$GITHUB_WORKSPACE/target/debug/examples/product_acceptance" "$PRODUCT" "$bundle" "$version" \
             | tee dist/validation/suite-bundle-identity.txt
           "$bundle/Contents/MacOS/$app_name" --version
           ditto -x -k "${archives[0]}" "$work/cli"

@@ -20,7 +20,8 @@ fn main() -> Result<(), String> {
     let app = SUITE.iter().find(|app| app.id == id).ok_or("Unknown product")?;
     let package = PathBuf::from(std::env::args_os().nth(2).ok_or("Expected candidate archive")?);
     let name = package.file_name().and_then(|name| name.to_str()).ok_or("Invalid archive filename")?;
-    let version = env!("CARGO_PKG_VERSION");
+    let version = std::env::args().nth(3).ok_or("Expected product release version")?;
+    let expected = plervo_suite_core::version::parse(&version).ok_or("Invalid product release version")?;
     let tag = format!("v{version}");
     let asset = Asset {
         name: name.into(),
@@ -28,7 +29,7 @@ fn main() -> Result<(), String> {
         url: format!("https://github.com/alportblu/plervo-pdf/releases/download/{tag}/{name}"),
         sha256: Some(http::sha256_file(&package)?),
     };
-    let release = Release { tag, version: plervo_suite_core::version::parse(version), assets: vec![asset.clone()], ..Release::default() };
+    let release = Release { tag, version: Some(expected), assets: vec![asset.clone()], ..Release::default() };
     let temp = tempfile::tempdir().map_err(|e| e.to_string())?;
     let paths = Paths::under(temp.path());
     let document = temp.path().join("document-preserved.txt");
@@ -50,7 +51,7 @@ fn main() -> Result<(), String> {
         for executable in [&binary, &cli] {
             let result = Command::new(executable).arg("--version").output().map_err(|e| e.to_string())?;
             let output = String::from_utf8_lossy(&result.stdout);
-            if !result.status.success() || !output.contains(version) {
+            if !result.status.success() || !output.contains(&version) {
                 return Err(format!("{} --version failed: {output}", executable.display()));
             }
         }
@@ -85,11 +86,12 @@ fn main() -> Result<(), String> {
     let app = SUITE.iter().find(|app| app.id == id).ok_or("Unknown product")?;
     let bundle = PathBuf::from(std::env::args_os().nth(2).ok_or("Expected candidate bundle")?);
     let found = detect::macos::read_bundle(app, &bundle).ok_or("Suite did not recognize the candidate bundle")?;
-    let expected = version::parse(env!("CARGO_PKG_VERSION")).ok_or("Invalid source version")?;
+    let product_version = std::env::args().nth(3).ok_or("Expected product release version")?;
+    let expected = version::parse(&product_version).ok_or("Invalid product release version")?;
     if found.version.as_ref() != Some(&expected) {
         return Err(format!("Suite detected {:?}, expected {expected:?}", found.version));
     }
-    println!("{}: Suite recognized the bundle and exact release version {}.", app.name, env!("CARGO_PKG_VERSION"));
+    println!("{}: Suite recognized the bundle and exact release version {product_version}.", app.name);
     Ok(())
 }
 
