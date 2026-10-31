@@ -34,11 +34,15 @@ This repository contains the Suite, PDF, and the pinned source catalog and overl
 | --- | --- |
 | macOS, Apple Silicon | Suite and all 13 apps. Signed by Maintech Solutions LLC and notarized by Apple. |
 | Linux, x86_64 | Suite and all 13 apps. DEB/RPM installers; glibc 2.39 or newer. |
-| Windows | [Plervo PDF is available in Microsoft Store](https://apps.microsoft.com/detail/9PBWKBZRBJNR). Suite and other Windows apps remain internal candidates; they are not public signed downloads. |
+| Windows, x64 | [Suite](https://apps.microsoft.com/detail/9P5P5QD5GDK1), [PDF](https://apps.microsoft.com/detail/9PBWKBZRBJNR), [CAD](https://apps.microsoft.com/detail/9P5CZZSKKG1Q) and [Video](https://apps.microsoft.com/detail/9NRKLM46BCDG) are available in Microsoft Store. The other ten apps are being prepared for separate certification. |
 
 1. Download the Suite for your computer from [plervo.com](https://plervo.com).
 2. Install and open **Plervo Suite**.
 3. Select an app in the catalog and choose **Install**.
+
+On Windows, Microsoft Store manages installation and updates. Each app can also
+be installed directly from its Store page. Suite's Store catalog includes only
+apps enabled in that Suite version; see [current Store availability](docs/microsoft-store.md).
 
 Linux app packages were exercised on Ubuntu 24.04, Debian 13 and Fedora 44; the Suite also passed Ubuntu 26.04 acceptance. Linux Mint 22 shares the Ubuntu 24.04 base but has not been tested separately. macOS Intel, Linux ARM and native Wayland sessions are not qualified.
 

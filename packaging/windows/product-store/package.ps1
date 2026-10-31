@@ -1,6 +1,6 @@
 <# Build Video/CAD MSIX from reviewed, pinned source. No certificate or trust changes. #>
 param(
-  [Parameter(Mandatory)] [ValidateSet('video', 'cad')] [string] $Product,
+  [Parameter(Mandatory)] [ValidateSet('video', 'cad', 'photo', 'vector', 'develop', 'motion', 'publish', 'write', 'slides', 'sheets', 'audio', 'canvas')] [string] $Product,
   [string] $Source = 'source',
   [switch] $ValidationOnly,
   [switch] $ManifestOnly
@@ -63,6 +63,9 @@ try {
     '@DESCRIPTION@' = $Config.description; '@PRODUCT@' = $Product
     '@FILE_EXTENSION@' = $Config.extension; '@FILE_TYPE@' = $Config.file_type
   }
+  if ($Product -in 'audio', 'slides') {
+    $Template = $Template.Replace('    <Resource Language="pt-BR" />', '').Replace('    <Resource Language="es-ES" />', '')
+  }
   foreach ($Key in $Values.Keys) { $Template = $Template.Replace($Key, [Security.SecurityElement]::Escape($Values[$Key])) }
   if ($Template -match '@[A-Z_]+@') { throw 'Unresolved manifest placeholder.' }
   $Template | Set-Content -LiteralPath (Join-Path $Stage 'AppxManifest.xml') -Encoding utf8
@@ -99,7 +102,13 @@ try {
     Copy-Item -LiteralPath $File -Destination $Stage
   }
   $Legal = New-Item -ItemType Directory -Path (Join-Path $Stage 'Licenses')
-  foreach ($Name in 'LICENSE-MIT', 'LICENSE-APACHE', 'NOTICE', 'ATTRIBUTION.md') { Copy-Item (Join-Path $SourceRoot $Name) $Legal.FullName }
+  foreach ($Name in 'LICENSE-MIT', 'LICENSE-APACHE', 'NOTICE') { Copy-Item (Join-Path $SourceRoot $Name) $Legal.FullName }
+  foreach ($Name in 'ATTRIBUTION.md', 'ATTRIBUTION.toml', 'ASSETS.md') {
+    $Attribution = Join-Path $SourceRoot $Name
+    if (Test-Path $Attribution) { Copy-Item $Attribution $Legal.FullName }
+  }
+  $Supplemental = Join-Path $SourceRoot 'licenses'
+  if (Test-Path $Supplemental) { Copy-Item $Supplemental (Join-Path $Legal.FullName 'upstream-licenses') -Recurse }
   Copy-Item (Join-Path $SourceRoot 'THIRD_PARTY_NOTICES.txt') $Legal.FullName
   Copy-Item (Join-Path $SourceRoot 'packaging\licenses\manifest.json') (Join-Path $Legal.FullName 'DEPENDENCY-LICENSES.json')
   if ((Get-FileHash (Join-Path $Legal.FullName 'THIRD_PARTY_NOTICES.txt')).Hash.ToLowerInvariant() -cne $Definition.notices_sha256 -or

@@ -46,7 +46,9 @@ New-Item -ItemType Directory -Force -Path $Folder | Out-Null
 $App = $null
 $Result = [ordered] @{ passed = $false; normal_close = $false; scope = 'Installed GUI launch, response, app-only capture, no TCP listener and normal close. Screenshots require visual review.' }
 try {
-  $App = Start-Process -FilePath $Executable -ArgumentList $Arguments -PassThru -RedirectStandardOutput (Join-Path $Folder 'gui-stdout.txt') -RedirectStandardError (Join-Path $Folder 'gui-stderr.txt')
+  $Start = @{ FilePath = $Executable; PassThru = $true; RedirectStandardOutput = (Join-Path $Folder 'gui-stdout.txt'); RedirectStandardError = (Join-Path $Folder 'gui-stderr.txt') }
+  if ($Arguments.Count) { $Start.ArgumentList = $Arguments }
+  $App = Start-Process @Start
     # Retain the process handle while it is alive so Windows preserves its exit code.
     [void] $App.Handle
     $Deadline = [DateTime]::UtcNow.AddSeconds(90)

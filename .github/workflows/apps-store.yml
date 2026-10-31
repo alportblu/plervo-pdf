@@ -1,18 +1,23 @@
-name: Plervo Video and CAD Microsoft Store
+name: Plervo apps Microsoft Store
 
 on:
   workflow_dispatch:
+    inputs:
+      product:
+        description: 'Product ID to qualify, or all for the complete Store catalog'
+        default: all
+        type: string
+        required: true
   pull_request:
     paths:
       - '.github/workflows/apps-store.yml'
       - 'packaging/windows/product-store/**'
       - 'products/sources.json'
-      - 'products/patches/video.patch'
-      - 'products/patches/cad.patch'
+      - 'products/patches/**'
+      - 'products/licenses/**'
       - 'products/deny.toml'
       - 'products/accept_cli.py'
-      - 'assets/products/video/**'
-      - 'assets/products/cad/**'
+      - 'assets/products/**'
 
 permissions:
   contents: read
@@ -31,12 +36,20 @@ jobs:
         with:
           persist-credentials: false
       - id: catalog
+        env:
+          SELECTED_PRODUCT: ${{ inputs.product || 'all' }}
         run: |
           python3 - <<'PY'
           import json, os, pathlib
           catalog = json.loads(pathlib.Path('products/sources.json').read_text())
-          rows = [p for p in catalog if p['product'] in ('video', 'cad')]
-          assert len(rows) == 2
+          apps = json.loads(pathlib.Path('packaging/windows/product-store/apps.json').read_text())
+          rows = [p for p in catalog if p['product'] in apps]
+          assert {p['product'] for p in rows} == set(apps) and len(rows) == 12
+          selected = os.environ['SELECTED_PRODUCT']
+          if selected != 'all':
+              assert selected in apps, 'Unknown Store product'
+              rows = [p for p in rows if p['product'] == selected]
+              assert len(rows) == 1
           with open(os.environ['GITHUB_OUTPUT'], 'a') as out:
               out.write('matrix=' + json.dumps({'include': rows}, separators=(',', ':')) + '\n')
           PY
@@ -92,12 +105,26 @@ jobs:
           manifest-path: source/Cargo.toml
           command: check
           arguments: --all-features --locked --config deny-active.toml
-      - name: Source formatting, boundaries and asset attribution
+      - name: Source formatting and boundaries
         working-directory: source
         run: |
           cargo fmt --all -- --check
           cargo xtask layers
-          cargo xtask assets
+      - name: Upstream asset attribution
+        if: matrix.product != 'photo'
+        working-directory: source
+        run: cargo xtask assets
+      - name: Photo asset attribution and notice inventory
+        if: matrix.product == 'photo'
+        run: |
+          # Photo uses ATTRIBUTION.md, not an `xtask assets` command.
+          # Its reviewed attribution is pinned by the distribution notice inventory.
+          python3 - <<'PY'
+          import json, pathlib
+          manifest = json.loads(pathlib.Path('source/packaging/licenses/manifest.json').read_text())
+          assert 'ATTRIBUTION.md' in manifest['inputs'], 'Photo attribution must be pinned'
+          PY
+          python3 products/licenses/verify.py source
 
   msix:
     needs: [catalog, source-review]
@@ -166,7 +193,8 @@ jobs:
           python products/licenses/verify.py source
       - name: Render actual app interfaces at Store listing resolution
         shell: pwsh
-        timeout-minutes: 30
+        # Includes a cold native compile, and helper lint where needed; actual capture stays bounded.
+        timeout-minutes: 65
         run: packaging/windows/product-store/listing.ps1 -Product $env:PRODUCT
       - name: Lint and test the complete Windows workspace
         working-directory: source
@@ -181,6 +209,9 @@ jobs:
         shell: bash
         run: |
           python -m pip install --require-hashes --only-binary=:all: -r products/acceptance-requirements.txt
+          for shot in dist/validation/"$PRODUCT"/listing/*.png; do
+            python packaging/windows/product-store/verify-render.py "$shot"
+          done
           python products/accept_cli.py --product "$PRODUCT" \
             --binary "source/target/x86_64-pc-windows-msvc/release/plervo-$PRODUCT-cli.exe" \
             --output "dist/validation/$PRODUCT/release-cli" --expected-version "$PRODUCT_VERSION" \
