@@ -53,13 +53,13 @@ jobs:
         shell: pwsh
         run: |
           packaging/windows/package-suite-store.ps1 -IdentityName Plervo.Suite.StoreValidation -Publisher 'CN=Plervo Store Validation' -PublisherDisplayName Plervo -ValidationOnly
-          packaging/windows/package-suite-store.ps1 -IdentityName Plervo.Suite.StoreValidation -Publisher 'CN=Plervo Store Validation' -PublisherDisplayName Plervo -ValidationOnly -Version 1.0.2.0
+          packaging/windows/package-suite-store.ps1 -IdentityName Plervo.Suite.StoreValidation -Publisher 'CN=Plervo Store Validation' -PublisherDisplayName Plervo -ValidationOnly -Version 1.0.3.0
       - name: Native package installation, UI, reinstallation and removal
         shell: powershell
         run: |
-          $Package = @(Get-ChildItem dist/suite-store/*-1.0.1.0-*-validation-only.msix)
+          $Package = @(Get-ChildItem dist/suite-store/*-1.0.2.0-*-validation-only.msix)
           if ($Package.Count -ne 1) { throw 'Expected one test package.' }
-          $Upgrade = @(Get-ChildItem dist/suite-store/*-1.0.2.0-*-validation-only.msix)
+          $Upgrade = @(Get-ChildItem dist/suite-store/*-1.0.3.0-*-validation-only.msix)
           if ($Upgrade.Count -ne 1) { throw 'Expected one upgrade test package.' }
           packaging/windows/test-suite-store.ps1 -Path $Package[0].FullName -UpgradePath $Upgrade[0].FullName
       - name: Render actual Store UI at listing resolution
@@ -85,7 +85,7 @@ jobs:
         shell: pwsh
         run: |
           packaging/windows/package-suite-store.ps1 -IdentityName RicardoBonetti.PlervoSuite -Publisher 'CN=B95B2115-019C-4863-ABF3-046177D1E135' -PublisherDisplayName 'Ricardo Bonetti'
-          $Test = Get-Content -Raw (Get-ChildItem dist/suite-store/*-1.0.1.0-*-validation-only.msix.json).FullName | ConvertFrom-Json
+          $Test = Get-Content -Raw (Get-ChildItem dist/suite-store/*-1.0.2.0-*-validation-only.msix.json).FullName | ConvertFrom-Json
           $Upload = Get-Content -Raw (Get-ChildItem dist/suite-store/*.msix.json | Where-Object Name -NotLike '*-validation-only*').FullName | ConvertFrom-Json
           $TestFiles = @($Test.files | Where-Object path -ne 'AppxManifest.xml' | ForEach-Object { "$($_.path):$($_.sha256)" })
           $UploadFiles = @($Upload.files | Where-Object path -ne 'AppxManifest.xml' | ForEach-Object { "$($_.path):$($_.sha256)" })

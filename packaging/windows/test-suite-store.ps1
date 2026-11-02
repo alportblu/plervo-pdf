@@ -61,12 +61,26 @@ try {
   $Status = (Invoke-Suite @('--status') 'inventory').Trim()
   if ($Status -cne '{}') { throw 'Runner unexpectedly has a trusted Store Plervo app.' }
   $Links = [ordered]@{}
-  foreach ($Entry in @(@('pdf','9PBWKBZRBJNR'), @('cad','9P5CZZSKKG1Q'), @('video','9NRKLM46BCDG'))) {
+  foreach ($Entry in @(
+    @('pdf','9PBWKBZRBJNR'),
+    @('video','9NRKLM46BCDG'),
+    @('cad','9P5CZZSKKG1Q'),
+    @('photo','9P5LZ60KSD8N'),
+    @('vector','9NMWZRJZHDDH'),
+    @('develop','9PLTQ9RL45R3'),
+    @('motion','9NSG0HNRW1TF'),
+    @('publish','9N9D719Z3CLR'),
+    @('write','9P3MPXHK0MWQ'),
+    @('slides','9PJP84C61W48'),
+    @('sheets','9NKPX3S5VQ4F'),
+    @('audio','9PJ7F61RGP11'),
+    @('canvas','9N51C6Q611QS')
+  )) {
     $Link = (Invoke-Suite @('--store-link', $Entry[0]) ($Entry[0] + '-store-link')).Trim()
     if ($Link -cne ('ms-windows-store://pdp/?ProductId=' + $Entry[1])) { throw "Wrong acquisition link: $($Entry[0])." }
     $Links[$Entry[0]] = $Link
   }
-  [void] (Invoke-Suite @('--install', 'photo') 'unpublished-product' 1)
+  [void] (Invoke-Suite @('--install', 'unknown') 'unknown-product' 1)
   [void] (Invoke-Suite @('--install', '../pdf') 'invalid-product' 1)
   [void] (Invoke-Suite @('--uninstall', 'pdf') 'external-removal-refused' 1)
   [void] (Invoke-Suite @('--open', 'pdf') 'absent-app-refused' 1)
@@ -103,7 +117,7 @@ if ((Get-ItemProperty $Choice -ErrorAction SilentlyContinue).ProgId -cne $Before
 @{ passed = $true; source_commit = $OriginalMetadata.source_commit; package_sha256 = $OriginalMetadata.sha256; tested_identity = $Metadata.identity_name;
   upgrade_sha256 = $UpgradeMetadata.sha256; install = $true; reinstall = $true; upgrade = $true; remove = $true; payload_hashes = $true; local_inventory = $true; native_ui_languages = @('en','pt','es');
   store_acquisition_link = $Links['pdf']; store_acquisition_links = $Links;
-  unpublished_product_refused = 'photo'; consumer_store_acquisition = 'not exercised on Windows Server runner';
+  unknown_product_refused = 'unknown'; consumer_store_acquisition = 'not exercised on Windows Server runner';
   trusted_store_app_activation = 'no Store-signed Plervo app installed on runner'; documents_preserved = $true;
   settings_preserved_on_reinstall = $true; default_pdf_handler_preserved = $true } |
   ConvertTo-Json -Depth 4 | Set-Content (Join-Path $Evidence 'result.json')
